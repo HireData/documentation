@@ -1,0 +1,34 @@
+---
+title: "How to Resolve WhatsApp Business Account Permission Issues"
+description: "Troubleshooting WhatsApp Business Account permissions error"
+---
+
+_When sending WhatsApp messages through HireData, you may encounter the following error: `(#200) You do not have the necessary permissions required to send messages on behalf of this WhatsApp Business Account (OAuthException: 200)`._
+
+_This error means that the WhatsApp Business Account (WABA) connected to HireData doesn't currently allow sending messages via the API. This usually happens due to account permissions or conflicts with other providers, so in this article, we will share some possible causes and solutions._
+
+## 1. Payment settings are missing or invalid
+
+- The WABA must have [valid payment details](https://help.hiredata.com/en/articles/255992-add-a-valid-payment-method-for-whatsapp) configured in the Meta Business Manager.
+- Go to **Meta Business Manager → Business Settings → WhatsApp Accounts → Payment Settings** and verify that a valid payment method is active.
+
+## 2. The WABA is connected to another provider (e.g., Bird)
+
+- A WhatsApp Business Account can only be linked to **one provider** at a time.
+- If the WABA is still connected to another provider, disconnect it before linking it to HireData.
+
+## 3. The WABA is tied to another platform
+
+- Some platforms restrict direct API access when they control the WABA.
+- Check whether your WABA is still tied to another platform (for example, a CRM or messaging tool). If so, unlink it to restore the API permissions.
+
+## 4. The WABA has credit with a third-party provider
+
+- If the WABA has purchased credits through another provider, Meta doesn't allow direct API usage.
+- Remove or stop the credit setup with the third-party provider before connecting the WABA directly.
+
+Error **_"(#200) OAuthException: You do not have the necessary permissions"_** usually means that the WhatsApp Business Account is either misconfigured, tied to another provider, or missing valid payment details. By verifying payment settings, checking for existing provider connections, and ensuring the WABA is not locked by another platform, you can resolve this issue and restore messaging functionality.
+
+### Need more help?
+
+If you've gone through these steps and the error still appears, please get in touch with us at **_[support@hiredata.com](mailto:support@hiredata.com)_**, and we will help you resolve the issue.

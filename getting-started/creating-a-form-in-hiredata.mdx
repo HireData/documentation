@@ -1,0 +1,137 @@
+---
+title: "Creating a Form in HireData"
+description: "Create forms and collect structured feedback from your candidates"
+---
+
+_The forms in HireData help you collect structured data during candidate journeys. This guide will walk you through setting up and using forms in HireData for your automations._
+
+<Accordion title="Creating a Form">
+
+Firstly, you need to **define the purpose of the form.** Determine what data you need to collect (e.g., candidate's availability, feedback on the recruitment process, etc.).
+
+Then, open the **Forms** page via the **Settings** and click on [New Form]. You can create a blank form or select any of the available templates:
+
+![New Form button](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50372488/258dd2bddf25269b3b9c23505c06/Screenshot+2025-05-19+at+09_38_44.png?expires=1776771000&signature=ebc1fa64bbb3579ecf93b27b1598d1234b2999b981345d4d963543715b4bd145&req=1dVswlr%2BpD9k2hL085ZhoXJnkDHlD20VAoKbbMXrb7TAdPPnAW0sf2qV4C%2Fc%0Ang%3D%3D%0A)
+
+_Form templates:_
+
+![Form templates](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50372790/dd66a63ed69c093c093887e05e75/Screenshot+2025-05-19+at+09_39_14.png?expires=1776771000&signature=2a6d2ba2b51d95eab8e0b388958968d51160e0ec5337016d898459f0b01368ae&req=1dVswlr9pTdk2hL085ZhoZsCH%2Fq4ISJSwWWrPmCTnJ5i9ELCLA%2FDTOi%2BF45o%0Afg%3D%3D%0A)
+
+_If you start from scratch, you should add a name to your form that's only for internal use:_
+
+![Adding a name to a form](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50373594/296032bce844f4cbe254f9a8aedc/Screenshot+2025-05-19+at+12_40_06.png?expires=1776771000&signature=b34da403b7780a1c3d83236017b678253fe76701c631d1c2d388a538c700ead9&req=1dVswlv%2FpTNk2hL085ZhoSg4wQiBZNZn%2F8XzBNGjvpmAHH597hET8XA7%2Bxf2%0AwA%3D%3D%0A)
+
+</Accordion>
+
+<Accordion title="Adding Questions">
+
+Forms consist of one or more questions, where each of them can have logic attached to it — for example, show a follow-up question only if a rating is below 8. More on that shortly, now let's see how to add different questions.
+
+### 1.1. Click on the type of question you want to add or on the [+] icon to add other questions
+
+Each form can have multiple question types depending on the kind of data you'd like to collect.
+
+Most used by our clients:
+
+- **NPS/Opinion scale:** Ask candidates to rate something from 1 to 10.
+- **Multiple choice**: Let users pick from a list of options.
+- **Short/Long Text**: Collect open-ended answers.
+- **Redirect URL:** Redirect respondents to your website or Google Review URL.
+
+Other:
+
+- **Yes/No questions**
+- **Dropdown:** Let users pick from a list of options stored in a drop-down field.
+- **Collect contact information:** Collect the candidate's email address, phone number, or website.
+- **Date/Time/Datetime:** Ask for the candidate's availability time, birth date, or any other details in this format.
+- **Number/Currency:** Collect salary expectations data.
+- **File upload: **For collecting documents or photos.
+- **Ending screen: **Add a Thank you page at the end of your form.
+
+![Question types](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50373968/44861d7f1e7fa66c078b5f90ed96/Screenshot+2025-03-19+at+21_07_17.png?expires=1776771000&signature=cb1c973f659e29d9339187e256e58c3dd7ada8157476a1f81dca73f4e91ec6de&req=1dVswlvzqj9k2hL085ZhoQHT9FmRfMRJzkGWpa2g6yWYv6ya5zU1xdT0h5bH%0AxA%3D%3D%0A)
+
+### 2.2. Optional question settings
+
+When adding or editing a question in your form, you can customise it using the following options:
+
+- **Description: **Supporting text that appears below the question. Use this to provide more context or clarify the question.
+- **Placeholder: **The text that appears inside the input field to guide the user on what kind of answer you're expecting (e.g. _“Type your response here…”_). It disappears once the user starts typing.
+- **Image: **A visual above the question to make it more engaging or provide a visual reference.
+- **Button text: **A customisable button that the candidate clicks to submit the answer or move to the next step. This can be useful if you want to guide the tone (e.g. "Submit Rating" or "Next").
+- **Adjust scale: **For rating questions, you can define the minimum and maximum values (e.g. 1–10, 1–5). This is useful for different feedback formats like NPS (0–10) or satisfaction scores (1–5).
+- **Required question: **Enable this to make the question mandatory so candidates won’t be able to skip it.
+- **Hidden question: **Use this to hide a question from the candidate while still storing an answer (e.g. a default value or system-generated response).
+- **Reverse: **For rating questions, this inverts the scale display (e.g. shows 10 → 1 instead of 1 → 10). It’s helpful when higher numbers represent something negative (like stress or difficulty).
+
+![Adding a question to a form](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50374651/e08f9b6575fe4713126d5f4c88ef/Screenshot+2025-05-19+at+09_48_54.png?expires=1776771000&signature=c4b2b4edb023455422a752527bf7943a75a5588d6a60f9fc3e78485f418beb22&req=1dVswlz8qTZk2hL085ZhoXa7lwNMk2tN0v1IwilLvEPWlcaDFipeYgMcnaBg%0Afw%3D%3D%0A)
+
+💡 **Tip:** You can drag and drop to reorder the questions.
+
+</Accordion>
+
+<Accordion title="Adding Logic to the Questions">
+
+Use **rules** to set up smart flows between questions. For example:
+
+- If a candidate rates **7 or below**, show a follow-up asking for improvement suggestions.
+- If the rating is **8 or higher**, take them to the next question or ask them to leave a Google review.
+
+To set this up:
+
+### 2.1. Open the **Logic** tab and click [Add Rule] below a question
+
+![Logic tab](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50376095/74d2b7cdacfd425de75490af2692/Screenshot+2025-05-19+at+12_54_56.png?expires=1776771000&signature=7b71acde29ee0e59a3fc4f8bb58b37d93723bea16ed613f7476fb874444fc93b&req=1dVswl76pTJk2hL085ZhoeFS9s9JlcE0YLSxzGGBymh3N6MN5LsjP0EwYelX%0A3A%3D%3D%0A)
+
+![Add Rule button](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50375541/c55e28d36bb123f3b06f005e1229/Screenshot+2025-05-19+at+12_51_47.png?expires=1776771000&signature=77b812ae46087736bd7b915823f69c039f7d51e291033f1133c6c3d09a60c4c4&req=1dVswl3%2FqDZk2hL085ZhoZZ4rHJ0lxzms2CkCEPqsnoYjjFqapZaoPk4vorj%0Arw%3D%3D%0A)
+
+### 2.2. Set your condition (e.g. “Rating is less than or equal to 7”)
+
+![Adding a condition](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50375600/e0ca18c4008c293dbc87f923ccb1/Screenshot%2B2025-05-19%2Bat%2B09_52_08.png?expires=1776771000&signature=5ebe9fb88bb0a09cb846055be4d9b964cb46312dbdf66d7aef68222cb96f6097&req=1dVswl38rDdk2hL085ZhoRXee48hT7G%2Biw4BeI0ljG0D1LTfMrvQMRDmJg9M%0ATQ%3D%3D%0A)
+
+### 2.3. Choose what should happen next (e.g. go to a specific follow-up question or thank-you screen)
+
+![Selecting what will happen next](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50375079/ea8168d8c7a57b145857ec6f0384/Screenshot+2025-05-19+at+09_52_17.png?expires=1776771000&signature=54461d1660aaca41b96cda68a300fadd19dace5d351fe8a8d7cbcd2e65316a27&req=1dVswl36qz5k2hL085ZhoQoiRZ72UaZqd6%2FM2NoN6z2PQpKWt7nUtMYUIR3d%0AOA%3D%3D%0A)
+
+</Accordion>
+
+<Accordion title="Adding a Thank-You Screen">
+
+Based on the answers, forms can also end with a thank-you message or redirect candidates to an external page to leave a review.
+
+You can customise the **Thank-you screen** with a:
+
+- Title
+- Short message
+- Image
+- Button with text
+- Redirect URL: Use this to direct candidates to leave a review or go to your website.
+
+_Thank you screen with Website Redirect URL:_
+
+![Thank you screen with Website Redirect URL:](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50376525/87de27da992cd1c12b907d801ee4/Screenshot+2025-05-19+at+09_50_43.png?expires=1776771000&signature=2fc1c7ac00dddcab4797bc23a09d6a5606be237be5d61d053802f60092b7bc58&req=1dVswl7%2FrjJk2hL085ZhoWb53F64nbFMbURcYGQgb6w24zN8gMwRBgOdKB9m%0AFQ%3D%3D%0A)
+
+_Thank you screen with Google Review URL:_
+
+![Thank you screen with Google Review URL](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50376558/55f3c02885001ebb38f618ac0de1/Screenshot+2025-05-19+at+09_50_50.png?expires=1776771000&signature=675ca2b8391337f661bcd5025ddf14ca38c2a50c706759479be148a9f2f9572e&req=1dVswl7%2FqT9k2hL085ZhoYwhoitWyBCTiEz8PqfvkeOiqrlB6eh4h2qqxMqA%0Apg%3D%3D%0A)
+
+</Accordion>
+
+<Accordion title="Preview and Save the Form">
+
+Click on the eye icon to preview the form and on [Save] to save it.
+
+![Save and Preview Buttons](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50379428/dc504a51b81ead94840a1570d82a/Screenshot+2025-05-19+at+13_18_51.png?expires=1776771000&signature=1283f5a0dcfa0ff46b7cc0903d6e8c2ee891c5c96d9f35d4c61f5234ab5e6b9b&req=1dVswlH%2Brj9k2hL085ZhoSHNPnVaVkUO6raW1DDhAlcs4F%2FpAo3g0go9xpgc%0AsQ%3D%3D%0A)
+
+_Form preview on different devices:_
+
+![Form preview](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/50379844/0dea75bcb5f074d89543ab52083d/Screenshot+2025-05-19+at+13_21_09.png?expires=1776771000&signature=928d7d31454ac6044b9e797af504decde26ef6ea9e93c06caf25cd212cd38ce9&req=1dVswlHyqDNk2hL085ZhoWa4wl8Afv3PdKZCN7x3Bjls98W0SKOsz46bXUlx%0AOQ%3D%3D%0A)
+
+That’s it! 🎉 Once your form is ready, you can add it to your email templates in HireData and then send it via your automations.
+
+</Accordion>
+
+---
+
+## Video guide
+
+<iframe src="https://www.loom.com/embed/b419054dc5df42dc95e33132dd747380" frameBorder="0" allowFullScreen className="w-full aspect-video"></iframe>

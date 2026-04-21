@@ -1,0 +1,86 @@
+---
+title: "How profile pictures work in HireData"
+description: "Learn how HireData determines user avatars"
+---
+
+_Profile pictures in HireData are automatically generated based on specific attachment types in Carerix. This article explains which attachments are used, the priority order applied, and when a photo, logo, or initials will be displayed._
+
+## How HireData selects a user avatar?
+
+When a profile is synced from Carerix, HireData checks whether there are attachments that can be used as an avatar. Only attachments with these specific type values are considered:
+
+- `pasfoto`
+- `emaillogo`
+
+The system also evaluates the attachment label. Matching is case-insensitive, so any casing variation (for example, `PasFoto`, `PASfoto`, `EmailLogo`) is supported.
+
+If multiple valid attachments exist, HireData evaluates them in a fixed priority order. Within that order, the most recently modified attachment is considered first.
+
+## User avatar selection priority
+
+HireData determines the avatar using the following priority:
+
+### 1. Email logo with label "emailpasfoto"
+
+First priority is given to an attachment where:
+
+- Type value is `emaillogo`
+- Label is `emailpasfoto`
+
+If such an attachment exists and contains usable content, it is used as the avatar.
+
+### 2. Profile photo with label "pasfoto"
+
+If no match is found in step 1, HireData checks for:
+
+- Type value `pasfoto`
+- Label `pasfoto`
+
+If found and valid, this image is used.
+
+### 3. Any attachment with type "pasfoto"
+
+If no exact label match is found, HireData checks for any attachment where:
+
+- Type value is `pasfoto`
+
+The label does not need to match in this case.
+
+### 4. Any attachment with type "emaillogo"
+
+If no profile photo is found, HireData checks for any attachment where:
+
+- Type value is `emaillogo`
+
+The label does not need to match.
+
+<Accordion title="When is a photo or logo displayed?">
+
+An image is displayed as the avatar when a **matching attachment is found** based on the priority above, and a valid image is available to be used as the user's avatar.
+
+</Accordion>
+
+<Accordion title="When are initials displayed?">
+
+Initials are shown when:
+
+- No attachment with type `pasfoto` and/or `emaillogo` exists
+- A matching attachment exists but does not contain usable content
+- The profile has no attachments
+
+In these cases, HireData automatically generates initials based on the profile name.
+
+</Accordion>
+
+<Accordion title="Troubleshooting">
+
+If you expect an image but only see initials, check the following:
+
+- The attachment type value is set to `pasfoto` or `emaillogo`.
+- The label is correctly configured.
+- The attachment contains accessible and usable file content.
+- The attachment has been synced correctly.
+
+If changes are made in Carerix, for example, uploading a new photo or updating the attachment type, the user avatar will update after the next successful sync within HireData.
+
+</Accordion>

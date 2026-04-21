@@ -1,0 +1,251 @@
+---
+title: "Connect with any app"
+description: "In this article you will learn about creating custom apps to connect any app with HireData in order to automate stuff."
+---
+
+_A custom app in HireData allows you to add custom functionality to automations. In it's current form a custom app allows you to create triggers. A trigger is an endpoint your own application can send data towards. Go to "Adding triggers to your custom app" to learn more about triggers._
+
+# 1. How to create and edit a custom app
+
+In this section you'll learn about creating and editing custom apps.
+
+## 1.1. Creating the custom app
+
+[Head over to the apps section in the settings](https://app.hiredata.com/settings/apps) to create a custom app. On the top right click the "+ Create new app" button to open the app creation wizard and give your app a name, then press the create app button on the bottom of the wizard to create the app. You'll be redirected to your app's edit page.
+
+## 1.2. Editing the custom app
+
+On the edit page you can do the following:
+
+- Activate/deactivate the app.
+- Manage your app's triggers.
+- Give your app a custom icon and logo to make it easier to identify.
+- Change the app's name on the top left of the editor.
+
+# 2. How to create and use triggers
+
+In this section you'll learn about creating and editing triggers for your custom app.
+
+## 2.1. What is a trigger?
+
+A trigger is what we call the starting point of an event-based automation. Triggers are webhooks that you can send data towards. When our application receives a request for an active trigger it will execute any automation that makes use of it.
+
+## 2.2. Why would I use a trigger?
+
+Triggers allow you to build your own starting points for automations where you control the data we receive. If your application has a form of webhook functionality or you have the resources to develop your own webhooks you will be able to use a trigger to connect your app with HireData and make use of our automations.
+
+## 2.3. Creating triggers
+
+When you're on the edit page you'll be able to find a "Create trigger" button on the left side menu. If there's already a trigger you can press the plus button next to the trigger section label. Pressing these buttons opens up a dialog with an input field to name the trigger you're creating. Once you've created a trigger it will open up in edit mode.
+
+## 2.4. Editing triggers
+
+When you click a trigger in the triggers list it will open up in edit mode. The edit mode is split up into multiple sections which we'll individually explain below.
+
+### 2.4.1. Top bar
+
+In the top bar of the edit view you'll be able to change the trigger's name, delete it and close the edit mode. In the future we may add more items to the top bar's menu to make it easier to test and configure the trigger.
+
+### 2.4.2. URL
+
+Underneath the top bar you'll find the trigger's webhook URL. In this section you can choose the request method and copy the URL. We require the request method to be explicitly declared so our application knows what kind of request to expect. It defaults to `POST` requests which can receive a `JSON` object or form request data. When you use a `GET` request our application will look at the query parameters for data.
+
+### 2.4.3. Object Definition
+
+The object definition is a list of fields based on the data the trigger will receive. It sounds more complicated than it is and can also be auto mapped when the trigger does not yet have an object definition. In the future we will add the ability to upload the sample directly so you can use any available data set u may already have.
+
+#### 2.4.3.1. Fields
+
+The following can be configured on a field:
+
+1. `Label` - the label or name of the field (e.g. "Contact: First Name").
+2. `Key` - the identifier of the field when it's used as a variable.
+  1. Example: `contact.firstName`.
+  2. Example use: "Hello `#\{\{contact.firstName\}\}`, we'd love to get your feedback!".
+3. `Type` - the primitive data type of the field's value.
+  1. `Bool` - expects a binary true/false value.
+  2. `String` - expects a text value.
+  3. `Int` - expects a number without decimals.
+  4. `Float` - expects a floating point number (e.g. `99.99`).
+  5. `Number` - expects any numeric value (e.g. `99999` or `99.99`).
+  6. `Datetime` - expects a datetime string.
+  7. `Time` - expects time values (e.g. `12:04 PM`).
+  8. `Dat`e - expects date values (e.g. `11-05-2024`).
+  9. ⚠️ `List` - a list of options, does not support adding options yet.
+  10. `Null` - fallback type for when the value's type is unknown.
+    1. when the automapper does not know what to do with a value this will be the type and may need to be manually edited.
+4. `Sub Type` - additional context/purpose of the value.
+  1. `None` - when there's no sub type.
+  2. `Id` - the sub type is a type of identifier.
+    1.
+  3. `Email` - indicates that a field will contain emails
+    1. Makes the field available for lists that only contain email fields
+  4. `Phone` - indicates that the field will contain phone numbers
+    1. Makes the field available for lists that only contain phone fields.
+  5. `Url` - indicates that the field will have URLs.
+    1. Makes the field available for lists that only contain url fields.
+
+**Example Fields**
+
+<table><tbody><tr><td>
+
+Label
+
+</td><td>
+
+Key
+
+</td><td>
+
+Type
+
+</td><td>
+
+Sub Type
+
+</td></tr><tr><td>
+
+Contact: Id
+
+</td><td>
+
+contact.contactId
+
+</td><td>
+
+Int
+
+</td><td>
+
+Id
+
+</td></tr><tr><td>
+
+Contact: First Name
+
+</td><td>
+
+contact.firstName
+
+</td><td>
+
+String
+
+</td><td>
+
+None
+
+</td></tr><tr><td>
+
+Contact: Last Name
+
+</td><td>
+
+contact.lastName
+
+</td><td>
+
+String
+
+</td><td>
+
+None
+
+</td></tr><tr><td>
+
+Contact: Email
+
+</td><td>
+
+contact.emailAddress
+
+</td><td>
+
+String
+
+</td><td>
+
+Email
+
+</td></tr><tr><td>
+
+Contact: Phone
+
+</td><td>
+
+contact.mobileNr
+
+</td><td>
+
+String
+
+</td><td>
+
+Phone
+
+</td></tr></tbody></table>
+
+#### 2.4.3.2. Automatically adding fields
+
+When the field list is empty you can send a test request to the trigger's webhook URL. Any fields that can be identified in the dataset will now be automatically mapped. To create the example fields above you could send the following JSON object:
+
+```
+{
+    "contact": {
+        "id": 1024,
+        "firstName": "Jeroen",
+        "lastName": "Sakkers",
+        "emailAddress": "jeroen@hiredata.com",
+        "mobileNr": "+31612345678"
+    }
+}
+```
+
+#### 2.4.3.3. Manually adding fields
+
+When the field list is empty you can press the "Add field" button to create your first field. The field list is a table with rows of fields. When there's fields you can add/remove fields with the plus/minus buttons. Be careful clicking them as the page auto saves changes.
+
+### 2.4.4. Sync Person
+
+In this section you will be able to map fields from your object definition to person configs. A person config makes it easier to set up tasks in automations and can auto-sync personal data to people in your HireData account. If this is not configured you will have to manually map all fields in each automation that uses the trigger.
+
+#### 2.4.4.1. What is a person config?
+
+A person config is a configuration format to map personal data in HireData. Using the example fields above you could make a `Contact` person config and map fields into the person config. In an automation instead of manually configuring all details you can select `Contact` whenever a task requires a person e.g. the receiver of emails and conversations.
+
+## 2.3. Activating triggers
+
+All done and ready with your trigger? Find it in the trigger list on the left side and press the play button on the right of the trigger's name. When your mouse hovers over it a tooltip saying "activate" will show up. When a trigger is active a pause button shows instead. Now it'll be able to receive data and execute automations.
+
+### 2.3.1. Sending Data
+
+Using the examples above, let's build an actual request now to understand the process.
+
+1. Go to [https://base64.guru/tools/http-request-online](https://base64.guru/tools/http-request-online).
+2. Fill in the form:
+  1. **URL * **- enter the trigger's webhook URL here
+  2. **HTTP Request Method **- set it to `POST`
+  3. **HTTP Request Headers **- set it to `Content-Type: application/json`
+    1. This will let our app know you're sending JSON data
+  4. **HTTP Request Body **- enter the data you want to send e.g.:
+
+```
+{
+    "contact": {
+        "id": 1024,
+        "firstName": "Jeroen",
+        "lastName": "Sakkers",
+        "emailAddress": "jeroen@hiredata.com",
+        "mobileNr": "+31612345678"
+    }
+}
+```
+
+3. Press the **Execute the HTTP Request** button.
+4. You should see the following **Response Body:**
+
+```
+{"statusCode":200,"statusText":"OK","success":true,"data":null}
+```
+
+5. If everything was configured as expected you will see the following in the object definition:![](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/24594061/b3e444f194eb8271cfe4459335e6/image.png?expires=1776880800&signature=127487ed3205e2c34de52eac47b09cb8b7dbe95e8f92476b6fc71662ce03be52&req=0tFqzFz6qjZk2hj99dpg6tpForBwSB8p6rq6ifj4jdk%2FBcl%2FcAkCGi%2BwWxTN%0AolpfwLPAoxkeLT3oXnjUMMmS%0A)

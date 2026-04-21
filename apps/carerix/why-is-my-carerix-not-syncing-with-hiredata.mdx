@@ -1,0 +1,58 @@
+---
+title: "Why is my Carerix not syncing with HireData"
+description: "Ensure a seamless connection between Carerix and HireData"
+---
+
+_Welcome to our concise but helpful guide on restoring a broken connection between your Carerix environment and HireData. Continue to find out how to identify an issue with the connection and easily fix it to avoid any disruptions in your campaigns._
+
+<Accordion title="Step 1: Test your Carerix connection with HireData">
+
+To test whether your Carerix account and HireData connection have the correct access, you can initiate a [manual sync](https://help.hiredata.com/en/articles/163476-manually-sync-carerix-with-hiredata) from your account settings.
+
+If you see a "403: Forbidden" message during the sync process, it means that HireData doesn't have the correct access within your Carerix setup. This issue is typically due to missing scopes in the client configuration.
+
+![Timeline showing an error with the connection](https://downloads.intercomcdn.eu/i/o/17303092/15b29f54da360ca9cc89759b/Screenshot_2024-07-21_at_14_05_15.png?expires=1776771000&signature=4c296de70dff01498d8fc677d825b222153f928ef2a109160d85aff6b5794b2c&req=0dJsxVv6pTVk2hL085ZhodtdiKwb%2Fg5hf2BdgVYgOfFDgjkdcnd%2BS8voNw5h%0A%2BA%3D%3D%0A)
+
+Additionally, if you don't see any match stages or variables loading when creating automation in HireData, then the connection with your core app is broken.
+
+![Automation in HireData with match stages not loading](https://downloads.intercomcdn.eu/i/o/17305511/999d6d8ba5678d429b33db6b/0+%281%29.png?expires=1776771000&signature=f41f8397bf9e7a7f044bb08b3507deed0a56e74ae15d9926c95dd2878cf15d05&req=0dJsxV3%2FrTZk2hL085Zhoceofej1SMkWfFBGthgRYqzRXnuJ48LX%2B6WI8EpF%0AKQ%3D%3D%0A)
+
+![Automation in HireData with variables not loading](https://downloads.intercomcdn.eu/i/o/17305527/3669cd1c8cbd09d5d028f5ff/0.png?expires=1776771000&signature=83dca9f93678f462deb8eba36acbd81fc35ff3d4ca6df0b401370e2f96dfcbcb&req=0dJsxV3%2FrjBk2hL085ZhoRu3XQnq0YUFgGjVbcRCz3iFrMypQ%2FoB91uNJKK%2F%0A0A%3D%3D%0A)
+
+</Accordion>
+
+<Accordion title="Step 2: Fix the connection">
+
+To restore the connection, you have to add the missing scopes from Carerix to Hiredata by following these steps:
+
+**_2.1 Login to your Carerix account_**
+
+**_2.2. Locate the client_**
+
+Navigate to the [Maintenance] drop-down menu and then open the [Identity Management] page to find the client that was created during the [initial setup](https://help.hiredata.com/en/articles/157034-connect-with-carerix).
+
+![Carerix environment with client information](https://downloads.intercomcdn.eu/i/o/17304486/fec4480405c6ca93391d15ca/dd85748e-1a67-424a-99bf-9d238e2b9b05.png?expires=1776771000&signature=c28e723acb626f879a441b51ae5acf3cf0d1b5f2b839ea36bb6808f96ad2e2a4&req=0dJsxVz%2BpDFk2hL085ZhoSB06L4WOppwoXnJ2iPlWiEu7rGwgBA%2B2%2Fecv9gX%0Abw%3D%3D%0A)
+
+**_2.3 Add the missing scopes_**
+
+This will ensure that HireData has the required permissions to access your Carerix environment. You can directly copy the default scopes from here, and then see ["Step 2.2: Setting up a Confidential Client"](https://help.hiredata.com/en/articles/157034-connect-with-carerix) for more information:
+
+- urn:cx/webhooks:data:manage
+- urn:cx/cx5Acl:data:manage
+- urn:cx/cx5Wrapper:data:manage
+- urn:cx/webhooks:data/webhooks:manage
+- urn:cx/webhooks:data/applications:manage
+
+![Default scopes in Carerix](https://downloads.intercomcdn.eu/i/o/17304498/60a75b76a4c34b9a72093040/821a9478-332c-4441-adad-f3e424c1b1a9.png?expires=1776771000&signature=bdde68a7bd561dc57414d18902cd01cf69ccea336ffcbf688c805bcdca651bbd&req=0dJsxVz%2BpT9k2hL085ZhobcLEgVwsftymRcGyfejbWtzh0Ap%2F%2FA7pcg0Qhcx%0Atg%3D%3D%0A)
+
+**_2.4 Save the changes_**
+
+</Accordion>
+
+<Accordion title="Step 3: Re-sync Carerix">
+
+After updating the client scopes, you can manually sync [Carerix](https://help.hiredata.com/en/collections/202628-carerix) again by following the same steps mentioned earlier for [manually syncing](https://help.hiredata.com/en/articles/163476-manually-sync-carerix-with-hiredata). If the permissions were correctly updated, you should no longer see the "403: Forbidden" message, and the sync should proceed successfully.
+
+![Timeline without an error](https://downloads.intercomcdn.eu/i/o/17303182/e1b13498495efca76d6135d3/Screenshot_2024-07-21_at_14_09_52.png?expires=1776771000&signature=0d68272be3e9d13b3b74c01a703c22131364e424b4f04508bf480b14b1dc144e&req=0dJsxVv7pDVk2hL085ZhoTs0j%2FT3FAq8lWSKB5yII%2B2ANUFtNF3J789WrYAK%0AOQ%3D%3D%0A)
+
+</Accordion>

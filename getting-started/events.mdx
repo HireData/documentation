@@ -1,0 +1,66 @@
+---
+title: "Events"
+description: "Understanding how HireData events work"
+---
+
+_When you connect your core app, such as Carerix, Salesforce, OTYS, etc., to HireData, it will start sending events, which are notifications that something has happened in your system. Events trigger your automations, making them crucial to how HireData works in the background. In this article, we'll explain how events work, where to find them, and how to analyse them if something doesn't go as expected._
+
+<Accordion title="What is an event">
+
+An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. These events are used to trigger the automations you've set up in HireData, and every event includes **Event Data**, **External Records **and** Processes.**
+
+_Event example:_
+
+![Individual event page](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/48025433/dfcef8ea63015221c669fda8c73e/Screenshot+2025-05-05+at+10_51_18.png?expires=1776771000&signature=8060cd0797a538aa21261ce0785845b6fac2bebc7518259820343ea52a8a1ef1&req=1N1vx13%2BrzRk2hL085ZhodVqZCJwjEblnctPFKSTb5oC2CYs0Ek%2FrW8xIrCz%0AKQ%3D%3D%0A)
+
+</Accordion>
+
+<Accordion title="How to view event details">
+
+Navigate to the **Settings** menu and open the **Events** page to see a list of all events sent from your connected apps:
+
+![Events page in HireData](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/48023611/6dda739ef346a3853f377eaa8cf3/Screenshot+2025-05-05+at+12_06_25.png?expires=1776771000&signature=3d2f4b6d13d1849964db8a0fc25b376a328ce9aabaefad9600a44bc743c805f8&req=1N1vx1v8rTZk2hL085ZhoQfgASB8SZ0bqaxEy5q0wfCj3eso4jpp0n0Lw1fd%0Amg%3D%3D%0A)
+
+_Use the filters for a more organised view, for example, if you want to see the events coming from one of your apps:_
+
+![Setting up filters](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/48024595/148122e6e62757f54aa7c19fb8c2/Screenshot+2025-05-05+at+10_49_56.png?expires=1776771000&signature=9469b2f3a62219563bf2aa139256385b52cdb023f6f775c6d9868b765abbf982&req=1N1vx1z%2FpTJk2hL085ZhoU2wn2U4f2vTZE3ErvU0lRSO0p1ylyv5Ip6CVC9Y%0AbA%3D%3D%0A)
+
+To explore an individual event, click the [Details] button next to the event for a short overview or open the dropdown menu and click [View].
+
+![Event drop-down menu](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/48023846/548fa48d03284d3547c8d418653a/Screenshot+2025-05-05+at+10_50_57.png?expires=1776771000&signature=4dcd0222bfc2d83b48f6a833046b4a70007d1043818a5e52f00453dec86ba45e&req=1N1vx1vyqDFk2hL085ZhoVDAvXt8%2FzzlCEHv1mPef97M4bRsc16KpRxNxcux%0Agw%3D%3D%0A)
+
+This will open the event detail view, which includes:
+
+- **Event Data** – a summarised view of the data received from your app.
+
+![Event Data tab](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/48023945/46b436365e5510728c4b2c417701/Screenshot+2025-05-05+at+10_51_18.png?expires=1776771000&signature=78e70ebe9f89ce3f2e39e4e5ff5c34f2138145096ee5ac3bea4a6ed5ac03710c&req=1N1vx1vzqDJk2hL085ZhodjR51c%2BiJ3Nw29j3%2FjU65Kg6THMtZLIG0cGH%2Fp0%0AlA%3D%3D%0A)
+
+- **External Records** – additional fields from the source app, even if they aren't used in the automation.
+
+![External records tab](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/48024008/ee6bf5691b538d18dae0aa99628b/Screenshot+2025-05-05+at+10_51_53.png?expires=1776771000&signature=8700931ca54f0f124d842e5d15ec4c4cc2794aa02658ab1eeedbc5d172279b9e&req=1N1vx1z6rD9k2hL085ZhoUVr3DzFcvLXY%2FjFxoXON3FSHGJmjO52YOU4ykO2%0AFw%3D%3D%0A)
+
+- **Processes** – the list of automation(s) triggered by this event and the runs it created. You'll also see each run's status (e.g. Completed, Delayed, Cancelled).
+
+![Processes tab](https://downloads.intercomcdn.eu/i/o/lk3ftrxl/48024037/fa368092f3bf390d46e8e8d1463c/Screenshot+2025-05-05+at+10_52_01.png?expires=1776771000&signature=b94b266b9caa42414e4800f3882a413a5b8ec01c7bbe89ab63c6ee77ecc2066d&req=1N1vx1z6rzBk2hL085ZhoesePx7jVZylLzHRdD%2Buf6hxrT1UThysp2SxnJ5U%0A8g%3D%3D%0A)
+
+</Accordion>
+
+<Accordion title="Troubleshooting events">
+
+If an automation didn't run as expected, or you're seeing unexpected data:
+
+- Go to the **Processes** tab of the event and check if any runs were created.
+- Click into the run to view logs and see if a step failed or was skipped.
+- Compare the **Event Data** with the conditions in your automation to ensure it matches.
+
+If no process was triggered, the event likely didn't meet the criteria of any active automations.
+
+### Still need help?
+
+If you're unsure why an event didn't trigger your automation or want help interpreting the event data, feel free to contact our team at [support@hiredata.com](mailto:support@hiredata.com). If you do, please include:
+
+- A link or the ID of the event;
+- A link or the name of the automation you expected to be triggered;
+- Any relevant steps or context that might help us investigate throughout.
+
+</Accordion>

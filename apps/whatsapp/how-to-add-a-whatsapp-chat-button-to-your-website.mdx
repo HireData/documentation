@@ -1,0 +1,59 @@
+---
+title: "How to Add a WhatsApp Chat Button to Your Website"
+description: "Add a WhatsApp Chat Button to your website for easier communication"
+---
+
+_You can easily allow visitors to contact your team via WhatsApp by embedding a **Click to Chat** button on your website. This method works across devices and doesn’t require any special integrations._
+
+## Step 1: Get Your WhatsApp Business Number
+
+Make sure you have a WhatsApp Business number [connected to your brand in HireData](https://help.hiredata.com/en/articles/232224-connect-with-whatsapp-embedded-sign-up). This is the number your website visitors will message.
+
+**Example format:**
+
+31612345678
+
+_(No +, no spaces, no dashes)_
+
+## Step 2: Generate Your WhatsApp Link
+
+Use this format:
+
+```
+<https://wa.me/><number>?text=<url-encoded-message>
+```
+
+Replace:
+
+- &lt;number&gt; with your full phone number (international format)
+- &lt;url-encoded-message&gt; with a pre-filled message
+
+Example:
+
+```
+<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies>!
+```
+
+💡 Tip: You can create different messages for different pages (e.g. job detail pages, services, or FAQs).
+
+## Step 3: Add the Button to Your Website
+
+You can embed the link as a text link, image button, or styled button. Here’s a simple example using text:
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> Chat with us on WhatsApp </a>
+```
+
+Or use an image:
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> <img src="<https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg>" alt="WhatsApp" width="40"> </a>
+```
+
+You can also style this as a floating button using custom CSS if you have access to your site’s theme.
+
+## 💡 Tips for Customisation
+
+- Add different links per page with tailored messages (e.g., “I’m interested in Job ID 5421”)
+- Track traffic by adding UTM parameters (e.g. ?utm_source=website)
+- Position the button for visibility (e.g., bottom-right corner, fixed position)
