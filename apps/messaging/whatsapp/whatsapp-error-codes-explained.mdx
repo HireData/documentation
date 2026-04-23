@@ -1,0 +1,230 @@
+---
+title: "WhatsApp Error Codes Explained"
+description: "Learn what WhatsApp Errors mean and how to solve them"
+---
+
+_When a WhatsApp message fails to send in HireData, you may see an error code in the conversation overview of the Send Message or Survey task. These codes come directly from Meta and explain why a message wasn't delivered. This article explains what each code means, so you know what's going on._
+
+## Authentication and permission errors
+
+These errors occur when HireData can't authenticate properly with your WhatsApp Business Account.
+
+### (0) Authentication exception
+
+The access token used to connect your account has expired or been revoked. Messages cannot be sent until this is resolved.
+
+### (190) Access token expired
+
+The access token linked to your WhatsApp connection has expired and needs to be refreshed.
+
+### (200–299) API permission issue
+
+HireData doesn't have the permissions needed to send messages on behalf of your WhatsApp Business Account. This is usually caused by a missing payment method, a conflict with another provider, or an expired access token.
+
+**_What to do:_**_See_ _[How to Resolve WhatsApp Business Account Permission Issues](https://help.hiredata.com/en/articles/394766-how-to-resolve-whatsapp-business-account-permission-issues)._
+
+### (10) Permission denied
+
+HireData is missing a required permission or is no longer eligible to send messages.
+
+## Account and billing errors
+
+These errors relate to the status or billing configuration of your WhatsApp Business Account.
+
+### (368) Account temporarily blocked
+
+Your account has been temporarily blocked due to a policy violation. Messaging is paused until the issue is reviewed and resolved in Meta Business Manager.
+
+**_What to do:_**_Log in to your [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjw46HPBhAMEiwASZpLRE3o4iBGHx4q8mAkEhnMTwXG17_Eec92qkYRHL2I6MBiuJ0sf-h4kRoC8fkQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC_ciGa5Zg7Mvjvr9xEpi0OMx) and review the policy enforcement notice on your account._
+
+### (131031) Account locked
+
+Your WhatsApp Business Account has been locked, typically due to a policy violation or a two-factor authentication (PIN) mismatch.
+
+**_What to do:_**_Log in to [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjw46HPBhAMEiwASZpLRE3o4iBGHx4q8mAkEhnMTwXG17_Eec92qkYRHL2I6MBiuJ0sf-h4kRoC8fkQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC_ciGa5Zg7Mvjvr9xEpi0OMx) and check your account status._
+
+### (131057) Account in maintenance mode
+
+Your WhatsApp Business Account is temporarily in maintenance mode, usually because a throughput upgrade is in progress. This resolves itself automatically.
+
+### (130497) Country restricted
+
+Messaging is not permitted in the recipient's country or region based on your current account settings.
+
+### (131042) Payment eligibility issue
+
+Your WhatsApp Business Account doesn't have an active payment method or credit line set up with Meta. Messages cannot be sent until billing is active.
+
+**_What to do:_**_See [Add a Valid Payment Method for WhatsApp](https://help.hiredata.com/en/articles/255992-add-a-valid-payment-method-for-whatsapp)._
+
+### (133010) Phone number not registered
+
+The phone number hasn't been properly onboarded to the WhatsApp Business API.
+
+## Rate limit errors
+
+These errors happen when too many messages are being sent in a short period of time.
+
+### (80007) Business account rate limit
+
+Your WhatsApp Business Account has reached its messaging throughput limit. It applies to your entire WhatsApp Business Account and caps the total volume of messages you can send over a period of time
+
+### (130429) Rate limit hit
+
+Your account has exceeded the allowed number of messages per second. It's a restriction that kicks in when you're sending too fast in a short window. This lifts automatically after a short period.
+
+### (131048) Spam rate limit
+
+Your phone number has been flagged due to a high volume of messages being blocked or reported by recipients. This affects your number's quality rating with Meta.
+
+**_What to do:_**_Check your phone number's quality rating in [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjwhqfPBhBWEiwAZo196jHORmdR703fP9fJkUx0gzy4Wduft0nyV2RJxkHUxlxbIFDT_deR_hoC_HAQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC9y2Odwg7zSG1UwxxT2UpbMa) under WhatsApp Manager → Phone Numbers._
+
+### (4) Too many API calls
+
+Your account has hit the app-level rate limit. This is a temporary restriction that lifts automatically.
+
+### (131056) Too many messages to the same user
+
+You've sent too many messages to a single recipient in a short time.
+
+## Conversation window errors
+
+These errors occur when a message is sent outside the rules of WhatsApp's 24-hour conversation window.
+
+### (131049) Message not delivered by Meta
+
+Meta chose not to deliver this marketing message, typically to protect the recipient's experience. This can happen when a user receives a high volume of marketing messages.
+
+**_What to do:_**_Wait at least 24 hours before trying again. Consider whether the template content is relevant and personalised for this recipient._
+
+### (131047) Re-engagement message without an active window
+
+You tried to send a free-form message after the candidate's 24-hour window had already closed. WhatsApp only allows template messages once the window expires.
+
+**_What to do:_**_Use an approved WhatsApp template to restart the conversation._
+
+### (131050) User has opted out
+
+The candidate has blocked or opted out of receiving marketing messages from your number. No further messages can be sent to them.
+
+## General message errors
+
+These are general errors that cover invalid requests or failed deliveries.
+
+### (100) Invalid parameter
+
+The message request contained an unrecognised or misspelt field.
+
+###
+
+### (131026) Message undeliverable
+
+The message couldn't reach the recipient. This usually means the phone number isn't registered on WhatsApp, the number no longer exists, or the recipient is using an outdated version of the app.
+
+### (131052) Media download error
+
+HireData couldn't download a media file sent by the candidate. This usually means the file is no longer available or the link has expired.
+
+**_What to do:_**_Ask the candidate to resend the file._
+
+### (131053) Media upload error
+
+The media file you tried to send uses an unsupported file type or format.
+
+### (131008) Required parameter missing
+
+A required field was not included in the message request.
+
+### (131021) Recipient is the same as sender
+
+The phone number you're trying to send to is the same as the sending number.
+
+### (131000) Unknown error
+
+An unexpected internal error occurred on Meta's side.
+
+**_What to do:_**_Wait a few minutes and try again. If the error persists, contact us at_ _[support@hiredata.com](mailto:support@hiredata.com)._
+
+## Template creation errors
+
+These errors occur when a template is being submitted or saved before it's ever used to send a message.
+
+### (2388072) Body format incorrect
+
+The body of the template contains a formatting issue that doesn't meet Meta's requirements.
+
+### (2388040) Character limit exceeded
+
+One of the template fields contains too much text and exceeds the allowed character limit.
+
+### (2388073) Footer format incorrect
+
+The footer of the template contains a formatting issue.
+
+### (2388047) Header format incorrect
+
+The header of the template uses an invalid format or syntax.
+
+### (2388293) Too many parameters
+
+The template uses more variable placeholders than Meta allows relative to the total text.
+
+### (134101) Template syncing
+
+The template was recently created and is still syncing with Meta's systems. Wait a few minutes before trying again.
+
+### (134102) Template unavailable
+
+The template is currently unavailable due to a sync or eligibility issue.
+
+### (2388299) Variable at the start or end of text
+
+A variable placeholder is positioned at the very beginning or end of the message body, which isn't permitted.
+
+## Template sending errors
+
+These errors occur when a template message is sent, but something about the template or its parameters doesn't match what Meta has on record.
+
+### (132068) Flow blocked
+
+A WhatsApp Flow attached to this template has a configuration issue and is currently blocked.
+
+### (132069) Flow throttled
+
+Too many messages using a WhatsApp Flow have been sent in a short period.
+
+### (132005) Hydrated text is too long
+
+The dynamic values filled into the template's placeholders make the final message too long.
+
+### (132000) Parameter count mismatch
+
+The number of variables passed with the template doesn't match the number of placeholders defined in it.
+
+### (132012) Parameter format mismatch
+
+A variable passed with the template is in the wrong format, for example, a number was expected, but text was sent.
+
+### (132001) Template not found
+
+The template name or language code doesn't match an approved template in your Meta account. This can happen if a template was recently deleted, renamed, or not yet approved.
+
+### (132007) Template content violates policy
+
+The template content includes something that doesn't comply with Meta's messaging policies.
+
+### (132015) Template paused
+
+Meta has temporarily paused this template due to a low quality rating or a high number of user reports.
+
+### (132016) Template disabled
+
+The template has been permanently disabled by Meta following repeated quality issues.
+
+### (132018) Template validation error
+
+There's a parameter issue with the template that prevented it from being validated by Meta.
+
+## Need more help?
+
+If an error persists and you're not sure what's causing it, reach out to us at _[support@hiredata.com](mailto:support@hiredata.com)_. For account-level issues in Meta, you can also contact Meta Business Support directly via [Meta Business Help Center](https://www.facebook.com/business/help).
