@@ -1,0 +1,62 @@
+---
+title: "Variables"
+sidebarTitle: "Introduction"
+description: "Personalize emails, messages, and automations with data from your fields"
+---
+
+_Variables let you drop live data, like a candidate's name, a job title, or a salary, straight into your emails, WhatsApp messages, forms, and automations. When the message is sent, each variable is replaced with the real value for that record._
+
+## What a variable looks like
+
+A variable is a field key wrapped in double curly braces:
+
+```
+Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
+```
+
+When this is sent to a candidate named Sofia applying for a Backend Engineer role, it becomes:
+
+```
+Hi Sofia, thanks for applying to Backend Engineer!
+```
+
+The spaces inside the braces are optional. `{{candidate.first_name}}` and `{{ candidate.first_name }}` behave the same.
+
+## Where you can use variables
+
+You can use variables anywhere you write content that gets sent or stored:
+
+- **Email** — subjects and bodies
+- **WhatsApp** — messages and templates
+- **Forms** — questions and follow-up logic
+- **Automations** — field mappings and scheduled tasks
+
+Most editors show an insert button (often `{ }` or **Insert variable**) that lists the fields available for the current record, so you don't have to remember exact field keys.
+
+## Providing a fallback
+
+If a field is empty for a particular record, the variable is replaced with nothing. To show a default instead, use the [`default`](/variables/modifiers#fallback) modifier:
+
+```
+Hi {{ candidate.first_name | default: "there" }}!
+```
+
+If the candidate has no first name, this sends "Hi there!".
+
+## Transforming values with modifiers
+
+Variables can do more than insert raw data. A **modifier** changes how the value appears. It can uppercase text, format a date, round a number, and much more. You add a modifier with a pipe (`|`):
+
+```
+{{ candidate.first_name | uppercase }}        → SOFIA
+{{ job.salary | format_currency: "EUR" }}      → €65,000.00
+{{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
+```
+
+You can chain several modifiers, and each one acts on the result of the previous:
+
+```
+{{ candidate.last_name | lowercase | capitalise }}
+```
+
+See the full list on the [Modifiers](/variables/modifiers) page.
