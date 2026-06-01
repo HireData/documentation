@@ -1,10 +1,10 @@
 ---
 title: "Variables"
 sidebarTitle: "Introduction"
-description: "Personalize emails, messages, and automations with data from your fields"
+description: "Personalize emails, messages, forms, and automations."
 ---
 
-_Variables let you drop live data, like a candidate's name, a job title, or a salary, straight into your emails, WhatsApp messages, forms, and automations. When the message is sent, each variable is replaced with the real value for that record._
+With variables you can drop live data, like a candidate's name, a job title, or a salary, straight into your emails, WhatsApp messages, forms, and automations.
 
 ## What a variable looks like
 
@@ -20,7 +20,9 @@ When this is sent to a candidate named Sofia applying for a Backend Engineer rol
 Hi Sofia, thanks for applying to Backend Engineer!
 ```
 
-The spaces inside the braces are optional. `{{candidate.first_name}}` and `{{ candidate.first_name }}` behave the same.
+The spaces inside the braces are optional:
+
+- `{{candidate.first_name}}` and `{{ candidate.first_name }}` behave the same.
 
 ## Where you can use variables
 
@@ -30,8 +32,6 @@ You can use variables anywhere you write content that gets sent or stored:
 - **WhatsApp** — messages and templates
 - **Forms** — questions and follow-up logic
 - **Automations** — field mappings and scheduled tasks
-
-Most editors show an insert button (often `{ }` or **Insert variable**) that lists the fields available for the current record, so you don't have to remember exact field keys.
 
 ## Providing a fallback
 
