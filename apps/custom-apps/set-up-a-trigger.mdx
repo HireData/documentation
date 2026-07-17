@@ -1,0 +1,131 @@
+---
+title: "Set up a trigger"
+sidebarTitle: "Set up a trigger"
+description: "Create a trigger, describe the data it receives, test it, and turn it into automations."
+---
+
+A trigger is a web address your other tool sends data to. This article walks through the trigger page from top to bottom: creating the trigger, describing its fields, testing it, and connecting automations.
+
+If you haven't created a custom app yet, start with the [introduction](/apps/custom-apps/introduction).
+
+## Create a trigger
+
+On your app's edit page, click **Create Trigger**. Name it after the data it will receive, for example "New application" or "Candidate updated".
+
+The trigger opens in its editor. At the top you'll find:
+
+- The trigger's **name** and its **address bar** with the request method
+- **Try It** to send a test request
+- **Automate This** to create an automation from the trigger
+- The **Activate** or **Pause** button
+
+{/* screenshot: trigger editor header with the URL bar */}
+
+## Choose the method and share the address
+
+Click **Copy address** and paste the address into the tool that will send the data.
+
+The request method tells HireData what kind of request to expect:
+
+| Method | How data is read |
+| ------ | ---------------- |
+| `POST` (default) | From the request body, as JSON or form data |
+| `GET` | From the address's query parameters |
+
+Requests with a different method than the one configured are rejected.
+
+## Describe the fields you'll receive
+
+The **Fields we receive** list tells HireData what's inside the data, so you can use it in automations and as [variables](/variables/introduction). Each field has:
+
+- **Label**: a readable name, like "Contact: First Name"
+- **Key**: the identifier in the data, with dots for nested values, like `contact.firstName`
+- **Type**: what kind of value to expect, like text, a number, or a date
+
+There are three ways to build the list:
+
+<Tabs>
+  <Tab title="Paste a sample">
+    While the trigger has no fields yet, click **Upload Sample Object** and paste or upload a JSON example of the data you'll send. HireData creates the fields for you and detects emails, phone numbers, dates, and URLs automatically.
+  </Tab>
+  <Tab title="Send a request">
+    While the trigger has no fields yet, any request sent to its address is stored as the sample and mapped into fields automatically. This also works while the trigger is paused, so it's a safe way to map real data from the other tool.
+  </Tab>
+  <Tab title="Add fields manually">
+    Click **New Field** to add fields one by one with the same field editor used across HireData. This includes AI fields, which generate a value with AI every time data arrives.
+  </Tab>
+</Tabs>
+
+<Note>
+  Once a trigger has fields, new requests no longer change them. Edit the list
+  manually or clear it before uploading a new sample.
+</Note>
+
+{/* screenshot: fields list with a few example fields */}
+
+## Test it with Try It
+
+Click **Try It** in the trigger's header to send a request without leaving HireData:
+
+1. The form is pre-filled with example values based on your fields. Adjust anything you like.
+2. Click **Send**.
+3. Check the request on the left and the response on the right.
+
+<Warning>
+  Try It sends a real request. On an active trigger it creates a real event
+  and runs your active automations. Test before you activate, or pause the
+  trigger first.
+</Warning>
+
+{/* screenshot: Try It modal with form and request panes */}
+
+## Hand it to your developer
+
+If someone else manages the tool that will send the data, the **Request Examples** at the bottom of the trigger give them everything they need. You can copy:
+
+- **cURL**: a ready-to-run example request for the command line
+- **JSON**: an example of the data the trigger expects
+- **OpenAPI**: a schema that imports into tools like Postman
+- **Copy for LLMs**: a single document describing the trigger, made to paste into an AI assistant that's building the integration for you
+
+<Tip>
+  Selecting fields first limits the copies to just those fields.
+</Tip>
+
+## Sync people
+
+If the incoming data describes a person, like a candidate or a contact, the **People** section maps it onto person records in HireData:
+
+1. Click **Add Person** and map the fields.
+2. Every request to the trigger now syncs that person automatically.
+3. Automations using the trigger can use the person directly, for example as the receiver of an email, without mapping fields again.
+
+Remove all people to stop syncing.
+
+## Turn it into automations
+
+Click **Automate This** in the trigger's header to create a draft automation that starts whenever the trigger receives data. You can configure its steps right after.
+
+The trigger's tabs show everything it does in one place:
+
+- **Automations**: the automations connected to this trigger, with bulk activate, pause, duplicate, and delete
+- **Events**: every request the trigger received
+- **Runs**: the automation runs those events started
+- **Tasks**: the individual tasks those runs executed
+
+## How requests are handled
+
+A quick reference for when something doesn't behave as expected:
+
+1. The request method must match the trigger's configured method, otherwise it's rejected.
+2. Every valid request is stored as an event, even while the app or trigger is paused. You'll always see it in the **Events** tab.
+3. Automations only run when both the app and the trigger are active. If nothing happens, check those two switches first, then the automation's own status and start filters.
+4. While a trigger has no fields, its first request is used to create them automatically.
+
+### Still need help?
+
+If a trigger isn't behaving as expected, contact our team at [support@hiredata.com](mailto:support@hiredata.com) and include:
+
+- A link to the trigger
+- The event, from the **Events** tab
+- The automation you expected to run

@@ -1,0 +1,70 @@
+---
+title: "Custom Apps"
+sidebarTitle: "Introduction"
+description: "Connect any tool to HireData and automate the data it sends."
+---
+
+A custom app connects HireData to a tool that has no built-in integration, like your own portal, a niche job board, or an internal system. If the tool can send a web request, a custom app can receive it and start your automations.
+
+## What is a custom app?
+
+A custom app is an app you create and control yourself. It consists of:
+
+- **A name, icon, and logo** so your team recognises it across HireData
+- **Triggers**: web addresses your other tools send data to
+- **An active state** that controls whether incoming data runs automations
+
+When an active trigger receives data, HireData stores it as an [event](/settings/logs/events) and starts every automation connected to that trigger.
+
+## Is this the right feature for me?
+
+Use a custom app when:
+
+- HireData does not have an integration with the tool you want to connect
+- You built the tool yourself, or your team controls how it sends data
+- The tool supports webhooks, or a developer can add a web request for you
+
+You don't need a custom app when:
+
+- An [integration](/apps/introduction) already exists for your ATS such as Carerix, Salesforce, OTYS, Recruitee, or Vincere
+- You only want to send data out of HireData; custom apps receive data
+
+<Tip>
+  Not sure if your tool can send web requests? Search its help centre for
+  "webhooks", or ask our team at [support@hiredata.com](mailto:support@hiredata.com).
+</Tip>
+
+## Create your custom app
+
+<Steps>
+  <Step title="Create the app">
+    Go to [Settings → Apps](https://app.hiredata.com/settings/apps) and click **Create New App**. Give it a recognisable name and you'll land on its edit page.
+  </Step>
+  <Step title="Add an icon and logo">
+    Click the app's icon in the header to open **App Icon & Logo**. Both are optional. The icon appears next to your app across HireData, the logo on its page.
+  </Step>
+  <Step title="Add a trigger">
+    Click **Create Trigger** to add your first trigger. The [next article](/apps/custom-apps/set-up-a-trigger) covers this step by step.
+  </Step>
+</Steps>
+
+## Where you'll see your custom app
+
+Once set up, your custom app behaves like any other app in HireData:
+
+- **Automations** can start from its triggers and use its fields
+- **Events** show every request your triggers received
+- **Variables** from its fields work in emails, messages, and forms
+- **People** can be synced automatically from incoming data
+
+## Activating your app
+
+Your app and each of its triggers have their own active state. Automations only run when both are active.
+
+This lets you prepare and test everything safely: keep the app paused while you build, then activate it when you're ready.
+
+## Next steps
+
+<Card title="Set up a trigger" icon="bolt" href="/apps/custom-apps/set-up-a-trigger">
+  Create a trigger, describe the data it receives, test it, and turn it into automations.
+</Card>
