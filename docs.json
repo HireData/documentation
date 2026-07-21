@@ -11,15 +11,26 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Docs",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Introduction",
-            "icon": "circle-info",
+            "group": "Get started",
+            "icon": "rocket",
             "pages": [
               "index",
               "introduction/product-demo",
+              "get-started/quickstart",
+              "get-started/your-first-week",
               "introduction/invite-users-to-your-account"
+            ]
+          },
+          {
+            "group": "Core concepts",
+            "icon": "lightbulb",
+            "pages": [
+              "concepts/how-hiredata-works",
+              "pages/people",
+              "pages/task-history"
             ]
           },
           {
@@ -28,15 +39,60 @@
             "pages": [
               "automations/automations",
               "automations/how-to-test-an-automation",
-              "automations/how-to-restore-a-deleted-automation"
+              "automations/how-to-restore-a-deleted-automation",
+              "settings/automation-safety-limits"
             ]
           },
           {
-            "group": "My Data",
-            "icon": "database",
+            "group": "Messaging",
+            "icon": "comments",
             "pages": [
-              "pages/people",
-              "pages/task-history"
+              {
+                "group": "WhatsApp",
+                "pages": [
+                  {
+                    "group": "Setup",
+                    "pages": [
+                      "apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up",
+                      "apps/messaging/whatsapp/add-a-valid-payment-method-for-whatsapp",
+                      "apps/messaging/whatsapp/buy-a-phone-number-from-numero-for-your-whatsapp-account",
+                      "apps/messaging/whatsapp/manually-sync-whatsapp-with-hiredata",
+                      "apps/messaging/whatsapp/how-to-add-a-whatsapp-chat-button-to-your-website"
+                    ]
+                  },
+                  {
+                    "group": "Templates",
+                    "pages": [
+                      "apps/messaging/whatsapp/how-whatsapp-templates-work",
+                      "apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata",
+                      "apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates"
+                    ]
+                  },
+                  {
+                    "group": "Inbox & sending",
+                    "pages": [
+                      "apps/messaging/whatsapp/whatsapp-inbox-basics",
+                      "apps/messaging/whatsapp/create-a-whatsapp-automation-in-hiredata",
+                      "apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations"
+                    ]
+                  },
+                  "apps/messaging/whatsapp/how-does-the-whatsapp-messaging-cost-structure-work"
+                ]
+              },
+              {
+                "group": "Email",
+                "pages": [
+                  "apps/messaging/emails/setting-up-an-email-template-in-hiredata",
+                  "apps/messaging/emails/sending-an-email-newsletter-to-your-audience",
+                  {
+                    "group": "Domains & senders",
+                    "pages": [
+                      "settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails",
+                      "settings/domains/adding-a-default-sender-to-your-domains"
+                    ]
+                  }
+                ]
+              }
             ]
           },
           {
@@ -47,43 +103,26 @@
             ]
           },
           {
-            "group": "Variables",
-            "icon": "brackets-curly",
-            "pages": [
-              "variables/introduction",
-              "variables/modifiers"
-            ]
-          },
-          {
-            "group": "Settings",
+            "group": "Account & settings",
             "icon": "gear",
             "pages": [
-              {
-                "group": "Domains",
-                "pages": [
-                  "settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails",
-                  "settings/domains/adding-a-default-sender-to-your-domains"
-                ]
-              },
+              "settings/prevent-user-role-changes-during-third-party-sync",
+              "settings/brands",
+              "settings/locations",
+              "settings/setting-a-default-language-and-ai-tone-of-voice",
               {
                 "group": "Logs",
                 "pages": [
                   "settings/logs/events",
                   "settings/logs/runs"
                 ]
-              },
-              "settings/brands",
-              "settings/locations",
-              "settings/how-to-change-reset-your-password",
-              "settings/prevent-user-role-changes-during-third-party-sync",
-              "settings/setting-a-default-language-and-ai-tone-of-voice",
-              "settings/automation-safety-limits"
+              }
             ]
           }
         ]
       },
       {
-        "tab": "Apps",
+        "tab": "Integrations",
         "groups": [
           {
             "group": "Overview",
@@ -92,96 +131,65 @@
             ]
           },
           {
-            "group": "ATS Integrations",
+            "group": "ATS",
             "pages": [
               {
                 "group": "Carerix",
                 "expanded": false,
                 "pages": [
-                  "apps/carerix/add-an-activity-or-item-in-carerix-with-hiredata",
-                  "apps/carerix/combined-fields-explained",
+                  "apps/carerix/overview",
                   "apps/carerix/connect-with-carerix",
-                  "apps/carerix/create-a-carerix-automation-in-hiredata",
-                  "apps/carerix/how-profile-pictures-work-in-hiredata",
                   "apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations",
+                  "apps/carerix/combined-fields-explained",
+                  "apps/carerix/manually-sync-carerix-with-hiredata",
+                  "apps/carerix/how-profile-pictures-work-in-hiredata",
+                  "apps/carerix/create-a-carerix-automation-in-hiredata",
+                  "apps/carerix/schedule-a-task-in-carerix-with-hiredata",
+                  "apps/carerix/add-an-activity-or-item-in-carerix-with-hiredata",
+                  "apps/carerix/update-fields-in-carerix-with-hiredata",
                   "apps/carerix/logging-email-messages-on-carerix-with-hiredata",
                   "apps/carerix/logging-whatsapp-conversations-in-carerix-with-hiredata",
-                  "apps/carerix/manually-sync-carerix-with-hiredata",
-                  "apps/carerix/schedule-a-task-in-carerix-with-hiredata",
-                  "apps/carerix/update-fields-in-carerix-with-hiredata",
-                  "apps/carerix/whatsapp-active-chats-counter-in-carerix-rma",
-                  "apps/carerix/why-is-my-carerix-not-syncing-with-hiredata"
-                ]
-              },
-              {
-                "group": "Salesforce",
-                "expanded": false,
-                "pages": [
-                  "apps/salesforce/connect-with-salesforce"
-                ]
-              },
-              {
-                "group": "OTYS",
-                "expanded": false,
-                "pages": [
-                  "apps/otys/connect-with-otys",
-                  "apps/otys/create-an-otys-automation-in-hiredata",
-                  "apps/otys/manually-sync-otys-with-hiredata"
-                ]
-              },
-              {
-                "group": "Recruitee",
-                "expanded": false,
-                "pages": [
-                  "apps/recruitee/connect-with-recruitee",
-                  "apps/recruitee/create-a-recruitee-automation-in-hiredata"
+                  "apps/carerix/whatsapp-active-chats-counter-in-carerix-rma"
                 ]
               },
               {
                 "group": "Vincere",
                 "expanded": false,
                 "pages": [
-                  "apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata",
+                  "apps/vincere/overview",
                   "apps/vincere/connect-with-vincere",
-                  "apps/vincere/create-a-vincere-automation-in-hiredata",
                   "apps/vincere/manually-sync-vincere-with-hiredata",
+                  "apps/vincere/create-a-vincere-automation-in-hiredata",
                   "apps/vincere/schedule-a-task-in-vincere-with-hiredata",
+                  "apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata",
                   "apps/vincere/update-fields-in-vincere-with-hiredata"
-                ]
-              }
-            ]
-          },
-          {
-            "group": "Messaging",
-            "pages": [
-              {
-                "group": "WhatsApp",
-                "expanded": false,
-                "pages": [
-                  "apps/messaging/whatsapp/add-a-valid-payment-method-for-whatsapp",
-                  "apps/messaging/whatsapp/buy-a-phone-number-from-numero-for-your-whatsapp-account",
-                  "apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api",
-                  "apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up",
-                  "apps/messaging/whatsapp/create-a-whatsapp-automation-in-hiredata",
-                  "apps/messaging/whatsapp/how-does-the-whatsapp-messaging-cost-structure-work",
-                  "apps/messaging/whatsapp/how-to-add-a-whatsapp-chat-button-to-your-website",
-                  "apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates",
-                  "apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
-                  "apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations",
-                  "apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
-                  "apps/messaging/whatsapp/how-whatsapp-templates-work",
-                  "apps/messaging/whatsapp/manually-sync-whatsapp-with-hiredata",
-                  "apps/messaging/whatsapp/whatsapp-error-codes-explained",
-                  "apps/messaging/whatsapp/whatsapp-inbox-basics",
-                  "apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata"
                 ]
               },
               {
-                "group": "Email",
+                "group": "OTYS",
                 "expanded": false,
                 "pages": [
-                  "apps/messaging/emails/setting-up-an-email-template-in-hiredata",
-                  "apps/messaging/emails/sending-an-email-newsletter-to-your-audience"
+                  "apps/otys/overview",
+                  "apps/otys/connect-with-otys",
+                  "apps/otys/manually-sync-otys-with-hiredata",
+                  "apps/otys/create-an-otys-automation-in-hiredata"
+                ]
+              },
+              {
+                "group": "Recruitee",
+                "expanded": false,
+                "pages": [
+                  "apps/recruitee/overview",
+                  "apps/recruitee/connect-with-recruitee",
+                  "apps/recruitee/create-a-recruitee-automation-in-hiredata"
+                ]
+              },
+              {
+                "group": "Salesforce",
+                "expanded": false,
+                "pages": [
+                  "apps/salesforce/overview",
+                  "apps/salesforce/connect-with-salesforce"
                 ]
               }
             ]
@@ -204,6 +212,50 @@
                   "apps/ratecard/using-custom-fields-to-personalise-surveys"
                 ]
               }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Knowledge Base",
+        "groups": [
+          {
+            "group": "Troubleshooting",
+            "icon": "wrench",
+            "pages": [
+              "knowledge-base/why-didnt-my-automation-run",
+              "apps/carerix/why-is-my-carerix-not-syncing-with-hiredata",
+              "apps/messaging/whatsapp/whatsapp-error-codes-explained",
+              "apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
+              "apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
+              "apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api"
+            ]
+          },
+          {
+            "group": "Cookbook",
+            "icon": "book",
+            "pages": [
+              "knowledge-base/cookbook/introduction"
+            ]
+          },
+          {
+            "group": "Account management",
+            "icon": "user-gear",
+            "pages": [
+              "settings/how-to-change-reset-your-password"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Reference",
+        "groups": [
+          {
+            "group": "Variables",
+            "icon": "brackets-curly",
+            "pages": [
+              "variables/introduction",
+              "variables/modifiers"
             ]
           }
         ]
@@ -252,7 +304,7 @@
     }
   },
   "interaction": {
-    "drilldown": false
+    "drilldown": true
   },
   "fonts": {
     "family": "Inter",
