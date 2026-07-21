@@ -1,0 +1,70 @@
+---
+title: "Apps personalizadas"
+sidebarTitle: "Introdução"
+description: "Ligue qualquer ferramenta à HireData e automatize os dados que ela envia."
+---
+
+Uma app personalizada liga a HireData a uma ferramenta que não tem integração nativa, como o seu próprio portal, um job board de nicho ou um sistema interno. Se a ferramenta conseguir enviar um pedido web, uma app personalizada consegue recebê-lo e iniciar as suas automações.
+
+## O que é uma app personalizada?
+
+Uma app personalizada é uma app que cria e controla por conta própria. É composta por:
+
+- **Um nome, ícone e logótipo** para que a sua equipa a reconheça em toda a HireData
+- **Triggers**: endereços web para os quais as suas outras ferramentas enviam dados
+- **Um estado ativo** que controla se os dados recebidos executam automações
+
+Quando um trigger ativo recebe dados, a HireData armazena-os como um [evento](/pt/settings/logs/events) e inicia todas as automações ligadas a esse trigger.
+
+## Esta é a funcionalidade certa para mim?
+
+Utilize uma app personalizada quando:
+
+- A HireData não tem uma integração com a ferramenta que quer ligar
+- Construiu a ferramenta por conta própria, ou a sua equipa controla a forma como ela envia dados
+- A ferramenta suporta webhooks, ou um developer consegue adicionar um pedido web por si
+
+Não precisa de uma app personalizada quando:
+
+- Já existe uma [integração](/pt/apps/introduction) para o seu ATS, como Carerix, Salesforce, OTYS, Recruitee ou Vincere
+- Apenas quer enviar dados para fora da HireData; as apps personalizadas recebem dados
+
+<Tip>
+  Não sabe se a sua ferramenta consegue enviar pedidos web? Pesquise no centro de ajuda dela por
+  "webhooks", ou pergunte à nossa equipa em [support@hiredata.com](mailto:support@hiredata.com).
+</Tip>
+
+## Crie a sua app personalizada
+
+<Steps>
+  <Step title="Criar a app">
+    Vá a [Settings → Apps](https://app.hiredata.com/settings/apps) e clique em **Create New App**. Dê-lhe um nome reconhecível e será encaminhado para a sua página de edição.
+  </Step>
+  <Step title="Adicionar um ícone e logótipo">
+    Clique no ícone da app no cabeçalho para abrir **App Icon & Logo**. Ambos são opcionais. O ícone aparece junto à sua app em toda a HireData, o logótipo na respetiva página.
+  </Step>
+  <Step title="Adicionar um trigger">
+    Clique em **Create Trigger** para adicionar o seu primeiro trigger. O [próximo artigo](/pt/apps/custom-apps/set-up-a-trigger) cobre este passo em detalhe.
+  </Step>
+</Steps>
+
+## Onde verá a sua app personalizada
+
+Depois de configurada, a sua app personalizada comporta-se como qualquer outra app na HireData:
+
+- **Automações** podem começar a partir dos seus triggers e utilizar os seus campos
+- **Eventos** mostram cada pedido que os seus triggers receberam
+- **Variáveis** dos seus campos funcionam em emails, mensagens e formulários
+- **Pessoas** podem ser sincronizadas automaticamente a partir dos dados recebidos
+
+## Ativar a sua app
+
+A sua app e cada um dos seus triggers têm o seu próprio estado ativo. As automações só correm quando ambos estão ativos.
+
+Isto permite-lhe preparar e testar tudo em segurança: mantenha a app em pausa enquanto constrói e ative-a quando estiver pronto.
+
+## Próximos passos
+
+<Card title="Configurar um trigger" icon="bolt" href="/pt/apps/custom-apps/set-up-a-trigger">
+  Crie um trigger, descreva os dados que recebe, teste-o e transforme-o em automações.
+</Card>

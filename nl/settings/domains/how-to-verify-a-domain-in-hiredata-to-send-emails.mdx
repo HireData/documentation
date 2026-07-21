@@ -1,0 +1,73 @@
+---
+title: "Hoe je een domein verifieert in HireData om e-mails te versturen"
+sidebarTitle: "Een domein verifiëren"
+description: "Verifieer je domein in HireData om e-mails te gaan versturen"
+---
+
+_Je domein verifiëren in HireData is een cruciale stap om ervoor te zorgen dat je e-mails direct vanuit HireData kunt versturen. Zonder domeinverificatie kun je geen e-mails versturen of het domein gebruiken voor je branding. Volg de onderstaande stappen om het verificatieproces te voltooien._
+
+## Stap 1: Voeg een nieuw domein toe
+
+Log in op je HireData-account, open je settings en dan de pagina **[Domains](https://app.hiredata.com/settings/account/domains)**.
+
+Klik op de knop **New Domain** om een nieuw domein toe te voegen.
+
+![Domains-pagina](/images/intercom/42937091-Screenshot-2025-03-26-at-10_55_24.png)
+
+## Stap 2: Voer domeindetails in
+
+Nadat je op **New Domain** hebt geklikt, verschijnt een nieuw scherm waarin je de domeindetails moet invullen, waaronder:
+
+1. **Domein-naam**
+2. **Default Sender Name** – dit is de naam die als afzender verschijnt in e-mails die vanuit HireData worden verzonden als deze informatie ontbreekt in de records van events die van je app worden ontvangen.
+3. **Default Sender Email** – dit wordt het default e-mailadres dat wordt gebruikt bij het versturen van e-mails als deze informatie niet beschikbaar is.
+
+Klik op **Create Domain** en ga door met de volgende stap.
+
+![Een nieuw domein toevoegen](/images/intercom/42937339-Screenshot-2025-03-26-at-10_57_15.png)
+
+## Stap 3: DNS-records genereren
+
+DNS-records (Domain Name System) zijn als wegwijzers die het internet vertellen waar het verschillende services die aan je domein zijn gekoppeld kan vinden. Wanneer je je domein in HireData verifieert, moet je specifieke DNS-records toevoegen om te bewijzen dat je eigenaar bent van het domein en om ons toe te staan namens jou e-mails te versturen.
+
+Deze records omvatten:
+
+- **CNAME Records**: Deze koppelen je domein aan een ander domein, vaak gebruikt voor verificatie.
+- **DMARC TXT Record** (optioneel): Dit record helpt je domein te beschermen tegen e-mail phishing en ongeautoriseerd e-mailgebruik, en verbetert e-mail-deliverability.
+
+Zonder deze records kunnen e-mailproviders je e-mails blokkeren of als spam markeren. Daarom is het toevoegen en verifiëren van de DNS-records essentieel voor soepele e-maillevering.
+
+Klik gewoon op **Generate DNS Records** als ze niet automatisch worden gegenereerd.
+
+![DNS-records](/images/intercom/42937537-Screenshot-2025-03-25-at-16_37_11.png)
+
+## Stap 4: Voeg DNS-records toe aan je domainprovider
+
+Nadat je de DNS-records hebt, moet je ze toevoegen aan je domainprovider (bijv. GoDaddy, Cloudflare, Namecheap, enz.).
+
+1. Navigeer naar het onderdeel DNS Settings op de website van je provider.
+2. Voeg de opgegeven DNS-records exact toe zoals getoond in HireData.
+3. Sla de wijzigingen op.
+
+<Warning>
+  Zaken om te overwegen:
+
+  1. Sommige DNS-providers vereisen dat je alleen het subdomein invoert in het veld **Host/Name**, zonder het volledige domein. De provider accepteert bijvoorbeeld mogelijk de host-waarde met "hiredata.com" niet, dus kan deze worden verwijderd.
+  2. Af en toe handelen DNS-providers de trailing dot (`.`) aan het einde van de waarden automatisch af, dus je moet deze mogelijk verwijderen.
+</Warning>
+
+## Stap 5: Verifieer DNS-records
+
+Keer terug naar de pagina **Domains** in HireData en klik op de knop **Verify DNS**. Als de DNS-records correct zijn toegevoegd, wordt je domein geverifieerd.
+
+Zodra je domein is geverifieerd, kun je direct vanuit HireData e-mails versturen via onze ingebouwde e-mailtemplates of aangepaste templates maken om je bedrijfscommunicatie te stroomlijnen.
+
+Als je domein niet is geverifieerd, kun je geen e-mails via HireData versturen. Zorg dat je het verificatieproces voltooit om verstoringen in je automatiseringen te voorkomen.
+
+Als je problemen ondervindt met de verificatie, zorg dan dat je DNS-records correct zijn toegevoegd en geef ze enige tijd om te worden verwerkt. Als de problemen aanhouden, neem dan contact op met je domainprovider of HireData support voor hulp.
+
+---
+
+## Video-uitleg
+
+<iframe src="https://www.loom.com/embed/b58cdb060cb545068bc82acf9a7871f9" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

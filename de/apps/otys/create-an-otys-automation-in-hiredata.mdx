@@ -1,0 +1,71 @@
+---
+title: "Eine OTYS-Automatisierung in HireData erstellen"
+sidebarTitle: "Automatisierung erstellen"
+description: "Recruiting-Workflows in OTYS optimieren: Eine Schritt-für-Schritt-Anleitung"
+---
+
+_Willkommen zu unserem Tutorial zur Einrichtung einer OTYS-Automatisierung innerhalb von HireData. Mit dieser Integration können Sie Aufgaben wie das Versenden von Candidate-NPS-Umfragen automatisieren, wodurch die Kandidatenerfahrung verbessert und Ihre Recruiting-Prozesse optimiert werden. Folgen Sie uns, während wir jeden Schritt zur effizienten Einrichtung dieser Automatisierung demonstrieren._
+
+## Schritt 1: Trigger einrichten
+
+Nachdem Sie die [Verbindung mit OTYS eingerichtet](/de/apps/otys/connect-with-otys) haben, besteht der erste Schritt beim Einrichten einer OTYS-Automatisierung darin, den Trigger zu definieren. Ein Trigger stellt sicher, dass HireData auf bestimmte Ereignisse innerhalb von OTYS „hört". Vergessen Sie nicht, alle Beziehungen auszuwählen, die Sie später benötigen, z. B. einen Kandidaten auswählen, wenn Sie ihm in einem weiteren Schritt innerhalb der Automatisierung eine Umfrage senden möchten. So funktioniert es:
+
+_Beispiel-Trigger: Procedure: Created or Updated_
+
+![](/images/intercom/0a3b98503fa2.png)
+
+_Wählen Sie die verwandten Objekte aus, die Sie später in der Automatisierung benötigen, z. B. einen Benutzer, der Absender einer Nachricht sein soll, und die Empfänger dieser Nachricht_
+
+![](/images/intercom/a2ea470bc74d.png)
+
+## Schritt 2: Filter hinzufügen
+
+Sobald Sie den Trigger eingerichtet haben, ist es wichtig, Filter hinzuzufügen, um sicherzustellen, dass die Automatisierung unter bestimmten Bedingungen ausgelöst wird. Führen Sie diese Schritte aus:
+
+_Beispiel-Filter: If procedure status 2 equals one of these stages_
+
+![](/images/intercom/b93dc0e49d9b.png)
+
+## Schritt 3: Eine Verzögerung hinzufügen
+
+In manchen Fällen möchten Sie vor der Ausführung der Automatisierung eine Verzögerung einbauen. So fügen Sie eine Verzögerung hinzu:
+
+_Beispiel-Verzögerung: 1 Tag (z. B. um einen Kandidaten über den Erhalt des Jobs zu informieren, bevor eine Post-Placement-Umfrage versendet wird)_
+
+![](/images/intercom/60aed5be9025.png)
+
+## Schritt 4: Die Aufgabe 'Send Survey' einrichten
+
+Konfigurieren wir nun die Aufgabe zum Versenden der Candidate-NPS-Umfrage. Führen Sie diese Schritte aus:
+
+_4.1. Wählen Sie Ihre Umfragevorlage aus:_
+
+![](/images/intercom/824cc509c2d0.png)
+
+_4.2. Wählen Sie den Empfänger der Umfrage:_
+
+![](/images/intercom/d97cce0471fd.png)
+
+_4.3. Geben Sie den Absender der Umfrage an:_
+
+![](/images/intercom/55b5cacb5b86.png)
+
+_4.4. Konfigurieren Sie das Timing der Umfrage:_
+
+![](/images/intercom/19c2f50ca93b.png)
+
+_4.5. Stellen Sie sicher, dass alle Einstellungen korrekt sind, und speichern Sie Ihre Aufgabe:_
+
+![](/images/intercom/48acbaf7c511.png)
+
+## Schritt 5: Automatisierung aktivieren
+
+Sobald Sie die Einrichtung abgeschlossen haben, ist es Zeit, Ihre Automatisierung zu aktivieren. Mit diesem Schritt ist Ihre OTYS-Automatisierung startklar und optimiert Ihre Recruiting-Prozesse mühelos.
+
+_Klicken Sie auf die Schaltfläche [Activate], um Ihre Automatisierung einzuschalten_
+
+![](/images/intercom/e19557891c61.png)
+
+Durch das Einrichten einer OTYS-Automatisierung innerhalb von HireData können Sie Aufgaben wie das Versenden von Candidate-NPS-Umfragen automatisieren und dadurch die Kandidatenerfahrung verbessern und Ihre Recruiting-Workflows optimieren. Mit der in diesem Tutorial bereitgestellten Schritt-für-Schritt-Anleitung können Sie Ihre Automatisierung effizient einrichten und aktivieren, Zeit und Ressourcen sparen und gleichzeitig Ihre Recruiting-Bemühungen verbessern.
+
+<iframe src="https://www.loom.com/embed/99d3f20aec88428685190acc2ec355f3" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

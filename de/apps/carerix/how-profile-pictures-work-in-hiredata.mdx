@@ -1,0 +1,81 @@
+---
+title: "Wie Profilbilder in HireData funktionieren"
+sidebarTitle: "Profilbilder"
+description: "Erfahren Sie, wie HireData Benutzer-Avatare bestimmt"
+---
+
+_Profilbilder in HireData werden automatisch anhand bestimmter Anhangstypen in Carerix erzeugt. Dieser Artikel erklärt, welche Anhänge verwendet werden, welche Prioritätsreihenfolge gilt und wann ein Foto, Logo oder Initialen angezeigt werden._
+
+## Wie HireData einen Benutzer-Avatar auswählt
+
+Wenn ein Profil aus Carerix synchronisiert wird, prüft HireData, ob es Anhänge gibt, die als Avatar verwendet werden können. Nur Anhänge mit diesen spezifischen Typwerten werden berücksichtigt:
+
+- `pasfoto`
+- `emaillogo`
+
+Das System bewertet außerdem das Anhangs-Label. Der Abgleich erfolgt ohne Berücksichtigung der Groß- und Kleinschreibung, sodass jede Schreibvariante (zum Beispiel `PasFoto`, `PASfoto`, `EmailLogo`) unterstützt wird.
+
+Wenn mehrere gültige Anhänge vorhanden sind, wertet HireData sie in einer festen Prioritätsreihenfolge aus. Innerhalb dieser Reihenfolge wird der zuletzt geänderte Anhang zuerst berücksichtigt.
+
+## Prioritätsreihenfolge für die Auswahl des Benutzer-Avatars
+
+HireData bestimmt den Avatar anhand der folgenden Priorität:
+
+### 1. Email-Logo mit Label „emailpasfoto"
+
+Erste Priorität hat ein Anhang, bei dem:
+
+- Der Typwert `emaillogo` ist
+- Das Label `emailpasfoto` ist
+
+Wenn ein solcher Anhang existiert und verwendbaren Inhalt enthält, wird er als Avatar verwendet.
+
+### 2. Profilfoto mit Label „pasfoto"
+
+Wenn in Schritt 1 keine Übereinstimmung gefunden wird, prüft HireData:
+
+- Typwert `pasfoto`
+- Label `pasfoto`
+
+Wenn gefunden und gültig, wird dieses Bild verwendet.
+
+### 3. Jeder Anhang mit Typ „pasfoto"
+
+Wenn keine exakte Label-Übereinstimmung gefunden wird, prüft HireData jeden Anhang, bei dem:
+
+- Der Typwert `pasfoto` ist
+
+Das Label muss in diesem Fall nicht übereinstimmen.
+
+### 4. Jeder Anhang mit Typ „emaillogo"
+
+Wenn kein Profilfoto gefunden wird, prüft HireData jeden Anhang, bei dem:
+
+- Der Typwert `emaillogo` ist
+
+Das Label muss nicht übereinstimmen.
+
+## Wann wird ein Foto oder Logo angezeigt?
+
+Ein Bild wird als Avatar angezeigt, wenn anhand der oben genannten Priorität **ein passender Anhang gefunden wird** und ein gültiges Bild als Avatar des Benutzers verwendet werden kann.
+
+## Wann werden Initialen angezeigt?
+
+Initialen werden angezeigt, wenn:
+
+- Kein Anhang mit dem Typ `pasfoto` und/oder `emaillogo` vorhanden ist
+- Ein passender Anhang vorhanden ist, aber keinen verwendbaren Inhalt enthält
+- Das Profil keine Anhänge hat
+
+In diesen Fällen erzeugt HireData automatisch Initialen basierend auf dem Profilnamen.
+
+## Fehlerbehebung
+
+Wenn Sie ein Bild erwarten, aber nur Initialen sehen, prüfen Sie Folgendes:
+
+- Der Anhangstyp ist auf `pasfoto` oder `emaillogo` gesetzt.
+- Das Label ist korrekt konfiguriert.
+- Der Anhang enthält zugänglichen und verwendbaren Dateiinhalt.
+- Der Anhang wurde korrekt synchronisiert.
+
+Wenn in Carerix Änderungen vorgenommen werden, zum Beispiel das Hochladen eines neuen Fotos oder das Aktualisieren des Anhangstyps, wird der Benutzer-Avatar nach der nächsten erfolgreichen Synchronisierung in HireData aktualisiert.

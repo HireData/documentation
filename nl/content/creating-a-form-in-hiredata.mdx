@@ -1,0 +1,128 @@
+---
+title: "Een formulier maken in HireData"
+sidebarTitle: "Formulieren"
+description: "Maak formulieren en verzamel gestructureerde feedback van je kandidaten"
+---
+
+_De formulieren in HireData helpen je gestructureerde data te verzamelen tijdens kandidaatreizen. Deze gids leidt je door het opzetten en gebruiken van formulieren in HireData voor je automatiseringen._
+
+## Een formulier maken
+
+Definieer eerst het **doel van het formulier**. Bepaal welke data je moet verzamelen (bijv. beschikbaarheid van een kandidaat, feedback op het recruitmentproces, enz.).
+
+Open vervolgens de pagina **Forms** via de **Settings** en klik op [New Form]. Je kunt een blanco formulier maken of een van de beschikbare templates selecteren:
+
+![Knop New Form](/images/intercom/50372488-Screenshot-2025-05-19-at-09_38_44.png)
+
+_Formuliertemplates:_
+
+![Formuliertemplates](/images/intercom/50372790-Screenshot-2025-05-19-at-09_39_14.png)
+
+_Als je vanaf nul begint, voeg dan een naam toe aan je formulier die alleen voor intern gebruik is:_
+
+![Een naam toevoegen aan een formulier](/images/intercom/50373594-Screenshot-2025-05-19-at-12_40_06.png)
+
+## Vragen toevoegen
+
+Formulieren bestaan uit een of meerdere vragen, waarbij aan elk daarvan logica kan worden gekoppeld — bijvoorbeeld een vervolgvraag alleen tonen als een rating lager is dan 8. Daarover zo meer, laten we eerst zien hoe je verschillende vragen toevoegt.
+
+### 1.1. Klik op het type vraag dat je wilt toevoegen of op het [+] icoon om andere vragen toe te voegen
+
+Elk formulier kan meerdere vraagtypes hebben, afhankelijk van het soort data dat je wilt verzamelen.
+
+Meest gebruikt door onze klanten:
+
+- **NPS/Opinion scale:** Vraag kandidaten iets te beoordelen van 1 tot 10.
+- **Multiple choice**: Laat gebruikers kiezen uit een lijst met opties.
+- **Short/Long Text**: Verzamel open antwoorden.
+- **Redirect URL:** Verwijs respondenten door naar je website of Google Review URL.
+
+Overig:
+
+- **Yes/No-vragen**
+- **Dropdown:** Laat gebruikers kiezen uit een lijst met opties die zijn opgeslagen in een dropdown-veld.
+- **Collect contact information:** Verzamel het e-mailadres, telefoonnummer of de website van de kandidaat.
+- **Date/Time/Datetime:** Vraag naar de beschikbaarheidstijd, geboortedatum of andere details in dit formaat.
+- **Number/Currency:** Verzamel data over salarisverwachtingen.
+- **File upload:** Voor het verzamelen van documenten of foto's.
+- **Ending screen:** Voeg een bedankpagina toe aan het einde van je formulier.
+
+![Vraagtypes](/images/intercom/50373968-Screenshot-2025-03-19-at-21_07_17.png)
+
+### 2.2. Optionele vraaginstellingen
+
+Bij het toevoegen of bewerken van een vraag in je formulier kun je hem aanpassen met de volgende opties:
+
+- **Description:** Ondersteunende tekst die onder de vraag verschijnt. Gebruik deze om meer context te bieden of de vraag te verduidelijken.
+- **Placeholder:** De tekst die in het invoerveld verschijnt om de gebruiker te helpen bij wat voor antwoord je verwacht (bijv. _"Type hier je antwoord…"_). Deze verdwijnt zodra de gebruiker begint te typen.
+- **Image:** Een visual boven de vraag om deze aantrekkelijker te maken of een visuele referentie te bieden.
+- **Button text:** Een aanpasbare knop waarop de kandidaat klikt om het antwoord in te dienen of naar de volgende stap te gaan. Dit kan handig zijn als je de toon wilt sturen (bijv. "Beoordeling indienen" of "Volgende").
+- **Adjust scale:** Voor rating-vragen kun je de minimum- en maximumwaarden definiëren (bijv. 1–10, 1–5). Dit is handig voor verschillende feedbackformaten zoals NPS (0–10) of tevredenheidsscores (1–5).
+- **Required question:** Zet dit aan om de vraag verplicht te maken zodat kandidaten hem niet kunnen overslaan.
+- **Hidden question:** Gebruik dit om een vraag verborgen te houden voor de kandidaat terwijl er toch een antwoord wordt opgeslagen (bijv. een default value of systeem-gegenereerd antwoord).
+- **Reverse:** Voor rating-vragen keert dit de schaalweergave om (bijv. toont 10 → 1 in plaats van 1 → 10). Het is handig wanneer hogere getallen iets negatiefs vertegenwoordigen (zoals stress of moeilijkheid).
+
+![Een vraag toevoegen aan een formulier](/images/intercom/50374651-Screenshot-2025-05-19-at-09_48_54.png)
+
+💡 **Tip:** Je kunt via drag-and-drop de volgorde van de vragen wijzigen.
+
+## Logica toevoegen aan de vragen
+
+Gebruik **rules** om slimme flows tussen vragen op te zetten. Bijvoorbeeld:
+
+- Als een kandidaat een **7 of lager** geeft, toon dan een vervolgvraag met suggesties voor verbetering.
+- Als de rating **8 of hoger** is, breng ze naar de volgende vraag of vraag ze een Google review achter te laten.
+
+Om dit in te stellen:
+
+### 2.1. Open het tabblad **Logic** en klik op [Add Rule] onder een vraag
+
+![Logic-tabblad](/images/intercom/50376095-Screenshot-2025-05-19-at-12_54_56.png)
+
+![Knop Add Rule](/images/intercom/50375541-Screenshot-2025-05-19-at-12_51_47.png)
+
+### 2.2. Stel je voorwaarde in (bijv. "Rating is less than or equal to 7")
+
+![Een voorwaarde toevoegen](/images/intercom/50375600-Screenshot-2B2025-05-19-2Bat-2B09_52_08.png)
+
+### 2.3. Kies wat er hierna moet gebeuren (bijv. ga naar een specifieke vervolgvraag of bedankscherm)
+
+![Selecteren wat er hierna gebeurt](/images/intercom/50375079-Screenshot-2025-05-19-at-09_52_17.png)
+
+## Een bedankscherm toevoegen
+
+Op basis van de antwoorden kunnen formulieren ook eindigen met een bedankbericht of kandidaten doorverwijzen naar een externe pagina om een review achter te laten.
+
+Je kunt het **Thank-you screen** aanpassen met een:
+
+- Titel
+- Kort bericht
+- Afbeelding
+- Knop met tekst
+- Redirect URL: Gebruik dit om kandidaten door te sturen om een review achter te laten of naar je website te gaan.
+
+_Bedankscherm met Website Redirect URL:_
+
+![Bedankscherm met Website Redirect URL:](/images/intercom/50376525-Screenshot-2025-05-19-at-09_50_43.png)
+
+_Bedankscherm met Google Review URL:_
+
+![Bedankscherm met Google Review URL](/images/intercom/50376558-Screenshot-2025-05-19-at-09_50_50.png)
+
+## Bekijk en sla het formulier op
+
+Klik op het oog-icoon om het formulier te previewen en op [Save] om het op te slaan.
+
+![Save- en Preview-knoppen](/images/intercom/50379428-Screenshot-2025-05-19-at-13_18_51.png)
+
+_Preview van het formulier op verschillende apparaten:_
+
+![Formulierpreview](/images/intercom/50379844-Screenshot-2025-05-19-at-13_21_09.png)
+
+Dat is het! 🎉 Zodra je formulier klaar is, kun je het toevoegen aan je e-mailtemplates in HireData en het vervolgens via je automatiseringen versturen.
+
+---
+
+## Video-uitleg
+
+<iframe src="https://www.loom.com/embed/b419054dc5df42dc95e33132dd747380" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

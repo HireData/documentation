@@ -1,0 +1,62 @@
+---
+title: "Variablen"
+sidebarTitle: "Einführung"
+description: "Personalisieren Sie E-Mails, Nachrichten, Formulare und Automatisierungen."
+---
+
+Mit Variablen können Sie Live-Daten wie den Namen eines Kandidaten, eine Berufsbezeichnung oder ein Gehalt direkt in Ihre E-Mails, WhatsApp-Nachrichten, Formulare und Automatisierungen einfügen.
+
+## Wie eine Variable aussieht
+
+Eine Variable ist ein Feld-Key, umschlossen von doppelten geschweiften Klammern:
+
+```
+Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
+```
+
+Wenn dies an eine Kandidatin namens Sofia gesendet wird, die sich auf eine Backend-Engineer-Rolle bewirbt, wird daraus:
+
+```
+Hi Sofia, thanks for applying to Backend Engineer!
+```
+
+Die Leerzeichen innerhalb der Klammern sind optional:
+
+- `{{candidate.first_name}}` und `{{ candidate.first_name }}` verhalten sich gleich.
+
+## Wo Sie Variablen verwenden können
+
+Sie können Variablen überall dort einsetzen, wo Sie Inhalte schreiben, die gesendet oder gespeichert werden:
+
+- **E-Mail** — Betreffzeilen und Textkörper
+- **WhatsApp** — Nachrichten und Vorlagen
+- **Formulare** — Fragen und Folge-Logik
+- **Automatisierungen** — Feld-Mappings und geplante Aufgaben
+
+## Einen Fallback bereitstellen
+
+Wenn ein Feld für einen bestimmten Datensatz leer ist, wird die Variable durch nichts ersetzt. Um stattdessen einen Standardwert anzuzeigen, verwenden Sie den Modifier [`default`](/de/variables/modifiers#fallback):
+
+```
+Hi {{ candidate.first_name | default: "there" }}!
+```
+
+Wenn der Kandidat keinen Vornamen hat, wird „Hi there!" gesendet.
+
+## Werte mit Modifiers transformieren
+
+Variablen können mehr, als nur Rohdaten einzufügen. Ein **Modifier** ändert, wie der Wert erscheint. Er kann Text in Großbuchstaben umwandeln, ein Datum formatieren, eine Zahl runden und vieles mehr. Sie fügen einen Modifier mit einem Pipe-Zeichen (`|`) hinzu:
+
+```
+{{ candidate.first_name | uppercase }}        → SOFIA
+{{ job.salary | format_currency: "EUR" }}      → €65,000.00
+{{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
+```
+
+Sie können mehrere Modifiers verketten, und jeder wirkt auf das Ergebnis des vorherigen:
+
+```
+{{ candidate.last_name | lowercase | capitalise }}
+```
+
+Die vollständige Liste finden Sie auf der Seite [Modifiers](/de/variables/modifiers).

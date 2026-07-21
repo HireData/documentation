@@ -1,0 +1,229 @@
+---
+title: "WhatsApp-foutcodes uitgelegd"
+sidebarTitle: "WhatsApp-foutcodes"
+description: "Leer wat WhatsApp-fouten betekenen en hoe je ze oplost"
+---
+
+_Wanneer een WhatsApp-bericht niet kan worden verzonden in HireData, kun je een foutcode zien in het gespreksoverzicht van de Send Message- of Survey-taak. Deze codes komen rechtstreeks van Meta en verklaren waarom een bericht niet is afgeleverd. Dit artikel legt uit wat elke code betekent, zodat je weet wat er aan de hand is._
+
+## Authenticatie- en permissiefouten
+
+Deze fouten treden op wanneer HireData niet goed kan authenticeren met je WhatsApp Business Account.
+
+### (0) Authentication exception
+
+De access token die is gebruikt om je account te koppelen is verlopen of ingetrokken. Berichten kunnen niet worden verzonden totdat dit is opgelost.
+
+### (190) Access token expired
+
+De access token die is gekoppeld aan je WhatsApp-verbinding is verlopen en moet worden vernieuwd.
+
+### (200–299) API permission issue
+
+HireData heeft niet de nodige permissies om berichten namens je WhatsApp Business Account te versturen. Dit wordt meestal veroorzaakt door een ontbrekende betaalmethode, een conflict met een andere provider, of een verlopen access token.
+
+**_Wat te doen:_** _Zie [Hoe je permissieproblemen met WhatsApp Business Account oplost](/nl/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues)._
+
+### (10) Permission denied
+
+HireData mist een vereiste permissie of komt niet meer in aanmerking om berichten te versturen.
+
+## Account- en billing-fouten
+
+Deze fouten hebben betrekking op de status of billing-configuratie van je WhatsApp Business Account.
+
+### (368) Account temporarily blocked
+
+Je account is tijdelijk geblokkeerd vanwege een beleidsovertreding. Berichten sturen is gepauzeerd totdat de kwestie is beoordeeld en opgelost in Meta Business Manager.
+
+**_Wat te doen:_** _Log in op je [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjw46HPBhAMEiwASZpLRE3o4iBGHx4q8mAkEhnMTwXG17_Eec92qkYRHL2I6MBiuJ0sf-h4kRoC8fkQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC_ciGa5Zg7Mvjvr9xEpi0OMx) en bekijk de policy enforcement notice op je account._
+
+### (131031) Account locked
+
+Je WhatsApp Business Account is vergrendeld, meestal vanwege een beleidsovertreding of een two-factor authentication (PIN) mismatch.
+
+**_Wat te doen:_** _Log in op [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjw46HPBhAMEiwASZpLRE3o4iBGHx4q8mAkEhnMTwXG17_Eec92qkYRHL2I6MBiuJ0sf-h4kRoC8fkQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC_ciGa5Zg7Mvjvr9xEpi0OMx) en controleer je accountstatus._
+
+### (131057) Account in maintenance mode
+
+Je WhatsApp Business Account staat tijdelijk in maintenance mode, meestal omdat een throughput-upgrade wordt uitgevoerd. Dit lost zich automatisch op.
+
+### (130497) Country restricted
+
+Berichten sturen is niet toegestaan in het land of de regio van de ontvanger op basis van je huidige accountinstellingen.
+
+### (131042) Payment eligibility issue
+
+Je WhatsApp Business Account heeft geen actieve betaalmethode of credit line ingesteld bij Meta. Berichten kunnen niet worden verzonden totdat billing actief is.
+
+**_Wat te doen:_** _Zie [Een geldige betaalmethode toevoegen voor WhatsApp](/nl/apps/messaging/whatsapp/add-a-valid-payment-method-for-whatsapp)._
+
+### (133010) Phone number not registered
+
+Het telefoonnummer is niet goed onboarded aan de WhatsApp Business API.
+
+## Rate limit-fouten
+
+Deze fouten treden op wanneer er in een kort tijdsbestek te veel berichten worden verzonden.
+
+### (80007) Business account rate limit
+
+Je WhatsApp Business Account heeft zijn messaging throughput limit bereikt. Dit geldt voor je hele WhatsApp Business Account en beperkt het totale volume berichten dat je over een bepaalde tijdsperiode kunt versturen.
+
+### (130429) Rate limit hit
+
+Je account heeft het toegestane aantal berichten per seconde overschreden. Het is een restrictie die aanslaat wanneer je te snel verstuurt in een kort venster. Dit wordt automatisch na een korte periode opgeheven.
+
+### (131048) Spam rate limit
+
+Je telefoonnummer is gemarkeerd vanwege een groot volume berichten dat door ontvangers wordt geblokkeerd of gerapporteerd. Dit beïnvloedt de quality rating van je nummer bij Meta.
+
+**_Wat te doen:_** _Controleer de quality rating van je telefoonnummer in [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjwhqfPBhBWEiwAZo196jHORmdR703fP9fJkUx0gzy4Wduft0nyV2RJxkHUxlxbIFDT_deR_hoC_HAQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC9y2Odwg7zSG1UwxxT2UpbMa) onder WhatsApp Manager → Phone Numbers._
+
+### (4) Too many API calls
+
+Je account heeft de app-level rate limit bereikt. Dit is een tijdelijke restrictie die automatisch wordt opgeheven.
+
+### (131056) Too many messages to the same user
+
+Je hebt in korte tijd te veel berichten naar één ontvanger gestuurd.
+
+## Fouten m.b.t. conversatievenster
+
+Deze fouten treden op wanneer een bericht wordt verstuurd buiten de regels van het 24-uurs conversation window van WhatsApp.
+
+### (131049) Message not delivered by Meta
+
+Meta heeft ervoor gekozen dit marketingbericht niet af te leveren, meestal om de gebruikerservaring van de ontvanger te beschermen. Dit kan gebeuren wanneer een gebruiker een groot volume marketingberichten ontvangt.
+
+**_Wat te doen:_** _Wacht ten minste 24 uur voordat je het opnieuw probeert. Overweeg of de content van de template relevant en gepersonaliseerd is voor deze ontvanger._
+
+### (131047) Re-engagement message without an active window
+
+Je hebt geprobeerd een free-form bericht te sturen nadat het 24-uursvenster van de kandidaat al was gesloten. WhatsApp staat alleen templateberichten toe zodra het venster verloopt.
+
+**_Wat te doen:_** _Gebruik een goedgekeurde WhatsApp-template om het gesprek opnieuw te starten._
+
+### (131050) User has opted out
+
+De kandidaat heeft geblokkeerd of zich uitgeschreven voor marketingberichten van je nummer. Er kunnen geen verdere berichten naar hem worden gestuurd.
+
+## Algemene berichtfouten
+
+Dit zijn algemene fouten die betrekking hebben op ongeldige verzoeken of mislukte leveringen.
+
+### (100) Invalid parameter
+
+Het berichtverzoek bevatte een onbekend of verkeerd gespeld veld.
+
+### (131026) Message undeliverable
+
+Het bericht kon de ontvanger niet bereiken. Dit betekent meestal dat het telefoonnummer niet is geregistreerd bij WhatsApp, het nummer niet meer bestaat, of de ontvanger een verouderde versie van de app gebruikt.
+
+### (131052) Media download error
+
+HireData kon een mediabestand dat door de kandidaat is verzonden niet downloaden. Dit betekent meestal dat het bestand niet meer beschikbaar is of de link is verlopen.
+
+**_Wat te doen:_** _Vraag de kandidaat het bestand opnieuw te versturen._
+
+### (131053) Media upload error
+
+Het mediabestand dat je hebt geprobeerd te versturen gebruikt een niet-ondersteund bestandstype of -formaat.
+
+### (131008) Required parameter missing
+
+Een verplicht veld was niet opgenomen in het berichtverzoek.
+
+### (131021) Recipient is the same as sender
+
+Het telefoonnummer waarnaar je probeert te versturen is hetzelfde als het verzendende nummer.
+
+### (131000) Unknown error
+
+Er is een onverwachte interne fout opgetreden aan de kant van Meta.
+
+**_Wat te doen:_** _Wacht een paar minuten en probeer het opnieuw. Als de fout aanhoudt, neem dan contact met ons op via_ _[support@hiredata.com](mailto:support@hiredata.com)._
+
+## Templatecreatie-fouten
+
+Deze fouten treden op wanneer een template wordt ingediend of opgeslagen, voordat deze ooit is gebruikt om een bericht te versturen.
+
+### (2388072) Body format incorrect
+
+De body van de template bevat een opmaakprobleem dat niet voldoet aan de vereisten van Meta.
+
+### (2388040) Character limit exceeded
+
+Een van de templatevelden bevat te veel tekst en overschrijdt het toegestane character limit.
+
+### (2388073) Footer format incorrect
+
+De footer van de template bevat een opmaakprobleem.
+
+### (2388047) Header format incorrect
+
+De header van de template gebruikt een ongeldig format of syntax.
+
+### (2388293) Too many parameters
+
+De template gebruikt meer variabele-placeholders dan Meta toestaat relatief tot de totale tekst.
+
+### (134101) Template syncing
+
+De template is recent aangemaakt en wordt nog gesynchroniseerd met de systemen van Meta. Wacht een paar minuten voordat je het opnieuw probeert.
+
+### (134102) Template unavailable
+
+De template is momenteel niet beschikbaar vanwege een sync- of eligibility-probleem.
+
+### (2388299) Variable at the start or end of text
+
+Een variabele-placeholder staat helemaal aan het begin of einde van de berichttekst, wat niet is toegestaan.
+
+## Template-verzendfouten
+
+Deze fouten treden op wanneer een templatebericht wordt verzonden, maar iets over de template of de parameters niet overeenkomt met wat Meta heeft geregistreerd.
+
+### (132068) Flow blocked
+
+Een WhatsApp Flow die aan deze template is gekoppeld heeft een configuratieprobleem en is momenteel geblokkeerd.
+
+### (132069) Flow throttled
+
+Er zijn in korte tijd te veel berichten via een WhatsApp Flow verstuurd.
+
+### (132005) Hydrated text is too long
+
+De dynamische waarden die in de placeholders van de template worden ingevuld maken het uiteindelijke bericht te lang.
+
+### (132000) Parameter count mismatch
+
+Het aantal variabelen dat met de template is meegegeven komt niet overeen met het aantal placeholders dat erin is gedefinieerd.
+
+### (132012) Parameter format mismatch
+
+Een variabele die met de template is meegegeven heeft het verkeerde format, bijvoorbeeld een getal werd verwacht, maar er is tekst verzonden.
+
+### (132001) Template not found
+
+De templatenaam of taalcode komt niet overeen met een goedgekeurde template in je Meta-account. Dit kan gebeuren als een template recent is verwijderd, hernoemd, of nog niet is goedgekeurd.
+
+### (132007) Template content violates policy
+
+De inhoud van de template bevat iets dat niet voldoet aan de messaging policies van Meta.
+
+### (132015) Template paused
+
+Meta heeft deze template tijdelijk gepauzeerd vanwege een lage quality rating of een groot aantal gebruikersrapportages.
+
+### (132016) Template disabled
+
+De template is permanent uitgeschakeld door Meta na herhaalde kwaliteitsproblemen.
+
+### (132018) Template validation error
+
+Er is een parameterprobleem met de template dat verhinderde dat deze door Meta werd gevalideerd.
+
+## Meer hulp nodig?
+
+Als een fout aanhoudt en je niet zeker weet wat de oorzaak is, neem dan contact met ons op via _[support@hiredata.com](mailto:support@hiredata.com)_. Voor problemen op accountniveau in Meta kun je ook direct contact opnemen met Meta Business Support via het [Meta Business Help Center](https://www.facebook.com/business/help).

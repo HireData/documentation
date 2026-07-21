@@ -1,0 +1,123 @@
+---
+title: "Événements"
+description: "Comprendre le fonctionnement des événements HireData"
+---
+
+_Lorsque vous connectez votre ATS, tel que Carerix, Salesforce, OTYS, etc., à HireData, il commencera à envoyer des événements, qui sont des notifications indiquant que quelque chose s'est produit dans votre système. Les événements déclenchent vos automatisations, ce qui les rend cruciaux pour le fonctionnement de HireData en arrière-plan. Dans cet article, nous expliquerons comment fonctionnent les événements, où les trouver et comment les analyser si quelque chose ne se passe pas comme prévu._
+
+## Qu'est-ce qu'un événement
+
+Un événement est un signal envoyé depuis votre app connectée vers HireData. Il représente généralement une action ou un changement spécifique, par exemple, la création d'un nouveau candidat, la mise à jour d'une offre, la finalisation d'un placement, etc. Ces événements sont utilisés pour déclencher les automatisations que vous avez mises en place dans HireData, et chaque événement comprend des **Event Data**, des **External Records** et des **Processes**.
+
+_Exemple d'événement :_
+
+![Page d'un événement individuel](/images/intercom/48025433-Screenshot-2025-05-05-at-10_51_18.png)
+
+## Comment consulter les détails d'un événement
+
+Rendez-vous dans le menu **Settings** et ouvrez la page **Events** pour voir la liste de tous les événements envoyés depuis vos apps connectées :
+
+![Page Events dans HireData](/images/intercom/48023611-Screenshot-2025-05-05-at-12_06_25.png)
+
+_Utilisez les filtres pour une vue plus organisée, par exemple si vous souhaitez voir les événements provenant de l'une de vos apps :_
+
+![Configuration des filtres](/images/intercom/48024595-Screenshot-2025-05-05-at-10_49_56.png)
+
+Pour explorer un événement individuel, cliquez sur le bouton [Details] à côté de l'événement pour un bref aperçu ou ouvrez le menu déroulant et cliquez sur [View].
+
+![Menu déroulant d'un événement](/images/intercom/48023846-Screenshot-2025-05-05-at-10_50_57.png)
+
+Cela ouvrira la vue détaillée de l'événement, qui comprend :
+
+- **Event Data** — une vue résumée des données reçues de votre app.
+
+![Onglet Event Data](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
+
+- **External Records** — des champs supplémentaires de l'app source, même s'ils ne sont pas utilisés dans l'automatisation.
+
+![Onglet External records](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
+
+- **Processes** — la liste des automatisations déclenchées par cet événement et les exécutions qu'il a créées. Vous verrez également le statut de chaque exécution (par ex. Completed, Delayed, Cancelled).
+
+![Onglet Processes](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+
+## Rejouer des événements
+
+Si un événement ne déclenche pas une automatisation comme prévu, ou si une exécution échoue avant de terminer ses tâches, vous pouvez rejouer des événements individuels ou multiples pour redéclencher les automatisations et remettre les choses sur les rails.
+
+<Warning>
+  Lorsque vous rejouez un événement, cela peut déclencher des exécutions dans plusieurs automatisations à la fois. Avant de rejouer, vérifiez toujours quelles automatisations et exécutions seront affectées, en particulier si l'une d'elles inclut l'envoi d'un e-mail ou d'un message. Rejouer ceux-ci sans vérifier au préalable pourrait entraîner l'envoi de messages en double aux candidats ou contacts.
+</Warning>
+
+### Que se passe-t-il lorsqu'un événement est rejoué ?
+
+HireData retraite le ou les événements sélectionnés et déclenche les automatisations associées. Les tâches affectées seront exécutées comme si l'événement venait de se produire.
+
+- **Automatisations basées sur événements** — Pour les automatisations déclenchées par un événement spécifique (par exemple, un candidat atteignant une certaine étape), le replay redéclenchera l'automatisation immédiatement en fonction des données de l'événement. S'il existait précédemment une exécution créée, elle sera rejouée et une étiquette « Replay » apparaîtra.
+
+![Un événement étiqueté comme Replayed](/images/intercom/146643359-Screenshot-2026-05-28-at-13_08_04.png)
+
+- **Automatisations planifiées (ponctuelles)** — Pour les automatisations qui s'exécutent à une date ou une planification fixe, rejouer l'événement ne changera ni ne replanifiera la date d'exécution prévue de l'automatisation. Le replay ne fait que réévaluer si l'événement correspond aux conditions de l'automatisation.
+
+### Comment rejouer des événements
+
+<Steps>
+  <Step title="Trouver l'événement à rejouer">
+    Il existe trois façons d'accéder à l'option de replay, selon vos besoins :
+
+    - **Depuis la page Events (tous les événements)** — Rendez-vous sur la page **Events** depuis le menu principal. Cela vous donne une vue d'ensemble de tous les événements reçus par HireData.
+
+    ![La page Events](/images/intercom/146643741-Screenshot-2026-05-28-at-13_06_02.png)
+
+    - **Depuis une automatisation spécifique** — Ouvrez l'automatisation que vous souhaitez examiner, puis rendez-vous sur sa page **Events**. Cela filtre la vue pour ne montrer que les événements liés à cette automatisation.
+
+    ![Accès à la page Events pour une automatisation spécifique](/images/intercom/146650572-Screenshot-2026-05-28-at-13_19_57.png)
+
+    ![La page Events pour une automatisation spécifique](/images/intercom/146644665-Screenshot-2026-05-28-at-13_20_17.png)
+
+    - **Depuis un événement unique** — Cliquez directement sur l'événement que vous souhaitez rejouer pour ouvrir sa vue détaillée.
+  </Step>
+  <Step title="Sélectionner le ou les événements à rejouer">
+    Pour rejouer un **événement unique**, cliquez sur le menu à trois points à côté de l'événement dans la vue détaillée ou la liste **Events**, et sélectionnez **Replay** dans le menu déroulant.
+
+    ![Rejouer un événement individuel](/images/intercom/146645337-Screenshot-2026-05-28-at-13_06_43.png)
+
+    Pour rejouer **plusieurs événements à la fois**, cochez la case à côté de chaque événement que vous souhaitez rejouer sur la page **Events** ou l'onglet **Events** d'une automatisation. Une fois qu'un ou plusieurs événements sont sélectionnés, un bouton **Replay** apparaîtra en haut de la page. Cliquez dessus pour continuer.
+
+    ![Replay d'événements en masse](/images/intercom/146646000-Screenshot-2026-05-28-at-13_06_24.png)
+  </Step>
+  <Step title="Vérifier et confirmer le replay">
+    Pour voir quelles automatisations ont été précédemment déclenchées par l'événement, ouvrez l'événement et rendez-vous dans l'onglet **Runs**. Cela vous montre les automatisations et leur statut lors du dernier traitement de l'événement. Utilisez ces informations pour décider s'il est sûr de procéder au replay.
+
+    ![Vérification des automatisations et exécutions qui seront déclenchées par le replay](/images/intercom/146646806-Screenshot-2026-05-28-at-13_20_50.png)
+
+    Vérifiez si l'une des automatisations listées inclut des tâches telles que **Send Email/Message/Survey**. Si c'est le cas, assurez-vous que vous voulez bien que ces messages soient renvoyés avant de confirmer.
+
+    Une fois confiant, confirmez le replay.
+  </Step>
+</Steps>
+
+<Tip>
+  - **Vérifiez toujours les automatisations concernées avant de confirmer un replay.** Un événement peut correspondre à plusieurs automatisations, et le rejouer les déclenchera toutes.
+  - **Soyez particulièrement prudent avec les automatisations qui envoient des e-mails ou des messages.** Rejouer un événement lié à ces automatisations peut envoyer des communications en double aux candidats ou contacts.
+  - **Utilisez l'onglet Events spécifique à une automatisation si vous ne voulez rejouer que dans une seule automatisation.** Cela vous donne une vue plus ciblée et réduit le risque de déclencher involontairement des automatisations sans rapport.
+  - **Le replay en masse est utile lorsque plusieurs événements ont échoué en même temps**, par exemple après un problème temporaire de synchronisation. Au lieu de les rejouer un par un, vous pouvez sélectionner tous les événements affectés et les rejouer ensemble.
+</Tip>
+
+## Dépannage des événements
+
+Si une automatisation ne s'est pas exécutée comme prévu, ou si vous voyez des données inattendues :
+
+- Rendez-vous dans l'onglet **Processes** de l'événement et vérifiez si des exécutions ont été créées.
+- Cliquez sur l'exécution pour consulter les journaux et voir si une étape a échoué ou a été ignorée.
+- Comparez les **Event Data** avec les conditions de votre automatisation pour vous assurer qu'elles correspondent.
+
+Si aucun processus n'a été déclenché, l'événement n'a probablement pas répondu aux critères des automatisations actives.
+
+### Besoin d'aide supplémentaire ?
+
+Si vous n'êtes pas sûr de pourquoi un événement n'a pas déclenché votre automatisation ou souhaitez de l'aide pour interpréter les données de l'événement, n'hésitez pas à contacter notre équipe à [support@hiredata.com](mailto:support@hiredata.com). Si vous le faites, veuillez inclure :
+
+- Un lien ou l'ID de l'événement ;
+- Un lien ou le nom de l'automatisation que vous vous attendiez à voir se déclencher ;
+- Toutes les étapes ou tout contexte pertinents qui pourraient nous aider à enquêter.

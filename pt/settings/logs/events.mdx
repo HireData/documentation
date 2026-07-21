@@ -1,0 +1,123 @@
+---
+title: "Events"
+description: "Perceber como os events da HireData funcionam"
+---
+
+_Quando liga o seu ATS, como Carerix, Salesforce, OTYS, etc., à HireData, ele começará a enviar events, que são notificações de que algo aconteceu no seu sistema. Os events acionam as suas automações, tornando-os cruciais para o funcionamento da HireData nos bastidores. Neste artigo, iremos explicar como os events funcionam, onde encontrá-los e como analisá-los se algo não correr como esperado._
+
+## O que é um event
+
+Um event é um sinal enviado da sua app ligada para a HireData. Normalmente representa uma ação ou alteração específica, por exemplo, um novo candidato ser criado, uma vaga ser atualizada, uma colocação ser concluída, etc. Estes events são usados para acionar as automações que configurou na HireData, e cada event inclui **Event Data**, **External Records** e **Processes.**
+
+_Exemplo de event:_
+
+![Individual event page](/images/intercom/48025433-Screenshot-2025-05-05-at-10_51_18.png)
+
+## Como ver os detalhes de um event
+
+Navegue até ao menu **Settings** e abra a página **Events** para ver uma lista de todos os events enviados a partir das suas apps ligadas:
+
+![Events page in HireData](/images/intercom/48023611-Screenshot-2025-05-05-at-12_06_25.png)
+
+_Utilize os filtros para uma vista mais organizada, por exemplo, se quer ver os events provenientes de uma das suas apps:_
+
+![Setting up filters](/images/intercom/48024595-Screenshot-2025-05-05-at-10_49_56.png)
+
+Para explorar um event individual, clique no botão [Details] junto ao event para uma visão geral curta, ou abra o menu suspenso e clique em [View].
+
+![Event drop-down menu](/images/intercom/48023846-Screenshot-2025-05-05-at-10_50_57.png)
+
+Isto irá abrir a vista de detalhe do event, que inclui:
+
+- **Event Data** – uma vista resumida dos dados recebidos da sua app.
+
+![Event Data tab](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
+
+- **External Records** – campos adicionais da app de origem, mesmo que não sejam utilizados na automação.
+
+![External records tab](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
+
+- **Processes** – a lista de automação(ões) acionada(s) por este event e os runs que criou. Também verá o estado de cada run (por exemplo, Completed, Delayed, Cancelled).
+
+![Processes tab](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+
+## Reproduzir events
+
+Se um event não acionar uma automação como esperado, ou um run falhar antes de concluir as suas tarefas, pode reproduzir events individuais ou múltiplos para voltar a acionar automações e voltar a colocar tudo em ordem.
+
+<Warning>
+  Quando reproduz um event, este pode acionar runs em várias automações de uma só vez. Antes de reproduzir, verifique sempre que automações e runs serão afetados, especialmente se algum incluir o envio de um email ou uma mensagem. Reproduzir esses sem verificar primeiro pode resultar em mensagens duplicadas a serem enviadas a candidatos ou contactos.
+</Warning>
+
+### O que acontece quando um event é reproduzido?
+
+A HireData reprocessa o(s) event(s) selecionado(s) e aciona as automações associadas. As tarefas afetadas serão executadas como se o event tivesse acabado de ocorrer.
+
+- **Automações baseadas em events** – Para automações que são acionadas por um event específico (por exemplo, um candidato a atingir uma determinada fase), o replay irá reacionar a automação imediatamente com base nos dados do event. Se houve anteriormente um run criado, este será reproduzido e aparecerá uma etiqueta "Replay".
+
+![An event labeled as Replayed](/images/intercom/146643359-Screenshot-2026-05-28-at-13_08_04.png)
+
+- **Automações agendadas (únicas)** – Para automações que correm numa data ou agendamento fixos, reproduzir o event não irá alterar ou reagendar a data de execução planeada da automação. O replay apenas reavalia se o event corresponde às condições da automação.
+
+### Como reproduzir events
+
+<Steps>
+  <Step title="Encontrar o event que quer reproduzir">
+    Há três formas de chegar à opção de replay, consoante aquilo que precisa:
+
+    - **A partir da página Events (todos os events)** – Navegue até à página **Events** a partir do menu principal. Isto dá-lhe uma visão geral de todos os events recebidos pela HireData.
+
+    ![The Events page](/images/intercom/146643741-Screenshot-2026-05-28-at-13_06_02.png)
+
+    - **A partir de uma automação específica** – Abra a automação que quer investigar e depois vá à sua página **Events**. Isto filtra a vista para mostrar apenas events relacionados com essa automação.
+
+    ![Finding the Events page for a specific automation](/images/intercom/146650572-Screenshot-2026-05-28-at-13_19_57.png)
+
+    ![The Events page for a specific automation](/images/intercom/146644665-Screenshot-2026-05-28-at-13_20_17.png)
+
+    - **A partir de um único event** – Clique diretamente no event que quer reproduzir para abrir a sua vista de detalhe.
+  </Step>
+  <Step title="Selecionar o(s) event(s) a reproduzir">
+    Para reproduzir um **único event**, clique no menu de três pontos junto ao event na vista de detalhe ou na lista **Events**, e selecione **Replay** no menu suspenso.
+
+    ![Replaying an individual event](/images/intercom/146645337-Screenshot-2026-05-28-at-13_06_43.png)
+
+    Para reproduzir **vários events de uma vez**, marque a caixa junto a cada event que quer reproduzir na página **Events** ou no separador **Events** de uma automação. Uma vez selecionados um ou mais events, aparecerá um botão **Replay** no topo da página. Clique nele para continuar.
+
+    ![Replaying events in bulk](/images/intercom/146646000-Screenshot-2026-05-28-at-13_06_24.png)
+  </Step>
+  <Step title="Rever e confirmar o replay">
+    Para ver que automações foram anteriormente acionadas pelo event, abra o event e vá ao separador **Runs**. Isto mostra-lhe as automações e o seu estado da última vez que o event foi processado. Use esta informação para decidir se é seguro prosseguir com o replay.
+
+    ![Reviewing which automations and runs will be triggered by the replay](/images/intercom/146646806-Screenshot-2026-05-28-at-13_20_50.png)
+
+    Verifique se alguma das automações listadas inclui tarefas como **Send Email/Message/Survey**. Se incluir, certifique-se de que pretende que essas mensagens sejam enviadas novamente antes de confirmar.
+
+    Uma vez confiante, confirme o replay.
+  </Step>
+</Steps>
+
+<Tip>
+  - **Reveja sempre as automações afetadas antes de confirmar um replay.** Um event pode corresponder a várias automações, e reproduzi-lo irá acionar todas elas.
+  - **Tenha extra cuidado com automações que enviam emails ou mensagens.** Reproduzir um event ligado a essas automações pode enviar comunicações duplicadas a candidatos ou contactos.
+  - **Use o separador Events específico da automação se quer reproduzir apenas dentro de uma única automação.** Isto dá-lhe uma vista mais focada e reduz o risco de acionar involuntariamente automações não relacionadas.
+  - **O bulk replay é útil quando vários events falharam ao mesmo tempo**, por exemplo, após um problema temporário de sincronização. Em vez de reproduzir um a um, pode selecionar todos os events afetados e reproduzi-los juntos.
+</Tip>
+
+## Resolução de problemas em events
+
+Se uma automação não correu como esperado, ou está a ver dados inesperados:
+
+- Vá ao separador **Processes** do event e verifique se algum run foi criado.
+- Clique no run para ver logs e verificar se algum passo falhou ou foi saltado.
+- Compare os **Event Data** com as condições na sua automação para garantir que correspondem.
+
+Se nenhum processo foi acionado, o event provavelmente não cumpriu os critérios de nenhuma automação ativa.
+
+### Ainda precisa de ajuda?
+
+Se não tem a certeza de por que motivo um event não acionou a sua automação ou quer ajuda a interpretar os dados do event, contacte a nossa equipa em [support@hiredata.com](mailto:support@hiredata.com). Se o fizer, inclua:
+
+- Um link ou o ID do event;
+- Um link ou o nome da automação que esperava que fosse acionada;
+- Quaisquer passos ou contexto relevante que nos possa ajudar a investigar.

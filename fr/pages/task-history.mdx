@@ -1,0 +1,63 @@
+---
+title: "Historique des tâches"
+sidebarTitle: "Tâches"
+description: "Comprenez combien de tâches ont été exécutées, ce qui a mal tourné si une tâche est annulée, et rejouez les événements lorsque vous souhaitez tester une automatisation"
+---
+
+_Ce guide vous présentera toutes les notions de base à connaître sur l'onglet [Task History], notamment comment utiliser les filtres pour voir les tâches terminées et annulées, où chercher les détails des événements et comment les rejouer. Faites défiler jusqu'à la fin de la page si vous préférez le format vidéo._
+
+Pour voir des tâches dans l'onglet [Task History], vous devez avoir des [automatisations](/fr/automations/automations) qui s'exécutent via HireData. C'est là que vous pouvez voir toutes les tâches qu'elles ont exécutées.
+
+![Onglet Task History](/images/intercom/0ef47336b95b.png)
+
+## Comment filtrer les tâches
+
+L'une des fonctionnalités de cet onglet est les [Filters]. Ils vous permettent de filtrer les tâches comme terminées ou annulées.
+
+_Vue des tâches terminées :_
+
+![Vue des tâches terminées](/images/intercom/3ca8d7257ea7.png)
+
+Pour ne voir que les tâches annulées, activez le filtre annulé en déplaçant la barre de sélection vers la gauche pour qu'elle devienne grise.
+
+_Vue des tâches annulées :_
+
+![Vue des tâches annulées](/images/intercom/afe4efe9c027.png)
+
+## Comprendre les événements
+
+Si vous souhaitez vérifier pourquoi une tâche a été annulée, vous pouvez consulter l'historique de l'événement. Cliquez sur [View Event] à côté de la tâche que vous souhaitez examiner, et vous verrez ses détails.
+
+![Tâche annulée avec les boutons View Event et View Process](/images/intercom/932cef706d97.png)
+
+_Exemple de détails d'événement :_
+
+![Détails de l'événement](/images/intercom/ca09fd4105a6.png)
+
+Si vous cliquez sur [Processes], vous verrez tous les processus générés par cet événement. Par exemple, dans cet événement, nous pouvons voir que l'événement a été traité par l'automatisation affichée, mais qu'à la fin il a été annulé en raison de données invalides.
+
+_Exemple de processus d'un événement :_
+
+![Processus d'un événement](/images/intercom/a7d9fc71346f.png)
+
+Cette vue d'ensemble vous donne une idée de ce qui s'est passé et s'il y a eu des erreurs qui ont empêché la tâche d'être terminée. Cela vous permet de les corriger et de terminer la tâche.
+
+## Comment rejouer un événement
+
+Si vous modifiez une tâche et que vous voulez voir si elle sera terminée, vous pouvez rejouer l'événement en cliquant sur le bouton [Replay] dans le menu déroulant.
+
+Par exemple, si dans l'onglet processes de l'événement, vous voyez que le délai que vous avez configuré dans l'automatisation ne fonctionne pas, vous pouvez le supprimer puis rejouer l'événement pour voir ce qui se passera.
+
+![Bouton Replay de l'événement](/images/intercom/686b1bc6c45d.png)
+
+## Astuce de pro
+
+Les nombres à côté de l'onglet [Task History] se mettront à jour lorsque vous basculez entre les tâches terminées et annulées, affichant le nombre total de tâches.
+
+![Nombre total de tâches terminées](/images/intercom/0bbd33e5c373.jpg)
+
+---
+
+## Guide vidéo
+
+<iframe src="https://www.loom.com/embed/30646815e61c43d68ea0d9b3ccc7db87" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

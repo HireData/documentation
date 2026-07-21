@@ -1,0 +1,73 @@
+---
+title: "Como verificar um domínio na HireData para enviar emails"
+sidebarTitle: "Verificar um domínio"
+description: "Verifique o seu domínio na HireData para começar a enviar emails"
+---
+
+_Verificar o seu domínio na HireData é um passo fundamental para garantir que pode enviar emails diretamente a partir da HireData. Sem a verificação de domínio, não conseguirá enviar emails ou usá-lo para o seu branding. Siga os passos abaixo para concluir o processo de verificação._
+
+## Passo 1: Adicionar um novo domínio
+
+Inicie sessão na sua conta HireData, abra as suas definições e depois a página **[Domains](https://app.hiredata.com/settings/account/domains)**.
+
+Clique no botão **New Domain** para adicionar um novo domínio.
+
+![Domains page](/images/intercom/42937091-Screenshot-2025-03-26-at-10_55_24.png)
+
+## Passo 2: Introduzir os detalhes do domínio
+
+Depois de clicar em **New Domain**, aparecerá um novo ecrã onde precisará de preencher os detalhes do domínio, incluindo:
+
+1. **Nome do domínio**
+2. **Default Sender Name** – este é o nome que aparecerá como remetente nos emails enviados a partir da HireData, se esta informação estiver em falta nos registos de eventos recebidos da sua app.
+3. **Default Sender Email** – este será o endereço de email por defeito utilizado ao enviar emails, se esta informação não estiver disponível.
+
+Clique em **Create Domain** e continue para o próximo passo.
+
+![Adding a new domain](/images/intercom/42937339-Screenshot-2025-03-26-at-10_57_15.png)
+
+## Passo 3: Gerar registos DNS
+
+Os registos DNS (Domain Name System) são como sinais que dizem à internet onde encontrar diferentes serviços associados ao seu domínio. Ao verificar o seu domínio na HireData, precisa de adicionar registos DNS específicos para provar que é o proprietário do domínio e permitir que enviemos emails em seu nome.
+
+Estes registos incluem:
+
+- **Registos CNAME**: Estes associam o seu domínio a outro domínio, muitas vezes usados para verificação.
+- **Registo DMARC TXT** (opcional): Este registo ajuda a proteger o seu domínio de phishing de email e utilização não autorizada, melhorando a deliverability dos emails.
+
+Sem estes registos, os fornecedores de email poderão bloquear ou marcar os seus emails como spam. É por isso que adicionar e verificar os registos DNS é essencial para uma entrega de email sem problemas.
+
+Basta clicar em **Generate DNS Records** se não forem gerados automaticamente.
+
+![DNS records](/images/intercom/42937537-Screenshot-2025-03-25-at-16_37_11.png)
+
+## Passo 4: Adicionar registos DNS ao seu fornecedor de domínio
+
+Depois de ter os registos DNS, precisa de os adicionar ao seu fornecedor de domínio (por exemplo, GoDaddy, Cloudflare, Namecheap, etc.).
+
+1. Navegue até à secção DNS Settings no website do seu fornecedor.
+2. Adicione os registos DNS fornecidos exatamente como aparecem na HireData.
+3. Guarde as alterações.
+
+<Warning>
+  Coisas a considerar:
+
+  1. Alguns fornecedores de DNS exigem que introduza apenas o subdomínio no campo **Host/Name**, sem o domínio completo. Por exemplo, o fornecedor pode não aceitar o valor do host com "hiredata.com", pelo que pode ser removido.
+  2. Ocasionalmente, os fornecedores de DNS podem tratar automaticamente do ponto final (`.`) no fim dos valores, pelo que poderá ter de o eliminar.
+</Warning>
+
+## Passo 5: Verificar os registos DNS
+
+Regresse à página **Domains** na HireData e clique no botão **Verify DNS**. Se os registos DNS foram adicionados corretamente, o seu domínio será verificado.
+
+Uma vez verificado o seu domínio, poderá enviar emails diretamente da HireData usando os nossos templates de email incorporados ou criar templates personalizados para simplificar a comunicação do seu negócio.
+
+Se o seu domínio não for verificado, não conseguirá enviar emails via HireData. Certifique-se de concluir o processo de verificação para evitar quaisquer interrupções nas suas automações.
+
+Se tiver problemas com a verificação, certifique-se de que os seus registos DNS foram corretamente adicionados e permita algum tempo para serem processados. Se os problemas persistirem, contacte o seu fornecedor de domínio ou o suporte da HireData para assistência.
+
+---
+
+## Guia em vídeo
+
+<iframe src="https://www.loom.com/embed/b58cdb060cb545068bc82acf9a7871f9" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

@@ -1,0 +1,73 @@
+---
+title: "Eine Domain in HireData verifizieren, um E-Mails zu senden"
+sidebarTitle: "Domain verifizieren"
+description: "Verifizieren Sie Ihre Domain in HireData, um mit dem Versenden von E-Mails zu beginnen"
+---
+
+_Das Verifizieren Ihrer Domain in HireData ist ein entscheidender Schritt, um sicherzustellen, dass Sie E-Mails direkt aus HireData senden können. Ohne Domain-Verifizierung können Sie weder E-Mails senden noch die Domain für Ihr Branding verwenden. Folgen Sie den nachstehenden Schritten, um den Verifizierungsprozess abzuschließen._
+
+## Schritt 1: Eine neue Domain hinzufügen
+
+Melden Sie sich in Ihrem HireData-Konto an, öffnen Sie Ihre Settings und dann die Seite **[Domains](https://app.hiredata.com/settings/account/domains)**.
+
+Klicken Sie auf die Schaltfläche **New Domain**, um eine neue Domain hinzuzufügen.
+
+![Domains page](/images/intercom/42937091-Screenshot-2025-03-26-at-10_55_24.png)
+
+## Schritt 2: Domain-Details eingeben
+
+Nach dem Klick auf **New Domain** erscheint ein neuer Bildschirm, in dem Sie die Domain-Details ausfüllen müssen, einschließlich:
+
+1. **Domain-Name**
+2. **Default Sender Name** – dies ist der Name, der bei aus HireData gesendeten E-Mails als Absender erscheint, falls diese Information in den von Ihrer App empfangenen Event-Datensätzen fehlt.
+3. **Default Sender Email** – dies ist die Standard-E-Mail-Adresse, die beim Senden von E-Mails verwendet wird, falls diese Information nicht verfügbar ist.
+
+Klicken Sie auf **Create Domain** und fahren Sie mit dem nächsten Schritt fort.
+
+![Adding a new domain](/images/intercom/42937339-Screenshot-2025-03-26-at-10_57_15.png)
+
+## Schritt 3: DNS-Einträge generieren
+
+DNS (Domain Name System)-Einträge sind wie Wegweiser, die dem Internet mitteilen, wo verschiedene mit Ihrer Domain verknüpfte Dienste zu finden sind. Wenn Sie Ihre Domain in HireData verifizieren, müssen Sie spezifische DNS-Einträge hinzufügen, um nachzuweisen, dass Sie die Domain besitzen, und um uns zu erlauben, E-Mails in Ihrem Namen zu senden.
+
+Diese Einträge umfassen:
+
+- **CNAME Records**: Diese verknüpfen Ihre Domain mit einer anderen Domain, häufig zur Verifizierung verwendet.
+- **DMARC TXT Record** (optional): Dieser Eintrag hilft, Ihre Domain vor E-Mail-Phishing und unbefugter E-Mail-Nutzung zu schützen und verbessert die E-Mail-Zustellbarkeit.
+
+Ohne diese Einträge könnten E-Mail-Provider Ihre E-Mails blockieren oder als Spam markieren. Deshalb ist das Hinzufügen und Verifizieren der DNS-Einträge für eine reibungslose E-Mail-Zustellung essenziell.
+
+Klicken Sie einfach auf **Generate DNS Records**, wenn diese nicht automatisch generiert werden.
+
+![DNS records](/images/intercom/42937537-Screenshot-2025-03-25-at-16_37_11.png)
+
+## Schritt 4: DNS-Einträge bei Ihrem Domain-Provider hinzufügen
+
+Nachdem Sie die DNS-Einträge haben, müssen Sie sie bei Ihrem Domain-Provider (z. B. GoDaddy, Cloudflare, Namecheap usw.) hinzufügen.
+
+1. Navigieren Sie auf der Website Ihres Providers zum Bereich DNS Settings.
+2. Fügen Sie die bereitgestellten DNS-Einträge exakt wie in HireData angezeigt hinzu.
+3. Speichern Sie die Änderungen.
+
+<Warning>
+  Zu beachten:
+
+  1. Manche DNS-Provider verlangen, dass Sie im Feld **Host/Name** nur die Subdomain eingeben, nicht die vollständige Domain. Der Provider akzeptiert den Host-Wert mit „hiredata.com" beispielsweise nicht, sodass er entfernt werden kann.
+  2. Gelegentlich verarbeiten DNS-Provider den abschließenden Punkt (`.`) am Ende der Werte automatisch, sodass Sie ihn eventuell löschen müssen.
+</Warning>
+
+## Schritt 5: DNS-Einträge verifizieren
+
+Kehren Sie zur Seite **Domains** in HireData zurück und klicken Sie auf die Schaltfläche **Verify DNS**. Wenn die DNS-Einträge korrekt hinzugefügt wurden, wird Ihre Domain verifiziert.
+
+Sobald Ihre Domain verifiziert ist, können Sie E-Mails direkt aus HireData senden, indem Sie unsere integrierten E-Mail-Vorlagen verwenden oder eigene erstellen, um Ihre Business-Kommunikation zu optimieren.
+
+Wenn Ihre Domain nicht verifiziert ist, können Sie keine E-Mails über HireData senden. Stellen Sie sicher, dass Sie den Verifizierungsprozess abschließen, um Unterbrechungen Ihrer Automatisierungen zu vermeiden.
+
+Sollten bei der Verifizierung Probleme auftreten, stellen Sie sicher, dass Ihre DNS-Einträge korrekt hinzugefügt wurden, und lassen Sie etwas Zeit für die Verarbeitung. Wenn die Probleme fortbestehen, kontaktieren Sie Ihren Domain-Provider oder den HireData-Support.
+
+---
+
+## Video-Anleitung
+
+<iframe src="https://www.loom.com/embed/b58cdb060cb545068bc82acf9a7871f9" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

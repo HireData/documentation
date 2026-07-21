@@ -1,0 +1,35 @@
+---
+title: "Comment résoudre les problèmes de permissions du compte WhatsApp Business"
+sidebarTitle: "Résoudre les problèmes de permissions"
+description: "Dépannage de l'erreur de permissions du compte WhatsApp Business"
+---
+
+_Lors de l'envoi de messages WhatsApp via HireData, vous pouvez rencontrer l'erreur suivante : `(#200) You do not have the necessary permissions required to send messages on behalf of this WhatsApp Business Account (OAuthException: 200)`._
+
+_Cette erreur signifie que le WhatsApp Business Account (WABA) connecté à HireData n'autorise pas actuellement l'envoi de messages via l'API. Cela se produit généralement en raison de permissions du compte ou de conflits avec d'autres fournisseurs. Dans cet article, nous partagerons donc quelques causes et solutions possibles._
+
+## 1. Les paramètres de paiement sont manquants ou invalides
+
+- Le WABA doit avoir des [informations de paiement valides](/fr/apps/messaging/whatsapp/add-a-valid-payment-method-for-whatsapp) configurées dans Meta Business Manager.
+- Rendez-vous dans **Meta Business Manager → Business Settings → WhatsApp Accounts → Payment Settings** et vérifiez qu'un moyen de paiement valide est actif.
+
+## 2. Le WABA est connecté à un autre fournisseur (par ex. Bird)
+
+- Un compte WhatsApp Business ne peut être lié qu'à **un seul fournisseur** à la fois.
+- Si le WABA est encore connecté à un autre fournisseur, déconnectez-le avant de le lier à HireData.
+
+## 3. Le WABA est lié à une autre plateforme
+
+- Certaines plateformes restreignent l'accès direct à l'API lorsqu'elles contrôlent le WABA.
+- Vérifiez si votre WABA est toujours lié à une autre plateforme (par exemple un CRM ou un outil de messagerie). Si tel est le cas, dissociez-le pour restaurer les permissions API.
+
+## 4. Le WABA dispose de crédits chez un fournisseur tiers
+
+- Si le WABA a acheté des crédits via un autre fournisseur, Meta n'autorise pas l'utilisation directe de l'API.
+- Supprimez ou arrêtez la configuration de crédits avec le fournisseur tiers avant de connecter directement le WABA.
+
+L'erreur **_« (#200) OAuthException: You do not have the necessary permissions »_** signifie généralement que le compte WhatsApp Business est mal configuré, lié à un autre fournisseur, ou qu'il manque des informations de paiement valides. En vérifiant les paramètres de paiement, en recherchant les connexions à d'autres fournisseurs et en vous assurant que le WABA n'est pas verrouillé par une autre plateforme, vous pouvez résoudre ce problème et restaurer la fonctionnalité de messagerie.
+
+### Besoin d'aide supplémentaire ?
+
+Si vous avez suivi ces étapes et que l'erreur persiste, contactez-nous à **_[support@hiredata.com](mailto:support@hiredata.com)_**, et nous vous aiderons à résoudre le problème.

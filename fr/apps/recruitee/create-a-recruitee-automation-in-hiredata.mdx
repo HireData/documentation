@@ -1,0 +1,113 @@
+---
+title: "Créer une automatisation Recruitee dans HireData"
+sidebarTitle: "Créer une automatisation"
+description: "Optimiser les workflows de recrutement dans Recruitee : un guide étape par étape"
+---
+
+_Bienvenue dans notre tutoriel sur la mise en place d'une automatisation Recruitee dans HireData. Grâce à cette intégration, vous pouvez automatiser des tâches telles que l'envoi d'enquêtes NPS candidats, améliorant ainsi l'expérience candidat et optimisant vos processus de recrutement. Suivez-nous pas à pas pour mettre en place une automatisation efficacement._
+
+## Étape 1 : Configurer l'automatisation
+
+Une fois que vous avez configuré la [connexion avec Recruitee](/fr/apps/recruitee/connect-with-recruitee), vous pouvez créer votre première automatisation. Connectez-vous à HireData et rendez-vous sur la page **Automations**, où vous pouvez trouver et cliquer sur le bouton [New Automation].
+
+![](/images/intercom/67368294-Screenshot-2025-10-01-at-10_06_02.png)
+
+### 1.1 Choisir Blank Automation ou l'un des modèles disponibles
+
+Si vous voulez un contrôle total et la liberté de concevoir chaque étape de votre workflow exactement selon vos besoins, alors **Blank Automation** est le bon choix. Cela vous permet de construire un processus entièrement personnalisé à partir de zéro.
+
+En revanche, si vous préférez une solution rapide et prête à l'emploi, sélectionnez l'un des modèles, et l'automatisation sera créée pour vous.
+
+## Étape 2 : Définir le déclencheur
+
+La deuxième étape consiste à définir le déclencheur. Un déclencheur permet à HireData « d'écouter » des événements spécifiques survenant dans Recruitee. Pour le configurer, sélectionnez d'abord l'app, puis l'objet, et enfin le déclencheur qui doit démarrer l'automatisation. Vous pouvez également appliquer des filtres à ce stade pour restreindre le moment où l'automatisation s'exécute, par exemple en ciblant uniquement les candidatures qui répondent à certains critères.
+
+_Exemple de déclencheur : Application : créée ou mise à jour_
+
+![](/images/intercom/66856079-image.png)
+
+Sélectionnez le moment où l'automatisation doit s'exécuter, par ex. uniquement quand un élément est créé, mis à jour, ou les deux.
+
+## Étape 3 : Ajouter un filtre
+
+Une fois le déclencheur configuré, il est essentiel d'ajouter des filtres pour garantir que l'automatisation ne se déclenche que dans des conditions spécifiques.
+
+Les filtres peuvent être ajoutés directement au déclencheur, garantissant que l'automatisation ne s'exécute que lorsque des conditions spécifiques sont remplies. Ils peuvent également être créés comme un bloc séparé, ce qui est particulièrement utile lorsque plusieurs ensembles de filtres sont nécessaires pour des workflows plus complexes. Suivez ces étapes :
+
+_Exemple de filtre : Si Outcome est égal à Declined_
+
+![](/images/intercom/65649117-image.png)
+
+_Les filtres garantissent que l'automatisation ne s'exécute que pour les candidats que vous souhaitez atteindre (par ex. candidats rejetés)._
+
+## Étape 4 : Ajouter un délai
+
+Dans certains cas, vous voudrez introduire un délai avant d'exécuter l'automatisation. Un délai correspond au moment où l'automatisation attend un certain temps avant d'effectuer l'action suivante. Voici comment l'ajouter :
+
+_Exemple de délai : 1 jour (par ex. pour informer un candidat qu'il a obtenu le poste avant de lui envoyer une enquête post-placement)_
+
+![](/images/intercom/65649205-Screenshot-2B2024-03-16-2Bat-2B09_37_52.png)
+
+## Étape 5 : Configurer la tâche « Send Email »
+
+Configurons maintenant la tâche d'envoi de l'enquête NPS candidat. Suivez ces étapes :
+
+### 5.1 Ajoutez un bloc depuis le [+] puis cliquez sur [Message]
+
+![](/images/intercom/65649314-image.png)
+
+###
+
+### 5.2 À cette étape, vous pouvez décider du type de message que vous souhaitez envoyer
+
+![](/images/intercom/65649315-Schermafbeelding-2B2025-09-16-2B142526.png)
+
+### 5.3 Maintenant, sélectionnez le modèle que vous souhaitez utiliser
+
+![](/images/intercom/65649319-Screenshot-2B2024-03-16-2Bat-2B09_33_41.png)
+
+### 5.4 Sélectionnez l'identité de marque de votre e-mail
+
+![](/images/intercom/66856626-image.png)
+
+### 5.5 Choisissez le destinataire du message
+
+![](/images/intercom/65649317-image.png)
+
+### 5.6 Précisez l'expéditeur de l'enquête
+
+![](/images/intercom/65649316-image.png)
+
+### 5.7 Vérifiez que tous les paramètres sont corrects et enregistrez votre tâche
+
+![](/images/intercom/65649318-image.png)
+
+###
+
+### 5.8 Vérifier l'automatisation
+
+Après avoir configuré votre première automatisation, nous vous conseillons de la relire pour vous assurer que tout est correctement configuré et qu'elle s'exécute sans encombre.
+
+**Voici comment fonctionnera l'exemple d'automatisation de ce guide :**
+
+Lorsqu'une candidature passe à **Declined**, HireData recevra un événement de Recruitee. Puis l'automatisation attendra un jour tout en évitant les week-ends pour éviter les retards (facultatif). Après cette courte pause, les candidats qui répondent aux critères recevront un e-mail personnalisé qui les nomme par leur prénom et inclut un formulaire de feedback.
+
+Cette approche rend le processus de rejet plus attentionné et professionnel, tout en vous donnant la possibilité de recueillir des retours précieux des candidats pour améliorer l'expérience de recrutement.
+
+![](/images/intercom/66856806-image.png)
+
+## Étape 6 : Activer votre automatisation
+
+Une fois la configuration terminée, il est temps d'activer votre automatisation. Avec cette étape, votre automatisation Recruitee est prête à fonctionner, simplifiant vos processus de recrutement en toute simplicité.
+
+_Cliquez sur le bouton [Activate] pour activer votre automatisation_
+
+![](/images/intercom/65649380-Screenshot-2B2024-03-16-2Bat-2B09_34_37.png)
+
+En mettant en place une automatisation Recruitee dans HireData, vous pouvez automatiser des tâches telles que l'envoi d'enquêtes NPS candidats, améliorant ainsi l'expérience candidat et optimisant vos workflows de recrutement. Grâce au guide étape par étape fourni dans ce tutoriel, vous pouvez configurer et activer efficacement votre automatisation, économisant du temps et des ressources tout en renforçant vos efforts de recrutement.
+
+---
+
+# Guide vidéo
+
+<iframe src="https://www.loom.com/embed/522b7b06ee2f4f05b1bc51ecf04d9b32" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

@@ -1,0 +1,70 @@
+---
+title: "Custom Apps"
+sidebarTitle: "Introductie"
+description: "Verbind elke tool met HireData en automatiseer de data die deze verstuurt."
+---
+
+Een custom app verbindt HireData met een tool die geen ingebouwde integratie heeft, zoals je eigen portal, een niche jobboard, of een intern systeem. Als de tool een webverzoek kan versturen, kan een custom app het ontvangen en je automatiseringen starten.
+
+## Wat is een custom app?
+
+Een custom app is een app die je zelf aanmaakt en beheert. Deze bestaat uit:
+
+- **Een naam, icoon en logo** zodat je team hem herkent in HireData
+- **Triggers**: webadressen waar je andere tools data naartoe sturen
+- **Een actieve status** die bepaalt of inkomende data automatiseringen laat draaien
+
+Wanneer een actieve trigger data ontvangt, slaat HireData deze op als een [event](/nl/settings/logs/events) en start elke automatisering die met die trigger is verbonden.
+
+## Is dit de juiste functie voor mij?
+
+Gebruik een custom app wanneer:
+
+- HireData geen integratie heeft met de tool die je wilt koppelen
+- Je de tool zelf hebt gebouwd, of je team bepaalt hoe deze data verstuurt
+- De tool webhooks ondersteunt, of een ontwikkelaar een webverzoek voor je kan toevoegen
+
+Je hebt geen custom app nodig wanneer:
+
+- Er al een [integratie](/nl/apps/introduction) bestaat voor je ATS zoals Carerix, Salesforce, OTYS, Recruitee of Vincere
+- Je alleen data uit HireData wilt versturen; custom apps ontvangen data
+
+<Tip>
+  Niet zeker of je tool webverzoeken kan versturen? Zoek in het helpcentrum
+  naar "webhooks", of vraag het aan ons team via [support@hiredata.com](mailto:support@hiredata.com).
+</Tip>
+
+## Maak je custom app
+
+<Steps>
+  <Step title="Maak de app">
+    Ga naar [Settings → Apps](https://app.hiredata.com/settings/apps) en klik op **Create New App**. Geef het een herkenbare naam en je komt op de bewerkpagina terecht.
+  </Step>
+  <Step title="Voeg een icoon en logo toe">
+    Klik op het icoon van de app in de header om **App Icon & Logo** te openen. Beide zijn optioneel. Het icoon verschijnt naast je app in HireData, het logo op de pagina.
+  </Step>
+  <Step title="Voeg een trigger toe">
+    Klik op **Create Trigger** om je eerste trigger toe te voegen. Het [volgende artikel](/nl/apps/custom-apps/set-up-a-trigger) behandelt deze stap voor stap.
+  </Step>
+</Steps>
+
+## Waar je je custom app tegenkomt
+
+Zodra deze is ingesteld, gedraagt je custom app zich als elke andere app in HireData:
+
+- **Automations** kunnen starten vanuit de triggers en de velden gebruiken
+- **Events** tonen elk verzoek dat je triggers hebben ontvangen
+- **Variables** uit de velden werken in e-mails, berichten en formulieren
+- **People** kunnen automatisch worden gesynchroniseerd vanuit inkomende data
+
+## Je app activeren
+
+Je app en elk van je triggers hebben hun eigen actieve status. Automatiseringen draaien alleen wanneer beide actief zijn.
+
+Zo kun je alles veilig voorbereiden en testen: houd de app gepauzeerd terwijl je bouwt, en activeer hem wanneer je klaar bent.
+
+## Volgende stappen
+
+<Card title="Een trigger instellen" icon="bolt" href="/nl/apps/custom-apps/set-up-a-trigger">
+  Maak een trigger, beschrijf de data die deze ontvangt, test hem en zet hem om in automatiseringen.
+</Card>

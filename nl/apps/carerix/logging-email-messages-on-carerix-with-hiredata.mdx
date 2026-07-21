@@ -1,0 +1,93 @@
+---
+title: "E-mailberichten loggen in Carerix met HireData"
+sidebarTitle: "E-mails loggen"
+description: "Krijg beter inzicht over teams heen in Carerix met HireData"
+---
+
+_Welkom bij onze uitgebreide gids over hoe je e-mailberichten vanuit HireData in Carerix kunt loggen. Dit zorgt ervoor dat alle e-mailcommunicatie in Carerix wordt vastgelegd, waardoor het eenvoudiger wordt om interacties met klanten en kandidaten te volgen. Lees verder om te leren hoe je een automatisering in HireData opzet die verzonden e-mails in Carerix logt._
+
+##
+
+## Stap 1: Maak een nieuwe automatisering
+
+Door HireData te integreren met Carerix kun je automatisch e-mailrecords in Carerix aanmaken wanneer er een e-mail wordt verstuurd. De automatisering legt relevante details vast zoals afzender, ontvanger, onderwerp, inhoud van het bericht en wanneer het bericht is verstuurd, waardoor elke e-mail correct wordt gelogd.
+
+### 1.1. Navigeer naar het onderdeel Automations in HireData en klik op [Create New Automation]
+
+### 1.2. Selecteer de template "Log email in Carerix"
+
+![Log email in Carerix template](/images/intercom/42396003-Screenshot-2025-03-21-at-17_20_20.png)
+
+## Stap 2: Voeg een trigger toe
+
+### 2.1. Controleer de app-verbinding
+
+Deze wordt automatisch geselecteerd, maar we raden aan om te controleren of het de juiste is, voor het geval je meerdere verbindingen met Carerix hebt.
+
+### 2.2. Selecteer Object
+
+Het object [Message] wordt ook automatisch geconfigureerd, maar dit kun je aanpassen door op de knop [Edit] te klikken. Dit zijn de andere object-opties die we in dit geval ondersteunen:
+
+![Objects](/images/intercom/42401482-Screenshot-2025-03-21-at-17_40_18.png)
+
+### 2.3. Stel een trigger in
+
+Stel de trigger in op [Message: Sent] om e-mails vast te leggen zodra ze worden verstuurd.
+
+![Trigger set up](/images/intercom/42401972-Screenshot-2025-03-21-at-17_20_57.png)
+
+### 2.4. Voeg filters toe (optioneel)
+
+Een filter toevoegen resulteert in een betere segmentatie afhankelijk van je behoeften. In dit voorbeeld willen we alle berichten filteren die via andere kanalen worden verstuurd, zodat alleen berichten die via e-mail worden verstuurd aan Carerix worden toegevoegd.
+
+![Een filter instellen](/images/intercom/42413297-Screenshot-2025-03-21-at-17_21_48.png)
+
+## Stap 3: Stel de taak [Add Email to Carerix] in
+
+Deze taak is onderdeel van de automatiseringstemplate waarin je de verplichte velden kunt invullen om ervoor te zorgen dat de e-maildata correct wordt gelogd:
+
+### 3.1. Selecteer het object dat je wilt aanmaken in Carerix, bijv. email, note, enz.
+
+Je kunt een van deze objecten selecteren om aan je app toe te voegen:
+
+- **Appointment:** Om vergaderingen of interviews te plannen
+- **Candidate:** Om een nieuwe kandidaat aan het systeem toe te voegen
+- **Email:** Om e-mailcommunicatie te loggen
+- **Match:** Om kandidaten te koppelen aan vacatures
+- **Note:** Om gespreksdetails of observaties vast te leggen
+- **Task:** Voor opvolgacties of to-do-items
+
+![Objectselectie](/images/intercom/42416121-Screenshot-2025-03-21-at-17_57_03.png)
+
+### 3.2. Selecteer de e-mailadressen van afzender en ontvanger om in Carerix te loggen
+
+![Velden voor afzender en ontvanger](/images/intercom/42416518-Screenshot-2025-03-21-at-17_58_31.png)
+
+### 3.3. Zorg vervolgens dat de juiste e-mailinhoud wordt vastgelegd
+
+- Onderwerp
+- Inhoud
+
+![E-mailinhoudsvelden](/images/intercom/42422610-Screenshot-2025-03-21-at-18_01_36.png)
+
+### 3.4. Stel de status in op een van de volgende opties, afhankelijk van de e-mails die je wilt loggen
+
+![Een e-mailstatus instellen](/images/intercom/42501386-Screenshot-2025-03-21-at-18_02_33.png)
+
+### 3.5. Voeg een Send On-voorwaarde toe
+
+Gebruik bijvoorbeeld [Message: Sent At] om het tijdstip van de e-mail te loggen:
+
+![Veld Send On](/images/intercom/42502640-Screenshot-2025-03-21-at-23_10_29.png)
+
+## Stap 5: Opslaan en activeren
+
+Klik op [Save Task] om de setup te voltooien:
+
+![](/images/intercom/42424210-Screenshot-2025-03-21-at-17_23_21.png)
+
+Klik ten slotte op **[Activate]** om live te gaan:
+
+![](/images/intercom/42425773-Screenshot-2025-03-21-at-18_31_27.png)
+
+Eenmaal geactiveerd zorgt deze automatisering ervoor dat elke verzonden e-mail automatisch wordt vastgelegd in Carerix, zodat gebruikers een volledige communicatiehistorie kunnen bijhouden. Dit verbetert tracking, transparantie en samenwerking tussen teams.

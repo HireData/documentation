@@ -1,0 +1,93 @@
+---
+title: "E-Mail-Nachrichten in Carerix mit HireData protokollieren"
+sidebarTitle: "E-Mails protokollieren"
+description: "Bessere Sichtbarkeit über Teams hinweg in Carerix mit HireData"
+---
+
+_Willkommen zu unserer umfassenden Anleitung, wie Sie E-Mail-Nachrichten aus HireData in Carerix protokollieren. So wird sichergestellt, dass die gesamte E-Mail-Kommunikation in Carerix erfasst wird, und Sie können Interaktionen mit Kunden und Kandidaten leichter nachverfolgen. Lesen Sie weiter, um zu erfahren, wie Sie in HireData eine Automatisierung einrichten, die gesendete E-Mails in Carerix protokolliert._
+
+##
+
+## Schritt 1: Eine neue Automatisierung erstellen
+
+Durch die Integration von HireData mit Carerix können Sie automatisch E-Mail-Datensätze in Carerix erstellen lassen, sobald eine E-Mail gesendet wird. Die Automatisierung erfasst relevante Details wie Absender, Empfänger, Betreff, Textinhalt und den Zeitpunkt des Versands und stellt sicher, dass jede E-Mail ordnungsgemäß protokolliert wird.
+
+### 1.1. Navigieren Sie in HireData zum Bereich Automations und klicken Sie auf [Create New Automation]
+
+### 1.2. Wählen Sie die Vorlage „Log email in Carerix"
+
+![Log email in Carerix template](/images/intercom/42396003-Screenshot-2025-03-21-at-17_20_20.png)
+
+## Schritt 2: Einen Trigger hinzufügen
+
+### 2.1. Prüfen Sie die App-Verbindung
+
+Sie wird automatisch ausgewählt, aber wir empfehlen sicherzustellen, dass es die richtige ist, falls Sie mehrere Verbindungen mit Carerix haben.
+
+### 2.2. Objekt auswählen
+
+Das Objekt [Message] wird ebenfalls automatisch konfiguriert, kann aber über die Schaltfläche [Edit] geändert werden. Hier sind die weiteren Objektoptionen, die wir in diesem Fall unterstützen:
+
+![Objects](/images/intercom/42401482-Screenshot-2025-03-21-at-17_40_18.png)
+
+### 2.3. Einen Trigger festlegen
+
+Setzen Sie den Trigger auf [Message: Sent], um E-Mails zu erfassen, sobald sie gesendet werden.
+
+![Trigger set up](/images/intercom/42401972-Screenshot-2025-03-21-at-17_20_57.png)
+
+### 2.4. Filter hinzufügen (optional)
+
+Das Hinzufügen eines Filters führt zu einer besseren Segmentierung je nach Bedarf. In diesem Beispiel möchten wir alle Nachrichten herausfiltern, die über andere Kanäle gesendet werden, sodass nur E-Mail-Nachrichten in Carerix hinzugefügt werden.
+
+![Setting up a filter](/images/intercom/42413297-Screenshot-2025-03-21-at-17_21_48.png)
+
+## Schritt 3: Die Aufgabe [Add Email to Carerix] einrichten
+
+Diese Aufgabe ist Teil der Automatisierungsvorlage, in der Sie die erforderlichen Felder ausfüllen können, damit die E-Mail-Daten korrekt protokolliert werden:
+
+### 3.1. Wählen Sie das Objekt aus, das Sie in Carerix erstellen möchten, z. B. E-Mail, Note usw.
+
+Sie können jedes dieser Objekte auswählen, um es in Ihrer App hinzuzufügen:
+
+- **Appointment:** Zum Planen von Meetings oder Interviews
+- **Candidate:** Zum Hinzufügen eines neuen Kandidaten im System
+- **Email:** Zum Protokollieren von E-Mail-Kommunikation
+- **Match:** Zum Verknüpfen von Kandidaten mit Stellenangeboten
+- **Note:** Zum Erfassen von Gesprächsdetails oder Beobachtungen
+- **Task:** Für Follow-up-Aktionen oder To-do-Elemente
+
+![Object selection](/images/intercom/42416121-Screenshot-2025-03-21-at-17_57_03.png)
+
+### 3.2. Wählen Sie die E-Mail-Adressen von Absender und Empfänger aus, die in Carerix protokolliert werden sollen
+
+![Sender and receiver fields](/images/intercom/42416518-Screenshot-2025-03-21-at-17_58_31.png)
+
+### 3.3. Stellen Sie dann sicher, dass der korrekte E-Mail-Inhalt erfasst wird
+
+- Betreff
+- Text
+
+![Email content fields](/images/intercom/42422610-Screenshot-2025-03-21-at-18_01_36.png)
+
+### 3.4. Setzen Sie den Status je nach den zu protokollierenden E-Mails auf eine der folgenden Optionen
+
+![Setting up an email status](/images/intercom/42501386-Screenshot-2025-03-21-at-18_02_33.png)
+
+### 3.5. Fügen Sie eine Send-On-Bedingung hinzu
+
+Verwenden Sie zum Beispiel [Message: Sent At], um den Zeitstempel der E-Mail zu protokollieren:
+
+![Send On field](/images/intercom/42502640-Screenshot-2025-03-21-at-23_10_29.png)
+
+## Schritt 5: Speichern und aktivieren
+
+Klicken Sie auf [Save Task], um die Einrichtung abzuschließen:
+
+![](/images/intercom/42424210-Screenshot-2025-03-21-at-17_23_21.png)
+
+Klicken Sie abschließend auf **\[Activate]**, um live zu gehen:
+
+![](/images/intercom/42425773-Screenshot-2025-03-21-at-18_31_27.png)
+
+Sobald aktiviert, sorgt diese Automatisierung dafür, dass jede gesendete E-Mail automatisch in Carerix erfasst wird, und Benutzer können eine vollständige Kommunikationshistorie führen. Das verbessert Nachvollziehbarkeit, Transparenz und teamübergreifende Zusammenarbeit.

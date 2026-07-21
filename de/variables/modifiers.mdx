@@ -1,0 +1,227 @@
+---
+title: "Modifiers"
+sidebarTitle: "Modifiers"
+description: "Werte von Variablen transformieren: Groß-/Kleinschreibung ändern, Datums- und Zahlenformate anwenden, Bedingungen erstellen und mehr"
+---
+
+Modifiers ändern, wie ein Wert einer [Variable](/de/variables/introduction) beim Senden Ihres Inhalts erscheint. Fügen Sie einen Modifier mit einem Pipe (`|`) nach dem Feld hinzu.
+
+## Wie Modifiers funktionieren
+
+Ein Modifier steht nach dem Feld, getrennt durch ein Pipe:
+
+```
+{{ candidate.first_name | uppercase }} → SOFIA
+```
+
+Fügen Sie weitere Pipes hinzu, um Modifiers der Reihe nach von links nach rechts anzuwenden:
+
+```
+{{ candidate.first_name | lowercase | capitalise }} → sofia → Sofia
+```
+
+Einige Modifiers nehmen zusätzliche Werte nach einem Doppelpunkt an, getrennt durch Kommas:
+
+```
+{{ job.title | truncate_chars: 20 }} → Senior Software Engin...
+{{ description | replace: "old", "new" }} → This is my new job
+```
+
+Argumente können sein:
+
+- **Text** — in Anführungszeichen setzen: `"EUR"`, `"there"`
+- **Zahlen** — einfach schreiben: `20`, `2`
+- **Ein anderes Feld** — per Key referenzieren: `highlight: candidate.first_name`
+
+<Tip>
+  Viele Modifiers haben kürzere Aliase. Zum Beispiel funktioniert `upper` genauso wie
+  `uppercase`, und `gt` wie `greater_than`. Aliase werden in den Tabellen unten in
+  Klammern angezeigt.
+</Tip>
+
+## Fallback
+
+| Modifier         | Was er macht                                     | Beispiel                                   |
+| ---------------- | ------------------------------------------------ | ------------------------------------------ |
+| `default: value` | Zeigt `value`, wenn das Feld leer oder nicht vorhanden ist | `{{ name \| default: "there" }}` → `there` |
+
+## Text
+
+| Modifier                              | Was er macht                                   | Beispiel                                              |
+| ------------------------------------- | ---------------------------------------------- | ----------------------------------------------------- |
+| `uppercase` (`upper`)                 | Wandelt den Text in Großbuchstaben um          | `sofia` → `SOFIA`                                     |
+| `lowercase` (`lower`)                 | Wandelt den Text in Kleinbuchstaben um         | `SOFIA` → `sofia`                                     |
+| `capitalise`                          | Schreibt jedes Wort groß                       | `john doe` → `John Doe`                               |
+| `title_case`                          | Schreibt nur das erste Wort groß               | `john doe` → `John doe`                               |
+| `camel_case`                          | Formatiert als camelCase                       | `john doe` → `johnDoe`                                |
+| `pascal_case`                         | Formatiert als PascalCase                      | `john doe` → `JohnDoe`                                |
+| `snake_case`                          | Verbindet die Wörter mit Unterstrichen         | `john doe` → `john_doe`                               |
+| `kebab_case`                          | Verbindet die Wörter mit Bindestrichen         | `john doe` → `john-doe`                               |
+| `dot_case`                            | Verbindet die Wörter mit Punkten               | `john doe` → `john.doe`                               |
+| `slug`                                | Erstellt eine webfreundliche Version für Links | `John Doe!` → `john-doe`                              |
+| `initials`                            | Nimmt die Initialen                            | `John Doe` → `JD`                                     |
+| `trim`                                | Entfernt Leerzeichen an beiden Enden           | `  hi  ` → `hi`                                       |
+| `trim_start`                          | Entfernt führende Leerzeichen                  | `  hi` → `hi`                                         |
+| `trim_end`                            | Entfernt nachfolgende Leerzeichen              | `hi  ` → `hi`                                         |
+| `append: text`                        | Fügt Text am Ende an                           | `Doe` + `append: "!"` → `Doe!`                        |
+| `prepend: text`                       | Fügt Text am Anfang an                         | `Doe` + `prepend: "Mr "` → `Mr Doe`                   |
+| `concat: a, b, …` (`combine`)         | Verkettet den Wert mit einem oder mehreren Texten oder Feldern | `first \| concat: " ", last` → `John Doe`           |
+| `replace: find, with`                 | Ersetzt alle Treffer                           | `replace: "o", "0"` auf `john` → `j0hn`               |
+| `replace_first: find, with`           | Ersetzt den ersten Treffer                     | `j0hn doe`                                            |
+| `replace_last: find, with`            | Ersetzt den letzten Treffer                    | `john d0e`                                            |
+| `remove: text`                        | Entfernt alle Treffer                          | `remove: " "` auf `john doe` → `johndoe`              |
+| `remove_first: text`                  | Entfernt den ersten Treffer                    |                                                       |
+| `remove_last: text`                   | Entfernt den letzten Treffer                   |                                                       |
+| `truncate_chars: length`              | Kürzt auf eine Anzahl an Zeichen und ergänzt `…` | `truncate_chars: 5` auf `Engineering` → `Engin...`  |
+| `truncate_words: count`               | Kürzt auf eine Anzahl an Wörtern und ergänzt `…` | `truncate_words: 2` auf `one two three` → `one two...` |
+| `excerpt: phrase`                     | Zeigt einen Ausschnitt rund um einen passenden Ausdruck |                                              |
+| `substring: start, length` (`substr`) | Nimmt einen Teil des Textes nach Position      | `substring: 0, 5` auf `Engineering` → `Engin`         |
+| `word: index`                         | Nimmt ein einzelnes Wort (beginnend bei 0)     | `word: 1` auf `one two three` → `two`                 |
+| `word_count` (`words`)                | Zählt die Wörter                               | `one two three` → `3`                                 |
+| `length` (`len`, `size`, `count`)     | Zählt die Zeichen                              | `Sofia` → `5`                                         |
+| `lines`                               | Teilt Text in separate Zeilen                  |                                                       |
+| `wrap: width`                         | Umbricht Text auf eine Zeilenbreite            |                                                       |
+| `pad_left: length, char`              | Füllt den Anfang auf eine Länge auf            | `pad_left: 3, "0"` auf `5` → `005`                    |
+| `pad_right: length, char`             | Füllt das Ende auf eine Länge auf              | `pad_right: 3, "x"` auf `5` → `5xx`                   |
+| `repeat: times`                       | Wiederholt den Text                            | `repeat: 3` auf `ab` → `ababab`                       |
+| `mask: char, start, length`           | Verbirgt Teile des Textes                      | `mask` auf `secret` → `******`                        |
+| `redact`                              | Verbirgt sensible Daten und behält einen Hinweis | `john@acme.com` → `j***@acme.com`                   |
+| `highlight: term`                     | Hebt passende Wörter im Text hervor            | hebt `term` im Text hervor                            |
+| `ascii` (`transliterate`)             | Ersetzt Akzentbuchstaben durch normale         | `José` → `Jose`                                       |
+| `escape_html`                         | Zeigt HTML-Zeichen als Klartext                | `<b>` → `&lt;b&gt;`                                   |
+| `strip_html`                          | Entfernt alle HTML-Tags                        | `<b>hi</b>` → `hi`                                    |
+| `markdown_to_html`                    | Wandelt Markdown in formatierten Text um       | `**hi**` → `<strong>hi</strong>`                      |
+| `sprintf: format` (`format`)          | Formatiert Text oder Zahlen mit einem Muster   | `sprintf: "%05.2f"` auf `3.1` → `03.10`               |
+
+## Kontakt und Locale
+
+| Modifier               | Was er macht                                                                          | Beispiel                                            |
+| ---------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `link`                 | Wandelt einen Wert in einen anklickbaren Link (E-Mail → `mailto:`, Telefon → `tel:`, Web → Anchor) | `a@b.com` → `<a href="mailto:a@b.com">a@b.com</a>` |
+| `format_phone: region` | Formatiert eine Telefonnummer international                                            | `06 12345678` → `+31612345678`                     |
+| `country_name`         | Zeigt den Ländernamen zu einem Code                                                    | `NL` → `Netherlands`                               |
+| `language_name`        | Zeigt den Sprachnamen zu einem Code                                                    | `nl` → `Dutch`                                     |
+
+## Zahlen
+
+| Modifier                                 | Was er macht                                  | Beispiel                                           |
+| ---------------------------------------- | --------------------------------------------- | -------------------------------------------------- |
+| `round: decimals`                        | Rundet auf eine Anzahl an Dezimalstellen      | `round: 2` auf `3.14159` → `3.14`                  |
+| `ceil`                                   | Rundet auf                                    | `3.1` → `4`                                        |
+| `floor`                                  | Rundet ab                                     | `3.9` → `3`                                        |
+| `absolute`                               | Entfernt das Minuszeichen                     | `-7` → `7`                                         |
+| `add: n`                                 | Addiert eine Zahl                             | `add: 10` auf `5` → `15`                           |
+| `subtract: n`                            | Subtrahiert eine Zahl                         | `subtract: 3` auf `5` → `2`                        |
+| `multiply_by: n`                         | Multipliziert                                 | `multiply_by: 2` auf `5` → `10`                    |
+| `divide_by: n`                           | Dividiert                                     | `divide_by: 2` auf `5` → `2.5`                     |
+| `modulo: n`                              | Der Rest nach der Division                    | `modulo: 2` auf `5` → `1`                          |
+| `min: n`                                 | Setzt einen niedrigsten erlaubten Wert        | `min: 0` auf `-3` → `0`                            |
+| `max: n`                                 | Setzt einen höchsten erlaubten Wert           | `max: 100` auf `120` → `100`                       |
+| `clamp: min, max`                        | Hält einen Wert innerhalb eines Bereichs      | `clamp: 0, 10` auf `15` → `10`                     |
+| `format_number: decimals`                | Formatiert mit Tausendertrennzeichen          | `1000000` → `1,000,000`                            |
+| `format_currency: currency`              | Formatiert als Geldbetrag                     | `format_currency: "EUR"` auf `65000` → `€65,000.00`|
+| `format_percentage: decimals`            | Formatiert als Prozentsatz                    | `75` → `75%`                                       |
+| `ordinal_number`                         | Fügt das Ordnungszahlsuffix hinzu             | `3` → `3rd`                                        |
+| `abbreviate: decimals`                   | Kürzt große Zahlen                            | `1200` → `1.2K`                                    |
+| `spell_number`                           | Schreibt die Zahl in Worten                   | `42` → `forty-two`                                 |
+| `negate`                                 | Dreht das Vorzeichen um                       | `5` → `-5`                                         |
+| `sign`                                   | Sagt Ihnen, ob negativ, null oder positiv     | `-7` → `-1`                                        |
+| `pow: exponent` (`power`)                | Erhebt in eine Potenz                         | `pow: 2` auf `5` → `25`                            |
+| `sqrt` (`square_root`)                   | Die Quadratwurzel                             | `16` → `4`                                         |
+| `to_fixed_number: decimals` (`to_fixed`) | Zeigt immer diese Anzahl an Dezimalstellen    | `to_fixed_number: 2` auf `3.1` → `3.10`            |
+| `file_size` (`format_bytes`)             | Menschenlesbare Dateigröße                    | `1024` → `1 KB`                                    |
+
+## Datums- und Zeitangaben
+
+Datumsformate verwenden Standard-Datumstoken wie `d` (Tag), `m` (Monat), `Y` (Jahr), `H` (Stunde) und `i` (Minute).
+
+| Modifier                             | Was er macht                         | Beispiel                                  |
+| ------------------------------------ | ------------------------------------ | ----------------------------------------- |
+| `format_date: format`                | Formatiert ein Datum                 | `format_date: "d-m-Y"` → `14-03-2026`     |
+| `format_relative_date`               | Zeigt das Datum relativ zu jetzt     | `4 months ago`                            |
+| `date_add: interval`                 | Fügt einem Datum Zeit hinzu          | `date_add: "3 days"`                      |
+| `date_subtract: interval`            | Subtrahiert Zeit von einem Datum     | `date_subtract: "1 week"`                 |
+| `age`                                | Volle Jahre seit dem Datum           | Geburtsdatum → `34`                       |
+| `diff_in_years: to`                  | Jahre zwischen zwei Daten            |                                           |
+| `diff_in_months: to`                 | Monate zwischen zwei Daten           |                                           |
+| `diff_in_weeks: to`                  | Wochen zwischen zwei Daten           |                                           |
+| `diff_in_days: to`                   | Tage zwischen zwei Daten             |                                           |
+| `diff_in_hours: to`                  | Stunden zwischen zwei Daten          |                                           |
+| `diff_in_minutes: to`                | Minuten zwischen zwei Daten          |                                           |
+| `diff_in_seconds: to`                | Sekunden zwischen zwei Daten         |                                           |
+| `start_of: unit`                     | Anfang des Tages, der Woche, des Monats usw. | `start_of: "month"` → Erster des Monats |
+| `end_of: unit`                       | Ende des Tages, der Woche, des Monats usw. | `end_of: "month"` → Letzter des Monats    |
+| `is_past`                            | True, wenn das Datum in der Vergangenheit liegt |                                    |
+| `is_future`                          | True, wenn das Datum in der Zukunft liegt |                                       |
+| `is_today`                           | True, wenn das Datum heute ist       |                                           |
+| `is_weekend`                         | True, wenn das Datum ein Wochenende ist |                                        |
+| `day_name`                           | Name des Wochentags                  | `Thursday`                                |
+| `month_name`                         | Name des Monats                      | `January`                                 |
+| `quarter`                            | Quartal des Jahres (1–4)             | `1`                                       |
+| `week` (`week_of_year`)              | Kalenderwoche des Jahres             | `3`                                       |
+| `add_business_days: n`               | Fügt Tage hinzu und überspringt Wochenenden |                                    |
+| `to_timezone: zone` (`tz`)           | Konvertiert in eine Zeitzone         | `to_timezone: "Europe/Amsterdam"`         |
+| `to_timestamp` (`unix`, `timestamp`) | Das Datum als numerischer Timestamp  |                                           |
+| `iso8601` (`iso_date`)               | Das Datum im standardisierten ISO-8601-Format | `2026-03-14T09:00:00+00:00`      |
+
+Die Einheiten für `start_of` und `end_of` sind `year`, `quarter`, `month`, `week`, `day`, `hour`, `minute` und `second`.
+
+## Listen und strukturierte Daten
+
+Diese funktionieren mit Feldern, die eine Liste von Werten enthalten.
+
+| Modifier                  | Was er macht                                        | Beispiel                      |
+| ------------------------- | --------------------------------------------------- | ----------------------------- |
+| `first`                   | Erstes Element                                      |                               |
+| `last`                    | Letztes Element                                     |                               |
+| `nth: index` (`at`)       | Element an einer Position (beginnend bei 0)         | `nth: 1` → zweites Element    |
+| `join: separator`         | Fügt Elemente zu Text zusammen                      | `join: ", "` → `php, sql, go` |
+| `split: separator`        | Teilt Text in eine Liste                            | `split: ","`                  |
+| `count` (`length`)        | Anzahl der Elemente                                 |                               |
+| `sort: direction`         | Sortiert die Elemente (`asc` oder `desc`)           |                               |
+| `sort_by: key, direction` | Sortiert Elemente nach einem Key                    |                               |
+| `unique` (`distinct`)     | Entfernt Duplikate                                  |                               |
+| `reverse`                 | Kehrt die Reihenfolge um                            |                               |
+| `slice: start, length`    | Nimmt einen Teil der Liste                          |                               |
+| `sum`                     | Addiert die Zahlen                                  | `[3, 1, 2]` → `6`             |
+| `avg` (`average`)         | Durchschnitt der Zahlen                             | `[3, 1, 2]` → `2`             |
+| `get: key`                | Wählt einen Wert anhand seines Namens               | `get: "skills"`               |
+| `pluck: key` (`column`)   | Zieht ein Feld aus jedem Element der Liste          | `pluck: "name"`               |
+| `keys`                    | Listet die Feldnamen auf                            |                               |
+| `values`                  | Listet die Werte auf                                |                               |
+| `parse_json`              | Liest JSON-Daten, damit Sie Listen-Modifiers darauf anwenden können |               |
+| `to_json`                 | Wandelt den Wert in JSON-Text um                    |                               |
+
+## Bedingungen und Logik
+
+Bedingungen geben true oder false zurück. Paaren Sie sie mit `boolean_label`, um ein freundliches Label anzuzeigen, oder kombinieren Sie sie mit `and`, `or` und `not`.
+
+| Modifier                           | Was er macht                            | Beispiel                                               |
+| ---------------------------------- | --------------------------------------- | ------------------------------------------------------ |
+| `equals: value` (`eq`)             | True, wenn gleich                       | `{{ stage \| equals: "offer" }}`                       |
+| `not_equals: value` (`ne`, `neq`)  | True, wenn nicht gleich                 |                                                        |
+| `greater_than: n` (`gt`)           | True, wenn größer als                   |                                                        |
+| `less_than: n` (`lt`)              | True, wenn kleiner als                  |                                                        |
+| `greater_than_or_equal: n` (`gte`) | True, wenn größer oder gleich           |                                                        |
+| `less_than_or_equal: n` (`lte`)    | True, wenn kleiner oder gleich          |                                                        |
+| `between: min, max`                | True, wenn innerhalb des Bereichs       | `between: 0, 10`                                       |
+| `is_empty` (`empty`)               | True, wenn das Feld leer ist            |                                                        |
+| `is_not_empty` (`not_empty`)       | True, wenn das Feld einen Wert hat      |                                                        |
+| `contains: text`                   | True, wenn es den Text enthält          |                                                        |
+| `does_not_contain: text`           | True, wenn es den Text nicht enthält    |                                                        |
+| `starts_with: text`                | True, wenn es mit dem Text beginnt      |                                                        |
+| `ends_with: text`                  | True, wenn es mit dem Text endet        |                                                        |
+| `does_not_start_with: text`        | True, wenn es nicht mit dem Text beginnt |                                                       |
+| `does_not_end_with: text`          | True, wenn es nicht mit dem Text endet  |                                                        |
+| `one_of: a, b, …` (`in`)           | True, wenn es zu einem Wert passt       | `one_of: "offer", "hired"`                             |
+| `not_one_of: a, b, …` (`not_in`)   | True, wenn es zu keinem passt           |                                                        |
+| `and: (condition)`                 | True, wenn beide Seiten wahr sind       | `gt: 80 \| and: (stage \| equals: "offer")`            |
+| `or: (condition)`                  | True, wenn eine Seite wahr ist          |                                                        |
+| `not`                              | Kehrt true und false um                 | `equals: "hired" \| not`                               |
+| `boolean_label: yes, no`           | Zeigt ein Label für true/false          | `gt: 80 \| boolean_label: "Strong", "Weak"` → `Strong` |
+
+Eine Bedingung kombiniert mit einem Label ist ein häufiges Muster:
+
+```
+{{ score | greater_than: 80 | boolean_label: "Strong candidate", "Needs review" }}
+```

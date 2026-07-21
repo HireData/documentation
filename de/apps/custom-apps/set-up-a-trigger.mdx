@@ -1,0 +1,143 @@
+---
+title: "Einen Trigger einrichten"
+sidebarTitle: "Einen Trigger einrichten"
+description: "Erstellen Sie einen Trigger, beschreiben Sie die empfangenen Daten, testen Sie ihn und wandeln Sie ihn in Automatisierungen um."
+---
+
+Ein Trigger ist eine Webadresse, an die Ihr anderes Tool Daten sendet. Dieser Artikel führt Sie von oben nach unten durch die Trigger-Seite: das Erstellen des Triggers, das Beschreiben seiner Felder, das Testen und das Verknüpfen von Automatisierungen.
+
+Wenn Sie noch keine Custom App erstellt haben, beginnen Sie mit der [Einführung](/de/apps/custom-apps/introduction).
+
+## Einen Trigger erstellen
+
+Klicken Sie auf der Bearbeitungsseite Ihrer App auf **Create Trigger**. Benennen Sie ihn nach den Daten, die er empfangen wird, zum Beispiel „New application" oder „Candidate updated".
+
+Der Trigger öffnet sich im Editor. Oben finden Sie:
+
+- Den **Namen** des Triggers und seine **Adressleiste** mit der Anfragemethode
+- **Try It**, um eine Testanfrage zu senden
+- **Automate This**, um aus dem Trigger eine Automatisierung zu erstellen
+- Die Schaltfläche **Activate** oder **Pause**
+
+{/* screenshot: trigger editor header with the URL bar */}
+
+## Methode wählen und die Adresse teilen
+
+Klicken Sie auf **Copy address** und fügen Sie die Adresse in das Tool ein, das die Daten senden wird.
+
+Die Anfragemethode teilt HireData mit, welche Art von Anfrage zu erwarten ist:
+
+| Methode | Wie die Daten gelesen werden |
+| ------ | ---------------- |
+| `POST` (Standard) | Aus dem Request Body, als JSON oder Formulardaten |
+| `GET` | Aus den Query-Parametern der Adresse |
+
+Anfragen mit einer anderen Methode als der konfigurierten werden abgelehnt.
+
+## Die zu empfangenden Felder beschreiben
+
+Die Liste **Fields we receive** teilt HireData mit, was in den Daten enthalten ist, sodass Sie diese in Automatisierungen und als [Variablen](/de/variables/introduction) verwenden können. Jedes Feld hat:
+
+- **Label**: einen lesbaren Namen, wie „Contact: First Name"
+- **Key**: den Bezeichner in den Daten, mit Punkten für verschachtelte Werte, z. B. `contact.firstName`
+- **Type**: welche Art von Wert zu erwarten ist, z. B. Text, Zahl oder Datum
+
+Es gibt drei Möglichkeiten, die Liste aufzubauen:
+
+<Tabs>
+  <Tab title="Ein Sample einfügen">
+    Solange der Trigger noch keine Felder hat, klicken Sie auf **Upload Sample Object** und fügen Sie ein JSON-Beispiel der Daten ein oder laden Sie es hoch. HireData erstellt die Felder für Sie und erkennt automatisch E-Mails, Telefonnummern, Datumsangaben und URLs.
+  </Tab>
+  <Tab title="Eine Anfrage senden">
+    Solange der Trigger noch keine Felder hat, wird jede an seine Adresse gesendete Anfrage als Sample gespeichert und automatisch in Felder gemappt. Das funktioniert auch, während der Trigger pausiert ist, sodass echte Daten aus dem anderen Tool sicher gemappt werden können.
+  </Tab>
+  <Tab title="Felder manuell hinzufügen">
+    Klicken Sie auf **New Field**, um Felder einzeln mit demselben Feldeditor hinzuzufügen, der in HireData überall verwendet wird. Das umfasst auch AI-Felder, die bei jedem Dateneingang einen Wert mit KI erzeugen.
+  </Tab>
+</Tabs>
+
+<Note>
+  Sobald ein Trigger Felder hat, ändern neue Anfragen diese nicht mehr. Bearbeiten Sie die Liste
+  manuell oder leeren Sie sie, bevor Sie ein neues Sample hochladen.
+</Note>
+
+{/* screenshot: fields list with a few example fields */}
+
+## Mit Try It testen
+
+Klicken Sie im Header des Triggers auf **Try It**, um eine Anfrage zu senden, ohne HireData zu verlassen:
+
+1. Das Formular ist basierend auf Ihren Feldern mit Beispielwerten vorausgefüllt. Passen Sie alles nach Bedarf an.
+2. Klicken Sie auf **Send**.
+3. Prüfen Sie die Anfrage auf der linken und die Antwort auf der rechten Seite.
+
+Der Schalter **Mode** über dem Formular wählt, wie die Anfrage verarbeitet wird:
+
+- **Test** (Standard): Erstellt ein Test-Event und führt Ihre Automatisierungen in einer sicheren Sandbox aus. Sie können jeden Schritt und dessen Ergebnis verfolgen, aber nichts wird erstellt, geändert oder gesendet.
+- **Live**: Sendet eine echte Anfrage, genau wie es Ihr anderes Tool tun würde.
+
+Test-Events und deren Läufe zeigen im Tab **Events** ein Test-Label.
+
+{/* screenshot: Try It modal with form and request panes */}
+
+## An Ihren Entwickler übergeben
+
+Wenn jemand anderes das Tool verwaltet, das die Daten senden wird, geben ihm die **Request Examples** am Ende des Triggers alles Nötige. Sie können kopieren:
+
+- **cURL**: eine sofort ausführbare Beispielanfrage für die Kommandozeile
+- **JSON**: ein Beispiel der Daten, die der Trigger erwartet
+- **OpenAPI**: ein Schema, das sich in Tools wie Postman importieren lässt
+- **Copy for LLMs**: ein einzelnes Dokument, das den Trigger beschreibt und zum Einfügen in einen KI-Assistenten gedacht ist, der die Integration für Sie baut
+
+<Tip>
+  Wenn Sie zuerst Felder auswählen, werden die Kopien auf diese Felder beschränkt.
+</Tip>
+
+### Testanfragen senden
+
+Jede Anfrage kann als Test markiert werden, indem ein Header hinzugefügt wird:
+
+```
+X-HireData-Test: true
+```
+
+Testanfragen verhalten sich genau wie der Test-Modus von Try It: Automatisierungen laufen in einer sicheren Sandbox, die nichts erstellt, ändert oder sendet, und das Event zeigt im Tab **Events** ein Test-Label. Nützlich, während die Integration des anderen Tools noch aufgebaut wird.
+
+## People synchronisieren
+
+Wenn die eingehenden Daten eine Person beschreiben, etwa einen Kandidaten oder Kontakt, mappt der Abschnitt **People** sie auf Personendatensätze in HireData:
+
+1. Klicken Sie auf **Add Person** und mappen Sie die Felder.
+2. Jede Anfrage an den Trigger synchronisiert diese Person nun automatisch.
+3. Automatisierungen, die den Trigger verwenden, können die Person direkt nutzen, zum Beispiel als Empfänger einer E-Mail, ohne die Felder erneut zu mappen.
+
+Entfernen Sie alle Personen, um die Synchronisation zu stoppen.
+
+## In Automatisierungen umwandeln
+
+Klicken Sie im Header des Triggers auf **Automate This**, um einen Entwurf einer Automatisierung zu erstellen, die startet, sobald der Trigger Daten empfängt. Sie können die Schritte direkt danach konfigurieren.
+
+Die Tabs des Triggers zeigen alles an einem Ort:
+
+- **Automations**: die mit diesem Trigger verbundenen Automatisierungen, mit Massenaktionen zum Aktivieren, Pausieren, Duplizieren und Löschen
+- **Events**: jede Anfrage, die der Trigger empfangen hat
+- **Runs**: die Automatisierungsläufe, die diese Events gestartet haben
+- **Tasks**: die einzelnen Aufgaben, die diese Läufe ausgeführt haben
+
+## Wie Anfragen verarbeitet werden
+
+Eine kurze Referenz, wenn etwas sich nicht wie erwartet verhält:
+
+1. Die Anfragemethode muss zur konfigurierten Methode des Triggers passen, sonst wird sie abgelehnt.
+2. Jede gültige Anfrage wird als Event gespeichert, auch wenn die App oder der Trigger pausiert ist. Sie sehen sie immer im Tab **Events**.
+3. Automatisierungen laufen nur, wenn sowohl die App als auch der Trigger aktiv sind. Wenn nichts passiert, prüfen Sie zuerst diese beiden Schalter, dann den Status der Automatisierung selbst und die Startfilter.
+4. Anfragen mit dem Header `X-HireData-Test: true` werden als Test-Events gespeichert und lassen Automatisierungen in einer Sandbox laufen, ohne Live-Änderungen.
+5. Solange ein Trigger keine Felder hat, wird seine erste Anfrage verwendet, um sie automatisch zu erstellen.
+
+### Brauchen Sie noch Hilfe?
+
+Wenn sich ein Trigger nicht wie erwartet verhält, kontaktieren Sie unser Team unter [support@hiredata.com](mailto:support@hiredata.com) und geben Sie an:
+
+- Einen Link zum Trigger
+- Das Event aus dem Tab **Events**
+- Die Automatisierung, die Sie erwartet haben, dass sie läuft

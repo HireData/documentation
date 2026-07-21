@@ -1,0 +1,63 @@
+---
+title: "Task History"
+sidebarTitle: "Tasks"
+description: "Perceba quantas tarefas foram executadas, o que correu mal se uma tarefa for cancelada e reproduza eventos quando quiser testar uma automação"
+---
+
+_Este guia irá apresentar-lhe todos os fundamentos que precisa de saber sobre o separador [Task History], incluindo como utilizar os filtros para ver tarefas concluídas e canceladas, onde procurar detalhes de eventos e como reproduzi-los. Vá até ao fim da página se preferir um formato em vídeo._
+
+Para ver quaisquer tarefas no separador [Task History], precisa de ter [automações](/pt/automations/automations) a correr através da HireData. É aqui que pode ver todas as tarefas que executaram.
+
+![Task History tab](/images/intercom/0ef47336b95b.png)
+
+## Como filtrar tarefas
+
+Uma das funcionalidades deste separador são os [Filters]. Permitem filtrar as tarefas como concluídas ou canceladas.
+
+_Vista de tarefas concluídas:_
+
+![Completed tasks view](/images/intercom/3ca8d7257ea7.png)
+
+Para ver apenas as tarefas canceladas, ative o filtro de canceladas movendo a barra deslizante para a esquerda até ficar cinzenta.
+
+_Vista de tarefas canceladas:_
+
+![Cancelled tasks view](/images/intercom/afe4efe9c027.png)
+
+## Compreender os eventos
+
+Se quiser verificar porque é que uma tarefa foi cancelada, pode olhar para o histórico do evento. Clique em [View Event] junto à tarefa que quer investigar e verá os seus detalhes.
+
+![Cancelled task with View Event and View Process buttons](/images/intercom/932cef706d97.png)
+
+_Exemplo de detalhes de evento:_
+
+![Event details](/images/intercom/ca09fd4105a6.png)
+
+Se clicar em [Processes], verá todos os processos gerados por este evento. Por exemplo, neste evento, podemos ver que o evento correu através da automação apresentada, mas no final foi cancelado devido a dados inválidos.
+
+_Exemplo de processos de evento:_
+
+![Event processes](/images/intercom/a7d9fc71346f.png)
+
+Esta visão geral dá-lhe uma ideia do que aconteceu e se houve algum erro que impediu a conclusão da tarefa. Isto permite-lhe corrigi-los e concluir a tarefa.
+
+## Como reproduzir um evento
+
+Se editar uma tarefa e quiser ver se ficará concluída, pode reproduzir o evento clicando no botão [Replay] no menu suspenso.
+
+Por exemplo, se, no separador de processos do evento, vir que o atraso que definiu na automação não está a funcionar, pode removê-lo e depois reproduzir o evento para ver o que irá acontecer.
+
+![Event Replay button](/images/intercom/686b1bc6c45d.png)
+
+## Dica Pro
+
+Os números junto ao separador [Task History] serão atualizados à medida que alterna entre tarefas concluídas e canceladas, apresentando o número total de tarefas.
+
+![Total number of completed tasks](/images/intercom/0bbd33e5c373.jpg)
+
+---
+
+## Guia em vídeo
+
+<iframe src="https://www.loom.com/embed/30646815e61c43d68ea0d9b3ccc7db87" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

@@ -1,0 +1,97 @@
+---
+title: "Créer une automatisation WhatsApp dans HireData"
+sidebarTitle: "Automatisations WhatsApp"
+description: "Optimiser les workflows de recrutement dans WhatsApp : un guide étape par étape"
+---
+
+_Bienvenue dans notre tutoriel sur la mise en place d'une automatisation WhatsApp dans HireData. Grâce à cette intégration, vous pouvez automatiser des tâches telles que la collecte et la mise à jour des informations des candidats — comme leur statut de disponibilité — et les informer des nouvelles offres d'emploi, améliorant ainsi l'expérience candidat et optimisant vos processus de recrutement._
+
+_Suivez-nous pas à pas pour mettre en place cette automatisation efficacement._
+
+## Étape 1 : Créer une nouvelle automatisation
+
+### 1.1. Rendez-vous sur le panneau Automations et cliquez sur le bouton [New Automation] pour commencer
+
+### 1.2. Sur la fenêtre pop-up, cliquez sur [WhatsApp] et sélectionnez l'un des modèles selon le sujet de la conversation que vous souhaitez créer
+
+_Dans ce guide, nous allons utiliser le modèle « Availability »._
+
+![Modèles WhatsApp](/images/intercom/29573810-1.png)
+
+_Découvrez comment créer de nouveaux modèles WhatsApp dans HireData et WhatsApp [ici](/fr/apps/messaging/whatsapp/how-whatsapp-templates-work)._
+
+## Étape 2 : Sélectionner un déclencheur
+
+Lorsque vous cliquez sur le bloc de déclencheur (le premier), vous verrez que l'app et la connexion seront déjà sélectionnées pour vous.
+
+### 2.1. Sélectionnez l'objet que vous allez écouter
+
+![Sélection d'un objet pour le déclencheur](/images/intercom/29573885-2.png)
+
+_Définissez l'objet :_
+
+![Définition de l'objet pour le déclencheur](/images/intercom/29573904-3.png)
+
+### 2.2. Spécifiez la date et l'heure d'exécution de la tâche
+
+Si cette tâche doit s'exécuter périodiquement, configurez le paramètre **Repeat every**. Pour les tâches ponctuelles, sélectionnez **Don't Repeat**.
+
+![Planification de la tâche](/images/intercom/29574079-4.png)
+
+## Étape 3 : Appliquer des filtres
+
+Ouvrez le bloc suivant pour ajouter davantage de filtres afin d'affiner votre sélection de candidats. Par exemple, vous pouvez filtrer les candidats selon leur statut, comme illustré ici :
+
+![Ajout de filtres](/images/intercom/29574865-5.png)
+
+Vous pouvez également ajouter d'autres filtres en cliquant sur [Add Filter], et si nécessaire, vous pouvez créer plusieurs ensembles de filtres en utilisant l'option [Add New Set] pour restreindre ou élargir votre sélection.
+
+## Étape 4 : Configurer la tâche
+
+Lorsque vous utilisez les modèles disponibles, la tâche sera créée automatiquement pour vous, mais vous aurez également la possibilité de la personnaliser en :
+
+### 4.1. Changeant le formulaire
+
+![Sélection d'un formulaire](/images/intercom/29575037-8.png)
+
+### 4.2. Fournissant un briefing détaillé, incluant les objectifs manquants pour garantir des performances optimales
+
+![](/images/intercom/29575883-9.png)
+
+### 4.3. Ajoutant davantage de champs de connaissance
+
+Ce sont des champs que vous pouvez ajouter pour fournir un contexte supplémentaire que l'IA utilisera pendant les conversations. Sélectionnez les éléments dont elle doit être consciente pour gérer efficacement les conversations, comme les noms des participants, les adresses e-mail, etc.
+
+Limites :
+
+- Jusqu'à **16 champs**
+- Longueur de la clé : **64 caractères**
+- Longueur de la valeur : **512 caractères**
+
+![Champs de connaissance](/images/intercom/29576740-knowledge.png)
+
+## Étape 5 : Mettre à jour les champs
+
+Lorsque la conversation dans WhatsApp se termine, les champs spécifiés dans cette tâche seront mis à jour dans votre app.
+
+![Tâche Update Fields](/images/intercom/29585860-10.png)
+
+Plus d'informations sur les composants clés de cette tâche :
+
+1. **Object :**
+  - L'objet représente l'entité de données que vous souhaitez mettre à jour, par exemple « Candidate ».
+2. **Identifier :**
+  - Un identifiant est un champ unique (comme un ID) utilisé pour localiser l'enregistrement exact à mettre à jour. Par exemple : « Candidate: ID » garantit que l'automatisation cible bien l'enregistrement du bon candidat.
+3. **Fields :**
+  - Ce sont les champs de l'objet que vous souhaitez mettre à jour. Vous pouvez sélectionner différents champs, tels que « Candidate: Notes » ou « Candidate: Available Date », etc., pour spécifier quelle partie de l'enregistrement doit être mise à jour.
+
+## Étape 6 : Vérifier et activer l'automatisation
+
+Assurez-vous que tous les filtres, formulaires et connaissances contextuelles sont correctement configurés avant d'activer l'automatisation.
+
+![Récapitulatif de la tâche](/images/intercom/29577769-final.png)
+
+## 💡 Astuces pour une utilisation optimale
+
+- Mettez régulièrement à jour vos filtres et formulaires pour les aligner sur vos besoins de recrutement.
+- Fournissez des briefings détaillés et spécifiques pour améliorer l'efficacité de l'IA.

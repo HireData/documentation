@@ -1,0 +1,53 @@
+---
+title: "Waarom synchroniseert mijn Carerix niet met HireData"
+sidebarTitle: "Carerix synchroniseert niet"
+description: "Zorg voor een naadloze verbinding tussen Carerix en HireData"
+---
+
+_Welkom bij onze beknopte maar behulpzame gids over het herstellen van een verbroken verbinding tussen je Carerix-omgeving en HireData. Lees verder om te ontdekken hoe je een probleem met de verbinding herkent en eenvoudig oplost om verstoringen in je campagnes te voorkomen._
+
+## Stap 1: Test je Carerix-verbinding met HireData
+
+Om te testen of je Carerix-account en HireData-verbinding de juiste toegang hebben, kun je vanuit je accountinstellingen een [handmatige sync](/nl/apps/carerix/manually-sync-carerix-with-hiredata) starten.
+
+Als je tijdens het syncproces een "403: Forbidden"-melding ziet, betekent dit dat HireData niet de juiste toegang heeft binnen je Carerix-setup. Dit probleem komt meestal door ontbrekende scopes in de client-configuratie.
+
+![Timeline met een fout in de verbinding](/images/intercom/a6f8aa67d6e3.png)
+
+Als je bovendien geen match-stages of variabelen ziet laden bij het maken van een automatisering in HireData, dan is de verbinding met Carerix verbroken.
+
+![Automatisering in HireData waarbij match-stages niet laden](/images/intercom/58f848b9f10c.png)
+
+![Automatisering in HireData waarbij variabelen niet laden](/images/intercom/69dabfa0516e.png)
+
+## Stap 2: Herstel de verbinding
+
+Om de verbinding te herstellen moet je de ontbrekende scopes van Carerix aan HireData toevoegen door deze stappen te volgen:
+
+**_2.1 Log in op je Carerix-account_**
+
+**_2.2. Zoek de client_**
+
+Navigeer naar het dropdown-menu [Maintenance] en open vervolgens de pagina [Identity Management] om de client te vinden die tijdens de [initiële setup](/nl/apps/carerix/connect-with-carerix) is aangemaakt.
+
+![Carerix-omgeving met client-informatie](/images/intercom/b0122798fb94.png)
+
+**_2.3 Voeg de ontbrekende scopes toe_**
+
+Dit zorgt ervoor dat HireData de vereiste rechten heeft om toegang te krijgen tot je Carerix-omgeving. Je kunt de default scopes direct hier kopiëren, en bekijk daarna ["Stap 2.2: Een Confidential Client instellen"](/nl/apps/carerix/connect-with-carerix) voor meer informatie:
+
+- urn:cx/webhooks:data:manage
+- urn:cx/cx5Acl:data:manage
+- urn:cx/cx5Wrapper:data:manage
+- urn:cx/webhooks:data/webhooks:manage
+- urn:cx/webhooks:data/applications:manage
+
+![Default scopes in Carerix](/images/intercom/779a7618b4d4.png)
+
+**_2.4 Sla de wijzigingen op_**
+
+## Stap 3: Synchroniseer Carerix opnieuw
+
+Nadat je de client-scopes hebt bijgewerkt, kun je [Carerix](/nl/apps/carerix/connect-with-carerix) opnieuw handmatig synchroniseren door dezelfde stappen te volgen als eerder genoemd voor [handmatig synchroniseren](/nl/apps/carerix/manually-sync-carerix-with-hiredata). Als de rechten correct zijn bijgewerkt, zou je de "403: Forbidden"-melding niet meer moeten zien en zou de sync succesvol moeten verlopen.
+
+![Timeline zonder fout](/images/intercom/ac777fe1dee6.png)

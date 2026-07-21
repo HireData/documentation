@@ -1,0 +1,62 @@
+---
+title: "Variabelen"
+sidebarTitle: "Introductie"
+description: "Personaliseer e-mails, berichten, formulieren en automatiseringen."
+---
+
+Met variabelen kun je live data, zoals de naam van een kandidaat, een functietitel of een salaris, rechtstreeks in je e-mails, WhatsApp-berichten, formulieren en automatiseringen invoegen.
+
+## Hoe een variabele eruitziet
+
+Een variabele is een field key omhuld met dubbele accolades:
+
+```
+Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
+```
+
+Wanneer dit wordt verzonden naar een kandidaat genaamd Sofia die solliciteert op een Backend Engineer-rol, wordt het:
+
+```
+Hi Sofia, thanks for applying to Backend Engineer!
+```
+
+De spaties binnen de accolades zijn optioneel:
+
+- `{{candidate.first_name}}` en `{{ candidate.first_name }}` gedragen zich hetzelfde.
+
+## Waar je variabelen kunt gebruiken
+
+Je kunt variabelen overal gebruiken waar je content schrijft die wordt verzonden of opgeslagen:
+
+- **Email** — onderwerpen en bodies
+- **WhatsApp** — berichten en templates
+- **Forms** — vragen en vervolglogica
+- **Automations** — field mappings en ingeplande taken
+
+## Een fallback opgeven
+
+Als een veld leeg is voor een bepaald record, wordt de variabele vervangen door niets. Om in plaats daarvan een default te tonen, gebruik je de [`default`](/nl/variables/modifiers#fallback)-modifier:
+
+```
+Hi {{ candidate.first_name | default: "there" }}!
+```
+
+Als de kandidaat geen voornaam heeft, verzendt dit "Hi there!".
+
+## Waarden transformeren met modifiers
+
+Variabelen kunnen meer doen dan alleen ruwe data invoegen. Een **modifier** verandert hoe de waarde verschijnt. Het kan tekst in hoofdletters zetten, een datum formatteren, een getal afronden, en nog veel meer. Je voegt een modifier toe met een pipe (`|`):
+
+```
+{{ candidate.first_name | uppercase }}        → SOFIA
+{{ job.salary | format_currency: "EUR" }}      → €65,000.00
+{{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
+```
+
+Je kunt meerdere modifiers aan elkaar koppelen, en elke modifier werkt op het resultaat van de vorige:
+
+```
+{{ candidate.last_name | lowercase | capitalise }}
+```
+
+Zie de volledige lijst op de pagina [Modifiers](/nl/variables/modifiers).

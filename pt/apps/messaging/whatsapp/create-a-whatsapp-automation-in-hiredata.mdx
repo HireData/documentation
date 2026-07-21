@@ -1,0 +1,97 @@
+---
+title: "Criar uma automação de WhatsApp na HireData"
+sidebarTitle: "Automações de WhatsApp"
+description: "Simplificar os fluxos de trabalho de recrutamento no WhatsApp: um guia passo a passo"
+---
+
+_Bem-vindo ao nosso tutorial sobre como configurar uma automação de WhatsApp na HireData. Com esta integração, pode automatizar tarefas como recolher e atualizar dados de candidatos, tais como estado de disponibilidade, e notificá-los sobre novas oportunidades de emprego, melhorando assim a experiência do candidato e simplificando os seus processos de recrutamento._
+
+_Acompanhe-nos enquanto demonstramos cada passo para configurar esta automação de forma eficiente._
+
+## Passo 1: Criar uma nova automação
+
+### 1.1. Navegue até ao painel Automations e clique no botão [New Automation] para começar
+
+### 1.2. No ecrã pop-up, clique em [WhatsApp] e selecione um dos templates consoante o tema da conversa que pretende criar
+
+_Neste guia, vamos usar o template "Availability"._
+
+![WhatsApp Templates](/images/intercom/29573810-1.png)
+
+_Saiba como criar novos templates de WhatsApp na HireData e no WhatsApp [aqui](/pt/apps/messaging/whatsapp/how-whatsapp-templates-work)._
+
+## Passo 2: Selecionar um Trigger
+
+Quando clica no bloco de construção do trigger (o primeiro), verá que a app e a ligação já estão selecionadas.
+
+### 2.1. Selecionar o objeto que irá escutar
+
+![Selecting an Object for the trigger](/images/intercom/29573885-2.png)
+
+_Defina o objeto:_
+
+![Defining the Object for the trigger](/images/intercom/29573904-3.png)
+
+### 2.2. Especificar a data e hora para executar a tarefa
+
+Se esta tarefa precisa de correr periodicamente, configure a definição **Repeat every**. Para tarefas únicas, selecione **Don't Repeat**.
+
+![Scheduling the task](/images/intercom/29574079-4.png)
+
+## Passo 3: Aplicar filtros
+
+Abra o próximo bloco de construção para adicionar mais filtros e refinar a sua seleção de candidatos. Por exemplo, pode filtrar candidatos pelo seu estado, como mostrado aqui:
+
+![Adding filters](/images/intercom/29574865-5.png)
+
+Também pode adicionar filtros adicionais clicando em [Add Filter] e, se necessário, criar múltiplos conjuntos de filtros através da opção [Add New Set] para estreitar ou alargar a sua seleção.
+
+## Passo 4: Configurar a tarefa
+
+Ao usar os templates disponíveis, a tarefa será criada automaticamente, mas terá também a possibilidade de a personalizar:
+
+### 4.1. Alterando o formulário
+
+![Selecting a form](/images/intercom/29575037-8.png)
+
+### 4.2. Fornecendo um briefing detalhado, incluindo objetivos em falta para garantir um desempenho ótimo
+
+![](/images/intercom/29575883-9.png)
+
+### 4.3. Adicionando mais campos de conhecimento
+
+Estes são campos que pode adicionar para fornecer contexto adicional que a IA pode utilizar durante as conversas. Selecione itens de que deve estar ciente para gerir as conversas de forma eficaz, como os nomes dos participantes, endereços de email, etc.
+
+Limites:
+
+- Até **16 campos**
+- Comprimento da key: **64 caracteres**
+- Comprimento do value: **512 caracteres**
+
+![Knowledge fields](/images/intercom/29576740-knowledge.png)
+
+## Passo 5: Atualizar campos
+
+Quando a conversa no WhatsApp termina, os campos especificados nesta tarefa serão atualizados na sua app.
+
+![Update Fields task](/images/intercom/29585860-10.png)
+
+Mais informação sobre os componentes-chave desta tarefa:
+
+1. **Object:**
+  - O objeto representa a entidade de dados que quer atualizar, por exemplo, "Candidate".
+2. **Identifier:**
+  - Um identificador é um campo único (como um ID) usado para localizar o registo exato que deve ser atualizado. Por exemplo: "Candidate: ID" garante que a automação atinge o registo do candidato correto.
+3. **Fields:**
+  - São os campos dentro do objeto que pretende atualizar. Pode selecionar diferentes campos, como "Candidate: Notes" ou "Candidate: Available Date", etc., para especificar que parte do registo precisa de ser atualizada.
+
+## Passo 6: Rever e ativar a automação
+
+Assegure-se de que todos os filtros, formulários e conhecimento contextual estão definidos corretamente antes de ativar a automação.
+
+![Task summary](/images/intercom/29577769-final.png)
+
+## 💡 Dicas para uma utilização ótima
+
+- Atualize regularmente os seus filtros e formulários para se alinhar com as suas necessidades de recrutamento.
+- Forneça briefings detalhados e específicos para aumentar a eficácia da IA.

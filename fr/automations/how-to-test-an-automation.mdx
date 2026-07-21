@@ -1,0 +1,121 @@
+---
+title: "Comment tester une automatisation"
+sidebarTitle: "Tester vos automatisations"
+description: "Découvrez comment tester une automatisation pour éviter les erreurs et améliorer l'efficacité"
+---
+
+_Avant d'activer une automatisation dans HireData, il est essentiel de la tester pour s'assurer qu'elle s'exécute comme prévu. Il existe deux façons de tester une automatisation : **Preview a Single Item** et **Test with a User**. Dans ce guide, nous allons vous montrer comment tester avec un utilisateur, alors poursuivez votre lecture si vous voulez apprendre à le faire._
+
+## Choisir comment tester une automatisation
+
+Rendez-vous sur l'automatisation que vous souhaitez tester et cliquez sur l'icône de test dans le coin supérieur droit de l'écran. Cela ouvrira le panneau de test de l'automatisation.
+
+![Emplacement du bouton de test](/images/intercom/47585278-Screenshot-2025-03-25-at-17_15_32.png)
+
+Deux options vous seront proposées :
+
+- **Test with a User** : cela exécute l'automatisation en utilisant des données utilisateur réelles, comme une adresse e-mail ou un numéro de téléphone, pour simuler l'expérience réelle, par exemple d'envoi d'un e-mail ou de démarrage d'une conversation WhatsApp.
+- **Preview a Single Item** : cela vous permet de voir comment l'automatisation traiterait un élément individuel sans exécuter réellement les tâches.
+
+![Options de test](/images/intercom/47585702-Screenshot-2025-03-25-at-17_17_25.png)
+
+## Tester avec un utilisateur
+
+C'est le meilleur choix si vous voulez voir toute l'expérience d'exécution d'une automatisation.
+
+![Test with a User](/images/intercom/47585767-Screenshot-2025-03-25-at-17_17_25.png)
+
+### Étape 1 : Choisir l'utilisateur dont les données seront utilisées pour le test
+
+Cet utilisateur recevra des e-mails ou des messages comme si l'automatisation était en direct. Une fois sélectionné dans le menu déroulant, cliquez sur [Run Test] pour lancer le processus.
+
+![Sélection d'un utilisateur pour le test](/images/intercom/47585978-Screenshot-2025-03-25-at-17_17_38.png)
+
+### Étape 2 : Surveiller la Timeline
+
+Le système affichera une chronologie de chaque étape de l'automatisation à mesure qu'elle s'exécute. Vous verrez des alertes telles que :
+
+- Run Scheduled
+- Run Started
+- Interaction Started
+- Email Sent (ou autre exécution de tâche)
+- Run Finished
+
+Attendez que le test se termine et assurez-vous que toutes les étapes progressent sans encombre.
+
+![Timeline du test](/images/intercom/47588129-Screenshot-2025-03-25-at-17_18_19.png)
+
+### Étape 3 : Vérifier la boîte de réception de l'utilisateur
+
+Si l'automatisation inclut l'envoi d'un e-mail, rendez-vous dans la boîte de réception de l'utilisateur sélectionné (par exemple la vôtre) et vérifiez que l'e-mail a bien été livré.
+
+- Vérifiez la mise en forme et le contenu pour vous assurer qu'il apparaît comme prévu ;
+- Parcourez le formulaire pour vous assurer que toutes les questions sont correctement configurées.
+
+![Exemple d'envoi d'e-mail](/images/intercom/47588552-Screenshot-2025-03-25-at-17_20_22.png)
+
+### Étape 4 : Examiner les détails de l'exécution et des événements
+
+Après l'exécution du test, vous pouvez cliquer sur **View Details** pour vérifier les journaux d'événements spécifiques, notamment :
+
+- Statut de livraison de l'e-mail (envoyé, distribué, ouvert, cliqué ou en bounce)
+- Tout retard dans l'exécution
+- Valeurs de données utilisées lors du test
+
+![Bouton View Details](/images/intercom/47586869-Screenshot-2B2025-03-25-2Bat-2B17_18_19.png)
+
+_Détails de la vue d'ensemble de l'automatisation :_
+
+![Onglet Overview](/images/intercom/47586985-Screenshot-2025-03-25-at-17_18_59.png)
+
+_Détails des champs :_
+
+![Onglet Fields](/images/intercom/47587101-Screenshot-2025-03-25-at-17_19_07.png)
+
+_Automatisation et événement associés :_
+
+![Onglet des informations associées](/images/intercom/47587148-Screenshot-2025-03-25-at-17_19_14.png)
+
+## Tester avec Preview a Single Item
+
+Vous pouvez utiliser cette option pour voir comment l'automatisation traiterait un élément individuel sans exécuter réellement les tâches.
+
+![Test Preview a Single Item](/images/intercom/47588725-Screenshot-2025-05-01-at-10_51_47.png)
+
+### Étape 1 : Choisir le match/élément avec lequel vous voulez tester et cliquez sur Run Test
+
+![Sélection d'un match/élément pour le test](/images/intercom/47588912-Screenshot-2025-05-01-at-11_04_31.png)
+
+### Étape 2 : Surveiller la Timeline
+
+Le système affichera une chronologie de chaque étape de l'automatisation à mesure qu'elle s'exécute. Vous verrez des alertes telles que :
+
+- Run Scheduled
+- Run Started
+- Interaction Started
+- Email Sent (ou autre exécution de tâche)
+- Run Finished
+
+Attendez que le test se termine et assurez-vous que toutes les étapes progressent sans encombre.
+
+![Timeline du test](/images/intercom/47589015-Screenshot-2025-05-01-at-10_57_29.png)
+
+_Étape Email Sent avec plus de détails :_
+
+![Étape Email Sent avec plus de détails](/images/intercom/47589189-Screenshot-2025-05-01-at-10_57_36.png)
+
+### Étape 3 : Examiner les détails de l'exécution et des événements
+
+Après l'exécution du test, vous pouvez cliquer sur **View Details** pour vérifier les journaux d'événements spécifiques, notamment :
+
+- Statut de livraison de l'e-mail (envoyé, distribué, ouvert, cliqué ou en bounce)
+- Tout retard dans l'exécution
+- Valeurs de données utilisées lors du test
+
+![Détails de l'exécution](/images/intercom/47589386-Screenshot-2025-05-01-at-10_58_07.png)
+
+## Ajuster une automatisation et retester si nécessaire
+
+Si vous remarquez un problème, comme des informations manquantes ou une erreur d'exécution, revenez à l'éditeur d'automatisation, effectuez les ajustements nécessaires et testez à nouveau jusqu'à ce que l'automatisation s'exécute correctement.
+
+En suivant ces étapes, vous pouvez garantir que votre automatisation fonctionne correctement avant de l'activer, évitant les erreurs et améliorant l'efficacité.

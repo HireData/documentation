@@ -1,0 +1,60 @@
+---
+title: "Einen WhatsApp-Chat-Button zu Ihrer Website hinzufügen"
+sidebarTitle: "Chat-Button für Website"
+description: "Fügen Sie einen WhatsApp-Chat-Button zu Ihrer Website hinzu, um die Kommunikation zu erleichtern"
+---
+
+_Sie können Besuchern ganz einfach ermöglichen, Ihr Team über WhatsApp zu kontaktieren, indem Sie einen **Click to Chat**-Button auf Ihrer Website einbetten. Diese Methode funktioniert geräteübergreifend und erfordert keine speziellen Integrationen._
+
+## Schritt 1: Ihre WhatsApp-Business-Nummer bereitstellen
+
+Stellen Sie sicher, dass Sie eine WhatsApp-Business-Nummer haben, die [mit Ihrer Marke in HireData verbunden ist](/de/apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up). Dies ist die Nummer, die Ihre Website-Besucher anschreiben werden.
+
+**Beispielformat:**
+
+31612345678
+
+_(Kein +, keine Leerzeichen, keine Bindestriche)_
+
+## Schritt 2: Ihren WhatsApp-Link erzeugen
+
+Verwenden Sie dieses Format:
+
+```
+<https://wa.me/><number>?text=<url-encoded-message>
+```
+
+Ersetzen Sie:
+
+- &lt;number&gt; durch Ihre vollständige Telefonnummer (internationales Format)
+- &lt;url-encoded-message&gt; durch eine vorausgefüllte Nachricht
+
+Beispiel:
+
+```
+<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies>!
+```
+
+💡 Tipp: Sie können unterschiedliche Nachrichten für unterschiedliche Seiten erstellen (z. B. Job-Detailseiten, Services oder FAQs).
+
+## Schritt 3: Den Button zu Ihrer Website hinzufügen
+
+Sie können den Link als Textlink, Bild-Button oder gestylten Button einbetten. Hier ein einfaches Beispiel mit Text:
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> Chat with us on WhatsApp </a>
+```
+
+Oder verwenden Sie ein Bild:
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> <img src="<https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg>" alt="WhatsApp" width="40"> </a>
+```
+
+Sie können dies auch als schwebenden Button mit individuellem CSS gestalten, wenn Sie Zugriff auf das Theme Ihrer Website haben.
+
+## 💡 Tipps zur Anpassung
+
+- Fügen Sie pro Seite unterschiedliche Links mit angepassten Nachrichten hinzu (z. B. „I'm interested in Job ID 5421")
+- Verfolgen Sie den Traffic durch Hinzufügen von UTM-Parametern (z. B. ?utm_source=website)
+- Positionieren Sie den Button gut sichtbar (z. B. unten rechts, feste Position)

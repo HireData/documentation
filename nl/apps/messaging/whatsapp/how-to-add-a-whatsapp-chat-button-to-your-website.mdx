@@ -1,0 +1,60 @@
+---
+title: "Een WhatsApp-chatknop aan je website toevoegen"
+sidebarTitle: "Chatknop op website"
+description: "Voeg een WhatsApp-chatknop toe aan je website voor eenvoudigere communicatie"
+---
+
+_Je kunt bezoekers eenvoudig laten contact opnemen met je team via WhatsApp door een **Click to Chat**-knop op je website in te bedden. Deze methode werkt op alle apparaten en vereist geen speciale integraties._
+
+## Stap 1: Verkrijg je WhatsApp Business-nummer
+
+Zorg dat je een WhatsApp Business-nummer hebt dat [is gekoppeld aan je merk in HireData](/nl/apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up). Dit is het nummer waar bezoekers van je website naar zullen berichten.
+
+**Voorbeeldformaat:**
+
+31612345678
+
+_(Geen +, geen spaties, geen streepjes)_
+
+## Stap 2: Genereer je WhatsApp-link
+
+Gebruik dit formaat:
+
+```
+<https://wa.me/><number>?text=<url-encoded-message>
+```
+
+Vervang:
+
+- &lt;number&gt; door je volledige telefoonnummer (internationaal formaat)
+- &lt;url-encoded-message&gt; door een vooraf ingevuld bericht
+
+Voorbeeld:
+
+```
+<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies>!
+```
+
+💡 Tip: Je kunt verschillende berichten maken voor verschillende pagina's (bijv. vacaturepagina's, services of FAQ's).
+
+## Stap 3: Voeg de knop toe aan je website
+
+Je kunt de link insluiten als tekstlink, afbeeldingsknop of gestylede knop. Hier is een eenvoudig voorbeeld met tekst:
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> Chat with us on WhatsApp </a>
+```
+
+Of gebruik een afbeelding:
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> <img src="<https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg>" alt="WhatsApp" width="40"> </a>
+```
+
+Je kunt dit ook stylen als een floating button met custom CSS als je toegang hebt tot het thema van je site.
+
+## 💡 Tips voor personalisatie
+
+- Voeg verschillende links per pagina toe met aangepaste berichten (bijv. "Ik ben geïnteresseerd in Job ID 5421")
+- Track verkeer door UTM-parameters toe te voegen (bijv. ?utm_source=website)
+- Positioneer de knop voor zichtbaarheid (bijv. rechtsonder, vaste positie)

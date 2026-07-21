@@ -1,0 +1,60 @@
+---
+title: "Como adicionar um botão de chat de WhatsApp ao seu website"
+sidebarTitle: "Botão de chat no website"
+description: "Adicione um botão de chat de WhatsApp ao seu website para facilitar a comunicação"
+---
+
+_Pode facilmente permitir que os visitantes contactem a sua equipa via WhatsApp incorporando um botão **Click to Chat** no seu website. Este método funciona em vários dispositivos e não requer quaisquer integrações especiais._
+
+## Passo 1: Obter o seu número WhatsApp Business
+
+Certifique-se de que tem um número WhatsApp Business [ligado à sua marca na HireData](/pt/apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up). Este é o número que os visitantes do seu website irão contactar.
+
+**Exemplo de formato:**
+
+31612345678
+
+_(Sem +, sem espaços, sem traços)_
+
+## Passo 2: Gerar o seu link de WhatsApp
+
+Utilize este formato:
+
+```
+<https://wa.me/><number>?text=<url-encoded-message>
+```
+
+Substitua:
+
+- &lt;number&gt; pelo seu número de telefone completo (formato internacional)
+- &lt;url-encoded-message&gt; por uma mensagem pré-preenchida
+
+Exemplo:
+
+```
+<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies>!
+```
+
+💡 Dica: Pode criar diferentes mensagens para diferentes páginas (por exemplo, páginas de detalhe de vagas, serviços ou FAQs).
+
+## Passo 3: Adicionar o botão ao seu website
+
+Pode incorporar o link como um link de texto, botão de imagem ou botão estilizado. Aqui está um exemplo simples usando texto:
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> Chat with us on WhatsApp </a>
+```
+
+Ou usando uma imagem:
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> <img src="<https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg>" alt="WhatsApp" width="40"> </a>
+```
+
+Também pode estilizá-lo como um botão flutuante usando CSS personalizado, se tiver acesso ao tema do seu site.
+
+## 💡 Dicas para personalização
+
+- Adicione links diferentes por página com mensagens personalizadas (por exemplo, "Estou interessado no Job ID 5421")
+- Acompanhe o tráfego adicionando parâmetros UTM (por exemplo, ?utm_source=website)
+- Posicione o botão para visibilidade (por exemplo, canto inferior direito, posição fixa)

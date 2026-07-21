@@ -1,0 +1,142 @@
+---
+title: "Configurer un déclencheur"
+sidebarTitle: "Configurer un déclencheur"
+description: "Créez un déclencheur, décrivez les données qu'il reçoit, testez-le et transformez-le en automatisations."
+---
+
+Un déclencheur est une adresse web à laquelle votre autre outil envoie des données. Cet article parcourt la page du déclencheur de haut en bas : création du déclencheur, description de ses champs, tests et connexion des automatisations.
+
+Si vous n'avez pas encore créé d'app personnalisée, commencez par l'[introduction](/fr/apps/custom-apps/introduction).
+
+## Créer un déclencheur
+
+Sur la page d'édition de votre app, cliquez sur **Create Trigger**. Nommez-le d'après les données qu'il recevra, par exemple « New application » ou « Candidate updated ».
+
+Le déclencheur s'ouvre dans son éditeur. En haut, vous trouverez :
+
+- Le **nom** du déclencheur et sa **barre d'adresse** avec la méthode de requête
+- **Try It** pour envoyer une requête de test
+- **Automate This** pour créer une automatisation à partir du déclencheur
+- Le bouton **Activate** ou **Pause**
+
+{/* screenshot: trigger editor header with the URL bar */}
+
+## Choisir la méthode et partager l'adresse
+
+Cliquez sur **Copy address** et collez l'adresse dans l'outil qui enverra les données.
+
+La méthode de requête indique à HireData le type de requête à attendre :
+
+| Méthode | Comment les données sont lues |
+| ------ | ---------------- |
+| `POST` (par défaut) | Depuis le corps de la requête, en JSON ou en données de formulaire |
+| `GET` | Depuis les paramètres de requête de l'adresse |
+
+Les requêtes ayant une méthode différente de celle configurée sont rejetées.
+
+## Décrire les champs que vous recevrez
+
+La liste **Fields we receive** indique à HireData ce que contiennent les données, afin que vous puissiez les utiliser dans les automatisations et en tant que [variables](/fr/variables/introduction). Chaque champ possède :
+
+- **Label** : un nom lisible, comme « Contact: First Name »
+- **Key** : l'identifiant dans les données, avec des points pour les valeurs imbriquées, comme `contact.firstName`
+- **Type** : le type de valeur attendu, comme du texte, un nombre ou une date
+
+Il existe trois façons de constituer la liste :
+
+<Tabs>
+  <Tab title="Coller un échantillon">
+    Tant que le déclencheur n'a pas encore de champs, cliquez sur **Upload Sample Object** et collez ou téléversez un exemple JSON des données que vous enverrez. HireData crée les champs pour vous et détecte automatiquement les e-mails, numéros de téléphone, dates et URL.
+  </Tab>
+  <Tab title="Envoyer une requête">
+    Tant que le déclencheur n'a pas encore de champs, toute requête envoyée à son adresse est stockée en tant qu'échantillon et automatiquement mappée en champs. Cela fonctionne également lorsque le déclencheur est en pause, c'est donc un moyen sûr de mapper des données réelles depuis l'autre outil.
+  </Tab>
+  <Tab title="Ajouter des champs manuellement">
+    Cliquez sur **New Field** pour ajouter des champs un par un avec le même éditeur de champ utilisé partout dans HireData. Cela inclut les champs IA, qui génèrent une valeur avec l'IA à chaque arrivée de données.
+  </Tab>
+</Tabs>
+
+<Note>
+  Une fois qu'un déclencheur a des champs, les nouvelles requêtes ne les modifient plus. Modifiez la liste manuellement ou effacez-la avant de téléverser un nouvel échantillon.
+</Note>
+
+{/* screenshot: fields list with a few example fields */}
+
+## Le tester avec Try It
+
+Cliquez sur **Try It** dans l'en-tête du déclencheur pour envoyer une requête sans quitter HireData :
+
+1. Le formulaire est pré-rempli avec des valeurs d'exemple basées sur vos champs. Ajustez ce que vous voulez.
+2. Cliquez sur **Send**.
+3. Vérifiez la requête à gauche et la réponse à droite.
+
+Le sélecteur **Mode** au-dessus du formulaire choisit la manière dont la requête est traitée :
+
+- **Test** (par défaut) : crée un événement de test et exécute vos automatisations dans un sandbox sûr. Vous pouvez suivre chaque étape et son résultat, mais rien n'est créé, modifié ou envoyé.
+- **Live** : envoie une vraie requête, exactement comme le ferait votre autre outil.
+
+Les événements de test et leurs exécutions affichent une étiquette Test dans l'onglet **Events**.
+
+{/* screenshot: Try It modal with form and request panes */}
+
+## Le confier à votre développeur
+
+Si quelqu'un d'autre gère l'outil qui enverra les données, les **Request Examples** en bas du déclencheur lui donnent tout ce dont il a besoin. Vous pouvez copier :
+
+- **cURL** : un exemple de requête prêt à l'emploi pour la ligne de commande
+- **JSON** : un exemple des données attendues par le déclencheur
+- **OpenAPI** : un schéma qui s'importe dans des outils comme Postman
+- **Copy for LLMs** : un document unique décrivant le déclencheur, prêt à être collé dans un assistant IA qui construit l'intégration pour vous
+
+<Tip>
+  Sélectionner d'abord les champs limite les copies à ces seuls champs.
+</Tip>
+
+### Envoyer des requêtes de test
+
+Toute requête peut être marquée comme un test en ajoutant un en-tête :
+
+```
+X-HireData-Test: true
+```
+
+Les requêtes de test se comportent exactement comme le mode Test de Try It : les automatisations s'exécutent dans un sandbox sûr qui ne crée, ne modifie ni n'envoie rien, et l'événement affiche une étiquette Test dans l'onglet **Events**. Utile pendant que l'intégration de l'autre outil est encore en cours de construction.
+
+## Synchroniser des personnes
+
+Si les données entrantes décrivent une personne, comme un candidat ou un contact, la section **People** les mappe sur les enregistrements de personnes dans HireData :
+
+1. Cliquez sur **Add Person** et mappez les champs.
+2. Chaque requête au déclencheur synchronise désormais cette personne automatiquement.
+3. Les automatisations utilisant le déclencheur peuvent utiliser la personne directement, par exemple comme destinataire d'un e-mail, sans avoir à remapper les champs.
+
+Supprimez toutes les personnes pour arrêter la synchronisation.
+
+## Le transformer en automatisations
+
+Cliquez sur **Automate This** dans l'en-tête du déclencheur pour créer un brouillon d'automatisation qui démarre chaque fois que le déclencheur reçoit des données. Vous pouvez configurer ses étapes juste après.
+
+Les onglets du déclencheur montrent tout ce qu'il fait à un seul endroit :
+
+- **Automations** : les automatisations connectées à ce déclencheur, avec activation, pause, duplication et suppression en masse
+- **Events** : chaque requête reçue par le déclencheur
+- **Runs** : les exécutions d'automatisations lancées par ces événements
+- **Tasks** : les tâches individuelles que ces exécutions ont réalisées
+
+## Comment les requêtes sont traitées
+
+Une référence rapide pour quand quelque chose ne se comporte pas comme prévu :
+
+1. La méthode de la requête doit correspondre à la méthode configurée du déclencheur, sinon elle est rejetée.
+2. Chaque requête valide est stockée en tant qu'événement, même lorsque l'app ou le déclencheur est en pause. Vous la verrez toujours dans l'onglet **Events**.
+3. Les automatisations ne s'exécutent que lorsque l'app et le déclencheur sont tous deux actifs. Si rien ne se passe, vérifiez d'abord ces deux interrupteurs, puis le statut de l'automatisation elle-même et ses filtres de démarrage.
+4. Les requêtes avec l'en-tête `X-HireData-Test: true` sont stockées en tant qu'événements de test et exécutent les automatisations dans un sandbox, sans modifications en direct.
+5. Tant qu'un déclencheur n'a pas de champs, sa première requête est utilisée pour les créer automatiquement.
+
+### Besoin d'aide supplémentaire ?
+
+Si un déclencheur ne se comporte pas comme prévu, contactez notre équipe à [support@hiredata.com](mailto:support@hiredata.com) et incluez :
+
+- Un lien vers le déclencheur
+- L'événement, depuis l'onglet **Events**
+- L'automatisation que vous vous attendiez à voir s'exécuter

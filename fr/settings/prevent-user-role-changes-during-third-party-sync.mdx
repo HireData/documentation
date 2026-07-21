@@ -1,0 +1,44 @@
+---
+title: "Comment empêcher la modification du rôle utilisateur lors de la synchronisation avec un tiers"
+sidebarTitle: "Protéger les rôles utilisateur"
+description: "Utilisez le paramètre Enable Third-Party Sync pour empêcher le rôle d'un utilisateur dans HireData d'être écrasé lors des synchronisations ATS"
+---
+
+_Lorsque HireData se synchronise avec votre ATS, il peut mettre à jour automatiquement les rôles utilisateur, ce qui écrase parfois les accès personnalisés que vous avez configurés manuellement. Cet article explique comment utiliser le paramètre **Enable Third-Party Sync** pour empêcher le rôle d'un utilisateur dans HireData d'être modifié lors de la synchronisation, et quand vous voudriez faire cela._
+
+## À quoi sert ce paramètre ?
+
+Par défaut, HireData synchronise les rôles utilisateur depuis votre ATS (par ex. Carerix) chaque nuit ou lorsqu'une synchronisation est déclenchée manuellement. Si un utilisateur a reçu un accès admin dans HireData mais n'est pas admin dans Carerix, cette synchronisation le ramènera à un utilisateur ordinaire, supprimant son accès.
+
+Désactiver le paramètre **Enable Third-Party Sync** pour un utilisateur spécifique indique à HireData : _« Ne touche pas au rôle de cet utilisateur pendant la synchronisation. »_ Son rôle HireData reste exactement tel que vous l'avez défini, quel que soit ce que dit votre app.
+
+- C'est particulièrement **utile pour les utilisateurs ATS non-admin qui ont besoin d'un accès admin dans HireData**. Par exemple, quelqu'un du service commercial avec un rôle « Marketer » dans votre app peut se voir accorder un accès admin dans HireData, et avec la synchronisation désactivée, cet accès ne sera pas écrasé.
+- Cela **s'applique également aux utilisateurs ayant des rôles supplémentaires** dans Carerix. Si un utilisateur a plusieurs rôles sous différents labels au sein d'un même environnement Carerix, et que l'un de ces rôles supplémentaires n'est pas admin, HireData peut incorrectement le remettre à un utilisateur ordinaire lors de la synchronisation. Désactiver ce paramètre empêche cela.
+
+<Note>
+  Pour les utilisateurs Carerix : si le paramètre est désactivé pour un utilisateur qui est Admin dans HireData, mais qui a un rôle différent dans Carerix (par ex. User, Marketer, Sales), il ne pourra pas accéder aux éléments de menu RMA dans Carerix, car il doit avoir des permissions admin spécifiquement dans Carerix.
+</Note>
+
+![L'interrupteur Enable Third-Party Sync dans les paramètres d'Access Control d'un utilisateur](/images/intercom/146220971-Screenshot-2026-05-27-at-13_51_33.png)
+
+## Protéger le rôle d'un utilisateur
+
+<Steps>
+  <Step title="Ouvrir les paramètres de l'utilisateur">
+    Rendez-vous dans **Settings** dans la navigation principale, puis sélectionnez **Users**. Trouvez l'utilisateur que vous souhaitez configurer et cliquez sur son nom pour ouvrir son profil.
+
+    Ce paramètre est par utilisateur. Vous devrez le configurer individuellement pour chaque personne dont le rôle doit être protégé.
+  </Step>
+  <Step title="Ajuster le paramètre de synchronisation">
+    Faites défiler jusqu'à la section **Access Control** sur la page de profil de l'utilisateur. Trouvez l'interrupteur **Enable Third-Party Sync**.
+
+    - **Activé** — Le rôle de cet utilisateur _sera_ mis à jour automatiquement lors des synchronisations depuis votre ATS.
+    - **Désactivé** — Le rôle de cet utilisateur _ne sera pas_ modifié par une synchronisation, qu'elle soit nocturne ou déclenchée manuellement.
+
+    Cliquez sur **Save Settings** pour appliquer.
+  </Step>
+</Steps>
+
+<Info>
+  Désactiver ce paramètre ne déconnecte pas l'utilisateur de votre ATS. Cela empêche uniquement l'écrasement de son rôle HireData lors de la synchronisation.
+</Info>

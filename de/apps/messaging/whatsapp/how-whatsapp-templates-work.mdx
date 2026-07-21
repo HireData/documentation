@@ -1,0 +1,238 @@
+---
+title: "So funktionieren WhatsApp-Vorlagen"
+sidebarTitle: "So funktionieren Vorlagen"
+description: "Erfahren Sie, wie Sie mit WhatsApp-Vorlagen Ihre Recruiting-Prozesse optimieren"
+---
+
+_Unsere WhatsApp-Automatisierungsvorlagen optimieren die Kandidatenkommunikation mithilfe von KI und Conversational-Recruiting-Techniken. Diese vorgefertigten Vorlagen helfen Recruitern, effizient mit Kandidaten über WhatsApp zu interagieren, und sorgen für zeitnahe Antworten und personalisierte Interaktionen. Lesen Sie weiter, um zu erfahren, wie Sie sie effektiv für Ihr Unternehmen einsetzen und wie Sie WhatsApp-Vorlagen im WhatsApp Manager erstellen._
+
+## WhatsApp-Vorlagen in HireData
+
+### Verfügbare WhatsApp-Vorlagen
+
+1. **Availability Check (via Carerix)** – Diese Vorlage dient dazu, die Verfügbarkeit eines Kandidaten für Jobmöglichkeiten zu prüfen. Sie sendet personalisierte Nachrichten, um den aktuellen Status der Jobsuche zu erfragen, und sorgt dafür, dass die Kandidatenprofile aktuell bleiben.
+2. **Job Alert (via Carerix)** – Diese Automatisierung benachrichtigt Kandidaten via WhatsApp über neue Stellenangebote. Sie nutzt KI-gestützte Konversationstechniken, um zeitnahe Kommunikation und das effektive Sammeln von Antworten sicherzustellen.
+3. **Job Alert (via OTYS)** – Ähnlich wie die Carerix-Job-Alert-Vorlage, aber für OTYS-Nutzer zugeschnitten. Sie informiert Kandidaten über neue Jobmöglichkeiten und hält das Engagement durch KI-gestützte Nachrichten aufrecht.
+
+![WhatsApp templates in HireData](/images/intercom/47447942-Screenshot-2B2025-03-17-2Bat-2B08_14_02.png)
+
+### Wie der Trigger funktioniert
+
+Alle WhatsApp-Vorlagen verwenden dieselbe Logik, unterscheiden sich aber im festgelegten Trigger und im Inhalt der Konversation (z. B. den gestellten Fragen, den gesammelten Informationen und dem Tonfall). Dieser Artikel konzentriert sich auf die Job-Alert-Automatisierung via Carerix.
+
+In dieser Automatisierung basiert der Trigger auf einem **Stage-Update** im Carerix-System. So funktioniert es:
+
+1. **Trigger Object** – Die Automatisierung hört, wann ein **Match** entweder **erstellt oder aktualisiert** wird.
+2. **Filter Condition** – Die Automatisierung wird nur fortgesetzt, wenn die **[Match: Stage]** auf **„Placed on shortlist"** gesetzt ist, sodass nur Kandidaten auf der Shortlist die Job-Alert-Nachricht erhalten.
+
+![Trigger setup](/images/intercom/41580122-Screenshot-2025-03-17-at-08_23_53.png)
+
+Sobald ausgelöst, initiiert die Automatisierung eine **WhatsApp-Konversation** und sendet den Kandidaten einen personalisierten Job Alert, der über die neue Möglichkeit informiert.
+
+### Die Aufgabe [Start Conversation] konfigurieren
+
+Sobald der Trigger festgelegt ist, besteht der nächste Schritt darin, die Aufgabe zu konfigurieren, die definiert, wie die WhatsApp-Nachricht gesendet wird. Hier eine Aufschlüsselung jeder Konfigurationsoption:
+
+1. **Phone Number Selection**
+  - Wählen Sie die Telefonnummer, die zum Senden der WhatsApp-Nachrichten verwendet wird. Dies ist typischerweise eine verifizierte Geschäftsnummer, die mit Ihrem WhatsApp Business verknüpft ist und bereits verifiziert und in der WhatsApp-Verbindung in HireData sichtbar sein sollte.
+2. **Message Template**
+  - Wählen Sie eine vorab genehmigte WhatsApp-Nachrichtenvorlage, um reibungslose und richtlinienkonforme Kommunikation zu gewährleisten. Die Vorlage definiert die Struktur der ersten Nachricht und kann Platzhalter für dynamische Inhalte enthalten (wie Kandidatennamen, Berufsbezeichnungen usw.).
+![Message template selection](/images/intercom/41580379-Screenshot-2025-03-17-at-09_19_22.png)
+3. **Recipient Selection**
+  - Definieren Sie, wer die Nachricht erhält. In diesem Fall ist es typischerweise der Kandidat, der mit dem Match verknüpft ist, das die Automatisierung ausgelöst hat.
+![Recipient selection](/images/intercom/41580408-Screenshot-2025-03-17-at-09_19_29.png)
+4. **Form Selection**
+  - Das Formular enthält alle Fragen, die dem Empfänger gestellt werden. Sie können ein Vorlagenformular auswählen oder Ihr eigenes auf der Forms-Seite in HireData erstellen.
+![Form selection](/images/intercom/41580447-Screenshot-2025-03-17-at-09_20_30.png)
+5. **Briefing**
+  - Geben Sie ein Briefing an, das das Ziel der WhatsApp-Konversation umreißt. Das hilft, Konsistenz und Klarheit in der Kommunikation zu wahren. Sie können jegliche Hinweise einfügen, die der KI helfen, effektiv mit dem Publikum zu kommunizieren.
+![Providing the goals of the conversation](/images/intercom/41580461-Screenshot-2025-03-17-at-08_34_39.png)
+6. **Knowledge**
+  - Dies sind **bis zu 16 Felder**, die Sie hinzufügen können, um der KI zusätzlichen Kontext für die Konversationen zu geben. Wählen Sie Elemente aus, die sie kennen sollte, um Konversationen effektiv zu handhaben, wie Namen der Teilnehmer, E-Mail-Adressen usw.
+
+Dies sind einige Standard-Dynamikplatzhalter, die die Nachricht personalisieren:
+
+- **Candidate Name** → Fügt automatisch den Namen des Empfängers ein.
+- **Job Title** → Füllt den Titel der Jobvakanz aus.
+- **Recruiter Name** → Personalisiert die Nachricht mit dem Namen des Absenders.
+- **Company Name** → Verweist auf das einstellende Unternehmen oder die Marke.
+![Knowledge fields](/images/intercom/41580572-Screenshot-2025-03-17-at-08_36_33.png)
+
+### Die Aufgabe [Update Fields] konfigurieren
+
+Nachdem die WhatsApp-Konversation Informationen vom Kandidaten gesammelt hat, kann die Automatisierung **bestimmte Felder automatisch aktualisieren** im System. So bleibt das Profil des Kandidaten aktuell, ohne dass manuelle Dateneingabe erforderlich ist.
+
+So funktioniert dieser Prozess:
+
+1. **Aufgabe zum Aktualisieren von Feldern erstellen**
+  - Eine Aufgabe wird zur Automatisierung hinzugefügt, die bestimmte Felder in den Datensätzen des Kandidaten aktualisiert. Das passiert nach der WhatsApp-Konversation, wenn der Kandidat neue Informationen wie sein Verfügbarkeitsdatum oder zusätzliche Notizen bereitstellt.
+![Update fields task set up](/images/intercom/41580699-Screenshot-2025-03-17-at-09_26_44.png)
+2. **Object Selection**
+  - Das aktualisierte Object ist der **Candidate**-Datensatz. So wird sichergestellt, dass alle gesammelten Informationen im richtigen Kandidatenprofil gespeichert werden.
+3. **Identifier**
+  - Um sicherzustellen, dass die Aktualisierung auf den richtigen Kandidaten angewendet wird, matcht das System die **Candidate: ID** aus der Konversation mit der **Candidate: ID** in der Datenbank. Dieser eindeutige Identifier stellt sicher, dass die Daten nur für den relevanten Kandidaten aktualisiert werden.
+4. **Fields Updated**
+  - Die Automatisierung aktualisiert ein oder mehrere Felder basierend auf den vom Kandidaten erhaltenen Antworten. Übliche Felder sind:
+    - **Candidate: Available Date** → Aktualisiert die Verfügbarkeit des Kandidaten für neue Jobmöglichkeiten.
+    - **Candidate: Notes** → Speichert zusätzliche Informationen, die der Kandidat bereitgestellt hat, wie Vorlieben oder besondere Wünsche.
+    - **Andere Felder** → Weitere Felder können nach Bedarf hinzugefügt werden, z. B. bevorzugter Jobtyp, Ortspräferenz oder Gehaltsvorstellungen.
+
+## WhatsApp-Vorlagen in WhatsApp
+
+### Eine WhatsApp-Vorlage erstellen
+
+_Gehen Sie zu Ihrem WhatsApp Template Manager, indem Sie auf [Manage Templates] klicken:_
+
+![Manage Templates redirect button](/images/intercom/47451468-Screenshot-2025-03-28-at-05_32_22.png)
+
+_Klicken Sie auf [Create Template]:_
+
+![Create a template button](/images/intercom/47455505-Screenshot-2025-03-28-at-05_14_28.png)
+
+_Wählen Sie den Vorlagentyp, z. B. [Marketing] und dann [Custom]:_
+
+![Selecting a template type](/images/intercom/47451710-Screenshot-2025-03-28-at-05_18_36.png)
+
+_Richten Sie Ihre WhatsApp-Vorlage im Editor ein:_
+
+![Setting up the WhatsApp template in the editor](/images/intercom/47451727-Screenshot-2025-03-28-at-05_18_47.png)
+
+### 1. Benennen Sie Ihre WhatsApp-Vorlage
+
+![Naming your template](/images/intercom/47452263-naming.png)
+
+_Verwenden Sie einen klaren und konsistenten Namen für Ihre Vorlage. Wenn Sie beispielsweise dieselbe Vorlage in mehreren Sprachen erstellen, verwenden Sie exakt denselben Namen, z. B. „availability" in diesem Fall, für alle Versionen (vorher):_
+
+![Naming consistency](/images/intercom/47452275-naming-2B2.png)
+
+_Verwenden Sie den Namen als Identifier für Ihre WhatsApp-Vorlage (nachher):_
+
+![Easily finding WhatsApp Templates with the same names](/images/intercom/47452301-naming-3.png)
+
+### 2. Variablen zu Ihrer WhatsApp-Vorlage hinzufügen
+
+_Sie können dynamische Felder einfügen, indem Sie im Editor auf [+ Add variable] klicken:_
+
+![Adding variables in the WhatsApp template](/images/intercom/47452641-var.png)
+
+_Fügen Sie zum Beispiel einen Variablennamen hinzu, z. B. company:_
+
+![Adding a variable name](/images/intercom/47452598-var1.png)
+
+_Fügen Sie einen Standardwert hinzu, z. B. Randstad:_
+
+![Adding variable default value](/images/intercom/47454151-var2.png)
+
+_Wählen Sie den Variablentyp: Name vs. Number:_
+
+![Selecting a variable type](/images/intercom/47454172-var3.png)
+
+_Ein Beispiel für eine nummerierte Variable:_
+
+![Adding a numbered variable](/images/intercom/47454337-var4.png)
+
+Sie können zwischen **Name** und **Number** als Variablentypen wählen. Nummerierte Variablen sind zwar erlaubt, aber wir empfehlen, für bessere Klarheit und Wiederverwendbarkeit **benannte Variablen** zu verwenden.
+
+### 3. Buttons zu Ihrer WhatsApp-Vorlage hinzufügen
+
+Buttons helfen Nutzern, direkt mit Ihrer Nachricht zu interagieren.
+
+![Add a button](/images/intercom/47454516-buttons.png)
+
+_Wählen Sie den Button-Typ, z. B. [Custom]:_
+
+![Choosing a button type](/images/intercom/47454544-buttons1.png)
+
+_Fügen Sie Ihren ersten Button hinzu, z. B. Sim:_
+
+![Adding a button](/images/intercom/47454584-buttons2.png)
+
+💡 Tipp: Für Vorlagen in mehreren Sprachen achten Sie darauf, denselben Variablennamen bzw. dieselbe Nummer für Konsistenz zu verwenden.
+
+_Vorschau Ihres Buttons:_
+
+![Button preview](/images/intercom/47454739-buttons3.png)
+
+_Mehrere Buttons hinzufügen (optional):_
+
+![Adding more buttons](/images/intercom/47454770-buttons4.png)
+
+_Vorschau der WhatsApp-Vorlage mit ihren Buttons:_
+
+![WhatsApp template with buttons preview](/images/intercom/47454864-buttons5.png)
+
+### 4. WhatsApp-Vorlage einreichen
+
+_Sobald alles bereit ist, klicken Sie auf [Submit], um die Vorlage zur Genehmigung einzureichen, und warten Sie auf die Überprüfung der Vorlage:_
+
+![Submitting a template for review](/images/intercom/47454980-submit.png)
+
+![Template review status](/images/intercom/47455037-submit1.png)
+
+_Hurra! Ihre WhatsApp-Vorlage ist verifiziert_
+
+![Approved WhatsApp template](/images/intercom/47455086-submit2.png)
+
+### WhatsApp-Vorlagen mit HireData synchronisieren
+
+_Um Ihre neu erstellte Vorlage in HireData verfügbar zu machen, klicken Sie im Dropdown-Menü Ihres WhatsApp-Kontos in HireData auf [Sync Account]:_
+
+![Sync Account button](/images/intercom/47448587-Screenshot-2025-03-28-at-05_55_39.png)
+
+_Nach dieser Benachrichtigung wird eine Synchronisation geplant:_
+
+![Sync schedule notification](/images/intercom/47448659-Screenshot-2025-03-28-at-08_43_20.png)
+
+_Nach einer Weile sehen Sie, dass die Synchronisation startet:_
+
+![Sync progress notification](/images/intercom/47448690-Screenshot-2025-03-28-at-08_43_42.png)
+
+_Klicken Sie auf das Timeline-Symbol, um den Status Ihrer Synchronisation zu prüfen:_
+
+![Data Sync Timeline](/images/intercom/47448750-Screenshot-2025-03-28-at-05_56_05.png)
+
+_Sie können Ihre neue WhatsApp-Vorlage nun in den WhatsApp-Aufgaben auswählen, die Sie in jeder Automatisierung konfigurieren werden:_
+
+![WhatsApp Template available for selection in HireData](/images/intercom/47448779-Screenshot-2025-03-28-at-06_33_29.png)
+
+### Eine WhatsApp-Vorlage bearbeiten
+
+_Gehen Sie zu Ihrem WhatsApp Template Manager, indem Sie auf [Manage Templates] klicken:_
+
+![Manage Templates button in the drop-down menu](/images/intercom/47450181-Screenshot-2025-03-28-at-05_32_22.png)
+
+_Klicken Sie auf eine Ihrer bestehenden Vorlagen:_
+
+![Templates list in WhatsApp Manager](/images/intercom/47450224-Screenshot-2025-03-28-at-05_14_28.png)
+
+_Klicken Sie auf [Edit Template], um zum Editor zu gelangen:_
+
+![Edit Template button in the WhatsApp Manager](/images/intercom/47450335-Screenshot-2025-03-28-at-05_14_41.png)
+
+_Bearbeiten Ihrer WhatsApp-Vorlage:_
+
+![WhatsApp Template editor](/images/intercom/47450387-Screenshot-2025-03-28-at-05_15_34.png)
+
+_Beispiel: Einen Titel zu Ihrer WhatsApp-Vorlage hinzufügen_
+
+![Adding a title to your WhatsApp template](/images/intercom/47450662-Screenshot-2025-03-28-at-05_15_57.png)
+
+_Beispiel: Einen Button (Call-to-Action) zu Ihrer WhatsApp-Vorlage hinzufügen_
+
+![Adding a button to your WhatsApp template](/images/intercom/47450686-Screenshot-2025-03-28-at-05_16_25.png)
+
+_Ihre aktualisierte WhatsApp-Vorlage zur Überprüfung einreichen (normalerweise fast sofort akzeptiert, wenn Sie die Richtlinien einhalten):_
+
+![Submitting your updated WhatsApp template for review](/images/intercom/47450725-Screenshot-2025-03-28-at-05_17_12.png)
+
+### Eine WhatsApp-Vorlage löschen
+
+_Klicken Sie oben rechts im Editor auf [Delete template]:_
+
+![Deleting a WhatsApp template](/images/intercom/47450936-Screenshot-2025-03-28-at-05_17_45.png)
+
+_Bestätigung des Löschens Ihrer WhatsApp-Vorlage:_
+
+![Confirmation of deleting your WhatsApp template](/images/intercom/47450976-Screenshot-2025-03-28-at-05_18_01.png)
+
+<iframe src="https://www.loom.com/embed/303e828003b84b27bfec2590ab4f26cd" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

@@ -1,0 +1,128 @@
+---
+title: "Créer un formulaire dans HireData"
+sidebarTitle: "Formulaires"
+description: "Créez des formulaires et recueillez des retours structurés de vos candidats"
+---
+
+_Les formulaires dans HireData vous aident à collecter des données structurées tout au long du parcours candidat. Ce guide vous accompagnera dans la configuration et l'utilisation des formulaires dans HireData pour vos automatisations._
+
+## Créer un formulaire
+
+Vous devez d'abord **définir l'objectif du formulaire**. Déterminez les données que vous devez collecter (par exemple, la disponibilité du candidat, un retour sur le processus de recrutement, etc.).
+
+Ouvrez ensuite la page **Forms** via les **Settings** et cliquez sur [New Form]. Vous pouvez créer un formulaire vierge ou sélectionner l'un des modèles disponibles :
+
+![Bouton New Form](/images/intercom/50372488-Screenshot-2025-05-19-at-09_38_44.png)
+
+_Modèles de formulaires :_
+
+![Modèles de formulaires](/images/intercom/50372790-Screenshot-2025-05-19-at-09_39_14.png)
+
+_Si vous partez de zéro, vous devez ajouter un nom à votre formulaire qui n'est qu'à usage interne :_
+
+![Ajout d'un nom à un formulaire](/images/intercom/50373594-Screenshot-2025-05-19-at-12_40_06.png)
+
+## Ajouter des questions
+
+Les formulaires se composent d'une ou plusieurs questions, chacune pouvant avoir une logique associée — par exemple, afficher une question de suivi uniquement si une note est inférieure à 8. Nous y reviendrons bientôt, voyons d'abord comment ajouter différentes questions.
+
+### 1.1. Cliquez sur le type de question que vous souhaitez ajouter ou sur l'icône [+] pour ajouter d'autres questions
+
+Chaque formulaire peut avoir plusieurs types de questions selon le type de données que vous souhaitez collecter.
+
+Les plus utilisés par nos clients :
+
+- **NPS/Opinion scale :** demandez aux candidats de noter quelque chose de 1 à 10.
+- **Multiple choice** : laissez les utilisateurs choisir dans une liste d'options.
+- **Short/Long Text** : recueillez des réponses ouvertes.
+- **Redirect URL :** redirigez les répondants vers votre site web ou une URL Google Review.
+
+Autres :
+
+- **Yes/No questions**
+- **Dropdown :** laissez les utilisateurs choisir dans une liste d'options stockées dans un champ déroulant.
+- **Collect contact information :** collectez l'adresse e-mail, le numéro de téléphone ou le site web du candidat.
+- **Date/Time/Datetime :** demandez la disponibilité, la date de naissance ou tout autre détail dans ce format.
+- **Number/Currency :** collectez les attentes salariales.
+- **File upload :** pour collecter des documents ou des photos.
+- **Ending screen :** ajoutez une page de remerciement à la fin de votre formulaire.
+
+![Types de questions](/images/intercom/50373968-Screenshot-2025-03-19-at-21_07_17.png)
+
+### 2.2. Paramètres optionnels des questions
+
+Lors de l'ajout ou de la modification d'une question dans votre formulaire, vous pouvez la personnaliser à l'aide des options suivantes :
+
+- **Description :** texte de support qui apparaît sous la question. Utilisez-le pour fournir plus de contexte ou clarifier la question.
+- **Placeholder :** le texte qui apparaît dans le champ de saisie pour guider l'utilisateur sur le type de réponse attendu (par ex. _« Saisissez votre réponse ici… »_). Il disparaît dès que l'utilisateur commence à taper.
+- **Image :** un visuel au-dessus de la question pour la rendre plus engageante ou fournir une référence visuelle.
+- **Button text :** un bouton personnalisable sur lequel le candidat clique pour soumettre la réponse ou passer à l'étape suivante. Cela peut être utile si vous voulez orienter le ton (par ex. « Soumettre l'évaluation » ou « Suivant »).
+- **Adjust scale :** pour les questions d'évaluation, vous pouvez définir les valeurs minimale et maximale (par ex. 1–10, 1–5). Utile pour différents formats de retour comme NPS (0–10) ou scores de satisfaction (1–5).
+- **Required question :** activez ceci pour rendre la question obligatoire afin que les candidats ne puissent pas la sauter.
+- **Hidden question :** utilisez ceci pour masquer une question au candidat tout en stockant une réponse (par ex. une valeur par défaut ou une réponse générée par le système).
+- **Reverse :** pour les questions d'évaluation, cela inverse l'affichage de l'échelle (par ex. affiche 10 → 1 au lieu de 1 → 10). Utile lorsque des nombres plus élevés représentent quelque chose de négatif (comme le stress ou la difficulté).
+
+![Ajout d'une question à un formulaire](/images/intercom/50374651-Screenshot-2025-05-19-at-09_48_54.png)
+
+💡 **Astuce :** vous pouvez glisser-déposer pour réorganiser les questions.
+
+## Ajouter de la logique aux questions
+
+Utilisez les **règles** pour mettre en place des flux intelligents entre les questions. Par exemple :
+
+- Si un candidat note **7 ou moins**, affichez un suivi demandant des suggestions d'amélioration.
+- Si la note est de **8 ou plus**, passez à la question suivante ou demandez-leur de laisser un avis Google.
+
+Pour configurer cela :
+
+### 2.1. Ouvrez l'onglet **Logic** et cliquez sur [Add Rule] sous une question
+
+![Onglet Logic](/images/intercom/50376095-Screenshot-2025-05-19-at-12_54_56.png)
+
+![Bouton Add Rule](/images/intercom/50375541-Screenshot-2025-05-19-at-12_51_47.png)
+
+### 2.2. Définissez votre condition (par ex. « Rating is less than or equal to 7 »)
+
+![Ajout d'une condition](/images/intercom/50375600-Screenshot-2B2025-05-19-2Bat-2B09_52_08.png)
+
+### 2.3. Choisissez ce qui doit se passer ensuite (par ex. aller à une question de suivi spécifique ou à un écran de remerciement)
+
+![Sélection de ce qui se passera ensuite](/images/intercom/50375079-Screenshot-2025-05-19-at-09_52_17.png)
+
+## Ajouter un écran de remerciement
+
+En fonction des réponses, les formulaires peuvent également se terminer par un message de remerciement ou rediriger les candidats vers une page externe pour laisser un avis.
+
+Vous pouvez personnaliser l'**écran de remerciement** avec :
+
+- Un titre
+- Un message court
+- Une image
+- Un bouton avec du texte
+- URL de redirection : utilisez-la pour diriger les candidats vers un avis ou vers votre site web.
+
+_Écran de remerciement avec URL de redirection vers le site web :_
+
+![Écran de remerciement avec URL de redirection vers le site web :](/images/intercom/50376525-Screenshot-2025-05-19-at-09_50_43.png)
+
+_Écran de remerciement avec URL Google Review :_
+
+![Écran de remerciement avec URL Google Review](/images/intercom/50376558-Screenshot-2025-05-19-at-09_50_50.png)
+
+## Prévisualiser et enregistrer le formulaire
+
+Cliquez sur l'icône œil pour prévisualiser le formulaire et sur [Save] pour l'enregistrer.
+
+![Boutons Save et Preview](/images/intercom/50379428-Screenshot-2025-05-19-at-13_18_51.png)
+
+_Aperçu du formulaire sur différents appareils :_
+
+![Aperçu du formulaire](/images/intercom/50379844-Screenshot-2025-05-19-at-13_21_09.png)
+
+Et voilà ! 🎉 Une fois votre formulaire prêt, vous pouvez l'ajouter à vos modèles d'e-mails dans HireData puis l'envoyer via vos automatisations.
+
+---
+
+## Guide vidéo
+
+<iframe src="https://www.loom.com/embed/b419054dc5df42dc95e33132dd747380" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

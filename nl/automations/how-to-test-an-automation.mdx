@@ -1,0 +1,121 @@
+---
+title: "Hoe je een automatisering test"
+sidebarTitle: "Automatiseringen testen"
+description: "Leer hoe je een automatisering test om fouten te voorkomen en de efficiëntie te verbeteren"
+---
+
+_Voordat je een automatisering activeert in HireData, is het essentieel om hem te testen zodat je zeker weet dat hij werkt zoals verwacht. Er zijn twee manieren om een automatisering te testen: **Preview a Single Item** en **Test with a User**. In deze gids demonstreren we hoe je test met een gebruiker, dus lees verder als je wilt leren hoe je dat doet._
+
+## Hoe je een automatisering wilt testen selecteren
+
+Navigeer naar de automatisering die je wilt testen en klik op het test-icoon rechtsboven in het scherm. Dit opent het testpaneel voor de automatisering.
+
+![Locatie van de testknop](/images/intercom/47585278-Screenshot-2025-03-25-at-17_15_32.png)
+
+Je krijgt twee opties:
+
+- **Test with a User**: Dit voert de automatisering uit met echte gebruikersdata, zoals een e-mailadres of telefoonnummer, om de daadwerkelijke ervaring van bijvoorbeeld een e-mail versturen of een WhatsApp-gesprek starten te simuleren.
+- **Preview a Single Item**: Hiermee kun je zien hoe de automatisering een individueel item zou verwerken zonder daadwerkelijk taken uit te voeren.
+
+![Testopties](/images/intercom/47585702-Screenshot-2025-03-25-at-17_17_25.png)
+
+## Testen met een gebruiker
+
+Dit is de betere keuze als je de hele ervaring van een lopende automatisering wilt zien.
+
+![Test with a User](/images/intercom/47585767-Screenshot-2025-03-25-at-17_17_25.png)
+
+### Stap 1: Kies de gebruiker wiens data wordt gebruikt voor het testen
+
+Deze gebruiker ontvangt e-mails of berichten alsof de automatisering live was. Nadat je hem uit het dropdown-menu hebt geselecteerd, klik je op [Run Test] om het proces te starten.
+
+![Een gebruiker selecteren om mee te testen](/images/intercom/47585978-Screenshot-2025-03-25-at-17_17_38.png)
+
+### Stap 2: Monitor de Timeline
+
+Het systeem toont een timeline van elke stap van de automatisering terwijl deze draait. Je ziet meldingen zoals:
+
+- Run Scheduled
+- Run Started
+- Interaction Started
+- Email Sent (of andere taakuitvoering)
+- Run Finished
+
+Wacht tot de test is voltooid en zorg dat alle stappen soepel doorlopen.
+
+![Test Timeline](/images/intercom/47588129-Screenshot-2025-03-25-at-17_18_19.png)
+
+### Stap 3: Controleer de inbox van de gebruiker
+
+Als de automatisering het versturen van een e-mail omvat, ga dan naar de inbox van de geselecteerde gebruiker (bijvoorbeeld die van jou) en controleer of de e-mail correct is afgeleverd.
+
+- Controleer de opmaak en inhoud om te zorgen dat het eruit ziet zoals verwacht;
+- Loop door het formulier om te controleren dat alle vragen correct zijn ingesteld.
+
+![Voorbeeld verzonden e-mail](/images/intercom/47588552-Screenshot-2025-03-25-at-17_20_22.png)
+
+### Stap 4: Bekijk de details van de run en events
+
+Na de testrun kun je op **View Details** klikken om specifieke event logs te controleren, waaronder:
+
+- E-mailleveringsstatus (sent, delivered, opened, clicked of bounced)
+- Eventuele vertragingen in uitvoering
+- Datawaarden die in de test zijn gebruikt
+
+![Knop View Details](/images/intercom/47586869-Screenshot-2B2025-03-25-2Bat-2B17_18_19.png)
+
+_Overzichtsdetails automatisering:_
+
+![Overzichtstabblad](/images/intercom/47586985-Screenshot-2025-03-25-at-17_18_59.png)
+
+_Velddetails:_
+
+![Fields-tabblad](/images/intercom/47587101-Screenshot-2025-03-25-at-17_19_07.png)
+
+_Gerelateerde automatisering en event:_
+
+![Related information-tabblad](/images/intercom/47587148-Screenshot-2025-03-25-at-17_19_14.png)
+
+## Testen met Preview a Single Item
+
+Je kunt dit gebruiken om te zien hoe de automatisering een individueel item zou verwerken zonder daadwerkelijk taken uit te voeren.
+
+![Preview a Single Item-test](/images/intercom/47588725-Screenshot-2025-05-01-at-10_51_47.png)
+
+### Stap 1: Kies de match/item die je wilt gebruiken om te testen en klik op Run Test
+
+![Een match/item selecteren om mee te testen](/images/intercom/47588912-Screenshot-2025-05-01-at-11_04_31.png)
+
+### Stap 2: Monitor de Timeline
+
+Het systeem toont een timeline van elke stap in de automatisering terwijl deze draait. Je ziet meldingen zoals:
+
+- Run Scheduled
+- Run Started
+- Interaction Started
+- Email Sent (of andere taakuitvoering)
+- Run Finished
+
+Wacht tot de test is voltooid en zorg dat alle stappen soepel doorlopen.
+
+![Test timeline](/images/intercom/47589015-Screenshot-2025-05-01-at-10_57_29.png)
+
+_Email Sent-stap met meer details:_
+
+![Email Sent-stap met meer details](/images/intercom/47589189-Screenshot-2025-05-01-at-10_57_36.png)
+
+### Stap 3: Bekijk de details van de run en events
+
+Na de testrun kun je op **View Details** klikken om specifieke event logs te controleren, waaronder:
+
+- E-mailleveringsstatus (sent, delivered, opened, clicked of bounced)
+- Eventuele vertragingen in uitvoering
+- Datawaarden die in de test zijn gebruikt
+
+![Run-details](/images/intercom/47589386-Screenshot-2025-05-01-at-10_58_07.png)
+
+## Een automatisering aanpassen en indien nodig opnieuw testen
+
+Als je een probleem opmerkt, zoals ontbrekende informatie of een fout in de uitvoering, keer dan terug naar de automatiseringseditor, breng de nodige aanpassingen aan en test opnieuw totdat de automatisering correct draait.
+
+Door deze stappen te volgen zorg je ervoor dat je automatisering goed werkt voordat je hem activeert, waardoor fouten worden voorkomen en de efficiëntie wordt verbeterd.

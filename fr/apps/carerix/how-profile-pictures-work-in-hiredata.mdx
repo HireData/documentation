@@ -1,0 +1,81 @@
+---
+title: "Comment fonctionnent les photos de profil dans HireData"
+sidebarTitle: "Photos de profil"
+description: "Découvrez comment HireData détermine les avatars des utilisateurs"
+---
+
+_Les photos de profil dans HireData sont générées automatiquement à partir de types de pièces jointes spécifiques dans Carerix. Cet article explique quelles pièces jointes sont utilisées, l'ordre de priorité appliqué et quand une photo, un logo ou des initiales seront affichés._
+
+## Comment HireData sélectionne l'avatar d'un utilisateur
+
+Lorsqu'un profil est synchronisé depuis Carerix, HireData vérifie s'il existe des pièces jointes pouvant être utilisées comme avatar. Seules les pièces jointes ayant ces valeurs de type spécifiques sont prises en compte :
+
+- `pasfoto`
+- `emaillogo`
+
+Le système évalue également le libellé de la pièce jointe. La correspondance est insensible à la casse, donc toute variation de casse (par exemple, `PasFoto`, `PASfoto`, `EmailLogo`) est prise en charge.
+
+Si plusieurs pièces jointes valides existent, HireData les évalue selon un ordre de priorité fixe. Dans cet ordre, la pièce jointe la plus récemment modifiée est considérée en premier.
+
+## Priorité de sélection de l'avatar utilisateur
+
+HireData détermine l'avatar en utilisant la priorité suivante :
+
+### 1. Logo e-mail avec le libellé « emailpasfoto »
+
+La première priorité est donnée à une pièce jointe où :
+
+- La valeur du type est `emaillogo`
+- Le libellé est `emailpasfoto`
+
+Si une telle pièce jointe existe et contient un contenu exploitable, elle est utilisée comme avatar.
+
+### 2. Photo de profil avec le libellé « pasfoto »
+
+Si aucune correspondance n'est trouvée à l'étape 1, HireData recherche :
+
+- Valeur de type `pasfoto`
+- Libellé `pasfoto`
+
+Si elle est trouvée et valide, cette image est utilisée.
+
+### 3. Toute pièce jointe de type « pasfoto »
+
+Si aucune correspondance exacte de libellé n'est trouvée, HireData recherche toute pièce jointe où :
+
+- La valeur du type est `pasfoto`
+
+Le libellé n'a pas besoin de correspondre dans ce cas.
+
+### 4. Toute pièce jointe de type « emaillogo »
+
+Si aucune photo de profil n'est trouvée, HireData recherche toute pièce jointe où :
+
+- La valeur du type est `emaillogo`
+
+Le libellé n'a pas besoin de correspondre.
+
+## Quand une photo ou un logo est-il affiché ?
+
+Une image est affichée comme avatar lorsqu'une **pièce jointe correspondante est trouvée** selon la priorité ci-dessus, et qu'une image valide est disponible pour être utilisée comme avatar de l'utilisateur.
+
+## Quand les initiales sont-elles affichées ?
+
+Les initiales sont affichées lorsque :
+
+- Aucune pièce jointe de type `pasfoto` et/ou `emaillogo` n'existe
+- Une pièce jointe correspondante existe mais ne contient pas de contenu exploitable
+- Le profil n'a pas de pièces jointes
+
+Dans ces cas, HireData génère automatiquement des initiales à partir du nom du profil.
+
+## Dépannage
+
+Si vous attendez une image mais ne voyez que des initiales, vérifiez ce qui suit :
+
+- La valeur du type de la pièce jointe est bien `pasfoto` ou `emaillogo`.
+- Le libellé est correctement configuré.
+- La pièce jointe contient un contenu de fichier accessible et exploitable.
+- La pièce jointe a été synchronisée correctement.
+
+Si des modifications sont apportées dans Carerix, par exemple le téléchargement d'une nouvelle photo ou la mise à jour du type de pièce jointe, l'avatar de l'utilisateur sera mis à jour après la prochaine synchronisation réussie dans HireData.

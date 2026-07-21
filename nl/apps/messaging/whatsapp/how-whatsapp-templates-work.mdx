@@ -1,0 +1,238 @@
+---
+title: "Hoe WhatsApp-templates werken"
+sidebarTitle: "Hoe templates werken"
+description: "Leer hoe je met WhatsApp-templates werkt om je recruitmentprocessen te stroomlijnen"
+---
+
+_Onze WhatsApp-automatiseringstemplates stroomlijnen kandidaatcommunicatie met AI en conversational recruiting-technieken. Deze kant-en-klare templates helpen recruiters efficiënt met kandidaten in contact te komen via WhatsApp, met tijdige reacties en gepersonaliseerde interacties. Lees verder om te leren hoe je ze effectief inzet voor je bedrijf, en hoe je WhatsApp-templates aanmaakt in de WhatsApp manager._
+
+## WhatsApp-templates in HireData
+
+### Beschikbare WhatsApp-templates
+
+1. **Availability Check (via Carerix)** — Deze template is ontworpen om de beschikbaarheid van een kandidaat voor vacatures te verifiëren. Het stuurt gepersonaliseerde berichten om te informeren naar hun huidige job search-status, zodat kandidaatprofielen up-to-date blijven.
+2. **Job Alert (via Carerix)** — Deze automatisering informeert kandidaten via WhatsApp over nieuwe vacatures. Het gebruikt AI-gedreven conversationele technieken om tijdige communicatie en effectief verzamelde reacties te garanderen.
+3. **Job Alert (via OTYS)** — Vergelijkbaar met de Carerix job alert-template is deze versie afgestemd op OTYS-gebruikers. Het informeert kandidaten over nieuwe vacatures terwijl het engagement onderhoudt via AI-powered messaging.
+
+![WhatsApp-templates in HireData](/images/intercom/47447942-Screenshot-2B2025-03-17-2Bat-2B08_14_02.png)
+
+### Hoe de trigger werkt
+
+Alle WhatsApp-templates gebruiken dezelfde logica, maar kunnen verschillen in de ingestelde trigger en de inhoud van het gesprek (bijv. de gestelde vragen, de verzamelde informatie en de tone of voice). Dit artikel richt zich op de Job Alert-automatisering via Carerix.
+
+In deze automatisering is de trigger gebaseerd op een **stage-update** binnen het Carerix-systeem. Zo werkt het:
+
+1. **Trigger Object** – De automatisering luistert wanneer een **Match** wordt **aangemaakt of bijgewerkt.**
+2. **Filter Condition** – De automatisering gaat alleen door als de **[Match: Stage]** is ingesteld op **"Placed on shortlist"**, zodat alleen shortlisted kandidaten het job alert-bericht ontvangen.
+
+![Trigger-setup](/images/intercom/41580122-Screenshot-2025-03-17-at-08_23_53.png)
+
+Zodra dit wordt getriggerd, start de automatisering een **WhatsApp-gesprek** en stuurt een gepersonaliseerde job alert naar de kandidaten om ze te informeren over de nieuwe kans.
+
+### De taak [Start Conversation] configureren
+
+Zodra de trigger is ingesteld, is de volgende stap de taak configureren die bepaalt hoe het WhatsApp-bericht wordt verstuurd. Hier is een overzicht van elke configuratie-optie:
+
+1. **Phone Number Selection**
+  - Kies het telefoonnummer dat wordt gebruikt om de WhatsApp-berichten te versturen. Dit is meestal een geverifieerd bedrijfsnummer dat is gekoppeld aan je WhatsApp Business, dat al geverifieerd en zichtbaar zou moeten zijn in de WhatsApp-verbinding in HireData.
+2. **Message Template**
+  - Selecteer een vooraf goedgekeurde WhatsApp-berichttemplate om vlotte en beleidsconforme communicatie te waarborgen. De template definieert de structuur van het eerste bericht, dat placeholders voor dynamische content kan bevatten (zoals kandidaatnamen, functietitels, enz.).
+![Selectie van berichttemplate](/images/intercom/41580379-Screenshot-2025-03-17-at-09_19_22.png)
+3. **Recipient Selection**
+  - Definieer wie het bericht ontvangt. In dit geval is dit meestal de kandidaat die is gekoppeld aan de match die de automatisering heeft getriggerd.
+![Ontvangerselectie](/images/intercom/41580408-Screenshot-2025-03-17-at-09_19_29.png)
+4. **Form Selection**
+  - Het formulier bevat alle vragen die aan de ontvanger worden gesteld. Je kunt een templateformulier selecteren of je eigen maken op de Forms-pagina in HireData.
+![Formulierselectie](/images/intercom/41580447-Screenshot-2025-03-17-at-09_20_30.png)
+5. **Briefing**
+  - Geef een briefing waarin het doel van het WhatsApp-gesprek wordt omschreven. Dit helpt consistentie en duidelijkheid in de communicatie te behouden. Je kunt richtlijnen opnemen die de AI helpen effectief te communiceren met de doelgroep.
+![De doelen van het gesprek opgeven](/images/intercom/41580461-Screenshot-2025-03-17-at-08_34_39.png)
+6. **Knowledge**
+  - Dit zijn **maximaal 16 velden** die je kunt toevoegen om extra context te bieden die de AI tijdens gesprekken kan gebruiken. Selecteer items waar het van op de hoogte moet zijn om gesprekken effectief af te handelen, zoals namen van deelnemers, e-mailadressen, enz.
+
+Dit zijn enkele standaard dynamische placeholders die het bericht personaliseren:
+
+- **Candidate Name** → Voegt automatisch de naam van de ontvanger in.
+- **Job Title** → Vult de titel van de vacature in.
+- **Recruiter Name** → Personaliseert het bericht met de naam van de afzender.
+- **Company Name** → Verwijst naar het inhurende bedrijf of merk.
+![Kennisvelden](/images/intercom/41580572-Screenshot-2025-03-17-at-08_36_33.png)
+
+### De taak [Update Fields] configureren
+
+Nadat het WhatsApp-gesprek informatie van de kandidaat heeft verzameld, kan de automatisering **automatisch specifieke velden bijwerken** in het systeem. Dit zorgt ervoor dat het profiel van de kandidaat up-to-date blijft zonder handmatige data-invoer.
+
+Zo werkt dit proces:
+
+1. **Een taak aanmaken om velden bij te werken**
+  - Aan de automatisering wordt een taak toegevoegd die specifieke velden in de records van de kandidaat bijwerkt. Dit gebeurt na het WhatsApp-gesprek wanneer de kandidaat nieuwe informatie verstrekt, zoals zijn beschikbaarheidsdatum of extra notities.
+![Setup Update fields-taak](/images/intercom/41580699-Screenshot-2025-03-17-at-09_26_44.png)
+2. **Objectselectie**
+  - Het object dat wordt bijgewerkt is het **Candidate**-record. Dit zorgt ervoor dat alle verzamelde informatie wordt opgeslagen in het juiste kandidaatprofiel.
+3. **Identifier**
+  - Om ervoor te zorgen dat de update wordt toegepast op de juiste kandidaat, matcht het systeem de **Candidate: ID** uit het gesprek met de **Candidate: ID** in de database. Deze unieke identifier zorgt ervoor dat de data alleen wordt bijgewerkt voor de relevante kandidaat.
+4. **Fields Updated**
+  - De automatisering werkt een of meer velden bij op basis van de ontvangen reacties van de kandidaat. Veelvoorkomende velden zijn:
+    - **Candidate: Available Date** → Werkt de beschikbaarheid van de kandidaat voor nieuwe vacatures bij.
+    - **Candidate: Notes** → Slaat aanvullende informatie op die de kandidaat verstrekt, zoals voorkeuren of speciale verzoeken.
+    - **Other Fields** → Er kunnen aanvullende velden worden toegevoegd naar behoefte, zoals voorkeur voor jobtype, locatievoorkeur of salarisverwachting.
+
+## WhatsApp-templates in WhatsApp
+
+### Een WhatsApp-template maken
+
+_Ga naar je WhatsApp Template Manager door op [Manage Templates] te klikken:_
+
+![Doorverwijzingsknop Manage Templates](/images/intercom/47451468-Screenshot-2025-03-28-at-05_32_22.png)
+
+_Klik op [Create Template]:_
+
+![Knop Een template aanmaken](/images/intercom/47455505-Screenshot-2025-03-28-at-05_14_28.png)
+
+_Selecteer het templatetype, bijv. door [Marketing] te selecteren en dan [Custom]:_
+
+![Templatetype selecteren](/images/intercom/47451710-Screenshot-2025-03-28-at-05_18_36.png)
+
+_Stel je WhatsApp-template in de editor in:_
+
+![WhatsApp-template opzetten in de editor](/images/intercom/47451727-Screenshot-2025-03-28-at-05_18_47.png)
+
+### 1. Geef je WhatsApp-template een naam
+
+![Je template een naam geven](/images/intercom/47452263-naming.png)
+
+_Gebruik een duidelijke en consistente naam voor je template. Als je bijvoorbeeld dezelfde template in meerdere talen maakt, gebruik dan exact dezelfde naam, bijv. "availability" in dit geval, voor alle versies (ervoor):_
+
+![Naamgeving consistentie](/images/intercom/47452275-naming-2B2.png)
+
+_Gebruik de naam als identifier voor je WhatsApp-template (erna):_
+
+![Eenvoudig WhatsApp-templates met dezelfde namen vinden](/images/intercom/47452301-naming-3.png)
+
+### 2. Voeg variabelen toe aan je WhatsApp-template
+
+_Je kunt dynamische velden invoegen door op [+ Add variable] te klikken in de editor:_
+
+![Variabelen toevoegen in de WhatsApp-template](/images/intercom/47452641-var.png)
+
+_Voeg bijvoorbeeld een variabelenaam toe, bijv. company:_
+
+![Een variabelenaam toevoegen](/images/intercom/47452598-var1.png)
+
+_Voeg een default value toe, bijv. Randstad:_
+
+![Default value voor variabele toevoegen](/images/intercom/47454151-var2.png)
+
+_Kies het variabeletype: Name vs. Number:_
+
+![Een variabeletype selecteren](/images/intercom/47454172-var3.png)
+
+_Een voorbeeld van een numbered variabele:_
+
+![Een numbered variabele toevoegen](/images/intercom/47454337-var4.png)
+
+Je kunt kiezen tussen **Name** en **Number** als variabeletypes. Hoewel numbered variabelen zijn toegestaan, raden we het gebruik van **named variables** aan voor betere duidelijkheid en hergebruik.
+
+### 3. Voeg knoppen toe aan je WhatsApp-template
+
+Knoppen helpen gebruikers direct te interageren met je bericht.
+
+![Een knop toevoegen](/images/intercom/47454516-buttons.png)
+
+_Kies het knoptype, bijv. [Custom]:_
+
+![Een knoptype kiezen](/images/intercom/47454544-buttons1.png)
+
+_Voeg je eerste knop toe, bijv. Sim:_
+
+![Een knop toevoegen](/images/intercom/47454584-buttons2.png)
+
+💡 Tip: Voor templates in meerdere talen, zorg dat je dezelfde variabelenaam/-nummer gebruikt voor consistentie.
+
+_Preview je knop:_
+
+![Knop preview](/images/intercom/47454739-buttons3.png)
+
+_Meerdere knoppen toevoegen (optioneel):_
+
+![Meer knoppen toevoegen](/images/intercom/47454770-buttons4.png)
+
+_Preview de WhatsApp-template met knoppen:_
+
+![Preview WhatsApp-template met knoppen](/images/intercom/47454864-buttons5.png)
+
+### 4. Verstuur je WhatsApp-template
+
+_Zodra alles klaar is, klik je op [Submit] om de template ter goedkeuring in te dienen en wacht je op de review van de template:_
+
+![Een template ter review indienen](/images/intercom/47454980-submit.png)
+
+![Reviewstatus van template](/images/intercom/47455037-submit1.png)
+
+_Hoera! Je WhatsApp-template is geverifieerd_
+
+![Goedgekeurde WhatsApp-template](/images/intercom/47455086-submit2.png)
+
+### WhatsApp-templates synchroniseren met HireData
+
+_Om je nieuw gemaakte template beschikbaar te maken in HireData, klik je op [Sync Account] in het dropdown-menu van je WhatsApp-account in HireData:_
+
+![Knop Sync Account](/images/intercom/47448587-Screenshot-2025-03-28-at-05_55_39.png)
+
+_Een sync wordt ingepland na deze melding:_
+
+![Melding sync ingepland](/images/intercom/47448659-Screenshot-2025-03-28-at-08_43_20.png)
+
+_Na een tijdje zie je dat de sync start:_
+
+![Melding syncvoortgang](/images/intercom/47448690-Screenshot-2025-03-28-at-08_43_42.png)
+
+_Klik op het timeline-icoon om de status van je sync te controleren:_
+
+![Data Sync Timeline](/images/intercom/47448750-Screenshot-2025-03-28-at-05_56_05.png)
+
+_Je kunt nu je nieuwe WhatsApp-template selecteren in de WhatsApp-taken die je in een automatisering configureert:_
+
+![WhatsApp-template beschikbaar voor selectie in HireData](/images/intercom/47448779-Screenshot-2025-03-28-at-06_33_29.png)
+
+### Een WhatsApp-template bewerken
+
+_Ga naar je WhatsApp Template Manager door op [Manage Templates] te klikken:_
+
+![Knop Manage Templates in het dropdown-menu](/images/intercom/47450181-Screenshot-2025-03-28-at-05_32_22.png)
+
+_Klik op een van je bestaande templates:_
+
+![Templatelijst in WhatsApp Manager](/images/intercom/47450224-Screenshot-2025-03-28-at-05_14_28.png)
+
+_Klik op [Edit Template] om naar de editor te gaan:_
+
+![Knop Edit Template in WhatsApp Manager](/images/intercom/47450335-Screenshot-2025-03-28-at-05_14_41.png)
+
+_Je WhatsApp-template bewerken:_
+
+![WhatsApp-template-editor](/images/intercom/47450387-Screenshot-2025-03-28-at-05_15_34.png)
+
+_Voorbeeld: Een titel toevoegen aan je WhatsApp-template_
+
+![Een titel toevoegen aan je WhatsApp-template](/images/intercom/47450662-Screenshot-2025-03-28-at-05_15_57.png)
+
+_Voorbeeld: Een knop (call-to-action) toevoegen aan je WhatsApp-template_
+
+![Een knop toevoegen aan je WhatsApp-template](/images/intercom/47450686-Screenshot-2025-03-28-at-05_16_25.png)
+
+_Je bijgewerkte WhatsApp-template ter review indienen (meestal vrijwel direct geaccepteerd, als je aan de richtlijnen voldoet):_
+
+![Je bijgewerkte WhatsApp-template ter review indienen](/images/intercom/47450725-Screenshot-2025-03-28-at-05_17_12.png)
+
+### Een WhatsApp-template verwijderen
+
+_Klik rechtsboven in de editor op [Delete template]:_
+
+![Een WhatsApp-template verwijderen](/images/intercom/47450936-Screenshot-2025-03-28-at-05_17_45.png)
+
+_Bevestiging van het verwijderen van je WhatsApp-template:_
+
+![Bevestiging van het verwijderen van je WhatsApp-template](/images/intercom/47450976-Screenshot-2025-03-28-at-05_18_01.png)
+
+<iframe src="https://www.loom.com/embed/303e828003b84b27bfec2590ab4f26cd" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

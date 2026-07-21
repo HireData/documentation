@@ -1,0 +1,229 @@
+---
+title: "Códigos de erro do WhatsApp explicados"
+sidebarTitle: "Códigos de erro do WhatsApp"
+description: "Saiba o que significam os erros do WhatsApp e como resolvê-los"
+---
+
+_Quando uma mensagem de WhatsApp falha ao ser enviada na HireData, poderá ver um código de erro na visão geral da conversa da tarefa Send Message ou Survey. Estes códigos vêm diretamente da Meta e explicam porque é que a mensagem não foi entregue. Este artigo explica o que significa cada código, para que perceba o que se está a passar._
+
+## Erros de autenticação e permissões
+
+Estes erros ocorrem quando a HireData não consegue autenticar-se corretamente com a sua WhatsApp Business Account.
+
+### (0) Authentication exception
+
+O access token utilizado para ligar a sua conta expirou ou foi revogado. Não é possível enviar mensagens até que isto seja resolvido.
+
+### (190) Access token expired
+
+O access token associado à sua ligação WhatsApp expirou e precisa de ser atualizado.
+
+### (200–299) API permission issue
+
+A HireData não tem as permissões necessárias para enviar mensagens em nome da sua WhatsApp Business Account. Isto é normalmente causado por um método de pagamento em falta, um conflito com outro fornecedor ou um access token expirado.
+
+**_O que fazer:_** _Ver [Como resolver problemas de permissões da WhatsApp Business Account](/pt/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues)._
+
+### (10) Permission denied
+
+A HireData não tem uma permissão necessária ou já não é elegível para enviar mensagens.
+
+## Erros de conta e faturação
+
+Estes erros estão relacionados com o estado ou configuração de faturação da sua WhatsApp Business Account.
+
+### (368) Account temporarily blocked
+
+A sua conta foi temporariamente bloqueada devido a uma violação de política. As mensagens estão em pausa até o assunto ser revisto e resolvido no Meta Business Manager.
+
+**_O que fazer:_**_Inicie sessão no seu [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjw46HPBhAMEiwASZpLRE3o4iBGHx4q8mAkEhnMTwXG17_Eec92qkYRHL2I6MBiuJ0sf-h4kRoC8fkQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC_ciGa5Zg7Mvjvr9xEpi0OMx) e reveja o aviso de aplicação de política na sua conta._
+
+### (131031) Account locked
+
+A sua WhatsApp Business Account foi bloqueada, normalmente devido a uma violação de política ou a uma incompatibilidade de two-factor authentication (PIN).
+
+**_O que fazer:_**_Inicie sessão no [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjw46HPBhAMEiwASZpLRE3o4iBGHx4q8mAkEhnMTwXG17_Eec92qkYRHL2I6MBiuJ0sf-h4kRoC8fkQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC_ciGa5Zg7Mvjvr9xEpi0OMx) e verifique o estado da sua conta._
+
+### (131057) Account in maintenance mode
+
+A sua WhatsApp Business Account encontra-se temporariamente em modo de manutenção, geralmente porque está em curso uma atualização de throughput. Este erro resolve-se automaticamente.
+
+### (130497) Country restricted
+
+O envio de mensagens não é permitido no país ou região do destinatário com base nas suas definições de conta atuais.
+
+### (131042) Payment eligibility issue
+
+A sua WhatsApp Business Account não tem um método de pagamento ativo ou linha de crédito configurada com a Meta. Não é possível enviar mensagens até a faturação estar ativa.
+
+**_O que fazer:_** _Ver [Adicionar um método de pagamento válido para o WhatsApp](/pt/apps/messaging/whatsapp/add-a-valid-payment-method-for-whatsapp)._
+
+### (133010) Phone number not registered
+
+O número de telefone não foi devidamente registado na WhatsApp Business API.
+
+## Erros de limite de envio
+
+Estes erros ocorrem quando são enviadas demasiadas mensagens num curto período de tempo.
+
+### (80007) Business account rate limit
+
+A sua WhatsApp Business Account atingiu o seu limite de throughput de mensagens. Aplica-se a toda a sua WhatsApp Business Account e limita o volume total de mensagens que pode enviar num determinado período.
+
+### (130429) Rate limit hit
+
+A sua conta excedeu o número permitido de mensagens por segundo. É uma restrição que entra em vigor quando envia demasiado depressa numa janela curta. Levanta-se automaticamente após um curto período.
+
+### (131048) Spam rate limit
+
+O seu número de telefone foi sinalizado devido a um volume elevado de mensagens bloqueadas ou denunciadas pelos destinatários. Isto afeta a classificação de qualidade do seu número junto da Meta.
+
+**_O que fazer:_**_Verifique a classificação de qualidade do seu número de telefone no [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjwhqfPBhBWEiwAZo196jHORmdR703fP9fJkUx0gzy4Wduft0nyV2RJxkHUxlxbIFDT_deR_hoC_HAQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC9y2Odwg7zSG1UwxxT2UpbMa) em WhatsApp Manager → Phone Numbers._
+
+### (4) Too many API calls
+
+A sua conta atingiu o limite de rate da app. Trata-se de uma restrição temporária que se levanta automaticamente.
+
+### (131056) Too many messages to the same user
+
+Enviou demasiadas mensagens a um único destinatário num curto período de tempo.
+
+## Erros da janela de conversa
+
+Estes erros ocorrem quando uma mensagem é enviada fora das regras da janela de conversa de 24 horas do WhatsApp.
+
+### (131049) Message not delivered by Meta
+
+A Meta optou por não entregar esta mensagem de marketing, normalmente para proteger a experiência do destinatário. Isto pode acontecer quando um utilizador recebe um volume elevado de mensagens de marketing.
+
+**_O que fazer:_**_Espere pelo menos 24 horas antes de tentar novamente. Considere se o conteúdo do template é relevante e personalizado para este destinatário._
+
+### (131047) Re-engagement message without an active window
+
+Tentou enviar uma mensagem de formato livre depois de a janela de 24 horas do candidato já ter fechado. O WhatsApp só permite template messages quando a janela expira.
+
+**_O que fazer:_**_Utilize um template WhatsApp aprovado para reiniciar a conversa._
+
+### (131050) User has opted out
+
+O candidato bloqueou ou fez opt-out da receção de mensagens de marketing do seu número. Não podem ser enviadas mais mensagens.
+
+## Erros gerais de mensagem
+
+Estes são erros gerais que cobrem pedidos inválidos ou entregas falhadas.
+
+### (100) Invalid parameter
+
+O pedido da mensagem continha um campo não reconhecido ou mal escrito.
+
+### (131026) Message undeliverable
+
+A mensagem não conseguiu chegar ao destinatário. Isto normalmente significa que o número não está registado no WhatsApp, o número já não existe ou o destinatário está a usar uma versão desatualizada da app.
+
+### (131052) Media download error
+
+A HireData não conseguiu descarregar um ficheiro de media enviado pelo candidato. Isto normalmente significa que o ficheiro já não está disponível ou o link expirou.
+
+**_O que fazer:_**_Peça ao candidato para reenviar o ficheiro._
+
+### (131053) Media upload error
+
+O ficheiro de media que tentou enviar utiliza um tipo ou formato de ficheiro não suportado.
+
+### (131008) Required parameter missing
+
+Um campo obrigatório não foi incluído no pedido de mensagem.
+
+### (131021) Recipient is the same as sender
+
+O número de telefone para o qual está a tentar enviar é o mesmo que o número de envio.
+
+### (131000) Unknown error
+
+Ocorreu um erro interno inesperado do lado da Meta.
+
+**_O que fazer:_**_Espere alguns minutos e tente novamente. Se o erro persistir, contacte-nos em_ _[support@hiredata.com](mailto:support@hiredata.com)._
+
+## Erros de criação de template
+
+Estes erros ocorrem quando um template está a ser submetido ou guardado, antes de ser sequer utilizado para enviar uma mensagem.
+
+### (2388072) Body format incorrect
+
+O corpo do template contém um problema de formatação que não cumpre os requisitos da Meta.
+
+### (2388040) Character limit exceeded
+
+Um dos campos do template contém texto demais e ultrapassa o limite permitido.
+
+### (2388073) Footer format incorrect
+
+O rodapé do template contém um problema de formatação.
+
+### (2388047) Header format incorrect
+
+O cabeçalho do template utiliza um formato ou sintaxe inválida.
+
+### (2388293) Too many parameters
+
+O template utiliza mais placeholders de variáveis do que a Meta permite face ao texto total.
+
+### (134101) Template syncing
+
+O template foi recentemente criado e ainda está a sincronizar com os sistemas da Meta. Espere alguns minutos antes de tentar novamente.
+
+### (134102) Template unavailable
+
+O template está atualmente indisponível devido a um problema de sincronização ou elegibilidade.
+
+### (2388299) Variable at the start or end of text
+
+Um placeholder de variável está posicionado no início ou fim do corpo da mensagem, o que não é permitido.
+
+## Erros de envio de template
+
+Estes erros ocorrem quando uma template message é enviada, mas algo no template ou nos seus parâmetros não corresponde ao que a Meta tem em registo.
+
+### (132068) Flow blocked
+
+Um WhatsApp Flow associado a este template tem um problema de configuração e está atualmente bloqueado.
+
+### (132069) Flow throttled
+
+Foram enviadas demasiadas mensagens usando um WhatsApp Flow num curto período.
+
+### (132005) Hydrated text is too long
+
+Os valores dinâmicos preenchidos nos placeholders do template tornam a mensagem final demasiado longa.
+
+### (132000) Parameter count mismatch
+
+O número de variáveis passadas com o template não corresponde ao número de placeholders definidos nele.
+
+### (132012) Parameter format mismatch
+
+Uma variável passada com o template está no formato errado, por exemplo, esperava-se um número mas foi enviado texto.
+
+### (132001) Template not found
+
+O nome do template ou o código de idioma não corresponde a um template aprovado na sua conta Meta. Isto pode acontecer se um template foi recentemente eliminado, renomeado ou ainda não aprovado.
+
+### (132007) Template content violates policy
+
+O conteúdo do template inclui algo que não cumpre as políticas de mensagens da Meta.
+
+### (132015) Template paused
+
+A Meta pausou temporariamente este template devido a uma baixa classificação de qualidade ou a um número elevado de denúncias de utilizadores.
+
+### (132016) Template disabled
+
+O template foi permanentemente desativado pela Meta após problemas de qualidade repetidos.
+
+### (132018) Template validation error
+
+Existe um problema de parâmetro com o template que impediu a sua validação pela Meta.
+
+## Precisa de mais ajuda?
+
+Se um erro persistir e não tem a certeza da causa, contacte-nos em _[support@hiredata.com](mailto:support@hiredata.com)_. Para questões ao nível da conta na Meta, também pode contactar diretamente o Meta Business Support via [Meta Business Help Center](https://www.facebook.com/business/help).

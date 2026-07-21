@@ -1,0 +1,62 @@
+---
+title: "Variáveis"
+sidebarTitle: "Introdução"
+description: "Personalize emails, mensagens, formulários e automações."
+---
+
+Com variáveis, pode inserir dados dinâmicos, como o nome de um candidato, um cargo ou um salário, diretamente nos seus emails, mensagens de WhatsApp, formulários e automações.
+
+## Como é uma variável
+
+Uma variável é uma chave de campo envolvida por chavetas duplas:
+
+```
+Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
+```
+
+Quando isto é enviado a uma candidata chamada Sofia a candidatar-se a uma vaga de Backend Engineer, torna-se:
+
+```
+Hi Sofia, thanks for applying to Backend Engineer!
+```
+
+Os espaços dentro das chavetas são opcionais:
+
+- `{{candidate.first_name}}` e `{{ candidate.first_name }}` comportam-se da mesma forma.
+
+## Onde pode utilizar variáveis
+
+Pode utilizar variáveis em qualquer sítio onde escreva conteúdo que seja enviado ou armazenado:
+
+- **Email** — assuntos e corpos
+- **WhatsApp** — mensagens e templates
+- **Formulários** — perguntas e lógica de seguimento
+- **Automações** — mapeamentos de campos e tarefas agendadas
+
+## Fornecer um valor por defeito
+
+Se um campo estiver vazio para um dado registo, a variável é substituída por nada. Para mostrar um valor por defeito, utilize o modificador [`default`](/pt/variables/modifiers#fallback):
+
+```
+Hi {{ candidate.first_name | default: "there" }}!
+```
+
+Se o candidato não tem primeiro nome, isto envia "Hi there!".
+
+## Transformar valores com modificadores
+
+As variáveis podem fazer mais do que inserir dados brutos. Um **modificador** altera a forma como o valor aparece. Pode colocar texto em maiúsculas, formatar uma data, arredondar um número e muito mais. Adiciona-se um modificador com um pipe (`|`):
+
+```
+{{ candidate.first_name | uppercase }}        → SOFIA
+{{ job.salary | format_currency: "EUR" }}      → €65,000.00
+{{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
+```
+
+Pode encadear vários modificadores, e cada um atua sobre o resultado do anterior:
+
+```
+{{ candidate.last_name | lowercase | capitalise }}
+```
+
+Veja a lista completa na página [Modificadores](/pt/variables/modifiers).

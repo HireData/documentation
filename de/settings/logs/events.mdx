@@ -1,0 +1,123 @@
+---
+title: "Events"
+description: "Verstehen, wie HireData-Events funktionieren"
+---
+
+_Wenn Sie Ihr ATS, z. B. Carerix, Salesforce, OTYS usw., mit HireData verbinden, beginnt es, Events zu senden – Benachrichtigungen darüber, dass in Ihrem System etwas passiert ist. Events lösen Ihre Automatisierungen aus und sind damit entscheidend dafür, wie HireData im Hintergrund arbeitet. In diesem Artikel erklären wir, wie Events funktionieren, wo Sie sie finden und wie Sie sie analysieren, wenn etwas nicht wie erwartet läuft._
+
+## Was ist ein Event
+
+Ein Event ist ein Signal, das von Ihrer verbundenen App an HireData gesendet wird. Es steht in der Regel für eine bestimmte Aktion oder Änderung – zum Beispiel das Erstellen eines neuen Kandidaten, das Aktualisieren einer Vakanz, den Abschluss eines Placements usw. Diese Events werden verwendet, um die in HireData eingerichteten Automatisierungen auszulösen, und jedes Event enthält **Event Data**, **External Records** und **Processes**.
+
+_Event-Beispiel:_
+
+![Individual event page](/images/intercom/48025433-Screenshot-2025-05-05-at-10_51_18.png)
+
+## So sehen Sie Event-Details
+
+Navigieren Sie zum **Settings**-Menü und öffnen Sie die Seite **Events**, um eine Liste aller von Ihren verbundenen Apps gesendeten Events zu sehen:
+
+![Events page in HireData](/images/intercom/48023611-Screenshot-2025-05-05-at-12_06_25.png)
+
+_Nutzen Sie die Filter für eine geordnetere Ansicht, zum Beispiel wenn Sie nur die Events einer Ihrer Apps sehen möchten:_
+
+![Setting up filters](/images/intercom/48024595-Screenshot-2025-05-05-at-10_49_56.png)
+
+Um ein einzelnes Event zu untersuchen, klicken Sie neben dem Event auf die Schaltfläche [Details] für eine Kurzübersicht, oder öffnen Sie das Dropdown-Menü und klicken Sie auf [View].
+
+![Event drop-down menu](/images/intercom/48023846-Screenshot-2025-05-05-at-10_50_57.png)
+
+Dies öffnet die Detailansicht des Events, die Folgendes enthält:
+
+- **Event Data** – eine zusammengefasste Ansicht der von Ihrer App empfangenen Daten.
+
+![Event Data tab](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
+
+- **External Records** – zusätzliche Felder aus der Quell-App, auch wenn sie nicht in der Automatisierung verwendet werden.
+
+![External records tab](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
+
+- **Processes** – die Liste der von diesem Event ausgelösten Automatisierung(en) und der dabei erzeugten Runs. Sie sehen außerdem den Status jedes Runs (z. B. Completed, Delayed, Cancelled).
+
+![Processes tab](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+
+## Events erneut abspielen
+
+Wenn ein Event eine Automatisierung nicht wie erwartet auslöst oder ein Run vor Abschluss seiner Aufgaben fehlschlägt, können Sie einzelne oder mehrere Events erneut abspielen, um Automatisierungen erneut auszulösen und die Dinge wieder ins Rollen zu bringen.
+
+<Warning>
+  Wenn Sie ein Event erneut abspielen, kann es Runs in mehreren Automatisierungen gleichzeitig auslösen. Prüfen Sie vor dem Replay immer, welche Automatisierungen und Runs betroffen sind, besonders wenn eine davon eine E-Mail oder Nachricht sendet. Diese ohne vorherige Prüfung erneut abzuspielen, könnte dazu führen, dass doppelte Nachrichten an Kandidaten oder Kontakte gesendet werden.
+</Warning>
+
+### Was passiert, wenn ein Event erneut abgespielt wird?
+
+HireData verarbeitet das/die ausgewählte(n) Event(s) erneut und löst die zugehörigen Automatisierungen aus. Die betroffenen Aufgaben werden ausgeführt, als wäre das Event gerade eingetreten.
+
+- **Event-basierte Automatisierungen** – Für Automatisierungen, die durch ein bestimmtes Event ausgelöst werden (zum Beispiel, wenn ein Kandidat eine bestimmte Stage erreicht), löst der Replay die Automatisierung sofort basierend auf den Event-Daten neu aus. Falls zuvor ein Run erstellt wurde, wird er erneut abgespielt und mit einem „Replay"-Label versehen.
+
+![An event labeled as Replayed](/images/intercom/146643359-Screenshot-2026-05-28-at-13_08_04.png)
+
+- **Geplante (einmalige) Automatisierungen** – Für Automatisierungen, die zu einem festen Datum oder Zeitplan laufen, ändert das erneute Abspielen des Events nicht das geplante Ausführungsdatum der Automatisierung. Der Replay bewertet lediglich neu, ob das Event den Bedingungen der Automatisierung entspricht.
+
+### So spielen Sie Events erneut ab
+
+<Steps>
+  <Step title="Das Event finden, das Sie erneut abspielen möchten">
+    Es gibt drei Wege zur Replay-Option, je nachdem, was Sie benötigen:
+
+    - **Von der Events-Seite (alle Events)** – Navigieren Sie über das Hauptmenü zur Seite **Events**. Sie erhalten eine Übersicht aller von HireData empfangenen Events.
+
+    ![The Events page](/images/intercom/146643741-Screenshot-2026-05-28-at-13_06_02.png)
+
+    - **Aus einer bestimmten Automatisierung** – Öffnen Sie die Automatisierung, die Sie untersuchen möchten, und gehen Sie zu ihrer **Events**-Seite. Damit wird die Ansicht so gefiltert, dass nur Events zu dieser Automatisierung angezeigt werden.
+
+    ![Finding the Events page for a specific automation](/images/intercom/146650572-Screenshot-2026-05-28-at-13_19_57.png)
+
+    ![The Events page for a specific automation](/images/intercom/146644665-Screenshot-2026-05-28-at-13_20_17.png)
+
+    - **Aus einem einzelnen Event** – Klicken Sie direkt auf das Event, das Sie erneut abspielen möchten, um die Detailansicht zu öffnen.
+  </Step>
+  <Step title="Das/die Event(s) zum Replay auswählen">
+    Um ein **einzelnes Event** erneut abzuspielen, klicken Sie in der Detailansicht oder in der Liste **Events** auf das Drei-Punkte-Menü neben dem Event und wählen Sie **Replay** aus dem Dropdown.
+
+    ![Replaying an individual event](/images/intercom/146645337-Screenshot-2026-05-28-at-13_06_43.png)
+
+    Um **mehrere Events gleichzeitig** erneut abzuspielen, setzen Sie auf der Seite **Events** oder im **Events**-Tab einer Automatisierung ein Häkchen neben jedes Event, das Sie erneut abspielen möchten. Sobald ein oder mehrere Events ausgewählt sind, erscheint oben auf der Seite eine Schaltfläche **Replay**. Klicken Sie darauf, um fortzufahren.
+
+    ![Replaying events in bulk](/images/intercom/146646000-Screenshot-2026-05-28-at-13_06_24.png)
+  </Step>
+  <Step title="Den Replay prüfen und bestätigen">
+    Um zu sehen, welche Automatisierungen zuvor durch das Event ausgelöst wurden, öffnen Sie das Event und gehen Sie zum Tab **Runs**. Dort sehen Sie die Automatisierungen und ihren Status vom letzten Mal, als das Event verarbeitet wurde. Nutzen Sie diese Information, um zu entscheiden, ob es sicher ist, mit dem Replay fortzufahren.
+
+    ![Reviewing which automations and runs will be triggered by the replay](/images/intercom/146646806-Screenshot-2026-05-28-at-13_20_50.png)
+
+    Prüfen Sie, ob eine der aufgelisteten Automatisierungen Aufgaben wie **Send Email/Message/Survey** enthält. Falls ja, stellen Sie sicher, dass diese Nachrichten tatsächlich erneut gesendet werden sollen, bevor Sie bestätigen.
+
+    Wenn Sie sicher sind, bestätigen Sie den Replay.
+  </Step>
+</Steps>
+
+<Tip>
+  - **Prüfen Sie vor dem Bestätigen eines Replays immer die betroffenen Automatisierungen.** Ein Event kann zu mehreren Automatisierungen passen, und ein Replay löst alle aus.
+  - **Seien Sie besonders vorsichtig bei Automatisierungen, die E-Mails oder Nachrichten senden.** Das erneute Abspielen eines Events, das mit solchen Automatisierungen verknüpft ist, kann zu doppelten Nachrichten an Kandidaten oder Kontakte führen.
+  - **Verwenden Sie den automatisierungsspezifischen Events-Tab, wenn Sie nur innerhalb einer einzelnen Automatisierung erneut abspielen möchten.** Das gibt Ihnen eine fokussiertere Ansicht und verringert das Risiko, unbeabsichtigt nicht verwandte Automatisierungen auszulösen.
+  - **Bulk-Replay ist nützlich, wenn mehrere Events gleichzeitig fehlgeschlagen sind**, zum Beispiel nach einem vorübergehenden Sync-Problem. Statt einzeln erneut abzuspielen, können Sie alle betroffenen Events auswählen und gemeinsam abspielen.
+</Tip>
+
+## Events – Fehlerbehebung
+
+Wenn eine Automatisierung nicht wie erwartet lief oder Sie unerwartete Daten sehen:
+
+- Gehen Sie zum Tab **Processes** des Events und prüfen Sie, ob Runs erstellt wurden.
+- Klicken Sie in den Run, um Logs anzuzeigen und zu sehen, ob ein Schritt fehlgeschlagen oder übersprungen wurde.
+- Vergleichen Sie die **Event Data** mit den Bedingungen in Ihrer Automatisierung, um sicherzustellen, dass sie übereinstimmen.
+
+Wenn kein Prozess ausgelöst wurde, hat das Event wahrscheinlich die Kriterien keiner aktiven Automatisierung erfüllt.
+
+### Brauchen Sie noch Hilfe?
+
+Wenn Sie sich unsicher sind, warum ein Event Ihre Automatisierung nicht ausgelöst hat, oder Hilfe bei der Interpretation der Event-Daten benötigen, kontaktieren Sie gerne unser Team unter [support@hiredata.com](mailto:support@hiredata.com). Bitte geben Sie dabei an:
+
+- Einen Link oder die ID des Events;
+- Einen Link oder den Namen der Automatisierung, die Sie ausgelöst erwartet haben;
+- Alle relevanten Schritte oder Kontexte, die uns bei der Untersuchung helfen könnten.
