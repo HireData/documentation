@@ -41,6 +41,69 @@ This will open the event detail view, which includes:
 
 ![Processes tab](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
 
+## Replaying events
+
+If an event doesn't trigger an automation as expected, or a run fails before completing its tasks, you can replay individual or multiple events to re-trigger automations and get things back on track.
+
+<Warning>
+  When you replay an event, it can trigger runs across multiple automations at once. Before replaying, always check which automations and runs will be affected, especially if any of them include sending an email or a message. Replaying those without checking first could result in duplicate messages being sent to candidates or contacts.
+</Warning>
+
+### What happens when an event is replayed?
+
+HireData reprocesses the selected event(s) and triggers the associated automations. The affected tasks will be executed as if the event had just occurred.
+
+- **Event-based automations** – For automations that are triggered by a specific event (for example, a candidate reaching a certain stage), the replay will re-trigger the automation immediately based on the event data. If there was previously a created run, it will be replayed and a "Replay" label will show up.
+
+![An event labeled as Replayed](/images/intercom/146643359-Screenshot-2026-05-28-at-13_08_04.png)
+
+- **Scheduled (one-time) automations** – For automations that run on a fixed date or schedule, replaying the event will not change or reschedule the automation's planned run date. The replay only re-evaluates whether the event matches the automation's conditions.
+
+### How to replay events
+
+<Steps>
+  <Step title="Find the event you want to replay">
+    There are three ways to get to the replay option, depending on what you need:
+
+    - **From the Events page (all events)** – Navigate to the **Events** page from the main menu. This gives you an overview of all events received by HireData.
+
+    ![The Events page](/images/intercom/146643741-Screenshot-2026-05-28-at-13_06_02.png)
+
+    - **From a specific automation** – Open the automation you want to investigate, then go to its **Events** page. This filters the view to only show events related to that automation.
+
+    ![Finding the Events page for a specific automation](/images/intercom/146650572-Screenshot-2026-05-28-at-13_19_57.png)
+
+    ![The Events page for a specific automation](/images/intercom/146644665-Screenshot-2026-05-28-at-13_20_17.png)
+
+    - **From a single event** – Click directly on the event you want to replay to open its detail view.
+  </Step>
+  <Step title="Select the event(s) to replay">
+    To replay a **single event**, click the three-dot menu next to the event in the detail view or the **Events** list, and select **Replay** from the dropdown.
+
+    ![Replaying an individual event](/images/intercom/146645337-Screenshot-2026-05-28-at-13_06_43.png)
+
+    To replay **multiple events at once**, check the box next to each event you want to replay on the **Events** page or an automation's **Events** tab. Once one or more events are selected, a **Replay** button will appear at the top of the page. Click it to proceed.
+
+    ![Replaying events in bulk](/images/intercom/146646000-Screenshot-2026-05-28-at-13_06_24.png)
+  </Step>
+  <Step title="Review and confirm the replay">
+    To see which automations were previously triggered by the event, open the event and go to the **Runs** tab. This shows you the automations and their status from the last time the event was processed. Use this information to decide whether it's safe to proceed with the replay.
+
+    ![Reviewing which automations and runs will be triggered by the replay](/images/intercom/146646806-Screenshot-2026-05-28-at-13_20_50.png)
+
+    Check whether any of the listed automations include tasks like **Send Email/Message/Survey**. If they do, make sure you intend for those messages to be sent again before confirming.
+
+    Once you're confident, confirm the replay.
+  </Step>
+</Steps>
+
+<Tip>
+  - **Always review the affected automations before confirming a replay.** One event can match multiple automations, and replaying it will trigger all of them.
+  - **Be extra cautious with automations that send emails or messages.** Replaying an event tied to those automations may send duplicate communications to candidates or contacts.
+  - **Use the automation-specific Events tab if you only want to replay within a single automation.** This gives you a more focused view and reduces the risk of unintentionally triggering unrelated automations.
+  - **Bulk replay is useful when multiple events failed at the same time**, for example, after a temporary sync issue. Instead of replaying one by one, you can select all affected events and replay them together.
+</Tip>
+
 ## Troubleshooting events
 
 If an automation didn't run as expected, or you're seeing unexpected data:

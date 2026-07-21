@@ -1,0 +1,44 @@
+---
+title: "How to Prevent User Role Changes During Third-Party Sync"
+sidebarTitle: "Protect User Roles"
+description: "Use the Enable Third-Party Sync setting to protect a user's role in HireData from being overwritten during ATS syncs"
+---
+
+_When HireData syncs with your ATS, it can automatically update user roles, which sometimes overwrites custom access you've set up manually. This article explains how to use the **Enable Third-Party Sync** setting to protect a user's role in HireData from being changed during sync, and when you'd want to do this._
+
+## What does this setting do?
+
+By default, HireData syncs user roles from your ATS (e.g. Carerix) every night or when a sync is triggered manually. If a user has been given admin access in HireData but is not an admin in Carerix, that sync will reset them back to a regular user, removing their access.
+
+Turning **off** the **Enable Third-Party Sync** setting for a specific user tells HireData: _"Don't touch this user's role during sync."_ Their HireData role stays exactly as you've set it, regardless of what your app says.
+
+- This is especially **useful for non-admin ATS users who need admin access in HireData**. For example, someone in Sales with a "Marketer" role in your app can be given admin access in HireData, and with sync disabled, that access won't be overwritten.
+- This also **applies to users with Additional Roles** in Carerix. If a user has multiple roles across different labels within one Carerix environment, and one of those additional roles is not an admin, HireData may incorrectly reset them to a regular user during sync. Turning off this setting prevents that from happening.
+
+<Note>
+  For Carerix users: if the setting is turned off for a user who is an Admin in HireData, but has a different role in Carerix (e.g. User, Marketer, Sales), they won't be able to access the RMA menu items within Carerix, as they need to have admin permissions in Carerix specifically.
+</Note>
+
+![The Enable Third-Party Sync toggle in a user's Access Control settings](/images/intercom/146220971-Screenshot-2026-05-27-at-13_51_33.png)
+
+## Protecting a user's role
+
+<Steps>
+  <Step title="Open the user's settings">
+    Go to **Settings** in the main navigation, then select **Users**. Find the user you want to configure and click their name to open their profile.
+
+    This setting is per user. You'll need to configure it individually for each person who needs their role protected.
+  </Step>
+  <Step title="Adjust the sync setting">
+    Scroll down to the **Access Control** section on the user's profile page. Find the **Enable Third-Party Sync** toggle.
+
+    - **Toggle on** – This user's role _will_ be updated automatically during syncs from your ATS.
+    - **Toggle off** – This user's role _will not_ be changed by any sync, whether nightly or manually triggered.
+
+    Click **Save Settings** to apply.
+  </Step>
+</Steps>
+
+<Info>
+  Turning this setting off does not disconnect the user from your ATS. It only prevents their HireData role from being overwritten during sync.
+</Info>

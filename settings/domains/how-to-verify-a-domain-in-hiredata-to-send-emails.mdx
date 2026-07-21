@@ -7,21 +7,21 @@ _Verifying your domain in HireData is a crucial step to ensure you can send emai
 
 ## Step 1: Add a New Domain
 
-Log in to your HireData account, open your settings, and then the **[Domains](https://app.hiredata.com/settings/account/domains)**[page](https://app.hiredata.com/settings/account/domains).
+Log in to your HireData account, open your settings, and then the **[Domains](https://app.hiredata.com/settings/account/domains)** page.
 
-Click on the [New Domain] button to add a new domain.
+Click on the **New Domain** button to add a new domain.
 
 ![Domains page](/images/intercom/42937091-Screenshot-2025-03-26-at-10_55_24.png)
 
 ## Step 2: Enter Domain Details
 
-After you click on [New Domain], a new screen will appear where you will need to fill in the domain details, including:
+After you click on **New Domain**, a new screen will appear where you will need to fill in the domain details, including:
 
 1. **Domain name**
 2. **Default Sender Name** – this is the name that will appear as the sender in emails sent from HireData if this information is missing in the events' records received from your app.
 3. **Default Sender Email** – this will be the default email address used when sending emails if this information is not available.
 
-Click on [Create Domain] and continue with the next step.
+Click on **Create Domain** and continue with the next step.
 
 ![Adding a new domain](/images/intercom/42937339-Screenshot-2025-03-26-at-10_57_15.png)
 
@@ -36,7 +36,7 @@ These records include:
 
 Without these records, email providers might block or mark your emails as spam. That’s why adding and verifying the DNS records is essential for smooth email delivery.
 
-Simply click on [Generate DNS Records] if they are not automatically generated.
+Simply click on **Generate DNS Records** if they are not automatically generated.
 
 ![DNS records](/images/intercom/42937537-Screenshot-2025-03-25-at-16_37_11.png)
 
@@ -48,9 +48,16 @@ After you have the DNS records, you need to add them to your domain provider (e.
 2. Add the provided DNS records exactly as shown in HireData.
 3. Save the changes.
 
+<Warning>
+  Things to consider:
+
+  1. Some DNS providers require you to enter only the subdomain in the **Host/Name** field, without the full domain. For example, the provider might not accept the host value with "hiredata.com", so it can be removed.
+  2. Occasionally, DNS providers might automatically handle the trailing dot (`.`) at the end of the values, so you might need to delete it.
+</Warning>
+
 ## Step 5: Verify DNS Records
 
-Return to the **Domains** page in HireData and click the [Verify DNS] button. If the DNS records have been correctly added, your domain will be verified.
+Return to the **Domains** page in HireData and click the **Verify DNS** button. If the DNS records have been correctly added, your domain will be verified.
 
 Once your domain is verified, you will be able to send emails directly from HireData by using our built-in email templates or create custom ones to streamline your business communication.
 
@@ -60,6 +67,6 @@ If you experience any issues with the verification, ensure your DNS records have
 
 ---
 
-# Video guide
+## Video guide
 
 <iframe src="https://www.loom.com/embed/b58cdb060cb545068bc82acf9a7871f9" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

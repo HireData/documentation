@@ -1,0 +1,97 @@
+---
+title: "Combined Fields Explained: How HireData Picks a Value"
+description: "Learn how HireData's combined fields automatically pick the first filled-in value from Carerix, and in what order each field is checked"
+---
+
+_Combined fields, like `anyEmailAddress` and `anyPhoneNumber`, make sure your automations always find the right information, even if some fields in Carerix are empty. Keep reading to learn how these fields work and in what order HireData picks a value._
+
+## Candidate, User and Contact
+
+`CarerixCandidate`, `CarerixUser`, and `CarerixContact` records all use the exact same set of combined fields. Whether you're working with a candidate's, a user's or a contact's profile, these fields behave the same way.
+
+### anyEmailAddress
+
+Use `anyEmailAddress` when you want HireData to always find an email address, no matter which specific field is filled in Carerix. If more than one email field has a value, HireData checks them in this order and uses the first one it finds:
+
+1. `businessOrPrivateEmailAddress`
+2. `privateOrBusinessEmailAddress`
+3. `primaryOrBusinessEmailAddress`
+4. `primaryOrPrivateEmailAddress`
+5. `primaryEmailAddress`
+6. `firstEmailAddress`
+7. `businessEmailAddress`
+8. `privateEmailAddress`
+9. `emailAddress`
+10. `homeEmailAddress`
+
+![The anyEmailAddress combined field in the variable picker](/images/intercom/157628810-Screenshot-2026-07-06-at-12_22_34.png)
+
+### anyPhoneNumber
+
+Use `anyPhoneNumber` to automatically pick a phone number, checking both personal and business numbers. HireData looks through these fields in this order:
+
+1. `mobileNumber`
+2. `phoneNumber`
+3. `mobileNumberBusiness`
+4. `phoneNumberBusiness`
+5. `faxNumber`
+6. `faxNumberBusiness`
+
+![The anyPhoneNumber combined field in the variable picker](/images/intercom/157628894-Screenshot-2026-07-06-at-12_21_52.png)
+
+### mobileOrPhoneNumber
+
+This variable focuses on personal contact numbers. It checks for a mobile number first, then falls back to a personal phone number, then a fax number:
+
+1. `mobileNumber`
+2. `phoneNumber`
+3. `faxNumber`
+
+![The mobileOrPhoneNumber combined field in the variable picker](/images/intercom/157628955-Screenshot-2026-07-06-at-12_24_11.png)
+
+### phoneOrMobileNumber
+
+This works the same way as `mobileOrPhoneNumber`, but checks the phone number first:
+
+1. `phoneNumber`
+2. `mobileNumber`
+3. `faxNumber`
+
+![The phoneOrMobileNumber combined field in the variable picker](/images/intercom/157629051-Screenshot-2026-07-06-at-12_24_43.png)
+
+### mobileOrPhoneNumberBusiness
+
+This variable only looks at business contact numbers. It checks the business mobile number first, then the business phone number, then the business fax number:
+
+1. `mobileNumberBusiness`
+2. `phoneNumberBusiness`
+3. `faxNumberBusiness`
+
+![The mobileOrPhoneNumberBusiness combined field in the variable picker](/images/intercom/157629105-Screenshot-2026-07-06-at-12_24_27.png)
+
+### phoneOrMobileNumberBusiness
+
+Same as above, but checks the business phone number first:
+
+1. `phoneNumberBusiness`
+2. `mobileNumberBusiness`
+3. `faxNumberBusiness`
+
+![The phoneOrMobileNumberBusiness combined field in the variable picker](/images/intercom/157629145-Screenshot-2026-07-06-at-12_25_00.png)
+
+## Match
+
+### modifiedOrCreatedBy
+
+Use `modifiedOrCreatedBy` to find out who's responsible for a match. HireData first checks who last modified the match record. If that's empty, it uses who created it instead:
+
+1. `modifiedBy`
+2. `createdBy`
+
+![The modifiedOrCreatedBy combined field in the variable picker](/images/intercom/157629854-Screenshot-2026-07-06-at-12_28_26.png)
+
+<Tip>
+  - Where possible, choose the "any" version of a variable, such as `anyEmailAddress` or `anyPhoneNumber`, instead of a single specific field. This way, your automation will keep looking for a value if the first fields in Carerix are empty.
+  - The order in which values are picked is fixed and built into HireData, so there's nothing you need to configure yourself.
+  - If none of the fields behind a combined field has a value, the field will appear empty. We recommend checking that the Carerix fields you rely on most are kept up to date.
+</Tip>
