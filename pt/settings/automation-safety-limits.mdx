@@ -1,0 +1,130 @@
+---
+title: "Limites de segurança de automação"
+sidebarTitle: "Limites de segurança"
+description: "Defina limites de segurança específicos para evitar enviar demasiadas mensagens aos seus contactos"
+---
+
+_Os limites de segurança na HireData garantem que as suas automações não sobrecarregam os seus contactos, prevenindo o envio excessivo de mensagens. Esta funcionalidade ajuda a manter um processo de comunicação equilibrado e profissional, minimizando erros. Continue a ler o nosso guia para uma explicação abrangente dos diferentes limites de segurança e aprenda a usá-los._
+
+## Explicação dos limites de segurança
+
+### Prevenir sobrecarga de mensagens
+
+#### 1.1. Limites de envio de email
+
+- **Definição**: Limita o número de emails que podem ser enviados para um único endereço de email.
+- **Objetivo**: Evita sobrecarregar a caixa de entrada de um contacto e impede que os emails sejam sinalizados como spam.
+- **Totalmente personalizável**
+
+![Email limits](/images/intercom/83073666-Screenshot-2025-12-08-at-15_26_21.png)
+
+#### 1.2. Limites de envio de conversas
+
+- **Definição**: Limita o número de conversas iniciadas por número de telefone.
+- **Objetivo**: Controlar a frequência de contacto para evitar mensagens excessivas e potencial fadiga do contacto.
+- **Totalmente personalizável**
+
+![](/images/intercom/83073739-Screenshot-2025-12-08-at-15_26_39.png)
+
+### Limites de mensagens de automação
+
+#### 2.1. Limite de envio de email
+
+- **Definição**: Limita o número de emails que pode enviar para o mesmo email com a mesma automação.
+- **Objetivo**: Evitar sobrecarregar o destinatário com o mesmo email num curto período de tempo.
+- **Totalmente personalizável**
+
+![](/images/intercom/83073975-Screenshot-2025-12-08-at-15_28_00.png)
+
+#### 2.2. Limite de envio de conversa
+
+- **Definição**: Limita o número de conversas que pode enviar para o mesmo número de telefone com a mesma automação.
+- **Objetivo**: Evitar sobrecarregar o destinatário com as mesmas mensagens num curto período de tempo.
+- **Totalmente personalizável**
+
+![](/images/intercom/83074042-Screenshot-2025-12-08-at-15_28_17.png)
+
+### Fechar conversas sem resposta
+
+#### 3.1. Ignored (sem resposta)
+
+- **Definição**: Cancela automaticamente uma conversa se não houver resposta dentro do período de tempo definido
+- **Objetivo**: Evita que conversas inativas fiquem abertas quando os destinatários não respondem.
+- **Totalmente personalizável**
+
+![Ignored close unresponsive conversation](/images/intercom/72969125-image.png)
+
+#### 3.2. Ghosted (deixou de responder)
+
+- **Definição**: Cancela uma conversa se não houver resposta após um seguimento dentro do período de tempo definido.
+- **Objetivo**: Evita que conversas paradas se mantenham abertas quando os destinatários deixam de responder a meio de uma conversa.
+- **Totalmente personalizável**
+
+![Ghosted converesations](/images/intercom/72969805-image.png)
+
+### Evitar reinícios acidentais
+
+#### 4.1. Período de cooling-off
+
+- **Definição**: Adiciona um período de buffer após o fim de uma conversa antes de uma nova poder começar.
+- **Objetivo**: Evita reinícios automáticos quando um contacto envia uma nova mensagem demasiado cedo após o encerramento de uma conversa.
+- **Totalmente personalizável**
+
+![Cooling-off period setting](/images/intercom/72970342-image.png)
+
+## Como ajustar os seus limites de segurança
+
+<Steps>
+  <Step title="Navegar até à secção Safety Limits na HireData">
+    ![The Safety Limits section](/images/intercom/75459538-2025-11-19_19h08_53.png)
+  </Step>
+  <Step title="Ajustar os limites de acordo com a sua estratégia de contacto">
+    Introduza o número máximo permitido de mensagens ou timeouts e utilize o menu suspenso para definir a frequência (por exemplo, por dia/semana/mês/trimestre/semestre/ano) de cada definição.
+
+    ![Adjusting the limits](/images/intercom/83075257-Screenshot-2B2025-01-21-2Bat-2B16_45_57.png)
+  </Step>
+  <Step title="Guardar as suas alterações">
+    Clique no botão **Save Changes** para aplicar as suas alterações imediatamente.
+
+    ![Saving changes in Safety Limits](/images/intercom/75456533-2025-11-05_23h18_42.png)
+  </Step>
+</Steps>
+
+## Ajustar limites de segurança para uma automação individual
+
+Cada automação na HireData pode ter o seu próprio conjunto de Safety Limits. Estes limites definem quantas mensagens um único destinatário pode receber desta automação específica dentro de um determinado período de tempo.
+
+Dentro do painel de definições de cada automação, encontrará dois tipos de limites:
+
+- **Email Limit** – Este limite determina quantos emails a automação está autorizada a enviar para o mesmo endereço de email dentro do período de tempo selecionado.
+- **Conversation Limit** – Este limite aplica-se a automações que iniciam conversas via WhatsApp. Define quantas novas tentativas de conversa podem ser iniciadas para o mesmo destinatário dentro de um dado período de tempo.
+
+### Como configurar os limites de segurança para automações individuais
+
+<Steps>
+  <Step title="Navegue até à automação para a qual pretende definir um Safety Limit">
+    ![Navigating to and selecting an automation](/images/intercom/75469444-2025-11-19_19h38_31.png)
+  </Step>
+  <Step title="Clique nos três pontos verticais no canto superior direito do ecrã e depois escolha Settings">
+    ![Navigating to Settings in the automation](/images/intercom/75463663-2025-11-19_19h34_44.png)
+  </Step>
+  <Step title="Defina o Safety Limit que melhor se adequa à sua automação e clique em Save">
+    ![Setting the automation's safety limits](/images/intercom/75464294-image.png)
+  </Step>
+</Steps>
+
+### E se quiser sem limites?
+
+No fundo do painel Safety Limits, encontrará uma opção chamada **Ignore Safety Limits**. Quando ativada, a automação **contorna todos os limites de segurança**, tanto os limites específicos da automação configurados acima como os limites de segurança ao nível da conta.
+
+![Ignore Safety Limits option](/images/intercom/146972102-Screenshot-2026-05-29-at-10_53_07.png)
+
+<Warning>
+  Esta opção só deverá ser utilizada quando estiver totalmente confiante de que:
+
+  - A automação não pode ser acionada em excesso
+  - Os destinatários esperam múltiplas mensagens
+  - O seu caso de uso genuinamente requer envio sem restrições
+
+  Para a maioria das automações, recomendamos vivamente manter os limites de segurança ativos.
+</Warning>

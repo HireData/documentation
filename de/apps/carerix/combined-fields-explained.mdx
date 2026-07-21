@@ -1,0 +1,98 @@
+---
+title: "Kombinierte Felder erklärt: So wählt HireData einen Wert"
+sidebarTitle: "Kombinierte Felder"
+description: "Erfahren Sie, wie die kombinierten Felder von HireData automatisch den ersten ausgefüllten Wert aus Carerix auswählen und in welcher Reihenfolge jedes Feld geprüft wird"
+---
+
+_Kombinierte Felder wie `anyEmailAddress` und `anyPhoneNumber` stellen sicher, dass Ihre Automatisierungen immer die richtigen Informationen finden, selbst wenn einige Felder in Carerix leer sind. Lesen Sie weiter, um zu erfahren, wie diese Felder funktionieren und in welcher Reihenfolge HireData einen Wert auswählt._
+
+## Candidate, User und Contact
+
+`CarerixCandidate`-, `CarerixUser`- und `CarerixContact`-Datensätze verwenden alle exakt denselben Satz kombinierter Felder. Egal, ob Sie mit dem Profil eines Kandidaten, eines Benutzers oder eines Kontakts arbeiten – diese Felder verhalten sich gleich.
+
+### anyEmailAddress
+
+Verwenden Sie `anyEmailAddress`, wenn HireData immer eine E-Mail-Adresse finden soll, egal welches konkrete Feld in Carerix ausgefüllt ist. Sind mehrere E-Mail-Felder befüllt, prüft HireData sie in dieser Reihenfolge und verwendet die erste gefundene:
+
+1. `businessOrPrivateEmailAddress`
+2. `privateOrBusinessEmailAddress`
+3. `primaryOrBusinessEmailAddress`
+4. `primaryOrPrivateEmailAddress`
+5. `primaryEmailAddress`
+6. `firstEmailAddress`
+7. `businessEmailAddress`
+8. `privateEmailAddress`
+9. `emailAddress`
+10. `homeEmailAddress`
+
+![The anyEmailAddress combined field in the variable picker](/images/intercom/157628810-Screenshot-2026-07-06-at-12_22_34.png)
+
+### anyPhoneNumber
+
+Verwenden Sie `anyPhoneNumber`, um automatisch eine Telefonnummer auszuwählen, wobei sowohl private als auch geschäftliche Nummern geprüft werden. HireData durchsucht diese Felder in dieser Reihenfolge:
+
+1. `mobileNumber`
+2. `phoneNumber`
+3. `mobileNumberBusiness`
+4. `phoneNumberBusiness`
+5. `faxNumber`
+6. `faxNumberBusiness`
+
+![The anyPhoneNumber combined field in the variable picker](/images/intercom/157628894-Screenshot-2026-07-06-at-12_21_52.png)
+
+### mobileOrPhoneNumber
+
+Diese Variable konzentriert sich auf persönliche Kontaktnummern. Sie prüft zuerst eine Mobilnummer, dann greift sie auf eine private Festnetznummer zurück und danach auf eine Faxnummer:
+
+1. `mobileNumber`
+2. `phoneNumber`
+3. `faxNumber`
+
+![The mobileOrPhoneNumber combined field in the variable picker](/images/intercom/157628955-Screenshot-2026-07-06-at-12_24_11.png)
+
+### phoneOrMobileNumber
+
+Dies funktioniert genauso wie `mobileOrPhoneNumber`, prüft jedoch zuerst die Festnetznummer:
+
+1. `phoneNumber`
+2. `mobileNumber`
+3. `faxNumber`
+
+![The phoneOrMobileNumber combined field in the variable picker](/images/intercom/157629051-Screenshot-2026-07-06-at-12_24_43.png)
+
+### mobileOrPhoneNumberBusiness
+
+Diese Variable betrachtet ausschließlich geschäftliche Kontaktnummern. Sie prüft zuerst die geschäftliche Mobilnummer, dann die geschäftliche Festnetznummer und dann die geschäftliche Faxnummer:
+
+1. `mobileNumberBusiness`
+2. `phoneNumberBusiness`
+3. `faxNumberBusiness`
+
+![The mobileOrPhoneNumberBusiness combined field in the variable picker](/images/intercom/157629105-Screenshot-2026-07-06-at-12_24_27.png)
+
+### phoneOrMobileNumberBusiness
+
+Wie oben, prüft aber zuerst die geschäftliche Festnetznummer:
+
+1. `phoneNumberBusiness`
+2. `mobileNumberBusiness`
+3. `faxNumberBusiness`
+
+![The phoneOrMobileNumberBusiness combined field in the variable picker](/images/intercom/157629145-Screenshot-2026-07-06-at-12_25_00.png)
+
+## Match
+
+### modifiedOrCreatedBy
+
+Verwenden Sie `modifiedOrCreatedBy`, um herauszufinden, wer für einen Match verantwortlich ist. HireData prüft zuerst, wer den Match-Datensatz zuletzt geändert hat. Ist dies leer, wird stattdessen die Person verwendet, die ihn erstellt hat:
+
+1. `modifiedBy`
+2. `createdBy`
+
+![The modifiedOrCreatedBy combined field in the variable picker](/images/intercom/157629854-Screenshot-2026-07-06-at-12_28_26.png)
+
+<Tip>
+  - Wählen Sie nach Möglichkeit die „any"-Variante einer Variable, etwa `anyEmailAddress` oder `anyPhoneNumber`, statt eines einzelnen konkreten Felds. So sucht Ihre Automatisierung weiter nach einem Wert, wenn die ersten Felder in Carerix leer sind.
+  - Die Reihenfolge, in der Werte ausgewählt werden, ist fest in HireData integriert und muss von Ihnen nicht konfiguriert werden.
+  - Wenn keines der Felder hinter einem kombinierten Feld einen Wert hat, erscheint das Feld leer. Wir empfehlen, dass die Carerix-Felder, auf die Sie sich am meisten verlassen, aktuell gehalten werden.
+</Tip>

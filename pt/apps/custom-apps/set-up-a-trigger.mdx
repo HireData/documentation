@@ -1,0 +1,143 @@
+---
+title: "Configurar um trigger"
+sidebarTitle: "Configurar um trigger"
+description: "Crie um trigger, descreva os dados que recebe, teste-o e transforme-o em automações."
+---
+
+Um trigger é um endereço web para o qual a sua outra ferramenta envia dados. Este artigo percorre a página do trigger de cima a baixo: criar o trigger, descrever os seus campos, testá-lo e ligar automações.
+
+Se ainda não criou uma app personalizada, comece pela [introdução](/pt/apps/custom-apps/introduction).
+
+## Criar um trigger
+
+Na página de edição da sua app, clique em **Create Trigger**. Dê-lhe um nome com base nos dados que irá receber, por exemplo "New application" ou "Candidate updated".
+
+O trigger abre no seu editor. No topo encontrará:
+
+- O **nome** do trigger e a sua **barra de endereço** com o método do pedido
+- **Try It** para enviar um pedido de teste
+- **Automate This** para criar uma automação a partir do trigger
+- O botão **Activate** ou **Pause**
+
+{/* screenshot: trigger editor header with the URL bar */}
+
+## Escolher o método e partilhar o endereço
+
+Clique em **Copy address** e cole o endereço na ferramenta que irá enviar os dados.
+
+O método do pedido indica à HireData que tipo de pedido deve esperar:
+
+| Método | Como os dados são lidos |
+| ------ | ---------------- |
+| `POST` (por defeito) | A partir do corpo do pedido, como JSON ou form data |
+| `GET` | A partir dos query parameters do endereço |
+
+Os pedidos com um método diferente do configurado são rejeitados.
+
+## Descrever os campos que irá receber
+
+A lista **Fields we receive** indica à HireData o que está dentro dos dados, para que possa utilizá-los em automações e como [variáveis](/pt/variables/introduction). Cada campo tem:
+
+- **Label**: um nome legível, como "Contact: First Name"
+- **Key**: o identificador nos dados, com pontos para valores aninhados, como `contact.firstName`
+- **Type**: que tipo de valor esperar, como texto, número ou data
+
+Há três formas de construir a lista:
+
+<Tabs>
+  <Tab title="Colar uma amostra">
+    Enquanto o trigger ainda não tem campos, clique em **Upload Sample Object** e cole ou carregue um exemplo JSON dos dados que irá enviar. A HireData cria os campos por si e deteta emails, números de telefone, datas e URLs automaticamente.
+  </Tab>
+  <Tab title="Enviar um pedido">
+    Enquanto o trigger ainda não tem campos, qualquer pedido enviado para o seu endereço é armazenado como amostra e mapeado automaticamente para campos. Isto também funciona enquanto o trigger está em pausa, pelo que é uma forma segura de mapear dados reais da outra ferramenta.
+  </Tab>
+  <Tab title="Adicionar campos manualmente">
+    Clique em **New Field** para adicionar campos um a um com o mesmo editor de campos utilizado em toda a HireData. Isto inclui campos de IA, que geram um valor com IA sempre que chegam dados.
+  </Tab>
+</Tabs>
+
+<Note>
+  Uma vez que um trigger tem campos, os novos pedidos deixam de os alterar. Edite a lista
+  manualmente ou limpe-a antes de carregar uma nova amostra.
+</Note>
+
+{/* screenshot: fields list with a few example fields */}
+
+## Testar com o Try It
+
+Clique em **Try It** no cabeçalho do trigger para enviar um pedido sem sair da HireData:
+
+1. O formulário é pré-preenchido com valores de exemplo com base nos seus campos. Ajuste o que quiser.
+2. Clique em **Send**.
+3. Verifique o pedido à esquerda e a resposta à direita.
+
+O interruptor **Mode** acima do formulário escolhe como o pedido é tratado:
+
+- **Test** (por defeito): cria um evento de teste e corre as suas automações num sandbox seguro. Pode seguir cada passo e o seu resultado, mas nada é criado, alterado ou enviado.
+- **Live**: envia um pedido real, exatamente como a sua outra ferramenta faria.
+
+Os eventos de teste e as suas execuções mostram uma etiqueta Test no separador **Events**.
+
+{/* screenshot: Try It modal with form and request panes */}
+
+## Entregar ao seu developer
+
+Se outra pessoa gere a ferramenta que irá enviar os dados, os **Request Examples** no fundo do trigger dão-lhe tudo o que precisa. Pode copiar:
+
+- **cURL**: um exemplo de pedido pronto a correr na linha de comandos
+- **JSON**: um exemplo dos dados que o trigger espera
+- **OpenAPI**: um schema que importa para ferramentas como o Postman
+- **Copy for LLMs**: um único documento que descreve o trigger, feito para colar num assistente de IA que esteja a construir a integração por si
+
+<Tip>
+  Selecionar campos primeiro limita as cópias apenas a esses campos.
+</Tip>
+
+### Enviar pedidos de teste
+
+Qualquer pedido pode ser marcado como teste adicionando um header:
+
+```
+X-HireData-Test: true
+```
+
+Os pedidos de teste comportam-se exatamente como o modo Test do Try It: as automações correm num sandbox seguro que não cria, altera nem envia nada, e o evento mostra uma etiqueta Test no separador **Events**. Útil enquanto a integração da outra ferramenta ainda está a ser construída.
+
+## Sincronizar pessoas
+
+Se os dados recebidos descreverem uma pessoa, como um candidato ou um contacto, a secção **People** mapeia-os para registos de pessoas na HireData:
+
+1. Clique em **Add Person** e mapeie os campos.
+2. Cada pedido ao trigger sincroniza agora essa pessoa automaticamente.
+3. As automações que utilizam o trigger podem usar a pessoa diretamente, por exemplo como destinatário de um email, sem mapear os campos novamente.
+
+Remova todas as pessoas para parar a sincronização.
+
+## Transformar em automações
+
+Clique em **Automate This** no cabeçalho do trigger para criar um rascunho de automação que começa sempre que o trigger receber dados. Pode configurar os seus passos logo a seguir.
+
+Os separadores do trigger mostram tudo o que ele faz num só lugar:
+
+- **Automations**: as automações ligadas a este trigger, com opções em massa para ativar, pausar, duplicar e apagar
+- **Events**: cada pedido que o trigger recebeu
+- **Runs**: as execuções de automação que esses eventos iniciaram
+- **Tasks**: as tarefas individuais que essas execuções realizaram
+
+## Como os pedidos são tratados
+
+Uma referência rápida para quando algo não se comporta como esperado:
+
+1. O método do pedido tem de corresponder ao método configurado no trigger, caso contrário é rejeitado.
+2. Cada pedido válido é armazenado como evento, mesmo enquanto a app ou o trigger estão em pausa. Vê-lo-á sempre no separador **Events**.
+3. As automações só correm quando tanto a app como o trigger estão ativos. Se nada acontecer, verifique primeiro esses dois interruptores e depois o próprio estado da automação e os filtros iniciais.
+4. Os pedidos com o header `X-HireData-Test: true` são armazenados como eventos de teste e correm as automações num sandbox, sem alterações reais.
+5. Enquanto um trigger não tem campos, o seu primeiro pedido é utilizado para os criar automaticamente.
+
+### Ainda precisa de ajuda?
+
+Se um trigger não estiver a comportar-se como esperado, contacte a nossa equipa em [support@hiredata.com](mailto:support@hiredata.com) e inclua:
+
+- Uma ligação para o trigger
+- O evento, do separador **Events**
+- A automação que esperava que corresse

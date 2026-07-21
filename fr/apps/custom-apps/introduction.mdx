@@ -1,0 +1,70 @@
+---
+title: "Apps personnalisées"
+sidebarTitle: "Introduction"
+description: "Connectez n'importe quel outil à HireData et automatisez les données qu'il envoie."
+---
+
+Une app personnalisée connecte HireData à un outil qui ne dispose d'aucune intégration native, comme votre propre portail, un job board de niche ou un système interne. Si l'outil peut envoyer une requête web, une app personnalisée peut la recevoir et démarrer vos automatisations.
+
+## Qu'est-ce qu'une app personnalisée ?
+
+Une app personnalisée est une app que vous créez et contrôlez vous-même. Elle se compose de :
+
+- **Un nom, une icône et un logo** pour que votre équipe la reconnaisse dans HireData
+- **Des déclencheurs** : des adresses web auxquelles vos autres outils envoient des données
+- **Un état actif** qui contrôle si les données entrantes exécutent les automatisations
+
+Lorsqu'un déclencheur actif reçoit des données, HireData les stocke en tant qu'[événement](/fr/settings/logs/events) et démarre toutes les automatisations connectées à ce déclencheur.
+
+## Est-ce la bonne fonctionnalité pour moi ?
+
+Utilisez une app personnalisée lorsque :
+
+- HireData n'a pas d'intégration avec l'outil que vous souhaitez connecter
+- Vous avez construit l'outil vous-même, ou votre équipe contrôle la manière dont il envoie des données
+- L'outil prend en charge les webhooks, ou un développeur peut ajouter une requête web pour vous
+
+Vous n'avez pas besoin d'une app personnalisée lorsque :
+
+- Une [intégration](/fr/apps/introduction) existe déjà pour votre ATS tel que Carerix, Salesforce, OTYS, Recruitee ou Vincere
+- Vous souhaitez seulement envoyer des données depuis HireData ; les apps personnalisées reçoivent des données
+
+<Tip>
+  Vous ne savez pas si votre outil peut envoyer des requêtes web ? Recherchez
+  « webhooks » dans son centre d'aide, ou contactez notre équipe à [support@hiredata.com](mailto:support@hiredata.com).
+</Tip>
+
+## Créer votre app personnalisée
+
+<Steps>
+  <Step title="Créer l'app">
+    Rendez-vous dans [Settings → Apps](https://app.hiredata.com/settings/apps) et cliquez sur **Create New App**. Donnez-lui un nom reconnaissable et vous arriverez sur sa page d'édition.
+  </Step>
+  <Step title="Ajouter une icône et un logo">
+    Cliquez sur l'icône de l'app dans l'en-tête pour ouvrir **App Icon & Logo**. Les deux sont facultatifs. L'icône apparaît à côté de votre app dans HireData, le logo sur sa page.
+  </Step>
+  <Step title="Ajouter un déclencheur">
+    Cliquez sur **Create Trigger** pour ajouter votre premier déclencheur. Le [prochain article](/fr/apps/custom-apps/set-up-a-trigger) couvre cette étape en détail.
+  </Step>
+</Steps>
+
+## Où vous verrez votre app personnalisée
+
+Une fois configurée, votre app personnalisée se comporte comme n'importe quelle autre app dans HireData :
+
+- **Les automatisations** peuvent démarrer à partir de ses déclencheurs et utiliser ses champs
+- **Les événements** affichent chaque requête reçue par vos déclencheurs
+- **Les variables** issues de ses champs fonctionnent dans les e-mails, les messages et les formulaires
+- **Les personnes** peuvent être synchronisées automatiquement à partir des données entrantes
+
+## Activer votre app
+
+Votre app et chacun de ses déclencheurs ont leur propre état actif. Les automatisations ne s'exécutent que lorsque les deux sont actifs.
+
+Cela vous permet de tout préparer et de tout tester en toute sécurité : gardez l'app en pause pendant la construction, puis activez-la lorsque vous êtes prêt.
+
+## Étapes suivantes
+
+<Card title="Configurer un déclencheur" icon="bolt" href="/fr/apps/custom-apps/set-up-a-trigger">
+  Créez un déclencheur, décrivez les données qu'il reçoit, testez-le et transformez-le en automatisations.
+</Card>

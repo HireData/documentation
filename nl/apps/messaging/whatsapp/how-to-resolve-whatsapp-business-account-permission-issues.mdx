@@ -1,0 +1,35 @@
+---
+title: "Hoe je permissieproblemen met WhatsApp Business Account oplost"
+sidebarTitle: "Permissieproblemen oplossen"
+description: "Troubleshooting van WhatsApp Business Account-permissiefouten"
+---
+
+_Bij het versturen van WhatsApp-berichten via HireData kun je de volgende fout tegenkomen: `(#200) You do not have the necessary permissions required to send messages on behalf of this WhatsApp Business Account (OAuthException: 200)`._
+
+_Deze fout betekent dat het WhatsApp Business Account (WABA) dat is gekoppeld aan HireData momenteel geen berichten via de API mag versturen. Dit gebeurt meestal door accountpermissies of conflicten met andere providers, dus in dit artikel delen we enkele mogelijke oorzaken en oplossingen._
+
+## 1. Betaalinstellingen ontbreken of zijn ongeldig
+
+- De WABA moet [geldige betaalgegevens](/nl/apps/messaging/whatsapp/add-a-valid-payment-method-for-whatsapp) hebben geconfigureerd in Meta Business Manager.
+- Ga naar **Meta Business Manager → Business Settings → WhatsApp Accounts → Payment Settings** en verifieer dat er een geldige betaalmethode actief is.
+
+## 2. De WABA is gekoppeld aan een andere provider (bijv. Bird)
+
+- Een WhatsApp Business Account kan slechts aan **één provider** tegelijk worden gekoppeld.
+- Als de WABA nog is gekoppeld aan een andere provider, ontkoppel deze dan voordat je hem aan HireData koppelt.
+
+## 3. De WABA is verbonden met een ander platform
+
+- Sommige platforms beperken directe API-toegang wanneer zij de WABA beheren.
+- Controleer of je WABA nog is verbonden met een ander platform (bijvoorbeeld een CRM of berichttool). Zo ja, ontkoppel het om de API-permissies te herstellen.
+
+## 4. De WABA heeft credit bij een externe provider
+
+- Als de WABA credits heeft aangeschaft via een andere provider, staat Meta geen direct API-gebruik toe.
+- Verwijder of stop de credit-setup bij de externe provider voordat je de WABA direct koppelt.
+
+Fout **_"(#200) OAuthException: You do not have the necessary permissions"_** betekent meestal dat het WhatsApp Business Account verkeerd is geconfigureerd, aan een andere provider is gekoppeld, of geldige betaalgegevens mist. Door betaalinstellingen te verifiëren, te controleren op bestaande providerverbindingen en te zorgen dat de WABA niet vergrendeld is door een ander platform, kun je dit probleem oplossen en berichtfunctionaliteit herstellen.
+
+### Meer hulp nodig?
+
+Als je deze stappen hebt doorlopen en de fout blijft verschijnen, neem dan contact met ons op via **_[support@hiredata.com](mailto:support@hiredata.com)_**, en we helpen je het probleem op te lossen.

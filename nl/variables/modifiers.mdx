@@ -1,0 +1,227 @@
+---
+title: "Modifiers"
+sidebarTitle: "Modifiers"
+description: "Transformeer waarden van variabelen: hoofdlettergebruik wijzigen, datums en getallen formatteren, voorwaarden bouwen, en meer"
+---
+
+Modifiers veranderen hoe een [variabele](/nl/variables/introduction)-waarde verschijnt wanneer je content wordt verzonden. Voeg er een toe met een pipe (`|`) na het veld.
+
+## Hoe modifiers werken
+
+Een modifier gaat na het veld, gescheiden door een pipe:
+
+```
+{{ candidate.first_name | uppercase }} → SOFIA
+```
+
+Voeg meer pipes toe om modifiers in volgorde toe te passen, van links naar rechts:
+
+```
+{{ candidate.first_name | lowercase | capitalise }} → sofia → Sofia
+```
+
+Sommige modifiers nemen extra waarden na een dubbele punt, gescheiden door komma's:
+
+```
+{{ job.title | truncate_chars: 20 }} → Senior Software Engin...
+{{ description | replace: "old", "new" }} → This is my new job
+```
+
+Argumenten kunnen zijn:
+
+- **Tekst** — omhul deze in aanhalingstekens: `"EUR"`, `"there"`
+- **Getallen** — schrijf ze gewoon: `20`, `2`
+- **Een ander veld** — verwijs ernaar met de key: `highlight: candidate.first_name`
+
+<Tip>
+  Veel modifiers hebben kortere aliassen. `upper` werkt bijvoorbeeld hetzelfde als
+  `uppercase`, en `gt` hetzelfde als `greater_than`. Aliassen worden getoond tussen
+  haakjes in de onderstaande tabellen.
+</Tip>
+
+## Fallback
+
+| Modifier         | Wat het doet                                     | Voorbeeld                                  |
+| ---------------- | ------------------------------------------------ | ------------------------------------------ |
+| `default: value` | Toont `value` wanneer het veld leeg of afwezig is | `{{ name \| default: "there" }}` → `there` |
+
+## Tekst
+
+| Modifier                              | Wat het doet                                   | Voorbeeld                                             |
+| ------------------------------------- | ---------------------------------------------- | ----------------------------------------------------- |
+| `uppercase` (`upper`)                 | Zet tekst in hoofdletters                      | `sofia` → `SOFIA`                                     |
+| `lowercase` (`lower`)                 | Zet tekst in kleine letters                    | `SOFIA` → `sofia`                                     |
+| `capitalise`                          | Begint elk woord met een hoofdletter           | `john doe` → `John Doe`                               |
+| `title_case`                          | Begint alleen het eerste woord met een hoofdletter | `john doe` → `John doe`                           |
+| `camel_case`                          | Formatteert als camelCase                      | `john doe` → `johnDoe`                                |
+| `pascal_case`                         | Formatteert als PascalCase                     | `john doe` → `JohnDoe`                                |
+| `snake_case`                          | Verbindt de woorden met underscores            | `john doe` → `john_doe`                               |
+| `kebab_case`                          | Verbindt de woorden met streepjes              | `john doe` → `john-doe`                               |
+| `dot_case`                            | Verbindt de woorden met punten                 | `john doe` → `john.doe`                               |
+| `slug`                                | Maakt een web-vriendelijke versie voor links   | `John Doe!` → `john-doe`                              |
+| `initials`                            | Neemt de initialen                             | `John Doe` → `JD`                                     |
+| `trim`                                | Verwijdert spaties aan beide uiteinden         | `  hi  ` → `hi`                                       |
+| `trim_start`                          | Verwijdert leidende spaties                    | `  hi` → `hi`                                         |
+| `trim_end`                            | Verwijdert eindspaties                         | `hi  ` → `hi`                                         |
+| `append: text`                        | Voegt tekst toe aan het einde                  | `Doe` + `append: "!"` → `Doe!`                        |
+| `prepend: text`                       | Voegt tekst toe aan het begin                  | `Doe` + `prepend: "Mr "` → `Mr Doe`                   |
+| `concat: a, b, …` (`combine`)         | Verbindt de waarde met een of meer teksten of velden | `first \| concat: " ", last` → `John Doe`       |
+| `replace: find, with`                 | Vervangt alle matches                          | `replace: "o", "0"` op `john` → `j0hn`                |
+| `replace_first: find, with`           | Vervangt de eerste match                       | `j0hn doe`                                            |
+| `replace_last: find, with`            | Vervangt de laatste match                      | `john d0e`                                            |
+| `remove: text`                        | Verwijdert alle matches                        | `remove: " "` op `john doe` → `johndoe`               |
+| `remove_first: text`                  | Verwijdert de eerste match                     |                                                       |
+| `remove_last: text`                   | Verwijdert de laatste match                    |                                                       |
+| `truncate_chars: length`              | Kort in tot een aantal tekens, en voegt `…` toe | `truncate_chars: 5` op `Engineering` → `Engin...`    |
+| `truncate_words: count`               | Kort in tot een aantal woorden, en voegt `…` toe | `truncate_words: 2` op `one two three` → `one two...` |
+| `excerpt: phrase`                     | Toont een snippet rond een matchende zin       |                                                       |
+| `substring: start, length` (`substr`) | Neemt een deel van de tekst op basis van positie | `substring: 0, 5` op `Engineering` → `Engin`        |
+| `word: index`                         | Neemt een enkel woord (startend bij 0)         | `word: 1` op `one two three` → `two`                  |
+| `word_count` (`words`)                | Telt de woorden                                | `one two three` → `3`                                 |
+| `length` (`len`, `size`, `count`)     | Telt de tekens                                 | `Sofia` → `5`                                         |
+| `lines`                               | Splitst tekst in aparte regels                 |                                                       |
+| `wrap: width`                         | Wrapt tekst tot een regelbreedte               |                                                       |
+| `pad_left: length, char`              | Vult het begin aan tot een lengte              | `pad_left: 3, "0"` op `5` → `005`                     |
+| `pad_right: length, char`             | Vult het einde aan tot een lengte              | `pad_right: 3, "x"` op `5` → `5xx`                    |
+| `repeat: times`                       | Herhaalt de tekst                              | `repeat: 3` op `ab` → `ababab`                        |
+| `mask: char, start, length`           | Verbergt een deel van de tekst                 | `mask` op `secret` → `******`                         |
+| `redact`                              | Verbergt gevoelige data en behoudt een hint    | `john@acme.com` → `j***@acme.com`                     |
+| `highlight: term`                     | Markeert matchende woorden in de tekst         | markeert `term` in de tekst                           |
+| `ascii` (`transliterate`)             | Vervangt geaccentueerde letters door gewone    | `José` → `Jose`                                       |
+| `escape_html`                         | Toont HTML-tekens als plain tekst              | `<b>` → `&lt;b&gt;`                                   |
+| `strip_html`                          | Verwijdert eventuele HTML-tags                 | `<b>hi</b>` → `hi`                                    |
+| `markdown_to_html`                    | Zet Markdown om in opgemaakte tekst            | `**hi**` → `<strong>hi</strong>`                      |
+| `sprintf: format` (`format`)          | Formatteert tekst of getallen met een pattern  | `sprintf: "%05.2f"` op `3.1` → `03.10`                |
+
+## Contact en locale
+
+| Modifier               | Wat het doet                                                                          | Voorbeeld                                          |
+| ---------------------- | ------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| `link`                 | Maakt van een waarde een klikbare link (email → `mailto:`, phone → `tel:`, web → anchor) | `a@b.com` → `<a href="mailto:a@b.com">a@b.com</a>` |
+| `format_phone: region` | Formatteert een telefoonnummer internationaal                                         | `06 12345678` → `+31612345678`                     |
+| `country_name`         | Toont de landnaam voor een code                                                       | `NL` → `Netherlands`                               |
+| `language_name`        | Toont de taalnaam voor een code                                                       | `nl` → `Dutch`                                     |
+
+## Getallen
+
+| Modifier                                 | Wat het doet                                  | Voorbeeld                                          |
+| ---------------------------------------- | --------------------------------------------- | -------------------------------------------------- |
+| `round: decimals`                        | Rondt af op een aantal decimalen              | `round: 2` op `3.14159` → `3.14`                   |
+| `ceil`                                   | Rondt naar boven af                           | `3.1` → `4`                                        |
+| `floor`                                  | Rondt naar beneden af                         | `3.9` → `3`                                        |
+| `absolute`                               | Verwijdert het minteken                       | `-7` → `7`                                         |
+| `add: n`                                 | Telt een getal op                             | `add: 10` op `5` → `15`                            |
+| `subtract: n`                            | Trekt een getal af                            | `subtract: 3` op `5` → `2`                         |
+| `multiply_by: n`                         | Vermenigvuldigt                               | `multiply_by: 2` op `5` → `10`                     |
+| `divide_by: n`                           | Deelt                                         | `divide_by: 2` op `5` → `2.5`                      |
+| `modulo: n`                              | De rest na deling                             | `modulo: 2` op `5` → `1`                           |
+| `min: n`                                 | Stelt een laagst toegestane waarde in         | `min: 0` op `-3` → `0`                             |
+| `max: n`                                 | Stelt een hoogst toegestane waarde in         | `max: 100` op `120` → `100`                        |
+| `clamp: min, max`                        | Houdt een waarde binnen een bereik            | `clamp: 0, 10` op `15` → `10`                      |
+| `format_number: decimals`                | Formatteert met duizendtalscheidingstekens    | `1000000` → `1,000,000`                            |
+| `format_currency: currency`              | Formatteert als geld                          | `format_currency: "EUR"` op `65000` → `€65,000.00` |
+| `format_percentage: decimals`            | Formatteert als percentage                    | `75` → `75%`                                       |
+| `ordinal_number`                         | Voegt het rangtelwoord-achtervoegsel toe      | `3` → `3rd`                                        |
+| `abbreviate: decimals`                   | Verkort grote getallen                        | `1200` → `1.2K`                                    |
+| `spell_number`                           | Schrijft het getal uit in woorden             | `42` → `forty-two`                                 |
+| `negate`                                 | Draait het teken om                           | `5` → `-5`                                         |
+| `sign`                                   | Vertelt je of het negatief, nul of positief is | `-7` → `-1`                                       |
+| `pow: exponent` (`power`)                | Verheft tot een macht                         | `pow: 2` op `5` → `25`                             |
+| `sqrt` (`square_root`)                   | De vierkantswortel                            | `16` → `4`                                         |
+| `to_fixed_number: decimals` (`to_fixed`) | Toont altijd dit aantal decimalen             | `to_fixed_number: 2` op `3.1` → `3.10`             |
+| `file_size` (`format_bytes`)             | Leesbare bestandsgrootte                      | `1024` → `1 KB`                                    |
+
+## Datums en tijden
+
+Datumformaten gebruiken standaard datum-tokens zoals `d` (dag), `m` (maand), `Y` (jaar), `H` (uur), en `i` (minuut).
+
+| Modifier                             | Wat het doet                                | Voorbeeld                                |
+| ------------------------------------ | ------------------------------------------- | ---------------------------------------- |
+| `format_date: format`                | Formatteert een datum                       | `format_date: "d-m-Y"` → `14-03-2026`    |
+| `format_relative_date`               | Toont de datum relatief aan nu              | `4 months ago`                           |
+| `date_add: interval`                 | Voegt tijd toe aan een datum                | `date_add: "3 days"`                     |
+| `date_subtract: interval`            | Trekt tijd af van een datum                 | `date_subtract: "1 week"`                |
+| `age`                                | Volledige jaren sinds de datum              | geboortedatum → `34`                     |
+| `diff_in_years: to`                  | Jaren tussen twee datums                    |                                          |
+| `diff_in_months: to`                 | Maanden tussen twee datums                  |                                          |
+| `diff_in_weeks: to`                  | Weken tussen twee datums                    |                                          |
+| `diff_in_days: to`                   | Dagen tussen twee datums                    |                                          |
+| `diff_in_hours: to`                  | Uren tussen twee datums                     |                                          |
+| `diff_in_minutes: to`                | Minuten tussen twee datums                  |                                          |
+| `diff_in_seconds: to`                | Seconden tussen twee datums                 |                                          |
+| `start_of: unit`                     | Begin van de dag, week, maand, enz.         | `start_of: "month"` → eerste van de maand |
+| `end_of: unit`                       | Einde van de dag, week, maand, enz.         | `end_of: "month"` → laatste van de maand |
+| `is_past`                            | True als de datum in het verleden ligt      |                                          |
+| `is_future`                          | True als de datum in de toekomst ligt       |                                          |
+| `is_today`                           | True als de datum vandaag is                |                                          |
+| `is_weekend`                         | True als de datum een weekend is            |                                          |
+| `day_name`                           | Naam van de weekdag                         | `Thursday`                               |
+| `month_name`                         | Naam van de maand                           | `January`                                |
+| `quarter`                            | Kwartaal van het jaar (1–4)                 | `1`                                      |
+| `week` (`week_of_year`)              | Weeknummer van het jaar                     | `3`                                      |
+| `add_business_days: n`               | Voegt dagen toe en slaat weekenden over     |                                          |
+| `to_timezone: zone` (`tz`)           | Converteert naar een tijdzone               | `to_timezone: "Europe/Amsterdam"`        |
+| `to_timestamp` (`unix`, `timestamp`) | De datum als numeric timestamp              |                                          |
+| `iso8601` (`iso_date`)               | De datum in standaard ISO-8601-formaat      | `2026-03-14T09:00:00+00:00`              |
+
+De eenheden voor `start_of` en `end_of` zijn `year`, `quarter`, `month`, `week`, `day`, `hour`, `minute`, en `second`.
+
+## Lijsten en gestructureerde data
+
+Deze werken op velden die een lijst met waarden bevatten.
+
+| Modifier                  | Wat het doet                                        | Voorbeeld                     |
+| ------------------------- | --------------------------------------------------- | ----------------------------- |
+| `first`                   | Eerste item                                         |                               |
+| `last`                    | Laatste item                                        |                               |
+| `nth: index` (`at`)       | Item op een positie (startend bij 0)                | `nth: 1` → tweede item        |
+| `join: separator`         | Verbindt items tot tekst                            | `join: ", "` → `php, sql, go` |
+| `split: separator`        | Splitst tekst in een lijst                          | `split: ","`                  |
+| `count` (`length`)        | Aantal items                                        |                               |
+| `sort: direction`         | Sorteert de items (`asc` of `desc`)                 |                               |
+| `sort_by: key, direction` | Sorteert items op een key                           |                               |
+| `unique` (`distinct`)     | Verwijdert duplicaten                               |                               |
+| `reverse`                 | Keert de volgorde om                                |                               |
+| `slice: start, length`    | Neemt een deel van de lijst                         |                               |
+| `sum`                     | Telt de getallen op                                 | `[3, 1, 2]` → `6`             |
+| `avg` (`average`)         | Gemiddelde van de getallen                          | `[3, 1, 2]` → `2`             |
+| `get: key`                | Pikt één waarde eruit op naam                       | `get: "skills"`               |
+| `pluck: key` (`column`)   | Haalt één veld uit elk item in de lijst             | `pluck: "name"`               |
+| `keys`                    | Toont de veldnamen                                  |                               |
+| `values`                  | Toont de waarden                                    |                               |
+| `parse_json`              | Leest JSON-data zodat je er lijst-modifiers op kunt gebruiken |                     |
+| `to_json`                 | Zet de waarde om in JSON-tekst                      |                               |
+
+## Voorwaarden en logica
+
+Voorwaarden retourneren true of false. Combineer ze met `boolean_label` om een gebruiksvriendelijk label te tonen, of combineer ze met `and`, `or` en `not`.
+
+| Modifier                           | Wat het doet                            | Voorbeeld                                              |
+| ---------------------------------- | --------------------------------------- | ------------------------------------------------------ |
+| `equals: value` (`eq`)             | True als gelijk                         | `{{ stage \| equals: "offer" }}`                       |
+| `not_equals: value` (`ne`, `neq`)  | True als niet gelijk                    |                                                        |
+| `greater_than: n` (`gt`)           | True als groter dan                     |                                                        |
+| `less_than: n` (`lt`)              | True als kleiner dan                    |                                                        |
+| `greater_than_or_equal: n` (`gte`) | True als groter dan of gelijk aan       |                                                        |
+| `less_than_or_equal: n` (`lte`)    | True als kleiner dan of gelijk aan      |                                                        |
+| `between: min, max`                | True als binnen het bereik              | `between: 0, 10`                                       |
+| `is_empty` (`empty`)               | True als het veld leeg is               |                                                        |
+| `is_not_empty` (`not_empty`)       | True als het veld een waarde heeft      |                                                        |
+| `contains: text`                   | True als het de tekst bevat             |                                                        |
+| `does_not_contain: text`           | True als het de tekst niet bevat        |                                                        |
+| `starts_with: text`                | True als het begint met de tekst        |                                                        |
+| `ends_with: text`                  | True als het eindigt met de tekst       |                                                        |
+| `does_not_start_with: text`        | True als het niet begint met de tekst   |                                                        |
+| `does_not_end_with: text`          | True als het niet eindigt met de tekst  |                                                        |
+| `one_of: a, b, …` (`in`)           | True als het overeenkomt met een waarde | `one_of: "offer", "hired"`                             |
+| `not_one_of: a, b, …` (`not_in`)   | True als het met geen enkele overeenkomt |                                                       |
+| `and: (condition)`                 | True als beide kanten waar zijn         | `gt: 80 \| and: (stage \| equals: "offer")`            |
+| `or: (condition)`                  | True als een van beide kanten waar is   |                                                        |
+| `not`                              | Draait true en false om                 | `equals: "hired" \| not`                               |
+| `boolean_label: yes, no`           | Toont een label voor true/false         | `gt: 80 \| boolean_label: "Strong", "Weak"` → `Strong` |
+
+Een voorwaarde gecombineerd met een label is een veelvoorkomend pattern:
+
+```
+{{ score | greater_than: 80 | boolean_label: "Strong candidate", "Needs review" }}
+```

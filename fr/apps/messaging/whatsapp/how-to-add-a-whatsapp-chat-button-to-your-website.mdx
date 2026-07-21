@@ -1,0 +1,60 @@
+---
+title: "Comment ajouter un bouton de chat WhatsApp à votre site web"
+sidebarTitle: "Bouton de chat sur le site"
+description: "Ajoutez un bouton de chat WhatsApp à votre site web pour faciliter la communication"
+---
+
+_Vous pouvez facilement permettre à vos visiteurs de contacter votre équipe via WhatsApp en intégrant un bouton **Click to Chat** sur votre site web. Cette méthode fonctionne sur tous les appareils et ne nécessite aucune intégration spéciale._
+
+## Étape 1 : Obtenir votre numéro WhatsApp Business
+
+Assurez-vous d'avoir un numéro WhatsApp Business [connecté à votre marque dans HireData](/fr/apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up). C'est le numéro que les visiteurs de votre site web vont contacter.
+
+**Format d'exemple :**
+
+31612345678
+
+_(Pas de +, pas d'espaces, pas de tirets)_
+
+## Étape 2 : Générer votre lien WhatsApp
+
+Utilisez ce format :
+
+```
+<https://wa.me/><number>?text=<url-encoded-message>
+```
+
+Remplacez :
+
+- &lt;number&gt; par votre numéro de téléphone complet (format international)
+- &lt;url-encoded-message&gt; par un message pré-rempli
+
+Exemple :
+
+```
+<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies>!
+```
+
+💡 Astuce : vous pouvez créer différents messages pour différentes pages (par ex. pages de détails d'emploi, services, ou FAQ).
+
+## Étape 3 : Ajouter le bouton à votre site web
+
+Vous pouvez intégrer le lien sous forme de lien texte, de bouton image ou de bouton stylisé. Voici un exemple simple utilisant du texte :
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> Chat with us on WhatsApp </a>
+```
+
+Ou utilisez une image :
+
+```
+<a href="<https://wa.me/31612345678?text=Hi%20there%2C%20I'm%20interested%20in%20your%20vacancies!"> target="_blank"> <img src="<https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg>" alt="WhatsApp" width="40"> </a>
+```
+
+Vous pouvez également le styliser comme un bouton flottant en utilisant du CSS personnalisé si vous avez accès au thème de votre site.
+
+## 💡 Astuces de personnalisation
+
+- Ajoutez des liens différents par page avec des messages adaptés (par ex. « I'm interested in Job ID 5421 »)
+- Suivez le trafic en ajoutant des paramètres UTM (par ex. ?utm_source=website)
+- Positionnez le bouton pour la visibilité (par ex. coin inférieur droit, position fixe)

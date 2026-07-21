@@ -1,0 +1,35 @@
+---
+title: "Como resolver problemas de permissões da WhatsApp Business Account"
+sidebarTitle: "Resolver problemas de permissões"
+description: "Resolução de problemas do erro de permissões da WhatsApp Business Account"
+---
+
+_Ao enviar mensagens de WhatsApp através da HireData, poderá encontrar o seguinte erro: `(#200) You do not have the necessary permissions required to send messages on behalf of this WhatsApp Business Account (OAuthException: 200)`._
+
+_Este erro significa que a WhatsApp Business Account (WABA) ligada à HireData não permite atualmente o envio de mensagens via API. Isto normalmente acontece devido a permissões de conta ou conflitos com outros fornecedores, pelo que neste artigo iremos partilhar algumas causas e soluções possíveis._
+
+## 1. Definições de pagamento em falta ou inválidas
+
+- A WABA tem de ter [dados de pagamento válidos](/pt/apps/messaging/whatsapp/add-a-valid-payment-method-for-whatsapp) configurados no Meta Business Manager.
+- Vá a **Meta Business Manager → Business Settings → WhatsApp Accounts → Payment Settings** e verifique se um método de pagamento válido está ativo.
+
+## 2. A WABA está ligada a outro fornecedor (por exemplo, Bird)
+
+- Uma WhatsApp Business Account só pode estar ligada a **um fornecedor** de cada vez.
+- Se a WABA ainda estiver ligada a outro fornecedor, desligue-a antes de a ligar à HireData.
+
+## 3. A WABA está associada a outra plataforma
+
+- Algumas plataformas restringem o acesso direto por API quando controlam a WABA.
+- Verifique se a sua WABA ainda está associada a outra plataforma (por exemplo, um CRM ou uma ferramenta de mensagens). Se estiver, dissocie-a para restaurar as permissões da API.
+
+## 4. A WABA tem crédito com um fornecedor terceiro
+
+- Se a WABA adquiriu créditos através de outro fornecedor, a Meta não permite a utilização direta da API.
+- Remova ou pare a configuração de crédito com o fornecedor terceiro antes de ligar a WABA diretamente.
+
+O erro **_"(#200) OAuthException: You do not have the necessary permissions"_** normalmente significa que a WhatsApp Business Account está mal configurada, associada a outro fornecedor ou sem dados de pagamento válidos. Ao verificar as definições de pagamento, verificar ligações a fornecedores existentes e assegurar que a WABA não está bloqueada por outra plataforma, pode resolver este problema e restaurar a funcionalidade de envio de mensagens.
+
+### Precisa de mais ajuda?
+
+Se seguiu estes passos e o erro persiste, contacte-nos em **_[support@hiredata.com](mailto:support@hiredata.com)_** e ajudaremos a resolver a situação.

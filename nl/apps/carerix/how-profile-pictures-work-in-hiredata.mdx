@@ -1,0 +1,81 @@
+---
+title: "Hoe profielfoto's werken in HireData"
+sidebarTitle: "Profielfoto's"
+description: "Leer hoe HireData avatars van gebruikers bepaalt"
+---
+
+_Profielfoto's in HireData worden automatisch gegenereerd op basis van specifieke bijlagetypes in Carerix. Dit artikel legt uit welke bijlagen worden gebruikt, welke prioriteitsvolgorde wordt toegepast, en wanneer een foto, logo of initialen worden weergegeven._
+
+## Hoe HireData een gebruikersavatar selecteert
+
+Wanneer een profiel wordt gesynchroniseerd vanuit Carerix, controleert HireData of er bijlagen zijn die als avatar kunnen worden gebruikt. Alleen bijlagen met deze specifieke type-waarden komen in aanmerking:
+
+- `pasfoto`
+- `emaillogo`
+
+Het systeem beoordeelt ook het label van de bijlage. Matching is niet-hoofdlettergevoelig, dus elke variatie in hoofdlettergebruik (bijvoorbeeld `PasFoto`, `PASfoto`, `EmailLogo`) wordt ondersteund.
+
+Als er meerdere geldige bijlagen bestaan, evalueert HireData ze in een vaste prioriteitsvolgorde. Binnen die volgorde wordt de meest recent gewijzigde bijlage als eerste beschouwd.
+
+## Prioriteit bij selectie van gebruikersavatar
+
+HireData bepaalt de avatar op basis van de volgende prioriteit:
+
+### 1. Email logo met label "emailpasfoto"
+
+De eerste prioriteit gaat naar een bijlage waarbij:
+
+- Type-waarde is `emaillogo`
+- Label is `emailpasfoto`
+
+Als een dergelijke bijlage bestaat en bruikbare inhoud bevat, wordt deze als avatar gebruikt.
+
+### 2. Profielfoto met label "pasfoto"
+
+Als er in stap 1 geen match wordt gevonden, controleert HireData op:
+
+- Type-waarde `pasfoto`
+- Label `pasfoto`
+
+Indien gevonden en geldig, wordt deze afbeelding gebruikt.
+
+### 3. Elke bijlage met type "pasfoto"
+
+Als er geen exacte labelmatch wordt gevonden, controleert HireData op elke bijlage waarbij:
+
+- Type-waarde is `pasfoto`
+
+Het label hoeft in dit geval niet overeen te komen.
+
+### 4. Elke bijlage met type "emaillogo"
+
+Als er geen profielfoto wordt gevonden, controleert HireData op elke bijlage waarbij:
+
+- Type-waarde is `emaillogo`
+
+Het label hoeft niet overeen te komen.
+
+## Wanneer wordt een foto of logo weergegeven?
+
+Een afbeelding wordt als avatar weergegeven wanneer een **overeenkomende bijlage wordt gevonden** op basis van bovenstaande prioriteit, en er een geldige afbeelding beschikbaar is om als avatar van de gebruiker te gebruiken.
+
+## Wanneer worden initialen weergegeven?
+
+Initialen worden getoond wanneer:
+
+- Er geen bijlage met type `pasfoto` en/of `emaillogo` bestaat
+- Er een overeenkomende bijlage bestaat maar geen bruikbare inhoud bevat
+- Het profiel geen bijlagen heeft
+
+In deze gevallen genereert HireData automatisch initialen op basis van de profielnaam.
+
+## Troubleshooting
+
+Als je een afbeelding verwacht maar alleen initialen ziet, controleer dan het volgende:
+
+- De type-waarde van de bijlage is ingesteld op `pasfoto` of `emaillogo`.
+- Het label is correct geconfigureerd.
+- De bijlage bevat toegankelijke en bruikbare bestandsinhoud.
+- De bijlage is correct gesynchroniseerd.
+
+Als er wijzigingen worden aangebracht in Carerix, bijvoorbeeld het uploaden van een nieuwe foto of het bijwerken van het bijlagetype, wordt de gebruikersavatar bijgewerkt na de volgende succesvolle sync binnen HireData.

@@ -1,0 +1,93 @@
+---
+title: "Registar mensagens de email no Carerix com a HireData"
+sidebarTitle: "Registar emails"
+description: "Melhor visibilidade entre equipas no Carerix com a HireData"
+---
+
+_Bem-vindo ao nosso guia abrangente sobre como registar mensagens de email da HireData no Carerix. Isto garante que toda a comunicação por email é registada no Carerix, facilitando o acompanhamento das interações com clientes e candidatos. Continue a ler para aprender a configurar uma automação na HireData que regista os emails enviados no Carerix._
+
+##
+
+## Passo 1: Criar uma nova automação
+
+Ao integrar a HireData com o Carerix, pode criar automaticamente registos de email no Carerix sempre que um email é enviado. A automação capta detalhes relevantes como o remetente, destinatário, assunto, corpo da mensagem e quando a mensagem foi enviada, garantindo que cada email é devidamente registado.
+
+### 1.1. Navegue até à secção Automations na HireData e clique em [Create New Automation]
+
+### 1.2. Selecione o template "Log email in Carerix"
+
+![Log email in Carerix template](/images/intercom/42396003-Screenshot-2025-03-21-at-17_20_20.png)
+
+## Passo 2: Adicionar um Trigger
+
+### 2.1. Reveja a ligação da app
+
+Será selecionada automaticamente, mas recomendamos que confirme que é a correta, caso tenha várias ligações ao Carerix.
+
+### 2.2. Selecione o objeto
+
+O objeto [Message] também será configurado automaticamente, mas pode ser editado ao clicar no botão [Edit]. Eis as outras opções de objeto que suportamos neste caso:
+
+![Objects](/images/intercom/42401482-Screenshot-2025-03-21-at-17_40_18.png)
+
+### 2.3. Definir um trigger
+
+Defina o trigger como [Message: Sent] para capturar emails assim que forem enviados.
+
+![Trigger set up](/images/intercom/42401972-Screenshot-2025-03-21-at-17_20_57.png)
+
+### 2.4. Adicionar filtros (opcional)
+
+Adicionar um filtro resultará numa melhor segmentação consoante as suas necessidades. Para este exemplo, queremos filtrar todas as mensagens enviadas por outros canais, de forma a que apenas as mensagens enviadas por email sejam adicionadas ao Carerix.
+
+![Setting up a filter](/images/intercom/42413297-Screenshot-2025-03-21-at-17_21_48.png)
+
+## Passo 3: Configurar a tarefa [Add Email to Carerix]
+
+Esta tarefa faz parte do template da automação onde pode preencher os campos necessários para garantir que os dados do email são registados corretamente:
+
+### 3.1. Selecione o objeto que pretende criar no Carerix, por exemplo, email, note, etc.
+
+Pode selecionar qualquer um destes objetos para ser adicionado à sua app:
+
+- **Appointment:** Para agendar reuniões ou entrevistas
+- **Candidate:** Para adicionar um novo candidato ao sistema
+- **Email:** Para registar comunicações por email
+- **Match:** Para associar candidatos a oportunidades de emprego
+- **Note:** Para registar detalhes de conversas ou observações
+- **Task:** Para ações de seguimento ou itens de tarefas
+
+![Object selection](/images/intercom/42416121-Screenshot-2025-03-21-at-17_57_03.png)
+
+### 3.2. Selecione o remetente e o destinatário dos endereços de email a registar no Carerix
+
+![Sender and receiver fields](/images/intercom/42416518-Screenshot-2025-03-21-at-17_58_31.png)
+
+### 3.3. Depois assegure-se de que o conteúdo correto do email é registado
+
+- Assunto
+- Corpo
+
+![Email content fields](/images/intercom/42422610-Screenshot-2025-03-21-at-18_01_36.png)
+
+### 3.4. Defina o estado como uma das seguintes opções, consoante os emails que pretende registar
+
+![Setting up an email status](/images/intercom/42501386-Screenshot-2025-03-21-at-18_02_33.png)
+
+### 3.5. Adicionar uma condição Send On
+
+Por exemplo, utilize [Message: Sent At] para registar o timestamp do email:
+
+![Send On field](/images/intercom/42502640-Screenshot-2025-03-21-at-23_10_29.png)
+
+## Passo 5: Guardar e ativar
+
+Clique em [Save Task] para finalizar a configuração:
+
+![](/images/intercom/42424210-Screenshot-2025-03-21-at-17_23_21.png)
+
+Por fim, clique em** **[Activate] para colocar em produção:
+
+![](/images/intercom/42425773-Screenshot-2025-03-21-at-18_31_27.png)
+
+Uma vez ativada, esta automação garante que cada email enviado é automaticamente registado no Carerix, permitindo aos utilizadores manter um histórico completo de comunicações. Isto melhora o acompanhamento, a transparência e a colaboração entre equipas.

@@ -1,0 +1,113 @@
+---
+title: "Een Recruitee-automatisering maken in HireData"
+sidebarTitle: "Automatisering maken"
+description: "Recruitmentworkflows stroomlijnen binnen Recruitee: een stapsgewijze gids"
+---
+
+_Welkom bij onze tutorial over het opzetten van een Recruitee-automatisering binnen HireData. Met deze integratie kun je taken automatiseren zoals het versturen van Candidate NPS-enquêtes, waardoor je de kandidaatervaring verbetert en je recruitmentprocessen stroomlijnt. Volg mee terwijl we elke stap demonstreren om een automatisering efficiënt op te zetten._
+
+## Stap 1: De automatisering opzetten
+
+Nadat je de [verbinding met Recruitee hebt opgezet](/nl/apps/recruitee/connect-with-recruitee), kun je je eerste automatisering maken. Log in op HireData en navigeer naar de pagina **Automations**, waar je op de knop [New Automation] kunt klikken.
+
+![](/images/intercom/67368294-Screenshot-2025-10-01-at-10_06_02.png)
+
+### 1.1 Kies Blank Automation of een van de beschikbare templates
+
+Als je volledige controle wilt en de vrijheid om elke stap van je workflow precies naar behoefte in te richten, dan is **Blank Automation** de juiste keuze. Hiermee kun je een volledig aangepast proces vanaf nul opbouwen.
+
+Aan de andere kant, als je liever een snelle, kant-en-klare oplossing hebt, selecteer dan een van de templates en de automatisering wordt voor je aangemaakt.
+
+## Stap 2: Definieer de trigger
+
+De tweede stap is het definiëren van de trigger. Een trigger zorgt ervoor dat HireData "luistert" naar specifieke gebeurtenissen binnen Recruitee. Om dit in te stellen, selecteer je eerst de app, dan het object en ten slotte de trigger die de automatisering moet starten. Je kunt in deze fase ook filters toepassen om te bepalen wanneer de automatisering draait, bijvoorbeeld door alleen sollicitaties te targeten die aan bepaalde criteria voldoen.
+
+_Voorbeeldtrigger: Application: Created or Updated_
+
+![](/images/intercom/66856079-image.png)
+
+Selecteer de timing voor wanneer de automatisering moet draaien, bijv. alleen wanneer een item is aangemaakt, bijgewerkt of beide.
+
+## Stap 3: Een filter toevoegen
+
+Zodra je de trigger hebt ingesteld, is het essentieel om filters toe te voegen om ervoor te zorgen dat de automatisering onder specifieke voorwaarden wordt getriggerd.
+
+Filters kunnen direct aan de trigger worden toegevoegd, zodat de automatisering alleen draait wanneer aan specifieke voorwaarden wordt voldaan. Ze kunnen ook worden gemaakt als een apart building block, wat vooral handig is wanneer meerdere filtersets nodig zijn voor complexere workflows. Volg deze stappen:
+
+_Voorbeeldfilter: If Outcome equals Declined_
+
+![](/images/intercom/65649117-image.png)
+
+_Filters zorgen dat de automatisering alleen draait voor kandidaten die je wilt bereiken (bijv. afgewezen kandidaten)._
+
+## Stap 4: Een vertraging toevoegen
+
+In sommige gevallen wil je een vertraging inbouwen voordat de automatisering wordt uitgevoerd. Een vertraging is wanneer de automatisering een bepaalde tijd wacht voordat de volgende actie wordt uitgevoerd. Zo voeg je hem toe:
+
+_Voorbeeldvertraging: 1 dag (bijvoorbeeld om een kandidaat te informeren over het krijgen van de baan voordat je een post-placement enquête verstuurt)_
+
+![](/images/intercom/65649205-Screenshot-2B2024-03-16-2Bat-2B09_37_52.png)
+
+## Stap 5: De 'Send Email'-taak instellen
+
+Laten we nu de taak configureren om de Candidate NPS-enquête te versturen. Volg deze stappen:
+
+### 5.1 Voeg een blok toe via de [+] en klik dan op [Message]
+
+![](/images/intercom/65649314-image.png)
+
+###
+
+### 5.2 In deze stap kun je bepalen welk type bericht je wilt versturen
+
+![](/images/intercom/65649315-Schermafbeelding-2B2025-09-16-2B142526.png)
+
+### 5.3 Selecteer nu de template die je wilt gebruiken
+
+![](/images/intercom/65649319-Screenshot-2B2024-03-16-2Bat-2B09_33_41.png)
+
+### 5.4 Selecteer de branding van je e-mail
+
+![](/images/intercom/66856626-image.png)
+
+### 5.5 Kies de ontvanger van het bericht
+
+![](/images/intercom/65649317-image.png)
+
+### 5.6 Specificeer de afzender van de enquête
+
+![](/images/intercom/65649316-image.png)
+
+### 5.7 Controleer dat alle instellingen kloppen en sla je taak op
+
+![](/images/intercom/65649318-image.png)
+
+###
+
+### 5.8 Controleer de automatisering
+
+Nadat je je eerste automatisering hebt opgezet, raden we aan deze te controleren om te zorgen dat alles correct is ingesteld en dat hij soepel draait.
+
+**Zo werkt de voorbeeld-automatisering in deze gids:**
+
+Wanneer een sollicitatie wordt bijgewerkt naar **Declined**, ontvangt HireData een event van Recruitee. Vervolgens wacht de automatisering één dag terwijl weekenden worden overgeslagen om vertraging te voorkomen (optioneel). Na deze korte pauze ontvangen de kandidaten die aan de criteria voldoen een gepersonaliseerde e-mail waarin ze bij naam worden aangesproken en die een feedbackformulier bevat.
+
+Deze aanpak maakt het afwijsproces attenter en professioneler, terwijl je tegelijkertijd waardevolle feedback van kandidaten kunt verzamelen om de wervingservaring te verbeteren.
+
+![](/images/intercom/66856806-image.png)
+
+## Stap 6: Je automatisering activeren
+
+Nadat je de setup hebt voltooid, is het tijd om je automatisering te activeren. Met deze stap is je Recruitee-automatisering klaar voor gebruik en stroomlijnt hij moeiteloos je recruitmentprocessen.
+
+_Klik op de knop [Activate] om je automatisering aan te zetten_
+
+![](/images/intercom/65649380-Screenshot-2B2024-03-16-2Bat-2B09_34_37.png)
+
+Door een Recruitee-automatisering op te zetten binnen HireData kun je taken automatiseren zoals het versturen van Candidate NPS-enquêtes, waardoor je de kandidaatervaring verbetert en je recruitmentworkflows optimaliseert. Met de stapsgewijze gids in deze tutorial kun je je automatisering efficiënt opzetten en activeren, tijd en middelen besparen en tegelijk je recruitmentinspanningen verbeteren.
+
+---
+
+# Video-uitleg
+
+<iframe src="https://www.loom.com/embed/522b7b06ee2f4f05b1bc51ecf04d9b32" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

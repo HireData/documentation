@@ -1,0 +1,113 @@
+---
+title: "Eine Recruitee-Automatisierung in HireData erstellen"
+sidebarTitle: "Automatisierung erstellen"
+description: "Recruiting-Workflows in Recruitee optimieren: Eine Schritt-für-Schritt-Anleitung"
+---
+
+_Willkommen zu unserem Tutorial zur Einrichtung einer Recruitee-Automatisierung innerhalb von HireData. Mit dieser Integration können Sie Aufgaben wie das Versenden von Candidate-NPS-Umfragen automatisieren und dadurch die Kandidatenerfahrung verbessern und Ihre Recruiting-Prozesse optimieren. Folgen Sie uns, während wir jeden Schritt zur effizienten Einrichtung einer Automatisierung demonstrieren._
+
+## Schritt 1: Die Automatisierung einrichten
+
+Nachdem Sie die [Verbindung mit Recruitee](/de/apps/recruitee/connect-with-recruitee) eingerichtet haben, können Sie Ihre erste Automatisierung erstellen. Melden Sie sich bei HireData an und navigieren Sie zur Seite **Automations**, wo Sie die Schaltfläche [New Automation] finden und darauf klicken können.
+
+![](/images/intercom/67368294-Screenshot-2025-10-01-at-10_06_02.png)
+
+### 1.1 Wählen Sie Blank Automation oder eine der verfügbaren Vorlagen
+
+Wenn Sie vollständige Kontrolle und die Freiheit haben möchten, jeden Schritt Ihres Workflows exakt nach Ihren Vorstellungen zu gestalten, dann ist **Blank Automation** die richtige Wahl. So können Sie einen vollständig individuellen Prozess von Grund auf aufbauen.
+
+Wenn Sie hingegen eine schnelle, fertige Lösung bevorzugen, wählen Sie eine der Vorlagen aus, und die Automatisierung wird für Sie erstellt.
+
+## Schritt 2: Den Trigger definieren
+
+Der zweite Schritt besteht darin, den Trigger zu definieren. Ein Trigger stellt sicher, dass HireData auf bestimmte Ereignisse innerhalb von Recruitee „hört". Wählen Sie dazu zunächst die App, dann das Object und schließlich den Trigger aus, der die Automatisierung starten soll. Sie können in diesem Schritt auch Filter anwenden, um einzugrenzen, wann die Automatisierung läuft, indem Sie zum Beispiel nur Bewerbungen adressieren, die bestimmte Kriterien erfüllen.
+
+_Beispiel-Trigger: Application: Created or Updated_
+
+![](/images/intercom/66856079-image.png)
+
+Wählen Sie das Timing aus, wann die Automatisierung laufen soll, z. B. nur wenn ein Element erstellt, aktualisiert oder beides wird.
+
+## Schritt 3: Filter hinzufügen
+
+Sobald Sie den Trigger eingerichtet haben, ist es wichtig, Filter hinzuzufügen, um sicherzustellen, dass die Automatisierung unter bestimmten Bedingungen ausgelöst wird.
+
+Filter können direkt zum Trigger hinzugefügt werden, sodass die Automatisierung nur läuft, wenn bestimmte Bedingungen erfüllt sind. Sie können auch als separater Baustein erstellt werden, was besonders nützlich ist, wenn mehrere Filtersätze für komplexere Workflows benötigt werden. Führen Sie diese Schritte aus:
+
+_Beispiel-Filter: If Outcome equals Declined_
+
+![](/images/intercom/65649117-image.png)
+
+_Filter stellen sicher, dass die Automatisierung nur für die Kandidaten läuft, die Sie erreichen möchten (z. B. abgelehnte Kandidaten)._
+
+## Schritt 4: Eine Verzögerung hinzufügen
+
+In manchen Fällen möchten Sie vor der Ausführung der Automatisierung eine Verzögerung einbauen. Eine Verzögerung bedeutet, dass die Automatisierung eine bestimmte Zeitspanne wartet, bevor sie die nächste Aktion ausführt. So fügen Sie sie hinzu:
+
+_Beispiel-Verzögerung: 1 Tag (z. B. um einen Kandidaten über den Erhalt des Jobs zu informieren, bevor eine Post-Placement-Umfrage versendet wird)_
+
+![](/images/intercom/65649205-Screenshot-2B2024-03-16-2Bat-2B09_37_52.png)
+
+## Schritt 5: Die Aufgabe 'Send Email' einrichten
+
+Konfigurieren wir nun die Aufgabe zum Versenden der Candidate-NPS-Umfrage. Führen Sie diese Schritte aus:
+
+### 5.1 Fügen Sie über [+] einen Block hinzu und klicken Sie dann auf [Message]
+
+![](/images/intercom/65649314-image.png)
+
+###
+
+### 5.2 In diesem Schritt entscheiden Sie, welchen Nachrichtentyp Sie senden möchten
+
+![](/images/intercom/65649315-Schermafbeelding-2B2025-09-16-2B142526.png)
+
+### 5.3 Wählen Sie nun die Vorlage aus, die Sie verwenden möchten
+
+![](/images/intercom/65649319-Screenshot-2B2024-03-16-2Bat-2B09_33_41.png)
+
+### 5.4 Wählen Sie das Branding Ihrer E-Mail
+
+![](/images/intercom/66856626-image.png)
+
+### 5.5 Wählen Sie den Empfänger der Nachricht
+
+![](/images/intercom/65649317-image.png)
+
+### 5.6 Geben Sie den Absender der Umfrage an
+
+![](/images/intercom/65649316-image.png)
+
+### 5.7 Stellen Sie sicher, dass alle Einstellungen korrekt sind, und speichern Sie Ihre Aufgabe
+
+![](/images/intercom/65649318-image.png)
+
+###
+
+### 5.8 Die Automatisierung überprüfen
+
+Nachdem Sie Ihre erste Automatisierung eingerichtet haben, empfehlen wir eine Überprüfung, um sicherzustellen, dass alles korrekt eingerichtet ist und reibungslos läuft.
+
+**So funktioniert die Beispiel-Automatisierung in dieser Anleitung:**
+
+Wenn eine Bewerbung auf **Declined** aktualisiert wird, erhält HireData ein Event von Recruitee. Dann wartet die Automatisierung einen Tag und überspringt Wochenenden, um Verzögerungen zu vermeiden (optional). Nach dieser kurzen Pause erhalten die Kandidaten, die die Kriterien erfüllen, eine personalisierte E-Mail, die sie mit Namen anspricht und ein Feedback-Formular enthält.
+
+Dieser Ansatz macht den Absageprozess durchdachter und professioneller und gibt Ihnen gleichzeitig die Möglichkeit, wertvolles Feedback von Kandidaten zu sammeln, um das Bewerbungserlebnis zu verbessern.
+
+![](/images/intercom/66856806-image.png)
+
+## Schritt 6: Automatisierung aktivieren
+
+Sobald Sie die Einrichtung abgeschlossen haben, ist es Zeit, Ihre Automatisierung zu aktivieren. Mit diesem Schritt ist Ihre Recruitee-Automatisierung startklar und optimiert Ihre Recruiting-Prozesse mühelos.
+
+_Klicken Sie auf die Schaltfläche [Activate], um Ihre Automatisierung einzuschalten_
+
+![](/images/intercom/65649380-Screenshot-2B2024-03-16-2Bat-2B09_34_37.png)
+
+Durch das Einrichten einer Recruitee-Automatisierung innerhalb von HireData können Sie Aufgaben wie das Versenden von Candidate-NPS-Umfragen automatisieren und dadurch die Kandidatenerfahrung verbessern und Ihre Recruiting-Workflows optimieren. Mit der in diesem Tutorial bereitgestellten Schritt-für-Schritt-Anleitung können Sie Ihre Automatisierung effizient einrichten und aktivieren, Zeit und Ressourcen sparen und gleichzeitig Ihre Recruiting-Bemühungen verbessern.
+
+---
+
+# Video-Anleitung
+
+<iframe src="https://www.loom.com/embed/522b7b06ee2f4f05b1bc51ecf04d9b32" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

@@ -1,0 +1,229 @@
+---
+title: "WhatsApp-Fehlercodes erklärt"
+sidebarTitle: "WhatsApp-Fehlercodes"
+description: "Erfahren Sie, was WhatsApp-Fehler bedeuten und wie Sie sie beheben"
+---
+
+_Wenn eine WhatsApp-Nachricht in HireData nicht gesendet werden kann, sehen Sie möglicherweise einen Fehlercode in der Konversationsübersicht der Aufgabe Send Message oder Survey. Diese Codes stammen direkt von Meta und erklären, warum eine Nachricht nicht zugestellt wurde. Dieser Artikel erklärt, was jeder Code bedeutet, damit Sie wissen, was los ist._
+
+## Authentifizierungs- und Berechtigungsfehler
+
+Diese Fehler treten auf, wenn HireData sich nicht korrekt bei Ihrem WhatsApp Business Account authentifizieren kann.
+
+### (0) Authentication exception
+
+Das für die Verbindung Ihres Kontos verwendete Access Token ist abgelaufen oder wurde widerrufen. Nachrichten können nicht gesendet werden, bis das behoben ist.
+
+### (190) Access token expired
+
+Das mit Ihrer WhatsApp-Verbindung verknüpfte Access Token ist abgelaufen und muss aktualisiert werden.
+
+### (200–299) API permission issue
+
+HireData hat nicht die Berechtigungen, um Nachrichten im Namen Ihres WhatsApp Business Accounts zu senden. Das wird üblicherweise durch eine fehlende Zahlungsmethode, einen Konflikt mit einem anderen Anbieter oder ein abgelaufenes Access Token verursacht.
+
+**_Was zu tun ist:_** _Siehe [WhatsApp-Business-Account-Berechtigungsprobleme lösen](/de/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues)._
+
+### (10) Permission denied
+
+HireData fehlt eine erforderliche Berechtigung oder ist nicht mehr berechtigt, Nachrichten zu senden.
+
+## Konto- und Abrechnungsfehler
+
+Diese Fehler betreffen den Status oder die Abrechnungskonfiguration Ihres WhatsApp Business Accounts.
+
+### (368) Account temporarily blocked
+
+Ihr Konto wurde aufgrund eines Richtlinienverstoßes vorübergehend gesperrt. Messaging pausiert, bis das Problem im Meta Business Manager überprüft und gelöst ist.
+
+**_Was zu tun ist:_** _Melden Sie sich in Ihrem [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjw46HPBhAMEiwASZpLRE3o4iBGHx4q8mAkEhnMTwXG17_Eec92qkYRHL2I6MBiuJ0sf-h4kRoC8fkQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC_ciGa5Zg7Mvjvr9xEpi0OMx) an und prüfen Sie den Hinweis zur Richtlinienumsetzung an Ihrem Konto._
+
+### (131031) Account locked
+
+Ihr WhatsApp Business Account wurde gesperrt, üblicherweise aufgrund eines Richtlinienverstoßes oder einer nicht passenden Zwei-Faktor-Authentifizierung (PIN).
+
+**_Was zu tun ist:_** _Melden Sie sich beim [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjw46HPBhAMEiwASZpLRE3o4iBGHx4q8mAkEhnMTwXG17_Eec92qkYRHL2I6MBiuJ0sf-h4kRoC8fkQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC_ciGa5Zg7Mvjvr9xEpi0OMx) an und überprüfen Sie Ihren Kontostatus._
+
+### (131057) Account in maintenance mode
+
+Ihr WhatsApp Business Account befindet sich vorübergehend im Wartungsmodus, in der Regel weil ein Durchsatz-Upgrade läuft. Das behebt sich automatisch.
+
+### (130497) Country restricted
+
+Messaging ist im Land oder in der Region des Empfängers aufgrund Ihrer aktuellen Kontoeinstellungen nicht erlaubt.
+
+### (131042) Payment eligibility issue
+
+Ihr WhatsApp Business Account hat keine aktive Zahlungsmethode oder Kreditlinie bei Meta eingerichtet. Nachrichten können nicht gesendet werden, bis die Abrechnung aktiv ist.
+
+**_Was zu tun ist:_** _Siehe [Eine gültige Zahlungsmethode für WhatsApp hinzufügen](/de/apps/messaging/whatsapp/add-a-valid-payment-method-for-whatsapp)._
+
+### (133010) Phone number not registered
+
+Die Telefonnummer wurde nicht ordnungsgemäß in die WhatsApp Business API onboardet.
+
+## Rate-Limit-Fehler
+
+Diese Fehler treten auf, wenn in kurzer Zeit zu viele Nachrichten gesendet werden.
+
+### (80007) Business account rate limit
+
+Ihr WhatsApp Business Account hat sein Messaging-Durchsatzlimit erreicht. Es gilt für Ihren gesamten WhatsApp Business Account und begrenzt das Gesamtvolumen der Nachrichten, die Sie über einen Zeitraum senden können.
+
+### (130429) Rate limit hit
+
+Ihr Konto hat die zulässige Anzahl an Nachrichten pro Sekunde überschritten. Es ist eine Einschränkung, die greift, wenn Sie in einem kurzen Zeitfenster zu schnell senden. Sie hebt sich nach kurzer Zeit automatisch auf.
+
+### (131048) Spam rate limit
+
+Ihre Telefonnummer wurde markiert, weil ein hohes Volumen an Nachrichten von Empfängern blockiert oder gemeldet wurde. Das beeinflusst das Quality Rating Ihrer Nummer bei Meta.
+
+**_Was zu tun ist:_** _Prüfen Sie das Quality Rating Ihrer Telefonnummer im [Meta Business Manager](https://www.facebook.com/business/tools/meta-business-suite?content_id=ucfMkKhXkEqVC24&ref=sem_smb&utm_term=meta%20business%20manager&gclid=CjwKCAjwhqfPBhBWEiwAZo196jHORmdR703fP9fJkUx0gzy4Wduft0nyV2RJxkHUxlxbIFDT_deR_hoC_HAQAvD_BwE&gad_source=1&gad_campaignid=21314039965&gbraid=0AAAAACr-yC9y2Odwg7zSG1UwxxT2UpbMa) unter WhatsApp Manager → Phone Numbers._
+
+### (4) Too many API calls
+
+Ihr Konto hat das App-Level-Rate-Limit erreicht. Das ist eine temporäre Einschränkung, die sich automatisch aufhebt.
+
+### (131056) Too many messages to the same user
+
+Sie haben in kurzer Zeit zu viele Nachrichten an einen einzelnen Empfänger gesendet.
+
+## Fehler beim Konversationsfenster
+
+Diese Fehler treten auf, wenn eine Nachricht außerhalb der Regeln des 24-Stunden-Konversationsfensters von WhatsApp gesendet wird.
+
+### (131049) Message not delivered by Meta
+
+Meta hat sich entschieden, diese Marketing-Nachricht nicht zuzustellen, typischerweise um die Erfahrung des Empfängers zu schützen. Das kann passieren, wenn ein Nutzer ein hohes Volumen an Marketing-Nachrichten erhält.
+
+**_Was zu tun ist:_** _Warten Sie mindestens 24 Stunden, bevor Sie es erneut versuchen. Überlegen Sie, ob der Inhalt der Vorlage für diesen Empfänger relevant und personalisiert ist._
+
+### (131047) Re-engagement message without an active window
+
+Sie haben versucht, eine Freeform-Nachricht zu senden, nachdem das 24-Stunden-Fenster des Kandidaten bereits geschlossen war. WhatsApp erlaubt nach Ablauf des Fensters nur noch Template-Nachrichten.
+
+**_Was zu tun ist:_** _Verwenden Sie eine genehmigte WhatsApp-Vorlage, um die Konversation neu zu starten._
+
+### (131050) User has opted out
+
+Der Kandidat hat Marketing-Nachrichten von Ihrer Nummer blockiert oder sich abgemeldet. Es können keine weiteren Nachrichten an ihn gesendet werden.
+
+## Allgemeine Nachrichtenfehler
+
+Dies sind allgemeine Fehler, die ungültige Anfragen oder fehlgeschlagene Zustellungen abdecken.
+
+### (100) Invalid parameter
+
+Die Nachrichtenanfrage enthielt ein unbekanntes oder falsch geschriebenes Feld.
+
+### (131026) Message undeliverable
+
+Die Nachricht konnte den Empfänger nicht erreichen. Das bedeutet meist, dass die Telefonnummer nicht bei WhatsApp registriert ist, die Nummer nicht mehr existiert oder der Empfänger eine veraltete Version der App verwendet.
+
+### (131052) Media download error
+
+HireData konnte eine vom Kandidaten gesendete Mediendatei nicht herunterladen. Das bedeutet meist, dass die Datei nicht mehr verfügbar oder der Link abgelaufen ist.
+
+**_Was zu tun ist:_** _Bitten Sie den Kandidaten, die Datei erneut zu senden._
+
+### (131053) Media upload error
+
+Die Mediendatei, die Sie senden wollten, verwendet einen nicht unterstützten Dateityp oder ein nicht unterstütztes Format.
+
+### (131008) Required parameter missing
+
+Ein erforderliches Feld wurde in der Nachrichtenanfrage nicht angegeben.
+
+### (131021) Recipient is the same as sender
+
+Die Telefonnummer, an die Sie senden möchten, ist dieselbe wie die sendende Nummer.
+
+### (131000) Unknown error
+
+Ein unerwarteter interner Fehler ist auf Metas Seite aufgetreten.
+
+**_Was zu tun ist:_** _Warten Sie einige Minuten und versuchen Sie es erneut. Wenn der Fehler weiterhin besteht, kontaktieren Sie uns unter_ _[support@hiredata.com](mailto:support@hiredata.com)._
+
+## Fehler bei der Vorlagenerstellung
+
+Diese Fehler treten auf, wenn eine Vorlage eingereicht oder gespeichert wird, bevor sie überhaupt zum Senden einer Nachricht verwendet wird.
+
+### (2388072) Body format incorrect
+
+Der Body der Vorlage enthält ein Formatierungsproblem, das die Anforderungen von Meta nicht erfüllt.
+
+### (2388040) Character limit exceeded
+
+Eines der Vorlagenfelder enthält zu viel Text und überschreitet die zulässige Zeichenanzahl.
+
+### (2388073) Footer format incorrect
+
+Der Footer der Vorlage enthält ein Formatierungsproblem.
+
+### (2388047) Header format incorrect
+
+Der Header der Vorlage verwendet ein ungültiges Format oder eine ungültige Syntax.
+
+### (2388293) Too many parameters
+
+Die Vorlage verwendet mehr Variablenplatzhalter, als Meta relativ zum Gesamttext erlaubt.
+
+### (134101) Template syncing
+
+Die Vorlage wurde kürzlich erstellt und synchronisiert sich noch mit Metas Systemen. Warten Sie einige Minuten, bevor Sie es erneut versuchen.
+
+### (134102) Template unavailable
+
+Die Vorlage ist derzeit aufgrund eines Sync- oder Berechtigungsproblems nicht verfügbar.
+
+### (2388299) Variable at the start or end of text
+
+Ein Variablenplatzhalter befindet sich am absoluten Anfang oder Ende des Nachrichtentextes, was nicht erlaubt ist.
+
+## Fehler beim Vorlagenversand
+
+Diese Fehler treten auf, wenn eine Template-Nachricht gesendet wird, aber etwas an der Vorlage oder ihren Parametern nicht mit dem übereinstimmt, was Meta gespeichert hat.
+
+### (132068) Flow blocked
+
+Ein an diese Vorlage angehängter WhatsApp Flow hat ein Konfigurationsproblem und ist derzeit blockiert.
+
+### (132069) Flow throttled
+
+Es wurden in kurzer Zeit zu viele Nachrichten mit einem WhatsApp Flow gesendet.
+
+### (132005) Hydrated text is too long
+
+Die in die Platzhalter der Vorlage eingefügten dynamischen Werte machen die finale Nachricht zu lang.
+
+### (132000) Parameter count mismatch
+
+Die Anzahl der mit der Vorlage übergebenen Variablen entspricht nicht der Anzahl der darin definierten Platzhalter.
+
+### (132012) Parameter format mismatch
+
+Eine mit der Vorlage übergebene Variable hat das falsche Format – zum Beispiel wurde eine Zahl erwartet, aber Text gesendet.
+
+### (132001) Template not found
+
+Der Vorlagenname oder Sprachcode passt nicht zu einer genehmigten Vorlage in Ihrem Meta-Konto. Das kann passieren, wenn eine Vorlage kürzlich gelöscht, umbenannt oder noch nicht genehmigt wurde.
+
+### (132007) Template content violates policy
+
+Der Inhalt der Vorlage enthält etwas, das nicht mit Metas Messaging-Richtlinien konform ist.
+
+### (132015) Template paused
+
+Meta hat diese Vorlage aufgrund eines niedrigen Quality Ratings oder einer hohen Anzahl an Nutzermeldungen vorübergehend pausiert.
+
+### (132016) Template disabled
+
+Die Vorlage wurde von Meta aufgrund wiederholter Qualitätsprobleme dauerhaft deaktiviert.
+
+### (132018) Template validation error
+
+Es gibt ein Parameterproblem mit der Vorlage, das die Validierung durch Meta verhindert hat.
+
+## Brauchen Sie mehr Hilfe?
+
+Wenn ein Fehler weiter besteht und Sie sich nicht sicher sind, was ihn verursacht, wenden Sie sich an uns unter _[support@hiredata.com](mailto:support@hiredata.com)_. Für kontobezogene Probleme bei Meta können Sie den Meta Business Support auch direkt über das [Meta Business Help Center](https://www.facebook.com/business/help) kontaktieren.

@@ -1,0 +1,121 @@
+---
+title: "Como testar uma automação"
+sidebarTitle: "Testar as suas automações"
+description: "Saiba como testar uma automação para prevenir erros e melhorar a eficiência"
+---
+
+_Antes de ativar uma automação na HireData, é essencial testá-la para garantir que corre como esperado. Existem duas formas de testar uma automação: **Preview a Single Item** e **Test with a User**. Neste guia, iremos demonstrar como testar com um utilizador, portanto continue a ler se quiser aprender como o fazer._
+
+## Selecionar como testar uma automação
+
+Navegue até à automação que quer testar e clique no ícone de teste no canto superior direito do ecrã. Isto irá abrir o painel de teste da automação.
+
+![Location of the test button](/images/intercom/47585278-Screenshot-2025-03-25-at-17_15_32.png)
+
+Ser-lhe-ão dadas duas opções:
+
+- **Test with a User**: Corre a automação usando dados reais de um utilizador, como um endereço de email ou número de telefone, para simular a experiência real de, por exemplo, enviar um email ou iniciar uma conversa de WhatsApp.
+- **Preview a Single Item**: Permite-lhe ver como a automação processaria um item individual sem executar efetivamente as tarefas.
+
+![Testing options](/images/intercom/47585702-Screenshot-2025-03-25-at-17_17_25.png)
+
+## Testar com um utilizador
+
+Esta é a melhor escolha se quer ver toda a experiência de correr uma automação.
+
+![Test with a User](/images/intercom/47585767-Screenshot-2025-03-25-at-17_17_25.png)
+
+### Passo 1: Escolher o utilizador cujos dados serão usados para teste
+
+Este utilizador receberá emails ou mensagens como se a automação estivesse ativa. Uma vez selecionado no menu suspenso, clique em [Run Test] para iniciar o processo.
+
+![Selecting a user to test with](/images/intercom/47585978-Screenshot-2025-03-25-at-17_17_38.png)
+
+### Passo 2: Monitorizar a Timeline
+
+O sistema apresentará uma timeline de cada passo da automação à medida que corre. Verá alertas como:
+
+- Run Scheduled
+- Run Started
+- Interaction Started
+- Email Sent (ou outra execução de tarefa)
+- Run Finished
+
+Aguarde a conclusão do teste e assegure-se de que todos os passos avançam sem problemas.
+
+![Test Timeline](/images/intercom/47588129-Screenshot-2025-03-25-at-17_18_19.png)
+
+### Passo 3: Verificar a caixa de entrada do utilizador
+
+Se a automação incluir o envio de um email, vá à caixa de entrada do utilizador selecionado (por exemplo, a sua) e verifique se o email foi entregue corretamente.
+
+- Verifique a formatação e o conteúdo para garantir que aparece como esperado;
+- Percorra o formulário para garantir que todas as perguntas estão configuradas corretamente.
+
+![Send email example](/images/intercom/47588552-Screenshot-2025-03-25-at-17_20_22.png)
+
+### Passo 4: Rever os detalhes do Run e do Event
+
+Após a execução do teste, pode clicar em **View Details** para verificar registos de eventos específicos, incluindo:
+
+- Estado de entrega do email (sent, delivered, opened, clicked, ou bounced)
+- Quaisquer atrasos na execução
+- Valores de dados utilizados no teste
+
+![View Details button](/images/intercom/47586869-Screenshot-2B2025-03-25-2Bat-2B17_18_19.png)
+
+_Detalhes da visão geral da automação:_
+
+![Overview tab](/images/intercom/47586985-Screenshot-2025-03-25-at-17_18_59.png)
+
+_Detalhes dos campos:_
+
+![Fields tab](/images/intercom/47587101-Screenshot-2025-03-25-at-17_19_07.png)
+
+_Automação e evento relacionados:_
+
+![Related information tab](/images/intercom/47587148-Screenshot-2025-03-25-at-17_19_14.png)
+
+## Testar com Preview a Single Item
+
+Pode usar isto para ver como a automação processaria um item individual sem executar efetivamente as tarefas.
+
+![Preview a Single Item test](/images/intercom/47588725-Screenshot-2025-05-01-at-10_51_47.png)
+
+### Passo 1: Escolha o match/item com que gostaria de testar e clique em Run Test
+
+![Selecting a match/item to test with](/images/intercom/47588912-Screenshot-2025-05-01-at-11_04_31.png)
+
+### Passo 2: Monitorizar a Timeline
+
+O sistema apresentará uma timeline de cada passo da automação à medida que corre. Verá alertas como:
+
+- Run Scheduled
+- Run Started
+- Interaction Started
+- Email Sent (ou outra execução de tarefa)
+- Run Finished
+
+Aguarde a conclusão do teste e assegure-se de que todos os passos avançam sem problemas.
+
+![Test timeline](/images/intercom/47589015-Screenshot-2025-05-01-at-10_57_29.png)
+
+_Passo Email Sent com mais detalhes:_
+
+![Email Sent step with more details](/images/intercom/47589189-Screenshot-2025-05-01-at-10_57_36.png)
+
+### Passo 3: Rever os detalhes do Run e do Event
+
+Após a execução do teste, pode clicar em **View Details** para verificar registos de eventos específicos, incluindo:
+
+- Estado de entrega do email (sent, delivered, opened, clicked, ou bounced)
+- Quaisquer atrasos na execução
+- Valores de dados utilizados no teste
+
+![Run details](/images/intercom/47589386-Screenshot-2025-05-01-at-10_58_07.png)
+
+## Ajustar uma automação e testar novamente se necessário
+
+Se notar um problema, como informação em falta ou um erro na execução, regresse ao editor de automação, faça os ajustes necessários e teste novamente até a automação correr corretamente.
+
+Ao seguir estes passos, pode garantir que a sua automação funciona corretamente antes de a ativar, prevenindo erros e melhorando a eficiência.

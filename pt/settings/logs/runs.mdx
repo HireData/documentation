@@ -1,0 +1,68 @@
+---
+title: "Runs"
+description: "Perceber como os runs da HireData funcionam"
+---
+
+_Quando uma automação é acionada por um event da sua app ligada, por exemplo, Carerix, Salesforce, etc., é criado um Run. Este Run representa todo o processo que se segue desde o trigger inicial até cada passo da sua automação. Neste artigo, vamos percorrer o que são runs, como encontrá-los e lê-los, e como eles podem ajudá-lo a fazer troubleshooting das suas automações._
+
+## O que é um run
+
+Um run é o resultado de uma automação ser acionada. Mostra a sequência exata de ações que ocorreram após um event ter sido recebido, por exemplo, um filtro a ser verificado, um atraso a ser concluído ou um email a ser enviado/conversa encerrada. Cada Run inclui uma timeline completa dos passos dados, um **Overview**, e os separadores **Fields** e **Related**.
+
+Uma vez concluído com sucesso um run, será refletido na página **Task History** com a adição de uma nova tarefa à lista.
+
+## Como filtrar runs
+
+Navegue até ao menu **Settings** e abra a página **Runs** para ver uma lista de todos os runs:
+
+![Runs page in HireData](/images/intercom/49924492-Screenshot-2025-05-05-at-10_54_30.png)
+
+Utilize os filtros para uma vista mais organizada, por exemplo, se quer ver os runs associados a uma das suas apps ligadas, ou reduzi-los pelo estado/fase em que se encontram atualmente.
+
+_Filtrar runs por app:_
+
+![Filtering runs by an app](/images/intercom/49925819-Screenshot-2025-05-16-at-10_37_44.png)
+
+_Filtrar runs pelo seu estado:_
+
+![Filtering runs by their state](/images/intercom/49925840-Screenshot-2025-05-16-at-10_37_59.png)
+
+_Filtrar runs pelo seu sub-estado:_
+
+![Filtering runs by their sub-state](/images/intercom/49925857-Screenshot-2025-05-16-at-10_38_22.png)
+
+## Como ver os detalhes de um run
+
+Para explorar um run individual, clique no botão [Details] junto ao run para uma visão geral curta, ou abra o menu suspenso e clique em [View Run].
+
+![How to view individual runs](/images/intercom/49924583-Screenshot-2025-05-05-at-10_54_51.png)
+
+Isto irá abrir a vista de detalhe do run, que inclui:
+
+- **Overview** – uma vista resumida dos dados recebidos da sua app.
+
+![Run Overview tab](/images/intercom/49924603-Screenshot-2025-05-05-at-10_55_16.png)
+
+- **Fields** – campos com os dados no event que acionou a automação e que podem ter sido utilizados no run.
+
+![Run Fields tab](/images/intercom/49924650-Screenshot-2025-05-05-at-10_55_27.png)
+
+- **Related** – a automação que este run seguiu e o event que o acionou.
+
+![Run Related tab](/images/intercom/49924666-Screenshot-2025-05-05-at-10_55_33.png)
+
+Esta vista detalhada também lhe permite ver exatamente como a sua automação decorreu e se cada passo foi bem-sucedido.
+
+## Troubleshooting de runs
+
+Se algo não aconteceu como esperado:
+
+- Abra a vista detalhada do run para ver logs e verificar se algum passo falhou ou foi saltado.
+- Abra o separador **Fields** para confirmar se os dados usados no run cumpriram as suas condições. Também pode comparar o run com o event original (encontrado via o separador **Related**) para perceber o que o acionou e confirmar se utilizou os dados corretos.
+
+## Ainda precisa de ajuda?
+
+Se não tem a certeza de por que motivo um run foi cancelado/concluído ou quer ajuda a interpretar os passos do run, contacte a nossa equipa em [support@hiredata.com](mailto:support@hiredata.com). Se o fizer, inclua:
+
+- Um link ou o ID do run;
+- Quaisquer dados ou contexto relevante que nos possa ajudar a investigar mais.

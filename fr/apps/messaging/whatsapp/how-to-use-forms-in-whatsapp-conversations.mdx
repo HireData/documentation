@@ -1,0 +1,47 @@
+---
+title: "Comment utiliser les formulaires dans les conversations WhatsApp"
+sidebarTitle: "Formulaires dans WhatsApp"
+description: "Collectez les informations des candidats et mettez à jour les champs de votre app via les conversations WhatsApp"
+---
+
+_Ce guide vous accompagnera dans la configuration et l'utilisation des formulaires dans HireData pour vos conversations WhatsApp, garantissant que les réponses collectées mettent automatiquement à jour les champs pertinents dans votre ATS._
+
+## Étape 1 : Créer un formulaire
+
+Vous devez d'abord **définir l'objectif du formulaire**. Déterminez les données que vous devez collecter (par exemple, les informations du candidat comme la date de disponibilité, les attentes salariales, les années d'expérience professionnelle, etc.).
+
+Ouvrez ensuite la page Forms via les Settings et cliquez sur [New Form] :
+
+![Page Forms](/images/intercom/42032471-Screenshot-2025-03-19-at-21_05_46.png)
+
+Il y aura de nombreux types de questions à choisir, alors ajoutez celles qui correspondent à l'objectif de votre formulaire et ajoutez-y une logique :
+
+![Constructeur de formulaire](/images/intercom/42032501-Screenshot-2025-03-19-at-21_07_17.png)
+
+Une fois terminé, examinez le formulaire et cliquez sur [Save].
+
+## Étape 2 : Ajouter un formulaire à votre automatisation
+
+[Créez votre automatisation](/fr/apps/messaging/whatsapp/create-a-whatsapp-automation-in-hiredata) avec deux tâches [Start a Conversation] et [Update field(s)]. Ajoutez le formulaire que vous avez créé ou sélectionnez l'un des modèles :
+
+![Sélection d'un formulaire lors de la configuration d'une automatisation](/images/intercom/42032591-Screenshot-2025-03-19-at-21_09_25.png)
+
+Dans la section Fields, vous verrez les questions du formulaire, c'est-à-dire tous les champs pour lesquels les données doivent être collectées pendant la conversation WhatsApp :
+
+![Section Fields](/images/intercom/42032543-Screenshot-2025-03-19-at-20_15_10.png)
+
+## Étape 3 : Mettre à jour automatiquement les champs en fonction des réponses au formulaire
+
+L'une de nos fonctionnalités clés est la mise à jour automatique des champs. Lorsqu'un utilisateur remplit un formulaire dans une conversation WhatsApp :
+
+1. Les réponses soumises sont collectées en temps réel
+2. Le système mappe les réponses aux champs correspondants et les met à jour dans l'app spécifiée (par exemple Carerix)
+
+![Tâche Update Field(s)](/images/intercom/42032384-Screenshot-2025-03-19-at-20_50_28.png)
+
+## Exemple :
+
+- Un candidat fournit sa **date de disponibilité** via le formulaire
+- Nous mettons automatiquement à jour sa prochaine date de disponibilité dans votre app, afin que tous les détails restent à jour
+
+En résumé, les formulaires WhatsApp intégrés de HireData offrent un moyen fluide de collecter et mettre à jour les informations des candidats en temps réel, éliminant la saisie manuelle des données.

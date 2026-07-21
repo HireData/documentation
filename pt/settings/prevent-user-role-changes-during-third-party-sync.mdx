@@ -1,0 +1,44 @@
+---
+title: "Como impedir alterações de user role durante a sincronização com terceiros"
+sidebarTitle: "Proteger user roles"
+description: "Utilize a definição Enable Third-Party Sync para proteger o role de um utilizador na HireData de ser sobrescrito durante sincronizações com o ATS"
+---
+
+_Quando a HireData sincroniza com o seu ATS, pode atualizar automaticamente os user roles, o que por vezes sobrescreve acessos personalizados que configurou manualmente. Este artigo explica como utilizar a definição **Enable Third-Party Sync** para proteger o role de um utilizador na HireData de ser alterado durante a sincronização, e quando faz sentido fazê-lo._
+
+## O que faz esta definição?
+
+Por defeito, a HireData sincroniza user roles a partir do seu ATS (por exemplo, Carerix) todas as noites ou quando uma sincronização é acionada manualmente. Se um utilizador recebeu acesso de admin na HireData mas não é admin no Carerix, essa sincronização irá repô-lo como utilizador normal, removendo o acesso.
+
+Desligar a definição **Enable Third-Party Sync** para um utilizador específico diz à HireData: _"Não toques no role deste utilizador durante a sincronização."_ O role HireData desse utilizador mantém-se exatamente como o definiu, independentemente do que a sua app diga.
+
+- Isto é especialmente **útil para utilizadores não-admin no ATS que precisam de acesso de admin na HireData**. Por exemplo, alguém em Vendas com o role "Marketer" na sua app pode receber acesso de admin na HireData e, com a sincronização desativada, esse acesso não será sobrescrito.
+- Também **se aplica a utilizadores com Additional Roles no Carerix**. Se um utilizador tem vários roles em diferentes labels dentro de um ambiente Carerix, e um desses roles adicionais não é admin, a HireData pode incorretamente repô-lo para utilizador normal durante a sincronização. Desligar esta definição impede que isso aconteça.
+
+<Note>
+  Para utilizadores Carerix: se a definição está desligada para um utilizador que é Admin na HireData, mas tem um role diferente no Carerix (por exemplo, User, Marketer, Sales), não conseguirá aceder aos itens do menu RMA dentro do Carerix, pois precisa de ter permissões de admin especificamente no Carerix.
+</Note>
+
+![The Enable Third-Party Sync toggle in a user's Access Control settings](/images/intercom/146220971-Screenshot-2026-05-27-at-13_51_33.png)
+
+## Proteger o role de um utilizador
+
+<Steps>
+  <Step title="Abrir as definições do utilizador">
+    Vá a **Settings** na navegação principal e depois selecione **Users**. Encontre o utilizador que quer configurar e clique no nome para abrir o perfil.
+
+    Esta definição é por utilizador. Terá de a configurar individualmente para cada pessoa cujo role precisa de proteger.
+  </Step>
+  <Step title="Ajustar a definição de sincronização">
+    Vá até à secção **Access Control** na página de perfil do utilizador. Encontre o toggle **Enable Third-Party Sync**.
+
+    - **Toggle ligado** – O role deste utilizador _será_ atualizado automaticamente durante as sincronizações do seu ATS.
+    - **Toggle desligado** – O role deste utilizador _não_ será alterado por qualquer sincronização, seja noturna ou acionada manualmente.
+
+    Clique em **Save Settings** para aplicar.
+  </Step>
+</Steps>
+
+<Info>
+  Desligar esta definição não desliga o utilizador do seu ATS. Apenas impede que o role HireData desse utilizador seja sobrescrito durante a sincronização.
+</Info>

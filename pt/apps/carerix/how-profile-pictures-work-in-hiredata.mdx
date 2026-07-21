@@ -1,0 +1,81 @@
+---
+title: "Como funcionam as fotos de perfil na HireData"
+sidebarTitle: "Fotos de perfil"
+description: "Saiba como a HireData determina os avatares dos utilizadores"
+---
+
+_As fotos de perfil na HireData são geradas automaticamente com base em tipos específicos de anexos no Carerix. Este artigo explica quais os anexos utilizados, a ordem de prioridade aplicada e quando é apresentada uma fotografia, um logótipo ou as iniciais._
+
+## Como a HireData escolhe um avatar de utilizador
+
+Quando um perfil é sincronizado a partir do Carerix, a HireData verifica se existem anexos que possam ser utilizados como avatar. Apenas os anexos com estes valores de tipo específicos são considerados:
+
+- `pasfoto`
+- `emaillogo`
+
+O sistema avalia também o rótulo do anexo. A correspondência não é sensível a maiúsculas/minúsculas, pelo que qualquer variação (por exemplo, `PasFoto`, `PASfoto`, `EmailLogo`) é suportada.
+
+Se existirem vários anexos válidos, a HireData avalia-os por uma ordem de prioridade fixa. Dentro dessa ordem, o anexo mais recentemente modificado é considerado primeiro.
+
+## Prioridade de escolha do avatar de utilizador
+
+A HireData determina o avatar utilizando a seguinte prioridade:
+
+### 1. Logótipo de email com o rótulo "emailpasfoto"
+
+A primeira prioridade é dada a um anexo em que:
+
+- O valor de tipo é `emaillogo`
+- O rótulo é `emailpasfoto`
+
+Se esse anexo existir e contiver conteúdo utilizável, é utilizado como avatar.
+
+### 2. Fotografia de perfil com o rótulo "pasfoto"
+
+Se nenhuma correspondência for encontrada no passo 1, a HireData procura:
+
+- Valor de tipo `pasfoto`
+- Rótulo `pasfoto`
+
+Se encontrada e válida, esta imagem é utilizada.
+
+### 3. Qualquer anexo com tipo "pasfoto"
+
+Se não for encontrada uma correspondência exata de rótulo, a HireData procura qualquer anexo em que:
+
+- O valor de tipo seja `pasfoto`
+
+Neste caso, o rótulo não precisa de corresponder.
+
+### 4. Qualquer anexo com tipo "emaillogo"
+
+Se não for encontrada uma fotografia de perfil, a HireData procura qualquer anexo em que:
+
+- O valor de tipo seja `emaillogo`
+
+O rótulo não precisa de corresponder.
+
+## Quando é apresentada uma fotografia ou logótipo?
+
+Uma imagem é apresentada como avatar quando é **encontrado um anexo correspondente** com base na prioridade acima e uma imagem válida está disponível para ser utilizada como avatar do utilizador.
+
+## Quando são apresentadas as iniciais?
+
+As iniciais são apresentadas quando:
+
+- Não existe nenhum anexo com tipo `pasfoto` e/ou `emaillogo`
+- Existe um anexo correspondente mas não contém conteúdo utilizável
+- O perfil não tem anexos
+
+Nestes casos, a HireData gera automaticamente as iniciais com base no nome do perfil.
+
+## Resolução de problemas
+
+Se espera ver uma imagem mas apenas vê iniciais, verifique o seguinte:
+
+- O valor de tipo do anexo está definido como `pasfoto` ou `emaillogo`.
+- O rótulo está corretamente configurado.
+- O anexo contém conteúdo de ficheiro acessível e utilizável.
+- O anexo foi sincronizado corretamente.
+
+Se forem feitas alterações no Carerix, por exemplo, o carregamento de uma nova fotografia ou a atualização do tipo de anexo, o avatar do utilizador será atualizado após a próxima sincronização bem-sucedida na HireData.

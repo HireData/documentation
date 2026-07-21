@@ -1,0 +1,98 @@
+---
+title: "Combined Fields uitgelegd: Hoe HireData een waarde kiest"
+sidebarTitle: "Combined Fields"
+description: "Leer hoe de combined fields van HireData automatisch de eerste ingevulde waarde uit Carerix kiezen, en in welke volgorde elk veld wordt gecontroleerd"
+---
+
+_Combined fields, zoals `anyEmailAddress` en `anyPhoneNumber`, zorgen ervoor dat je automatiseringen altijd de juiste informatie vinden, zelfs als sommige velden in Carerix leeg zijn. Lees verder om te zien hoe deze velden werken en in welke volgorde HireData een waarde kiest._
+
+## Candidate, User en Contact
+
+`CarerixCandidate`, `CarerixUser` en `CarerixContact` records gebruiken allemaal exact dezelfde set combined fields. Of je nu werkt met het profiel van een kandidaat, gebruiker of contactpersoon, deze velden gedragen zich hetzelfde.
+
+### anyEmailAddress
+
+Gebruik `anyEmailAddress` wanneer je wilt dat HireData altijd een e-mailadres vindt, ongeacht welk specifiek veld is ingevuld in Carerix. Als er meerdere e-mailvelden een waarde hebben, controleert HireData ze in deze volgorde en gebruikt de eerste die wordt gevonden:
+
+1. `businessOrPrivateEmailAddress`
+2. `privateOrBusinessEmailAddress`
+3. `primaryOrBusinessEmailAddress`
+4. `primaryOrPrivateEmailAddress`
+5. `primaryEmailAddress`
+6. `firstEmailAddress`
+7. `businessEmailAddress`
+8. `privateEmailAddress`
+9. `emailAddress`
+10. `homeEmailAddress`
+
+![Het combined field anyEmailAddress in de variabelenkiezer](/images/intercom/157628810-Screenshot-2026-07-06-at-12_22_34.png)
+
+### anyPhoneNumber
+
+Gebruik `anyPhoneNumber` om automatisch een telefoonnummer te kiezen, waarbij zowel persoonlijke als zakelijke nummers worden gecontroleerd. HireData doorloopt deze velden in deze volgorde:
+
+1. `mobileNumber`
+2. `phoneNumber`
+3. `mobileNumberBusiness`
+4. `phoneNumberBusiness`
+5. `faxNumber`
+6. `faxNumberBusiness`
+
+![Het combined field anyPhoneNumber in de variabelenkiezer](/images/intercom/157628894-Screenshot-2026-07-06-at-12_21_52.png)
+
+### mobileOrPhoneNumber
+
+Deze variabele richt zich op persoonlijke contactnummers. Het controleert eerst op een mobiel nummer, valt vervolgens terug op een persoonlijk telefoonnummer en daarna op een faxnummer:
+
+1. `mobileNumber`
+2. `phoneNumber`
+3. `faxNumber`
+
+![Het combined field mobileOrPhoneNumber in de variabelenkiezer](/images/intercom/157628955-Screenshot-2026-07-06-at-12_24_11.png)
+
+### phoneOrMobileNumber
+
+Dit werkt hetzelfde als `mobileOrPhoneNumber`, maar controleert eerst het telefoonnummer:
+
+1. `phoneNumber`
+2. `mobileNumber`
+3. `faxNumber`
+
+![Het combined field phoneOrMobileNumber in de variabelenkiezer](/images/intercom/157629051-Screenshot-2026-07-06-at-12_24_43.png)
+
+### mobileOrPhoneNumberBusiness
+
+Deze variabele kijkt alleen naar zakelijke contactnummers. Het controleert eerst het zakelijke mobiele nummer, daarna het zakelijke telefoonnummer, en vervolgens het zakelijke faxnummer:
+
+1. `mobileNumberBusiness`
+2. `phoneNumberBusiness`
+3. `faxNumberBusiness`
+
+![Het combined field mobileOrPhoneNumberBusiness in de variabelenkiezer](/images/intercom/157629105-Screenshot-2026-07-06-at-12_24_27.png)
+
+### phoneOrMobileNumberBusiness
+
+Hetzelfde als hierboven, maar controleert eerst het zakelijke telefoonnummer:
+
+1. `phoneNumberBusiness`
+2. `mobileNumberBusiness`
+3. `faxNumberBusiness`
+
+![Het combined field phoneOrMobileNumberBusiness in de variabelenkiezer](/images/intercom/157629145-Screenshot-2026-07-06-at-12_25_00.png)
+
+## Match
+
+### modifiedOrCreatedBy
+
+Gebruik `modifiedOrCreatedBy` om te achterhalen wie verantwoordelijk is voor een match. HireData controleert eerst wie de match het laatst heeft aangepast. Als dat leeg is, wordt in plaats daarvan gebruikt wie hem heeft aangemaakt:
+
+1. `modifiedBy`
+2. `createdBy`
+
+![Het combined field modifiedOrCreatedBy in de variabelenkiezer](/images/intercom/157629854-Screenshot-2026-07-06-at-12_28_26.png)
+
+<Tip>
+  - Kies waar mogelijk voor de "any"-versie van een variabele, zoals `anyEmailAddress` of `anyPhoneNumber`, in plaats van een enkel specifiek veld. Op deze manier blijft je automatisering zoeken naar een waarde als de eerste velden in Carerix leeg zijn.
+  - De volgorde waarin waarden worden gekozen ligt vast en is ingebouwd in HireData, dus je hoeft zelf niets te configureren.
+  - Als geen van de velden achter een combined field een waarde heeft, verschijnt het veld leeg. We raden aan om te controleren of de Carerix-velden waarop je het meest vertrouwt up-to-date worden gehouden.
+</Tip>

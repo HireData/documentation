@@ -1,0 +1,238 @@
+---
+title: "Comment fonctionnent les modèles WhatsApp"
+sidebarTitle: "Fonctionnement des modèles"
+description: "Découvrez comment utiliser les modèles WhatsApp pour optimiser vos processus de recrutement"
+---
+
+_Nos modèles d'automatisation WhatsApp fluidifient la communication avec les candidats grâce à l'IA et aux techniques de recrutement conversationnel. Ces modèles pré-conçus aident les recruteurs à interagir efficacement avec les candidats via WhatsApp, garantissant des réponses rapides et des interactions personnalisées. Poursuivez pour apprendre à les utiliser efficacement pour votre entreprise, ainsi qu'à créer des modèles WhatsApp dans le WhatsApp Manager._
+
+## Modèles WhatsApp dans HireData
+
+### Modèles WhatsApp disponibles
+
+1. **Availability Check (via Carerix)** —** **Ce modèle est conçu pour vérifier la disponibilité d'un candidat pour des opportunités d'emploi. Il envoie des messages personnalisés pour se renseigner sur leur statut de recherche d'emploi actuel, garantissant que les profils des candidats restent à jour.
+2. **Job Alert (via Carerix) **— Cette automatisation informe les candidats des nouvelles offres d'emploi via WhatsApp. Elle utilise des techniques conversationnelles pilotées par l'IA pour garantir une communication rapide et recueillir efficacement les réponses.
+3. **Job Alert (via OTYS)** — Similaire au modèle d'alerte emploi Carerix, cette version est adaptée aux utilisateurs OTYS. Elle informe les candidats des nouvelles opportunités d'emploi tout en maintenant l'engagement grâce à la messagerie propulsée par l'IA.
+
+![Modèles WhatsApp dans HireData](/images/intercom/47447942-Screenshot-2B2025-03-17-2Bat-2B08_14_02.png)
+
+### Comment fonctionne le déclencheur
+
+Tous les modèles WhatsApp utilisent la même logique, mais peuvent se différencier dans le déclencheur défini et le contenu de la conversation (par ex. les questions posées, les informations collectées et le ton de la voix). Cet article se concentre sur l'automatisation Job Alert via Carerix.
+
+Dans cette automatisation, le déclencheur est basé sur une **mise à jour d'étape** dans le système Carerix. Voici comment cela fonctionne :
+
+1. **Objet du déclencheur** — L'automatisation écoute quand un **Match** est **créé ou mis à jour.**
+2. **Condition de filtre** — L'automatisation ne se poursuit que si le **[Match: Stage]** est défini sur **« Placed on shortlist » **garantissant que seuls les candidats présélectionnés reçoivent le message d'alerte emploi.
+
+![Configuration du déclencheur](/images/intercom/41580122-Screenshot-2025-03-17-at-08_23_53.png)
+
+Une fois déclenchée, l'automatisation initie une **conversation WhatsApp**, envoyant une alerte emploi personnalisée aux candidats pour les informer de la nouvelle opportunité.
+
+### Configuration de la tâche [Start Conversation]
+
+Une fois le déclencheur défini, l'étape suivante consiste à configurer la tâche qui définit comment le message WhatsApp sera envoyé. Voici un aperçu de chaque option de configuration :
+
+1. **Sélection du numéro de téléphone**
+  - Choisissez le numéro de téléphone qui sera utilisé pour envoyer les messages WhatsApp. C'est généralement un numéro professionnel vérifié associé à votre WhatsApp Business qui devrait déjà être vérifié et visible dans la connexion WhatsApp dans HireData.
+2. **Modèle de message**
+  - Sélectionnez un modèle de message WhatsApp pré-approuvé pour garantir une communication fluide et conforme. Le modèle définit la structure du premier message, qui peut inclure des espaces réservés pour du contenu dynamique (comme les noms des candidats, les intitulés de poste, etc.).
+![Sélection du modèle de message](/images/intercom/41580379-Screenshot-2025-03-17-at-09_19_22.png)
+3. **Sélection du destinataire**
+  - Définissez qui recevra le message. Dans ce cas, il s'agit généralement du candidat lié au match qui a déclenché l'automatisation.
+![Sélection du destinataire](/images/intercom/41580408-Screenshot-2025-03-17-at-09_19_29.png)
+4. **Sélection du formulaire**
+  - Le formulaire contient toutes les questions qui seront posées au destinataire. Vous pouvez sélectionner un modèle de formulaire ou créer le vôtre sur la page Forms dans HireData.
+![Sélection du formulaire](/images/intercom/41580447-Screenshot-2025-03-17-at-09_20_30.png)
+5. **Briefing**
+  - Fournissez un briefing décrivant l'objectif de la conversation WhatsApp. Cela aide à maintenir la cohérence et la clarté dans la communication. Vous pouvez inclure toute indication qui aidera l'IA à communiquer efficacement avec l'audience.
+![Fourniture des objectifs de la conversation](/images/intercom/41580461-Screenshot-2025-03-17-at-08_34_39.png)
+6. **Knowledge**
+  - Ce sont **jusqu'à 16 champs** que vous pouvez ajouter pour fournir un contexte supplémentaire à l'IA pendant les conversations. Sélectionnez les éléments dont elle doit être consciente pour gérer efficacement les conversations, tels que les noms des participants, les adresses e-mail, etc.
+
+Voici quelques espaces réservés dynamiques standards qui personnaliseront le message :
+
+- **Candidate Name** → Insère automatiquement le nom du destinataire.
+- **Job Title** → Renseigne l'intitulé de l'offre d'emploi.
+- **Recruiter Name** → Personnalise le message avec le nom de l'expéditeur.
+- **Company Name** → Référence l'entreprise ou la marque qui recrute.
+![Champs de connaissance](/images/intercom/41580572-Screenshot-2025-03-17-at-08_36_33.png)
+
+### Configuration de la tâche [Update Fields]
+
+Après que la conversation WhatsApp a collecté des informations auprès du candidat, l'automatisation peut **mettre à jour automatiquement des champs spécifiques** dans le système. Cela garantit que le profil du candidat reste à jour sans nécessiter de saisie manuelle.
+
+Voici comment ce processus fonctionne :
+
+1. **Création d'une tâche pour mettre à jour les champs**
+  - Une tâche est ajoutée à l'automatisation qui met à jour des champs spécifiques dans les enregistrements du candidat. Cela se produit après la conversation WhatsApp lorsque le candidat fournit de nouvelles informations, telles que sa date de disponibilité ou des notes supplémentaires.
+![Configuration de la tâche de mise à jour des champs](/images/intercom/41580699-Screenshot-2025-03-17-at-09_26_44.png)
+2. **Sélection de l'objet**
+  - L'objet mis à jour est l'enregistrement **Candidate**. Cela garantit que toutes les informations collectées sont stockées dans le bon profil de candidat.
+3. **Identifiant**
+  - Pour s'assurer que la mise à jour est appliquée au bon candidat, le système fait correspondre le **Candidate: ID** de la conversation avec le **Candidate: ID** de la base de données. Cet identifiant unique garantit que les données sont mises à jour uniquement pour le candidat pertinent.
+4. **Champs mis à jour**
+  - L'automatisation met à jour un ou plusieurs champs en fonction des réponses reçues du candidat. Les champs courants incluent :
+    - **Candidate: Available Date** → Met à jour la disponibilité du candidat pour de nouvelles opportunités d'emploi.
+    - **Candidate: Notes** → Stocke toute information supplémentaire fournie par le candidat, comme des préférences ou des demandes particulières.
+    - **Autres champs** → D'autres champs peuvent être ajoutés selon les besoins, tels que le type de poste préféré, la préférence de localisation ou les attentes salariales.
+
+## Modèles WhatsApp dans WhatsApp
+
+### Créer un modèle WhatsApp
+
+_Rendez-vous dans votre WhatsApp Template Manager en cliquant sur [Manage Templates] :_
+
+![Bouton de redirection Manage Templates](/images/intercom/47451468-Screenshot-2025-03-28-at-05_32_22.png)
+
+_Cliquez sur [Create Template] :_
+
+![Bouton Create a template](/images/intercom/47455505-Screenshot-2025-03-28-at-05_14_28.png)
+
+_Sélectionnez le type de modèle, par exemple en sélectionnant [Marketing] puis [Custom] :_
+
+![Sélection d'un type de modèle](/images/intercom/47451710-Screenshot-2025-03-28-at-05_18_36.png)
+
+_Configurez votre modèle WhatsApp dans l'éditeur :_
+
+![Configuration du modèle WhatsApp dans l'éditeur](/images/intercom/47451727-Screenshot-2025-03-28-at-05_18_47.png)
+
+### 1. Nommer votre modèle WhatsApp
+
+![Nommer votre modèle](/images/intercom/47452263-naming.png)
+
+_Utilisez un nom clair et cohérent pour votre modèle. Par exemple, si vous créez le même modèle dans plusieurs langues, utilisez exactement le même nom, par ex. « availability » dans ce cas, pour toutes les versions (avant) :_
+
+![Cohérence de nommage](/images/intercom/47452275-naming-2B2.png)
+
+_Utilisez le nom comme identifiant de votre modèle WhatsApp (après) :_
+
+![Trouver facilement les modèles WhatsApp portant le même nom](/images/intercom/47452301-naming-3.png)
+
+### 2. Ajouter des variables à votre modèle WhatsApp
+
+_Vous pouvez insérer des champs dynamiques en cliquant sur [+ Add variable] dans l'éditeur :_
+
+![Ajout de variables dans le modèle WhatsApp](/images/intercom/47452641-var.png)
+
+_Par exemple, ajoutez un nom de variable, par ex. company :_
+
+![Ajout d'un nom de variable](/images/intercom/47452598-var1.png)
+
+_Ajoutez une valeur par défaut, par ex. Randstad :_
+
+![Ajout de la valeur par défaut de la variable](/images/intercom/47454151-var2.png)
+
+_Choisissez le type de variable : Name ou Number :_
+
+![Sélection d'un type de variable](/images/intercom/47454172-var3.png)
+
+_Un exemple de variable numérotée :_
+
+![Ajout d'une variable numérotée](/images/intercom/47454337-var4.png)
+
+Vous pouvez choisir entre **Name** et **Number** comme types de variables. Bien que les variables numérotées soient autorisées, nous recommandons d'utiliser les **variables nommées** pour une meilleure clarté et une meilleure réutilisation.
+
+### 3. Ajouter des boutons à votre modèle WhatsApp
+
+Les boutons aident les utilisateurs à interagir directement avec votre message.
+
+![Ajouter un bouton](/images/intercom/47454516-buttons.png)
+
+_Choisissez le type de bouton, par ex. [Custom] :_
+
+![Choix d'un type de bouton](/images/intercom/47454544-buttons1.png)
+
+_Ajoutez votre premier bouton, par ex. Sim :_
+
+![Ajout d'un bouton](/images/intercom/47454584-buttons2.png)
+
+💡 Astuce : pour les modèles en plusieurs langues, assurez-vous d'utiliser le même nom/numéro de variable pour la cohérence.
+
+_Prévisualisez votre bouton :_
+
+![Aperçu du bouton](/images/intercom/47454739-buttons3.png)
+
+_Ajout de plusieurs boutons (facultatif) :_
+
+![Ajout d'autres boutons](/images/intercom/47454770-buttons4.png)
+
+_Aperçu du modèle WhatsApp avec ses boutons :_
+
+![Aperçu du modèle WhatsApp avec boutons](/images/intercom/47454864-buttons5.png)
+
+### 4. Soumettre votre modèle WhatsApp
+
+_Une fois que tout est prêt, cliquez sur [Submit] pour envoyer le modèle à l'approbation et attendez la révision du modèle :_
+
+![Soumettre un modèle à la révision](/images/intercom/47454980-submit.png)
+
+![Statut de révision du modèle](/images/intercom/47455037-submit1.png)
+
+_Hourra ! Votre modèle WhatsApp est vérifié_
+
+![Modèle WhatsApp approuvé](/images/intercom/47455086-submit2.png)
+
+### Synchroniser les modèles WhatsApp avec HireData
+
+_Pour rendre votre modèle nouvellement créé disponible dans HireData, c_liquez sur [Sync Account] dans le menu déroulant de votre compte WhatsApp dans HireData :_
+
+![Bouton Sync Account](/images/intercom/47448587-Screenshot-2025-03-28-at-05_55_39.png)
+
+_Une synchronisation sera planifiée après cette notification :_
+
+![Notification de planification de synchronisation](/images/intercom/47448659-Screenshot-2025-03-28-at-08_43_20.png)
+
+_Après un moment, vous verrez la synchronisation démarrer :_
+
+![Notification de progression de synchronisation](/images/intercom/47448690-Screenshot-2025-03-28-at-08_43_42.png)
+
+_Cliquez sur l'icône timeline pour vérifier le statut de votre synchronisation :_
+
+![Timeline de synchronisation des données](/images/intercom/47448750-Screenshot-2025-03-28-at-05_56_05.png)
+
+_Vous pouvez désormais sélectionner votre nouveau modèle WhatsApp dans les tâches WhatsApp que vous configurerez dans toute automatisation :_
+
+![Modèle WhatsApp disponible à la sélection dans HireData](/images/intercom/47448779-Screenshot-2025-03-28-at-06_33_29.png)
+
+### Modifier un modèle WhatsApp
+
+_Rendez-vous dans votre WhatsApp Template Manager en cliquant sur [Manage Templates] :_
+
+![Bouton Manage Templates dans le menu déroulant](/images/intercom/47450181-Screenshot-2025-03-28-at-05_32_22.png)
+
+_Cliquez sur l'un de vos modèles existants :_
+
+![Liste des modèles dans WhatsApp Manager](/images/intercom/47450224-Screenshot-2025-03-28-at-05_14_28.png)
+
+_Cliquez sur [Edit Template] pour accéder à l'éditeur :_
+
+![Bouton Edit Template dans WhatsApp Manager](/images/intercom/47450335-Screenshot-2025-03-28-at-05_14_41.png)
+
+_Modification de votre modèle WhatsApp :_
+
+![Éditeur de modèle WhatsApp](/images/intercom/47450387-Screenshot-2025-03-28-at-05_15_34.png)
+
+_Exemple : ajout d'un titre à votre modèle WhatsApp_
+
+![Ajout d'un titre à votre modèle WhatsApp](/images/intercom/47450662-Screenshot-2025-03-28-at-05_15_57.png)
+
+_Exemple : ajout d'un bouton (call-to-action) à votre modèle WhatsApp_
+
+![Ajout d'un bouton à votre modèle WhatsApp](/images/intercom/47450686-Screenshot-2025-03-28-at-05_16_25.png)
+
+_Soumission de votre modèle WhatsApp mis à jour à la révision (généralement accepté presque instantanément, si vous respectez les directives) :_
+
+![Soumission de votre modèle WhatsApp mis à jour à la révision](/images/intercom/47450725-Screenshot-2025-03-28-at-05_17_12.png)
+
+### Supprimer un modèle WhatsApp
+
+_Cliquez sur [Delete template] dans le coin supérieur droit de l'éditeur :_
+
+![Suppression d'un modèle WhatsApp](/images/intercom/47450936-Screenshot-2025-03-28-at-05_17_45.png)
+
+_Confirmation de la suppression de votre modèle WhatsApp :_
+
+![Confirmation de la suppression de votre modèle WhatsApp](/images/intercom/47450976-Screenshot-2025-03-28-at-05_18_01.png)
+
+<iframe src="https://www.loom.com/embed/303e828003b84b27bfec2590ab4f26cd" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

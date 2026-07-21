@@ -1,0 +1,58 @@
+---
+title: "WhatsApp-gesprekken loggen in Carerix met HireData"
+sidebarTitle: "WhatsApp-chats loggen"
+description: "Krijg beter inzicht over teams heen in Carerix met HireData"
+---
+
+_Welkom bij onze uitgebreide gids over hoe je WhatsApp-gesprekken vanuit HireData naar Carerix logt. Dit zorgt ervoor dat alle gesprekken in Carerix worden vastgelegd, waardoor het eenvoudiger wordt om interacties met klanten en kandidaten te volgen. Lees verder om te leren hoe je een automatisering in HireData opzet die WhatsApp-communicatie in Carerix logt._
+
+##
+
+## Stap 1: Maak een nieuwe automatisering
+
+Door HireData te integreren met Carerix kun je automatisch records van WhatsApp-gesprekken in Carerix aanmaken wanneer een gesprek is afgerond. De automatisering legt relevante details vast zoals afzender, ontvanger, onderwerp, inhoud van het bericht en wanneer het gesprek is gestart of geëindigd, waardoor elk gesprek correct wordt gelogd.
+
+## 1.1. Navigeer naar het onderdeel Automations in HireData en klik op [Create New Automation]
+
+## 1.2. Selecteer de template "Log email in Carerix"
+
+![Log email in Carerix template](/images/intercom/42396003-Screenshot-2025-03-21-at-17_20_20.png)
+
+## Stap 2: Voeg een trigger toe
+
+## 2.1. Controleer de app-verbinding
+
+Deze wordt automatisch geselecteerd, maar we raden aan om te controleren of het de juiste is, voor het geval je meerdere verbindingen met Carerix hebt.
+
+## 2.2. Selecteer Object
+
+Het object [Message] wordt automatisch geconfigureerd, dus je moet dit veranderen naar [Conversation] via de knop [Edit]. Dit zijn alle object-opties die we in dit geval ondersteunen:
+
+![Objects](/images/intercom/42517363-Screenshot-2025-03-21-at-23_20_44.png)
+
+## 2.3. Stel een trigger in
+
+Stel de trigger in op het gesprek [Started] of [Ended], afhankelijk van wanneer je de automatisering wilt triggeren, bijv. wanneer het gesprek net is gestart of geëindigd.
+
+![Trigger](/images/intercom/42508270-Screenshot-2025-03-21-at-23_20_53.png)
+
+## Stap 3: Stel de taak [Add X to Carerix] in
+
+Deze taak is onderdeel van de automatiseringstemplate waarin je een object kunt selecteren en de verplichte velden kunt invullen om ervoor te zorgen dat de gespreksdata correct wordt gelogd in Carerix.
+
+Je kunt een van deze objecten selecteren om aan je app toe te voegen:
+
+- **Appointment:** Om vergaderingen of interviews te plannen
+- **Candidate:** Om een nieuwe kandidaat aan het systeem toe te voegen
+- **Email:** Om e-mailcommunicatie te loggen
+- **Match:** Om kandidaten te koppelen aan vacatures
+- **Note:** Om gespreksdetails of observaties vast te leggen
+- **Task:** Voor opvolgacties of to-do-items
+
+![](/images/intercom/42508788-Screenshot-2025-03-21-at-23_21_52.png)
+
+## Stap 5: Opslaan en activeren
+
+Klik op [Save Task] om de setup te voltooien en de automatisering te activeren**.**
+
+Eenmaal geactiveerd zorgt deze automatisering ervoor dat elk WhatsApp-gesprek (gestart of geëindigd) automatisch wordt vastgelegd in Carerix, zodat gebruikers een volledige communicatiehistorie kunnen bijhouden. Dit verbetert tracking, transparantie en samenwerking tussen teams.

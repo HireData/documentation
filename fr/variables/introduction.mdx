@@ -1,0 +1,62 @@
+---
+title: "Variables"
+sidebarTitle: "Introduction"
+description: "Personnalisez les e-mails, les messages, les formulaires et les automatisations."
+---
+
+Avec les variables, vous pouvez insérer des données en direct, comme le nom d'un candidat, un intitulé de poste ou un salaire, directement dans vos e-mails, messages WhatsApp, formulaires et automatisations.
+
+## À quoi ressemble une variable
+
+Une variable est une clé de champ entourée d'accolades doubles :
+
+```
+Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
+```
+
+Lorsqu'il est envoyé à une candidate nommée Sofia postulant pour un rôle de Backend Engineer, cela devient :
+
+```
+Hi Sofia, thanks for applying to Backend Engineer!
+```
+
+Les espaces à l'intérieur des accolades sont facultatifs :
+
+- `{{candidate.first_name}}` et `{{ candidate.first_name }}` se comportent de la même manière.
+
+## Où utiliser les variables
+
+Vous pouvez utiliser des variables partout où vous rédigez du contenu envoyé ou stocké :
+
+- **E-mail** — objets et corps
+- **WhatsApp** — messages et modèles
+- **Formulaires** — questions et logique de suivi
+- **Automatisations** — mappings de champs et tâches planifiées
+
+## Fournir une valeur de repli
+
+Si un champ est vide pour un enregistrement donné, la variable est remplacée par rien. Pour afficher une valeur par défaut à la place, utilisez le modificateur [`default`](/fr/variables/modifiers#fallback) :
+
+```
+Hi {{ candidate.first_name | default: "there" }}!
+```
+
+Si le candidat n'a pas de prénom, cela envoie « Hi there! ».
+
+## Transformer les valeurs avec les modificateurs
+
+Les variables peuvent faire plus que simplement insérer des données brutes. Un **modificateur** change la façon dont la valeur apparaît. Il peut mettre le texte en majuscules, formater une date, arrondir un nombre, et bien plus encore. Vous ajoutez un modificateur avec un tube (`|`) :
+
+```
+{{ candidate.first_name | uppercase }}        → SOFIA
+{{ job.salary | format_currency: "EUR" }}      → €65,000.00
+{{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
+```
+
+Vous pouvez enchaîner plusieurs modificateurs, et chacun agit sur le résultat du précédent :
+
+```
+{{ candidate.last_name | lowercase | capitalise }}
+```
+
+Consultez la liste complète sur la page [Modificateurs](/fr/variables/modifiers).

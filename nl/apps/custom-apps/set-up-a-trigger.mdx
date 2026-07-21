@@ -1,0 +1,142 @@
+---
+title: "Een trigger instellen"
+sidebarTitle: "Een trigger instellen"
+description: "Maak een trigger, beschrijf de data die deze ontvangt, test hem en zet hem om in automatiseringen."
+---
+
+Een trigger is een webadres waar je andere tool data naartoe stuurt. Dit artikel loopt van boven naar beneden door de triggerpagina: de trigger maken, de velden beschrijven, testen en automatiseringen koppelen.
+
+Als je nog geen custom app hebt aangemaakt, begin dan met de [introductie](/nl/apps/custom-apps/introduction).
+
+## Maak een trigger
+
+Klik op de bewerkpagina van je app op **Create Trigger**. Geef hem een naam die past bij de data die hij zal ontvangen, bijvoorbeeld "New application" of "Candidate updated".
+
+De trigger opent in de editor. Bovenaan vind je:
+
+- De **naam** van de trigger en de **adresbalk** met de request-methode
+- **Try It** om een testverzoek te versturen
+- **Automate This** om een automatisering vanuit de trigger te maken
+- De knop **Activate** of **Pause**
+
+{/* screenshot: trigger editor header with the URL bar */}
+
+## Kies de methode en deel het adres
+
+Klik op **Copy address** en plak het adres in de tool die de data zal versturen.
+
+De request-methode vertelt HireData welk type verzoek verwacht wordt:
+
+| Methode | Hoe data wordt gelezen |
+| ------- | ---------------------- |
+| `POST` (standaard) | Uit de request body, als JSON of form data |
+| `GET` | Uit de query parameters van het adres |
+
+Verzoeken met een andere methode dan is geconfigureerd worden geweigerd.
+
+## Beschrijf de velden die je ontvangt
+
+De lijst **Fields we receive** vertelt HireData wat er in de data zit, zodat je het kunt gebruiken in automatiseringen en als [variabelen](/nl/variables/introduction). Elk veld heeft:
+
+- **Label**: een leesbare naam, zoals "Contact: First Name"
+- **Key**: de identifier in de data, met punten voor geneste waarden, zoals `contact.firstName`
+- **Type**: welk soort waarde te verwachten is, zoals tekst, een getal of een datum
+
+Er zijn drie manieren om de lijst op te bouwen:
+
+<Tabs>
+  <Tab title="Plak een sample">
+    Zolang de trigger nog geen velden heeft, klik op **Upload Sample Object** en plak of upload een JSON-voorbeeld van de data die je gaat versturen. HireData maakt de velden voor je aan en detecteert automatisch e-mails, telefoonnummers, datums en URL's.
+  </Tab>
+  <Tab title="Verstuur een verzoek">
+    Zolang de trigger nog geen velden heeft, wordt elk verzoek dat naar het adres wordt gestuurd opgeslagen als sample en automatisch in velden gemapt. Dit werkt ook terwijl de trigger gepauzeerd is, dus het is een veilige manier om echte data uit de andere tool te mappen.
+  </Tab>
+  <Tab title="Voeg velden handmatig toe">
+    Klik op **New Field** om velden één voor één toe te voegen met dezelfde veldeneditor die in HireData wordt gebruikt. Dit omvat AI-velden, die met AI een waarde genereren telkens wanneer er data binnenkomt.
+  </Tab>
+</Tabs>
+
+<Note>
+  Zodra een trigger velden heeft, veranderen nieuwe verzoeken deze niet meer. Bewerk de lijst handmatig of maak hem leeg voordat je een nieuwe sample uploadt.
+</Note>
+
+{/* screenshot: fields list with a few example fields */}
+
+## Test hem met Try It
+
+Klik op **Try It** in de header van de trigger om een verzoek te versturen zonder HireData te verlaten:
+
+1. Het formulier is vooraf ingevuld met voorbeeldwaarden op basis van je velden. Pas aan wat je wilt.
+2. Klik op **Send**.
+3. Bekijk het verzoek aan de linkerkant en de response aan de rechterkant.
+
+De schakelaar **Mode** boven het formulier bepaalt hoe het verzoek wordt afgehandeld:
+
+- **Test** (standaard): maakt een test-event en draait je automatiseringen in een veilige sandbox. Je kunt elke stap en het resultaat volgen, maar er wordt niets aangemaakt, gewijzigd of verstuurd.
+- **Live**: stuurt een echt verzoek, precies zoals je andere tool het zou doen.
+
+Test-events en hun runs tonen een Test-label in het tabblad **Events**.
+
+{/* screenshot: Try It modal with form and request panes */}
+
+## Geef het door aan je ontwikkelaar
+
+Als iemand anders de tool beheert die de data gaat versturen, dan geven de **Request Examples** onderaan de trigger alles wat diegene nodig heeft. Je kunt kopiëren:
+
+- **cURL**: een kant-en-klaar voorbeeldverzoek voor de command line
+- **JSON**: een voorbeeld van de data die de trigger verwacht
+- **OpenAPI**: een schema dat je in tools zoals Postman kunt importeren
+- **Copy for LLMs**: één document dat de trigger beschrijft, gemaakt om te plakken in een AI-assistent die de integratie voor je bouwt
+
+<Tip>
+  Selecteer eerst velden om de kopieën tot alleen die velden te beperken.
+</Tip>
+
+### Testverzoeken versturen
+
+Elk verzoek kan als test worden gemarkeerd door een header toe te voegen:
+
+```
+X-HireData-Test: true
+```
+
+Testverzoeken gedragen zich precies zoals de Test-modus van Try It: automatiseringen draaien in een veilige sandbox die niets aanmaakt, wijzigt of verstuurt, en het event toont een Test-label in het tabblad **Events**. Handig terwijl de integratie van de andere tool nog wordt gebouwd.
+
+## Personen synchroniseren
+
+Als de inkomende data een persoon beschrijft, zoals een kandidaat of contactpersoon, mapt het onderdeel **People** deze op persoonsrecords in HireData:
+
+1. Klik op **Add Person** en map de velden.
+2. Elk verzoek aan de trigger synchroniseert die persoon nu automatisch.
+3. Automatiseringen die de trigger gebruiken kunnen de persoon direct gebruiken, bijvoorbeeld als ontvanger van een e-mail, zonder velden opnieuw te mappen.
+
+Verwijder alle personen om te stoppen met synchroniseren.
+
+## Zet het om in automatiseringen
+
+Klik op **Automate This** in de header van de trigger om een concept-automatisering te maken die start wanneer de trigger data ontvangt. Je kunt de stappen daarna direct configureren.
+
+De tabbladen van de trigger tonen alles wat hij doet op één plek:
+
+- **Automations**: de automatiseringen die met deze trigger zijn verbonden, met bulk activeren, pauzeren, dupliceren en verwijderen
+- **Events**: elk verzoek dat de trigger heeft ontvangen
+- **Runs**: de automation runs die deze events hebben gestart
+- **Tasks**: de individuele taken die die runs hebben uitgevoerd
+
+## Hoe verzoeken worden afgehandeld
+
+Een snelle referentie voor wanneer iets zich niet gedraagt zoals verwacht:
+
+1. De request-methode moet overeenkomen met de geconfigureerde methode van de trigger, anders wordt hij geweigerd.
+2. Elk geldig verzoek wordt opgeslagen als een event, zelfs wanneer de app of trigger gepauzeerd is. Je ziet het altijd in het tabblad **Events**.
+3. Automatiseringen draaien alleen wanneer zowel de app als de trigger actief zijn. Als er niets gebeurt, controleer dan eerst die twee schakelaars, en daarna de status en start-filters van de automatisering.
+4. Verzoeken met de header `X-HireData-Test: true` worden opgeslagen als test-events en draaien automatiseringen in een sandbox, zonder live wijzigingen.
+5. Zolang een trigger geen velden heeft, wordt het eerste verzoek gebruikt om ze automatisch aan te maken.
+
+### Toch nog hulp nodig?
+
+Als een trigger zich niet gedraagt zoals verwacht, neem dan contact op met ons team via [support@hiredata.com](mailto:support@hiredata.com) en voeg toe:
+
+- Een link naar de trigger
+- Het event, vanuit het tabblad **Events**
+- De automatisering die je verwachtte te zien draaien

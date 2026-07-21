@@ -1,0 +1,123 @@
+---
+title: "Events"
+description: "Begrijp hoe HireData-events werken"
+---
+
+_Wanneer je je ATS koppelt, zoals Carerix, Salesforce, OTYS, enz., aan HireData, begint deze events te sturen, wat meldingen zijn dat er iets in je systeem is gebeurd. Events triggeren je automatiseringen, waardoor ze cruciaal zijn voor hoe HireData op de achtergrond werkt. In dit artikel leggen we uit hoe events werken, waar je ze vindt, en hoe je ze analyseert als er iets niet gaat zoals verwacht._
+
+## Wat is een event
+
+Een event is een signaal dat vanuit je gekoppelde app naar HireData wordt gestuurd. Het vertegenwoordigt meestal een specifieke actie of wijziging, bijvoorbeeld een nieuwe kandidaat die wordt aangemaakt, een vacature die wordt bijgewerkt, een placement die is voltooid, enz. Deze events worden gebruikt om de automatiseringen te triggeren die je in HireData hebt opgezet, en elk event bevat **Event Data**, **External Records** en **Processes**.
+
+_Voorbeeldevent:_
+
+![Individuele eventpagina](/images/intercom/48025433-Screenshot-2025-05-05-at-10_51_18.png)
+
+## Hoe je eventdetails bekijkt
+
+Navigeer naar het menu **Settings** en open de pagina **Events** om een lijst te zien met alle events die vanuit je gekoppelde apps zijn verzonden:
+
+![Events-pagina in HireData](/images/intercom/48023611-Screenshot-2025-05-05-at-12_06_25.png)
+
+_Gebruik de filters voor een georganiseerder overzicht, bijvoorbeeld als je de events van een van je apps wilt zien:_
+
+![Filters instellen](/images/intercom/48024595-Screenshot-2025-05-05-at-10_49_56.png)
+
+Om een individueel event te verkennen, klik je op de knop [Details] naast het event voor een kort overzicht of open je het dropdown-menu en klik je op [View].
+
+![Event dropdown-menu](/images/intercom/48023846-Screenshot-2025-05-05-at-10_50_57.png)
+
+Dit opent de detailweergave van het event, die het volgende bevat:
+
+- **Event Data** – een samengevat overzicht van de data die van je app is ontvangen.
+
+![Event Data-tabblad](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
+
+- **External Records** – aanvullende velden van de bronapp, zelfs als ze niet in de automatisering worden gebruikt.
+
+![External records-tabblad](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
+
+- **Processes** – de lijst met automatisering(en) die door dit event zijn getriggerd en de runs die zijn aangemaakt. Je ziet ook de status van elke run (bijv. Completed, Delayed, Cancelled).
+
+![Processes-tabblad](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+
+## Events opnieuw afspelen
+
+Als een event niet een automatisering triggert zoals verwacht, of een run mislukt voordat de taken zijn voltooid, kun je individuele of meerdere events opnieuw afspelen om automatiseringen opnieuw te triggeren en dingen weer op de rails te krijgen.
+
+<Warning>
+  Wanneer je een event opnieuw afspeelt, kan het runs triggeren over meerdere automatiseringen tegelijk. Controleer voor het opnieuw afspelen altijd welke automatiseringen en runs worden beïnvloed, vooral als een van deze het versturen van een e-mail of bericht omvat. Ze opnieuw afspelen zonder eerst te controleren kan resulteren in duplicaat berichten die naar kandidaten of contacten worden verzonden.
+</Warning>
+
+### Wat gebeurt er wanneer een event opnieuw wordt afgespeeld?
+
+HireData verwerkt de geselecteerde event(s) opnieuw en triggert de bijbehorende automatiseringen. De betrokken taken worden uitgevoerd alsof het event zojuist heeft plaatsgevonden.
+
+- **Event-gebaseerde automatiseringen** – Voor automatiseringen die worden getriggerd door een specifiek event (bijvoorbeeld een kandidaat die een bepaalde stage bereikt), zal het opnieuw afspelen de automatisering onmiddellijk opnieuw triggeren op basis van de eventdata. Als er eerder een run was aangemaakt, wordt deze opnieuw afgespeeld en verschijnt er een "Replay"-label.
+
+![Een event gelabeld als Replayed](/images/intercom/146643359-Screenshot-2026-05-28-at-13_08_04.png)
+
+- **Ingeplande (eenmalige) automatiseringen** – Voor automatiseringen die op een vaste datum of schema draaien, zal het opnieuw afspelen van het event de geplande run-datum van de automatisering niet wijzigen of opnieuw inplannen. Het opnieuw afspelen herbeoordeelt alleen of het event overeenkomt met de voorwaarden van de automatisering.
+
+### Hoe je events opnieuw afspeelt
+
+<Steps>
+  <Step title="Vind het event dat je wilt afspelen">
+    Er zijn drie manieren om bij de replay-optie te komen, afhankelijk van wat je nodig hebt:
+
+    - **Vanaf de Events-pagina (alle events)** – Navigeer naar de pagina **Events** vanuit het hoofdmenu. Dit geeft je een overzicht van alle events die door HireData zijn ontvangen.
+
+    ![De Events-pagina](/images/intercom/146643741-Screenshot-2026-05-28-at-13_06_02.png)
+
+    - **Vanuit een specifieke automatisering** – Open de automatisering die je wilt onderzoeken en ga vervolgens naar de pagina **Events**. Dit filtert de weergave zodat alleen events gerelateerd aan die automatisering worden getoond.
+
+    ![De Events-pagina vinden voor een specifieke automatisering](/images/intercom/146650572-Screenshot-2026-05-28-at-13_19_57.png)
+
+    ![De Events-pagina voor een specifieke automatisering](/images/intercom/146644665-Screenshot-2026-05-28-at-13_20_17.png)
+
+    - **Vanuit een enkel event** – Klik direct op het event dat je opnieuw wilt afspelen om de detailweergave te openen.
+  </Step>
+  <Step title="Selecteer het/de event(s) om af te spelen">
+    Om een **enkel event** opnieuw af te spelen, klik je op het menu met drie puntjes naast het event in de detailweergave of in de **Events**-lijst en selecteer je **Replay** uit de dropdown.
+
+    ![Een individueel event opnieuw afspelen](/images/intercom/146645337-Screenshot-2026-05-28-at-13_06_43.png)
+
+    Om **meerdere events tegelijk** opnieuw af te spelen, vink je het vakje aan naast elk event dat je opnieuw wilt afspelen op de pagina **Events** of het **Events**-tabblad van een automatisering. Zodra een of meer events zijn geselecteerd, verschijnt bovenaan de pagina een **Replay**-knop. Klik erop om door te gaan.
+
+    ![Events in bulk opnieuw afspelen](/images/intercom/146646000-Screenshot-2026-05-28-at-13_06_24.png)
+  </Step>
+  <Step title="Controleer en bevestig het opnieuw afspelen">
+    Om te zien welke automatiseringen eerder door het event zijn getriggerd, open je het event en ga je naar het tabblad **Runs**. Dit toont je de automatiseringen en hun status van de laatste keer dat het event werd verwerkt. Gebruik deze informatie om te beslissen of het veilig is om door te gaan met de replay.
+
+    ![Controleren welke automatiseringen en runs worden getriggerd door de replay](/images/intercom/146646806-Screenshot-2026-05-28-at-13_20_50.png)
+
+    Controleer of een van de vermelde automatiseringen taken bevat zoals **Send Email/Message/Survey**. Als dat het geval is, zorg dan dat je bedoelt dat die berichten opnieuw worden verstuurd voordat je bevestigt.
+
+    Zodra je overtuigd bent, bevestig je de replay.
+  </Step>
+</Steps>
+
+<Tip>
+  - **Bekijk altijd de betrokken automatiseringen voordat je een replay bevestigt.** Eén event kan overeenkomen met meerdere automatiseringen, en het opnieuw afspelen triggert ze allemaal.
+  - **Wees extra voorzichtig met automatiseringen die e-mails of berichten versturen.** Het opnieuw afspelen van een event dat aan die automatiseringen is gekoppeld kan duplicaatcommunicatie naar kandidaten of contacten sturen.
+  - **Gebruik het automatisering-specifieke Events-tabblad als je alleen binnen een enkele automatisering wilt afspelen.** Dit geeft je een meer gefocuste weergave en verkleint het risico dat je onbedoeld niet-gerelateerde automatiseringen triggert.
+  - **Bulk replay is handig wanneer meerdere events tegelijk zijn mislukt**, bijvoorbeeld na een tijdelijk syncprobleem. In plaats van ze één voor één af te spelen, kun je alle betrokken events selecteren en samen afspelen.
+</Tip>
+
+## Troubleshooting van events
+
+Als een automatisering niet draaide zoals verwacht, of je onverwachte data ziet:
+
+- Ga naar het tabblad **Processes** van het event en controleer of er runs zijn aangemaakt.
+- Klik in de run om logs te bekijken en zie of een stap is mislukt of overgeslagen.
+- Vergelijk de **Event Data** met de voorwaarden in je automatisering om ervoor te zorgen dat het overeenkomt.
+
+Als er geen proces is getriggerd, voldeed het event waarschijnlijk niet aan de criteria van enige actieve automatiseringen.
+
+### Toch nog hulp nodig?
+
+Als je niet zeker weet waarom een event je automatisering niet heeft getriggerd of hulp wilt bij het interpreteren van de eventdata, neem dan gerust contact op met ons team via [support@hiredata.com](mailto:support@hiredata.com). Voeg als je dat doet toe:
+
+- Een link of het ID van het event;
+- Een link of de naam van de automatisering die je verwachtte te triggeren;
+- Alle relevante stappen of context die ons kunnen helpen te onderzoeken.

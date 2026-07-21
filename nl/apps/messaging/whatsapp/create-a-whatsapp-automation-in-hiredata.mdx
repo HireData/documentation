@@ -1,0 +1,97 @@
+---
+title: "Een WhatsApp-automatisering maken in HireData"
+sidebarTitle: "WhatsApp-automatiseringen"
+description: "Recruitmentworkflows stroomlijnen binnen WhatsApp: een stapsgewijze gids"
+---
+
+_Welkom bij onze tutorial over het opzetten van WhatsApp-automatisering binnen HireData. Met deze integratie kun je taken automatiseren zoals het verzamelen en bijwerken van kandidaatgegevens, zoals beschikbaarheidsstatus, en het informeren van kandidaten over nieuwe vacatures, waarmee je de kandidaatervaring verbetert en je recruitmentprocessen stroomlijnt._
+
+_Volg mee terwijl we elke stap demonstreren om deze automatisering efficiënt op te zetten._
+
+## Stap 1: Maak een nieuwe automatisering
+
+### 1.1. Navigeer naar het paneel Automations en klik op de knop [New Automation] om te beginnen
+
+### 1.2. Klik op het pop-upscherm op [WhatsApp] en selecteer een van de templates afhankelijk van het onderwerp van het gesprek dat je wilt aanmaken
+
+_In deze gids gaan we de template "Availability" gebruiken._
+
+![WhatsApp-templates](/images/intercom/29573810-1.png)
+
+_Leer hoe je nieuwe WhatsApp-templates in HireData en WhatsApp maakt [hier](/nl/apps/messaging/whatsapp/how-whatsapp-templates-work)._
+
+## Stap 2: Selecteer een trigger
+
+Wanneer je op de trigger building block klikt (de eerste), zie je dat de app en de verbinding al voor je zijn geselecteerd.
+
+### 2.1. Selecteer het object waarnaar je gaat luisteren
+
+![Een object voor de trigger selecteren](/images/intercom/29573885-2.png)
+
+_Definieer het object:_
+
+![Het object voor de trigger definiëren](/images/intercom/29573904-3.png)
+
+### 2.2. Specificeer de datum en tijd om de taak uit te voeren
+
+Als deze taak periodiek moet draaien, configureer dan de instelling **Repeat every**. Voor eenmalige taken selecteer je **Don't Repeat**.
+
+![De taak inplannen](/images/intercom/29574079-4.png)
+
+## Stap 3: Filters toepassen
+
+Open het volgende building block om meer filters toe te voegen om je kandidaatselectie te verfijnen. Je kunt bijvoorbeeld kandidaten filteren op status, zoals hier getoond:
+
+![Filters toevoegen](/images/intercom/29574865-5.png)
+
+Je kunt ook extra filters toevoegen door op [Add Filter] te klikken, en indien nodig kun je meerdere filtersets maken via de optie [Add New Set] om je selectie te versmallen of te verbreden.
+
+## Stap 4: Configureer taak
+
+Bij gebruik van de beschikbare templates wordt de taak automatisch voor je aangemaakt, maar je hebt ook de mogelijkheid om deze aan te passen door:
+
+### 4.1. De vorm te wijzigen
+
+![Een formulier selecteren](/images/intercom/29575037-8.png)
+
+### 4.2. Een gedetailleerde briefing te geven, inclusief ontbrekende doelen om optimale prestaties te garanderen
+
+![](/images/intercom/29575883-9.png)
+
+### 4.3. Meer kennisvelden toe te voegen
+
+Dit zijn velden die je kunt toevoegen om extra context te bieden die de AI tijdens gesprekken kan gebruiken. Selecteer items waar het van op de hoogte moet zijn om gesprekken effectief af te handelen, zoals de namen van de deelnemers, e-mailadressen, enz.
+
+Limieten:
+
+- Maximaal **16 velden**
+- Key-lengte: **64 tekens**
+- Waarde-lengte: **512 tekens**
+
+![Kennisvelden](/images/intercom/29576740-knowledge.png)
+
+## Stap 5: Velden bijwerken
+
+Wanneer het gesprek in WhatsApp eindigt, worden de opgegeven velden in deze taak bijgewerkt in je app.
+
+![Taak Update Fields](/images/intercom/29585860-10.png)
+
+Meer informatie over de belangrijkste componenten van deze taak:
+
+1. **Object:**
+  - Het object vertegenwoordigt de data-entiteit die je wilt bijwerken, bijv. "Candidate".
+2. **Identifier:**
+  - Een identifier is een uniek veld (zoals een ID) dat wordt gebruikt om het exacte record te vinden dat moet worden bijgewerkt. Bijvoorbeeld: "Candidate: ID" zorgt ervoor dat de automatisering het juiste kandidaatrecord aanwijst.
+3. **Fields:**
+  - Dit zijn de velden binnen het object die je wilt laten bijwerken. Je kunt verschillende velden selecteren, zoals "Candidate: Notes" of "Candidate: Available Date", enz., om te specificeren welk deel van het record moet worden bijgewerkt.
+
+## Stap 6: Controleer en activeer de automatisering
+
+Zorg dat alle filters, formulieren en contextuele kennis correct zijn ingesteld voordat je de automatisering activeert.
+
+![Taaksamenvatting](/images/intercom/29577769-final.png)
+
+## 💡 Tips voor optimaal gebruik
+
+- Werk je filters en formulieren regelmatig bij om aan te sluiten op je recruitmentbehoeften.
+- Geef gedetailleerde en specifieke briefings om de effectiviteit van de AI te vergroten.

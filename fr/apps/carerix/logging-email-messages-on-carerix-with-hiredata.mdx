@@ -1,0 +1,93 @@
+---
+title: "Consigner les e-mails dans Carerix avec HireData"
+sidebarTitle: "Consigner les e-mails"
+description: "Améliorez la visibilité entre équipes dans Carerix avec HireData"
+---
+
+_Bienvenue dans notre guide complet sur la consignation des e-mails de HireData vers Carerix. Cela garantit que toute la communication par e-mail est enregistrée dans Carerix, ce qui facilite le suivi des interactions avec les clients et candidats. Poursuivez votre lecture pour découvrir comment configurer une automatisation dans HireData qui consigne les e-mails envoyés dans Carerix._
+
+##
+
+## Étape 1 : Créer une nouvelle automatisation
+
+En intégrant HireData à Carerix, vous pouvez créer automatiquement des enregistrements d'e-mails dans Carerix chaque fois qu'un e-mail est envoyé. L'automatisation capture les détails pertinents tels que l'expéditeur, le destinataire, l'objet, le contenu du corps et le moment où le message a été envoyé, garantissant ainsi que chaque e-mail est correctement consigné.
+
+### 1.1. Rendez-vous dans la section Automatisations de HireData et cliquez sur [Create New Automation]
+
+### 1.2. Sélectionnez le modèle « Log email in Carerix »
+
+![Modèle Log email in Carerix](/images/intercom/42396003-Screenshot-2025-03-21-at-17_20_20.png)
+
+## Étape 2 : Ajouter un déclencheur
+
+### 2.1. Vérifiez la connexion à l'app
+
+Elle sera sélectionnée automatiquement, mais nous vous recommandons de vous assurer qu'il s'agit de la bonne au cas où vous auriez plusieurs connexions avec Carerix.
+
+### 2.2. Sélectionnez l'objet
+
+L'objet [Message] sera également configuré automatiquement, mais vous pouvez le modifier en cliquant sur le bouton [Edit]. Voici les autres options d'objet que nous prenons en charge dans ce cas :
+
+![Objets](/images/intercom/42401482-Screenshot-2025-03-21-at-17_40_18.png)
+
+### 2.3. Définir un déclencheur
+
+Définissez le déclencheur sur [Message: Sent] pour capturer les e-mails dès qu'ils sont envoyés.
+
+![Configuration du déclencheur](/images/intercom/42401972-Screenshot-2025-03-21-at-17_20_57.png)
+
+### 2.4. Ajouter des filtres (facultatif)
+
+L'ajout d'un filtre permettra une meilleure segmentation en fonction de vos besoins. Dans cet exemple, nous souhaitons filtrer tous les messages envoyés via d'autres canaux, afin que seuls les messages envoyés par e-mail soient ajoutés à Carerix.
+
+![Configuration d'un filtre](/images/intercom/42413297-Screenshot-2025-03-21-at-17_21_48.png)
+
+## Étape 3 : Configurer la tâche [Add Email to Carerix]
+
+Cette tâche fait partie du modèle d'automatisation où vous pouvez renseigner les champs requis pour vous assurer que les données de l'e-mail sont correctement consignées :
+
+### 3.1. Sélectionnez l'objet que vous souhaitez créer dans Carerix, par exemple e-mail, note, etc.
+
+Vous pouvez sélectionner l'un de ces objets à ajouter à votre app :
+
+- **Appointment :** pour planifier des réunions ou des entretiens
+- **Candidate :** pour ajouter un nouveau candidat au système
+- **Email :** pour consigner les communications par e-mail
+- **Match :** pour connecter les candidats à des opportunités d'emploi
+- **Note :** pour enregistrer les détails ou les observations d'une conversation
+- **Task :** pour les actions de suivi ou éléments à faire
+
+![Sélection d'objet](/images/intercom/42416121-Screenshot-2025-03-21-at-17_57_03.png)
+
+### 3.2. Sélectionnez les adresses e-mail de l'expéditeur et du destinataire à consigner dans Carerix
+
+![Champs expéditeur et destinataire](/images/intercom/42416518-Screenshot-2025-03-21-at-17_58_31.png)
+
+### 3.3. Assurez-vous ensuite que le contenu correct de l'e-mail est enregistré
+
+- Sujet
+- Corps
+
+![Champs de contenu de l'e-mail](/images/intercom/42422610-Screenshot-2025-03-21-at-18_01_36.png)
+
+### 3.4. Définissez le statut sur l'une des options suivantes en fonction des e-mails que vous souhaitez consigner
+
+![Configuration du statut d'un e-mail](/images/intercom/42501386-Screenshot-2025-03-21-at-18_02_33.png)
+
+### 3.5. Ajoutez une condition Send On
+
+Par exemple, utilisez [Message: Sent At] pour consigner l'horodatage de l'e-mail :
+
+![Champ Send On](/images/intercom/42502640-Screenshot-2025-03-21-at-23_10_29.png)
+
+## Étape 5 : Enregistrer et activer
+
+Cliquez sur [Save Task] pour finaliser la configuration :
+
+![](/images/intercom/42424210-Screenshot-2025-03-21-at-17_23_21.png)
+
+Enfin, cliquez sur** **[Activate] pour la mettre en service :
+
+![](/images/intercom/42425773-Screenshot-2025-03-21-at-18_31_27.png)
+
+Une fois activée, cette automatisation garantit que chaque e-mail envoyé est automatiquement enregistré dans Carerix, permettant aux utilisateurs de conserver un historique complet des communications. Cela améliore le suivi, la transparence et la collaboration entre les équipes.

@@ -1,0 +1,113 @@
+---
+title: "Criar uma automação Recruitee na HireData"
+sidebarTitle: "Criar uma automação"
+description: "Simplificar os fluxos de trabalho de recrutamento no Recruitee: um guia passo a passo"
+---
+
+_Bem-vindo ao nosso tutorial sobre como configurar uma automação Recruitee na HireData. Com esta integração, pode automatizar tarefas como o envio de inquéritos NPS a candidatos, melhorando a experiência do candidato e simplificando os seus processos de recrutamento. Acompanhe-nos enquanto demonstramos cada passo para configurar uma automação de forma eficiente._
+
+## Passo 1: Configurar a automação
+
+Depois de ter configurado a [ligação com o Recruitee](/pt/apps/recruitee/connect-with-recruitee), pode criar a sua primeira automação. Inicie sessão na HireData e navegue até à página **Automations**, onde poderá encontrar e clicar no botão [New Automation].
+
+![](/images/intercom/67368294-Screenshot-2025-10-01-at-10_06_02.png)
+
+### 1.1 Escolher Blank Automation ou um dos templates disponíveis
+
+Se pretende ter controlo total e liberdade para desenhar cada passo do seu fluxo de trabalho exatamente como precisa, então **Blank Automation** é a escolha certa. Permite-lhe construir um processo totalmente personalizado a partir do zero.
+
+Por outro lado, se preferir uma solução rápida e pronta a usar, selecione um dos templates e a automação será criada para si.
+
+## Passo 2: Definir o trigger
+
+O segundo passo é definir o trigger. Um trigger garante que a HireData "escuta" eventos específicos que ocorrem no Recruitee. Para o configurar, primeiro selecione a app, depois o objeto e, por fim, o trigger que deve iniciar a automação. Também pode aplicar filtros nesta fase para restringir quando a automação corre, por exemplo, visando apenas candidaturas que cumpram determinados critérios.
+
+_Exemplo de trigger: Application: Created or Updated_
+
+![](/images/intercom/66856079-image.png)
+
+Selecione o momento em que a automação deve correr, por exemplo, apenas quando um item é criado, atualizado, ou ambos.
+
+## Passo 3: Adicionar um filtro
+
+Depois de configurar o trigger, é essencial adicionar filtros para garantir que a automação é acionada em condições específicas.
+
+Os filtros podem ser adicionados diretamente ao trigger, assegurando que a automação só corre quando são cumpridas condições específicas. Também podem ser criados como um bloco de construção separado, o que é especialmente útil quando são necessários vários conjuntos de filtros para fluxos de trabalho mais complexos. Siga estes passos:
+
+_Exemplo de filtro: Se Outcome for igual a Declined_
+
+![](/images/intercom/65649117-image.png)
+
+_Os filtros garantem que a automação só corre para candidatos que quer alcançar (por exemplo, candidatos rejeitados)._
+
+## Passo 4: Adicionar um atraso
+
+Em alguns casos, poderá querer introduzir um atraso antes de executar a automação. Um atraso é quando a automação espera uma certa quantidade de tempo antes de executar a próxima ação. Eis como adicioná-lo:
+
+_Exemplo de atraso: 1 dia (por exemplo, para informar um candidato sobre a admissão antes de enviar um inquérito pós-colocação)_
+
+![](/images/intercom/65649205-Screenshot-2B2024-03-16-2Bat-2B09_37_52.png)
+
+## Passo 5: Configurar a tarefa 'Send Email'
+
+Agora, vamos configurar a tarefa para enviar o inquérito NPS ao candidato. Siga estes passos:
+
+### 5.1 Adicione um bloco a partir do [+] e depois clique em [Message]
+
+![](/images/intercom/65649314-image.png)
+
+###
+
+### 5.2 Neste passo, pode decidir que tipo de mensagem quer enviar
+
+![](/images/intercom/65649315-Schermafbeelding-2B2025-09-16-2B142526.png)
+
+### 5.3 Agora, selecione o template que gostaria de utilizar
+
+![](/images/intercom/65649319-Screenshot-2B2024-03-16-2Bat-2B09_33_41.png)
+
+### 5.4 Selecione o Branding do seu email
+
+![](/images/intercom/66856626-image.png)
+
+### 5.5 Escolha o destinatário da mensagem
+
+![](/images/intercom/65649317-image.png)
+
+### 5.6 Especifique o remetente do inquérito
+
+![](/images/intercom/65649316-image.png)
+
+### 5.7 Assegure-se de que todas as definições estão corretas e guarde a sua tarefa
+
+![](/images/intercom/65649318-image.png)
+
+###
+
+### 5.8 Rever a automação
+
+Depois de configurar a sua primeira automação, aconselhamos a revê-la para garantir que tudo está configurado corretamente e que corre sem problemas.
+
+**Eis como funcionará a automação de exemplo deste guia:**
+
+Quando uma candidatura é atualizada para **Declined**, a HireData receberá um evento do Recruitee. Depois, a automação irá esperar um dia, ignorando fins de semana para evitar atrasos (opcional). Após esta pequena pausa, os candidatos que cumpram os critérios receberão um email personalizado, tratando-os pelo nome e incluindo um formulário de feedback.
+
+Esta abordagem torna o processo de rejeição mais atencioso e profissional, ao mesmo tempo que lhe dá a oportunidade de recolher feedback valioso dos candidatos para melhorar a experiência de contratação.
+
+![](/images/intercom/66856806-image.png)
+
+## Passo 6: Ativar a sua automação
+
+Uma vez concluída a configuração, é hora de ativar a sua automação. Com este passo, a sua automação Recruitee fica pronta a funcionar, simplificando os seus processos de recrutamento sem esforço.
+
+_Clique no botão [Activate] para ligar a sua automação_
+
+![](/images/intercom/65649380-Screenshot-2B2024-03-16-2Bat-2B09_34_37.png)
+
+Ao configurar uma automação Recruitee na HireData, pode automatizar tarefas como o envio de inquéritos NPS a candidatos, melhorando a experiência do candidato e otimizando os seus fluxos de recrutamento. Com o guia passo a passo fornecido neste tutorial, pode configurar e ativar a sua automação de forma eficiente, poupando tempo e recursos ao mesmo tempo que reforça os seus esforços de recrutamento.
+
+---
+
+# Guia em vídeo
+
+<iframe src="https://www.loom.com/embed/522b7b06ee2f4f05b1bc51ecf04d9b32" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

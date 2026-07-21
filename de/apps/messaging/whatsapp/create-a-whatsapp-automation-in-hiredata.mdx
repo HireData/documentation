@@ -1,0 +1,97 @@
+---
+title: "Eine WhatsApp-Automatisierung in HireData erstellen"
+sidebarTitle: "WhatsApp-Automatisierungen"
+description: "Recruiting-Workflows in WhatsApp optimieren: Eine Schritt-für-Schritt-Anleitung"
+---
+
+_Willkommen zu unserem Tutorial zur Einrichtung einer WhatsApp-Automatisierung in HireData. Mit dieser Integration können Sie Aufgaben automatisieren, wie das Erfassen und Aktualisieren von Kandidatendetails (z. B. Verfügbarkeitsstatus) und das Informieren über neue Stellenangebote, und so die Kandidatenerfahrung verbessern und Ihre Recruiting-Prozesse optimieren._
+
+_Folgen Sie uns, während wir jeden Schritt zur effizienten Einrichtung dieser Automatisierung demonstrieren._
+
+## Schritt 1: Eine neue Automatisierung erstellen
+
+### 1.1. Navigieren Sie zum Automations-Panel und klicken Sie auf die Schaltfläche [New Automation], um zu starten
+
+### 1.2. Klicken Sie im Pop-up-Fenster auf [WhatsApp] und wählen Sie je nach Thema der zu erstellenden Konversation eine der Vorlagen aus
+
+_In dieser Anleitung verwenden wir die Vorlage „Availability"._
+
+![WhatsApp Templates](/images/intercom/29573810-1.png)
+
+_Erfahren Sie, wie Sie neue WhatsApp-Vorlagen in HireData und WhatsApp erstellen: [hier](/de/apps/messaging/whatsapp/how-whatsapp-templates-work)._
+
+## Schritt 2: Einen Trigger auswählen
+
+Wenn Sie auf den Trigger-Baustein (den ersten) klicken, sehen Sie, dass die App und die Verbindung bereits für Sie ausgewählt sind.
+
+### 2.1. Wählen Sie das Object, das Sie überwachen möchten
+
+![Selecting an Object for the trigger](/images/intercom/29573885-2.png)
+
+_Definieren Sie das Object:_
+
+![Defining the Object for the trigger](/images/intercom/29573904-3.png)
+
+### 2.2. Geben Sie das Datum und die Uhrzeit für die Aufgabe an
+
+Wenn diese Aufgabe periodisch ausgeführt werden muss, konfigurieren Sie die Einstellung **Repeat every**. Für einmalige Aufgaben wählen Sie **Don't Repeat**.
+
+![Scheduling the task](/images/intercom/29574079-4.png)
+
+## Schritt 3: Filter anwenden
+
+Öffnen Sie den nächsten Baustein, um weitere Filter hinzuzufügen und Ihre Kandidatenauswahl zu verfeinern. Sie können Kandidaten zum Beispiel nach ihrem Status filtern, wie hier gezeigt:
+
+![Adding filters](/images/intercom/29574865-5.png)
+
+Sie können weitere Filter über [Add Filter] hinzufügen und bei Bedarf über die Option [Add New Set] mehrere Filtersätze erstellen, um Ihre Auswahl einzugrenzen oder zu erweitern.
+
+## Schritt 4: Aufgabe konfigurieren
+
+Bei Verwendung der verfügbaren Vorlagen wird die Aufgabe automatisch für Sie erstellt, aber Sie haben auch die Möglichkeit, sie anzupassen:
+
+### 4.1. Das Formular ändern
+
+![Selecting a form](/images/intercom/29575037-8.png)
+
+### 4.2. Ein detailliertes Briefing bereitstellen, inklusive fehlender Ziele für eine optimale Leistung
+
+![](/images/intercom/29575883-9.png)
+
+### 4.3. Weitere Knowledge Fields hinzufügen
+
+Dies sind Felder, die Sie hinzufügen können, um der KI zusätzlichen Kontext für die Konversationen zu geben. Wählen Sie Elemente aus, die sie kennen sollte, um Konversationen effektiv zu handhaben, wie Namen der Teilnehmer, E-Mail-Adressen usw.
+
+Limits:
+
+- Bis zu **16 Felder**
+- Länge des Schlüssels: **64 Zeichen**
+- Länge des Werts: **512 Zeichen**
+
+![Knowledge fields](/images/intercom/29576740-knowledge.png)
+
+## Schritt 5: Felder aktualisieren
+
+Wenn die Konversation in WhatsApp endet, werden die in dieser Aufgabe angegebenen Felder in Ihrer App aktualisiert.
+
+![Update Fields task](/images/intercom/29585860-10.png)
+
+Weitere Informationen zu den wichtigsten Komponenten dieser Aufgabe:
+
+1. **Object:**
+  - Das Object stellt die Datenentität dar, die Sie aktualisieren möchten, z. B. „Candidate".
+2. **Identifier:**
+  - Ein Identifier ist ein eindeutiges Feld (wie eine ID), das verwendet wird, um genau den Datensatz zu finden, der aktualisiert werden soll. Beispiel: „Candidate: ID" stellt sicher, dass die Automatisierung den richtigen Kandidatendatensatz anspricht.
+3. **Fields:**
+  - Dies sind die Felder innerhalb des Objects, die Sie aktualisieren möchten. Sie können verschiedene Felder auswählen, z. B. „Candidate: Notes" oder „Candidate: Available Date" usw., um festzulegen, welcher Teil des Datensatzes aktualisiert werden soll.
+
+## Schritt 6: Automatisierung überprüfen und aktivieren
+
+Stellen Sie sicher, dass alle Filter, Formulare und Kontextinformationen richtig eingerichtet sind, bevor Sie die Automatisierung aktivieren.
+
+![Task summary](/images/intercom/29577769-final.png)
+
+## 💡 Tipps für optimale Nutzung
+
+- Aktualisieren Sie Ihre Filter und Formulare regelmäßig, um sie an Ihre Recruiting-Bedürfnisse anzupassen.
+- Geben Sie detaillierte und spezifische Briefings, um die Effektivität der KI zu erhöhen.

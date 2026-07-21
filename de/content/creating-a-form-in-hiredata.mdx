@@ -1,0 +1,128 @@
+---
+title: "Ein Formular in HireData erstellen"
+sidebarTitle: "Formulare"
+description: "Erstellen Sie Formulare und sammeln Sie strukturiertes Feedback von Ihren Kandidaten"
+---
+
+_Die Formulare in HireData helfen Ihnen, während der Candidate Journey strukturierte Daten zu sammeln. Diese Anleitung führt Sie durch das Einrichten und Verwenden von Formularen in HireData für Ihre Automatisierungen._
+
+## Ein Formular erstellen
+
+Zunächst müssen Sie **den Zweck des Formulars definieren**. Legen Sie fest, welche Daten Sie erfassen möchten (z. B. Verfügbarkeit von Kandidaten, Feedback zum Recruitment-Prozess usw.).
+
+Öffnen Sie dann die Seite **Forms** über die **Settings** und klicken Sie auf [New Form]. Sie können ein leeres Formular erstellen oder eine der verfügbaren Vorlagen auswählen:
+
+![New Form button](/images/intercom/50372488-Screenshot-2025-05-19-at-09_38_44.png)
+
+_Formularvorlagen:_
+
+![Form templates](/images/intercom/50372790-Screenshot-2025-05-19-at-09_39_14.png)
+
+_Wenn Sie von Grund auf beginnen, sollten Sie Ihrem Formular einen Namen geben, der nur für den internen Gebrauch ist:_
+
+![Adding a name to a form](/images/intercom/50373594-Screenshot-2025-05-19-at-12_40_06.png)
+
+## Fragen hinzufügen
+
+Formulare bestehen aus einer oder mehreren Fragen, an die jeweils Logik angehängt sein kann – zum Beispiel eine Folgefrage nur anzuzeigen, wenn eine Bewertung unter 8 liegt. Mehr dazu gleich. Zunächst sehen wir uns an, wie verschiedene Fragen hinzugefügt werden.
+
+### 1.1. Klicken Sie auf den Fragetyp, den Sie hinzufügen möchten, oder auf das [+]-Symbol, um weitere Fragen hinzuzufügen
+
+Jedes Formular kann je nach Art der zu erfassenden Daten verschiedene Fragetypen enthalten.
+
+Am häufigsten von unseren Kunden verwendet:
+
+- **NPS/Opinion scale:** Kandidaten etwas von 1 bis 10 bewerten lassen.
+- **Multiple choice**: Nutzer aus einer Optionsliste wählen lassen.
+- **Short/Long Text**: Offene Antworten erfassen.
+- **Redirect URL:** Befragte auf Ihre Website oder eine Google-Review-URL weiterleiten.
+
+Weitere:
+
+- **Yes/No questions**
+- **Dropdown:** Nutzer aus einer Liste von Optionen in einem Dropdown-Feld auswählen lassen.
+- **Collect contact information:** E-Mail-Adresse, Telefonnummer oder Website des Kandidaten erfassen.
+- **Date/Time/Datetime:** Nach Verfügbarkeitszeit, Geburtsdatum oder anderen Details in diesem Format fragen.
+- **Number/Currency:** Daten zu Gehaltsvorstellungen erfassen.
+- **File upload:** Zum Sammeln von Dokumenten oder Fotos.
+- **Ending screen:** Fügen Sie am Ende Ihres Formulars eine Dankeseite hinzu.
+
+![Question types](/images/intercom/50373968-Screenshot-2025-03-19-at-21_07_17.png)
+
+### 2.2. Optionale Fragen-Einstellungen
+
+Beim Hinzufügen oder Bearbeiten einer Frage in Ihrem Formular können Sie sie über die folgenden Optionen anpassen:
+
+- **Description:** Ergänzender Text unterhalb der Frage. Nutzen Sie dies, um mehr Kontext zu geben oder die Frage zu präzisieren.
+- **Placeholder:** Der Text, der im Eingabefeld erscheint und den Nutzer darauf hinweist, welche Art von Antwort erwartet wird (z. B. _„Type your response here…"_). Er verschwindet, sobald der Nutzer zu tippen beginnt.
+- **Image:** Ein Bild über der Frage, um sie ansprechender zu gestalten oder eine visuelle Referenz zu geben.
+- **Button text:** Ein anpassbarer Button, den der Kandidat klickt, um die Antwort abzusenden oder zum nächsten Schritt zu gehen. Nützlich, wenn Sie den Ton lenken möchten (z. B. „Submit Rating" oder „Next").
+- **Adjust scale:** Für Bewertungsfragen können Sie die Minimal- und Maximalwerte festlegen (z. B. 1–10, 1–5). Nützlich für unterschiedliche Feedback-Formate wie NPS (0–10) oder Zufriedenheitsbewertungen (1–5).
+- **Required question:** Aktivieren Sie diese Option, um die Frage verpflichtend zu machen, damit Kandidaten sie nicht überspringen können.
+- **Hidden question:** Nutzen Sie dies, um eine Frage vor dem Kandidaten zu verbergen, während dennoch eine Antwort gespeichert wird (z. B. ein Standardwert oder eine systemgenerierte Antwort).
+- **Reverse:** Bei Bewertungsfragen kehrt dies die Anzeige der Skala um (z. B. 10 → 1 statt 1 → 10). Hilfreich, wenn höhere Zahlen etwas Negatives repräsentieren (z. B. Stress oder Schwierigkeit).
+
+![Adding a question to a form](/images/intercom/50374651-Screenshot-2025-05-19-at-09_48_54.png)
+
+💡 **Tipp:** Sie können Fragen per Drag-and-Drop neu anordnen.
+
+## Logik zu den Fragen hinzufügen
+
+Verwenden Sie **Rules**, um smarte Abläufe zwischen Fragen einzurichten. Zum Beispiel:
+
+- Wenn ein Kandidat mit **7 oder weniger** bewertet, zeigen Sie eine Folgefrage nach Verbesserungsvorschlägen.
+- Wenn die Bewertung **8 oder höher** ist, führen Sie ihn zur nächsten Frage oder bitten Sie ihn, eine Google-Bewertung zu hinterlassen.
+
+So richten Sie das ein:
+
+### 2.1. Öffnen Sie den Tab **Logic** und klicken Sie unter einer Frage auf [Add Rule]
+
+![Logic tab](/images/intercom/50376095-Screenshot-2025-05-19-at-12_54_56.png)
+
+![Add Rule button](/images/intercom/50375541-Screenshot-2025-05-19-at-12_51_47.png)
+
+### 2.2. Legen Sie Ihre Bedingung fest (z. B. „Rating is less than or equal to 7")
+
+![Adding a condition](/images/intercom/50375600-Screenshot-2B2025-05-19-2Bat-2B09_52_08.png)
+
+### 2.3. Wählen Sie, was als Nächstes passieren soll (z. B. zu einer bestimmten Folgefrage oder zum Danke-Bildschirm springen)
+
+![Selecting what will happen next](/images/intercom/50375079-Screenshot-2025-05-19-at-09_52_17.png)
+
+## Einen Danke-Bildschirm hinzufügen
+
+Formulare können basierend auf den Antworten auch mit einer Dankesnachricht enden oder Kandidaten auf eine externe Seite zum Hinterlassen einer Bewertung weiterleiten.
+
+Sie können den **Thank-you screen** anpassen mit:
+
+- Titel
+- Kurzer Nachricht
+- Bild
+- Button mit Text
+- Redirect URL: Verwenden Sie dies, um Kandidaten zu einer Bewertung oder zu Ihrer Website zu leiten.
+
+_Thank-you screen mit Website Redirect URL:_
+
+![Thank you screen with Website Redirect URL:](/images/intercom/50376525-Screenshot-2025-05-19-at-09_50_43.png)
+
+_Thank-you screen mit Google Review URL:_
+
+![Thank you screen with Google Review URL](/images/intercom/50376558-Screenshot-2025-05-19-at-09_50_50.png)
+
+## Formular in der Vorschau ansehen und speichern
+
+Klicken Sie auf das Augen-Symbol, um das Formular in der Vorschau anzuzeigen, und auf [Save], um es zu speichern.
+
+![Save and Preview Buttons](/images/intercom/50379428-Screenshot-2025-05-19-at-13_18_51.png)
+
+_Formularvorschau auf verschiedenen Geräten:_
+
+![Form preview](/images/intercom/50379844-Screenshot-2025-05-19-at-13_21_09.png)
+
+Das war's! 🎉 Sobald Ihr Formular fertig ist, können Sie es zu Ihren E-Mail-Vorlagen in HireData hinzufügen und dann über Ihre Automatisierungen versenden.
+
+---
+
+## Video-Anleitung
+
+<iframe src="https://www.loom.com/embed/b419054dc5df42dc95e33132dd747380" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>

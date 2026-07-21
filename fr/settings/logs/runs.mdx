@@ -1,0 +1,68 @@
+---
+title: "Exécutions"
+description: "Comprendre le fonctionnement des exécutions HireData"
+---
+
+_Lorsqu'une automatisation est déclenchée par un événement provenant de votre app connectée, par ex. Carerix, Salesforce, etc., une exécution est créée. Cette exécution représente le processus complet qui suit, du déclencheur initial à chaque étape de votre automatisation. Dans cet article, nous verrons ce que sont les exécutions, comment les trouver et les lire, et comment elles peuvent vous aider à dépanner vos automatisations._
+
+## Qu'est-ce qu'une exécution
+
+Une exécution est le résultat du déclenchement d'une automatisation. Elle montre la séquence exacte d'actions qui ont eu lieu après la réception d'un événement, par exemple, la vérification d'un filtre, l'achèvement d'un délai, ou l'envoi d'un e-mail/la fin d'une conversation. Chaque exécution comprend une timeline complète des étapes réalisées, un onglet **Overview**, **Fields** et **Related**.
+
+Une fois qu'une exécution est terminée avec succès, elle sera reflétée dans la page **Task History** en ajoutant une nouvelle tâche à la liste.
+
+## Comment filtrer les exécutions
+
+Rendez-vous dans le menu **Settings** et ouvrez la page **Runs** pour voir la liste de toutes les exécutions :
+
+![Page Runs dans HireData](/images/intercom/49924492-Screenshot-2025-05-05-at-10_54_30.png)
+
+Utilisez les filtres pour une vue plus organisée, par exemple si vous souhaitez voir les exécutions associées à l'une de vos apps connectées, ou en les restreignant selon l'état/l'étape dans laquelle elles se trouvent actuellement.
+
+_Filtrer les exécutions par app :_
+
+![Filtrer les exécutions par app](/images/intercom/49925819-Screenshot-2025-05-16-at-10_37_44.png)
+
+_Filtrer les exécutions par état :_
+
+![Filtrer les exécutions par état](/images/intercom/49925840-Screenshot-2025-05-16-at-10_37_59.png)
+
+_Filtrer les exécutions par sous-état :_
+
+![Filtrer les exécutions par sous-état](/images/intercom/49925857-Screenshot-2025-05-16-at-10_38_22.png)
+
+## Comment consulter les détails d'une exécution
+
+Pour explorer une exécution individuelle, cliquez sur le bouton [Details] à côté de l'exécution pour un bref aperçu ou ouvrez le menu déroulant et cliquez sur [View Run].
+
+![Comment consulter les exécutions individuelles](/images/intercom/49924583-Screenshot-2025-05-05-at-10_54_51.png)
+
+Cela ouvrira la vue détaillée de l'exécution, qui comprend :
+
+- **Overview** — une vue résumée des données reçues de votre app.
+
+![Onglet Run Overview](/images/intercom/49924603-Screenshot-2025-05-05-at-10_55_16.png)
+
+- **Fields** — les champs contenant les données de l'événement qui a déclenché l'automatisation et qui ont pu être utilisés dans l'exécution.
+
+![Onglet Run Fields](/images/intercom/49924650-Screenshot-2025-05-05-at-10_55_27.png)
+
+- **Related** — l'automatisation qu'a suivie cette exécution et l'événement qui l'a déclenchée.
+
+![Onglet Run Related](/images/intercom/49924666-Screenshot-2025-05-05-at-10_55_33.png)
+
+Cette vue détaillée vous permet également de voir exactement comment votre automatisation s'est déroulée et si chaque étape a réussi.
+
+## Dépannage des exécutions
+
+Si quelque chose ne s'est pas passé comme prévu :
+
+- Ouvrez la vue détaillée de l'exécution pour consulter les journaux et voir si une étape a échoué ou a été ignorée.
+- Ouvrez l'onglet **Fields** pour confirmer que les données utilisées dans l'exécution répondaient à vos conditions. Vous pouvez également comparer l'exécution à l'événement d'origine (accessible via l'onglet **Related**) pour comprendre ce qui l'a déclenchée et confirmer qu'elle a utilisé les bonnes données.
+
+## Besoin d'aide supplémentaire ?
+
+Si vous n'êtes pas sûr de pourquoi une exécution a été annulée/terminée ou souhaitez de l'aide pour interpréter les étapes de l'exécution, n'hésitez pas à contacter notre équipe à [support@hiredata.com](mailto:support@hiredata.com). Si vous le faites, veuillez inclure :
+
+- Un lien ou l'ID de l'exécution ;
+- Toutes les données ou tout contexte pertinents qui pourraient nous aider à enquêter davantage.
