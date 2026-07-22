@@ -1,0 +1,50 @@
+---
+title: "Why Can't I Verify My DNS Records?"
+sidebarTitle: "Can't Verify DNS"
+description: "Getting a 404 error or no response when clicking Verify DNS in HireData? Install the Email app first — DNS records can only be generated and verified after that."
+---
+
+_You're trying to verify your domain in HireData, but clicking **Verify DNS** results in a 404 error — or simply nothing happens. In most cases, this is because the Email app hasn't been installed yet. Follow the steps below to fix it._
+
+## Why this happens
+
+DNS records for your domain are created by the email service behind the Email app. As long as the Email app is not installed, there is no email service connected to your account yet — so HireData cannot generate or verify DNS records, and the **Verify DNS** button on the **Domains** page will return a 404 error or no response.
+
+Installing the Email app first resolves this.
+
+## Step 1: Install the Email App
+
+Go to the [Email app](https://app.hiredata.com/apps) within HireData and click on **Install Email**.
+
+## Step 2: Choose Your Email Service
+
+A panel will appear where you choose which email service you want to use for sending emails:
+
+1. **HireData** (recommended) – use HireData's built-in email service.
+2. **SendGrid API Key** – use your own SendGrid account.
+
+## Step 3: Select a Region and Install
+
+If you chose HireData's email service, select the **region** where your email data should be processed (for example, **Europe** if your organization requires EU data residency), and click **Connect and Install**.
+
+<Note>
+  Not sure which region to pick? For most European organizations, **Europe** is the right choice, as it keeps your email data within the EU.
+</Note>
+
+## Step 4: Generate and Add Your DNS Records
+
+Now that the Email app is installed, return to the [**Domains**](https://app.hiredata.com/settings/account/domains) page in your settings. The DNS records for your domain can now be generated.
+
+Add these records to your domain provider (e.g., GoDaddy, Cloudflare, Namecheap). If someone else manages your domain, use the **Send To Coworker** button to email the records directly to the right person.
+
+For a full walkthrough of this part of the process, see [How to Verify a Domain in HireData to Send Emails](/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+## Step 5: Verify DNS
+
+Once the DNS records have been added, click the **Verify DNS** button on the **Domains** page. The 404 error should now be gone, and your domain will be verified as soon as the records have propagated.
+
+<Warning>
+  DNS changes can take some time to propagate — from a few minutes up to 24–48 hours, depending on your provider. If verification doesn't succeed right away, allow some time and try again.
+</Warning>
+
+Still running into issues after installing the Email app and adding the DNS records? Reach out to us at [support@hiredata.com](mailto:support@hiredata.com) — we're happy to help.
