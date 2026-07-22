@@ -1,0 +1,50 @@
+---
+title: "Pourquoi ne puis-je pas vérifier mes enregistrements DNS ?"
+sidebarTitle: "Impossible de vérifier le DNS"
+description: "Vous obtenez une erreur 404 ou aucune réponse en cliquant sur Verify DNS dans HireData ? Installez d'abord l'application Email — les enregistrements DNS ne peuvent être générés et vérifiés qu'ensuite."
+---
+
+_Vous essayez de vérifier votre domaine dans HireData, mais cliquer sur **Verify DNS** génère une erreur 404 — ou il ne se passe tout simplement rien. Dans la plupart des cas, cela vient du fait que l'application Email n'a pas encore été installée. Suivez les étapes ci-dessous pour résoudre le problème._
+
+## Pourquoi cela se produit
+
+Les enregistrements DNS de votre domaine sont créés par le service e-mail qui se trouve derrière l'application Email. Tant que l'application Email n'est pas installée, aucun service e-mail n'est encore relié à votre compte — HireData ne peut donc ni générer ni vérifier les enregistrements DNS, et le bouton **Verify DNS** sur la page **Domains** renvoie une erreur 404 ou aucune réponse.
+
+Installer d'abord l'application Email résout ce problème.
+
+## Étape 1 : Installez l'application Email
+
+Rendez-vous sur l'[application Email](https://app.hiredata.com/apps) dans HireData et cliquez sur **Install Email**.
+
+## Étape 2 : Choisissez votre service e-mail
+
+Un panneau apparaîtra dans lequel vous choisissez le service e-mail que vous souhaitez utiliser pour envoyer des e-mails :
+
+1. **HireData** (recommandé) – utilisez le service e-mail intégré de HireData.
+2. **SendGrid API Key** – utilisez votre propre compte SendGrid.
+
+## Étape 3 : Sélectionnez une région et installez
+
+Si vous avez choisi le service e-mail de HireData, sélectionnez la **région** dans laquelle vos données e-mail doivent être traitées (par exemple, **Europe** si votre organisation exige une résidence des données dans l'UE), puis cliquez sur **Connect and Install**.
+
+<Note>
+  Vous ne savez pas quelle région choisir ? Pour la plupart des organisations européennes, **Europe** est le bon choix, car il permet de conserver vos données e-mail au sein de l'UE.
+</Note>
+
+## Étape 4 : Générez et ajoutez vos enregistrements DNS
+
+Maintenant que l'application Email est installée, retournez sur la page [**Domains**](https://app.hiredata.com/settings/account/domains) dans vos paramètres. Les enregistrements DNS pour votre domaine peuvent désormais être générés.
+
+Ajoutez ces enregistrements chez votre fournisseur de domaine (par ex. GoDaddy, Cloudflare, Namecheap). Si quelqu'un d'autre gère votre domaine, utilisez le bouton **Send To Coworker** pour envoyer les enregistrements directement à la bonne personne par e-mail.
+
+Pour un guide complet de cette partie du processus, consultez [Vérifier un domaine dans HireData pour envoyer des e-mails](/fr/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+## Étape 5 : Vérifiez le DNS
+
+Une fois les enregistrements DNS ajoutés, cliquez sur le bouton **Verify DNS** de la page **Domains**. L'erreur 404 devrait désormais avoir disparu, et votre domaine sera vérifié dès que les enregistrements se seront propagés.
+
+<Warning>
+  Les modifications DNS peuvent prendre un certain temps à se propager — de quelques minutes jusqu'à 24–48 heures, selon votre fournisseur. Si la vérification n'aboutit pas tout de suite, patientez un peu et réessayez.
+</Warning>
+
+Vous rencontrez encore des problèmes après avoir installé l'application Email et ajouté les enregistrements DNS ? Contactez-nous à l'adresse [support@hiredata.com](mailto:support@hiredata.com) — nous sommes là pour vous aider.

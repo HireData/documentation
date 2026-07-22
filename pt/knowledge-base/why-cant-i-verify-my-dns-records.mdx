@@ -1,0 +1,50 @@
+---
+title: "Porque não consigo verificar os meus registos DNS?"
+sidebarTitle: "Não é possível verificar o DNS"
+description: "Recebe um erro 404 ou nenhuma resposta ao clicar em Verify DNS na HireData? Instale primeiro a app Email — os registos DNS só podem ser gerados e verificados depois disso."
+---
+
+_Está a tentar verificar o seu domínio na HireData, mas ao clicar em **Verify DNS** aparece um erro 404 — ou simplesmente não acontece nada. Na maioria dos casos, isto deve-se ao facto de a app Email ainda não ter sido instalada. Siga os passos abaixo para resolver o problema._
+
+## Porque é que isto acontece
+
+Os registos DNS do seu domínio são criados pelo serviço de email que está por trás da app Email. Enquanto a app Email não estiver instalada, não existe ainda nenhum serviço de email ligado à sua conta — a HireData não consegue portanto gerar nem verificar registos DNS, e o botão **Verify DNS** na página **Domains** devolve um erro 404 ou nenhuma resposta.
+
+Instalar primeiro a app Email resolve esta situação.
+
+## Passo 1: Instale a app Email
+
+Aceda à [app Email](https://app.hiredata.com/apps) dentro da HireData e clique em **Install Email**.
+
+## Passo 2: Escolha o seu serviço de email
+
+Aparecerá um painel onde escolhe qual o serviço de email que pretende utilizar para enviar emails:
+
+1. **HireData** (recomendado) – utilize o serviço de email integrado da HireData.
+2. **SendGrid API Key** – utilize a sua própria conta SendGrid.
+
+## Passo 3: Selecione uma região e instale
+
+Se escolheu o serviço de email da HireData, selecione a **região** onde os seus dados de email devem ser processados (por exemplo, **Europe** se a sua organização exigir residência de dados na UE) e clique em **Connect and Install**.
+
+<Note>
+  Não tem a certeza de que região escolher? Para a maioria das organizações europeias, **Europe** é a escolha certa, uma vez que mantém os seus dados de email dentro da UE.
+</Note>
+
+## Passo 4: Gere e adicione os seus registos DNS
+
+Agora que a app Email está instalada, volte à página [**Domains**](https://app.hiredata.com/settings/account/domains) nas suas definições. Os registos DNS para o seu domínio podem agora ser gerados.
+
+Adicione estes registos junto do seu fornecedor de domínio (por ex., GoDaddy, Cloudflare, Namecheap). Se for outra pessoa que gere o seu domínio, utilize o botão **Send To Coworker** para enviar os registos diretamente por email à pessoa certa.
+
+Para um guia completo desta parte do processo, consulte [Como verificar um domínio na HireData para enviar emails](/pt/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+## Passo 5: Verifique o DNS
+
+Assim que os registos DNS estiverem adicionados, clique no botão **Verify DNS** na página **Domains**. O erro 404 deverá ter desaparecido e o seu domínio será verificado assim que os registos se propagarem.
+
+<Warning>
+  As alterações de DNS podem demorar algum tempo a propagar-se — desde alguns minutos até 24–48 horas, consoante o seu fornecedor. Se a verificação não for bem-sucedida de imediato, aguarde um pouco e tente novamente.
+</Warning>
+
+Continua a ter problemas depois de instalar a app Email e de adicionar os registos DNS? Contacte-nos em [support@hiredata.com](mailto:support@hiredata.com) — teremos todo o gosto em ajudar.
