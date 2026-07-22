@@ -1,0 +1,50 @@
+---
+title: "Waarom kan ik mijn DNS-records niet verifiëren?"
+sidebarTitle: "DNS verifiëren lukt niet"
+description: "Krijg je een 404-fout of geen respons bij het klikken op Verify DNS in HireData? Installeer eerst de Email app — DNS-records kunnen pas daarna worden gegenereerd en geverifieerd."
+---
+
+_Je probeert je domein in HireData te verifiëren, maar bij het klikken op **Verify DNS** krijg je een 404-fout — of er gebeurt gewoon niets. In de meeste gevallen komt dit doordat de Email app nog niet is geïnstalleerd. Volg de onderstaande stappen om dit op te lossen._
+
+## Waarom dit gebeurt
+
+DNS-records voor je domein worden aangemaakt door de e-maildienst achter de Email app. Zolang de Email app niet is geïnstalleerd, is er nog geen e-maildienst gekoppeld aan je account — HireData kan dan geen DNS-records genereren of verifiëren, en de knop **Verify DNS** op de pagina **Domains** geeft een 404-fout of geen respons.
+
+Door eerst de Email app te installeren, wordt dit opgelost.
+
+## Stap 1: Installeer de Email app
+
+Ga naar de [Email app](https://app.hiredata.com/apps) binnen HireData en klik op **Install Email**.
+
+## Stap 2: Kies je e-maildienst
+
+Er verschijnt een paneel waarin je kiest welke e-maildienst je wilt gebruiken om e-mails te versturen:
+
+1. **HireData** (aanbevolen) – gebruik de ingebouwde e-maildienst van HireData.
+2. **SendGrid API Key** – gebruik je eigen SendGrid-account.
+
+## Stap 3: Selecteer een regio en installeer
+
+Als je hebt gekozen voor de e-maildienst van HireData, selecteer dan de **regio** waar je e-mailgegevens moeten worden verwerkt (bijvoorbeeld **Europe** als je organisatie EU-dataresidentie vereist) en klik op **Connect and Install**.
+
+<Note>
+  Niet zeker welke regio je moet kiezen? Voor de meeste Europese organisaties is **Europe** de juiste keuze, omdat je e-mailgegevens dan binnen de EU blijven.
+</Note>
+
+## Stap 4: Genereer en voeg je DNS-records toe
+
+Nu de Email app is geïnstalleerd, ga je terug naar de pagina [**Domains**](https://app.hiredata.com/settings/account/domains) in je settings. De DNS-records voor je domein kunnen nu worden gegenereerd.
+
+Voeg deze records toe bij je domeinprovider (bijv. GoDaddy, Cloudflare, Namecheap). Als iemand anders je domein beheert, gebruik dan de knop **Send To Coworker** om de records rechtstreeks naar de juiste persoon te e-mailen.
+
+Voor een volledige uitleg van dit onderdeel, zie [Een domein in HireData verifiëren voor e-mails](/nl/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+## Stap 5: Verifieer DNS
+
+Zodra de DNS-records zijn toegevoegd, klik je op de knop **Verify DNS** op de pagina **Domains**. De 404-fout zou nu weg moeten zijn en je domein wordt geverifieerd zodra de records zijn gepropageerd.
+
+<Warning>
+  DNS-wijzigingen kunnen enige tijd in beslag nemen om door te dringen — van enkele minuten tot 24–48 uur, afhankelijk van je provider. Als de verificatie niet meteen slaagt, wacht dan even en probeer het opnieuw.
+</Warning>
+
+Loop je nog steeds tegen problemen aan nadat je de Email app hebt geïnstalleerd en de DNS-records hebt toegevoegd? Neem contact met ons op via [support@hiredata.com](mailto:support@hiredata.com) — we helpen je graag verder.
