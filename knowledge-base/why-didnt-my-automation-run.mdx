@@ -2,6 +2,7 @@
 title: "Why Didn't My Automation Run?"
 sidebarTitle: "Automation Didn't Run"
 description: "Diagnose why a HireData automation didn't run: checking event delivery, reading run logs, understanding cancelled runs and safety limits, and replaying events."
+keywords: ["run cancelled", "Run Cancelled - Invalid Sender Email", "Run Cancelled - Send Limits Exceeded", "Run Cancelled - Send Limits Per Automation Exceeded", "invalid sender email", "cancellation reason", "automation didn't run", "automation not triggered", "no run created", "run geannuleerd", "automatisering werkt niet", "automatisering is niet gestart", "waarom is mijn run geannuleerd", "ongeldig afzenderadres"]
 ---
 
 {/* TODO(docs-reorg): symptom-first diagnosis flow:
@@ -9,7 +10,7 @@ description: "Diagnose why a HireData automation didn't run: checking event deli
    2. Is the automation active? — TODO
    3. Did the event pass the start filters? — TODO
    4. Was a run created and what is its status? (Runs, safety limits, delays)
-      — PARTIAL: Send Limits done; Invalid Sender, ghosted/cooling-off and
+      — PARTIAL: Send Limits and Invalid Sender done; ghosted/cooling-off and
         Delayed still open, see HD-1687
    5. Replaying the event once fixed — DONE
    Cross-link: /settings/logs/events (replay section), /settings/logs/runs,
@@ -128,32 +129,45 @@ The recipient has reached a limit set on that **specific automation**, rather th
 </Warning>
 
 {/* ---------------------------------------------------------------------------
-  STUB — Run Cancelled – Invalid Sender Email
+  Run Cancelled – Invalid Sender Email — written HD-1687.
 
-  The highest-value section here and the reason HD-1687 prioritised it. None of
-  the three observed cancellation strings appears in the KB, but the other two
-  resolve anyway because Automation Safety Limits covers the underlying setting.
-  This one has no equivalent, which is why the support conversation asking about
-  it ran to 179,619 tokens and came back partial — the analyst's note reads "No
-  exact KB article on this error; agent inferred troubleshooting from
-  domain/sender docs: check Settings->Domains, verify DNS, sender selection,
-  brand settings."
+  Cause (a), an unverified sending domain, is confirmed: Callum reproduced the
+  error by running an automation that sends from an unverified domain and got
+  the same cancellation string back. That's why it leads the section.
 
-  That inference is a decent hint at the answer, but a hint isn't a source. Not
-  writing it until someone confirms what actually triggers the error:
-
-  a) The sending domain isn't verified.
-     /settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails:
-     "If your domain is not verified, you will not be able to send emails via
-     HireData."
-  b) No Default Sender Email is configured. Same article: "this will be the
-     default email address used when sending emails if this information is not
-     available."
-  c) The sender address resolved from the event record is malformed or empty.
-  d) Something else.
-
-  @Ian — this is the one I need from you.
+  Causes (b) "no Default Sender Email configured" and (c) "sender address on the
+  event record is empty or malformed" are NOT confirmed — they're inferred from
+  /settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails and from
+  how Send Email resolves its sender. They're written as "other things to check"
+  rather than as causes. @Ian — please confirm or cut them, and tell us whether
+  the engine emits one Invalid Sender Email reason for all of these or a
+  distinct string per cause.
   --------------------------------------------------------------------------- */}
+
+### Run Cancelled – Invalid Sender Email
+
+The run was about to send an email, but HireData couldn't resolve a valid sending address for it, so the run was cancelled instead of sending from an address that would be rejected.
+
+**In most cases the sending domain simply isn't verified.** A domain has to be verified in HireData before anything can be sent from it — if it isn't, emails from addresses on that domain can't be sent, and a run that tries to do so is cancelled with this reason.
+
+**_What to do:_**
+
+<Steps>
+  <Step title="Check the domain's status">
+    Go to **Settings → Domains** and find the domain that the sender address belongs to. If it isn't showing as verified, that's your cause.
+  </Step>
+  <Step title="Verify the domain">
+    Add the generated DNS records at your domain provider, then click **Verify DNS** in HireData. See [How to Verify a Domain in HireData to Send Emails](/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails) for the full walkthrough. The Email app must be installed before DNS records can be generated — if **Verify DNS** returns a 404 or does nothing, see [Why Can't I Verify My DNS Records?](/knowledge-base/why-cant-i-verify-my-dns-records)
+  </Step>
+  <Step title="Replay the event">
+    Once the domain is verified, replay the original event to re-trigger the automation. See step 5 below.
+  </Step>
+</Steps>
+
+If the domain is already verified, two other things are worth checking:
+
+- **No Default Sender Email on the domain.** Each domain carries a **Default Sender Email**, used when the sender address isn't available in the event record received from your app. See [Adding a default sender to your domains](/settings/domains/adding-a-default-sender-to-your-domains).
+- **The sender resolved from the event is empty or malformed.** Open the run and check the **Fields** tab to see the data the run actually used, and compare it against the original event via the **Related** tab. See [Runs](/settings/logs/runs).
 
 {/* ---------------------------------------------------------------------------
   STUB — Ignored, Ghosted, Cooling-off period, and Delayed
@@ -202,9 +216,9 @@ If you've worked through these steps and still aren't sure what happened, contac
   BEFORE PUBLISH
 
   - Steps 2 and 3 need writing, and unknown #1 in the header needs answering.
-  - Cross-link from /settings/logs/runs and /settings/automation-safety-limits.
-  On the runs page, place the link ahead of the existing support-email line
-  rather than replacing it — that line is the page's only support contact.
+  - DONE: cross-linked from /settings/logs/runs (ahead of the support-email
+  line, which is still there) and from /settings/automation-safety-limits
+  (callout at the top, since that's where Send Limits questions land).
   - Trim the in-progress <Note> as steps land; remove it entirely when 2 and 3
   are done and the cancellation list is confirmed complete.
   - Update the four existing translations. Keep the error strings in English in
