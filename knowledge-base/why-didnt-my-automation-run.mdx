@@ -66,7 +66,7 @@ _When an automation doesn't do what you expected, the cause is usually one of fo
 
 Automations are triggered by events sent from your connected app. If no event arrived, nothing downstream can happen.
 
-Go to **Settings → Events** and filter by the app you expect the event from. If you can find the event, open it and check the **Processes** tab — this lists the automations the event triggered and the runs it created, along with each run's status.
+Go to **Events** and filter by the app you expect the event from. If you can find the event, open it and check the **Processes** tab — this lists the automations the event triggered and the runs it created, along with each run's status.
 
 - **No event at all** – the problem is upstream, in the connection rather than the automation. For Carerix, see [Why is my Carerix not syncing with HireData](/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata).
 - **Event arrived, no processes listed** – the event likely didn't meet the criteria of any active automation. Continue to steps 2 and 3.
@@ -102,7 +102,7 @@ _Being written. Until then, see [How to test an automation](/automations/how-to-
 
 ## 4. Was a run created, and was it cancelled?
 
-If a run exists but didn't finish, its status tells you why. Go to **Settings → Runs** and filter by state or sub-state, or reach the run from the **Processes** tab of the event. See [Runs](/settings/logs/runs) for how to read a run's detail view.
+If a run exists but didn't finish, its status tells you why. Go to **Runs** and filter by state or sub-state, or reach the run from the **Processes** tab of the event. See [Runs](/settings/logs/runs) for how to read a run's detail view.
 
 The cancellation reasons documented so far all relate to safety limits, which exist to prevent an automation from overwhelming the same contact.
 
