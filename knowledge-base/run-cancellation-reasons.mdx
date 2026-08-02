@@ -1,0 +1,52 @@
+---
+title: "Run Cancellation Reasons"
+sidebarTitle: "Run Cancellations"
+description: "Understand common run cancellation messages and how to resolve them."
+keywords: ["run cancelled", "run canceled", "cancellation reason", "Send Limits Exceeded", "Send Limits Per Automation Exceeded", "Invalid Sender Email", "Invalid sender email", "run geannuleerd", "verzendlimiet overschreden", "ongeldig afzenderadres"]
+---
+
+{/* TODO(HD-1687): Confirm the complete engine cancellation list and every condition that can produce "Invalid sender email." before removing this note. */}
+
+When a run is cancelled, HireData displays the reason on the cancelled step:
+
+1. Select **Runs** in the main navigation.
+2. Open the relevant run by selecting its row.
+3. Select the cancelled step in the timeline.
+4. Read the message on the **Overview** tab.
+
+## Invalid sender email
+
+The run can display `Invalid sender email.` when the Send Email step cannot use the configured sender address. An unverified sender domain is one confirmed cause.
+
+Check the following:
+
+1. Go to **Settings** \> **Domains** and confirm that the sender's domain is verified.
+2. Open the Send Email step and confirm that its sender field contains the intended email address.
+3. If the domain is verified and the cancellation continues, record the run ID and sender address before contacting HireData Support.
+
+After correcting the sender, replay the event or test with a new event.
+
+## Send Limits Exceeded
+
+This cancellation protects recipients from receiving too many messages across your account.
+
+1. Go to **Settings** \> **Safety Limits**.
+2. Review the limits under **Prevent Message Overload**.
+3. Confirm whether the recipient reached the relevant email or conversation limit.
+
+See [Safety Limits](/settings/automation-safety-limits) for the available account-level controls.
+
+## Send Limits Per Automation Exceeded
+
+This cancellation means the recipient reached a message limit configured for the automation.
+
+1. Open the automation.
+2. Open the three-dot menu and select **Settings**.
+3. Review **Message limits**, including the email and conversation limits.
+4. Adjust the limit only when the automation's intended messaging frequency requires it.
+
+<Warning>
+  The **Ignore all safety limits** option removes these protections for the automation. Use it only when you have reviewed the risk of duplicate or excessive messages.
+</Warning>
+
+If the message shown in your run is not listed here, record the exact text, run ID, and cancelled step before contacting HireData Support.

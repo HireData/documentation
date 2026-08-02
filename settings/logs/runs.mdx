@@ -1,70 +1,37 @@
 ---
 title: "Runs"
-description: "Learn what runs are in HireData, how they capture each step of a triggered automation, and how to read run logs to troubleshoot recruitment workflows fast."
+description: "Inspect automation runs, step results, fields, and cancellation messages."
+keywords: ["runs", "automation history", "run cancelled", "Invalid sender email", "cancelled step"]
 ---
 
-_When an automation is triggered by an event from your connected app, e.g. Carerix, Salesforce, etc., a Run is created. This Run represents the full process that follows from the initial trigger to each step of your automation. In this article, we will walk through what runs are, how to find and read them, and how they can help you troubleshoot your automations._
+A run records how an event moved through an automation. Use it to see which steps completed, stopped, or were cancelled.
 
-## What is a run
+## Find a run
 
-A run is the result of an automation being triggered. It shows the exact sequence of actions that took place after an event was received, for example, a filter being checked, a delay being completed, or an email being sent/conversation ended. Each Run includes a full timeline of the steps taken, an **Overview**, **Fields**, and \*\*Related \*\*tabs.
+1. Select **Runs** in the main navigation.
+2. Search the list or use its columns to identify the run. The list includes details such as state, automation, step, creation time, update time, and owner.
+3. Select the run row to open its details.
 
-Once a run is successfully completed, it will be reflected in the **Task History** page by adding a new task to the list.
+If a row is difficult to open, select an empty area of the row instead of its linked text.
 
-## How to filter runs
+## Inspect the timeline
 
-Navigate to the **Settings** menu and open the **Runs** page to see a list of all runs:
+The run timeline lists each automation step and its result. Select a step to inspect it.
 
-![Runs page in HireData](/images/intercom/49924492-Screenshot-2025-05-05-at-10_54_30.png)
+The step details can include:
 
-Use the filters for a more organised view, for example, if you want to see the runs associated with one of your connected apps, or by narrowing them down by the state/stage they are currently in.
+- **Overview** for the result, cancellation reason, or error message
+- **Fields** for values used or produced by the step
+- **Related** for associated records
 
-_Filtering runs by an app:_
+For a cancelled Send Email step, select it in the timeline and read the exact message on **Overview**. For example, the message can be `Invalid sender email.`
 
-![Filtering runs by an app](/images/intercom/49925819-Screenshot-2025-05-16-at-10_37_44.png)
+See [Run Cancellation Reasons](/knowledge-base/run-cancellation-reasons) for common causes and fixes.
 
-_Filtering runs by their state:_
+## Continue troubleshooting
 
-![Filtering runs by their state](/images/intercom/49925840-Screenshot-2025-05-16-at-10_37_59.png)
+Open the related event and compare its **Data** tab with the automation's Start conditions. If you correct the configuration, you can replay the event, but first confirm which actions the earlier run already completed.
 
-_Filtering runs by their sub-state:_
-
-![Filtering runs by their sub-state](/images/intercom/49925857-Screenshot-2025-05-16-at-10_38_22.png)
-
-## How to view run details
-
-To explore an individual run, click the \[Details\] button next to the run for a short overview or open the dropdown menu and click \[View Run\].
-
-![How to view individual runs](/images/intercom/49924583-Screenshot-2025-05-05-at-10_54_51.png)
-
-This will open the run's detail view, which includes:
-
-- **Overview** – a summarised view of the data received from your app.
-
-![Run Overview tab](/images/intercom/49924603-Screenshot-2025-05-05-at-10_55_16.png)
-
-- **Fields** – fields with the data in the event that triggered the automation and might have been used in the run.
-
-![Run Fields tab](/images/intercom/49924650-Screenshot-2025-05-05-at-10_55_27.png)
-
-- **Related** – the automation this run followed and the event that triggered it.
-
-![Run Related tab](/images/intercom/49924666-Screenshot-2025-05-05-at-10_55_33.png)
-
-This detailed view also allows you to see exactly how your automation played out and whether each step succeeded.
-
-## Troubleshooting runs
-
-If something didn’t happen as expected:
-
-- Open the detailed view of the run to view logs and see if a step failed or was skipped.
-- Open the **Fields** tab to confirm whether the data used in the run met your conditions. You can also compare the run with the original event (found via the **Related** tab) to understand what triggered it and confirm if it used the correct data.
-
-## Still need help?
-
-If a run was cancelled and you want to know what the cancellation reason means and how to fix it, see [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run), which has a section per reason.
-
-If you're unsure why a run was cancelled/completed or want help interpreting the run's steps, feel free to contact our team at [support@hiredata.com](mailto:support@hiredata.com). If you do, please include:
-
-- A link or the ID of the run;
-- Any relevant data or context that might help us investigate further.
+<Warning>
+  Replay can repeat messages, record updates, tasks, and other actions from the earlier run.
+</Warning>

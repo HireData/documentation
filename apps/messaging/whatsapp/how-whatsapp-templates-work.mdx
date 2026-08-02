@@ -10,8 +10,8 @@ _Our WhatsApp automation templates streamline candidate communication using AI a
 
 ### Available WhatsApp templates
 
-1. **Availability Check (via Carerix)** -\*\* \*\*This template is designed to verify a candidate's availability for job opportunities. It sends personalised messages to inquire about their current job search status, ensuring that candidate profiles remain up-to-date.
-2. \*\*Job Alert (via Carerix) \*\*- This automation notifies candidates about new job openings via WhatsApp. It leverages AI-driven conversational techniques to ensure timely communication and gather responses effectively.
+1. **Availability Check (via Carerix)** - This template is designed to verify a candidate's availability for job opportunities. It sends personalised messages to inquire about their current job search status, ensuring that candidate profiles remain up-to-date.
+2. **Job Alert (via Carerix)** - This automation notifies candidates about new job openings via WhatsApp. It leverages AI-driven conversational techniques to ensure timely communication and gather responses effectively.
 3. **Job Alert (via OTYS)** - Similar to the Carerix job alert template, this version is tailored for OTYS users. It informs candidates about new job opportunities while maintaining engagement through AI-powered messaging.
 
 ![WhatsApp templates in HireData](/images/intercom/47447942-Screenshot-2B2025-03-17-2Bat-2B08_14_02.png)
@@ -23,13 +23,13 @@ All of the WhatsApp templates use the same logic but can differentiate in the se
 In this automation, the trigger is based on a **stage update** within the Carerix system. Here's how it functions:
 
 1. **Trigger Object** – The automation listens for when a **Match** is either **created or updated.**
-2. **Filter Condition** – The automation only proceeds if the **\[Match: Stage\]** is set to \*\*"Placed on shortlist" \*\*ensuring that only shortlisted candidates receive the job alert message.
+2. **Filter Condition** – The automation only proceeds if **Match: Stage** is set to **Placed on shortlist**, ensuring that only shortlisted candidates receive the job alert message.
 
 ![Trigger setup](/images/intercom/41580122-Screenshot-2025-03-17-at-08_23_53.png)
 
 Once triggered, the automation initiates a **WhatsApp conversation**, sending a personalised job alert to the candidates informing them about the new opportunity.
 
-### Configuring the \[Start Conversation\] task
+### Configuring the Start Conversation task
 
 Once the trigger is set, the next step is to configure the task that defines how the WhatsApp message will be sent. Here's a breakdown of each configuration option:
 
@@ -64,7 +64,7 @@ These are some standard dynamic placeholders that will personalise the message:
 - **Recruiter Name** → Personalises the message with the sender's name.
 - **Company Name** → References the hiring company or brand. <img src="/images/intercom/41580572-Screenshot-2025-03-17-at-08_36_33.png" alt="Knowledge fields" />
 
-### Configuring the \[Update Fields\] task
+### Configuring the Update Fields task
 
 After the WhatsApp conversation collects information from the candidate, the automation can **automatically update specific fields** in the system. This ensures that the candidate's profile stays up-to-date without requiring manual data entry.
 
@@ -93,15 +93,15 @@ Here's how this process works:
 
 ### Creating a WhatsApp template
 
-_Go to your WhatsApp Template Manager by clicking \[Manage Templates\]:_
+Go to your WhatsApp Template Manager by selecting **Manage Templates**.
 
 ![Manage Templates redirect button](/images/intercom/47451468-Screenshot-2025-03-28-at-05_32_22.png)
 
-_Click on \[Create Template\]:_
+Select **Create Template**.
 
 ![Create a template button](/images/intercom/47455505-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Select the template type, e.g. by selecting \[Marketing\] and then \[Custom\]:_
+Select the template type, such as **Marketing**, then select **Custom**.
 
 ![Selecting a template type](/images/intercom/47451710-Screenshot-2025-03-28-at-05_18_36.png)
 
@@ -123,7 +123,7 @@ _Use the name as an identifier for your WhatsApp template (after):_
 
 ### 2. Add variables to your WhatsApp template
 
-_You can insert dynamic fields by clicking \[\+ Add variable\] in the editor:_
+Insert dynamic fields by selecting **\+ Add variable** in the editor.
 
 ![Adding variables in the WhatsApp template](/images/intercom/47452641-var.png)
 
@@ -151,7 +151,7 @@ Buttons help users interact with your message directly.
 
 ![Add a button](/images/intercom/47454516-buttons.png)
 
-_Choose the button type, e.g. \[Custom\]:_
+Choose the button type, such as **Custom**.
 
 ![Choosing a button type](/images/intercom/47454544-buttons1.png)
 
@@ -175,7 +175,7 @@ _Preview the WhatsApp template with its buttons:_
 
 ### 4. Submit your WhatsApp template
 
-_Once everything is ready, click \[Submit\] to send the template for approval and wait for the template’s review:_
+When the template is ready, select **Submit** to send it for review.
 
 ![Submitting a template for review](/images/intercom/47454980-submit.png)
 
@@ -185,26 +185,7 @@ _Hooray! Your WhatsApp template is verified_
 
 ![Approved WhatsApp template](/images/intercom/47455086-submit2.png)
 
-{/* ---------------------------------------------------------------------------
-  HD-1687 — section B. Author: Callum. Reviewer: Ian.
-
-  Added because a user asked how long a template takes to go from pending/in
-  review to active and the KB only covered EDITED templates ("usually almost
-  instantly accepted"), never initial approval.
-
-  Sourced from Meta's own developer documentation (Business Management API →
-  Message Templates, and the template category guidelines page), which is
-  authoritative for: the two-stage flow (immediate category validation, then
-  template review), the status names APPROVED / PENDING / REJECTED / PAUSED,
-  notification by email + WhatsApp Manager alert, and the rule that edited
-  approved/paused templates are auto-approved unless they fail review.
-
-  NOT VERIFIED — the "usually minutes, up to 24 hours" figure. Meta's developer
-  docs describe the review process but do not publish a duration; the 24-hour
-  figure comes from Meta's business help centre and is what support teams
-  quote. @Ian — confirm this is the number we want to commit to in writing, or
-  give me the figure our own customers actually see.
-  --------------------------------------------------------------------------- */}
+{/* TODO(HD-1687): Confirm that HireData wants to publish "usually minutes, allow up to 24 hours" as the review-time guidance. */}
 
 ### How long does template approval take?
 
@@ -213,7 +194,7 @@ Submitting a template starts two steps, in this order:
 1. **Category validation** — happens immediately. Meta checks the category you chose (Marketing, Utility or Authentication) against the template's content. If Meta disagrees, the template is rejected right away for incorrect category, before any content review happens. See [WhatsApp Template Categories in HireData](/apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata).
 2. **Template review** — this is the **In review** (Pending) state. Meta checks the content against its guidelines and then approves or rejects it.
 
-Most templates clear review within a few minutes, but Meta allows itself up to **24 hours**. A template still showing _In review_ an hour after you submitted it isn't stuck — that's normal, and there's nothing to do but wait.
+Most templates complete review within a few minutes. Allow up to **24 hours** before treating an **In review** template as stuck.
 
 | Status | What it means | Can you send with it? |
 | --- | --- | --- |
@@ -233,7 +214,7 @@ Meta tells you the outcome by email and with an alert in WhatsApp Manager, so yo
 - Check your email and the WhatsApp Manager alerts — the outcome may already have been sent.
 - Open the template in **Manage Templates** and confirm its current status there rather than in HireData, which only sees the template after a sync.
 - If it's been rejected, fix the content against Meta's guidelines and resubmit, or create a new template.
-- If it really is stuck in review, that's on Meta's side — raise it through Meta Business Support.
+- If it remains in review, contact Meta Business Support.
 
 <Warning>
   An approved template only becomes selectable in HireData automations once it has been synced. If a template shows as approved in WhatsApp Manager but you can't find it in HireData, run **Sync Account** as described below.
@@ -241,7 +222,7 @@ Meta tells you the outcome by email and with an alert in WhatsApp Manager, so yo
 
 ### Syncing WhatsApp templates with HireData
 
-\_To make your newly created template available in HireData,_c\_lick on \[Sync Account\] in the dropdown menu of your WhatsApp account in HireData:_
+To make the new template available in HireData, select **Sync Account** from the dropdown menu for your WhatsApp account.
 
 ![Sync Account button](/images/intercom/47448587-Screenshot-2025-03-28-at-05_55_39.png)
 
@@ -263,7 +244,7 @@ _You can now select your new WhatsApp template in the WhatsApp tasks you’ll co
 
 ### Editing a WhatsApp template
 
-_Go to your WhatsApp Template Manager by clicking \[Manage Templates\]:_
+Go to your WhatsApp Template Manager by selecting **Manage Templates**.
 
 ![Manage Templates button in the drop-down menu](/images/intercom/47450181-Screenshot-2025-03-28-at-05_32_22.png)
 
@@ -271,7 +252,7 @@ _Click on one of your existing templates:_
 
 ![Templates list in WhatsApp Manager](/images/intercom/47450224-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Click on \[Edit Template\] to go to the editor:_
+Select **Edit Template** to open the editor.
 
 ![Edit Template button in the WhatsApp Manager](/images/intercom/47450335-Screenshot-2025-03-28-at-05_14_41.png)
 
@@ -293,7 +274,7 @@ _Submitting your updated WhatsApp template for review (usually almost instantly 
 
 ### Deleting a WhatsApp template
 
-_Click on \[Delete template\] in the top right corner of the editor:_
+Select **Delete template** in the upper-right corner of the editor.
 
 ![Deleting a WhatsApp template](/images/intercom/47450936-Screenshot-2025-03-28-at-05_17_45.png)
 

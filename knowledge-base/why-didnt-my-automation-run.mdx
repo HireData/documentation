@@ -1,227 +1,59 @@
 ---
 title: "Why Didn't My Automation Run?"
 sidebarTitle: "Automation Didn't Run"
-description: "Diagnose why a HireData automation didn't run: checking event delivery, reading run logs, understanding cancelled runs and safety limits, and replaying events."
-keywords: ["run cancelled", "Run Cancelled - Invalid Sender Email", "Run Cancelled - Send Limits Exceeded", "Run Cancelled - Send Limits Per Automation Exceeded", "invalid sender email", "cancellation reason", "automation didn't run", "automation not triggered", "no run created", "run geannuleerd", "automatisering werkt niet", "automatisering is niet gestart", "waarom is mijn run geannuleerd", "ongeldig afzenderadres"]
+description: "Find out why an event did not start an automation or why an automation stopped."
+keywords: ["automation did not run", "automation didn't start", "trigger not working", "event not processed", "automation gestopt", "automatisering werkt niet"]
 ---
 
-{/* TODO(docs-reorg): symptom-first diagnosis flow:
-   1. Did the event arrive? (Events page) — DONE
-   2. Is the automation active? — TODO
-   3. Did the event pass the start filters? — TODO
-   4. Was a run created and what is its status? (Runs, safety limits, delays)
-      — PARTIAL: Send Limits and Invalid Sender done; ghosted/cooling-off and
-        Delayed still open, see HD-1687
-   5. Replaying the event once fixed — DONE
-   Cross-link: /settings/logs/events (replay section), /settings/logs/runs,
-   /settings/automation-safety-limits, /automations/how-to-test-an-automation */}
+Use this guide when an automation did not start, stopped unexpectedly, or produced a different result than you expected.
 
-{/* ---------------------------------------------------------------------------
-  HD-1687 — partial fill of this placeholder. Author: Callum. Reviewer: Ian.
+## 1. Confirm that HireData received the event
 
-  Steps 1, 5 and part of 4 are written from verified sources. Steps 2 and 3 need
-  product access I don't have yet.
+1. Select **Events** in the main navigation.
+2. Search for the candidate, contact, or event you expected to start the automation.
+3. Open the event.
+4. Check the **Data** tab to confirm that the expected values are present. Use the code view (`<>`) to inspect the raw JSON.
 
-  Step 4 is the HD-1687 work: users paste "Run Cancelled – ..." strings into Ask
-  HireData and none of those strings appears anywhere in the KB. Send Limits
-  questions resolve anyway because Automation Safety Limits is a good article;
-  Invalid Sender Email has no equivalent and doesn't resolve.
+If the event is missing, check the source app and its HireData connection. HireData cannot start an automation until it receives the event.
 
-  NOT VERIFIED — please confirm before publish:
-  1. That "Send Limits Exceeded" maps to the limits in Settings → Safety Limits
-    and "Send Limits Per Automation Exceeded" to the per-automation ones.
-    Inferred from the error names and from three support threads resolving to
-    that article. Not documented; I haven't seen the engine emit either string.
-    This is stated flatly in the body prose below — if it's wrong, those two
-    subsections are wrong, so it's the first thing to check.
-  2. Whether §1.1/§1.2 are genuinely account-scoped and aggregate across
-    automations. The docs establish "account-level safety limits" as a category
-    without saying which sections are account-scoped.
-  3. What "cancelled" means mechanically, and what separates Cancelled from
-    Delayed. /settings/logs/events lists both as statuses without defining them.
-  4. Where the cancellation reason shows in the UI. /settings/logs/runs documents
-    state and sub-state filters, so sub-state is the likely home — not stated.
-  5. The separator in the real error string. I've used an en dash; users typed it
-    without one. Since this section exists to match what people paste, it matters.
-  6. The full list of reasons the engine emits. I have three distinct strings
-    across five support conversations (four threads), and seven limit types in
-    the docs.
-  7. Tab naming: /settings/logs/events lists the event detail tabs as Event Data
-    / External Records / Processes, but its replay walkthrough says to open the
-    event's "Runs" tab. Step 1 and step 5 below inherit both names. One of them
-    is wrong in the source and should be fixed there.
+## 2. Check the automation status
 
-  TRANSLATIONS: /nl/, /de/, /fr/ and /pt/ versions of this page already exist as
-  placeholders carrying the same TODO. They'll diverge from this one until they're
-  updated — worth deciding whether that happens now or after steps 2 and 3 land.
-  --------------------------------------------------------------------------- */}
+Open the automation and look at the action in the upper-right corner:
 
-<Note>
-  This article is in progress. Steps 2 and 3 aren't written yet, and the list of run cancellation reasons in step 4 isn't complete. In the meantime, see [Events](/settings/logs/events) for how to inspect and replay events.
-</Note>
+- **Pause** means the automation is active.
+- **Activate** means the automation is inactive. Select **Activate** when you are ready for new events to enter the automation.
 
-_When an automation doesn't do what you expected, the cause is usually one of four things: the event never arrived, the automation isn't active, the event didn't pass your filters, or a run started but was cancelled. Work through the checks below in order — each one narrows down where the problem is. Step 5 covers how to replay the event once you've fixed the cause._
+Activating an automation does not automatically process events that arrived while it was inactive. Replay the event after you have checked the automation configuration.
 
-## 1. Did the event arrive?
+## 3. Compare the event with the Start configuration
 
-Automations are triggered by events sent from your connected app. If no event arrived, nothing downstream can happen.
+Open the automation's **Start** block and compare its app, trigger, and conditions with the event's **Data** tab.
 
-Go to **Events** and filter by the app you expect the event from. If you can find the event, open it and check the **Processes** tab — this lists the automations the event triggered and the runs it created, along with each run's status.
+Check for:
 
-- **No event at all** – the problem is upstream, in the connection rather than the automation. For Carerix, see [Why is my Carerix not syncing with HireData](/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata).
-- **Event arrived, no processes listed** – the event likely didn't meet the criteria of any active automation. Continue to steps 2 and 3.
-- **Event arrived, a run was created** – skip to step 4.
+- A different object or trigger than the event used
+- A missing field
+- A value that does not satisfy a condition
+- A field whose name or format changed in the source app
 
-See [Events](/settings/logs/events) for how to read the event detail view.
+If you change the Start configuration, save the automation before testing again.
 
-{/* ---------------------------------------------------------------------------
-  STUB — 2. Is the automation active?
+## 4. Inspect the run
 
-  Needs: where the active/inactive toggle lives, what an inactive automation does
-  with incoming events (ignored silently, or queued?), and whether there's any
-  visible signal that an automation is off. I couldn't confirm any of this.
-  --------------------------------------------------------------------------- */}
+If the event started the automation, select **Runs** in the main navigation and open the relevant row. Select the step that stopped or was cancelled, then review its **Overview**, **Fields**, and **Related** tabs.
 
-## 2. Is the automation active?
+For cancellation messages and their fixes, see [Run Cancellation Reasons](/knowledge-base/run-cancellation-reasons).
 
-_Being written. Until then, see [How to test an automation](/automations/how-to-test-an-automation)._
+## 5. Test with Replay
 
-{/* ---------------------------------------------------------------------------
-  STUB — 3. Did the event pass the start filters?
+After fixing the cause:
 
-  The Events troubleshooting section says to "Compare the Event Data with the
-  conditions in your automation to ensure it matches", which is the shape of this
-  step, but I'd want to describe the filter UI accurately rather than paraphrase
-  one line. /automations/how-to-test-an-automation's "Preview a Single Item" mode
-  looks like the right tool here, but I haven't used it.
-  --------------------------------------------------------------------------- */}
-
-## 3. Did the event pass the start filters?
-
-_Being written. Until then, see [How to test an automation](/automations/how-to-test-an-automation)._
-
-## 4. Was a run created, and was it cancelled?
-
-If a run exists but didn't finish, its status tells you why. Go to **Runs** and filter by state or sub-state, or reach the run from the **Processes** tab of the event. See [Runs](/settings/logs/runs) for how to read a run's detail view.
-
-The cancellation reasons documented so far all relate to safety limits, which exist to prevent an automation from overwhelming the same contact.
-
-### Run Cancelled – Send Limits Exceeded
-
-The recipient has reached one of the limits configured in the **Safety Limits** section:
-
-- **Email send limits** cap how many emails a single email address can receive.
-- **Conversation send limits** cap how many conversations are initiated per phone number.
-
-**_What to do:_** _Go to the Safety Limits section in HireData to review the current caps and adjust them to fit your outreach strategy. See [Automation Safety Limits](/settings/automation-safety-limits) for a breakdown of each limit and what it controls._
-
-### Run Cancelled – Send Limits Per Automation Exceeded
-
-The recipient has reached a limit set on that **specific automation**, rather than one of the limits above. Every automation in HireData can carry its own:
-
-- **Email Limit** – how many emails this automation may send to the same email address within the selected time frame.
-- **Conversation Limit** – how many new conversation attempts this automation may start for the same recipient within a given period. This applies to automations that initiate conversations via WhatsApp.
-
-**_What to do:_** _Open the automation, click the three vertical dots in the upper right, and choose Settings to review its limits. See [Automation Safety Limits](/settings/automation-safety-limits) for the full breakdown._
+1. Return to the event.
+2. Select **Replay**.
+3. Confirm that the new run completes as expected.
 
 <Warning>
-  At the bottom of an individual automation's Safety Limits panel you'll find **Ignore Safety Limits**. When enabled, that automation bypasses all safety limits, both its own and the account-level ones. Only use this when you're confident the automation cannot trigger excessively, the recipients expect multiple messages, and your use case genuinely requires unrestricted sending. For most automations we strongly recommend keeping the safety limits enabled.
+  Replay can repeat messages, updates, tasks, and other actions that already completed. Inspect the earlier run before replaying an event.
 </Warning>
 
-{/* ---------------------------------------------------------------------------
-  Run Cancelled – Invalid Sender Email — written HD-1687.
-
-  Cause (a), an unverified sending domain, is confirmed: Callum reproduced the
-  error by running an automation that sends from an unverified domain and got
-  the same cancellation string back. That's why it leads the section.
-
-  Causes (b) "no Default Sender Email configured" and (c) "sender address on the
-  event record is empty or malformed" are NOT confirmed — they're inferred from
-  /settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails and from
-  how Send Email resolves its sender. They're written as "other things to check"
-  rather than as causes. @Ian — please confirm or cut them, and tell us whether
-  the engine emits one Invalid Sender Email reason for all of these or a
-  distinct string per cause.
-  --------------------------------------------------------------------------- */}
-
-### Run Cancelled – Invalid Sender Email
-
-The run was about to send an email, but HireData couldn't resolve a valid sending address for it, so the run was cancelled instead of sending from an address that would be rejected.
-
-**In most cases the sending domain simply isn't verified.** A domain has to be verified in HireData before anything can be sent from it — if it isn't, emails from addresses on that domain can't be sent, and a run that tries to do so is cancelled with this reason.
-
-**_What to do:_**
-
-<Steps>
-  <Step title="Check the domain's status">
-    Go to **Settings → Domains** and find the domain that the sender address belongs to. If it isn't showing as verified, that's your cause.
-  </Step>
-  <Step title="Verify the domain">
-    Add the generated DNS records at your domain provider, then click **Verify DNS** in HireData. See [How to Verify a Domain in HireData to Send Emails](/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails) for the full walkthrough. The Email app must be installed before DNS records can be generated — if **Verify DNS** returns a 404 or does nothing, see [Why Can't I Verify My DNS Records?](/knowledge-base/why-cant-i-verify-my-dns-records)
-  </Step>
-  <Step title="Replay the event">
-    Once the domain is verified, replay the original event to re-trigger the automation. See step 5 below.
-  </Step>
-</Steps>
-
-If the domain is already verified, two other things are worth checking:
-
-- **No Default Sender Email on the domain.** Each domain carries a **Default Sender Email**, used when the sender address isn't available in the event record received from your app. See [Adding a default sender to your domains](/settings/domains/adding-a-default-sender-to-your-domains).
-- **The sender resolved from the event is empty or malformed.** Open the run and check the **Fields** tab to see the data the run actually used, and compare it against the original event via the **Related** tab. See [Runs](/settings/logs/runs).
-
-{/* ---------------------------------------------------------------------------
-  STUB — Ignored, Ghosted, Cooling-off period, and Delayed
-
-  Automation Safety Limits §3.1, §3.2 and §4.1 describe three further behaviours:
-
-  - Ignored (no reply): "Automatically cancels a conversation if there's no
-    reply within the set time period"
-  - Ghosted (stopped responding): "Cancels a conversation if there's no reply
-    after a follow-up within the set time period."
-  - Cooling-off period: "Prevents automatic restarts when a contact sends a new
-    message too soon after a conversation has closed."
-
-  All three are documented as cancelling CONVERSATIONS. Whether any surfaces as a
-  cancelled RUN is what I shouldn't assume, so they're held. If they do, each
-  needs its error string first — matching the string is the point.
-
-  Delayed runs are also unwritten. The original TODO mentions delays and
-  /settings/logs/events lists Delayed as a run status, but nothing documents what
-  causes one or how long it lasts.
-  --------------------------------------------------------------------------- */}
-
-## 5. Replaying the event once it's fixed
-
-Once you've corrected the cause, you don't need to wait for the same thing to happen again — you can replay the original event to re-trigger the automation.
-
-<Warning>
-  When you replay an event, it can trigger runs across multiple automations at once. Before replaying, always check which automations and runs will be affected, especially if any of them include sending an email or a message. Replaying those without checking first could result in duplicate messages being sent to candidates or contacts.
-</Warning>
-
-Open the event, use the three-dot menu and select **Replay**. Before confirming, check which automations were triggered last time and whether any include **Send Email/Message/Survey** tasks.
-
-Replaying behaves differently by automation type: event-based automations re-trigger immediately, while scheduled (one-time) automations keep their planned run date and only re-evaluate whether the event matches their conditions.
-
-See [Events](/settings/logs/events) for the full replay walkthrough, including how to replay several events at once.
-
-## Still need help?
-
-If you've worked through these steps and still aren't sure what happened, contact our team at [support@hiredata.com](mailto:support@hiredata.com). Please include:
-
-- A link or the ID of the event, and of the run if one was created;
-- A link or the name of the automation you expected to trigger;
-- Any relevant data or context that might help us investigate further.
-
-{/* ---------------------------------------------------------------------------
-  BEFORE PUBLISH
-
-  - Steps 2 and 3 need writing, and unknown #1 in the header needs answering.
-  - DONE: cross-linked from /settings/logs/runs (ahead of the support-email
-  line, which is still there) and from /settings/automation-safety-limits
-  (callout at the top, since that's where Send Limits questions land).
-  - Trim the in-progress <Note> as steps land; remove it entirely when 2 and 3
-  are done and the cancellation list is confirmed complete.
-  - Update the four existing translations. Keep the error strings in English in
-  all of them: the one Dutch Send Limits conversation pasted the English string
-  while asking in Dutch.
-  --------------------------------------------------------------------------- */}
+If the event still does not enter the automation, record the event ID, automation name, and expected trigger before contacting HireData Support.

@@ -1,79 +1,61 @@
 ---
-title: "Fixing Incomplete Candidate Profiles"
+title: "Find Incomplete Candidate Profiles"
 sidebarTitle: "Incomplete Profiles"
-description: "Use HireData automations to find candidates with missing data and chase the gaps automatically, so incomplete profiles get completed without manual admin."
-keywords: ["incomplete candidate profiles", "incomplete profiles", "missing candidate data", "missing fields", "empty fields", "data quality", "data enrichment", "profile completeness", "reachability", "onvolledige kandidaatprofielen", "onvolledige profielen", "ontbrekende gegevens", "lege velden", "datakwaliteit"]
+description: "Find candidate profiles with missing data and route them for completion."
+keywords: ["incomplete candidate profile", "missing candidate data", "data quality automation", "ontbrekende kandidaatgegevens", "incompleet kandidaatprofiel"]
 ---
 
-{/* ---------------------------------------------------------------------------
-  HD-1687 — section G. Author: Callum. Reviewer: Ian.
+Build a data-quality automation to identify candidate profiles that are missing important information, then notify someone or start a completion workflow.
 
-  HD-1687 filed this as a RETRIEVAL gap ("the concept is covered by data-quality
-  templates, the term just isn't indexed"). Re-checking against today's KB, that
-  turned out to be wrong: the data-quality templates are in-product, and there
-  is no help article covering them at all. Ask HireData answered "data quality"
-  well because it lists the templates from its own context, and answered
-  "Incomplete Candidate Profiles" with "found limited direct information"
-  because the KB genuinely has nothing. So this is a content gap, not a keyword
-  gap, and it needed a page rather than a keyword top-up. Noted on the Linear
-  issue.
+## Check the template gallery first
 
-  This page documents the PATTERN, sourced from the automation docs — trigger,
-  start filter, delay, task — which is exactly the shape of the answer the agent
-  gave when it resolved the question in the traces.
+Before building from scratch, open the Dashboard template gallery, select **All**, and filter or search for data-quality templates. Depending on your workflow, useful starting points can include:
 
-  NOT VERIFIED — @Ian:
-  1. The in-product data-quality templates. The agent's answers reference ~10 of
-     them by name (Pre-Intake/Screening, Job Application, Availability Check,
-     ...). I've deliberately not listed or named them here because I can't see
-     the template gallery to check the names are current. If you send me the
-     list, this page should link to them by name — that's the bit users actually
-     want, and it's the difference between a useful recipe and a generic one.
-  2. The exact wording of the "is empty" / "is not set" filter operator in the
-     automation builder. Written generically for now.
-  --------------------------------------------------------------------------- */}
+- **Email Bounce: Schedule Task**
+- **Job Application**
+- **Phone Number Standardizer \+31 - Candidates - Cleanup**
+- **Pre-Intake / Screening**
 
-<Note>
-  This recipe is in review. The pattern below is correct, but it doesn't yet link to the ready-made data-quality automation templates — that's coming.
-</Note>
+Open a template to review its trigger, conditions, and actions before adding it to your account.
 
-_Incomplete candidate profiles — a missing phone number, no availability date, an empty email field — quietly break everything downstream. An automation can't message someone it has no number for, and a filter can't match on a field that's empty. Rather than auditing profiles by hand, you can have HireData spot the gap and chase it for you._
+## Build the automation
 
-## The pattern
+### 1. Choose the candidate trigger
 
-Every "incomplete profile" automation is the same four pieces:
+In the **Start** block, select your ATS and the candidate-created or candidate-updated trigger that matches your process.
 
-<Steps>
-  <Step title="Trigger on the record changing">
-    Start the automation from a **Candidate: Created or Updated** trigger (or the equivalent for the object you care about). This means the check runs whenever the profile changes, rather than on a schedule. See [Create a Carerix automation in HireData](/apps/carerix/create-a-carerix-automation-in-hiredata) for how triggers are configured.
-  </Step>
-  <Step title="Filter on the field being empty">
-    Add a start filter for the field you want filled — for example, availability date is empty, or mobile number is empty. Only records that are actually missing the data pass the filter, so nobody gets chased for information you already have.
+### 2. Define what counts as incomplete
 
-    The field has to be enabled on your connection before you can filter on it. See [Enable Carerix fields and relationships in automations](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations).
-  </Step>
-  <Step title="Add a delay (optional but recommended)">
-    A short delay stops the automation firing the instant a recruiter starts typing into a half-finished profile. A day is usually enough to let normal data entry finish on its own.
-  </Step>
-  <Step title="Ask for the missing data">
-    Then either message the candidate to ask for it, or notify the recruiter who owns the record:
+Add Start conditions for the fields your team requires, such as:
 
-    - **Ask the candidate** — start a WhatsApp conversation with a [form](/content/creating-a-form-in-hiredata) attached. The answers can be written straight back to the profile with an **Update field(s)** task, so the gap closes itself. See [How to Use Forms in WhatsApp Conversations](/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations).
-    - **Notify the recruiter** — send an email listing what's missing, using an [email template](/apps/messaging/emails/setting-up-an-email-template-in-hiredata) with variables for the candidate's name and the empty fields.
-  </Step>
-</Steps>
+- Email address
+- Phone number
+- First or last name
+- Consent or availability
+- Role, location, or other placement information
+
+Start with one high-impact field so the first version is easy to test. You can add other conditions after confirming the workflow.
+
+### 3. Add the completion action
+
+Choose the action that fits your process. For example, you can:
+
+- Create a task for a recruiter
+- Notify an internal channel or email address
+- Ask the candidate for the missing information
+- Update the profile when the information is collected
+
+If the source system often receives fields shortly after record creation, add a short delay that reflects your actual import process before checking the profile.
+
+### 4. Test safely
+
+1. Activate the automation when it is ready for testing.
+2. Create or update a test candidate with the target field missing.
+3. Open **Events** and inspect the event's **Data** tab.
+4. Open **Runs** and confirm that the expected actions completed.
 
 <Tip>
-  Build one automation per field rather than one automation covering everything. It keeps the filters readable, and it means you can see at a glance which gap is the common one across your database.
+  If you use Carerix, confirm that each required field is enabled in the connection. See [Enable Carerix Fields and Relationships](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) and [Carerix Webhook Fields](/apps/carerix/carerix-webhook-fields).
 </Tip>
 
-## Before you switch it on
-
-- **Test it first.** Run the automation against sample data so you can see which candidates it would catch and what they'd receive. See [How to Test an Automation](/automations/how-to-test-an-automation).
-- **Check your safety limits.** A data-quality automation can match a large slice of your database at once. The [safety limits](/settings/automation-safety-limits) are what stop one candidate being chased repeatedly — don't switch them off for this.
-- **Sync first if the data looks stale.** If fields you know are filled in Carerix still look empty in HireData, run a [manual sync](/apps/carerix/manually-sync-carerix-with-hiredata) before concluding the profile is incomplete.
-
-## Related
-
-- [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run) — if the automation isn't firing on records you expect it to catch
-- [Events](/settings/logs/events) — to check what your ATS actually sent for a given candidate
+Keep account and automation safety limits enabled while testing workflows that can send candidate messages.

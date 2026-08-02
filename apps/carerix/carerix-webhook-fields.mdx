@@ -1,111 +1,62 @@
 ---
-title: "Carerix Webhook Fields at a Glance"
+title: "Carerix Webhook Fields"
 sidebarTitle: "Webhook Fields"
-description: "Find the Carerix field names HireData receives: where the ID, email and name live, which event types exist, and how to inspect a raw webhook payload."
-keywords: ["carerix webhook", "carerix payload", "request body", "raw request body", "carerix id field", "candidateId", "employee id", "event type", "create update delete", "field names", "ruwe verzoeklichaam", "carerix velden", "webhook inspecteren", "event type create update delete"]
+description: "Find the Carerix field labels and keys available to HireData automations."
+keywords: ["Carerix webhook fields", "Carerix payload", "candidate fields", "Carerix field keys", "event data"]
 ---
 
-{/* ---------------------------------------------------------------------------
-  HD-1687 — section C. Author: Callum. Reviewer: Ian.
+Carerix events contain the fields enabled for the relevant object in your Carerix connection. Use each field's key when you need to identify it in an event or automation.
 
-  New page. Written because the two most expensive Ask HireData conversations in
-  the whole orq dataset (218k and 182k tokens) were the same question: what is
-  the Carerix ID field called, how are email and name passed, and is there an
-  event-type field for create/update/delete. The KB explained WHERE to inspect a
-  payload but never named a single field, so the agent guessed at length.
+## Candidate fields at a glance
 
-  Deliberate choice: this page does NOT publish a table of literal Carerix JSON
-  keys. The enabled field set is per-connection (Settings → Apps → Carerix →
-  Edit), so any fixed list would be wrong for some accounts and would rot. It
-  instead names the fields HireData exposes — which are documented and stable —
-  and shows the two places to read the real names for a given account.
+The standard Candidate object includes these commonly used fields:
 
-  VERIFIED: field names in the identifier/email/name sections come from
-  /apps/carerix/combined-fields-explained. The Event Data / External Records
-  tabs come from /settings/logs/events. The Custom App trigger behaviour comes
-  from /apps/custom-apps/set-up-a-trigger.
+| Field | Key | Typical use |
+| --- | --- | --- |
+| Id | `{{_id}}` | Identify the Carerix record |
+| First Name | `{{firstName}}` | Personalize messages and updates |
+| Last Name | `{{lastName}}` | Personalize messages and updates |
+| Email Address | `{{emailAddress}}` | Use the main email field |
+| Business Email Address | `{{businessEmailAddress}}` | Use the business email field |
+| Private Email Address | `{{privateEmailAddress}}` | Use the private email field |
+| Primary Email Address | `{{primaryEmailAddress}}` | Use Carerix's primary email field |
+| Any Email Address | `{{anyEmailAddress}}` | Select an email using HireData's fallback order |
 
-  NOT VERIFIED — @Ian:
-  1. Whether Carerix triggers include a Deleted event type. Every documented
-     example is "Created or Updated" (e.g. Match: Created or Updated) and I have
-     never seen a delete trigger, but absence of evidence isn't evidence — the
-     "Which event types exist" section says so explicitly and should be made
-     definite once you confirm.
-  2. Whether the trigger's event type is exposed as a usable FIELD/variable in
-     an automation, or only as the trigger selection itself. The section is
-     worded to avoid claiming either way.
-  3. Whether `id` is the right generic name for the Carerix record identifier
-     across objects. The WhatsApp templates article documents "Candidate: ID" as
-     the identifier used to match records, so the label form is right; the raw
-     key is what I'm unsure of.
-  --------------------------------------------------------------------------- */}
+Your available fields can differ because each connection has its own enabled field set. For the fallback behavior of `{{anyEmailAddress}}`, see [Combined Fields](/apps/carerix/combined-fields-explained).
 
-<Note>
-  This page is in review. The identifier, email and name sections are sourced from existing documentation; the event-type section is still being confirmed with the product team.
-</Note>
+## Confirm the fields in your connection
 
-_If you're building an automation or an integration on top of Carerix data and need to know what a field is actually called — the record ID, the email address, the candidate's name — this page tells you where those names come from and how to read them for your own connection._
+1. Go to **Settings** \> **Apps**.
+2. Open **Carerix**.
+3. Open the three-dot menu for the connection and select **Edit**.
+4. Select an object, such as **Candidate**, **Contact**, **Meeting**, or **User**.
+5. Review the **Object Definition** table. It shows each field's **Label**, **Type**, and **Key**.
 
-## What HireData receives from Carerix
+Only enabled fields are available to new events. To change the set, see [Enable Carerix Fields and Relationships](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations).
 
-Carerix sends HireData an **event** whenever something happens in your system: a candidate created, a match updated, and so on. HireData normalises that into an event record with a fixed shape, which is what your automations then work with.
+## Inspect the exact event payload
 
-This is worth knowing up front, because it answers the most common version of this question:
+To confirm what HireData received for a particular record:
 
-<Note>
-  **Can I see the raw Carerix request body?** Not as raw JSON, no. What you get instead is the normalised event, split across two tabs that between them show everything Carerix sent: **Event Data** (the fields HireData mapped and your automations can use) and **External Records** (additional fields from Carerix, including ones no automation uses). See [Events](/settings/logs/events).
+1. Select **Events** in the main navigation.
+2. Open the relevant Carerix event.
+3. Select the **Data** tab.
+4. Select the code view (`<>`) to inspect the raw JSON.
 
-  If you specifically need to see a literal request body, use a [Custom App trigger](/apps/custom-apps/set-up-a-trigger) — it stores every request it receives and shows you the parsed fields, keys and types.
-</Note>
+Use the **Runs** tab to see which automations processed the event.
 
-## Where the field names come from
+## Carerix event types
 
-The exact set of Carerix fields available to you is **specific to your connection**, because you choose which ones sync. There are two reliable places to read them:
+When you configure a Carerix Start block, the trigger picker can include:
 
-<Steps>
-  <Step title="The connection's field list — the authoritative source">
-    Go to **Settings → Apps → Carerix**, click **Edit** on your connection, and open an object (Candidate, Match, Appointment, and so on). You'll see every field on that object and whether it's toggled on. Only fields toggled on are available to automations. See [Enable Carerix fields and relationships in automations](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations).
-  </Step>
-  <Step title="A real event — the fastest source">
-    Go to **Settings → Events**, filter by Carerix, and open a recent event. **Event Data** shows the mapped fields with their values; **External Records** shows the additional fields Carerix sent that aren't used by an automation. This is the quickest way to answer "what did Carerix actually send for this candidate?"
-  </Step>
-</Steps>
+- **Created**
+- **Created or Updated**
+- **Updated**
+- **Schedule**
+- **Manual**
 
-## The identifier
+Choose the trigger that matches when the automation should start. **Deleted** is not currently offered in the trigger picker.
 
-Each Carerix record carries an ID, exposed in HireData as the object's **ID** field — `Candidate: ID`, `Match: ID`, and so on. This is what automations match on: the **Update fields** task, for example, matches the `Candidate: ID` from the conversation against the `Candidate: ID` in the database to make sure the right record is updated.
+{/* TODO(HD-1687): Confirm whether Deleted is unavailable for every Carerix object and whether the selected trigger/event action is exposed as an automation variable. */}
 
-Use the object's ID field rather than an email address or a name when you need a stable identifier — emails and names change, IDs don't.
-
-## Email addresses
-
-Carerix records can hold several email addresses at once, so HireData exposes both the individual fields and a **combined field** that picks the first one with a value.
-
-Use `anyEmailAddress` when you just need a working email address. The individual fields behind it, in the order HireData checks them, are documented in full in [Combined Fields Explained](/apps/carerix/combined-fields-explained) — the first two checked are `businessOrPrivateEmailAddress` and `privateOrBusinessEmailAddress`, and the plain `businessEmailAddress` and `privateEmailAddress` fields sit further down the order.
-
-The same pattern applies to phone numbers via `anyPhoneNumber`. `CarerixCandidate`, `CarerixUser` and `CarerixContact` all use the identical set of combined fields.
-
-## Names
-
-Name fields are exposed per object as ordinary fields — first name, last name and the derived full name — and are toggled on per connection like any other field. Check your connection's field list (step 1 above) for the exact set enabled on your Candidate object.
-
-<Tip>
-  If you're picking fields for an automation, use the variable picker rather than typing keys. It shows the readable label ("Contact: First Name") alongside the underlying key, which removes the guesswork entirely.
-</Tip>
-
-## Which event types exist
-
-Carerix triggers are defined per object and per action. The documented and commonly used form is **created or updated** on an object — for example, `Match: Created or Updated`, which is what the WhatsApp Job Alert template uses. You choose the trigger when you build the automation; see [Create a Carerix automation in HireData](/apps/carerix/create-a-carerix-automation-in-hiredata).
-
-<Warning>
-  Whether a **deleted** event type is available for Carerix objects is currently being confirmed. Don't design an automation around delete events until it's documented here.
-</Warning>
-
-To see which trigger fired for a specific event, open the event and check the **Processes** tab — it lists the automations that event triggered and the runs it created. See [Events](/settings/logs/events).
-
-## Still need help?
-
-If you need a field that isn't appearing, first check it's toggled on in your connection, then run a [manual sync](/apps/carerix/manually-sync-carerix-with-hiredata) so recent changes in Carerix are reflected in HireData. If it still isn't there, contact us at [support@hiredata.com](mailto:support@hiredata.com) with:
-
-- The name of the Carerix object and the field you're looking for;
-- A link or the ID of an event that should have contained it.
+If a field is present in Carerix but missing from the event, confirm that it is enabled for the correct object, then create or update a test record to generate a new event.
