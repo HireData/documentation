@@ -1,0 +1,137 @@
+---
+title: "Verbind HireData met je AI-assistent"
+sidebarTitle: "Verbinden via MCP"
+description: "Verbind ChatGPT, Claude of Gemini binnen enkele minuten met HireData: voeg de HireData MCP-connector toe, log in met je eigen account en laat je AI-assistent veilig in je workspaces werken."
+---
+
+_HireData heeft een officiële MCP-verbinding (Model Context Protocol). Elke AI-assistent die MCP ondersteunt, kan verbinding maken met HireData via je eigen account: hij ziet alleen de workspaces waar je toegang toe geeft, werkt met dezelfde rechten die jij in de app hebt, en elk verzoek wordt geverifieerd en vastgelegd in het activiteitenlogboek. In deze handleiding laten we zien hoe je de verbinding instelt in ChatGPT, Claude en Gemini._
+
+## Wat je kunt doen zodra je verbonden bent
+
+Na het verbinden kan je AI-assistent direct met je HireData-workspaces werken. Bijvoorbeeld:
+
+- **People** — kandidaten en contacten opzoeken, bekijken, aanmaken en bijwerken, inclusief hun contactgegevens en labels.
+- **Forms** — volledige formulieren bouwen en beheren: velden, antwoordopties, validatie en branching-logica.
+- **Form responses** — verzonden antwoorden opzoeken, inclusief antwoorden op oudere versies van een formulier.
+- **Email templates** — e-mailtemplates in je huisstijl maken, vertalen en testmails versturen.
+- **Message templates & conversations** — WhatsApp- en berichttemplates beheren, hun goedkeuringsstatus controleren en gespreksgeschiedenis bekijken.
+- **Team & invitations** — workspace-gebruikers, rollen en uitnodigingen beheren.
+- **Statistics** — gebruiks- en prestatiecijfers opvragen, zoals creditgebruik over een periode, e-mail- en berichtprestaties, en automatiseringsuitvoeringen.
+- **Knowledge base** — HireData-helpartikelen doorzoeken en lezen, direct vanuit je assistent.
+
+Je assistent kan nooit meer dan jij kunt: tijdens het inloggen zie je precies welke rechten van toepassing zijn (maximaal 14, afhankelijk van je rol), en binnen elke workspace geldt je eigen toegangsniveau. Sommige tools zijn daarom mogelijk niet voor jou beschikbaar.
+
+## Voordat je begint
+
+- Je hebt een HireData-account met toegang tot ten minste één workspace.
+- De verbindings-URL voor alle assistenten is:
+
+```text
+https://api.hiredata.com/mcp
+```
+
+- Custom connectors vereisen op sommige assistenten een specifiek abonnement (zie elke sectie hieronder).
+
+## Verbinden vanuit Claude
+
+Custom connectors zijn beschikbaar op alle Claude-abonnementen (Free, Pro, Max, Team en Enterprise); gratis accounts zijn beperkt tot één custom connector.
+
+### Stap 1: Voeg de HireData-connector toe
+
+1. Open Claude en ga naar **Settings** \> **Connectors** (in de desktop-app vind je Connectors onder **Customize**).
+2. Klik op **Add** \> **Add custom connector**.
+3. Vul de MCP-server-URL in: `https://api.hiredata.com/mcp`
+4. Klik op **Add**. HireData verschijnt nu in je lijst met connectors.
+
+![De HireData-connector in Claude's Connectors-instellingen, klaar om te verbinden](/images/mcp/claude-connector-connect.png)
+
+Op Team- en Enterprise-abonnementen voegt een organisatie-eigenaar de connector eerst toe in **Organization settings** \> **Connectors**; daarna verbindt elk lid hem vanuit zijn eigen **Settings** \> **Connectors**.
+
+### Stap 2: Log in en autoriseer
+
+1. Klik op **\[Connect\]**. Je browser opent het toestemmingsscherm van HireData: _"Connect Claude to HireData MCP"_.
+2. Controleer of je met het juiste HireData-account bent ingelogd.
+3. Selecteer onder **Workspace access** de workspace(s) waartoe je toegang wilt verlenen.
+4. Bekijk onder **What Claude can access** de rechten. Standaard zijn alle voor jou beschikbare rechten geselecteerd — klik op het tandwielicoon om ze te beperken.
+5. Vink **"I recognise and trust the above URL"** aan om de terugverwijzing naar Claude te bevestigen, en klik op **\[Authorize\]**.
+
+![Het toestemmingsscherm van HireData met workspace-toegang en rechten](/images/mcp/hiredata-consent-screen.png)
+
+_Vouw de rechtenlijst uit om precies te zien wat je toestaat:_
+
+![De volledige rechtenlijst op het toestemmingsscherm van HireData](/images/mcp/hiredata-consent-permissions.png)
+
+Je kunt deze toegang op elk moment intrekken vanuit je instellingen.
+
+### Stap 3: Bepaal wanneer Claude jouw goedkeuring nodig heeft
+
+Klik terug in **Settings** \> **Connectors** op de HireData-connector om **Tool permissions** te openen. Tools zijn gegroepeerd in **Read-only tools** en **Write/delete tools**, en beide staan standaard op **Needs approval**.
+
+![Tool permissions voor de HireData-connector in Claude](/images/mcp/claude-tool-permissions.png)
+
+Een veelgebruikte opzet: zet read-only tools op **Always allow** zodat Claude vrij dingen kan opzoeken, en houd write/delete tools op **Needs approval** zodat er niets in HireData verandert zonder jouw expliciete OK. Je kunt dit ook per afzonderlijke tool instellen.
+
+![Read-only tools ingesteld op Always allow](/images/mcp/claude-read-only-always-allow.png)
+
+### Stap 4: Gebruik het in een chat
+
+Klik in een gesprek op de **\+**-knop, kies **Connectors**, en zorg dat **HireData** is ingeschakeld. Vraag dan gewoon — bijvoorbeeld: _"Maak een kandidaat-NPS-e-mailtemplate in onze huisstijl en stuur me een test."_
+
+## Verbinden vanuit ChatGPT
+
+Custom MCP-verbindingen zijn beschikbaar op betaalde ChatGPT-abonnementen (Plus, Pro, Business, Enterprise en Edu; niet op het gratis abonnement).
+
+### Stap 1: Voeg de HireData MCP-server toe
+
+1. Open ChatGPT (desktop-app) en ga naar **Settings** \> **Plugins** (onder _Integrations_).
+2. Open het tabblad **MCPs** en klik op **\[\+ Add server\]**.
+
+![Het MCPs-tabblad in de Plugins-instellingen van ChatGPT](/images/mcp/chatgpt-mcps-add-server.png)
+
+3. Vul in _Connect to a custom MCP_ in:
+   - **Name**: `HireData`
+   - **Type**: **Streamable HTTP**
+   - **URL**: `https://api.hiredata.com/mcp`
+4. Laat de token- en headervelden leeg — HireData gebruikt OAuth-inlog — en klik op **\[Save\]**.
+
+![Het custom MCP-formulier van ChatGPT ingevuld voor HireData](/images/mcp/chatgpt-custom-mcp-form.png)
+
+<Note>
+  Op ChatGPT web vind je dezelfde functie onder **Settings** \> **Connectors**: klik op **Advanced**, schakel **Developer mode** in en gebruik **Add custom connector** met de bovenstaande URL.
+</Note>
+
+### Stap 2: Log in bij HireData
+
+De eerste keer dat ChatGPT de server gebruikt, word je naar het inlog- en toestemmingsscherm van HireData geleid. Log in, selecteer de workspace(s) waartoe je toegang wilt verlenen, bekijk de rechten, bevestig de redirect-URL en autoriseer. Zet daarna de HireData-server aan en zijn tools zijn beschikbaar in je chats.
+
+## Verbinden vanuit Gemini
+
+Google biedt custom MCP-verbindingen momenteel op twee plekken aan — de reguliere Gemini-chatapp ondersteunt ze nog niet:
+
+- **Gemini Spark** (Google AI Ultra): open **Connected Apps** in de instellingen van Spark, voeg een custom app toe en vul de MCP-server-URL in: `https://api.hiredata.com/mcp`. De eerste keer dat je hem gebruikt, wordt je gevraagd om in te loggen bij HireData.
+- **Gemini Enterprise**: een beheerder voegt HireData toe als custom MCP-serververbinding in de Gemini Enterprise-adminconsole met dezelfde URL. Daarna loggen gebruikers in met hun eigen HireData-account.
+
+Omdat Google's MCP-ondersteuning snel evolueert, raadpleeg je Google's documentatie voor de meest actuele beschikbaarheid op jouw abonnement.
+
+## Hoe toegang en beveiliging werken
+
+- **Jouw rechten, niets meer.** De assistent werkt met dezelfde rechten die jij in HireData hebt, en alleen in de workspaces die je bij het inloggen hebt geselecteerd. Elk verzoek wordt aan de HireData-kant opnieuw gecontroleerd.
+- **Audit trail.** Elke actie die je assistent uitvoert, wordt vastgelegd in het activiteitenlogboek, gekoppeld aan de workspace waarin het is uitgevoerd.
+- **Nieuwe mogelijkheden vereisen jouw goedkeuring.** Wanneer HireData nieuwe MCP-mogelijkheden toevoegt, wordt je bestaande verbinding niet automatisch uitgebreid — er wordt eerst gevraagd om opnieuw te autoriseren. Geen verrassingen.
+- **Veilige wijzigingen.** Updates zijn partieel (alles wat je assistent niet noemt blijft ongewijzigd), je assistent kan nieuwer werk niet stilzwijgend overschrijven, en destructieve of externe acties vereisen expliciete bevestiging.
+- **Altijd los te koppelen.** Verwijder de connector in de instellingen van je assistent, of trek de autorisatie in vanuit je HireData-instellingen.
+
+## Problemen oplossen
+
+- **403-fout tijdens autorisatie** (_"The provided auth token for the request is different from the session auth token"_): sluit het autorisatietabblad en klik in je assistent opnieuw op **Connect** om de flow opnieuw te starten. Dit kan gebeuren wanneer een oudere HireData-inlogsessie nog open staat in je browser.
+- **Tools verschijnen niet in de chat**: controleer of de connector is ingeschakeld voor dat gesprek (in Claude via het menu **\+** \> Connectors; in ChatGPT via de servertoggle in Settings \> Plugins \> MCPs).
+
+## Probeer het uit
+
+Een paar voorbeeldprompts om te beginnen:
+
+- "Welke e-mailtemplates hebben we in HireData, en welke missen een Nederlandse vertaling?"
+- "Zet een AVG-toestemmingsformulier op en toon me een previewlink."
+- "Maak een kandidaat-NPS-formulier met een 0–10 scorevraag en een vervolgvraag voor scores onder de 7."
+- "Hoeveel credits heeft onze workspace in juni en juli gebruikt?"
+- "Nodig [jane@example.com](mailto:jane@example.com) uit voor onze workspace als gebruiker."

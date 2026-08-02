@@ -1,0 +1,137 @@
+---
+title: "HireData mit Ihrem KI-Assistenten verbinden"
+sidebarTitle: "Verbindung über MCP"
+description: "Verbinden Sie ChatGPT, Claude oder Gemini in wenigen Minuten mit HireData: Fügen Sie den HireData MCP-Connector hinzu, melden Sie sich mit Ihrem eigenen Konto an und lassen Sie Ihren KI-Assistenten sicher in Ihren Workspaces arbeiten."
+---
+
+_HireData verfügt über eine offizielle MCP-Verbindung (Model Context Protocol). Jeder KI-Assistent, der MCP unterstützt, kann sich mit Ihrem eigenen Konto mit HireData verbinden: Er sieht nur die Workspaces, die Sie freigeben, arbeitet mit denselben Berechtigungen, die Sie in der App haben, und jede Anfrage wird geprüft und im Aktivitätsprotokoll festgehalten. Diese Anleitung zeigt Ihnen, wie Sie die Verbindung in ChatGPT, Claude und Gemini einrichten._
+
+## Was Sie nach der Verbindung tun können
+
+Nach der Verbindung kann Ihr KI-Assistent direkt mit Ihren HireData-Workspaces arbeiten. Zum Beispiel kann er:
+
+- **People** – Kandidaten und Kontakte suchen, ansehen, erstellen und aktualisieren, einschließlich ihrer Kontaktdaten und Labels.
+- **Forms** – vollständige Formulare erstellen und pflegen: Felder, Antwortoptionen, Validierung und Verzweigungslogik.
+- **Form responses** – eingereichte Antworten nachschlagen, auch Antworten auf ältere Versionen eines Formulars.
+- **Email templates** – Markengerechte E-Mail-Vorlagen erstellen, übersetzen und Test-E-Mails senden.
+- **Message templates & conversations** – WhatsApp- und Messaging-Vorlagen verwalten, deren Genehmigungsstatus prüfen und den Konversationsverlauf einsehen.
+- **Team & invitations** – Workspace-Nutzer, Rollen und Einladungen verwalten.
+- **Statistics** – Nutzungs- und Leistungszahlen abrufen, wie z. B. Credit-Verbrauch über einen beliebigen Zeitraum, E-Mail- und Messaging-Performance und Automatisierungsläufe.
+- **Knowledge base** – HireData-Hilfeartikel direkt aus Ihrem Assistenten heraus durchsuchen und lesen.
+
+Ihr Assistent kann nie mehr tun als Sie: Während der Anmeldung sehen Sie genau, welche Berechtigungen gelten (bis zu 14, je nach Ihrer Rolle), und innerhalb jedes Workspaces gilt Ihre eigene Zugriffsebene. Einige Tools sind daher möglicherweise für Sie nicht verfügbar.
+
+## Bevor Sie beginnen
+
+- Sie benötigen ein HireData-Konto mit Zugriff auf mindestens einen Workspace.
+- Die Verbindungs-URL für alle Assistenten lautet:
+
+```text
+https://api.hiredata.com/mcp
+```
+
+- Benutzerdefinierte Connectoren erfordern bei einigen Assistenten einen bestimmten Plan (siehe die jeweiligen Abschnitte unten).
+
+## Verbindung über Claude
+
+Benutzerdefinierte Connectoren sind in allen Claude-Plänen verfügbar (Free, Pro, Max, Team und Enterprise); kostenlose Konten sind auf einen benutzerdefinierten Connector beschränkt.
+
+### Schritt 1: Den HireData-Connector hinzufügen
+
+1. Öffnen Sie Claude und gehen Sie zu **Settings** \> **Connectors** (in der Desktop-App finden Sie Connectors unter **Customize**).
+2. Klicken Sie auf **Add** \> **Add custom connector**.
+3. Geben Sie die MCP-Server-URL ein: `https://api.hiredata.com/mcp`
+4. Klicken Sie auf **Add**. HireData erscheint nun in Ihrer Connector-Liste.
+
+![Der HireData-Connector in den Connectors-Einstellungen von Claude, bereit zur Verbindung](/images/mcp/claude-connector-connect.png)
+
+In Team- und Enterprise-Plänen fügt zunächst ein Organisationsinhaber den Connector unter **Organization settings** \> **Connectors** hinzu; danach verbindet ihn jedes Mitglied über seine eigenen **Settings** \> **Connectors**.
+
+### Schritt 2: Anmelden und autorisieren
+
+1. Klicken Sie auf **\[Connect\]**. Ihr Browser öffnet den Zustimmungsbildschirm von HireData: _„Connect Claude to HireData MCP"_.
+2. Prüfen Sie, ob Sie mit dem richtigen HireData-Konto angemeldet sind.
+3. Wählen Sie unter **Workspace access** die Workspaces aus, auf die Sie Zugriff gewähren möchten.
+4. Überprüfen Sie unter **What Claude can access** die Berechtigungen. Standardmäßig sind alle Ihnen verfügbaren Berechtigungen ausgewählt – klicken Sie auf das Zahnradsymbol, um sie einzuschränken.
+5. Aktivieren Sie **„I recognise and trust the above URL"**, um die Weiterleitung zurück zu Claude zu bestätigen, und klicken Sie auf **\[Authorize\]**.
+
+![Der Zustimmungsbildschirm von HireData mit Workspace-Zugriff und Berechtigungen](/images/mcp/hiredata-consent-screen.png)
+
+_Klappen Sie die Berechtigungsliste auf, um genau zu sehen, was Sie gewähren:_
+
+![Die vollständige Berechtigungsliste auf dem Zustimmungsbildschirm von HireData](/images/mcp/hiredata-consent-permissions.png)
+
+Sie können diesen Zugriff jederzeit über Ihre Einstellungen widerrufen.
+
+### Schritt 3: Wählen, wann Claude Ihre Zustimmung braucht
+
+Klicken Sie zurück in **Settings** \> **Connectors** auf den HireData-Connector, um **Tool permissions** zu öffnen. Die Tools sind in **Read-only tools** und **Write/delete tools** gruppiert, und beide sind standardmäßig auf **Needs approval** gesetzt.
+
+![Tool-Berechtigungen für den HireData-Connector in Claude](/images/mcp/claude-tool-permissions.png)
+
+Eine gängige Konfiguration: Setzen Sie Read-only-Tools auf **Always allow**, damit Claude frei nachschlagen kann, und lassen Sie Write/delete-Tools auf **Needs approval**, damit sich nichts in HireData ohne Ihr ausdrückliches OK ändert. Sie können dies auch pro einzelnem Tool einstellen.
+
+![Read-only-Tools auf Always allow gesetzt](/images/mcp/claude-read-only-always-allow.png)
+
+### Schritt 4: In einem Chat nutzen
+
+Klicken Sie in einer Konversation auf die Schaltfläche **\+**, wählen Sie **Connectors** und stellen Sie sicher, dass **HireData** aktiviert ist. Dann fragen Sie einfach – zum Beispiel: _„Erstelle eine Kandidaten-NPS-E-Mail-Vorlage im Stil unserer Marke und sende mir einen Test."_
+
+## Verbindung über ChatGPT
+
+Benutzerdefinierte MCP-Verbindungen sind in den kostenpflichtigen ChatGPT-Plänen verfügbar (Plus, Pro, Business, Enterprise und Edu; nicht im kostenlosen Plan).
+
+### Schritt 1: Den HireData MCP-Server hinzufügen
+
+1. Öffnen Sie ChatGPT (Desktop-App) und gehen Sie zu **Settings** \> **Plugins** (unter _Integrations_).
+2. Öffnen Sie den Tab **MCPs** und klicken Sie auf **\[\+ Add server\]**.
+
+![Der MCPs-Tab in den Plugins-Einstellungen von ChatGPT](/images/mcp/chatgpt-mcps-add-server.png)
+
+3. Füllen Sie in _Connect to a custom MCP_ Folgendes aus:
+   - **Name**: `HireData`
+   - **Type**: **Streamable HTTP**
+   - **URL**: `https://api.hiredata.com/mcp`
+4. Lassen Sie die Felder für Token und Header leer – HireData verwendet OAuth-Anmeldung – und klicken Sie auf **\[Save\]**.
+
+![Das benutzerdefinierte MCP-Formular von ChatGPT ausgefüllt für HireData](/images/mcp/chatgpt-custom-mcp-form.png)
+
+<Note>
+  Im ChatGPT-Web befindet sich dieselbe Funktion unter **Settings** \> **Connectors**: Klicken Sie auf **Advanced**, aktivieren Sie **Developer mode** und nutzen Sie **Add custom connector** mit der obigen URL.
+</Note>
+
+### Schritt 2: Bei HireData anmelden
+
+Beim ersten Mal, wenn ChatGPT den Server nutzt, werden Sie zum Anmelde- und Zustimmungsbildschirm von HireData geleitet. Melden Sie sich an, wählen Sie die Workspaces aus, auf die Sie Zugriff gewähren möchten, prüfen Sie die Berechtigungen, bestätigen Sie die Weiterleitungs-URL und autorisieren Sie. Danach aktivieren Sie den HireData-Server und seine Tools stehen in Ihren Chats zur Verfügung.
+
+## Verbindung über Gemini
+
+Google bietet benutzerdefinierte MCP-Verbindungen derzeit an zwei Stellen an – die reguläre Gemini-Chat-App unterstützt sie noch nicht:
+
+- **Gemini Spark** (Google AI Ultra): Öffnen Sie **Connected Apps** in den Einstellungen von Spark, fügen Sie eine benutzerdefinierte App hinzu und geben Sie die MCP-Server-URL `https://api.hiredata.com/mcp` ein. Bei der ersten Nutzung werden Sie aufgefordert, sich bei HireData anzumelden.
+- **Gemini Enterprise**: Ein Administrator fügt HireData in der Gemini Enterprise-Admin-Konsole als benutzerdefinierte MCP-Serververbindung mit derselben URL hinzu. Danach melden sich die Nutzer mit ihrem eigenen HireData-Konto an.
+
+Da sich Googles MCP-Unterstützung schnell weiterentwickelt, prüfen Sie in Googles Dokumentation die aktuelle Verfügbarkeit für Ihren Plan.
+
+## Wie Zugriff und Sicherheit funktionieren
+
+- **Ihre Berechtigungen, nicht mehr.** Der Assistent arbeitet mit denselben Rechten, die Sie in HireData haben, und nur in den Workspaces, die Sie bei der Anmeldung ausgewählt haben. Jede Anfrage wird auf HireData-Seite erneut überprüft.
+- **Audit-Trail.** Jede Aktion, die Ihr Assistent ausführt, wird im Aktivitätsprotokoll festgehalten, verknüpft mit dem Workspace, in dem sie ausgeführt wurde.
+- **Neue Funktionen brauchen Ihre Zustimmung.** Wenn HireData neue MCP-Funktionen hinzufügt, erweitert sich Ihre bestehende Verbindung nicht automatisch – Sie werden zuerst um eine erneute Autorisierung gebeten. Keine Überraschungen.
+- **Sichere Änderungen.** Aktualisierungen sind partiell (alles, was Ihr Assistent nicht erwähnt, bleibt unverändert), Ihr Assistent kann neuere Arbeit nicht stillschweigend überschreiben, und destruktive oder nach außen gerichtete Aktionen erfordern eine ausdrückliche Bestätigung.
+- **Jederzeit trennen.** Entfernen Sie den Connector in den Einstellungen Ihres Assistenten oder widerrufen Sie die Freigabe in Ihren HireData-Einstellungen.
+
+## Fehlerbehebung
+
+- **403-Fehler während der Autorisierung** (_„The provided auth token for the request is different from the session auth token"_): Schließen Sie den Autorisierungs-Tab und klicken Sie in Ihrem Assistenten erneut auf **Connect**, um den Vorgang neu zu starten. Dies kann passieren, wenn eine ältere HireData-Anmeldesitzung noch in Ihrem Browser geöffnet ist.
+- **Tools erscheinen nicht im Chat**: Prüfen Sie, ob der Connector für diese Konversation aktiviert ist (in Claude über das **\+**-Menü \> Connectors; in ChatGPT über den Server-Schalter in Settings \> Plugins \> MCPs).
+
+## Probieren Sie es aus
+
+Einige Beispiel-Prompts für den Einstieg:
+
+- „Welche E-Mail-Vorlagen haben wir in HireData, und bei welchen fehlt eine niederländische Übersetzung?"
+- „Richte ein DSGVO-Einwilligungsformular ein und zeige mir einen Vorschau-Link."
+- „Erstelle ein Kandidaten-NPS-Formular mit einer Bewertungsfrage von 0–10 und einer Folgefrage für Bewertungen unter 7."
+- „Wie viele Credits hat unser Workspace im Juni und Juli verbraucht?"
+- „Lade [jane@example.com](mailto:jane@example.com) als Nutzer in unseren Workspace ein."
