@@ -1,0 +1,148 @@
+---
+title: "Personal access token scopes"
+sidebarTitle: "Token scopes"
+description: "Every scope you can grant to a HireData personal access token, and the MCP tools each scope unlocks."
+---
+
+_Personal access tokens (`hdp_…`) let a script or AI assistant use the HireData MCP endpoint (`https://api.hiredata.com/mcp`) without an interactive sign-in. Scopes control which MCP tools a token can call. This page lists every scope, grouped the same way as in the token settings and on the OAuth consent screen._
+
+## How scopes work
+
+- A token can never do more than you can. Every call is checked against the token's scopes **and** your own permissions in the workspace it runs in.
+- Each group's manage scope implies the narrower scopes in the same group. A token with `people.manage` can use every tool listed under `people.read`, `people.write`, and `people.delete`.
+- Which scopes you can grant depends on your role. Scopes you don't hold yourself aren't offered when creating a token, and some groups below may not appear for you.
+- Scope changes on an existing token apply immediately. The token secret stays the same.
+
+## Available with any token {#any-token}
+
+These tools don't require a scope:
+
+`whoami`, `listWorkspaces`, `searchKnowledgeBase`, `getKnowledgeBaseContent`
+
+## Shared templates {#system-templates}
+
+The shared HireData template catalog and its labels.
+
+<Info>
+  This scope is only available to HireData super admins.
+</Info>
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `system.templates.manage` | Manage the shared template catalog | `listTemplateTags`, `showTemplateTag`, `createTemplateTag`, `updateTemplateTag`, `deleteTemplateTag`, and the automation trigger tools (`listAutomationTriggers`, `showAutomationTrigger`, `showAutomationTriggerCapabilities`, `createAutomationTrigger`, `updateAutomationTrigger`, `deleteAutomationTrigger`, `duplicateAutomationTrigger`, `restoreAutomationTrigger`) |
+
+## Users {#users}
+
+Users and invitations within your workspaces.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `users.read` | View users | `listUsers`, `showUser`, `listUserInvites` |
+| `users.manage` | Manage users | Everything under `users.read`, plus `createUser`, `updateUser`, `deleteUser`, `inviteUsers`, `revokeUserInvite` |
+
+## People {#people}
+
+People, their contact details, labels, and source history in your workspaces.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `people.read` | View people | `listPeople`, `showPerson` |
+| `people.write` | Create and update people | `createPerson`, `updatePerson` |
+| `people.delete` | Delete people | `deletePerson` |
+| `people.manage` | Manage people | Everything under `people.read`, `people.write`, and `people.delete` |
+
+## Automations {#automations}
+
+Your automations, their triggers and run history.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `automations.read` | View automations | No MCP tools use this scope yet |
+| `automations.manage` | Manage automations | No MCP tools use this scope yet |
+
+## Partner templates {#partner-automation-templates}
+
+Automation templates shared through your partner library. Only available to partner accounts.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `partner.automation_templates.manage` | Manage partner templates | No MCP tools use this scope yet |
+
+## Forms {#forms}
+
+Forms, fields, options, logic, and themes in your workspaces.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `forms.read` | View forms | `listForms`, `showForm` |
+| `forms.manage` | Manage forms | Everything under `forms.read`, plus `createForm`, `updateForm`, `mutateForm`, `deleteForm`, `restoreForm`, `duplicateForm` |
+
+## Form responses {#forms-responses}
+
+Responses submitted to forms in your workspaces.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `forms.responses.read` | View form responses | `listFormResponses`, `showFormResponse` |
+| `forms.responses.manage` | Manage form responses | The same tools as `forms.responses.read`; management tools will be added here |
+
+## Conversations {#chat-conversations}
+
+Conversations with people and contacts in your workspace.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `chat.conversations.read` | View conversations | `listConversations`, `showConversation` |
+| `chat.conversations.manage` | Manage conversations | The same tools as `chat.conversations.read`; management tools will be added here |
+
+## Email templates {#mail-templates}
+
+Email templates in your workspace.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `mail_templates.read` | View email templates | `listEmailTemplates`, `showEmailTemplate`, `showEmailTemplateCapabilities` |
+| `mail_templates.manage` | Manage email templates | Everything under `mail_templates.read`, plus `createEmailTemplate`, `updateEmailTemplate`, `mutateEmailTemplate`, `importRawEmailTemplate`, `deleteEmailTemplate`, `restoreEmailTemplate`, `duplicateEmailTemplate`, `sendEmailTemplateTest` |
+
+## Messages {#messages}
+
+Messages exchanged in your workspace conversations.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `messages.read` | View messages | `listMessages` |
+| `messages.write` | Send messages | `sendMessage` |
+| `messages.manage` | Manage messages | Everything under `messages.read` and `messages.write` |
+
+## WhatsApp templates {#message-templates}
+
+WhatsApp templates in your workspace.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `message_templates.read` | View message templates | `listMessageTemplates`, `showMessageTemplate`, `listMessageChannels` |
+| `message_templates.manage` | Manage message templates | Everything under `message_templates.read`, plus `createMessageTemplate`, `updateMessageTemplate`, `mutateMessageTemplate`, `syncMessageTemplate`, `deleteMessageTemplate`, `restoreMessageTemplate`, `duplicateMessageTemplate` |
+
+## AI usage {#ai-usage}
+
+How much AI your workspaces consume, and where.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `ai_usage.read` | View AI usage | No MCP tools use this scope yet |
+
+## Scans {#scans}
+
+Results, findings and opportunities your scans surface.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `scans.read` | View scan results | No MCP tools use this scope yet |
+
+## Statistics {#statistics}
+
+Usage, credit and performance statistics for your workspaces.
+
+| Scope | Grants | MCP tools |
+| --- | --- | --- |
+| `statistics.read` | View workspace statistics | `showWorkspaceStats`, `showWorkspaceStatsCapabilities` |
