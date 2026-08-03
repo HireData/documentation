@@ -1,39 +1,113 @@
 ---
 title: "Events"
-description: "Inspect incoming events, their data, related runs, and replay options."
-keywords: ["events", "event logs", "request body", "raw JSON", "replay event"]
+description: "Learn how events work in HireData: how connected apps send them, where to find the event log, and how to inspect payloads to debug your automations."
+keywords: ["request body", "raw request body", "webhook payload", "inspect payload", "see what the app sent", "event data", "replay event", "webhook inspection", "verzoeklichaam", "ruwe request body", "payload bekijken", "event opnieuw afspelen", "webhook inspecteren"]
 ---
 
-An event is a change or action received from an app, such as a candidate being created or updated. Automations use events to decide when to start.
+_When you connect your ATS, such as Carerix, Salesforce, or OTYS, to HireData, it starts sending events. Events are notifications that something has happened in your system. They trigger your automations, making them crucial to how HireData works in the background. This article explains how events work, where to find them, and how to analyse them if something doesn't go as expected._
 
-## Find an event
+## What is an event
 
-1. Select **Events** in the main navigation.
-2. Search or filter the list to find the event.
-3. Select the event row to open its details.
+An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, such as a candidate being created, a vacancy being updated, or a placement being completed.
 
-## Inspect event data
+Events are used to trigger the automations you've set up in HireData. Each event includes the data received from the source app and a record of the runs associated with it.
 
-The **Data** tab shows the payload HireData received. Switch between its views to inspect the fields in the format that is most useful to you. Select the code view (`<>`) to see the raw JSON request body.
+## How to view event details
 
-The event details also identify its app, trigger, locale, date, request information, and headers. Use these details when investigating why an automation did not start.
+Select **Events** in the main navigation to see a list of events sent from your connected apps. Use **Search events** to find a particular event, then select its row to open the detail view.
 
-## Review related runs
+The event detail view includes:
 
-Select the **Runs** tab to see the automations and runs associated with the event. Open a run to review its timeline and individual steps.
+- **Data** – the fields and values HireData received from the source app. Use the view controls beside the data to switch between the available table, tree, code, and JSON representations.
+- **Runs** – the automations and runs associated with the event.
+- **Event Information** – the app, trigger, locale, and event date.
+- **Request**, **Headers**, and **References** – additional information that can help you investigate the source and processing of the event.
 
-If no run appears, compare the event data with the automation's app, trigger, and Start conditions. See [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run) for a complete checklist.
+Use the code or JSON view on the **Data** tab when you need to inspect the raw request body or confirm an exact field name and value.
 
-## Replay an event
+## Replaying events
 
-Replay sends the stored event through the current automation configuration again. This is useful after you fix a trigger or condition.
-
-1. Open the event.
-2. Select **Replay**.
-3. Review the new entry on the **Runs** tab.
+If an event doesn't trigger an automation as expected, or a run fails before completing its tasks, you can replay individual or multiple events to re-trigger automations and get things back on track.
 
 <Warning>
-  Replay can repeat messages, record updates, tasks, and other actions that already completed. Inspect the earlier run before replaying an event.
+  When you replay an event, it can trigger runs across multiple automations at once. Before replaying, always check which automations and runs will be affected, especially if any of them include sending an email or a message. Replaying those without checking first could result in duplicate messages being sent to candidates or contacts.
 </Warning>
 
-If the replay does not produce the expected run, confirm that the automation is active and review the event's raw JSON for missing or differently formatted values.
+### What happens when an event is replayed?
+
+HireData reprocesses the selected event or events and triggers the associated automations. The affected tasks are executed as if the event had just occurred.
+
+- **Event-based automations** – For automations triggered by a specific event, such as a candidate reaching a certain stage, replay re-triggers the automation immediately based on the stored event data. If a run was created previously, the new run displays a **Replay** label.
+
+![An event labeled as Replayed](/images/intercom/146643359-Screenshot-2026-05-28-at-13_08_04.png)
+
+- **Scheduled one-time automations** – For automations that run on a fixed date or schedule, replaying the event does not change or reschedule the planned run date. Replay only re-evaluates whether the event matches the automation's conditions.
+
+### How to replay events
+
+<Steps>
+  <Step title="Find the event you want to replay">
+    There are three ways to reach the replay option, depending on what you need:
+
+    - **From the Events page** – Select **Events** in the main navigation. This gives you an overview of all events received by HireData.
+
+    ![The Events page](/images/intercom/146643741-Screenshot-2026-05-28-at-13_06_02.png)
+
+    - **From a specific automation** – Open the automation you want to investigate, then open its **Events** view. This filters the list to events related to that automation.
+
+    ![Finding the Events page for a specific automation](/images/intercom/146650572-Screenshot-2026-05-28-at-13_19_57.png)
+
+    ![The Events page for a specific automation](/images/intercom/146644665-Screenshot-2026-05-28-at-13_20_17.png)
+
+    - **From a single event** – Select the event to open its detail view.
+  </Step>
+  <Step title="Select the event or events to replay">
+    To replay a **single event**, open its detail view and select **Replay** at the top of the page. You can also open the event's three-dot menu from the **Events** list and select **Replay**.
+
+    ![Replaying an individual event](/images/intercom/146645337-Screenshot-2026-05-28-at-13_06_43.png)
+
+    To replay **multiple events at once**, select the checkbox beside each event on the **Events** page or an automation's Events view. Once one or more events are selected, a **Replay** button appears at the top of the page. Select it to proceed.
+
+    ![Replaying events in bulk](/images/intercom/146646000-Screenshot-2026-05-28-at-13_06_24.png)
+  </Step>
+  <Step title="Review and confirm the replay">
+    Open the event and select the **Runs** tab to see which automations processed it previously and the status of their runs. Use this information to decide whether it is safe to replay the event.
+
+    ![Reviewing which automations and runs will be triggered by the replay](/images/intercom/146646806-Screenshot-2026-05-28-at-13_20_50.png)
+
+    Check whether any of the listed automations include tasks such as **Send Email**, **Send Message**, or **Send Survey**. If they do, make sure you intend for those actions to run again before confirming.
+
+    Once you're confident, confirm the replay.
+  </Step>
+</Steps>
+
+<Note>
+  **Replay** can be unavailable for some events. If you expect an event to be replayable but the option is disabled, record the event ID and contact HireData Support.
+</Note>
+
+<Tip>
+  - **Always review the affected automations before confirming a replay.** One event can match multiple automations, and replaying it can trigger all of them.
+  - **Be extra cautious with automations that send emails or messages.** Replaying an event tied to those automations may send duplicate communications to candidates or contacts.
+  - **Use the automation-specific Events view if you only want to investigate one automation.** This gives you a more focused event list.
+  - **Bulk replay is useful when multiple events failed at the same time**, such as after a temporary sync issue. Instead of replaying events one by one, select the affected events and replay them together.
+</Tip>
+
+## Troubleshooting events
+
+If an automation didn't run as expected, or you're seeing unexpected data:
+
+- Open the event's **Runs** tab and check whether a run was created.
+- Open the run to see whether a step failed, stopped, or was cancelled.
+- Compare the event's **Data** tab with the app, trigger, and conditions in the automation's Start block.
+- Use the code or JSON data view to check for missing fields, different field names, or unexpected value formats.
+
+If no run was created, the event may not have met the criteria of an active automation. See [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run) for a complete checklist.
+
+### Still need help?
+
+If you're unsure why an event didn't trigger your automation or want help interpreting the event data, contact [support@hiredata.com](mailto:support@hiredata.com). Include:
+
+- A link or the ID of the event
+- A link or the name of the automation you expected to trigger
+- The result you expected
+- Any relevant steps or context that can help the team investigate
