@@ -2,7 +2,7 @@
 title: "Run Cancellation Reasons"
 sidebarTitle: "Run Cancellations"
 description: "Learn why HireData cancels automation runs, where to find the cancellation message, and how to resolve Invalid Sender Email and send-limit errors."
-keywords: ["run cancelled", "run canceled", "cancellation reason", "Send Limits Exceeded", "Send Limits Per Automation Exceeded", "Invalid Sender Email", "Invalid sender email", "run geannuleerd", "verzendlimiet overschreden", "ongeldig afzenderadres"]
+keywords: ["run cancelled", "run canceled", "cancellation reason", "Send Limits Exceeded", "Send Limits Per Automation Exceeded", "Invalid Sender Email", "Invalid sender email", "DNS Verification Failed", "Please add your DNS records to your domain", "Verify DNS", "run geannuleerd", "verzendlimiet overschreden", "ongeldig afzenderadres"]
 ---
 
 _When HireData cancels a run, the cancelled step records a message explaining why it could not continue. This guide shows you where to find that message, what the most common cancellation reasons mean, and which settings to check before trying the automation again._
@@ -33,10 +33,21 @@ You may see `Invalid sender email.` when a Send Email step cannot use the config
 ### How to resolve it
 
 1. Go to **Settings** \> **Domains**.
-2. Find the domain used by the sender address and confirm that it is verified.
-3. Open the affected automation and select the **Send Email** step.
-4. Confirm that the sender field contains the intended email address and that its domain matches the verified domain.
-5. Save any correction, then test with a new event or carefully replay the original event.
+2. Find and open the domain used by the sender address.
+3. If DNS records have not been generated, select **Generate DNS Records**.
+4. Add every generated record to the DNS settings at your domain provider. Copy the names and values exactly as HireData displays them.
+5. Return to the domain in HireData and select **Verify DNS**.
+6. Once the domain is verified, open the affected automation and select the **Send Email** step.
+7. Confirm that the sender field contains the intended email address and that its domain matches the verified domain.
+8. Save any correction, then test with a new event or carefully replay the original event.
+
+<Warning>
+  If HireData displays `DNS Verification Failed - Please add your DNS records to your domain.`, it cannot yet find all the required records. Confirm that every generated record was saved at your domain provider, check whether the provider expects only the subdomain in the **Host/Name** field, and allow time for DNS changes to propagate before selecting **Verify DNS** again.
+</Warning>
+
+For the complete DNS setup, including provider-specific formatting tips, see [How to Verify a Domain in HireData to Send Emails](/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+If **Verify DNS** returns a 404 error or no response instead, the Email app may not be installed. Follow [Why Can't I Verify My DNS Records?](/knowledge-base/why-cant-i-verify-my-dns-records).
 
 If the domain is verified and the sender address appears correct, record the run ID, automation name, and sender address before contacting HireData Support.
 
