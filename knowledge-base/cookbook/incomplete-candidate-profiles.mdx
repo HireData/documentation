@@ -1,61 +1,122 @@
 ---
 title: "Find Incomplete Candidate Profiles"
 sidebarTitle: "Incomplete Profiles"
-description: "Find candidate profiles with missing data and route them for completion."
+description: "Build a data-quality automation that identifies candidate profiles with missing information, then creates a task, sends a notification, or starts a completion workflow."
 keywords: ["incomplete candidate profile", "missing candidate data", "data quality automation", "ontbrekende kandidaatgegevens", "incompleet kandidaatprofiel"]
 ---
 
-Build a data-quality automation to identify candidate profiles that are missing important information, then notify someone or start a completion workflow.
+_Incomplete candidate profiles can make it harder to contact people, match them with suitable roles, or keep recruitment data reliable. This recipe shows you how to identify records that are missing important information and route them into a practical completion workflow._
+
+## What you will build
+
+The automation uses four parts:
+
+1. A candidate event from your connected ATS
+2. Start conditions that define which information is required
+3. An action for a recruiter, internal team, or candidate
+4. A safe test that confirms the correct profiles enter the workflow
+
+Start with one important missing field. Once the first version works as expected, you can extend the automation to cover other parts of the candidate profile.
 
 ## Check the template gallery first
 
-Before building from scratch, open the Dashboard template gallery, select **All**, and filter or search for data-quality templates. Depending on your workflow, useful starting points can include:
+Before building the automation from scratch, open the template gallery from the HireData Dashboard. Select **All**, then search or filter for a template that matches your data-quality workflow.
+
+Depending on what you want to achieve, useful starting points can include:
 
 - **Email Bounce: Schedule Task**
 - **Job Application**
 - **Phone Number Standardizer \+31 - Candidates - Cleanup**
 - **Pre-Intake / Screening**
 
-Open a template to review its trigger, conditions, and actions before adding it to your account.
+Open a template and review its trigger, conditions, and actions before adding it to your account. You can then adapt it to match the fields and process used by your team.
 
-## Build the automation
+## Decide what makes a profile incomplete
 
-### 1. Choose the candidate trigger
-
-In the **Start** block, select your ATS and the candidate-created or candidate-updated trigger that matches your process.
-
-### 2. Define what counts as incomplete
-
-Add Start conditions for the fields your team requires, such as:
+Agree which information your team needs before building the conditions. Common examples include:
 
 - Email address
 - Phone number
 - First or last name
 - Consent or availability
-- Role, location, or other placement information
+- Preferred role or location
+- Other information required for placement or communication
 
-Start with one high-impact field so the first version is easy to test. You can add other conditions after confirming the workflow.
+Focus on fields that lead to a clear follow-up action. A missing optional field does not always need its own automation.
+
+## Build the automation
+
+### 1. Choose the candidate trigger
+
+Open the **Start** block and select your ATS. Choose the candidate-created or candidate-updated trigger that best matches when you want HireData to check the profile.
+
+For example:
+
+- Use a created trigger when profiles should be checked as they enter the ATS.
+- Use an updated trigger when the check should also run after recruiters or integrations change the record.
+- Use a combined created-or-updated trigger when both situations should enter the same workflow.
+
+The available trigger names can differ between integrations.
+
+### 2. Add the missing-data conditions
+
+Add Start conditions for the field you want to check. Configure the condition so that only profiles without the required value continue into the automation.
+
+Begin with one high-impact field, such as an email address or phone number. This keeps the first test easy to understand. Add other fields after confirming that the automation selects the correct profiles.
+
+<Tip>
+  If a field does not appear in the variable picker, confirm that it is enabled in your ATS connection. Carerix users can follow [Enable Carerix Fields and Relationships](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations).
+</Tip>
 
 ### 3. Add the completion action
 
-Choose the action that fits your process. For example, you can:
+Choose what should happen after HireData finds an incomplete profile. Depending on your process, the automation can:
 
 - Create a task for a recruiter
 - Notify an internal channel or email address
-- Ask the candidate for the missing information
-- Update the profile when the information is collected
+- Ask the candidate to provide the missing information
+- Update the profile after the information is collected
 
-If the source system often receives fields shortly after record creation, add a short delay that reflects your actual import process before checking the profile.
+Make the action specific enough that the recipient knows which profile and field need attention.
 
-### 4. Test safely
+If the source system often adds fields shortly after creating a record, place a short delay before the check. Set the delay to reflect the timing of your actual import or enrichment process.
+
+### 4. Test with an incomplete profile
+
+Use a test record that is missing the field targeted by your condition.
 
 1. Activate the automation when it is ready for testing.
-2. Create or update a test candidate with the target field missing.
-3. Open **Events** and inspect the event's **Data** tab.
-4. Open **Runs** and confirm that the expected actions completed.
+2. Create or update the test candidate in your ATS.
+3. Select **Events** in HireData and open the new event.
+4. Check the event's **Data** tab to confirm that the field is empty or missing.
+5. Select **Runs** and confirm that the expected actions completed.
 
-<Tip>
-  If you use Carerix, confirm that each required field is enabled in the connection. See [Enable Carerix Fields and Relationships](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) and [Carerix Webhook Fields](/apps/carerix/carerix-webhook-fields).
-</Tip>
+Repeat the test with a complete profile. It should not enter the missing-data workflow.
 
-Keep account and automation safety limits enabled while testing workflows that can send candidate messages.
+<Warning>
+  Keep account and automation safety limits enabled while testing workflows that can send messages to candidates.
+</Warning>
+
+## Review and improve the workflow
+
+After the automation has processed a small number of records, review its runs and the follow-up work it creates.
+
+Check whether:
+
+- The selected profiles genuinely need attention
+- The assigned person has enough information to complete the record
+- The workflow runs at the right point in your recruitment process
+- A delay or additional condition would reduce unnecessary actions
+
+Add more required fields gradually so that it remains clear why each candidate entered the workflow.
+
+## Need more help?
+
+If the automation does not find the expected profiles, compare the event's **Data** tab with the Start conditions. See [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run) for a complete troubleshooting checklist.
+
+If you still need help, contact [support@hiredata.com](mailto:support@hiredata.com) and include:
+
+- The automation name
+- A link or the ID of a test event
+- The field you expected to be checked
+- The result you expected
