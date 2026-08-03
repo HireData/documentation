@@ -1,59 +1,100 @@
 ---
 title: "Why Didn't My Automation Run?"
 sidebarTitle: "Automation Didn't Run"
-description: "Find out why an event did not start an automation or why an automation stopped."
+description: "Troubleshoot automations that did not start or stopped unexpectedly by checking events, activation status, Start conditions, run details, and replay results."
 keywords: ["automation did not run", "automation didn't start", "trigger not working", "event not processed", "automation gestopt", "automatisering werkt niet"]
 ---
 
-Use this guide when an automation did not start, stopped unexpectedly, or produced a different result than you expected.
+_When an automation does not run as expected, the event and run history can show exactly where the process stopped. This guide walks you through the checks in order, from confirming that HireData received the event to inspecting an individual automation step and safely testing your correction._
+
+## First identify where the process stopped
+
+Before changing the automation, check how far the event progressed. This helps you focus on the relevant settings.
+
+| What you find | What it usually tells you | Start with |
+| --- | --- | --- |
+| No matching event | HireData may not have received the change from the source app. | The app connection and source record |
+| An event exists, but no run was created | The automation may be inactive or its Start configuration did not match. | The automation status, trigger, and conditions |
+| A run exists, but a step stopped or was cancelled | The automation started, but an individual step could not continue. | The run timeline and step details |
 
 ## 1. Confirm that HireData received the event
+
+Every event-based automation starts with information received from a connected app. If the expected event is not in HireData, the automation has nothing to process.
 
 1. Select **Events** in the main navigation.
 2. Search for the candidate, contact, or event you expected to start the automation.
 3. Open the event.
-4. Check the **Data** tab to confirm that the expected values are present. Use the code view (`<>`) to inspect the raw JSON.
+4. Check the **Data** tab to confirm that the expected fields and values are present.
+5. Use the code view (`<>`) when you need to inspect the raw JSON or confirm an exact field name.
 
-If the event is missing, check the source app and its HireData connection. HireData cannot start an automation until it receives the event.
+If you cannot find the event, check whether the change was saved in the source app and whether its HireData connection is working. For Carerix connection problems, see [Why is my Carerix not syncing with HireData?](/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata).
 
-## 2. Check the automation status
+For more information about the event detail view, see [Events](/settings/logs/events).
+
+## 2. Check whether the automation is active
+
+An inactive automation does not create new runs when matching events arrive.
 
 Open the automation and look at the action in the upper-right corner:
 
-- **Pause** means the automation is active.
-- **Activate** means the automation is inactive. Select **Activate** when you are ready for new events to enter the automation.
+- **Pause** means the automation is currently active.
+- **Activate** means the automation is currently inactive. Select **Activate** when you are ready for new events to enter it.
 
-Activating an automation does not automatically process events that arrived while it was inactive. Replay the event after you have checked the automation configuration.
+<Note>
+  Activating an automation does not automatically process events that arrived while it was inactive. After checking the rest of the configuration, you can carefully replay an earlier event.
+</Note>
 
 ## 3. Compare the event with the Start configuration
 
-Open the automation's **Start** block and compare its app, trigger, and conditions with the event's **Data** tab.
+If the event exists but no run was created, compare the event with the automation's **Start** block. The app, trigger, and conditions must match the incoming event.
 
 Check for:
 
-- A different object or trigger than the event used
-- A missing field
-- A value that does not satisfy a condition
-- A field whose name or format changed in the source app
+- A different app or object from the one that produced the event
+- A different trigger, such as **Created** instead of **Updated**
+- A required field that is missing from the event
+- A field value that does not satisfy one of the Start conditions
+- A field whose name, type, or format changed in the source app
 
-If you change the Start configuration, save the automation before testing again.
+Use the event's **Data** tab while reviewing the Start block so that you can compare the actual values rather than the source record's current values.
 
-## 4. Inspect the run
+If you change the Start configuration, save the automation before testing it again.
 
-If the event started the automation, select **Runs** in the main navigation and open the relevant row. Select the step that stopped or was cancelled, then review its **Overview**, **Fields**, and **Related** tabs.
+## 4. Inspect the run and its steps
 
-For cancellation messages and their fixes, see [Run Cancellation Reasons](/knowledge-base/run-cancellation-reasons).
+If a run exists, the automation did start. The run timeline shows how the event moved through the automation and where it stopped.
 
-## 5. Test with Replay
+1. Select **Runs** in the main navigation.
+2. Find the relevant run and select its row.
+3. Select the step that stopped, failed, or was cancelled.
+4. Review the step's **Overview**, **Fields**, and **Related** tabs.
 
-After fixing the cause:
+The **Overview** tab can contain the result or cancellation message. **Fields** shows the values used or produced by the step, while **Related** links the run back to its automation and event.
+
+For explanations of common cancellation messages, see [Run Cancellation Reasons](/knowledge-base/run-cancellation-reasons). For more information about reading a run, see [Runs](/settings/logs/runs).
+
+## 5. Test the correction
+
+Once you have found and corrected the cause, test the automation again.
+
+A new event is the safest option because it creates a fresh run without repeating actions from the earlier one. If creating a new event is not practical, you can replay the original event:
 
 1. Return to the event.
-2. Select **Replay**.
-3. Confirm that the new run completes as expected.
+2. Open its **Runs** tab and review what already completed.
+3. Select **Replay**.
+4. Open the new run and confirm that it follows the expected path.
 
 <Warning>
-  Replay can repeat messages, updates, tasks, and other actions that already completed. Inspect the earlier run before replaying an event.
+  Replay can repeat emails, messages, record updates, tasks, and other actions that completed during the earlier run. Review all related runs before confirming a replay.
 </Warning>
 
-If the event still does not enter the automation, record the event ID, automation name, and expected trigger before contacting HireData Support.
+## Need more help?
+
+If the automation still does not run as expected, contact [support@hiredata.com](mailto:support@hiredata.com). Include:
+
+- A link or the ID of the event
+- The automation name
+- The run ID, if one was created
+- The result you expected
+- The step or condition where the process appears to stop
+- The exact cancellation or error message, if one appears
