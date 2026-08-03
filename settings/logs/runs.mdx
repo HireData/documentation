@@ -1,37 +1,76 @@
 ---
 title: "Runs"
-description: "Inspect automation runs, step results, fields, and cancellation messages."
-keywords: ["runs", "automation history", "run cancelled", "Invalid sender email", "cancelled step"]
+description: "Learn what runs are in HireData, how they capture each step of a triggered automation, and how to read run details to troubleshoot recruitment workflows."
+keywords: ["runs", "automation history", "run cancelled", "Invalid sender email", "cancelled step", "run troubleshooting"]
 ---
 
-A run records how an event moved through an automation. Use it to see which steps completed, stopped, or were cancelled.
+_When an automation is triggered by an event from a connected app, such as Carerix or Salesforce, HireData creates a run. The run represents the process that follows, from the initial trigger through each step of the automation. This article explains what runs are, how to find and read them, and how they can help you troubleshoot your automations._
 
-## Find a run
+## What is a run
 
-1. Select **Runs** in the main navigation.
-2. Search the list or use its columns to identify the run. The list includes details such as state, automation, step, creation time, update time, and owner.
-3. Select the run row to open its details.
+A run is the result of an automation being triggered. It shows the sequence of actions that took place after HireData received an event. For example, a run can show a condition being checked, a delay being completed, an email being sent, or a conversation ending.
 
-If a row is difficult to open, select an empty area of the row instead of its linked text.
+Each run includes a timeline of the automation steps. Select a step in the timeline to inspect its **Overview**, **Fields**, and **Related** tabs. This lets you see exactly how the automation progressed and whether each step completed, stopped, or was cancelled.
 
-## Inspect the timeline
+## How to find a run
 
-The run timeline lists each automation step and its result. Select a step to inspect it.
+Select **Runs** in the main navigation to see the runs created by your automations and events.
 
-The step details can include:
+Use **Search runs** or the table columns to identify the run you need. The current list includes:
 
-- **Overview** for the result, cancellation reason, or error message
-- **Fields** for values used or produced by the step
-- **Related** for associated records
+- **State**
+- **Automation**
+- **Step**
+- **Finished**
+- **Cancelled**
+- **Continue**
+- **Created**
+- **Updated**
+- **Owner**
 
-For a cancelled Send Email step, select it in the timeline and read the exact message on **Overview**. For example, the message can be `Invalid sender email.`
+You can use the sortable date columns to organise the list and search for a particular automation or run.
 
-See [Run Cancellation Reasons](/knowledge-base/run-cancellation-reasons) for common causes and fixes.
+## How to view run details
 
-## Continue troubleshooting
+Select the run's row to open its detail view. If selecting linked text opens an automation or another record instead, select an empty area of the row.
 
-Open the related event and compare its **Data** tab with the automation's Start conditions. If you correct the configuration, you can replay the event, but first confirm which actions the earlier run already completed.
+The detail view shows the full run timeline. Select the event or an automation step to inspect it.
+
+The selected item's tabs include:
+
+- **Overview** – a summary of the selected event or step, including its result, status, cancellation reason, or error message when available.
+- **Fields** – the values used or produced by the event or step.
+- **Related** – associated records, such as the automation and event connected to the run.
+
+For a cancelled Send Email step, select the step in the timeline and read the exact message on **Overview**. For example, the message can be `Invalid sender email.`
+
+See [Run Cancellation Reasons](/knowledge-base/run-cancellation-reasons) for common cancellation messages and their fixes.
+
+## Troubleshooting runs
+
+If something didn't happen as expected:
+
+- Open the run and select the step that failed, stopped, or was cancelled.
+- Read the **Overview** tab for the exact result or message.
+- Open **Fields** to confirm which values the step used or produced.
+- Open **Related** to find the original event and automation.
+- Compare the event's **Data** tab with the automation's Start conditions.
+- Check whether an earlier step completed before deciding to replay the event.
+
+If you correct the automation or event data, you can replay the related event to create a new run.
 
 <Warning>
-  Replay can repeat messages, record updates, tasks, and other actions from the earlier run.
+  Replay can repeat messages, record updates, tasks, and other actions that already completed in the earlier run. Review the full timeline before replaying an event.
 </Warning>
+
+For a broader diagnostic checklist, see [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run).
+
+## Still need help?
+
+If you're unsure why a run was cancelled or completed, or want help interpreting its steps, contact [support@hiredata.com](mailto:support@hiredata.com). Include:
+
+- A link or the ID of the run
+- The automation name
+- The step you expected to complete
+- The exact cancellation or error message, if one appears
+- Any relevant data or context that can help the team investigate
