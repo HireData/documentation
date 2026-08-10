@@ -1,10 +1,10 @@
 ---
 title: "Connectez HireData à votre assistant IA"
 sidebarTitle: "Connexion via MCP"
-description: "Connectez ChatGPT, Claude ou Gemini à HireData via le connecteur MCP officiel, connectez-vous avec votre compte et travaillez en sécurité dans vos workspaces."
+description: "Connectez ChatGPT, Claude, Gemini ou Microsoft Copilot à HireData via le connecteur MCP officiel, connectez-vous avec votre compte et travaillez en sécurité dans vos workspaces."
 ---
 
-_HireData dispose d'une connexion MCP (Model Context Protocol) officielle. Tout assistant IA prenant en charge MCP peut se connecter à HireData avec votre propre compte : il ne voit que les workspaces auxquels vous lui accordez l'accès, fonctionne avec les mêmes permissions que vous dans l'application, et chaque requête est vérifiée et enregistrée dans le journal d'activité. Ce guide vous explique comment configurer la connexion dans ChatGPT, Claude et Gemini._
+_HireData dispose d'une connexion MCP (Model Context Protocol) officielle. Tout assistant IA prenant en charge MCP peut se connecter à HireData avec votre propre compte : il ne voit que les workspaces auxquels vous lui accordez l'accès, fonctionne avec les mêmes permissions que vous dans l'application, et chaque requête est vérifiée et enregistrée dans le journal d'activité. Ce guide vous explique comment configurer la connexion dans ChatGPT, Claude, Gemini et Microsoft Copilot._
 
 ## Ce que vous pouvez faire une fois connecté
 
@@ -112,6 +112,17 @@ Google propose actuellement les connexions MCP personnalisées à deux endroits 
 - **Gemini Enterprise** : un administrateur ajoute HireData en tant que connexion à un serveur MCP personnalisé dans la console d'administration de Gemini Enterprise en utilisant la même URL. Ensuite, les utilisateurs se connectent avec leur propre compte HireData.
 
 La prise en charge de MCP par Google évoluant rapidement, consultez la documentation de Google pour connaître la disponibilité la plus récente sur votre formule.
+
+## Se connecter depuis Microsoft Copilot
+
+Microsoft propose actuellement les connexions MCP personnalisées via Copilot Studio — l'application Copilot grand public ne les prend pas encore en charge :
+
+1. Dans **Microsoft Copilot Studio**, ouvrez la page **Tools** de votre agent et choisissez **Add a tool** \> **New tool** \> **Model Context Protocol**.
+2. Saisissez un nom et une description (l'agent utilise la description pour décider quand appeler HireData), ainsi que l'URL du serveur : `https://api.hiredata.com/mcp`
+3. Choisissez l'authentification **OAuth 2.0** avec **Dynamic discovery**, créez la connexion et ajoutez l'outil à l'agent.
+4. Publiez l'agent ; les utilisateurs se connectent à HireData avec leur propre compte lors de la première utilisation, avec la même sélection de workspaces et les mêmes permissions que sur les autres assistants.
+
+Les agents ainsi créés peuvent être mis à disposition dans Microsoft 365 Copilot. Copilot Studio nécessite une licence appropriée, et les connexions MCP sont soumises aux politiques de données Power Platform de votre organisation — consultez la documentation de Microsoft pour connaître la disponibilité actuelle.
 
 ## Comment fonctionnent l'accès et la sécurité
 
