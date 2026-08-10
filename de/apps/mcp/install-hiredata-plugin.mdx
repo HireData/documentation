@@ -3,13 +3,13 @@ title: "HireData-Plugin installieren"
 sidebarTitle: "Plugin installieren"
 description: "Installieren Sie das HireData-Plugin von GitHub in ChatGPT, Codex oder Claude, verbinden Sie Ihr Konto und nutzen Sie die Recruiting-Skills und MCP-Tools."
 keywords: ["HireData plugin", "Codex plugin", "ChatGPT plugin", "Claude plugin", "Claude Code", "HireData skills", "MCP"]
-related: ["/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+related: ["/de/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
 Das HireData-Plugin kombiniert wiederverwendbare Recruiting-Workflows mit der offiziellen MCP-Verbindung von HireData. Es hilft ChatGPT, Codex und Claude dabei, HireData-Automatisierungen zu planen, zu erstellen, zu testen und zu verbessern, anstatt ihnen Tools ohne die zugehörige Arbeitsweise zur Verfügung zu stellen.
 
 <Note>
-  Das Plugin ist derzeit als Early-Access-Installation über den öffentlichen GitHub-Marketplace von HireData verfügbar. Es erscheint noch nicht im universellen Plugin-Verzeichnis von OpenAI. Verwenden Sie diese Schritte mit der ChatGPT-Desktop-App, der Codex-CLI, Claude Code oder einer Claude Team-/Enterprise-Organisation. Für Gemini oder eine reine MCP-Verbindung folgen Sie der Anleitung [HireData mit Ihrem KI-Assistenten verbinden](/apps/mcp/connect-hiredata-to-your-ai-assistant).
+  Das Plugin ist derzeit als Early-Access-Installation über den öffentlichen GitHub-Marketplace von HireData verfügbar. Es erscheint noch nicht im universellen Plugin-Verzeichnis von OpenAI. Verwenden Sie diese Schritte mit der ChatGPT-Desktop-App, der Codex-CLI, Claude Code oder einer Claude Team-/Enterprise-Organisation. Für Gemini oder eine reine MCP-Verbindung folgen Sie der Anleitung [HireData mit Ihrem KI-Assistenten verbinden](/de/apps/mcp/connect-hiredata-to-your-ai-assistant).
 </Note>
 
 ## Was das Plugin hinzufügt
@@ -67,7 +67,7 @@ Sie benötigen:
   <Step title="HireData-Konto verbinden">
     Melden Sie sich bei der Aufforderung bei HireData an. Wählen Sie den bzw. die Workspaces aus, auf die der Assistent zugreifen darf, prüfen Sie die angeforderten Berechtigungen und klicken Sie auf **Authorize**.
 
-    Der Assistent erhält nur den Workspace-Zugriff, den Sie auswählen, und arbeitet mit Ihren bestehenden HireData-Berechtigungen. Siehe [wie Zugriff und Sicherheit in HireData funktionieren](/apps/mcp/connect-hiredata-to-your-ai-assistant#how-access-and-security-work).
+    Der Assistent erhält nur den Workspace-Zugriff, den Sie auswählen, und arbeitet mit Ihren bestehenden HireData-Berechtigungen. Siehe [wie Zugriff und Sicherheit in HireData funktionieren](/de/apps/mcp/connect-hiredata-to-your-ai-assistant).
   </Step>
   <Step title="Installation überprüfen">
     Prüfen Sie das installierte Plugin im Terminal:
@@ -117,7 +117,46 @@ Ein Organisationsinhaber verteilt das Plugin über den Organisationskatalog:
   </Step>
 </Steps>
 
-Individuelle Claude-Pläne ohne Organisationskatalog können stattdessen die [manuelle MCP-Verbindung](/apps/mcp/connect-hiredata-to-your-ai-assistant) verwenden; damit stehen die Live-HireData-Tools zur Verfügung, jedoch ohne die fünf mitgelieferten Skills.
+Individuelle Claude-Pläne ohne Organisationskatalog können die Skills per Prompt installieren (siehe unten) und mit der [manuellen MCP-Verbindung](/de/apps/mcp/connect-hiredata-to-your-ai-assistant) kombinieren.
+
+## Skills per Prompt installieren
+
+Keine Plugin-Unterstützung in Ihrem Plan oder Assistenten? Die Skills sind einfache, öffentliche Dateien – Sie können sie also von Ihrem KI-Assistenten abrufen und verpacken lassen.
+
+### Claude (Chat, Desktop und Cowork)
+
+Kopieren Sie diesen Prompt in eine Claude-Konversation, die Dateien erstellen kann (zum Beispiel eine Cowork-Sitzung):
+
+```text
+Lade die fünf HireData-Skills von https://github.com/HireData/skills
+herunter (sie liegen in plugins/hiredata/skills). Verpacke jede Skill
+als separate .skill-Datei – ein ZIP mit der SKILL.md und dem
+references-Ordner der jeweiligen Skill im Stammverzeichnis – und sende
+mir die fünf Dateien, damit ich sie als Skills in meinem Konto
+speichern kann.
+```
+
+Speichern Sie jede von Claude gelieferte Datei als Skill in Ihrem Konto:
+
+![Claude liefert jede verpackte Skill mit einer Save-skill-Schaltfläche](/images/mcp/claude-save-skill.png)
+
+Ist eine Skill bereits in Ihrem Konto vorhanden, zeigt die Schaltfläche stattdessen **Update skill** – führen Sie denselben Prompt erneut aus, nachdem HireData eine neue Version veröffentlicht hat, um Ihre Skills zu aktualisieren:
+
+![Eine bereits im Konto vorhandene Skill zeigt Update skill](/images/mcp/claude-update-skill.png)
+
+In Kombination mit dem [HireData-MCP-Connector](/de/apps/mcp/connect-hiredata-to-your-ai-assistant) ergibt das dasselbe Verhalten wie das vollständige Plugin. Erlaubt Ihre Organisation das Speichern von Skills nicht, bitten Sie einen Owner, das Plugin über den Organisationskatalog zu verteilen.
+
+### Jeder andere Assistent
+
+Assistenten ohne installierbare Skills können einer Skill dennoch für eine einzelne Aufgabe folgen. Ersetzen Sie den Skill-Namen und Ihr Ziel in diesem Prompt:
+
+```text
+Rufe https://raw.githubusercontent.com/HireData/skills/main/plugins/hiredata/skills/hiredata-plan-activation/SKILL.md
+ab, folge dem darin beschriebenen Workflow (rufe auch die referenzierten
+Dateien ab) und hilf mir bei: [Ihr Ziel]
+```
+
+Das funktioniert in ChatGPT, Gemini, Microsoft Copilot oder jedem Assistenten, der öffentliche Webseiten lesen kann, und lässt sich gut mit der [manuellen MCP-Verbindung](/de/apps/mcp/connect-hiredata-to-your-ai-assistant) kombinieren. Die fünf Ordnernamen sind `hiredata-plan-activation`, `hiredata-create-triggers`, `hiredata-create-forms`, `hiredata-create-email-templates` und `hiredata-create-whatsapp-templates`.
 
 ## Plugin aktualisieren
 
@@ -135,7 +174,7 @@ Starten Sie nach dem Update eine neue Konversation, damit Ihr Assistent die neue
 - **HireData fordert Sie nicht zur Anmeldung auf:** Starten Sie eine neue Konversation mit aktiviertem Plugin und stellen Sie eine Anfrage, die HireData-Workspace-Daten benötigt.
 - **Ihre Organisation blockiert die Installation:** Bitten Sie Ihren ChatGPT- oder Codex-Administrator, den HireData-Marketplace und die MCP-Verbindung freizugeben.
 - **Die Skills werden in Claude nicht ausgelöst:** Prüfen Sie, ob das Plugin als installiert angezeigt wird (`/plugin` in Claude Code oder der Plugin-Browser in einer Claude-Organisation), und starten Sie eine neue Konversation.
-- **Sie benötigen nur die MCP-Tools oder nutzen einen anderen Assistenten:** Folgen Sie der [Anleitung zur manuellen MCP-Verbindung](/apps/mcp/connect-hiredata-to-your-ai-assistant).
+- **Sie benötigen nur die MCP-Tools oder nutzen einen anderen Assistenten:** Folgen Sie der [Anleitung zur manuellen MCP-Verbindung](/de/apps/mcp/connect-hiredata-to-your-ai-assistant).
 
 ## Plugin entfernen
 
@@ -150,7 +189,7 @@ Das Entfernen des Plugins widerruft nicht zwangsläufig eine bestehende HireData
     Sehen Sie sich die Skills, Installationsmetadaten, Evaluationsfälle und den Beitrags-Leitfaden an.
   </Card>
 
-  <Card title="Nur über MCP verbinden" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
+  <Card title="Nur über MCP verbinden" icon="plug" href="/de/apps/mcp/connect-hiredata-to-your-ai-assistant">
     Verbinden Sie Gemini oder jeden MCP-kompatiblen Assistenten, ohne die Skills zu installieren.
   </Card>
 </CardGroup>
