@@ -105,13 +105,15 @@ An organization Owner distributes the plugin through the organization catalog:
 
 <Steps>
   <Step title="Add the marketplace">
-    Open **Organization settings → Plugins** and add a GitHub-synced marketplace with the repository `HireData/skills`. The initial sync runs automatically.
+    Open **Organization settings → Plugins** and add a GitHub-synced marketplace with the repository `HireData/skills`. The initial sync runs automatically, and later plugin releases sync from the repository's default branch.
+
+    Alternatively, add a custom marketplace and upload the plugin as a ZIP file (the `plugins/hiredata` directory from the repository). Use this when your organization prefers not to sync from GitHub; note that manual uploads do not receive automatic updates.
   </Step>
   <Step title="Make the plugin available">
     Set the HireData plugin's installation preference, for example **Available for install** or **Installed by default**.
   </Step>
   <Step title="Install as a member">
-    Members open the Browse plugins modal, install **HireData**, and complete the HireData sign-in on first use. The plugin then works in Claude web chat and the Claude desktop app.
+    Members open the plugin browser from the chat interface, install **HireData**, and complete the HireData sign-in on first use. The plugin then works in Claude web chat, the Claude desktop app, and Cowork sessions. If the Owner set the plugin to **Installed by default**, members skip this step entirely.
   </Step>
 </Steps>
 
@@ -119,15 +121,11 @@ Individual Claude plans without an organization catalog can use the [manual MCP 
 
 ## Update the plugin
 
-Refresh the GitHub marketplace when HireData publishes an update:
+- **ChatGPT or Codex:** run `codex plugin marketplace upgrade hiredata-skills`, then open **Plugins** or run `/plugins` in Codex CLI to apply the update.
+- **Claude Code:** run `/plugin marketplace update hiredata-skills`.
+- **Claude Team and Enterprise:** GitHub-synced marketplaces update automatically when HireData publishes a new plugin version. Manually uploaded ZIPs require a new upload.
 
-```bash
-codex plugin marketplace upgrade hiredata-skills
-```
-
-In Claude Code, run `/plugin marketplace update hiredata-skills`. Claude Team and Enterprise organizations sync updates from GitHub automatically; Claude delivers a plugin update when its version number changes.
-
-Open **Plugins** or run `/plugins` in Codex CLI to apply an available update. Start a new conversation after updating so Codex loads the new skills and configuration.
+Start a new conversation after updating so your assistant loads the new skills and configuration.
 
 ## Troubleshooting
 
@@ -141,13 +139,9 @@ Open **Plugins** or run `/plugins` in Codex CLI to apply an available update. St
 
 ## Remove the plugin
 
-In ChatGPT or Codex, run:
-
-```bash
-codex plugin remove hiredata@hiredata-skills
-```
-
-In Claude Code, run `/plugin uninstall hiredata@hiredata-skills`. In a Claude organization, remove the plugin from the plugin browser or ask an Owner to change its availability.
+- **ChatGPT or Codex:** run `codex plugin remove hiredata@hiredata-skills`.
+- **Claude Code:** run `/plugin uninstall hiredata@hiredata-skills`.
+- **Claude Team and Enterprise:** remove the plugin from the plugin browser, or ask an Owner to change its availability in **Organization settings → Plugins**. Plugins marked **Required** by an Owner cannot be removed by members.
 
 Removing the plugin does not necessarily revoke an existing HireData OAuth grant. Disconnect HireData in your AI assistant or revoke the grant in HireData settings when you also want to remove access.
 
