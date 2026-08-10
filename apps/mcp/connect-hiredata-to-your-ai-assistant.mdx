@@ -1,12 +1,12 @@
 ---
 title: "HireData MCP: Connect HireData to your AI assistant"
 sidebarTitle: "HireData MCP"
-description: "Connect ChatGPT, Claude, Gemini, or another AI assistant to the official HireData MCP server, authorize your workspaces, and use HireData safely."
-keywords: ["HireData MCP", "HireData Model Context Protocol", "connect HireData to ChatGPT", "connect HireData to Claude", "connect HireData to Gemini", "HireData AI assistant"]
+description: "Connect ChatGPT, Claude, Gemini, Microsoft Copilot, or another AI assistant to the official HireData MCP server, authorize your workspaces, and use HireData safely."
+keywords: ["HireData MCP", "HireData Model Context Protocol", "connect HireData to ChatGPT", "connect HireData to Claude", "connect HireData to Gemini", "connect HireData to Copilot", "HireData AI assistant"]
 related: ["/apps/mcp/install-hiredata-plugin"]
 ---
 
-_HireData has an official MCP (Model Context Protocol) connection. Any AI assistant that supports MCP can connect to HireData with your own account. It sees only the workspaces you grant and works with the same permissions you have in the app. Every request is verified and recorded in the activity log. This guide shows you how to set up the connection in ChatGPT, Claude, and Gemini._
+_HireData has an official MCP (Model Context Protocol) connection. Any AI assistant that supports MCP can connect to HireData with your own account. It sees only the workspaces you grant and works with the same permissions you have in the app. Every request is verified and recorded in the activity log. This guide shows you how to set up the connection in ChatGPT, Claude, Gemini, and Microsoft Copilot._
 
 <Note>
   If you use ChatGPT desktop or Codex, you can [install the HireData plugin](/apps/mcp/install-hiredata-plugin) to get five recruitment workflow skills together with this MCP connection. Continue with this guide when you want MCP tools only or use Claude, Gemini, or another MCP client.
@@ -118,6 +118,17 @@ Google currently offers custom MCP connections in two places — the regular Gem
 - **Gemini Enterprise**: an administrator adds HireData as a custom MCP server connection in the Gemini Enterprise admin console using the same URL. After that, users sign in with their own HireData account.
 
 Since Google's MCP support is evolving quickly, check Google's documentation for the latest availability on your plan.
+
+## Connect from Microsoft Copilot
+
+Microsoft currently offers custom MCP connections through Copilot Studio — the consumer Copilot app does not support them yet:
+
+1. In **Microsoft Copilot Studio**, open your agent's **Tools** page and choose **Add a tool** \> **New tool** \> **Model Context Protocol**.
+2. Enter a name and description (the agent uses the description to decide when to call HireData), and the server URL: `https://api.hiredata.com/mcp`
+3. Choose **OAuth 2.0** authentication with **Dynamic discovery**, create the connection, and add the tool to the agent.
+4. Publish the agent; users sign in to HireData with their own account on first use, with the same workspace selection and permissions as other assistants.
+
+Agents built this way can be made available in Microsoft 365 Copilot. Copilot Studio requires appropriate licensing, and MCP connections are subject to your organisation's Power Platform data policies — check Microsoft's documentation for current availability.
 
 ## How access and security work
 
