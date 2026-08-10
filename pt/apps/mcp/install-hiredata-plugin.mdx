@@ -117,7 +117,37 @@ Um Owner da organização distribui o plugin através do catálogo da organizaç
   </Step>
 </Steps>
 
-Os planos Claude individuais sem catálogo de organização podem usar a [ligação MCP manual](/apps/mcp/connect-hiredata-to-your-ai-assistant); esta oferece as ferramentas ao vivo da HireData sem as cinco skills incluídas.
+Os planos Claude individuais sem catálogo de organização podem [instalar as skills com um prompt](#install-the-skills-with-a-prompt) e combiná-las com a [ligação MCP manual](/apps/mcp/connect-hiredata-to-your-ai-assistant).
+
+## Install the skills with a prompt
+
+Sem suporte de plugins no seu plano ou assistente? As skills são ficheiros públicos comuns, por isso pode pedir ao seu assistente de IA para as obter e empacotar por si.
+
+### Claude (chat, desktop e Cowork)
+
+Copie este prompt para uma conversa do Claude que possa criar ficheiros (por exemplo, uma sessão do Cowork):
+
+```text
+Download the five HireData skills from https://github.com/HireData/skills
+(they are in plugins/hiredata/skills). Package each skill as a separate
+.skill file — a ZIP with that skill's SKILL.md and references folder at
+its root — and send me the five files so I can save them as skills on my
+account.
+```
+
+Guarde cada ficheiro que o Claude entregar como uma skill na sua conta. Combinado com o [conector MCP da HireData](/apps/mcp/connect-hiredata-to-your-ai-assistant), isto dá-lhe o mesmo comportamento do plugin completo. Se a sua organização não permitir guardar skills, peça a um Owner para distribuir o plugin através do catálogo da organização.
+
+### Qualquer outro assistente
+
+Assistentes sem skills instaláveis podem, ainda assim, seguir uma skill para uma única tarefa. Substitua o nome da skill e o seu objetivo neste prompt:
+
+```text
+Fetch https://raw.githubusercontent.com/HireData/skills/main/plugins/hiredata/skills/hiredata-plan-activation/SKILL.md,
+follow the workflow it describes (fetch the files it references too), and
+help me with: [your goal]
+```
+
+Isto funciona no ChatGPT, no Gemini, no Microsoft Copilot ou em qualquer assistente que consiga ler páginas web públicas, e combina bem com a [ligação MCP manual](/apps/mcp/connect-hiredata-to-your-ai-assistant). Os cinco nomes de pastas são `hiredata-plan-activation`, `hiredata-create-triggers`, `hiredata-create-forms`, `hiredata-create-email-templates` e `hiredata-create-whatsapp-templates`.
 
 ## Atualizar o plugin
 
