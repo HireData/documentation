@@ -105,13 +105,15 @@ Un propriétaire de l'organisation distribue le plugin via le catalogue de l'org
 
 <Steps>
   <Step title="Ajouter la marketplace">
-    Ouvrez **Organization settings → Plugins** et ajoutez une marketplace synchronisée avec GitHub à partir du dépôt `HireData/skills`. La synchronisation initiale s'exécute automatiquement.
+    Ouvrez **Organization settings → Plugins** et ajoutez une marketplace synchronisée avec GitHub à partir du dépôt `HireData/skills`. La synchronisation initiale s'exécute automatiquement, et les futures versions du plugin sont synchronisées depuis la branche par défaut du dépôt.
+
+    Vous pouvez également ajouter une marketplace personnalisée et téléverser le plugin sous forme de fichier ZIP (le répertoire `plugins/hiredata` du dépôt). Utilisez cette option lorsque votre organisation préfère ne pas se synchroniser depuis GitHub ; notez que les téléversements manuels ne reçoivent pas de mises à jour automatiques.
   </Step>
   <Step title="Rendre le plugin disponible">
     Définissez la préférence d'installation du plugin HireData, par exemple **Available for install** ou **Installed by default**.
   </Step>
   <Step title="Installer en tant que membre">
-    Les membres ouvrent la fenêtre Browse plugins, installent **HireData** et effectuent la connexion à HireData à la première utilisation. Le plugin fonctionne ensuite dans le chat web Claude et dans l'application de bureau Claude.
+    Les membres ouvrent le navigateur de plugins depuis l'interface de chat, installent **HireData** et effectuent la connexion à HireData à la première utilisation. Le plugin fonctionne ensuite dans le chat web Claude, l'application de bureau Claude et les sessions Cowork. Si le propriétaire a défini le plugin sur **Installed by default**, les membres peuvent ignorer entièrement cette étape.
   </Step>
 </Steps>
 
@@ -119,15 +121,11 @@ Les formules Claude individuelles sans catalogue d'organisation peuvent utiliser
 
 ## Mettre à jour le plugin
 
-Actualisez la marketplace GitHub lorsque HireData publie une mise à jour :
+- **ChatGPT ou Codex :** exécutez `codex plugin marketplace upgrade hiredata-skills`, puis ouvrez **Plugins** ou exécutez `/plugins` dans la CLI Codex pour appliquer la mise à jour.
+- **Claude Code :** exécutez `/plugin marketplace update hiredata-skills`.
+- **Claude Team et Enterprise :** les marketplaces synchronisées avec GitHub sont mises à jour automatiquement lorsque HireData publie une nouvelle version du plugin. Les ZIP téléversés manuellement nécessitent un nouveau téléversement.
 
-```bash
-codex plugin marketplace upgrade hiredata-skills
-```
-
-Dans Claude Code, exécutez `/plugin marketplace update hiredata-skills`. Les organisations Claude Team et Enterprise synchronisent automatiquement les mises à jour depuis GitHub ; Claude fournit une mise à jour du plugin lorsque son numéro de version change.
-
-Ouvrez **Plugins** ou exécutez `/plugins` dans la CLI Codex pour appliquer une mise à jour disponible. Démarrez une nouvelle conversation après la mise à jour afin que Codex charge les nouvelles skills et la nouvelle configuration.
+Démarrez une nouvelle conversation après la mise à jour afin que votre assistant charge les nouvelles skills et la nouvelle configuration.
 
 ## Dépannage
 
@@ -141,13 +139,9 @@ Ouvrez **Plugins** ou exécutez `/plugins` dans la CLI Codex pour appliquer une 
 
 ## Supprimer le plugin
 
-Dans ChatGPT ou Codex, exécutez :
-
-```bash
-codex plugin remove hiredata@hiredata-skills
-```
-
-Dans Claude Code, exécutez `/plugin uninstall hiredata@hiredata-skills`. Dans une organisation Claude, supprimez le plugin depuis le navigateur de plugins ou demandez à un propriétaire de modifier sa disponibilité.
+- **ChatGPT ou Codex :** exécutez `codex plugin remove hiredata@hiredata-skills`.
+- **Claude Code :** exécutez `/plugin uninstall hiredata@hiredata-skills`.
+- **Claude Team et Enterprise :** supprimez le plugin depuis le navigateur de plugins ou demandez à un propriétaire de modifier sa disponibilité dans **Organization settings → Plugins**. Les plugins marqués comme **Required** par un propriétaire ne peuvent pas être supprimés par les membres.
 
 Supprimer le plugin ne révoque pas nécessairement une autorisation OAuth HireData existante. Déconnectez HireData dans votre assistant IA ou révoquez l'autorisation dans les paramètres HireData lorsque vous souhaitez également supprimer l'accès.
 
