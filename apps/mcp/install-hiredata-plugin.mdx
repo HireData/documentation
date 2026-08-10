@@ -1,0 +1,123 @@
+---
+title: "Install the HireData plugin in ChatGPT or Codex"
+sidebarTitle: "Install the plugin"
+description: "Install the HireData plugin from GitHub in ChatGPT or Codex, connect your account, and start using its recruitment skills and MCP tools."
+keywords: ["HireData plugin", "Codex plugin", "ChatGPT plugin", "HireData skills", "MCP"]
+related: ["/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+---
+
+The HireData plugin combines reusable recruitment workflows with HireData's official MCP connection. It helps ChatGPT and Codex understand how to plan, create, test, and improve HireData automations instead of giving them tools without the working method behind them.
+
+<Note>
+  The plugin is currently available as an early-access install from HireData's public GitHub marketplace. It does not appear in OpenAI's universal Plugins Directory yet. Use these steps with the ChatGPT desktop app or Codex CLI. For Claude, Gemini, or an MCP-only connection, [connect HireData to your AI assistant](/apps/mcp/connect-hiredata-to-your-ai-assistant).
+</Note>
+
+## What the plugin adds
+
+The first release includes five skills:
+
+- **Plan an activation** — connect client problems to high-impact HireData workflows and measurable outcomes.
+- **Create triggers** — choose the right event, timing, filters, and relationships before creating a trigger.
+- **Create forms** — design concise forms with validation, branching, and a clear next step.
+- **Create email templates** — use variables, modifiers, and bounded AI variables safely.
+- **Create WhatsApp templates** — design concise, contextual templates with appropriate category reasoning and follow-up paths.
+
+The plugin also configures the existing remote HireData MCP connection at `https://api.hiredata.com/mcp`. It does not bundle or deploy a separate MCP server.
+
+| Installation | What you get | Use it when |
+| --- | --- | --- |
+| HireData plugin | Five HireData skills and the MCP connection | You use ChatGPT desktop or Codex and want both HireData knowledge and tools |
+| MCP only | Live HireData tools without the five skills | You use Claude, Gemini, another MCP client, or only need tool access |
+
+## Before you begin
+
+You need:
+
+- A HireData account with access to at least one workspace.
+- A current ChatGPT desktop app or Codex CLI with `codex plugin` support.
+- Permission to add Git marketplaces and MCP connections. Your organisation's AI administrator may restrict these features.
+
+## Install the plugin
+
+<Steps>
+  <Step title="Add the HireData marketplace">
+    Open a terminal and run:
+
+    ```bash
+    codex plugin marketplace add HireData/skills
+    ```
+
+    This adds HireData's public GitHub repository as the `hiredata-skills` marketplace. You do not need to clone the repository.
+  </Step>
+  <Step title="Install HireData">
+    Run:
+
+    ```bash
+    codex plugin add hiredata@hiredata-skills
+    ```
+
+    Follow any setup prompt shown by Codex. The plugin source is public at [github.com/HireData/skills](https://github.com/HireData/skills).
+  </Step>
+  <Step title="Reload the plugin">
+    Start a new Codex session. If you use the ChatGPT desktop app, restart it, open **Plugins**, and confirm that **HireData** appears under **Installed** or the **HireData Skills** marketplace.
+
+    Installed skills and tools load when you start a new conversation. They do not appear retroactively in an existing one.
+  </Step>
+  <Step title="Connect your HireData account">
+    When prompted, sign in to HireData. Select the workspace or workspaces the assistant may use, review the requested permissions, and click **Authorize**.
+
+    The assistant receives only the workspace access you select and works with your existing HireData permissions. See [how HireData access and security work](/apps/mcp/connect-hiredata-to-your-ai-assistant#how-access-and-security-work).
+  </Step>
+  <Step title="Verify the installation">
+    Check the installed plugin from the terminal:
+
+    ```bash
+    codex plugin list --marketplace hiredata-skills
+    ```
+
+    Then try one of these requests in a new conversation:
+
+    - "Use HireData to review our existing templates and rank the highest-impact missing workflow. Do not create anything yet."
+    - "Use HireData to design an application acknowledgement email that uses an AI variable safely. Show me a preview and do not send it."
+    - "Use HireData to create a candidate availability form. Show me the form and branching logic before creating it."
+  </Step>
+</Steps>
+
+## Update the plugin
+
+Refresh the GitHub marketplace when HireData publishes an update:
+
+```bash
+codex plugin marketplace upgrade hiredata-skills
+```
+
+Open **Plugins** or run `/plugins` in Codex CLI to apply an available update. Start a new conversation after updating so Codex loads the new skills and configuration.
+
+## Troubleshooting
+
+- **The `codex plugin` command is unavailable:** update Codex or the ChatGPT desktop app, then try again.
+- **The HireData marketplace does not appear:** run `codex plugin marketplace list`, then restart the ChatGPT desktop app.
+- **The plugin is installed but its skills do not appear:** enable HireData in **Plugins** and start a new conversation.
+- **HireData does not ask you to sign in:** start a new conversation with the plugin enabled and make a request that needs HireData workspace data.
+- **Your organisation blocks the installation:** ask your ChatGPT or Codex administrator to allow the HireData marketplace and MCP connection.
+- **You only need the MCP tools or use another assistant:** follow the [manual MCP connection guide](/apps/mcp/connect-hiredata-to-your-ai-assistant).
+
+## Remove the plugin
+
+Run:
+
+```bash
+codex plugin remove hiredata@hiredata-skills
+```
+
+Removing the plugin does not necessarily revoke an existing HireData OAuth grant. Disconnect HireData in your AI assistant or revoke the grant in HireData settings when you also want to remove access.
+
+<CardGroup cols={2}>
+  <Card title="View the source" icon="github" href="https://github.com/HireData/skills">
+    Review the skills, installation metadata, eval cases, and contribution guide.
+  </Card>
+
+  <Card title="Connect via MCP only" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
+    Connect Claude, Gemini, ChatGPT, or another MCP-compatible assistant without installing the skills.
+  </Card>
+</CardGroup>
