@@ -105,13 +105,15 @@ Een Owner van de organisatie verspreidt de plugin via de organisatiecatalogus:
 
 <Steps>
   <Step title="Voeg de marketplace toe">
-    Open **Organization settings → Plugins** en voeg een GitHub-gesynchroniseerde marketplace toe met de repository `HireData/skills`. De eerste synchronisatie start automatisch.
+    Open **Organization settings → Plugins** en voeg een GitHub-gesynchroniseerde marketplace toe met de repository `HireData/skills`. De eerste synchronisatie start automatisch, en latere plugin-releases worden vanuit de default branch van de repository gesynchroniseerd.
+
+    Voeg als alternatief een custom marketplace toe en upload de plugin als ZIP-bestand (de map `plugins/hiredata` uit de repository). Gebruik dit wanneer je organisatie liever niet vanuit GitHub synchroniseert; let op dat handmatige uploads geen automatische updates ontvangen.
   </Step>
   <Step title="Maak de plugin beschikbaar">
     Stel de installatievoorkeur van de HireData-plugin in, bijvoorbeeld **Available for install** of **Installed by default**.
   </Step>
   <Step title="Installeer als lid">
-    Leden openen de Browse plugins-modal, installeren **HireData** en voltooien bij het eerste gebruik de HireData-login. Daarna werkt de plugin in Claude webchat en de Claude-desktop-app.
+    Leden openen de plugin-browser vanuit de chatinterface, installeren **HireData** en voltooien bij het eerste gebruik de HireData-login. Daarna werkt de plugin in Claude webchat, de Claude-desktop-app en Cowork-sessies. Als de Owner de plugin op **Installed by default** heeft ingesteld, kunnen leden deze stap volledig overslaan.
   </Step>
 </Steps>
 
@@ -119,15 +121,11 @@ Individuele Claude-abonnementen zonder organisatiecatalogus kunnen in plaats daa
 
 ## De plugin bijwerken
 
-Ververs de GitHub-marketplace wanneer HireData een update publiceert:
+- **ChatGPT of Codex:** voer `codex plugin marketplace upgrade hiredata-skills` uit, open daarna **Plugins** of voer `/plugins` uit in de Codex CLI om de update toe te passen.
+- **Claude Code:** voer `/plugin marketplace update hiredata-skills` uit.
+- **Claude Team en Enterprise:** GitHub-gesynchroniseerde marketplaces worden automatisch bijgewerkt wanneer HireData een nieuwe pluginversie publiceert. Handmatig geüploade ZIPs vereisen een nieuwe upload.
 
-```bash
-codex plugin marketplace upgrade hiredata-skills
-```
-
-Voer in Claude Code `/plugin marketplace update hiredata-skills` uit. Claude Team- en Enterprise-organisaties synchroniseren updates automatisch vanuit GitHub; Claude levert een plugin-update wanneer het versienummer verandert.
-
-Open **Plugins** of voer `/plugins` uit in de Codex CLI om een beschikbare update toe te passen. Start een nieuw gesprek na de update, zodat Codex de nieuwe skills en configuratie laadt.
+Start een nieuw gesprek na de update, zodat je assistent de nieuwe skills en configuratie laadt.
 
 ## Problemen oplossen
 
@@ -141,13 +139,9 @@ Open **Plugins** of voer `/plugins` uit in de Codex CLI om een beschikbare updat
 
 ## De plugin verwijderen
 
-In ChatGPT of Codex, voer uit:
-
-```bash
-codex plugin remove hiredata@hiredata-skills
-```
-
-Voer in Claude Code `/plugin uninstall hiredata@hiredata-skills` uit. Verwijder in een Claude-organisatie de plugin via de plugin-browser, of vraag een Owner om de beschikbaarheid ervan te wijzigen.
+- **ChatGPT of Codex:** voer `codex plugin remove hiredata@hiredata-skills` uit.
+- **Claude Code:** voer `/plugin uninstall hiredata@hiredata-skills` uit.
+- **Claude Team en Enterprise:** verwijder de plugin via de plugin-browser, of vraag een Owner om de beschikbaarheid ervan te wijzigen in **Organization settings → Plugins**. Plugins die door een Owner op **Required** zijn ingesteld, kunnen niet door leden worden verwijderd.
 
 Het verwijderen van de plugin trekt niet automatisch een bestaande HireData OAuth-autorisatie in. Verbreek de verbinding met HireData in je AI-assistent, of trek de autorisatie in vanuit je HireData-instellingen wanneer je ook de toegang wilt verwijderen.
 

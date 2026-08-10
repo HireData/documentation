@@ -105,13 +105,15 @@ Um Owner da organização distribui o plugin através do catálogo da organizaç
 
 <Steps>
   <Step title="Adicione o marketplace">
-    Abra **Organization settings → Plugins** e adicione um marketplace sincronizado com o GitHub com o repositório `HireData/skills`. A sincronização inicial é executada automaticamente.
+    Abra **Organization settings → Plugins** e adicione um marketplace sincronizado com o GitHub com o repositório `HireData/skills`. A sincronização inicial é executada automaticamente, e as versões seguintes do plugin são sincronizadas a partir do branch predefinido do repositório.
+
+    Em alternativa, adicione um marketplace personalizado e carregue o plugin como ficheiro ZIP (o diretório `plugins/hiredata` do repositório). Use esta opção quando a sua organização preferir não sincronizar a partir do GitHub; note que os carregamentos manuais não recebem atualizações automáticas.
   </Step>
   <Step title="Torne o plugin disponível">
     Defina a preferência de instalação do plugin da HireData, por exemplo **Available for install** ou **Installed by default**.
   </Step>
   <Step title="Instale como membro">
-    Os membros abrem a janela Browse plugins, instalam a **HireData** e concluem o início de sessão na HireData na primeira utilização. O plugin funciona depois no chat web do Claude e na app de desktop do Claude.
+    Os membros abrem o navegador de plugins a partir da interface de chat, instalam a **HireData** e concluem o início de sessão na HireData na primeira utilização. O plugin funciona depois no chat web do Claude, na app de desktop do Claude e em sessões do Cowork. Se o Owner tiver definido o plugin como **Installed by default**, os membros saltam completamente este passo.
   </Step>
 </Steps>
 
@@ -119,15 +121,11 @@ Os planos Claude individuais sem catálogo de organização podem usar a [ligaç
 
 ## Atualizar o plugin
 
-Atualize o marketplace do GitHub quando a HireData publicar uma atualização:
+- **ChatGPT ou Codex:** execute `codex plugin marketplace upgrade hiredata-skills` e depois abra **Plugins** ou execute `/plugins` no Codex CLI para aplicar a atualização.
+- **Claude Code:** execute `/plugin marketplace update hiredata-skills`.
+- **Claude Team e Enterprise:** os marketplaces sincronizados com o GitHub atualizam-se automaticamente quando a HireData publica uma nova versão do plugin. Os ZIPs carregados manualmente exigem um novo carregamento.
 
-```bash
-codex plugin marketplace upgrade hiredata-skills
-```
-
-No Claude Code, execute `/plugin marketplace update hiredata-skills`. As organizações Claude Team e Enterprise sincronizam as atualizações do GitHub automaticamente; o Claude entrega uma atualização do plugin quando o seu número de versão muda.
-
-Abra **Plugins** ou execute `/plugins` no Codex CLI para aplicar uma atualização disponível. Inicie uma nova conversa depois de atualizar para que o Codex carregue as novas skills e a configuração.
+Inicie uma nova conversa depois de atualizar para que o seu assistente carregue as novas skills e a configuração.
 
 ## Resolução de problemas
 
@@ -141,13 +139,9 @@ Abra **Plugins** ou execute `/plugins` no Codex CLI para aplicar uma atualizaç�
 
 ## Remover o plugin
 
-No ChatGPT ou Codex, execute:
-
-```bash
-codex plugin remove hiredata@hiredata-skills
-```
-
-No Claude Code, execute `/plugin uninstall hiredata@hiredata-skills`. Numa organização Claude, remova o plugin no navegador de plugins ou peça a um Owner para alterar a sua disponibilidade.
+- **ChatGPT ou Codex:** execute `codex plugin remove hiredata@hiredata-skills`.
+- **Claude Code:** execute `/plugin uninstall hiredata@hiredata-skills`.
+- **Claude Team e Enterprise:** remova o plugin no navegador de plugins ou peça a um Owner para alterar a sua disponibilidade em **Organization settings → Plugins**. Os plugins marcados como **Required** por um Owner não podem ser removidos pelos membros.
 
 Remover o plugin não revoga necessariamente uma autorização OAuth existente da HireData. Desligue a HireData no seu assistente de IA ou revogue a autorização nas definições da HireData quando também quiser remover o acesso.
 
