@@ -1,0 +1,83 @@
+---
+title: "HireData skills for your AI assistant"
+sidebarTitle: "Skills"
+description: "Five HireData skills teach ChatGPT, Codex, and Claude how to plan activations and create triggers, forms, email templates, and WhatsApp templates safely — with a preview before anything is created."
+keywords: ["HireData skills", "AI skills", "plan activation", "create triggers", "create forms", "AI email templates", "AI WhatsApp templates", "HireData plugin", "MCP"]
+related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+---
+
+The [HireData MCP connection](/apps/mcp/connect-hiredata-to-your-ai-assistant) gives your AI assistant HireData's tools. Skills give it the working method behind them: how an experienced HireData consultant would approach the task, what to check in your workspace first, and when to stop and show you a preview instead of creating something you didn't ask for.
+
+HireData currently publishes five skills. Each follows the same contract: the assistant gathers context, inspects your workspace through the MCP connection, shows you a complete preview, and only creates or changes something after you approve that exact preview. New triggers stay inactive, forms stay unpublished where drafts are supported, and nothing is sent or activated as a side effect.
+
+| Skill | Use it when you want to |
+| --- | --- |
+| [Plan an activation](#plan-an-activation) | Turn a recruitment problem into a prioritized, evidence-based automation plan |
+| [Create triggers](#create-triggers) | Start an automation at the right moment, with the right filters and population |
+| [Create forms](#create-forms) | Capture a decision or signal with the shortest possible form |
+| [Create email templates](#create-email-templates) | Write emails with safe variables, modifiers, and bounded AI variables |
+| [Create WhatsApp templates](#create-whatsapp-templates) | Design concise WhatsApp messages that pass Meta's template review |
+
+## Plan an activation
+
+Turns a recruitment or staffing problem into a small, prioritized activation plan. The skill establishes your operating context (ATS, staffing model, audiences, channels, current HireData usage), expresses each problem as a user story, scores opportunities by reach, frequency, value, data readiness, effort, and risk, and recommends the smallest coherent first release — normally three to five workflows, each with a trigger moment, channel, owner, success measure, and a safe first test.
+
+Try:
+
+- "We lose candidates between application and first interview. Use HireData to propose which automations to implement first. Do not create anything yet."
+- "Review our existing templates and automations and rank the highest-impact missing workflow."
+- "Build a 30-day activation plan for interview no-show reduction, with success measures."
+
+When you approve a recommendation, this skill hands the workflow to the matching creation skill below.
+
+## Create triggers
+
+Designs automation triggers around the business event and the data your later workflow steps need. The skill inspects your connected apps, objects, fields, and existing triggers, checks for overlapping triggers, and previews the source, timing, timezone, filters in plain language, expected frequency, and duplicate controls before creating anything. New and changed triggers stay **inactive** unless you explicitly ask for activation.
+
+Try:
+
+- "Create a trigger for candidates whose placement ends in 30 days. Show me the filters in plain language first."
+- "Our welcome automation fires too often. Diagnose the trigger and propose a narrower configuration."
+
+## Create forms
+
+Creates the shortest form that captures the decision or signal your workflow needs — screening, availability, interview feedback, intake, consent, or NPS. The skill won't ask candidates for data HireData already knows from the trigger, person, application, or vacancy, keeps required fields to a minimum, checks that every branch reaches an appropriate ending, and previews fields, validation, branching, and the submission outcome before creating.
+
+Try:
+
+- "Create a candidate availability form for weekend shifts. Show me the form and branching logic before creating it."
+- "Design an interview feedback form for hiring managers that takes under a minute to complete."
+
+## Create email templates
+
+Designs emails around the recipient's context and the next useful action. The skill selects deterministic variables for facts, uses modifiers for formatting and fallbacks, and applies AI variables only for bounded generation with an explicit source, tone, length, and fallback — an AI variable is never allowed to invent dates, salary, legal status, or commitments. You see the complete copy, subject, variables, and CTA destinations before anything is saved, and test emails go only to an address you approve.
+
+Try:
+
+- "Design an application acknowledgement email that uses an AI variable safely. Show me a preview and do not send it."
+- "Improve our interview invitation template: check which variables can replace the hard-coded text."
+
+## Create WhatsApp templates
+
+Creates concise WhatsApp templates that are useful in context and likely to pass Meta's current review requirements. The skill reasons explicitly about the Meta category (it won't disguise promotional content as transactional), validates variable order and button targets, plans the response and no-response paths, and reports Meta approval as pending until the platform confirms it. No live message is sent as part of template creation.
+
+Try:
+
+- "Create a WhatsApp template reminding candidates of tomorrow's interview, with a confirm button and a reschedule path."
+- "Review our shift-offer template: is the category right, and what would you change before resubmitting to Meta?"
+
+## Get the skills
+
+The skills are bundled with the HireData MCP connection in the HireData plugin — one install covers both. [Install the HireData plugin](/apps/mcp/install-hiredata-plugin) in ChatGPT, Codex, or Claude. No plugin support on your plan or assistant? The same guide shows how to [install the skills with a prompt](/apps/mcp/install-hiredata-plugin#install-the-skills-with-a-prompt).
+
+The skills are public and open to review at [github.com/HireData/skills](https://github.com/HireData/skills).
+
+<CardGroup cols={2}>
+  <Card title="Install the plugin" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
+    Get all five skills plus the MCP connection in ChatGPT, Codex, or Claude.
+  </Card>
+
+  <Card title="Connect via MCP only" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
+    Use HireData's tools from Gemini or any MCP-compatible assistant.
+  </Card>
+</CardGroup>
