@@ -27,7 +27,7 @@ The plugin also configures the existing remote HireData MCP connection at `https
 | Installation | What you get | Use it when |
 | --- | --- | --- |
 | HireData plugin | Five HireData skills and the MCP connection | You use ChatGPT desktop, Codex, or Claude and want both HireData knowledge and tools |
-| MCP only | Live HireData tools without the five skills | You use Gemini, another MCP client, or only need tool access |
+| MCP only | Live HireData tools without the five skills | You use Gemini, ChatGPT on the web, another MCP client, or only need tool access |
 
 ## Before you begin
 
@@ -69,9 +69,9 @@ The `codex plugin` and `/plugin` commands below are CLI commands. They do not wo
   </Step>
 </Steps>
 
-<Warning>
-  ChatGPT on the web cannot install the plugin. It cannot add a marketplace, cannot add MCP servers, and does not show plugins you installed in the desktop app — so HireData will not appear there after a desktop install. It can upload skills from your computer. Use the desktop app for the full plugin.
-</Warning>
+<Note>
+  ChatGPT on the web cannot install the plugin: it cannot add a marketplace, and it does not show plugins you installed in the desktop app, so HireData will not appear there after a desktop install. Use the desktop app for the full plugin. On the web you can still upload skills from your computer, and [add HireData as a custom MCP server](/apps/mcp/connect-hiredata-to-your-ai-assistant) with Developer mode enabled.
+</Note>
 
 ### Codex CLI
 
@@ -227,7 +227,7 @@ Start a new conversation after updating so your assistant loads the new skills a
 ## Troubleshooting
 
 - **A `/plugin` or `codex plugin` command does nothing:** these are CLI commands, and only work in Claude Code and the Codex CLI. In the ChatGPT and Claude desktop apps, add the marketplace from **Settings** \> **Plugins**.
-- **HireData does not appear in ChatGPT on the web after a desktop install:** the web app cannot add marketplaces or MCP servers, and does not show plugins installed in the desktop app. Use the desktop app.
+- **HireData does not appear in ChatGPT on the web after a desktop install:** the web app cannot add marketplaces and does not show plugins installed in the desktop app. Use the desktop app, or [add HireData as a custom MCP server](/apps/mcp/connect-hiredata-to-your-ai-assistant) on the web for tools without the skills.
 - **The `codex plugin` command is unavailable:** update the Codex CLI, then try again.
 - **The HireData marketplace does not appear in the Codex CLI:** run `codex plugin marketplace list`, then start a new session.
 - **The plugin is installed but its skills do not appear:** enable HireData in **Settings** \> **Plugins** and start a new conversation.
