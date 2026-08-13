@@ -1,12 +1,12 @@
 ---
 title: "Installeer de HireData-plugin"
 sidebarTitle: "Installeer de plugin"
-description: "Installeer de HireData-plugin vanuit GitHub in ChatGPT, Codex of Claude, koppel je account en ga aan de slag met de recruitment-skills en MCP-tools."
-keywords: ["HireData plugin", "Codex plugin", "ChatGPT plugin", "Claude plugin", "Claude Code", "HireData skills", "MCP"]
-related: ["/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+description: "Krijg HireData's vijf recruitment-skills (activaties plannen, triggers, formulieren, e-mailtemplates en WhatsApp-templates aanmaken) plus de MCP-verbinding door de HireData-plugin te installeren in ChatGPT, Codex of Claude."
+keywords: ["HireData skills", "HireData plugin", "HireData skills installeren", "Codex plugin", "ChatGPT plugin", "Claude plugin", "Claude Code", "AI recruitment skills", "MCP"]
+related: ["/apps/mcp/hiredata-skills", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
-De HireData-plugin combineert herbruikbare recruitment-workflows met HireData's officiële MCP-verbinding. Hij helpt ChatGPT, Codex en Claude om HireData-automatiseringen te plannen, aan te maken, te testen en te verbeteren, in plaats van ze tools te geven zonder de bijbehorende werkwijze.
+De HireData-plugin is de snelste manier om [HireData's vijf skills](/apps/mcp/hiredata-skills) (een activatie plannen, triggers aanmaken, formulieren aanmaken, e-mailtemplates aanmaken en WhatsApp-templates aanmaken) in ChatGPT, Codex of Claude te krijgen, samen met HireData's officiële MCP-verbinding. De skills leren je assistent hoe hij HireData-automatiseringen kan plannen, aanmaken, testen en verbeteren, in plaats van dat hij tools krijgt zonder de bijbehorende werkwijze.
 
 <Note>
   De plugin is momenteel beschikbaar als early-access installatie vanuit HireData's publieke GitHub-marketplace. Hij verschijnt nog niet in OpenAI's universele Plugins Directory. Gebruik deze stappen met de ChatGPT-desktop-app, de Codex CLI, Claude Code, of een Claude Team/Enterprise-organisatie. Voor Gemini of een alleen-MCP-verbinding, [verbind HireData met je AI-assistent](/apps/mcp/connect-hiredata-to-your-ai-assistant).
@@ -14,13 +14,13 @@ De HireData-plugin combineert herbruikbare recruitment-workflows met HireData's 
 
 ## Wat de plugin toevoegt
 
-De eerste release bevat vijf skills:
+De eerste release bevat vijf skills. Zie [HireData-skills voor je AI-assistent](/apps/mcp/hiredata-skills) voor wat elke skill doet en voorbeeldprompts:
 
-- **Plan an activation** — koppel klantproblemen aan impactvolle HireData-workflows en meetbare resultaten.
-- **Create triggers** — kies de juiste gebeurtenis, timing, filters en relaties voordat je een trigger aanmaakt.
-- **Create forms** — ontwerp beknopte formulieren met validatie, branching en een duidelijke vervolgstap.
-- **Create email templates** — gebruik variabelen, modifiers en begrensde AI-variabelen op een veilige manier.
-- **Create WhatsApp templates** — ontwerp beknopte, contextuele templates met passende categorie-onderbouwing en vervolgpaden.
+- [**Plan an activation**](/apps/mcp/hiredata-skills#plan-an-activation) — koppel klantproblemen aan impactvolle HireData-workflows en meetbare resultaten.
+- [**Create triggers**](/apps/mcp/hiredata-skills#create-triggers) — kies de juiste gebeurtenis, timing, filters en relaties voordat je een trigger aanmaakt.
+- [**Create forms**](/apps/mcp/hiredata-skills#create-forms) — ontwerp beknopte formulieren met validatie, branching en een duidelijke vervolgstap.
+- [**Create email templates**](/apps/mcp/hiredata-skills#create-email-templates) — gebruik variabelen, modifiers en begrensde AI-variabelen op een veilige manier.
+- [**Create WhatsApp templates**](/apps/mcp/hiredata-skills#create-whatsapp-templates) — ontwerp beknopte, contextuele templates met passende categorie-onderbouwing en vervolgpaden.
 
 De plugin configureert ook de bestaande externe HireData MCP-verbinding op `https://api.hiredata.com/mcp`. Hij bundelt of installeert geen aparte MCP-server.
 
@@ -97,7 +97,7 @@ Voer deze commando's uit in Claude Code:
 /plugin install hiredata@hiredata-skills
 ```
 
-Log bij het eerste gebruik in bij HireData wanneer daarom wordt gevraagd, selecteer de toegestane workspaces en autoriseer. Start een nieuw gesprek voordat je gaat testen; skills hebben een namespace zoals `/hiredata:hiredata-plan-activation` enzovoort.
+Log bij het eerste gebruik in bij HireData wanneer daarom wordt gevraagd, selecteer de toegestane workspaces en autoriseer. Start een nieuw gesprek voordat je gaat testen. Skills hebben een namespace zoals `/hiredata:hiredata-plan-activation` enzovoort.
 
 ### Claude Team en Enterprise (web, desktop en Cowork)
 
@@ -107,7 +107,7 @@ Een Owner van de organisatie verspreidt de plugin via de organisatiecatalogus:
   <Step title="Voeg de marketplace toe">
     Open **Organization settings → Plugins** en voeg een GitHub-gesynchroniseerde marketplace toe met de repository `HireData/skills`. De eerste synchronisatie start automatisch, en latere plugin-releases worden vanuit de default branch van de repository gesynchroniseerd.
 
-    Voeg als alternatief een custom marketplace toe en upload de plugin als ZIP-bestand (de map `plugins/hiredata` uit de repository). Gebruik dit wanneer je organisatie liever niet vanuit GitHub synchroniseert; let op dat handmatige uploads geen automatische updates ontvangen.
+    Voeg als alternatief een custom marketplace toe en upload de plugin als ZIP-bestand (de map `plugins/hiredata` uit de repository). Gebruik dit wanneer je organisatie liever niet vanuit GitHub synchroniseert. Handmatige uploads ontvangen geen automatische updates.
   </Step>
   <Step title="Maak de plugin beschikbaar">
     Stel de installatievoorkeur van de HireData-plugin in, bijvoorbeeld **Available for install** of **Installed by default**.
@@ -117,7 +117,37 @@ Een Owner van de organisatie verspreidt de plugin via de organisatiecatalogus:
   </Step>
 </Steps>
 
-Individuele Claude-abonnementen zonder organisatiecatalogus kunnen in plaats daarvan de [handmatige MCP-verbinding](/apps/mcp/connect-hiredata-to-your-ai-assistant) gebruiken; die biedt de live HireData-tools zonder de vijf gebundelde skills.
+Individuele Claude-abonnementen zonder organisatiecatalogus kunnen [de skills installeren met een prompt](#install-the-skills-with-a-prompt) en die combineren met de [handmatige MCP-verbinding](/apps/mcp/connect-hiredata-to-your-ai-assistant).
+
+## Installeer de skills met een prompt
+
+Geen plugin-ondersteuning op je abonnement of assistent? De skills zijn gewone, openbare bestanden, dus je kunt je AI-assistent ze voor je laten ophalen en verpakken.
+
+### Claude (chat, desktop en Cowork)
+
+Kopieer deze prompt in een Claude-gesprek dat bestanden kan aanmaken (bijvoorbeeld een Cowork-sessie):
+
+```text
+Download the five HireData skills from https://github.com/HireData/skills
+(they are in plugins/hiredata/skills). Package each skill as a separate
+.skill file — a ZIP with that skill's SKILL.md and references folder at
+its root — and send me the five files so I can save them as skills on my
+account.
+```
+
+Sla elk bestand dat Claude aanlevert op als skill op je account. Gecombineerd met de [HireData MCP-connector](/apps/mcp/connect-hiredata-to-your-ai-assistant) krijg je hetzelfde gedrag als de volledige plugin. Als je organisatie het opslaan van skills niet toestaat, vraag dan een Owner om de plugin via de organisatiecatalogus te verspreiden.
+
+### Elke andere assistent
+
+Assistenten zonder installeerbare skills kunnen een skill nog steeds volgen voor een enkele taak. Vervang de naam van de skill en je doel in deze prompt:
+
+```text
+Fetch https://raw.githubusercontent.com/HireData/skills/main/plugins/hiredata/skills/hiredata-plan-activation/SKILL.md,
+follow the workflow it describes (fetch the files it references too), and
+help me with: [your goal]
+```
+
+Dit werkt in ChatGPT, Gemini, Microsoft Copilot of elke assistent die openbare webpagina's kan lezen, en past goed bij de [handmatige MCP-verbinding](/apps/mcp/connect-hiredata-to-your-ai-assistant). De vijf mapnamen zijn `hiredata-plan-activation`, `hiredata-create-triggers`, `hiredata-create-forms`, `hiredata-create-email-templates` en `hiredata-create-whatsapp-templates`.
 
 ## De plugin bijwerken
 

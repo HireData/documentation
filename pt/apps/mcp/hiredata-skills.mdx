@@ -1,0 +1,83 @@
+---
+title: "Skills da HireData para o seu assistente de IA"
+sidebarTitle: "Skills"
+description: "Cinco skills da HireData ensinam o ChatGPT, o Codex e o Claude a planear activações e a criar triggers, formulários, templates de email e templates de WhatsApp em segurança — com uma pré-visualização antes de criar seja o que for."
+keywords: ["HireData skills", "skills de IA", "planear activação", "criar triggers", "criar formulários", "templates de email com IA", "templates de WhatsApp com IA", "HireData plugin", "MCP"]
+related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+---
+
+A [ligação MCP da HireData](/apps/mcp/connect-hiredata-to-your-ai-assistant) dá ao seu assistente de IA as ferramentas da HireData. As skills dão-lhe o método de trabalho por trás delas: como um consultor experiente da HireData abordaria a tarefa, o que deve verificar primeiro no seu workspace e quando deve parar e mostrar-lhe uma pré-visualização em vez de criar algo que não pediu.
+
+A HireData publica atualmente cinco skills. Cada uma segue o mesmo contrato: o assistente reúne contexto, inspeciona o seu workspace através da ligação MCP, mostra-lhe uma pré-visualização completa e só cria ou altera algo depois de aprovar essa pré-visualização exata. Os novos triggers ficam inativos, os formulários ficam por publicar sempre que os rascunhos forem suportados, e nada é enviado nem ativado como efeito secundário.
+
+| Skill | Use-a quando quiser |
+| --- | --- |
+| [Plan an activation](#plan-an-activation) | Transformar um problema de recrutamento num plano de automação priorizado e baseado em evidências |
+| [Create triggers](#create-triggers) | Iniciar uma automação no momento certo, com os filtros e a população certos |
+| [Create forms](#create-forms) | Captar uma decisão ou um sinal com o formulário mais curto possível |
+| [Create email templates](#create-email-templates) | Escrever emails com variáveis, modificadores e variáveis de IA controladas em segurança |
+| [Create WhatsApp templates](#create-whatsapp-templates) | Desenhar mensagens de WhatsApp concisas que passem a revisão de templates da Meta |
+
+## Plan an activation
+
+Transforma um problema de recrutamento ou de staffing num plano de activação pequeno e priorizado. A skill estabelece o seu contexto operacional (ATS, modelo de staffing, audiências, canais, utilização atual da HireData), exprime cada problema como uma user story, pontua as oportunidades por alcance, frequência, valor, prontidão dos dados, esforço e risco, e recomenda a primeira release coerente mais pequena — normalmente três a cinco fluxos de trabalho, cada um com um momento de trigger, canal, responsável, medida de sucesso e um primeiro teste seguro.
+
+Experimente:
+
+- "Perdemos candidatos entre a candidatura e a primeira entrevista. Usa a HireData para propor que automações devemos implementar primeiro. Não crias nada ainda."
+- "Revê os nossos templates e automações existentes e ordena o fluxo de trabalho em falta com maior impacto."
+- "Constrói um plano de activação de 30 dias para reduzir os no-shows em entrevistas, com medidas de sucesso."
+
+Quando aprovar uma recomendação, esta skill entrega o fluxo de trabalho à skill de criação correspondente abaixo.
+
+## Create triggers
+
+Desenha triggers de automação em torno do evento de negócio e dos dados que os passos posteriores do fluxo de trabalho vão precisar. A skill inspeciona as suas apps ligadas, objetos, campos e triggers existentes, verifica sobreposições de triggers e apresenta uma pré-visualização da origem, timing, fuso horário, filtros em linguagem simples, frequência esperada e controlos de duplicados antes de criar seja o que for. Os triggers novos e alterados ficam **inactive** a menos que peça explicitamente para os ativar.
+
+Experimente:
+
+- "Cria um trigger para candidatos cuja colocação termina daqui a 30 dias. Mostra-me primeiro os filtros em linguagem simples."
+- "A nossa automação de boas-vindas dispara demasiadas vezes. Diagnostica o trigger e propõe uma configuração mais restrita."
+
+## Create forms
+
+Cria o formulário mais curto que capta a decisão ou o sinal de que o seu fluxo de trabalho precisa — screening, disponibilidade, feedback de entrevista, intake, consentimento ou NPS. A skill não pede aos candidatos dados que a HireData já conhece a partir do trigger, da pessoa, da candidatura ou da vaga, mantém os campos obrigatórios ao mínimo, verifica que cada ramificação chega a um final apropriado e apresenta uma pré-visualização dos campos, validação, ramificação e resultado da submissão antes de criar.
+
+Experimente:
+
+- "Cria um formulário de disponibilidade de candidato para turnos de fim de semana. Mostra-me o formulário e a lógica de ramificação antes de o criar."
+- "Desenha um formulário de feedback de entrevista para hiring managers que demore menos de um minuto a completar."
+
+## Create email templates
+
+Desenha emails em torno do contexto do destinatário e da próxima ação útil. A skill seleciona variáveis determinísticas para factos, usa modificadores para formatação e fallbacks e aplica variáveis de IA apenas para geração controlada com uma fonte, tom, tamanho e fallback explícitos — uma variável de IA nunca pode inventar datas, salário, estatuto legal ou compromissos. Vê o conteúdo completo, o assunto, as variáveis e os destinos dos CTAs antes de algo ser guardado, e os emails de teste vão apenas para um endereço que aprove.
+
+Experimente:
+
+- "Desenha um email de confirmação de candidatura que use uma variável de IA em segurança. Mostra-me uma pré-visualização e não o envies."
+- "Melhora o nosso template de convite para entrevista: verifica que variáveis podem substituir o texto fixo."
+
+## Create WhatsApp templates
+
+Cria templates de WhatsApp concisos, úteis no contexto e com boas hipóteses de passar os requisitos actuais de revisão da Meta. A skill raciocina explicitamente sobre a categoria da Meta (não disfarça conteúdo promocional como transacional), valida a ordem das variáveis e os destinos dos botões, planeia os caminhos de resposta e de não-resposta e reporta a aprovação da Meta como pendente até a plataforma a confirmar. Não é enviada nenhuma mensagem ao vivo como parte da criação do template.
+
+Experimente:
+
+- "Cria um template de WhatsApp a lembrar os candidatos da entrevista de amanhã, com um botão de confirmação e um caminho para reagendar."
+- "Revê o nosso template de oferta de turno: a categoria está correta e o que mudarias antes de o resubmeter à Meta?"
+
+## Obter as skills
+
+As skills estão incluídas na ligação MCP da HireData dentro do plugin da HireData — uma instalação cobre ambos. [Instale o plugin da HireData](/apps/mcp/install-hiredata-plugin) no ChatGPT, no Codex ou no Claude. Sem suporte para plugins no seu plano ou assistente? O mesmo guia mostra como [instalar as skills com um prompt](/apps/mcp/install-hiredata-plugin#install-the-skills-with-a-prompt).
+
+As skills são públicas e estão abertas a revisão em [github.com/HireData/skills](https://github.com/HireData/skills).
+
+<CardGroup cols={2}>
+  <Card title="Instalar o plugin" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
+    Obtenha as cinco skills e a ligação MCP no ChatGPT, no Codex ou no Claude.
+  </Card>
+
+  <Card title="Ligar apenas via MCP" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
+    Use as ferramentas da HireData a partir do Gemini ou de qualquer assistente compatível com MCP.
+  </Card>
+</CardGroup>
