@@ -63,14 +63,34 @@ Choose **Add**, then pick **AI variable** from the **Intelligent** group:
 
 ![The field type picker with AI variable at the top under the Intelligent heading](/images/ai-variable-type-picker.png)
 
-The editor asks for the following.
+### Choosing what the AI should do
+
+Before anything else, the editor asks what kind of job this variable is doing. There are seven modes, each shown as a tile with a one-line description:
+
+![The seven AI variable modes shown as tiles: Custom, Extract, Summarize, Classify, Write, Translate and Analyze](/images/ai-variable-mode-picker.png)
+
+| Mode | What it is for |
+| --- | --- |
+| `Custom` | Write your own prompt from scratch |
+| `Extract` | Pull structured data out of text or documents |
+| `Summarize` | Condense long content into key points |
+| `Classify` | Categorize content into predefined groups |
+| `Write` | Generate or rewrite content in a chosen tone |
+| `Translate` | Convert text from one language to another |
+| `Analyze` | Examine content for insights, sentiment, or patterns |
+
+<Note>
+  The mode is not locked in. Once you pick one, the tiles collapse into a compact dropdown, and you can change it whenever you like — reopen the variable and choose a different mode under **What should the AI do?**. The rest of the form adjusts to match.
+</Note>
+
+### The rest of the editor
 
 ![The AI variable editor showing the mode, prompt, return type, and language controls](/images/ai-variable-editor.png)
 
 | Field | What it does |
 | --- | --- |
 | **Name** | The human label, shown on the variable chip in your content. |
-| **What should the AI do?** | The mode: `Custom`, `Extract`, `Summarize`, `Classify`, `Write`, `Translate`, or `Analyze`. `Custom` lets you write the whole prompt yourself; the others come pre-shaped for their job. |
+| **What should the AI do?** | The mode you chose, now as a dropdown. Change it here at any time. |
 | **What will you provide to the AI?** | Two tabs. **Input** is a free-text prompt. **Variables** attaches specific fields with **Add Field**. See [Giving it something to work from](#giving-it-something-to-work-from). |
 | **Hints for the AI** (optional) | Extra context, tone, or constraints, kept separate from the main instruction. |
 | **What should the AI return?** | The output type — `Text`, `Rich text`, `Number`, `Yes / No`, `List`, `Date`, and the rest of the standard field types. |
@@ -83,12 +103,31 @@ The editor asks for the following.
 
 ## Giving it something to work from
 
-The instruction alone is rarely enough — the model needs the record. There are two ways to hand it over, and they can be combined:
+The instruction alone is rarely enough — the model needs the record. There are two ways to hand it over, and they can be combined.
 
-- **The Variables tab.** Choose **Add Field** and attach the fields the variable needs. This is the clearer option, and it makes the dependencies visible to anyone who opens the variable later.
-- **Inline in the prompt.** Write `{{ candidate.first_name }}` directly in the instruction and it is substituted before the instruction is sent.
+### Inline in the prompt
 
-Either way, the attached and referenced fields become the variable's inputs, which is also what decides when it regenerates.
+Type `{{` anywhere in the **Input** box and a picker appears, listing every variable available to this template with its key and its type. Keep typing to filter, then choose one to insert it:
+
+![The prompt box with the variable picker open, listing Recipient: First Name and Recipient: Birth Date with their keys and types](/images/ai-variable-prompt-variable-picker.png)
+
+So a birthday wish that greets the recipient by name reads:
+
+```text
+Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
+```
+
+Each token is replaced with that recipient's value before the instruction reaches the model, so for Sofia the model is asked for a wish _for Sofia_ rather than for `{{recipient.first_name}}`.
+
+### The Variables tab
+
+Switch to the **Variables** tab and choose **Add Field** to attach fields instead of naming them in the prompt. Each row is a searchable picker over the same list of variables, and the `−` button removes one.
+
+Attaching a field hands its value to the model without you having to mention it in the instruction. It also makes the variable's inputs obvious to whoever opens it next, which is worth doing once the prompt gets long.
+
+### Why the inputs matter
+
+The fields you reference, by either method, are the variable's **inputs** — and inputs are what decide when it is worked out again. Give it the fields it genuinely depends on rather than describing them in prose. See [Limitations](#limitations).
 
 ## Writing the instruction
 
