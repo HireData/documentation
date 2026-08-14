@@ -20,7 +20,7 @@ We hope you take some time today to celebrate.
 
 In the editor it appears as a chip, marked with the AI sparkle so you can tell it apart from a normal variable at a glance:
 
-![An AI variable shown as a chip in the body of an email template](/images/ai-variable-chip-in-content.png)
+![Ai Variable Chip In Content](/images/ai-variable-chip-in-content.png "Ai Variable Chip In Content")
 
 ## Where you can add one
 
@@ -57,17 +57,17 @@ Most personalisation is not an AI problem. Before adding an AI variable, check w
 
 Open the variables panel with the `{}` control in the builder toolbar. Existing variables are listed with their key and type, so an AI one is easy to spot:
 
-![The variables panel listing a Celebration variable with an ai type badge](/images/ai-variable-variables-panel.png)
+![Ai Variable Variables Panel](/images/ai-variable-variables-panel.png "Ai Variable Variables Panel")
 
 Choose **Add**, then pick **AI variable** from the **Intelligent** group:
 
-![The field type picker with AI variable at the top under the Intelligent heading](/images/ai-variable-type-picker.png)
+![Ai Variable Type Picker](/images/ai-variable-type-picker.png "Ai Variable Type Picker")
 
 ### Choosing what the AI should do
 
 Before anything else, the editor asks what kind of job this variable is doing. There are seven modes, each shown as a tile with a one-line description:
 
-![The seven AI variable modes shown as tiles: Custom, Extract, Summarize, Classify, Write, Translate and Analyze](/images/ai-variable-mode-picker.png)
+![Ai Variable Mode Picker](/images/ai-variable-mode-picker.png "Ai Variable Mode Picker")
 
 | Mode | What it is for |
 | --- | --- |
@@ -85,7 +85,7 @@ Before anything else, the editor asks what kind of job this variable is doing. T
 
 ### The rest of the editor
 
-![The AI variable editor showing the mode, prompt, return type, and language controls](/images/ai-variable-editor.png)
+![Ai Variable Editor](/images/ai-variable-editor.png "Ai Variable Editor")
 
 | Field | What it does |
 | --- | --- |
@@ -109,11 +109,13 @@ The instruction alone is rarely enough — the model needs the record. There are
 
 Type `{{` anywhere in the **Input** box and a picker appears, listing every variable available to this template with its key and its type. Keep typing to filter, then choose one to insert it:
 
-![The prompt box with the variable picker open, listing Recipient: First Name and Recipient: Birth Date with their keys and types](/images/ai-variable-prompt-variable-picker.png)
+<Frame>
+  ![Ai Variable Prompt Variable Picker 1](/images/ai-variable-prompt-variable-picker-1.png "Ai Variable Prompt Variable Picker 1")
+</Frame>
 
 So a birthday wish that greets the recipient by name reads:
 
-```text
+```text wrap
 Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
 ```
 
@@ -122,6 +124,10 @@ Each token is replaced with that recipient's value before the instruction reache
 ### The Variables tab
 
 Switch to the **Variables** tab and choose **Add Field** to attach fields instead of naming them in the prompt. Each row is a searchable picker over the same list of variables, and the `−` button removes one.
+
+<Frame>
+  ![Ai Variable Picker](/images/ai-variable-picker.png "Ai Variable Picker")
+</Frame>
 
 Attaching a field hands its value to the model without you having to mention it in the instruction. It also makes the variable's inputs obvious to whoever opens it next, which is worth doing once the prompt gets long.
 
