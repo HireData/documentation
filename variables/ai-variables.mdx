@@ -1,14 +1,14 @@
 ---
 title: "AI variables"
 sidebarTitle: "AI variables"
-description: "Use AI variables to generate a sentence per recipient inside HireData emails, messages, and forms, and learn when a normal variable or modifier is the better choice."
+description: "Use AI variables to generate a value per recipient inside HireData emails, forms, and automations, and learn when a normal variable or modifier is the better choice."
 keywords: ["AI variables", "AI variable", "personalisation", "generated text", "custom variable", "AI email", "AI-variabelen"]
 related: ["/variables/introduction", "/variables/modifiers"]
 ---
 
-A normal variable **looks up** a value. An AI variable **writes** one.
+A normal variable **looks up** a value. An AI variable **works one out**.
 
-Where `{{ candidate.first_name }}` reads a field and drops it in, an AI variable runs a short instruction for each recipient and inserts the sentence it produces. It is the tool for the one line that has to be different every time — an opener that ties someone's background to a vacancy, or a birthday wish that does not read like a mail merge.
+Where `{{ candidate.first_name }}` reads a field and drops it in, an AI variable runs a short instruction against the record and inserts what it produces. It is the tool for the line that has to be different every time — an opener that ties someone's background to a vacancy, or a birthday wish that does not read like a mail merge.
 
 You use it exactly like any other variable:
 
@@ -18,12 +18,22 @@ You use it exactly like any other variable:
 We hope you take some time today to celebrate.
 ```
 
+In the editor it appears as a chip, marked with the AI sparkle so you can tell it apart from a normal variable at a glance:
+
+![An AI variable shown as a chip in the body of an email template](/images/ai-variable-chip-in-content.png)
+
+## Where you can add one
+
+You can create AI variables in **email templates**, **forms**, and **automations**. The automation builder also offers presets, so a variable you use often does not have to be rebuilt by hand.
+
+WhatsApp message templates can _reference_ variables, but the variable list there is read-only — you cannot create an AI variable from the message builder. Define it on the automation that sends the message instead.
+
 ## When to use one
 
 Reach for an AI variable when all three are true:
 
-- the output is **prose**, not a fact;
-- a fixed line with a fallback would read badly, because the sentence genuinely has to change per person;
+- the output has to be **derived**, not looked up;
+- a fixed line with a fallback would read badly, because the value genuinely has to change per person;
 - being slightly off is survivable — nobody makes a decision based on it.
 
 Good candidates: a personalised opener, a re-engagement hook for a dormant candidate, a non-generic birthday line, or a tone rewrite of a fixed paragraph.
@@ -40,16 +50,67 @@ Most personalisation is not an AI problem. Before adding an AI variable, check w
 | Consistent casing or currency | `uppercase`, `format_currency` |
 
 <Warning>
-  Never use an AI variable to state a fact. Dates, rates, salaries, contract terms, start dates, legal or GDPR status, and anything that reads as a commitment must come from a field. If the field is empty, the honest answer is to leave it out or use a fallback — not to let a model fill the gap. A generated sentence that invents a start date is a false statement sent to a candidate in your name.
+  Never let an AI variable invent a fact. Dates, rates, salaries, contract terms, start dates, legal or GDPR status, and anything that reads as a commitment must come from a field. If the field is empty, the honest answer is to leave it out or use a fallback — not to let a model fill the gap. A generated sentence that invents a start date is a false statement sent to a candidate in your name.
 </Warning>
+
+## Setting one up
+
+Open the variables panel with the `{}` control in the builder toolbar. Existing variables are listed with their key and type, so an AI one is easy to spot:
+
+![The variables panel listing a Celebration variable with an ai type badge](/images/ai-variable-variables-panel.png)
+
+Choose **Add**, then pick **AI variable** from the **Intelligent** group:
+
+![The field type picker with AI variable at the top under the Intelligent heading](/images/ai-variable-type-picker.png)
+
+The editor asks for the following.
+
+![The AI variable editor showing the mode, prompt, return type, and language controls](/images/ai-variable-editor.png)
+
+| Field | What it does |
+| --- | --- |
+| **Name** | The human label, shown on the variable chip in your content. |
+| **What should the AI do?** | The mode: `Custom`, `Extract`, `Summarize`, `Classify`, `Write`, `Translate`, or `Analyze`. `Custom` lets you write the whole prompt yourself; the others come pre-shaped for their job. |
+| **What will you provide to the AI?** | Two tabs. **Input** is a free-text prompt. **Variables** attaches specific fields with **Add Field**. See [Giving it something to work from](#giving-it-something-to-work-from). |
+| **Hints for the AI** (optional) | Extra context, tone, or constraints, kept separate from the main instruction. |
+| **What should the AI return?** | The output type — `Text`, `Rich text`, `Number`, `Yes / No`, `List`, `Date`, and the rest of the standard field types. |
+| **Language** | The output language. The default, `None — match the input language`, follows the data it is given. |
+| **More options** | **Reference as** is the key you type in content — `celebration` becomes `{{celebration}}`. **What is it for?** is an optional description. |
+
+<Note>
+  An AI variable does not have to produce prose. Because you choose the return type, one can just as well resolve to a `Yes / No`, a `Number`, or a value from a `List` — which is what the `Classify` and `Extract` modes are for. The [warning above](#when-to-use-something-else) still applies: deriving a value from data in the record is fine, inventing one is not.
+</Note>
+
+## Giving it something to work from
+
+The instruction alone is rarely enough — the model needs the record. There are two ways to hand it over, and they can be combined:
+
+- **The Variables tab.** Choose **Add Field** and attach the fields the variable needs. This is the clearer option, and it makes the dependencies visible to anyone who opens the variable later.
+- **Inline in the prompt.** Write `{{ candidate.first_name }}` directly in the instruction and it is substituted before the instruction is sent.
+
+Either way, the attached and referenced fields become the variable's inputs, which is also what decides when it regenerates.
+
+## Writing the instruction
+
+A usable instruction names its shape and its limits. Let the dedicated controls do the work they are there for — set the output language in the **Language** control rather than describing it in the prompt, and set the return type rather than asking for one:
+
+> Write a friendly, single-sentence birthday wish, maximum 20 words. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the recipient's name is missing, write a general wish with no name.
+
+That last sentence matters most. Say what to do when the data is missing, or the model will invent something to fill the space.
+
+**Longer instructions are not better instructions.** Constraints do more work than description. State the maximum length, the tone, what it must not do, and what to produce when the source data is thin.
 
 ## Limitations
 
-**It generates per recipient, not once.** The same template produces different text for different people. Two candidates comparing emails will see different sentences. That is the point, but it also means you cannot proofread the output the way you proofread a template — you can only bound it.
+**It resolves once per send, then repeats.** The value is generated the first time the variable is referenced and reused for every other mention in the same message — so `{{ celebration }}` twice in one email gives you the same sentence twice, not two attempts. It is worked out again when its inputs change, which is what makes it per-recipient. A variable with no inputs attached has nothing to vary on.
 
-**A valid template can still send an empty line.** Validation checks that a placeholder is _known_, not that it will have a value when the message goes out. An AI variable that receives no input produces nothing, and the message sends with a hole in it.
+**A stored default is not a safety net.** For an AI variable, the default value is the slot the generated value is written into, not a fallback you can set. If the model returns nothing, the variable resolves to nothing. To guarantee something lands on the page, use the [`default`](/variables/modifiers#fallback) modifier where you reference it:
 
-This is the most common problem in practice. When you test a template, every custom variable referenced in the body needs an explicit, non-empty value — a stored default is deliberately **not** substituted for it. So this template:
+```text
+{{ celebration | default: "We hope you have a lovely day." }}
+```
+
+**A valid template can still send with a hole in it.** Validation checks that a placeholder is _known_, not that it will have a value when the message goes out. So this template:
 
 ```text
 {{ celebration }}
@@ -57,25 +118,17 @@ This is the most common problem in practice. When you test a template, every cus
 We hope you take some time today to celebrate.
 ```
 
-can preview perfectly and still arrive as an email that opens with a blank line, followed by "We hope you take some time today to celebrate." The template is not broken. The workflow did not supply the variable's input.
+can validate perfectly and still arrive as an email that opens with a blank line, followed by "We hope you take some time today to celebrate." The template is not broken. The variable produced nothing.
 
-If a recipient reports a message with a missing sentence, an empty greeting, or a stray fragment, check which variables are custom before assuming the copy is wrong.
+**Test sends behave differently from real ones.** On a test send, every custom variable referenced in the body needs an explicit, non-empty value that you supply — stored values are deliberately not substituted. A clean test therefore proves the copy works; it does not prove the variable will resolve in production.
 
-**Longer instructions are not better instructions.** Constraints do more work than description. State the maximum length, the language, the tone, what it must not do, and what to produce when the source data is thin.
-
-## Writing the instruction
-
-A usable instruction names its source, its shape, and its limits:
-
-> Write a friendly, single-sentence birthday wish, maximum 20 words, in the recipient's preferred language. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the recipient's name is missing, write a general wish with no name.
-
-That last sentence matters most. Say what to do when the data is missing, or the model will invent something to fill the space.
+If a recipient reports a message with a missing sentence, an empty greeting, or a stray fragment, check which variables are AI variables before assuming the copy is wrong.
 
 ## Before you send
 
 <Steps>
   <Step title="Test with complete data">
-    Confirm the sentence reads well and stays inside your length limit.
+    Confirm the value reads well and stays inside your length limit.
   </Step>
   <Step title="Test with missing and empty data">
     This is where AI variables fail. Check that a thin record produces something acceptable rather than a hallucinated detail or an empty line.
