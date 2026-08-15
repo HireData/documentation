@@ -1,14 +1,14 @@
 ---
 title: "HireData skills for your AI assistant"
 sidebarTitle: "Skills"
-description: "Overview of the five HireData skills that guide ChatGPT, Codex, and Claude through planning activations and creating triggers, forms, and templates."
-keywords: ["HireData skills", "AI skills", "plan activation", "create triggers", "create forms", "AI email templates", "AI WhatsApp templates", "HireData plugin", "MCP"]
+description: "Overview of the six HireData skills that guide ChatGPT, Codex, and Claude through planning activations, creating workflows, and writing actionable issue reports."
+keywords: ["HireData skills", "AI skills", "plan activation", "create triggers", "create forms", "AI email templates", "AI WhatsApp templates", "AI issue reports", "HireData plugin", "MCP"]
 related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
 The [HireData MCP connection](/apps/mcp/connect-hiredata-to-your-ai-assistant) gives your AI assistant HireData's tools. Skills give it the working method behind them: how an experienced HireData consultant would approach the task, what to check in your workspace first, and when to stop and show you a preview instead of creating something you didn't ask for.
 
-HireData currently publishes five skills. Each follows the same contract: the assistant gathers context, inspects your workspace through the MCP connection, shows you a complete preview, and only creates or changes something after you approve that exact preview. New triggers stay inactive, forms stay unpublished where drafts are supported, and nothing is sent or activated as a side effect.
+HireData currently publishes six skills. Each gathers the available context, shows you a complete draft or preview, and only creates or changes something after you approve that exact action. New triggers stay inactive, forms stay unpublished where drafts are supported, and nothing is sent or activated as a side effect.
 
 | Skill | Use it when you want to |
 | --- | --- |
@@ -17,6 +17,7 @@ HireData currently publishes five skills. Each follows the same contract: the as
 | [Create forms](#create-forms) | Capture a decision or signal with the shortest possible form |
 | [Create email templates](#create-email-templates) | Write emails with safe variables, modifiers, and bounded AI variables |
 | [Create WhatsApp templates](#create-whatsapp-templates) | Design concise WhatsApp messages that pass Meta's template review |
+| [Write issue reports](#write-issue-reports) | Turn evidence and requests into clear, actionable reports for HireData |
 
 ## Plan an activation
 
@@ -66,6 +67,17 @@ Try:
 - "Create a WhatsApp template reminding candidates of tomorrow's interview, with a confirm button and a reschedule path."
 - "Review our shift-offer template: is the category right, and what would you change before resubmitting to Meta?"
 
+## Write issue reports
+
+Turns a bug, customer request, prototype, recording, meeting note, or technical prompt into a structured HireData issue report. The skill preserves evidence, separates facts from assumptions, chooses the smallest useful issue structure, and makes missing product or technical decisions visible. Customers and partners get a report they can send to HireData without needing internal Linear access. Authorized HireData users can also refine or update live issues when they explicitly request it.
+
+Try:
+
+- "Turn these reproduction steps, screenshot, and automation URL into a HireData-compatible bug report. Draft only."
+- "Refine this prototype into a product specification, but treat the mock as evidence rather than the final product contract."
+
+[Learn how to write better HireData issue reports with AI](/apps/mcp/write-better-hiredata-issue-reports-with-ai).
+
 ## Get the skills
 
 The skills are bundled with the HireData MCP connection in the HireData plugin. One install covers both. [Install the HireData plugin](/apps/mcp/install-hiredata-plugin) in ChatGPT, Codex, or Claude. No plugin support on your plan or assistant? The same guide shows how to [install the skills with a prompt](/apps/mcp/install-hiredata-plugin#install-the-skills-with-a-prompt).
@@ -74,7 +86,7 @@ The skills are public and open to review at [github.com/HireData/skills](https:/
 
 <CardGroup cols={2}>
   <Card title="Install the plugin" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
-    Get all five skills plus the MCP connection in ChatGPT, Codex, or Claude.
+    Get all six skills plus the MCP connection in ChatGPT, Codex, or Claude.
   </Card>
 
   <Card title="Connect via MCP only" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
