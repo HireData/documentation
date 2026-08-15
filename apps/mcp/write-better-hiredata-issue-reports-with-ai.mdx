@@ -1,0 +1,117 @@
+---
+title: "Write better HireData issue reports with AI"
+sidebarTitle: "Report an issue with AI"
+description: "Use the HireData Linear Issues skill to turn evidence, requests, prototypes, and technical notes into a clear issue report for HireData."
+keywords: ["HireData issue report", "Linear issue", "AI bug report", "report a bug", "feature request", "HireData skills", "MCP"]
+related: ["/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+---
+
+Use the **HireData Linear Issues** skill to turn a bug, customer request, prototype, recording, meeting note, or technical prompt into a structured issue report. The skill preserves your evidence, separates facts from assumptions, and makes missing decisions visible before development starts.
+
+You can use it as a customer or partner without access to HireData's Linear workspace. It creates a report you can send through your usual HireData support or partner channel. Authorized HireData team members can also use connected Linear tools to inspect or update an issue when they explicitly request a live change.
+
+<Note>
+  The skill helps draft and refine an issue. It does not automatically approve requirements, assign HireData's internal priority, estimate work, or make planning decisions.
+</Note>
+
+## Before you begin
+
+[Install the HireData plugin](/apps/mcp/install-hiredata-plugin) and start a new conversation so your assistant loads the latest skills. The plugin includes the issue-writing skill and HireData's MCP connection.
+
+Prepare as much of the following evidence as you have:
+
+- the affected user, account, workflow, or object;
+- the relevant environment and page URL;
+- exact reproduction steps for a bug;
+- what happened and what you expected;
+- frequency, impact, and any workaround;
+- screenshots, recordings, timestamps, runs, events, or logs;
+- the original request or conversation.
+
+You do not need every item before starting. The skill identifies material gaps without inventing answers.
+
+## Draft an issue report
+
+Start with a prompt like:
+
+```text
+Use $hiredata-create-linear-issues to turn the evidence below into a
+HireData-compatible issue report. Draft only. Do not guess priority,
+ownership, estimates, or implementation details.
+
+[Paste your notes and links here]
+```
+
+In Claude Code, the installed skill may appear as `/hiredata:hiredata-create-linear-issues`.
+
+The draft includes:
+
+1. a proposed title;
+2. the appropriate issue type and current readiness;
+3. a structured description;
+4. evidence and source links;
+5. missing information or open decisions;
+6. verified duplicate, dependency, or related-work recommendations when tools are available.
+
+## Use the right prompt for your situation
+
+### Report a bug
+
+```text
+Use the HireData issue-writing skill to turn these reproduction steps,
+screenshot, and automation URL into a bug report I can send to HireData.
+Keep unknown details visible and draft only.
+```
+
+### Submit a feature request
+
+```text
+Turn this customer request into an intake-ready HireData issue report.
+Separate the reusable product need from our account-specific setup and
+list the decisions HireData still needs to make.
+```
+
+### Refine a prototype-led feature
+
+```text
+Use the HireData issue-writing skill to refine this prototype into a
+product specification. Treat the prototype as evidence, not as the final
+product contract. Do not invent technical decisions.
+```
+
+### Improve an existing issue
+
+```text
+Review this issue and its source material. Rewrite it so product can refine
+it without reconstructing the request. Summarize what changed and preserve
+metadata I did not ask you to change.
+```
+
+## Review before submitting
+
+Check that the draft:
+
+- describes the observable problem or outcome without relying on a prototype alone;
+- distinguishes facts, decisions, assumptions, and open questions;
+- keeps customer-specific mappings separate from reusable HireData behaviour;
+- links the original evidence;
+- does not claim that an unverified customer name, deadline, or request makes the issue urgent;
+- does not invent a schema, implementation, estimate, owner, or acceptance criterion.
+
+You remain responsible for the accuracy of the report. Send the reviewed draft through the support or partner channel agreed with HireData.
+
+## Privacy and security
+
+- Share only the customer and candidate data needed to reproduce or understand the issue.
+- Remove credentials, access tokens, secrets, and unrelated personal data.
+- Do not paste security vulnerabilities into a public GitHub issue. Contact HireData privately through your normal support channel.
+- The public skill does not contain HireData's internal priorities, employee routing, customer tiers, or planning rules.
+
+## Troubleshooting
+
+- **The skill is missing:** update the HireData plugin and start a new conversation.
+- **The assistant wants to create an issue immediately:** say “Draft only” unless you intend and are authorized to make a live change.
+- **The output guesses internal metadata:** ask it to remove unsupported priority, assignee, estimate, cycle, and status values.
+- **The assistant cannot search Linear:** it can still create a sendable report; note that duplicate and relationship checks remain unverified.
+
+The skill source is public at [github.com/HireData/skills](https://github.com/HireData/skills/tree/main/plugins/hiredata/skills/hiredata-create-linear-issues).
