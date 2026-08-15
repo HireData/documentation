@@ -1,0 +1,117 @@
+---
+title: "Schrijf betere HireData issue reports met AI"
+sidebarTitle: "Issue melden met AI"
+description: "Gebruik de HireData Linear Issues-skill om bewijs, verzoeken, prototypes en technische notities om te zetten in een helder issue report voor HireData."
+keywords: ["HireData issue report", "Linear issue", "AI bug report", "bug melden", "feature request", "HireData skills", "MCP"]
+related: ["/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+---
+
+Gebruik de **HireData Linear Issues**-skill om een bug, klantverzoek, prototype, opname, vergadernotitie of technische prompt om te zetten in een gestructureerd issue report. De skill bewaart je bewijs, scheidt feiten van aannames en maakt ontbrekende beslissingen zichtbaar voordat de ontwikkeling begint.
+
+Je kunt hem als klant of partner gebruiken zonder toegang tot HireData's Linear-workspace. Er ontstaat een rapport dat je via je gebruikelijke HireData-support- of partnerkanaal kunt versturen. Bevoegde HireData-teamleden kunnen daarnaast de gekoppelde Linear-tools gebruiken om een issue te inspecteren of bij te werken wanneer ze expliciet om een live wijziging vragen.
+
+<Note>
+  De skill helpt met het opstellen en verfijnen van een issue. Hij keurt niet automatisch requirements goed, kent geen interne HireData-prioriteit toe, schat geen werk in en neemt geen planningsbeslissingen.
+</Note>
+
+## Voordat je begint
+
+[Installeer de HireData-plugin](/apps/mcp/install-hiredata-plugin) en start een nieuw gesprek zodat je assistent de nieuwste skills laadt. De plugin bevat de issue-schrijfskill en HireData's MCP-verbinding.
+
+Zorg dat je zoveel mogelijk van het onderstaande bewijs bij de hand hebt:
+
+- de betrokken gebruiker, account, workflow of het betrokken object;
+- de relevante omgeving en pagina-URL;
+- exacte reproductiestappen voor een bug;
+- wat er gebeurde en wat je verwachtte;
+- frequentie, impact en een eventuele workaround;
+- screenshots, opnames, tijdstempels, runs, events of logs;
+- het oorspronkelijke verzoek of gesprek.
+
+Je hebt niet alles nodig voordat je begint. De skill signaleert wezenlijke gaten zonder antwoorden te verzinnen.
+
+## Een issue report opstellen
+
+Begin met een prompt zoals:
+
+```text
+Use $hiredata-create-linear-issues to turn the evidence below into a
+HireData-compatible issue report. Draft only. Do not guess priority,
+ownership, estimates, or implementation details.
+
+[Paste your notes and links here]
+```
+
+In Claude Code kan de geïnstalleerde skill verschijnen als `/hiredata:hiredata-create-linear-issues`.
+
+Het concept bevat:
+
+1. een voorgestelde titel;
+2. het passende issue-type en de huidige gereedheid;
+3. een gestructureerde omschrijving;
+4. bewijs en bronlinks;
+5. ontbrekende informatie of open beslissingen;
+6. geverifieerde aanbevelingen voor duplicaten, dependencies of gerelateerd werk wanneer daar tools voor beschikbaar zijn.
+
+## Gebruik de juiste prompt voor jouw situatie
+
+### Een bug melden
+
+```text
+Use the HireData issue-writing skill to turn these reproduction steps,
+screenshot, and automation URL into a bug report I can send to HireData.
+Keep unknown details visible and draft only.
+```
+
+### Een feature request indienen
+
+```text
+Turn this customer request into an intake-ready HireData issue report.
+Separate the reusable product need from our account-specific setup and
+list the decisions HireData still needs to make.
+```
+
+### Een prototype-gedreven feature verfijnen
+
+```text
+Use the HireData issue-writing skill to refine this prototype into a
+product specification. Treat the prototype as evidence, not as the final
+product contract. Do not invent technical decisions.
+```
+
+### Een bestaand issue verbeteren
+
+```text
+Review this issue and its source material. Rewrite it so product can refine
+it without reconstructing the request. Summarize what changed and preserve
+metadata I did not ask you to change.
+```
+
+## Controleer voordat je indient
+
+Controleer of het concept:
+
+- het waarneembare probleem of resultaat beschrijft zonder alleen op een prototype te steunen;
+- onderscheid maakt tussen feiten, beslissingen, aannames en open vragen;
+- klantspecifieke mappings gescheiden houdt van herbruikbaar HireData-gedrag;
+- naar het oorspronkelijke bewijs verwijst;
+- niet claimt dat een niet-geverifieerde klantnaam, deadline of verzoek het issue urgent maakt;
+- geen schema, implementatie, schatting, eigenaar of acceptatiecriterium verzint.
+
+Jij blijft verantwoordelijk voor de juistheid van het rapport. Stuur het gecontroleerde concept via het support- of partnerkanaal dat met HireData is afgesproken.
+
+## Privacy en beveiliging
+
+- Deel alleen de klant- en kandidaatgegevens die nodig zijn om het issue te reproduceren of te begrijpen.
+- Verwijder credentials, access tokens, secrets en niet-gerelateerde persoonsgegevens.
+- Plak geen beveiligingskwetsbaarheden in een publiek GitHub-issue. Neem privé contact op met HireData via je gebruikelijke supportkanaal.
+- De publieke skill bevat geen interne prioriteiten van HireData, medewerker-routing, klanttiers of planningsregels.
+
+## Problemen oplossen
+
+- **De skill ontbreekt:** werk de HireData-plugin bij en start een nieuw gesprek.
+- **De assistent wil direct een issue aanmaken:** zeg "Draft only", tenzij je een live wijziging wilt maken en daartoe bevoegd bent.
+- **De output gokt naar interne metadata:** vraag om niet-ondersteunde waarden voor prioriteit, assignee, schatting, cycle en status te verwijderen.
+- **De assistent kan Linear niet doorzoeken:** hij kan nog steeds een verzendbaar rapport maken; let er wel op dat controles op duplicaten en relaties dan niet zijn geverifieerd.
+
+De bron van de skill is publiek beschikbaar op [github.com/HireData/skills](https://github.com/HireData/skills/tree/main/plugins/hiredata/skills/hiredata-create-linear-issues).

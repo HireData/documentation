@@ -1,14 +1,14 @@
 ---
 title: "Les skills HireData pour votre assistant IA"
 sidebarTitle: "Skills"
-description: "Cinq skills HireData apprennent à ChatGPT, Codex et Claude comment planifier des activations et créer des triggers, des formulaires, des modèles d'e-mails et des modèles WhatsApp en toute sécurité — avec un aperçu avant toute création."
-keywords: ["HireData skills", "skills IA", "planifier une activation", "créer des triggers", "créer des formulaires", "modèles d'e-mails IA", "modèles WhatsApp IA", "plugin HireData", "MCP"]
+description: "Aperçu des six skills HireData qui guident ChatGPT, Codex et Claude pour planifier des activations, créer des workflows et rédiger des rapports d'incident exploitables."
+keywords: ["HireData skills", "skills IA", "planifier une activation", "créer des triggers", "créer des formulaires", "modèles d'e-mails IA", "modèles WhatsApp IA", "rapports d'incident IA", "plugin HireData", "MCP"]
 related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
 La [connexion MCP HireData](/apps/mcp/connect-hiredata-to-your-ai-assistant) donne à votre assistant IA les outils de HireData. Les skills lui donnent la méthode de travail qui va avec : la façon dont un consultant HireData expérimenté aborderait la tâche, ce qu'il faut d'abord vérifier dans votre workspace, et quand s'arrêter pour vous montrer un aperçu plutôt que de créer quelque chose que vous n'avez pas demandé.
 
-HireData publie actuellement cinq skills. Chacune suit le même contrat : l'assistant recueille le contexte, inspecte votre workspace via la connexion MCP, vous montre un aperçu complet, et ne crée ou ne modifie quelque chose qu'après votre approbation de cet aperçu précis. Les nouveaux triggers restent inactifs, les formulaires restent non publiés lorsque les brouillons sont pris en charge, et rien n'est envoyé ni activé comme effet de bord.
+HireData publie actuellement six skills. Chacune recueille le contexte disponible, vous montre un brouillon ou un aperçu complet, et ne crée ou ne modifie quelque chose qu'après votre approbation de cette action précise. Les nouveaux triggers restent inactifs, les formulaires restent non publiés lorsque les brouillons sont pris en charge, et rien n'est envoyé ni activé comme effet de bord.
 
 | Skill | À utiliser quand vous souhaitez |
 | --- | --- |
@@ -17,10 +17,11 @@ HireData publie actuellement cinq skills. Chacune suit le même contrat : l'assi
 | [Create forms](#create-forms) | Capturer une décision ou un signal avec le formulaire le plus court possible |
 | [Create email templates](#create-email-templates) | Rédiger des e-mails avec des variables sûres, des modificateurs et des variables IA bornées |
 | [Create WhatsApp templates](#create-whatsapp-templates) | Concevoir des messages WhatsApp concis qui passent la revue de modèles de Meta |
+| [Write issue reports](#write-issue-reports) | Transformer des preuves et des demandes en rapports clairs et exploitables pour HireData |
 
 ## Plan an activation
 
-Transforme un problème de recrutement ou de staffing en un petit plan d'activation priorisé. La skill établit votre contexte opérationnel (ATS, modèle de staffing, audiences, canaux, utilisation actuelle de HireData), exprime chaque problème sous forme de user story, note les opportunités selon la portée, la fréquence, la valeur, la disponibilité des données, l'effort et le risque, et recommande la plus petite première release cohérente — normalement trois à cinq workflows, chacun avec un moment déclencheur, un canal, un responsable, une mesure de succès et un premier test sûr.
+Transforme un problème de recrutement ou de staffing en un petit plan d'activation priorisé. La skill établit votre contexte opérationnel (ATS, modèle de staffing, audiences, canaux, utilisation actuelle de HireData) et exprime chaque problème sous forme de user story. Elle note les opportunités selon la portée, la fréquence, la valeur, la disponibilité des données, l'effort et le risque. Elle recommande ensuite la plus petite première release cohérente, normalement trois à cinq workflows. Chaque workflow inclut un moment déclencheur, un canal, un responsable, une mesure de succès et un premier test sûr.
 
 Essayez :
 
@@ -41,7 +42,7 @@ Essayez :
 
 ## Create forms
 
-Crée le formulaire le plus court qui capture la décision ou le signal dont votre workflow a besoin — pré-qualification, disponibilité, feedback d'entretien, intake, consentement ou NPS. La skill ne demandera pas aux candidats des données que HireData connaît déjà via le trigger, la personne, la candidature ou le poste, garde le nombre de champs obligatoires au minimum, vérifie que chaque branche aboutit à une fin appropriée, et présente en aperçu les champs, la validation, le branchement et le résultat de la soumission avant la création.
+Crée le formulaire le plus court qui capture la décision ou le signal dont votre workflow a besoin — pré-qualification, disponibilité, feedback d'entretien, intake, consentement ou NPS. La skill ne demandera pas aux candidats des données que HireData connaît déjà via le trigger, la personne, la candidature ou le poste. Elle garde le nombre de champs obligatoires au minimum et vérifie que chaque branche aboutit à une fin appropriée. Elle présente en aperçu les champs, la validation, le branchement et le résultat de la soumission avant la création.
 
 Essayez :
 
@@ -50,7 +51,7 @@ Essayez :
 
 ## Create email templates
 
-Conçoit des e-mails autour du contexte du destinataire et de l'action utile suivante. La skill sélectionne des variables déterministes pour les faits, utilise des modificateurs pour la mise en forme et les valeurs de repli, et n'applique les variables IA que pour une génération bornée avec une source, un ton, une longueur et un repli explicites — une variable IA n'est jamais autorisée à inventer des dates, des salaires, des statuts juridiques ou des engagements. Vous voyez le texte complet, l'objet, les variables et les destinations des CTA avant qu'aucun élément ne soit enregistré, et les e-mails de test ne partent qu'à une adresse que vous approuvez.
+Conçoit des e-mails autour du contexte du destinataire et de l'action utile suivante. La skill sélectionne des variables déterministes pour les faits et utilise des modificateurs pour la mise en forme et les valeurs de repli. Elle n'applique les variables IA que pour une génération bornée avec une source, un ton, une longueur et un repli explicites. Une variable IA n'est jamais autorisée à inventer des dates, des salaires, des statuts juridiques ou des engagements. Vous voyez le texte complet, l'objet, les variables et les destinations des CTA avant qu'aucun élément ne soit enregistré. Les e-mails de test ne partent qu'à une adresse que vous approuvez.
 
 Essayez :
 
@@ -66,6 +67,17 @@ Essayez :
 - « Crée un modèle WhatsApp rappelant aux candidats leur entretien de demain, avec un bouton de confirmation et un parcours de report. »
 - « Examine notre modèle d'offre de shift : la catégorie est-elle correcte, et que changerais-tu avant de le resoumettre à Meta ? »
 
+## Write issue reports
+
+Transforme un bug, une demande client, un prototype, un enregistrement, une note de réunion ou un prompt technique en un rapport d'incident HireData structuré. La skill préserve les preuves, sépare les faits des hypothèses, choisit la plus petite structure d'issue utile et rend visibles les décisions produit ou techniques manquantes. Les clients et partenaires obtiennent un rapport qu'ils peuvent envoyer à HireData sans avoir besoin d'un accès interne à Linear. Les utilisateurs HireData autorisés peuvent également affiner ou mettre à jour des issues en direct lorsqu'ils le demandent explicitement.
+
+Essayez :
+
+- « Transforme ces étapes de reproduction, cette capture d'écran et cette URL d'automatisation en un rapport de bug compatible HireData. Uniquement un brouillon. »
+- « Affine ce prototype en une spécification produit, mais traite la maquette comme une preuve plutôt que comme le contrat produit final. »
+
+[Découvrez comment rédiger de meilleurs rapports d'incident HireData avec l'IA](/apps/mcp/write-better-hiredata-issue-reports-with-ai).
+
 ## Obtenir les skills
 
 Les skills sont fournies avec la connexion MCP HireData dans le plugin HireData — une seule installation couvre les deux. [Installez le plugin HireData](/apps/mcp/install-hiredata-plugin) dans ChatGPT, Codex ou Claude. Pas de prise en charge du plugin sur votre formule ou votre assistant ? Le même guide explique comment [installer les skills avec un prompt](/apps/mcp/install-hiredata-plugin#install-the-skills-with-a-prompt).
@@ -74,7 +86,7 @@ Les skills sont publiques et ouvertes à consultation sur [github.com/HireData/s
 
 <CardGroup cols={2}>
   <Card title="Installer le plugin" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
-    Obtenez les cinq skills et la connexion MCP dans ChatGPT, Codex ou Claude.
+    Obtenez les six skills et la connexion MCP dans ChatGPT, Codex ou Claude.
   </Card>
 
   <Card title="Se connecter via MCP uniquement" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
