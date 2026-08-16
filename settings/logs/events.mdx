@@ -1,13 +1,14 @@
 ---
 title: "Events"
 description: "Learn how events work in HireData: how connected apps send them, where to find the event log, and how to inspect payloads to debug your automations."
+keywords: ["request body", "raw request body", "webhook payload", "inspect payload", "see what the app sent", "event data", "replay event", "webhook inspection", "verzoeklichaam", "ruwe request body", "payload bekijken", "event opnieuw afspelen", "webhook inspecteren"]
 ---
 
 When you connect your ATS (such as Carerix, Salesforce, or OTYS) to HireData, it starts sending events. Events are notifications that something has happened in your system. They trigger your automations, making them crucial to how HireData works in the background. This article explains how events work, where to find them, and how to analyse them when something doesn't go as expected.
 
 ## What is an event
 
-An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. These events are used to trigger the automations you've set up in HireData, and every event includes **Event Data**, **External Records **and** Processes.**
+An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. These events are used to trigger the automations you've set up in HireData, and every event includes **Event Data**, **External Records and Processes.**
 
 _Event example:_
 
@@ -23,7 +24,7 @@ _Use the filters for a more organised view, for example, if you want to see the 
 
 ![Setting up filters](/images/intercom/48024595-Screenshot-2025-05-05-at-10_49_56.png)
 
-To explore an individual event, click the [Details] button next to the event for a short overview or open the dropdown menu and click [View].
+To explore an individual event, click the \[Details\] button next to the event for a short overview or open the dropdown menu and click \[View\].
 
 ![Event drop-down menu](/images/intercom/48023846-Screenshot-2025-05-05-at-10_50_57.png)
 
@@ -32,6 +33,8 @@ This will open the event detail view, which includes:
 - **Event Data** – a summarised view of the data received from your app.
 
 ![Event Data tab](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
+
+To inspect the raw request body, open the event data and use the available code or JSON view. This helps you confirm exact field names and values received from the source app.
 
 - **External Records** – additional fields from the source app, even if they aren't used in the automation.
 
@@ -111,8 +114,9 @@ If an automation didn't run as expected, or you're seeing unexpected data:
 - Go to the **Processes** tab of the event and check if any runs were created.
 - Click into the run to view logs and see if a step failed or was skipped.
 - Compare the **Event Data** with the conditions in your automation to ensure it matches.
+- Use the code or JSON data view to check for missing fields, different field names, or unexpected value formats.
 
-If no process was triggered, the event likely didn't meet the criteria of any active automations.
+If no process was triggered, the event may not have met the criteria of an active automation. See [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run) for a complete checklist.
 
 ### Still need help?
 
@@ -121,4 +125,3 @@ If you're unsure why an event didn't trigger your automation or want help interp
 - A link or the ID of the event;
 - A link or the name of the automation you expected to be triggered;
 - Any relevant steps or context that might help us investigate throughout.
-

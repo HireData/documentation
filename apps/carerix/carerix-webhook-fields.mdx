@@ -1,0 +1,98 @@
+---
+sidebarTitle: "Webhook Fields"
+description: "Learn which Carerix fields and keys are available in HireData, where to inspect a connection or event payload, and how to troubleshoot missing data."
+keywords: ["Carerix webhook fields", "Carerix payload", "candidate fields", "Carerix field keys", "event data"]
+title: "Carerix Webhook Fields"
+---
+
+_When Carerix sends an event to HireData, the event contains the fields enabled for the relevant object in your Carerix connection. This guide explains which candidate fields are commonly available, where to find their keys, and how to confirm exactly what HireData received for a specific record._
+
+## How Carerix fields reach HireData
+
+Each Carerix connection has its own enabled field set. This means the fields available in one HireData account can differ from those in another account, even when both use the same Carerix object.
+
+The connection's **Object Definition** determines which fields are available to new events and automations. A real event's **Data** tab then shows the values HireData received for one specific record.
+
+<Note>
+  Use the field table below as a guide to common Candidate fields. Your connection settings and the event's **Data** tab are the source of truth for the fields available in your account.
+</Note>
+
+## Candidate fields at a glance
+
+The standard Candidate object commonly includes the following fields:
+
+| Field | Key | Typical use |
+| --- | --- | --- |
+| Id | `{{_id}}` | Identify the Carerix record |
+| First Name | `{{firstName}}` | Personalise messages and updates |
+| Last Name | `{{lastName}}` | Personalise messages and updates |
+| Email Address | `{{emailAddress}}` | Use the main email field |
+| Business Email Address | `{{businessEmailAddress}}` | Use the business email field |
+| Private Email Address | `{{privateEmailAddress}}` | Use the private email field |
+| Primary Email Address | `{{primaryEmailAddress}}` | Use Carerix's primary email field |
+| Any Email Address | `{{anyEmailAddress}}` | Select an email using HireData's fallback order |
+
+When an automation only needs a usable email address, **Any Email Address** can be more reliable than selecting one specific email field. See [Combined Fields Explained](/apps/carerix/combined-fields-explained) for the complete fallback order.
+
+## Confirm the fields in your connection
+
+Check the Carerix connection when you need to know whether a field is enabled or which key HireData uses for it.
+
+1. Go to **Settings** \> **Apps**.
+2. Open **Carerix**.
+3. Open the three-dot menu for the relevant connection and select **Edit**.
+4. Select an object, such as **Candidate**, **Contact**, **Meeting**, or **User**.
+5. Review the **Object Definition** table.
+
+The table shows each field's **Label**, **Type**, and **Key**. Only enabled fields are available to new events for that object.
+
+If the field you need is disabled, see [Enable Carerix Fields and Relationships](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) before changing the connection.
+
+## Inspect the exact event payload
+
+Use a real event when you need to confirm which fields and values HireData received for an individual record.
+
+1. Select **Events** in the main navigation.
+2. Find and open the relevant Carerix event.
+3. Select the **Data** tab.
+4. Use the available table or tree view to explore the fields.
+5. Select the code view (`</>`) when you need to inspect the raw JSON or confirm an exact key and value.
+
+The event's **Runs** tab shows which automations processed it. This is useful when the payload contains the expected field but an automation did not behave as intended.
+
+For a fuller explanation of the event detail view, see [Events](/settings/logs/events).
+
+## Choose the appropriate Carerix trigger
+
+When you configure a Carerix **Start** block, the trigger picker can include:
+
+- **Created**
+- **Created or Updated**
+- **Updated**
+- **Schedule**
+- **Manual**
+
+Choose the trigger that matches when the automation should start. For example, use **Created or Updated** when the same automation should handle both new records and later changes.
+
+**Deleted** is not currently offered in the trigger picker.
+
+## Troubleshoot a missing field
+
+If a field exists in Carerix but does not appear in HireData:
+
+1. Confirm that you are checking the correct Carerix object.
+2. Open the connection's **Object Definition** and confirm that the field is enabled.
+3. If the field was recently created or changed in Carerix, run a [manual sync](/apps/carerix/manually-sync-carerix-with-hiredata).
+4. Create or update a test record to generate a new event.
+5. Inspect the new event's **Data** tab and code view.
+
+Enabling a field does not add it to events that HireData received earlier. Use a newly generated event when testing a connection change.
+
+## Need more help?
+
+If the field is enabled but still missing from new events, contact [support@hiredata.com](mailto:support@hiredata.com). Include:
+
+- The Carerix connection and object name
+- The field label and key
+- A link or the ID of a recent event
+- The result you expected
