@@ -10,13 +10,13 @@ With variables you can drop live data, like a candidate's name, a job title, or 
 
 A variable is a field key wrapped in double curly braces:
 
-```
+```text
 Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
 ```
 
 When this is sent to a candidate named Sofia applying for a Backend Engineer role, it becomes:
 
-```
+```text
 Hi Sofia, thanks for applying to Backend Engineer!
 ```
 
@@ -37,7 +37,7 @@ You can use variables anywhere you write content that gets sent or stored:
 
 If a field is empty for a particular record, the variable is replaced with nothing. To show a default instead, use the [`default`](/variables/modifiers#fallback) modifier:
 
-```
+```text
 Hi {{ candidate.first_name | default: "there" }}!
 ```
 
@@ -47,7 +47,7 @@ If the candidate has no first name, this sends "Hi there!".
 
 Variables can do more than insert raw data. A **modifier** changes how the value appears. It can uppercase text, format a date, round a number, and much more. You add a modifier with a pipe (`|`):
 
-```
+```text
 {{ candidate.first_name | uppercase }}        → SOFIA
 {{ job.salary | format_currency: "EUR" }}      → €65,000.00
 {{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
@@ -55,8 +55,14 @@ Variables can do more than insert raw data. A **modifier** changes how the value
 
 You can chain several modifiers, and each one acts on the result of the previous:
 
-```
+```text
 {{ candidate.last_name | lowercase | capitalise }}
 ```
 
 See the full list on the [Modifiers](/variables/modifiers) page.
+
+## Generating a value instead of looking one up
+
+Every variable above **reads** a value that already exists. When the value has to be worked out fresh for each recipient — a personal opener, a non-generic birthday line — use an [AI variable](/variables/ai-variables) instead.
+
+Never let one invent a fact. Dates, salaries, and contract terms belong in a normal variable.
