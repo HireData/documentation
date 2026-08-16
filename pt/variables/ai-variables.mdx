@@ -1,0 +1,194 @@
+---
+title: "Variáveis de AI"
+sidebarTitle: "Variáveis de AI"
+description: "Utilize variáveis de AI para gerar um valor por destinatário em emails, formulários e automações da HireData, e saiba quando uma variável normal ou um modificador é a melhor escolha."
+keywords: ["variáveis de AI", "variável de AI", "personalização", "texto gerado", "variável personalizada", "email com AI", "AI-variabelen"]
+related: ["/variables/introduction", "/variables/modifiers"]
+---
+
+Uma variável normal **procura** um valor. Uma variável de AI **calcula-o**.
+
+Enquanto `{{ candidate.first_name }}` lê um campo e insere-o, uma variável de AI executa uma instrução curta sobre o registo e insere o que produz. É a ferramenta para aquela linha que tem de ser diferente de cada vez — uma abertura que liga o percurso de alguém a uma vaga, ou um voto de aniversário que não parece um envio em massa.
+
+Utiliza-se exatamente como qualquer outra variável:
+
+```text
+{{ celebration }}
+
+We hope you take some time today to celebrate.
+```
+
+No editor aparece como uma etiqueta, marcada com a estrela da AI para que a possa distinguir de uma variável normal com um olhar:
+
+![Etiqueta de variável de AI no conteúdo](/images/ai-variable-chip-in-content.png "Etiqueta de variável de AI no conteúdo")
+
+## Onde pode adicionar uma
+
+Pode criar variáveis de AI em **templates de email**, **formulários** e **automações**. O construtor de automações também oferece predefinições, para que uma variável que utilize frequentemente não tenha de ser reconstruída à mão.
+
+Os templates de mensagens de WhatsApp podem _referenciar_ variáveis, mas a lista de variáveis aí é apenas de leitura — não pode criar uma variável de AI a partir do construtor de mensagens. Defina-a antes na automação que envia a mensagem.
+
+## Quando utilizar uma
+
+Recorra a uma variável de AI quando as três condições forem verdadeiras:
+
+- o resultado tem de ser **derivado**, e não procurado;
+- uma linha fixa com um valor por defeito soaria mal, porque o valor tem genuinamente de mudar por pessoa;
+- ficar ligeiramente ao lado não é catastrófico — ninguém toma uma decisão com base nisso.
+
+Bons candidatos: uma abertura personalizada, um gancho de reengajamento para um candidato inativo, uma linha de aniversário que não pareça genérica, ou uma reescrita de tom de um parágrafo fixo.
+
+## Quando utilizar outra coisa
+
+A maior parte da personalização não é um problema de AI. Antes de adicionar uma variável de AI, verifique se uma variável simples ou um [modificador](/variables/modifiers) já faz o trabalho — são mais rápidos, mais baratos e não podem estar errados.
+
+| Quer                                                             | Utilize antes                                     |
+| ---------------------------------------------------------------- | ------------------------------------------------- |
+| Um nome, título, data, salário ou qualquer valor armazenado      | Uma variável normal                               |
+| Uma data formatada para a região do destinatário                 | `format_date`                                     |
+| Um valor por defeito quando um campo está vazio                  | O modificador [`default`](/variables/modifiers#fallback) |
+| Maiúsculas/minúsculas ou moeda consistentes                      | `uppercase`, `format_currency`                    |
+
+<Warning>
+  Nunca deixe uma variável de AI inventar um facto. Datas, valores, salários, termos contratuais, datas de início, estatuto legal ou de RGPD, e qualquer coisa que seja lida como um compromisso, têm de vir de um campo. Se o campo está vazio, a resposta honesta é omitir ou usar um valor por defeito — não deixar um modelo preencher o vazio. Uma frase gerada que inventa uma data de início é uma declaração falsa enviada a um candidato em seu nome.
+</Warning>
+
+## Como configurar uma
+
+Abra o painel de variáveis com o controlo `{}` na barra de ferramentas do construtor. As variáveis existentes são listadas com a sua chave e tipo, pelo que é fácil identificar uma de AI:
+
+![Painel de variáveis com variável de AI](/images/ai-variable-variables-panel.png "Painel de variáveis com variável de AI")
+
+Escolha **Add** e depois selecione **AI variable** no grupo **Intelligent**:
+
+![Seletor de tipo de variável de AI](/images/ai-variable-type-picker.png "Seletor de tipo de variável de AI")
+
+### Escolher o que a AI deve fazer
+
+Antes de mais, o editor pergunta que tipo de trabalho esta variável está a fazer. Existem sete modos, cada um apresentado como um mosaico com uma descrição de uma linha:
+
+![Seletor de modo da variável de AI](/images/ai-variable-mode-picker.png "Seletor de modo da variável de AI")
+
+| Modo        | Para que serve                                                    |
+| ----------- | ----------------------------------------------------------------- |
+| `Custom`    | Escreva o seu próprio prompt de raiz                              |
+| `Extract`   | Retira dados estruturados de texto ou documentos                  |
+| `Summarize` | Condensa conteúdo extenso em pontos-chave                         |
+| `Classify`  | Categoriza conteúdo em grupos predefinidos                        |
+| `Write`     | Gera ou reescreve conteúdo num tom escolhido                      |
+| `Translate` | Converte texto de um idioma para outro                            |
+| `Analyze`   | Analisa conteúdo em busca de insights, sentimento ou padrões      |
+
+<Note>
+  O modo não fica fixo. Depois de escolher um, os mosaicos recolhem-se num menu pendente compacto, e pode mudá-lo sempre que quiser — reabra a variável e escolha um modo diferente em **What should the AI do?**. O restante do formulário adapta-se em conformidade.
+</Note>
+
+### O resto do editor
+
+![Editor de variável de AI](/images/ai-variable-editor.png "Editor de variável de AI")
+
+| Campo                                    | O que faz                                                                                                                                                                                                                                        |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Name**                                 | A etiqueta legível, mostrada na etiqueta da variável no seu conteúdo.                                                                                                                                                                            |
+| **What should the AI do?**               | O modo que escolheu, agora como um menu pendente. Altere-o aqui a qualquer momento.                                                                                                                                                              |
+| **What will you provide to the AI?**     | Dois separadores. **Input** é um prompt de texto livre. **Variables** anexa campos específicos com **Add Field**. Consulte [Dar-lhe algo com que trabalhar](#dar-lhe-algo-com-que-trabalhar).                                                     |
+| **Hints for the AI** (opcional)          | Contexto, tom ou restrições adicionais, mantidos separados da instrução principal.                                                                                                                                                               |
+| **What should the AI return?**           | O tipo de resultado — `Text`, `Rich text`, `Number`, `Yes / No`, `List`, `Date` e os restantes tipos de campo padrão.                                                                                                                            |
+| **Language**                             | O idioma do resultado. A predefinição, `None — match the input language`, segue os dados que lhe são fornecidos.                                                                                                                                 |
+| **More options**                         | **Reference as** é a chave que escreve no conteúdo — `celebration` torna-se `{{celebration}}`. **What is it for?** é uma descrição opcional.                                                                                                     |
+
+<Note>
+  Uma variável de AI não tem de produzir prosa. Como escolhe o tipo de resultado, pode igualmente resolver-se para um `Yes / No`, um `Number` ou um valor de uma `List` — que é para o que servem os modos `Classify` e `Extract`. O [aviso acima](#quando-utilizar-outra-coisa) mantém-se: derivar um valor a partir de dados no registo está bem, inventá-lo não.
+</Note>
+
+## Dar-lhe algo com que trabalhar
+
+A instrução por si só raramente é suficiente — o modelo precisa do registo. Existem duas formas de o entregar, e podem ser combinadas.
+
+### Em linha, no prompt
+
+Escreva `{{` em qualquer ponto da caixa **Input** e aparece um seletor, listando todas as variáveis disponíveis para este template com a sua chave e o seu tipo. Continue a escrever para filtrar, e escolha uma para a inserir:
+
+<Frame>
+  ![Seletor de variáveis no prompt da variável de AI 1](/images/ai-variable-prompt-variable-picker-1.png "Seletor de variáveis no prompt da variável de AI 1")
+</Frame>
+
+Assim, um voto de aniversário que cumprimenta o destinatário pelo nome fica:
+
+```text wrap
+Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
+```
+
+Cada token é substituído pelo valor desse destinatário antes de a instrução chegar ao modelo, pelo que, para a Sofia, é pedido ao modelo um voto _para a Sofia_ em vez de para `{{recipient.first_name}}`.
+
+### O separador Variables
+
+Mude para o separador **Variables** e escolha **Add Field** para anexar campos em vez de os nomear no prompt. Cada linha é um seletor pesquisável sobre a mesma lista de variáveis, e o botão `−` remove uma.
+
+<Frame>
+  ![Seletor de variável de AI](/images/ai-variable-picker.png "Seletor de variável de AI")
+</Frame>
+
+Anexar um campo entrega o seu valor ao modelo sem ter de o mencionar na instrução. Também torna as entradas da variável óbvias para quem a abrir a seguir, o que compensa fazer assim que o prompt cresce.
+
+### Porque é que as entradas são importantes
+
+Os campos que referencia, por qualquer um dos métodos, são as **entradas** da variável — e são as entradas que decidem quando é calculada novamente. Dê-lhe os campos de que genuinamente depende, em vez de os descrever em prosa. Consulte [Limitações](#limitacoes).
+
+## Escrever a instrução
+
+Uma instrução utilizável nomeia a sua forma e os seus limites. Deixe os controlos dedicados fazer o trabalho para que existem — defina o idioma de saída no controlo **Language** em vez de o descrever no prompt, e defina o tipo de resultado em vez de o pedir:
+
+> Write a friendly, single-sentence birthday wish, maximum 20 words. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the recipient's name is missing, write a general wish with no name.
+
+Essa última frase é a mais importante. Diga o que fazer quando faltarem dados, ou o modelo vai inventar algo para preencher o espaço.
+
+**Instruções mais longas não são instruções melhores.** As restrições fazem mais trabalho do que a descrição. Indique o comprimento máximo, o tom, o que não pode fazer, e o que produzir quando os dados de origem forem escassos.
+
+## Limitações
+
+**Resolve-se uma vez por envio, depois repete-se.** O valor é gerado na primeira vez que a variável é referenciada e reutilizado em todas as outras menções na mesma mensagem — por isso `{{ celebration }}` duas vezes num email dá-lhe a mesma frase duas vezes, e não duas tentativas. É calculado novamente quando as suas entradas mudam, e é isso que a torna por destinatário. Uma variável sem entradas anexadas não tem sobre o quê variar.
+
+**Um valor por defeito guardado não é uma rede de segurança.** Para uma variável de AI, o valor por defeito é o espaço onde o valor gerado é escrito, não um valor de recurso que possa definir. Se o modelo não devolver nada, a variável resolve-se para nada. Para garantir que algo chega à página, utilize o modificador [`default`](/variables/modifiers#fallback) onde a referencia:
+
+```text
+{{ celebration | default: "We hope you have a lovely day." }}
+```
+
+**Um template válido pode continuar a ser enviado com um buraco.** A validação verifica se um marcador de posição é _conhecido_, não se terá um valor quando a mensagem for enviada. Assim, este template:
+
+```text
+{{ celebration }}
+
+We hope you take some time today to celebrate.
+```
+
+pode ser validado sem problemas e chegar na mesma como um email que abre com uma linha em branco, seguido de "We hope you take some time today to celebrate." O template não está avariado. A variável não produziu nada.
+
+**Os envios de teste comportam-se de forma diferente dos envios reais.** Num envio de teste, todas as variáveis personalizadas referenciadas no corpo precisam de um valor explícito e não vazio que forneça — os valores armazenados deliberadamente não são substituídos. Um teste bem-sucedido prova, portanto, que o texto funciona; não prova que a variável se irá resolver em produção.
+
+Se um destinatário relatar uma mensagem com uma frase em falta, uma saudação vazia ou um fragmento perdido, verifique quais das variáveis são variáveis de AI antes de assumir que o texto está errado.
+
+## Antes de enviar
+
+<Steps>
+  <Step title="Teste com dados completos">
+    Confirme que o valor se lê bem e se mantém dentro do seu limite de comprimento.
+  </Step>
+  <Step title="Teste com dados em falta e vazios">
+    É aqui que as variáveis de AI falham. Verifique que um registo escasso produz algo aceitável em vez de um detalhe inventado ou uma linha vazia.
+  </Step>
+  <Step title="Teste em cada idioma em que envia">
+    O tom e a formalidade não se transferem entre idiomas. Uma frase que soa calorosa em inglês pode soar demasiado familiar em holandês.
+  </Step>
+  <Step title="Leia como o destinatário">
+    Pergunte-se se um candidato ficaria envergonhado, confuso ou enganado por esta frase. Se a resposta for talvez, aperte as restrições ou utilize uma linha fixa.
+  </Step>
+</Steps>
+
+## Relacionado
+
+- [Variáveis](/variables/introduction) — o essencial e onde as variáveis funcionam
+- [Modificadores](/variables/modifiers) — formatação determinística, valores por defeito e capitalização
+- [Definir um idioma por defeito e tom de voz da AI](/settings/setting-a-default-language-and-ai-tone-of-voice)
+- [Porque é que a minha automação não foi executada?](/knowledge-base/why-didnt-my-automation-run)
