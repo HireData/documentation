@@ -2,6 +2,7 @@
 title: "Combined Fields uitgelegd: Hoe HireData een waarde kiest"
 sidebarTitle: "Combined Fields"
 description: "Leer hoe de combined fields van HireData automatisch de eerste ingevulde waarde uit Carerix kiezen, en in welke volgorde elk veld wordt gecontroleerd"
+keywords: ["which email address is used first", "any email address", "anyEmailAddress", "business or private email", "email precedence", "priority order", "which email does carerix pick", "welk e-mailadres wordt eerst gekozen", "zakelijk of prive e-mailadres", "volgorde", "prioriteit"]
 ---
 
 _Combined fields, zoals `anyEmailAddress` en `anyPhoneNumber`, zorgen ervoor dat je automatiseringen altijd de juiste informatie vinden, zelfs als sommige velden in Carerix leeg zijn. Lees verder om te zien hoe deze velden werken en in welke volgorde HireData een waarde kiest._
@@ -11,6 +12,8 @@ _Combined fields, zoals `anyEmailAddress` en `anyPhoneNumber`, zorgen ervoor dat
 `CarerixCandidate`, `CarerixUser` en `CarerixContact` records gebruiken allemaal exact dezelfde set combined fields. Of je nu werkt met het profiel van een kandidaat, gebruiker of contactpersoon, deze velden gedragen zich hetzelfde.
 
 ### anyEmailAddress
+
+Als je je afvraagt welk e-mailadres HireData kiest wanneer een record er meer dan één heeft — zakelijk of privé, primair of secundair — dan is dit het veld dat beslist, en de prioriteitsvolgorde staat hieronder.
 
 Gebruik `anyEmailAddress` wanneer je wilt dat HireData altijd een e-mailadres vindt, ongeacht welk specifiek veld is ingevuld in Carerix. Als er meerdere e-mailvelden een waarde hebben, controleert HireData ze in deze volgorde en gebruikt de eerste die wordt gevonden:
 

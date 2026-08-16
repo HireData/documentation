@@ -2,6 +2,7 @@
 title: "Champs combinés : comment HireData choisit une valeur"
 sidebarTitle: "Champs combinés"
 description: "Découvrez comment les champs combinés de HireData sélectionnent automatiquement la première valeur renseignée depuis Carerix et dans quel ordre."
+keywords: ["quelle adresse e-mail est utilisée en premier", "any email address", "anyEmailAddress", "e-mail professionnel ou privé", "précédence e-mail", "ordre de priorité", "quel e-mail Carerix choisit", "ordre", "priorité"]
 ---
 
 _Les champs combinés, comme `anyEmailAddress` et `anyPhoneNumber`, garantissent que vos automatisations trouvent toujours la bonne information, même si certains champs dans Carerix sont vides. Poursuivez votre lecture pour comprendre le fonctionnement de ces champs et l'ordre dans lequel HireData sélectionne une valeur._
@@ -11,6 +12,8 @@ _Les champs combinés, comme `anyEmailAddress` et `anyPhoneNumber`, garantissent
 Les enregistrements `CarerixCandidate`, `CarerixUser` et `CarerixContact` utilisent tous exactement le même ensemble de champs combinés. Que vous travailliez avec le profil d'un candidat, d'un utilisateur ou d'un contact, ces champs se comportent de la même manière.
 
 ### anyEmailAddress
+
+Si vous vous demandez quelle adresse e-mail HireData choisit lorsqu'un enregistrement en contient plusieurs — professionnelle ou privée, primaire ou secondaire —, c'est le champ qui décide, et l'ordre de priorité est indiqué ci-dessous.
 
 Utilisez `anyEmailAddress` lorsque vous souhaitez que HireData trouve toujours une adresse e-mail, quel que soit le champ spécifique renseigné dans Carerix. Si plusieurs champs e-mail contiennent une valeur, HireData les vérifie dans cet ordre et utilise la première trouvée :
 

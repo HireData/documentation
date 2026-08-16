@@ -1,6 +1,7 @@
 ---
 title: "Events"
 description: "Verstehen Sie, wie HireData-Events funktionieren, welche Trigger sie auslösen und wie Sie Ereignisdaten in Automatisierungen nutzen können."
+keywords: ["Request Body", "Roher Request Body", "Webhook-Payload", "Payload prüfen", "sehen, was die App gesendet hat", "Event-Daten", "Event erneut abspielen", "Webhook-Inspektion"]
 ---
 
 _Wenn Sie Ihr ATS, z. B. Carerix, Salesforce, OTYS usw., mit HireData verbinden, beginnt es, Events zu senden – Benachrichtigungen darüber, dass in Ihrem System etwas passiert ist. Events lösen Ihre Automatisierungen aus und sind damit entscheidend dafür, wie HireData im Hintergrund arbeitet. In diesem Artikel erklären wir, wie Events funktionieren, wo Sie sie finden und wie Sie sie analysieren, wenn etwas nicht wie erwartet läuft._
@@ -32,6 +33,8 @@ Dies öffnet die Detailansicht des Events, die Folgendes enthält:
 - **Event Data** – eine zusammengefasste Ansicht der von Ihrer App empfangenen Daten.
 
 ![Event Data tab](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
+
+Um den rohen Request Body zu prüfen, öffnen Sie die Event-Daten und nutzen Sie die verfügbare Code- oder JSON-Ansicht. So können Sie exakte Feldnamen und Werte bestätigen, die von der Quell-App empfangen wurden.
 
 - **External Records** – zusätzliche Felder aus der Quell-App, auch wenn sie nicht in der Automatisierung verwendet werden.
 
@@ -111,8 +114,9 @@ Wenn eine Automatisierung nicht wie erwartet lief oder Sie unerwartete Daten seh
 - Gehen Sie zum Tab **Processes** des Events und prüfen Sie, ob Runs erstellt wurden.
 - Klicken Sie in den Run, um Logs anzuzeigen und zu sehen, ob ein Schritt fehlgeschlagen oder übersprungen wurde.
 - Vergleichen Sie die **Event Data** mit den Bedingungen in Ihrer Automatisierung, um sicherzustellen, dass sie übereinstimmen.
+- Nutzen Sie die Code- oder JSON-Datenansicht, um auf fehlende Felder, abweichende Feldnamen oder unerwartete Wertformate zu prüfen.
 
-Wenn kein Prozess ausgelöst wurde, hat das Event wahrscheinlich die Kriterien keiner aktiven Automatisierung erfüllt.
+Wenn kein Prozess ausgelöst wurde, hat das Event möglicherweise die Kriterien keiner aktiven Automatisierung erfüllt. Eine vollständige Checkliste finden Sie unter [Warum ist meine Automatisierung nicht gelaufen?](/knowledge-base/why-didnt-my-automation-run).
 
 ### Brauchen Sie noch Hilfe?
 

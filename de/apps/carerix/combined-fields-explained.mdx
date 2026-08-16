@@ -2,6 +2,7 @@
 title: "Kombinierte Felder erklärt: So wählt HireData einen Wert"
 sidebarTitle: "Kombinierte Felder"
 description: "Erfahren Sie, wie kombinierte Felder in HireData automatisch den ersten ausgefüllten Wert aus Carerix wählen und in welcher Reihenfolge geprüft wird."
+keywords: ["welche E-Mail-Adresse wird zuerst gewählt", "any email address", "anyEmailAddress", "geschäftliche oder private E-Mail", "E-Mail-Reihenfolge", "Prioritätsreihenfolge", "welche E-Mail wählt Carerix", "Reihenfolge", "Priorität"]
 ---
 
 _Kombinierte Felder wie `anyEmailAddress` und `anyPhoneNumber` stellen sicher, dass Ihre Automatisierungen immer die richtigen Informationen finden, selbst wenn einige Felder in Carerix leer sind. Lesen Sie weiter, um zu erfahren, wie diese Felder funktionieren und in welcher Reihenfolge HireData einen Wert auswählt._
@@ -11,6 +12,8 @@ _Kombinierte Felder wie `anyEmailAddress` und `anyPhoneNumber` stellen sicher, d
 `CarerixCandidate`-, `CarerixUser`- und `CarerixContact`-Datensätze verwenden alle exakt denselben Satz kombinierter Felder. Egal, ob Sie mit dem Profil eines Kandidaten, eines Benutzers oder eines Kontakts arbeiten – diese Felder verhalten sich gleich.
 
 ### anyEmailAddress
+
+Wenn Sie sich fragen, welche E-Mail-Adresse HireData wählt, wenn ein Datensatz mehr als eine hat – geschäftlich oder privat, primär oder sekundär –, dann entscheidet dieses Feld darüber, und die Prioritätsreihenfolge steht unten.
 
 Verwenden Sie `anyEmailAddress`, wenn HireData immer eine E-Mail-Adresse finden soll, egal welches konkrete Feld in Carerix ausgefüllt ist. Sind mehrere E-Mail-Felder befüllt, prüft HireData sie in dieser Reihenfolge und verwendet die erste gefundene:
 

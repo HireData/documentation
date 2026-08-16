@@ -1,6 +1,7 @@
 ---
 title: "Runs"
 description: "Perceba como funcionam os runs na HireData, onde encontrá-los nos logs e como utilizá-los para fazer troubleshooting das suas automações passo a passo."
+keywords: ["runs", "histórico de automação", "run cancelado", "Invalid sender email", "passo cancelado", "troubleshooting de run"]
 ---
 
 _Quando uma automação é acionada por um event da sua app ligada, por exemplo, Carerix, Salesforce, etc., é criado um Run. Este Run representa todo o processo que se segue desde o trigger inicial até cada passo da sua automação. Neste artigo, vamos percorrer o que são runs, como encontrá-los e lê-los, e como eles podem ajudá-lo a fazer troubleshooting das suas automações._
@@ -53,12 +54,16 @@ Isto irá abrir a vista de detalhe do run, que inclui:
 
 Esta vista detalhada também lhe permite ver exatamente como a sua automação decorreu e se cada passo foi bem-sucedido.
 
+Para um passo **Send Email** cancelado, abra o passo e leia a mensagem exata apresentada em **Overview**. Por exemplo, a mensagem pode ser `Invalid sender email.` Consulte [Motivos de cancelamento de runs](/knowledge-base/run-cancellation-reasons) para mensagens de cancelamento comuns e as respetivas resoluções.
+
 ## Troubleshooting de runs
 
 Se algo não aconteceu como esperado:
 
 - Abra a vista detalhada do run para ver logs e verificar se algum passo falhou ou foi saltado.
 - Abra o separador **Fields** para confirmar se os dados usados no run cumpriram as suas condições. Também pode comparar o run com o event original (encontrado via o separador **Related**) para perceber o que o acionou e confirmar se utilizou os dados corretos.
+
+Para uma checklist de diagnóstico mais alargada, consulte [Porque é que a minha automação não correu?](/knowledge-base/why-didnt-my-automation-run).
 
 ## Ainda precisa de ajuda?
 

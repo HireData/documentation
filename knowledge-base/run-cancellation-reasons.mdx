@@ -1,0 +1,99 @@
+---
+title: "Run Cancellation Reasons"
+sidebarTitle: "Run Cancellations"
+description: "Learn why HireData cancels automation runs, where to find the cancellation message, and how to resolve Invalid Sender Email and send-limit errors."
+keywords: ["run cancelled", "run canceled", "cancellation reason", "Send Limits Exceeded", "Send Limits Per Automation Exceeded", "Invalid Sender Email", "Invalid sender email", "DNS Verification Failed", "Please add your DNS records to your domain", "Verify DNS", "run geannuleerd", "verzendlimiet overschreden", "ongeldig afzenderadres"]
+---
+
+_When HireData cancels a run, the cancelled step records a message explaining why it could not continue. This guide shows you where to find that message, what the most common cancellation reasons mean, and which settings to check before trying the automation again._
+
+## Find the cancellation message
+
+Open the affected run first so that you can work from the exact message rather than guessing what stopped the automation.
+
+1. Select **Runs** in the main navigation.
+2. Find the relevant run and select its row.
+3. Select the cancelled step in the timeline.
+4. Open the **Overview** tab and read the cancellation message.
+
+You can also use the **Fields** tab to review the values used by the step and **Related** to open the automation or original event.
+
+## Common cancellation reasons
+
+| Message | What it means | Where to check |
+| --- | --- | --- |
+| `Invalid sender email.` | The Send Email step could not use its configured sender address. | The sender address and its domain |
+| `Send Limits Exceeded` | The recipient reached an account-level email or conversation limit. | **Settings** \> **Safety Limits** |
+| `Send Limits Per Automation Exceeded` | The recipient reached a limit configured for this automation. | The automation's **Settings** |
+
+## Invalid sender email
+
+You may see `Invalid sender email.` when a Send Email step cannot use the configured sender address. One confirmed cause is sending from a domain that has not been verified in HireData.
+
+### How to resolve it
+
+1. Go to **Settings** \> **Domains**.
+2. Find and open the domain used by the sender address.
+3. If DNS records have not been generated, select **Generate DNS Records**.
+4. Add every generated record to the DNS settings at your domain provider. Copy the names and values exactly as HireData displays them.
+5. Return to the domain in HireData and select **Verify DNS**.
+6. Once the domain is verified, open the affected automation and select the **Send Email** step.
+7. Confirm that the sender field contains the intended email address and that its domain matches the verified domain.
+8. Save any correction, then test with a new event or carefully replay the original event.
+
+<Warning>
+  If HireData displays `DNS Verification Failed - Please add your DNS records to your domain.`, it cannot yet find all the required records. Confirm that every generated record was saved at your domain provider, check whether the provider expects only the subdomain in the **Host/Name** field, and allow time for DNS changes to propagate before selecting **Verify DNS** again.
+</Warning>
+
+For the complete DNS setup, including provider-specific formatting tips, see [How to Verify a Domain in HireData to Send Emails](/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+If **Verify DNS** returns a 404 error or no response instead, the Email app may not be installed. Follow [Why Can't I Verify My DNS Records?](/knowledge-base/why-cant-i-verify-my-dns-records).
+
+If the domain is verified and the sender address appears correct, record the run ID, automation name, and sender address before contacting HireData Support.
+
+## Send Limits Exceeded
+
+This cancellation means the recipient reached an account-level safety limit. HireData stops the step to prevent the same email address or phone number from receiving more messages than your account allows.
+
+### How to resolve it
+
+1. Go to **Settings** \> **Safety Limits**.
+2. Review the limits under **Prevent Message Overload**.
+3. Check whether the recipient reached the relevant email or conversation limit.
+4. Only adjust the limit if a higher frequency is appropriate for your outreach strategy.
+
+See [Automation Safety Limits](/settings/automation-safety-limits) for a complete explanation of the account-level controls.
+
+## Send Limits Per Automation Exceeded
+
+This cancellation means the recipient reached an email or conversation limit configured specifically for the automation. Other automations can have different limits.
+
+### How to resolve it
+
+1. Open the affected automation.
+2. Open the three-dot menu and select **Settings**.
+3. Review the email and conversation limits under **Message limits**.
+4. Confirm whether the recipient has already received the maximum allowed messages within the configured period.
+5. Adjust the limit only when the automation's intended messaging frequency requires it.
+
+<Warning>
+  The **Ignore all safety limits** option removes both automation-specific and account-level protections for this automation. Use it only after reviewing the risk of duplicate or excessive messages.
+</Warning>
+
+## Test after making a correction
+
+After correcting the sender or limit configuration, use a new test event where possible. You can also replay the original event, but first inspect its earlier run to see which steps already completed.
+
+<Warning>
+  Replaying an event can repeat emails, messages, record updates, tasks, and other actions from the earlier run.
+</Warning>
+
+## Need more help?
+
+If the cancellation message is not listed here, or the suggested checks do not resolve it, contact [support@hiredata.com](mailto:support@hiredata.com). Include:
+
+- A link or the ID of the run
+- The automation name
+- The cancelled step
+- The exact cancellation message
+- Any relevant sender or recipient details

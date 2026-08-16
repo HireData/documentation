@@ -1,0 +1,99 @@
+---
+title: "Motivos de cancelamento de runs"
+sidebarTitle: "Cancelamentos de runs"
+description: "Saiba porque é que a HireData cancela runs de automações, onde encontrar a mensagem de cancelamento e como resolver erros de Invalid Sender Email e de limites de envio."
+keywords: ["run cancelado", "run cancelled", "motivo de cancelamento", "Send Limits Exceeded", "Send Limits Per Automation Exceeded", "Invalid Sender Email", "Invalid sender email", "DNS Verification Failed", "Please add your DNS records to your domain", "Verify DNS", "limite de envio excedido", "endereço de remetente inválido"]
+---
+
+_Quando a HireData cancela um run, o passo cancelado regista uma mensagem que explica por que motivo não pôde continuar. Este guia mostra-lhe onde encontrar essa mensagem, o que significam os motivos de cancelamento mais comuns e que definições verificar antes de voltar a testar a automação._
+
+## Encontrar a mensagem de cancelamento
+
+Abra primeiro o run afetado para poder trabalhar a partir da mensagem exata em vez de adivinhar o que parou a automação.
+
+1. Selecione **Runs** na navegação principal.
+2. Encontre o run em causa e selecione a sua linha.
+3. Selecione o passo cancelado na timeline.
+4. Abra o separador **Overview** e leia a mensagem de cancelamento.
+
+Também pode utilizar o separador **Fields** para rever os valores utilizados pelo passo e **Related** para abrir a automação ou o event original.
+
+## Motivos de cancelamento comuns
+
+| Mensagem | O que significa | Onde verificar |
+| --- | --- | --- |
+| `Invalid sender email.` | O passo Send Email não conseguiu utilizar o endereço de remetente configurado. | O endereço de remetente e o respetivo domínio |
+| `Send Limits Exceeded` | O destinatário atingiu um limite de email ou de conversa ao nível da conta. | **Settings** \> **Safety Limits** |
+| `Send Limits Per Automation Exceeded` | O destinatário atingiu um limite configurado para esta automação. | As **Settings** da automação |
+
+## Invalid sender email
+
+Pode ver `Invalid sender email.` quando um passo Send Email não consegue utilizar o endereço de remetente configurado. Uma causa confirmada é enviar a partir de um domínio que não foi verificado na HireData.
+
+### Como resolver
+
+1. Vá a **Settings** \> **Domains**.
+2. Encontre e abra o domínio utilizado pelo endereço de remetente.
+3. Se os registos DNS não tiverem sido gerados, selecione **Generate DNS Records**.
+4. Adicione todos os registos gerados às definições de DNS junto do seu fornecedor de domínio. Copie os nomes e valores exatamente como a HireData os apresenta.
+5. Volte ao domínio na HireData e selecione **Verify DNS**.
+6. Assim que o domínio estiver verificado, abra a automação afetada e selecione o passo **Send Email**.
+7. Confirme que o campo de remetente contém o endereço de email pretendido e que o seu domínio corresponde ao domínio verificado.
+8. Guarde qualquer correção e depois teste com um novo event ou reproduza cuidadosamente o event original.
+
+<Warning>
+  Se a HireData apresentar `DNS Verification Failed - Please add your DNS records to your domain.`, ainda não consegue encontrar todos os registos necessários. Confirme que todos os registos gerados foram guardados junto do seu fornecedor de domínio, verifique se o fornecedor espera apenas o subdomínio no campo **Host/Name**, e dê tempo para a propagação das alterações de DNS antes de selecionar **Verify DNS** novamente.
+</Warning>
+
+Para a configuração completa de DNS, incluindo dicas de formatação específicas do fornecedor, consulte [Como verificar um domínio na HireData para enviar emails](/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+Se **Verify DNS** devolver um erro 404 ou nenhuma resposta, a app Email poderá não estar instalada. Siga [Porque é que não consigo verificar os meus registos DNS?](/knowledge-base/why-cant-i-verify-my-dns-records).
+
+Se o domínio estiver verificado e o endereço de remetente parecer correto, registe o ID do run, o nome da automação e o endereço de remetente antes de contactar o Suporte da HireData.
+
+## Send Limits Exceeded
+
+Este cancelamento significa que o destinatário atingiu um limite de segurança ao nível da conta. A HireData interrompe o passo para impedir que o mesmo endereço de email ou número de telefone receba mais mensagens do que a sua conta permite.
+
+### Como resolver
+
+1. Vá a **Settings** \> **Safety Limits**.
+2. Reveja os limites em **Prevent Message Overload**.
+3. Verifique se o destinatário atingiu o limite de email ou de conversa relevante.
+4. Ajuste o limite apenas se uma frequência mais elevada for adequada à sua estratégia de contacto.
+
+Consulte [Limites de segurança de automação](/settings/automation-safety-limits) para uma explicação completa dos controlos ao nível da conta.
+
+## Send Limits Per Automation Exceeded
+
+Este cancelamento significa que o destinatário atingiu um limite de email ou de conversa configurado especificamente para a automação. Outras automações podem ter limites diferentes.
+
+### Como resolver
+
+1. Abra a automação afetada.
+2. Abra o menu de três pontos e selecione **Settings**.
+3. Reveja os limites de email e de conversa em **Message limits**.
+4. Confirme se o destinatário já recebeu o número máximo de mensagens permitido dentro do período configurado.
+5. Ajuste o limite apenas quando a frequência de mensagens pretendida da automação assim o exigir.
+
+<Warning>
+  A opção **Ignore all safety limits** remove tanto as proteções específicas da automação como as proteções ao nível da conta para esta automação. Utilize-a apenas depois de rever o risco de mensagens duplicadas ou excessivas.
+</Warning>
+
+## Testar após uma correção
+
+Depois de corrigir a configuração do remetente ou do limite, utilize sempre que possível um novo event de teste. Também pode reproduzir o event original, mas inspecione primeiro o run anterior para ver que passos já foram concluídos.
+
+<Warning>
+  Reproduzir um event pode repetir emails, mensagens, atualizações de registos, tarefas e outras ações do run anterior.
+</Warning>
+
+## Precisa de mais ajuda?
+
+Se a mensagem de cancelamento não estiver listada aqui, ou se as verificações sugeridas não a resolverem, contacte [support@hiredata.com](mailto:support@hiredata.com). Inclua:
+
+- Um link ou o ID do run
+- O nome da automação
+- O passo cancelado
+- A mensagem de cancelamento exata
+- Quaisquer detalhes relevantes de remetente ou destinatário

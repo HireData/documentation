@@ -1,0 +1,98 @@
+---
+sidebarTitle: "Campos de webhook"
+description: "Saiba que campos e chaves do Carerix estão disponíveis na HireData, onde inspecionar o payload de uma ligação ou de um event e como resolver dados em falta."
+keywords: ["Campos webhook Carerix", "payload Carerix", "campos de candidato", "chaves de campos Carerix", "dados de event"]
+title: "Campos de webhook do Carerix"
+---
+
+_Quando o Carerix envia um event para a HireData, o event contém os campos ativados para o objeto correspondente na sua ligação do Carerix. Este guia explica quais os campos de candidato mais frequentemente disponíveis, onde encontrar as respetivas chaves e como confirmar exatamente o que a HireData recebeu para um registo específico._
+
+## Como os campos do Carerix chegam à HireData
+
+Cada ligação do Carerix tem o seu próprio conjunto de campos ativados. Isto significa que os campos disponíveis numa conta HireData podem diferir dos de outra conta, mesmo quando ambas utilizam o mesmo objeto do Carerix.
+
+O **Object Definition** da ligação determina quais os campos disponíveis para novos events e automações. O separador **Data** de um event real mostra depois os valores que a HireData recebeu para um registo específico.
+
+<Note>
+  Utilize a tabela de campos abaixo como guia para os campos de Candidato mais comuns. As definições da sua ligação e o separador **Data** do event são a fonte da verdade para os campos disponíveis na sua conta.
+</Note>
+
+## Campos de candidato num relance
+
+O objeto Candidato padrão inclui geralmente os seguintes campos:
+
+| Campo | Chave | Utilização típica |
+| --- | --- | --- |
+| Id | `{{_id}}` | Identificar o registo do Carerix |
+| Primeiro nome | `{{firstName}}` | Personalizar mensagens e atualizações |
+| Apelido | `{{lastName}}` | Personalizar mensagens e atualizações |
+| Endereço de email | `{{emailAddress}}` | Utilizar o campo de email principal |
+| Endereço de email profissional | `{{businessEmailAddress}}` | Utilizar o campo de email profissional |
+| Endereço de email privado | `{{privateEmailAddress}}` | Utilizar o campo de email privado |
+| Endereço de email primário | `{{primaryEmailAddress}}` | Utilizar o campo de email primário do Carerix |
+| Qualquer endereço de email | `{{anyEmailAddress}}` | Selecionar um email usando a ordem de fallback da HireData |
+
+Quando uma automação apenas precisa de um endereço de email utilizável, **Any Email Address** pode ser mais fiável do que selecionar um campo específico de email. Consulte [Campos combinados](/apps/carerix/combined-fields-explained) para a ordem de fallback completa.
+
+## Confirmar os campos na sua ligação
+
+Verifique a ligação do Carerix quando precisar de saber se um campo está ativado ou qual a chave que a HireData utiliza para o mesmo.
+
+1. Vá a **Settings** \> **Apps**.
+2. Abra **Carerix**.
+3. Abra o menu de três pontos da ligação em causa e selecione **Edit**.
+4. Selecione um objeto, como **Candidate**, **Contact**, **Meeting** ou **User**.
+5. Reveja a tabela **Object Definition**.
+
+A tabela mostra o **Label**, o **Type** e a **Key** de cada campo. Apenas os campos ativados estão disponíveis para novos events desse objeto.
+
+Se o campo de que precisa estiver desativado, consulte [Ativar campos e relações do Carerix](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) antes de alterar a ligação.
+
+## Inspecionar o payload exato do event
+
+Utilize um event real quando precisar de confirmar quais os campos e valores que a HireData recebeu para um registo individual.
+
+1. Selecione **Events** na navegação principal.
+2. Encontre e abra o event do Carerix em causa.
+3. Selecione o separador **Data**.
+4. Utilize a tabela disponível ou a vista em árvore para explorar os campos.
+5. Selecione a vista de código (`</>`) quando precisar de inspecionar o JSON em bruto ou confirmar uma chave e um valor exatos.
+
+O separador **Runs** do event mostra quais as automações que o processaram. Isto é útil quando o payload contém o campo esperado, mas uma automação não se comportou como pretendido.
+
+Para uma explicação mais completa da vista de detalhe do event, consulte [Events](/settings/logs/events).
+
+## Escolher o trigger de Carerix adequado
+
+Quando configura um bloco **Start** do Carerix, o seletor de trigger pode incluir:
+
+- **Created**
+- **Created or Updated**
+- **Updated**
+- **Schedule**
+- **Manual**
+
+Escolha o trigger que corresponde ao momento em que a automação deve arrancar. Por exemplo, utilize **Created or Updated** quando a mesma automação deve tratar tanto novos registos como alterações posteriores.
+
+**Deleted** não é atualmente oferecido no seletor de triggers.
+
+## Resolver um campo em falta
+
+Se um campo existir no Carerix mas não aparecer na HireData:
+
+1. Confirme que está a verificar o objeto correto do Carerix.
+2. Abra o **Object Definition** da ligação e confirme que o campo está ativado.
+3. Se o campo tiver sido criado ou alterado recentemente no Carerix, execute uma [sincronização manual](/apps/carerix/manually-sync-carerix-with-hiredata).
+4. Crie ou atualize um registo de teste para gerar um novo event.
+5. Inspecione o separador **Data** do novo event e a vista de código.
+
+Ativar um campo não o adiciona aos events que a HireData recebeu anteriormente. Utilize um event recém-gerado quando estiver a testar uma alteração à ligação.
+
+## Precisa de mais ajuda?
+
+Se o campo estiver ativado mas continuar em falta em novos events, contacte [support@hiredata.com](mailto:support@hiredata.com). Inclua:
+
+- A ligação e o nome do objeto do Carerix
+- O label e a chave do campo
+- Um link ou o ID de um event recente
+- O resultado que esperava

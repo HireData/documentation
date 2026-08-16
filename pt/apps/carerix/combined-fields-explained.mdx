@@ -2,6 +2,7 @@
 title: "Campos combinados: como a HireData escolhe um valor"
 sidebarTitle: "Campos combinados"
 description: "Saiba como os campos combinados da HireData escolhem automaticamente o primeiro valor preenchido a partir do Carerix, e em que ordem cada campo é verificado"
+keywords: ["que endereço de email é usado primeiro", "any email address", "anyEmailAddress", "email profissional ou privado", "precedência de email", "ordem de prioridade", "que email escolhe o carerix", "prioridade", "ordem"]
 ---
 
 _Os campos combinados, como `anyEmailAddress` e `anyPhoneNumber`, garantem que as suas automações encontram sempre a informação correta, mesmo que alguns campos no Carerix estejam vazios. Continue a ler para saber como estes campos funcionam e em que ordem a HireData escolhe um valor._
@@ -11,6 +12,8 @@ _Os campos combinados, como `anyEmailAddress` e `anyPhoneNumber`, garantem que a
 Os registos `CarerixCandidate`, `CarerixUser` e `CarerixContact` utilizam exatamente o mesmo conjunto de campos combinados. Quer esteja a trabalhar com o perfil de um candidato, de um utilizador ou de um contacto, estes campos comportam-se da mesma forma.
 
 ### anyEmailAddress
+
+Se está a pensar qual o endereço de email que a HireData escolhe quando um registo tem mais do que um — profissional ou privado, primário ou secundário — este é o campo que decide, e a ordem de prioridade está abaixo.
 
 Utilize `anyEmailAddress` quando quiser que a HireData encontre sempre um endereço de email, independentemente de qual campo específico esteja preenchido no Carerix. Se mais do que um campo de email tiver valor, a HireData verifica-os por esta ordem e utiliza o primeiro que encontrar:
 

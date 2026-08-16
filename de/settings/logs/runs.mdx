@@ -1,6 +1,7 @@
 ---
 title: "Runs"
 description: "Verstehen Sie, wie HireData-Runs funktionieren, wie Sie Ausführungen prüfen, Fehler diagnostizieren und Automatisierungen zuverlässig überwachen."
+keywords: ["Runs", "Automatisierungsverlauf", "Run abgebrochen", "Invalid sender email", "abgebrochener Schritt", "Run-Fehlerbehebung"]
 ---
 
 _Wenn eine Automatisierung durch ein Event aus Ihrer verbundenen App, z. B. Carerix, Salesforce usw., ausgelöst wird, wird ein Run erstellt. Dieser Run repräsentiert den gesamten Prozess, der ab dem initialen Trigger und für jeden Schritt Ihrer Automatisierung folgt. In diesem Artikel gehen wir darauf ein, was Runs sind, wie Sie sie finden und lesen und wie sie Ihnen bei der Fehlerbehebung Ihrer Automatisierungen helfen können._
@@ -53,12 +54,16 @@ Dies öffnet die Detailansicht des Runs, die Folgendes enthält:
 
 Diese detaillierte Ansicht ermöglicht es Ihnen außerdem, genau zu sehen, wie Ihre Automatisierung abgelaufen ist und ob jeder Schritt erfolgreich war.
 
+Bei einem abgebrochenen **Send Email**-Schritt öffnen Sie den Schritt und lesen die exakte in **Overview** angezeigte Meldung. Die Meldung kann zum Beispiel `Invalid sender email.` lauten. Siehe [Gründe für Run-Abbrüche](/knowledge-base/run-cancellation-reasons) für häufige Abbruchmeldungen und deren Lösungen.
+
 ## Runs – Fehlerbehebung
 
 Wenn etwas nicht wie erwartet passiert ist:
 
 - Öffnen Sie die Detailansicht des Runs, um Logs anzuzeigen und zu sehen, ob ein Schritt fehlgeschlagen oder übersprungen wurde.
 - Öffnen Sie den Tab **Fields**, um zu bestätigen, ob die im Run verwendeten Daten Ihren Bedingungen entsprachen. Sie können den Run auch mit dem ursprünglichen Event (im Tab **Related** zu finden) vergleichen, um zu verstehen, was ihn ausgelöst hat, und zu bestätigen, dass die richtigen Daten verwendet wurden.
+
+Eine umfassendere Diagnose-Checkliste finden Sie unter [Warum ist meine Automatisierung nicht gelaufen?](/knowledge-base/why-didnt-my-automation-run).
 
 ## Brauchen Sie noch Hilfe?
 

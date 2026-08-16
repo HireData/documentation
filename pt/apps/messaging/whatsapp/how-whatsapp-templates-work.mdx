@@ -23,13 +23,13 @@ Todos os templates de WhatsApp utilizam a mesma lógica, mas podem diferenciar-s
 Nesta automação, o trigger baseia-se numa **atualização de stage** no sistema Carerix. Aqui está como funciona:
 
 1. **Trigger Object** – A automação escuta quando um **Match** é **criado ou atualizado.**
-2. **Filter Condition** – A automação só prossegue se o **[Match: Stage]** estiver definido como **"Placed on shortlist" **, garantindo que apenas candidatos em shortlist recebem a mensagem de job alert.
+2. **Filter Condition** – A automação só prossegue se o **\[Match: Stage\]** estiver definido como **"Placed on shortlist" **, garantindo que apenas candidatos em shortlist recebem a mensagem de job alert.
 
 ![Trigger setup](/images/intercom/41580122-Screenshot-2025-03-17-at-08_23_53.png)
 
 Uma vez acionada, a automação inicia uma **conversa de WhatsApp**, enviando um job alert personalizado aos candidatos, informando-os sobre a nova oportunidade.
 
-### Configurar a tarefa [Start Conversation]
+### Configurar a tarefa \[Start Conversation\]
 
 Uma vez definido o trigger, o próximo passo é configurar a tarefa que define como a mensagem de WhatsApp será enviada. Aqui está uma explicação de cada opção de configuração:
 
@@ -58,7 +58,7 @@ Estes são alguns placeholders dinâmicos padrão que personalizarão a mensagem
 - **Company Name** → Refere a empresa contratante ou marca.
 ![Knowledge fields](/images/intercom/41580572-Screenshot-2025-03-17-at-08_36_33.png)
 
-### Configurar a tarefa [Update Fields]
+### Configurar a tarefa \[Update Fields\]
 
 Depois de a conversa de WhatsApp recolher informação do candidato, a automação pode **atualizar automaticamente campos específicos** no sistema. Isto garante que o perfil do candidato se mantém atualizado sem necessidade de introdução manual de dados.
 
@@ -81,15 +81,15 @@ Eis como funciona este processo:
 
 ### Criar um template de WhatsApp
 
-_Vá ao seu WhatsApp Template Manager clicando em [Manage Templates]:_
+_Vá ao seu WhatsApp Template Manager clicando em \[Manage Templates\]:_
 
 ![Manage Templates redirect button](/images/intercom/47451468-Screenshot-2025-03-28-at-05_32_22.png)
 
-_Clique em [Create Template]:_
+_Clique em \[Create Template\]:_
 
 ![Create a template button](/images/intercom/47455505-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Selecione o tipo de template, por exemplo selecionando [Marketing] e depois [Custom]:_
+_Selecione o tipo de template, por exemplo selecionando \[Marketing\] e depois \[Custom\]:_
 
 ![Selecting a template type](/images/intercom/47451710-Screenshot-2025-03-28-at-05_18_36.png)
 
@@ -111,7 +111,7 @@ _Utilize o nome como identificador para o seu template de WhatsApp (depois):_
 
 ### 2. Adicionar variáveis ao seu template de WhatsApp
 
-_Pode inserir campos dinâmicos clicando em [+ Add variable] no editor:_
+_Pode inserir campos dinâmicos clicando em \[+ Add variable\] no editor:_
 
 ![Adding variables in the WhatsApp template](/images/intercom/47452641-var.png)
 
@@ -139,7 +139,7 @@ Os botões ajudam os utilizadores a interagir diretamente com a sua mensagem.
 
 ![Add a button](/images/intercom/47454516-buttons.png)
 
-_Escolha o tipo de botão, por exemplo [Custom]:_
+_Escolha o tipo de botão, por exemplo \[Custom\]:_
 
 ![Choosing a button type](/images/intercom/47454544-buttons1.png)
 
@@ -163,7 +163,7 @@ _Pré-visualize o template de WhatsApp com os seus botões:_
 
 ### 4. Submeter o seu template de WhatsApp
 
-_Uma vez que tudo esteja pronto, clique em [Submit] para enviar o template para aprovação e aguarde a revisão do template:_
+_Uma vez que tudo esteja pronto, clique em \[Submit\] para enviar o template para aprovação e aguarde a revisão do template:_
 
 ![Submitting a template for review](/images/intercom/47454980-submit.png)
 
@@ -173,9 +173,42 @@ _Boa! O seu template de WhatsApp está verificado_
 
 ![Approved WhatsApp template](/images/intercom/47455086-submit2.png)
 
+### Quanto tempo demora a aprovação de um template?
+
+Submeter um template inicia dois passos, por esta ordem:
+
+1. **Validação de categoria** — acontece imediatamente. A Meta verifica a categoria que escolheu (Marketing, Utility ou Authentication) face ao conteúdo do template. Se a Meta discordar, o template é rejeitado logo por categoria incorreta, antes de qualquer revisão de conteúdo. Consulte [Categorias de templates de WhatsApp na HireData](/apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata).
+2. **Revisão do template** — este é o estado **In review** (Pending). A Meta verifica o conteúdo face às suas diretrizes e depois aprova ou rejeita.
+
+A maioria dos templates conclui a revisão em poucos minutos. Aguarde até **24 horas** antes de considerar um template **In review** como bloqueado.
+
+| Estado | O que significa | Pode enviar com ele? |
+| --- | --- | --- |
+| **In review** (Pending) | Passou a validação de categoria, a Meta está a verificar o conteúdo. | Não |
+| **Approved** | Passou a revisão. | Sim |
+| **Rejected** | Falhou a validação de categoria ou a revisão de conteúdo. A Meta dá um motivo de rejeição. | Não |
+| **Paused** | Aprovado, mas pausado pela Meta após feedback negativo dos destinatários. | Não, até ser retomado |
+
+A Meta comunica-lhe o resultado por email e com um alerta no WhatsApp Manager, pelo que não precisa de estar constantemente a atualizar a lista de templates.
+
+<Note>
+  Editar um template que já esteja **Approved** ou **Paused** envia-o novamente para revisão, mas essas edições são normalmente aceites quase instantaneamente, a menos que a alteração falhe a revisão. Consulte [Como editar templates de mensagens de WhatsApp na HireData](/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates).
+</Note>
+
+**Se um template estiver em revisão há mais de 24 horas**
+
+- Verifique o seu email e os alertas do WhatsApp Manager — o resultado pode já ter sido enviado.
+- Abra o template em **Manage Templates** e confirme o seu estado atual aí, em vez de na HireData, que apenas vê o template após uma sincronização.
+- Se tiver sido rejeitado, corrija o conteúdo face às diretrizes da Meta e volte a submeter, ou crie um novo template.
+- Se continuar em revisão, contacte o Suporte de Empresas da Meta.
+
+<Warning>
+  Um template aprovado só fica selecionável nas automações da HireData depois de ter sido sincronizado. Se um template aparecer como aprovado no WhatsApp Manager mas não o conseguir encontrar na HireData, execute **Sync Account** como descrito abaixo.
+</Warning>
+
 ### Sincronizar templates de WhatsApp com a HireData
 
-_Para tornar o seu template recém-criado disponível na HireData,_c_lique em [Sync Account] no menu suspenso da sua conta de WhatsApp na HireData:_
+_Para tornar o seu template recém-criado disponível na HireData,_c_lique em \[Sync Account\] no menu suspenso da sua conta de WhatsApp na HireData:_
 
 ![Sync Account button](/images/intercom/47448587-Screenshot-2025-03-28-at-05_55_39.png)
 
@@ -197,7 +230,7 @@ _Pode agora selecionar o seu novo template de WhatsApp nas tarefas de WhatsApp q
 
 ### Editar um template de WhatsApp
 
-_Vá ao seu WhatsApp Template Manager clicando em [Manage Templates]:_
+_Vá ao seu WhatsApp Template Manager clicando em \[Manage Templates\]:_
 
 ![Manage Templates button in the drop-down menu](/images/intercom/47450181-Screenshot-2025-03-28-at-05_32_22.png)
 
@@ -205,7 +238,7 @@ _Clique num dos seus templates existentes:_
 
 ![Templates list in WhatsApp Manager](/images/intercom/47450224-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Clique em [Edit Template] para ir para o editor:_
+_Clique em \[Edit Template\] para ir para o editor:_
 
 ![Edit Template button in the WhatsApp Manager](/images/intercom/47450335-Screenshot-2025-03-28-at-05_14_41.png)
 
@@ -227,7 +260,7 @@ _Submeter o seu template de WhatsApp atualizado para revisão (habitualmente ace
 
 ### Eliminar um template de WhatsApp
 
-_Clique em [Delete template] no canto superior direito do editor:_
+_Clique em \[Delete template\] no canto superior direito do editor:_
 
 ![Deleting a WhatsApp template](/images/intercom/47450936-Screenshot-2025-03-28-at-05_17_45.png)
 

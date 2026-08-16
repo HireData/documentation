@@ -1,6 +1,7 @@
 ---
 title: "Événements"
 description: "Comprenez le fonctionnement des événements HireData, comment ils sont reçus, filtrés et déclenchent vos automatisations de recrutement au quotidien."
+keywords: ["corps de requête", "corps de requête brut", "charge utile webhook", "inspecter la charge utile", "voir ce que l'app a envoyé", "données d'événement", "rejouer un événement", "inspection webhook"]
 ---
 
 _Lorsque vous connectez votre ATS, tel que Carerix, Salesforce, OTYS, etc., à HireData, il commencera à envoyer des événements, qui sont des notifications indiquant que quelque chose s'est produit dans votre système. Les événements déclenchent vos automatisations, ce qui les rend cruciaux pour le fonctionnement de HireData en arrière-plan. Dans cet article, nous expliquerons comment fonctionnent les événements, où les trouver et comment les analyser si quelque chose ne se passe pas comme prévu._
@@ -32,6 +33,8 @@ Cela ouvrira la vue détaillée de l'événement, qui comprend :
 - **Event Data** — une vue résumée des données reçues de votre app.
 
 ![Onglet Event Data](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
+
+Pour inspecter le corps de requête brut, ouvrez les données de l'événement et utilisez la vue code ou JSON disponible. Cela vous aide à confirmer les noms de champs exacts et les valeurs reçus depuis l'app source.
 
 - **External Records** — des champs supplémentaires de l'app source, même s'ils ne sont pas utilisés dans l'automatisation.
 
@@ -111,8 +114,9 @@ Si une automatisation ne s'est pas exécutée comme prévu, ou si vous voyez des
 - Rendez-vous dans l'onglet **Processes** de l'événement et vérifiez si des exécutions ont été créées.
 - Cliquez sur l'exécution pour consulter les journaux et voir si une étape a échoué ou a été ignorée.
 - Comparez les **Event Data** avec les conditions de votre automatisation pour vous assurer qu'elles correspondent.
+- Utilisez la vue code ou JSON des données pour repérer les champs manquants, des noms de champs différents ou des formats de valeurs inattendus.
 
-Si aucun processus n'a été déclenché, l'événement n'a probablement pas répondu aux critères des automatisations actives.
+Si aucun processus n'a été déclenché, l'événement n'a peut-être pas répondu aux critères d'une automatisation active. Voir [Pourquoi mon automatisation ne s'est-elle pas exécutée ?](/knowledge-base/why-didnt-my-automation-run) pour une check-list complète.
 
 ### Besoin d'aide supplémentaire ?
 

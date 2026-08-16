@@ -1,6 +1,7 @@
 ---
 title: "Events"
 description: "Perceba como funcionam os events na HireData, onde encontrá-los nos logs e como analisá-los para fazer troubleshooting das suas automações e integrações."
+keywords: ["request body", "raw request body", "webhook payload", "inspecionar payload", "ver o que a app enviou", "dados do event", "reproduzir event", "inspeção de webhook", "corpo do pedido", "ver payload"]
 ---
 
 _Quando liga o seu ATS, como Carerix, Salesforce, OTYS, etc., à HireData, ele começará a enviar events, que são notificações de que algo aconteceu no seu sistema. Os events acionam as suas automações, tornando-os cruciais para o funcionamento da HireData nos bastidores. Neste artigo, iremos explicar como os events funcionam, onde encontrá-los e como analisá-los se algo não correr como esperado._
@@ -32,6 +33,8 @@ Isto irá abrir a vista de detalhe do event, que inclui:
 - **Event Data** – uma vista resumida dos dados recebidos da sua app.
 
 ![Event Data tab](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
+
+Para inspecionar o corpo do pedido em bruto, abra os event data e utilize a vista de código ou JSON disponível. Isto ajuda-o a confirmar os nomes exatos dos campos e os valores recebidos da app de origem.
 
 - **External Records** – campos adicionais da app de origem, mesmo que não sejam utilizados na automação.
 
@@ -111,8 +114,9 @@ Se uma automação não correu como esperado, ou está a ver dados inesperados:
 - Vá ao separador **Processes** do event e verifique se algum run foi criado.
 - Clique no run para ver logs e verificar se algum passo falhou ou foi saltado.
 - Compare os **Event Data** com as condições na sua automação para garantir que correspondem.
+- Utilize a vista de código ou JSON dos dados para verificar campos em falta, nomes de campos diferentes ou formatos de valor inesperados.
 
-Se nenhum processo foi acionado, o event provavelmente não cumpriu os critérios de nenhuma automação ativa.
+Se nenhum processo foi acionado, o event pode não ter cumprido os critérios de uma automação ativa. Consulte [Porque é que a minha automação não correu?](/knowledge-base/why-didnt-my-automation-run) para uma checklist completa.
 
 ### Ainda precisa de ajuda?
 

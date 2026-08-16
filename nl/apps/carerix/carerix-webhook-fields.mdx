@@ -1,0 +1,98 @@
+---
+sidebarTitle: "Webhookvelden"
+description: "Ontdek welke Carerix-velden en -sleutels beschikbaar zijn in HireData, waar je een verbinding of eventpayload inspecteert, en hoe je ontbrekende data troubleshoot."
+keywords: ["Carerix webhook fields", "Carerix payload", "candidate fields", "Carerix field keys", "event data", "Carerix webhookvelden", "kandidaatvelden", "Carerix veldsleutels", "eventdata"]
+title: "Carerix-webhookvelden"
+---
+
+_Wanneer Carerix een event naar HireData stuurt, bevat dat event de velden die zijn ingeschakeld voor het relevante object in je Carerix-verbinding. Deze gids legt uit welke kandidaatvelden vaak beschikbaar zijn, waar je hun sleutels vindt, en hoe je precies bevestigt wat HireData heeft ontvangen voor een specifiek record._
+
+## Hoe Carerix-velden HireData bereiken
+
+Elke Carerix-verbinding heeft zijn eigen set ingeschakelde velden. Dit betekent dat de velden die beschikbaar zijn in het ene HireData-account kunnen verschillen van die in een ander account, ook al gebruiken beide hetzelfde Carerix-object.
+
+De **Object Definition** van de verbinding bepaalt welke velden beschikbaar zijn voor nieuwe events en automatiseringen. Het **Data**-tabblad van een echt event toont vervolgens de waarden die HireData heeft ontvangen voor één specifiek record.
+
+<Note>
+  Gebruik de veldtabel hieronder als richtlijn voor gangbare Candidate-velden. De instellingen van je verbinding en het **Data**-tabblad van het event zijn de bron van waarheid voor de velden die beschikbaar zijn in jouw account.
+</Note>
+
+## Candidate-velden in één oogopslag
+
+Het standaard Candidate-object bevat vaak de volgende velden:
+
+| Veld | Sleutel | Typisch gebruik |
+| --- | --- | --- |
+| Id | `{{_id}}` | Het Carerix-record identificeren |
+| First Name | `{{firstName}}` | Berichten en updates personaliseren |
+| Last Name | `{{lastName}}` | Berichten en updates personaliseren |
+| Email Address | `{{emailAddress}}` | Het hoofd-e-mailveld gebruiken |
+| Business Email Address | `{{businessEmailAddress}}` | Het zakelijke e-mailveld gebruiken |
+| Private Email Address | `{{privateEmailAddress}}` | Het persoonlijke e-mailveld gebruiken |
+| Primary Email Address | `{{primaryEmailAddress}}` | Het primaire e-mailveld van Carerix gebruiken |
+| Any Email Address | `{{anyEmailAddress}}` | Een e-mail selecteren via de fallback-volgorde van HireData |
+
+Wanneer een automatisering alleen een bruikbaar e-mailadres nodig heeft, kan **Any Email Address** betrouwbaarder zijn dan één specifiek e-mailveld selecteren. Zie [Combined Fields uitgelegd](/apps/carerix/combined-fields-explained) voor de volledige fallback-volgorde.
+
+## Bevestig de velden in je verbinding
+
+Controleer de Carerix-verbinding wanneer je wilt weten of een veld is ingeschakeld of welke sleutel HireData ervoor gebruikt.
+
+1. Ga naar **Settings** \> **Apps**.
+2. Open **Carerix**.
+3. Open het driepuntsmenu voor de relevante verbinding en selecteer **Edit**.
+4. Selecteer een object, zoals **Candidate**, **Contact**, **Meeting** of **User**.
+5. Bekijk de tabel **Object Definition**.
+
+De tabel toont voor elk veld de **Label**, **Type** en **Key**. Alleen ingeschakelde velden zijn beschikbaar voor nieuwe events voor dat object.
+
+Als het veld dat je nodig hebt is uitgeschakeld, zie dan [Carerix-velden en relaties inschakelen](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) voordat je de verbinding wijzigt.
+
+## Inspecteer de exacte eventpayload
+
+Gebruik een echt event wanneer je wilt bevestigen welke velden en waarden HireData heeft ontvangen voor een individueel record.
+
+1. Selecteer **Events** in de hoofdnavigatie.
+2. Zoek en open het relevante Carerix-event.
+3. Selecteer het **Data**-tabblad.
+4. Gebruik de beschikbare tabel- of tree-weergave om de velden te verkennen.
+5. Selecteer de code-weergave (`</>`) wanneer je de ruwe JSON wilt inspecteren of een exacte sleutel en waarde wilt bevestigen.
+
+Het **Runs**-tabblad van het event toont welke automatiseringen het hebben verwerkt. Dit is handig wanneer de payload het verwachte veld bevat, maar een automatisering zich niet gedroeg zoals bedoeld.
+
+Zie [Events](/settings/logs/events) voor een uitgebreidere uitleg van de eventdetailweergave.
+
+## Kies de juiste Carerix-trigger
+
+Wanneer je een Carerix **Start**-blok configureert, kan de triggerkiezer het volgende bevatten:
+
+- **Created**
+- **Created or Updated**
+- **Updated**
+- **Schedule**
+- **Manual**
+
+Kies de trigger die past bij wanneer de automatisering moet starten. Gebruik bijvoorbeeld **Created or Updated** wanneer dezelfde automatisering zowel nieuwe records als latere wijzigingen moet afhandelen.
+
+**Deleted** wordt momenteel niet aangeboden in de triggerkiezer.
+
+## Troubleshoot een ontbrekend veld
+
+Als een veld in Carerix bestaat maar niet in HireData verschijnt:
+
+1. Controleer of je het juiste Carerix-object bekijkt.
+2. Open de **Object Definition** van de verbinding en controleer of het veld is ingeschakeld.
+3. Als het veld recent is aangemaakt of gewijzigd in Carerix, voer dan een [handmatige sync](/apps/carerix/manually-sync-carerix-with-hiredata) uit.
+4. Maak een testrecord aan of update het om een nieuw event te genereren.
+5. Inspecteer het **Data**-tabblad en de codeweergave van het nieuwe event.
+
+Een veld inschakelen voegt het niet toe aan events die HireData eerder heeft ontvangen. Gebruik een nieuw gegenereerd event bij het testen van een verbindingswijziging.
+
+## Toch nog hulp nodig?
+
+Als het veld is ingeschakeld maar nog steeds ontbreekt in nieuwe events, neem dan contact op met [support@hiredata.com](mailto:support@hiredata.com). Voeg toe:
+
+- De naam van de Carerix-verbinding en het object
+- De veldlabel en -sleutel
+- Een link of het ID van een recent event
+- Het resultaat dat je verwachtte

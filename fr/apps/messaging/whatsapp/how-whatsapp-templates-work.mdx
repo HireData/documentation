@@ -23,13 +23,13 @@ Tous les modèles WhatsApp utilisent la même logique, mais peuvent se différen
 Dans cette automatisation, le déclencheur est basé sur une **mise à jour d'étape** dans le système Carerix. Voici comment cela fonctionne :
 
 1. **Objet du déclencheur** — L'automatisation écoute quand un **Match** est **créé ou mis à jour.**
-2. **Condition de filtre** — L'automatisation ne se poursuit que si le **[Match: Stage]** est défini sur **« Placed on shortlist » **garantissant que seuls les candidats présélectionnés reçoivent le message d'alerte emploi.
+2. **Condition de filtre** — L'automatisation ne se poursuit que si le **\[Match: Stage\]** est défini sur **« Placed on shortlist » **garantissant que seuls les candidats présélectionnés reçoivent le message d'alerte emploi.
 
 ![Configuration du déclencheur](/images/intercom/41580122-Screenshot-2025-03-17-at-08_23_53.png)
 
 Une fois déclenchée, l'automatisation initie une **conversation WhatsApp**, envoyant une alerte emploi personnalisée aux candidats pour les informer de la nouvelle opportunité.
 
-### Configuration de la tâche [Start Conversation]
+### Configuration de la tâche \[Start Conversation\]
 
 Une fois le déclencheur défini, l'étape suivante consiste à configurer la tâche qui définit comment le message WhatsApp sera envoyé. Voici un aperçu de chaque option de configuration :
 
@@ -58,7 +58,7 @@ Voici quelques espaces réservés dynamiques standards qui personnaliseront le m
 - **Company Name** → Référence l'entreprise ou la marque qui recrute.
 ![Champs de connaissance](/images/intercom/41580572-Screenshot-2025-03-17-at-08_36_33.png)
 
-### Configuration de la tâche [Update Fields]
+### Configuration de la tâche \[Update Fields\]
 
 Après que la conversation WhatsApp a collecté des informations auprès du candidat, l'automatisation peut **mettre à jour automatiquement des champs spécifiques** dans le système. Cela garantit que le profil du candidat reste à jour sans nécessiter de saisie manuelle.
 
@@ -81,15 +81,15 @@ Voici comment ce processus fonctionne :
 
 ### Créer un modèle WhatsApp
 
-_Rendez-vous dans votre WhatsApp Template Manager en cliquant sur [Manage Templates] :_
+_Rendez-vous dans votre WhatsApp Template Manager en cliquant sur \[Manage Templates\] :_
 
 ![Bouton de redirection Manage Templates](/images/intercom/47451468-Screenshot-2025-03-28-at-05_32_22.png)
 
-_Cliquez sur [Create Template] :_
+_Cliquez sur \[Create Template\] :_
 
 ![Bouton Create a template](/images/intercom/47455505-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Sélectionnez le type de modèle, par exemple en sélectionnant [Marketing] puis [Custom] :_
+_Sélectionnez le type de modèle, par exemple en sélectionnant \[Marketing\] puis \[Custom\] :_
 
 ![Sélection d'un type de modèle](/images/intercom/47451710-Screenshot-2025-03-28-at-05_18_36.png)
 
@@ -111,7 +111,7 @@ _Utilisez le nom comme identifiant de votre modèle WhatsApp (après) :_
 
 ### 2. Ajouter des variables à votre modèle WhatsApp
 
-_Vous pouvez insérer des champs dynamiques en cliquant sur [+ Add variable] dans l'éditeur :_
+_Vous pouvez insérer des champs dynamiques en cliquant sur \[\+ Add variable\] dans l'éditeur :_
 
 ![Ajout de variables dans le modèle WhatsApp](/images/intercom/47452641-var.png)
 
@@ -139,7 +139,7 @@ Les boutons aident les utilisateurs à interagir directement avec votre message.
 
 ![Ajouter un bouton](/images/intercom/47454516-buttons.png)
 
-_Choisissez le type de bouton, par ex. [Custom] :_
+_Choisissez le type de bouton, par ex. \[Custom\] :_
 
 ![Choix d'un type de bouton](/images/intercom/47454544-buttons1.png)
 
@@ -163,7 +163,7 @@ _Aperçu du modèle WhatsApp avec ses boutons :_
 
 ### 4. Soumettre votre modèle WhatsApp
 
-_Une fois que tout est prêt, cliquez sur [Submit] pour envoyer le modèle à l'approbation et attendez la révision du modèle :_
+_Une fois que tout est prêt, cliquez sur \[Submit\] pour envoyer le modèle à l'approbation et attendez la révision du modèle :_
 
 ![Soumettre un modèle à la révision](/images/intercom/47454980-submit.png)
 
@@ -173,9 +173,42 @@ _Hourra ! Votre modèle WhatsApp est vérifié_
 
 ![Modèle WhatsApp approuvé](/images/intercom/47455086-submit2.png)
 
+### Combien de temps prend l'approbation d'un modèle ?
+
+Soumettre un modèle démarre deux étapes, dans cet ordre :
+
+1. **Validation de la catégorie** — se produit immédiatement. Meta vérifie la catégorie que vous avez choisie (Marketing, Utility ou Authentication) par rapport au contenu du modèle. Si Meta n'est pas d'accord, le modèle est rejeté immédiatement pour catégorie incorrecte, avant toute revue de contenu. Voir [Catégories de modèles WhatsApp dans HireData](/apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata).
+2. **Revue du modèle** — c'est l'état **In review** (Pending). Meta vérifie le contenu par rapport à ses directives puis l'approuve ou le rejette.
+
+La plupart des modèles terminent leur revue en quelques minutes. Attendez jusqu'à **24 heures** avant de considérer qu'un modèle **In review** est bloqué.
+
+| Statut | Ce qu'il signifie | Pouvez-vous envoyer avec ? |
+| --- | --- | --- |
+| **In review** (Pending) | A passé la validation de catégorie, Meta vérifie le contenu. | Non |
+| **Approved** | A passé la revue. | Oui |
+| **Rejected** | A échoué à la validation de catégorie ou à la revue de contenu. Meta indique un motif de rejet. | Non |
+| **Paused** | Approuvé, mais mis en pause par Meta après des retours négatifs de destinataires. | Non, jusqu'à sa reprise |
+
+Meta vous informe du résultat par e-mail et via une alerte dans WhatsApp Manager, vous n'avez donc pas besoin de continuellement rafraîchir la liste des modèles.
+
+<Note>
+  Modifier un modèle qui est déjà **Approved** ou **Paused** le renvoie en revue, mais ces modifications sont généralement acceptées presque instantanément, sauf si le changement échoue à la revue. Voir [Comment modifier les modèles de messages WhatsApp dans HireData](/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates).
+</Note>
+
+**Si un modèle est en revue depuis plus de 24 heures**
+
+- Vérifiez votre e-mail et les alertes de WhatsApp Manager — le résultat a peut-être déjà été envoyé.
+- Ouvrez le modèle dans **Manage Templates** et confirmez son statut actuel directement là, plutôt que dans HireData, qui ne voit le modèle qu'après une synchronisation.
+- S'il a été rejeté, corrigez le contenu selon les directives de Meta et resoumettez, ou créez un nouveau modèle.
+- S'il reste en revue, contactez le support Meta Business.
+
+<Warning>
+  Un modèle approuvé ne devient sélectionnable dans les automatisations HireData qu'une fois synchronisé. Si un modèle apparaît comme approuvé dans WhatsApp Manager mais que vous ne le trouvez pas dans HireData, lancez **Sync Account** comme décrit ci-dessous.
+</Warning>
+
 ### Synchroniser les modèles WhatsApp avec HireData
 
-_Pour rendre votre modèle nouvellement créé disponible dans HireData, c_liquez sur [Sync Account] dans le menu déroulant de votre compte WhatsApp dans HireData :_
+_Pour rendre votre modèle nouvellement créé disponible dans HireData, c_liquez sur \[Sync Account\] dans le menu déroulant de votre compte WhatsApp dans HireData :_
 
 ![Bouton Sync Account](/images/intercom/47448587-Screenshot-2025-03-28-at-05_55_39.png)
 
@@ -197,7 +230,7 @@ _Vous pouvez désormais sélectionner votre nouveau modèle WhatsApp dans les t�
 
 ### Modifier un modèle WhatsApp
 
-_Rendez-vous dans votre WhatsApp Template Manager en cliquant sur [Manage Templates] :_
+_Rendez-vous dans votre WhatsApp Template Manager en cliquant sur \[Manage Templates\] :_
 
 ![Bouton Manage Templates dans le menu déroulant](/images/intercom/47450181-Screenshot-2025-03-28-at-05_32_22.png)
 
@@ -205,7 +238,7 @@ _Cliquez sur l'un de vos modèles existants :_
 
 ![Liste des modèles dans WhatsApp Manager](/images/intercom/47450224-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Cliquez sur [Edit Template] pour accéder à l'éditeur :_
+_Cliquez sur \[Edit Template\] pour accéder à l'éditeur :_
 
 ![Bouton Edit Template dans WhatsApp Manager](/images/intercom/47450335-Screenshot-2025-03-28-at-05_14_41.png)
 
@@ -227,7 +260,7 @@ _Soumission de votre modèle WhatsApp mis à jour à la révision (généralemen
 
 ### Supprimer un modèle WhatsApp
 
-_Cliquez sur [Delete template] dans le coin supérieur droit de l'éditeur :_
+_Cliquez sur \[Delete template\] dans le coin supérieur droit de l'éditeur :_
 
 ![Suppression d'un modèle WhatsApp](/images/intercom/47450936-Screenshot-2025-03-28-at-05_17_45.png)
 
@@ -235,4 +268,4 @@ _Confirmation de la suppression de votre modèle WhatsApp :_
 
 ![Confirmation de la suppression de votre modèle WhatsApp](/images/intercom/47450976-Screenshot-2025-03-28-at-05_18_01.png)
 
-<iframe src="https://www.loom.com/embed/303e828003b84b27bfec2590ab4f26cd" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>
+<iframe src="https://www.loom.com/embed/303e828003b84b27bfec2590ab4f26cd" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl" />

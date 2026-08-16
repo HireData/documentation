@@ -1,6 +1,7 @@
 ---
 title: "Runs"
 description: "Begrijp hoe HireData-runs werken, welke informatie ze bevatten en hoe je ze gebruikt om automatiseringen te debuggen en workflows te controleren."
+keywords: ["runs", "automation history", "run cancelled", "Invalid sender email", "cancelled step", "run troubleshooting", "run-historie", "run geannuleerd", "geannuleerde stap", "run troubleshooten"]
 ---
 
 _Wanneer een automatisering wordt getriggerd door een event vanuit je gekoppelde app, bijv. Carerix, Salesforce, enz., wordt een Run aangemaakt. Deze Run vertegenwoordigt het volledige proces dat volgt vanaf de initiële trigger tot elke stap van je automatisering. In dit artikel behandelen we wat runs zijn, hoe je ze vindt en leest, en hoe ze je kunnen helpen je automatiseringen te troubleshooten._
@@ -53,12 +54,16 @@ Dit opent de detailweergave van de run, die het volgende bevat:
 
 Deze gedetailleerde weergave stelt je ook in staat om precies te zien hoe je automatisering is verlopen en of elke stap is geslaagd.
 
+Voor een geannuleerde **Send Email**-stap open je de stap en lees je het exacte bericht dat wordt getoond in **Overview**. Het bericht kan bijvoorbeeld `Invalid sender email.` zijn. Zie [Redenen voor annulering van runs](/knowledge-base/run-cancellation-reasons) voor veelvoorkomende annuleringsberichten en hun oplossingen.
+
 ## Troubleshooting van runs
 
 Als er iets niet is gebeurd zoals verwacht:
 
 - Open de detailweergave van de run om logs te bekijken en te zien of een stap is mislukt of overgeslagen.
 - Open het tabblad **Fields** om te bevestigen of de data die in de run is gebruikt aan je voorwaarden voldeed. Je kunt ook de run vergelijken met het oorspronkelijke event (te vinden via het tabblad **Related**) om te begrijpen wat het triggerde en te bevestigen dat de juiste data is gebruikt.
+
+Voor een bredere diagnostische checklist, zie [Waarom liep mijn automatisering niet?](/knowledge-base/why-didnt-my-automation-run).
 
 ## Toch nog hulp nodig?
 

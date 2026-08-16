@@ -1,6 +1,7 @@
 ---
 title: "Events"
 description: "Begrijp hoe HireData-events werken, welke informatie ze bevatten en hoe je ze gebruikt om automatiseringen te debuggen en workflows te controleren."
+keywords: ["request body", "raw request body", "webhook payload", "inspect payload", "see what the app sent", "event data", "replay event", "webhook inspection", "verzoeklichaam", "ruwe request body", "payload bekijken", "event opnieuw afspelen", "webhook inspecteren"]
 ---
 
 _Wanneer je je ATS koppelt, zoals Carerix, Salesforce, OTYS, enz., aan HireData, begint deze events te sturen, wat meldingen zijn dat er iets in je systeem is gebeurd. Events triggeren je automatiseringen, waardoor ze cruciaal zijn voor hoe HireData op de achtergrond werkt. In dit artikel leggen we uit hoe events werken, waar je ze vindt, en hoe je ze analyseert als er iets niet gaat zoals verwacht._
@@ -32,6 +33,8 @@ Dit opent de detailweergave van het event, die het volgende bevat:
 - **Event Data** – een samengevat overzicht van de data die van je app is ontvangen.
 
 ![Event Data-tabblad](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
+
+Om de ruwe request body te inspecteren, open je de eventdata en gebruik je de beschikbare code- of JSON-weergave. Dit helpt je exacte veldnamen en waarden te bevestigen die van de bronapp zijn ontvangen.
 
 - **External Records** – aanvullende velden van de bronapp, zelfs als ze niet in de automatisering worden gebruikt.
 
@@ -111,8 +114,9 @@ Als een automatisering niet draaide zoals verwacht, of je onverwachte data ziet:
 - Ga naar het tabblad **Processes** van het event en controleer of er runs zijn aangemaakt.
 - Klik in de run om logs te bekijken en zie of een stap is mislukt of overgeslagen.
 - Vergelijk de **Event Data** met de voorwaarden in je automatisering om ervoor te zorgen dat het overeenkomt.
+- Gebruik de code- of JSON-dataweergave om te controleren op ontbrekende velden, andere veldnamen of onverwachte waardeformats.
 
-Als er geen proces is getriggerd, voldeed het event waarschijnlijk niet aan de criteria van enige actieve automatiseringen.
+Als er geen proces is getriggerd, voldeed het event mogelijk niet aan de criteria van een actieve automatisering. Zie [Waarom liep mijn automatisering niet?](/knowledge-base/why-didnt-my-automation-run) voor een volledige checklist.
 
 ### Toch nog hulp nodig?
 

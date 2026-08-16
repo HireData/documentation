@@ -1,20 +1,100 @@
 ---
 title: "Waarom liep mijn automatisering niet?"
 sidebarTitle: "Automatisering liep niet"
-description: "Een diagnostische checklist voor automatiseringen die niet zijn getriggerd in HireData: doorloop events, filters, condities en run logs stap voor stap."
+description: "Een diagnostische checklist voor automatiseringen die niet zijn getriggerd in HireData: doorloop event delivery, filters, condities en run logs stap voor stap."
+keywords: ["automation did not run", "automation didn't start", "trigger not working", "event not processed", "automation gestopt", "automatisering werkt niet", "automatisering liep niet", "trigger werkt niet", "event niet verwerkt"]
 ---
 
+_Wanneer een automatisering niet loopt zoals verwacht, kunnen de event- en run-historie precies laten zien waar het proces is gestopt. Deze gids loodst je in volgorde door de controles, van bevestigen dat HireData het event heeft ontvangen tot het inspecteren van een individuele automatiseringsstap en het veilig testen van je correctie._
+
+## Identificeer eerst waar het proces is gestopt
+
+Voordat je de automatisering wijzigt, controleer hoe ver het event is gekomen. Dit helpt je te focussen op de relevante instellingen.
+
+| Wat je vindt | Wat het meestal betekent | Begin met |
+| --- | --- | --- |
+| Geen bijpassend event | HireData heeft de wijziging mogelijk niet ontvangen van de bronapp. | De app-verbinding en het bronrecord |
+| Er bestaat een event, maar er is geen run aangemaakt | De automatisering is mogelijk inactief of de Start-configuratie kwam niet overeen. | De automatiseringsstatus, trigger en voorwaarden |
+| Er bestaat een run, maar een stap is gestopt of geannuleerd | De automatisering is gestart, maar een individuele stap kon niet doorgaan. | De run-timeline en stapdetails |
+
+## 1. Bevestig dat HireData het event heeft ontvangen
+
+Elke event-gebaseerde automatisering begint met informatie ontvangen van een gekoppelde app. Als het verwachte event niet in HireData staat, heeft de automatisering niets om te verwerken.
+
+1. Selecteer **Events** in de hoofdnavigatie.
+2. Zoek naar de kandidaat, contactpersoon of het event waarvan je verwachtte dat het de automatisering zou starten.
+3. Open het event.
+4. Controleer het **Data**-tabblad om te bevestigen dat de verwachte velden en waarden aanwezig zijn.
+5. Gebruik de code-weergave (`</>`) wanneer je de ruwe JSON wilt inspecteren of een exacte veldnaam wilt bevestigen.
+
+Als je het event niet kunt vinden, controleer dan of de wijziging is opgeslagen in de bronapp en of de HireData-verbinding daarvan werkt. Voor Carerix-verbindingsproblemen zie [Waarom synchroniseert mijn Carerix niet met HireData?](/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata).
+
+Zie [Events](/settings/logs/events) voor meer informatie over de eventdetailweergave.
+
+## 2. Controleer of de automatisering actief is
+
+Een inactieve automatisering maakt geen nieuwe runs aan wanneer bijpassende events binnenkomen.
+
+Open de automatisering en kijk naar de actie rechtsboven:
+
+- **Pause** betekent dat de automatisering momenteel actief is.
+- **Activate** betekent dat de automatisering momenteel inactief is. Selecteer **Activate** wanneer je klaar bent om nieuwe events te laten binnenkomen.
+
 <Note>
-  Dit artikel is een placeholder. De onderstaande inhoud schetst waar het over zal gaan.
+  Een automatisering activeren verwerkt niet automatisch events die zijn binnengekomen terwijl hij inactief was. Nadat je de rest van de configuratie hebt gecontroleerd, kun je een eerder event voorzichtig opnieuw afspelen.
 </Note>
 
-{/* TODO(docs-reorg): symptom-first diagnosis flow:
-   1. Did the event arrive? (Events page)
-   2. Is the automation active?
-   3. Did the event pass the start filters?
-   4. Was a run created and what is its status? (Runs, safety limits, delays)
-   5. Replaying the event once fixed
-   Cross-link: /settings/logs/events (replay section), /settings/logs/runs,
-   /settings/automation-safety-limits, /automations/how-to-test-an-automation */}
+## 3. Vergelijk het event met de Start-configuratie
 
-Terwijl deze pagina wordt geschreven, zie [Events](/nl/settings/logs/events) voor hoe je events inspecteert en opnieuw afspeelt.
+Als het event bestaat maar er geen run is aangemaakt, vergelijk je het event met het **Start**-blok van de automatisering. De app, trigger en voorwaarden moeten overeenkomen met het binnenkomende event.
+
+Controleer op:
+
+- Een andere app of ander object dan degene die het event heeft geproduceerd
+- Een andere trigger, zoals **Created** in plaats van **Updated**
+- Een vereist veld dat ontbreekt in het event
+- Een veldwaarde die niet aan een van de startvoorwaarden voldoet
+- Een veld waarvan de naam, het type of het format in de bronapp is gewijzigd
+
+Gebruik het **Data**-tabblad van het event terwijl je het Start-blok bekijkt, zodat je de daadwerkelijke waarden vergelijkt in plaats van de huidige waarden van het bronrecord.
+
+Als je de Start-configuratie wijzigt, sla dan de automatisering op voordat je hem opnieuw test.
+
+## 4. Inspecteer de run en zijn stappen
+
+Als er een run bestaat, is de automatisering gestart. De run-timeline toont hoe het event door de automatisering is gegaan en waar het is gestopt.
+
+1. Selecteer **Runs** in de hoofdnavigatie.
+2. Vind de relevante run en selecteer de rij.
+3. Selecteer de stap die is gestopt, mislukt of geannuleerd.
+4. Bekijk de tabbladen **Overview**, **Fields** en **Related** van de stap.
+
+Het **Overview**-tabblad kan het resultaat of annuleringsbericht bevatten. **Fields** toont de waarden die de stap heeft gebruikt of geproduceerd, en **Related** linkt de run terug naar zijn automatisering en event.
+
+Voor uitleg over veelvoorkomende annuleringsberichten, zie [Redenen voor annulering van runs](/knowledge-base/run-cancellation-reasons). Voor meer informatie over het lezen van een run, zie [Runs](/settings/logs/runs).
+
+## 5. Test de correctie
+
+Zodra je de oorzaak hebt gevonden en gecorrigeerd, test je de automatisering opnieuw.
+
+Een nieuw event is de veiligste optie omdat het een verse run aanmaakt zonder acties uit de vorige run te herhalen. Als een nieuw event aanmaken niet praktisch is, kun je het oorspronkelijke event opnieuw afspelen:
+
+1. Ga terug naar het event.
+2. Open het **Runs**-tabblad en bekijk wat al is voltooid.
+3. Selecteer **Replay**.
+4. Open de nieuwe run en controleer of hij het verwachte pad volgt.
+
+<Warning>
+  Opnieuw afspelen kan e-mails, berichten, recordupdates, taken en andere acties herhalen die tijdens de eerdere run zijn voltooid. Bekijk alle gerelateerde runs voordat je een replay bevestigt.
+</Warning>
+
+## Toch nog hulp nodig?
+
+Als de automatisering nog steeds niet loopt zoals verwacht, neem dan contact op met [support@hiredata.com](mailto:support@hiredata.com). Voeg toe:
+
+- Een link of het ID van het event
+- De automatiseringsnaam
+- Het run-ID, als er een was aangemaakt
+- Het resultaat dat je verwachtte
+- De stap of voorwaarde waar het proces lijkt te stoppen
+- Het exacte annulerings- of foutbericht, als er een verschijnt

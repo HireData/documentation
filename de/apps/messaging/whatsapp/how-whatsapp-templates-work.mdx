@@ -81,15 +81,15 @@ So funktioniert dieser Prozess:
 
 ### Eine WhatsApp-Vorlage erstellen
 
-_Gehen Sie zu Ihrem WhatsApp Template Manager, indem Sie auf [Manage Templates] klicken:_
+_Gehen Sie zu Ihrem WhatsApp Template Manager, indem Sie auf \[Manage Templates\] klicken:_
 
 ![Manage Templates redirect button](/images/intercom/47451468-Screenshot-2025-03-28-at-05_32_22.png)
 
-_Klicken Sie auf [Create Template]:_
+_Klicken Sie auf \[Create Template\]:_
 
 ![Create a template button](/images/intercom/47455505-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Wählen Sie den Vorlagentyp, z. B. [Marketing] und dann [Custom]:_
+_Wählen Sie den Vorlagentyp, z. B. \[Marketing\] und dann \[Custom\]:_
 
 ![Selecting a template type](/images/intercom/47451710-Screenshot-2025-03-28-at-05_18_36.png)
 
@@ -111,7 +111,7 @@ _Verwenden Sie den Namen als Identifier für Ihre WhatsApp-Vorlage (nachher):_
 
 ### 2. Variablen zu Ihrer WhatsApp-Vorlage hinzufügen
 
-_Sie können dynamische Felder einfügen, indem Sie im Editor auf [+ Add variable] klicken:_
+_Sie können dynamische Felder einfügen, indem Sie im Editor auf \[\+ Add variable\] klicken:_
 
 ![Adding variables in the WhatsApp template](/images/intercom/47452641-var.png)
 
@@ -139,7 +139,7 @@ Buttons helfen Nutzern, direkt mit Ihrer Nachricht zu interagieren.
 
 ![Add a button](/images/intercom/47454516-buttons.png)
 
-_Wählen Sie den Button-Typ, z. B. [Custom]:_
+_Wählen Sie den Button-Typ, z. B. \[Custom\]:_
 
 ![Choosing a button type](/images/intercom/47454544-buttons1.png)
 
@@ -163,7 +163,7 @@ _Vorschau der WhatsApp-Vorlage mit ihren Buttons:_
 
 ### 4. WhatsApp-Vorlage einreichen
 
-_Sobald alles bereit ist, klicken Sie auf [Submit], um die Vorlage zur Genehmigung einzureichen, und warten Sie auf die Überprüfung der Vorlage:_
+_Sobald alles bereit ist, klicken Sie auf \[Submit\], um die Vorlage zur Genehmigung einzureichen, und warten Sie auf die Überprüfung der Vorlage:_
 
 ![Submitting a template for review](/images/intercom/47454980-submit.png)
 
@@ -173,9 +173,42 @@ _Hurra! Ihre WhatsApp-Vorlage ist verifiziert_
 
 ![Approved WhatsApp template](/images/intercom/47455086-submit2.png)
 
+### Wie lange dauert die Genehmigung einer Vorlage?
+
+Das Einreichen einer Vorlage startet zwei Schritte, in dieser Reihenfolge:
+
+1. **Kategorie-Validierung** – erfolgt sofort. Meta prüft die von Ihnen gewählte Kategorie (Marketing, Utility oder Authentication) gegen den Inhalt der Vorlage. Wenn Meta nicht zustimmt, wird die Vorlage sofort wegen falscher Kategorie abgelehnt, noch bevor eine Inhaltsprüfung stattfindet. Siehe [WhatsApp-Template-Kategorien in HireData](/apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata).
+2. **Vorlagenprüfung** – dies ist der Zustand **In review** (Pending). Meta prüft den Inhalt gegen seine Richtlinien und genehmigt ihn dann oder lehnt ihn ab.
+
+Die meisten Vorlagen schließen die Prüfung innerhalb weniger Minuten ab. Warten Sie bis zu **24 Stunden**, bevor Sie eine Vorlage im Status **In review** als hängengeblieben behandeln.
+
+| Status | Bedeutung | Können Sie damit senden? |
+| --- | --- | --- |
+| **In review** (Pending) | Kategorie-Validierung bestanden, Meta prüft den Inhalt. | Nein |
+| **Approved** | Prüfung bestanden. | Ja |
+| **Rejected** | Kategorie-Validierung oder Inhaltsprüfung fehlgeschlagen. Meta gibt einen Ablehnungsgrund an. | Nein |
+| **Paused** | Genehmigt, aber von Meta nach negativem Empfängerfeedback pausiert. | Nein, bis sie fortgesetzt wird |
+
+Meta teilt Ihnen das Ergebnis per E-Mail und mit einer Meldung im WhatsApp Manager mit, sodass Sie die Vorlagenliste nicht ständig aktualisieren müssen.
+
+<Note>
+  Das Bearbeiten einer Vorlage, die bereits **Approved** oder **Paused** ist, schickt sie zurück in die Prüfung, diese Änderungen werden jedoch üblicherweise fast sofort akzeptiert, es sei denn, die Änderung besteht die Prüfung nicht. Siehe [WhatsApp-Nachrichtenvorlagen bearbeiten in HireData](/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates).
+</Note>
+
+**Wenn eine Vorlage länger als 24 Stunden in Review ist**
+
+- Prüfen Sie Ihre E-Mails und die WhatsApp-Manager-Meldungen – das Ergebnis kann bereits gesendet worden sein.
+- Öffnen Sie die Vorlage in **Manage Templates** und bestätigen Sie deren aktuellen Status dort und nicht in HireData, das die Vorlage erst nach einer Synchronisation sieht.
+- Wenn sie abgelehnt wurde, korrigieren Sie den Inhalt gemäß den Meta-Richtlinien und reichen Sie erneut ein, oder erstellen Sie eine neue Vorlage.
+- Wenn sie in Review bleibt, kontaktieren Sie den Meta Business Support.
+
+<Warning>
+  Eine genehmigte Vorlage wird in HireData-Automatisierungen erst nach einer Synchronisation auswählbar. Wenn eine Vorlage im WhatsApp Manager als genehmigt angezeigt wird, aber in HireData nicht gefunden wird, führen Sie **Sync Account** wie unten beschrieben aus.
+</Warning>
+
 ### WhatsApp-Vorlagen mit HireData synchronisieren
 
-_Um Ihre neu erstellte Vorlage in HireData verfügbar zu machen, klicken Sie im Dropdown-Menü Ihres WhatsApp-Kontos in HireData auf [Sync Account]:_
+_Um Ihre neu erstellte Vorlage in HireData verfügbar zu machen, klicken Sie im Dropdown-Menü Ihres WhatsApp-Kontos in HireData auf \[Sync Account\]:_
 
 ![Sync Account button](/images/intercom/47448587-Screenshot-2025-03-28-at-05_55_39.png)
 
@@ -197,7 +230,7 @@ _Sie können Ihre neue WhatsApp-Vorlage nun in den WhatsApp-Aufgaben auswählen,
 
 ### Eine WhatsApp-Vorlage bearbeiten
 
-_Gehen Sie zu Ihrem WhatsApp Template Manager, indem Sie auf [Manage Templates] klicken:_
+_Gehen Sie zu Ihrem WhatsApp Template Manager, indem Sie auf \[Manage Templates\] klicken:_
 
 ![Manage Templates button in the drop-down menu](/images/intercom/47450181-Screenshot-2025-03-28-at-05_32_22.png)
 
@@ -205,7 +238,7 @@ _Klicken Sie auf eine Ihrer bestehenden Vorlagen:_
 
 ![Templates list in WhatsApp Manager](/images/intercom/47450224-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Klicken Sie auf [Edit Template], um zum Editor zu gelangen:_
+_Klicken Sie auf \[Edit Template\], um zum Editor zu gelangen:_
 
 ![Edit Template button in the WhatsApp Manager](/images/intercom/47450335-Screenshot-2025-03-28-at-05_14_41.png)
 
@@ -227,7 +260,7 @@ _Ihre aktualisierte WhatsApp-Vorlage zur Überprüfung einreichen (normalerweise
 
 ### Eine WhatsApp-Vorlage löschen
 
-_Klicken Sie oben rechts im Editor auf [Delete template]:_
+_Klicken Sie oben rechts im Editor auf \[Delete template\]:_
 
 ![Deleting a WhatsApp template](/images/intercom/47450936-Screenshot-2025-03-28-at-05_17_45.png)
 

@@ -1,0 +1,98 @@
+---
+sidebarTitle: "Webhook-Felder"
+description: "Erfahren Sie, welche Carerix-Felder und -Keys in HireData verfügbar sind, wo Sie eine Verbindung oder eine Event-Payload prüfen und wie Sie fehlende Daten beheben."
+keywords: ["Carerix Webhook-Felder", "Carerix-Payload", "Kandidatenfelder", "Carerix Field Keys", "Event-Daten"]
+title: "Carerix Webhook-Felder"
+---
+
+_Wenn Carerix ein Event an HireData sendet, enthält das Event die Felder, die für das entsprechende Objekt in Ihrer Carerix-Verbindung aktiviert sind. Diese Anleitung erklärt, welche Kandidatenfelder üblicherweise verfügbar sind, wo Sie deren Keys finden und wie Sie exakt bestätigen, was HireData für einen bestimmten Datensatz empfangen hat._
+
+## Wie Carerix-Felder zu HireData gelangen
+
+Jede Carerix-Verbindung hat ihren eigenen Satz aktivierter Felder. Das bedeutet, dass die in einem HireData-Konto verfügbaren Felder von denen in einem anderen Konto abweichen können, selbst wenn beide dasselbe Carerix-Objekt verwenden.
+
+Die **Object Definition** der Verbindung bestimmt, welche Felder für neue Events und Automatisierungen verfügbar sind. Der **Data**-Tab eines echten Events zeigt anschließend die Werte, die HireData für einen bestimmten Datensatz empfangen hat.
+
+<Note>
+  Verwenden Sie die untenstehende Feldtabelle als Orientierung für gängige Candidate-Felder. Ihre Verbindungseinstellungen und der **Data**-Tab des Events sind die maßgebliche Quelle für die in Ihrem Konto verfügbaren Felder.
+</Note>
+
+## Candidate-Felder auf einen Blick
+
+Das Standard-Candidate-Objekt enthält üblicherweise folgende Felder:
+
+| Feld | Key | Typischer Einsatz |
+| --- | --- | --- |
+| Id | `{{_id}}` | Den Carerix-Datensatz identifizieren |
+| First Name | `{{firstName}}` | Nachrichten und Updates personalisieren |
+| Last Name | `{{lastName}}` | Nachrichten und Updates personalisieren |
+| Email Address | `{{emailAddress}}` | Das primäre E-Mail-Feld verwenden |
+| Business Email Address | `{{businessEmailAddress}}` | Das geschäftliche E-Mail-Feld verwenden |
+| Private Email Address | `{{privateEmailAddress}}` | Das private E-Mail-Feld verwenden |
+| Primary Email Address | `{{primaryEmailAddress}}` | Das primäre E-Mail-Feld von Carerix verwenden |
+| Any Email Address | `{{anyEmailAddress}}` | Eine E-Mail-Adresse anhand der HireData-Fallback-Reihenfolge auswählen |
+
+Wenn eine Automatisierung nur eine nutzbare E-Mail-Adresse benötigt, kann **Any Email Address** zuverlässiger sein als die Auswahl eines konkreten E-Mail-Feldes. Die vollständige Fallback-Reihenfolge finden Sie unter [Kombinierte Felder erklärt](/apps/carerix/combined-fields-explained).
+
+## Felder in Ihrer Verbindung bestätigen
+
+Prüfen Sie die Carerix-Verbindung, wenn Sie wissen möchten, ob ein Feld aktiviert ist oder welchen Key HireData dafür verwendet.
+
+1. Gehen Sie zu **Settings** \> **Apps**.
+2. Öffnen Sie **Carerix**.
+3. Öffnen Sie das Drei-Punkte-Menü der relevanten Verbindung und wählen Sie **Edit**.
+4. Wählen Sie ein Objekt aus, etwa **Candidate**, **Contact**, **Meeting** oder **User**.
+5. Prüfen Sie die Tabelle **Object Definition**.
+
+Die Tabelle zeigt für jedes Feld das **Label**, den **Type** und den **Key**. Nur aktivierte Felder stehen neuen Events für dieses Objekt zur Verfügung.
+
+Wenn das benötigte Feld deaktiviert ist, siehe [Carerix-Felder und -Beziehungen aktivieren](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations), bevor Sie die Verbindung ändern.
+
+## Die exakte Event-Payload prüfen
+
+Verwenden Sie ein echtes Event, wenn Sie bestätigen möchten, welche Felder und Werte HireData für einen einzelnen Datensatz empfangen hat.
+
+1. Wählen Sie **Events** in der Hauptnavigation.
+2. Suchen und öffnen Sie das relevante Carerix-Event.
+3. Wählen Sie den Tab **Data**.
+4. Nutzen Sie die verfügbare Tabellen- oder Baumansicht, um die Felder zu erkunden.
+5. Wählen Sie die Code-Ansicht (`</>`), wenn Sie das rohe JSON prüfen oder einen exakten Key und Wert bestätigen müssen.
+
+Der Tab **Runs** des Events zeigt, welche Automatisierungen es verarbeitet haben. Das ist nützlich, wenn die Payload das erwartete Feld enthält, eine Automatisierung sich jedoch nicht wie beabsichtigt verhalten hat.
+
+Eine ausführlichere Erklärung der Event-Detailansicht finden Sie unter [Events](/settings/logs/events).
+
+## Den passenden Carerix-Trigger wählen
+
+Wenn Sie einen Carerix-**Start**-Block konfigurieren, kann die Trigger-Auswahl Folgendes enthalten:
+
+- **Created**
+- **Created or Updated**
+- **Updated**
+- **Schedule**
+- **Manual**
+
+Wählen Sie den Trigger, der zu dem Zeitpunkt passt, zu dem die Automatisierung starten soll. Verwenden Sie zum Beispiel **Created or Updated**, wenn dieselbe Automatisierung sowohl neue Datensätze als auch spätere Änderungen behandeln soll.
+
+**Deleted** wird derzeit nicht in der Trigger-Auswahl angeboten.
+
+## Ein fehlendes Feld beheben
+
+Wenn ein Feld in Carerix existiert, aber nicht in HireData erscheint:
+
+1. Prüfen Sie, dass Sie das korrekte Carerix-Objekt betrachten.
+2. Öffnen Sie die **Object Definition** der Verbindung und bestätigen Sie, dass das Feld aktiviert ist.
+3. Wenn das Feld kürzlich in Carerix erstellt oder geändert wurde, führen Sie eine [manuelle Synchronisation](/apps/carerix/manually-sync-carerix-with-hiredata) durch.
+4. Erstellen oder aktualisieren Sie einen Testdatensatz, um ein neues Event zu erzeugen.
+5. Prüfen Sie den **Data**-Tab und die Code-Ansicht des neuen Events.
+
+Das Aktivieren eines Feldes fügt es nicht zu Events hinzu, die HireData zuvor empfangen hat. Verwenden Sie beim Testen einer Verbindungsänderung ein neu erzeugtes Event.
+
+## Benötigen Sie weitere Hilfe?
+
+Wenn das Feld aktiviert ist, aber in neuen Events weiterhin fehlt, kontaktieren Sie [support@hiredata.com](mailto:support@hiredata.com). Geben Sie an:
+
+- Den Namen der Carerix-Verbindung und des Objekts
+- Das Label und den Key des Feldes
+- Einen Link oder die ID eines aktuellen Events
+- Das erwartete Ergebnis

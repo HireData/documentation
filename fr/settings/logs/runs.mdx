@@ -1,6 +1,7 @@
 ---
 title: "Exécutions"
 description: "Comprenez le fonctionnement des exécutions HireData, comment suivre leur statut et diagnostiquer les erreurs de vos automatisations en un coup d'œil."
+keywords: ["exécutions", "historique des automatisations", "exécution annulée", "Invalid sender email", "étape annulée", "dépannage des exécutions"]
 ---
 
 _Lorsqu'une automatisation est déclenchée par un événement provenant de votre app connectée, par ex. Carerix, Salesforce, etc., une exécution est créée. Cette exécution représente le processus complet qui suit, du déclencheur initial à chaque étape de votre automatisation. Dans cet article, nous verrons ce que sont les exécutions, comment les trouver et les lire, et comment elles peuvent vous aider à dépanner vos automatisations._
@@ -53,12 +54,16 @@ Cela ouvrira la vue détaillée de l'exécution, qui comprend :
 
 Cette vue détaillée vous permet également de voir exactement comment votre automatisation s'est déroulée et si chaque étape a réussi.
 
+Pour une étape **Send Email** annulée, ouvrez l'étape et lisez le message exact affiché dans **Overview**. Par exemple, le message peut être `Invalid sender email.`. Voir [Motifs d'annulation des exécutions](/knowledge-base/run-cancellation-reasons) pour les messages d'annulation courants et leurs solutions.
+
 ## Dépannage des exécutions
 
 Si quelque chose ne s'est pas passé comme prévu :
 
 - Ouvrez la vue détaillée de l'exécution pour consulter les journaux et voir si une étape a échoué ou a été ignorée.
 - Ouvrez l'onglet **Fields** pour confirmer que les données utilisées dans l'exécution répondaient à vos conditions. Vous pouvez également comparer l'exécution à l'événement d'origine (accessible via l'onglet **Related**) pour comprendre ce qui l'a déclenchée et confirmer qu'elle a utilisé les bonnes données.
+
+Pour une check-list de diagnostic plus large, voir [Pourquoi mon automatisation ne s'est-elle pas exécutée ?](/knowledge-base/why-didnt-my-automation-run).
 
 ## Besoin d'aide supplémentaire ?
 

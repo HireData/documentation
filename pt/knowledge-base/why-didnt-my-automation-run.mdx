@@ -1,20 +1,100 @@
 ---
 title: "Porque é que a minha automação não correu?"
 sidebarTitle: "Automação não correu"
-description: "Checklist de diagnóstico para automações da HireData que não correram: verifique o evento, os filtros, os runs e os logs para encontrar a causa raiz."
+description: "Diagnostique porque é que uma automação da HireData não correu com esta checklist de troubleshooting, cobrindo entrega de events, filtros, condições e como ler os logs de runs."
+keywords: ["automação não correu", "automação não arrancou", "trigger não funciona", "event não processado", "automação parou", "automação não funciona"]
 ---
 
+_Quando uma automação não corre como esperado, o histórico de events e de runs pode mostrar exatamente onde o processo parou. Este guia orienta-o pelas verificações por ordem, desde confirmar que a HireData recebeu o event até inspecionar um passo individual da automação e testar em segurança a sua correção._
+
+## Comece por identificar onde o processo parou
+
+Antes de alterar a automação, verifique até onde o event progrediu. Isto ajuda-o a focar-se nas definições relevantes.
+
+| O que encontra | O que normalmente indica | Comece por |
+| --- | --- | --- |
+| Nenhum event correspondente | A HireData pode não ter recebido a alteração da app de origem. | A ligação da app e o registo de origem |
+| Existe um event, mas não foi criado nenhum run | A automação pode estar inativa ou a sua configuração de Start não coincidiu. | O estado da automação, o trigger e as condições |
+| Existe um run, mas um passo parou ou foi cancelado | A automação arrancou, mas um passo individual não conseguiu continuar. | A timeline do run e os detalhes do passo |
+
+## 1. Confirme que a HireData recebeu o event
+
+Cada automação baseada em events começa com informação recebida de uma app ligada. Se o event esperado não estiver na HireData, a automação não tem nada para processar.
+
+1. Selecione **Events** na navegação principal.
+2. Pesquise o candidato, contacto ou event que esperava que iniciasse a automação.
+3. Abra o event.
+4. Verifique o separador **Data** para confirmar que os campos e valores esperados estão presentes.
+5. Utilize a vista de código (`</>`) quando precisar de inspecionar o JSON em bruto ou confirmar o nome exato de um campo.
+
+Se não conseguir encontrar o event, verifique se a alteração foi guardada na app de origem e se a respetiva ligação à HireData está a funcionar. Para problemas de ligação do Carerix, consulte [Porque é que o meu Carerix não está a sincronizar com a HireData?](/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata).
+
+Para mais informação sobre a vista de detalhe do event, consulte [Events](/settings/logs/events).
+
+## 2. Verifique se a automação está ativa
+
+Uma automação inativa não cria novos runs quando chegam events correspondentes.
+
+Abra a automação e olhe para a ação no canto superior direito:
+
+- **Pause** significa que a automação está atualmente ativa.
+- **Activate** significa que a automação está atualmente inativa. Selecione **Activate** quando estiver pronto para novos events entrarem nela.
+
 <Note>
-  Este artigo é um marcador de posição. O conteúdo abaixo descreve aquilo que irá abranger.
+  Ativar uma automação não processa automaticamente os events que chegaram enquanto estava inativa. Depois de verificar o resto da configuração, pode reproduzir cuidadosamente um event anterior.
 </Note>
 
-{/* TODO(docs-reorg): symptom-first diagnosis flow:
-   1. Did the event arrive? (Events page)
-   2. Is the automation active?
-   3. Did the event pass the start filters?
-   4. Was a run created and what is its status? (Runs, safety limits, delays)
-   5. Replaying the event once fixed
-   Cross-link: /settings/logs/events (replay section), /settings/logs/runs,
-   /settings/automation-safety-limits, /automations/how-to-test-an-automation */}
+## 3. Compare o event com a configuração de Start
 
-Enquanto esta página está a ser escrita, consulte [Events](/pt/settings/logs/events) para saber como inspecionar e reproduzir eventos.
+Se o event existe mas não foi criado nenhum run, compare o event com o bloco **Start** da automação. A app, o trigger e as condições têm de corresponder ao event recebido.
+
+Verifique se existe:
+
+- Uma app ou objeto diferente daquele que produziu o event
+- Um trigger diferente, como **Created** em vez de **Updated**
+- Um campo obrigatório em falta no event
+- Um valor de campo que não satisfaz uma das condições de Start
+- Um campo cujo nome, tipo ou formato tenha mudado na app de origem
+
+Utilize o separador **Data** do event enquanto revê o bloco de Start para poder comparar os valores reais em vez dos valores atuais do registo de origem.
+
+Se alterar a configuração de Start, guarde a automação antes de a testar novamente.
+
+## 4. Inspecione o run e os seus passos
+
+Se existe um run, a automação arrancou. A timeline do run mostra como o event percorreu a automação e onde parou.
+
+1. Selecione **Runs** na navegação principal.
+2. Encontre o run em causa e selecione a sua linha.
+3. Selecione o passo que parou, falhou ou foi cancelado.
+4. Reveja os separadores **Overview**, **Fields** e **Related** do passo.
+
+O separador **Overview** pode conter o resultado ou a mensagem de cancelamento. **Fields** mostra os valores utilizados ou produzidos pelo passo, enquanto **Related** liga o run à automação e ao event.
+
+Para explicações de mensagens de cancelamento comuns, consulte [Motivos de cancelamento de runs](/knowledge-base/run-cancellation-reasons). Para mais informação sobre como ler um run, consulte [Runs](/settings/logs/runs).
+
+## 5. Teste a correção
+
+Depois de encontrar e corrigir a causa, teste a automação novamente.
+
+Um novo event é a opção mais segura porque cria um run novo sem repetir ações do anterior. Se não for prático criar um novo event, pode reproduzir o event original:
+
+1. Volte ao event.
+2. Abra o seu separador **Runs** e reveja o que já foi concluído.
+3. Selecione **Replay**.
+4. Abra o novo run e confirme que segue o caminho esperado.
+
+<Warning>
+  Reproduzir pode repetir emails, mensagens, atualizações de registos, tarefas e outras ações que foram concluídas durante o run anterior. Reveja todos os runs relacionados antes de confirmar um replay.
+</Warning>
+
+## Precisa de mais ajuda?
+
+Se a automação continuar a não correr como esperado, contacte [support@hiredata.com](mailto:support@hiredata.com). Inclua:
+
+- Um link ou o ID do event
+- O nome da automação
+- O ID do run, se algum tiver sido criado
+- O resultado que esperava
+- O passo ou condição onde o processo parece parar
+- A mensagem exata de cancelamento ou erro, se alguma aparecer
