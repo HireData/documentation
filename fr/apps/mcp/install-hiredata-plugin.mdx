@@ -16,15 +16,15 @@ Le plugin HireData est le moyen le plus rapide d'obtenir les [neuf skills HireDa
 
 Le plugin inclut neuf skills — consultez [Les skills HireData pour votre assistant IA](/apps/mcp/hiredata-skills) pour découvrir ce que fait chacune d'elles et des exemples de prompts :
 
-- [**Plan an activation**](/apps/mcp/hiredata-skills#plan-an-activation) — relier les problèmes des clients à des workflows HireData à fort impact et à des résultats mesurables.
-- [**Create triggers**](/apps/mcp/hiredata-skills#create-triggers) — choisir le bon événement, le bon timing, les bons filtres et les bonnes relations avant de créer un trigger.
-- [**Create forms**](/apps/mcp/hiredata-skills#create-forms) — concevoir des formulaires concis avec validation, branchement et une étape suivante claire.
-- [**Create email templates**](/apps/mcp/hiredata-skills#create-email-templates) — utiliser des variables, des modificateurs et des variables IA bornées en toute sécurité.
-- [**Create WhatsApp templates**](/apps/mcp/hiredata-skills#create-whatsapp-templates) — concevoir des modèles concis et contextuels avec un raisonnement de catégorie approprié et des parcours de suivi.
-- [**Diagnose automations**](/apps/mcp/hiredata-skills#diagnose-automations) — comprendre pourquoi un workflow n'a pas démarré, envoyé ou abouti comme prévu, et obtenir une correction avec sa contrepartie.
-- [**Diagnose email performance**](/apps/mcp/hiredata-skills#diagnose-email-performance) — expliquer une baisse des ouvertures, des clics ou de la délivrabilité, et savoir quoi faire.
-- [**Write issue reports**](/apps/mcp/write-better-hiredata-issue-reports-with-ai) — rédiger et affiner des issues Linear HireData avec les sources internes ou partenaires auxquelles l'utilisateur a accès.
-- [**Apply staffing lifecycle knowledge**](/apps/mcp/hiredata-skills#apply-staffing-lifecycle-knowledge) — lire correctement les demandes de recrutement : une personne, une candidature et un placement ne sont pas la même chose.
+- [**Planifier une activation**](/apps/mcp/hiredata-skills#planifier-une-activation) — relier les problèmes des clients à des workflows HireData à fort impact et à des résultats mesurables.
+- [**Créer des triggers**](/apps/mcp/hiredata-skills#créer-des-triggers) — choisir le bon événement, le bon timing, les bons filtres et les bonnes relations avant de créer un trigger.
+- [**Créer des formulaires**](/apps/mcp/hiredata-skills#créer-des-formulaires) — concevoir des formulaires concis avec validation, branchement et une étape suivante claire.
+- [**Créer des modèles d'e-mail**](/apps/mcp/hiredata-skills#créer-des-modèles-de-mail) — utiliser des variables, des modificateurs et des variables IA bornées en toute sécurité.
+- [**Créer des modèles WhatsApp**](/apps/mcp/hiredata-skills#créer-des-modèles-whatsapp) — concevoir des modèles concis et contextuels avec un raisonnement de catégorie approprié et des parcours de suivi.
+- [**Diagnostiquer les automatisations**](/apps/mcp/hiredata-skills#diagnostiquer-les-automatisations) — comprendre pourquoi un workflow n'a pas démarré, envoyé ou abouti comme prévu, et obtenir une correction avec sa contrepartie.
+- [**Diagnostiquer la performance des e-mails**](/apps/mcp/hiredata-skills#diagnostiquer-la-performance-des-e-mails) — expliquer une baisse des ouvertures, des clics ou de la délivrabilité, et savoir quoi faire.
+- [**Rédiger des issue reports**](/apps/mcp/write-better-hiredata-issue-reports-with-ai) — rédiger et affiner des issues Linear HireData avec les sources internes ou partenaires auxquelles l'utilisateur a accès.
+- [**Appliquer la connaissance du cycle de vie du staffing**](/apps/mcp/hiredata-skills#appliquer-la-connaissance-du-cycle-de-vie-du-staffing) — lire correctement les demandes de recrutement : une personne, une candidature et un placement ne sont pas la même chose.
 
 Le plugin configure également la connexion MCP HireData distante existante à `https://api.hiredata.com/mcp`. Il n'intègre ni ne déploie de serveur MCP séparé.
 
@@ -69,7 +69,7 @@ Les commandes `codex plugin` et `/plugin` ci-dessous sont des commandes CLI. Ell
     L'assistant ne reçoit que l'accès aux workspaces que vous sélectionnez et fonctionne avec vos permissions HireData existantes. Consultez [comment fonctionnent l'accès et la sécurité HireData](/apps/mcp/connect-hiredata-to-your-ai-assistant#how-access-and-security-work).
   </Step>
   <Step title="Démarrer une nouvelle conversation">
-    Les skills et outils installés se chargent lorsque vous démarrez une nouvelle conversation. Ils n'apparaissent pas rétroactivement dans une conversation existante. Ensuite, [vérifiez que tout fonctionne](#verify-it-works).
+    Les skills et outils installés se chargent lorsque vous démarrez une nouvelle conversation. Ils n'apparaissent pas rétroactivement dans une conversation existante. Ensuite, [vérifiez que tout fonctionne](#vérifier-que-tout-fonctionne).
   </Step>
 </Steps>
 
@@ -113,7 +113,7 @@ Les commandes `codex plugin` et `/plugin` ci-dessous sont des commandes CLI. Ell
     codex plugin list --marketplace hiredata-skills
     ```
 
-    Ensuite, [vérifiez que tout fonctionne](#verify-it-works) dans une nouvelle session.
+    Ensuite, [vérifiez que tout fonctionne](#vérifier-que-tout-fonctionne) dans une nouvelle session.
   </Step>
 </Steps>
 
@@ -146,7 +146,7 @@ L'installation du plugin configure également la connexion MCP HireData, aucune 
     Claude ne reçoit que l'accès aux workspaces que vous sélectionnez et fonctionne avec vos permissions HireData existantes. Consultez [comment fonctionnent l'accès et la sécurité HireData](/apps/mcp/connect-hiredata-to-your-ai-assistant#how-access-and-security-work).
   </Step>
   <Step title="Démarrer une nouvelle conversation">
-    Les skills et outils installés se chargent lorsque vous démarrez une nouvelle conversation. Ils n'apparaissent pas rétroactivement dans une conversation existante. Ensuite, [vérifiez que tout fonctionne](#verify-it-works).
+    Les skills et outils installés se chargent lorsque vous démarrez une nouvelle conversation. Ils n'apparaissent pas rétroactivement dans une conversation existante. Ensuite, [vérifiez que tout fonctionne](#vérifier-que-tout-fonctionne).
   </Step>
 </Steps>
 

@@ -16,15 +16,15 @@ Das HireData-Plugin ist der schnellste Weg, um die [neun Skills von HireData](/a
 
 Das Plugin enthält neun Skills – siehe [HireData-Skills für deinen KI-Assistenten](/apps/mcp/hiredata-skills) für Details zu jedem Skill und Beispiel-Prompts:
 
-- [**Plan an activation**](/apps/mcp/hiredata-skills#plan-an-activation) – Kundenprobleme mit wirkungsvollen HireData-Workflows und messbaren Ergebnissen verknüpfen.
-- [**Create triggers**](/apps/mcp/hiredata-skills#create-triggers) – das richtige Ereignis, den passenden Zeitpunkt, Filter und Beziehungen wählen, bevor ein Trigger erstellt wird.
-- [**Create forms**](/apps/mcp/hiredata-skills#create-forms) – prägnante Formulare mit Validierung, Verzweigung und einem klaren nächsten Schritt gestalten.
-- [**Create email templates**](/apps/mcp/hiredata-skills#create-email-templates) – Variablen, Modifikatoren und begrenzte KI-Variablen sicher einsetzen.
-- [**Create WhatsApp templates**](/apps/mcp/hiredata-skills#create-whatsapp-templates) – prägnante, kontextbezogene Vorlagen entwerfen, mit passender Begründung der Kategorie und Folgepfaden.
-- [**Diagnose automations**](/apps/mcp/hiredata-skills#diagnose-automations) – herausfinden, warum ein Workflow nicht wie erwartet lief, sendete oder endete, samt Korrektur und deren Abwägung.
-- [**Diagnose email performance**](/apps/mcp/hiredata-skills#diagnose-email-performance) – einen Rückgang bei Öffnungen, Klicks oder Zustellbarkeit erklären und wissen, was dagegen hilft.
-- [**Write issue reports**](/apps/mcp/write-better-hiredata-issue-reports-with-ai) – HireData-Linear-Issues mit den internen oder Partner-Quellen erstellen und verfeinern, auf die der Nutzer Zugriff hat.
-- [**Apply staffing lifecycle knowledge**](/apps/mcp/hiredata-skills#apply-staffing-lifecycle-knowledge) – Recruiting-Anfragen richtig lesen: Person, Bewerbung und Einsatz sind nicht dasselbe.
+- [**Aktivierung planen**](/apps/mcp/hiredata-skills#aktivierung-planen) – Kundenprobleme mit wirkungsvollen HireData-Workflows und messbaren Ergebnissen verknüpfen.
+- [**Trigger erstellen**](/apps/mcp/hiredata-skills#trigger-erstellen) – das richtige Ereignis, den passenden Zeitpunkt, Filter und Beziehungen wählen, bevor ein Trigger erstellt wird.
+- [**Formulare erstellen**](/apps/mcp/hiredata-skills#formulare-erstellen) – prägnante Formulare mit Validierung, Verzweigung und einem klaren nächsten Schritt gestalten.
+- [**E-Mail-Vorlagen erstellen**](/apps/mcp/hiredata-skills#e-mail-vorlagen-erstellen) – Variablen, Modifikatoren und begrenzte KI-Variablen sicher einsetzen.
+- [**WhatsApp-Vorlagen erstellen**](/apps/mcp/hiredata-skills#whatsapp-vorlagen-erstellen) – prägnante, kontextbezogene Vorlagen entwerfen, mit passender Begründung der Kategorie und Folgepfaden.
+- [**Automatisierungen diagnostizieren**](/apps/mcp/hiredata-skills#automatisierungen-diagnostizieren) – herausfinden, warum ein Workflow nicht wie erwartet lief, sendete oder endete, samt Korrektur und deren Abwägung.
+- [**E-Mail-Performance diagnostizieren**](/apps/mcp/hiredata-skills#e-mail-performance-diagnostizieren) – einen Rückgang bei Öffnungen, Klicks oder Zustellbarkeit erklären und wissen, was dagegen hilft.
+- [**Issue-Reports schreiben**](/apps/mcp/write-better-hiredata-issue-reports-with-ai) – HireData-Linear-Issues mit den internen oder Partner-Quellen erstellen und verfeinern, auf die der Nutzer Zugriff hat.
+- [**Personaldienstleistungs-Lifecycle-Wissen anwenden**](/apps/mcp/hiredata-skills#personaldienstleistungs-lifecycle-wissen-anwenden) – Recruiting-Anfragen richtig lesen: Person, Bewerbung und Einsatz sind nicht dasselbe.
 
 Das Plugin konfiguriert außerdem die bestehende Remote-Verbindung zum HireData MCP unter `https://api.hiredata.com/mcp`. Es bündelt oder deployt keinen separaten MCP-Server.
 
@@ -69,7 +69,7 @@ Die weiter unten gezeigten Befehle `codex plugin` und `/plugin` sind CLI-Befehle
     Der Assistent erhält nur den Workspace-Zugriff, den du auswählst, und arbeitet mit deinen bestehenden HireData-Berechtigungen. Siehe [wie Zugriff und Sicherheit bei HireData funktionieren](/apps/mcp/connect-hiredata-to-your-ai-assistant#how-access-and-security-work).
   </Step>
   <Step title="Neue Konversation starten">
-    Installierte Skills und Tools werden geladen, sobald du eine neue Konversation startest. In einer bestehenden Konversation erscheinen sie nicht nachträglich. Anschließend [prüfe, dass es funktioniert](#verify-it-works).
+    Installierte Skills und Tools werden geladen, sobald du eine neue Konversation startest. In einer bestehenden Konversation erscheinen sie nicht nachträglich. Anschließend [prüfe, dass es funktioniert](#prüfen-ob-es-funktioniert).
   </Step>
 </Steps>
 
@@ -113,7 +113,7 @@ Die weiter unten gezeigten Befehle `codex plugin` und `/plugin` sind CLI-Befehle
     codex plugin list --marketplace hiredata-skills
     ```
 
-    Anschließend [prüfe in einer neuen Sitzung, dass es funktioniert](#verify-it-works).
+    Anschließend [prüfe in einer neuen Sitzung, dass es funktioniert](#prüfen-ob-es-funktioniert).
   </Step>
 </Steps>
 
@@ -146,7 +146,7 @@ Bei der Installation des Plugins wird gleichzeitig die HireData-MCP-Verbindung k
     Claude erhält nur den Workspace-Zugriff, den du auswählst, und arbeitet mit deinen bestehenden HireData-Berechtigungen. Siehe [wie Zugriff und Sicherheit bei HireData funktionieren](/apps/mcp/connect-hiredata-to-your-ai-assistant#how-access-and-security-work).
   </Step>
   <Step title="Neue Konversation starten">
-    Installierte Skills und Tools werden geladen, sobald du eine neue Konversation startest. In einer bestehenden Konversation erscheinen sie nicht nachträglich. Anschließend [prüfe, dass es funktioniert](#verify-it-works).
+    Installierte Skills und Tools werden geladen, sobald du eine neue Konversation startest. In einer bestehenden Konversation erscheinen sie nicht nachträglich. Anschließend [prüfe, dass es funktioniert](#prüfen-ob-es-funktioniert).
   </Step>
 </Steps>
 
@@ -179,7 +179,7 @@ Owner können das Plugin über den Organisationskatalog verteilen, sodass nicht 
   </Step>
 </Steps>
 
-## Verify it works
+## Prüfen, ob es funktioniert
 
 Starte eine neue Konversation und probiere eine dieser Anfragen aus:
 
