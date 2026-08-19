@@ -1,12 +1,12 @@
 ---
 title: "Installeer de HireData-plugin"
 sidebarTitle: "Installeer de plugin"
-description: "Installeer de HireData-plugin in ChatGPT, Codex of Claude om zes recruitment- en issue-reporting-skills plus de MCP-verbinding in één stap toe te voegen aan je AI-assistent."
+description: "Installeer de HireData-plugin in ChatGPT, Codex of Claude om de negen recruitment-, diagnose- en issue-skills en de MCP-verbinding in één stap aan je AI-assistent toe te voegen."
 keywords: ["HireData skills", "HireData plugin", "HireData skills installeren", "Codex plugin", "ChatGPT plugin", "Claude plugin", "Claude Code", "AI recruitment skills", "MCP"]
 related: ["/apps/mcp/hiredata-skills", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
-De HireData-plugin is de snelste manier om [HireData's zes skills](/apps/mcp/hiredata-skills) in ChatGPT, Codex of Claude te krijgen, samen met HireData's officiële MCP-verbinding. De skills bestrijken activatieplanning, triggers, formulieren, e-mailtemplates, WhatsApp-templates en actiegerichte issue reports. Ze geven je assistent de werkwijze achter HireData's tools.
+De HireData-plugin is de snelste manier om [HireData's negen skills](/apps/mcp/hiredata-skills) — een activatie plannen, triggers, formulieren, e-mailtemplates en WhatsApp-templates aanmaken, automatiseringen en e-mailprestaties diagnosticeren, staffingkennis toepassen en heldere Linear-issues schrijven — in ChatGPT, Codex of Claude te krijgen, samen met HireData's officiële MCP-verbinding. De skills leren je assistent hoe hij HireData-automatiseringen kan plannen, aanmaken, testen en verbeteren, in plaats van dat hij tools krijgt zonder de bijbehorende werkwijze.
 
 <Note>
   De plugin is momenteel beschikbaar als early-access installatie vanuit HireData's publieke GitHub-marketplace. Hij verschijnt nog niet in OpenAI's universele Plugins Directory. In elke assistent voeg je eerst HireData's marketplace toe en installeer je de plugin daaruit — via **Settings** \> **Plugins** in de ChatGPT- en Claude-desktop-apps, of met commando's in de Codex CLI en Claude Code. Voor Gemini of een alleen-MCP-verbinding, [verbind HireData met je AI-assistent](/apps/mcp/connect-hiredata-to-your-ai-assistant).
@@ -14,21 +14,24 @@ De HireData-plugin is de snelste manier om [HireData's zes skills](/apps/mcp/hir
 
 ## Wat de plugin toevoegt
 
-De plugin bevat zes skills — zie [HireData-skills voor je AI-assistent](/apps/mcp/hiredata-skills) voor wat elke skill doet en voorbeeldprompts:
+De plugin bevat negen skills — zie [HireData-skills voor je AI-assistent](/apps/mcp/hiredata-skills) voor wat elke skill doet en voorbeeldprompts:
 
-- [**Plan an activation**](/apps/mcp/hiredata-skills#plan-an-activation) — koppel klantproblemen aan impactvolle HireData-workflows en meetbare resultaten.
-- [**Create triggers**](/apps/mcp/hiredata-skills#create-triggers) — kies de juiste gebeurtenis, timing, filters en relaties voordat je een trigger aanmaakt.
-- [**Create forms**](/apps/mcp/hiredata-skills#create-forms) — ontwerp beknopte formulieren met validatie, branching en een duidelijke vervolgstap.
-- [**Create email templates**](/apps/mcp/hiredata-skills#create-email-templates) — gebruik variabelen, modifiers en begrensde AI-variabelen op een veilige manier.
-- [**Create WhatsApp templates**](/apps/mcp/hiredata-skills#create-whatsapp-templates) — ontwerp beknopte, contextuele templates met passende categorie-onderbouwing en vervolgpaden.
-- [**Write issue reports**](/apps/mcp/write-better-hiredata-issue-reports-with-ai) — zet bewijs, verzoeken en prototypes om in heldere rapporten voor HireData zonder interne metadata of implementatiedetails te verzinnen.
+- [**Plan een activatie**](/apps/mcp/hiredata-skills#plan-een-activatie) — koppel klantproblemen aan impactvolle HireData-workflows en meetbare resultaten.
+- [**Triggers aanmaken**](/apps/mcp/hiredata-skills#triggers-aanmaken) — kies de juiste gebeurtenis, timing, filters en relaties voordat je een trigger aanmaakt.
+- [**Formulieren aanmaken**](/apps/mcp/hiredata-skills#formulieren-aanmaken) — ontwerp beknopte formulieren met validatie, branching en een duidelijke vervolgstap.
+- [**E-mailtemplates aanmaken**](/apps/mcp/hiredata-skills#e-mailtemplates-aanmaken) — gebruik variabelen, modifiers en begrensde AI-variabelen op een veilige manier.
+- [**WhatsApp-templates aanmaken**](/apps/mcp/hiredata-skills#whatsapp-templates-aanmaken) — ontwerp beknopte, contextuele templates met passende categorie-onderbouwing en vervolgpaden.
+- [**Automatiseringen diagnosticeren**](/apps/mcp/hiredata-skills#automatiseringen-diagnosticeren) — zoek uit waarom een workflow niet liep, verzond of afrondde zoals verwacht, en krijg een oplossing met de afweging erbij.
+- [**E-mailprestaties diagnosticeren**](/apps/mcp/hiredata-skills#e-mailprestaties-diagnosticeren) — verklaar een daling in opens, kliks of afleverbaarheid, en wat je eraan doet.
+- [**Issue reports schrijven**](/apps/mcp/write-better-hiredata-issue-reports-with-ai) — stel HireData Linear-issues op en scherp ze aan met de interne of partnerbronnen waar de gebruiker toegang toe heeft.
+- [**Staffing-lifecyclekennis toepassen**](/apps/mcp/hiredata-skills#staffing-lifecyclekennis-toepassen) — lees recruitmentvragen goed: een persoon, een sollicitatie en een plaatsing zijn niet hetzelfde.
 
 De plugin configureert ook de bestaande externe HireData MCP-verbinding op `https://api.hiredata.com/mcp`. Hij bundelt of installeert geen aparte MCP-server.
 
 | Installatie | Wat je krijgt | Wanneer gebruiken |
 | --- | --- | --- |
-| HireData-plugin | Zes HireData-skills en de MCP-verbinding | Je gebruikt ChatGPT desktop, Codex of Claude en wilt zowel HireData-kennis als tools |
-| Alleen MCP | Live HireData-tools zonder de zes skills | Je gebruikt Gemini, ChatGPT op het web, een andere MCP-client, of hebt alleen toegang tot tools nodig |
+| HireData-plugin | Negen HireData-skills en de MCP-verbinding | Je gebruikt ChatGPT desktop, Codex of Claude en wilt zowel HireData-kennis als tools |
+| Alleen MCP | Live HireData-tools zonder de negen skills | Je gebruikt Gemini, ChatGPT op het web, een andere MCP-client, of hebt alleen toegang tot tools nodig |
 
 ## Voordat je begint
 
@@ -183,7 +186,8 @@ Start een nieuw gesprek en probeer een van deze verzoeken:
 - "Gebruik HireData om onze bestaande templates te bekijken en de meest impactvolle ontbrekende workflow te rangschikken. Maak nog niets aan."
 - "Gebruik HireData om een sollicitatiebevestigingsmail te ontwerpen die een AI-variabele veilig gebruikt. Toon me een preview en verstuur hem niet."
 - "Gebruik HireData om een formulier voor kandidaatbeschikbaarheid aan te maken. Toon me het formulier en de branching-logica voordat je het aanmaakt."
-- "Gebruik HireData om deze reproductiestappen en screenshots om te zetten in een issue report. Alleen als concept."
+- "Gebruik HireData om uit te zoeken waarom deze kandidaat onze welkomstmail nooit heeft ontvangen."
+- "Gebruik HireData om deze reproductiestappen en screenshots om te zetten in een issue report. Alleen een concept."
 
 Als je assistent je op dit moment vraagt om in te loggen bij HireData, is dat de bedoeling — de verbinding autoriseert bij het eerste gebruik.
 
@@ -196,10 +200,10 @@ Kun je de plugin niet installeren — omdat je assistent geen plugin-ondersteuni
 Kopieer deze prompt in een Claude-gesprek dat bestanden kan aanmaken (bijvoorbeeld een Cowork-sessie):
 
 ```text
-Download the six HireData skills from https://github.com/HireData/skills
+Download the nine HireData skills from https://github.com/HireData/skills
 (they are in plugins/hiredata/skills). Package each skill as a separate
 .skill file — a ZIP with that skill's SKILL.md and references folder at
-its root — and send me the six files so I can save them as skills on my
+its root — and send me the nine files so I can save them as skills on my
 account.
 ```
 
@@ -215,7 +219,7 @@ follow the workflow it describes (fetch the files it references too), and
 help me with: [your goal]
 ```
 
-Dit werkt in ChatGPT, Gemini, Microsoft Copilot of elke assistent die openbare webpagina's kan lezen, en past goed bij de [handmatige MCP-verbinding](/apps/mcp/connect-hiredata-to-your-ai-assistant). De zes mapnamen zijn `hiredata-plan-activation`, `hiredata-create-triggers`, `hiredata-create-forms`, `hiredata-create-email-templates`, `hiredata-create-whatsapp-templates` en `hiredata-create-linear-issues`.
+Dit werkt in ChatGPT, Gemini, Microsoft Copilot of elke assistent die openbare webpagina's kan lezen, en past goed bij de [handmatige MCP-verbinding](/apps/mcp/connect-hiredata-to-your-ai-assistant). De negen mapnamen zijn `hiredata-plan-activation`, `hiredata-create-triggers`, `hiredata-create-forms`, `hiredata-create-email-templates`, `hiredata-create-whatsapp-templates`, `hiredata-diagnose-automations`, `hiredata-diagnose-email-performance`, `hiredata-map-staffing-lifecycle` en `hiredata-create-linear-issues`.
 
 ## De plugin bijwerken
 

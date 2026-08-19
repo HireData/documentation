@@ -1,23 +1,28 @@
 ---
 title: "HireData-skills voor je AI-assistent"
 sidebarTitle: "Skills"
-description: "Overzicht van de zes HireData-skills die ChatGPT, Codex en Claude begeleiden bij het plannen van activaties, het aanmaken van workflows en het schrijven van actiegerichte issue reports."
-keywords: ["HireData skills", "AI-skills", "activatie plannen", "triggers aanmaken", "formulieren aanmaken", "AI e-mailtemplates", "AI WhatsApp-templates", "AI issue reports", "HireData plugin", "MCP"]
+description: "Hoe de negen HireData-skills ChatGPT, Codex en Claude begeleiden bij het plannen van activaties, bouwen van workflows, diagnosticeren van problemen en schrijven van heldere issue reports."
+keywords: ["HireData skills", "AI-skills", "activatie plannen", "triggers aanmaken", "formulieren aanmaken", "AI e-mailtemplates", "AI WhatsApp-templates", "automatiseringen diagnosticeren", "e-mail afleverbaarheid", "HireData plugin", "MCP"]
 related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
 De [HireData MCP-verbinding](/apps/mcp/connect-hiredata-to-your-ai-assistant) geeft je AI-assistent de tools van HireData. Skills geven daar de werkwijze bij: hoe een ervaren HireData-consultant de taak zou aanpakken, wat hij eerst in je workspace zou controleren, en wanneer hij zou stoppen om je een preview te tonen in plaats van iets aan te maken waar je niet om vroeg.
 
-HireData publiceert op dit moment zes skills. Elke skill verzamelt de beschikbare context, toont je een volledig concept of preview en maakt of wijzigt pas iets nadat je die exacte actie hebt goedgekeurd. Nieuwe triggers blijven inactief, formulieren blijven als concept staan waar concepten worden ondersteund, en er wordt niets verzonden of geactiveerd als neveneffect.
+HireData publiceert op dit moment negen skills: één die plant, vier die bouwen, twee die diagnosticeren, één die issue reports schrijft en één die de staffingkennis levert waarop de rest leunt.
+
+De skills die iets bouwen volgen hetzelfde contract: de assistent verzamelt context, inspecteert je workspace via de MCP-verbinding, toont je een volledige preview en maakt of wijzigt pas iets nadat je die exacte preview hebt goedgekeurd. Nieuwe triggers blijven inactief, formulieren blijven als concept staan waar concepten worden ondersteund, en er wordt niets verzonden of geactiveerd als neveneffect. De skills die diagnosticeren lezen je workspacedata, leggen uit wat er werkelijk is gebeurd en stellen een oplossing voor — ze voeren die nooit zelf uit.
 
 | Skill | Gebruik hem wanneer je wilt |
 | --- | --- |
-| [Plan an activation](#plan-an-activation) | Een recruitmentprobleem omzetten in een geprioriteerd, onderbouwd automatiseringsplan |
-| [Create triggers](#create-triggers) | Een automatisering op het juiste moment starten, met de juiste filters en doelgroep |
-| [Create forms](#create-forms) | Een beslissing of signaal vastleggen met het kortst mogelijke formulier |
-| [Create email templates](#create-email-templates) | E-mails schrijven met veilige variabelen, modifiers en begrensde AI-variabelen |
-| [Create WhatsApp templates](#create-whatsapp-templates) | Bondige WhatsApp-berichten ontwerpen die Meta's template-review doorstaan |
-| [Write issue reports](#write-issue-reports) | Bewijs en verzoeken omzetten in heldere, actiegerichte rapporten voor HireData |
+| [Plan een activatie](#plan-een-activatie) | Een recruitmentprobleem omzetten in een geprioriteerd, onderbouwd automatiseringsplan |
+| [Triggers aanmaken](#triggers-aanmaken) | Een automatisering op het juiste moment starten, met de juiste filters en doelgroep |
+| [Formulieren aanmaken](#formulieren-aanmaken) | Een beslissing of signaal vastleggen met het kortst mogelijke formulier |
+| [E-mailtemplates aanmaken](#e-mailtemplates-aanmaken) | E-mails schrijven met veilige variabelen, modifiers en begrensde AI-variabelen |
+| [WhatsApp-templates aanmaken](#whatsapp-templates-aanmaken) | Bondige WhatsApp-berichten ontwerpen die Meta's template-review doorstaan |
+| [Automatiseringen diagnosticeren](#automatiseringen-diagnosticeren) | Uitzoeken waarom een workflow niet deed wat je verwachtte, en wat je moet aanpassen |
+| [E-mailprestaties diagnosticeren](#e-mailprestaties-diagnosticeren) | Een daling in opens, kliks of afleverbaarheid verklaren en er iets aan doen |
+| [Issue reports schrijven](#issue-reports-schrijven) | HireData Linear-issues opstellen en aanscherpen met de bronnen waar jij toegang toe hebt |
+| [Staffing-lifecyclekennis toepassen](#staffing-lifecyclekennis-toepassen) | Je assistent recruitmentvragen laten lezen zoals een recruiter dat doet |
 
 ## Plan een activatie
 
@@ -67,16 +72,48 @@ Probeer:
 - "Maak een WhatsApp-template die kandidaten herinnert aan hun gesprek van morgen, met een bevestigingsknop en een pad om te verzetten."
 - "Bekijk onze shift-offer-template: klopt de categorie, en wat zou je aanpassen voordat we hem opnieuw bij Meta indienen?"
 
-## Issue reports schrijven
+## Automatiseringen diagnosticeren
 
-Zet een bug, klantverzoek, prototype, opname, vergadernotitie of technische prompt om in een gestructureerd HireData issue report. De skill bewaart bewijs, scheidt feiten van aannames, kiest de kleinste bruikbare issue-structuur en maakt ontbrekende product- of technische beslissingen zichtbaar. Klanten en partners krijgen een rapport dat ze naar HireData kunnen sturen zonder dat ze interne Linear-toegang nodig hebben. Bevoegde HireData-gebruikers kunnen live issues ook verfijnen of bijwerken wanneer ze daar expliciet om vragen.
+Legt uit wat er werkelijk met een workflow is gebeurd, vóórdat er iets wordt aangepast. De meeste meldingen over een "kapotte" automatisering blijken één van verschillende situaties te zijn, met elk een andere oplossing: een trigger die nooit een event opleverde, runs die bij een filter stopten, een stap die een fout gaf, een bericht dat wel is verstuurd maar niet afgeleverd, runs die zijn gestart en nooit zijn afgerond, of een automatisering die draait op een volume dat niemand bedoeld heeft. De skill haalt die uit elkaar op basis van je events, runs, stappen en berichten, en benoemt vervolgens wat er gebeurde, het bewijs daarvoor, hoeveel records het raakte, of het nog steeds gebeurt en wat onverklaard blijft. Ook rapporteert hij wat het volume daadwerkelijk heeft gekost. Voorgestelde oplossingen komen met hun afweging, en er wordt niets gewijzigd, gepauzeerd, geactiveerd of opnieuw afgespeeld zonder dat jij die exacte wijziging goedkeurt.
 
 Probeer:
 
-- "Zet deze reproductiestappen, screenshot en automatiserings-URL om in een HireData-compatibel bug report. Alleen als concept."
-- "Verfijn dit prototype tot een productspecificatie, maar behandel de mock als bewijs en niet als het definitieve productcontract."
+- "Deze kandidaat heeft onze welkomstmail nooit ontvangen. Gebruik HireData om uit te zoeken waarom."
+- "Onze onboarding-automatisering laat duizenden geannuleerde runs zien. Is dat een fout of normaal?"
+- "Controleer of er automatiseringen vastlopen of veel meer runs produceren dan resultaten."
 
-[Lees hoe je met AI betere HireData issue reports schrijft](/apps/mcp/write-better-hiredata-issue-reports-with-ai).
+## E-mailprestaties diagnosticeren
+
+Scheidt "de mail kwam niet aan" van "de mail kwam aan en niemand deed er iets mee". Bij een dalende open rate voelen die twee identiek, terwijl ze niets met elkaar te maken hebben. De skill controleert eerst je aflever-, bounce-, klacht- en afmeldpercentages tegen gezonde drempels, zodat je weet of het versturen zelf mankeert. Daarna filtert hij machineopens eruit — Apple Mail Privacy Protection blaast elke open rate op — en vergelijkt hij alleen menselijke betrokkenheid per provider en per maand, met click-to-open om een contentprobleem te onderscheiden van een plaatsingsprobleem in de inbox. Hij herkent ook vergelijkingen die geen vergelijking zijn, zoals één-op-één-mail afgezet tegen een bulkcampagne, of een vorig systeem dat opens anders telde. Het advies komt terug op volgorde van verwachte impact, met wat HireData oppakt gescheiden van wat jij moet doen.
+
+Probeer:
+
+- "Onze open rate is gedaald sinds we naar HireData zijn overgestapt. Wat is er veranderd?"
+- "Mail naar Microsoft-adressen lijkt geblokkeerd te worden. Bekijk de laatste zes maanden per provider."
+- "Wat zijn onze aflever-, bounce- en klachtpercentages dit kwartaal, en zijn die gezond?"
+
+## Issue reports schrijven
+
+Zet een bug, klantverzoek, prototype, opname, meetingnotitie of technische prompt om in een gestructureerd HireData Linear-issue. De skill bevat HireData's methode voor issues, templates, refinement-richtlijnen en onderhouden workflow-snapshots. HireData-medewerkers kunnen de live Linear-workspace en interne Notion-SOP's gebruiken; goedgekeurde partners de projecten en Notion-pagina's die met hen zijn gedeeld. Gebruikers zonder live toegang krijgen alsnog een volledig rapport, waarin niet-geverifieerde metadata duidelijk is gemarkeerd.
+
+Het installeren van de skill geeft nooit extra toegang. Je bestaande rechten in HireData, Linear en Notion bepalen welke bronnen en live acties beschikbaar zijn.
+
+Probeer:
+
+- "Zet deze reproductiestappen, screenshot en automatiserings-URL om in een bug-issue dat klaar is voor intake. Alleen een concept."
+- "Werk dit prototype uit tot een productspecificatie, maar behandel de mock als bewijsmateriaal en niet als het definitieve product."
+- "Gebruik de HireData Notion-pagina's die met ons partnerproject zijn gedeeld om dit issue te verbeteren, en markeer ontoegankelijke metadata als niet-geverifieerd."
+
+[Lees hoe je betere HireData issue reports schrijft met AI](/apps/mcp/write-better-hiredata-issue-reports-with-ai).
+
+## Staffing-lifecyclekennis toepassen
+
+Achtergrondkennis in plaats van een taak die je rechtstreeks vraagt. Deze skill geeft je assistent staffing- en ATS-domeinkennis: wie de actoren zijn (kandidaat, contactpersoon, bedrijf, recruiter) en wie eigenaar is van welk record; hoe kandidaten, vacatures, matches, publicaties, talentpools en plaatsingen zich tot elkaar verhouden; in welke fase een match zit en welke gebeurtenis die fase terecht laat opschuiven; en wat een kandidaat- of vacaturegedreven markt betekent voor timing, doelgroep en contactfrequentie. Vooral voorkomt hij dure misverstanden — "sluit de kandidaat af" na afloop van een opdracht betekent de plaatsing beëindigen, niet de persoon, en een afgewezen match kan geen onboarding starten. De andere skills werken ook zonder; deze zorgt dat ze je vraag goed lezen. Hij levert redeneerkracht, geen workspacefeiten: fasenamen, velden en waarden worden altijd tegen je live workspace gecontroleerd.
+
+Probeer:
+
+- "Deze plaatsing eindigt over drie weken. Wat moet er nu gebeuren voor deze kandidaat?"
+- "De klant heeft nog geen feedback gegeven op onze twee voordrachten. Wat sturen we, naar wie, en wanneer?"
 
 ## De skills ophalen
 
@@ -86,7 +123,7 @@ De skills zijn openbaar en in te zien op [github.com/HireData/skills](https://gi
 
 <CardGroup cols={2}>
   <Card title="Installeer de plugin" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
-    Krijg alle zes skills plus de MCP-verbinding in ChatGPT, Codex of Claude.
+    Krijg alle negen skills plus de MCP-verbinding in ChatGPT, Codex of Claude.
   </Card>
 
   <Card title="Verbind alleen via MCP" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
