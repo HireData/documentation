@@ -1,14 +1,14 @@
 ---
 title: "HireData skills for your AI assistant"
 sidebarTitle: "Skills"
-description: "How the nine HireData skills guide ChatGPT, Codex, and Claude through planning activations, building workflows, diagnosing what went wrong, and writing actionable issue reports."
+description: "How the nine HireData skills guide ChatGPT, Codex, and Claude through planning activations, building workflows, diagnosing failures, and writing issue reports."
 keywords: ["HireData skills", "AI skills", "plan activation", "create triggers", "create forms", "AI email templates", "AI WhatsApp templates", "diagnose automations", "email deliverability", "AI issue reports", "HireData plugin", "MCP"]
 related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
 The [HireData MCP connection](/apps/mcp/connect-hiredata-to-your-ai-assistant) gives your AI assistant HireData's tools. Skills give it the working method behind them: how an experienced HireData consultant would approach the task, what to check in your workspace first, and when to stop and show you a preview instead of creating something you didn't ask for.
 
-HireData currently publishes nine skills: one for deciding what to build, four for building it, two for working out why something didn't do what you expected, one for writing issue reports, and one that supplies the staffing domain knowledge the others rely on.
+HireData currently publishes nine skills: one for deciding what to build, four for building it, two for working out why something didn't do what you expected, one for writing issue reports, and one that sharpens the rest with staffing domain knowledge.
 
 Each skill gathers the available context, shows you a complete draft, preview, or diagnosis, and only creates or changes something after you approve that exact action. New triggers stay inactive, forms stay unpublished where drafts are supported, and nothing is sent, activated, or replayed as a side effect.
 
@@ -22,7 +22,7 @@ Each skill gathers the available context, shows you a complete draft, preview, o
 | [Diagnose automations](#diagnose-automations) | Find out what actually happened to a workflow before changing it |
 | [Diagnose email performance](#diagnose-email-performance) | Explain a drop in open rates, click rates, or deliverability |
 | [Write issue reports](#write-issue-reports) | Draft and refine HireData Linear issues using the workflow sources you can access |
-| [Map the staffing lifecycle](#map-the-staffing-lifecycle) | Give your assistant the recruitment domain knowledge the other skills build on |
+| [Map the staffing lifecycle](#map-the-staffing-lifecycle) | Give your assistant the staffing and ATS domain knowledge that sharpens the other skills |
 
 ## Plan an activation
 
@@ -74,11 +74,7 @@ Try:
 
 ## Diagnose automations
 
-Explains what actually happened to a workflow before anything is changed. Most reports of a "broken" automation turn out to be one of several different situations with different fixes: the trigger never produced an event, runs stopped early, a step errored, the message was sent but not delivered, runs started and never finished, or everything worked at a volume nobody intended. The skill separates them by walking the evidence in order — intake, run outcome, step reason, channel outcome, configuration — and stops as soon as the evidence explains what you saw.
-
-It's built to catch the failures that show up in no error count. A run stuck in `waiting` for two months looks like nothing on a status chart. An automation producing hundreds of thousands of runs to send a handful of emails reports no errors at all. The skill checks the age of the oldest unfinished run and compares runs against distinct records and finished runs on every diagnosis, and it checks actual credit usage before anyone panics about volume.
-
-It also refuses to overstate things: cancelled runs are normal in a healthy workspace rather than errors, and if no source recorded a reason, the skill says the reason isn't recorded and names where a human should look next. You get what happened, the evidence for it, how many records it affected, whether it's still happening, and what remains unexplained — then a proposed repair with its trade-off. Applying that repair needs your approval. Replaying past events is flagged with its blast radius first, because a replay can re-send real messages to real candidates.
+Explains what actually happened to a workflow before anything is changed. A "broken" automation is usually one of several situations with different fixes: a trigger that never fired, runs that stopped early or never finished, a step that errored, a message sent but not delivered, volume nobody intended, or an expectation that was wrong. The skill walks the evidence in order: intake, run outcome, step reason, channel outcome, configuration. It checks the age of the oldest unfinished run, compares runs against distinct records and finished runs, and reads credit usage before treating volume as a problem. Cancelled runs are reported as normal, not as errors. Repairs need your approval, and a replay is flagged with its blast radius first, because it can re-send real messages.
 
 Try:
 
@@ -88,13 +84,7 @@ Try:
 
 ## Diagnose email performance
 
-Separates "the mail didn't arrive" from "the mail arrived and nobody cared". The two feel identical to report and have nothing in common.
-
-The skill establishes the delivery baseline first — delivery, hard bounce, spam complaint, and unsubscribe rates — and says plainly, with the numbers, when your sending is healthy. It then strips machine opens (Apple Mail Privacy Protection and similar prefetching inflate the headline rate) before claiming any trend, compares human-only open rates per provider per month, and reads click-to-open on human opens to tell a content problem apart from an inbox-placement one.
-
-Two checks stop the most common wrong conclusions. It verifies that the period you're comparing against is a real baseline rather than one first blast to a fresh list, which is the most flattering data point that can exist and is comparable to nothing. And it treats a previous system's open-rate figures as unverified until you know how that system counted them, since many older systems count bot and prefetch opens or divide by sent rather than delivered.
-
-Advice comes back in effect order, separating what HireData will do from what you need to do. The skill won't promise a spam-placement percentage: no platform can see inbox versus spam placement, and it says so rather than implying otherwise.
+Separates mail that never arrived from mail that arrived and went unread. The skill establishes the delivery baseline first: delivery, hard bounce, spam complaint, and unsubscribe rates. It strips machine opens inflated by Apple Mail Privacy Protection, compares human-only open rates per provider, reads click-to-open to separate content from placement, and checks send frequency against distinct recipients. It also checks that your comparison period is a real baseline rather than one first blast to a fresh list, and treats a previous system's figures as unverified until you know how it counted opens. Advice comes back in effect order, separating what HireData will do from what you need to do.
 
 Try:
 
@@ -118,13 +108,7 @@ Try:
 
 ## Map the staffing lifecycle
 
-Background knowledge the other skills lean on, rather than something you invoke directly. It teaches your assistant how a staffing agency actually works: the four actors (the candidate, the company, the contact who hires there, and the recruiter operating HireData) and who owns which record; the object model behind an ATS — people, jobs, publications, talent pools, matches or applications, and placements; and the stages a match moves through on its way to a placement.
-
-It exists largely to prevent one expensive category error: confusing a person with an application or a placement. "Close the candidate" after an assignment ends almost always means end the **placement**, not remove the person, who usually stays on for redeployment. Because the relationships are many-to-many — one candidate has many matches and many placements over time — "the placement" is rarely unique to a person, and the skill confirms which one you mean before anything is changed.
-
-It also shapes audience and timing. A candidate-driven market rewards speed and relevant outreach; a job-driven one is about selling candidates to hiring managers. Many steps have a client-side mirror — intake, submission, interview feedback, offer, aftercare — whose audience is the contact, not the candidate. And it flags the fields that actually decide an outcome, such as candidate availability, so your assistant asks the one question that changes the answer instead of guessing.
-
-The skill supplies reasoning, not data. It never freezes your workspace's field names, stages, or values: those are always read live from your workspace through the MCP connection.
+Gives your assistant the staffing and ATS domain knowledge the other skills work better with, rather than something you invoke directly. It covers the four actors — candidate, company, hiring contact, and recruiter — and the ATS object model: people, jobs, publications, talent pools, matches, placements, and match stages. It exists largely to prevent one expensive category error: confusing a person with an application or a placement. "Close the candidate" after an assignment ends almost always means end the **placement**, not remove the person, who usually stays on for redeployment. Since one candidate has many placements over time, the skill confirms which one you mean first. It supplies reasoning, not data: your workspace's field names, stages, and values are always read live.
 
 ## Get the skills
 
