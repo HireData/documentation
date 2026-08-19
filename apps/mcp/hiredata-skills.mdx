@@ -1,14 +1,16 @@
 ---
 title: "HireData skills for your AI assistant"
 sidebarTitle: "Skills"
-description: "How the six HireData skills guide ChatGPT, Codex, and Claude through planning activations, building workflows, and writing actionable issue reports."
-keywords: ["HireData skills", "AI skills", "plan activation", "create triggers", "create forms", "AI email templates", "AI WhatsApp templates", "AI issue reports", "HireData plugin", "MCP"]
+description: "How the nine HireData skills guide ChatGPT, Codex, and Claude through planning activations, building workflows, diagnosing failures, and writing issue reports."
+keywords: ["HireData skills", "AI skills", "plan activation", "create triggers", "create forms", "AI email templates", "AI WhatsApp templates", "diagnose automations", "email deliverability", "AI issue reports", "HireData plugin", "MCP"]
 related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
 The [HireData MCP connection](/apps/mcp/connect-hiredata-to-your-ai-assistant) gives your AI assistant HireData's tools. Skills give it the working method behind them: how an experienced HireData consultant would approach the task, what to check in your workspace first, and when to stop and show you a preview instead of creating something you didn't ask for.
 
-HireData currently publishes six skills. Each gathers the available context, shows you a complete draft or preview, and only creates or changes something after you approve that exact action. New triggers stay inactive, forms stay unpublished where drafts are supported, and nothing is sent or activated as a side effect.
+HireData currently publishes nine skills: one for deciding what to build, four for building it, two for working out why something didn't do what you expected, one for writing issue reports, and one that sharpens the rest with staffing domain knowledge.
+
+Each skill gathers the available context, shows you a complete draft, preview, or diagnosis, and only creates or changes something after you approve that exact action. New triggers stay inactive, forms stay unpublished where drafts are supported, and nothing is sent, activated, or replayed as a side effect.
 
 | Skill | Use it when you want to |
 | --- | --- |
@@ -17,7 +19,10 @@ HireData currently publishes six skills. Each gathers the available context, sho
 | [Create forms](#create-forms) | Capture a decision or signal with the shortest possible form |
 | [Create email templates](#create-email-templates) | Write emails with safe variables, modifiers, and bounded AI variables |
 | [Create WhatsApp templates](#create-whatsapp-templates) | Design concise WhatsApp messages that pass Meta's template review |
+| [Diagnose automations](#diagnose-automations) | Find out what actually happened to a workflow before changing it |
+| [Diagnose email performance](#diagnose-email-performance) | Explain a drop in open rates, click rates, or deliverability |
 | [Write issue reports](#write-issue-reports) | Draft and refine HireData Linear issues using the workflow sources you can access |
+| [Map the staffing lifecycle](#map-the-staffing-lifecycle) | Give your assistant the staffing and ATS domain knowledge that sharpens the other skills |
 
 ## Plan an activation
 
@@ -67,6 +72,26 @@ Try:
 - "Create a WhatsApp template reminding candidates of tomorrow's interview, with a confirm button and a reschedule path."
 - "Review our shift-offer template: is the category right, and what would you change before resubmitting to Meta?"
 
+## Diagnose automations
+
+Explains what actually happened to a workflow before anything is changed. A "broken" automation is usually one of several situations with different fixes: a trigger that never fired, runs that stopped early or never finished, a step that errored, a message sent but not delivered, volume nobody intended, or an expectation that was wrong. The skill walks the evidence in order: intake, run outcome, step reason, channel outcome, configuration. It checks the age of the oldest unfinished run, compares runs against distinct records and finished runs, and reads credit usage before treating volume as a problem. Cancelled runs are reported as normal, not as errors. Repairs need your approval, and a replay is flagged with its blast radius first, because it can re-send real messages.
+
+Try:
+
+- "Our interview reminder automation went quiet last week. Diagnose what happened before changing anything."
+- "This automation has 600,000 runs and sent 8 emails. Where is the volume going, and what did it cost?"
+- "Here is the error from yesterday's run. What does it mean, and how many candidates did it affect?"
+
+## Diagnose email performance
+
+Separates mail that never arrived from mail that arrived and went unread. The skill establishes the delivery baseline first: delivery, hard bounce, spam complaint, and unsubscribe rates. It strips machine opens inflated by Apple Mail Privacy Protection, compares human-only open rates per provider, reads click-to-open to separate content from placement, and checks send frequency against distinct recipients. It also checks that your comparison period is a real baseline rather than one first blast to a fresh list, and treats a previous system's figures as unverified until you know how it counted opens. Advice comes back in effect order, separating what HireData will do from what you need to do.
+
+Try:
+
+- "Our open rate has halved since we migrated to HireData. What changed, and is any of it on your side?"
+- "Microsoft appears to be blocking our mail. What's the evidence, and what do we do about it?"
+- "What are our delivery, bounce, complaint, and unsubscribe rates over the last six months?"
+
 ## Write issue reports
 
 Turns a bug, customer request, prototype, recording, meeting note, or technical prompt into a structured HireData Linear issue. The skill includes HireData's issue-writing method, templates, refinement guidance, and maintained workflow snapshots. HireData team members can use the live Linear workspace and internal Notion SOPs; approved partners can use the project and Notion pages shared with them. Users without live access still get a complete report with unverified metadata clearly marked.
@@ -81,6 +106,10 @@ Try:
 
 [Learn how to write better HireData issue reports with AI](/apps/mcp/write-better-hiredata-issue-reports-with-ai).
 
+## Map the staffing lifecycle
+
+Gives your assistant the staffing and ATS domain knowledge the other skills work better with, rather than something you invoke directly. It covers the four actors — candidate, company, hiring contact, and recruiter — and the ATS object model: people, jobs, publications, talent pools, matches, placements, and match stages. It exists largely to prevent one expensive category error: confusing a person with an application or a placement. "Close the candidate" after an assignment ends almost always means end the **placement**, not remove the person, who usually stays on for redeployment. Since one candidate has many placements over time, the skill confirms which one you mean first. It supplies reasoning, not data: your workspace's field names, stages, and values are always read live.
+
 ## Get the skills
 
 The skills are bundled with the HireData MCP connection in the HireData plugin. One install covers both. [Install the HireData plugin](/apps/mcp/install-hiredata-plugin) in ChatGPT, Codex, or Claude. No plugin support on your plan or assistant? The same guide shows how to [install the skills with a prompt](/apps/mcp/install-hiredata-plugin#install-the-skills-with-a-prompt).
@@ -89,7 +118,7 @@ The skills are public and open to review at [github.com/HireData/skills](https:/
 
 <CardGroup cols={2}>
   <Card title="Install the plugin" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
-    Get all six skills plus the MCP connection in ChatGPT, Codex, or Claude.
+    Get all nine skills plus the MCP connection in ChatGPT, Codex, or Claude.
   </Card>
 
   <Card title="Connect via MCP only" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
