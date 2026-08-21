@@ -10,8 +10,10 @@
 
 ## Terminology
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+- **task** — the product's word for a unit of work in an automation. Write "task", not "step" or "action" (quote UI strings that say "step" unchanged).
+- **HTTP Request** — the task's name, with that capitalisation. Reached via **Add → HTTP Request**.
+- **Post Webhook** — the legacy task's exact label. Not "Post to Webhook" or "POST Webhook", both of which appear in source material.
+- **task categories** — the nine groups tasks are added from: Add, Delay, Filter, Find, Loop, Message, Prompt, Split, Update.
 
 ## Style preferences
 
