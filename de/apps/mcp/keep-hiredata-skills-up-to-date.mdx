@@ -1,0 +1,115 @@
+---
+title: "Ihre HireData-Skills aktuell halten"
+sidebarTitle: "Skills aktuell halten"
+description: "HireData verbessert seine Skills, während sich das Produkt ändert. Prüfen Sie Ihre Version, aktualisieren Sie das Plugin, frischen Sie manuell installierte Skills auf und lassen Sie sich über Neues informieren."
+keywords: ["HireData Skills aktualisieren", "neue HireData Skills", "Plugin aktualisieren", "HireData Skills Version", "auf neue Skills prüfen", "Claude Plugin Update", "Codex Plugin Upgrade", "MCP"]
+related: ["/de/apps/mcp/install-hiredata-plugin", "/de/apps/mcp/hiredata-skills", "/de/apps/mcp/install-hiredata-skills-with-a-prompt"]
+---
+
+HireData verbessert seine Skills, während sich das Produkt ändert, und veröffentlicht neue. Ihr Assistent nutzt weiterhin die Kopie, die er hat, bis Sie sie aktualisieren – Skills, die Sie vor einem halben Jahr installiert haben, geben also weiterhin ein halbes Jahr alte Empfehlungen und enthalten keine Skills, die es damals noch nicht gab.
+
+Einmal im Monat zu prüfen genügt. Was Sie tun müssen, hängt davon ab, wie die Skills dorthin gekommen sind.
+
+## Welcher Fall trifft auf Sie zu?
+
+Wenn Sie nicht mehr wissen, wie Ihre Skills installiert wurden, prüfen Sie das so:
+
+- Öffnen Sie **Customize** \> **Plugins** in Claude oder **Settings** \> **Plugins** in ChatGPT. Wenn **HireData** dort aufgeführt ist, haben Sie das Plugin – nutzen Sie [Das Plugin aktualisieren](#das-plugin-aktualisieren).
+- Ist diese Liste leer, erscheinen HireData-Skills aber unter **Customize** \> **Skills**, dann haben Sie sie [mit einem Prompt installiert](/de/apps/mcp/install-hiredata-skills-with-a-prompt) – nutzen Sie [Mit einem Prompt installierte Skills aktualisieren](#mit-einem-prompt-installierte-skills-aktualisieren).
+- Wenn Ihre Organisation HireData für Sie installiert hat, kommen Updates in der Regel von selbst. Bleiben sie aus, fragen Sie diejenigen, die es eingerichtet haben.
+- Wenn beides zutrifft, tun Sie beides.
+
+## Prüfen, ob Sie veraltet sind
+
+Am schnellsten geht es, wenn Sie einfach fragen. Aktivieren Sie zuerst das HireData-Plugin – oder Ihre HireData-Skills – für diese Konversation: Ihr Assistent sieht nur das, was in dem Chat geladen ist, in dem Sie sich befinden. Fügen Sie dann dies ein. Der Prompt liest und berichtet nur; er ändert nichts.
+
+```text
+Prüfe, ob meine HireData-Skills aktuell sind.
+
+1. Rufe https://raw.githubusercontent.com/HireData/skills/main/.claude-plugin/marketplace.json
+   ab und nenne mir die veröffentlichte Versionsnummer.
+2. Sieh dir https://github.com/HireData/skills in plugins/hiredata/skills an und liste
+   jeden Skill-Ordner auf, den es dort heute gibt.
+3. Vergleiche diese Liste mit den HireData-Skills, die dir in dieser Konversation
+   aktuell zur Verfügung stehen.
+4. Berichte drei Dinge: welche HireData-Skills ich bereits habe, welche es gibt, die
+   ich nicht habe, und die veröffentlichte Versionsnummer.
+
+Ändere oder installiere nichts – berichte nur.
+```
+
+Die Versionsnummer Ihres Plugins wird auch dort angezeigt, wo Sie es verwalten: auf der Plugin-Karte unter **Customize** \> **Plugins**, mit `/plugin` in Claude Code oder mit `codex plugin list --marketplace hiredata-skills` in der Codex CLI. Die zuletzt veröffentlichte Nummer steht im Feld `version` weit oben in [der Marketplace-Datei von HireData](https://github.com/HireData/skills/blob/main/.claude-plugin/marketplace.json) auf GitHub. Stimmen beide überein, sind Sie aktuell.
+
+## Das Plugin aktualisieren
+
+Führen Sie den Schritt für Ihren Assistenten aus und **starten Sie danach eine neue Konversation.** Skills und Tools werden beim Start einer Konversation geladen – ein bereits offener Chat nutzt also weiterhin die alte Version.
+
+| Assistent | Was zu tun ist |
+| --- | --- |
+| **Claude Desktop-App oder Web** | **Customize** \> **Plugins**, auf **HireData** klicken und aktualisieren. Gibt es nichts zu klicken, sind Sie bereits aktuell |
+| **ChatGPT Desktop-App** | **Settings** \> **Plugins**, das HireData-Plugin öffnen und aktualisieren |
+| **Claude Code** | `/plugin marketplace update hiredata-skills` ausführen |
+| **Codex CLI** | `codex plugin marketplace upgrade hiredata-skills` ausführen, dann mit `/plugins` prüfen, ob das Plugin aktiviert ist |
+| **Claude Team oder Enterprise** | Nichts, sofern ein Owner den mit GitHub synchronisierten Marketplace hinzugefügt hat – neue Versionen kommen von selbst. Ein manuell hochgeladenes ZIP erfordert einen erneuten Upload |
+
+<Note>
+  Ihr Assistent erhält nur dann ein Update, wenn HireData die Versionsnummer erhöht. Wenn Sie auf Aktualisieren drücken und nichts passiert, haben Sie bereits die neueste Version.
+</Note>
+
+## Mit einem Prompt installierte Skills aktualisieren
+
+Ein Skill, den Sie [mit einem Prompt installiert](/de/apps/mcp/install-hiredata-skills-with-a-prompt) haben, ist eine feste Kopie der Anweisungen, wie sie am Tag der Installation vorlagen. So frischen Sie einen auf:
+
+<Steps>
+  <Step title="Die neue Datei bauen">
+    Führen Sie den Installations-Prompt für diesen Skill erneut aus. Ihr Assistent ruft die aktuelle Version ab und gibt Ihnen ein neues ZIP.
+  </Step>
+  <Step title="Den alten entfernen">
+    Gehen Sie in Claude zu **Customize** \> **Skills** und löschen Sie den alten Skill. Entfernen Sie ihn in ChatGPT aus Ihrer Skill-Liste. Lassen Sie das aus, haben Sie am Ende zwei Versionen desselben Skills.
+  </Step>
+  <Step title="Den neuen hochladen">
+    Laden Sie ihn genauso hoch wie beim ersten Mal: **Customize** \> **Skills** \> **\[Add\]**. Starten Sie danach eine neue Konversation – der eben hochgeladene Skill steht in keinem bereits offenen Chat zur Verfügung.
+  </Step>
+</Steps>
+
+## Sich benachrichtigen lassen, wenn sich etwas ändert
+
+Wenn Sie nicht daran denken möchten, selbst nachzusehen, lassen Sie sich benachrichtigen.
+
+**Der Cowork-Modus von Claude kann eine Aufgabe nach Zeitplan ausführen.** Wenn Sie Cowork haben, fügen Sie den folgenden Prompt einmal in eine Sitzung ein, und Cowork beobachtet die Skills-Bibliothek für Sie. Nicht sicher, ob Sie es haben? Dann haben Sie es nicht – nutzen Sie die GitHub-Option darunter.
+
+```text
+Richte eine wöchentliche Aufgabe ein, die die HireData-Skills-Bibliothek für mich beobachtet.
+
+Jeden Montagmorgen:
+1. Sieh dir https://github.com/HireData/skills an und liste jeden Skill-Ordner unter
+   plugins/hiredata/skills auf, dazu die Versionsnummer in
+   .claude-plugin/marketplace.json.
+2. Vergleiche das mit den HireData-Skills, die dir in der Sitzung zur Verfügung stehen,
+   und mit dem, was der vorherige Lauf dieser Aufgabe berichtet hat.
+3. Berichte mir nur Über Unterschiede: neue Skills, Skills, die sich seit der letzten
+   Prüfung geändert haben, und eine Versionsnummer, die sich bewegt hat. Je eine Zeile
+   dazu, was sich geändert hat, mit dem Link zur Änderung auf GitHub.
+4. Wenn sich nichts geändert hat, sage das in einer einzigen Zeile und benachrichtige mich nicht.
+```
+
+Die Aufgabe sagt Ihnen, was sich bewegt hat und wo; das Plugin aktualisieren oder den Installations-Prompt erneut ausführen müssen Sie weiterhin selbst. Ergänzen Sie _„verpacke alles Neue als .skill-Datei und schicke sie mir"_, und Sie erhalten die Dateien fertig zum Speichern.
+
+**Oder folgen Sie dem Repository.** Öffnen Sie [github.com/HireData/skills](https://github.com/HireData/skills), klicken Sie auf **Watch** und wählen Sie aus, worüber Sie informiert werden möchten – dafür benötigen Sie ein GitHub-Konto. Wenn Sie einen RSS-Reader nutzen, liefert Ihnen `https://github.com/HireData/skills/commits/main.atom` dieselben Änderungen als Feed. Neue Skills werden außerdem zusammen mit anderen Produktneuigkeiten auf [hiredata.com](https://www.hiredata.com/) angekündigt.
+
+## Fehlerbehebung
+
+- **Sie haben aktualisiert, aber Ihr Assistent verhält sich weiterhin wie zuvor.** Starten Sie eine neue Konversation. Ein Update gilt nie für einen bereits offenen Chat.
+- **Ein neuer Skill erscheint nach einem Update nicht.** Prüfen Sie, ob das Plugin unter **Customize** \> **Plugins** noch aktiviert ist, und starten Sie eine neue Konversation.
+- **Ihre Organisation verwaltet das Plugin.** In Team- und Enterprise-Plänen können Mitglieder ein von einem Owner verteiltes Plugin nicht aktualisieren. Bitten Sie einen Owner, den Marketplace erneut zu synchronisieren.
+- **Ein Update rührt selbst erstellte Skills nicht an.** Ihre eigenen Skills und die von HireData liegen nebeneinander; das eine zu aktualisieren lässt das andere unberührt.
+
+<CardGroup cols={2}>
+  <Card title="Was die Skills tun" icon="list-check" href="/de/apps/mcp/hiredata-skills">
+    Jeder HireData-Skill, wofür er gedacht ist, und Beispiel-Prompts.
+  </Card>
+
+  <Card title="Einen eigenen Skill erstellen" icon="wand-magic-sparkles" href="/de/apps/mcp/create-your-own-skill">
+    Verwandeln Sie etwas, das Sie immer wieder erklären, in einen eigenen Skill.
+  </Card>
+</CardGroup>
