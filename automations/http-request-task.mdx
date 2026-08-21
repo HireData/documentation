@@ -88,6 +88,8 @@ A specification usually describes a whole API rather than a single endpoint. Whe
 
 This depends on the document, not on how you brought it in. The same list of endpoints appears whether you pasted the specification or fetched it **From URL**.
 
+// Add endpoint picker image
+
 ## Build the request by hand
 
 An import needs a document to read. When all you have is an endpoint and the vendor's documentation, fill the request in yourself. These are the same tabs an import writes into, so this is also how you adjust an imported request. Credentials come last either way, under [Authentication](#authentication): an import sets the type, never the secret.
@@ -159,7 +161,7 @@ Fields can go into the URL, the parameters, the headers, and the body. Any part 
 The **Auth** tab is a segmented control with five options: `None`, `API key`, `Bearer token`, `Basic auth`, and `OAuth2`. Choose the one the endpoint's owner told you to use and its fields appear.
 
 | Type | Fields |
-| ---- | ------ |
+| --- | --- |
 | `API key` | **Key name**, **Send in**, **Key value** |
 | `Bearer token` | **Token** |
 | `Basic auth` | **Username**, **Password** |
@@ -262,7 +264,7 @@ That body is exactly what the [Response](#describe-the-response) section wants. 
 The **Advanced** tab holds the request's description and what should happen when the endpoint is slow or unavailable.
 
 | Control | What it does | Default |
-| ------- | ------------ | ------- |
+| --- | --- | --- |
 | **Description** | Describes what the request does. This is what titles the task everywhere else — in the automation, in a run, and in the field names it produces | Empty, behind the placeholder "Describe what this request does." |
 | **Timeout (seconds)** | How long to wait for a response before giving up, so a slow endpoint doesn't stall the run | `30` |
 | **Retries** | How many extra attempts to make after a failed request | `0` |
