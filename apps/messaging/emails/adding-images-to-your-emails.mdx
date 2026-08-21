@@ -1,0 +1,109 @@
+---
+title: "Adding images to your emails"
+sidebarTitle: "Add images"
+description: "Upload images to the HireData Media Library, reuse them across your email templates, and copy an image URL for icons in your email signature."
+icon: "image"
+---
+
+_Every image in a HireData email comes from the **Media Library**: your logo, a header photo, a background, or the small social icons in your signature. You open the Media Library from any image field in the email editor, upload your file once, and reuse it in every template. Each image also gets its own public URL, which is what you need when a signature or block asks for an image link._
+
+## Step 1: Open the Media Library
+
+Open an email template in **Settings** \> **Emails**, then click any image field in the editor — for example **Background image** \> **\[Choose image\]** in the right-hand panel, or an image block in the email body or signature.
+
+<Frame caption="Replace with Screenshot 1: The Background image field with the [Choose image] button">
+  ![Choose image field in the email editor](https://placehold.co/1000x300/eef2f6/64748b?text=Screenshot+1%0ABackground+image+-+Choose+image)
+</Frame>
+
+The Media Library opens as a pop-up with two tabs:
+
+- **Home** — the images that belong to the email you are working in, such as your brand's avatar, banner and logo, and the sender's photo. These stay dynamic: they follow whichever brand or sender the automation uses when the email is sent.
+- **Fields** — the media stored in your workspace, including everything you upload yourself. Use the search bar and the pagination at the bottom to find an image.
+
+<Frame caption="Replace with Screenshot 2: The Media Library pop-up with the Home and Fields tabs">
+  ![Media Library pop-up](https://placehold.co/1400x900/eef2f6/64748b?text=Screenshot+2%0AMedia+Library+-+Home+%26+Fields)
+</Frame>
+
+## Step 2: Upload your image
+
+Click **\[Upload media\]** in the top-right corner of the Media Library and select the file from your device. The image appears in the grid straight away and stays available for every other template in your workspace, so you only upload each logo or icon once.
+
+<Tip>
+  **Which file to upload:**
+
+  - Use **PNG with a transparent background** for logos and icons, so they look right on any background colour.
+  - Choose a **dark version** of your logo — most email clients use a white background, and a light logo disappears on it.
+  - Upload icons at roughly **twice the size** you want them displayed (for example 64 x 64 px for a 32 px signature icon) so they stay sharp on high-resolution screens.
+  - Keep files small (under a few hundred KB). Heavy images slow the email down and can hurt deliverability.
+</Tip>
+
+## Step 3: Add a title and alt text
+
+Click an image in the grid to open its details on the right.
+
+- **Title** — the name you and your colleagues use to find the image back.
+- **Alt text** — the text shown when the image cannot load, and the text a screen reader reads out. If you leave it empty, HireData falls back to the image title.
+
+Under **More info** you will find the image's **Id** and **Mime type**.
+
+<Frame caption="Replace with Screenshot 3: Image details with the Title and Alt text fields">
+  ![Image details panel with title and alt text](https://placehold.co/900x1100/eef2f6/64748b?text=Screenshot+3%0AImage+details+-+Title+%26+Alt+text)
+</Frame>
+
+<Note>
+  Many recipients block images by default, and some corporate mail clients never load them at all. Alt text is what they see instead, so write something meaningful — "HireData logo" rather than "image1".
+</Note>
+
+## Step 4: Use the image in your email
+
+With the image selected, click **\[Add media to field\]** at the bottom of the details panel. The image is placed in the field you opened the Media Library from, and the pop-up closes.
+
+Save the template and use the preview or a test email to check how the image renders before you use the template in an automation.
+
+## Step 5: Copy the image URL (for signature icons)
+
+Some places ask for an image **link** instead of a file — social icons in a signature are the usual example. Every image in the Media Library has its own public URL:
+
+1. Open the image in the Media Library.
+2. Click the **share** icon in the top-right corner of the details panel.
+3. A **URL Copied** confirmation appears. The link is now on your clipboard, and **\[Open URL\]** lets you check it in a new tab.
+4. Paste the link wherever the image URL is asked for.
+
+<Frame caption="Replace with Screenshot 4: The share icon and the URL Copied confirmation">
+  ![URL copied confirmation](https://placehold.co/900x260/eef2f6/64748b?text=Screenshot+4%0AURL+Copied+-+Open+URL)
+</Frame>
+
+<Warning>
+  This URL is public: anyone who has the link can open the image. Only upload images that you are happy to have on the open internet — no candidate documents, ID scans, or anything else confidential.
+</Warning>
+
+## Icons in your email signature
+
+Your signature is part of the email template, so signature images work the same way as any other image:
+
+1. Upload the icons you want to use (for example LinkedIn, Instagram, or a certification badge) via **\[Upload media\]**.
+2. Click the signature block in the email editor and select the image element you want to fill.
+3. Pick the icon from the Media Library and click **\[Add media to field\]**, or paste the image URL if the element asks for a link.
+
+<Tip>
+  Keep signature icons to a maximum of three or four, all the same size, and give each one alt text ("LinkedIn"). A signature full of images looks like a newsletter to spam filters.
+</Tip>
+
+<Note>
+  Your brand's **logo**, **banner**, and **avatar** do not belong in the signature as uploaded images — set them once in **Settings** \> **Brands**, and every template that uses that brand picks them up automatically. See [Brands](/settings/brands).
+</Note>
+
+## Good to know
+
+- The Media Library is shared across your workspace: an image one colleague uploads is available to everyone building templates.
+- Images you add through the **Home** tab (brand avatar, banner, logo, sender photo) stay dynamic. Change the logo in **Settings** \> **Brands** and every email using that brand updates automatically — no need to touch the templates.
+- Always send yourself a test email before putting a template live. Image rendering differs between Outlook, Gmail, and Apple Mail.
+
+---
+
+## Related topics
+
+- [Setting up an email template in HireData](/apps/messaging/emails/setting-up-an-email-template-in-hiredata)
+- [Brands](/settings/brands)
+- [Sending an email newsletter to your audience](/apps/messaging/emails/sending-an-email-newsletter-to-your-audience)
+- [How to verify a domain in HireData to send emails](/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails)

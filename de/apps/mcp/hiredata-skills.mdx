@@ -1,14 +1,14 @@
 ---
 title: "HireData-Skills für Ihren KI-Assistenten"
 sidebarTitle: "Skills"
-description: "So führen die neun HireData-Skills ChatGPT, Codex und Claude durch Aktivierungen planen, Workflows bauen, Diagnose und präzise Issue-Reports."
-keywords: ["HireData Skills", "KI-Skills", "Aktivierung planen", "Trigger erstellen", "Formulare erstellen", "KI-E-Mail-Vorlagen", "KI-WhatsApp-Vorlagen", "Automatisierungen diagnostizieren", "E-Mail-Zustellbarkeit", "HireData plugin", "MCP"]
-related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+description: "So führen die HireData-Skills ChatGPT, Codex und Claude durch Aktivierungen planen, Workflows bauen, Diagnose, ROI-Reporting und präzise Issue-Reports."
+keywords: ["HireData Skills", "KI-Skills", "Aktivierung planen", "Trigger erstellen", "Formulare erstellen", "KI-E-Mail-Vorlagen", "KI-WhatsApp-Vorlagen", "Automatisierungen diagnostizieren", "E-Mail-Zustellbarkeit", "Automatisierungs-ROI", "HireData plugin", "MCP"]
+related: ["/de/apps/mcp/install-hiredata-plugin", "/de/apps/mcp/install-hiredata-skills-with-a-prompt", "/de/apps/mcp/keep-hiredata-skills-up-to-date", "/de/apps/mcp/create-your-own-skill"]
 ---
 
 Die [HireData-MCP-Verbindung](/apps/mcp/connect-hiredata-to-your-ai-assistant) stellt Ihrem KI-Assistenten die Tools von HireData zur Verfügung. Skills liefern die dazugehörige Arbeitsweise: wie eine erfahrene HireData-Beraterin oder ein erfahrener HireData-Berater an die Aufgabe herangeht, was zunächst im Workspace geprüft werden sollte und wann besser innegehalten und Ihnen eine Vorschau gezeigt wird, statt etwas anzulegen, worum Sie nicht gebeten haben.
 
-HireData veröffentlicht aktuell neun Skills: einen, der plant, vier, die etwas erstellen, zwei, die diagnostizieren, einen, der Issue-Reports schreibt, und einen, der das Personaldienstleistungs-Fachwissen für alle übrigen liefert.
+HireData veröffentlicht aktuell zehn Skills: einen, der plant, vier, die etwas erstellen, zwei, die diagnostizieren, einen, der berichtet, was die Automatisierungen geliefert haben, einen, der Issue-Reports schreibt, und einen, der das Personaldienstleistungs-Fachwissen für alle übrigen liefert.
 
 Die erstellenden Skills folgen demselben Prinzip: Der Assistent sammelt den Kontext, prüft Ihren Workspace über die MCP-Verbindung, zeigt Ihnen eine vollständige Vorschau und legt oder ändert erst dann etwas an, wenn Sie genau diese Vorschau freigeben. Neue Trigger bleiben inaktiv, Formulare bleiben unveröffentlicht, sofern Entwürfe unterstützt werden, und nichts wird als Nebeneffekt gesendet oder aktiviert. Die diagnostizierenden Skills lesen Ihre Workspace-Daten, erklären, was tatsächlich passiert ist, und schlagen eine Korrektur vor – umsetzen tun sie sie nie von selbst.
 
@@ -21,6 +21,7 @@ Die erstellenden Skills folgen demselben Prinzip: Der Assistent sammelt den Kont
 | [WhatsApp-Vorlagen erstellen](#whatsapp-vorlagen-erstellen) | prägnante WhatsApp-Nachrichten gestalten möchten, die Metas Vorlagenprüfung bestehen |
 | [Automatisierungen diagnostizieren](#automatisierungen-diagnostizieren) | herausfinden möchten, warum ein Workflow nicht das getan hat, was Sie erwartet haben |
 | [E-Mail-Performance diagnostizieren](#e-mail-performance-diagnostizieren) | einen Rückgang bei Öffnungen, Klicks oder Zustellbarkeit erklären und beheben möchten |
+| [Automatisierungs-ROI berichten](#automatisierungs-roi-berichten) | zeigen möchten, was Ihre Automatisierungen tatsächlich geliefert haben – auf Basis gemessener Zahlen |
 | [Issue-Reports schreiben](#issue-reports-schreiben) | HireData-Linear-Issues mit den Quellen erstellen möchten, auf die Sie Zugriff haben |
 | [Personaldienstleistungs-Lifecycle-Wissen anwenden](#personaldienstleistungs-lifecycle-wissen-anwenden) | möchten, dass Ihr Assistent Recruiting-Anfragen so liest wie eine Recruiterin oder ein Recruiter |
 
@@ -92,6 +93,15 @@ Probieren Sie:
 - „Mails an Microsoft-Adressen scheinen blockiert zu werden. Prüfe die letzten sechs Monate pro Anbieter."
 - „Wie hoch sind unsere Zustell-, Bounce- und Beschwerderaten in diesem Quartal, und sind sie gesund?"
 
+## Automatisierungs-ROI berichten
+
+Beantwortet die Frage „Was hat uns das eigentlich gebracht?", ohne etwas zu erfinden. Der Skill ermittelt zuerst den tatsächlichen Berichtszeitraum daraus, wann Ihre Automatisierungen angelegt wurden und wann sie wirklich liefen, statt ein Zeitfenster zu übernehmen, das jemand ausgewählt hat. Er trennt Automatisierungen, die mit Kandidaten und Kontakten kommunizieren – denen Vermittlungen zugerechnet werden können – von reinen Datenautomatisierungen, denen eingesparte Zeit zugerechnet wird. Jede Zahl stammt aus gemessenen Workspace-Daten, nie aus einem Modell, und wenn die Attribution einen kürzeren Zeitraum abdeckt, als die Automatisierungen aktiv waren, benennt der Skill das und erklärt, warum. Sie erhalten den Bericht für Ihre Kundin oder Ihren Kunden und dazu eine interne Notiz mit den Zahlen, die er verworfen hat, und der Rechnung, die nicht aufging.
+
+Probieren Sie:
+
+- „Was haben unsere Automatisierungen seit dem Livegang geliefert? Nutze ausschließlich gemessene Zahlen."
+- „Erstelle vor der Verlängerung einen Business Review für diesen Workspace und sage mir, welche Zahlen du nicht vertreten konntest."
+
 ## Issue-Reports schreiben
 
 Verwandelt einen Bug, einen Kundenwunsch, einen Prototyp, eine Aufzeichnung, eine Meeting-Notiz oder einen technischen Prompt in ein strukturiertes HireData-Linear-Issue. Der Skill enthält HireDatas Methode zum Schreiben von Issues, Vorlagen, Refinement-Leitlinien und gepflegte Workflow-Snapshots. HireData-Mitarbeitende können den Live-Linear-Workspace und interne Notion-SOPs nutzen, freigegebene Partner die mit ihnen geteilten Projekte und Notion-Seiten. Ohne Live-Zugriff erhalten Sie trotzdem einen vollständigen Report, in dem nicht verifizierte Metadaten klar markiert sind.
@@ -117,16 +127,24 @@ Probieren Sie:
 
 ## Skills beziehen
 
-Die Skills sind zusammen mit der HireData-MCP-Verbindung im HireData-Plugin gebündelt – eine Installation deckt beides ab. [Installieren Sie das HireData-Plugin](/apps/mcp/install-hiredata-plugin) in ChatGPT, Codex oder Claude. Keine Plugin-Unterstützung in Ihrem Plan oder Assistenten? Dieselbe Anleitung zeigt, wie Sie die [Skills mit einem Prompt installieren](/apps/mcp/install-hiredata-plugin#skills-mit-einem-prompt-installieren).
+Die Skills sind zusammen mit der HireData-MCP-Verbindung im HireData-Plugin gebündelt – eine Installation deckt beides ab. [Installieren Sie das HireData-Plugin](/de/apps/mcp/install-hiredata-plugin) in ChatGPT, Codex oder Claude. Keine Plugin-Unterstützung in Ihrem Plan oder Assistenten? Dann [installieren Sie die Skills mit einem Prompt](/de/apps/mcp/install-hiredata-skills-with-a-prompt).
 
-Die Skills sind öffentlich und können unter [github.com/HireData/skills](https://github.com/HireData/skills) eingesehen werden.
+HireData verbessert diese Skills, während sich das Produkt ändert, und ergänzt neue – [halten Sie sie also aktuell](/de/apps/mcp/keep-hiredata-skills-up-to-date). Sie sind öffentlich und können unter [github.com/HireData/skills](https://github.com/HireData/skills) eingesehen werden – und für die Arbeit, die nur Ihr Team macht, können Sie [einen eigenen Skill erstellen](/de/apps/mcp/create-your-own-skill).
 
 <CardGroup cols={2}>
-  <Card title="Plugin installieren" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
-    Alle neun Skills und die MCP-Verbindung in ChatGPT, Codex oder Claude erhalten.
+  <Card title="Plugin installieren" icon="puzzle-piece" href="/de/apps/mcp/install-hiredata-plugin">
+    Jeden Skill und die MCP-Verbindung in ChatGPT, Codex oder Claude erhalten.
   </Card>
 
-  <Card title="Nur über MCP verbinden" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
-    Die Tools von HireData aus Gemini oder jedem MCP-kompatiblen Assistenten nutzen.
+  <Card title="Skills mit einem Prompt installieren" icon="wand-magic-sparkles" href="/de/apps/mcp/install-hiredata-skills-with-a-prompt">
+    Keine Plugin-Unterstützung? Lassen Sie Ihren Assistenten die Skills abrufen und verpacken.
+  </Card>
+
+  <Card title="Skills aktuell halten" icon="arrows-rotate" href="/de/apps/mcp/keep-hiredata-skills-up-to-date">
+    Version prüfen, in einem Schritt aktualisieren und von neuen Skills erfahren.
+  </Card>
+
+  <Card title="Einen eigenen Skill erstellen" icon="hammer" href="/de/apps/mcp/create-your-own-skill">
+    Halten Sie Ihre eigene Methode einmal fest und geben Sie sie zurück.
   </Card>
 </CardGroup>
