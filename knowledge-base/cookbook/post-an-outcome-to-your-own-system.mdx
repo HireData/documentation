@@ -105,7 +105,7 @@ Open the **Auth** tab, select `Bearer token`, and paste the token into **Token**
 If the endpoint wants a key in a named header or a query parameter instead, or trades a client ID and secret for a token, the other types cover both — see [authentication](/automations/http-request-task#authentication).
 
 <Warning>
-  Anyone who can edit this automation can read the token you paste here. If you're configuring this on someone else's behalf, use a credential you're allowed to hold, scoped to no more than this request needs.
+  Anyone who can edit this automation can read the token you paste here — see [authentication](/automations/http-request-task#authentication) for what that means when you're configuring this on someone else's behalf.
 </Warning>
 
 {/* screenshot: cookbook-auth-bearer.png — the Auth tab set to Bearer token */}
@@ -125,14 +125,16 @@ Then, in the **Response** section beneath the tabs, describe the body your endpo
 }
 ```
 
-Under **Success response (2xx)**, click **Add property** twice: one for `id`, labelled "Event ID", and one for `status`, labelled "Status". Later tasks can now pick two fields:
+Under **Success response (2xx)**, click **Add property** twice: one for `id`, labelled "Event ID", and one for `status`, labelled "Status". Later tasks can now pick these two by name:
 
 - `Post conversation outcome: id`
 - `Post conversation outcome: status`
 
+They arrive on top of the three fields every HTTP Request task produces anyway — the status code, the response body as text, and whether the call succeeded. Describing `id` is what saves a later task from digging it out of that text.
+
 Under **Error response (non-2xx)**, describe what the endpoint returns when it rejects a call — usually a message you'd want in a log. That tree is only worth filling in if you set the run to continue past a failure — see [Decide what happens when the call fails](#decide-what-happens-when-the-call-fails) below.
 
-Nothing reads the response for you: a value you don't describe here is a field you won't find later. See [describe the response](/automations/http-request-task#describe-the-response).
+A value you don't describe here is a value no later task can pick out by name. See [describe the response](/automations/http-request-task#describe-the-response).
 
 {/* screenshot: cookbook-response-described.png — the Response section with id and status described, the drawer titled "Post conversation outcome" */}
 
@@ -141,16 +143,18 @@ Nothing reads the response for you: a value you don't describe here is a field y
 Click **Test** in the footer, and read the warning before you click **Send**.
 
 <Warning>
-  The test sends the real request. A `POST` you test is a `POST` your endpoint receives and acts on. Aim it at the test address you asked for up front, or at data the endpoint's owner is happy for you to write. See [test the request](/automations/http-request-task#test-the-request).
+  The test sends the real request. A `POST` you test is a `POST` your endpoint receives and acts on. Aim it at the test address you asked for up front, or at data the endpoint's owner is happy for you to write.
 </Warning>
 
-The dialog asks for one value per parameter, grouped into **Path**, **Query**, and **Body**. Every input is empty — including the ones you bound to automation fields in step 4, which show empty here and need a literal value typed in. That's expected, and the bindings themselves are unaffected.
+The dialog asks for one value per parameter, grouping them by where they belong. This recipe's request has no path or query parameters, so you'll see a **Body** group only, one input per property from step 4.
 
-{/* screenshot: cookbook-test-dialogue.png — the Test dialog before Send, every input still empty */}
+Anything you set to a fixed value in step 4 is already filled in. The properties you bound to automation fields come up blank, because those values only exist during a real run — type a plausible literal into each of those. See [fill in the values](/automations/http-request-task#fill-in-the-values).
 
-Type a plausible value into each one and click **Send**. You get back a status word, the HTTP code, and how long the call took, plus the full response body.
+{/* screenshot: cookbook-test-dialog.png — the Test dialog before Send, every input still empty */}
 
-Read that body against what you described in step 6. If a key you described isn't in it, or a key in it isn't described, fix the response tree now — this is the cheapest moment to find out.
+Click **Send**. You get back a status word, the HTTP code, and how long the call took, plus the full response body — and an **Outputs** section listing the values HireData pulled out using the tree you built in step 6.
+
+Read those against each other. A property you described that comes back missing shows up here, and this is the cheapest moment to find that out.
 
 ### 8. Use a response value in a later task
 
@@ -162,14 +166,14 @@ Any later task that takes a text value works the same way. The pattern is what m
 
 ## Decide what happens when the call fails
 
-Your endpoint will be unavailable at some point. Two switches on the **Advanced** tab decide what that costs you, and they answer separate questions:
+Your endpoint will be unavailable at some point. Two switches on the **Advanced** tab decide what that costs you, and for this recipe:
 
-- **Fail on error responses** is on by default. Leave it on here — if your endpoint rejects the payload, you want to know.
-- **Continue automation on failure** is off by default. Turn it on if this POST is a notification and the rest of the run is still worth doing without it. Leave it off if nothing after this task makes sense until the call succeeds.
+- Leave **Fail on error responses** on. If your endpoint rejects the payload, you want the task to say so.
+- Turn **Continue automation on failure** on only if this POST is a notification and the rest of the run is worth doing without it. If you do, fill in the **Error response (non-2xx)** tree as well, so a later task can log what your endpoint actually said.
 
-If you do let the run continue, this is when the **Error response (non-2xx)** tree earns its place: a later task can log what your endpoint actually said, instead of only that something went wrong.
+For an endpoint that's occasionally slow rather than broken, raise **Retries** on the same tab.
 
-For an endpoint that's occasionally slow rather than broken, raise **Retries** on the same tab. **Backoff** becomes editable once retries are above `0`. See [advanced settings](/automations/http-request-task#advanced-settings) and [decide what counts as a failure](/automations/http-request-task#decide-what-counts-as-a-failure).
+Both switches, and what they do together, are covered in [decide what counts as a failure](/automations/http-request-task#decide-what-counts-as-a-failure).
 
 ## Activate and check the first runs
 

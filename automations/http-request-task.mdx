@@ -5,6 +5,8 @@ description: "Call an external API from a HireData automation: import a specific
 keywords: ["http request", "call an external api", "api request from automation", "outbound api call", "post webhook", "import openapi", "swagger", "postman collection", "curl", "api key header", "bearer token", "oauth2 client credentials", "path parameters", "response schema", "test a request", "timeout", "retries", "continue automation on failure", "request blocked private address", "externe api aanroepen", "api koppeling automatisering"]
 ---
 
+_Call an external API straight from an automation: import a specification or build the request by hand, authenticate it, describe what comes back, and use those values in later tasks._
+
 An automation can call an external API by itself. The **HTTP Request** task sends a request to an address you choose, with the authentication that endpoint expects, and makes the response available to the tasks that follow once you describe what it contains. You don't need a developer, and you don't need anything sitting in between.
 
 If someone already handed you an API specification or a cURL command, you don't have to retype it. HireData can read it and fill the request in for you, which is where this page starts.
@@ -33,7 +35,7 @@ Under **Add**, you'll find both **HTTP Request** and **Post Webhook**.
 Adding the task opens a drawer that holds the whole request:
 
 - The **header** carries the task's name and a control to edit it.
-- Below the header, the **URL bar** with the method selector.
+- Below the header, the **URL bar** with the method selector, offering `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, and `HEAD`.
 - Five tabs: **Params**, **Body**, **Headers**, **Auth**, and **Advanced**.
 - **Response** is not one of the tabs. It's a separate section beneath the tabbed area and is always visible.
 - The footer carries **Import**, **Test**, **Cancel**, and **Save Task**.
@@ -41,10 +43,6 @@ Adding the task opens a drawer that holds the whole request:
 A new task is titled **HTTP Request**, with the method set to `POST` and an empty URL behind the placeholder `https://api.example.com/v1/resource/`.
 
 ![A new HTTP Request task, with the method set to POST and the URL bar showing its placeholder](/images/http-request/empty-drawer.png)
-
-## Supported methods
-
-The method selector offers six methods: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, and `HEAD`.
 
 ## Import a specification or a cURL command
 
@@ -62,7 +60,18 @@ The fastest way to fill in a request is to let HireData read it from a document 
   </Tab>
 </Tabs>
 
-![The Import dialog offering Paste, Upload file, and From URL](/images/http-request/import-dialogue.png)
+![The Import dialog offering Paste, Upload file, and From URL](/images/http-request/import-dialog.png)
+
+### Formats HireData reads
+
+Whichever route you use, the document has to be one HireData recognises:
+
+- **OpenAPI 3.x** and **Swagger 2.0** specifications
+- **Postman 2.1** collections
+- A **cURL** command
+- A **markdown** page that contains either a cURL command or a specification, which is often what a vendor's documentation page amounts to
+
+Anything outside that list is refused rather than half-read, with "Only OpenAPI 3.x, Swagger 2.0 and Postman 2.1 documents are supported." An older Swagger or a Postman 1.0 export needs converting first. A specification that points at other files with external `$ref` references is also refused, so ask for a bundled single-file version.
 
 ### What an import fills in
 
@@ -78,7 +87,11 @@ Fill in your own key or token on the **Auth** tab afterwards, and treat the impo
 
 ### Importing a cURL command
 
-A cURL command imports too, and it's often all a vendor's documentation gives you. It sets the method, the URL, the body, and a bearer token if the command carries one.
+A cURL command imports too, and it's often all a vendor's documentation gives you. It sets the method, the URL, the body, and the headers.
+
+It also sets the credential, where the command carries one. An `Authorization: Bearer …` header becomes a **Bearer token** with the token filled in, and the header itself is dropped so it isn't sent twice. `-u user:password` — and a base64 `Authorization: Basic …` — becomes **Basic auth** with the username and password filled in.
+
+So treat a cURL command you were sent as a credential, not just a snippet. If it came out of someone else's terminal, it may carry their key: check the **Auth** tab after importing and replace anything you shouldn't be holding.
 
 The **Response** section stays empty afterwards. A cURL command describes only the request going out and carries no information about what comes back, so there's nothing for HireData to build the response trees from. If later tasks need values from the response, describe it yourself in the [Response](#describe-the-response) section.
 
@@ -92,7 +105,7 @@ This depends on the document, not on how you brought it in. The same list of end
 
 ## Build the request by hand
 
-An import needs a document to read. When all you have is an endpoint and the vendor's documentation, fill the request in yourself. These are the same tabs an import writes into, so this is also how you adjust an imported request. Credentials come last either way, under [Authentication](#authentication): an import sets the type, never the secret.
+An import needs a document to read. When all you have is an endpoint and the vendor's documentation, fill the request in yourself. These are the same tabs an import writes into, so this is also how you adjust an imported request. Credentials come last either way, under [Authentication](#authentication) — with one exception. Importing a *specification* sets the authentication type and leaves the secret blank, because a security scheme describes how an endpoint authenticates without carrying anyone's key. A *cURL command* is different: it holds real credentials, and they're imported with it.
 
 ### Query and path parameters
 
@@ -103,6 +116,9 @@ The **Params** tab has two sections, **Query** and **Path**. They look alike and
 - **Enabled**: a checkbox that turns the parameter on or off without deleting the row
 - **Name**: the parameter's name, typed in
 - **Value**: what to send, with a field picker beside it
+- **Remove**: deletes the row outright
+
+The URL bar and the **Query** rows are two views of the same thing. Paste a URL with a query string on the end and it splits into rows; add or edit a row and the query string in the URL bar updates to match. So you can work in whichever of the two you were given — a full URL from a vendor's documentation, or a table of parameters — without transcribing it into the other.
 
 You don't name **Path** rows yourself. They come from the URL. Until the URL contains one, the section reads "Path parameters appear when the URL contains `{placeholder}` segments."
 
@@ -120,15 +136,13 @@ So you express the endpoint's shape once, in the URL. Edit the URL and the rows 
 
 ### Request body
 
-The **Body** tab has three sets of controls. Between them they cover what you're sending and how you'd rather write it:
+The **Body** tab opens with one choice, `Form` or `Raw`: whether the body goes out as form fields or as a raw payload. That choice decides which controls sit beside it, so make it first.
 
-- `Form` or `Raw`: whether the body goes out as form fields or as a raw payload
-- `JSON`, `XML`, `Text`, or `GraphQL`: the body's format, for an endpoint that documents XML or a GraphQL query rather than JSON
-- `Builder` or `Code`: whether you build the body from typed properties or write it out yourself
+**`Form`** offers two encodings, `Multipart form` and `Form URL encoded`, and a table of name and value rows. An endpoint that takes a form usually documents one of the two and rejects the other, so check which before you pick.
 
-Use whichever of those last two suits you. With nothing in it yet, the tab reads "No body properties yet" and points at both: "Add typed properties to build the request body, or switch to the raw editor."
+**`Raw`** offers four formats — `JSON`, `XML`, `Text`, and `GraphQL` — for an endpoint that documents XML or a GraphQL query rather than JSON. It adds a third control, `Builder` or `Code`: whether you build the body from typed properties or write it out yourself. Use whichever suits you. With nothing in it yet, the tab reads "No body properties yet" and points at both: "Add typed properties to build the request body, or switch to the raw editor."
 
-You nest objects in the property name, not with a control: "Use dots in property names to nest objects, e.g. candidate.email."
+There are two ways to nest, and the quick one is in the name: "Use dots in property names to nest objects, e.g. candidate.email."
 
 A property named `candidate.email` therefore sends the address inside a `candidate` object:
 
@@ -140,9 +154,11 @@ A property named `candidate.email` therefore sends the address inside a `candida
 }
 ```
 
+The other way is structural. Give a property the type **Collection** — "A repeating list of objects, e.g. line items or attendees" — or make it an object, and it becomes a group row with an **Add child property** button on it. Build the shape out that way when the endpoint wants an array of things rather than one, which dotted names can't express. Every property also has **Edit property** and **Remove**.
+
 A `GET` request doesn't send a body. Select `GET` and the whole tab becomes one line: "This request method does not send a body."
 
-![The Body tab on a POST request, showing its three groups of controls](/images/http-request/body-tab.png)
+![The Body tab on a POST request, set to Raw and JSON, with the Builder and Code controls beside it](/images/http-request/body-tab.png)
 
 ### Headers
 
@@ -154,7 +170,14 @@ For a header that carries an API key or a bearer token, use [Authentication](#au
 
 ### Using fields from the automation
 
-A request built entirely from fixed values sends the same thing on every run, which is rarely the point. That's what the field picker beside a **Value** is for. Pick a field from the automation and each run sends its own data, including values an earlier task produced.
+A request built entirely from fixed values sends the same thing on every run, which is rarely the point. Fields from the automation are what make each run send its own data, including values an earlier task produced.
+
+There are two ways to insert one:
+
+- The **field picker** beside a **Value**, which lists what's available
+- Typing `{{` in the input itself. The picker opens as soon as you type it, and what you type between the braces searches the list — quicker when you already know roughly what the field is called
+
+Either way the field is stored as a `{{field_key}}` token, which is what you'll see if you look at a value you've already filled in.
 
 Fields can go into the URL, the parameters, the headers, and the body. Any part of the request can change from run to run.
 
@@ -179,6 +202,8 @@ The **Auth** tab is a segmented control with five options: `None`, `API key`, `B
 
 These are the fields of the client credentials grant. HireData trades the **Client ID** and **Client secret** for a token at the **Token URL**, then sends that token with the request. There's no redirect URL and no consent screen involved, so if you're looking for one, it isn't missing.
 
+The token is fetched once and kept. HireData reuses it while it's still valid and fetches a new one when it expires, so an automation running many times an hour isn't asking the token endpoint for a fresh token on every run. There's nothing for you to schedule or refresh.
+
 **Scopes** are "Separated by spaces". **Send credentials as** chooses how the client ID and secret reach the token endpoint: in the `Request body`, which is the default, or as a `Basic auth header`. The token endpoint's documentation says which it expects.
 
 <Warning>
@@ -193,7 +218,7 @@ These are the fields of the client credentials grant. HireData trades the **Clie
 
 The **Response** section sits beneath the tabs, always visible, because it's what the rest of the automation depends on: "Describe the expected response body to use its values as fields in later steps."
 
-Nothing reads the response for you. Until a value is described here, later tasks have no field to pick.
+Three fields arrive whether you describe anything or not — the status code, the response body, and whether the call succeeded. What describing the response adds is the values *inside* the body, each as a field of its own. Until a value is described here, no later task can pick that value out on its own.
 
 There are two trees, and you describe them separately:
 
@@ -208,6 +233,18 @@ That's what it's for. If you've set the run to carry on past a failed request, d
 
 ![The Response section with described properties in both the success and error trees](/images/http-request/response-section.png)
 
+### Fields you always get
+
+Three fields exist on every HTTP Request task, described response or not:
+
+| Field | What it holds |
+| --- | --- |
+| `<description>: Response Status` | The HTTP status code, as a number |
+| `<description>: Response Body` | The response body, as text |
+| `<description>: Response Success` | Whether the call succeeded, as true or false |
+
+Between them they answer "did it work, and what came back", which is enough for a later task that only needs to branch on success or log the raw reply. Describing the response is what saves a later task from reading that text and picking values out of it.
+
 ### Use a response value in a later task
 
 A described property becomes a field on the tasks that follow, named after the request and the property's path:
@@ -220,6 +257,10 @@ Take a request described as "Get brand context by domain". It returns `canonical
 
 - `Get brand context by domain: meta.canonical_name`
 - `Get brand context by domain: identity.description`
+
+Properties on the error tree carry an extra segment, so they can't collide with the success tree's:
+
+`<request description>: Error: <dotted path>`
 
 The description isn't cosmetic, then. It's the first half of every field name this task produces, so write a specific one before you describe the response — it's what you'll be reading in a field picker later.
 
@@ -239,15 +280,20 @@ The dialog opens on the method and the resolved URL, so you can read what it's a
 
 ### Fill in the values
 
-Below that, the dialog asks for one value per parameter, grouped into **Path**, **Query**, and **Body**, each labelled with the parameter's name.
+Below that, the dialog asks for one value per parameter, grouped into **Path**, **Query**, and **Body**. Only the groups your request actually has appear, so a request with no path or query parameters shows a **Body** group alone. Each input is labelled with the parameter's name, and each is editable on its own.
 
-Every input is empty. There's no pre-fill — not from a specification's example values, not from a parameter's description. The names tell you what's wanted; the values are yours to type, and each one is editable on its own.
+The inputs start from what the task is already configured to send. Anything you set to a fixed value arrives filled in, so a request built from literals can often be sent as it stands.
 
-That includes any parameter you bound to an automation field. A path parameter set to a field from the run also shows empty here, and needs a literal value typed in. The binding itself is unaffected — it applies when the automation runs.
+Two kinds of input come up blank:
 
-The dialog doesn't keep what you type. Close it and open it again and the inputs are empty, so note down any values you'll want to send more than once.
+- A parameter with no configured value. Path parameters are usually in this group, since they come from `{placeholder}` segments in the URL rather than from a row you typed a value into.
+- A value bound to an automation field, unless that field happens to have a default value. The token is resolved against that default, and most fields carrying run data don't have one.
 
-{/* screenshot: test-dialogue-before-send.png — the Test dialog before Send, its inputs grouped into Path, Query, and Body and all empty */}
+Type a literal into whatever's blank. The binding itself is unaffected — it still applies when the automation runs.
+
+Reopening the dialog re-reads the task's configuration, so a literal you typed in for one test isn't there for the next.
+
+{/* screenshot: test-dialog-before-send.png — the Test dialog before Send, its inputs grouped by the parameters the request has, all empty */}
 
 ### Check the outgoing request
 
@@ -257,11 +303,13 @@ The **Request** panel renders the outgoing call, with a format selector for cURL
 -H 'Authorization: Bearer ***'
 ```
 
-That masking covers this preview only. Anyone who can open the task can still read the credential itself — see [Authentication](#authentication).
+The same masking applies to the request recorded against a run, so a key or token doesn't end up sitting in the run's activity either. What isn't masked is the task's own configuration: anyone who can open the task can still read the credential you entered there — see [Authentication](#authentication).
 
 ### Read the result
 
 After **Send**, a strip reports how it went: a status word, the HTTP code, and how long the call took — `Success`, `200`, `323 ms`. Beneath it, the full response body in a viewer labelled with the same status, with a control to copy it.
+
+If you've already described the response, an **Outputs** section lists the values HireData pulled out of that body. That's the quickest check that your response tree matches the real reply: a property you described but that comes back missing shows up here, rather than in a run next week.
 
 That body is exactly what the [Response](#describe-the-response) section wants. Testing first and copying the body out is the shortest way to a response tree that matches what the endpoint really returns, rather than what its documentation says it returns.
 
@@ -302,7 +350,7 @@ Open a run and a completed HTTP Request shows:
 
 - Its **Description** as the title, the method and host beneath it — `GET api.example.com` — and the path below that
 - **What will you provide?** and **What will you get back?**: the request you configured and the response you described
-- A row of chips for the settings that shaped the call — the auth type, the timeout, and the retries, as `Bearer token`, `30s`, and `No retries`
+- A row of chips for the settings that shaped the call. The auth type, the timeout, and the retries are always there — `Bearer token`, `30s`, `No retries`. The rest appear only once you've turned them on: a backoff when retries are above `0`, `Ignores error statuses` when **Fail on error responses** is off, and `Continues on failure` when **Continue automation on failure** is on
 
 The run's timeline carries two entries for the task, `HTTP Request: Run Moved` and `HTTP Request: Completed`, with the message "Http request succeeded."
 
@@ -314,13 +362,15 @@ A request can come back blocked, with the message "The request was blocked — t
 
 HireData doesn't call private or internal addresses. Check where the URL actually points, including when an automation field supplies part of it: a host that only resolves inside your own network isn't reachable from HireData.
 
-If the destination is plainly public and you still see this, report it rather than working around it. The [support details](#still-need-help) below cover what to include.
+If the destination is plainly public and you still see this, report it rather than working around it. The [support details](#need-more-help) below cover what to include.
 
 ## Existing Post Webhook tasks
 
-**Post Webhook** is the other task for sending data out of HireData. Automations that already use it keep working exactly as they do now, and nothing about them needs to change.
+**Post Webhook** is the other task for sending data out of HireData, and it's what the HTTP Request task replaces. Automations that already use it keep working exactly as they do now, and nothing about them needs changing by hand.
 
-## Still need help?
+A one-off migration will convert those steps into HTTP Request tasks. It runs once, on our side, and it isn't something you trigger or prepare for. Build anything new as an HTTP Request task; leave what you already have alone.
+
+## Need more help?
 
 If a request isn't behaving as expected, contact our team at [support@hiredata.com](mailto:support@hiredata.com) and include:
 
