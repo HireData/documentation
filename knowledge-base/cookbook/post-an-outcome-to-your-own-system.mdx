@@ -44,6 +44,8 @@ Open the **Start** block. Choose **HireData** as the app, then **Conversation** 
 
 Any trigger works here — a completed form response, a candidate updated in your ATS. It only changes which fields you have available to send in step 4; the rest of the recipe is the same.
 
+{/* screenshot: cookbook-start-block.png — the Start block set to HireData / Conversation / Ended */}
+
 ### 2. Add the HTTP Request task
 
 Add a task and pick **HTTP Request**. It's filed under both **Add** and **Message**, and both routes open the same task — see [where to find the task](/automations/http-request-task#where-to-find-the-task).
@@ -94,6 +96,8 @@ More generally, which fields you can pick depends on the trigger you chose in st
 
 Full detail on the format controls, the builder, and the raw editor is in [request body](/automations/http-request-task#request-body).
 
+{/* screenshot: cookbook-body-fields.png — the Body tab with the recipe's six properties, the field picker open on one Value */}
+
 ### 5. Authenticate with a bearer token
 
 Open the **Auth** tab, select `Bearer token`, and paste the token into **Token**. HireData sends it as an `Authorization` header on every request; there's no header for you to add on the **Headers** tab.
@@ -103,6 +107,8 @@ If the endpoint wants a key in a named header or a query parameter instead, or t
 <Warning>
   Anyone who can edit this automation can read the token you paste here. If you're configuring this on someone else's behalf, use a credential you're allowed to hold, scoped to no more than this request needs.
 </Warning>
+
+{/* screenshot: cookbook-auth-bearer.png — the Auth tab set to Bearer token */}
 
 ### 6. Describe what comes back
 
@@ -128,6 +134,8 @@ Under **Error response (non-2xx)**, describe what the endpoint returns when it r
 
 Nothing reads the response for you: a value you don't describe here is a field you won't find later. See [describe the response](/automations/http-request-task#describe-the-response).
 
+{/* screenshot: cookbook-response-described.png — the Response section with id and status described, the drawer titled "Post conversation outcome" */}
+
 ### 7. Test the request before you activate
 
 Click **Test** in the footer, and read the warning before you click **Send**.
@@ -138,6 +146,8 @@ Click **Test** in the footer, and read the warning before you click **Send**.
 
 The dialog asks for one value per parameter, grouped into **Path**, **Query**, and **Body**. Every input is empty — including the ones you bound to automation fields in step 4, which show empty here and need a literal value typed in. That's expected, and the bindings themselves are unaffected.
 
+{/* screenshot: cookbook-test-dialogue.png — the Test dialog before Send, every input still empty */}
+
 Type a plausible value into each one and click **Send**. You get back a status word, the HTTP code, and how long the call took, plus the full response body.
 
 Read that body against what you described in step 6. If a key you described isn't in it, or a key in it isn't described, fix the response tree now — this is the cheapest moment to find out.
@@ -147,6 +157,8 @@ Read that body against what you described in step 6. If a key you described isn'
 Add a task after the HTTP Request that does something with what came back. **Add → Note** is the simplest: put `Post conversation outcome: id` in the note's text, so the reference your own system generated is recorded in HireData too.
 
 Any later task that takes a text value works the same way. The pattern is what matters: the endpoint's answer is now data in the run, not something you have to go and look up. See [use a response value in a later task](/automations/http-request-task#use-a-response-value-in-a-later-task).
+
+{/* screenshot: cookbook-note-field-picker.png — the Note task's field picker, showing "Post conversation outcome: id" */}
 
 ## Decide what happens when the call fails
 

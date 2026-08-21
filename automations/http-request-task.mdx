@@ -88,7 +88,7 @@ A specification usually describes a whole API rather than a single endpoint. Whe
 
 This depends on the document, not on how you brought it in. The same list of endpoints appears whether you pasted the specification or fetched it **From URL**.
 
-{/*  Add endpoint picker image  */}
+{/* screenshot: endpoint-picker.png — the endpoint chooser, after importing a specification with several operations */}
 
 ## Build the request by hand
 
@@ -150,7 +150,7 @@ Header rows have a **Name** and a **Value**. **Name** suggests known header name
 
 For a header that carries an API key or a bearer token, use [Authentication](#authentication) instead. It has fields for both.
 
-{/*  insert header example here  */}
+{/* screenshot: headers-tab.png — the Headers tab, with the Name combobox suggesting known header names */}
 
 ### Using fields from the automation
 
@@ -158,7 +158,7 @@ A request built entirely from fixed values sends the same thing on every run, wh
 
 Fields can go into the URL, the parameters, the headers, and the body. Any part of the request can change from run to run.
 
-{/*  insert field values here  */}
+{/* screenshot: field-picker.png — the field picker open on a Value, listing fields from the automation */}
 
 ## Authentication
 
@@ -223,6 +223,8 @@ Take a request described as "Get brand context by domain". It returns `canonical
 
 The description isn't cosmetic, then. It's the first half of every field name this task produces, so write a specific one before you describe the response — it's what you'll be reading in a field picker later.
 
+{/* screenshot: response-field-in-later-task.png — a later task's field picker, showing "Get brand context by domain: meta.canonical_name" */}
+
 ## Test the request
 
 **Test** in the drawer's footer sends the request now, so you find out it's wrong here rather than in a live run.
@@ -244,6 +246,8 @@ Every input is empty. There's no pre-fill — not from a specification's example
 That includes any parameter you bound to an automation field. A path parameter set to a field from the run also shows empty here, and needs a literal value typed in. The binding itself is unaffected — it applies when the automation runs.
 
 The dialog doesn't keep what you type. Close it and open it again and the inputs are empty, so note down any values you'll want to send more than once.
+
+{/* screenshot: test-dialogue-before-send.png — the Test dialog before Send, its inputs grouped into Path, Query, and Body and all empty */}
 
 ### Check the outgoing request
 
@@ -301,6 +305,8 @@ Open a run and a completed HTTP Request shows:
 - A row of chips for the settings that shaped the call — the auth type, the timeout, and the retries, as `Bearer token`, `30s`, and `No retries`
 
 The run's timeline carries two entries for the task, `HTTP Request: Run Moved` and `HTTP Request: Completed`, with the message "Http request succeeded."
+
+{/* screenshot: task-in-a-run.png — a completed HTTP Request in a run: both sections and the chip row of auth type, timeout, and retries */}
 
 ## If a request comes back blocked
 
