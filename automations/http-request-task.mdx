@@ -1,8 +1,8 @@
 ---
 title: "HTTP Request task"
 sidebarTitle: "HTTP Request"
-description: "Call an external API from a HireData automation with the HTTP Request task: where it lives, how to import a specification, and how to build an authenticated request by hand."
-keywords: ["http request", "call an external api", "api request from automation", "outbound api call", "post webhook", "import openapi", "swagger", "postman collection", "curl", "api key header", "bearer token", "oauth2 client credentials", "path parameters", "externe api aanroepen", "api koppeling automatisering"]
+description: "Call an external API from a HireData automation: import a specification or build the request by hand, describe the response for later tasks, test it, and handle failures."
+keywords: ["http request", "call an external api", "api request from automation", "outbound api call", "post webhook", "import openapi", "swagger", "postman collection", "curl", "api key header", "bearer token", "oauth2 client credentials", "path parameters", "response schema", "test a request", "timeout", "retries", "continue automation on failure", "request blocked private address", "externe api aanroepen", "api koppeling automatisering"]
 ---
 
 An automation can call an external API by itself. The **HTTP Request** task sends a request to an address you choose, with the authentication that endpoint expects, and makes the response available to the tasks that follow once you describe what it contains. You don't need a developer, and you don't need anything sitting in between.
@@ -69,8 +69,8 @@ Importing an API specification populates:
 - The **method** and the **URL**, including the path segments the operation defines
 - Any **query parameters** the operation takes, on the **Params** tab
 - The **authentication type** on the **Auth** tab, taken from the specification's security scheme
-- The **description** on the **Advanced** tab
-- Both trees in the **Response** section: the success response and the error response
+- The **Description** on the [Advanced](#advanced-settings) tab
+- Both trees in the [Response](#describe-the-response) section: the success response and the error response
 
 Fill in your own key or token on the **Auth** tab afterwards, and treat the import as a starting point rather than a finished request.
 
@@ -78,7 +78,7 @@ Fill in your own key or token on the **Auth** tab afterwards, and treat the impo
 
 A cURL command imports too, and it's often all a vendor's documentation gives you. It sets the method, the URL, the body, and a bearer token if the command carries one.
 
-The **Response** section stays empty afterwards. A cURL command describes only the request going out and carries no information about what comes back, so there's nothing for HireData to build the response trees from. If later tasks need values from the response, describe it yourself in the **Response** section.
+The **Response** section stays empty afterwards. A cURL command describes only the request going out and carries no information about what comes back, so there's nothing for HireData to build the response trees from. If later tasks need values from the response, describe it yourself in the [Response](#describe-the-response) section.
 
 ### Documents with more than one operation
 
@@ -180,6 +180,127 @@ These are the fields of the client credentials grant. HireData trades the **Clie
 </Warning>
 
 {/* screenshot: Auth tab set to OAuth2, fields blank, credential-visibility line visible */}
+
+## Describe the response
+
+The **Response** section sits beneath the tabs, always visible, because it's what the rest of the automation depends on: "Describe the expected response body to use its values as fields in later steps."
+
+Nothing reads the response for you. Until a value is described here, later tasks have no field to pick.
+
+There are two trees, and you describe them separately:
+
+- **Success response (2xx)**: what the endpoint returns when the call works
+- **Error response (non-2xx)**: what it returns when the call doesn't
+
+Build either one with **Add property**. A leaf property carries a **Label** and a key. The **Label** is the readable name you'll see downstream; the key is the name in the response body — "Canonical Name" for `canonical_name`. A property holding an object becomes a collapsible group, so a nested response reads as a tree rather than a flat list. Each property has **Edit property** and **Remove**.
+
+The error tree carries a note of its own: "Available when the request fails — useful for logging when the automation continues on failure."
+
+That's what it's for. If you've set the run to carry on past a failed request, describe the error body too, and a later task can record what the endpoint actually said instead of only that something went wrong.
+
+{/* screenshot: Response section with properties in both the Success and Error trees */}
+
+### Use a response value in a later task
+
+A described property becomes a field on the tasks that follow, named after the request and the property's path:
+
+`<request description>: <dotted path>`
+
+The first half is the **Description** from the [Advanced](#advanced-settings) tab. The second is the property's position in the tree.
+
+Take a request described as "Get brand context by domain". It returns `canonical_name` inside a `meta` object, and `description` inside an `identity` object. Later tasks get two fields to pick from:
+
+- `Get brand context by domain: meta.canonical_name`
+- `Get brand context by domain: identity.description`
+
+The description isn't cosmetic, then. It's the first half of every field name this task produces, so write a specific one before you describe the response — it's what you'll be reading in a field picker later.
+
+## Test the request
+
+**Test** in the drawer's footer sends the request now, so you find out it's wrong here rather than in a live run.
+
+<Warning>
+  The dialog says what it does: "Sends the real request with the values below."
+
+  This is not a dry run. A `POST` you test is a `POST` the endpoint receives, and a `DELETE` deletes. Aim the test at a sandbox endpoint, or at values the endpoint's owner is happy for you to write, before you click **Send**.
+</Warning>
+
+The dialog opens on the method and the resolved URL, so you can read what it's about to call, with **Send** to fire it.
+
+### Fill in the values
+
+Below that, the dialog asks for one value per parameter, grouped into **Path**, **Query**, and **Body**, each labelled with the parameter's name.
+
+Every input is empty. There's no pre-fill — not from a specification's example values, not from a parameter's description. The names tell you what's wanted; the values are yours to type, and each one is editable on its own.
+
+That includes any parameter you bound to an automation field. A path parameter set to a field from the run also shows empty here, and needs a literal value typed in. The binding itself is unaffected — it applies when the automation runs.
+
+The dialog doesn't keep what you type. Close it and open it again and the inputs are empty, so note down any values you'll want to send more than once.
+
+### Check the outgoing request
+
+The **Request** panel renders the outgoing call, with a format selector for cURL and a control to copy it. It masks secrets, so a bearer token reads:
+
+```text
+-H 'Authorization: Bearer ***'
+```
+
+That masking covers this preview only. Anyone who can open the task can still read the credential itself — see [Authentication](#authentication).
+
+### Read the result
+
+After **Send**, a strip reports how it went: a status word, the HTTP code, and how long the call took — `Success`, `200`, `323 ms`. Beneath it, the full response body in a viewer labelled with the same status, with a control to copy it.
+
+That body is exactly what the [Response](#describe-the-response) section wants. Testing first and copying the body out is the shortest way to a response tree that matches what the endpoint really returns, rather than what its documentation says it returns.
+
+{/* screenshot: Test dialog after a successful send — status, code, and duration, with the response body below */}
+
+## Advanced settings
+
+The **Advanced** tab holds the request's description and what should happen when the endpoint is slow or unavailable.
+
+| Control | What it does | Default |
+| ------- | ------------ | ------- |
+| **Description** | Describes what the request does. This is what titles the task everywhere else — in the automation, in a run, and in the field names it produces | Empty, behind the placeholder "Describe what this request does." |
+| **Timeout (seconds)** | How long to wait for a response before giving up, so a slow endpoint doesn't stall the run | `30` |
+| **Retries** | How many extra attempts to make after a failed request | `0` |
+| **Backoff (seconds)** | How long to wait between those attempts | `2` |
+
+**Backoff** is disabled while **Retries** is `0`. There's nothing to wait between yet, so raise **Retries** first and the field becomes editable.
+
+## Decide what counts as a failure
+
+The **Advanced** tab ends with two switches. They answer separate questions, and it's worth reading them that way rather than as one failure setting.
+
+**Fail on error responses** is on by default: "Treat 4xx and 5xx responses as a failed task."
+
+Turn it off when a non-2xx is a normal answer from this endpoint rather than a problem — a `404` from a lookup that simply found nothing, say. The task then completes, and what to do about the code is yours to decide in a later task.
+
+**Continue automation on failure** is off by default: "The run continues with the next step even if this request fails."
+
+Turn it on when the rest of the run is worth doing without this call — the request was a notification, not a prerequisite. Leave it off and a failed request ends the run there.
+
+Between them they decide the fate of that expected `404`. Turn the first switch off and it was never a failure. Leave it on and turn the second on instead, and it's a failure the run survives — the case the [error response](#describe-the-response) tree is for.
+
+{/* screenshot: Advanced tab — Description, Timeout, Retries, Backoff, and the two failure switches */}
+
+## What the task looks like in a run
+
+Open a run and a completed HTTP Request shows:
+
+- Its **Description** as the title, the method and host beneath it — `GET api.example.com` — and the path below that
+- **What will you provide?** and **What will you get back?**: the request you configured and the response you described
+- A row of chips for the settings that shaped the call — the auth type, the timeout, and the retries, as `Bearer token`, `30s`, and `No retries`
+
+The run's timeline carries two entries for the task, `HTTP Request: Run Moved` and `HTTP Request: Completed`, with the message "Http request succeeded."
+
+## If a request comes back blocked
+
+A request can come back blocked, with the message "The request was blocked — the destination is a private or internal address."
+
+HireData doesn't call private or internal addresses. Check where the URL actually points, including when an automation field supplies part of it: a host that only resolves inside your own network isn't reachable from HireData.
+
+If the destination is plainly public and you still see this, report it rather than working around it. The [support details](#still-need-help) below cover what to include.
 
 ## Existing Post Webhook tasks
 
