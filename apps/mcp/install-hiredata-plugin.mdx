@@ -1,12 +1,17 @@
 ---
 title: "Install the HireData plugin"
 sidebarTitle: "Install the plugin"
-description: "Install the HireData plugin in ChatGPT, Codex, or Claude to add nine recruitment, diagnostic, and issue-reporting skills plus the MCP connection in one step."
+description: "Install the HireData plugin in ChatGPT, Codex, or Claude to add every HireData recruitment, diagnostic, and issue-reporting skill plus the MCP connection in one step."
 keywords: ["HireData skills", "HireData plugin", "install HireData skills", "Codex plugin", "ChatGPT plugin", "Claude plugin", "Claude Code", "AI recruitment skills", "MCP"]
-related: ["/apps/mcp/hiredata-skills", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+related: ["/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-skills-with-a-prompt", "/apps/mcp/keep-hiredata-skills-up-to-date", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
-The HireData plugin is the fastest way to get [HireData's nine skills](/apps/mcp/hiredata-skills) into ChatGPT, Codex, or Claude, together with HireData's official MCP connection. The skills cover activation planning, triggers, forms, email templates, WhatsApp templates, automation and email diagnostics, staffing domain knowledge, and actionable Linear issues. They give your assistant the working method behind HireData's tools.
+Installing the HireData plugin does two things in one step:
+
+- It adds [HireData's skills](/apps/mcp/hiredata-skills) — the working method behind HireData's tools, covering activation planning, triggers, forms, email and WhatsApp templates, automation and email diagnostics, ROI reporting, staffing domain knowledge, and actionable Linear issues.
+- It sets up HireData's official MCP connection, so your assistant can read and change things in the HireData workspaces you allow.
+
+Nothing is installed inside HireData, and nothing changes in your workspaces until you ask for it. Prefer to skip the plugin? You can [install the skills with a prompt](/apps/mcp/install-hiredata-skills-with-a-prompt) instead.
 
 <Note>
   The plugin is currently available as an early-access install from HireData's public GitHub marketplace. It does not appear in OpenAI's universal Plugins Directory yet. In every assistant you add HireData's marketplace first, then install the plugin from it. Use **Settings** \> **Plugins** in the ChatGPT and Claude desktop apps, or the commands in the Codex CLI and Claude Code. For Gemini or an MCP-only connection, [connect HireData to your AI assistant](/apps/mcp/connect-hiredata-to-your-ai-assistant).
@@ -14,7 +19,7 @@ The HireData plugin is the fastest way to get [HireData's nine skills](/apps/mcp
 
 ## What the plugin adds
 
-The plugin includes nine skills. See [HireData skills for your AI assistant](/apps/mcp/hiredata-skills) for what each one does and example prompts:
+The plugin includes every skill HireData publishes — ten today. See [HireData skills for your AI assistant](/apps/mcp/hiredata-skills) for what each one does and example prompts:
 
 - [**Plan an activation**](/apps/mcp/hiredata-skills#plan-an-activation) — connect client problems to high-impact HireData workflows and measurable outcomes.
 - [**Create triggers**](/apps/mcp/hiredata-skills#create-triggers) — choose the right event, timing, filters, and relationships before creating a trigger.
@@ -23,6 +28,7 @@ The plugin includes nine skills. See [HireData skills for your AI assistant](/ap
 - [**Create WhatsApp templates**](/apps/mcp/hiredata-skills#create-whatsapp-templates) — design concise, contextual templates with appropriate category reasoning and follow-up paths.
 - [**Diagnose automations**](/apps/mcp/hiredata-skills#diagnose-automations) — find out why a workflow did not run, send, or finish as expected, and get a repair with its trade-off.
 - [**Diagnose email performance**](/apps/mcp/hiredata-skills#diagnose-email-performance) — explain a drop in opens, clicks, or deliverability, and what to do about it.
+- [**Report automation ROI**](/apps/mcp/hiredata-skills#report-automation-roi) — report what automations have actually delivered over the period they have genuinely been running.
 - [**Write issue reports**](/apps/mcp/write-better-hiredata-issue-reports-with-ai) — draft and refine HireData Linear issues using the internal or partner workflow sources the user can access.
 - [**Apply staffing lifecycle knowledge**](/apps/mcp/hiredata-skills#apply-staffing-lifecycle-knowledge) — read recruitment requests correctly: a person, an application, and a placement are not the same thing.
 
@@ -30,8 +36,9 @@ The plugin also configures the existing remote HireData MCP connection at `https
 
 | Installation | What you get | Use it when |
 | --- | --- | --- |
-| HireData plugin | Nine HireData skills and the MCP connection | You use ChatGPT desktop, Codex, or Claude and want both HireData knowledge and tools |
-| MCP only | Live HireData tools without the nine skills | You use Gemini, ChatGPT on the web, another MCP client, or only need tool access |
+| HireData plugin | Every HireData skill and the MCP connection, updated from one button | You use ChatGPT desktop, Codex, or Claude and want both HireData knowledge and tools |
+| [Skills with a prompt](/apps/mcp/install-hiredata-skills-with-a-prompt) | The skills you pick, saved by hand, and no automatic updates | Your assistant has no plugin support, or your organisation blocks the marketplace |
+| [MCP only](/apps/mcp/connect-hiredata-to-your-ai-assistant) | Live HireData tools without the skills | You use Gemini, ChatGPT on the web, another MCP client, or only need tool access |
 
 ## Before you begin
 
@@ -192,33 +199,9 @@ If your assistant asks you to sign in to HireData at this point, that is expecte
 
 ## Install the skills with a prompt
 
-Can't install the plugin, either because your assistant has no plugin support or because your organisation blocks the marketplace? The skills are plain, public files, so you can let your AI assistant fetch and package them for you instead.
+Can't install the plugin — no plugin support on your plan, or your organisation blocks the marketplace? The skills are plain, public files, so your assistant can fetch and package them for you instead, and you save them yourself.
 
-### Claude (chat, desktop, and Cowork)
-
-Copy this prompt into a Claude conversation that can create files (for example a Cowork session):
-
-```text
-Download the nine HireData skills from https://github.com/HireData/skills
-(they are in plugins/hiredata/skills). Package each skill as a separate
-.skill file — a ZIP with that skill's SKILL.md and references folder at
-its root — and send me the nine files so I can save them as skills on my
-account.
-```
-
-Save each file Claude delivers as a skill on your account. Combined with the [HireData MCP connector](/apps/mcp/connect-hiredata-to-your-ai-assistant), this gives you the same behaviour as the full plugin. If your organisation doesn't allow saving skills, ask an Owner to distribute the plugin through the organisation catalog instead.
-
-### Any other assistant
-
-Assistants without installable skills can still follow a skill for a single task. Replace the skill name and your goal in this prompt:
-
-```text
-Fetch https://raw.githubusercontent.com/HireData/skills/main/plugins/hiredata/skills/hiredata-plan-activation/SKILL.md,
-follow the workflow it describes (fetch the files it references too), and
-help me with: [your goal]
-```
-
-This works in ChatGPT, Gemini, Microsoft Copilot, or any assistant that can read public web pages, and pairs well with the [manual MCP connection](/apps/mcp/connect-hiredata-to-your-ai-assistant). The nine folder names are `hiredata-plan-activation`, `hiredata-create-triggers`, `hiredata-create-forms`, `hiredata-create-email-templates`, `hiredata-create-whatsapp-templates`, `hiredata-diagnose-automations`, `hiredata-diagnose-email-performance`, `hiredata-map-staffing-lifecycle`, and `hiredata-create-linear-issues`.
+[Install the HireData skills with a prompt](/apps/mcp/install-hiredata-skills-with-a-prompt) has the copy-paste prompt for Claude, ChatGPT, and any other assistant, plus the full list of skill folder names. Pair it with the [HireData MCP connection](/apps/mcp/connect-hiredata-to-your-ai-assistant) to get the same behaviour as the full plugin.
 
 ## Update the plugin
 
@@ -228,6 +211,8 @@ This works in ChatGPT, Gemini, Microsoft Copilot, or any assistant that can read
 - **Claude Team and Enterprise:** GitHub-synced marketplaces update automatically when HireData publishes a new plugin version. Manually uploaded ZIPs require a new upload.
 
 Start a new conversation after updating so your assistant loads the new skills and configuration.
+
+HireData adds and improves skills over time. [Keep your HireData skills up to date](/apps/mcp/keep-hiredata-skills-up-to-date) shows how to check which version you have, and how to be told when something new arrives instead of remembering to look.
 
 ## Troubleshooting
 
@@ -251,8 +236,16 @@ Start a new conversation after updating so your assistant loads the new skills a
 Removing the plugin does not necessarily revoke an existing HireData OAuth grant. Disconnect HireData in your AI assistant or revoke the grant in HireData settings when you also want to remove access.
 
 <CardGroup cols={2}>
-  <Card title="View the source" icon="github" href="https://github.com/HireData/skills">
-    Review the skills, installation metadata, eval cases, and contribution guide.
+  <Card title="Install skills with a prompt" icon="wand-magic-sparkles" href="/apps/mcp/install-hiredata-skills-with-a-prompt">
+    No plugin support, or a blocked marketplace? Let your assistant fetch the skills instead.
+  </Card>
+
+  <Card title="Keep skills up to date" icon="arrows-rotate" href="/apps/mcp/keep-hiredata-skills-up-to-date">
+    Check your version, update in one step, and get told when new skills arrive.
+  </Card>
+
+  <Card title="Create your own skill" icon="hammer" href="/apps/mcp/create-your-own-skill">
+    Capture your own method once, and contribute it back to the skills repository.
   </Card>
 
   <Card title="Connect via MCP only" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
