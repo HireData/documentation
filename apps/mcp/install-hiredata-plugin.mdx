@@ -1,9 +1,9 @@
 ---
 title: "Install the HireData plugin"
 sidebarTitle: "Install the plugin"
-description: "Install the HireData plugin in ChatGPT, Codex, or Claude to add nine recruitment, diagnostic, and issue-reporting skills plus the MCP connection in one step."
+description: "Install the HireData plugin in ChatGPT, Codex, or Claude to add every HireData recruitment, diagnostic, and issue-reporting skill plus the MCP connection in one step."
 keywords: ["HireData skills", "HireData plugin", "install HireData skills", "Codex plugin", "ChatGPT plugin", "Claude plugin", "Claude Code", "AI recruitment skills", "MCP"]
-related: ["/apps/mcp/hiredata-skills", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+related: ["/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-skills-with-a-prompt", "/apps/mcp/keep-hiredata-skills-up-to-date", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
 Installing the HireData plugin does two things in one step:
@@ -212,6 +212,8 @@ Can't install the plugin — no plugin support on your plan, or your organisatio
 
 Start a new conversation after updating so your assistant loads the new skills and configuration.
 
+HireData adds and improves skills over time. [Keep your HireData skills up to date](/apps/mcp/keep-hiredata-skills-up-to-date) shows how to check which version you have, and how to be told when something new arrives instead of remembering to look.
+
 ## Troubleshooting
 
 - **A `/plugin` or `codex plugin` command does nothing:** these are CLI commands, and only work in Claude Code and the Codex CLI. In the ChatGPT and Claude desktop apps, add the marketplace from **Settings** \> **Plugins**.
@@ -234,8 +236,16 @@ Start a new conversation after updating so your assistant loads the new skills a
 Removing the plugin does not necessarily revoke an existing HireData OAuth grant. Disconnect HireData in your AI assistant or revoke the grant in HireData settings when you also want to remove access.
 
 <CardGroup cols={2}>
-  <Card title="View the source" icon="github" href="https://github.com/HireData/skills">
-    Review the skills, installation metadata, eval cases, and contribution guide.
+  <Card title="Install skills with a prompt" icon="wand-magic-sparkles" href="/apps/mcp/install-hiredata-skills-with-a-prompt">
+    No plugin support, or a blocked marketplace? Let your assistant fetch the skills instead.
+  </Card>
+
+  <Card title="Keep skills up to date" icon="arrows-rotate" href="/apps/mcp/keep-hiredata-skills-up-to-date">
+    Check your version, update in one step, and get told when new skills arrive.
+  </Card>
+
+  <Card title="Create your own skill" icon="hammer" href="/apps/mcp/create-your-own-skill">
+    Capture your own method once, and contribute it back to the skills repository.
   </Card>
 
   <Card title="Connect via MCP only" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
