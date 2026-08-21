@@ -6,7 +6,12 @@ keywords: ["HireData skills", "HireData plugin", "installer les skills HireData"
 related: ["/apps/mcp/hiredata-skills", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
-Le plugin HireData est le moyen le plus rapide d'obtenir les [neuf skills HireData](/apps/mcp/hiredata-skills) — plan an activation, create triggers, create forms, create email templates, create WhatsApp templates, diagnose automations, diagnose email performance, write issue reports et apply staffing lifecycle knowledge — dans ChatGPT, Codex ou Claude, ainsi que la connexion MCP officielle de HireData. Les skills apprennent à votre assistant comment planifier, créer, tester et améliorer des automatisations HireData, plutôt que de lui fournir des outils sans la méthode de travail qui les accompagne.
+L'installation du plugin HireData fait deux choses en une seule étape :
+
+- Elle ajoute [les skills HireData](/fr/apps/mcp/hiredata-skills) — la méthode de travail derrière les outils de HireData, couvrant la planification d'activation, les triggers, les formulaires, les modèles d'e-mail et WhatsApp, le diagnostic des automatisations et des e-mails, le rapport de ROI, la connaissance métier du staffing et des issues Linear exploitables.
+- Elle configure la connexion MCP officielle de HireData, pour que votre assistant puisse lire et modifier des éléments dans les workspaces HireData que vous autorisez.
+
+Rien n'est installé à l'intérieur de HireData, et rien ne change dans vos workspaces tant que vous ne le demandez pas. Vous préférez vous passer du plugin ? Vous pouvez [installer les skills avec un prompt](/fr/apps/mcp/install-hiredata-skills-with-a-prompt) à la place.
 
 <Note>
   Le plugin est actuellement disponible en accès anticipé via la marketplace publique GitHub de HireData. Il n'apparaît pas encore dans le répertoire universel des Plugins d'OpenAI. Dans chaque assistant, vous ajoutez d'abord la marketplace HireData, puis vous installez le plugin depuis celle-ci — depuis **Settings** \> **Plugins** dans les applications de bureau ChatGPT et Claude, ou avec des commandes dans la Codex CLI et Claude Code. Pour Gemini ou une connexion uniquement via MCP, [connectez HireData à votre assistant IA](/apps/mcp/connect-hiredata-to-your-ai-assistant).
@@ -14,17 +19,18 @@ Le plugin HireData est le moyen le plus rapide d'obtenir les [neuf skills HireDa
 
 ## Ce que le plugin apporte
 
-Le plugin inclut neuf skills — consultez [Les skills HireData pour votre assistant IA](/apps/mcp/hiredata-skills) pour découvrir ce que fait chacune d'elles et des exemples de prompts :
+Le plugin inclut toutes les skills que HireData publie — dix aujourd'hui. Consultez [Les skills HireData pour votre assistant IA](/fr/apps/mcp/hiredata-skills) pour découvrir ce que fait chacune d'elles et des exemples de prompts :
 
-- [**Planifier une activation**](/apps/mcp/hiredata-skills#planifier-une-activation) — relier les problèmes des clients à des workflows HireData à fort impact et à des résultats mesurables.
-- [**Créer des triggers**](/apps/mcp/hiredata-skills#créer-des-triggers) — choisir le bon événement, le bon timing, les bons filtres et les bonnes relations avant de créer un trigger.
-- [**Créer des formulaires**](/apps/mcp/hiredata-skills#créer-des-formulaires) — concevoir des formulaires concis avec validation, branchement et une étape suivante claire.
-- [**Créer des modèles d'e-mail**](/apps/mcp/hiredata-skills#créer-des-modèles-de-mail) — utiliser des variables, des modificateurs et des variables IA bornées en toute sécurité.
-- [**Créer des modèles WhatsApp**](/apps/mcp/hiredata-skills#créer-des-modèles-whatsapp) — concevoir des modèles concis et contextuels avec un raisonnement de catégorie approprié et des parcours de suivi.
-- [**Diagnostiquer les automatisations**](/apps/mcp/hiredata-skills#diagnostiquer-les-automatisations) — comprendre pourquoi un workflow n'a pas démarré, envoyé ou abouti comme prévu, et obtenir une correction avec sa contrepartie.
-- [**Diagnostiquer la performance des e-mails**](/apps/mcp/hiredata-skills#diagnostiquer-la-performance-des-e-mails) — expliquer une baisse des ouvertures, des clics ou de la délivrabilité, et savoir quoi faire.
+- [**Planifier une activation**](/fr/apps/mcp/hiredata-skills#planifier-une-activation) — relier les problèmes des clients à des workflows HireData à fort impact et à des résultats mesurables.
+- [**Créer des triggers**](/fr/apps/mcp/hiredata-skills#créer-des-triggers) — choisir le bon événement, le bon timing, les bons filtres et les bonnes relations avant de créer un trigger.
+- [**Créer des formulaires**](/fr/apps/mcp/hiredata-skills#créer-des-formulaires) — concevoir des formulaires concis avec validation, branchement et une étape suivante claire.
+- [**Créer des modèles d'e-mail**](/fr/apps/mcp/hiredata-skills#créer-des-modèles-de-mail) — utiliser des variables, des modificateurs et des variables IA bornées en toute sécurité.
+- [**Créer des modèles WhatsApp**](/fr/apps/mcp/hiredata-skills#créer-des-modèles-whatsapp) — concevoir des modèles concis et contextuels avec un raisonnement de catégorie approprié et des parcours de suivi.
+- [**Diagnostiquer les automatisations**](/fr/apps/mcp/hiredata-skills#diagnostiquer-les-automatisations) — comprendre pourquoi un workflow n'a pas démarré, envoyé ou abouti comme prévu, et obtenir une correction avec sa contrepartie.
+- [**Diagnostiquer la performance des e-mails**](/fr/apps/mcp/hiredata-skills#diagnostiquer-la-performance-des-e-mails) — expliquer une baisse des ouvertures, des clics ou de la délivrabilité, et savoir quoi faire.
+- [**Rapporter le ROI des automatisations**](/fr/apps/mcp/hiredata-skills#rapporter-le-roi-des-automatisations) — rapporter ce que les automatisations ont réellement apporté sur la période pendant laquelle elles ont véritablement tourné.
 - [**Rédiger des issue reports**](/apps/mcp/write-better-hiredata-issue-reports-with-ai) — rédiger et affiner des issues Linear HireData avec les sources internes ou partenaires auxquelles l'utilisateur a accès.
-- [**Appliquer la connaissance du cycle de vie du staffing**](/apps/mcp/hiredata-skills#appliquer-la-connaissance-du-cycle-de-vie-du-staffing) — lire correctement les demandes de recrutement : une personne, une candidature et un placement ne sont pas la même chose.
+- [**Appliquer la connaissance du cycle de vie du staffing**](/fr/apps/mcp/hiredata-skills#appliquer-la-connaissance-du-cycle-de-vie-du-staffing) — lire correctement les demandes de recrutement : une personne, une candidature et un placement ne sont pas la même chose.
 
 Le plugin configure également la connexion MCP HireData distante existante à `https://api.hiredata.com/mcp`. Il n'intègre ni ne déploie de serveur MCP séparé.
 

@@ -6,7 +6,12 @@ keywords: ["HireData skills", "HireData plugin", "install HireData skills", "Cod
 related: ["/apps/mcp/hiredata-skills", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
 ---
 
-Das HireData-Plugin ist der schnellste Weg, um die [neun Skills von HireData](/apps/mcp/hiredata-skills) – Aktivierung planen, Trigger, Formulare, E-Mail-Vorlagen und WhatsApp-Vorlagen erstellen, Automatisierungen und E-Mail-Performance diagnostizieren, Personaldienstleistungs-Fachwissen anwenden und präzise Linear-Issues schreiben – zusammen mit der offiziellen MCP-Verbindung von HireData in ChatGPT, Codex oder Claude einzurichten. Die Skills zeigen deinem Assistenten, wie er HireData-Automatisierungen plant, erstellt, testet und verbessert, statt ihm nur Tools ohne die zugehörige Arbeitsweise zur Verfügung zu stellen.
+Die Installation des HireData-Plugins erledigt zwei Dinge in einem Schritt:
+
+- Sie fügt [die Skills von HireData](/de/apps/mcp/hiredata-skills) hinzu – die Arbeitsweise hinter den Tools von HireData: Aktivierung planen, Trigger, Formulare, E-Mail- und WhatsApp-Vorlagen, Automatisierungs- und E-Mail-Diagnose, ROI-Reporting, Personaldienstleistungs-Fachwissen und präzise Linear-Issues.
+- Sie richtet die offizielle MCP-Verbindung von HireData ein, sodass dein Assistent in den HireData-Workspaces, die du freigibst, lesen und Änderungen vornehmen kann.
+
+In HireData selbst wird nichts installiert, und in deinen Workspaces ändert sich nichts, bis du darum bittest. Möchtest du das Plugin lieber überspringen? Dann kannst du stattdessen [die Skills mit einem Prompt installieren](/de/apps/mcp/install-hiredata-skills-with-a-prompt).
 
 <Note>
   Das Plugin ist derzeit als Early-Access-Installation über den öffentlichen GitHub-Marketplace von HireData verfügbar. Es erscheint noch nicht im universellen Plugins-Verzeichnis von OpenAI. In jedem Assistenten fügst du zuerst den Marketplace von HireData hinzu und installierst dann das Plugin daraus – über **Settings** \> **Plugins** in den Desktop-Apps von ChatGPT und Claude oder mit Befehlen in der Codex CLI und in Claude Code. Für Gemini oder eine reine MCP-Verbindung folge der Anleitung [HireData mit deinem KI-Assistenten verbinden](/apps/mcp/connect-hiredata-to-your-ai-assistant).
@@ -14,7 +19,7 @@ Das HireData-Plugin ist der schnellste Weg, um die [neun Skills von HireData](/a
 
 ## Was das Plugin hinzufügt
 
-Das Plugin enthält neun Skills – siehe [HireData-Skills für deinen KI-Assistenten](/apps/mcp/hiredata-skills) für Details zu jedem Skill und Beispiel-Prompts:
+Das Plugin enthält jeden Skill, den HireData veröffentlicht – aktuell zehn. Siehe [HireData-Skills für deinen KI-Assistenten](/de/apps/mcp/hiredata-skills) für Details zu jedem Skill und Beispiel-Prompts:
 
 - [**Aktivierung planen**](/apps/mcp/hiredata-skills#aktivierung-planen) – Kundenprobleme mit wirkungsvollen HireData-Workflows und messbaren Ergebnissen verknüpfen.
 - [**Trigger erstellen**](/apps/mcp/hiredata-skills#trigger-erstellen) – das richtige Ereignis, den passenden Zeitpunkt, Filter und Beziehungen wählen, bevor ein Trigger erstellt wird.
@@ -23,6 +28,7 @@ Das Plugin enthält neun Skills – siehe [HireData-Skills für deinen KI-Assist
 - [**WhatsApp-Vorlagen erstellen**](/apps/mcp/hiredata-skills#whatsapp-vorlagen-erstellen) – prägnante, kontextbezogene Vorlagen entwerfen, mit passender Begründung der Kategorie und Folgepfaden.
 - [**Automatisierungen diagnostizieren**](/apps/mcp/hiredata-skills#automatisierungen-diagnostizieren) – herausfinden, warum ein Workflow nicht wie erwartet lief, sendete oder endete, samt Korrektur und deren Abwägung.
 - [**E-Mail-Performance diagnostizieren**](/apps/mcp/hiredata-skills#e-mail-performance-diagnostizieren) – einen Rückgang bei Öffnungen, Klicks oder Zustellbarkeit erklären und wissen, was dagegen hilft.
+- [**Automatisierungs-ROI berichten**](/de/apps/mcp/hiredata-skills#automatisierungs-roi-berichten) – berichten, was die Automatisierungen über den Zeitraum, in dem sie tatsächlich liefen, wirklich geliefert haben.
 - [**Issue-Reports schreiben**](/apps/mcp/write-better-hiredata-issue-reports-with-ai) – HireData-Linear-Issues mit den internen oder Partner-Quellen erstellen und verfeinern, auf die der Nutzer Zugriff hat.
 - [**Personaldienstleistungs-Lifecycle-Wissen anwenden**](/apps/mcp/hiredata-skills#personaldienstleistungs-lifecycle-wissen-anwenden) – Recruiting-Anfragen richtig lesen: Person, Bewerbung und Einsatz sind nicht dasselbe.
 
@@ -30,8 +36,9 @@ Das Plugin konfiguriert außerdem die bestehende Remote-Verbindung zum HireData 
 
 | Installation | Was du erhältst | Wann sinnvoll |
 | --- | --- | --- |
-| HireData-Plugin | Neun HireData-Skills und die MCP-Verbindung | Du nutzt ChatGPT Desktop, Codex oder Claude und möchtest sowohl das HireData-Wissen als auch die Tools |
-| Nur MCP | Live-HireData-Tools ohne die neun Skills | Du nutzt Gemini, ChatGPT im Web, einen anderen MCP-Client oder benötigst nur den Zugriff auf die Tools |
+| [HireData-Plugin](#plugin-in-chatgpt-installieren) | Jeden HireData-Skill und die MCP-Verbindung, aktualisierbar über eine einzige Schaltfläche | Du nutzt ChatGPT Desktop, Codex oder Claude und möchtest sowohl das HireData-Wissen als auch die Tools |
+| [Skills mit einem Prompt](/de/apps/mcp/install-hiredata-skills-with-a-prompt) | Die Skills, die du auswählst, von Hand gespeichert und ohne automatische Updates | Dein Assistent unterstützt keine Plugins, oder deine Organisation blockiert den Marketplace |
+| [Nur MCP](/de/apps/mcp/connect-hiredata-to-your-ai-assistant) | Live-HireData-Tools ohne die Skills | Du nutzt Gemini, ChatGPT im Web, einen anderen MCP-Client oder benötigst nur den Zugriff auf die Tools |
 
 ## Bevor du beginnst
 
