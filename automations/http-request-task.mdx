@@ -1,8 +1,8 @@
 ---
 title: "HTTP Request task"
 sidebarTitle: "HTTP Request"
-description: "Call an external API from a HireData automation with the HTTP Request task: where it lives, which methods it supports, and how to import a specification."
-keywords: ["http request", "call an external api", "api request from automation", "outbound api call", "post webhook", "import openapi", "swagger", "postman collection", "curl", "externe api aanroepen", "api koppeling automatisering"]
+description: "Call an external API from a HireData automation with the HTTP Request task: where it lives, how to import a specification, and how to build an authenticated request by hand."
+keywords: ["http request", "call an external api", "api request from automation", "outbound api call", "post webhook", "import openapi", "swagger", "postman collection", "curl", "api key header", "bearer token", "oauth2 client credentials", "path parameters", "externe api aanroepen", "api koppeling automatisering"]
 ---
 
 An automation can call an external API by itself. The **HTTP Request** task sends a request to an address you choose, with the authentication that endpoint expects, and makes the response available to the tasks that follow once you describe what it contains. You don't need a developer, and you don't need anything sitting in between.
@@ -85,6 +85,101 @@ The **Response** section stays empty afterwards. A cURL command describes only t
 A specification usually describes a whole API rather than a single endpoint. When the document you import contains more than one operation, HireData shows you a list of the endpoints in it and asks which one this task should call, so handing over a complete specification is not a mistake.
 
 This depends on the document, not on how you brought it in. The same list of endpoints appears whether you pasted the specification or fetched it **From URL**.
+
+## Build the request by hand
+
+An import needs a document to read. When all you have is an endpoint and the vendor's documentation, fill the request in yourself. These are the same tabs an import writes into, so this is also how you adjust an imported request. Credentials come last either way, under [Authentication](#authentication): an import sets the type, never the secret.
+
+### Query and path parameters
+
+The **Params** tab has two sections, **Query** and **Path**. They look alike and work differently.
+
+**Query** rows are yours to fill in. Each row has:
+
+- **Enabled**: a checkbox that turns the parameter on or off without deleting the row
+- **Name**: the parameter's name, typed in
+- **Value**: what to send, with a field picker beside it
+
+You don't name **Path** rows yourself. They come from the URL. Until the URL contains one, the section reads "Path parameters appear when the URL contains `{placeholder}` segments."
+
+Wrap part of the path in curly braces and a row appears for it. Give the task this URL:
+
+```text
+https://api.example.com/repos/{owner}/{repo}/issues
+```
+
+Two rows appear under **Path** straight away, `owner` and `repo`, each marked required with an asterisk. A URL ending in `/chats/{chat_id}/messages` gives you one row, `chat_id`.
+
+So you express the endpoint's shape once, in the URL. Edit the URL and the rows follow it.
+
+{/* screenshot: URL containing the placeholders owner and repo, Params tab showing both auto-created required Path rows */}
+
+### Request body
+
+The **Body** tab has three sets of controls. Between them they cover what you're sending and how you'd rather write it:
+
+- `Form` or `Raw`: whether the body goes out as form fields or as a raw payload
+- `JSON`, `XML`, `Text`, or `GraphQL`: the body's format, for an endpoint that documents XML or a GraphQL query rather than JSON
+- `Builder` or `Code`: whether you build the body from typed properties or write it out yourself
+
+Use whichever of those last two suits you. With nothing in it yet, the tab reads "No body properties yet" and points at both: "Add typed properties to build the request body, or switch to the raw editor."
+
+You nest objects in the property name, not with a control: "Use dots in property names to nest objects, e.g. candidate.email."
+
+A property named `candidate.email` therefore sends the address inside a `candidate` object:
+
+```json
+{
+  "candidate": {
+    "email": "sofia@example.com"
+  }
+}
+```
+
+A `GET` request doesn't send a body. Select `GET` and the whole tab becomes one line: "This request method does not send a body."
+
+{/* screenshot: Body tab on a POST, all three control groups visible */}
+
+### Headers
+
+Header rows have a **Name** and a **Value**. **Name** suggests known header names as you type. You can still type any name the endpoint needs. **Value** takes the same field picker as a query parameter's value.
+
+For a header that carries an API key or a bearer token, use [Authentication](#authentication) instead. It has fields for both.
+
+### Using fields from the automation
+
+A request built entirely from fixed values sends the same thing on every run, which is rarely the point. That's what the field picker beside a **Value** is for. Pick a field from the automation and each run sends its own data, including values an earlier task produced.
+
+Fields can go into the URL, the parameters, the headers, and the body. Any part of the request can change from run to run.
+
+## Authentication
+
+The **Auth** tab is a segmented control with five options: `None`, `API key`, `Bearer token`, `Basic auth`, and `OAuth2`. Choose the one the endpoint's owner told you to use and its fields appear.
+
+| Type | Fields |
+| ---- | ------ |
+| `API key` | **Key name**, **Send in**, **Key value** |
+| `Bearer token` | **Token** |
+| `Basic auth` | **Username**, **Password** |
+| `OAuth2` | **Token URL**, **Client ID**, **Client secret**, **Scopes**, **Audience**, **Send credentials as** |
+
+### API key
+
+**Send in** decides where the key travels: as a `Header`, which is the default, or as a `Query parameter`. **Key name** is then the name of that header or that parameter. **Key value** is the key itself. Check which of the two the endpoint's documentation asks for, because a key in the wrong place reads to the endpoint like no key at all.
+
+### OAuth2
+
+These are the fields of the client credentials grant. HireData trades the **Client ID** and **Client secret** for a token at the **Token URL**, then sends that token with the request. There's no redirect URL and no consent screen involved, so if you're looking for one, it isn't missing.
+
+**Scopes** are "Separated by spaces". **Send credentials as** chooses how the client ID and secret reach the token endpoint: in the `Request body`, which is the default, or as a `Basic auth header`. The token endpoint's documentation says which it expects.
+
+<Warning>
+  Every authentication type shows the same line, and it's worth reading before you paste in a customer's secret: "Credentials are stored in this step's configuration and visible to anyone who can edit this automation."
+
+  Anyone who can edit the automation can read the key or token you enter. If you're setting this up on someone else's behalf, use a credential you're allowed to hold, scoped to no more than this request needs.
+</Warning>
+
+{/* screenshot: Auth tab set to OAuth2, fields blank, credential-visibility line visible */}
 
 ## Existing Post Webhook tasks
 
