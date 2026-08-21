@@ -1,0 +1,99 @@
+---
+title: "HTTP Request task"
+sidebarTitle: "HTTP Request"
+description: "Call an external API from a HireData automation with the HTTP Request task: where it lives, which methods it supports, and how to import a specification."
+keywords: ["http request", "call an external api", "api request from automation", "outbound api call", "post webhook", "import openapi", "swagger", "postman collection", "curl", "externe api aanroepen", "api koppeling automatisering"]
+---
+
+An automation can call an external API by itself. The **HTTP Request** task sends a request to an address you choose, with the authentication that endpoint expects, and makes the response available to the tasks that follow. You don't need a developer, and you don't need anything sitting in between.
+
+If someone already handed you an API specification or a cURL command, you don't have to retype it. HireData can read it and fill the request in for you, which is where this page starts.
+
+<Note>
+  Looking for the other direction, where another tool sends data **into** HireData? That's a custom app trigger. See [Custom Apps](/apps/custom-apps/introduction).
+</Note>
+
+## Where to find the task
+
+The task picker groups tasks by category, and **HTTP Request** is filed under two of them. Both routes open the same task:
+
+- **Add → HTTP Request**
+- **Message → HTTP Request**
+
+If you think of an outbound call as sending something, look under **Message**. The task is there too, so a call that isn't under **Add** hasn't gone missing.
+
+Under **Add**, **HTTP Request** and **Post Webhook** currently sit side by side. See [Existing Post Webhook tasks](#existing-post-webhook-tasks) if you already use the older one.
+
+{/* screenshot: the Add task list, showing HTTP Request and Post Webhook side by side */}
+
+## Supported methods
+
+The method selector sits at the left of the URL bar. Six methods are available: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, and `HEAD`.
+
+## Inside the task drawer
+
+Adding the task opens a drawer that holds the whole request:
+
+- The **header** carries the task's name and a control to edit it.
+- Below the header, the **URL bar** with the method selector.
+- Five tabs: **Params**, **Body**, **Headers**, **Auth**, and **Advanced**.
+- **Response** is not one of the tabs. It's a separate section beneath the tabbed area and is always visible.
+- The footer carries **Import**, **Test**, **Cancel**, and **Save Task**.
+
+A new task starts with the title "HTTP Request", the method set to **POST**, and an empty URL behind the placeholder `https://api.example.com/v1/resource/`.
+
+{/* screenshot: empty drawer — URL placeholder, POST default, Params tab with the Path helper text */}
+
+## Import a specification or a cURL command
+
+The fastest way to fill in a request is to let HireData read it from a document you already have. Click **Import** in the drawer's footer to open the **Import** dialog, which offers three routes:
+
+<Tabs>
+  <Tab title="Paste">
+    Described as "OpenAPI, Swagger, Postman, cURL or markdown". Paste the document straight into the box, which prompts you to "Paste an OpenAPI or Swagger specification, Postman collection, cURL command, or a markdown page containing one…".
+  </Tab>
+  <Tab title="Upload file">
+    Described as "A specification or collection file". Use this when the document came to you as a file rather than as text you can copy.
+  </Tab>
+  <Tab title="From URL">
+    Described as "Fetch a specification by URL". Give HireData the address the specification is published at and it retrieves the document for you.
+  </Tab>
+</Tabs>
+
+{/* screenshot: the Import dialog with its three routes */}
+
+### What an import fills in
+
+Importing an API specification populates:
+
+- The **method** and the **URL**, including the path segments the operation defines
+- Any **query parameters** the operation takes, on the **Params** tab
+- The **authentication type** on the **Auth** tab, taken from the specification's security scheme
+- The **description** on the **Advanced** tab
+- Both trees in the **Response** section: the success response and the error response
+
+What's left to you is whatever the document doesn't carry. Credentials are the main one: a specification says which kind of credential the endpoint wants, never the credential itself, so fill in your own key or token on the **Auth** tab afterwards. Everything an import sets can be edited, so treat it as a starting point rather than a finished request.
+
+### Importing a cURL command
+
+A cURL command imports too, and it's often all a vendor's documentation gives you. It sets the method, the URL, the body, and a bearer token if the command carries one.
+
+The **Response** section stays empty afterwards. A cURL command describes only the request going out and carries no information about what comes back, so there's nothing for HireData to build the response trees from. If later tasks need values from the response, describe it yourself in the **Response** section.
+
+### Documents with more than one operation
+
+A specification usually describes a whole API rather than a single endpoint. When the document you import contains more than one operation, HireData shows you a list of the endpoints in it and asks which one this task should call, so handing over a complete specification is not a mistake.
+
+This depends on the document, not on how you brought it in. The same list of endpoints appears whether you pasted the specification or fetched it **From URL**.
+
+## Existing Post Webhook tasks
+
+**Post Webhook** is the older task for sending data out, and it still sits alongside **HTTP Request** under **Add**. Automations that already use it keep working exactly as they do now, and nothing about them needs to change.
+
+### Still need help?
+
+If a request isn't behaving as expected, contact our team at [support@hiredata.com](mailto:support@hiredata.com) and include:
+
+- A link to the automation
+- The task's method and URL, with any credentials removed
+- What you expected the endpoint to return, and what it returned instead
