@@ -1,0 +1,175 @@
+---
+title: "Maak je eigen skill"
+sidebarTitle: "Maak je eigen skill"
+description: "Zet iets wat je steeds opnieuw uitlegt — zoals het ombouwen van een ATS-e-mailhandtekening — om in een skill die je AI-assistent vanzelf toepast. Opnemen, bouwen vanuit een gesprek, en teruggeven."
+keywords: ["skill maken", "skill opnemen", "eigen skill Claude", "SKILL.md", "e-mailhandtekening skill", "skill bijdragen", "HireData skills repository", "AI recruitment skills"]
+related: ["/nl/apps/mcp/hiredata-skills", "/nl/apps/mcp/install-hiredata-plugin", "/nl/apps/mcp/keep-hiredata-skills-up-to-date"]
+---
+
+[HireData's skills](/nl/apps/mcp/hiredata-skills) dekken het werk dat HireData het beste kent. De dingen die _jij_ elke keer op dezelfde manier doet — de tone of voice van je bureau, hoe je de e-mailhandtekening van een klant ombouwt, de checklist die je doorloopt voordat een workspace live gaat — zijn de dingen die het waard zijn om op te schrijven. Een skill is hoe je dat één keer doet, in plaats van het in elk gesprek opnieuw uit te leggen.
+
+Een skill is een map met een bestand `SKILL.md` erin: platte tekst, geen code nodig. Je hoeft hem daarna nooit meer te noemen. Je assistent bekijkt de beschrijving van elke skill die je hebt geïnstalleerd, en leest de volledige instructies zodra je vraag bij een van die beschrijvingen past.
+
+## Is dit een skill waard?
+
+Goede kandidaten hebben drie dingen gemeen:
+
+- **Je doet het herhaaldelijk.** Eén keer per maand is genoeg; één keer ooit niet.
+- **De werkwijze ligt vast.** Je zou een nieuwe collega vandaag dezelfde instructies geven als vorig jaar.
+- **Er is een goed antwoord.** Huisstijl, een verplichte volgorde van stappen, een formaat dat moet kloppen — dingen die een assistent verkeerd gokt zolang jij ze niet vertelt.
+
+Is het eenmalig, vraag er dan gewoon om. Een skill die je nooit activeert is ballast.
+
+## Voordat je begint
+
+Claude moet bestanden voor je mogen aanmaken — zo geeft het je de afgeronde skill. Klik in Claude op het web linksonder op je naam en ga naar **Settings** \> **Capabilities**; in de desktop-app staat dezelfde pagina onder **Customize**. Zet code-uitvoering en het aanmaken van bestanden aan.
+
+Staat het uit, dan schrijft Claude de skill in de chat, maar kan het je geen bestand geven om te uploaden. Op een Team- of Enterprise-abonnement beheert een Owner dit in **Organization settings** \> **Skills**.
+
+## Route 1: een gesprek omzetten in een skill
+
+Dit is de makkelijkste route, en hij werkt in elk Claude-gesprek. Je hebt de taak al één keer met je assistent gedaan, dus de werkwijze staat al in de chat.
+
+<Steps>
+  <Step title="Doe de taak één keer goed">
+    Werk hem met je assistent door tot het resultaat is wat je echt wilt. Corrigeer onderweg — _"nee, de iconen staan altijd onder het telefoonnummer"_ — want juist die correcties zijn het waardevolle deel.
+  </Step>
+  <Step title="Vraag om de skill">
+    Plak in datzelfde gesprek:
+
+    ```text
+    Zet wat we net hebben gedaan om in een skill die ik opnieuw kan gebruiken.
+    
+    Schrijf een SKILL.md met een korte naam in kleine-letters-met-koppeltekens, en een
+    description die zowel zegt wat de skill doet als wanneer je hem gebruikt —
+    inclusief de woorden die een collega van mij daadwerkelijk zou gebruiken als
+    hij hierom vraagt.
+    
+    Leg in de body de werkwijze vast die we hebben gevolgd, de correcties die ik
+    onderweg heb gemaakt, en één uitgewerkt voorbeeld. Laat alles weg wat alleen voor
+    het geval van vandaag geldt, en laat wachtwoorden, tokens en klantgegevens weg.
+    
+    Verpak het daarna als een zip met de skill-map in de root, en geef me de zip om
+    te downloaden.
+    ```
+  </Step>
+  <Step title="Sla hem op">
+    Ga in Claude naar **Customize** \> **Skills**, klik op **\[Add\]**, kies de optie om een skill-bestand te uploaden en selecteer de zip. Ga in ChatGPT naar [chatgpt.com/skills](https://chatgpt.com/skills), klik op **Create** en dan op **Upload from your computer**.
+  </Step>
+  <Step title="Test hem in een nieuw gesprek">
+    Skills worden alleen geladen bij de start van een gesprek, dus open een nieuw gesprek en vraag zoals je normaal zou vragen — niet door de skill bij naam te noemen. Grijpt je assistent er niet naar, zie dan [wanneer een skill niet wordt geactiveerd](#wanneer-een-skill-niet-wordt-geactiveerd).
+  </Step>
+</Steps>
+
+### Praktijkvoorbeeld: een e-mailhandtekening
+
+De ATS-e-mailhandtekening van een klant nabouwen als HireData-e-mailtemplate is een perfecte kandidaat: dezelfde klus, andere klant, elke keer weer — en de regels zitten alleen in jouw hoofd.
+
+Doe één handtekening samen met je assistent. Vertel hem welke delen vaststaan en welke uit [variabelen](/nl/variables/introduction) komen, waar het logo hoort, wat er gebeurt als een telefoonnummer ontbreekt, en welke iconen jouw klanten gebruiken. Voer daarna de prompt hierboven uit. De volgende handtekening begint bij jouw werkwijze in plaats van bij nul.
+
+<Note>
+  Iconen en logo's in een e-mailtemplate moeten ergens gehost staan waar je ontvangers erbij kunnen. Behandel dat in de skill — waar de afbeeldingen vandaan komen, en wat je doet als een klant ze niet heeft aangeleverd — zodat de skill daar niet elke keer op vastloopt.
+</Note>
+
+## Route 2: neem jezelf op terwijl je het doet
+
+Je kunt jezelf opnemen terwijl je de taak doet, in plaats van hem te beschrijven. Handig wanneer het werk over meerdere schermen loopt en makkelijker te laten zien is dan op te schrijven.
+
+Je hebt alle drie nodig: een Mac, een Pro-, Max- of Team-abonnement, en de Cowork-modus van Claude. Verschijnt **Record a skill** niet in het menu **\[\+\]**, dan heb je het niet — gebruik dan Route 1.
+
+Voordat je begint: je video en audio worden niet bewaard, alleen screenshots uit de sessie, opgeslagen in de Cowork-taak. Behandel het als een scherm delen en sluit alles wat je een collega niet zou laten zien.
+
+<Steps>
+  <Step title="Start de opname">
+    Klik op **\[\+\]** in het invoerveld en kies **Record a skill**, of ga naar **Customize** \> **Skills**, klik op **\[Add\]** en kies **Record your screen**.
+  </Step>
+  <Step title="Doe de taak en vertel erbij">
+    Werk in je normale tempo, tot ongeveer tien minuten, en zeg wat je doet en waarom — _"ik controleer altijd eerst het merk, want dat bepaalt de afzender"_. Die onderbouwing maakt de skill de moeite waard; de klikken alleen niet.
+  </Step>
+  <Step title="Bekijk wat Claude voorstelt">
+    Claude bekijkt de opname en stelt een nieuwe skill voor, of een update van een skill die je al hebt. Lees hem voordat je opslaat: een opname pikt details op uit het ene geval dat je hebt voorgedaan. Verwijder alles wat de volgende keer niet meer klopt.
+  </Step>
+</Steps>
+
+## Route 3: schrijf hem zelf
+
+Soms weet je al precies wat erin moet staan.
+
+Het snelst begin je door er een van HireData te kopiëren. Open een willekeurige map op [github.com/HireData/skills](https://github.com/HireData/skills), lees de `SKILL.md` en gebruik die als vorm voor je eigen skill. De structuur is klein:
+
+```text
+my-skill/
+├── SKILL.md
+└── references/
+    └── examples.md
+```
+
+`SKILL.md` is een plattetekstbestand. Schrijf het in een teksteditor — niet in Word — en sla het op als `SKILL.md`, zonder `.txt` of `.docx` erachter. Het begint met twee verplichte velden tussen twee regels van drie streepjes, gevolgd door gewone tekst:
+
+```markdown
+---
+name: rebuild-ats-email-signature
+description: Rebuild a client's ATS email signature as a HireData email template. Use when someone asks to migrate, convert, or recreate an email signature, or match a client's existing signature layout.
+---
+
+# Rebuild an ATS email signature
+
+## Before you start
+- Check which brand the signature belongs to...
+
+## Steps
+1. ...
+
+## Example
+...
+```
+
+Drie regels zijn belangrijk:
+
+- **`name`** — alleen kleine letters, cijfers en koppeltekens, maximaal 64 tekens, en de woorden _claude_ en _anthropic_ mogen er niet in staan.
+- **`description`** — het enige deel dat je assistent leest voordat hij beslist of de skill van toepassing is. Zeg **wat hij doet en wanneer je hem gebruikt**, in de woorden die je collega's echt gebruiken, en blijf onder de 200 tekens.
+- **`references/`** — alles wat lang is hoort hier: veldlijsten, voorbeelden, uitzonderingen. Verwijs ernaar vanuit `SKILL.md`. Je assistent opent die bestanden alleen wanneer hij ze nodig heeft, en dat houdt de skill snel.
+
+Zip de map `my-skill` zelf, zodat je bij het openen van de zip precies de map hierboven ziet en niet nog een map eromheen. Upload hem daarna zoals in [Route 1](#route-1-een-gesprek-omzetten-in-een-skill), stap 3.
+
+<Note>
+  Het helpcentrum van Claude schrijft dit bestand als `skill.md`. `SKILL.md` is de vorm die in de ontwikkelaarsdocumentatie van Anthropic en in HireData's eigen skills wordt gebruikt, en allebei werken ze.
+</Note>
+
+## Wanneer een skill niet wordt geactiveerd
+
+In negen van de tien gevallen ligt het aan de beschrijving, niet aan de instructies.
+
+- **Start een nieuw gesprek.** Skills worden geladen bij de start van een gesprek.
+- **Schrijf de beschrijving vanuit de vraag, niet vanuit de skill.** "Rebuild a client's ATS email signature as a HireData email template. Use when someone asks to migrate, convert, or recreate a signature" wint het van "E-mailhandtekening-helper".
+- **Voeg de woorden toe die mensen echt zeggen.** Zegt jouw team "handtekening ombouwen", zet dat er dan ook in.
+- **Vraag je assistent wat hij zag.** _"Welke skills had je zojuist tot je beschikking, en waarom heb je die voor handtekeningen niet gebruikt?"_ Meestal vertelt hij je precies wat er ontbreekt.
+- **Splits hem op.** Eén skill per workflow wordt veel betrouwbaarder geactiveerd dan één skill die vijf dingen probeert te dekken.
+
+## Deel hem met je team
+
+Een skill die je zelf uploadt is persoonlijk — elke collega uploadt zijn eigen kopie, tenzij een Owner hem voor de hele organisatie klaarzet. Wil je er een overdragen, stuur dan de zip.
+
+Op Team- en Enterprise-abonnementen kan een Owner een skill voor iedereen klaarzetten: **Organization settings** \> **Skills** \> **\[\+ Add\]**, de zip uploaden, en hij verschijnt bij elk lid onder **Customize** \> **Skills**. Owners kunnen zelfgemaakte skills ook helemaal uitschakelen — dus als je er geen kunt uploaden, is dat de reden.
+
+<Warning>
+  Een skill geeft je assistent instructies die hij zal opvolgen. Installeer alleen skills van mensen die je vertrouwt, lees er een helemaal door voordat je hem aanzet, en zet er nooit wachtwoorden, API-sleutels of klantgegevens in — gebruik voor live data de [HireData MCP-verbinding](/nl/apps/mcp/connect-hiredata-to-your-ai-assistant).
+</Warning>
+
+## Geef hem terug aan HireData
+
+Zou jouw skill andere HireData-gebruikers helpen, dan publiceert HireData hem. De skills zijn open source onder Apache 2.0.
+
+De makkelijke route: stuur hem naar [support@hiredata.com](mailto:support@hiredata.com) met een regel over wat hij doet en wie hij helpt, dan pakt HireData het verder op.
+
+Ben je vertrouwd met GitHub? Open dan in plaats daarvan een pull request op [github.com/HireData/skills](https://github.com/HireData/skills). Kort gezegd: voeg je map toe onder `plugins/hiredata/skills/` met een kleingeschreven naam met koppeltekens, bij voorkeur beginnend met een werkwoord, een `SKILL.md` en een `references/`-map van één niveau diep; voeg evaluatiecases toe aan `evals/regression-cases.json` — een normaal gebruik, een geval met ontbrekende of dubbelzinnige data, een veiligheids- of ongeldige-combinatiegeval, plus een baseline- en een kandidaatresultaat, beoordeeld tegen `evals/RUBRIC.md`; en voer `python3 scripts/validate_repo.py` uit voordat je de PR opent. [CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) bevat de volledige eisen en de reviewchecklist.
+
+<CardGroup cols={2}>
+  <Card title="Zie hoe HireData's skills zijn geschreven" icon="github" href="https://github.com/HireData/skills">
+    Tien werkende voorbeelden, hun references en de evaluatiecases erachter.
+  </Card>
+
+  <Card title="Installeer de HireData-skills" icon="puzzle-piece" href="/nl/apps/mcp/install-hiredata-plugin">
+    Krijg HireData's eigen skills en de MCP-verbinding in één stap.
+  </Card>
+</CardGroup>
