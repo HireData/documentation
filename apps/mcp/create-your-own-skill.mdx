@@ -1,0 +1,175 @@
+---
+title: "Create your own skill"
+sidebarTitle: "Create your own skill"
+description: "Turn something you explain over and over — like converting an ATS email signature — into a skill your AI assistant applies on its own. Record it, build it from a conversation, and contribute it back."
+keywords: ["create a skill", "record a skill", "custom skill Claude", "SKILL.md", "email signature skill", "contribute skill", "HireData skills repository", "AI recruitment skills"]
+related: ["/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-plugin", "/apps/mcp/keep-hiredata-skills-up-to-date"]
+---
+
+[HireData's skills](/apps/mcp/hiredata-skills) cover the work HireData knows best. The things _you_ do the same way every time — your agency's tone of voice, how you rebuild a client's email signature, the checklist you run before a workspace goes live — are the ones worth writing down. A skill is how you do that once instead of explaining it in every conversation.
+
+A skill is a folder with a `SKILL.md` file in it: plain text, no code required. You never have to mention it afterwards. Your assistant checks the description of every skill you have installed, and reads the full instructions whenever your request matches one.
+
+## Is this worth a skill?
+
+Good candidates share three traits:
+
+- **You do it repeatedly.** Once a month is enough; once ever is not.
+- **The method is stable.** You would give a new colleague the same instructions today as last year.
+- **There is a right answer.** House style, a required order of steps, a format that has to match — things an assistant guesses wrong unless you tell it.
+
+If it's a one-off, just ask for it. A skill you never trigger is clutter.
+
+## Before you begin
+
+Claude has to be allowed to create files for you — that is how it hands you the finished skill. In Claude on the web, click your name in the bottom-left corner and go to **Settings** \> **Capabilities**; in the desktop app, the same page sits under **Customize**. Switch on code execution and file creation.
+
+If it is off, Claude writes the skill into the chat but can't give you a file to upload. On a Team or Enterprise plan an Owner controls this in **Organization settings** \> **Skills**.
+
+## Route 1: turn a conversation into a skill
+
+This is the easiest route, and it works in any Claude conversation. You have already done the task once with your assistant, which means the method is sitting right there in the chat.
+
+<Steps>
+  <Step title="Do the task once, properly">
+    Work through it with your assistant until the result is what you actually want. Correct it as you go — _"no, the icons always go under the phone number"_ — because those corrections are the valuable part.
+  </Step>
+  <Step title="Ask for the skill">
+    In the same conversation, paste:
+
+    ```text
+    Turn what we just did into a skill I can reuse.
+    
+    Write a SKILL.md with a short name in lowercase-with-hyphens, and a
+    description that says both what the skill does and when to use it —
+    including the words a colleague of mine would actually use when asking
+    for this.
+    
+    In the body, capture the method we followed, the corrections I made along
+    the way, and one worked example. Leave out anything specific to today's
+    case, and leave out passwords, tokens and customer data.
+    
+    Then package it as a zip with the skill folder at the root, and give me
+    the zip to download.
+    ```
+  </Step>
+  <Step title="Save it">
+    In Claude, go to **Customize** \> **Skills**, click **\[Add\]**, choose the option to upload a skill file, and pick the zip. In ChatGPT, go to [chatgpt.com/skills](https://chatgpt.com/skills), click **Create**, then **Upload from your computer**.
+  </Step>
+  <Step title="Test it in a new conversation">
+    Skills only load when a conversation starts, so open a new one and ask the way you normally would — not by naming the skill. If your assistant doesn't reach for it, see [when a skill does not trigger](#when-a-skill-does-not-trigger).
+  </Step>
+</Steps>
+
+### Worked example: an email signature
+
+Rebuilding a client's ATS email signature as a HireData email template is a perfect candidate: same job, different client, every time, and the rules only live in your head.
+
+Do one signature with your assistant. Tell it which parts are fixed and which come from [variables](/variables/introduction), where the logo goes, what happens when a phone number is missing, and which icons your clients use. Then run the prompt above. The next signature starts from your method instead of from scratch.
+
+<Note>
+  Icons and logos in an email template have to be hosted somewhere your recipients can reach. Cover that in the skill — where the images come from, and what to do when a client hasn't supplied them — so the skill doesn't stall on it every time.
+</Note>
+
+## Route 2: record yourself doing it
+
+You can record yourself doing the task instead of describing it. Useful when the work spans several screens and is easier to show than to write down.
+
+You need all three: a Mac, a Pro, Max, or Team plan, and Claude's Cowork mode. If **Record a skill** doesn't appear in the **\[\+\]** menu, you don't have it — use Route 1 instead.
+
+Before you start: your video and audio aren't kept, only screenshots from the session, stored in the Cowork task. Treat it like a screen share and close anything you wouldn't show a colleague.
+
+<Steps>
+  <Step title="Start the recording">
+    Click **\[\+\]** in the composer and choose **Record a skill**, or go to **Customize** \> **Skills**, click **\[Add\]**, and choose **Record your screen**.
+  </Step>
+  <Step title="Do the task, and narrate">
+    Work at your normal pace, up to about ten minutes, and say what you're doing and why — _"I always check the brand first, because that decides the sender"_. The reasoning is what makes the skill worth having; the clicks alone aren't.
+  </Step>
+  <Step title="Review what Claude proposes">
+    Claude reviews the recording and proposes a new skill, or an update to one you already have. Read it before saving: a recording picks up details from the one case you demonstrated. Delete anything that won't be true next time.
+  </Step>
+</Steps>
+
+## Route 3: write it yourself
+
+Sometimes you already know exactly what it should say.
+
+The quickest start is to copy one of HireData's. Open any folder under [github.com/HireData/skills](https://github.com/HireData/skills), read its `SKILL.md`, and use it as the shape for your own. The structure is small:
+
+```text
+my-skill/
+├── SKILL.md
+└── references/
+    └── examples.md
+```
+
+`SKILL.md` is a plain text file. Write it in a text editor — not Word — and save it as `SKILL.md`, with no `.txt` or `.docx` on the end. It starts with two required fields between two lines of three dashes, then ordinary text:
+
+```markdown
+---
+name: rebuild-ats-email-signature
+description: Rebuild a client's ATS email signature as a HireData email template. Use when someone asks to migrate, convert, or recreate an email signature, or match a client's existing signature layout.
+---
+
+# Rebuild an ATS email signature
+
+## Before you start
+- Check which brand the signature belongs to...
+
+## Steps
+1. ...
+
+## Example
+...
+```
+
+Three rules matter:
+
+- **`name`** — lowercase letters, numbers, and hyphens only, up to 64 characters, and it can't contain the words _claude_ or _anthropic_.
+- **`description`** — the only part your assistant reads before deciding whether the skill applies. Say **what it does and when to use it**, in the words your colleagues actually use, and keep it under 200 characters.
+- **`references/`** — put anything long here: field lists, examples, edge cases. Link to it from `SKILL.md`. Your assistant only opens those files when it needs them, which keeps the skill quick.
+
+Zip the `my-skill` folder itself, so that opening the zip shows exactly the folder above and not another folder wrapped around it. Then upload it as in [Route 1](#route-1-turn-a-conversation-into-a-skill), step 3.
+
+<Note>
+  Claude's help centre writes this file as `skill.md`. `SKILL.md` is the form used in Anthropic's developer documentation and in HireData's own skills, and both work.
+</Note>
+
+## When a skill does not trigger
+
+Nine times out of ten the problem is the description, not the instructions.
+
+- **Start a new conversation.** Skills load at the start of one.
+- **Rewrite the description around the request, not the skill.** "Rebuild a client's ATS email signature as a HireData email template. Use when someone asks to migrate, convert, or recreate a signature" beats "Email signature helper".
+- **Add the words people really say.** If your team says "handtekening ombouwen", put that in the description too.
+- **Ask your assistant what it saw.** _"Which skills were available to you just now, and why didn't you use the signature one?"_ It will usually tell you exactly what's missing.
+- **Split it.** One skill per workflow triggers far more reliably than one skill that tries to cover five.
+
+## Share it with your team
+
+A skill you upload yourself is personal — each colleague uploads their own copy, unless an Owner provisions it for the whole organisation. To hand one over, send the zip.
+
+On Team and Enterprise plans an Owner can provision a skill for everyone: **Organization settings** \> **Skills** \> **\[\+ Add\]**, upload the zip, and it appears in every member's **Customize** \> **Skills**. Owners can also switch off user-created skills entirely — so if you can't upload one, that is why.
+
+<Warning>
+  A skill gives your assistant instructions it will follow. Only install skills from people you trust, read one through before enabling it, and never put passwords, API keys, or customer data inside one — use the [HireData MCP connection](/apps/mcp/connect-hiredata-to-your-ai-assistant) for live data instead.
+</Warning>
+
+## Contribute it back to HireData
+
+If your skill would help other HireData users, HireData will publish it. The skills are open source under Apache 2.0.
+
+The easy route: send it to [support@hiredata.com](mailto:support@hiredata.com) with a line about what it does and who it helps, and HireData will take it from there.
+
+Comfortable with GitHub? Open a pull request on [github.com/HireData/skills](https://github.com/HireData/skills) instead. In short: add your folder under `plugins/hiredata/skills/` with a lowercase, hyphenated, preferably verb-led name, a `SKILL.md`, and a one-level-deep `references/` folder; add eval cases to `evals/regression-cases.json` — a normal use, a case with missing or ambiguous data, a safety or invalid-combination case, plus a baseline and candidate result scored against `evals/RUBRIC.md`; and run `python3 scripts/validate_repo.py` before you open the PR. [CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) has the full requirements and the review checklist.
+
+<CardGroup cols={2}>
+  <Card title="See how HireData's skills are written" icon="github" href="https://github.com/HireData/skills">
+    Ten working examples, their references, and the eval cases behind them.
+  </Card>
+
+  <Card title="Install the HireData skills" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
+    Get HireData's own skills and the MCP connection in one step.
+  </Card>
+</CardGroup>
