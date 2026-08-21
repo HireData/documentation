@@ -26,7 +26,7 @@ If you think of an outbound call as sending something, look under **Message**. T
 
 Under **Add**, **HTTP Request** and **Post Webhook** currently sit side by side.
 
-{/* screenshot: the Add task list, showing HTTP Request and Post Webhook side by side */}
+![The Add task list with HTTP Request and Post Webhook listed side by side](/images/http-request/add-task-list.png)
 
 ## Inside the task drawer
 
@@ -40,7 +40,7 @@ Adding the task opens a drawer that holds the whole request:
 
 A new task is titled **HTTP Request**, with the method set to `POST` and an empty URL behind the placeholder `https://api.example.com/v1/resource/`.
 
-{/* screenshot: empty drawer — URL placeholder, POST default, Params tab with the Path helper text */}
+![A new HTTP Request task, with the method set to POST and the URL bar showing its placeholder](/images/http-request/empty-drawer.png)
 
 ## Supported methods
 
@@ -62,7 +62,7 @@ The fastest way to fill in a request is to let HireData read it from a document 
   </Tab>
 </Tabs>
 
-{/* screenshot: the Import dialog with its three routes */}
+![The Import dialog offering Paste, Upload file, and From URL](/images/http-request/import-dialogue.png)
 
 ### What an import fills in
 
@@ -114,7 +114,7 @@ Two rows appear under **Path** straight away, `owner` and `repo`, each marked re
 
 So you express the endpoint's shape once, in the URL. Edit the URL and the rows follow it.
 
-{/* screenshot: URL containing the placeholders owner and repo, Params tab showing both auto-created required Path rows */}
+![The Params tab with required Path rows for owner and repo, created from the URL](/images/http-request/path-parameters.png)
 
 ### Request body
 
@@ -140,7 +140,7 @@ A property named `candidate.email` therefore sends the address inside a `candida
 
 A `GET` request doesn't send a body. Select `GET` and the whole tab becomes one line: "This request method does not send a body."
 
-{/* screenshot: Body tab on a POST, all three control groups visible */}
+![The Body tab on a POST request, showing its three groups of controls](/images/http-request/body-tab.png)
 
 ### Headers
 
@@ -181,7 +181,7 @@ These are the fields of the client credentials grant. HireData trades the **Clie
   Anyone who can edit the automation can read the key or token you enter. If you're setting this up on someone else's behalf, use a credential you're allowed to hold, scoped to no more than this request needs.
 </Warning>
 
-{/* screenshot: Auth tab set to OAuth2, fields blank, credential-visibility line visible */}
+![The Auth tab set to OAuth2, with its fields empty and the credential visibility notice beneath them](/images/http-request/auth-oauth2.png)
 
 ## Describe the response
 
@@ -200,7 +200,7 @@ The error tree carries a note of its own: "Available when the request fails — 
 
 That's what it's for. If you've set the run to carry on past a failed request, describe the error body too, and a later task can record what the endpoint actually said instead of only that something went wrong.
 
-{/* screenshot: Response section with properties in both the Success and Error trees */}
+![The Response section with described properties in both the success and error trees](/images/http-request/response-section.png)
 
 ### Use a response value in a later task
 
@@ -255,7 +255,7 @@ After **Send**, a strip reports how it went: a status word, the HTTP code, and h
 
 That body is exactly what the [Response](#describe-the-response) section wants. Testing first and copying the body out is the shortest way to a response tree that matches what the endpoint really returns, rather than what its documentation says it returns.
 
-{/* screenshot: Test dialog after a successful send — status, code, and duration, with the response body below */}
+![The Test dialog after a successful send, showing the status, code, and duration above the response body](/images/http-request/test-result.png)
 
 ## Advanced settings
 
@@ -284,7 +284,7 @@ Turn it on when the rest of the run is worth doing without this call — the req
 
 Between them they decide the fate of that expected `404`. Turn the first switch off and it was never a failure. Leave it on and turn the second on instead, and it's a failure the run survives — the case the [error response](#describe-the-response) tree is for.
 
-{/* screenshot: Advanced tab — Description, Timeout, Retries, Backoff, and the two failure switches */}
+![The Advanced tab showing Description, Timeout, Retries, Backoff, and the two failure switches](/images/http-request/advanced-tab.png)
 
 ## What the task looks like in a run
 
