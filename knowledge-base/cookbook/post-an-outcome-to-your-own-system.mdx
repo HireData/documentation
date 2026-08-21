@@ -16,7 +16,7 @@ One automation with four parts:
 3. A **described response**, so what the endpoint sends back becomes fields
 4. A **later task** that uses one of those fields
 
-Every tab, field, and default is covered in the [HTTP Request task](/automations/http-request-task) reference. This page walks one path through it, start to finish.
+Every tab, field, and default is covered in the [HTTP Request task](/reference/automation-tasks/http-request-task) reference. This page walks one path through it, start to finish.
 
 <Note>
   This recipe sends data **out** of HireData. If what you actually need is the other direction — another tool sending data **in** to start an automation — that's a custom app trigger instead. See [Custom Apps](/apps/custom-apps/introduction) and [Set up a trigger](/apps/custom-apps/set-up-a-trigger).
@@ -33,7 +33,7 @@ Whoever owns the endpoint has all of this. Getting it up front saves a round of 
 - Whether there's a **test or sandbox address**. The test in step 7 sends a real request, so you want somewhere safe to aim it
 
 <Tip>
-  If they can send you an OpenAPI or Swagger specification, a Postman collection, or even the cURL command straight out of their documentation, ask for that instead of a written description. HireData reads all of them and fills the request in for you. See [Import a specification or a cURL command](/automations/http-request-task#import-a-specification-or-a-curl-command).
+  If they can send you an OpenAPI or Swagger specification, a Postman collection, or even the cURL command straight out of their documentation, ask for that instead of a written description. HireData reads all of them and fills the request in for you. See [Import a specification or a cURL command](/reference/automation-tasks/http-request-task#import-a-specification-or-a-curl-command).
 </Tip>
 
 ## Build the automation
@@ -48,9 +48,9 @@ Any trigger works here — a completed form response, a candidate updated in you
 
 ### 2. Add the HTTP Request task
 
-Add a task and pick **HTTP Request**. It's filed under both **Add** and **Message**, and both routes open the same task — see [where to find the task](/automations/http-request-task#where-to-find-the-task).
+Add a task and pick **HTTP Request**. It's filed under both **Add** and **Message**, and both routes open the same task — see [where to find the task](/reference/automation-tasks/http-request-task#where-to-find-the-task).
 
-If you were given a specification or a cURL command when you asked for the endpoint's details, click **Import** in the drawer's footer now and let HireData fill the request in. The two routes fill in different things, so check [what an import fills in](/automations/http-request-task#what-an-import-fills-in), then read back through steps 3 to 6 against what it wrote. Otherwise, fill it in by hand as below.
+If you were given a specification or a cURL command when you asked for the endpoint's details, click **Import** in the drawer's footer now and let HireData fill the request in. The two routes fill in different things, so check [what an import fills in](/reference/automation-tasks/http-request-task#what-an-import-fills-in), then read back through steps 3 to 6 against what it wrote. Otherwise, fill it in by hand as below.
 
 ### 3. Set the method and the URL
 
@@ -60,7 +60,7 @@ A new task already has the method set to `POST`, which is what you want. Enter y
 https://api.example.com/v1/recruitment-events
 ```
 
-If part of the address changes from run to run, wrap that part in curly braces and a required row appears for it on the **Params** tab. See [query and path parameters](/automations/http-request-task#query-and-path-parameters).
+If part of the address changes from run to run, wrap that part in curly braces and a required row appears for it on the **Params** tab. See [query and path parameters](/reference/automation-tasks/http-request-task#query-and-path-parameters).
 
 ### 4. Build the JSON body from automation fields
 
@@ -94,7 +94,7 @@ More generally, which fields you can pick depends on the trigger you chose in st
 }
 ```
 
-Full detail on the format controls, the builder, and the raw editor is in [request body](/automations/http-request-task#request-body).
+Full detail on the format controls, the builder, and the raw editor is in [request body](/reference/automation-tasks/http-request-task#request-body).
 
 {/* screenshot: cookbook-body-fields.png — the Body tab with the recipe's six properties, the field picker open on one Value */}
 
@@ -102,10 +102,10 @@ Full detail on the format controls, the builder, and the raw editor is in [reque
 
 Open the **Auth** tab, select `Bearer token`, and paste the token into **Token**. HireData sends it as an `Authorization` header on every request; there's no header for you to add on the **Headers** tab.
 
-If the endpoint wants a key in a named header or a query parameter instead, or trades a client ID and secret for a token, the other types cover both — see [authentication](/automations/http-request-task#authentication).
+If the endpoint wants a key in a named header or a query parameter instead, or trades a client ID and secret for a token, the other types cover both — see [authentication](/reference/automation-tasks/http-request-task#authentication).
 
 <Warning>
-  Anyone who can edit this automation can read the token you paste here — see [authentication](/automations/http-request-task#authentication) for what that means when you're configuring this on someone else's behalf.
+  Anyone who can edit this automation can read the token you paste here — see [authentication](/reference/automation-tasks/http-request-task#authentication) for what that means when you're configuring this on someone else's behalf.
 </Warning>
 
 {/* screenshot: cookbook-auth-bearer.png — the Auth tab set to Bearer token */}
@@ -134,7 +134,7 @@ They arrive on top of the three fields every HTTP Request task produces anyway �
 
 Under **Error response (non-2xx)**, describe what the endpoint returns when it rejects a call — usually a message you'd want in a log. That tree is only worth filling in if you set the run to continue past a failure — see [Decide what happens when the call fails](#decide-what-happens-when-the-call-fails) below.
 
-A value you don't describe here is a value no later task can pick out by name. See [describe the response](/automations/http-request-task#describe-the-response).
+A value you don't describe here is a value no later task can pick out by name. See [describe the response](/reference/automation-tasks/http-request-task#describe-the-response).
 
 {/* screenshot: cookbook-response-described.png — the Response section with id and status described, the drawer titled "Post conversation outcome" */}
 
@@ -148,7 +148,7 @@ Click **Test** in the footer, and read the warning before you click **Send**.
 
 The dialog asks for one value per parameter, grouping them by where they belong. This recipe's request has no path or query parameters, so you'll see a **Body** group only, one input per property from step 4.
 
-Anything you set to a fixed value in step 4 is already filled in. The properties you bound to automation fields come up blank, because those values only exist during a real run — type a plausible literal into each of those. See [fill in the values](/automations/http-request-task#fill-in-the-values).
+Anything you set to a fixed value in step 4 is already filled in. The properties you bound to automation fields come up blank, because those values only exist during a real run — type a plausible literal into each of those. See [fill in the values](/reference/automation-tasks/http-request-task#fill-in-the-values).
 
 {/* screenshot: cookbook-test-dialog.png — the Test dialog before Send, every input still empty */}
 
@@ -160,7 +160,7 @@ Read those against each other. A property you described that comes back missing 
 
 Add a task after the HTTP Request that does something with what came back. **Add → Note** is the simplest: put `Post conversation outcome: id` in the note's text, so the reference your own system generated is recorded in HireData too.
 
-Any later task that takes a text value works the same way. The pattern is what matters: the endpoint's answer is now data in the run, not something you have to go and look up. See [use a response value in a later task](/automations/http-request-task#use-a-response-value-in-a-later-task).
+Any later task that takes a text value works the same way. The pattern is what matters: the endpoint's answer is now data in the run, not something you have to go and look up. See [use a response value in a later task](/reference/automation-tasks/http-request-task#use-a-response-value-in-a-later-task).
 
 {/* screenshot: cookbook-note-field-picker.png — the Note task's field picker, showing "Post conversation outcome: id" */}
 
@@ -173,13 +173,13 @@ Your endpoint will be unavailable at some point. Two switches on the **Advanced*
 
 For an endpoint that's occasionally slow rather than broken, raise **Retries** on the same tab.
 
-Both switches, and what they do together, are covered in [decide what counts as a failure](/automations/http-request-task#decide-what-counts-as-a-failure).
+Both switches, and what they do together, are covered in [decide what counts as a failure](/reference/automation-tasks/http-request-task#decide-what-counts-as-a-failure).
 
 ## Activate and check the first runs
 
 Activate the automation and let a real conversation end. Then open **Runs** and find the run.
 
-A completed HTTP Request shows its description as the title, with **What will you provide?** and **What will you get back?** beneath it, so you can compare what was sent against what you configured. See [what the task looks like in a run](/automations/http-request-task#what-the-task-looks-like-in-a-run) and the [Runs](/settings/logs/runs) log.
+A completed HTTP Request shows its description as the title, with **What will you provide?** and **What will you get back?** beneath it, so you can compare what was sent against what you configured. See [what the task looks like in a run](/reference/automation-tasks/http-request-task#what-the-task-looks-like-in-a-run) and the [Runs](/settings/logs/runs) log.
 
 Check the first few runs against your own system's records before you rely on the automation. A request that succeeded from HireData's side still tells you nothing about what your system did with it.
 
@@ -187,7 +187,7 @@ Check the first few runs against your own system's records before you rely on th
 
 If the automation isn't running at all, the problem is the trigger rather than the request. See [Why didn't my automation run?](/knowledge-base/why-didnt-my-automation-run).
 
-If the request runs but comes back blocked, see [if a request comes back blocked](/automations/http-request-task#if-a-request-comes-back-blocked).
+If the request runs but comes back blocked, see [if a request comes back blocked](/reference/automation-tasks/http-request-task#if-a-request-comes-back-blocked).
 
 If you still need help, contact [support@hiredata.com](mailto:support@hiredata.com) and include:
 

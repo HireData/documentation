@@ -101,7 +101,7 @@ A specification usually describes a whole API rather than a single endpoint. Whe
 
 This depends on the document, not on how you brought it in. The same list of endpoints appears whether you pasted the specification or fetched it **From URL**.
 
-{/* screenshot: endpoint-picker.png — the endpoint chooser, after importing a specification with several operations */}
+![The endpoint chooser, after importing a specification with several operations](/images/http-request/endpoint-picker.png)
 
 ## Build the request by hand
 
@@ -166,7 +166,7 @@ Header rows have a **Name** and a **Value**. **Name** suggests known header name
 
 For a header that carries an API key or a bearer token, use [Authentication](#authentication) instead. It has fields for both.
 
-{/* screenshot: headers-tab.png — the Headers tab, with the Name combobox suggesting known header names */}
+![The Headers tab, with the Name combobox suggesting known header names](/images/http-request/headers-tab.png)
 
 ### Using fields from the automation
 
@@ -181,7 +181,7 @@ Either way the field is stored as a `{{field_key}}` token, which is what you'll 
 
 Fields can go into the URL, the parameters, the headers, and the body. Any part of the request can change from run to run.
 
-{/* screenshot: field-picker.png — the field picker open on a Value, listing fields from the automation */}
+![The field picker open on a Value, listing fields from the automation](/images/http-request/field-picker.png)
 
 ## Authentication
 
@@ -264,7 +264,7 @@ Properties on the error tree carry an extra segment, so they can't collide with 
 
 The description isn't cosmetic, then. It's the first half of every field name this task produces, so write a specific one before you describe the response — it's what you'll be reading in a field picker later.
 
-{/* screenshot: response-field-in-later-task.png — a later task's field picker, showing "Get brand context by domain: meta.canonical_name" */}
+![A later task's field picker, showing "Get brand context by domain: meta.canonical_name"](/images/http-request/response-field-in-later-task.png)
 
 ## Test the request
 
@@ -354,7 +354,7 @@ Open a run and a completed HTTP Request shows:
 
 The run's timeline carries two entries for the task, `HTTP Request: Run Moved` and `HTTP Request: Completed`, with the message "Http request succeeded."
 
-{/* screenshot: task-in-a-run.png — a completed HTTP Request in a run: both sections and the chip row of auth type, timeout, and retries */}
+![A completed HTTP Request in a run: both sections and the chip row of auth type, timeout, and retries](/images/http-request/task-in-a-run.png)
 
 ## If a request comes back blocked
 
