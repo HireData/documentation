@@ -81,11 +81,35 @@ Your assistant can only see the skills that are loaded in _that_ conversation, s
 
 ## Get told when something changes
 
-If you'd rather be notified than remember to check:
+Better than remembering to check: have something tell you.
 
-- **Follow the repository's activity feed.** Add `https://github.com/HireData/skills/commits/main.atom` to any RSS reader. Every change to the skills shows up there.
+### Let your assistant check every week
+
+If your assistant can run scheduled tasks — Claude does this in Cowork — you can hand the whole thing over. Set it up once, then only hear from it when something has actually changed.
+
+Paste this into a Cowork session:
+
+```text
+Set up a weekly task that watches the HireData skills library for me.
+
+Every Monday morning:
+1. Look at https://github.com/HireData/skills and list every skill folder under
+   plugins/hiredata/skills, plus the version number in
+   .claude-plugin/marketplace.json.
+2. Compare that with the HireData skills available to you in the session, and
+   with what the previous run of this task reported.
+3. Tell me only about differences: skills that are new, skills that changed
+   since the last check, and a version number that has moved. One line each on
+   what changed, and the link to the change on GitHub.
+4. If nothing changed, say so in a single line and do not notify me.
+```
+
+The task tells you what moved and where; you still press **Update** on the plugin, or re-run the install prompt, yourself. Ask it to _"package anything new as a .skill file and send it to me"_ and it will hand you the files ready to save.
+
+### Or subscribe to the repository
+
+- **Add the activity feed to an RSS reader:** `https://github.com/HireData/skills/commits/main.atom`. Every change to the skills shows up there.
 - **Watch the repository on GitHub.** Open [github.com/HireData/skills](https://github.com/HireData/skills), click **Watch**, and pick what you want to hear about. You need a GitHub account.
-- **Put the check on a schedule.** If your assistant can run scheduled tasks, set one up monthly with the [check prompt](#ask-your-assistant-to-check) above.
 - **Read the HireData release notes.** New skills are announced alongside other product news at [hiredata.com](https://www.hiredata.com/).
 
 ## Troubleshooting
