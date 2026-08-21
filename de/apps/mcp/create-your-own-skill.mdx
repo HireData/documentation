@@ -1,0 +1,175 @@
+---
+title: "Einen eigenen Skill erstellen"
+sidebarTitle: "Einen eigenen Skill erstellen"
+description: "Verwandeln Sie etwas, das Sie immer wieder erklären – etwa das Umbauen einer ATS-E-Mail-Signatur – in einen Skill, den Ihr KI-Assistent von selbst anwendet. Aufnehmen, aus einer Konversation bauen und an HireData zurückgeben."
+keywords: ["Skill erstellen", "Skill aufnehmen", "eigener Skill Claude", "SKILL.md", "E-Mail-Signatur Skill", "Skill beitragen", "HireData Skills Repository", "KI-Recruiting-Skills"]
+related: ["/de/apps/mcp/hiredata-skills", "/de/apps/mcp/install-hiredata-plugin", "/de/apps/mcp/keep-hiredata-skills-up-to-date"]
+---
+
+[Die Skills von HireData](/de/apps/mcp/hiredata-skills) decken die Arbeit ab, die HireData am besten kennt. Die Dinge, die _Sie_ jedes Mal gleich tun – die Tonalität Ihrer Agentur, wie Sie die E-Mail-Signatur einer Kundin umbauen, die Checkliste, die Sie durchgehen, bevor ein Workspace live geht – sind die, die es wert sind, aufgeschrieben zu werden. Ein Skill ist der Weg, das einmal zu tun, statt es in jeder Konversation neu zu erklären.
+
+Ein Skill ist ein Ordner mit einer Datei `SKILL.md` darin: reiner Text, kein Code erforderlich. Sie müssen ihn danach nie wieder erwähnen. Ihr Assistent prüft die Beschreibung jedes installierten Skills und liest die vollständigen Anweisungen, sobald Ihre Anfrage zu einem davon passt.
+
+## Lohnt sich dafür ein Skill?
+
+Gute Kandidaten haben drei Eigenschaften gemeinsam:
+
+- **Sie tun es wiederholt.** Einmal im Monat genügt; einmal überhaupt nicht.
+- **Die Methode ist stabil.** Sie würden einer neuen Kollegin heute dieselben Anweisungen geben wie letztes Jahr.
+- **Es gibt eine richtige Antwort.** Hausstil, eine vorgeschriebene Reihenfolge von Schritten, ein Format, das passen muss – Dinge, die ein Assistent falsch rät, solange Sie sie ihm nicht sagen.
+
+Wenn es einmalig ist, fragen Sie einfach danach. Ein Skill, den Sie nie auslösen, ist Ballast.
+
+## Bevor Sie beginnen
+
+Claude muss Dateien für Sie erstellen dürfen – so übergibt es Ihnen den fertigen Skill. Klicken Sie in Claude im Web unten links auf Ihren Namen und gehen Sie zu **Settings** \> **Capabilities**; in der Desktop-App finden Sie dieselbe Seite unter **Customize**. Aktivieren Sie Code-Ausführung und Dateierstellung.
+
+Ist es deaktiviert, schreibt Claude den Skill in den Chat, kann Ihnen aber keine Datei zum Hochladen geben. In einem Team- oder Enterprise-Plan steuert ein Owner das unter **Organization settings** \> **Skills**.
+
+## Weg 1: eine Konversation in einen Skill verwandeln
+
+Das ist der einfachste Weg, und er funktioniert in jeder Claude-Konversation. Sie haben die Aufgabe mit Ihrem Assistenten bereits einmal erledigt – die Methode steht also genau dort im Chat.
+
+<Steps>
+  <Step title="Die Aufgabe einmal richtig erledigen">
+    Arbeiten Sie sie mit Ihrem Assistenten durch, bis das Ergebnis wirklich Ihren Vorstellungen entspricht. Korrigieren Sie unterwegs – _„nein, die Icons gehören immer unter die Telefonnummer"_ – denn genau diese Korrekturen sind der wertvolle Teil.
+  </Step>
+  <Step title="Nach dem Skill fragen">
+    Fügen Sie in derselben Konversation dies ein:
+
+    ```text
+    Verwandle das, was wir gerade getan haben, in einen Skill, den ich wiederverwenden kann.
+    
+    Schreibe eine SKILL.md mit einem kurzen Namen in Kleinbuchstaben-mit-Bindestrichen und
+    einer description, die sowohl sagt, was der Skill tut, als auch, wann er zu verwenden
+    ist – einschließlich der Worte, die eine Kollegin von mir tatsächlich benutzen würde,
+    wenn sie danach fragt.
+    
+    Halte im Hauptteil die Methode fest, der wir gefolgt sind, die Korrekturen, die ich
+    unterwegs vorgenommen habe, und ein durchgearbeitetes Beispiel. Lass alles weg, was
+    nur für den heutigen Fall gilt, und lass Passwörter, Tokens und Kundendaten weg.
+    
+    Verpacke es dann als ZIP mit dem Skill-Ordner im Wurzelverzeichnis und gib mir das ZIP
+    zum Herunterladen.
+    ```
+  </Step>
+  <Step title="Speichern">
+    Gehen Sie in Claude zu **Customize** \> **Skills**, klicken Sie auf **\[Add\]**, wählen Sie die Option zum Hochladen einer Skill-Datei und wählen Sie das ZIP aus. Gehen Sie in ChatGPT zu [chatgpt.com/skills](https://chatgpt.com/skills), klicken Sie auf **Create** und dann auf **Upload from your computer**.
+  </Step>
+  <Step title="In einer neuen Konversation testen">
+    Skills werden nur beim Start einer Konversation geladen – öffnen Sie also eine neue und fragen Sie so, wie Sie es normalerweise tun würden, ohne den Skill beim Namen zu nennen. Wenn Ihr Assistent nicht danach greift, siehe [wenn ein Skill nicht ausgelöst wird](#wenn-ein-skill-nicht-ausgelöst-wird).
+  </Step>
+</Steps>
+
+### Praxisbeispiel: eine E-Mail-Signatur
+
+Die ATS-E-Mail-Signatur einer Kundin als HireData-E-Mail-Vorlage nachzubauen ist ein perfekter Kandidat: dieselbe Aufgabe, andere Kundin, jedes Mal – und die Regeln existieren nur in Ihrem Kopf.
+
+Bauen Sie eine Signatur gemeinsam mit Ihrem Assistenten. Sagen Sie ihm, welche Teile fest sind und welche aus [Variablen](/de/variables/introduction) kommen, wo das Logo hingehört, was passiert, wenn eine Telefonnummer fehlt, und welche Icons Ihre Kundinnen und Kunden verwenden. Führen Sie dann den Prompt oben aus. Die nächste Signatur beginnt bei Ihrer Methode statt bei null.
+
+<Note>
+  Icons und Logos in einer E-Mail-Vorlage müssen irgendwo gehostet sein, wo Ihre Empfänger sie erreichen können. Behandeln Sie das im Skill – woher die Bilder kommen und was zu tun ist, wenn eine Kundin keine geliefert hat – damit der Skill nicht jedes Mal daran hängen bleibt.
+</Note>
+
+## Weg 2: sich selbst dabei aufnehmen
+
+Sie können sich bei der Aufgabe aufnehmen, statt sie zu beschreiben. Nützlich, wenn sich die Arbeit über mehrere Bildschirme erstreckt und leichter zu zeigen als aufzuschreiben ist.
+
+Sie benötigen alle drei: einen Mac, einen Pro-, Max- oder Team-Plan und den Cowork-Modus von Claude. Wenn **Record a skill** nicht im Menü **\[\+\]** erscheint, haben Sie es nicht – nutzen Sie stattdessen Weg 1.
+
+Bevor Sie beginnen: Ihr Video und Ihr Ton werden nicht aufbewahrt, nur Screenshots aus der Sitzung, gespeichert in der Cowork-Aufgabe. Behandeln Sie es wie eine Bildschirmfreigabe und schließen Sie alles, was Sie einer Kollegin nicht zeigen würden.
+
+<Steps>
+  <Step title="Die Aufnahme starten">
+    Klicken Sie im Eingabefeld auf **\[\+\]** und wählen Sie **Record a skill**, oder gehen Sie zu **Customize** \> **Skills**, klicken Sie auf **\[Add\]** und wählen Sie **Record your screen**.
+  </Step>
+  <Step title="Die Aufgabe erledigen und dabei erzählen">
+    Arbeiten Sie in Ihrem normalen Tempo, bis zu etwa zehn Minuten, und sagen Sie, was Sie tun und warum – _„ich prüfe immer zuerst die Marke, weil das den Absender bestimmt"_. Die Begründung macht den Skill wertvoll; die Klicks allein tun das nicht.
+  </Step>
+  <Step title="Prüfen, was Claude vorschlägt">
+    Claude wertet die Aufnahme aus und schlägt einen neuen Skill vor oder eine Aktualisierung eines vorhandenen. Lesen Sie ihn, bevor Sie speichern: Eine Aufnahme greift Details aus genau dem einen Fall auf, den Sie vorgeführt haben. Löschen Sie alles, was beim nächsten Mal nicht mehr stimmt.
+  </Step>
+</Steps>
+
+## Weg 3: den Skill selbst schreiben
+
+Manchmal wissen Sie bereits genau, was darin stehen soll.
+
+Am schnellsten beginnen Sie, indem Sie einen von HireData kopieren. Öffnen Sie einen beliebigen Ordner unter [github.com/HireData/skills](https://github.com/HireData/skills), lesen Sie dessen `SKILL.md` und nutzen Sie sie als Vorlage für Ihre eigene. Die Struktur ist überschaubar:
+
+```text
+my-skill/
+├── SKILL.md
+└── references/
+    └── examples.md
+```
+
+`SKILL.md` ist eine reine Textdatei. Schreiben Sie sie in einem Texteditor – nicht in Word – und speichern Sie sie als `SKILL.md`, ohne `.txt` oder `.docx` am Ende. Sie beginnt mit zwei Pflichtfeldern zwischen zwei Zeilen aus drei Bindestrichen, danach folgt normaler Text:
+
+```markdown
+---
+name: rebuild-ats-email-signature
+description: Rebuild a client's ATS email signature as a HireData email template. Use when someone asks to migrate, convert, or recreate an email signature, or match a client's existing signature layout.
+---
+
+# Rebuild an ATS email signature
+
+## Before you start
+- Check which brand the signature belongs to...
+
+## Steps
+1. ...
+
+## Example
+...
+```
+
+Drei Regeln sind wichtig:
+
+- **`name`** – nur Kleinbuchstaben, Ziffern und Bindestriche, bis zu 64 Zeichen, und er darf die Wörter _claude_ oder _anthropic_ nicht enthalten.
+- **`description`** – der einzige Teil, den Ihr Assistent liest, bevor er entscheidet, ob der Skill passt. Sagen Sie, **was er tut und wann er zu verwenden ist**, in den Worten, die Ihre Kolleginnen und Kollegen tatsächlich benutzen, und bleiben Sie unter 200 Zeichen.
+- **`references/`** – hier gehört alles Lange hin: Feldlisten, Beispiele, Sonderfälle. Verlinken Sie darauf aus `SKILL.md`. Ihr Assistent öffnet diese Dateien nur, wenn er sie braucht, was den Skill schnell hält.
+
+Zippen Sie den Ordner `my-skill` selbst, sodass beim Öffnen des ZIP genau der obige Ordner erscheint und nicht ein weiterer Ordner darum herum. Laden Sie ihn dann hoch wie in [Weg 1](#weg-1-eine-konversation-in-einen-skill-verwandeln), Schritt 3.
+
+<Note>
+  Das Hilfe-Center von Claude schreibt diese Datei als `skill.md`. `SKILL.md` ist die Form, die in der Entwicklerdokumentation von Anthropic und in den Skills von HireData verwendet wird – beide funktionieren.
+</Note>
+
+## Wenn ein Skill nicht ausgelöst wird
+
+In neun von zehn Fällen liegt das Problem an der Beschreibung, nicht an den Anweisungen.
+
+- **Starten Sie eine neue Konversation.** Skills werden beim Start einer Konversation geladen.
+- **Formulieren Sie die Beschreibung von der Anfrage her, nicht vom Skill her.** „Rebuild a client's ATS email signature as a HireData email template. Use when someone asks to migrate, convert, or recreate a signature" schlägt „E-Mail-Signatur-Helfer".
+- **Ergänzen Sie die Worte, die Menschen wirklich sagen.** Wenn Ihr Team „Signatur umbauen" sagt, schreiben Sie das ebenfalls in die Beschreibung.
+- **Fragen Sie Ihren Assistenten, was er gesehen hat.** _„Welche Skills standen dir gerade zur Verfügung, und warum hast du den für Signaturen nicht genutzt?"_ Meist sagt er Ihnen genau, was fehlt.
+- **Teilen Sie ihn auf.** Ein Skill pro Workflow löst weit zuverlässiger aus als ein Skill, der fünf Dinge abdecken will.
+
+## Den Skill mit Ihrem Team teilen
+
+Ein Skill, den Sie selbst hochladen, ist persönlich – jede Kollegin lädt ihre eigene Kopie hoch, sofern ihn nicht ein Owner für die gesamte Organisation bereitstellt. Um einen zu übergeben, senden Sie das ZIP.
+
+In Team- und Enterprise-Plänen kann ein Owner einen Skill für alle bereitstellen: **Organization settings** \> **Skills** \> **\[\+ Add\]**, das ZIP hochladen, und er erscheint bei jedem Mitglied unter **Customize** \> **Skills**. Owner können selbst erstellte Skills auch vollständig deaktivieren – wenn Sie also keinen hochladen können, liegt es daran.
+
+<Warning>
+  Ein Skill gibt Ihrem Assistenten Anweisungen, denen er folgen wird. Installieren Sie nur Skills von Personen, denen Sie vertrauen, lesen Sie einen Skill durch, bevor Sie ihn aktivieren, und legen Sie niemals Passwörter, API-Schlüssel oder Kundendaten hinein – nutzen Sie für Live-Daten die [HireData-MCP-Verbindung](/de/apps/mcp/connect-hiredata-to-your-ai-assistant).
+</Warning>
+
+## Den Skill an HireData zurückgeben
+
+Wenn Ihr Skill anderen HireData-Nutzenden helfen würde, veröffentlicht HireData ihn. Die Skills sind Open Source unter Apache 2.0.
+
+Der einfache Weg: Senden Sie ihn an [support@hiredata.com](mailto:support@hiredata.com) mit einer Zeile dazu, was er tut und wem er hilft – HireData übernimmt den Rest.
+
+Sie sind mit GitHub vertraut? Dann öffnen Sie stattdessen einen Pull Request auf [github.com/HireData/skills](https://github.com/HireData/skills). Kurz gefasst: Legen Sie Ihren Ordner unter `plugins/hiredata/skills/` an, mit einem kleingeschriebenen, mit Bindestrichen getrennten, möglichst verbgeführten Namen, einer `SKILL.md` und einem nur eine Ebene tiefen `references/`-Ordner; ergänzen Sie Evaluationsfälle in `evals/regression-cases.json` – einen normalen Anwendungsfall, einen Fall mit fehlenden oder mehrdeutigen Daten, einen Sicherheits- oder Ungültigkeitsfall sowie ein Baseline- und ein Kandidatenergebnis, bewertet gegen `evals/RUBRIC.md`; und führen Sie `python3 scripts/validate_repo.py` aus, bevor Sie den PR eröffnen. [CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) enthält die vollständigen Anforderungen und die Review-Checkliste.
+
+<CardGroup cols={2}>
+  <Card title="Sehen, wie die Skills von HireData geschrieben sind" icon="github" href="https://github.com/HireData/skills">
+    Zehn funktionierende Beispiele, ihre References und die Evaluationsfälle dahinter.
+  </Card>
+
+  <Card title="Die HireData-Skills installieren" icon="puzzle-piece" href="/de/apps/mcp/install-hiredata-plugin">
+    Die eigenen Skills von HireData und die MCP-Verbindung in einem Schritt erhalten.
+  </Card>
+</CardGroup>

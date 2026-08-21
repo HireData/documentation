@@ -1,14 +1,14 @@
 ---
 title: "HireData skills for your AI assistant"
 sidebarTitle: "Skills"
-description: "How the nine HireData skills guide ChatGPT, Codex, and Claude to plan activations, build workflows, diagnose issues, and write issue reports."
+description: "How the ten HireData skills guide ChatGPT, Codex, and Claude to plan activations, build workflows, diagnose issues, report ROI, and write issue reports."
 keywords: ["HireData skills", "AI skills", "plan activation", "create triggers", "create forms", "AI email templates", "AI WhatsApp templates", "diagnose automations", "email deliverability", "AI issue reports", "HireData plugin", "MCP"]
-related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/install-hiredata-skills-with-a-prompt", "/apps/mcp/keep-hiredata-skills-up-to-date", "/apps/mcp/create-your-own-skill"]
 ---
 
 The [HireData MCP connection](/apps/mcp/connect-hiredata-to-your-ai-assistant) gives your AI assistant HireData's tools. Skills give it the working method behind them: how an experienced HireData consultant would approach the task, what to check in your workspace first, and when to stop and show you a preview instead of creating something you didn't ask for.
 
-HireData currently publishes nine skills: one that plans, four that build, two that diagnose, one that writes issue reports, and one that supplies the staffing domain knowledge behind the rest.
+HireData currently publishes ten skills: one that plans, four that build, two that diagnose, one that reports on what the automations delivered, one that writes issue reports, and one that supplies the staffing domain knowledge behind the rest.
 
 The skills that build something gather the available context, show you a complete draft or preview, and only create or change something after you approve that exact action. New triggers stay inactive, forms stay unpublished where drafts are supported, and nothing is sent or activated as a side effect. The skills that diagnose read your workspace data, explain what actually happened, and propose a repair — they never apply it on their own.
 
@@ -21,6 +21,7 @@ The skills that build something gather the available context, show you a complet
 | [Create WhatsApp templates](#create-whatsapp-templates) | Design concise WhatsApp messages that pass Meta's template review |
 | [Diagnose automations](#diagnose-automations) | Find out why a workflow did not do what you expected, and what to change |
 | [Diagnose email performance](#diagnose-email-performance) | Explain a drop in opens, clicks, or deliverability, and act on it |
+| [Report automation ROI](#report-automation-roi) | Show what your automations have actually delivered, on measured figures |
 | [Write issue reports](#write-issue-reports) | Draft and refine HireData Linear issues using the workflow sources you can access |
 | [Apply staffing lifecycle knowledge](#apply-staffing-lifecycle-knowledge) | Have your assistant read recruitment requests the way a recruiter would |
 
@@ -92,6 +93,15 @@ Try:
 - "Mail to Microsoft addresses seems to be blocked. Check the last six months per provider."
 - "What are our delivery, bounce, and complaint rates this quarter, and are they healthy?"
 
+## Report automation ROI
+
+Answers "what has this actually given us?" without inventing anything. The skill first establishes the true reporting period from when your automations were created and when they actually ran, rather than accepting a window someone picked. It separates automations that communicate with candidates and contacts — which can be credited with placements — from data-only automations, which are credited with time saved. Every figure comes from measured workspace data, never a model, and where attribution covers less of the period than the automations were live, the skill says so and explains why. You get the customer-facing readout plus an internal note listing the numbers it rejected and the arithmetic that failed.
+
+Try:
+
+- "What have our automations delivered since we went live? Use only measured figures."
+- "Build a business review for this workspace ahead of renewal, and tell me which numbers you couldn't stand behind."
+
 ## Write issue reports
 
 Turns a bug, customer request, prototype, recording, meeting note, or technical prompt into a structured HireData Linear issue. The skill includes HireData's issue-writing method, templates, refinement guidance, and maintained workflow snapshots. HireData team members can use the live Linear workspace and internal Notion SOPs; approved partners can use the project and Notion pages shared with them. Users without live access still get a complete report with unverified metadata clearly marked.
@@ -117,16 +127,24 @@ Try:
 
 ## Get the skills
 
-The skills are bundled with the HireData MCP connection in the HireData plugin. One install covers both. [Install the HireData plugin](/apps/mcp/install-hiredata-plugin) in ChatGPT, Codex, or Claude. No plugin support on your plan or assistant? The same guide shows how to [install the skills with a prompt](/apps/mcp/install-hiredata-plugin#install-the-skills-with-a-prompt).
+The skills are bundled with the HireData MCP connection in the HireData plugin. One install covers both. [Install the HireData plugin](/apps/mcp/install-hiredata-plugin) in ChatGPT, Codex, or Claude. No plugin support on your plan or assistant? [Install the skills with a prompt](/apps/mcp/install-hiredata-skills-with-a-prompt) instead.
 
-The skills are public and open to review at [github.com/HireData/skills](https://github.com/HireData/skills).
+HireData improves these skills as the product changes and adds new ones, so [keep them up to date](/apps/mcp/keep-hiredata-skills-up-to-date). They are public and open to review at [github.com/HireData/skills](https://github.com/HireData/skills) — and you can [create your own](/apps/mcp/create-your-own-skill) for the work only your team does.
 
 <CardGroup cols={2}>
   <Card title="Install the plugin" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
-    Get all nine skills plus the MCP connection in ChatGPT, Codex, or Claude.
+    Get every skill plus the MCP connection in ChatGPT, Codex, or Claude.
   </Card>
 
-  <Card title="Connect via MCP only" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
-    Use HireData's tools from Gemini or any MCP-compatible assistant.
+  <Card title="Install skills with a prompt" icon="wand-magic-sparkles" href="/apps/mcp/install-hiredata-skills-with-a-prompt">
+    No plugin support? Let your assistant fetch and package the skills for you.
+  </Card>
+
+  <Card title="Keep skills up to date" icon="arrows-rotate" href="/apps/mcp/keep-hiredata-skills-up-to-date">
+    Check your version, update in one step, and hear about new skills.
+  </Card>
+
+  <Card title="Create your own skill" icon="hammer" href="/apps/mcp/create-your-own-skill">
+    Capture your own method once, and contribute it back.
   </Card>
 </CardGroup>
