@@ -1,0 +1,163 @@
+---
+title: "Installer les skills HireData avec un prompt"
+sidebarTitle: "Installer les skills avec un prompt"
+description: "Demandez à votre assistant IA de récupérer les skills HireData et de les empaqueter, puis enregistrez-les vous-même. Un prompt à copier-coller par assistant, quand vous ne pouvez pas installer le plugin."
+keywords: ["installer les skills HireData", "prompt skills HireData", "téléverser une skill Claude", "téléverser une skill ChatGPT", "SKILL.md", "skills sans plugin", "alternative au plugin HireData", "MCP"]
+related: ["/fr/apps/mcp/install-hiredata-plugin", "/fr/apps/mcp/hiredata-skills", "/fr/apps/mcp/keep-hiredata-skills-up-to-date"]
+---
+
+Une skill HireData est un ensemble d'instructions écrites qui apprend à votre assistant IA comment HireData réalise une tâche précise — rédiger un modèle d'e-mail, diagnostiquer une automatisation, planifier une activation. Il existe deux façons d'obtenir [les skills HireData](/fr/apps/mcp/hiredata-skills) dans votre assistant. Cette page couvre la méthode manuelle : vous collez un prompt, votre assistant récupère les instructions et vous remet un fichier, et vous téléversez ce fichier vous-même. Comptez environ deux minutes par skill.
+
+Si vous pouvez [installer le plugin](/fr/apps/mcp/install-hiredata-plugin), faites-le plutôt — c'est une seule étape, cela inclut la connexion HireData, et tout se met à jour depuis un seul bouton.
+
+| Voie | Ce qui se passe | À choisir quand |
+| --- | --- | --- |
+| [Installer le plugin](/fr/apps/mcp/install-hiredata-plugin) | Votre assistant reçoit toutes les skills HireData **et** la connexion MCP HireData en une seule étape, et les deux se mettent à jour ensuite depuis un seul bouton | Votre assistant prend en charge les plugins et votre organisation les autorise. **Commencez ici.** |
+| Installer avec un prompt (cette page) | Votre assistant récupère les fichiers des skills ; vous enregistrez celles que vous voulez. Rien ne se met à jour tout seul | Votre assistant ne prend pas en charge les plugins, votre organisation bloque la marketplace, ou vous ne voulez qu'une ou deux skills |
+
+<Note>
+  Une skill apprend à votre assistant comment HireData réalise une tâche. Elle ne lui permet pas de voir ni de modifier quoi que ce soit dans vos workspaces. Pour cela, il vous faut aussi la [connexion MCP HireData](/fr/apps/mcp/connect-hiredata-to-your-ai-assistant) — le lien entre votre assistant et votre compte HireData. Configurez les deux, et vous obtenez l'équivalent de ce qu'apporte le plugin.
+</Note>
+
+## Installer les skills dans Claude
+
+### Installer une skill
+
+Commencez par une seule. Une fois que vous l'avez fait une fois, toutes les autres fonctionnent exactement de la même manière.
+
+<Steps>
+  <Step title="Autoriser Claude à créer des fichiers">
+    Dans Claude sur le web, cliquez sur votre nom en bas à gauche et allez dans **Settings** \> **Capabilities**. Dans l'application de bureau Claude, la même page se trouve sous **Customize**.
+
+    Activez l'exécution de code et la création de fichiers. Claude s'en sert pour construire le fichier que vous allez télécharger ; si c'est désactivé, Claude vous dira qu'il ne peut pas créer de fichiers.
+
+    Pas de réglage à cet endroit, ou il ne reste pas activé ? Vous êtes probablement sur une formule Team ou Enterprise, où un Owner le contrôle dans **Organization settings** \> **Skills** — **Code execution and file creation** et **Skills** doivent tous deux être activés. Demandez-lui de l'activer, ou d'[installer le plugin](/fr/apps/mcp/install-hiredata-plugin#claude-team-et-enterprise) pour tout le monde, ce qui représente moins de travail pour vous deux.
+  </Step>
+  <Step title="Demander à Claude de construire le fichier de la skill">
+    Démarrez une **nouvelle** conversation et collez le prompt ci-dessous. Il n'installe encore rien — il demande à Claude de construire un fichier, que vous téléverserez à l'étape suivante.
+
+    Ce prompt construit la skill **Créer des modèles d'e-mail**. Pour en construire une autre, remplacez `hiredata-create-email-templates` par un autre nom de dossier issu de [la liste des skills plus bas sur cette page](#les-noms-des-dossiers-de-skills). Il apparaît deux fois — une fois dans la première ligne, une fois dans l'adresse web — modifiez donc les deux.
+
+    ```text
+    Empaquette la skill HireData « hiredata-create-email-templates » pour moi.
+    
+    1. Récupère https://raw.githubusercontent.com/HireData/skills/main/plugins/hiredata/skills/hiredata-create-email-templates/SKILL.md
+    2. Récupère tous les fichiers auxquels ce SKILL.md fait référence dans son dossier references/, depuis ce même dossier du dépôt.
+    3. Reconstitue le dossier exactement tel qu'il est dans le dépôt : SKILL.md au premier niveau, le dossier references/ à côté.
+    4. Compresse-le en zip de sorte que le dossier de la skill se trouve lui-même à la racine du zip, et donne-moi le zip à télécharger.
+    ```
+
+    Claude répond avec un fichier zip. Téléchargez-le — il arrive dans votre dossier Téléchargements.
+  </Step>
+  <Step title="L'enregistrer comme skill">
+    Dans Claude, allez dans **Customize** \> **Skills**, cliquez sur **\[Add\]**, choisissez l'option de téléversement d'un fichier de skill, et sélectionnez le zip que vous venez de télécharger.
+
+    La skill apparaît désormais dans votre liste, activée.
+  </Step>
+  <Step title="Vérifier que cela fonctionne">
+    Démarrez une autre **nouvelle** conversation — les skills ne se chargent qu'au démarrage d'une conversation — et demandez quelque chose qui correspond à la skill, par exemple : _« Conçois un e-mail d'accusé de réception de candidature pour des candidats. Montre-moi un aperçu et n'envoie rien. »_
+
+    Claude nomme la skill au moment où il commence à travailler. Si ce n'est pas le cas, consultez [Dépannage](#dépannage).
+  </Step>
+</Steps>
+
+### Les installer toutes en une fois
+
+Un seul prompt les construit toutes. Il récupère tous les fichiers de skills du dépôt, ce qui prend quelques minutes — laissez l'onglet ouvert jusqu'à la fin.
+
+```text
+Empaquette toutes les skills HireData pour moi.
+
+Les skills se trouvent sur https://github.com/HireData/skills dans plugins/hiredata/skills.
+Lis ce dossier pour connaître les noms actuels des skills — ne suppose pas que tu les connais.
+
+Pour chaque skill, récupère son SKILL.md ainsi que tous les fichiers auxquels il fait
+référence dans son dossier references/, et reconstitue le dossier exactement tel qu'il
+est dans le dépôt.
+
+Donne-moi ensuite un zip par skill, chacun avec le dossier de cette skill à la racine
+du zip, afin que je puisse les téléverser un par un.
+```
+
+Téléversez chaque zip via **Customize** \> **Skills** \> **\[Add\]**.
+
+<Note>
+  **Vous utilisez le mode Cowork de Claude ?** Demandez des fichiers `.skill` plutôt que des zips — _« envoie-les-moi sous forme de fichiers .skill »_ — et Claude vous remet des fichiers que vous pouvez enregistrer sur votre compte directement depuis la session.
+</Note>
+
+## Installer une skill dans ChatGPT
+
+Les skills personnalisées dans ChatGPT nécessitent une formule Business, Enterprise, Healthcare ou Edu. Sur Enterprise et Edu, un administrateur doit d'abord activer les skills. Les skills personnelles ne se synchronisent pas entre l'application de bureau et le web : ajoutez-les donc dans celle que vous utilisez au quotidien.
+
+<Steps>
+  <Step title="Demander à ChatGPT de construire le fichier de la skill">
+    Utilisez le même prompt que dans [Installer une skill](#installer-une-skill), étape 2. ChatGPT renvoie un zip à télécharger.
+  </Step>
+  <Step title="Le téléverser">
+    Allez sur [chatgpt.com/skills](https://chatgpt.com/skills) (ou **Skills** dans l'application de bureau), cliquez sur **Create**, puis sur **Upload from your computer**, et sélectionnez le zip.
+
+    ChatGPT analyse une skill téléversée avant qu'elle ne devienne active : il peut donc s'écouler une minute avant que vous puissiez l'utiliser.
+  </Step>
+  <Step title="Vérifier que cela fonctionne">
+    Démarrez une nouvelle conversation et demandez quelque chose qui correspond à la skill.
+  </Step>
+</Steps>
+
+Si vous utilisez l'application de bureau ChatGPT, [installer le plugin](/fr/apps/mcp/install-hiredata-plugin#installer-le-plugin-dans-chatgpt) est plus rapide et configure aussi la connexion MCP.
+
+## Utiliser une skill une seule fois, sans l'installer
+
+Les assistants qui ne peuvent pas installer de skills peuvent tout de même en suivre une pour une tâche unique. Rien n'est installé. Vous donnez le lien à l'assistant chaque fois que vous en avez besoin.
+
+```text
+Lis https://raw.githubusercontent.com/HireData/skills/main/plugins/hiredata/skills/hiredata-plan-activation/SKILL.md
+ainsi que les fichiers auxquels il fait référence, suis la méthode qu'il décrit, et
+aide-moi sur :
+
+[décrivez ce que vous voulez]
+```
+
+Cela fonctionne dans Gemini, Microsoft Copilot, ChatGPT sur le web, ou tout assistant capable de lire une page web publique. Remplacez `hiredata-plan-activation` par la skill qui correspond à la tâche, et associez-la à la [connexion MCP HireData](/fr/apps/mcp/connect-hiredata-to-your-ai-assistant) pour que l'assistant puisse aussi atteindre votre workspace.
+
+## Les noms des dossiers de skills
+
+Utilisez-les exactement tels qu'ils sont écrits. [Les skills HireData pour votre assistant IA](/fr/apps/mcp/hiredata-skills) explique ce que fait chacune d'elles.
+
+| Skill | Nom du dossier |
+| --- | --- |
+| Planifier une activation | `hiredata-plan-activation` |
+| Créer des triggers | `hiredata-create-triggers` |
+| Créer des formulaires | `hiredata-create-forms` |
+| Créer des modèles d'e-mail | `hiredata-create-email-templates` |
+| Créer des modèles WhatsApp | `hiredata-create-whatsapp-templates` |
+| Diagnostiquer les automatisations | `hiredata-diagnose-automations` |
+| Diagnostiquer la performance des e-mails | `hiredata-diagnose-email-performance` |
+| Rapporter le ROI des automatisations | `hiredata-report-automation-roi` |
+| Rédiger des issue reports | `hiredata-create-linear-issues` |
+| Appliquer la connaissance du cycle de vie du staffing | `hiredata-map-staffing-lifecycle` |
+
+HireData ajoute des skills au fil du temps : consultez [le dépôt](https://github.com/HireData/skills) pour la liste du jour, ou utilisez le [prompt de vérification](/fr/apps/mcp/keep-hiredata-skills-up-to-date#vérifier-si-votre-version-est-à-jour).
+
+## Dépannage
+
+- **Votre assistant dit qu'il ne peut pas accéder aux fichiers.** Il a besoin de l'autorisation de consulter des pages web — la recherche et la récupération web dans **Settings** \> **Capabilities**. Si votre organisation a désactivé cela, la voie du plugin est votre seule option ; demandez plutôt à votre administrateur IA d'autoriser la marketplace HireData.
+- **Le téléversement est refusé.** Ouvrez le zip et vérifiez qu'il ressemble à ceci — le dossier de la skill d'abord, `SKILL.md` à l'intérieur :
+  ```text
+  hiredata-create-email-templates/
+  ├── SKILL.md
+  └── references/
+  ```
+  Si un second dossier enveloppe le tout, collez ceci à votre assistant : _« Reconstruis le zip de sorte que le dossier de la skill soit lui-même au premier niveau, sans rien autour. »_
+- **La skill se téléverse mais ne se déclenche jamais.** Les skills se chargent au démarrage d'une conversation. Ouvrez une nouvelle conversation et réessayez, et vérifiez que la skill est activée dans **Customize** \> **Skills**.
+- **Vous ne pouvez pas téléverser de skills du tout.** Sur les formules Team et Enterprise, un Owner peut désactiver les skills créées par les utilisateurs. Demandez-lui de distribuer [le plugin](/fr/apps/mcp/install-hiredata-plugin#claude-team-et-enterprise) via le catalogue de votre organisation à la place.
+- **Rien ne se passe dans votre workspace HireData.** Les skills décrivent la méthode ; la [connexion MCP](/fr/apps/mcp/connect-hiredata-to-your-ai-assistant) fournit les outils. Configurez les deux.
+
+<CardGroup cols={2}>
+  <Card title="Garder les skills à jour" icon="arrows-rotate" href="/fr/apps/mcp/keep-hiredata-skills-up-to-date">
+    Les skills installées de cette façon ne se mettent pas à jour toutes seules. Voici comment vérifier.
+  </Card>
+
+  <Card title="Installer le plugin à la place" icon="puzzle-piece" href="/fr/apps/mcp/install-hiredata-plugin">
+    Une seule étape pour toutes les skills et la connexion MCP, et un seul bouton pour mettre à jour.
+  </Card>
+</CardGroup>

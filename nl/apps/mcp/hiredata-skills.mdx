@@ -1,14 +1,14 @@
 ---
 title: "HireData-skills voor je AI-assistent"
 sidebarTitle: "Skills"
-description: "Hoe de negen HireData-skills ChatGPT, Codex en Claude begeleiden bij het plannen van activaties, bouwen van workflows en diagnose van problemen."
-keywords: ["HireData skills", "AI-skills", "activatie plannen", "triggers aanmaken", "formulieren aanmaken", "AI e-mailtemplates", "AI WhatsApp-templates", "automatiseringen diagnosticeren", "e-mail afleverbaarheid", "HireData plugin", "MCP"]
-related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+description: "Hoe de tien HireData-skills ChatGPT, Codex en Claude begeleiden bij het plannen van activaties, bouwen van workflows, diagnose van problemen, ROI-rapportage en issue reports."
+keywords: ["HireData skills", "AI-skills", "activatie plannen", "triggers aanmaken", "formulieren aanmaken", "AI e-mailtemplates", "AI WhatsApp-templates", "automatiseringen diagnosticeren", "e-mail afleverbaarheid", "automatiserings-ROI", "AI issue reports", "HireData plugin", "MCP"]
+related: ["/nl/apps/mcp/install-hiredata-plugin", "/nl/apps/mcp/install-hiredata-skills-with-a-prompt", "/nl/apps/mcp/keep-hiredata-skills-up-to-date", "/nl/apps/mcp/create-your-own-skill"]
 ---
 
-De [HireData MCP-verbinding](/apps/mcp/connect-hiredata-to-your-ai-assistant) geeft je AI-assistent de tools van HireData. Skills geven daar de werkwijze bij: hoe een ervaren HireData-consultant de taak zou aanpakken, wat hij eerst in je workspace zou controleren, en wanneer hij zou stoppen om je een preview te tonen in plaats van iets aan te maken waar je niet om vroeg.
+De [HireData MCP-verbinding](/nl/apps/mcp/connect-hiredata-to-your-ai-assistant) geeft je AI-assistent de tools van HireData. Skills geven daar de werkwijze bij: hoe een ervaren HireData-consultant de taak zou aanpakken, wat hij eerst in je workspace zou controleren, en wanneer hij zou stoppen om je een preview te tonen in plaats van iets aan te maken waar je niet om vroeg.
 
-HireData publiceert op dit moment negen skills: één die plant, vier die bouwen, twee die diagnosticeren, één die issue reports schrijft en één die de staffingkennis levert waarop de rest leunt.
+HireData publiceert op dit moment tien skills: één die plant, vier die bouwen, twee die diagnosticeren, één die rapporteert wat de automatiseringen hebben opgeleverd, één die issue reports schrijft en één die de staffingkennis levert waarop de rest leunt.
 
 De skills die iets bouwen volgen hetzelfde contract: de assistent verzamelt context, inspecteert je workspace via de MCP-verbinding, toont je een volledige preview en maakt of wijzigt pas iets nadat je die exacte preview hebt goedgekeurd. Nieuwe triggers blijven inactief, formulieren blijven als concept staan waar concepten worden ondersteund, en er wordt niets verzonden of geactiveerd als neveneffect. De skills die diagnosticeren lezen je workspacedata, leggen uit wat er werkelijk is gebeurd en stellen een oplossing voor — ze voeren die nooit zelf uit.
 
@@ -21,6 +21,7 @@ De skills die iets bouwen volgen hetzelfde contract: de assistent verzamelt cont
 | [WhatsApp-templates aanmaken](#whatsapp-templates-aanmaken) | Bondige WhatsApp-berichten ontwerpen die Meta's template-review doorstaan |
 | [Automatiseringen diagnosticeren](#automatiseringen-diagnosticeren) | Uitzoeken waarom een workflow niet deed wat je verwachtte, en wat je moet aanpassen |
 | [E-mailprestaties diagnosticeren](#e-mailprestaties-diagnosticeren) | Een daling in opens, kliks of afleverbaarheid verklaren en er iets aan doen |
+| [Automatiserings-ROI rapporteren](#automatiserings-roi-rapporteren) | Laten zien wat je automatiseringen daadwerkelijk hebben opgeleverd, op gemeten cijfers |
 | [Issue reports schrijven](#issue-reports-schrijven) | HireData Linear-issues opstellen en aanscherpen met de bronnen waar jij toegang toe hebt |
 | [Staffing-lifecyclekennis toepassen](#staffing-lifecyclekennis-toepassen) | Je assistent recruitmentvragen laten lezen zoals een recruiter dat doet |
 
@@ -92,6 +93,15 @@ Probeer:
 - "Mail naar Microsoft-adressen lijkt geblokkeerd te worden. Bekijk de laatste zes maanden per provider."
 - "Wat zijn onze aflever-, bounce- en klachtpercentages dit kwartaal, en zijn die gezond?"
 
+## Automatiserings-ROI rapporteren
+
+Beantwoordt de vraag "wat heeft dit ons nu eigenlijk opgeleverd?" zonder iets te verzinnen. De skill stelt eerst de werkelijke rapportageperiode vast — op basis van wanneer je automatiseringen zijn aangemaakt en wanneer ze daadwerkelijk hebben gedraaid, in plaats van een periode over te nemen die iemand heeft gekozen. Hij scheidt automatiseringen die met kandidaten en contactpersonen communiceren, en dus aan plaatsingen mogen worden toegerekend, van data-only automatiseringen, die worden toegerekend aan bespaarde tijd. Elk cijfer komt uit gemeten workspacedata, nooit uit een model, en waar de attributie een kleiner deel van de periode dekt dan de automatiseringen live waren, zegt de skill dat erbij en legt uit waarom. Je krijgt de klantgerichte rapportage plus een interne notitie met de cijfers die hij heeft afgewezen en de rekensommen die niet klopten.
+
+Probeer:
+
+- "Wat hebben onze automatiseringen opgeleverd sinds we live zijn gegaan? Gebruik alleen gemeten cijfers."
+- "Bouw een business review voor deze workspace met het oog op de verlenging, en vertel me welke cijfers je niet kon onderbouwen."
+
 ## Issue reports schrijven
 
 Zet een bug, klantverzoek, prototype, opname, meetingnotitie of technische prompt om in een gestructureerd HireData Linear-issue. De skill bevat HireData's methode voor issues, templates, refinement-richtlijnen en onderhouden workflow-snapshots. HireData-medewerkers kunnen de live Linear-workspace en interne Notion-SOP's gebruiken; goedgekeurde partners de projecten en Notion-pagina's die met hen zijn gedeeld. Gebruikers zonder live toegang krijgen alsnog een volledig rapport, waarin niet-geverifieerde metadata duidelijk is gemarkeerd.
@@ -117,16 +127,24 @@ Probeer:
 
 ## De skills ophalen
 
-De skills zitten samen met de HireData MCP-verbinding gebundeld in de HireData-plugin. Eén installatie dekt beide. [Installeer de HireData-plugin](/apps/mcp/install-hiredata-plugin) in ChatGPT, Codex of Claude. Geen plugin-ondersteuning op je abonnement of assistent? Dezelfde handleiding laat zien hoe je [de skills installeert met een prompt](/apps/mcp/install-hiredata-plugin#installeer-de-skills-met-een-prompt).
+De skills zitten samen met de HireData MCP-verbinding gebundeld in de HireData-plugin. Eén installatie dekt beide. [Installeer de HireData-plugin](/nl/apps/mcp/install-hiredata-plugin) in ChatGPT, Codex of Claude. Geen plugin-ondersteuning op je abonnement of assistent? [Installeer de skills dan met een prompt](/nl/apps/mcp/install-hiredata-skills-with-a-prompt).
 
-De skills zijn openbaar en in te zien op [github.com/HireData/skills](https://github.com/HireData/skills).
+HireData verbetert deze skills terwijl het product verandert en voegt er nieuwe aan toe, dus [houd ze up-to-date](/nl/apps/mcp/keep-hiredata-skills-up-to-date). Ze zijn openbaar en in te zien op [github.com/HireData/skills](https://github.com/HireData/skills) — en voor het werk dat alleen jouw team doet, kun je [je eigen skill maken](/nl/apps/mcp/create-your-own-skill).
 
 <CardGroup cols={2}>
-  <Card title="Installeer de plugin" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
-    Krijg alle negen skills plus de MCP-verbinding in ChatGPT, Codex of Claude.
+  <Card title="Installeer de plugin" icon="puzzle-piece" href="/nl/apps/mcp/install-hiredata-plugin">
+    Krijg elke skill plus de MCP-verbinding in ChatGPT, Codex of Claude.
   </Card>
 
-  <Card title="Verbind alleen via MCP" icon="plug" href="/apps/mcp/connect-hiredata-to-your-ai-assistant">
-    Gebruik HireData's tools vanuit Gemini of een andere MCP-compatibele assistent.
+  <Card title="Installeer skills met een prompt" icon="wand-magic-sparkles" href="/nl/apps/mcp/install-hiredata-skills-with-a-prompt">
+    Geen plugin-ondersteuning? Laat je assistent de skills ophalen en inpakken.
+  </Card>
+
+  <Card title="Houd skills up-to-date" icon="arrows-rotate" href="/nl/apps/mcp/keep-hiredata-skills-up-to-date">
+    Controleer je versie, werk bij in één stap, en hoor het als er nieuwe skills zijn.
+  </Card>
+
+  <Card title="Maak je eigen skill" icon="hammer" href="/nl/apps/mcp/create-your-own-skill">
+    Leg je eigen werkwijze één keer vast, en geef hem terug.
   </Card>
 </CardGroup>
