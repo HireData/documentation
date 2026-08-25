@@ -1,0 +1,128 @@
+---
+title: "Check for new skills automatically"
+sidebarTitle: "Check for new skills automatically"
+description: "Have Claude or ChatGPT check the HireData skills library on a schedule and tell you only when a skill is new, changed, or a version number has moved."
+icon: "clock"
+keywords: ["scheduled task", "check for new skills", "new HireData skills", "Claude scheduled task", "ChatGPT tasks", "skills notification", "automatic skill check", "MCP"]
+related: ["/apps/mcp/keep-hiredata-skills-up-to-date", "/apps/mcp/create-your-own-skill", "/apps/mcp/hiredata-skills"]
+---
+
+Your assistant can do the checking for you. Both Claude and ChatGPT can run a prompt on a schedule, so once a day one of them looks at [HireData's skills library](https://github.com/HireData/skills), compares it with what you have, and stays silent unless something moved.
+
+Daily is the right rhythm even though HireData does not publish that often: a check that runs every morning costs you nothing on the days nothing changed, and you hear about a new skill the day it lands instead of the next time you happen to look.
+
+<Note>
+  A scheduled task tells you what changed. It cannot install anything — no assistant can add a skill to your account on your behalf. You still press update, or upload the file, yourself.
+</Note>
+
+## What you need
+
+| Assistant | Where it lives | Plans | Worth knowing |
+| --- | --- | --- | --- |
+| **Claude** | **Scheduled** in the Cowork sidebar | Pro, Max, Team, Enterprise | On desktop, and in beta on web and mobile. A task can build files, so it can hand you the new skill ready to upload |
+| **ChatGPT** | **Scheduled** in the sidebar | Plus, Pro, Business, Enterprise | 5 active tasks on Plus, 15 on Pro and Enterprise, 10 on Business. Tasks run at most once an hour, and report only — they can't package a skill for you |
+
+Neither route needs the HireData plugin: the skills library is public, and the task reads it over the web. The plugin does make the comparison sharper, because your assistant can then see which HireData skills it actually has.
+
+## Set it up in Claude
+
+<Steps>
+  <Step title="Open the scheduler">
+    In Cowork, click **Scheduled** in the sidebar, then **New task** \> **Set up manually**.
+  </Step>
+  <Step title="Name it and set the frequency">
+    Name it something you'll recognise in a notification — _HireData skills watch_ — and set the frequency to **Daily**. Pick a time you're usually at your desk; first thing in the morning works well.
+  </Step>
+  <Step title="Paste the prompt">
+    ```text
+    Check whether HireData has published anything new, and stay quiet if it hasn't.
+    
+    1. Read https://raw.githubusercontent.com/HireData/skills/main/.claude-plugin/marketplace.json
+       and note the published version number.
+    2. List every skill folder under plugins/hiredata/skills in
+       https://github.com/HireData/skills.
+    3. Compare that list with the HireData skills available to you in this task,
+       and with what the previous run of this task found.
+    4. Report only differences: skills that are new, skills whose instructions
+       changed since the last check, and a version number that has moved. One
+       line each on what it does or what changed, with the GitHub link.
+    5. If nothing changed, reply with a single line saying so and do not notify me.
+    
+    Do not install or change anything.
+    ```
+  </Step>
+  <Step title="Save it and watch the first run">
+    Click **Save**, then run it once on demand from the **Scheduled** list. The first run has nothing to compare against, so it reports everything it found — that's your baseline, and it's also how you check the task actually reads the library.
+  </Step>
+</Steps>
+
+Add one line to the prompt and the task hands you the files as well:
+
+```text
+6. For anything new or changed, package it as a .skill file and send it to me,
+   so I only have to click it to install.
+```
+
+That only works if Claude is allowed to create files for you — the same setting the [create your own skill](/apps/mcp/create-your-own-skill#before-you-begin) page covers.
+
+## Set it up in ChatGPT
+
+<Steps>
+  <Step title="Open the scheduler">
+    Click **Scheduled** in the sidebar, then create a new task. You can also just ask in a normal chat — _"every weekday at 9, check the HireData skills library and tell me only if something changed"_ — and ChatGPT turns it into a task.
+  </Step>
+  <Step title="Paste the prompt">
+    ```text
+    Every day, check whether HireData has published a new or updated skill.
+    
+    1. Read https://raw.githubusercontent.com/HireData/skills/main/.claude-plugin/marketplace.json
+       and note the published version number.
+    2. List the skill folders under plugins/hiredata/skills in
+       https://github.com/HireData/skills.
+    3. Compare both with what you reported last time.
+    4. Tell me only what changed: new skills, changed skills, a moved version
+       number — one line each, with the link.
+    5. If nothing changed, say so in one line and send no notification.
+    ```
+  </Step>
+  <Step title="Choose how you hear about it">
+    Notifications for tasks are under **Settings** \> **Notifications** — push, email, or both. Tasks can't reach your uploaded skills, so this route compares against its own previous run rather than against what you have installed.
+  </Step>
+</Steps>
+
+## When the task reports something
+
+The task tells you what moved; updating is still a decision you make.
+
+<Steps>
+  <Step title="Read what changed">
+    A new skill is worth a look at its `SKILL.md` on GitHub before you install it — the description tells you when it triggers, which is what decides whether it will get in your way.
+  </Step>
+  <Step title="Update">
+    Follow [keep your HireData skills up to date](/apps/mcp/keep-hiredata-skills-up-to-date): press update on the plugin, or re-run the install prompt for the skill that changed.
+  </Step>
+  <Step title="Start a new conversation">
+    Skills load when a conversation starts. A chat you already had open keeps using the old version.
+  </Step>
+</Steps>
+
+## When the task goes wrong
+
+- **It reports the same thing every day.** It isn't comparing against its own history. Say so explicitly in the prompt: _"compare with what you reported in the previous run of this task, and only mention differences"_.
+- **It says you have no HireData skills.** Scheduled tasks start a fresh session. In Claude, switch the HireData plugin on for the task; in ChatGPT, expect the comparison to be against the previous run only.
+- **It never runs.** Check the task is not paused in the **Scheduled** list, and that you are still on a plan that includes scheduled tasks.
+- **It notifies you about nothing.** Some runs report "no changes" anyway. Tighten the last line: _"if nothing changed, do not notify me at all"_.
+
+## If you can't run a scheduled task
+
+Follow the repository instead. Open [github.com/HireData/skills](https://github.com/HireData/skills), click **Watch**, and pick what you want to hear about — you need a GitHub account. `https://github.com/HireData/skills/commits/main.atom` gives you the same changes in any RSS reader. New skills are also announced with other product news at [hiredata.com](https://www.hiredata.com/).
+
+<CardGroup cols={2}>
+  <Card title="Update your skills" icon="arrows-rotate" href="/apps/mcp/keep-hiredata-skills-up-to-date">
+    What to do once the task tells you something has changed.
+  </Card>
+
+  <Card title="Create your own skill" icon="wand-magic-sparkles" href="/apps/mcp/create-your-own-skill">
+    Turn something you explain over and over into a skill of your own.
+  </Card>
+</CardGroup>
