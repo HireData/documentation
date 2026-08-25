@@ -32,7 +32,7 @@ La méthode de requête indique à HireData le type de requête à attendre :
 | `POST` (par défaut) | Depuis le corps de la requête, en JSON ou en données de formulaire |
 | `GET` | Depuis les paramètres de requête de l'adresse |
 
-Les requêtes ayant une méthode différente de celle configurée sont rejetées.
+HireData rejette les requêtes ayant une méthode différente de celle configurée.
 
 ## Décrire les champs que vous recevrez
 
@@ -94,7 +94,7 @@ Si quelqu'un d'autre gère l'outil qui enverra les données, les **Request Examp
 
 ### Envoyer des requêtes de test
 
-Toute requête peut être marquée comme un test en ajoutant un en-tête :
+Vous pouvez marquer toute requête comme un test en ajoutant un en-tête :
 
 ```
 X-HireData-Test: true
