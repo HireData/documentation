@@ -1,0 +1,379 @@
+---
+title: "Tâche HTTP Request"
+sidebarTitle: "HTTP Request"
+description: "Envoyez une requête HTTP depuis une automatisation HireData. Importez une spécification OpenAPI ou une commande cURL, authentifiez-la, décrivez la réponse, testez et gérez les échecs."
+keywords: ["requête http", "appeler une api externe", "requête api depuis une automatisation", "appel api sortant", "post webhook", "importer openapi", "swagger", "collection postman", "curl", "clé api en-tête", "bearer token", "oauth2 client credentials", "paramètres de chemin", "schéma de réponse", "tester une requête", "timeout", "retries", "continuer l'automatisation en cas d'échec", "requête bloquée adresse privée", "connecter une api externe", "intégration api automatisation"]
+---
+
+_Appelez une API externe directement depuis une automatisation : importez une spécification ou construisez la requête à la main, authentifiez-la, décrivez ce qui revient et utilisez ces valeurs dans les tâches suivantes._
+
+Une automatisation peut appeler une API externe par elle-même. La tâche **HTTP Request** envoie une requête à l'adresse de votre choix, avec l'authentification attendue par cet endpoint, et met la réponse à disposition des tâches suivantes une fois que vous avez décrit ce qu'elle contient. Vous n'avez pas besoin d'un développeur, ni de quoi que ce soit d'intermédiaire entre les deux.
+
+Si quelqu'un vous a déjà remis une spécification d'API ou une commande cURL, inutile de la retaper. HireData peut la lire et remplir la requête pour vous, et c'est par là que cette page commence.
+
+Si vous préférez suivre un exemple complet plutôt que de consulter les champs un par un, le cookbook déroule une même requête du déclencheur jusqu'à la valeur de la réponse : [Publier un résultat vers votre propre système](/fr/knowledge-base/cookbook/post-an-outcome-to-your-own-system).
+
+<Note>
+  Vous cherchez l'autre sens, où un autre outil envoie des données **vers** HireData ? Il s'agit alors d'un déclencheur d'app personnalisée. Consultez [Apps personnalisées](/fr/apps/custom-apps/introduction).
+</Note>
+
+## Où trouver la tâche
+
+Le sélecteur de tâches regroupe les tâches par catégorie, et **HTTP Request** figure dans deux d'entre elles. Les deux chemins ouvrent la même tâche :
+
+- **Add → HTTP Request**
+- **Message → HTTP Request**
+
+Si vous voyez un appel sortant comme l'envoi de quelque chose, regardez sous **Message**. La tâche s'y trouve aussi : un appel qui n'est pas sous **Add** n'a donc pas disparu.
+
+Sous **Add**, vous trouverez à la fois **HTTP Request** et **Post Webhook**.
+
+![La liste des tâches Add, avec HTTP Request et Post Webhook parmi les tâches disponibles](/images/http-request/add-task-list.png)
+
+## À l'intérieur du panneau de la tâche
+
+L'ajout de la tâche ouvre un panneau qui contient toute la requête :
+
+- L'**en-tête** porte le nom de la tâche et un contrôle pour le modifier.
+- Sous l'en-tête, la **barre d'URL** avec le sélecteur de méthode, proposant `GET`, `POST`, `PUT`, `PATCH`, `DELETE` et `HEAD`.
+- Cinq onglets : **Params**, **Body**, **Headers**, **Auth** et **Advanced**.
+- **Response** ne fait pas partie des onglets. C'est une section distincte sous la zone à onglets, toujours visible.
+- Le pied du panneau porte **Import**, **Test**, **Cancel** et **Save Task**.
+
+Une nouvelle tâche s'intitule **HTTP Request**, avec la méthode définie sur `POST` et une URL vide derrière le placeholder `https://api.example.com/v1/resource/`.
+
+![Une nouvelle tâche HTTP Request, avec la méthode définie sur POST et la barre d'URL affichant son placeholder](/images/http-request/empty-drawer.png)
+
+## Importer une spécification ou une commande cURL
+
+Le moyen le plus rapide de remplir une requête est de laisser HireData la lire depuis un document que vous avez déjà. Cliquez sur **Import** dans le pied du panneau pour ouvrir la boîte de dialogue **Import**, qui propose trois chemins :
+
+<Tabs>
+  <Tab title="Coller">
+    Collez le document directement dans la zone. Le chemin est libellé « OpenAPI, Swagger, Postman, cURL or markdown », donc tout document dans l'un de ces formats fonctionne.
+  </Tab>
+  <Tab title="Téléverser un fichier">
+    Choisissez le document sur votre ordinateur, pour les cas où ce qu'on vous a envoyé n'est pas un texte que vous pouvez copier. Le chemin est libellé « A specification or collection file ».
+  </Tab>
+  <Tab title="Depuis une URL">
+    Donnez à HireData l'adresse à laquelle la spécification est publiée et il récupère le document pour vous. Le chemin est libellé « Fetch a specification by URL ».
+  </Tab>
+</Tabs>
+
+![La boîte de dialogue Import proposant Paste, Upload file et From URL](/images/http-request/import-dialog.png)
+
+### Les formats que HireData lit
+
+Quel que soit le chemin utilisé, le document doit être d'un type que HireData reconnaît :
+
+- Les spécifications **OpenAPI 3.x** et **Swagger 2.0**
+- Les collections **Postman 2.1**
+- Une commande **cURL**
+- Une page **markdown** contenant soit une commande cURL, soit une spécification — ce qui correspond souvent à la page de documentation d'un fournisseur
+
+Tout ce qui sort de cette liste est refusé plutôt que lu à moitié, avec « Only OpenAPI 3.x, Swagger 2.0 and Postman 2.1 documents are supported. » Un Swagger plus ancien ou un export Postman 1.0 doit d'abord être converti. Une spécification qui pointe vers d'autres fichiers avec des références `$ref` externes est également refusée : demandez une version regroupée en un seul fichier.
+
+### Ce qu'un import remplit
+
+L'import d'une spécification d'API renseigne :
+
+- La **méthode** et l'**URL**, y compris les segments de chemin définis par l'opération
+- Les éventuels **paramètres de requête** que l'opération accepte, sur l'onglet **Params**
+- Le **type d'authentification** sur l'onglet **Auth**, tiré du schéma de sécurité de la spécification
+- La **Description** sur l'onglet [Advanced](#paramètres-avancés)
+- Les deux arborescences de la section [Response](#décrire-la-réponse) : la réponse de succès et la réponse d'erreur
+
+Renseignez ensuite votre propre clé ou token sur l'onglet **Auth**, et considérez l'import comme un point de départ plutôt que comme une requête terminée.
+
+### Importer une commande cURL
+
+Une commande cURL s'importe aussi, et c'est souvent tout ce que fournit la documentation d'un fournisseur. Elle définit la méthode, l'URL, le corps et les en-têtes.
+
+Elle définit aussi l'identifiant, quand la commande en contient un. Un en-tête `Authorization: Bearer …` devient un **Bearer token** avec le token renseigné, et l'en-tête lui-même est supprimé pour ne pas être envoyé deux fois. `-u user:password` — et un `Authorization: Basic …` en base64 — devient une **Basic auth** avec le nom d'utilisateur et le mot de passe renseignés.
+
+Considérez donc une commande cURL qu'on vous a envoyée comme un identifiant, pas seulement comme un extrait de code. Si elle sort du terminal de quelqu'un d'autre, elle contient peut-être sa clé : vérifiez l'onglet **Auth** après l'import et remplacez tout ce que vous ne devriez pas détenir.
+
+La section **Response** reste vide ensuite. Une commande cURL ne décrit que la requête sortante et ne porte aucune information sur ce qui revient, HireData n'a donc rien pour construire les arborescences de réponse. Si des tâches ultérieures ont besoin de valeurs de la réponse, décrivez-la vous-même dans la section [Response](#décrire-la-réponse).
+
+### Documents contenant plusieurs opérations
+
+Une spécification décrit généralement une API entière plutôt qu'un seul endpoint. Lorsque le document que vous importez contient plusieurs opérations, HireData vous montre la liste des endpoints qu'il contient et vous demande lequel cette tâche doit appeler : remettre une spécification complète n'est donc pas une erreur.
+
+Cela dépend du document, pas de la façon dont vous l'avez fourni. La même liste d'endpoints apparaît que vous ayez collé la spécification ou que vous l'ayez récupérée via **From URL**.
+
+![Le sélecteur d'endpoints, après l'import d'une spécification comportant plusieurs opérations](/images/http-request/endpoint-picker.png)
+
+## Construire la requête à la main
+
+Un import a besoin d'un document à lire. Quand vous n'avez qu'un endpoint et la documentation du fournisseur, remplissez la requête vous-même. Ce sont les mêmes onglets que ceux qu'un import renseigne, c'est donc aussi ainsi que vous ajustez une requête importée. Les identifiants viennent en dernier dans les deux cas, sous [Authentification](#authentification) — à une exception près. L'import d'une *spécification* définit le type d'authentification et laisse le secret vide, car un schéma de sécurité décrit comment un endpoint s'authentifie sans porter la clé de qui que ce soit. Une *commande cURL*, c'est différent : elle contient de vrais identifiants, et ils sont importés avec elle.
+
+### Paramètres de requête et de chemin
+
+L'onglet **Params** comporte deux sections, **Query** et **Path**. Elles se ressemblent et fonctionnent différemment.
+
+Les lignes **Query** sont à remplir par vous. Chaque ligne comporte :
+
+- **Enabled** : une case à cocher qui active ou désactive le paramètre sans supprimer la ligne
+- **Name** : le nom du paramètre, saisi au clavier
+- **Value** : ce qu'il faut envoyer, avec un sélecteur de champs à côté
+- **Remove** : supprime la ligne définitivement
+
+La barre d'URL et les lignes **Query** sont deux vues de la même chose. Collez une URL avec une chaîne de requête à la fin et elle se découpe en lignes ; ajoutez ou modifiez une ligne et la chaîne de requête dans la barre d'URL se met à jour en conséquence. Vous pouvez donc travailler dans celle des deux qu'on vous a donnée — une URL complète tirée de la documentation d'un fournisseur, ou un tableau de paramètres — sans la retranscrire dans l'autre.
+
+Vous ne nommez pas les lignes **Path** vous-même. Elles viennent de l'URL. Tant que l'URL n'en contient pas, la section affiche « Path parameters appear when the URL contains `{placeholder}` segments. »
+
+Entourez une partie du chemin d'accolades et une ligne apparaît pour elle. Donnez cette URL à la tâche :
+
+```text
+https://api.example.com/repos/{owner}/{repo}/issues
+```
+
+Deux lignes apparaissent immédiatement sous **Path**, `owner` et `repo`, chacune marquée comme obligatoire par un astérisque. Une URL se terminant par `/chats/{chat_id}/messages` vous donne une seule ligne, `chat_id`.
+
+Vous exprimez donc la forme de l'endpoint une seule fois, dans l'URL. Modifiez l'URL et les lignes suivent.
+
+![L'onglet Params avec les lignes Path obligatoires owner et repo, créées à partir de l'URL](/images/http-request/path-parameters.png)
+
+### Corps de la requête
+
+L'onglet **Body** s'ouvre sur un choix, `Form` ou `Raw` : le corps part-il sous forme de champs de formulaire ou de payload brut. Ce choix détermine les contrôles affichés à côté, faites-le donc en premier.
+
+**`Form`** propose deux encodages, `Multipart form` et `Form URL encoded`, et un tableau de lignes nom-valeur. Un endpoint qui accepte un formulaire documente généralement l'un des deux et rejette l'autre, vérifiez donc lequel avant de choisir.
+
+**`Raw`** propose quatre formats — `JSON`, `XML`, `Text` et `GraphQL` — pour un endpoint qui documente du XML ou une requête GraphQL plutôt que du JSON. Il ajoute un troisième contrôle, `Builder` ou `Code` : soit vous construisez le corps à partir de propriétés typées, soit vous l'écrivez vous-même. Utilisez celui qui vous convient. Tant qu'il est vide, l'onglet affiche « No body properties yet » et pointe vers les deux options : « Add typed properties to build the request body, or switch to the raw editor. »
+
+Il y a deux façons d'imbriquer, et la plus rapide est dans le nom : « Use dots in property names to nest objects, e.g. candidate.email. »
+
+Une propriété nommée `candidate.email` envoie donc l'adresse à l'intérieur d'un objet `candidate` :
+
+```json
+{
+  "candidate": {
+    "email": "sofia@example.com"
+  }
+}
+```
+
+L'autre façon est structurelle. Donnez à une propriété le type **Collection** — « A repeating list of objects, e.g. line items or attendees » — ou faites-en un objet, et elle devient une ligne de groupe dotée d'un bouton **Add child property**. Construisez la structure de cette façon quand l'endpoint attend un tableau d'éléments plutôt qu'un seul, ce que les noms à points ne peuvent pas exprimer. Chaque propriété dispose aussi de **Edit property** et **Remove**.
+
+Une requête `GET` n'envoie pas de corps. Sélectionnez `GET` et l'onglet entier se réduit à une seule ligne : « This request method does not send a body. »
+
+![L'onglet Body d'une requête POST, réglé sur Raw et JSON, avec les contrôles Builder et Code à côté](/images/http-request/body-tab.png)
+
+### En-têtes
+
+Les lignes d'en-tête ont un **Name** et une **Value**. **Name** suggère des noms d'en-têtes connus à mesure que vous tapez. Vous pouvez toujours saisir n'importe quel nom dont l'endpoint a besoin. **Value** dispose du même sélecteur de champs que la valeur d'un paramètre de requête.
+
+Pour un en-tête qui porte une clé API ou un bearer token, utilisez plutôt [Authentification](#authentification). Elle a des champs pour les deux.
+
+![L'onglet Headers, avec la liste Name suggérant des noms d'en-têtes connus](/images/http-request/headers-tab.png)
+
+### Utiliser les champs de l'automatisation
+
+Une requête construite uniquement à partir de valeurs fixes envoie la même chose à chaque exécution, ce qui est rarement le but. Les champs de l'automatisation sont ce qui permet à chaque exécution d'envoyer ses propres données, y compris les valeurs produites par une tâche antérieure.
+
+Il y a deux façons d'en insérer un :
+
+- Le **sélecteur de champs** à côté d'une **Value**, qui liste ce qui est disponible
+- Taper `{{` directement dans le champ de saisie. Le sélecteur s'ouvre dès que vous le tapez, et ce que vous tapez entre les accolades filtre la liste — plus rapide quand vous savez déjà à peu près comment le champ s'appelle
+
+Dans les deux cas, le champ est stocké sous forme de token `{{field_key}}`, ce que vous verrez si vous regardez une valeur déjà renseignée.
+
+Les champs peuvent aller dans l'URL, les paramètres, les en-têtes et le corps. N'importe quelle partie de la requête peut changer d'une exécution à l'autre.
+
+![Le sélecteur de champs ouvert sur une Value, listant les champs de l'automatisation](/images/http-request/field-picker.png)
+
+## Authentification
+
+L'onglet **Auth** est un contrôle segmenté à cinq options : `None`, `API key`, `Bearer token`, `Basic auth` et `OAuth2`. Choisissez celle que le propriétaire de l'endpoint vous a indiquée et ses champs apparaissent.
+
+| Type | Champs |
+| --- | --- |
+| `API key` | **Key name**, **Send in**, **Key value** |
+| `Bearer token` | **Token** |
+| `Basic auth` | **Username**, **Password** |
+| `OAuth2` | **Token URL**, **Client ID**, **Client secret**, **Scopes**, **Audience**, **Send credentials as** |
+
+### Clé API
+
+**Send in** décide où la clé voyage : dans un `Header`, la valeur par défaut, ou dans un `Query parameter`. **Key name** est alors le nom de cet en-tête ou de ce paramètre. **Key value** est la clé elle-même. Vérifiez lequel des deux la documentation de l'endpoint demande, car une clé au mauvais endroit équivaut, pour l'endpoint, à une absence de clé.
+
+### OAuth2
+
+Ce sont les champs du flux client credentials. HireData échange le **Client ID** et le **Client secret** contre un token à la **Token URL**, puis envoie ce token avec la requête. Il n'y a ni URL de redirection ni écran de consentement, donc si vous en cherchez un, il ne manque pas.
+
+Le token est récupéré une fois puis conservé. HireData le réutilise tant qu'il est valide et en récupère un nouveau à son expiration : une automatisation qui s'exécute plusieurs fois par heure ne demande donc pas un nouveau token à l'endpoint de token à chaque exécution. Vous n'avez rien à planifier ni à rafraîchir.
+
+Les **Scopes** sont « Separated by spaces ». **Send credentials as** choisit comment le client ID et le secret atteignent l'endpoint de token : dans le `Request body`, la valeur par défaut, ou dans un `Basic auth header`. La documentation de l'endpoint de token indique ce qu'il attend.
+
+<Warning>
+  Chaque type d'authentification affiche la même phrase, et elle mérite d'être lue avant de coller le secret d'un client : « Credentials are stored in this step's configuration and visible to anyone who can edit this automation. »
+
+  Toute personne pouvant modifier l'automatisation peut lire la clé ou le token que vous saisissez. Si vous configurez ceci pour le compte de quelqu'un d'autre, utilisez un identifiant que vous êtes autorisé à détenir, limité à ce dont cette requête a strictement besoin.
+</Warning>
+
+![L'onglet Auth réglé sur OAuth2, avec ses champs vides et l'avertissement de visibilité des identifiants en dessous](/images/http-request/auth-oauth2.png)
+
+## Décrire la réponse
+
+La section **Response** se trouve sous les onglets, toujours visible, car c'est d'elle que dépend le reste de l'automatisation : « Describe the expected response body to use its values as fields in later steps. »
+
+Trois champs arrivent que vous décriviez quelque chose ou non — le code de statut, le corps de la réponse et la réussite ou non de l'appel. Ce que la description de la réponse ajoute, ce sont les valeurs *à l'intérieur* du corps, chacune comme un champ à part entière. Tant qu'une valeur n'est pas décrite ici, aucune tâche ultérieure ne peut l'extraire d'elle-même.
+
+Il y a deux arborescences, et vous les décrivez séparément :
+
+- **Success response (2xx)** : ce que l'endpoint renvoie quand l'appel fonctionne
+- **Error response (non-2xx)** : ce qu'il renvoie quand l'appel échoue
+
+Construisez l'une ou l'autre avec **Add property**. Une propriété feuille porte un **Label** et une clé. Le **Label** est le nom lisible que vous verrez en aval ; la clé est le nom dans le corps de la réponse — « Canonical Name » pour `canonical_name`. Une propriété contenant un objet devient un groupe repliable, si bien qu'une réponse imbriquée se lit comme une arborescence plutôt que comme une liste à plat. Chaque propriété dispose de **Edit property** et **Remove**.
+
+L'arborescence d'erreur porte sa propre note : « Available when the request fails — useful for logging when the automation continues on failure. »
+
+C'est à cela qu'elle sert. Si vous avez configuré l'exécution pour continuer après une requête échouée, décrivez aussi le corps d'erreur : une tâche ultérieure pourra alors consigner ce que l'endpoint a réellement répondu, au lieu de seulement savoir que quelque chose a mal tourné.
+
+![La section Response avec des propriétés décrites dans les arborescences de succès et d'erreur](/images/http-request/response-section.png)
+
+### Les champs toujours présents
+
+Trois champs existent sur chaque tâche HTTP Request, réponse décrite ou non :
+
+| Champ | Ce qu'il contient |
+| --- | --- |
+| `<description>: Response Status` | Le code de statut HTTP, sous forme de nombre |
+| `<description>: Response Body` | Le corps de la réponse, sous forme de texte |
+| `<description>: Response Success` | La réussite ou non de l'appel, sous forme de vrai ou faux |
+
+À eux trois, ils répondent à « est-ce que ça a fonctionné, et qu'est-ce qui est revenu », ce qui suffit à une tâche ultérieure qui n'a besoin que de bifurquer selon le succès ou de consigner la réponse brute. Décrire la réponse, c'est ce qui évite à une tâche ultérieure de devoir lire ce texte et en extraire des valeurs.
+
+### Utiliser une valeur de la réponse dans une tâche ultérieure
+
+Une propriété décrite devient un champ sur les tâches qui suivent, nommé d'après la requête et le chemin de la propriété :
+
+`<request description>: <dotted path>`
+
+La première moitié est la **Description** de l'onglet [Advanced](#paramètres-avancés). La seconde est la position de la propriété dans l'arborescence.
+
+Prenez une requête décrite comme « Get brand context by domain ». Elle renvoie `canonical_name` dans un objet `meta`, et `description` dans un objet `identity`. Les tâches ultérieures obtiennent deux champs à choisir :
+
+- `Get brand context by domain: meta.canonical_name`
+- `Get brand context by domain: identity.description`
+
+Les propriétés de l'arborescence d'erreur portent un segment supplémentaire, elles ne peuvent donc pas entrer en collision avec celles de l'arborescence de succès :
+
+`<request description>: Error: <dotted path>`
+
+La description n'est donc pas cosmétique. C'est la première moitié du nom de chaque champ produit par cette tâche : écrivez-en une spécifique avant de décrire la réponse — c'est elle que vous lirez plus tard dans un sélecteur de champs.
+
+![Le sélecteur de champs d'une tâche ultérieure, montrant « Get brand context by domain: meta.canonical_name »](/images/http-request/response-field-in-later-task.png)
+
+## Tester la requête
+
+**Test**, dans le pied du panneau, envoie la requête immédiatement : vous découvrez qu'elle est incorrecte ici plutôt que dans une exécution réelle.
+
+<Warning>
+  La boîte de dialogue dit ce qu'elle fait : « Sends the real request with the values below. »
+
+  Ce n'est pas une simulation. Un `POST` que vous testez est un `POST` que l'endpoint reçoit, et un `DELETE` supprime. Visez un endpoint de test, ou des valeurs que le propriétaire de l'endpoint accepte de vous voir écrire, avant de cliquer sur **Send**.
+</Warning>
+
+La boîte de dialogue s'ouvre sur la méthode et l'URL résolue, pour que vous puissiez lire ce qu'elle s'apprête à appeler, avec **Send** pour lancer l'envoi.
+
+### Remplir les valeurs
+
+En dessous, la boîte de dialogue demande une valeur par paramètre, regroupées en **Path**, **Query** et **Body**. Seuls les groupes que votre requête possède réellement apparaissent : une requête sans paramètres de chemin ni de requête n'affiche qu'un groupe **Body**. Chaque champ de saisie est libellé du nom du paramètre, et chacun se modifie indépendamment.
+
+Les champs de saisie partent de ce que la tâche est déjà configurée pour envoyer. Tout ce que vous avez défini sur une valeur fixe arrive prérempli : une requête construite à partir de littéraux peut donc souvent être envoyée telle quelle.
+
+Deux types de champs arrivent vides :
+
+- Un paramètre sans valeur configurée. Les paramètres de chemin sont généralement dans ce groupe, puisqu'ils viennent des segments `{placeholder}` de l'URL plutôt que d'une ligne dans laquelle vous avez saisi une valeur.
+- Une valeur liée à un champ de l'automatisation, sauf si ce champ a justement une valeur par défaut. Le token est résolu avec cette valeur par défaut, et la plupart des champs portant des données d'exécution n'en ont pas.
+
+Saisissez un littéral dans ce qui est vide. La liaison elle-même n'est pas affectée — elle s'applique toujours quand l'automatisation s'exécute.
+
+Rouvrir la boîte de dialogue relit la configuration de la tâche : un littéral saisi pour un test n'est donc plus là au test suivant.
+
+![La boîte de dialogue Test avant Send, avec les champs Path vides et les champs Body portant les valeurs configurées sur la tâche](/images/http-request/test-dialog-before-send.png)
+
+### Vérifier la requête sortante
+
+Le panneau **Request** affiche l'appel sortant, avec un sélecteur de format pour cURL et un contrôle pour le copier. Il masque les secrets, si bien qu'un bearer token se lit :
+
+```text
+-H 'Authorization: Bearer ***'
+```
+
+Le même masquage s'applique à la requête enregistrée sur une exécution : une clé ou un token ne se retrouve donc pas non plus dans l'activité de l'exécution. Ce qui n'est pas masqué, c'est la configuration de la tâche elle-même : toute personne pouvant ouvrir la tâche peut toujours lire l'identifiant que vous y avez saisi — voir [Authentification](#authentification).
+
+### Lire le résultat
+
+Après **Send**, un bandeau indique comment cela s'est passé : un mot de statut, le code HTTP et la durée de l'appel — `Success`, `200`, `323 ms`. En dessous, le corps complet de la réponse dans un visualiseur libellé du même statut, avec un contrôle pour le copier.
+
+Si vous avez déjà décrit la réponse, une section **Outputs** liste les valeurs que HireData a extraites de ce corps. C'est la vérification la plus rapide que votre arborescence de réponse correspond à la vraie réponse : une propriété que vous avez décrite mais qui revient manquante apparaît ici, plutôt que dans une exécution la semaine prochaine.
+
+Ce corps est exactement ce que la section [Response](#décrire-la-réponse) attend. Tester d'abord et copier le corps est le chemin le plus court vers une arborescence de réponse qui correspond à ce que l'endpoint renvoie vraiment, plutôt qu'à ce que sa documentation dit qu'il renvoie.
+
+![La boîte de dialogue Test après un envoi réussi, montrant le statut, le code et la durée au-dessus du corps de la réponse](/images/http-request/test-result.png)
+
+## Paramètres avancés
+
+L'onglet **Advanced** contient la description de la requête et ce qui doit se passer quand l'endpoint est lent ou indisponible.
+
+| Contrôle | Ce qu'il fait | Valeur par défaut |
+| --- | --- | --- |
+| **Description** | Décrit ce que fait la requête. C'est elle qui intitule la tâche partout ailleurs — dans l'automatisation, dans une exécution et dans les noms des champs qu'elle produit | Vide, derrière le placeholder « Describe what this request does. » |
+| **Timeout (seconds)** | Combien de temps attendre une réponse avant d'abandonner, pour qu'un endpoint lent ne bloque pas l'exécution | `30` |
+| **Retries** | Combien de tentatives supplémentaires effectuer après une requête échouée | `0` |
+| **Backoff (seconds)** | Combien de temps attendre entre ces tentatives | `2` |
+
+**Backoff** est désactivé tant que **Retries** est à `0`. Il n'y a encore rien entre quoi attendre : augmentez d'abord **Retries** et le champ devient modifiable.
+
+## Décider ce qui compte comme un échec
+
+L'onglet **Advanced** se termine par deux interrupteurs. Ils répondent à des questions distinctes, et il vaut mieux les lire ainsi plutôt que comme un seul réglage d'échec.
+
+**Fail on error responses** est activé par défaut : « Treat 4xx and 5xx responses as a failed task. »
+
+Désactivez-le quand une réponse non-2xx est une réponse normale de cet endpoint plutôt qu'un problème — un `404` d'une recherche qui n'a simplement rien trouvé, par exemple. La tâche se termine alors, et ce qu'il faut faire de ce code vous appartient dans une tâche ultérieure.
+
+**Continue automation on failure** est désactivé par défaut : « The run continues with the next step even if this request fails. »
+
+Activez-le quand le reste de l'exécution vaut la peine d'être fait sans cet appel — la requête était une notification, pas un prérequis. Laissez-le désactivé et une requête échouée termine l'exécution à cet endroit.
+
+À eux deux, ils décident du sort de ce `404` attendu. Désactivez le premier interrupteur et ce n'était jamais un échec. Laissez-le activé et activez plutôt le second, et c'est un échec auquel l'exécution survit — le cas pour lequel l'arborescence de [réponse d'erreur](#décrire-la-réponse) existe.
+
+![L'onglet Advanced montrant Description, Timeout, Retries, Backoff et les deux interrupteurs d'échec](/images/http-request/advanced-tab.png)
+
+## À quoi ressemble la tâche dans une exécution
+
+Ouvrez une exécution et une tâche HTTP Request terminée montre :
+
+- Sa **Description** en titre, la méthode et l'hôte en dessous — `GET api.example.com` — et le chemin encore en dessous
+- **What will you provide?** et **What will you get back?** : la requête que vous avez configurée et la réponse que vous avez décrite
+- Une rangée de pastilles pour les réglages qui ont façonné l'appel. Le type d'authentification, le timeout et les retries sont toujours là — `Bearer token`, `30s`, `No retries`. Les autres n'apparaissent qu'une fois que vous les avez activés : un backoff quand les retries sont au-dessus de `0`, `Ignores error statuses` quand **Fail on error responses** est désactivé, et `Continues on failure` quand **Continue automation on failure** est activé
+
+La timeline de l'exécution porte deux entrées pour la tâche, `HTTP Request: Run Moved` et `HTTP Request: Completed`, avec le message « Http request succeeded. »
+
+![Une tâche HTTP Request terminée dans une exécution : les deux sections et la rangée de pastilles avec le type d'authentification, le timeout et les retries](/images/http-request/task-in-a-run.png)
+
+## Si une requête revient bloquée
+
+Une requête peut revenir bloquée, avec le message « The request was blocked — the destination is a private or internal address. »
+
+HireData n'appelle pas les adresses privées ou internes. Vérifiez où l'URL pointe réellement, y compris quand un champ de l'automatisation en fournit une partie : un hôte qui ne se résout qu'à l'intérieur de votre propre réseau n'est pas joignable depuis HireData.
+
+Si la destination est manifestement publique et que vous voyez toujours ce message, signalez-le plutôt que de le contourner. Les [informations pour le support](#besoin-daide-supplémentaire) ci-dessous indiquent quoi inclure.
+
+## Les tâches Post Webhook existantes
+
+**Post Webhook** est l'autre tâche pour envoyer des données hors de HireData, et c'est elle que la tâche HTTP Request remplace. Les automatisations qui l'utilisent déjà continuent de fonctionner exactement comme aujourd'hui, et rien n'y est à modifier à la main.
+
+Une migration ponctuelle convertira ces étapes en tâches HTTP Request. Elle s'exécute une seule fois, de notre côté, et ce n'est pas quelque chose que vous déclenchez ou préparez. Construisez toute nouveauté comme une tâche HTTP Request ; laissez l'existant tel quel.
+
+## Besoin d'aide supplémentaire ?
+
+Si une requête ne se comporte pas comme prévu, contactez notre équipe à [support@hiredata.com](mailto:support@hiredata.com) en incluant :
+
+- Un lien vers l'automatisation
+- La méthode et l'URL de la tâche, avec les identifiants retirés
+- Ce que vous attendiez de l'endpoint, et ce qu'il a renvoyé à la place

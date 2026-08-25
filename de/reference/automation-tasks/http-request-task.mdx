@@ -1,0 +1,379 @@
+---
+title: "HTTP-Request-Aufgabe"
+sidebarTitle: "HTTP Request"
+description: "Senden Sie einen HTTP-Request aus einer HireData-Automatisierung. Importieren Sie eine OpenAPI-Spezifikation oder einen cURL-Befehl, authentifizieren Sie den Request, beschreiben Sie die Response, testen Sie und behandeln Sie Fehlschläge."
+keywords: ["http request", "externe API aufrufen", "API-Request aus Automatisierung", "ausgehender API-Aufruf", "post webhook", "OpenAPI importieren", "swagger", "Postman Collection", "curl", "API-Key-Header", "Bearer-Token", "OAuth2 Client Credentials", "Pfadparameter", "Response-Schema", "Request testen", "Timeout", "Retries", "Automatisierung bei Fehler fortsetzen", "Request blockiert private Adresse", "API-Anbindung Automatisierung", "Daten aus HireData senden"]
+---
+
+_Rufen Sie eine externe API direkt aus einer Automatisierung auf: Importieren Sie eine Spezifikation oder bauen Sie den Request von Hand, authentifizieren Sie ihn, beschreiben Sie, was zurückkommt, und verwenden Sie diese Werte in späteren Aufgaben._
+
+Eine Automatisierung kann eine externe API selbst aufrufen. Die Aufgabe **HTTP Request** sendet einen Request an eine Adresse Ihrer Wahl, mit der Authentifizierung, die dieser Endpunkt erwartet, und stellt die Response den nachfolgenden Aufgaben zur Verfügung, sobald Sie beschrieben haben, was sie enthält. Sie brauchen dafür keinen Entwickler und nichts, das dazwischengeschaltet ist.
+
+Wenn Ihnen jemand bereits eine API-Spezifikation oder einen cURL-Befehl gegeben hat, müssen Sie nichts abtippen. HireData kann das Dokument lesen und den Request für Sie ausfüllen – genau damit beginnt diese Seite.
+
+Wenn Sie lieber einem vollständigen Beispiel folgen, statt Felder einzeln nachzuschlagen: Das Kochbuch führt einen einzelnen Request vom Trigger bis zum Response-Wert durch: [Ein Ergebnis an Ihr eigenes System posten](/de/knowledge-base/cookbook/post-an-outcome-to-your-own-system).
+
+<Note>
+  Suchen Sie die andere Richtung, bei der ein anderes Tool Daten **in** HireData sendet? Das ist ein Custom-App-Trigger. Siehe [Custom Apps](/de/apps/custom-apps/introduction).
+</Note>
+
+## Wo Sie die Aufgabe finden
+
+Die Aufgabenauswahl gruppiert Aufgaben nach Kategorie, und **HTTP Request** ist unter zwei davon einsortiert. Beide Wege öffnen dieselbe Aufgabe:
+
+- **Add → HTTP Request**
+- **Message → HTTP Request**
+
+Wenn Sie einen ausgehenden Aufruf als das Senden von etwas betrachten, schauen Sie unter **Message**. Die Aufgabe ist auch dort – ein Aufruf, der nicht unter **Add** steht, ist also nicht verschwunden.
+
+Unter **Add** finden Sie sowohl **HTTP Request** als auch **Post Webhook**.
+
+![Die Add-Aufgabenliste, mit HTTP Request und Post Webhook unter den Aufgaben, die Sie hinzufügen können](/images/http-request/add-task-list.png)
+
+## Im Drawer der Aufgabe
+
+Beim Hinzufügen der Aufgabe öffnet sich ein Drawer, der den gesamten Request enthält:
+
+- Der **Header** trägt den Namen der Aufgabe und ein Bedienelement, um ihn zu bearbeiten.
+- Unter dem Header die **URL-Leiste** mit der Methodenauswahl, die `GET`, `POST`, `PUT`, `PATCH`, `DELETE` und `HEAD` anbietet.
+- Fünf Tabs: **Params**, **Body**, **Headers**, **Auth** und **Advanced**.
+- **Response** ist keiner der Tabs. Es ist ein eigener Bereich unterhalb des Tab-Bereichs und ist immer sichtbar.
+- Die Fußzeile trägt **Import**, **Test**, **Cancel** und **Save Task**.
+
+Eine neue Aufgabe trägt den Titel **HTTP Request**, mit der Methode `POST` und einer leeren URL hinter dem Platzhalter `https://api.example.com/v1/resource/`.
+
+![Eine neue HTTP-Request-Aufgabe, mit der Methode POST und der URL-Leiste mit ihrem Platzhalter](/images/http-request/empty-drawer.png)
+
+## Eine Spezifikation oder einen cURL-Befehl importieren
+
+Der schnellste Weg, einen Request auszufüllen, ist, HireData ein Dokument lesen zu lassen, das Sie bereits haben. Klicken Sie auf **Import** in der Fußzeile des Drawers, um den **Import**-Dialog zu öffnen, der drei Wege anbietet:
+
+<Tabs>
+  <Tab title="Paste">
+    Fügen Sie das Dokument direkt in das Feld ein. Der Weg ist mit „OpenAPI, Swagger, Postman, cURL or markdown" beschriftet – alles in einem dieser Formate funktioniert also.
+  </Tab>
+  <Tab title="Upload file">
+    Wählen Sie das Dokument von Ihrem Computer, für den Fall, dass das, was Sie erhalten haben, kein kopierbarer Text ist. Der Weg ist mit „A specification or collection file" beschriftet.
+  </Tab>
+  <Tab title="From URL">
+    Geben Sie HireData die Adresse, unter der die Spezifikation veröffentlicht ist, und das Dokument wird für Sie abgerufen. Der Weg ist mit „Fetch a specification by URL" beschriftet.
+  </Tab>
+</Tabs>
+
+![Der Import-Dialog mit Paste, Upload file und From URL](/images/http-request/import-dialog.png)
+
+### Formate, die HireData liest
+
+Welchen Weg Sie auch nutzen, das Dokument muss eines sein, das HireData erkennt:
+
+- **OpenAPI 3.x**- und **Swagger 2.0**-Spezifikationen
+- **Postman 2.1**-Collections
+- Ein **cURL**-Befehl
+- Eine **Markdown**-Seite, die entweder einen cURL-Befehl oder eine Spezifikation enthält – was die Dokumentationsseite eines Anbieters oft im Kern ist
+
+Alles außerhalb dieser Liste wird abgelehnt statt halb gelesen, mit „Only OpenAPI 3.x, Swagger 2.0 and Postman 2.1 documents are supported." Ein älteres Swagger oder ein Postman-1.0-Export muss zuerst konvertiert werden. Eine Spezifikation, die mit externen `$ref`-Referenzen auf andere Dateien verweist, wird ebenfalls abgelehnt – bitten Sie also um eine gebündelte Einzeldatei-Version.
+
+### Was ein Import ausfüllt
+
+Der Import einer API-Spezifikation befüllt:
+
+- Die **Methode** und die **URL**, einschließlich der Pfadsegmente, die die Operation definiert
+- Alle **Query-Parameter**, die die Operation annimmt, im Tab **Params**
+- Den **Authentifizierungstyp** im Tab **Auth**, übernommen aus dem Security-Schema der Spezifikation
+- Die **Description** im Tab [Advanced](#erweiterte-einstellungen)
+- Beide Bäume im Bereich [Response](#die-response-beschreiben): die Erfolgs-Response und die Fehler-Response
+
+Tragen Sie anschließend Ihren eigenen Key oder Token im Tab **Auth** ein, und betrachten Sie den Import als Ausgangspunkt statt als fertigen Request.
+
+### Einen cURL-Befehl importieren
+
+Auch ein cURL-Befehl lässt sich importieren, und oft ist er alles, was die Dokumentation eines Anbieters hergibt. Er setzt die Methode, die URL, den Body und die Headers.
+
+Er setzt auch das Zugangsdatum, wenn der Befehl eines enthält. Ein `Authorization: Bearer …`-Header wird zu einem **Bearer token** mit ausgefülltem Token, und der Header selbst wird entfernt, damit er nicht doppelt gesendet wird. `-u user:password` – und ein base64-kodiertes `Authorization: Basic …` – wird zu **Basic auth** mit ausgefülltem Benutzernamen und Passwort.
+
+Behandeln Sie einen cURL-Befehl, den Sie erhalten haben, also als Zugangsdatum, nicht nur als Snippet. Wenn er aus dem Terminal einer anderen Person stammt, kann er deren Key enthalten: Prüfen Sie nach dem Import den Tab **Auth** und ersetzen Sie alles, was Sie nicht besitzen sollten.
+
+Der Bereich **Response** bleibt danach leer. Ein cURL-Befehl beschreibt nur den ausgehenden Request und enthält keine Informationen darüber, was zurückkommt – es gibt also nichts, woraus HireData die Response-Bäume bauen könnte. Wenn spätere Aufgaben Werte aus der Response brauchen, beschreiben Sie sie selbst im Bereich [Response](#die-response-beschreiben).
+
+### Dokumente mit mehr als einer Operation
+
+Eine Spezifikation beschreibt in der Regel eine ganze API statt eines einzelnen Endpunkts. Wenn das importierte Dokument mehr als eine Operation enthält, zeigt HireData Ihnen eine Liste der darin enthaltenen Endpunkte und fragt, welchen diese Aufgabe aufrufen soll – eine vollständige Spezifikation zu übergeben ist also kein Fehler.
+
+Das hängt vom Dokument ab, nicht davon, wie Sie es eingebracht haben. Dieselbe Endpunktliste erscheint, egal ob Sie die Spezifikation eingefügt oder per **From URL** abgerufen haben.
+
+![Die Endpunktauswahl nach dem Import einer Spezifikation mit mehreren Operationen](/images/http-request/endpoint-picker.png)
+
+## Den Request von Hand erstellen
+
+Ein Import braucht ein Dokument zum Lesen. Wenn Sie nur einen Endpunkt und die Dokumentation des Anbieters haben, füllen Sie den Request selbst aus. Es sind dieselben Tabs, in die ein Import schreibt – so passen Sie also auch einen importierten Request an. Zugangsdaten kommen in beiden Fällen zuletzt, unter [Authentifizierung](#authentifizierung) – mit einer Ausnahme. Der Import einer *Spezifikation* setzt den Authentifizierungstyp und lässt das Secret leer, weil ein Security-Schema beschreibt, wie ein Endpunkt authentifiziert, ohne den Key von irgendjemandem zu enthalten. Ein *cURL-Befehl* ist anders: Er enthält echte Zugangsdaten, und sie werden mit importiert.
+
+### Query- und Pfadparameter
+
+Der Tab **Params** hat zwei Bereiche, **Query** und **Path**. Sie sehen gleich aus und funktionieren unterschiedlich.
+
+**Query**-Zeilen füllen Sie selbst aus. Jede Zeile hat:
+
+- **Enabled**: eine Checkbox, die den Parameter ein- oder ausschaltet, ohne die Zeile zu löschen
+- **Name**: der Name des Parameters, eingetippt
+- **Value**: was gesendet wird, mit einer Feldauswahl daneben
+- **Remove**: löscht die Zeile endgültig
+
+Die URL-Leiste und die **Query**-Zeilen sind zwei Ansichten derselben Sache. Fügen Sie eine URL mit Query-String am Ende ein, und sie wird in Zeilen aufgeteilt; fügen Sie eine Zeile hinzu oder bearbeiten Sie sie, und der Query-String in der URL-Leiste passt sich entsprechend an. Sie können also in derjenigen der beiden Ansichten arbeiten, die Ihnen vorliegt – eine vollständige URL aus der Dokumentation eines Anbieters oder eine Tabelle von Parametern –, ohne sie in die andere zu übertragen.
+
+**Path**-Zeilen benennen Sie nicht selbst. Sie kommen aus der URL. Solange die URL keinen enthält, steht im Bereich „Path parameters appear when the URL contains `{placeholder}` segments."
+
+Umschließen Sie einen Teil des Pfads mit geschweiften Klammern, und eine Zeile dafür erscheint. Geben Sie der Aufgabe diese URL:
+
+```text
+https://api.example.com/repos/{owner}/{repo}/issues
+```
+
+Sofort erscheinen zwei Zeilen unter **Path**, `owner` und `repo`, jeweils mit einem Sternchen als erforderlich markiert. Eine URL, die auf `/chats/{chat_id}/messages` endet, ergibt eine Zeile, `chat_id`.
+
+Sie drücken die Form des Endpunkts also einmal aus, in der URL. Bearbeiten Sie die URL, und die Zeilen folgen ihr.
+
+![Der Params-Tab mit erforderlichen Path-Zeilen für owner und repo, erstellt aus der URL](/images/http-request/path-parameters.png)
+
+### Request-Body
+
+Der Tab **Body** beginnt mit einer Wahl, `Form` oder `Raw`: ob der Body als Formularfelder oder als Raw-Payload gesendet wird. Diese Wahl entscheidet, welche Bedienelemente daneben erscheinen – treffen Sie sie also zuerst.
+
+**`Form`** bietet zwei Kodierungen, `Multipart form` und `Form URL encoded`, und eine Tabelle mit Namens- und Wertzeilen. Ein Endpunkt, der ein Formular annimmt, dokumentiert in der Regel eine der beiden und lehnt die andere ab – prüfen Sie also vor der Wahl, welche es ist.
+
+**`Raw`** bietet vier Formate – `JSON`, `XML`, `Text` und `GraphQL` – für einen Endpunkt, der XML oder eine GraphQL-Query statt JSON dokumentiert. Es kommt ein drittes Bedienelement hinzu, `Builder` oder `Code`: ob Sie den Body aus typisierten Eigenschaften bauen oder ihn selbst ausschreiben. Nutzen Sie, was Ihnen liegt. Solange noch nichts darin steht, zeigt der Tab „No body properties yet" und verweist auf beides: „Add typed properties to build the request body, or switch to the raw editor."
+
+Es gibt zwei Arten zu verschachteln, und die schnelle steckt im Namen: „Use dots in property names to nest objects, e.g. candidate.email."
+
+Eine Eigenschaft namens `candidate.email` sendet die Adresse daher innerhalb eines `candidate`-Objekts:
+
+```json
+{
+  "candidate": {
+    "email": "sofia@example.com"
+  }
+}
+```
+
+Der andere Weg ist strukturell. Geben Sie einer Eigenschaft den Typ **Collection** – „A repeating list of objects, e.g. line items or attendees" – oder machen Sie sie zu einem Objekt, und sie wird zu einer Gruppenzeile mit einer Schaltfläche **Add child property**. Bauen Sie die Form auf diese Weise aus, wenn der Endpunkt ein Array von Dingen statt eines einzelnen erwartet – das können Namen mit Punkten nicht ausdrücken. Jede Eigenschaft hat außerdem **Edit property** und **Remove**.
+
+Ein `GET`-Request sendet keinen Body. Wählen Sie `GET`, und der ganze Tab wird zu einer Zeile: „This request method does not send a body."
+
+![Der Body-Tab bei einem POST-Request, eingestellt auf Raw und JSON, mit den Bedienelementen Builder und Code daneben](/images/http-request/body-tab.png)
+
+### Headers
+
+Header-Zeilen haben einen **Name** und einen **Value**. **Name** schlägt beim Tippen bekannte Header-Namen vor. Sie können trotzdem jeden Namen eintippen, den der Endpunkt braucht. **Value** nutzt dieselbe Feldauswahl wie der Wert eines Query-Parameters.
+
+Für einen Header, der einen API-Key oder einen Bearer-Token trägt, verwenden Sie stattdessen die [Authentifizierung](#authentifizierung). Sie hat Felder für beides.
+
+![Der Headers-Tab, mit der Name-Combobox, die bekannte Header-Namen vorschlägt](/images/http-request/headers-tab.png)
+
+### Felder aus der Automatisierung verwenden
+
+Ein Request, der komplett aus festen Werten besteht, sendet bei jedem Run dasselbe – was selten der Sinn ist. Felder aus der Automatisierung sorgen dafür, dass jeder Run seine eigenen Daten sendet, einschließlich der Werte, die eine frühere Aufgabe erzeugt hat.
+
+Es gibt zwei Wege, eines einzufügen:
+
+- Die **Feldauswahl** neben einem **Value**, die auflistet, was verfügbar ist
+- `{{` direkt im Eingabefeld tippen. Die Auswahl öffnet sich, sobald Sie es tippen, und was Sie zwischen den Klammern tippen, durchsucht die Liste – schneller, wenn Sie ungefähr wissen, wie das Feld heißt
+
+In beiden Fällen wird das Feld als `{{field_key}}`-Token gespeichert – das sehen Sie, wenn Sie einen bereits ausgefüllten Wert betrachten.
+
+Felder können in die URL, die Parameter, die Headers und den Body. Jeder Teil des Requests kann sich von Run zu Run ändern.
+
+![Die geöffnete Feldauswahl auf einem Value, mit Feldern aus der Automatisierung](/images/http-request/field-picker.png)
+
+## Authentifizierung
+
+Der Tab **Auth** ist ein segmentiertes Bedienelement mit fünf Optionen: `None`, `API key`, `Bearer token`, `Basic auth` und `OAuth2`. Wählen Sie diejenige, die der Betreiber des Endpunkts Ihnen genannt hat, und ihre Felder erscheinen.
+
+| Typ | Felder |
+| --- | --- |
+| `API key` | **Key name**, **Send in**, **Key value** |
+| `Bearer token` | **Token** |
+| `Basic auth` | **Username**, **Password** |
+| `OAuth2` | **Token URL**, **Client ID**, **Client secret**, **Scopes**, **Audience**, **Send credentials as** |
+
+### API-Key
+
+**Send in** entscheidet, wo der Key mitreist: als `Header`, das ist der Standard, oder als `Query parameter`. **Key name** ist dann der Name dieses Headers oder dieses Parameters. **Key value** ist der Key selbst. Prüfen Sie, welches von beiden die Dokumentation des Endpunkts verlangt – ein Key an der falschen Stelle wirkt auf den Endpunkt wie gar kein Key.
+
+### OAuth2
+
+Das sind die Felder des Client-Credentials-Grants. HireData tauscht die **Client ID** und das **Client secret** an der **Token URL** gegen einen Token und sendet diesen Token dann mit dem Request. Es gibt keine Redirect-URL und keinen Zustimmungsbildschirm – wenn Sie danach suchen: Es fehlt nichts.
+
+Der Token wird einmal abgerufen und behalten. HireData verwendet ihn weiter, solange er gültig ist, und holt einen neuen, wenn er abläuft – eine Automatisierung, die viele Male pro Stunde läuft, fragt den Token-Endpunkt also nicht bei jedem Run nach einem frischen Token. Sie müssen nichts planen oder erneuern.
+
+**Scopes** sind „Separated by spaces". **Send credentials as** wählt, wie Client-ID und Secret den Token-Endpunkt erreichen: im `Request body`, das ist der Standard, oder als `Basic auth header`. Die Dokumentation des Token-Endpunkts sagt, was er erwartet.
+
+<Warning>
+  Jeder Authentifizierungstyp zeigt dieselbe Zeile, und sie ist lesenswert, bevor Sie das Secret eines Kunden einfügen: „Credentials are stored in this step's configuration and visible to anyone who can edit this automation."
+
+  Jede Person, die die Automatisierung bearbeiten kann, kann den Key oder Token lesen, den Sie eingeben. Wenn Sie dies im Auftrag von jemand anderem einrichten, verwenden Sie ein Zugangsdatum, das Sie besitzen dürfen, und beschränken Sie es auf nicht mehr, als dieser Request braucht.
+</Warning>
+
+![Der Auth-Tab eingestellt auf OAuth2, mit leeren Feldern und dem Hinweis zur Sichtbarkeit der Zugangsdaten darunter](/images/http-request/auth-oauth2.png)
+
+## Die Response beschreiben
+
+Der Bereich **Response** sitzt unterhalb der Tabs, immer sichtbar, denn von ihm hängt der Rest der Automatisierung ab: „Describe the expected response body to use its values as fields in later steps."
+
+Drei Felder kommen an, ob Sie etwas beschreiben oder nicht – der Statuscode, der Response-Body und ob der Aufruf erfolgreich war. Was das Beschreiben der Response hinzufügt, sind die Werte *innerhalb* des Bodys, jeder als eigenes Feld. Solange ein Wert hier nicht beschrieben ist, kann keine spätere Aufgabe diesen Wert selbstständig herausgreifen.
+
+Es gibt zwei Bäume, und Sie beschreiben sie getrennt:
+
+- **Success response (2xx)**: was der Endpunkt zurückgibt, wenn der Aufruf funktioniert
+- **Error response (non-2xx)**: was er zurückgibt, wenn nicht
+
+Bauen Sie beide mit **Add property** auf. Eine Blatt-Eigenschaft trägt ein **Label** und einen Key. Das **Label** ist der lesbare Name, den Sie später sehen; der Key ist der Name im Response-Body – „Canonical Name" für `canonical_name`. Eine Eigenschaft, die ein Objekt enthält, wird zu einer einklappbaren Gruppe, sodass eine verschachtelte Response als Baum statt als flache Liste lesbar ist. Jede Eigenschaft hat **Edit property** und **Remove**.
+
+Der Fehler-Baum trägt einen eigenen Hinweis: „Available when the request fails — useful for logging when the automation continues on failure."
+
+Dafür ist er da. Wenn Sie den Run so eingestellt haben, dass er über einen fehlgeschlagenen Request hinaus weiterläuft, beschreiben Sie auch den Fehler-Body – dann kann eine spätere Aufgabe festhalten, was der Endpunkt tatsächlich gesagt hat, statt nur, dass etwas schiefging.
+
+![Der Response-Bereich mit beschriebenen Eigenschaften im Erfolgs- und im Fehler-Baum](/images/http-request/response-section.png)
+
+### Felder, die Sie immer erhalten
+
+Drei Felder existieren bei jeder HTTP-Request-Aufgabe, mit oder ohne beschriebene Response:
+
+| Feld | Was es enthält |
+| --- | --- |
+| `<description>: Response Status` | Der HTTP-Statuscode, als Zahl |
+| `<description>: Response Body` | Der Response-Body, als Text |
+| `<description>: Response Success` | Ob der Aufruf erfolgreich war, als true oder false |
+
+Zusammen beantworten sie „hat es funktioniert, und was kam zurück" – genug für eine spätere Aufgabe, die nur auf Erfolg verzweigen oder die rohe Antwort protokollieren muss. Das Beschreiben der Response erspart einer späteren Aufgabe, diesen Text zu lesen und Werte daraus herauszupicken.
+
+### Einen Response-Wert in einer späteren Aufgabe verwenden
+
+Eine beschriebene Eigenschaft wird zu einem Feld in den nachfolgenden Aufgaben, benannt nach dem Request und dem Pfad der Eigenschaft:
+
+`<request description>: <dotted path>`
+
+Die erste Hälfte ist die **Description** aus dem Tab [Advanced](#erweiterte-einstellungen). Die zweite ist die Position der Eigenschaft im Baum.
+
+Nehmen Sie einen Request mit der Beschreibung „Get brand context by domain". Er gibt `canonical_name` innerhalb eines `meta`-Objekts zurück und `description` innerhalb eines `identity`-Objekts. Spätere Aufgaben erhalten zwei Felder zur Auswahl:
+
+- `Get brand context by domain: meta.canonical_name`
+- `Get brand context by domain: identity.description`
+
+Eigenschaften im Fehler-Baum tragen ein zusätzliches Segment, damit sie nicht mit denen des Erfolgs-Baums kollidieren können:
+
+`<request description>: Error: <dotted path>`
+
+Die Beschreibung ist also nicht kosmetisch. Sie ist die erste Hälfte jedes Feldnamens, den diese Aufgabe erzeugt – schreiben Sie also eine spezifische, bevor Sie die Response beschreiben. Sie ist das, was Sie später in einer Feldauswahl lesen werden.
+
+![Die Feldauswahl einer späteren Aufgabe mit „Get brand context by domain: meta.canonical_name"](/images/http-request/response-field-in-later-task.png)
+
+## Den Request testen
+
+**Test** in der Fußzeile des Drawers sendet den Request sofort – Sie merken also hier, dass etwas falsch ist, statt in einem echten Run.
+
+<Warning>
+  Der Dialog sagt, was er tut: „Sends the real request with the values below."
+
+  Das ist kein Trockenlauf. Ein `POST`, den Sie testen, ist ein `POST`, den der Endpunkt empfängt, und ein `DELETE` löscht. Richten Sie den Test auf einen Sandbox-Endpunkt oder auf Werte, deren Schreiben der Betreiber des Endpunkts akzeptiert, bevor Sie auf **Send** klicken.
+</Warning>
+
+Der Dialog öffnet sich mit der Methode und der aufgelösten URL, sodass Sie lesen können, was gleich aufgerufen wird, mit **Send** zum Abschicken.
+
+### Die Werte ausfüllen
+
+Darunter fragt der Dialog nach einem Wert pro Parameter, gruppiert in **Path**, **Query** und **Body**. Nur die Gruppen, die Ihr Request tatsächlich hat, erscheinen – ein Request ohne Pfad- oder Query-Parameter zeigt also nur eine **Body**-Gruppe. Jedes Eingabefeld ist mit dem Namen des Parameters beschriftet, und jedes ist einzeln editierbar.
+
+Die Eingabefelder starten mit dem, was die Aufgabe bereits konfiguriert ist zu senden. Alles, was Sie auf einen festen Wert gesetzt haben, kommt ausgefüllt an – ein aus Literalen gebauter Request lässt sich oft so senden, wie er ist.
+
+Zwei Arten von Eingabefeldern bleiben leer:
+
+- Ein Parameter ohne konfigurierten Wert. Pfadparameter gehören meist in diese Gruppe, da sie aus `{placeholder}`-Segmenten in der URL stammen und nicht aus einer Zeile, in die Sie einen Wert getippt haben.
+- Ein Wert, der an ein Automatisierungsfeld gebunden ist – es sei denn, dieses Feld hat zufällig einen Standardwert. Der Token wird gegen diesen Standard aufgelöst, und die meisten Felder mit Run-Daten haben keinen.
+
+Tippen Sie ein Literal in alles, was leer ist. Die Bindung selbst bleibt unberührt – sie gilt weiterhin, wenn die Automatisierung läuft.
+
+Beim erneuten Öffnen liest der Dialog die Konfiguration der Aufgabe neu – ein Literal, das Sie für einen Test eingetippt haben, ist beim nächsten also nicht mehr da.
+
+![Der Test-Dialog vor Send, mit leeren Path-Eingaben und Body-Eingaben mit den auf der Aufgabe konfigurierten Werten](/images/http-request/test-dialog-before-send.png)
+
+### Den ausgehenden Request prüfen
+
+Das **Request**-Panel stellt den ausgehenden Aufruf dar, mit einer Formatauswahl für cURL und einem Bedienelement zum Kopieren. Es maskiert Secrets, ein Bearer-Token liest sich also so:
+
+```text
+-H 'Authorization: Bearer ***'
+```
+
+Dieselbe Maskierung gilt für den Request, der bei einem Run aufgezeichnet wird – ein Key oder Token landet also auch nicht in der Aktivität des Runs. Was nicht maskiert wird, ist die Konfiguration der Aufgabe selbst: Jede Person, die die Aufgabe öffnen kann, kann das dort eingetragene Zugangsdatum weiterhin lesen – siehe [Authentifizierung](#authentifizierung).
+
+### Das Ergebnis lesen
+
+Nach **Send** meldet eine Leiste, wie es gelaufen ist: ein Statuswort, der HTTP-Code und wie lange der Aufruf dauerte – `Success`, `200`, `323 ms`. Darunter der vollständige Response-Body in einem Viewer mit demselben Status, mit einem Bedienelement zum Kopieren.
+
+Wenn Sie die Response bereits beschrieben haben, listet ein Bereich **Outputs** die Werte auf, die HireData aus diesem Body gezogen hat. Das ist die schnellste Prüfung, ob Ihr Response-Baum zur echten Antwort passt: Eine Eigenschaft, die Sie beschrieben haben, die aber fehlt, zeigt sich hier – statt nächste Woche in einem Run.
+
+Dieser Body ist genau das, was der Bereich [Response](#die-response-beschreiben) braucht. Erst zu testen und den Body herauszukopieren ist der kürzeste Weg zu einem Response-Baum, der dem entspricht, was der Endpunkt wirklich zurückgibt – statt dem, was seine Dokumentation behauptet.
+
+![Der Test-Dialog nach einem erfolgreichen Senden, mit Status, Code und Dauer über dem Response-Body](/images/http-request/test-result.png)
+
+## Erweiterte Einstellungen
+
+Der Tab **Advanced** enthält die Beschreibung des Requests und was passieren soll, wenn der Endpunkt langsam oder nicht erreichbar ist.
+
+| Bedienelement | Was es tut | Standard |
+| --- | --- | --- |
+| **Description** | Beschreibt, was der Request tut. Sie betitelt die Aufgabe überall sonst – in der Automatisierung, in einem Run und in den Feldnamen, die sie erzeugt | Leer, hinter dem Platzhalter „Describe what this request does." |
+| **Timeout (seconds)** | Wie lange auf eine Response gewartet wird, bevor aufgegeben wird, damit ein langsamer Endpunkt den Run nicht aufhält | `30` |
+| **Retries** | Wie viele zusätzliche Versuche nach einem fehlgeschlagenen Request unternommen werden | `0` |
+| **Backoff (seconds)** | Wie lange zwischen diesen Versuchen gewartet wird | `2` |
+
+**Backoff** ist deaktiviert, solange **Retries** auf `0` steht. Es gibt noch nichts, zwischen dem gewartet werden könnte – erhöhen Sie also zuerst **Retries**, und das Feld wird editierbar.
+
+## Festlegen, was als Fehlschlag zählt
+
+Der Tab **Advanced** endet mit zwei Schaltern. Sie beantworten getrennte Fragen, und es lohnt sich, sie so zu lesen statt als eine einzige Fehler-Einstellung.
+
+**Fail on error responses** ist standardmäßig an: „Treat 4xx and 5xx responses as a failed task."
+
+Schalten Sie ihn aus, wenn eine Non-2xx-Antwort für diesen Endpunkt eine normale Antwort ist statt eines Problems – etwa ein `404` von einem Lookup, der schlicht nichts gefunden hat. Die Aufgabe wird dann abgeschlossen, und was mit dem Code geschehen soll, entscheiden Sie in einer späteren Aufgabe.
+
+**Continue automation on failure** ist standardmäßig aus: „The run continues with the next step even if this request fails."
+
+Schalten Sie ihn an, wenn der Rest des Runs auch ohne diesen Aufruf lohnend ist – der Request war eine Benachrichtigung, keine Voraussetzung. Lassen Sie ihn aus, und ein fehlgeschlagener Request beendet den Run an dieser Stelle.
+
+Zusammen entscheiden sie über das Schicksal des erwarteten `404`. Schalten Sie den ersten Schalter aus, und es war nie ein Fehlschlag. Lassen Sie ihn an und schalten Sie stattdessen den zweiten an, und es ist ein Fehlschlag, den der Run überlebt – der Fall, für den der [Fehler-Response-Baum](#die-response-beschreiben) da ist.
+
+![Der Advanced-Tab mit Description, Timeout, Retries, Backoff und den beiden Fehler-Schaltern](/images/http-request/advanced-tab.png)
+
+## So sieht die Aufgabe in einem Run aus
+
+Öffnen Sie einen Run, und ein abgeschlossener HTTP Request zeigt:
+
+- Seine **Description** als Titel, darunter die Methode und den Host – `GET api.example.com` – und darunter den Pfad
+- **What will you provide?** und **What will you get back?**: den Request, den Sie konfiguriert haben, und die Response, die Sie beschrieben haben
+- Eine Reihe von Chips für die Einstellungen, die den Aufruf geprägt haben. Der Auth-Typ, der Timeout und die Retries sind immer da – `Bearer token`, `30s`, `No retries`. Der Rest erscheint erst, wenn Sie ihn eingeschaltet haben: ein Backoff, wenn Retries über `0` liegen, `Ignores error statuses`, wenn **Fail on error responses** aus ist, und `Continues on failure`, wenn **Continue automation on failure** an ist
+
+Die Timeline des Runs trägt zwei Einträge für die Aufgabe, `HTTP Request: Run Moved` und `HTTP Request: Completed`, mit der Meldung „Http request succeeded."
+
+![Ein abgeschlossener HTTP Request in einem Run: beide Bereiche und die Chip-Reihe mit Auth-Typ, Timeout und Retries](/images/http-request/task-in-a-run.png)
+
+## Wenn ein Request blockiert zurückkommt
+
+Ein Request kann blockiert zurückkommen, mit der Meldung „The request was blocked — the destination is a private or internal address."
+
+HireData ruft keine privaten oder internen Adressen auf. Prüfen Sie, wohin die URL tatsächlich zeigt – auch wenn ein Automatisierungsfeld einen Teil davon liefert: Ein Host, der nur innerhalb Ihres eigenen Netzwerks auflösbar ist, ist von HireData aus nicht erreichbar.
+
+Wenn das Ziel eindeutig öffentlich ist und Sie das trotzdem sehen, melden Sie es, statt es zu umgehen. Die [Support-Details](#brauchen-sie-noch-hilfe) unten beschreiben, was Sie mitschicken sollten.
+
+## Bestehende Post-Webhook-Aufgaben
+
+**Post Webhook** ist die andere Aufgabe zum Senden von Daten aus HireData heraus, und sie ist es, die die HTTP-Request-Aufgabe ersetzt. Automatisierungen, die sie bereits nutzen, funktionieren exakt weiter wie bisher, und nichts daran muss von Hand geändert werden.
+
+Eine einmalige Migration wird diese Schritte in HTTP-Request-Aufgaben umwandeln. Sie läuft einmal, auf unserer Seite, und ist nichts, was Sie auslösen oder vorbereiten müssen. Bauen Sie alles Neue als HTTP-Request-Aufgabe; lassen Sie das, was Sie bereits haben, unverändert.
+
+## Brauchen Sie noch Hilfe?
+
+Wenn sich ein Request nicht wie erwartet verhält, kontaktieren Sie unser Team unter [support@hiredata.com](mailto:support@hiredata.com) und geben Sie an:
+
+- Einen Link zur Automatisierung
+- Die Methode und URL der Aufgabe, mit entfernten Zugangsdaten
+- Was der Endpunkt Ihrer Erwartung nach zurückgeben sollte und was er stattdessen zurückgegeben hat

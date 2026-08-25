@@ -173,6 +173,39 @@ _Hurra! Ihre WhatsApp-Vorlage ist verifiziert_
 
 ![Approved WhatsApp template](/images/intercom/47455086-submit2.png)
 
+### Wie lange dauert die Genehmigung einer Vorlage?
+
+Mit dem Einreichen einer Vorlage beginnen zwei Schritte, in dieser Reihenfolge:
+
+1. **Kategorie-Validierung** — erfolgt sofort. Meta prüft die von Ihnen gewählte Kategorie (Marketing, Utility oder Authentication) gegen den Inhalt der Vorlage. Wenn Meta nicht einverstanden ist, wird die Vorlage sofort wegen falscher Kategorie abgelehnt, noch bevor eine inhaltliche Prüfung stattfindet. Siehe [WhatsApp-Vorlagen-Kategorien in HireData](/de/apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata).
+2. **Vorlagenprüfung** — das ist der Status **In review** (Pending). Meta prüft den Inhalt anhand seiner Richtlinien und genehmigt die Vorlage anschließend oder lehnt sie ab.
+
+Die meisten Vorlagen durchlaufen die Prüfung innerhalb weniger Minuten. Warten Sie bis zu **24 Stunden**, bevor Sie eine Vorlage mit dem Status **In review** als festhängend betrachten.
+
+| Status | Bedeutung | Können Sie damit senden? |
+| --- | --- | --- |
+| **In review** (Pending) | Kategorie-Validierung bestanden, Meta prüft den Inhalt. | Nein |
+| **Approved** | Prüfung bestanden. | Ja |
+| **Rejected** | Kategorie-Validierung oder inhaltliche Prüfung nicht bestanden. Meta nennt einen Ablehnungsgrund. | Nein |
+| **Paused** | Genehmigt, aber von Meta nach negativem Feedback von Empfängern pausiert. | Nein, bis sie fortgesetzt wird |
+
+Meta teilt Ihnen das Ergebnis per E-Mail und über eine Benachrichtigung im WhatsApp Manager mit – Sie müssen die Vorlagenliste also nicht ständig aktualisieren.
+
+<Note>
+  Das Bearbeiten einer Vorlage, die bereits **Approved** oder **Paused** ist, schickt sie erneut durch die Prüfung; diese Änderungen werden aber in der Regel fast sofort akzeptiert, sofern die Änderung nicht an der Prüfung scheitert. Siehe [WhatsApp-Nachrichtenvorlagen in HireData bearbeiten](/de/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates).
+</Note>
+
+**Wenn eine Vorlage länger als 24 Stunden in Prüfung ist**
+
+- Prüfen Sie Ihre E-Mails und die Benachrichtigungen im WhatsApp Manager — das Ergebnis wurde möglicherweise bereits gesendet.
+- Öffnen Sie die Vorlage unter **Manage Templates** und prüfen Sie den aktuellen Status dort statt in HireData, das die Vorlage erst nach einer Synchronisation sieht.
+- Wenn sie abgelehnt wurde, korrigieren Sie den Inhalt anhand der Meta-Richtlinien und reichen Sie sie erneut ein, oder erstellen Sie eine neue Vorlage.
+- Bleibt sie in Prüfung, kontaktieren Sie den Meta Business Support.
+
+<Warning>
+  Eine genehmigte Vorlage ist in HireData-Automatisierungen erst auswählbar, nachdem sie synchronisiert wurde. Wenn eine Vorlage im WhatsApp Manager als genehmigt angezeigt wird, Sie sie in HireData aber nicht finden, führen Sie **Sync Account** aus, wie unten beschrieben.
+</Warning>
+
 ### WhatsApp-Vorlagen mit HireData synchronisieren
 
 _Um Ihre neu erstellte Vorlage in HireData verfügbar zu machen, klicken Sie im Dropdown-Menü Ihres WhatsApp-Kontos in HireData auf [Sync Account]:_

@@ -1,0 +1,147 @@
+---
+title: "Schrijf betere HireData Linear-issues met AI"
+sidebarTitle: "Linear-issues schrijven met AI"
+description: "Gebruik de HireData Linear Issues-skill om bewijsmateriaal, verzoeken, prototypes en technische notities om te zetten in heldere, uitvoerbare Linear-issues."
+keywords: ["HireData Linear issue", "Linear issue", "AI bugreport", "een bug melden", "feature request", "HireData skills", "MCP"]
+related: ["/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+---
+
+Gebruik de **HireData Linear Issues**-skill om een bug, klantverzoek, prototype, opname, meetingnotitie of technische prompt om te zetten in een issue dat compleet is voor zijn huidige volwassenheidsniveau.
+
+De skill bevat HireData's methode voor het schrijven van issues, templates, refinement-richtlijnen en een onderhouden snapshot van de relevante workflowregels. Hij ondersteunt zowel HireData-teamleden als goedgekeurde partners. Toegang tot live Linear-issues en Notion-pagina's blijft afhankelijk van de rechten van het gekoppelde account.
+
+<Note>
+  Het installeren van de skill geeft geen toegang tot HireData's Linear-workspace, Notion-pagina's, klantgegevens of projecten. Hij gebruikt alleen de bronnen waartoe je al geautoriseerd bent.
+</Note>
+
+## Wie kan hem gebruiken
+
+| Doelgroep | Wat de skill doet |
+| --- | --- |
+| HireData-team | Stelt issues op, scherpt ze aan, legt relaties en — alleen op expliciet verzoek — maakt of wijzigt issues via de live HireData Linear-workspace en interne Notion-SOP's. |
+| Goedgekeurde partners | Gebruikt het HireData-project en de Notion-pagina's die met de partner zijn gedeeld, plus de meegeleverde richtlijnen. Dit is handig voor gezamenlijke projecten zoals een RMA-backlog. |
+| Gebruikers zonder live workspace-toegang | Produceert een volledig rapport voor het afgesproken HireData-support- of partnerkanaal en markeert live metadata, duplicaten en relaties als niet-geverifieerd. |
+
+HireData kan geselecteerde Notion-pagina's met een partner delen wanneer nauwere samenwerking nuttig is. Dezelfde skill volgt dan die gedeelde bronnen zonder ongerelateerde interne pagina's bloot te leggen.
+
+## Voordat je begint
+
+[Installeer of update de HireData-plugin](/nl/apps/mcp/install-hiredata-plugin) en start een nieuw gesprek, zodat je assistent de nieuwste skill laadt.
+
+Bereid zoveel mogelijk van het volgende bewijsmateriaal voor:
+
+- De betrokken gebruiker, het account, de workflow of het object
+- De relevante omgeving en pagina-URL
+- Exacte reproductiestappen voor een bug
+- Wat er gebeurde en wat je verwachtte
+- Frequentie, impact en een eventuele workaround
+- Screenshots, opnames, tijdstempels, runs, events of logs
+- Het oorspronkelijke verzoek of gesprek
+
+Je hoeft niet elk onderdeel te hebben voordat je begint. De skill benoemt wezenlijke hiaten zonder antwoorden te verzinnen.
+
+## Eerst een concept, dan pas Linear wijzigen
+
+Begin met:
+
+```text
+Use $hiredata-create-linear-issues to turn the evidence below into a
+HireData Linear issue. Draft only. Use the HireData and partner sources
+I can access, and mark anything that still needs live verification.
+
+[Paste your notes and links here]
+```
+
+In Claude Code kan de geïnstalleerde skill verschijnen als `/hiredata:hiredata-create-linear-issues`.
+
+Het concept bevat:
+
+1. Een voorgestelde titel
+2. De juiste route: intake, productspecificatie, implementatie of oplevering
+3. Een eerlijk gereedheidsniveau
+4. Een gestructureerde beschrijving met bewijsmateriaal en bronlinks
+5. Ontbrekende informatie en open beslissingen
+6. Aanbevelingen voor duplicaten, afhankelijkheden en gerelateerd werk wanneer die geverifieerd kunnen worden
+7. Voorgestelde metadata, alleen wanneer een goedgekeurde bron dit ondersteunt
+
+## Voorbeeldprompts
+
+### Een bug melden
+
+```text
+Turn these reproduction steps, screenshots, and automation URL into an
+intake-ready HireData bug issue. Search for duplicates if I have access,
+but do not create anything yet.
+```
+
+### Een feature aanscherpen
+
+```text
+Refine this prototype and customer feedback into a product specification.
+Treat the prototype as evidence, not as the product contract. Separate
+reusable HireData behaviour from customer-specific configuration.
+```
+
+### Werk voorbereiden voor engineering
+
+```text
+Review this issue and its sources. Tell me whether it is ready for
+refinement, estimation, or implementation. Do not invent technical
+decisions. Draft the changes and summarize what you changed.
+```
+
+### Werken als goedgekeurde partner
+
+```text
+Use the issue-writing skill and the HireData Notion pages shared with our
+project to improve this report. Follow the shared workflow, leave
+inaccessible internal metadata unverified, and do not update the live
+issue until I approve the draft.
+```
+
+### Een goedgekeurde update doorvoeren
+
+```text
+Update HD-1234 with the agreed draft now. Preserve metadata I did not ask
+you to change, then reopen the issue and verify the result.
+```
+
+## Hoe de skill omgaat met complex werk
+
+Voor brede of prototype-gedreven features doet de skill het volgende:
+
+- houdt het issue begrijpelijk zonder het prototype te openen;
+- scheidt vooraf bepaald gedrag van gedrag dat het model beoordeelt;
+- benoemt of mogelijkheden naast elkaar bestaan, elkaar uitsluiten of op volgorde draaien;
+- dekt configuratie, uitvoering, opslag, presentatie, rapportage, automatisering, foutafhandeling, regressie en uitrol af, of stelt die expliciet uit;
+- scheidt herbruikbaar productgedrag van klantspecifieke koppelingen;
+- houdt productspecificaties en engineering-implementatie-issues gescheiden waar dat passend is.
+
+## Review en verantwoordelijkheid
+
+AI-ondersteund betekent niet automatisch goedgekeurd. De melder blijft verantwoordelijk voor feiten, bewijsmateriaal en klantcontext. HireData's normale proces van Triage, refinement, estimation en planning blijft gelden.
+
+Controleer voordat je een live wijziging indient of goedkeurt of het issue:
+
+- het waarneembare probleem of resultaat beschrijft;
+- onderscheid maakt tussen feiten, beslissingen, aannames en open vragen;
+- het oorspronkelijke bewijsmateriaal linkt;
+- geen urgentie, eigenaarschap, inschattingen, implementatiedetails of acceptatiecriteria verzint;
+- alleen bronnen en acties gebruikt die binnen de bestaande rechten van de gebruiker beschikbaar zijn.
+
+## Privacy en beveiliging
+
+- Deel alleen de klant- en kandidaatgegevens die nodig zijn om het issue te begrijpen of te reproduceren.
+- Neem nooit inloggegevens, access tokens, secrets of ongerelateerde persoonsgegevens op.
+- Plak beveiligingskwetsbaarheden niet in een openbaar GitHub-issue. Neem privé contact op met HireData via je normale supportkanaal.
+- Een openbare skill-broncode maakt privé Notion-pagina's of Linear-issues niet openbaar. Hun bestaande rechten blijven gelden.
+
+## Problemen oplossen
+
+- **De skill ontbreekt:** werk de HireData-plugin bij en start een nieuw gesprek.
+- **De assistent kan een Notion-pagina niet openen:** vraag HireData of die pagina met je account gedeeld moet worden, of werk verder met de meegeleverde snapshot en markeer het resultaat als niet-geverifieerd.
+- **De assistent wil Linear meteen wijzigen:** zeg "Draft only", tenzij je de live wijziging echt wilt doorvoeren én daartoe geautoriseerd bent.
+- **Een workflowregel lijkt verouderd:** vraag de assistent de canonieke gedeelde Notion-pagina te controleren voordat hij metadata toepast.
+- **De assistent kan Linear niet doorzoeken:** hij kan nog steeds een volledig rapport opleveren; duplicaat- en relatiecontroles blijven dan niet-geverifieerd.
+
+De broncode van de skill is beschikbaar op [github.com/HireData/skills](https://github.com/HireData/skills/tree/main/plugins/hiredata/skills/hiredata-create-linear-issues).

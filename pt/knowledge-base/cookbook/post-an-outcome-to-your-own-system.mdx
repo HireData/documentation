@@ -1,0 +1,196 @@
+---
+title: "Publicar um resultado no seu próprio sistema"
+sidebarTitle: "Publicar um resultado"
+description: "Construa uma automação que faz POST de um resumo JSON para a sua API quando uma conversa termina, autentica com um bearer token e reutiliza a resposta depois."
+keywords: ["post para a minha própria api", "enviar dados para fora da hiredata", "chamada de api de saída", "chamar o meu sistema a partir de uma automação", "tarefa http request", "bearer token", "corpo json a partir de campos da automação", "valor da resposta numa tarefa posterior", "trigger de conversa terminada", "eigen systeem aanroepen", "data uit hiredata versturen"]
+---
+
+_O seu próprio sistema precisa de saber o que aconteceu na HireData. Esta receita constrói uma automação que faz POST de um resumo JSON para um endpoint que controla no momento em que uma conversa termina, autentica-o com um bearer token e devolve a resposta do endpoint ao mesmo run._
+
+## O que vai construir
+
+Uma automação com quatro partes:
+
+1. Um **trigger** para o momento que vale a pena reportar
+2. Uma tarefa **HTTP Request** que faz POST de JSON para o seu endpoint, autenticada com um bearer token
+3. Uma **resposta descrita**, para que o que o endpoint devolve se torne campos
+4. Uma **tarefa posterior** que utiliza um desses campos
+
+Cada separador, campo e predefinição está coberto na referência da [tarefa HTTP Request](/pt/reference/automation-tasks/http-request-task). Esta página percorre um caminho através dela, do início ao fim.
+
+<Note>
+  Esta receita envia dados **para fora** da HireData. Se o que realmente precisa é a direção oposta — outra ferramenta a enviar dados **para dentro** para iniciar uma automação — isso é antes um trigger de app personalizada. Veja [Apps personalizadas](/pt/apps/custom-apps/introduction) e [Configurar um trigger](/pt/apps/custom-apps/set-up-a-trigger).
+</Note>
+
+## O que pedir antes de começar
+
+Quem é dono do endpoint tem tudo isto. Obtê-lo à partida poupa uma ronda de adivinhação:
+
+- O **URL** a chamar, e o **método** que espera
+- O **corpo** que espera, idealmente como um payload JSON de exemplo em vez de uma descrição
+- Como **autentica**. Esta receita usa um bearer token emitido para esta integração, não o token pessoal de alguém
+- O que **devolve** — tanto quando uma chamada é aceite como quando é rejeitada
+- Se existe um **endereço de teste ou sandbox**. O teste no passo 7 envia um pedido real, por isso quer um sítio seguro para onde o apontar
+
+<Tip>
+  Se lhe conseguirem enviar uma especificação OpenAPI ou Swagger, uma coleção Postman, ou até o comando cURL diretamente da documentação deles, peça isso em vez de uma descrição escrita. A HireData lê todos eles e preenche o pedido por si. Veja [Importar uma especificação ou um comando cURL](/pt/reference/automation-tasks/http-request-task#importar-uma-especificação-ou-um-comando-curl).
+</Tip>
+
+## Construir a automação
+
+### 1. Acionar no momento que vale a pena reportar
+
+Abra o bloco **Start**. Escolha **HireData** como app, depois **Conversation** como objeto e **Ended** como trigger. A automação agora corre uma vez de cada vez que uma conversa termina.
+
+Qualquer trigger funciona aqui — uma resposta de formulário concluída, um candidato atualizado no seu ATS. Só muda quais os campos que tem disponíveis para enviar no passo 4; o resto da receita é igual.
+
+{/* screenshot: cookbook-start-block.png — the Start block set to HireData / Conversation / Ended */}
+
+### 2. Adicionar a tarefa HTTP Request
+
+Adicione uma tarefa e escolha **HTTP Request**. Está arquivada tanto em **Add** como em **Message**, e ambos os caminhos abrem a mesma tarefa — veja [onde encontrar a tarefa](/pt/reference/automation-tasks/http-request-task#onde-encontrar-a-tarefa).
+
+Se lhe deram uma especificação ou um comando cURL quando pediu os detalhes do endpoint, clique agora em **Import** no rodapé do painel e deixe a HireData preencher o pedido. Os dois caminhos preenchem coisas diferentes, por isso verifique [o que uma importação preenche](/pt/reference/automation-tasks/http-request-task#o-que-uma-importação-preenche) e depois releia os passos 3 a 6 comparando com o que foi escrito. Caso contrário, preencha manualmente como abaixo.
+
+### 3. Definir o método e o URL
+
+Uma tarefa nova já tem o método definido como `POST`, que é o que quer. Introduza o endereço do seu endpoint na barra de URL:
+
+```text
+https://api.example.com/v1/recruitment-events
+```
+
+Se parte do endereço muda de run para run, envolva essa parte em chavetas e aparece uma linha obrigatória para ela no separador **Params**. Veja [parâmetros de query e de path](/pt/reference/automation-tasks/http-request-task#parâmetros-de-query-e-de-path).
+
+### 4. Construir o corpo JSON a partir de campos da automação
+
+Abra o separador **Body** e adicione uma propriedade por cada valor que quer enviar. Ao lado de cada **Value** está um seletor de campos: use-o para escolher um campo do run em vez de escrever um valor fixo, para que cada run envie os seus próprios dados.
+
+Os pontos num nome de propriedade aninham-na, por isso um corpo como este precisa de seis propriedades:
+
+| Propriedade | Valor a escolher |
+| -------- | ------------- |
+| `conversation_id` | O ID da conversa |
+| `channel` | O canal em que a conversa decorreu |
+| `finished_at` | Quando a conversa terminou |
+| `contact.name` | O nome do **Sender** |
+| `contact.phone_number` | O número de telefone do **Sender** |
+| `outcome` | Um valor de uma tarefa anterior, ou uma string fixa |
+
+Uma conversa agrupa as pessoas nela em **Sender**, **Receiver** e **Owner**, por isso escolha do lado em que o candidato está: o sender quando foi ele a iniciar a conversa, o receiver quando foi a sua automação. Do lado do sender, qual o detalhe de contacto preenchido segue o canal — um número de telefone no WhatsApp, um endereço de email no email.
+
+Mais em geral, os campos que pode escolher dependem do trigger que escolheu no passo 1, e incluem valores que tarefas anteriores na mesma automação produziram. O que chega ao seu endpoint é JSON comum:
+
+```json
+{
+  "conversation_id": "8f2c1e64-3a71-4f0b-9d2e-7c5a1b8e40df",
+  "channel": "WhatsApp",
+  "finished_at": "2026-08-21T14:32:00Z",
+  "contact": {
+    "name": "Sofia Almeida",
+    "phone_number": "+31612345678"
+  },
+  "outcome": "interested"
+}
+```
+
+O detalhe completo sobre os controlos de formato, o builder e o editor raw está em [corpo do pedido](/pt/reference/automation-tasks/http-request-task#corpo-do-pedido).
+
+{/* screenshot: cookbook-body-fields.png — the Body tab with the recipe's six properties, the field picker open on one Value */}
+
+### 5. Autenticar com um bearer token
+
+Abra o separador **Auth**, selecione `Bearer token` e cole o token em **Token**. A HireData envia-o como header `Authorization` em cada pedido; não há nenhum header para adicionar no separador **Headers**.
+
+Se o endpoint quer antes uma chave num header nomeado ou num parâmetro de query, ou troca um client ID e um secret por um token, os outros tipos cobrem ambos os casos — veja [autenticação](/pt/reference/automation-tasks/http-request-task#autenticação).
+
+<Warning>
+  Qualquer pessoa que possa editar esta automação pode ler o token que cola aqui — veja [autenticação](/pt/reference/automation-tasks/http-request-task#autenticação) para o que isso significa quando está a configurar isto em nome de outra pessoa.
+</Warning>
+
+{/* screenshot: cookbook-auth-bearer.png — the Auth tab set to Bearer token */}
+
+### 6. Descrever o que volta
+
+Há duas coisas a fazer antes de a resposta ser utilizável, e é mais fácil por esta ordem.
+
+Comece no separador **Advanced** e escreva uma **Description** — "Post conversation outcome" para esta tarefa. Ela intitula a tarefa em todo o lado, e é a primeira metade do nome de cada campo que esta tarefa produz, por isso decidi-la agora poupa-lhe reler mais tarde um seletor cheio de campos renomeados.
+
+Depois, na secção **Response** por baixo dos separadores, descreva o corpo que o seu endpoint devolve. Digamos que responde a uma chamada com sucesso com isto:
+
+```json
+{
+  "id": "evt_9Fk2Lq",
+  "status": "accepted"
+}
+```
+
+Em **Success response (2xx)**, clique em **Add property** duas vezes: uma para `id`, com o label "Event ID", e uma para `status`, com o label "Status". As tarefas posteriores podem agora escolher estes dois pelo nome:
+
+- `Post conversation outcome: id`
+- `Post conversation outcome: status`
+
+Eles chegam por cima dos três campos que qualquer tarefa HTTP Request produz de qualquer forma — o código de estado, o corpo da resposta como texto e se a chamada teve sucesso. Descrever `id` é o que poupa uma tarefa posterior de o escavar desse texto.
+
+Em **Error response (non-2xx)**, descreva o que o endpoint devolve quando rejeita uma chamada — normalmente uma mensagem que quereria num log. Essa árvore só vale a pena preencher se configurar o run para continuar depois de uma falha — veja [Decidir o que acontece quando a chamada falha](#decidir-o-que-acontece-quando-a-chamada-falha) abaixo.
+
+Um valor que não descrever aqui é um valor que nenhuma tarefa posterior pode escolher pelo nome. Veja [descrever a resposta](/pt/reference/automation-tasks/http-request-task#descrever-a-resposta).
+
+{/* screenshot: cookbook-response-described.png — the Response section with id and status described, the drawer titled "Post conversation outcome" */}
+
+### 7. Testar o pedido antes de ativar
+
+Clique em **Test** no rodapé, e leia o aviso antes de clicar em **Send**.
+
+<Warning>
+  O teste envia o pedido real. Um `POST` que testa é um `POST` que o seu endpoint recebe e sobre o qual atua. Aponte-o para o endereço de teste que pediu à partida, ou para dados que o dono do endpoint aceite que escreva.
+</Warning>
+
+A caixa de diálogo pede um valor por parâmetro, agrupando-os pelo sítio a que pertencem. O pedido desta receita não tem parâmetros de path nem de query, por isso verá apenas um grupo **Body**, um input por propriedade do passo 4.
+
+Tudo o que definiu como valor fixo no passo 4 já está preenchido. As propriedades que ligou a campos da automação aparecem em branco, porque esses valores só existem durante um run real — escreva um literal plausível em cada uma delas. Veja [preencher os valores](/pt/reference/automation-tasks/http-request-task#preencher-os-valores).
+
+{/* screenshot: cookbook-test-dialog.png — the Test dialog before Send, every input still empty */}
+
+Clique em **Send**. Recebe de volta uma palavra de estado, o código HTTP e quanto tempo a chamada demorou, mais o corpo completo da resposta — e uma secção **Outputs** a listar os valores que a HireData extraiu usando a árvore que construiu no passo 6.
+
+Leia-os em conjunto. Uma propriedade que descreveu e que volta em falta aparece aqui, e este é o momento mais barato para o descobrir.
+
+### 8. Utilizar um valor da resposta numa tarefa posterior
+
+Adicione uma tarefa depois do HTTP Request que faça algo com o que voltou. **Add → Note** é a mais simples: coloque `Post conversation outcome: id` no texto da nota, para que a referência gerada pelo seu próprio sistema fique registada também na HireData.
+
+Qualquer tarefa posterior que receba um valor de texto funciona da mesma forma. O padrão é o que importa: a resposta do endpoint é agora um dado no run, não algo que tenha de ir procurar. Veja [utilizar um valor da resposta numa tarefa posterior](/pt/reference/automation-tasks/http-request-task#utilizar-um-valor-da-resposta-numa-tarefa-posterior).
+
+{/* screenshot: cookbook-note-field-picker.png — the Note task's field picker, showing "Post conversation outcome: id" */}
+
+## Decidir o que acontece quando a chamada falha
+
+O seu endpoint estará indisponível em algum momento. Dois interruptores no separador **Advanced** decidem o que isso lhe custa, e para esta receita:
+
+- Deixe **Fail on error responses** ligado. Se o seu endpoint rejeitar o payload, quer que a tarefa o diga.
+- Ligue **Continue automation on failure** apenas se este POST for uma notificação e o resto do run valer a pena sem ele. Se o fizer, preencha também a árvore **Error response (non-2xx)**, para que uma tarefa posterior possa registar o que o seu endpoint realmente disse.
+
+Para um endpoint que está ocasionalmente lento em vez de avariado, aumente **Retries** no mesmo separador.
+
+Ambos os interruptores, e o que fazem em conjunto, estão cobertos em [decidir o que conta como falha](/pt/reference/automation-tasks/http-request-task#decidir-o-que-conta-como-falha).
+
+## Ativar e verificar os primeiros runs
+
+Ative a automação e deixe uma conversa real terminar. Depois abra **Runs** e encontre o run.
+
+Um HTTP Request concluído mostra a sua descrição como título, com **What will you provide?** e **What will you get back?** por baixo, para que possa comparar o que foi enviado com o que configurou. Veja [como a tarefa aparece num run](/pt/reference/automation-tasks/http-request-task#como-a-tarefa-aparece-num-run) e o log de [Runs](/pt/settings/logs/runs).
+
+Verifique os primeiros runs contra os registos do seu próprio sistema antes de confiar na automação. Um pedido que teve sucesso do lado da HireData continua a não lhe dizer nada sobre o que o seu sistema fez com ele.
+
+## Ainda precisa de ajuda?
+
+Se a automação não está a correr de todo, o problema está no trigger e não no pedido. Veja [Porque é que a minha automação não correu?](/pt/knowledge-base/why-didnt-my-automation-run).
+
+Se o pedido corre mas volta bloqueado, veja [se um pedido voltar bloqueado](/pt/reference/automation-tasks/http-request-task#se-um-pedido-voltar-bloqueado).
+
+Se ainda precisar de ajuda, contacte [support@hiredata.com](mailto:support@hiredata.com) e inclua:
+
+- O nome da automação e um link para um run
+- O método e o URL da tarefa, com o token removido
+- O que esperava que o seu endpoint devolvesse, e o que devolveu em vez disso

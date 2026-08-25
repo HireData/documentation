@@ -1,0 +1,196 @@
+---
+title: "Post een uitkomst naar je eigen systeem"
+sidebarTitle: "Post een uitkomst"
+description: "Bouw een automatisering die een JSON-samenvatting naar je API POST wanneer een gesprek eindigt, authenticeert met een bearer token en de response later hergebruikt."
+keywords: ["naar mijn eigen api posten", "data uit hiredata versturen", "uitgaande api-call", "mijn systeem aanroepen vanuit een automatisering", "http request-taak", "bearer token", "json-body uit automatiseringsvelden", "responsewaarde in een latere taak", "conversation ended trigger", "eigen systeem aanroepen", "send data out of hiredata"]
+---
+
+_Je eigen systeem moet weten wat er in HireData is gebeurd. Dit recept bouwt een automatisering die een JSON-samenvatting POST naar een endpoint dat jij beheert op het moment dat een gesprek eindigt, deze authenticeert met een bearer token, en het antwoord van het endpoint terugvoert in dezelfde run._
+
+## Wat je gaat bouwen
+
+Eén automatisering met vier onderdelen:
+
+1. Een **trigger** voor het moment dat het rapporteren waard is
+2. Een **HTTP Request**-taak die JSON naar je endpoint POST, geauthenticeerd met een bearer token
+3. Een **beschreven response**, zodat wat het endpoint terugstuurt velden worden
+4. Een **latere taak** die een van die velden gebruikt
+
+Elk tabblad, veld en default wordt behandeld in de referentie van de [HTTP Request-taak](/nl/reference/automation-tasks/http-request-task). Deze pagina loopt er één pad doorheen, van begin tot eind.
+
+<Note>
+  Dit recept verstuurt data **uit** HireData. Als je eigenlijk de andere richting nodig hebt — een andere tool die data **naar binnen** stuurt om een automatisering te starten — dan is dat een custom app-trigger. Zie [Custom Apps](/nl/apps/custom-apps/introduction) en [Een trigger instellen](/nl/apps/custom-apps/set-up-a-trigger).
+</Note>
+
+## Wat je opvraagt voordat je begint
+
+Wie het endpoint beheert heeft dit allemaal. Het vooraf opvragen bespaart een ronde gokken:
+
+- De **URL** om aan te roepen, en de **method** die deze verwacht
+- De **body** die het verwacht, idealiter als een voorbeeld-JSON-payload in plaats van een beschrijving
+- Hoe het **authenticeert**. Dit recept gebruikt een bearer token dat voor deze integratie is uitgegeven, niet iemands persoonlijke token
+- Wat het **retourneert** — zowel wanneer een call wordt geaccepteerd als wanneer die wordt geweigerd
+- Of er een **test- of sandboxadres** is. De test in stap 7 verstuurt een echt request, dus je wilt een veilige plek om op te richten
+
+<Tip>
+  Als ze je een OpenAPI- of Swagger-specificatie, een Postman-collection of zelfs het cURL-commando rechtstreeks uit hun documentatie kunnen sturen, vraag daar dan om in plaats van om een geschreven beschrijving. HireData leest ze allemaal en vult het request voor je in. Zie [Een specificatie of cURL-commando importeren](/nl/reference/automation-tasks/http-request-task#een-specificatie-of-curl-commando-importeren).
+</Tip>
+
+## De automatisering bouwen
+
+### 1. Trigger op het moment dat het rapporteren waard is
+
+Open het **Start**-blok. Kies **HireData** als app, dan **Conversation** als object en **Ended** als trigger. De automatisering draait nu één keer telkens wanneer een gesprek eindigt.
+
+Elke trigger werkt hier — een ingevuld formulier, een kandidaat die is bijgewerkt in je ATS. Het verandert alleen welke velden je in stap 4 beschikbaar hebt om te versturen; de rest van het recept is hetzelfde.
+
+{/* screenshot: cookbook-start-block.png — the Start block set to HireData / Conversation / Ended */}
+
+### 2. Voeg de HTTP Request-taak toe
+
+Voeg een taak toe en kies **HTTP Request**. Deze staat onder zowel **Add** als **Message**, en beide routes openen dezelfde taak — zie [waar je de taak vindt](/nl/reference/automation-tasks/http-request-task#waar-je-de-taak-vindt).
+
+Als je een specificatie of een cURL-commando hebt gekregen toen je om de details van het endpoint vroeg, klik dan nu op **Import** in de footer van de drawer en laat HireData het request invullen. De twee routes vullen verschillende dingen in, dus check [wat een import invult](/nl/reference/automation-tasks/http-request-task#wat-een-import-invult) en loop daarna stap 3 tot en met 6 na tegen wat er is ingevuld. Vul het anders handmatig in zoals hieronder.
+
+### 3. Stel de method en de URL in
+
+Een nieuwe taak heeft de method al op `POST` staan, en dat is wat je wilt. Voer het adres van je endpoint in in de URL-balk:
+
+```text
+https://api.example.com/v1/recruitment-events
+```
+
+Als een deel van het adres van run tot run verandert, omhul dat deel dan met accolades en er verschijnt een verplichte rij voor op het tabblad **Params**. Zie [query- en path-parameters](/nl/reference/automation-tasks/http-request-task#query--en-path-parameters).
+
+### 4. Bouw de JSON-body op uit automatiseringsvelden
+
+Open het tabblad **Body** en voeg een property toe per waarde die je wilt versturen. Naast elke **Value** staat een field picker: gebruik die om een veld uit de run te kiezen in plaats van een vaste waarde te typen, zodat elke run z'n eigen data verstuurt.
+
+Punten in een property-naam nesten hem, dus een body als deze heeft zes properties nodig:
+
+| Property | Waarde om te kiezen |
+| -------- | ------------- |
+| `conversation_id` | Het ID van het gesprek |
+| `channel` | Het kanaal waarop het gesprek liep |
+| `finished_at` | Wanneer het gesprek eindigde |
+| `contact.name` | De naam van de **Sender** |
+| `contact.phone_number` | Het telefoonnummer van de **Sender** |
+| `outcome` | Een waarde uit een eerdere taak, of een vaste string |
+
+Een gesprek groepeert de mensen erin onder **Sender**, **Receiver** en **Owner**, dus kies uit de kant waar de kandidaat zit: de sender wanneer die het gesprek begon, de receiver wanneer jouw automatisering dat deed. Aan de kant van de sender volgt welk contactgegeven is ingevuld het kanaal — een telefoonnummer op WhatsApp, een e-mailadres op e-mail.
+
+Meer in het algemeen hangt af van de trigger die je in stap 1 koos welke velden je kunt kiezen, inclusief waarden die eerdere taken in dezelfde automatisering hebben geproduceerd. Wat bij je endpoint aankomt is gewone JSON:
+
+```json
+{
+  "conversation_id": "8f2c1e64-3a71-4f0b-9d2e-7c5a1b8e40df",
+  "channel": "WhatsApp",
+  "finished_at": "2026-08-21T14:32:00Z",
+  "contact": {
+    "name": "Sofia Almeida",
+    "phone_number": "+31612345678"
+  },
+  "outcome": "interested"
+}
+```
+
+Alle details over de formaat-controls, de builder en de raw editor staan in [request body](/nl/reference/automation-tasks/http-request-task#request-body).
+
+{/* screenshot: cookbook-body-fields.png — the Body tab with the recipe's six properties, the field picker open on one Value */}
+
+### 5. Authenticeer met een bearer token
+
+Open het tabblad **Auth**, selecteer `Bearer token` en plak het token in **Token**. HireData verstuurt het als een `Authorization`-header op elk request; er is geen header die je op het tabblad **Headers** hoeft toe te voegen.
+
+Als het endpoint in plaats daarvan een key in een specifieke header of query parameter wil, of een client ID en secret inruilt voor een token, dekken de andere typen beide gevallen — zie [authenticatie](/nl/reference/automation-tasks/http-request-task#authenticatie).
+
+<Warning>
+  Iedereen die deze automatisering kan bewerken kan het token lezen dat je hier plakt — zie [authenticatie](/nl/reference/automation-tasks/http-request-task#authenticatie) voor wat dat betekent wanneer je dit namens iemand anders configureert.
+</Warning>
+
+{/* screenshot: cookbook-auth-bearer.png — the Auth tab set to Bearer token */}
+
+### 6. Beschrijf wat er terugkomt
+
+Twee dingen om te doen voordat de response bruikbaar is, en het is makkelijker in deze volgorde.
+
+Begin op het tabblad **Advanced** en schrijf een **Description** — "Post conversation outcome" voor deze taak. Die vormt overal elders de titel van de taak, en is de eerste helft van de naam van elk veld dat deze taak produceert, dus die nu vastleggen bespaart je later het opnieuw doorlezen van een picker vol hernoemde velden.
+
+Beschrijf vervolgens, in de sectie **Response** onder de tabbladen, de body die je endpoint retourneert. Stel dat het een geslaagde call beantwoordt met dit:
+
+```json
+{
+  "id": "evt_9Fk2Lq",
+  "status": "accepted"
+}
+```
+
+Klik onder **Success response (2xx)** twee keer op **Add property**: één voor `id`, met label "Event ID", en één voor `status`, met label "Status". Latere taken kunnen deze twee nu op naam kiezen:
+
+- `Post conversation outcome: id`
+- `Post conversation outcome: status`
+
+Ze komen bovenop de drie velden die elke HTTP Request-taak sowieso produceert — de statuscode, de response body als tekst, en of de call is geslaagd. `id` beschrijven is wat een latere taak bespaart die uit die tekst te moeten opgraven.
+
+Beschrijf onder **Error response (non-2xx)** wat het endpoint retourneert wanneer het een call weigert — meestal een bericht dat je in een log wilt hebben. Die tree is alleen de moeite van het invullen waard als je de run instelt om door te gaan na een failure — zie [Bepaal wat er gebeurt als de call mislukt](#bepaal-wat-er-gebeurt-als-de-call-mislukt) hieronder.
+
+Een waarde die je hier niet beschrijft is een waarde die geen enkele latere taak op naam kan kiezen. Zie [de response beschrijven](/nl/reference/automation-tasks/http-request-task#de-response-beschrijven).
+
+{/* screenshot: cookbook-response-described.png — the Response section with id and status described, the drawer titled "Post conversation outcome" */}
+
+### 7. Test het request voordat je activeert
+
+Klik op **Test** in de footer, en lees de waarschuwing voordat je op **Send** klikt.
+
+<Warning>
+  De test verstuurt het echte request. Een `POST` die je test is een `POST` die je endpoint ontvangt en verwerkt. Richt hem op het testadres dat je vooraf hebt opgevraagd, of op data waarvan de eigenaar van het endpoint het prima vindt dat je die schrijft.
+</Warning>
+
+Het dialoogvenster vraagt om één waarde per parameter, gegroepeerd naar waar ze thuishoren. Het request van dit recept heeft geen path- of query parameters, dus je ziet alleen een **Body**-groep, één invoerveld per property uit stap 4.
+
+Alles wat je in stap 4 op een vaste waarde hebt gezet is al ingevuld. De properties die je aan automatiseringsvelden hebt gekoppeld komen leeg op, omdat die waarden alleen tijdens een echte run bestaan — typ in elk daarvan een plausibele letterlijke waarde. Zie [de waarden invullen](/nl/reference/automation-tasks/http-request-task#de-waarden-invullen).
+
+{/* screenshot: cookbook-test-dialog.png — the Test dialog before Send, every input still empty */}
+
+Klik op **Send**. Je krijgt een statuswoord terug, de HTTP-code en hoelang de call duurde, plus de volledige response body — en een **Outputs**-sectie met de waarden die HireData eruit heeft gehaald met de tree die je in stap 6 hebt gebouwd.
+
+Lees die tegen elkaar. Een property die je hebt beschreven maar die ontbreekt in wat terugkomt, zie je hier, en dit is het goedkoopste moment om daarachter te komen.
+
+### 8. Gebruik een responsewaarde in een latere taak
+
+Voeg na de HTTP Request een taak toe die iets doet met wat er terugkwam. **Add → Note** is de simpelste: zet `Post conversation outcome: id` in de tekst van de notitie, zodat de referentie die je eigen systeem genereerde ook in HireData wordt vastgelegd.
+
+Elke latere taak die een tekstwaarde accepteert werkt op dezelfde manier. Het patroon is wat telt: het antwoord van het endpoint is nu data in de run, niet iets dat je moet gaan opzoeken. Zie [een responsewaarde gebruiken in een latere taak](/nl/reference/automation-tasks/http-request-task#een-responsewaarde-gebruiken-in-een-latere-taak).
+
+{/* screenshot: cookbook-note-field-picker.png — the Note task's field picker, showing "Post conversation outcome: id" */}
+
+## Bepaal wat er gebeurt als de call mislukt
+
+Je endpoint zal op enig moment niet beschikbaar zijn. Twee switches op het tabblad **Advanced** bepalen wat je dat kost, en voor dit recept:
+
+- Laat **Fail on error responses** aan. Als je endpoint de payload weigert, wil je dat de taak dat zegt.
+- Zet **Continue automation on failure** alleen aan als deze POST een notificatie is en de rest van de run de moeite waard is zonder. Als je dat doet, vul dan ook de tree **Error response (non-2xx)** in, zodat een latere taak kan loggen wat je endpoint werkelijk zei.
+
+Voor een endpoint dat af en toe traag is in plaats van kapot, verhoog je **Retries** op hetzelfde tabblad.
+
+Beide switches, en wat ze samen doen, worden behandeld in [bepalen wat als failure telt](/nl/reference/automation-tasks/http-request-task#bepalen-wat-als-failure-telt).
+
+## Activeer en controleer de eerste runs
+
+Activeer de automatisering en laat een echt gesprek eindigen. Open dan **Runs** en zoek de run op.
+
+Een voltooide HTTP Request toont zijn beschrijving als titel, met **What will you provide?** en **What will you get back?** eronder, zodat je kunt vergelijken wat er is verzonden met wat je hebt geconfigureerd. Zie [hoe de taak eruitziet in een run](/nl/reference/automation-tasks/http-request-task#hoe-de-taak-eruitziet-in-een-run) en de [Runs](/nl/settings/logs/runs)-log.
+
+Controleer de eerste paar runs tegen de records van je eigen systeem voordat je op de automatisering vertrouwt. Een request dat vanuit HireData's kant slaagde, zegt nog niets over wat je systeem ermee heeft gedaan.
+
+## Meer hulp nodig?
+
+Als de automatisering helemaal niet draait, ligt het probleem bij de trigger en niet bij het request. Zie [Waarom liep mijn automatisering niet?](/nl/knowledge-base/why-didnt-my-automation-run).
+
+Als het request draait maar geblokkeerd terugkomt, zie [als een request geblokkeerd terugkomt](/nl/reference/automation-tasks/http-request-task#als-een-request-geblokkeerd-terugkomt).
+
+Als je nog steeds hulp nodig hebt, neem dan contact op met [support@hiredata.com](mailto:support@hiredata.com) en voeg toe:
+
+- De naam van de automatisering en een link naar een run
+- De method en URL van de taak, met het token verwijderd
+- Wat je verwachtte dat je endpoint zou retourneren, en wat het in plaats daarvan retourneerde

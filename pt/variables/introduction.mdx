@@ -1,7 +1,7 @@
 ---
 title: "Variáveis"
 sidebarTitle: "Introdução"
-description: "Utilize variáveis na HireData para inserir dados dinâmicos, como nome do candidato, cargo ou salário, em emails, mensagens, formulários e automações."
+description: "Utilize variáveis na HireData para personalizar emails, mensagens de WhatsApp, formulários e automações com dados de candidatos vindos diretamente das suas apps ligadas."
 ---
 
 Com variáveis, pode inserir dados dinâmicos, como o nome de um candidato, um cargo ou um salário, diretamente nos seus emails, mensagens de WhatsApp, formulários e automações.
@@ -10,13 +10,13 @@ Com variáveis, pode inserir dados dinâmicos, como o nome de um candidato, um c
 
 Uma variável é uma chave de campo envolvida por chavetas duplas:
 
-```
+```text
 Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
 ```
 
 Quando isto é enviado a uma candidata chamada Sofia a candidatar-se a uma vaga de Backend Engineer, torna-se:
 
-```
+```text
 Hi Sofia, thanks for applying to Backend Engineer!
 ```
 
@@ -37,7 +37,7 @@ Pode utilizar variáveis em qualquer sítio onde escreva conteúdo que seja envi
 
 Se um campo estiver vazio para um dado registo, a variável é substituída por nada. Para mostrar um valor por defeito, utilize o modificador [`default`](/pt/variables/modifiers#fallback):
 
-```
+```text
 Hi {{ candidate.first_name | default: "there" }}!
 ```
 
@@ -47,7 +47,7 @@ Se o candidato não tem primeiro nome, isto envia "Hi there!".
 
 As variáveis podem fazer mais do que inserir dados brutos. Um **modificador** altera a forma como o valor aparece. Pode colocar texto em maiúsculas, formatar uma data, arredondar um número e muito mais. Adiciona-se um modificador com um pipe (`|`):
 
-```
+```text
 {{ candidate.first_name | uppercase }}        → SOFIA
 {{ job.salary | format_currency: "EUR" }}      → €65,000.00
 {{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
@@ -55,8 +55,14 @@ As variáveis podem fazer mais do que inserir dados brutos. Um **modificador** a
 
 Pode encadear vários modificadores, e cada um atua sobre o resultado do anterior:
 
-```
+```text
 {{ candidate.last_name | lowercase | capitalise }}
 ```
 
 Veja a lista completa na página [Modificadores](/pt/variables/modifiers).
+
+## Gerar um valor em vez de o consultar
+
+Todas as variáveis acima **leem** um valor que já existe. Quando o valor tem de ser gerado de novo para cada destinatário — uma abertura pessoal, uma frase de aniversário não genérica — utilize antes uma [variável de IA](/pt/variables/ai-variables).
+
+Nunca deixe uma inventar um facto. Datas, salários e termos de contrato pertencem a uma variável normal.

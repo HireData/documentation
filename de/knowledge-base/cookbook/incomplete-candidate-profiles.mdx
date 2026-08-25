@@ -1,0 +1,122 @@
+---
+title: "Unvollständige Kandidatenprofile finden"
+sidebarTitle: "Unvollständige Profile"
+description: "Bauen Sie eine Datenqualitäts-Automatisierung, die Kandidatenprofile mit fehlenden Informationen findet und dann eine Aufgabe erstellt oder einen Vervollständigungs-Workflow startet."
+keywords: ["unvollständiges Kandidatenprofil", "fehlende Kandidatendaten", "Datenqualitäts-Automatisierung", "Kandidatendaten vervollständigen", "inkomplettes Kandidatenprofil"]
+---
+
+_Unvollständige Kandidatenprofile können es erschweren, Menschen zu kontaktieren, sie mit passenden Rollen zu matchen oder Recruiting-Daten zuverlässig zu halten. Dieses Rezept zeigt Ihnen, wie Sie Datensätze identifizieren, denen wichtige Informationen fehlen, und sie in einen praktikablen Vervollständigungs-Workflow leiten._
+
+## Was Sie bauen werden
+
+Die Automatisierung nutzt vier Teile:
+
+1. Ein Kandidaten-Event aus Ihrem verbundenen ATS
+2. Startbedingungen, die definieren, welche Informationen erforderlich sind
+3. Eine Aktion für einen Recruiter, ein internes Team oder den Kandidaten
+4. Einen sicheren Test, der bestätigt, dass die richtigen Profile in den Workflow gelangen
+
+Beginnen Sie mit einem wichtigen fehlenden Feld. Sobald die erste Version wie erwartet funktioniert, können Sie die Automatisierung auf andere Teile des Kandidatenprofils ausweiten.
+
+## Prüfen Sie zuerst die Vorlagen-Galerie
+
+Bevor Sie die Automatisierung von Grund auf bauen, öffnen Sie die Vorlagen-Galerie vom HireData-Dashboard aus. Wählen Sie **All** und suchen oder filtern Sie dann nach einer Vorlage, die zu Ihrem Datenqualitäts-Workflow passt.
+
+Je nachdem, was Sie erreichen möchten, können nützliche Ausgangspunkte sein:
+
+- **Email Bounce: Schedule Task**
+- **Job Application**
+- **Phone Number Standardizer \+31 - Candidates - Cleanup**
+- **Pre-Intake / Screening**
+
+Öffnen Sie eine Vorlage und prüfen Sie ihren Trigger, ihre Bedingungen und Aktionen, bevor Sie sie zu Ihrem Account hinzufügen. Danach können Sie sie an die Felder und den Prozess Ihres Teams anpassen.
+
+## Festlegen, was ein Profil unvollständig macht
+
+Einigen Sie sich darauf, welche Informationen Ihr Team braucht, bevor Sie die Bedingungen bauen. Häufige Beispiele sind:
+
+- E-Mail-Adresse
+- Telefonnummer
+- Vor- oder Nachname
+- Einwilligung oder Verfügbarkeit
+- Bevorzugte Rolle oder Standort
+- Andere Informationen, die für Vermittlung oder Kommunikation erforderlich sind
+
+Konzentrieren Sie sich auf Felder, die zu einer klaren Folgeaktion führen. Ein fehlendes optionales Feld braucht nicht immer eine eigene Automatisierung.
+
+## Die Automatisierung bauen
+
+### 1. Den Kandidaten-Trigger wählen
+
+Öffnen Sie den **Start**-Block und wählen Sie Ihr ATS. Wählen Sie den Trigger für erstellte oder aktualisierte Kandidaten, der am besten dazu passt, wann HireData das Profil prüfen soll.
+
+Zum Beispiel:
+
+- Verwenden Sie einen Created-Trigger, wenn Profile geprüft werden sollen, sobald sie ins ATS gelangen.
+- Verwenden Sie einen Updated-Trigger, wenn die Prüfung auch laufen soll, nachdem Recruiter oder Integrationen den Datensatz ändern.
+- Verwenden Sie einen kombinierten Created-oder-Updated-Trigger, wenn beide Situationen in denselben Workflow münden sollen.
+
+Die verfügbaren Trigger-Namen können sich zwischen Integrationen unterscheiden.
+
+### 2. Die Bedingungen für fehlende Daten hinzufügen
+
+Fügen Sie Startbedingungen für das Feld hinzu, das Sie prüfen möchten. Konfigurieren Sie die Bedingung so, dass nur Profile ohne den erforderlichen Wert in die Automatisierung weiterlaufen.
+
+Beginnen Sie mit einem Feld mit hoher Auswirkung, etwa einer E-Mail-Adresse oder Telefonnummer. Das hält den ersten Test leicht verständlich. Fügen Sie weitere Felder hinzu, nachdem Sie bestätigt haben, dass die Automatisierung die richtigen Profile auswählt.
+
+<Tip>
+  Wenn ein Feld nicht in der Variablenauswahl erscheint, prüfen Sie, ob es in Ihrer ATS-Verbindung aktiviert ist. Carerix-Nutzer können [Carerix-Felder und -Beziehungen aktivieren](/de/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) folgen.
+</Tip>
+
+### 3. Die Vervollständigungsaktion hinzufügen
+
+Wählen Sie, was passieren soll, nachdem HireData ein unvollständiges Profil gefunden hat. Je nach Ihrem Prozess kann die Automatisierung:
+
+- Eine Aufgabe für einen Recruiter erstellen
+- Einen internen Kanal oder eine E-Mail-Adresse benachrichtigen
+- Den Kandidaten bitten, die fehlenden Informationen bereitzustellen
+- Das Profil aktualisieren, nachdem die Informationen gesammelt wurden
+
+Machen Sie die Aktion so konkret, dass der Empfänger weiß, welches Profil und welches Feld Aufmerksamkeit brauchen.
+
+Wenn das Quellsystem Felder oft kurz nach dem Erstellen eines Datensatzes ergänzt, setzen Sie eine kurze Verzögerung vor die Prüfung. Stellen Sie die Verzögerung so ein, dass sie das Timing Ihres tatsächlichen Import- oder Anreicherungsprozesses widerspiegelt.
+
+### 4. Mit einem unvollständigen Profil testen
+
+Verwenden Sie einen Testdatensatz, dem das von Ihrer Bedingung geprüfte Feld fehlt.
+
+1. Aktivieren Sie die Automatisierung, sobald sie testbereit ist.
+2. Erstellen oder aktualisieren Sie den Testkandidaten in Ihrem ATS.
+3. Wählen Sie **Events** in HireData und öffnen Sie das neue Event.
+4. Prüfen Sie im Tab **Data** des Events, dass das Feld leer ist oder fehlt.
+5. Wählen Sie **Runs** und bestätigen Sie, dass die erwarteten Aktionen abgeschlossen wurden.
+
+Wiederholen Sie den Test mit einem vollständigen Profil. Es sollte nicht in den Workflow für fehlende Daten gelangen.
+
+<Warning>
+  Lassen Sie Account- und Automatisierungs-Sicherheitslimits aktiviert, während Sie Workflows testen, die Nachrichten an Kandidaten senden können.
+</Warning>
+
+## Den Workflow überprüfen und verbessern
+
+Nachdem die Automatisierung eine kleine Anzahl von Datensätzen verarbeitet hat, prüfen Sie ihre Runs und die Folgeaufgaben, die sie erstellt.
+
+Prüfen Sie, ob:
+
+- Die ausgewählten Profile wirklich Aufmerksamkeit brauchen
+- Die zugewiesene Person genug Informationen hat, um den Datensatz zu vervollständigen
+- Der Workflow am richtigen Punkt Ihres Recruiting-Prozesses läuft
+- Eine Verzögerung oder zusätzliche Bedingung unnötige Aktionen reduzieren würde
+
+Fügen Sie weitere erforderliche Felder schrittweise hinzu, damit klar bleibt, warum jeder Kandidat in den Workflow gelangt ist.
+
+## Brauchen Sie noch Hilfe?
+
+Wenn die Automatisierung nicht die erwarteten Profile findet, vergleichen Sie den Tab **Data** des Events mit den Startbedingungen. Siehe [Warum ist meine Automatisierung nicht gelaufen?](/de/knowledge-base/why-didnt-my-automation-run) für eine vollständige Troubleshooting-Checkliste.
+
+Wenn Sie weiterhin Hilfe brauchen, kontaktieren Sie [support@hiredata.com](mailto:support@hiredata.com) und geben Sie an:
+
+- Den Namen der Automatisierung
+- Einen Link oder die ID eines Test-Events
+- Das Feld, dessen Prüfung Sie erwartet haben
+- Das Ergebnis, das Sie erwartet haben

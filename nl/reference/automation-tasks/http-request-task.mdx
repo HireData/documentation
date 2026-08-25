@@ -1,0 +1,379 @@
+---
+title: "HTTP Request-taak"
+sidebarTitle: "HTTP Request"
+description: "Verstuur een HTTP-request vanuit een HireData-automatisering. Importeer een OpenAPI-spec of cURL-commando, authenticeer, beschrijf de response, test en handel failures af."
+keywords: ["http request", "externe api aanroepen", "api-request vanuit automatisering", "uitgaande api-call", "webhook posten", "openapi importeren", "swagger", "postman collection", "curl", "api key header", "bearer token", "oauth2 client credentials", "path-parameters", "response schema", "een request testen", "timeout", "retries", "automatisering doorlaten bij failure", "request geblokkeerd privéadres", "api koppeling automatisering", "call an external api"]
+---
+
+_Roep een externe API rechtstreeks vanuit een automatisering aan: importeer een specificatie of bouw het request handmatig op, authenticeer het, beschrijf wat er terugkomt en gebruik die waarden in latere taken._
+
+Een automatisering kan zelf een externe API aanroepen. De **HTTP Request**-taak verstuurt een request naar een adres dat jij kiest, met de authenticatie die dat endpoint verwacht, en maakt de response beschikbaar voor de taken die volgen zodra je beschrijft wat deze bevat. Je hebt geen developer nodig, en er hoeft niets tussenin te zitten.
+
+Als iemand je al een API-specificatie of een cURL-commando heeft gegeven, hoef je die niet over te typen. HireData kan deze lezen en het request voor je invullen, en daar begint deze pagina mee.
+
+Als je liever één compleet voorbeeld volgt dan velden één voor één opzoekt: het cookbook loopt één request door van trigger tot responsewaarde: [Post een uitkomst naar je eigen systeem](/nl/knowledge-base/cookbook/post-an-outcome-to-your-own-system).
+
+<Note>
+  Zoek je de andere richting, waarbij een andere tool data **naar** HireData stuurt? Dat is een custom app-trigger. Zie [Custom Apps](/nl/apps/custom-apps/introduction).
+</Note>
+
+## Waar je de taak vindt
+
+De task picker groepeert taken per categorie, en **HTTP Request** staat onder twee daarvan. Beide routes openen dezelfde taak:
+
+- **Add → HTTP Request**
+- **Message → HTTP Request**
+
+Als je een uitgaande call ziet als iets versturen, kijk dan onder **Message**. Daar staat de taak ook, dus een call die niet onder **Add** staat is niet zoekgeraakt.
+
+Onder **Add** vind je zowel **HTTP Request** als **Post Webhook**.
+
+![De Add-takenlijst, met HTTP Request en Post Webhook tussen de taken die je kunt toevoegen](/images/http-request/add-task-list.png)
+
+## Binnen de task drawer
+
+Bij het toevoegen van de taak opent een drawer die het hele request bevat:
+
+- De **header** bevat de naam van de taak en een control om die te bewerken.
+- Onder de header de **URL-balk** met de method-selector, met `GET`, `POST`, `PUT`, `PATCH`, `DELETE` en `HEAD`.
+- Vijf tabbladen: **Params**, **Body**, **Headers**, **Auth** en **Advanced**.
+- **Response** is niet een van de tabbladen. Het is een aparte sectie onder het tabbladgedeelte en is altijd zichtbaar.
+- De footer bevat **Import**, **Test**, **Cancel** en **Save Task**.
+
+Een nieuwe taak heet **HTTP Request**, met de method ingesteld op `POST` en een lege URL achter de placeholder `https://api.example.com/v1/resource/`.
+
+![Een nieuwe HTTP Request-taak, met de method ingesteld op POST en de URL-balk met de placeholder](/images/http-request/empty-drawer.png)
+
+## Een specificatie of cURL-commando importeren
+
+De snelste manier om een request in te vullen is HireData het te laten lezen uit een document dat je al hebt. Klik op **Import** in de footer van de drawer om het **Import**-dialoogvenster te openen, dat drie routes biedt:
+
+<Tabs>
+  <Tab title="Paste">
+    Plak het document rechtstreeks in het vak. De route is gelabeld "OpenAPI, Swagger, Postman, cURL or markdown", dus alles in een van die formaten werkt.
+  </Tab>
+  <Tab title="Upload file">
+    Kies het document van je computer, voor wanneer wat je hebt ontvangen geen tekst is die je kunt kopiëren. De route is gelabeld "A specification or collection file".
+  </Tab>
+  <Tab title="From URL">
+    Geef HireData het adres waarop de specificatie is gepubliceerd en het document wordt voor je opgehaald. De route is gelabeld "Fetch a specification by URL".
+  </Tab>
+</Tabs>
+
+![Het Import-dialoogvenster met Paste, Upload file en From URL](/images/http-request/import-dialog.png)
+
+### Formaten die HireData leest
+
+Welke route je ook gebruikt, het document moet er een zijn die HireData herkent:
+
+- **OpenAPI 3.x**- en **Swagger 2.0**-specificaties
+- **Postman 2.1**-collections
+- Een **cURL**-commando
+- Een **markdown**-pagina die een cURL-commando of een specificatie bevat, wat vaak is waar de documentatiepagina van een vendor op neerkomt
+
+Alles buiten die lijst wordt geweigerd in plaats van half gelezen, met "Only OpenAPI 3.x, Swagger 2.0 and Postman 2.1 documents are supported." Een oudere Swagger of een Postman 1.0-export moet eerst worden geconverteerd. Een specificatie die met externe `$ref`-references naar andere bestanden verwijst wordt ook geweigerd, dus vraag om een gebundelde single-file versie.
+
+### Wat een import invult
+
+Het importeren van een API-specificatie vult in:
+
+- De **method** en de **URL**, inclusief de path-segmenten die de operatie definieert
+- Eventuele **query parameters** die de operatie accepteert, op het tabblad **Params**
+- Het **authenticatietype** op het tabblad **Auth**, overgenomen uit het security scheme van de specificatie
+- De **Description** op het tabblad [Advanced](#geavanceerde-instellingen)
+- Beide trees in de sectie [Response](#de-response-beschrijven): de success response en de error response
+
+Vul daarna zelf je key of token in op het tabblad **Auth**, en beschouw de import als een startpunt in plaats van een afgerond request.
+
+### Een cURL-commando importeren
+
+Een cURL-commando kan ook worden geïmporteerd, en vaak is dat alles wat de documentatie van een vendor je geeft. Het stelt de method, de URL, de body en de headers in.
+
+Het stelt ook de credential in, wanneer het commando er een bevat. Een `Authorization: Bearer …`-header wordt een **Bearer token** met het token ingevuld, en de header zelf wordt weggelaten zodat deze niet twee keer wordt verzonden. `-u user:password` — en een base64 `Authorization: Basic …` — wordt **Basic auth** met de gebruikersnaam en het wachtwoord ingevuld.
+
+Behandel een cURL-commando dat je hebt ontvangen dus als een credential, niet alleen als een snippet. Als het uit iemand anders z'n terminal komt, kan het diens key bevatten: controleer het tabblad **Auth** na het importeren en vervang alles wat je niet zou moeten hebben.
+
+De sectie **Response** blijft daarna leeg. Een cURL-commando beschrijft alleen het uitgaande request en bevat geen informatie over wat er terugkomt, dus er is niets waaruit HireData de response trees kan opbouwen. Als latere taken waarden uit de response nodig hebben, beschrijf die dan zelf in de sectie [Response](#de-response-beschrijven).
+
+### Documenten met meer dan één operatie
+
+Een specificatie beschrijft meestal een hele API in plaats van een enkel endpoint. Wanneer het document dat je importeert meer dan één operatie bevat, toont HireData je een lijst met de endpoints erin en vraagt welke deze taak moet aanroepen, dus een complete specificatie aanleveren is geen fout.
+
+Dit hangt af van het document, niet van hoe je het hebt aangeleverd. Dezelfde lijst met endpoints verschijnt of je de specificatie nu hebt geplakt of via **From URL** hebt opgehaald.
+
+![De endpoint-kiezer, na het importeren van een specificatie met meerdere operaties](/images/http-request/endpoint-picker.png)
+
+## Het request handmatig opbouwen
+
+Een import heeft een document nodig om te lezen. Wanneer je alleen een endpoint en de documentatie van de vendor hebt, vul je het request zelf in. Dit zijn dezelfde tabbladen waar een import in schrijft, dus dit is ook hoe je een geïmporteerd request aanpast. Credentials komen in beide gevallen als laatste, onder [Authenticatie](#authenticatie) — met één uitzondering. Het importeren van een *specificatie* stelt het authenticatietype in en laat het secret leeg, omdat een security scheme beschrijft hoe een endpoint authenticeert zonder iemands key te bevatten. Een *cURL-commando* is anders: dat bevat echte credentials, en die worden mee geïmporteerd.
+
+### Query- en path-parameters
+
+Het tabblad **Params** heeft twee secties, **Query** en **Path**. Ze zien er hetzelfde uit en werken verschillend.
+
+**Query**-rijen vul je zelf in. Elke rij heeft:
+
+- **Enabled**: een checkbox die de parameter aan- of uitzet zonder de rij te verwijderen
+- **Name**: de naam van de parameter, zelf getypt
+- **Value**: wat er wordt verzonden, met een field picker ernaast
+- **Remove**: verwijdert de rij helemaal
+
+De URL-balk en de **Query**-rijen zijn twee weergaven van hetzelfde. Plak een URL met een query string aan het einde en die wordt opgesplitst in rijen; voeg een rij toe of bewerk er een en de query string in de URL-balk wordt bijgewerkt. Je kunt dus werken in welke van de twee je ook hebt gekregen — een volledige URL uit de documentatie van een vendor, of een tabel met parameters — zonder die naar de andere over te typen.
+
+**Path**-rijen benoem je niet zelf. Die komen uit de URL. Totdat de URL er een bevat, staat er in de sectie "Path parameters appear when the URL contains `{placeholder}` segments."
+
+Omhul een deel van het path met accolades en er verschijnt een rij voor. Geef de taak deze URL:
+
+```text
+https://api.example.com/repos/{owner}/{repo}/issues
+```
+
+Er verschijnen direct twee rijen onder **Path**, `owner` en `repo`, elk met een sterretje als verplicht gemarkeerd. Een URL die eindigt op `/chats/{chat_id}/messages` geeft je één rij, `chat_id`.
+
+Je drukt de vorm van het endpoint dus één keer uit, in de URL. Bewerk de URL en de rijen volgen.
+
+![Het Params-tabblad met verplichte Path-rijen voor owner en repo, aangemaakt vanuit de URL](/images/http-request/path-parameters.png)
+
+### Request body
+
+Het tabblad **Body** opent met één keuze, `Form` of `Raw`: of de body wordt verzonden als formuliervelden of als een raw payload. Die keuze bepaalt welke controls ernaast staan, dus maak die als eerste.
+
+**`Form`** biedt twee encodings, `Multipart form` en `Form URL encoded`, en een tabel met naam- en waarderijen. Een endpoint dat een formulier accepteert documenteert er meestal een van de twee en weigert de andere, dus controleer welke voordat je kiest.
+
+**`Raw`** biedt vier formaten — `JSON`, `XML`, `Text` en `GraphQL` — voor een endpoint dat XML of een GraphQL-query documenteert in plaats van JSON. Het voegt een derde control toe, `Builder` of `Code`: of je de body opbouwt uit getypeerde properties of hem zelf uitschrijft. Gebruik wat jou het beste past. Zolang er nog niets in staat, toont het tabblad "No body properties yet" en wijst het op beide: "Add typed properties to build the request body, or switch to the raw editor."
+
+Er zijn twee manieren om te nesten, en de snelle zit in de naam: "Use dots in property names to nest objects, e.g. candidate.email."
+
+Een property met de naam `candidate.email` verstuurt het adres daarom binnen een `candidate`-object:
+
+```json
+{
+  "candidate": {
+    "email": "sofia@example.com"
+  }
+}
+```
+
+De andere manier is structureel. Geef een property het type **Collection** — "A repeating list of objects, e.g. line items or attendees" — of maak er een object van, en het wordt een groepsrij met een **Add child property**-knop erop. Bouw de vorm op die manier uit wanneer het endpoint een array van dingen wil in plaats van er één, wat je met namen met punten niet kunt uitdrukken. Elke property heeft ook **Edit property** en **Remove**.
+
+Een `GET`-request verstuurt geen body. Selecteer `GET` en het hele tabblad wordt één regel: "This request method does not send a body."
+
+![Het Body-tabblad op een POST-request, ingesteld op Raw en JSON, met de Builder- en Code-controls ernaast](/images/http-request/body-tab.png)
+
+### Headers
+
+Header-rijen hebben een **Name** en een **Value**. **Name** stelt bekende headernamen voor terwijl je typt. Je kunt nog steeds elke naam typen die het endpoint nodig heeft. **Value** heeft dezelfde field picker als de waarde van een query parameter.
+
+Gebruik voor een header die een API key of een bearer token bevat in plaats daarvan [Authenticatie](#authenticatie). Daar zijn velden voor beide.
+
+![Het Headers-tabblad, met de Name-combobox die bekende headernamen voorstelt](/images/http-request/headers-tab.png)
+
+### Velden uit de automatisering gebruiken
+
+Een request dat volledig uit vaste waarden is opgebouwd verstuurt bij elke run hetzelfde, en dat is zelden de bedoeling. Velden uit de automatisering zorgen ervoor dat elke run z'n eigen data verstuurt, inclusief waarden die een eerdere taak heeft geproduceerd.
+
+Er zijn twee manieren om er een in te voegen:
+
+- De **field picker** naast een **Value**, die toont wat er beschikbaar is
+- `{{` typen in het invoerveld zelf. De picker opent zodra je het typt, en wat je tussen de accolades typt doorzoekt de lijst — sneller wanneer je al ongeveer weet hoe het veld heet
+
+In beide gevallen wordt het veld opgeslagen als een `{{field_key}}`-token, wat je ziet als je kijkt naar een waarde die je al hebt ingevuld.
+
+Velden kunnen in de URL, de parameters, de headers en de body. Elk deel van het request kan van run tot run veranderen.
+
+![De field picker geopend op een Value, met velden uit de automatisering](/images/http-request/field-picker.png)
+
+## Authenticatie
+
+Het tabblad **Auth** is een segmented control met vijf opties: `None`, `API key`, `Bearer token`, `Basic auth` en `OAuth2`. Kies degene die de eigenaar van het endpoint je heeft opgegeven en de bijbehorende velden verschijnen.
+
+| Type | Velden |
+| --- | --- |
+| `API key` | **Key name**, **Send in**, **Key value** |
+| `Bearer token` | **Token** |
+| `Basic auth` | **Username**, **Password** |
+| `OAuth2` | **Token URL**, **Client ID**, **Client secret**, **Scopes**, **Audience**, **Send credentials as** |
+
+### API key
+
+**Send in** bepaalt waar de key naartoe reist: als een `Header`, wat de default is, of als een `Query parameter`. **Key name** is dan de naam van die header of die parameter. **Key value** is de key zelf. Controleer welke van de twee de documentatie van het endpoint vraagt, want een key op de verkeerde plek leest voor het endpoint als helemaal geen key.
+
+### OAuth2
+
+Dit zijn de velden van de client credentials grant. HireData ruilt de **Client ID** en het **Client secret** in voor een token op de **Token URL**, en verstuurt dat token vervolgens met het request. Er is geen redirect-URL en geen toestemmingsscherm bij betrokken, dus als je daarnaar zoekt: het ontbreekt niet.
+
+Het token wordt één keer opgehaald en bewaard. HireData hergebruikt het zolang het geldig is en haalt een nieuw token op wanneer het verloopt, dus een automatisering die vele keren per uur draait vraagt het token-endpoint niet bij elke run om een vers token. Er is niets dat je hoeft in te plannen of te verversen.
+
+**Scopes** zijn "Separated by spaces". **Send credentials as** kiest hoe de client ID en het secret het token-endpoint bereiken: in de `Request body`, wat de default is, of als een `Basic auth header`. De documentatie van het token-endpoint zegt welke het verwacht.
+
+<Warning>
+  Elk authenticatietype toont dezelfde regel, en het is de moeite waard die te lezen voordat je het secret van een klant plakt: "Credentials are stored in this step's configuration and visible to anyone who can edit this automation."
+
+  Iedereen die de automatisering kan bewerken, kan de key of het token lezen dat je invoert. Als je dit namens iemand anders instelt, gebruik dan een credential die je mag hebben, met niet meer scope dan dit request nodig heeft.
+</Warning>
+
+![Het Auth-tabblad ingesteld op OAuth2, met lege velden en de melding over de zichtbaarheid van credentials eronder](/images/http-request/auth-oauth2.png)
+
+## De response beschrijven
+
+De sectie **Response** staat onder de tabbladen, altijd zichtbaar, omdat de rest van de automatisering ervan afhangt: "Describe the expected response body to use its values as fields in later steps."
+
+Drie velden krijg je hoe dan ook, of je iets beschrijft of niet — de statuscode, de response body en of de call is geslaagd. Wat het beschrijven van de response toevoegt zijn de waarden *binnen* de body, elk als een eigen veld. Totdat een waarde hier is beschreven, kan geen enkele latere taak die waarde er zelf uit halen.
+
+Er zijn twee trees, en je beschrijft ze afzonderlijk:
+
+- **Success response (2xx)**: wat het endpoint retourneert wanneer de call werkt
+- **Error response (non-2xx)**: wat het retourneert wanneer de call niet werkt
+
+Bouw elk van beide op met **Add property**. Een leaf property heeft een **Label** en een key. Het **Label** is de leesbare naam die je verderop ziet; de key is de naam in de response body — "Canonical Name" voor `canonical_name`. Een property die een object bevat wordt een inklapbare groep, zodat een geneste response leest als een tree in plaats van een platte lijst. Elke property heeft **Edit property** en **Remove**.
+
+De error tree heeft een eigen notitie: "Available when the request fails — useful for logging when the automation continues on failure."
+
+Daar is die voor. Als je de run hebt ingesteld om door te gaan na een mislukt request, beschrijf dan ook de error body, en een latere taak kan vastleggen wat het endpoint werkelijk zei in plaats van alleen dat er iets misging.
+
+![De Response-sectie met beschreven properties in zowel de success- als de error-tree](/images/http-request/response-section.png)
+
+### Velden die je altijd krijgt
+
+Drie velden bestaan op elke HTTP Request-taak, met of zonder beschreven response:
+
+| Veld | Wat het bevat |
+| --- | --- |
+| `<description>: Response Status` | De HTTP-statuscode, als getal |
+| `<description>: Response Body` | De response body, als tekst |
+| `<description>: Response Success` | Of de call is geslaagd, als true of false |
+
+Samen beantwoorden ze "werkte het, en wat kwam er terug", wat genoeg is voor een latere taak die alleen hoeft te vertakken op succes of de ruwe reply hoeft te loggen. De response beschrijven is wat een latere taak bespaart die tekst te moeten lezen en er waarden uit te moeten halen.
+
+### Een responsewaarde gebruiken in een latere taak
+
+Een beschreven property wordt een veld op de taken die volgen, genoemd naar het request en het pad van de property:
+
+`<request description>: <dotted path>`
+
+De eerste helft is de **Description** van het tabblad [Advanced](#geavanceerde-instellingen). De tweede is de positie van de property in de tree.
+
+Neem een request beschreven als "Get brand context by domain". Het retourneert `canonical_name` binnen een `meta`-object, en `description` binnen een `identity`-object. Latere taken krijgen twee velden om uit te kiezen:
+
+- `Get brand context by domain: meta.canonical_name`
+- `Get brand context by domain: identity.description`
+
+Properties op de error tree krijgen een extra segment, zodat ze niet kunnen botsen met die van de success tree:
+
+`<request description>: Error: <dotted path>`
+
+De description is dus niet cosmetisch. Het is de eerste helft van elke veldnaam die deze taak produceert, dus schrijf een specifieke voordat je de response beschrijft — het is wat je later in een field picker terugleest.
+
+![De field picker van een latere taak, met "Get brand context by domain: meta.canonical_name"](/images/http-request/response-field-in-later-task.png)
+
+## Het request testen
+
+**Test** in de footer van de drawer verstuurt het request nu, zodat je er hier achter komt dat het fout zit in plaats van in een live run.
+
+<Warning>
+  Het dialoogvenster zegt wat het doet: "Sends the real request with the values below."
+
+  Dit is geen dry run. Een `POST` die je test is een `POST` die het endpoint ontvangt, en een `DELETE` verwijdert. Richt de test op een sandbox-endpoint, of op waarden waarvan de eigenaar van het endpoint het prima vindt dat je ze schrijft, voordat je op **Send** klikt.
+</Warning>
+
+Het dialoogvenster opent met de method en de opgeloste URL, zodat je kunt lezen wat er zo wordt aangeroepen, met **Send** om het af te vuren.
+
+### De waarden invullen
+
+Daaronder vraagt het dialoogvenster om één waarde per parameter, gegroepeerd in **Path**, **Query** en **Body**. Alleen de groepen die je request daadwerkelijk heeft verschijnen, dus een request zonder path- of query parameters toont alleen een **Body**-groep. Elk invoerveld is gelabeld met de naam van de parameter, en elk is afzonderlijk te bewerken.
+
+De invoervelden beginnen met wat de taak al is geconfigureerd om te versturen. Alles wat je op een vaste waarde hebt gezet komt ingevuld aan, dus een request dat uit letterlijke waarden is opgebouwd kan vaak worden verzonden zoals het er staat.
+
+Twee soorten invoer komen leeg op:
+
+- Een parameter zonder geconfigureerde waarde. Path-parameters zitten meestal in deze groep, omdat ze uit `{placeholder}`-segmenten in de URL komen in plaats van uit een rij waarin je een waarde hebt getypt.
+- Een waarde die aan een automatiseringsveld is gekoppeld, tenzij dat veld toevallig een default-waarde heeft. Het token wordt opgelost tegen die default, en de meeste velden met run-data hebben er geen.
+
+Typ een letterlijke waarde in wat leeg is. De koppeling zelf blijft onaangetast — die geldt nog steeds wanneer de automatisering draait.
+
+Het dialoogvenster opnieuw openen leest de configuratie van de taak opnieuw in, dus een letterlijke waarde die je voor één test hebt getypt staat er bij de volgende niet meer.
+
+![Het Test-dialoogvenster vóór Send, met de Path-invoervelden leeg en de Body-invoervelden met de waarden die op de taak zijn geconfigureerd](/images/http-request/test-dialog-before-send.png)
+
+### Het uitgaande request controleren
+
+Het **Request**-paneel toont de uitgaande call, met een formaatselector voor cURL en een control om deze te kopiëren. Het maskeert secrets, dus een bearer token leest als:
+
+```text
+-H 'Authorization: Bearer ***'
+```
+
+Dezelfde maskering geldt voor het request dat bij een run wordt vastgelegd, dus een key of token belandt ook niet in de activiteit van de run. Wat niet wordt gemaskeerd is de configuratie van de taak zelf: iedereen die de taak kan openen kan nog steeds de credential lezen die je daar hebt ingevoerd — zie [Authenticatie](#authenticatie).
+
+### Het resultaat lezen
+
+Na **Send** rapporteert een strip hoe het ging: een statuswoord, de HTTP-code en hoelang de call duurde — `Success`, `200`, `323 ms`. Daaronder de volledige response body in een viewer met dezelfde status als label, met een control om deze te kopiëren.
+
+Als je de response al hebt beschreven, toont een **Outputs**-sectie de waarden die HireData uit die body heeft gehaald. Dat is de snelste controle dat je response tree overeenkomt met de echte reply: een property die je hebt beschreven maar die ontbreekt in wat terugkomt, zie je hier — in plaats van volgende week in een run.
+
+Die body is precies wat de sectie [Response](#de-response-beschrijven) wil. Eerst testen en de body eruit kopiëren is de kortste weg naar een response tree die overeenkomt met wat het endpoint werkelijk retourneert, in plaats van met wat de documentatie zegt dat het retourneert.
+
+![Het Test-dialoogvenster na een geslaagde verzending, met de status, code en duur boven de response body](/images/http-request/test-result.png)
+
+## Geavanceerde instellingen
+
+Het tabblad **Advanced** bevat de beschrijving van het request en wat er moet gebeuren wanneer het endpoint traag of niet beschikbaar is.
+
+| Control | Wat het doet | Default |
+| --- | --- | --- |
+| **Description** | Beschrijft wat het request doet. Dit is de titel van de taak overal elders — in de automatisering, in een run, en in de veldnamen die het produceert | Leeg, achter de placeholder "Describe what this request does." |
+| **Timeout (seconds)** | Hoelang er op een response wordt gewacht voordat wordt opgegeven, zodat een traag endpoint de run niet ophoudt | `30` |
+| **Retries** | Hoeveel extra pogingen er worden gedaan na een mislukt request | `0` |
+| **Backoff (seconds)** | Hoelang er tussen die pogingen wordt gewacht | `2` |
+
+**Backoff** is uitgeschakeld zolang **Retries** op `0` staat. Er is dan nog niets om tussen te wachten, dus verhoog eerst **Retries** en het veld wordt bewerkbaar.
+
+## Bepalen wat als failure telt
+
+Het tabblad **Advanced** eindigt met twee switches. Ze beantwoorden aparte vragen, en het is de moeite waard ze zo te lezen in plaats van als één failure-instelling.
+
+**Fail on error responses** staat standaard aan: "Treat 4xx and 5xx responses as a failed task."
+
+Zet hem uit wanneer een non-2xx een normaal antwoord van dit endpoint is in plaats van een probleem — een `404` van een lookup die simpelweg niets vond, bijvoorbeeld. De taak wordt dan voltooid, en wat je met de code doet bepaal jij in een latere taak.
+
+**Continue automation on failure** staat standaard uit: "The run continues with the next step even if this request fails."
+
+Zet hem aan wanneer de rest van de run de moeite waard is zonder deze call — het request was een notificatie, geen voorwaarde. Laat hem uit en een mislukt request beëindigt de run daar.
+
+Samen bepalen ze het lot van die verwachte `404`. Zet de eerste switch uit en het was nooit een failure. Laat hem aan en zet in plaats daarvan de tweede aan, en het is een failure die de run overleeft — het geval waarvoor de [error response](#de-response-beschrijven)-tree er is.
+
+![Het Advanced-tabblad met Description, Timeout, Retries, Backoff en de twee failure-switches](/images/http-request/advanced-tab.png)
+
+## Hoe de taak eruitziet in een run
+
+Open een run en een voltooide HTTP Request toont:
+
+- Zijn **Description** als titel, de method en host eronder — `GET api.example.com` — en het path daaronder
+- **What will you provide?** en **What will you get back?**: het request dat je hebt geconfigureerd en de response die je hebt beschreven
+- Een rij chips voor de instellingen die de call vormden. Het auth-type, de timeout en de retries staan er altijd — `Bearer token`, `30s`, `No retries`. De rest verschijnt pas zodra je ze hebt aangezet: een backoff wanneer retries boven `0` staan, `Ignores error statuses` wanneer **Fail on error responses** uit staat, en `Continues on failure` wanneer **Continue automation on failure** aan staat
+
+De timeline van de run bevat twee entries voor de taak, `HTTP Request: Run Moved` en `HTTP Request: Completed`, met het bericht "Http request succeeded."
+
+![Een voltooide HTTP Request in een run: beide secties en de chip-rij met auth-type, timeout en retries](/images/http-request/task-in-a-run.png)
+
+## Als een request geblokkeerd terugkomt
+
+Een request kan geblokkeerd terugkomen, met het bericht "The request was blocked — the destination is a private or internal address."
+
+HireData roept geen privé- of interne adressen aan. Controleer waar de URL werkelijk naar wijst, ook wanneer een automatiseringsveld een deel ervan levert: een host die alleen binnen je eigen netwerk resolvet is niet bereikbaar vanuit HireData.
+
+Als de bestemming duidelijk publiek is en je dit toch ziet, meld het dan in plaats van eromheen te werken. De [supportgegevens](#meer-hulp-nodig) hieronder beschrijven wat je moet meesturen.
+
+## Bestaande Post Webhook-taken
+
+**Post Webhook** is de andere taak om data uit HireData te versturen, en het is de taak die de HTTP Request-taak vervangt. Automatiseringen die hem al gebruiken blijven precies zo werken als nu, en er hoeft niets handmatig aan te worden veranderd.
+
+Een eenmalige migratie zal die stappen omzetten in HTTP Request-taken. Die draait één keer, aan onze kant, en is niet iets dat je start of waarop je je moet voorbereiden. Bouw alles wat nieuw is als een HTTP Request-taak; laat wat je al hebt met rust.
+
+## Meer hulp nodig?
+
+Als een request zich niet gedraagt zoals verwacht, neem dan contact op met ons team via [support@hiredata.com](mailto:support@hiredata.com) en voeg toe:
+
+- Een link naar de automatisering
+- De method en URL van de taak, met eventuele credentials verwijderd
+- Wat je verwachtte dat het endpoint zou retourneren, en wat het in plaats daarvan retourneerde

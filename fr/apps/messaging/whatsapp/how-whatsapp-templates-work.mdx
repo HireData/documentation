@@ -1,10 +1,10 @@
 ---
 title: "Comment fonctionnent les modèles WhatsApp"
 sidebarTitle: "Fonctionnement des modèles"
-description: "Découvrez comment utiliser les modèles WhatsApp dans HireData pour optimiser vos processus de recrutement et respecter les règles de Meta."
+description: "Comprenez le fonctionnement des modèles WhatsApp dans HireData : catégories, approbation par Meta, variables, et quand vous en avez besoin pour contacter les candidats."
 ---
 
-_Nos modèles d'automatisation WhatsApp fluidifient la communication avec les candidats grâce à l'IA et aux techniques de recrutement conversationnel. Ces modèles pré-conçus aident les recruteurs à interagir efficacement avec les candidats via WhatsApp, garantissant des réponses rapides et des interactions personnalisées. Poursuivez pour apprendre à les utiliser efficacement pour votre entreprise, ainsi qu'à créer des modèles WhatsApp dans le WhatsApp Manager._
+_Nos modèles d'automatisation WhatsApp fluidifient la communication avec les candidats grâce à l'IA et aux techniques de recrutement conversationnel. Ces modèles pré-conçus aident les recruteurs à interagir efficacement avec les candidats via WhatsApp, garantissant des réponses rapides et des interactions personnalisées. Poursuivez pour apprendre à les utiliser efficacement pour votre entreprise, ainsi qu'à créer des modèles WhatsApp dans le WhatsApp manager._
 
 ## Modèles WhatsApp dans HireData
 
@@ -172,6 +172,39 @@ _Une fois que tout est prêt, cliquez sur [Submit] pour envoyer le modèle à l'
 _Hourra ! Votre modèle WhatsApp est vérifié_
 
 ![Modèle WhatsApp approuvé](/images/intercom/47455086-submit2.png)
+
+### Combien de temps prend l'approbation d'un modèle ?
+
+Soumettre un modèle lance deux étapes, dans cet ordre :
+
+1. **Validation de la catégorie** — se produit immédiatement. Meta vérifie la catégorie que vous avez choisie (Marketing, Utility ou Authentication) par rapport au contenu du modèle. Si Meta n'est pas d'accord, le modèle est rejeté immédiatement pour catégorie incorrecte, avant toute révision du contenu. Consultez [Catégories de modèles WhatsApp dans HireData](/fr/apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata).
+2. **Révision du modèle** — c'est l'état **In review** (Pending). Meta vérifie le contenu par rapport à ses directives, puis l'approuve ou le rejette.
+
+La plupart des modèles terminent la révision en quelques minutes. Comptez jusqu'à **24 heures** avant de considérer un modèle **In review** comme bloqué.
+
+| Statut | Ce que cela signifie | Pouvez-vous envoyer avec ? |
+| --- | --- | --- |
+| **In review** (Pending) | A passé la validation de catégorie, Meta vérifie le contenu. | Non |
+| **Approved** | A passé la révision. | Oui |
+| **Rejected** | A échoué à la validation de catégorie ou à la révision du contenu. Meta fournit un motif de rejet. | Non |
+| **Paused** | Approuvé, mais suspendu par Meta après des retours négatifs des destinataires. | Non, jusqu'à sa reprise |
+
+Meta vous communique le résultat par e-mail et via une alerte dans WhatsApp Manager, vous n'avez donc pas besoin d'actualiser sans cesse la liste des modèles.
+
+<Note>
+  Modifier un modèle déjà **Approved** ou **Paused** le renvoie en révision, mais ces modifications sont généralement acceptées presque instantanément, sauf si le changement échoue à la révision. Consultez [Modifier les modèles de messages WhatsApp dans HireData](/fr/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates).
+</Note>
+
+**Si un modèle est en révision depuis plus de 24 heures**
+
+- Vérifiez vos e-mails et les alertes du WhatsApp Manager — le résultat a peut-être déjà été envoyé.
+- Ouvrez le modèle dans **Manage Templates** et confirmez-y son statut actuel plutôt que dans HireData, qui ne voit le modèle qu'après une synchronisation.
+- S'il a été rejeté, corrigez le contenu selon les directives de Meta et soumettez-le à nouveau, ou créez un nouveau modèle.
+- S'il reste en révision, contactez le support Meta Business.
+
+<Warning>
+  Un modèle approuvé ne devient sélectionnable dans les automatisations HireData qu'une fois synchronisé. Si un modèle apparaît comme approuvé dans WhatsApp Manager mais que vous ne le trouvez pas dans HireData, lancez **Sync Account** comme décrit ci-dessous.
+</Warning>
 
 ### Synchroniser les modèles WhatsApp avec HireData
 

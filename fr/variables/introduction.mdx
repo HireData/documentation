@@ -1,7 +1,7 @@
 ---
 title: "Variables"
 sidebarTitle: "Introduction"
-description: "Personnalisez les e-mails, messages, formulaires et automatisations HireData en utilisant des variables dynamiques puisées dans vos données candidats."
+description: "Utilisez les variables HireData pour personnaliser e-mails, messages WhatsApp, formulaires et automatisations avec les données candidats issues directement de vos apps connectées."
 ---
 
 Avec les variables, vous pouvez insérer des données en direct, comme le nom d'un candidat, un intitulé de poste ou un salaire, directement dans vos e-mails, messages WhatsApp, formulaires et automatisations.
@@ -10,13 +10,13 @@ Avec les variables, vous pouvez insérer des données en direct, comme le nom d'
 
 Une variable est une clé de champ entourée d'accolades doubles :
 
-```
+```text
 Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
 ```
 
 Lorsqu'il est envoyé à une candidate nommée Sofia postulant pour un rôle de Backend Engineer, cela devient :
 
-```
+```text
 Hi Sofia, thanks for applying to Backend Engineer!
 ```
 
@@ -37,7 +37,7 @@ Vous pouvez utiliser des variables partout où vous rédigez du contenu envoyé 
 
 Si un champ est vide pour un enregistrement donné, la variable est remplacée par rien. Pour afficher une valeur par défaut à la place, utilisez le modificateur [`default`](/fr/variables/modifiers#fallback) :
 
-```
+```text
 Hi {{ candidate.first_name | default: "there" }}!
 ```
 
@@ -47,7 +47,7 @@ Si le candidat n'a pas de prénom, cela envoie « Hi there! ».
 
 Les variables peuvent faire plus que simplement insérer des données brutes. Un **modificateur** change la façon dont la valeur apparaît. Il peut mettre le texte en majuscules, formater une date, arrondir un nombre, et bien plus encore. Vous ajoutez un modificateur avec un tube (`|`) :
 
-```
+```text
 {{ candidate.first_name | uppercase }}        → SOFIA
 {{ job.salary | format_currency: "EUR" }}      → €65,000.00
 {{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
@@ -55,8 +55,14 @@ Les variables peuvent faire plus que simplement insérer des données brutes. Un
 
 Vous pouvez enchaîner plusieurs modificateurs, et chacun agit sur le résultat du précédent :
 
-```
+```text
 {{ candidate.last_name | lowercase | capitalise }}
 ```
 
 Consultez la liste complète sur la page [Modificateurs](/fr/variables/modifiers).
+
+## Générer une valeur au lieu de la rechercher
+
+Chaque variable ci-dessus **lit** une valeur qui existe déjà. Lorsque la valeur doit être produite spécialement pour chaque destinataire — une accroche personnelle, une formule d'anniversaire non générique — utilisez plutôt une [variable IA](/fr/variables/ai-variables).
+
+Ne la laissez jamais inventer un fait. Les dates, les salaires et les conditions contractuelles relèvent d'une variable normale.

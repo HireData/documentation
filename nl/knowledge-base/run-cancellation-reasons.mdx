@@ -1,0 +1,99 @@
+---
+title: "Redenen voor run-annuleringen"
+sidebarTitle: "Run-annuleringen"
+description: "Leer waarom HireData automatiseringsruns annuleert, waar je het annuleringsbericht vindt, en hoe je Invalid Sender Email- en verzendlimietfouten oplost."
+keywords: ["run geannuleerd", "annuleringsreden", "Send Limits Exceeded", "Send Limits Per Automation Exceeded", "Invalid Sender Email", "Invalid sender email", "DNS Verification Failed", "Please add your DNS records to your domain", "Verify DNS", "run cancelled", "verzendlimiet overschreden", "ongeldig afzenderadres"]
+---
+
+_Wanneer HireData een run annuleert, legt de geannuleerde stap een bericht vast dat uitlegt waarom deze niet kon doorgaan. Deze gids laat je zien waar je dat bericht vindt, wat de meest voorkomende annuleringsredenen betekenen, en welke instellingen je controleert voordat je de automatisering opnieuw probeert._
+
+## Vind het annuleringsbericht
+
+Open eerst de betreffende run, zodat je kunt werken vanuit het exacte bericht in plaats van te gokken wat de automatisering stopte.
+
+1. Selecteer **Runs** in de hoofdnavigatie.
+2. Zoek de relevante run en selecteer de rij ervan.
+3. Selecteer de geannuleerde stap in de timeline.
+4. Open het tabblad **Overview** en lees het annuleringsbericht.
+
+Je kunt ook het tabblad **Fields** gebruiken om de waarden te bekijken die de stap gebruikte, en **Related** om de automatisering of het oorspronkelijke event te openen.
+
+## Veelvoorkomende annuleringsredenen
+
+| Bericht | Wat het betekent | Waar je controleert |
+| --- | --- | --- |
+| `Invalid sender email.` | De Send Email-stap kon het geconfigureerde afzenderadres niet gebruiken. | Het afzenderadres en het domein ervan |
+| `Send Limits Exceeded` | De ontvanger bereikte een e-mail- of gesprekslimiet op accountniveau. | **Settings** \> **Safety Limits** |
+| `Send Limits Per Automation Exceeded` | De ontvanger bereikte een limiet die voor deze automatisering is geconfigureerd. | De **Settings** van de automatisering |
+
+## Invalid sender email
+
+Je kunt `Invalid sender email.` zien wanneer een Send Email-stap het geconfigureerde afzenderadres niet kan gebruiken. Eén bevestigde oorzaak is verzenden vanaf een domein dat niet in HireData is geverifieerd.
+
+### Hoe je het oplost
+
+1. Ga naar **Settings** \> **Domains**.
+2. Zoek en open het domein dat door het afzenderadres wordt gebruikt.
+3. Als er nog geen DNS-records zijn gegenereerd, selecteer dan **Generate DNS Records**.
+4. Voeg elk gegenereerd record toe aan de DNS-instellingen bij je domeinprovider. Kopieer de namen en waarden exact zoals HireData ze toont.
+5. Keer terug naar het domein in HireData en selecteer **Verify DNS**.
+6. Zodra het domein is geverifieerd, open je de betreffende automatisering en selecteer je de stap **Send Email**.
+7. Bevestig dat het afzenderveld het bedoelde e-mailadres bevat en dat het domein ervan overeenkomt met het geverifieerde domein.
+8. Sla eventuele correcties op en test daarna met een nieuw event, of speel het oorspronkelijke event zorgvuldig opnieuw af.
+
+<Warning>
+  Als HireData `DNS Verification Failed - Please add your DNS records to your domain.` toont, kan het nog niet alle vereiste records vinden. Bevestig dat elk gegenereerd record is opgeslagen bij je domeinprovider, controleer of de provider alleen het subdomein verwacht in het veld **Host/Name**, en geef DNS-wijzigingen de tijd om te propageren voordat je opnieuw **Verify DNS** selecteert.
+</Warning>
+
+Voor de complete DNS-setup, inclusief providerspecifieke formatteringstips, zie [Hoe je een domein verifieert in HireData om e-mails te verzenden](/nl/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+Als **Verify DNS** in plaats daarvan een 404-fout of geen response retourneert, is de Email-app mogelijk niet geïnstalleerd. Volg [Waarom kan ik mijn DNS-records niet verifiëren?](/nl/knowledge-base/why-cant-i-verify-my-dns-records).
+
+Als het domein is geverifieerd en het afzenderadres correct lijkt, noteer dan het run-ID, de naam van de automatisering en het afzenderadres voordat je contact opneemt met HireData Support.
+
+## Send limits exceeded
+
+Deze annulering betekent dat de ontvanger een safety limit op accountniveau heeft bereikt. HireData stopt de stap om te voorkomen dat hetzelfde e-mailadres of telefoonnummer meer berichten ontvangt dan je account toestaat.
+
+### Hoe je het oplost
+
+1. Ga naar **Settings** \> **Safety Limits**.
+2. Bekijk de limieten onder **Prevent Message Overload**.
+3. Controleer of de ontvanger de relevante e-mail- of gesprekslimiet heeft bereikt.
+4. Pas de limiet alleen aan als een hogere frequentie passend is voor je outreach-strategie.
+
+Zie [Safety limits voor automatiseringen](/nl/settings/automation-safety-limits) voor een complete uitleg van de controls op accountniveau.
+
+## Send limits per automation exceeded
+
+Deze annulering betekent dat de ontvanger een e-mail- of gesprekslimiet heeft bereikt die specifiek voor de automatisering is geconfigureerd. Andere automatiseringen kunnen andere limieten hebben.
+
+### Hoe je het oplost
+
+1. Open de betreffende automatisering.
+2. Open het menu met drie puntjes en selecteer **Settings**.
+3. Bekijk de e-mail- en gesprekslimieten onder **Message limits**.
+4. Bevestig of de ontvanger binnen de geconfigureerde periode al het maximaal toegestane aantal berichten heeft ontvangen.
+5. Pas de limiet alleen aan wanneer de beoogde berichtfrequentie van de automatisering dat vereist.
+
+<Warning>
+  De optie **Ignore all safety limits** verwijdert zowel de automatiseringsspecifieke als de accountbrede beschermingen voor deze automatisering. Gebruik hem alleen nadat je het risico op dubbele of excessieve berichten hebt afgewogen.
+</Warning>
+
+## Test na het maken van een correctie
+
+Gebruik na het corrigeren van de afzender- of limietconfiguratie waar mogelijk een nieuw test-event. Je kunt ook het oorspronkelijke event opnieuw afspelen, maar inspecteer eerst de eerdere run ervan om te zien welke stappen al zijn voltooid.
+
+<Warning>
+  Een event opnieuw afspelen kan e-mails, berichten, recordupdates, taken en andere acties uit de eerdere run herhalen.
+</Warning>
+
+## Meer hulp nodig?
+
+Als het annuleringsbericht hier niet wordt genoemd, of de voorgestelde controles het niet oplossen, neem dan contact op met [support@hiredata.com](mailto:support@hiredata.com). Voeg toe:
+
+- Een link of het ID van de run
+- De naam van de automatisering
+- De geannuleerde stap
+- Het exacte annuleringsbericht
+- Alle relevante afzender- of ontvangergegevens

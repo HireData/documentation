@@ -1,0 +1,161 @@
+---
+title: "Installeer de HireData-skills met een prompt"
+sidebarTitle: "Skills installeren met een prompt"
+description: "Vraag je AI-assistent om HireData's skills op te halen en te verpakken, en sla ze daarna zelf op. Een kopieer-en-plak-prompt per assistent, voor wanneer je de plugin niet kunt installeren."
+keywords: ["HireData skills installeren", "HireData skills prompt", "skill uploaden Claude", "skill uploaden ChatGPT", "SKILL.md", "skills zonder plugin", "HireData plugin alternatief", "MCP"]
+related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/hiredata-skills", "/apps/mcp/keep-hiredata-skills-up-to-date"]
+---
+
+Een HireData-skill is een set geschreven instructies die je AI-assistent leert hoe HireData één klus aanpakt — een e-mailtemplate schrijven, een automatisering diagnosticeren, een activatie plannen. Er zijn twee manieren om [de skills van HireData](/nl/apps/mcp/hiredata-skills) in je assistent te krijgen. Deze pagina behandelt de handmatige: je plakt een prompt, je assistent haalt de instructies op en geeft je een bestand, en dat bestand upload je zelf. Ongeveer twee minuten per skill.
+
+Kun je [de plugin installeren](/nl/apps/mcp/install-hiredata-plugin), doe dat dan — het is één stap, de HireData-verbinding zit erbij, en alles wordt bijgewerkt met één knop.
+
+| Route | Wat er gebeurt | Kies deze wanneer |
+| --- | --- | --- |
+| [Installeer de plugin](/nl/apps/mcp/install-hiredata-plugin) | Je assistent krijgt elke HireData-skill **én** de HireData MCP-verbinding in één stap, en beide worden later met één knop bijgewerkt | Je assistent ondersteunt plugins en je organisatie staat ze toe. **Begin hier.** |
+| Installeren met een prompt (deze pagina) | Je assistent haalt de skill-bestanden op; jij slaat de gewenste op. Niets wordt vanzelf bijgewerkt | Je assistent heeft geen plugin-ondersteuning, je organisatie blokkeert de marketplace, of je wilt maar één of twee skills |
+
+<Note>
+  Een skill leert je assistent hoe HireData een klus aanpakt. Hij laat je assistent niets zien of wijzigen in je workspaces. Daarvoor heb je ook de [HireData MCP-verbinding](/nl/apps/mcp/connect-hiredata-to-your-ai-assistant) nodig — de koppeling tussen je assistent en je HireData-account. Stel beide in, en je hebt wat de plugin je geeft.
+</Note>
+
+## Skills installeren in Claude
+
+### Eén skill installeren
+
+Begin met één. Zodra je het één keer hebt gedaan, werkt de rest precies hetzelfde.
+
+<Steps>
+  <Step title="Laat Claude bestanden aanmaken">
+    In Claude op het web klik je op je naam linksonder en ga je naar **Settings** \> **Capabilities**. In de Claude-desktop-app staat dezelfde pagina onder **Customize**.
+
+    Schakel code execution en het aanmaken van bestanden in. Claude gebruikt dit om het bestand te bouwen dat je zo gaat downloaden; staat het uit, dan vertelt Claude je dat hij geen bestanden kan aanmaken.
+
+    Geen schakelaar te zien, of blijft hij niet aan staan? Dan zit je waarschijnlijk op een Team- of Enterprise-abonnement, waar een Owner dit beheert in **Organization settings** \> **Skills** — zowel **Code execution and file creation** als **Skills** moeten aan staan. Vraag hem om het in te schakelen, of om [de plugin te installeren](/nl/apps/mcp/install-hiredata-plugin#claude-team-en-enterprise) voor iedereen, wat voor jullie beiden minder werk is.
+  </Step>
+  <Step title="Vraag Claude het skill-bestand te bouwen">
+    Start een **nieuw** gesprek en plak de prompt hieronder. Er wordt nog niets geïnstalleerd — de prompt vraagt Claude één bestand te bouwen, dat je in de volgende stap uploadt.
+
+    Deze prompt bouwt de skill **E-mailtemplates aanmaken**. Om een andere te bouwen, vervang je `hiredata-create-email-templates` door een andere mapnaam uit [de skill-lijst verderop op deze pagina](#de-mapnamen-van-de-skills). Hij komt twee keer voor — één keer in de eerste regel, één keer in het webadres — dus wijzig beide.
+
+    ```text
+    Please package the HireData "hiredata-create-email-templates" skill for me.
+    
+    1. Fetch https://raw.githubusercontent.com/HireData/skills/main/plugins/hiredata/skills/hiredata-create-email-templates/SKILL.md
+    2. Fetch every file that SKILL.md refers to in its references/ folder, from that same folder in the repository.
+    3. Rebuild the folder exactly as it is in the repository: SKILL.md at the top, the references/ folder beside it.
+    4. Zip it so the skill folder itself sits at the root of the zip, and give me the zip to download.
+    ```
+
+    Claude antwoordt met een zip-bestand. Download het — het komt in je Downloads-map terecht.
+  </Step>
+  <Step title="Sla het op als skill">
+    Ga in Claude naar **Customize** \> **Skills**, klik op **\[Add\]**, kies de optie om een skill-bestand te uploaden en selecteer de zip die je zojuist hebt gedownload.
+
+    De skill verschijnt nu in je lijst, ingeschakeld.
+  </Step>
+  <Step title="Controleer of hij werkt">
+    Start opnieuw een **nieuw** gesprek — skills worden alleen geladen wanneer een gesprek start — en vraag iets waar de skill voor is, bijvoorbeeld: _"Ontwerp een sollicitatiebevestigingsmail voor kandidaten. Toon me een preview en verstuur niets."_
+
+    Claude noemt de skill zodra hij aan het werk gaat. Doet hij dat niet, zie dan [Problemen oplossen](#problemen-oplossen).
+  </Step>
+</Steps>
+
+### Alles in één keer installeren
+
+Eén prompt bouwt ze allemaal. Hij haalt elk skill-bestand in de repository op, wat een paar minuten duurt — laat het tabblad open tot het klaar is.
+
+```text
+Please package all HireData skills for me.
+
+The skills live at https://github.com/HireData/skills in plugins/hiredata/skills.
+Read that folder to find the current skill names — do not assume you know them.
+
+For each skill, fetch its SKILL.md plus every file it refers to in its
+references/ folder, and rebuild the folder exactly as it is in the repository.
+
+Then give me one zip per skill, each with that skill's folder at the root of
+the zip, so I can upload them one by one.
+```
+
+Upload elke zip via **Customize** \> **Skills** \> **\[Add\]**.
+
+<Note>
+  **Gebruik je Claude's Cowork-modus?** Vraag om `.skill`-bestanden in plaats van zips — _"send them to me as .skill files"_ — en Claude levert bestanden die je rechtstreeks vanuit de sessie op je account kunt opslaan.
+</Note>
+
+## Een skill installeren in ChatGPT
+
+Custom skills in ChatGPT vereisen een Business-, Enterprise-, Healthcare- of Edu-abonnement. Op Enterprise en Edu moet een beheerder skills eerst inschakelen. Persoonlijke skills synchroniseren niet tussen de desktop-app en het web, dus voeg ze toe in de versie die je dagelijks gebruikt.
+
+<Steps>
+  <Step title="Vraag ChatGPT het skill-bestand te bouwen">
+    Gebruik dezelfde prompt als in [Eén skill installeren](#eén-skill-installeren), stap 2. ChatGPT geeft een zip terug om te downloaden.
+  </Step>
+  <Step title="Upload hem">
+    Ga naar [chatgpt.com/skills](https://chatgpt.com/skills) (of **Skills** in de desktop-app), klik op **Create**, dan op **Upload from your computer**, en selecteer de zip.
+
+    ChatGPT scant een geüploade skill voordat hij actief wordt, dus het kan een minuut duren voordat je hem kunt gebruiken.
+  </Step>
+  <Step title="Controleer of hij werkt">
+    Start een nieuwe chat en vraag iets waar de skill voor is.
+  </Step>
+</Steps>
+
+Gebruik je de ChatGPT-desktop-app, dan is [de plugin installeren](/nl/apps/mcp/install-hiredata-plugin#installeer-de-plugin-in-chatgpt) sneller en wordt ook de MCP-verbinding ingesteld.
+
+## Een skill eenmalig gebruiken, zonder te installeren
+
+Assistenten die geen skills kunnen installeren, kunnen er nog steeds een volgen voor een enkele taak. Er wordt niets geïnstalleerd. Je geeft de assistent de link elke keer dat je hem wilt gebruiken.
+
+```text
+Read https://raw.githubusercontent.com/HireData/skills/main/plugins/hiredata/skills/hiredata-plan-activation/SKILL.md
+and any files it refers to, follow the method it describes, and help me with:
+
+[describe what you want]
+```
+
+Dit werkt in Gemini, Microsoft Copilot, ChatGPT op het web, of elke assistent die een openbare webpagina kan lezen. Vervang `hiredata-plan-activation` door de skill die bij de taak past, en combineer het met de [HireData MCP-verbinding](/nl/apps/mcp/connect-hiredata-to-your-ai-assistant) zodat de assistent ook bij je workspace kan.
+
+## De mapnamen van de skills
+
+Gebruik deze exact zoals geschreven. [HireData-skills voor je AI-assistent](/nl/apps/mcp/hiredata-skills) legt uit wat elke skill doet.
+
+| Skill | Mapnaam |
+| --- | --- |
+| Plan een activatie | `hiredata-plan-activation` |
+| Triggers aanmaken | `hiredata-create-triggers` |
+| Formulieren aanmaken | `hiredata-create-forms` |
+| E-mailtemplates aanmaken | `hiredata-create-email-templates` |
+| WhatsApp-templates aanmaken | `hiredata-create-whatsapp-templates` |
+| Automatiseringen diagnosticeren | `hiredata-diagnose-automations` |
+| E-mailprestaties diagnosticeren | `hiredata-diagnose-email-performance` |
+| Automatiserings-ROI rapporteren | `hiredata-report-automation-roi` |
+| Issue reports schrijven | `hiredata-create-linear-issues` |
+| Staffing-lifecyclekennis toepassen | `hiredata-map-staffing-lifecycle` |
+
+HireData voegt in de loop van de tijd skills toe, dus check [de repository](https://github.com/HireData/skills) voor de actuele lijst, of gebruik de [controleprompt](/nl/apps/mcp/keep-hiredata-skills-up-to-date#controleer-of-je-verouderd-bent).
+
+## Problemen oplossen
+
+- **Je assistent zegt dat hij niet bij de bestanden kan.** Hij heeft toestemming nodig om webpagina's op te halen — websearch en fetching in **Settings** \> **Capabilities**. Heeft je organisatie dat uitgeschakeld, dan is de plugin-route je enige optie; vraag je AI-beheerder om in plaats daarvan de HireData-marketplace toe te staan.
+- **De upload wordt geweigerd.** Open de zip en controleer of hij er zo uitziet — de skill-map eerst, met `SKILL.md` erin:
+  ```text
+  hiredata-create-email-templates/
+  ├── SKILL.md
+  └── references/
+  ```
+  Zit daar nog een tweede map omheen, plak dan dit naar je assistent: _"Rebuild the zip so the skill folder itself is at the top level, with nothing wrapped around it."_
+- **De skill uploadt, maar triggert nooit.** Skills worden geladen wanneer een gesprek start. Open een nieuw gesprek en probeer het opnieuw, en controleer of de skill is ingeschakeld in **Customize** \> **Skills**.
+- **Je kunt helemaal geen skills uploaden.** Op Team- en Enterprise-abonnementen kan een Owner door gebruikers gemaakte skills uitschakelen. Vraag hem om [de plugin](/nl/apps/mcp/install-hiredata-plugin#claude-team-en-enterprise) via jullie organisatiecatalogus te verspreiden.
+- **Er gebeurt niets in je HireData-workspace.** Skills beschrijven de methode; de [MCP-verbinding](/nl/apps/mcp/connect-hiredata-to-your-ai-assistant) levert de tools. Stel beide in.
+
+<CardGroup cols={2}>
+  <Card title="Houd ze up-to-date" icon="arrows-rotate" href="/apps/mcp/keep-hiredata-skills-up-to-date">
+    Skills die je op deze manier installeert, werken zichzelf niet bij. Zo controleer je het.
+  </Card>
+
+  <Card title="Installeer liever de plugin" icon="puzzle-piece" href="/apps/mcp/install-hiredata-plugin">
+    Eén stap voor elke skill plus de MCP-verbinding, en één knop om bij te werken.
+  </Card>
+</CardGroup>

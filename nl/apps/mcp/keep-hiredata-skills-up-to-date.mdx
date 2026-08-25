@@ -1,0 +1,115 @@
+---
+title: "Houd je HireData-skills up-to-date"
+sidebarTitle: "Skills up-to-date houden"
+description: "HireData verbetert zijn skills naarmate het product verandert. Controleer welke versie je hebt, werk de plugin bij, ververs handmatig geïnstalleerde skills en hoor het wanneer er iets nieuws verschijnt."
+keywords: ["HireData skills bijwerken", "nieuwe HireData skills", "plugin bijwerken", "HireData skills versie", "controleren op nieuwe skills", "Claude plugin update", "Codex plugin upgrade", "MCP"]
+related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-skills-with-a-prompt"]
+---
+
+HireData verbetert zijn skills naarmate het product verandert, en publiceert nieuwe. Je assistent blijft de kopie gebruiken die hij heeft totdat jij hem bijwerkt, dus skills die je zes maanden geleden hebt geïnstalleerd geven nog steeds zes maanden oud advies — en bevatten geen skills die toen nog niet bestonden.
+
+Eén keer per maand controleren is genoeg. Wat je moet doen, hangt af van hoe de skills er zijn gekomen.
+
+## Welke situatie geldt voor jou?
+
+Weet je niet meer hoe je skills zijn geïnstalleerd? Controleer dan:
+
+- Open **Customize** \> **Plugins** in Claude, of **Settings** \> **Plugins** in ChatGPT. Staat **HireData** daar in de lijst, dan heb je de plugin — gebruik [De plugin bijwerken](#de-plugin-bijwerken).
+- Is die lijst leeg, maar verschijnen er HireData-skills onder **Customize** \> **Skills**, dan heb je ze [met een prompt geïnstalleerd](/nl/apps/mcp/install-hiredata-skills-with-a-prompt) — gebruik [Skills verversen die je met een prompt hebt geïnstalleerd](#skills-verversen-die-je-met-een-prompt-hebt-geïnstalleerd).
+- Heeft je organisatie HireData voor je geïnstalleerd, dan komen updates meestal vanzelf. Blijven ze uit, vraag het dan aan degene die het heeft ingesteld.
+- Heb je beide, doe dan beide.
+
+## Controleer of je verouderd bent
+
+De snelste controle is het gewoon vragen. Zet eerst de HireData-plugin — of je HireData-skills — aan voor het gesprek: je assistent ziet alleen wat er in de huidige chat is geladen. Plak daarna dit. Het leest en rapporteert alleen; er verandert niets.
+
+```text
+Check whether my HireData skills are up to date.
+
+1. Fetch https://raw.githubusercontent.com/HireData/skills/main/.claude-plugin/marketplace.json
+   and tell me the published version number.
+2. Look at https://github.com/HireData/skills in plugins/hiredata/skills and list
+   every skill folder that exists there today.
+3. Compare that list with the HireData skills you currently have available to you
+   in this conversation.
+4. Report three things: which HireData skills I already have, which ones exist but
+   I don't have, and the published version number.
+
+Do not change or install anything — just report.
+```
+
+Het versienummer van je plugin staat ook overal waar je hem beheert: op de plugin-kaart in **Customize** \> **Plugins**, met `/plugin` in Claude Code, of met `codex plugin list --marketplace hiredata-skills` in de Codex CLI. Het laatst gepubliceerde nummer is het veld `version` bovenaan [het marketplace-bestand van HireData](https://github.com/HireData/skills/blob/main/.claude-plugin/marketplace.json) op GitHub. Komen de twee overeen, dan ben je up-to-date.
+
+## De plugin bijwerken
+
+Doe de stap voor jouw assistent, **en start daarna een nieuw gesprek.** Skills en tools worden geladen wanneer een gesprek start, dus een chat die al open stond blijft de oude versie gebruiken.
+
+| Assistent | Wat te doen |
+| --- | --- |
+| **Claude-desktop-app of web** | **Customize** \> **Plugins**, klik op **HireData** en werk hem bij. Niets om op te klikken betekent dat je al actueel bent |
+| **ChatGPT-desktop-app** | **Settings** \> **Plugins**, open de HireData-plugin en werk hem bij |
+| **Claude Code** | Voer `/plugin marketplace update hiredata-skills` uit |
+| **Codex CLI** | Voer `codex plugin marketplace upgrade hiredata-skills` uit en gebruik daarna `/plugins` om te controleren of de plugin is ingeschakeld |
+| **Claude Team of Enterprise** | Niets, als een Owner de marketplace GitHub-gesynchroniseerd heeft toegevoegd — nieuwe versies komen vanzelf binnen. Een handmatig geüploade ZIP vereist een nieuwe upload |
+
+<Note>
+  Je assistent ontvangt alleen een update wanneer HireData het versienummer verhoogt. Druk je op bijwerken en gebeurt er niets, dan heb je al de nieuwste versie.
+</Note>
+
+## Skills verversen die je met een prompt hebt geïnstalleerd
+
+Een skill die je [met een prompt hebt geïnstalleerd](/nl/apps/mcp/install-hiredata-skills-with-a-prompt) is een vaste kopie van de instructies zoals ze waren op de dag dat je hem installeerde. Zo ververs je er een:
+
+<Steps>
+  <Step title="Bouw het nieuwe bestand">
+    Voer de installatieprompt voor die skill opnieuw uit. Je assistent haalt de huidige versie op en geeft je een nieuwe zip.
+  </Step>
+  <Step title="Verwijder de oude">
+    Ga in Claude naar **Customize** \> **Skills** en verwijder de oude skill. In ChatGPT verwijder je hem uit je skills-lijst. Sla je dit over, dan eindig je met twee versies van dezelfde skill.
+  </Step>
+  <Step title="Upload de nieuwe">
+    Upload hem op dezelfde manier als de eerste keer: **Customize** \> **Skills** \> **\[Add\]**. Start daarna een nieuw gesprek — de skill die je zojuist hebt geüpload is niet beschikbaar in een chat die al open stond.
+  </Step>
+</Steps>
+
+## Word gewaarschuwd wanneer er iets verandert
+
+Wil je er liever niet aan hoeven denken, laat dan iets anders het je vertellen.
+
+**Claude's Cowork-modus kan een taak volgens schema uitvoeren.** Heb je Cowork, plak dan de prompt hieronder één keer in een sessie en hij houdt de skills-bibliotheek voor je in de gaten. Weet je niet zeker of je het hebt? Dan heb je het niet — gebruik de GitHub-optie eronder.
+
+```text
+Set up a weekly task that watches the HireData skills library for me.
+
+Every Monday morning:
+1. Look at https://github.com/HireData/skills and list every skill folder under
+   plugins/hiredata/skills, plus the version number in
+   .claude-plugin/marketplace.json.
+2. Compare that with the HireData skills available to you in the session, and
+   with what the previous run of this task reported.
+3. Tell me only about differences: skills that are new, skills that changed
+   since the last check, and a version number that has moved. One line each on
+   what changed, with the link to the change on GitHub.
+4. If nothing changed, say so in a single line and do not notify me.
+```
+
+De taak vertelt je wat er is veranderd en waar; het bijwerken van de plugin, of het opnieuw uitvoeren van de installatieprompt, doe je nog steeds zelf. Voeg _"package anything new as a .skill file and send it to me"_ toe en hij levert je de bestanden kant-en-klaar om op te slaan.
+
+**Of volg de repository.** Open [github.com/HireData/skills](https://github.com/HireData/skills), klik op **Watch** en kies waarover je wilt horen — je hebt een GitHub-account nodig. Gebruik je een RSS-lezer, dan geeft `https://github.com/HireData/skills/commits/main.atom` je dezelfde wijzigingen als feed. Nieuwe skills worden ook aangekondigd bij het overige productnieuws op [hiredata.com](https://www.hiredata.com/).
+
+## Problemen oplossen
+
+- **Je hebt bijgewerkt, maar je assistent gedraagt zich nog steeds als voorheen.** Start een nieuw gesprek. Een update geldt nooit voor een chat die al open stond.
+- **Een nieuwe skill verschijnt niet na een update.** Controleer of de plugin nog is ingeschakeld in **Customize** \> **Plugins** en start daarna een nieuw gesprek.
+- **Je organisatie beheert de plugin.** Op Team- en Enterprise-abonnementen kunnen leden een plugin die een Owner verspreidt niet bijwerken. Vraag een Owner om de marketplace opnieuw te synchroniseren.
+- **Bijwerken raakt skills die je zelf hebt gemaakt niet.** Je eigen skills en die van HireData staan naast elkaar; de een bijwerken laat de ander met rust.
+
+<CardGroup cols={2}>
+  <Card title="Wat de skills doen" icon="list-check" href="/apps/mcp/hiredata-skills">
+    Elke HireData-skill, waarvoor hij dient, en voorbeeldprompts.
+  </Card>
+
+  <Card title="Maak je eigen skill" icon="wand-magic-sparkles" href="/apps/mcp/create-your-own-skill">
+    Zet iets dat je telkens opnieuw uitlegt om in een eigen skill.
+  </Card>
+</CardGroup>

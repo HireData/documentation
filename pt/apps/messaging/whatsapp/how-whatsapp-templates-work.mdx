@@ -173,6 +173,39 @@ _Boa! O seu template de WhatsApp está verificado_
 
 ![Approved WhatsApp template](/images/intercom/47455086-submit2.png)
 
+### Quanto tempo demora a aprovação de um template?
+
+Submeter um template inicia dois passos, por esta ordem:
+
+1. **Validação da categoria** — acontece imediatamente. A Meta verifica a categoria que escolheu (Marketing, Utility ou Authentication) face ao conteúdo do template. Se a Meta discordar, o template é rejeitado de imediato por categoria incorreta, antes de qualquer revisão de conteúdo. Consulte [Categorias de templates de WhatsApp na HireData](/pt/apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata).
+2. **Revisão do template** — este é o estado **In review** (Pending). A Meta verifica o conteúdo face às suas diretrizes e depois aprova-o ou rejeita-o.
+
+A maioria dos templates conclui a revisão em poucos minutos. Aguarde até **24 horas** antes de considerar que um template **In review** está bloqueado.
+
+| Estado | O que significa | Pode enviar com ele? |
+| --- | --- | --- |
+| **In review** (Pending) | Passou a validação de categoria, a Meta está a verificar o conteúdo. | Não |
+| **Approved** | Passou a revisão. | Sim |
+| **Rejected** | Falhou a validação de categoria ou a revisão de conteúdo. A Meta indica o motivo da rejeição. | Não |
+| **Paused** | Aprovado, mas colocado em pausa pela Meta após feedback negativo dos destinatários. | Não, até ser retomado |
+
+A Meta comunica-lhe o resultado por email e com um alerta no WhatsApp Manager, por isso não precisa de estar sempre a atualizar a lista de templates.
+
+<Note>
+  Editar um template que já está **Approved** ou **Paused** envia-o novamente para revisão, mas essas edições são normalmente aceites quase instantaneamente, a menos que a alteração falhe a revisão. Consulte [Como editar templates de mensagens de WhatsApp na HireData](/pt/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates).
+</Note>
+
+**Se um template estiver em revisão há mais de 24 horas**
+
+- Verifique o seu email e os alertas do WhatsApp Manager — o resultado pode já ter sido enviado.
+- Abra o template em **Manage Templates** e confirme aí o seu estado atual, e não na HireData, que só vê o template após uma sincronização.
+- Se tiver sido rejeitado, corrija o conteúdo de acordo com as diretrizes da Meta e volte a submetê-lo, ou crie um novo template.
+- Se continuar em revisão, contacte o Meta Business Support.
+
+<Warning>
+  Um template aprovado só fica selecionável nas automações da HireData depois de ter sido sincronizado. Se um template aparecer como aprovado no WhatsApp Manager mas não o encontrar na HireData, execute o **Sync Account** conforme descrito abaixo.
+</Warning>
+
 ### Sincronizar templates de WhatsApp com a HireData
 
 _Para tornar o seu template recém-criado disponível na HireData,_c_lique em [Sync Account] no menu suspenso da sua conta de WhatsApp na HireData:_

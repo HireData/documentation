@@ -1,0 +1,122 @@
+---
+title: "Trouver les profils candidats incomplets"
+sidebarTitle: "Profils incomplets"
+description: "Construisez une automatisation de qualité des données qui trouve les profils candidats aux informations manquantes, puis crée une tâche ou lance un workflow de complétion."
+keywords: ["profil candidat incomplet", "données candidat manquantes", "automatisation qualité des données", "informations candidat manquantes", "compléter un profil candidat"]
+---
+
+_Des profils candidats incomplets peuvent compliquer la prise de contact, le rapprochement avec des postes adaptés ou la fiabilité des données de recrutement. Cette recette vous montre comment identifier les enregistrements auxquels il manque des informations importantes et les diriger vers un workflow de complétion concret._
+
+## Ce que vous allez construire
+
+L'automatisation repose sur quatre parties :
+
+1. Un événement candidat provenant de votre ATS connecté
+2. Des conditions de démarrage qui définissent quelles informations sont requises
+3. Une action pour un recruteur, une équipe interne ou un candidat
+4. Un test sûr qui confirme que les bons profils entrent dans le workflow
+
+Commencez par un champ manquant important. Une fois que la première version fonctionne comme prévu, vous pouvez étendre l'automatisation à d'autres parties du profil candidat.
+
+## Consultez d'abord la galerie de modèles
+
+Avant de construire l'automatisation de zéro, ouvrez la galerie de modèles depuis le tableau de bord HireData. Sélectionnez **All**, puis recherchez ou filtrez un modèle qui correspond à votre workflow de qualité des données.
+
+Selon ce que vous souhaitez accomplir, des points de départ utiles peuvent être :
+
+- **Email Bounce: Schedule Task**
+- **Job Application**
+- **Phone Number Standardizer \+31 - Candidates - Cleanup**
+- **Pre-Intake / Screening**
+
+Ouvrez un modèle et examinez son déclencheur, ses conditions et ses actions avant de l'ajouter à votre compte. Vous pouvez ensuite l'adapter aux champs et au processus utilisés par votre équipe.
+
+## Décidez ce qui rend un profil incomplet
+
+Convenez des informations dont votre équipe a besoin avant de construire les conditions. Exemples courants :
+
+- Adresse e-mail
+- Numéro de téléphone
+- Prénom ou nom
+- Consentement ou disponibilité
+- Poste ou lieu souhaité
+- Autres informations requises pour le placement ou la communication
+
+Concentrez-vous sur les champs qui entraînent une action de suivi claire. Un champ facultatif manquant n'a pas toujours besoin de sa propre automatisation.
+
+## Construire l'automatisation
+
+### 1. Choisir le déclencheur candidat
+
+Ouvrez le bloc **Start** et sélectionnez votre ATS. Choisissez le déclencheur de création ou de mise à jour de candidat qui correspond le mieux au moment où HireData doit vérifier le profil.
+
+Par exemple :
+
+- Utilisez un déclencheur de création lorsque les profils doivent être vérifiés dès leur entrée dans l'ATS.
+- Utilisez un déclencheur de mise à jour lorsque la vérification doit aussi s'exécuter après que des recruteurs ou des intégrations modifient l'enregistrement.
+- Utilisez un déclencheur combiné création-ou-mise-à-jour lorsque les deux situations doivent entrer dans le même workflow.
+
+Les noms de déclencheurs disponibles peuvent différer selon les intégrations.
+
+### 2. Ajouter les conditions de données manquantes
+
+Ajoutez des conditions de démarrage pour le champ que vous souhaitez vérifier. Configurez la condition pour que seuls les profils sans la valeur requise continuent dans l'automatisation.
+
+Commencez par un champ à fort impact, comme une adresse e-mail ou un numéro de téléphone. Cela garde le premier test facile à comprendre. Ajoutez d'autres champs après avoir confirmé que l'automatisation sélectionne les bons profils.
+
+<Tip>
+  Si un champ n'apparaît pas dans le sélecteur de variables, confirmez qu'il est activé dans votre connexion ATS. Les utilisateurs de Carerix peuvent suivre [Activer les champs et relations Carerix](/fr/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations).
+</Tip>
+
+### 3. Ajouter l'action de complétion
+
+Choisissez ce qui doit se passer une fois que HireData trouve un profil incomplet. Selon votre processus, l'automatisation peut :
+
+- Créer une tâche pour un recruteur
+- Notifier un canal interne ou une adresse e-mail
+- Demander au candidat de fournir les informations manquantes
+- Mettre à jour le profil une fois les informations collectées
+
+Rendez l'action suffisamment précise pour que le destinataire sache quel profil et quel champ nécessitent une attention.
+
+Si le système source ajoute souvent des champs peu après la création d'un enregistrement, placez un court délai avant la vérification. Réglez le délai en fonction du calendrier réel de votre processus d'import ou d'enrichissement.
+
+### 4. Tester avec un profil incomplet
+
+Utilisez un enregistrement de test auquel manque le champ visé par votre condition.
+
+1. Activez l'automatisation lorsqu'elle est prête pour le test.
+2. Créez ou mettez à jour le candidat de test dans votre ATS.
+3. Sélectionnez **Events** dans HireData et ouvrez le nouvel événement.
+4. Vérifiez l'onglet **Data** de l'événement pour confirmer que le champ est vide ou absent.
+5. Sélectionnez **Runs** et confirmez que les actions attendues se sont bien terminées.
+
+Répétez le test avec un profil complet. Il ne doit pas entrer dans le workflow de données manquantes.
+
+<Warning>
+  Gardez les limites de sécurité du compte et des automatisations activées pendant que vous testez des workflows susceptibles d'envoyer des messages aux candidats.
+</Warning>
+
+## Examiner et améliorer le workflow
+
+Une fois que l'automatisation a traité un petit nombre d'enregistrements, examinez ses exécutions et le travail de suivi qu'elle crée.
+
+Vérifiez si :
+
+- Les profils sélectionnés nécessitent réellement une attention
+- La personne assignée dispose de suffisamment d'informations pour compléter l'enregistrement
+- Le workflow s'exécute au bon moment de votre processus de recrutement
+- Un délai ou une condition supplémentaire réduirait les actions inutiles
+
+Ajoutez progressivement d'autres champs requis afin qu'il reste clair pourquoi chaque candidat est entré dans le workflow.
+
+## Besoin d'aide supplémentaire ?
+
+Si l'automatisation ne trouve pas les profils attendus, comparez l'onglet **Data** de l'événement avec les conditions de démarrage. Consultez [Pourquoi mon automatisation ne s'est-elle pas exécutée ?](/fr/knowledge-base/why-didnt-my-automation-run) pour une check-list de dépannage complète.
+
+Si vous avez encore besoin d'aide, contactez [support@hiredata.com](mailto:support@hiredata.com) en incluant :
+
+- Le nom de l'automatisation
+- Un lien ou l'ID d'un événement de test
+- Le champ que vous vous attendiez à voir vérifié
+- Le résultat que vous attendiez

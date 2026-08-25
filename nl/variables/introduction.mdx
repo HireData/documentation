@@ -1,7 +1,7 @@
 ---
 title: "Variabelen"
 sidebarTitle: "Introductie"
-description: "Personaliseer e-mails, WhatsApp-berichten, formulieren en automatiseringen in HireData met variabelen die kandidaat- en jobgegevens dynamisch invullen."
+description: "Personaliseer e-mails, WhatsApp-berichten, formulieren en automatiseringen in HireData met variabelen die kandidaatdata rechtstreeks uit je gekoppelde apps halen."
 ---
 
 Met variabelen kun je live data, zoals de naam van een kandidaat, een functietitel of een salaris, rechtstreeks in je e-mails, WhatsApp-berichten, formulieren en automatiseringen invoegen.
@@ -10,13 +10,13 @@ Met variabelen kun je live data, zoals de naam van een kandidaat, een functietit
 
 Een variabele is een field key omhuld met dubbele accolades:
 
-```
+```text
 Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
 ```
 
 Wanneer dit wordt verzonden naar een kandidaat genaamd Sofia die solliciteert op een Backend Engineer-rol, wordt het:
 
-```
+```text
 Hi Sofia, thanks for applying to Backend Engineer!
 ```
 
@@ -37,7 +37,7 @@ Je kunt variabelen overal gebruiken waar je content schrijft die wordt verzonden
 
 Als een veld leeg is voor een bepaald record, wordt de variabele vervangen door niets. Om in plaats daarvan een default te tonen, gebruik je de [`default`](/nl/variables/modifiers#fallback)-modifier:
 
-```
+```text
 Hi {{ candidate.first_name | default: "there" }}!
 ```
 
@@ -47,7 +47,7 @@ Als de kandidaat geen voornaam heeft, verzendt dit "Hi there!".
 
 Variabelen kunnen meer doen dan alleen ruwe data invoegen. Een **modifier** verandert hoe de waarde verschijnt. Het kan tekst in hoofdletters zetten, een datum formatteren, een getal afronden, en nog veel meer. Je voegt een modifier toe met een pipe (`|`):
 
-```
+```text
 {{ candidate.first_name | uppercase }}        → SOFIA
 {{ job.salary | format_currency: "EUR" }}      → €65,000.00
 {{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
@@ -55,8 +55,14 @@ Variabelen kunnen meer doen dan alleen ruwe data invoegen. Een **modifier** vera
 
 Je kunt meerdere modifiers aan elkaar koppelen, en elke modifier werkt op het resultaat van de vorige:
 
-```
+```text
 {{ candidate.last_name | lowercase | capitalise }}
 ```
 
 Zie de volledige lijst op de pagina [Modifiers](/nl/variables/modifiers).
+
+## Een waarde genereren in plaats van opzoeken
+
+Elke variabele hierboven **leest** een waarde die al bestaat. Wanneer de waarde voor elke ontvanger opnieuw bedacht moet worden — een persoonlijke openingszin, een niet-generieke verjaardagsregel — gebruik je een [AI-variabele](/nl/variables/ai-variables).
+
+Laat er nooit een een feit verzinnen. Datums, salarissen en contractvoorwaarden horen in een normale variabele.

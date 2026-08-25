@@ -1,0 +1,194 @@
+---
+title: "AI-variabelen"
+sidebarTitle: "AI-variabelen"
+description: "Genereer een regel per ontvanger in HireData-e-mails, formulieren en automatiseringen met AI-variabelen, en leer wanneer een normale variabele of modifier beter past."
+keywords: ["AI-variabelen", "AI-variabele", "personalisatie", "gegenereerde tekst", "custom variabele", "AI-e-mail", "AI variables"]
+related: ["/variables/introduction", "/variables/modifiers"]
+---
+
+Een normale variabele **zoekt** een waarde **op**. Een AI-variabele **bedenkt er een**.
+
+Waar `{{ candidate.first_name }}` een veld leest en invoegt, voert een AI-variabele een korte instructie uit tegen het record en voegt in wat die produceert. Het is de tool voor de regel die elke keer anders moet zijn — een opener die iemands achtergrond koppelt aan een vacature, of een verjaardagswens die niet leest als een mailmerge.
+
+Je gebruikt hem precies zoals elke andere variabele:
+
+```text
+{{ celebration }}
+
+We hope you take some time today to celebrate.
+```
+
+In de editor verschijnt hij als een chip, gemarkeerd met de AI-sparkle zodat je hem in één oogopslag kunt onderscheiden van een normale variabele:
+
+![Ai Variable Chip In Content](/images/ai-variable-chip-in-content.png "Ai Variable Chip In Content")
+
+## Waar je er een kunt toevoegen
+
+Je kunt AI-variabelen aanmaken in **e-mailtemplates**, **formulieren** en **automatiseringen**. De automation builder biedt ook presets, zodat je een variabele die je vaak gebruikt niet handmatig opnieuw hoeft op te bouwen.
+
+WhatsApp-berichttemplates kunnen naar variabelen _verwijzen_, maar de variabelenlijst daar is read-only — je kunt geen AI-variabele aanmaken vanuit de message builder. Definieer hem in plaats daarvan op de automatisering die het bericht verstuurt.
+
+## Wanneer je er een gebruikt
+
+Grijp naar een AI-variabele wanneer alle drie waar zijn:
+
+- de output moet worden **afgeleid**, niet opgezocht;
+- een vaste regel met een fallback zou slecht lezen, omdat de waarde echt per persoon moet veranderen;
+- er net naast zitten is te overleven — niemand neemt er een beslissing op.
+
+Goede kandidaten: een gepersonaliseerde opener, een re-engagement-haakje voor een slapende kandidaat, een niet-generieke verjaardagsregel, of een toonherschrijving van een vaste alinea.
+
+## Wanneer je iets anders gebruikt
+
+De meeste personalisatie is geen AI-probleem. Controleer voordat je een AI-variabele toevoegt of een gewone variabele of een [modifier](/nl/variables/modifiers) het werk al doet — die zijn sneller, goedkoper, en kunnen er niet naast zitten.
+
+| Je wilt | Gebruik in plaats daarvan |
+| --- | --- |
+| Een naam, titel, datum, salaris, of welke opgeslagen waarde dan ook | Een normale variabele |
+| Een datum geformatteerd voor de locale van de ontvanger | `format_date` |
+| Een default wanneer een veld leeg is | De [`default`](/nl/variables/modifiers#fallback)-modifier |
+| Consistent hoofdlettergebruik of valuta | `uppercase`, `format_currency` |
+
+<Warning>
+  Laat een AI-variabele nooit een feit verzinnen. Datums, tarieven, salarissen, contractvoorwaarden, startdatums, juridische of GDPR-status, en alles wat leest als een toezegging moet uit een veld komen. Als het veld leeg is, is het eerlijke antwoord het weg te laten of een fallback te gebruiken — niet een model het gat te laten vullen. Een gegenereerde zin die een startdatum verzint is een onjuiste uitspraak die uit jouw naam naar een kandidaat wordt gestuurd.
+</Warning>
+
+## Een AI-variabele instellen
+
+Open het variabelenpaneel met de `{}`-control in de werkbalk van de builder. Bestaande variabelen worden getoond met hun key en type, dus een AI-variabele is makkelijk te herkennen:
+
+![Ai Variable Variables Panel](/images/ai-variable-variables-panel.png "Ai Variable Variables Panel")
+
+Kies **Add** en kies vervolgens **AI variable** uit de groep **Intelligent**:
+
+![Ai Variable Type Picker](/images/ai-variable-type-picker.png "Ai Variable Type Picker")
+
+### Kiezen wat de AI moet doen
+
+Voor al het andere vraagt de editor wat voor soort werk deze variabele doet. Er zijn zeven modi, elk getoond als een tegel met een beschrijving van één regel:
+
+![Ai Variable Mode Picker](/images/ai-variable-mode-picker.png "Ai Variable Mode Picker")
+
+| Modus | Waar hij voor is |
+| --- | --- |
+| `Custom` | Schrijf je eigen prompt vanaf nul |
+| `Extract` | Haal gestructureerde data uit tekst of documenten |
+| `Summarize` | Vat lange content samen tot kernpunten |
+| `Classify` | Categoriseer content in vooraf gedefinieerde groepen |
+| `Write` | Genereer of herschrijf content in een gekozen toon |
+| `Translate` | Zet tekst om van de ene taal naar de andere |
+| `Analyze` | Onderzoek content op inzichten, sentiment of patronen |
+
+<Note>
+  De modus ligt niet vast. Zodra je er een kiest, klappen de tegels in tot een compacte dropdown, en je kunt hem wijzigen wanneer je wilt — heropen de variabele en kies een andere modus onder **What should the AI do?**. De rest van het formulier past zich daarop aan.
+</Note>
+
+### De rest van de editor
+
+![Ai Variable Editor](/images/ai-variable-editor.png "Ai Variable Editor")
+
+| Veld | Wat het doet |
+| --- | --- |
+| **Name** | Het leesbare label, getoond op de variabele-chip in je content. |
+| **What should the AI do?** | De modus die je koos, nu als dropdown. Wijzig hem hier op elk moment. |
+| **What will you provide to the AI?** | Twee tabbladen. **Input** is een vrije tekstprompt. **Variables** koppelt specifieke velden met **Add Field**. Zie [Geef het iets om mee te werken](#geef-het-iets-om-mee-te-werken). |
+| **Hints for the AI** (optioneel) | Extra context, toon of beperkingen, gescheiden gehouden van de hoofdinstructie. |
+| **What should the AI return?** | Het outputtype — `Text`, `Rich text`, `Number`, `Yes / No`, `List`, `Date`, en de rest van de standaard veldtypen. |
+| **Language** | De outputtaal. De default, `None — match the input language`, volgt de data die hij krijgt. |
+| **More options** | **Reference as** is de key die je in content typt — `celebration` wordt `{{celebration}}`. **What is it for?** is een optionele beschrijving. |
+
+<Note>
+  Een AI-variabele hoeft geen proza te produceren. Omdat je het returntype kiest, kan er net zo goed een `Yes / No`, een `Number`, of een waarde uit een `List` uitkomen — daar zijn de modi `Classify` en `Extract` voor. De [waarschuwing hierboven](#wanneer-je-iets-anders-gebruikt) blijft gelden: een waarde afleiden uit data in het record is prima, er een verzinnen niet.
+</Note>
+
+## Geef het iets om mee te werken
+
+De instructie alleen is zelden genoeg — het model heeft het record nodig. Er zijn twee manieren om dat aan te leveren, en ze kunnen worden gecombineerd.
+
+### Inline in de prompt
+
+Typ `{{` waar dan ook in het **Input**-vak en er verschijnt een picker die elke variabele toont die voor deze template beschikbaar is, met key en type. Blijf typen om te filteren, en kies er dan een om hem in te voegen:
+
+<Frame>
+  ![Ai Variable Prompt Variable Picker 1](/images/ai-variable-prompt-variable-picker-1.png "Ai Variable Prompt Variable Picker 1")
+</Frame>
+
+Een verjaardagswens die de ontvanger bij naam begroet leest dus als:
+
+```text wrap
+Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
+```
+
+Elk token wordt vervangen door de waarde van die ontvanger voordat de instructie het model bereikt, dus voor Sofia wordt het model om een wens _voor Sofia_ gevraagd in plaats van voor `{{recipient.first_name}}`.
+
+### Het Variables-tabblad
+
+Schakel over naar het tabblad **Variables** en kies **Add Field** om velden te koppelen in plaats van ze in de prompt te benoemen. Elke rij is een doorzoekbare picker over dezelfde lijst variabelen, en de `−`-knop verwijdert er een.
+
+<Frame>
+  ![Ai Variable Picker](/images/ai-variable-picker.png "Ai Variable Picker")
+</Frame>
+
+Een veld koppelen geeft de waarde ervan aan het model zonder dat je het in de instructie hoeft te noemen. Het maakt de inputs van de variabele ook duidelijk voor wie hem hierna opent, wat de moeite waard is zodra de prompt lang wordt.
+
+### Waarom de inputs ertoe doen
+
+De velden waarnaar je verwijst, via welke methode dan ook, zijn de **inputs** van de variabele — en inputs bepalen wanneer hij opnieuw wordt bepaald. Geef hem de velden waarvan hij echt afhangt in plaats van ze in proza te beschrijven. Zie [Beperkingen](#beperkingen).
+
+## De instructie schrijven
+
+Een bruikbare instructie benoemt haar vorm en haar grenzen. Laat de speciale controls het werk doen waarvoor ze er zijn — stel de outputtaal in via de **Language**-control in plaats van die in de prompt te beschrijven, en stel het returntype in in plaats van erom te vragen:
+
+> Write a friendly, single-sentence birthday wish, maximum 20 words. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the recipient's name is missing, write a general wish with no name.
+
+Die laatste zin is het belangrijkst. Zeg wat er moet gebeuren wanneer de data ontbreekt, of het model verzint iets om de ruimte te vullen.
+
+**Langere instructies zijn geen betere instructies.** Beperkingen doen meer werk dan beschrijving. Benoem de maximale lengte, de toon, wat er niet mag, en wat er geproduceerd moet worden wanneer de brondata dun is.
+
+## Beperkingen
+
+**Hij wordt één keer per verzending bepaald, en daarna herhaald.** De waarde wordt gegenereerd de eerste keer dat er naar de variabele wordt verwezen en hergebruikt voor elke andere vermelding in hetzelfde bericht — dus twee keer `{{ celebration }}` in één e-mail geeft je twee keer dezelfde zin, geen twee pogingen. Hij wordt opnieuw bepaald wanneer zijn inputs veranderen, en dat is wat hem per ontvanger maakt. Een variabele zonder gekoppelde inputs heeft niets om op te variëren.
+
+**Een opgeslagen default is geen vangnet.** Voor een AI-variabele is de default-waarde het slot waarin de gegenereerde waarde wordt geschreven, geen fallback die je kunt instellen. Als het model niets retourneert, resolvet de variabele naar niets. Om te garanderen dat er iets op de pagina belandt, gebruik je de [`default`](/nl/variables/modifiers#fallback)-modifier op de plek waar je ernaar verwijst:
+
+```text
+{{ celebration | default: "We hope you have a lovely day." }}
+```
+
+**Een geldige template kan alsnog met een gat erin worden verzonden.** Validatie controleert of een placeholder _bekend_ is, niet of hij een waarde zal hebben wanneer het bericht uitgaat. Dus deze template:
+
+```text
+{{ celebration }}
+
+We hope you take some time today to celebrate.
+```
+
+kan perfect valideren en toch aankomen als een e-mail die opent met een lege regel, gevolgd door "We hope you take some time today to celebrate." De template is niet kapot. De variabele produceerde niets.
+
+**Testverzendingen gedragen zich anders dan echte.** Bij een testverzending heeft elke custom variabele waarnaar in de body wordt verwezen een expliciete, niet-lege waarde nodig die jij aanlevert — opgeslagen waarden worden bewust niet gesubstitueerd. Een schone test bewijst dus dat de copy werkt; hij bewijst niet dat de variabele in productie een waarde oplevert.
+
+Als een ontvanger een bericht meldt met een ontbrekende zin, een lege begroeting of een los fragment, controleer dan welke variabelen AI-variabelen zijn voordat je aanneemt dat de copy fout is.
+
+## Voordat je verzendt
+
+<Steps>
+  <Step title="Test met complete data">
+    Bevestig dat de waarde goed leest en binnen je lengtelimiet blijft.
+  </Step>
+  <Step title="Test met ontbrekende en lege data">
+    Dit is waar AI-variabelen falen. Controleer dat een dun record iets acceptabels oplevert in plaats van een gehallucineerd detail of een lege regel.
+  </Step>
+  <Step title="Test in elke taal waarin je verzendt">
+    Toon en formaliteit gaan niet mee tussen talen. Een regel die warm leest in het Engels kan overfamiliair lezen in het Nederlands.
+  </Step>
+  <Step title="Lees het als de ontvanger">
+    Vraag je af of een kandidaat zich zou schamen voor deze zin, erdoor in verwarring zou raken of erdoor zou worden misleid. Is het antwoord misschien, scherp dan de beperkingen aan of gebruik een vaste regel.
+  </Step>
+</Steps>
+
+## Gerelateerd
+
+- [Variabelen](/nl/variables/introduction) — de basis en waar variabelen werken
+- [Modifiers](/nl/variables/modifiers) — deterministische formattering, defaults en hoofdlettergebruik
+- [Een standaardtaal en AI tone of voice instellen](/nl/settings/setting-a-default-language-and-ai-tone-of-voice)
+- [Waarom liep mijn automatisering niet?](/nl/knowledge-base/why-didnt-my-automation-run)

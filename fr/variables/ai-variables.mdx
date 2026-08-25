@@ -1,0 +1,194 @@
+---
+title: "Variables IA"
+sidebarTitle: "Variables IA"
+description: "Générez une ligne propre à chaque destinataire dans les e-mails, formulaires et automatisations HireData avec les variables IA, et apprenez quand une variable normale ou un modificateur convient mieux."
+keywords: ["variables IA", "variable IA", "personnalisation", "texte généré", "variable personnalisée", "e-mail IA", "AI variables"]
+related: ["/variables/introduction", "/variables/modifiers"]
+---
+
+Une variable normale **recherche** une valeur. Une variable IA en **déduit** une.
+
+Là où `{{ candidate.first_name }}` lit un champ et l'insère tel quel, une variable IA exécute une courte instruction sur l'enregistrement et insère ce qu'elle produit. C'est l'outil pour la phrase qui doit être différente à chaque fois — une accroche qui relie le parcours de quelqu'un à un poste, ou un vœu d'anniversaire qui ne ressemble pas à un publipostage.
+
+Vous l'utilisez exactement comme n'importe quelle autre variable :
+
+```text
+{{ celebration }}
+
+We hope you take some time today to celebrate.
+```
+
+Dans l'éditeur, elle apparaît sous forme de pastille, marquée de l'étincelle IA pour la distinguer d'une variable normale au premier coup d'œil :
+
+![Pastille de variable IA dans le contenu](/images/ai-variable-chip-in-content.png "Ai Variable Chip In Content")
+
+## Où en ajouter une
+
+Vous pouvez créer des variables IA dans les **modèles d'e-mail**, les **formulaires** et les **automatisations**. Le constructeur d'automatisations propose aussi des préréglages, pour qu'une variable que vous utilisez souvent n'ait pas à être reconstruite à la main.
+
+Les modèles de message WhatsApp peuvent _référencer_ des variables, mais la liste des variables y est en lecture seule — vous ne pouvez pas créer une variable IA depuis le constructeur de messages. Définissez-la plutôt sur l'automatisation qui envoie le message.
+
+## Quand en utiliser une
+
+Optez pour une variable IA quand les trois conditions sont réunies :
+
+- le résultat doit être **déduit**, pas recherché ;
+- une phrase fixe avec une valeur de repli se lirait mal, parce que la valeur doit vraiment changer selon la personne ;
+- une légère imprécision est acceptable — personne ne prend de décision sur cette base.
+
+De bons cas d'usage : une accroche personnalisée, une relance pour un candidat inactif, un vœu d'anniversaire non générique, ou la réécriture du ton d'un paragraphe fixe.
+
+## Quand utiliser autre chose
+
+La plupart des personnalisations ne sont pas un problème d'IA. Avant d'ajouter une variable IA, vérifiez si une variable simple ou un [modificateur](/fr/variables/modifiers) fait déjà le travail — ils sont plus rapides, moins coûteux et ne peuvent pas se tromper.
+
+| Vous voulez | Utilisez plutôt |
+| --- | --- |
+| Un nom, un intitulé, une date, un salaire ou toute valeur stockée | Une variable normale |
+| Une date formatée selon la locale du destinataire | `format_date` |
+| Une valeur par défaut quand un champ est vide | Le modificateur [`default`](/fr/variables/modifiers#valeur-de-repli) |
+| Une casse ou une monnaie cohérentes | `uppercase`, `format_currency` |
+
+<Warning>
+  Ne laissez jamais une variable IA inventer un fait. Les dates, les taux, les salaires, les conditions contractuelles, les dates de début, le statut juridique ou RGPD, et tout ce qui se lit comme un engagement doit venir d'un champ. Si le champ est vide, la réponse honnête est de l'omettre ou d'utiliser une valeur de repli — pas de laisser un modèle combler le vide. Une phrase générée qui invente une date de début est une fausse déclaration envoyée à un candidat en votre nom.
+</Warning>
+
+## En créer une
+
+Ouvrez le panneau des variables avec le contrôle `{}` dans la barre d'outils du constructeur. Les variables existantes sont listées avec leur clé et leur type, une variable IA est donc facile à repérer :
+
+![Panneau des variables avec une variable IA](/images/ai-variable-variables-panel.png "Ai Variable Variables Panel")
+
+Choisissez **Add**, puis sélectionnez **AI variable** dans le groupe **Intelligent** :
+
+![Sélecteur de type de variable IA](/images/ai-variable-type-picker.png "Ai Variable Type Picker")
+
+### Choisir ce que l'IA doit faire
+
+Avant toute chose, l'éditeur demande quel type de travail cette variable accomplit. Il y a sept modes, chacun présenté comme une tuile avec une description d'une ligne :
+
+![Sélecteur de mode de variable IA](/images/ai-variable-mode-picker.png "Ai Variable Mode Picker")
+
+| Mode | À quoi il sert |
+| --- | --- |
+| `Custom` | Écrire votre propre prompt de zéro |
+| `Extract` | Extraire des données structurées d'un texte ou de documents |
+| `Summarize` | Condenser un contenu long en points clés |
+| `Classify` | Catégoriser un contenu dans des groupes prédéfinis |
+| `Write` | Générer ou réécrire un contenu dans un ton choisi |
+| `Translate` | Convertir un texte d'une langue à une autre |
+| `Analyze` | Examiner un contenu pour en tirer des enseignements, un sentiment ou des tendances |
+
+<Note>
+  Le mode n'est pas figé. Une fois que vous en avez choisi un, les tuiles se replient en un menu déroulant compact, et vous pouvez en changer quand vous voulez — rouvrez la variable et choisissez un autre mode sous **What should the AI do?**. Le reste du formulaire s'adapte en conséquence.
+</Note>
+
+### Le reste de l'éditeur
+
+![Éditeur de variable IA](/images/ai-variable-editor.png "Ai Variable Editor")
+
+| Champ | Ce qu'il fait |
+| --- | --- |
+| **Name** | Le libellé lisible, affiché sur la pastille de la variable dans votre contenu. |
+| **What should the AI do?** | Le mode que vous avez choisi, désormais sous forme de menu déroulant. Changez-le ici à tout moment. |
+| **What will you provide to the AI?** | Deux onglets. **Input** est un prompt en texte libre. **Variables** attache des champs précis avec **Add Field**. Voir [Lui donner de quoi travailler](#lui-donner-de-quoi-travailler). |
+| **Hints for the AI** (facultatif) | Contexte, ton ou contraintes supplémentaires, tenus séparés de l'instruction principale. |
+| **What should the AI return?** | Le type de sortie — `Text`, `Rich text`, `Number`, `Yes / No`, `List`, `Date` et le reste des types de champs standard. |
+| **Language** | La langue de sortie. La valeur par défaut, `None — match the input language`, suit les données fournies. |
+| **More options** | **Reference as** est la clé que vous tapez dans le contenu — `celebration` devient `{{celebration}}`. **What is it for?** est une description facultative. |
+
+<Note>
+  Une variable IA n'a pas à produire de la prose. Comme vous choisissez le type de retour, elle peut tout aussi bien se résoudre en `Yes / No`, en `Number` ou en une valeur d'une `List` — c'est à cela que servent les modes `Classify` et `Extract`. L'[avertissement ci-dessus](#quand-utiliser-autre-chose) s'applique toujours : déduire une valeur des données de l'enregistrement est acceptable, en inventer une ne l'est pas.
+</Note>
+
+## Lui donner de quoi travailler
+
+L'instruction seule suffit rarement — le modèle a besoin de l'enregistrement. Il y a deux façons de le lui transmettre, et elles peuvent se combiner.
+
+### Directement dans le prompt
+
+Tapez `{{` n'importe où dans la zone **Input** et un sélecteur apparaît, listant chaque variable disponible pour ce modèle avec sa clé et son type. Continuez à taper pour filtrer, puis choisissez-en une pour l'insérer :
+
+<Frame>
+  ![Sélecteur de variables dans le prompt d'une variable IA 1](/images/ai-variable-prompt-variable-picker-1.png "Ai Variable Prompt Variable Picker 1")
+</Frame>
+
+Ainsi, un vœu d'anniversaire qui salue le destinataire par son nom se lit :
+
+```text wrap
+Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
+```
+
+Chaque token est remplacé par la valeur du destinataire avant que l'instruction n'atteigne le modèle : pour Sofia, on demande donc au modèle un vœu _pour Sofia_ plutôt que pour `{{recipient.first_name}}`.
+
+### L'onglet Variables
+
+Passez sur l'onglet **Variables** et choisissez **Add Field** pour attacher des champs au lieu de les nommer dans le prompt. Chaque ligne est un sélecteur avec recherche sur la même liste de variables, et le bouton `−` en supprime un.
+
+<Frame>
+  ![Sélecteur de champs d'une variable IA](/images/ai-variable-picker.png "Ai Variable Picker")
+</Frame>
+
+Attacher un champ transmet sa valeur au modèle sans que vous ayez à le mentionner dans l'instruction. Cela rend aussi les entrées de la variable évidentes pour la prochaine personne qui l'ouvrira, ce qui vaut la peine dès que le prompt s'allonge.
+
+### Pourquoi les entrées comptent
+
+Les champs que vous référencez, par l'une ou l'autre méthode, sont les **entrées** de la variable — et ce sont les entrées qui décident quand elle est recalculée. Donnez-lui les champs dont elle dépend réellement plutôt que de les décrire en prose. Voir [Limitations](#limitations).
+
+## Rédiger l'instruction
+
+Une instruction utilisable nomme sa forme et ses limites. Laissez les contrôles dédiés faire le travail pour lequel ils existent — définissez la langue de sortie dans le contrôle **Language** plutôt que de la décrire dans le prompt, et définissez le type de retour plutôt que d'en demander un :
+
+> Rédige un vœu d'anniversaire amical en une seule phrase, 20 mots maximum. Varie la formulation pour que cela ne sonne pas comme un modèle. Pas d'emoji. Ne commence pas par « Joyeux anniversaire ». Si le prénom du destinataire manque, écris un vœu général sans prénom.
+
+C'est la dernière phrase qui compte le plus. Dites quoi faire quand la donnée manque, sinon le modèle inventera quelque chose pour combler le vide.
+
+**Une instruction plus longue n'est pas une meilleure instruction.** Les contraintes font plus de travail que la description. Indiquez la longueur maximale, le ton, ce qu'elle ne doit pas faire, et quoi produire quand les données sources sont maigres.
+
+## Limitations
+
+**Elle se résout une fois par envoi, puis se répète.** La valeur est générée la première fois que la variable est référencée et réutilisée pour toutes les autres mentions dans le même message — `{{ celebration }}` deux fois dans un e-mail donne donc deux fois la même phrase, pas deux tentatives. Elle est recalculée quand ses entrées changent, ce qui la rend propre à chaque destinataire. Une variable sans entrées attachées n'a rien sur quoi varier.
+
+**Une valeur par défaut stockée n'est pas un filet de sécurité.** Pour une variable IA, la valeur par défaut est l'emplacement dans lequel la valeur générée est écrite, pas une valeur de repli que vous pouvez définir. Si le modèle ne renvoie rien, la variable se résout en rien. Pour garantir que quelque chose apparaisse sur la page, utilisez le modificateur [`default`](/fr/variables/modifiers#valeur-de-repli) là où vous la référencez :
+
+```text
+{{ celebration | default: "We hope you have a lovely day." }}
+```
+
+**Un modèle valide peut quand même partir avec un trou.** La validation vérifie qu'un placeholder est _connu_, pas qu'il aura une valeur au moment de l'envoi. Ce modèle :
+
+```text
+{{ celebration }}
+
+We hope you take some time today to celebrate.
+```
+
+peut donc être validé parfaitement et arriver quand même sous la forme d'un e-mail qui commence par une ligne vide, suivie de « We hope you take some time today to celebrate. » Le modèle n'est pas cassé. La variable n'a rien produit.
+
+**Les envois de test se comportent différemment des vrais envois.** Lors d'un envoi de test, chaque variable personnalisée référencée dans le corps a besoin d'une valeur explicite et non vide que vous fournissez — les valeurs stockées ne sont volontairement pas substituées. Un test propre prouve donc que le texte fonctionne ; il ne prouve pas que la variable se résoudra en production.
+
+Si un destinataire signale un message avec une phrase manquante, une salutation vide ou un fragment isolé, vérifiez quelles variables sont des variables IA avant de supposer que le texte est en cause.
+
+## Avant d'envoyer
+
+<Steps>
+  <Step title="Testez avec des données complètes">
+    Confirmez que la valeur se lit bien et reste dans votre limite de longueur.
+  </Step>
+  <Step title="Testez avec des données manquantes et vides">
+    C'est là que les variables IA échouent. Vérifiez qu'un enregistrement pauvre produit quelque chose d'acceptable plutôt qu'un détail halluciné ou une ligne vide.
+  </Step>
+  <Step title="Testez dans chaque langue d'envoi">
+    Le ton et le degré de formalité ne se transfèrent pas d'une langue à l'autre. Une phrase qui semble chaleureuse en anglais peut sembler trop familière en néerlandais.
+  </Step>
+  <Step title="Lisez-la comme le destinataire">
+    Demandez-vous si un candidat serait gêné, dérouté ou induit en erreur par cette phrase. Si la réponse est peut-être, resserrez les contraintes ou utilisez une phrase fixe.
+  </Step>
+</Steps>
+
+## Voir aussi
+
+- [Variables](/fr/variables/introduction) — les bases et là où les variables fonctionnent
+- [Modificateurs](/fr/variables/modifiers) — formatage déterministe, valeurs par défaut et casse
+- [Définir une langue par défaut et un ton de voix IA](/fr/settings/setting-a-default-language-and-ai-tone-of-voice)
+- [Pourquoi mon automatisation ne s'est-elle pas exécutée ?](/fr/knowledge-base/why-didnt-my-automation-run)

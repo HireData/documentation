@@ -1,7 +1,7 @@
 ---
 title: "Variablen"
 sidebarTitle: "Einführung"
-description: "Personalisieren Sie E-Mails, Nachrichten, Formulare und Automatisierungen in HireData mit Variablen, die dynamische Daten pro Kandidat einsetzen."
+description: "Personalisieren Sie E-Mails, WhatsApp-Nachrichten, Formulare und Automatisierungen in HireData mit Variablen, die Kandidatendaten direkt aus Ihren verbundenen Apps einsetzen."
 ---
 
 Mit Variablen können Sie Live-Daten wie den Namen eines Kandidaten, eine Berufsbezeichnung oder ein Gehalt direkt in Ihre E-Mails, WhatsApp-Nachrichten, Formulare und Automatisierungen einfügen.
@@ -10,13 +10,13 @@ Mit Variablen können Sie Live-Daten wie den Namen eines Kandidaten, eine Berufs
 
 Eine Variable ist ein Feld-Key, umschlossen von doppelten geschweiften Klammern:
 
-```
+```text
 Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
 ```
 
 Wenn dies an eine Kandidatin namens Sofia gesendet wird, die sich auf eine Backend-Engineer-Rolle bewirbt, wird daraus:
 
-```
+```text
 Hi Sofia, thanks for applying to Backend Engineer!
 ```
 
@@ -37,7 +37,7 @@ Sie können Variablen überall dort einsetzen, wo Sie Inhalte schreiben, die ges
 
 Wenn ein Feld für einen bestimmten Datensatz leer ist, wird die Variable durch nichts ersetzt. Um stattdessen einen Standardwert anzuzeigen, verwenden Sie den Modifier [`default`](/de/variables/modifiers#fallback):
 
-```
+```text
 Hi {{ candidate.first_name | default: "there" }}!
 ```
 
@@ -47,7 +47,7 @@ Wenn der Kandidat keinen Vornamen hat, wird „Hi there!" gesendet.
 
 Variablen können mehr, als nur Rohdaten einzufügen. Ein **Modifier** ändert, wie der Wert erscheint. Er kann Text in Großbuchstaben umwandeln, ein Datum formatieren, eine Zahl runden und vieles mehr. Sie fügen einen Modifier mit einem Pipe-Zeichen (`|`) hinzu:
 
-```
+```text
 {{ candidate.first_name | uppercase }}        → SOFIA
 {{ job.salary | format_currency: "EUR" }}      → €65,000.00
 {{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
@@ -55,8 +55,14 @@ Variablen können mehr, als nur Rohdaten einzufügen. Ein **Modifier** ändert, 
 
 Sie können mehrere Modifiers verketten, und jeder wirkt auf das Ergebnis des vorherigen:
 
-```
+```text
 {{ candidate.last_name | lowercase | capitalise }}
 ```
 
 Die vollständige Liste finden Sie auf der Seite [Modifiers](/de/variables/modifiers).
+
+## Einen Wert generieren, statt ihn nachzuschlagen
+
+Jede Variable oben **liest** einen Wert, der bereits existiert. Wenn der Wert für jeden Empfänger neu erarbeitet werden muss — ein persönlicher Einstiegssatz, eine nicht generische Geburtstagszeile — verwenden Sie stattdessen eine [KI-Variable](/de/variables/ai-variables).
+
+Lassen Sie eine KI-Variable nie einen Fakt erfinden. Termine, Gehälter und Vertragsbedingungen gehören in eine normale Variable.
