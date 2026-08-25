@@ -3,7 +3,7 @@ title: "Keep your HireData skills up to date"
 sidebarTitle: "Keep skills up to date"
 description: "HireData improves its skills as the product changes. Check which version you have, update the plugin, refresh skills you installed by hand, and get told when something new arrives."
 keywords: ["update HireData skills", "new HireData skills", "update plugin", "HireData skills version", "check for new skills", "Claude plugin update", "Codex plugin upgrade", "MCP"]
-related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-skills-with-a-prompt"]
+related: ["/apps/mcp/check-for-new-skills-automatically", "/apps/mcp/install-hiredata-plugin", "/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-skills-with-a-prompt"]
 ---
 
 HireData improves its skills as the product changes, and publishes new ones. Your assistant keeps using the copy it has until you update it, so skills you installed six months ago still give six-month-old advice — and won't include skills that didn't exist yet.
@@ -74,28 +74,9 @@ A skill you [installed with a prompt](/apps/mcp/install-hiredata-skills-with-a-p
 
 ## Get told when something changes
 
-If you'd rather not remember to check, have something tell you.
+If you'd rather not remember to check, don't. Claude and ChatGPT can both run a prompt on a schedule, so one of them checks the skills library every morning and only speaks up when something has actually moved — see [check for new skills automatically](/apps/mcp/check-for-new-skills-automatically) for the copy-paste prompt per assistant.
 
-**Claude's Cowork mode can run a task on a schedule.** If you have Cowork, paste the prompt below into a session once and it watches the skills library for you. Not sure whether you have it? Then you don't — use the GitHub option underneath.
-
-```text
-Set up a weekly task that watches the HireData skills library for me.
-
-Every Monday morning:
-1. Look at https://github.com/HireData/skills and list every skill folder under
-   plugins/hiredata/skills, plus the version number in
-   .claude-plugin/marketplace.json.
-2. Compare that with the HireData skills available to you in the session, and
-   with what the previous run of this task reported.
-3. Tell me only about differences: skills that are new, skills that changed
-   since the last check, and a version number that has moved. One line each on
-   what changed, with the link to the change on GitHub.
-4. If nothing changed, say so in a single line and do not notify me.
-```
-
-The task tells you what moved and where; you still press update on the plugin, or re-run the install prompt, yourself. Add _"package anything new as a .skill file and send it to me"_ and it hands you the files ready to save.
-
-**Or follow the repository.** Open [github.com/HireData/skills](https://github.com/HireData/skills), click **Watch**, and choose what you want to hear about — you need a GitHub account. If you use an RSS reader, `https://github.com/HireData/skills/commits/main.atom` gives you the same changes as a feed. New skills are also announced with other product news at [hiredata.com](https://www.hiredata.com/).
+No scheduled tasks on your plan? Follow the repository instead: open [github.com/HireData/skills](https://github.com/HireData/skills), click **Watch**, and choose what you want to hear about — you need a GitHub account. If you use an RSS reader, `https://github.com/HireData/skills/commits/main.atom` gives you the same changes as a feed. New skills are also announced with other product news at [hiredata.com](https://www.hiredata.com/).
 
 ## Troubleshooting
 
