@@ -32,7 +32,7 @@ The request method tells HireData what kind of request to expect:
 | `POST` (default) | From the request body, as JSON or form data |
 | `GET` | From the address's query parameters |
 
-Requests with a different method than the one configured are rejected.
+HireData rejects requests with a different method than the one configured.
 
 ## Describe the fields you'll receive
 
@@ -95,7 +95,7 @@ If someone else manages the tool that will send the data, the **Request Examples
 
 ### Sending test requests
 
-Any request can be marked as a test by adding a header:
+You can mark any request as a test by adding a header:
 
 ```
 X-HireData-Test: true
