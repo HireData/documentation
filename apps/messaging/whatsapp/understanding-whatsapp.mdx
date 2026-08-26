@@ -64,85 +64,83 @@ Each part has its own purpose and, in many cases, its own ID.
 
 ## Accounts and IDs
 
-<AccordionGroup>
-  <Accordion title="Meta Business Portfolio" icon="briefcase-business">
-    A **Meta Business Portfolio**, previously called a **Business Manager account**, is the main environment in which a company manages its Meta assets.
+### Meta Business Portfolio
 
-    It can contain Facebook Pages, advertising accounts, users, and WhatsApp Business Accounts.
+A **Meta Business Portfolio**, previously called a **Business Manager account**, is the main environment in which a company manages its Meta assets.
 
-    The **Business Portfolio ID**, also called the **Business ID** or **Business Manager ID**, uniquely identifies this environment.
-  </Accordion>
+It can contain Facebook Pages, advertising accounts, users, and WhatsApp Business Accounts.
 
-  <Accordion title="WhatsApp Business Account (WABA)" icon="message-square-more">
-    A **WhatsApp Business Account**, usually abbreviated to **WABA**, is the administrative account containing a company's WhatsApp Business Platform assets.
+The **Business Portfolio ID**, also called the **Business ID** or **Business Manager ID**, uniquely identifies this environment.
 
-    A WABA can contain business phone numbers, message templates, account settings, quality information, and payment information.
+### WhatsApp Business Account (WABA)
 
-    The **WABA ID** identifies the account as a whole. It does not identify an individual phone number.
-  </Accordion>
+A **WhatsApp Business Account**, usually abbreviated to **WABA**, is the administrative account containing a company's WhatsApp Business Platform assets.
 
-  <Accordion title="Business phone number" icon="phone">
-    The business phone number is the real number customers see and contact on WhatsApp—for example, `+31 20 123 4567`.
+A WABA can contain business phone numbers, message templates, account settings, quality information, and payment information.
 
-    The business must prove that it controls this number during setup.
-  </Accordion>
+The **WABA ID** identifies the account as a whole. It does not identify an individual phone number.
 
-  <Accordion title="Phone Number ID" icon="badge-hash">
-    The **Phone Number ID** is an internal Meta identifier assigned to a business phone number.
+### Business phone number
 
-    For example:
+The business phone number is the real number customers see and contact on WhatsApp—for example, `+31 20 123 4567`.
 
-    - Telephone number customers see: `+31 20 123 4567`
-    - Internal Phone Number ID: `107654321234567`
+The business must prove that it controls this number during setup.
 
-    The WhatsApp API uses the Phone Number ID to determine which business number should send a message. It is not interchangeable with the actual telephone number.
-  </Accordion>
+### Phone Number ID
 
-  <Accordion title="Display name" icon="tag">
-    The **display name** is the business name customers see in their WhatsApp conversation—for example, “Example Recruitment.”
+The **Phone Number ID** is an internal Meta identifier assigned to a business phone number.
 
-    Meta reviews this name. It must accurately represent the business and comply with WhatsApp's naming rules.
+For example:
 
-    Display-name approval is separate from verifying control of the phone number, completing Meta business verification, and receiving a verified badge.
-  </Accordion>
+- Telephone number customers see: `+31 20 123 4567`
+- Internal Phone Number ID: `107654321234567`
 
-  <Accordion title="WhatsApp ID (wa_id)" icon="contact">
-    A **WhatsApp ID**, commonly shown as `wa_id`, identifies a person on WhatsApp.
+The WhatsApp API uses the Phone Number ID to determine which business number should send a message. It is not interchangeable with the actual telephone number.
 
-    It is normally based on the person's international phone number without spaces or a plus sign. For example, `31612345678`.
+### Display name
 
-    - A **Phone Number ID** identifies the company's sending number inside Meta.
-    - A **`wa_id`** identifies a WhatsApp user or recipient.
-  </Accordion>
+The **display name** is the business name customers see in their WhatsApp conversation—for example, “Example Recruitment.”
 
-  <Accordion title="Meta App ID" icon="app-window">
-    A **Meta App** provides the technical connection between WhatsApp and another software platform.
+Meta reviews this name. It must accurately represent the business and comply with WhatsApp's naming rules.
 
-    The **App ID** identifies that application. It does not identify the company, its WABA, or its phone number.
-  </Accordion>
+Display-name approval is separate from verifying control of the phone number, completing Meta business verification, and receiving a verified badge.
 
-  <Accordion title="Access token" icon="key-round">
-    An **access token** is a secret credential that allows software to access the WhatsApp API.
+### WhatsApp ID (`wa_id`)
 
-    <Warning>
-      Treat an access token like a password. Never include it in screenshots, support tickets, public documents, or source code.
-    </Warning>
-  </Accordion>
+A **WhatsApp ID**, commonly shown as `wa_id`, identifies a person on WhatsApp.
 
-  <Accordion title="Message ID" icon="message-square-code">
-    Every sent and received message has a unique **Message ID**. WhatsApp message IDs often begin with `wamid`.
+It is normally based on the person's international phone number without spaces or a plus sign. For example, `31612345678`.
 
-    A system uses this ID to match replies to earlier messages, mark incoming messages as read, track delivery, and determine whether a message was sent, delivered, read, or failed.
-  </Accordion>
+- A **Phone Number ID** identifies the company's sending number inside Meta.
+- A **`wa_id`** identifies a WhatsApp user or recipient.
 
-  <Accordion title="Template ID and template name" icon="file-text">
-    A **message template** is a reusable message format reviewed by WhatsApp.
+### Meta App ID
 
-    Each template has a name, language, category, review status, Template ID, and content with optional variables and buttons.
+A **Meta App** provides the technical connection between WhatsApp and another software platform.
 
-    The template name is normally used when sending the message. The numerical Template ID identifies the template inside Meta.
-  </Accordion>
-</AccordionGroup>
+The **App ID** identifies that application. It does not identify the company, its WABA, or its phone number.
+
+### Access token
+
+An **access token** is a secret credential that allows software to access the WhatsApp API.
+
+<Warning>
+  Treat an access token like a password. Never include it in screenshots, support tickets, public documents, or source code.
+</Warning>
+
+### Message ID
+
+Every sent and received message has a unique **Message ID**. WhatsApp message IDs often begin with `wamid`.
+
+A system uses this ID to match replies to earlier messages, mark incoming messages as read, track delivery, and determine whether a message was sent, delivered, read, or failed.
+
+### Template ID and template name
+
+A **message template** is a reusable message format reviewed by WhatsApp.
+
+Each template has a name, language, category, review status, Template ID, and content with optional variables and buttons.
+
+The template name is normally used when sending the message. The numerical Template ID identifies the template inside Meta.
 
 ## Important messaging terms
 
@@ -206,7 +204,7 @@ During this process, the customer signs in to Meta and selects or creates:
 | **Business Portfolio ID** | The company's overall business environment in Meta |
 | **WABA ID** | The company's WhatsApp Business Account |
 | **Phone Number ID** | A business sending number inside the API |
-| **`wa_id`** | A WhatsApp user or recipient |
+| **WhatsApp ID** | A WhatsApp user or recipient |
 | **App ID** | The application connected to WhatsApp |
 | **Template ID** | An approved message template |
 | **Message ID** | One individual sent or received message |
