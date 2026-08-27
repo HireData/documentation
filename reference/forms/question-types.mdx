@@ -1,0 +1,430 @@
+---
+title: "Form question types"
+sidebarTitle: "Question types"
+description: "Every question type in the HireData form builder: settings, stored answer, logic operators, evaluation support, required-field rules, a logic cookbook, and saveForm examples."
+keywords: ["form question types", "form field types", "yes/no question", "multiple choice", "dropdown", "net promoter score", "opinion scale", "file upload", "ending screen", "redirect url", "required question", "form logic", "jump rule", "all other cases go to", "logic operators", "stored answer value", "saveForm", "create form mcp", "mutate form", "formuliervelden", "vraagtypen"]
+---
+
+_What each question type in the form builder collects, how the answer is stored, which logic rules you can attach, and how to create the same form through the API or MCP._
+
+This page is the reference for the **Add Content** palette in the form builder. For the walkthrough that takes you from an empty form to a published one, read [Creating a form in HireData](/content/creating-a-form-in-hiredata).
+
+The builder opens the palette when you click the **+** button above the question list. Questions are grouped by category, and a **Recommended** list on the left repeats the six most used types.
+
+![The Add Content palette with its Recommended list and the Text, Contact Info, Temporal, Choice, Numeric, Rating, Other, and Ending groups](/images/forms-builder/01-add-content-palette.png)
+
+## Choosing a question type
+
+The palette shows 18 entries. Each row links to the section that describes that type.
+
+| Question type | Group | Stores | Logic operators | Works with evaluation |
+|---|---|---|---|---|
+| [Short Text](#short-text-and-long-text) | Text | text | text operators | Yes |
+| [Long Text](#short-text-and-long-text) | Text | text | text operators | Yes |
+| [Email](#email-phone-number-and-website) | Contact Info | text | text operators | Yes |
+| [Phone Number](#email-phone-number-and-website) | Contact Info | text | text operators | Yes |
+| [Website](#email-phone-number-and-website) | Contact Info | text | text operators | Yes |
+| [Date](#date-time-and-datetime) | Temporal | date and time, UTC | has response | Yes |
+| [Time](#date-time-and-datetime) | Temporal | date and time, UTC | has response | Yes |
+| [Datetime](#date-time-and-datetime) | Temporal | date and time, UTC | has response | Yes |
+| [Yes/No](#yes-no) | Choice | true or false | is equal to, is not equal to | Yes |
+| [Multiple Choice](#multiple-choice-and-dropdown) | Choice | list of chosen options | choice operators | Yes |
+| [Dropdown](#multiple-choice-and-dropdown) | Choice | list of chosen options | choice operators | Yes |
+| [Number](#number-and-currency) | Numeric | number | numeric operators | Yes |
+| [Currency](#number-and-currency) | Numeric | number | numeric operators | Yes |
+| [Net Promoter Score](#net-promoter-score-and-opinion-scale) | Rating | whole number 0 to 10 | numeric operators | Yes |
+| [Opinion Scale](#net-promoter-score-and-opinion-scale) | Rating | whole number within the scale | numeric operators | Yes |
+| [File Upload](#file-upload) | Other | list of files | has response | Yes |
+| [Ending Screen](#ending-screen-and-redirect-url) | Ending | nothing | none | No |
+| [Redirect URL](#ending-screen-and-redirect-url) | Ending | nothing | none | No |
+
+"Works with evaluation" means the question can take part in Criteria, Scoring, and Skills on the **Evaluation** tab. Every question type except the two endings can. The two rating types, Yes/No, and the two choice types are the only ones a conversational form can present as buttons.
+
+The operator groups are spelled out in [Logic operators by category](#logic-operators-by-category).
+
+## Settings every question has
+
+Click a question in the list to open its card. Every question type except Redirect URL has these settings:
+
+- **Question**, up to 255 characters. Ending screens call this **Title**.
+- **Description**, up to 1024 characters, shown under the question.
+- **Image**, with a placement selector that defaults to **Above the Input Field**. The other placements are **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page**, and **Background**.
+- **Auto reply (on answer)**, "Message that will be sent when this question is answered." Yes/No and the choice types replace this with per-answer replies. Endings don't have it.
+- **Auto reply (on invalid answer)**, "Message that will be sent when a required question is answered incorrectly." It only appears once **Required** is on.
+- A type switch in the footer, labelled with the current type, for types that have a sibling: Short Text and Long Text, Yes/No's Checkbox and Toggle, Multiple Choice and Dropdown, Net Promoter Score and Opinion Scale.
+- **Required** and **Hidden** toggles in the footer. Endings and Redirect URL don't have them.
+
+![A Yes/No question card open in the builder, showing Question, Description, Image, Auto reply (Yes), Auto reply (No), the Checkbox type switch, and the Required and Hidden toggles, with the Interactive Preview on the right](/images/forms-builder/02-question-card-yes-no.png)
+
+A hidden question is skipped when the respondent moves through the form, and logic rules cannot jump to it. Its stored answer stays available to automations, which is how you carry a default value through a form.
+
+## Question types
+
+### Short Text and Long Text
+
+Short Text is a single line. Long Text is a multi-line box. Switch between them with the footer type switch. Through the API, Short Text is `fieldType: "text"` with no subtype and Long Text is `fieldType: "text"` with `subType: "memo"`.
+
+Settings: **Placeholder** (up to 255 characters), **Minimum Length**, **Maximum Length**, and **Validation Pattern**, a regular expression the answer has to match, for example `/^[a-zA-Z0-9 ]*$/`.
+
+Stored answer: a text string. When a text field receives a list, HireData joins the items with a comma.
+
+Logic operators: has response, is equal to, is not equal to, starts with, ends with, contains, does not contain.
+
+Evaluation: Criteria, Scoring, and Skills. Criteria on text questions default to **Evaluate with AI** because a text answer rarely matches an exact expectation.
+
+### Email, Phone Number, and Website
+
+Three text questions with server-side format checks. Email must be a valid email address. Phone Number accepts an optional leading `+` followed by 5 to 20 characters of digits, spaces, dots, slashes, dashes, and brackets, with at least five digits. Website must be a valid web address. API types: `email`, `phone`, `url`.
+
+Settings: the same as text. **Placeholder**, **Minimum Length**, **Maximum Length**, **Validation Pattern**.
+
+Stored answer: a text string.
+
+Logic operators: the text operators.
+
+Evaluation: Criteria, Scoring, and Skills.
+
+### Date, Time, and Datetime
+
+Date asks for a calendar date, Time for a time of day, Datetime for both. API types: `date`, `time`, `datetime`. Time must arrive as `HH:MM` on a 24-hour clock.
+
+Settings: none beyond the common ones. The card has no type-specific controls.
+
+Stored answer: a date-time value in UTC, for all three types.
+
+Logic operators: has response only. The builder offers no comparison operators for temporal questions. `saveForm` accepts the numeric operators on these types, but the builder cannot show or edit such a rule.
+
+Evaluation: Criteria, Scoring, and Skills. Answer rules on the **Evaluation** tab do offer comparisons such as greater than and less than for dates.
+
+### Yes/No
+
+One question, two answers. Yes/No is `fieldType: "binary"` with `subType: "checkbox"` (a single tick box) or `subType: "toggle"` (an on/off switch). New Yes/No questions start as Checkbox. Use the footer type switch to change to Toggle.
+
+Settings: **Auto reply (Yes)**, "Message that will be sent when the answer is Yes." and **Auto reply (No)**, "Message that will be sent when the answer is No." There is no placeholder.
+
+Stored answer: `true` or `false`. A checkbox left unticked stores `false`.
+
+Logic operators: has response, is equal to, is not equal to, with **Yes** and **No** as the values.
+
+Evaluation: Criteria, Scoring, and Skills.
+
+Read [Required questions](#required-questions) before you make a Yes/No question required. A required Yes/No question cannot be answered No in the web form today.
+
+### Multiple Choice and Dropdown
+
+Multiple Choice shows the options as a list. Dropdown shows them in a select menu. Both are `fieldType: "choice"`, with `subType: "list"` for Multiple Choice and `subType: "dropdown"` for Dropdown. Switch between them with the footer type switch.
+
+Settings:
+
+- **Options**. Each option has a label the respondent sees and a value that is stored. Drag to reorder. The cog on an option holds a per-option **Auto reply (on answer)**.
+- **Add Data Source** replaces the static options with a workspace data source. A field uses either static options or a data source, never both.
+- **Conversational Button Text**, "When this field is shown as a select menu this will be the text shown on the button." Defaults to "Choose".
+- **Placeholder**, Dropdown only.
+- **Multiple** in the footer, which lets the respondent pick more than one option.
+
+Stored answer: a list of `{ "label": ..., "value": ... }` objects, even when **Multiple** is off. The `value` is the option's value, not its ID. Nothing selected stores an empty list, which does not satisfy **Required**.
+
+Logic operators: has response, is equal to, is not equal to, is one of, is not one of. Rule values are chosen from the question's options. `saveForm` rejects a rule whose value is not one of the field's option values.
+
+Evaluation: Criteria, Scoring, and Skills.
+
+### Number and Currency
+
+Number collects a plain number. Currency adds a symbol. API types: `number`, `currency`.
+
+Settings: **Placeholder**, **Minimum Value**, **Maximum Value**, **Steps**. Currency adds **Currency Symbol** with `$`, `€`, `£`, `¥`, and `₹`.
+
+Stored answer: a number. `0` is a valid answer and is stored as `0`.
+
+Logic operators: has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to.
+
+Evaluation: Criteria, Scoring, and Skills.
+
+### Net Promoter Score and Opinion Scale
+
+Both are `fieldType: "rating"`. Net Promoter Score is `subType: "nps"`, a fixed 0 to 10 scale with the labels "Not likely at all" and "Extremely likely". Opinion Scale is `subType: "numeric"` and lets you set the scale. Switch between them with the footer type switch.
+
+Settings for Net Promoter Score: **Conversational Button Text** only. The scale and its labels are fixed.
+
+Settings for Opinion Scale:
+
+- **Scale**, a minimum of **0** or **1** and a maximum from **1** to **10**.
+- **Min label**, **Mid label**, **Max label**, up to 50 characters each.
+- **Reverse** in the footer, which shows the scale from high to low.
+- **Conversational Button Text**.
+
+![An Opinion Scale question with a 1 to 5 scale, the three label fields, and the Reverse toggle](/images/forms-builder/03-opinion-scale-settings.png)
+
+Stored answer: a whole number within the scale. `saveForm` validates the answer against `min_value` and `max_value`.
+
+Logic operators: the numeric operators. The value picker lists the points on the scale.
+
+Evaluation: Criteria, Scoring, and Skills. Scoring rules on a rating question are the usual way to turn a score into points.
+
+### File Upload
+
+Lets the respondent attach files. API type `file`.
+
+Settings: **Multiple**, a Yes/No select, and **File type**, a preset list: Any, Image, Audio, Video, Media, PDF, Document, Powerpoint, Word Document, Sheet, Archive. The preset becomes an `accept` string such as `application/pdf`.
+
+Stored answer: a list of files, each with `file_name`, `file_url`, `mime_type`, and `extension`.
+
+Logic operators: has response only.
+
+Evaluation: Criteria, Scoring, and Skills. Rule-based evaluation sees only the file metadata. AI evaluation reads the file contents for JPEG, PNG, GIF, WebP, and PDF, up to 5 files and 10 MB in total.
+
+### Ending Screen and Redirect URL
+
+Endings sit under the **Endings** divider at the bottom of the question list. A form can have several, and logic rules pick which one a respondent reaches. Both are `fieldType: "ending"`. Redirect URL is `subType: "redirect"`.
+
+Ending Screen settings: **Title**, **Description**, **Image**, and a **Button** toggle. Turning the button on reveals **Button Text** (defaults to "Submit Form"), **Redirect URL**, **Redirect Timer**, and **Timer** in seconds from 0 to 10. When the timer is on, the form opens the redirect URL after the countdown.
+
+Redirect URL settings: a single **Redirect URL** field. The respondent is sent there as soon as they reach it. No title, description, required, or hidden controls.
+
+Stored answer: none. Endings hold no answer.
+
+Logic: endings have no **Add Rule** button and cannot be the source of a condition. They are the usual target of a rule.
+
+Evaluation: not available. Endings do not appear on the **Evaluation** tab.
+
+### Types the builder does not show
+
+`saveForm` accepts a few more values than the palette offers. `fieldType: "range"` and `fieldType: "color"` exist, and `rating` accepts the subtypes `star`, `thumbs`, `emoji`, and `slider`. The builder cannot add them and has no settings card for them.
+
+<Note>
+  Range, Color, and the Star, Thumbs, Emoji, and Slider rating subtypes are available through the API and MCP only. This page does not cover how the web form renders them.
+</Note>
+
+## Required questions
+
+Turning **Required** on adds an asterisk to the question label and stops the respondent from continuing until the question has an answer.
+
+The server rule is Laravel's `required`. An answer satisfies it unless it is `null`, an empty string, or an empty list. So:
+
+| Answer | Satisfies Required |
+|---|---|
+| `false` (Yes/No answered No, or a toggle left off) | Yes |
+| `0` (Number, Currency, Net Promoter Score, or Opinion Scale) | Yes |
+| `null` or missing | No |
+| Empty string | No |
+| Empty list (nothing chosen, no file) | No |
+
+<Warning>
+  The web form at forms.hiredata.com currently rejects `false` and `0` on required questions. A respondent who answers No on a required Yes/No question, leaves a required toggle off, or enters 0 in a required Number question clicks **Next** and nothing happens. No message is shown. The answer is saved, but the form does not advance, and any logic rule on that question does not fire. Until this is fixed, do not make Yes/No questions required, and set a minimum of 1 on required numeric questions where 0 is not a meaningful answer.
+</Warning>
+
+Empty answers behave as designed. The web form shows "This field is required and cannot be empty." for an empty required text question and "Please enter a number (like 42 or 3.14)." for an empty required Number question.
+
+In a conversational form, **Auto reply (on invalid answer)** is the message sent when a required question receives no usable answer.
+
+## Conditional logic
+
+Open the **Logic** tab to attach rules to a question. Each question in the list has an **Add Rule** button and a footer target.
+
+![A logic rule that jumps to a follow-up question when the score is 7 or less, with All other cases go to the ending](/images/forms-builder/04-logic-rule-and-fallback.png)
+
+### Anatomy of a rule
+
+A rule reads `if <question> <operator> <value> then go to <target>`.
+
+- The **if** row holds one or more conditions. **Add Condition** adds another. All conditions must be met for the rule to fire.
+- A condition can reference the question itself or any earlier question. Later questions and endings are not offered.
+- **then go to** picks the target from every other question and ending. Hidden questions are excluded.
+- **Delete Rule** removes the rule.
+
+Under the rules sits the fallback row. It reads **All other cases go to** when the question has at least one rule and **Always go to** when it has none. Leave it on **Select...** to continue to the next question in the list.
+
+HireData checks the rules in order and follows the first one whose conditions are all met. If none match, it follows the fallback. Without a fallback, it moves to the next question. Hidden questions are skipped along the way.
+
+Through `saveForm`, a rule is a `jump` action with `condition.operator` set to `if`. The fallback is a `jump` with `condition.operator` set to `fallback` and an empty `conditions` list. See [saveForm examples](#saveform-examples).
+
+### Logic operators by category
+
+Every category offers **has response**, which is true once the question has any answer. The builder adds these per category:
+
+| Category | Question types | Extra operators |
+|---|---|---|
+| Text and Contact Info | Short Text, Long Text, Email, Phone Number, Website | is equal to, is not equal to, starts with, ends with, contains, does not contain |
+| Choice: Yes/No | Yes/No | is equal to, is not equal to |
+| Choice: options | Multiple Choice, Dropdown | is equal to, is not equal to, is one of, is not one of |
+| Numeric and Rating | Number, Currency, Net Promoter Score, Opinion Scale | is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to |
+| Temporal and Other | Date, Time, Datetime, File Upload | none |
+| Ending | Ending Screen, Redirect URL | rules not available |
+
+The API keys are `has_response`, `equals`, `not_equals`, `starts_with`, `ends_with`, `contains`, `does_not_contain`, `does_not_start_with`, `does_not_end_with`, `greater_than`, `less_than`, `greater_than_or_equal`, `less_than_or_equal`, `between`, `one_of`, and `not_one_of`. `saveForm` validates them by type: the comparison operators and `between` on Number, Currency, Range, the rating types, Date, Time, and Datetime; the string operators on the text types and choice types; `one_of` and `not_one_of` on choice types only. `equals` and `not_equals` pass on any type. `between` needs exactly two values. The builder shows only the operators in the table above, so a rule that uses `between` or `does_not_start_with` is editable through the API only.
+
+### Logic cookbook
+
+**Ask why after a low score.** On a Net Promoter Score question, add a rule `if` this question `is less than or equal to` `7` `then go to` a Long Text question "What could we do better?". Set **All other cases go to** the ending. Respondents who score 8 or higher skip the follow-up.
+
+**Collect a contact detail only when asked for.** On a Multiple Choice question "May we contact you about your answer?" with options "Yes, by email", "Yes, by phone", and "No", add a rule `if` this question `is equal to` "Yes, by email" `then go to` an Email question. Add a second rule for "Yes, by phone" that goes to a Phone Number question. Set **All other cases go to** the ending.
+
+**Route on Yes/No.** On a Yes/No question, add a rule `if` this question `is equal to` **Yes** `then go to` the follow-up. Set **All other cases go to** the question after the follow-up. Keep the question optional until the required-field issue above is fixed.
+
+**Send different groups to different endings.** Add one Ending Screen per outcome. On the deciding question, add one rule per outcome that goes to its ending, and point **All other cases go to** at the default ending.
+
+**Skip a block of questions.** On the last question before the block, set **Always go to** the first question after the block. No rule needed.
+
+**Combine two conditions.** Click **Add Condition** in a rule to require both, for example `Opinion Scale is greater than or equal to 4` and `Yes/No is equal to Yes`. Both conditions can reference earlier questions.
+
+**Check that a file was attached.** On a File Upload question, use `has response` to route respondents who attached something to a different question than those who skipped it.
+
+## Testing and troubleshooting
+
+Before you publish, walk the form once per branch in the **Interactive Preview** on the right of the builder. The preview runs the same logic as the public form.
+
+- **A rule never fires.** Check that the condition's question comes before or is the question that holds the rule. Rules cannot look ahead.
+- **The form jumps to the wrong question.** Rules run top to bottom and the first match wins. Reorder the rules or make the earlier conditions narrower.
+- **The respondent is stuck on a required question with no message.** They answered No, turned a toggle off, or entered 0. See [Required questions](#required-questions).
+- **A rule target is missing from the picker.** The target is hidden, or it is the question itself. Unhide it or pick another target.
+- **The choice rule value is not accepted.** The value must match one of the question's option values exactly. If the options come from a data source, the values are the source's values.
+- **The Opinion Scale rule value picker shows the wrong range.** Set the value through `saveForm`, where any number within the scale is accepted.
+- **A Yes/No auto reply is not sent.** Yes/No uses **Auto reply (Yes)** and **Auto reply (No)**, not the generic on-answer reply.
+- **`saveForm` rejects the payload.** The most common causes are a `configuration.type` that differs from `fieldType`, a `configuration.values` object with a key the type does not allow, a `values` object that is empty, a `subType` the type does not support, a duplicate option value, or a logic reference to a field that does not exist. Omit `configuration` entirely when a field needs no settings.
+- **A mutate call fails with a revision error.** Call `searchForms` with `operation: show` again and pass the fresh `revision` as `expectedRevision`. Every change to the form changes the revision.
+
+## saveForm examples
+
+Both examples were run against a live workspace and passed validation. `clientRef` names a new field so that logic in the same call can point at it before the field has an ID. The response maps each `clientRef` to the created UUID in `effects.referenceMap`.
+
+### Create a form with a score, a follow-up, and a fallback
+
+```json
+{
+  "workspace": "1",
+  "operation": "create",
+  "arguments": {
+    "set": {
+      "name": "Candidate experience survey",
+      "formType": "form",
+      "status": "draft",
+      "isPublic": false
+    },
+    "fields": [
+      {
+        "clientRef": "nps",
+        "fieldType": "rating",
+        "subType": "nps",
+        "label": "How likely are you to recommend us to a friend?",
+        "required": true,
+        "configuration": {
+          "type": "rating",
+          "values": { "min_value": 0, "max_value": 10 }
+        },
+        "logic": [
+          {
+            "type": "jump",
+            "details": { "to": { "type": "field", "value": "improve" } },
+            "condition": {
+              "operator": "if",
+              "conditions": [
+                { "field": "nps", "operator": "less_than_or_equal", "value": 7 }
+              ]
+            }
+          },
+          {
+            "type": "jump",
+            "details": { "to": { "type": "field", "value": "thanks" } },
+            "condition": { "operator": "fallback", "conditions": [] }
+          }
+        ]
+      },
+      {
+        "clientRef": "improve",
+        "fieldType": "text",
+        "subType": "memo",
+        "label": "What could we do better?",
+        "required": false,
+        "configuration": {
+          "type": "text",
+          "values": { "placeholder": "Tell us in a few sentences" }
+        }
+      },
+      {
+        "clientRef": "thanks",
+        "fieldType": "ending",
+        "label": "Thank you for your feedback",
+        "configuration": {
+          "type": "ending",
+          "values": { "button_enabled": false, "timer_enabled": false }
+        }
+      }
+    ]
+  }
+}
+```
+
+The server stores the rating with `reverse: false` added, and the Long Text question keeps its placeholder.
+
+### Add a choice question with a rule to an existing form
+
+Fetch the form first with `searchForms`, `operation: show`, and copy its `revision`. Field IDs in the example are placeholders for the IDs that call returns.
+
+```json
+{
+  "workspace": "1",
+  "operation": "mutate",
+  "arguments": {
+    "formId": "01a04182-5051-70db-9f62-d50890ab1d1a",
+    "expectedRevision": "<revision from searchForms show>",
+    "operations": [
+      {
+        "type": "addField",
+        "clientRef": "contact",
+        "field": {
+          "fieldType": "choice",
+          "subType": "list",
+          "label": "May we contact you about your answer?",
+          "required": true,
+          "configuration": { "type": "choice", "values": { "multiple": false } },
+          "options": [
+            { "label": "Yes, by email", "value": "email" },
+            { "label": "Yes, by phone", "value": "phone" },
+            { "label": "No", "value": "no" }
+          ]
+        }
+      },
+      {
+        "type": "addField",
+        "clientRef": "email",
+        "field": { "fieldType": "email", "label": "What is your email address?", "required": true }
+      },
+      {
+        "type": "reorderFields",
+        "fieldIds": ["<nps id>", "<improve id>", "contact", "email", "<thanks id>"]
+      },
+      {
+        "type": "setFieldLogic",
+        "fieldId": "contact",
+        "logic": [
+          {
+            "type": "jump",
+            "details": { "to": { "type": "field", "value": "email" } },
+            "condition": {
+              "operator": "if",
+              "conditions": [{ "field": "contact", "operator": "equals", "value": "email" }]
+            }
+          },
+          {
+            "type": "jump",
+            "details": { "to": { "type": "field", "value": "<thanks id>" } },
+            "condition": { "operator": "fallback", "conditions": [] }
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Operations run in order and the whole batch is rolled back if any of them fails. The Email field has no `configuration` because it needs no settings; the server fills in `{ "type": "email", "values": {} }` itself. The response reports `changes: ["field_added", "fields_reordered", "logic_set"]`.
+
+### Rules that trip up generated payloads
+
+- `fieldType` values are the bare type: `text`, `email`, `phone`, `date`, `time`, `datetime`, `binary`, `rating`, `number`, `currency`, `url`, `choice`, `file`, `ending`. Subtypes go in `subType`.
+- `binary`, `rating`, and `choice` need a `subType`. `text` and `ending` may omit it.
+- Only `choice` fields take `options`. Option `label` and `value` are both required, and values must be unique within the field.
+- `configuration.type` must equal `fieldType`. Allowed keys per type: `placeholder` and `validation` for the text types and Number; `currency_symbol`, `placeholder`, `validation` for Currency; `yes_auto_reply_message`, `no_auto_reply_message` for Yes/No; `min_value`, `max_value`, `reverse`, `conversationalButtonText`, `min_label`, `mid_label`, `max_label` for ratings; `placeholder`, `conversationalButtonText`, `multiple` for choice; `multiple`, `accept` for File Upload; `button_enabled`, `button_text`, `redirect_url`, `timer_enabled`, `timer` for endings. Date, Time, Datetime, and Color take none.
+- `timer_enabled: true` needs a positive `timer`.
+- A rule cannot jump to its own question, and the logic graph may not loop.
+- Field positions stay contiguous from 0. `reorderFields` must list every field.
