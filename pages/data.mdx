@@ -4,55 +4,116 @@ sidebarTitle: "Data"
 description: "Use the Data tab in HireData to research synced records, review communication history, and inspect responses to WhatsApp messages and forms."
 ---
 
-The **Data** tab is the central place to inspect the information HireData receives from your connected systems and the activity HireData creates around it.
+The **Data** tab brings together information from your connected systems and the activity HireData creates around it. It helps you answer three different questions:
 
-Use it to research a specific record, review a person's communication history, or inspect responses to WhatsApp messages and forms.
+- **What data do we have about this record?**
+- **What have we communicated with this person?**
+- **What answers did we receive?**
+
+Use the three views—**Collections**, **People**, and **Responses**—as different ways into the same operational history.
+
+## Choose the right view
+
+| When you want to… | Start in | What you’ll find |
+| --- | --- | --- |
+| Research a candidate or another object from a connected system | **Collections** | Synced fields and relationships to people, automations, forms, events, runs, and tasks |
+| Review communication with one person | **People** | WhatsApp conversations and email messages recorded by HireData |
+| Inspect an answer to a message or form | **Responses** | Response timing, submitted answers, and links to related activity |
+
+<Note>
+  The collections, fields, and relationships you can see depend on the apps connected to your workspace and the data they make available to HireData.
+</Note>
+
+## Watch the overview
 
 <iframe src="https://supercut.ai/embed/hiredata/G9RSDbEQylIlECehDKjxj5?embed=full" title="HireData Data tab overview" allow="clipboard-write; encrypted-media; picture-in-picture" allowFullScreen className="w-full aspect-video rounded-xl" />
 
-## What's in the Data tab
+## Collections: investigate synced records
 
-Open **Data** in HireData. At the top of the page, you can switch between three sections:
+**Collections** is the object-centered view of your data. Each collection represents a type of record supplied by a connected app. Depending on your setup, that might include candidates and other ATS objects.
 
-- **Collections** — Browse and investigate records synced from your connected systems.
-- **People** — Review communication with an individual person.
-- **Responses** — Inspect answers received through messages and forms.
-
-## Research records in Collections
-
-The **Collections** section contains the objects available from your connected systems. The exact collections depend on the integrations configured for your workspace.
+### Find a record
 
 1. Open **Data** and select **Collections**.
-2. Choose the collection you want to inspect, such as candidates.
-3. Search for a record by its ID. For Carerix records, use the same candidate ID you see in Carerix.
-4. Open the record to review its related information.
+2. Choose the collection that contains the record you need.
+3. Search using the record's source-system ID.
+4. Open the result to inspect its fields and related information.
 
-Depending on the record, you can inspect related people, automations, forms, events, runs, tasks, and synced fields. This makes Collections useful when you want to understand what has happened to a particular candidate or other object.
+In the Carerix example shown in the video, the candidate ID in HireData matches the ID in Carerix. Using the source-system ID is especially helpful when multiple people have similar names.
 
-## Review communication in People
+### Follow the related data
 
-Use **People** to inspect the messages associated with an individual.
+A collection record is more than a list of fields. Its relationships can show the operational history surrounding that record, including:
+
+- People connected to the record
+- Automations associated with it
+- Forms sent or completed
+- Events received from connected apps
+- Runs created by automations
+- Tasks executed during those runs
+
+These relationships let you move from “What data is stored?” to “What happened, and why?”
+
+<Tip>
+  Keep the underlying recruitment objects separate while investigating. A person, an application or match, and a placement are different records. One candidate can have multiple applications or placements over time, so open the specific related record instead of assuming there is only one.
+</Tip>
+
+## People: review communication history
+
+**People** is the conversation-centered view. Use it when your question is about communication with an individual rather than the fields on an ATS object.
 
 1. Open **Data** and select **People**.
-2. Find and open the person you want to review.
-3. Check their WhatsApp conversations and email messages.
+2. Find and open the person.
+3. Review the available WhatsApp conversations and email messages.
 
-If HireData has not recorded any messages for that person, the conversation history will be empty.
+This is useful when you want to confirm what HireData sent, see the context around a conversation, or understand which channel was used.
 
-## Inspect answers in Responses
+If the page is empty, HireData has no communication history to display for that person. Check that you opened the correct person and remember that messages sent outside HireData may not appear here.
 
-The **Responses** section shows replies received through WhatsApp messages and forms sent by email.
+<Note>
+  A person record does not represent a single application or placement. Use **Collections** and its relationships when you need the context of a particular job, match, application, or placement.
+</Note>
+
+## Responses: inspect submitted answers
+
+**Responses** is the answer-centered view. It collects responses received through supported WhatsApp interactions and forms sent by email.
 
 1. Open **Data** and select **Responses**.
 2. Open the response you want to investigate.
-3. Review when it started, how long completion took, and the submitted answers.
-4. When available, follow the links to the related task, event, or automation for more context.
+3. Review when the response started, how long completion took, and the submitted answers.
+4. Follow the available links to the related task, event, or automation.
 
-## When to use the Data tab
+Those links help you establish why the request was sent and which workflow handled it. This is particularly useful when an answer looks unexpected or you need to trace it back to its source.
 
-The Data tab is especially useful when you need to:
+## Trace what happened across HireData
 
-- Research what happened to a candidate or another synced record.
-- Confirm which automations, runs, tasks, forms, or events relate to a record.
-- Review a person's WhatsApp and email history.
-- Investigate the source and context of a submitted response.
+The Data tab is a useful starting point, but detailed automation troubleshooting lives in the related logs:
+
+1. An **event** is received from a connected app.
+2. An automation can create a **run** for that event.
+3. The run executes one or more **tasks**.
+
+Use the relationships on a collection record or response to find the relevant item, then continue in:
+
+- [Events](/settings/logs/events) to inspect the signal and data received from the connected app.
+- [Runs](/settings/logs/runs) to follow the automation timeline and see whether steps completed, failed, or were skipped.
+- [Task history](/pages/task-history) to inspect individual actions executed by HireData.
+- [How HireData works](/concepts/how-hiredata-works) for an overview of how these records connect.
+
+## Common situations
+
+### I cannot find a record
+
+Check that you selected the correct collection and used the ID from the connected source system. If the record is still missing, confirm that the relevant app is connected and that the record has been synced to HireData.
+
+### I cannot see a conversation
+
+Confirm that you opened the correct person. The People view only shows communication available to HireData, so activity from an unsupported channel or outside HireData may not be present.
+
+### I need to understand why an automation did or did not run
+
+Use the Data tab to locate the related record, then inspect its [event](/settings/logs/events) and [run](/settings/logs/runs). The detailed logs provide more diagnostic information than the Data overview alone.
+
+### I need the answers from a form or message
+
+Start in **Responses**. Open the response for the submitted answers, then use its related links to understand which automation and task requested them.
