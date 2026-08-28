@@ -48,7 +48,7 @@ Any trigger works here — a completed form response, a candidate updated in you
 
 ### 2. Add the HTTP Request task
 
-Add a task and pick **HTTP Request**. It's filed under both **Add** and **Message**, and both routes open the same task — see [where to find the task](/reference/automation-tasks/http-request-task#where-to-find-the-task).
+Add a task and pick **HTTP Request**. It's filed under both **Add** and **Message**, and both routes open the same task. See [where to find the task](/reference/automation-tasks/http-request-task#where-to-find-the-task).
 
 If you were given a specification or a cURL command when you asked for the endpoint's details, click **Import** in the drawer's footer now and let HireData fill the request in. The two routes fill in different things, so check [what an import fills in](/reference/automation-tasks/http-request-task#what-an-import-fills-in), then read back through steps 3 to 6 against what it wrote. Otherwise, fill it in by hand as below.
 
@@ -102,10 +102,10 @@ Full detail on the format controls, the builder, and the raw editor is in [reque
 
 Open the **Auth** tab, select `Bearer token`, and paste the token into **Token**. HireData sends it as an `Authorization` header on every request; there's no header for you to add on the **Headers** tab.
 
-If the endpoint wants a key in a named header or a query parameter instead, or trades a client ID and secret for a token, the other types cover both — see [authentication](/reference/automation-tasks/http-request-task#authentication).
+If the endpoint wants a key in a named header or a query parameter instead, or trades a client ID and secret for a token, the other types cover both. See [authentication](/reference/automation-tasks/http-request-task#authentication).
 
 <Warning>
-  Anyone who can edit this automation can read the token you paste here — see [authentication](/reference/automation-tasks/http-request-task#authentication) for what that means when you're configuring this on someone else's behalf.
+  Anyone who can edit this automation can read the token you paste here. See [authentication](/reference/automation-tasks/http-request-task#authentication) for what that means when you're configuring this on someone else's behalf.
 </Warning>
 
 {/* screenshot: cookbook-auth-bearer.png — the Auth tab set to Bearer token */}
@@ -132,7 +132,7 @@ Under **Success response (2xx)**, click **Add property** twice: one for `id`, la
 
 They arrive on top of the three fields every HTTP Request task produces anyway — the status code, the response body as text, and whether the call succeeded. Describing `id` is what saves a later task from digging it out of that text.
 
-Under **Error response (non-2xx)**, describe what the endpoint returns when it rejects a call — usually a message you'd want in a log. That tree is only worth filling in if you set the run to continue past a failure — see [Decide what happens when the call fails](#decide-what-happens-when-the-call-fails) below.
+Under **Error response (non-2xx)**, describe what the endpoint returns when it rejects a call — usually a message you'd want in a log. That tree is only worth filling in if you set the run to continue past a failure. See [Decide what happens when the call fails](#decide-what-happens-when-the-call-fails) below.
 
 A value you don't describe here is a value no later task can pick out by name. See [describe the response](/reference/automation-tasks/http-request-task#describe-the-response).
 
@@ -148,7 +148,7 @@ Click **Test** in the footer, and read the warning before you click **Send**.
 
 The dialog asks for one value per parameter, grouping them by where they belong. This recipe's request has no path or query parameters, so you'll see a **Body** group only, one input per property from step 4.
 
-Anything you set to a fixed value in step 4 is already filled in. The properties you bound to automation fields come up blank, because those values only exist during a real run — type a plausible literal into each of those. See [fill in the values](/reference/automation-tasks/http-request-task#fill-in-the-values).
+Anything you set to a fixed value in step 4 is already filled in. The properties you bound to automation fields come up blank, because those values only exist during a real run. Type a plausible literal into each of those. See [fill in the values](/reference/automation-tasks/http-request-task#fill-in-the-values).
 
 {/* screenshot: cookbook-test-dialog.png — the Test dialog before Send, every input still empty */}
 

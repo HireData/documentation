@@ -105,7 +105,7 @@ This depends on the document, not on how you brought it in. The same list of end
 
 ## Build the request by hand
 
-An import needs a document to read. When all you have is an endpoint and the vendor's documentation, fill the request in yourself. These are the same tabs an import writes into, so this is also how you adjust an imported request. Credentials come last either way, under [Authentication](#authentication) — with one exception. Importing a *specification* sets the authentication type and leaves the secret blank, because a security scheme describes how an endpoint authenticates without carrying anyone's key. A *cURL command* is different: it holds real credentials, and they're imported with it.
+An import needs a document to read. When all you have is an endpoint and the vendor's documentation, fill the request in yourself. These are the same tabs an import writes into, so this is also how you adjust an imported request. Credentials come last either way, under [Authentication](#authentication), with one exception. Importing a *specification* sets the authentication type and leaves the secret blank, because a security scheme describes how an endpoint authenticates without carrying anyone's key. A *cURL command* is different: it holds real credentials, and they're imported with it.
 
 ### Query and path parameters
 
@@ -175,7 +175,7 @@ A request built entirely from fixed values sends the same thing on every run, wh
 There are two ways to insert one:
 
 - The **field picker** beside a **Value**, which lists what's available
-- Typing `{{` in the input itself. The picker opens as soon as you type it, and what you type between the braces searches the list — quicker when you already know roughly what the field is called
+- Typing `{{` in the input itself. The picker opens as soon as you type it, and what you type between the braces searches the list, which is quicker when you already know roughly what the field is called
 
 Either way the field is stored as a `{{field_key}}` token, which is what you'll see if you look at a value you've already filled in.
 
@@ -218,14 +218,14 @@ The token is fetched once and kept. HireData reuses it while it's still valid an
 
 The **Response** section sits beneath the tabs, always visible, because it's what the rest of the automation depends on: "Describe the expected response body to use its values as fields in later steps."
 
-Three fields arrive whether you describe anything or not — the status code, the response body, and whether the call succeeded. What describing the response adds is the values *inside* the body, each as a field of its own. Until a value is described here, no later task can pick that value out on its own.
+Three fields arrive whether you describe anything or not: the status code, the response body, and whether the call succeeded. What describing the response adds is the values *inside* the body, each as a field of its own. Until a value is described here, no later task can pick that value out on its own.
 
 There are two trees, and you describe them separately:
 
 - **Success response (2xx)**: what the endpoint returns when the call works
 - **Error response (non-2xx)**: what it returns when the call doesn't
 
-Build either one with **Add property**. A leaf property carries a **Label** and a key. The **Label** is the readable name you'll see downstream; the key is the name in the response body — "Canonical Name" for `canonical_name`. A property holding an object becomes a collapsible group, so a nested response reads as a tree rather than a flat list. Each property has **Edit property** and **Remove**.
+Build either one with **Add property**. A leaf property carries a **Label** and a key. The **Label** is the readable name you'll see downstream; the key is the name in the response body: "Canonical Name" for `canonical_name`. A property holding an object becomes a collapsible group, so a nested response reads as a tree rather than a flat list. Each property has **Edit property** and **Remove**.
 
 The error tree carries a note of its own: "Available when the request fails — useful for logging when the automation continues on failure."
 
@@ -262,7 +262,7 @@ Properties on the error tree carry an extra segment, so they can't collide with 
 
 `<request description>: Error: <dotted path>`
 
-The description isn't cosmetic, then. It's the first half of every field name this task produces, so write a specific one before you describe the response — it's what you'll be reading in a field picker later.
+The description isn't cosmetic, then. It's the first half of every field name this task produces, so write a specific one before you describe the response. It's what you'll be reading in a field picker later.
 
 ![A later task's field picker, showing "Get brand context by domain: meta.canonical_name"](/images/http-request/response-field-in-later-task.png)
 
@@ -289,7 +289,7 @@ Two kinds of input come up blank:
 - A parameter with no configured value. Path parameters are usually in this group, since they come from `{placeholder}` segments in the URL rather than from a row you typed a value into.
 - A value bound to an automation field, unless that field happens to have a default value. The token is resolved against that default, and most fields carrying run data don't have one.
 
-Type a literal into whatever's blank. The binding itself is unaffected — it still applies when the automation runs.
+Type a literal into whatever's blank. The binding itself is unaffected. It still applies when the automation runs.
 
 Reopening the dialog re-reads the task's configuration, so a literal you typed in for one test isn't there for the next.
 
@@ -303,11 +303,11 @@ The **Request** panel renders the outgoing call, with a format selector for cURL
 -H 'Authorization: Bearer ***'
 ```
 
-The same masking applies to the request recorded against a run, so a key or token doesn't end up sitting in the run's activity either. What isn't masked is the task's own configuration: anyone who can open the task can still read the credential you entered there — see [Authentication](#authentication).
+The same masking applies to the request recorded against a run, so a key or token doesn't end up sitting in the run's activity either. What isn't masked is the task's own configuration: anyone who can open the task can still read the credential you entered there. See [Authentication](#authentication).
 
 ### Read the result
 
-After **Send**, a strip reports how it went: a status word, the HTTP code, and how long the call took — `Success`, `200`, `323 ms`. Beneath it, the full response body in a viewer labelled with the same status, with a control to copy it.
+After **Send**, a strip reports how it went: a status word, the HTTP code, and how long the call took: `Success`, `200`, `323 ms`. Beneath it, the full response body in a viewer labelled with the same status, with a control to copy it.
 
 If you've already described the response, an **Outputs** section lists the values HireData pulled out of that body. That's the quickest check that your response tree matches the real reply: a property you described but that comes back missing shows up here, rather than in a run next week.
 
@@ -321,7 +321,7 @@ The **Advanced** tab holds the request's description and what should happen when
 
 | Control | What it does | Default |
 | --- | --- | --- |
-| **Description** | Describes what the request does. This is what titles the task everywhere else — in the automation, in a run, and in the field names it produces | Empty, behind the placeholder "Describe what this request does." |
+| **Description** | Describes what the request does. This is what titles the task everywhere else: in the automation, in a run, and in the field names it produces | Empty, behind the placeholder "Describe what this request does." |
 | **Timeout (seconds)** | How long to wait for a response before giving up, so a slow endpoint doesn't stall the run | `30` |
 | **Retries** | How many extra attempts to make after a failed request | `0` |
 | **Backoff (seconds)** | How long to wait between those attempts | `2` |
@@ -334,13 +334,13 @@ The **Advanced** tab ends with two switches. They answer separate questions, and
 
 **Fail on error responses** is on by default: "Treat 4xx and 5xx responses as a failed task."
 
-Turn it off when a non-2xx is a normal answer from this endpoint rather than a problem — a `404` from a lookup that simply found nothing, say. The task then completes, and what to do about the code is yours to decide in a later task.
+Turn it off when a non-2xx is a normal answer from this endpoint rather than a problem, such as a `404` from a lookup that simply found nothing. The task then completes, and what to do about the code is yours to decide in a later task.
 
 **Continue automation on failure** is off by default: "The run continues with the next step even if this request fails."
 
-Turn it on when the rest of the run is worth doing without this call — the request was a notification, not a prerequisite. Leave it off and a failed request ends the run there.
+Turn it on when the rest of the run is worth doing without this call. The request was a notification, not a prerequisite. Leave it off and a failed request ends the run there.
 
-Between them they decide the fate of that expected `404`. Turn the first switch off and it was never a failure. Leave it on and turn the second on instead, and it's a failure the run survives — the case the [error response](#describe-the-response) tree is for.
+Between them they decide the fate of that expected `404`. Turn the first switch off and it was never a failure. Leave it on and turn the second on instead, and it's a failure the run survives. That's the case the [error response](#describe-the-response) tree is for.
 
 ![The Advanced tab showing Description, Timeout, Retries, Backoff, and the two failure switches](/images/http-request/advanced-tab.png)
 
@@ -350,7 +350,7 @@ Open a run and a completed HTTP Request shows:
 
 - Its **Description** as the title, the method and host beneath it — `GET api.example.com` — and the path below that
 - **What will you provide?** and **What will you get back?**: the request you configured and the response you described
-- A row of chips for the settings that shaped the call. The auth type, the timeout, and the retries are always there — `Bearer token`, `30s`, `No retries`. The rest appear only once you've turned them on: a backoff when retries are above `0`, `Ignores error statuses` when **Fail on error responses** is off, and `Continues on failure` when **Continue automation on failure** is on
+- A row of chips for the settings that shaped the call. The auth type, the timeout, and the retries are always there: `Bearer token`, `30s`, `No retries`. The rest appear only once you've turned them on: a backoff when retries are above `0`, `Ignores error statuses` when **Fail on error responses** is off, and `Continues on failure` when **Continue automation on failure** is on
 
 The run's timeline carries two entries for the task, `HTTP Request: Run Moved` and `HTTP Request: Completed`, with the message "Http request succeeded."
 
