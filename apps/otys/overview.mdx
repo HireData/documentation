@@ -4,11 +4,48 @@ sidebarTitle: "Overview"
 description: "Learn what the HireData OTYS integration syncs, which recruitment automations it supports, and how to get started connecting your OTYS account today."
 ---
 
-<Note>
-  This article is a placeholder. The content below outlines what it will cover.
-</Note>
+Connect OTYS to HireData to start automations from recruitment events and use OTYS data in messages, surveys, conditions, and follow-up workflows.
 
-{/* TODO(docs-reorg): what syncs, sync frequency, supported tasks matrix, links. */}
+## What the integration provides
+
+HireData receives events from OTYS and makes the selected record and its related data available to an automation. For example, a procedure being created or updated can start a workflow. You can add filters so the workflow continues only for the stages, statuses, or other values you choose.
+
+## What you can automate
+
+With an OTYS connection, you can:
+
+- Start workflows when supported OTYS records are created or updated
+- Filter events using OTYS fields and related records
+- Send personalized email, WhatsApp, or survey messages
+- Add delays before a message or follow-up
+- Combine OTYS data with HireData forms, templates, and messaging tasks
+
+The objects, fields, and tasks shown in the automation builder are the capabilities available for your connection.
+
+## How data stays current
+
+After the connection is created, HireData imports connection data such as users, objects, fields, and statuses and schedules daily resyncs. If you add or change something in OTYS and need it immediately, run a [manual sync](/apps/otys/manually-sync-otys-with-hiredata).
+
+## Get started
+
+<Steps>
+  <Step title="Connect OTYS">
+    Add the OTYS app in HireData using your account name and API key. Ask your OTYS representative if you do not have these credentials.
+  </Step>
+  <Step title="Create an automation">
+    Select OTYS as the trigger app, choose the object and event, then include every related record you will need later in the workflow.
+  </Step>
+  <Step title="Add conditions and tasks">
+    Limit the audience with filters, add any required delay, and configure the message, survey, or other available task.
+  </Step>
+  <Step title="Test before activating">
+    Run the automation with sample data and confirm that each step uses the expected OTYS values.
+  </Step>
+</Steps>
+
+## OTYS guides
 
 - [Connect with OTYS](/apps/otys/connect-with-otys)
+- [Manually sync OTYS](/apps/otys/manually-sync-otys-with-hiredata)
 - [Create an OTYS automation](/apps/otys/create-an-otys-automation-in-hiredata)
+- [Test an automation](/automations/how-to-test-an-automation)

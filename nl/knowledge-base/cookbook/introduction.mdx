@@ -4,9 +4,54 @@ sidebarTitle: "Introductie"
 description: "Ontdek kant-en-klare recruitment-playbooks die je in HireData kunt bouwen, van no-show opvolgingen tot placement-enquêtes en talentpool-nurturing."
 ---
 
-<Note>
-  Dit artikel is een placeholder. De onderstaande inhoud schetst waar het over zal gaan.
-</Note>
+De cookbook bevat praktische HireData-recepten voor echte recruitmentdoelen. Ieder recept combineert een trigger, voorwaarden, taken en templates tot een workflow die je kunt aanpassen aan je eigen apps en proces.
 
-{/* TODO(docs-reorg): explain what recipes are, how to read them, and list them as cards.
-   Each recipe composes a trigger + filters + tasks + templates for a real recruiting outcome. */}
+## Hoe je een recept gebruikt
+
+Een recept beschrijft:
+
+1. **Het resultaat** — wat de workflow moet bereiken
+2. **De trigger** — welk event of schema de workflow start
+3. **De voorwaarden** — welke records verder mogen
+4. **De taken** — wat HireData met die records doet
+5. **De test** — hoe je de workflow veilig controleert
+
+Gebruik het recept als startpunt. Objectnamen, stages, velden en beschikbare taken kunnen per ATS-koppeling verschillen. Kies daarom de vergelijkbare waarden uit je eigen automation builder.
+
+## Voordat je gaat bouwen
+
+- Koppel de app die de brondata levert.
+- Kies een veilig testrecord.
+- Controleer welke velden en relaties beschikbaar zijn.
+- Bepaal wie verantwoordelijk is als een taak menselijke opvolging vereist.
+- Kijk in de templategalerij of er al een automatisering is die je kunt aanpassen.
+- Test iedere externe actie voordat je de workflow activeert.
+
+<Warning>
+  Recepten die berichten versturen, records bijwerken of externe systemen aanroepen, kunnen echte data beïnvloeden. Gebruik testontvangers en sandbox-endpoints totdat je de volledige run hebt gecontroleerd.
+</Warning>
+
+## Beschikbare recepten
+
+De huidige recepten zijn in het Engels beschikbaar:
+
+<CardGroup cols={2}>
+  <Card title="Find incomplete candidate profiles" icon="user-magnifying-glass" href="/knowledge-base/cookbook/incomplete-candidate-profiles">
+    Vind profielen met ontbrekende informatie en stuur ze door naar een recruiter, intern team of aanvulworkflow.
+  </Card>
+
+  <Card title="Post an outcome to your own system" icon="code" href="/knowledge-base/cookbook/post-an-outcome-to-your-own-system">
+    Stuur bij een HireData-event een JSON-samenvatting naar een API-endpoint en gebruik het antwoord in latere taken.
+  </Card>
+</CardGroup>
+
+## Bouw gecontroleerd
+
+Nadat je een recept hebt gebouwd:
+
+1. [Test de automatisering](/nl/automations/how-to-test-an-automation).
+2. Bekijk het [event](/nl/settings/logs/events) en de [run](/nl/settings/logs/runs).
+3. Controleer het resultaat in de doelapp.
+4. Activeer eerst voor een beperkte doelgroep en breid daarna de voorwaarden uit.
+
+Bekijk voor herbruikbare startpunten ook de templategalerij vanuit het HireData-dashboard.
