@@ -5,11 +5,11 @@ description: "Every question type in the HireData form builder: what it collects
 keywords: ["form question types", "form field types", "yes/no question", "multiple choice", "dropdown", "net promoter score", "opinion scale", "file upload", "ending screen", "redirect url", "required question", "form logic", "jump rule", "all other cases go to", "logic operators", "formuliervelden", "vraagtypen"]
 ---
 
-_What each question type in the form builder collects, how the answer is stored, and which logic rules you can attach to it._
+_What each question type in the form builder collects, what its settings do, and which logic rules you can attach to it._
 
-This page is the reference for the **Add Content** palette in the form builder. For the walkthrough that takes you from an empty form to a published one, read [Creating a form in HireData](/content/creating-a-form-in-hiredata).
+Every question in a form comes from the **Add Content** palette, which opens from the **+** button next to the **Content**, **Logic**, and **Evaluation** tabs. The palette groups question types by category and repeats the six most used ones in a **Recommended** list. Once a question is in the list, drag it by its handle to change the order.
 
-The builder opens the palette when you click the **+** button next to the **Content**, **Logic**, and **Evaluation** tabs. Question types are grouped by category, and a **Recommended** list on the left repeats the six most used ones.
+To build a form from the start, including naming and publishing it, follow [Creating a form in HireData](/content/creating-a-form-in-hiredata). To check how the finished form looks, click the eye button next to **Save**. It opens the form in a new window.
 
 ![The Add Content palette with its Recommended list and the Text, Contact Info, Temporal, Choice, Numeric, Rating, Other, and Ending groups](/images/forms-builder/01-add-content-palette.png)
 
@@ -50,10 +50,12 @@ Click a question in the list to open its card. The card has the settings shared 
 - **Required** and **Hidden** toggles in the footer.
 - A type switch in the footer for types that come in two flavours: Short Text and Long Text, Yes/No's Checkbox and Toggle, Multiple Choice and Dropdown, Net Promoter Score and Opinion Scale.
 
-Two settings appear on most, but not all, question types:
+Text settings such as **Question**, **Description**, and the placeholders accept variables, so a question can address the respondent by name or mention the vacancy. See [Variables](/variables/introduction).
 
-- **Auto reply (on answer)**, "Message that will be sent when this question is answered." Yes/No replaces it with a reply per answer, and Multiple Choice and Dropdown move it onto each option.
-- **Auto reply (on invalid answer)**, "Message that will be sent when a required question is answered incorrectly." It appears once **Required** is on.
+Two more settings appear on most, but not all, question types. Both are messages for forms answered in a WhatsApp conversation:
+
+- **Auto reply (on answer)** is sent as soon as the respondent answers the question. Yes/No replaces it with a reply per answer, and Multiple Choice and Dropdown move it onto each option.
+- **Auto reply (on invalid answer)** appears once **Required** is on. The builder describes it as the message sent when a required question is answered incorrectly.
 
 Redirect URL has none of these. It is a single field, described under [Ending Screen and Redirect URL](#ending-screen-and-redirect-url).
 
@@ -63,17 +65,23 @@ A hidden question is skipped when the respondent moves through the form, and log
 
 ## Question types
 
-Each section below lists the type's own settings, what a completed form stores for it, and which logic operators the **Logic** tab offers for it.
+Each section below lists the type's own settings, what a completed form stores for it, and which operators the **Logic** tab offers for it.
 
 ### Short Text and Long Text
 
 Short Text is a single line. Long Text is a multi-line box. Switch between them with the footer type switch.
 
-**Settings.** **Placeholder** (up to 255 characters), **Minimum Length**, **Maximum Length**, and **Validation Pattern**, a regular expression the answer has to match, for example `/^[a-zA-Z0-9 ]*$/`.
+**Settings:**
 
-**Stores.** The text the respondent typed.
+**Placeholder** (up to 255 characters), **Minimum Length**, **Maximum Length**, and **Validation Pattern**, a regular expression the answer has to match, for example `/^[a-zA-Z0-9 ]*$/`.
 
-**Logic.** Has response, is equal to, is not equal to, starts with, ends with, contains, does not contain.
+**Stores:**
+
+The text the respondent typed.
+
+**Logic:**
+
+Has response, is equal to, is not equal to, starts with, ends with, contains, does not contain.
 
 Criteria on a text question default to **Evaluate with AI**, because a free-text answer rarely matches an exact expectation.
 
@@ -83,11 +91,17 @@ Criteria on a text question default to **Evaluate with AI**, because a free-text
 
 Three text questions with a format check on the answer. Email must be a valid email address. Phone Number accepts an optional leading `+` and then 5 to 20 characters of digits, spaces, dots, slashes, dashes, and brackets, with at least five digits. Website must be a valid web address.
 
-**Settings.** The same as text: **Placeholder**, **Minimum Length**, **Maximum Length**, **Validation Pattern**.
+**Settings:**
 
-**Stores.** The address or number as typed.
+The same as text: **Placeholder**, **Minimum Length**, **Maximum Length**, **Validation Pattern**.
 
-**Logic.** The text operators.
+**Stores:**
+
+The address or number as typed.
+
+**Logic:**
+
+The text operators.
 
 ![A Phone Number question card next to the preview showing a phone input](/images/forms-builder/06-type-phone-number.png)
 
@@ -95,11 +109,17 @@ Three text questions with a format check on the answer. Email must be a valid em
 
 Date asks for a calendar date, Time for a time of day, Datetime for both.
 
-**Settings.** None beyond the shared ones.
+**Settings:**
 
-**Stores.** A date and time. Time answers are stored with a date attached.
+None beyond the shared ones.
 
-**Logic.** Has response only. The builder offers no comparisons such as "is before" for these types. Answer rules on the **Evaluation** tab do offer greater than and less than for dates.
+**Stores:**
+
+A date and time. Time answers are stored with a date attached.
+
+**Logic:**
+
+Has response only. The builder offers no comparisons such as "is before" for these types. Answer rules on the **Evaluation** tab do offer greater than and less than for dates.
 
 ![A Date question card with only the shared settings, next to the preview showing a date picker](/images/forms-builder/07-type-date.png)
 
@@ -107,11 +127,17 @@ Date asks for a calendar date, Time for a time of day, Datetime for both.
 
 One question, two answers. New Yes/No questions start as **Checkbox**, a single tick box. Use the footer type switch to change to **Toggle**, an on/off switch.
 
-**Settings.** **Auto reply (Yes)**, "Message that will be sent when the answer is Yes." and **Auto reply (No)**, "Message that will be sent when the answer is No." There is no placeholder.
+**Settings:**
 
-**Stores.** Yes or No. A checkbox left unticked stores No.
+**Auto reply (Yes)**, "Message that will be sent when the answer is Yes." and **Auto reply (No)**, "Message that will be sent when the answer is No." There is no placeholder.
 
-**Logic.** Has response, is equal to, is not equal to, with **Yes** and **No** as the values. The value box in a rule stays blank after you choose Yes or No. The choice is saved; open the picker again to see which one is selected.
+**Stores:**
+
+Yes or No. A checkbox left unticked stores No.
+
+**Logic:**
+
+Has response, is equal to, is not equal to, with **Yes** and **No** as the values. The value box in a rule stays blank after you choose Yes or No. The choice is saved; open the picker again to see which one is selected.
 
 Read [Required questions](#required-questions) before you make a Yes/No question required. A required Yes/No question cannot be answered No in the web form today.
 
@@ -121,17 +147,21 @@ Read [Required questions](#required-questions) before you make a Yes/No question
 
 Multiple Choice shows the options as a list. Dropdown shows them in a select menu. Switch between them with the footer type switch.
 
-**Settings.**
+**Settings:**
 
 - **Options**. Each option has a label the respondent sees and a value that is stored. Drag to reorder. The cog on an option holds that option's **Auto reply (on answer)**.
-- **Add Data Source** replaces the typed options with a workspace data source. A question uses either typed options or a data source, never both.
+- **Add Data Source** fills the options from a data source in your workspace, for example the values of a custom field from your ATS, instead of options you type. A question uses one or the other, never both.
 - **Conversational Button Text**, "When this field is shown as a select menu this will be the text shown on the button." Defaults to "Choose".
 - **Placeholder**, Dropdown only.
 - **Multiple** in the footer, which lets the respondent pick more than one option.
 
-**Stores.** The chosen option or options, each with its label and value. Nothing chosen counts as no answer.
+**Stores:**
 
-**Logic.** Has response, is equal to, is not equal to, is one of, is not one of. Rule values are picked from the question's options.
+The chosen option or options, each with its label and value. Nothing chosen counts as no answer.
+
+**Logic:**
+
+Has response, is equal to, is not equal to, is one of, is not one of. Rule values are picked from the question's options.
 
 ![A Multiple Choice question card with three options, Add Data Source, Conversational Button Text, and the Multiple toggle, next to the preview showing the options as a list](/images/forms-builder/09-type-multiple-choice.png)
 
@@ -139,11 +169,17 @@ Multiple Choice shows the options as a list. Dropdown shows them in a select men
 
 Number collects a plain number. Currency adds a symbol in front of it.
 
-**Settings.** **Placeholder**, **Minimum Value**, **Maximum Value**, **Steps**. Currency adds **Currency Symbol** with a choice of `$`, `€`, `£`, `¥`, and `₹`.
+**Settings:**
 
-**Stores.** The number. `0` is a valid answer.
+**Placeholder**, **Minimum Value**, **Maximum Value**, **Steps**. Currency adds **Currency Symbol** with a choice of `$`, `€`, `£`, `¥`, and `₹`.
 
-**Logic.** Has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to.
+**Stores:**
+
+The number. `0` is a valid answer.
+
+**Logic:**
+
+Has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to.
 
 ![A Currency question card with Placeholder, Minimum Value, Maximum Value, Currency Symbol set to Euro, and Steps, next to the preview](/images/forms-builder/10-type-currency.png)
 
@@ -151,18 +187,24 @@ Number collects a plain number. Currency adds a symbol in front of it.
 
 Net Promoter Score is a fixed 0 to 10 scale labelled "Not likely at all" and "Extremely likely". Opinion Scale lets you set the scale and the labels. Switch between them with the footer type switch.
 
-**Settings for Net Promoter Score.** **Conversational Button Text** only. The scale and labels are fixed.
+**Settings for Net Promoter Score:**
 
-**Settings for Opinion Scale.**
+**Conversational Button Text** only. The scale and labels are fixed.
+
+**Settings for Opinion Scale:**
 
 - **Scale**, a minimum of **0** or **1** and a maximum from **1** to **10**.
 - **Min label**, **Mid label**, **Max label**, up to 50 characters each.
 - **Reverse** in the footer, which shows the scale from high to low.
 - **Conversational Button Text**.
 
-**Stores.** The point the respondent picked, as a whole number.
+**Stores:**
 
-**Logic.** The numeric operators. The value picker lists the points on the scale.
+The point the respondent picked, as a whole number.
+
+**Logic:**
+
+The numeric operators. The value picker lists the points on the scale.
 
 ![An Opinion Scale question card with a 1 to 5 scale, the three label fields, and the Reverse toggle, next to the preview showing five buttons](/images/forms-builder/11-type-opinion-scale.png)
 
@@ -170,11 +212,17 @@ Net Promoter Score is a fixed 0 to 10 scale labelled "Not likely at all" and "Ex
 
 Lets the respondent attach files.
 
-**Settings.** **Multiple**, a Yes/No select, and **File type**, a preset list: Any, Image, Audio, Video, Media, PDF, Document, Powerpoint, Word Document, Sheet, Archive.
+**Settings:**
 
-**Stores.** The uploaded files, with their names and types.
+**Multiple**, a Yes/No select, and **File type**, a preset list: Any, Image, Audio, Video, Media, PDF, Document, Powerpoint, Word Document, Sheet, Archive.
 
-**Logic.** Has response only.
+**Stores:**
+
+The uploaded files, with their names and types.
+
+**Logic:**
+
+Has response only.
 
 Rule-based evaluation sees only the file names and types. AI evaluation reads the contents of JPEG, PNG, GIF, WebP, and PDF files, up to 5 files and 10 MB in total.
 
@@ -184,13 +232,21 @@ Rule-based evaluation sees only the file names and types. AI evaluation reads th
 
 Endings sit under the **Endings** divider at the bottom of the question list. A form can have several, and logic rules decide which one a respondent reaches.
 
-**Ending Screen settings.** **Title**, **Description**, **Image**, and a **Button** toggle. Turning the button on reveals **Button Text** (defaults to "Submit Form"), **Redirect URL**, **Redirect Timer**, and **Timer** in seconds from 0 to 10. With the timer on, the form opens the redirect URL after the countdown.
+**Ending Screen settings:**
 
-**Redirect URL settings.** A single **Redirect URL** field. The respondent is sent there as soon as they reach it. No title, description, image, required, or hidden.
+**Title**, **Description**, **Image**, and a **Button** toggle. Turning the button on reveals **Button Text** (defaults to "Submit Form"), **Redirect URL**, **Redirect Timer**, and **Timer** in seconds from 0 to 10. With the timer on, the form opens the redirect URL after the countdown.
 
-**Stores.** Nothing. Endings hold no answer.
+**Redirect URL settings:**
 
-**Logic.** Endings have no **Add Rule** button and cannot be used in a condition. They are the usual target of a rule.
+A single **Redirect URL** field. The respondent is sent there as soon as they reach it. No title, description, image, required, or hidden.
+
+**Stores:**
+
+Nothing. Endings hold no answer.
+
+**Logic:**
+
+Endings have no **Add Rule** button and cannot be used in a condition. They are the usual target of a rule.
 
 Endings do not appear on the **Evaluation** tab.
 
@@ -226,9 +282,9 @@ Open the **Logic** tab to attach rules to a question. Each question in the list 
 
 ### Anatomy of a rule
 
-A rule reads `if <question> <operator> <value> then go to <target>`.
+A question can carry several rules, and each rule is checked on its own. A rule reads `if <question> <operator> <value> then go to <target>`.
 
-- The **if** row holds one or more conditions. **Add Condition** adds another. All conditions must be met for the rule to fire.
+- The **if** row holds the rule's conditions. **Add Condition** adds another one to the same rule, and a rule fires only when every one of its conditions is met. To offer alternatives, add a second rule instead.
 - A condition can look at the question itself or any earlier question. Later questions and endings are not offered.
 - **then go to** picks the target from every other question and ending. Hidden questions are excluded.
 - **Delete Rule** removes the rule.
