@@ -5,8 +5,6 @@ description: "Every question type in the HireData form builder: what it collects
 keywords: ["form question types", "form field types", "yes/no question", "multiple choice", "dropdown", "net promoter score", "opinion scale", "file upload", "ending screen", "redirect url", "required question", "form logic", "jump rule", "all other cases go to", "logic operators", "formuliervelden", "vraagtypen"]
 ---
 
-_What each question type in the form builder collects, what its settings do, and which logic rules you can attach to it._
-
 Every question in a form comes from the **Add Content** palette, which opens from the **+** button next to the **Content**, **Logic**, and **Evaluation** tabs. The palette groups question types by category and repeats the six most used ones in a **Recommended** list. Once a question is in the list, drag it by its handle to change the order.
 
 To build a form from the start, including naming and publishing it, follow [Creating a form in HireData](/content/creating-a-form-in-hiredata). To check how the finished form looks, click the eye button next to **Save**. It opens the form in a new window.
@@ -50,7 +48,7 @@ Click a question in the list to open its card. The card has the settings shared 
 - **Required** and **Hidden** toggles in the footer.
 - A type switch in the footer for types that come in two flavours: Short Text and Long Text, Yes/No's Checkbox and Toggle, Multiple Choice and Dropdown, Net Promoter Score and Opinion Scale.
 
-Text settings such as **Question**, **Description**, and the placeholders accept variables, so a question can address the respondent by name or mention the vacancy. See [Variables](/variables/introduction).
+Text settings such as **Question**, **Description**, and the placeholders accept variables, so a question can address the respondent by name or mention the vacancy. Some variables only become available after you add their object to the form, see [Objects](#objects). For the variable syntax, see [Variables](/variables/introduction).
 
 Two more settings appear on most, but not all, question types. Both are messages for forms answered in a WhatsApp conversation:
 
@@ -150,7 +148,7 @@ Multiple Choice shows the options as a list. Dropdown shows them in a select men
 **Settings:**
 
 - **Options**. Each option has a label the respondent sees and a value that is stored. Drag to reorder. The cog on an option holds that option's **Auto reply (on answer)**.
-- **Add Data Source** fills the options from a data source in your workspace, for example the values of a custom field from your ATS, instead of options you type. A question uses one or the other, never both.
+- **Add Data Source** fills the options from a data source in your workspace, instead of options you type. A question uses one or the other, never both.
 - **Conversational Button Text**, "When this field is shown as a select menu this will be the text shown on the button." Defaults to "Choose".
 - **Placeholder**, Dropdown only.
 - **Multiple** in the footer, which lets the respondent pick more than one option.
@@ -273,6 +271,14 @@ Answering No, turning a toggle off, and entering 0 are real answers and are mean
 </Warning>
 
 In a conversational form, **Auto reply (on invalid answer)** is the message sent back when a required question receives no usable answer.
+
+## Objects
+
+You can bring objects from your ATS or other apps into the form, so their fields are available as variables in your questions.
+
+To add one, click the **Show objects** button in the toolbar at the top right of the builder, then pick the objects you need from the menu.
+
+![The builder toolbar next to Save and Publish, with the Show objects button highlighted](/images/forms-builder/21-object-button.png)
 
 ## Conditional logic
 
