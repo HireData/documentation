@@ -4,13 +4,52 @@ sidebarTitle: "Overview"
 description: "Learn what the HireData Carerix integration syncs, which recruitment automations it supports, and how to get started connecting your Carerix account."
 ---
 
-<Note>
-  This article is a placeholder. The content below outlines what it will cover.
-</Note>
+Connect Carerix to HireData to turn changes in your recruitment database into automated communication, follow-up, and data-management workflows. HireData listens for Carerix events, applies your conditions, and performs the tasks you configure.
 
-{/* TODO(docs-reorg): what syncs (candidates, users, contacts, matches, vacancies...),
-   sync frequency, supported tasks matrix, links into Connect / fields / task guides. */}
+## What the integration provides
+
+The Carerix connection makes recruitment data available to your HireData automations, including commonly used candidate, user, contact, match, and job information. You choose which fields and relationships are available so each automation can use the records it needs.
+
+A Carerix event can start an automation when a record is created or updated. Filters can then narrow the audience by stage, status, owner, or another available field.
+
+## What you can automate
+
+Common Carerix workflows include:
+
+- Send personalized email, WhatsApp, or survey messages after a match-stage change
+- Schedule recruiter tasks and follow-ups in Carerix
+- Add activities or other items to Carerix records
+- Update Carerix fields when a workflow reaches a specific outcome
+- Log email messages and WhatsApp conversations in Carerix
+- Add delays and conditions so communication happens at the right time
+
+The available records and variables depend on the objects, fields, and relationships enabled in your connection.
+
+## How data stays current
+
+HireData performs an initial sync when you connect Carerix and schedules daily resyncs for connection data such as users, objects, fields, and statuses. Run a [manual sync](/apps/carerix/manually-sync-carerix-with-hiredata) when you need a recent Carerix change immediately.
+
+If a field or related record is missing from the automation builder, review [Carerix fields and relationships](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) before syncing again.
+
+## Get started
+
+<Steps>
+  <Step title="Connect Carerix">
+    Install and activate the Carerix RMA from the Marketplace. If you manage multiple tenants, follow the advanced connection method in [Connect with Carerix](/apps/carerix/connect-with-carerix).
+  </Step>
+  <Step title="Choose the available data">
+    Enable only the objects, fields, and relationships your workflows need. This keeps variables relevant and makes automations easier to configure.
+  </Step>
+  <Step title="Build and test an automation">
+    Choose a Carerix event, add conditions and tasks, then [test the automation](/automations/how-to-test-an-automation) before activating it.
+  </Step>
+</Steps>
+
+## Carerix guides
 
 - [Connect with Carerix](/apps/carerix/connect-with-carerix)
+- [Allow Carerix cookies in your browser](/apps/carerix/allow-carerix-cookies-in-your-browser)
 - [Enable fields and relationships](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations)
 - [Create a Carerix automation](/apps/carerix/create-a-carerix-automation-in-hiredata)
+- [Schedule a task in Carerix](/apps/carerix/schedule-a-task-in-carerix-with-hiredata)
+- [Update fields in Carerix](/apps/carerix/update-fields-in-carerix-with-hiredata)

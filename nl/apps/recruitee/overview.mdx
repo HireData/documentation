@@ -4,11 +4,50 @@ sidebarTitle: "Overzicht"
 description: "Ontdek wat de Recruitee-integratie synchroniseert, welke automatiseringen worden ondersteund en hoe je Recruitee aan HireData koppelt."
 ---
 
-<Note>
-  Dit artikel is een placeholder. De onderstaande inhoud schetst waar het over zal gaan.
-</Note>
+Koppel Recruitee aan HireData om automatisch te reageren op wijzigingen in sollicitaties en kandidaten. HireData gebruikt Recruitee-eventdata om een doelgroep te selecteren, communicatie te personaliseren en follow-uptaken uit te voeren.
 
-{/* TODO(docs-reorg): what syncs, sync frequency, supported tasks matrix, links. */}
+## Wat de integratie beschikbaar maakt
+
+De koppeling gebruikt een Recruitee API-token en Company ID. De rechten van het token bepalen tot welke kandidaat-, vacature-, hire- en gerelateerde data HireData toegang heeft.
+
+Ondersteunde Recruitee-events kunnen een automatisering starten. Een aangemaakte of bijgewerkte sollicitatie kan bijvoorbeeld een workflow triggeren, terwijl voorwaarden de workflow beperken tot een stage zoals **Declined**.
+
+## Wat je kunt automatiseren
+
+Veelgebruikte Recruitee-workflows zijn:
+
+- Een gepersonaliseerde e-mail versturen na een wijziging van de sollicitatiestage
+- Kandidaatfeedback of een survey aanvragen
+- Voorwaarden toevoegen zodat alleen de bedoelde sollicitaties verdergaan
+- Een ingestelde periode wachten vóór een follow-up
+- Kandidaat-, vacature-, afzender- en andere gerelateerde waarden in templates gebruiken
+
+## Hoe data beschikbaar wordt
+
+De eerste synchronisatie kan enkele minuten duren. Ontbreken er records of velden? Controleer dan eerst of de Recruitee-user achter het API-token de rechten uit de verbindingshandleiding heeft.
+
+De objecten, velden en taken in de HireData automation builder laten zien wat via jouw koppeling beschikbaar is.
+
+## Aan de slag
+
+<Steps>
+  <Step title="Maak een Recruitee API-token">
+    Gebruik een Recruitee-user met rechten voor kandidaten, vacatures, hires en API-tokens.
+  </Step>
+  <Step title="Koppel Recruitee">
+    Vul het API-token en Company ID in HireData in en wacht tot de eerste synchronisatie is afgerond.
+  </Step>
+  <Step title="Bouw de workflow">
+    Kies een Recruitee-object en -event, voeg voorwaarden toe en configureer het bericht of een andere beschikbare taak.
+  </Step>
+  <Step title="Test en activeer">
+    Controleer de triggerdata, ontvangers en taakoutput voordat je live events verwerkt.
+  </Step>
+</Steps>
+
+## Recruitee-handleidingen
 
 - [Verbinden met Recruitee](/nl/apps/recruitee/connect-with-recruitee)
 - [Een Recruitee-automatisering maken](/nl/apps/recruitee/create-a-recruitee-automation-in-hiredata)
+- [Een automatisering testen](/nl/automations/how-to-test-an-automation)
+- [Inkomende events bekijken](/nl/settings/logs/events)

@@ -4,11 +4,49 @@ sidebarTitle: "Overview"
 description: "Learn what the HireData Salesforce integration syncs, which recruitment automations it supports, and how to get started connecting your Salesforce org."
 ---
 
+Connect Salesforce to HireData to make authorized Salesforce data available to recruitment workflows. The records and actions you can use depend on your Salesforce configuration and the permissions of the user who authorizes the connection.
+
+## How the connection works
+
+HireData connects through Salesforce's authorization flow. Sign in with a user who has the required administrative access and approve the connection. If your organization uses a custom Salesforce domain, select **Use custom domain** during sign-in.
+
+Once connected, open the HireData automation builder and select Salesforce to see the objects, fields, events, and tasks available to your organization.
+
+## What you can build
+
+Depending on the capabilities available through your connection, a Salesforce-based workflow can:
+
+- Start from a supported Salesforce event
+- Apply conditions using fields received from Salesforce
+- Use Salesforce and related HireData values in messages or forms
+- Combine Salesforce data with email, WhatsApp, survey, delay, and other HireData tasks
+- Record each execution in HireData's event and run logs
+
 <Note>
-  This article is a placeholder. The content below outlines what it will cover.
+  Salesforce organizations can differ significantly. Use the automation builder as the source of truth for the objects and actions enabled for your connection.
 </Note>
 
-{/* TODO(docs-reorg): what syncs, sync frequency, supported tasks matrix, links.
-   Note: Salesforce currently only has a connect guide — automation/task guides to be written. */}
+## Get started
+
+<Steps>
+  <Step title="Connect Salesforce">
+    Open **Apps** in HireData, select Salesforce, and start a new connection.
+  </Step>
+  <Step title="Authorize the correct organization">
+    Sign in with a Salesforce user that has the required access. Use your custom domain when your organization requires it.
+  </Step>
+  <Step title="Review the available capabilities">
+    Create or open an automation and select Salesforce to inspect the available trigger objects, fields, and tasks.
+  </Step>
+  <Step title="Test before activating">
+    Use a safe test record and confirm the event data and run timeline before processing live records.
+  </Step>
+</Steps>
+
+## Salesforce guides
 
 - [Connect with Salesforce](/apps/salesforce/connect-with-salesforce)
+- [Create and manage automations](/automations/automations)
+- [Test an automation](/automations/how-to-test-an-automation)
+- [Inspect events](/settings/logs/events)
+- [Read automation runs](/settings/logs/runs)

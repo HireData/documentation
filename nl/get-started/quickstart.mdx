@@ -4,20 +4,80 @@ sidebarTitle: "Quickstart"
 description: "Bouw, test en activeer je eerste HireData-automatisering in ongeveer 15 minuten met deze quickstart voor recruitmentworkflows en integraties."
 ---
 
+Met deze quickstart ga je van een gekoppelde recruitmentapp naar een geteste automatisering. Gebruik een veilig testrecord en kies tijdens het oefenen een workflow die geen echte kandidaten benadert.
+
+## Voordat je begint
+
+Je hebt nodig:
+
+- Een HireData-account met rechten voor apps en automatiseringen
+- Toegangsgegevens voor je ATS of recruitmentapp
+- Eén testkandidaat, sollicitatie, match of ander record
+- Een duidelijk resultaat, zoals een interne testmail of recruitertaak
+
 <Note>
-  Dit artikel is een placeholder. De onderstaande inhoud schetst waar het over zal gaan.
+  Is je app al gekoppeld? Begin dan bij stap 2.
 </Note>
 
-{/* TODO(docs-reorg): 15-minute Steps walkthrough:
-   1. Connect your ATS (link per-ATS connect pages)
-   2. Create a blank automation and pick a trigger
-   3. Add a task (e.g. send an email)
-   4. Test it with a test run
-   5. Activate and watch the first live run
-   End with Next steps: Your first week checklist, Core concepts. */}
+<Steps>
+  <Step title="Koppel je recruitmentapp">
+    Open **Settings** \> **Apps**, kies je ATS en maak een koppeling.
 
-Terwijl deze pagina wordt geschreven, behandelen deze bestaande gidsen hetzelfde terrein:
+    Gebruik de handleiding voor [Carerix](/nl/apps/carerix/connect-with-carerix), [Vincere](/nl/apps/vincere/connect-with-vincere), [OTYS](/nl/apps/otys/connect-with-otys), [Recruitee](/nl/apps/recruitee/connect-with-recruitee) of [Salesforce](/nl/apps/salesforce/connect-with-salesforce).
 
-- [Automatiseringen](/nl/automations/automations)
-- [Hoe je een automatisering test](/nl/automations/how-to-test-an-automation)
-- [Verbind je ATS](/nl/apps/introduction)
+    Wacht tot de eerste synchronisatie is afgerond voordat je de trigger bouwt.
+  </Step>
+  <Step title="Maak een lege automatisering">
+    Open **Automations**, kies **Blank Automation** en geef de automatisering een naam die het doel beschrijft.
+
+    In het **Start**-blok:
+
+    1. Selecteer de gekoppelde app en connection.
+    2. Kies het object, bijvoorbeeld Candidate, Match, Application of Procedure.
+    3. Kies het event dat de workflow moet starten.
+    4. Voeg alle gerelateerde records toe die je nodig hebt voor filters, ontvangers, afzenders of taken.
+  </Step>
+  <Step title="Beperk de doelgroep">
+    Voeg voorwaarden toe aan het **Start**-blok of plaats een aparte filterstap. Begin met één eenvoudige voorwaarde waaraan je testrecord voldoet.
+
+    Laat de workflow bijvoorbeeld alleen doorgaan als een application stage gelijk is aan **Test** of als een specifiek testmailadres aanwezig is.
+  </Step>
+  <Step title="Voeg één veilige taak toe">
+    Kies een taak waarvan je het resultaat makkelijk kunt controleren. Goede eerste taken zijn:
+
+    - Een e-mail naar je eigen adres sturen
+    - Een interne recruitertaak maken
+    - Een speciaal testveld bijwerken
+    - Een testformulier of survey naar jezelf sturen
+
+    Koppel de ontvanger, afzender en andere velden aan de triggerdata en sla de taak op.
+  </Step>
+  <Step title="Test de automatisering">
+    Gebruik de testoptie van HireData en selecteer je testrecord of voorbeeldevent. Controleer iedere stap en kijk of de verwachte waarden beschikbaar zijn.
+
+    Stopt een stap? Open dan eerst de details voordat je de workflow wijzigt. Bekijk [Een automatisering testen](/nl/automations/how-to-test-an-automation).
+  </Step>
+  <Step title="Activeer en controleer">
+    Activeer de automatisering pas nadat de test volledig is geslaagd. Maak daarna de verwachte wijziging in de bronapp en controleer of:
+
+    1. HireData het [event](/nl/settings/logs/events) heeft ontvangen.
+    2. De automatisering een [run](/nl/settings/logs/runs) heeft gemaakt.
+    3. De taak met het verwachte resultaat is voltooid.
+  </Step>
+</Steps>
+
+## Een veilige eerste automatisering
+
+Een geschikte eerste workflow is:
+
+**Testrecord bijgewerkt → testvoorwaarde voldoet → interne e-mail versturen**
+
+Zo test je de volledige HireData-flow zonder een kandidaat te berichten of productiedata te wijzigen.
+
+## Volgende stappen
+
+- Leer [hoe HireData werkt](/nl/concepts/how-hiredata-works)
+- Voltooi de [checklist voor je eerste week](/nl/get-started/your-first-week)
+- Bekijk de templategalerij vanuit het HireData-dashboard
+- Leer hoe je [variabelen gebruikt](/nl/variables/introduction)
+- Bekijk de [veiligheidslimieten voor automatiseringen](/nl/settings/automation-safety-limits)

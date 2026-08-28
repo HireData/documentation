@@ -4,11 +4,48 @@ sidebarTitle: "Overzicht"
 description: "Ontdek wat de OTYS-integratie synchroniseert, welke automatiseringen worden ondersteund en hoe je OTYS aan HireData koppelt in enkele stappen."
 ---
 
-<Note>
-  Dit artikel is een placeholder. De onderstaande inhoud schetst waar het over zal gaan.
-</Note>
+Koppel OTYS aan HireData om automatiseringen te starten vanuit recruitmentevents en OTYS-data te gebruiken in berichten, surveys, voorwaarden en opvolgworkflows.
 
-{/* TODO(docs-reorg): what syncs, sync frequency, supported tasks matrix, links. */}
+## Wat de integratie beschikbaar maakt
+
+HireData ontvangt events uit OTYS en maakt het geselecteerde record en de gerelateerde data beschikbaar in een automatisering. Een aangemaakte of bijgewerkte procedure kan bijvoorbeeld een workflow starten. Met filters bepaal je voor welke stages, statussen of andere waarden de workflow verdergaat.
+
+## Wat je kunt automatiseren
+
+Met een OTYS-koppeling kun je:
+
+- Workflows starten wanneer ondersteunde OTYS-records worden aangemaakt of bijgewerkt
+- Events filteren met OTYS-velden en gerelateerde records
+- Gepersonaliseerde e-mails, WhatsApp-berichten of surveys versturen
+- Een delay toevoegen vóór een bericht of follow-up
+- OTYS-data combineren met HireData-formulieren, templates en berichttaken
+
+De objecten, velden en taken in de automation builder zijn de mogelijkheden die voor jouw koppeling beschikbaar zijn.
+
+## Hoe data actueel blijft
+
+Na het koppelen importeert HireData onder andere users, objecten, velden en statussen en plant het dagelijkse synchronisaties. Heb je iets in OTYS gewijzigd en heb je dit direct nodig? Voer dan een [handmatige synchronisatie](/nl/apps/otys/manually-sync-otys-with-hiredata) uit.
+
+## Aan de slag
+
+<Steps>
+  <Step title="Koppel OTYS">
+    Voeg de OTYS-app toe met je accountnaam en API-key. Vraag je OTYS-contactpersoon om hulp als je deze gegevens niet hebt.
+  </Step>
+  <Step title="Maak een automatisering">
+    Selecteer OTYS als trigger-app, kies het object en event en voeg alle gerelateerde records toe die je later nodig hebt.
+  </Step>
+  <Step title="Voeg voorwaarden en taken toe">
+    Beperk de doelgroep met filters, voeg eventueel een delay toe en configureer het bericht, de survey of een andere beschikbare taak.
+  </Step>
+  <Step title="Test vóór activatie">
+    Test met voorbeelddata en controleer of iedere stap de verwachte OTYS-waarden gebruikt.
+  </Step>
+</Steps>
+
+## OTYS-handleidingen
 
 - [Verbinden met OTYS](/nl/apps/otys/connect-with-otys)
+- [OTYS handmatig synchroniseren](/nl/apps/otys/manually-sync-otys-with-hiredata)
 - [Een OTYS-automatisering maken](/nl/apps/otys/create-an-otys-automation-in-hiredata)
+- [Een automatisering testen](/nl/automations/how-to-test-an-automation)
