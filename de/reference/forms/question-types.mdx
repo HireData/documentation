@@ -1,0 +1,357 @@
+---
+title: "Formular-Fragetypen"
+sidebarTitle: "Fragetypen"
+description: "Jeder Fragetyp im HireData-Formular-Builder: was er erfasst, seine Einstellungen, die gespeicherte Antwort, die unterstützten Logikregeln und wie sich Pflichtfragen verhalten."
+keywords: ["formular-fragetypen", "formularfeld-typen", "ja/nein-frage", "multiple choice", "dropdown", "net promoter score", "opinion scale", "datei-upload", "ending screen", "redirect url", "pflichtfrage", "formular-logik", "sprungregel", "all other cases go to", "logik-operatoren", "formularfelder", "fragetypen"]
+---
+
+Jede Frage in einem Formular stammt aus der **Add Content**-Palette, die sich über die **+**-Schaltfläche neben den Tabs **Content**, **Logic** und **Evaluation** öffnet. Die Palette gruppiert Fragetypen nach Kategorie und wiederholt die sechs meistgenutzten in einer **Recommended**-Liste. Sobald eine Frage in der Liste ist, ziehen Sie sie an ihrem Griff, um die Reihenfolge zu ändern.
+
+Um ein Formular von Anfang an aufzubauen, einschließlich Benennen und Veröffentlichen, folgen Sie [Ein Formular in HireData erstellen](/de/content/creating-a-form-in-hiredata). Um zu prüfen, wie das fertige Formular aussieht, klicken Sie auf die Augen-Schaltfläche neben **Save**. Sie öffnet das Formular in einem neuen Fenster.
+
+![Die Add-Content-Palette mit ihrer Recommended-Liste und den Gruppen Text, Contact Info, Temporal, Choice, Numeric, Rating, Other und Ending](/images/forms-builder/01-add-content-palette.png)
+
+## Einen Fragetyp wählen
+
+Die Palette zeigt 18 Einträge. Jede Zeile verlinkt auf den Abschnitt, der diesen Typ beschreibt.
+
+| Fragetyp | Gruppe | Speichert | Logik-Operatoren | Funktioniert mit Evaluation |
+|---|---|---|---|---|
+| [Short Text](#short-text-und-long-text) | Text | Text | Text | Ja |
+| [Long Text](#short-text-und-long-text) | Text | Text | Text | Ja |
+| [Email](#email-phone-number-und-website) | Contact Info | Text | Text | Ja |
+| [Phone Number](#email-phone-number-und-website) | Contact Info | Text | Text | Ja |
+| [Website](#email-phone-number-und-website) | Contact Info | Text | Text | Ja |
+| [Date](#date-time-und-datetime) | Temporal | Datum und Uhrzeit | has response | Ja |
+| [Time](#date-time-und-datetime) | Temporal | Datum und Uhrzeit | has response | Ja |
+| [Datetime](#date-time-und-datetime) | Temporal | Datum und Uhrzeit | has response | Ja |
+| [Yes/No](#yes-no) | Choice | Yes oder No | Yes/No | Ja |
+| [Multiple Choice](#multiple-choice-und-dropdown) | Choice | die gewählten Optionen | Choice | Ja |
+| [Dropdown](#multiple-choice-und-dropdown) | Choice | die gewählten Optionen | Choice | Ja |
+| [Number](#number-und-currency) | Numeric | eine Zahl | numerisch | Ja |
+| [Currency](#number-und-currency) | Numeric | eine Zahl | numerisch | Ja |
+| [Net Promoter Score](#net-promoter-score-und-opinion-scale) | Rating | 0 bis 10 | numerisch | Ja |
+| [Opinion Scale](#net-promoter-score-und-opinion-scale) | Rating | einen Punkt auf der Skala | numerisch | Ja |
+| [File Upload](#file-upload) | Other | die Dateien | has response | Ja |
+| [Ending Screen](#ending-screen-und-redirect-url) | Ending | nichts | keine | Nein |
+| [Redirect URL](#ending-screen-und-redirect-url) | Ending | nichts | keine | Nein |
+
+„Funktioniert mit Evaluation" bedeutet, dass die Frage an Criteria, Scoring und Skills auf dem Tab **Evaluation** teilnehmen kann. Jeder Fragetyp außer den beiden Endings kann das. Die Operator-Gruppen sind in [Logik-Operatoren nach Kategorie](#logik-operatoren-nach-kategorie) ausgeschrieben.
+
+## Einstellungen, die jede Frage hat
+
+Klicken Sie auf eine Frage in der Liste, um ihre Karte zu öffnen. Die Karte enthält oben und unten die Einstellungen, die alle Fragetypen gemeinsam haben, dazwischen die typeigenen Einstellungen.
+
+- **Question**, bis zu 255 Zeichen. Bei Ending Screens heißt das **Title**.
+- **Description**, bis zu 1024 Zeichen, angezeigt unter der Frage.
+- **Image**, mit einer Platzierungsauswahl, die standardmäßig auf **Above the Input Field** steht. Die anderen Platzierungen sind **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page** und **Background**.
+- Die Schalter **Required** und **Hidden** in der Fußzeile.
+- Ein Typumschalter in der Fußzeile für Typen, die in zwei Varianten vorkommen: Short Text und Long Text, Checkbox und Toggle bei Yes/No, Multiple Choice und Dropdown, Net Promoter Score und Opinion Scale.
+
+Texteinstellungen wie **Question**, **Description** und die Platzhalter akzeptieren Variablen, sodass eine Frage Befragte mit Namen ansprechen oder die Vakanz erwähnen kann. Manche Variablen werden erst verfügbar, nachdem Sie ihr Objekt zum Formular hinzugefügt haben, siehe [Objekte](#objekte). Zur Variablen-Syntax siehe [Variablen](/de/variables/introduction).
+
+Zwei weitere Einstellungen erscheinen bei den meisten, aber nicht allen Fragetypen. Beide sind Nachrichten für Formulare, die in einer WhatsApp-Konversation beantwortet werden:
+
+- **Auto reply (on answer)** wird gesendet, sobald die befragte Person die Frage beantwortet. Yes/No ersetzt sie durch eine Antwort pro Antwortmöglichkeit, und Multiple Choice und Dropdown verlagern sie auf die einzelnen Optionen.
+- **Auto reply (on invalid answer)** erscheint, sobald **Required** eingeschaltet ist. Der Builder beschreibt sie als die Nachricht, die gesendet wird, wenn eine Pflichtfrage falsch beantwortet wird.
+
+Redirect URL hat nichts davon. Es ist ein einzelnes Feld, beschrieben unter [Ending Screen und Redirect URL](#ending-screen-und-redirect-url).
+
+![Eine Email-Fragekarte mit eingeschaltetem Required, mit Question, Description, Image, Placeholder, den Längen- und Pattern-Einstellungen, beiden Auto Replies und den Schaltern Required und Hidden, neben der Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
+
+Eine verborgene Frage wird übersprungen, wenn die befragte Person durch das Formular geht, und Logikregeln können nicht zu ihr springen. Ihre gespeicherte Antwort bleibt für Automatisierungen verfügbar – so tragen Sie einen Standardwert durch ein Formular.
+
+## Fragetypen
+
+Jeder Abschnitt unten führt die typeigenen Einstellungen auf, was ein ausgefülltes Formular dafür speichert und welche Operatoren der Tab **Logic** dafür anbietet.
+
+### Short Text und Long Text
+
+Short Text ist eine einzelne Zeile. Long Text ist ein mehrzeiliges Feld. Wechseln Sie mit dem Typumschalter in der Fußzeile zwischen beiden.
+
+**Einstellungen:**
+
+**Placeholder** (bis zu 255 Zeichen), **Minimum Length**, **Maximum Length** und **Validation Pattern**, ein regulärer Ausdruck, dem die Antwort entsprechen muss, zum Beispiel `/^[a-zA-Z0-9 ]*$/`.
+
+**Speichert:**
+
+Den Text, den die befragte Person eingetippt hat.
+
+**Logik:**
+
+Has response, is equal to, is not equal to, starts with, ends with, contains, does not contain.
+
+Criteria auf einer Textfrage stehen standardmäßig auf **Evaluate with AI**, weil eine Freitextantwort selten exakt einer Erwartung entspricht.
+
+![Eine Long-Text-Fragekarte mit Placeholder, Minimum Length, Maximum Length und Validation Pattern, neben der Vorschau mit einem mehrzeiligen Antwortfeld](/images/forms-builder/05-type-long-text.png)
+
+### Email, Phone Number und Website
+
+Drei Textfragen mit einer Formatprüfung der Antwort. Email muss eine gültige E-Mail-Adresse sein. Phone Number akzeptiert ein optionales führendes `+` und danach 5 bis 20 Zeichen aus Ziffern, Leerzeichen, Punkten, Schrägstrichen, Bindestrichen und Klammern, mit mindestens fünf Ziffern. Website muss eine gültige Webadresse sein.
+
+**Einstellungen:**
+
+Dieselben wie bei Text: **Placeholder**, **Minimum Length**, **Maximum Length**, **Validation Pattern**.
+
+**Speichert:**
+
+Die Adresse oder Nummer, wie eingetippt.
+
+**Logik:**
+
+Die Text-Operatoren.
+
+![Eine Phone-Number-Fragekarte neben der Vorschau mit einem Telefon-Eingabefeld](/images/forms-builder/06-type-phone-number.png)
+
+### Date, Time und Datetime
+
+Date fragt nach einem Kalenderdatum, Time nach einer Uhrzeit, Datetime nach beidem.
+
+**Einstellungen:**
+
+Keine über die gemeinsamen hinaus.
+
+**Speichert:**
+
+Ein Datum und eine Uhrzeit. Time-Antworten werden mit einem angehängten Datum gespeichert.
+
+**Logik:**
+
+Nur has response. Der Builder bietet für diese Typen keine Vergleiche wie „is before" an. Answer Rules auf dem Tab **Evaluation** bieten für Daten durchaus greater than und less than an.
+
+![Eine Date-Fragekarte mit nur den gemeinsamen Einstellungen, neben der Vorschau mit einem Datumswähler](/images/forms-builder/07-type-date.png)
+
+### Yes/No
+
+Eine Frage, zwei Antworten. Neue Yes/No-Fragen starten als **Checkbox**, ein einzelnes Ankreuzfeld. Wechseln Sie mit dem Typumschalter in der Fußzeile zu **Toggle**, einem Ein/Aus-Schalter.
+
+**Einstellungen:**
+
+**Auto reply (Yes)**, „Message that will be sent when the answer is Yes.", und **Auto reply (No)**, „Message that will be sent when the answer is No." Es gibt keinen Platzhalter.
+
+**Speichert:**
+
+Yes oder No. Eine nicht angekreuzte Checkbox speichert No.
+
+**Logik:**
+
+Has response, is equal to, is not equal to, mit **Yes** und **No** als Werten. Das Wertefeld in einer Regel bleibt leer, nachdem Sie Yes oder No gewählt haben. Die Wahl ist gespeichert; öffnen Sie die Auswahl erneut, um zu sehen, welche ausgewählt ist.
+
+Lesen Sie [Pflichtfragen](#pflichtfragen), bevor Sie eine Yes/No-Frage verpflichtend machen. Eine verpflichtende Yes/No-Frage kann im Webformular derzeit nicht mit No beantwortet werden.
+
+![Eine Yes/No-Fragekarte mit Auto reply (Yes), Auto reply (No) und dem Checkbox-Typumschalter, neben der Vorschau mit einem einzelnen Ankreuzfeld](/images/forms-builder/08-type-yes-no.png)
+
+### Multiple Choice und Dropdown
+
+Multiple Choice zeigt die Optionen als Liste. Dropdown zeigt sie in einem Auswahlmenü. Wechseln Sie mit dem Typumschalter in der Fußzeile zwischen beiden.
+
+**Einstellungen:**
+
+- **Options**. Jede Option hat ein Label, das die befragte Person sieht, und einen Wert, der gespeichert wird. Ziehen Sie zum Umsortieren. Das Zahnrad einer Option enthält deren **Auto reply (on answer)**.
+- **Add Data Source** befüllt die Optionen aus einer Datenquelle in Ihrem Workspace, statt aus Optionen, die Sie eintippen. Eine Frage nutzt das eine oder das andere, nie beides.
+- **Conversational Button Text**, „When this field is shown as a select menu this will be the text shown on the button." Standard ist „Choose".
+- **Placeholder**, nur bei Dropdown.
+- **Multiple** in der Fußzeile, womit die befragte Person mehr als eine Option wählen kann.
+
+**Speichert:**
+
+Die gewählte Option oder Optionen, jeweils mit Label und Wert. Nichts gewählt zählt als keine Antwort.
+
+**Logik:**
+
+Has response, is equal to, is not equal to, is one of, is not one of. Regelwerte werden aus den Optionen der Frage gewählt.
+
+![Eine Multiple-Choice-Fragekarte mit drei Optionen, Add Data Source, Conversational Button Text und dem Multiple-Schalter, neben der Vorschau mit den Optionen als Liste](/images/forms-builder/09-type-multiple-choice.png)
+
+### Number und Currency
+
+Number erfasst eine einfache Zahl. Currency stellt ihr ein Symbol voran.
+
+**Einstellungen:**
+
+**Placeholder**, **Minimum Value**, **Maximum Value**, **Steps**. Currency fügt **Currency Symbol** hinzu, mit einer Auswahl aus `$`, `€`, `£`, `¥` und `₹`.
+
+**Speichert:**
+
+Die Zahl. `0` ist eine gültige Antwort.
+
+**Logik:**
+
+Has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to.
+
+![Eine Currency-Fragekarte mit Placeholder, Minimum Value, Maximum Value, Currency Symbol auf Euro gesetzt und Steps, neben der Vorschau](/images/forms-builder/10-type-currency.png)
+
+### Net Promoter Score und Opinion Scale
+
+Net Promoter Score ist eine feste Skala von 0 bis 10 mit den Beschriftungen „Not likely at all" und „Extremely likely". Bei Opinion Scale legen Sie die Skala und die Beschriftungen selbst fest. Wechseln Sie mit dem Typumschalter in der Fußzeile zwischen beiden.
+
+**Einstellungen für Net Promoter Score:**
+
+Nur **Conversational Button Text**. Die Skala und die Beschriftungen sind fest.
+
+**Einstellungen für Opinion Scale:**
+
+- **Scale**, ein Minimum von **0** oder **1** und ein Maximum von **1** bis **10**.
+- **Min label**, **Mid label**, **Max label**, jeweils bis zu 50 Zeichen.
+- **Reverse** in der Fußzeile, was die Skala von hoch nach niedrig anzeigt.
+- **Conversational Button Text**.
+
+**Speichert:**
+
+Den Punkt, den die befragte Person gewählt hat, als ganze Zahl.
+
+**Logik:**
+
+Die numerischen Operatoren. Die Werteauswahl listet die Punkte der Skala auf.
+
+![Eine Opinion-Scale-Fragekarte mit einer Skala von 1 bis 5, den drei Beschriftungsfeldern und dem Reverse-Schalter, neben der Vorschau mit fünf Schaltflächen](/images/forms-builder/11-type-opinion-scale.png)
+
+### File Upload
+
+Lässt die befragte Person Dateien anhängen.
+
+**Einstellungen:**
+
+**Multiple**, eine Yes/No-Auswahl, und **File type**, eine vorgegebene Liste: Any, Image, Audio, Video, Media, PDF, Document, Powerpoint, Word Document, Sheet, Archive.
+
+**Speichert:**
+
+Die hochgeladenen Dateien, mit ihren Namen und Typen.
+
+**Logik:**
+
+Nur has response.
+
+Regelbasierte Evaluation sieht nur die Dateinamen und -typen. KI-Evaluation liest die Inhalte von JPEG-, PNG-, GIF-, WebP- und PDF-Dateien, bis zu 5 Dateien und 10 MB insgesamt.
+
+![Eine File-Upload-Fragekarte mit Multiple auf No und File type auf PDF, neben der Vorschau mit einem Upload-Bereich](/images/forms-builder/12-type-file-upload.png)
+
+### Ending Screen und Redirect URL
+
+Endings sitzen unter dem **Endings**-Trenner am Ende der Fragenliste. Ein Formular kann mehrere haben, und Logikregeln entscheiden, welches eine befragte Person erreicht.
+
+**Ending-Screen-Einstellungen:**
+
+**Title**, **Description**, **Image** und ein **Button**-Schalter. Das Einschalten des Buttons zeigt **Button Text** (Standard ist „Submit Form"), **Redirect URL**, **Redirect Timer** und **Timer** in Sekunden von 0 bis 10. Mit eingeschaltetem Timer öffnet das Formular die Redirect-URL nach dem Countdown.
+
+**Redirect-URL-Einstellungen:**
+
+Ein einzelnes **Redirect URL**-Feld. Die befragte Person wird dorthin geschickt, sobald sie es erreicht. Kein Titel, keine Beschreibung, kein Bild, kein Required, kein Hidden.
+
+**Speichert:**
+
+Nichts. Endings enthalten keine Antwort.
+
+**Logik:**
+
+Endings haben keine **Add Rule**-Schaltfläche und können nicht in einer Bedingung verwendet werden. Sie sind das übliche Ziel einer Regel.
+
+Endings erscheinen nicht auf dem Tab **Evaluation**.
+
+![Eine Ending-Screen-Karte mit Title, Description, Image und dem Button-Schalter, neben der Vorschau mit dem Dankestext](/images/forms-builder/13-type-ending-screen.png)
+
+![Eine Redirect-URL-Karte mit nur dem Redirect-URL-Feld](/images/forms-builder/14-type-redirect-url.png)
+
+### Typen, die der Builder nicht anzeigt
+
+In HireData existieren noch ein paar weitere Fragetypen, als die Palette anbietet: Range, Color und die Varianten Star, Thumbs, Emoji und Slider einer Bewertung. Der Builder kann sie nicht hinzufügen und hat keine Einstellungskarte für sie.
+
+<Note>
+  Range, Color und die Bewertungen Star, Thumbs, Emoji und Slider können nur über eine Integration wie die HireData-API hinzugefügt werden. Wenn einer davon in einem Formular auftaucht, das Sie nicht gebaut haben, funktioniert er, aber Sie können seine Einstellungen nicht im Builder ändern.
+</Note>
+
+## Pflichtfragen
+
+Das Einschalten von **Required** fügt der Fragebeschriftung ein Sternchen hinzu und hindert die befragte Person am Weitergehen, bis die Frage eine Antwort hat. Ein leeres Textfeld, ein leeres Zahlenfeld, keine gewählte Option und keine angehängte Datei zählen alle als keine Antwort. Das Webformular zeigt dann eine Meldung unter der Frage, etwa „This field is required and cannot be empty."
+
+Mit No antworten, einen Toggle ausschalten und 0 eingeben sind echte Antworten und sollen eine Pflichtfrage erfüllen.
+
+<Warning>
+  Das Webformular auf forms.hiredata.com macht das derzeit falsch. Eine befragte Person, die bei einer verpflichtenden Yes/No-Frage mit No antwortet, einen verpflichtenden Toggle ausgeschaltet lässt oder bei einer verpflichtenden Number-, Currency- oder Bewertungsfrage 0 eingibt, klickt auf **Next** und nichts passiert. Es wird keine Meldung angezeigt. Die Antwort wird gespeichert, aber das Formular geht nicht weiter, und keine Logikregel auf dieser Frage greift. Bis das behoben ist, lassen Sie Yes/No-Fragen optional und setzen Sie bei verpflichtenden numerischen Fragen, bei denen 0 keine sinnvolle Antwort ist, einen **Minimum Value** von 1.
+</Warning>
+
+In einem konversationellen Formular ist **Auto reply (on invalid answer)** die Nachricht, die zurückgesendet wird, wenn eine Pflichtfrage keine verwertbare Antwort erhält.
+
+## Objekte
+
+Sie können Objekte aus Ihrem ATS oder anderen Apps in das Formular holen, damit deren Felder als Variablen in Ihren Fragen verfügbar sind.
+
+Um eines hinzuzufügen, klicken Sie auf die Schaltfläche **Show objects** in der Symbolleiste oben rechts im Builder und wählen Sie dann die benötigten Objekte aus dem Menü.
+
+![Die Builder-Symbolleiste neben Save und Publish, mit hervorgehobener Show-objects-Schaltfläche](/images/forms-builder/21-object-button.png)
+
+## Bedingte Logik
+
+Öffnen Sie den Tab **Logic**, um einer Frage Regeln anzuhängen. Jede Frage in der Liste hat eine **Add Rule**-Schaltfläche und ein Ziel in der Fußzeile.
+
+![Eine Logikregel, die zu einer Folgefrage springt, wenn der Score 7 oder weniger ist, mit All other cases go to zum Ending](/images/forms-builder/04-logic-rule-and-fallback.png)
+
+### Anatomie einer Regel
+
+Eine Frage kann mehrere Regeln tragen, und jede Regel wird für sich geprüft. Eine Regel liest sich `if <question> <operator> <value> then go to <target>`.
+
+- Die **if**-Zeile enthält die Bedingungen der Regel. **Add Condition** fügt derselben Regel eine weitere hinzu, und eine Regel greift nur, wenn jede ihrer Bedingungen erfüllt ist. Um Alternativen anzubieten, fügen Sie stattdessen eine zweite Regel hinzu.
+- Eine Bedingung kann auf die Frage selbst oder jede frühere Frage schauen. Spätere Fragen und Endings werden nicht angeboten.
+- **then go to** wählt das Ziel aus allen anderen Fragen und Endings. Verborgene Fragen sind ausgeschlossen.
+- **Delete Rule** entfernt die Regel.
+
+Unter den Regeln sitzt die Fallback-Zeile. Sie liest sich **All other cases go to**, wenn die Frage mindestens eine Regel hat, und **Always go to**, wenn sie keine hat. Lassen Sie sie auf **Select...**, um mit der nächsten Frage in der Liste fortzufahren.
+
+HireData prüft die Regeln von oben nach unten und folgt der ersten, deren Bedingungen alle erfüllt sind. Wenn keine passt, folgt es dem Fallback. Ohne Fallback geht es zur nächsten Frage weiter. Verborgene Fragen werden dabei übersprungen.
+
+### Logik-Operatoren nach Kategorie
+
+Jede Kategorie bietet **has response** an, was wahr ist, sobald die Frage irgendeine Antwort hat. Der Builder fügt pro Kategorie diese hinzu:
+
+| Kategorie | Fragetypen | Zusätzliche Operatoren |
+|---|---|---|
+| Text und Contact Info | Short Text, Long Text, Email, Phone Number, Website | is equal to, is not equal to, starts with, ends with, contains, does not contain |
+| Choice: Yes/No | Yes/No | is equal to, is not equal to |
+| Choice: Optionen | Multiple Choice, Dropdown | is equal to, is not equal to, is one of, is not one of |
+| Numeric und Rating | Number, Currency, Net Promoter Score, Opinion Scale | is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to |
+| Temporal und Other | Date, Time, Datetime, File Upload | keine |
+| Ending | Ending Screen, Redirect URL | Regeln nicht verfügbar |
+
+### Logik-Kochbuch
+
+Jedes Muster unten wird so gezeigt, wie es auf dem Tab **Logic** erscheint.
+
+**Nach einem niedrigen Score nach dem Warum fragen.** Fügen Sie auf einer Net-Promoter-Score-Frage eine Regel hinzu: `if` diese Frage `is less than or equal to` `7` `then go to` eine Long-Text-Frage wie „What could we do better?". Setzen Sie **All other cases go to** auf das Ending. Befragte, die mit 8 oder höher bewerten, überspringen die Folgefrage.
+
+![Die Regel auf der Net-Promoter-Score-Frage: is less than or equal to 7, gehe zu What could we do better, all other cases go to Thank you for your feedback](/images/forms-builder/04-logic-rule-and-fallback.png)
+
+**Ein Kontaktdetail nur auf Wunsch erfassen.** Fügen Sie auf einer Multiple-Choice-Frage „May we contact you about your answer?" mit den Optionen „Yes, by email", „Yes, by phone" und „No" eine Regel hinzu: `if` diese Frage `is equal to` „Yes, by email" `then go to` eine Email-Frage. Fügen Sie eine zweite Regel für „Yes, by phone" hinzu, die zu einer Phone-Number-Frage geht. Setzen Sie **All other cases go to** auf das Ending.
+
+![Die Regel auf der Kontaktfrage: is equal to Yes, by email, gehe zu What is your email address, all other cases go to Thank you for your feedback](/images/forms-builder/15-logic-choice-branch.png)
+
+**Einen Fragenblock überspringen.** Setzen Sie auf der letzten Frage vor dem Block **Always go to** auf die erste Frage nach dem Block. Es ist keine Regel nötig. Hier springt die Vornamen-Frage direkt zur Führerschein-Frage und überspringt fünf Fragen dazwischen.
+
+![Die Vornamen-Frage ohne Regeln und mit Always go to auf die Führerschein-Frage gesetzt](/images/forms-builder/16-logic-always-go-to.png)
+
+**Auf Yes/No verzweigen.** Fügen Sie auf einer Yes/No-Frage eine Regel hinzu: `if` diese Frage `is equal to` **Yes** `then go to` die Folgefrage. Setzen Sie **All other cases go to** auf die Frage nach der Folgefrage. Lassen Sie die Frage optional, bis das oben beschriebene Pflichtfeld-Problem behoben ist. Das Wertefeld erscheint leer, obwohl Yes ausgewählt ist; siehe [Yes/No](#yes-no).
+
+![Die Regel auf der Führerschein-Frage: is equal to Yes, gehe zu Which region do you prefer, all other cases go to die Frage nach den Jahren an Erfahrung](/images/forms-builder/17-logic-yes-no.png)
+
+**Verschiedene Gruppen zu verschiedenen Endings schicken.** Fügen Sie ein Ending pro Ergebnis hinzu. Fügen Sie auf der entscheidenden Frage eine Regel pro Ergebnis hinzu, die zu dessen Ending geht, und richten Sie **All other cases go to** auf das Standard-Ending. Hier erreichen Befragte aus dem Norden den Dankesbildschirm, und alle anderen werden zur Bewertungsseite geschickt.
+
+![Die Regel auf der Regionsfrage: is equal to North, gehe zu Thank you for your feedback, all other cases go to Leave us a review](/images/forms-builder/18-logic-two-endings.png)
+
+**Zwei Bedingungen kombinieren.** Klicken Sie in einer Regel auf **Add Condition**, um beide zu verlangen. Hier erreicht eine befragte Person das Ending nur, wenn der Zufriedenheits-Score 4 oder höher ist und sie die Führerschein-Frage mit Yes beantwortet hat. Die zweite Bedingung blickt auf eine frühere Frage zurück.
+
+![Eine Regel mit zwei Bedingungen: Zufriedenheit is greater than or equal to 4, und die Führerschein-Frage is equal to Yes, dann gehe zum Dankes-Ending, all other cases go to Upload your CV](/images/forms-builder/19-logic-two-conditions.png)
+
+**Prüfen, ob eine Datei angehängt wurde.** Verwenden Sie auf einer File-Upload-Frage `has response`, um Befragte, die etwas angehängt haben, anders zu leiten als jene, die es übersprungen haben.
+
+![Die Regel auf der CV-Upload-Frage: has response, gehe zu Thank you for your feedback, all other cases go to Leave us a review](/images/forms-builder/20-logic-file-has-response.png)
+
+## Testen und Fehlerbehebung
+
+Die rechte Seite des Builders hat drei Tabs: **Interactive Preview** durchläuft das Webformular, **Conversational Preview** zeigt die Chat-Version, und **Test & Evaluate** lässt eine Antwort durch die Evaluatoren laufen. Bevor Sie veröffentlichen, gehen Sie das Formular in der Interactive Preview einmal pro Zweig durch. Sie führt dieselbe Logik aus wie das öffentliche Formular.
+
+- **Eine Regel greift nie.** Prüfen Sie, ob die Frage der Bedingung vor der Frage kommt, die die Regel trägt, oder diese selbst ist. Regeln können nicht nach vorn blicken.
+- **Das Formular springt zur falschen Frage.** Regeln laufen von oben nach unten, und der erste Treffer gewinnt. Sortieren Sie die Regeln um oder schränken Sie die früheren Bedingungen ein.
+- **Die befragte Person hängt ohne Meldung an einer Pflichtfrage fest.** Sie hat mit No geantwortet, einen Toggle ausgeschaltet oder 0 eingegeben. Siehe [Pflichtfragen](#pflichtfragen).
+- **Ein Regelziel fehlt in der Auswahl.** Das Ziel ist verborgen, oder es ist die Frage selbst. Heben Sie das Verbergen auf oder wählen Sie ein anderes Ziel.
+- **Der Yes/No-Wert in einer Regel sieht leer aus.** Das ist eine Anzeige-Eigenheit. Öffnen Sie die Auswahl; der ausgewählte Wert ist markiert.
+- **Eine Yes/No-Auto-Reply wird nicht gesendet.** Yes/No verwendet **Auto reply (Yes)** und **Auto reply (No)**, nicht die generische On-Answer-Antwort.
+- **Die benötigte Option fehlt in der Werteliste der Regel.** Die Liste besteht aus den Optionen der Frage. Fügen Sie die Option zuerst auf dem Tab **Content** hinzu. Wenn die Optionen aus einer Datenquelle kommen, folgt die Liste der Quelle.
