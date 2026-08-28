@@ -4,13 +4,13 @@ sidebarTitle: "Forms"
 description: "Build custom forms in HireData to collect structured feedback and candidate data, then feed the responses straight into your automations and ATS fields."
 ---
 
-_The forms in HireData help you collect structured data during candidate journeys. This guide will walk you through setting up and using forms in HireData for your automations._
+_The forms in HireData help you collect structured data during candidate journeys. This guide walks you through setting up and using forms in HireData for your automations._
 
 ## Creating a form
 
-Firstly, you need to **define the purpose of the form.** Determine what data you need to collect (e.g., candidate's availability, feedback on the recruitment process, etc.).
+First, **define the purpose of the form.** Decide what data you need to collect, such as a candidate's availability or feedback on the recruitment process.
 
-Then, open the **Forms** page via the **Settings** and click [New Form]. You can create a blank form or select any of the available templates:
+Then open the **Forms** page from **Settings** and click **New Form**. You can create a blank form or pick one of the templates:
 
 ![New Form button](/images/intercom/50372488-Screenshot-2025-05-19-at-09_38_44.png)
 
@@ -18,80 +18,46 @@ _Form templates:_
 
 ![Form templates](/images/intercom/50372790-Screenshot-2025-05-19-at-09_39_14.png)
 
-_If you start from scratch, you should add a name to your form that's only for internal use:_
+_If you start from scratch, give the form a name. The name is for internal use only:_
 
 ![Adding a name to a form](/images/intercom/50373594-Screenshot-2025-05-19-at-12_40_06.png)
 
 ## Adding questions
 
-Forms consist of one or more questions, where each of them can have logic attached to it — for example, show a follow-up question only if a rating is below 8. More on that shortly, now let's see how to add different questions.
+A form is one or more questions. Each question can carry logic, for example to show a follow-up only when a rating is below 8. Click the **+** button above the question list to open the **Add Content** palette and pick a question type.
 
-### 1.1. Click the type of question you want to add or the [+] icon to add other questions
-
-Each form can have multiple question types depending on the kind of data you'd like to collect.
-
-Most used by our clients:
-
-- **NPS/Opinion scale:** Ask candidates to rate something from 1 to 10.
-- **Multiple choice**: Let users pick from a list of options.
-- **Short/Long Text**: Collect open-ended answers.
-- **Redirect URL:** Redirect respondents to your website or Google Review URL.
-
-Other:
-
-- **Yes/No questions**
-- **Dropdown:** Let users pick from a list of options stored in a drop-down field.
-- **Collect contact information:** Collect the candidate's email address, phone number, or website.
-- **Date/Time/Datetime:** Ask for the candidate's availability time, birth date, or any other details in this format.
-- **Number/Currency:** Collect salary expectations data.
-- **File upload: **For collecting documents or photos.
-- **Ending screen: **Add a Thank you page at the end of your form.
+The palette offers text, contact, date and time, choice, numeric, rating, file upload, and ending types. For what each type collects, its settings, the answer it stores, and the logic operators it supports, see the [question types reference](/reference/forms/question-types).
 
 ![Question types](/images/intercom/50373968-Screenshot-2025-03-19-at-21_07_17.png)
 
-### 2.2. Optional question settings
+### Question settings
 
-When adding or editing a question in your form, you can customise it using the following options:
-
-- **Description: **Supporting text that appears below the question. Use this to provide more context or clarify the question.
-- **Placeholder: **The text that appears inside the input field to guide the user on what kind of answer you're expecting (e.g. _“Type your response here…”_). It disappears once the user starts typing.
-- **Image: **A visual above the question to make it more engaging or provide a visual reference.
-- **Button text: **A customisable button that the candidate clicks to submit the answer or move to the next step. This can be useful if you want to guide the tone (e.g. "Submit Rating" or "Next").
-- **Adjust scale: **For rating questions, you can define the minimum and maximum values (e.g. 1–10, 1–5). This is useful for different feedback formats like NPS (0–10) or satisfaction scores (1–5).
-- **Required question: **Enable this to make the question mandatory so candidates won’t be able to skip it.
-- **Hidden question: **Use this to hide a question from the candidate while still storing an answer (e.g. a default value or system-generated response).
-- **Reverse: **For rating questions, this inverts the scale display (e.g. shows 10 → 1 instead of 1 → 10). It’s helpful when higher numbers represent something negative (like stress or difficulty).
+Click a question to open its settings. Every question has a **Description**, an **Image**, and **Required** and **Hidden** toggles. Text questions add a **Placeholder**, rating questions a scale and a **Reverse** toggle, and choice questions their options. The full list per type is in [Settings every question has](/reference/forms/question-types#settings-every-question-has).
 
 ![Adding a question to a form](/images/intercom/50374651-Screenshot-2025-05-19-at-09_48_54.png)
 
-💡 **Tip:** You can drag and drop to reorder the questions.
+<Tip>
+  Drag and drop to reorder the questions.
+</Tip>
+
+Before you make a Yes/No or numeric question required, read [Required questions](/reference/forms/question-types#required-questions).
 
 ## Adding logic to the questions
 
-Use **rules** to set up smart flows between questions. For example:
+Use **rules** to set up flows between questions. For example:
 
 - If a candidate rates **7 or below**, show a follow-up asking for improvement suggestions.
 - If the rating is **8 or higher**, take them to the next question or ask them to leave a Google review.
 
-To set this up:
-
-### 2.1. Open the **Logic** tab and click [Add Rule] below a question
+To set this up, open the **Logic** tab and click **Add Rule** under a question. Set the condition, for example "is less than or equal to 7", then choose the question or ending screen to go to. **All other cases go to** decides where everyone else continues.
 
 ![Logic tab](/images/intercom/50376095-Screenshot-2025-05-19-at-12_54_56.png)
 
-![Add Rule button](/images/intercom/50375541-Screenshot-2025-05-19-at-12_51_47.png)
-
-### 2.2. Set your condition (e.g. “Rating is less than or equal to 7”)
-
-![Adding a condition](/images/intercom/50375600-Screenshot-2B2025-05-19-2Bat-2B09_52_08.png)
-
-### 2.3. Choose what should happen next (e.g. go to a specific follow-up question or thank-you screen)
-
-![Selecting what will happen next](/images/intercom/50375079-Screenshot-2025-05-19-at-09_52_17.png)
+Which operators each question type supports, how HireData picks between several rules, and ready-made patterns are in the [conditional logic reference](/reference/forms/question-types#conditional-logic).
 
 ## Adding a thank-you screen
 
-Based on the answers, forms can also end with a thank-you message or redirect candidates to an external page to leave a review.
+Based on the answers, forms can end with a thank-you message or redirect candidates to an external page to leave a review.
 
 You can customise the **Thank-you screen** with a:
 
@@ -99,11 +65,11 @@ You can customise the **Thank-you screen** with a:
 - Short message
 - Image
 - Button with text
-- Redirect URL: Use this to direct candidates to leave a review or go to your website.
+- Redirect URL. Use this to direct candidates to leave a review or go to your website.
 
 _Thank you screen with Website Redirect URL:_
 
-![Thank you screen with Website Redirect URL:](/images/intercom/50376525-Screenshot-2025-05-19-at-09_50_43.png)
+![Thank you screen with Website Redirect URL](/images/intercom/50376525-Screenshot-2025-05-19-at-09_50_43.png)
 
 _Thank you screen with Google Review URL:_
 
@@ -111,7 +77,7 @@ _Thank you screen with Google Review URL:_
 
 ## Preview and save the form
 
-Click the eye icon to preview the form and [Save] to save it.
+Click the eye icon to preview the form and **Save** to save it.
 
 ![Save and Preview Buttons](/images/intercom/50379428-Screenshot-2025-05-19-at-13_18_51.png)
 
@@ -119,7 +85,7 @@ _Form preview on different devices:_
 
 ![Form preview](/images/intercom/50379844-Screenshot-2025-05-19-at-13_21_09.png)
 
-That’s it! 🎉 Once your form is ready, you can add it to your email templates in HireData and then send it via your automations.
+Once your form is ready, add it to your email templates in HireData and send it through your automations.
 
 ---
 
