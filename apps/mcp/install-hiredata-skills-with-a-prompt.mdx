@@ -8,7 +8,7 @@ related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/hiredata-skills", "/ap
 
 A HireData skill is a set of written instructions that teaches your AI assistant how HireData does one job — writing an email template, diagnosing an automation, planning an activation. There are two ways to get [HireData's skills](/apps/mcp/hiredata-skills) into your assistant. This page covers the manual one: you paste a prompt, your assistant fetches the instructions and hands you a file, and you upload that file yourself. About two minutes per skill.
 
-If you can [install the plugin](/apps/mcp/install-hiredata-plugin), do that instead — it is one step, it includes the HireData connection, and it updates from one button.
+If you can [install the plugin](/apps/mcp/install-hiredata-plugin), do that instead. It is one step, it includes the HireData connection, and it updates from one button.
 
 | Route | What happens | Choose it when |
 | --- | --- | --- |
@@ -31,10 +31,10 @@ Start with one. Once you have done it once, the rest work exactly the same way.
 
     Switch on code execution and file creation. Claude uses this to build the file you are about to download; if it is off, Claude will tell you it cannot create files.
 
-    No switch there, or it won't stay on? You are probably on a Team or Enterprise plan, where an Owner controls it in **Organization settings** \> **Skills** — both **Code execution and file creation** and **Skills** have to be on. Ask them to switch it on, or to [install the plugin](/apps/mcp/install-hiredata-plugin#claude-team-and-enterprise) for everyone, which is less work for both of you.
+    No switch there, or it won't stay on? You are probably on a Team or Enterprise plan, where an Owner controls it in **Organization settings** \> **Skills**. Both **Code execution and file creation** and **Skills** have to be on. Ask them to switch it on, or to [install the plugin](/apps/mcp/install-hiredata-plugin#claude-team-and-enterprise) for everyone, which is less work for both of you.
   </Step>
   <Step title="Ask Claude to build the skill file">
-    Start a **new** conversation and paste the prompt below. It does not install anything yet — it asks Claude to build one file, which you upload in the next step.
+    Start a **new** conversation and paste the prompt below. It does not install anything yet. It asks Claude to build one file, which you upload in the next step.
 
     This prompt builds the **Create email templates** skill. To build a different one, replace `hiredata-create-email-templates` with another folder name from [the skill list further down this page](#the-skill-folder-names). It appears twice — once in the first line, once in the web address — so change both.
 
@@ -47,7 +47,7 @@ Start with one. Once you have done it once, the rest work exactly the same way.
     4. Zip it so the skill folder itself sits at the root of the zip, and give me the zip to download.
     ```
 
-    Claude replies with a zip file. Download it — it lands in your Downloads folder.
+    Claude replies with a zip file. Download it. It lands in your Downloads folder.
   </Step>
   <Step title="Save it as a skill">
     In Claude, go to **Customize** \> **Skills**, click **\[Add\]**, choose the option to upload a skill file, and pick the zip you just downloaded.
@@ -63,7 +63,7 @@ Start with one. Once you have done it once, the rest work exactly the same way.
 
 ### Install all of them at once
 
-One prompt builds all of them. It fetches every skill file in the repository, which takes a few minutes — leave the tab open until it finishes.
+One prompt builds all of them. It fetches every skill file in the repository, which takes a few minutes. Leave the tab open until it finishes.
 
 ```text
 Please package all HireData skills for me.
