@@ -4,9 +4,52 @@ sidebarTitle: "Introduction"
 description: "Ready-made recruiting playbooks you can build in HireData, from no-show follow-ups to placement surveys, with step-by-step guides and automation templates."
 ---
 
-<Note>
-  This article is a placeholder. The content below outlines what it will cover.
-</Note>
+The cookbook contains practical HireData recipes for real recruitment outcomes. Each recipe combines a trigger, conditions, tasks, and templates into a workflow you can adapt to your own apps and process.
 
-{/* TODO(docs-reorg): explain what recipes are, how to read them, and list them as cards.
-   Each recipe composes a trigger + filters + tasks + templates for a real recruiting outcome. */}
+## How to use a recipe
+
+A recipe explains:
+
+1. **The outcome** — what the workflow should achieve
+2. **The trigger** — which event or schedule starts it
+3. **The conditions** — which records should continue
+4. **The tasks** — what HireData does with those records
+5. **The test** — how to verify the workflow safely
+
+Use the recipe as a starting point. Object names, stages, fields, and available tasks can differ between ATS connections, so choose the equivalent values from your own automation builder.
+
+## Before you build
+
+- Connect the app that provides the source data.
+- Identify a safe test record.
+- Confirm which fields and relationships are available.
+- Decide who owns the outcome when a task requires human follow-up.
+- Check the template gallery for an existing automation you can adapt.
+- Test every external action before activating the workflow.
+
+<Warning>
+  Recipes that send messages, update records, or call external systems can affect real data. Use test recipients and sandbox endpoints until you have reviewed the complete run.
+</Warning>
+
+## Available recipes
+
+<CardGroup cols={2}>
+  <Card title="Find incomplete candidate profiles" icon="user-magnifying-glass" href="/knowledge-base/cookbook/incomplete-candidate-profiles">
+    Find profiles with missing information and route them to a recruiter, internal team, or candidate-completion workflow.
+  </Card>
+
+  <Card title="Post an outcome to your own system" icon="code" href="/knowledge-base/cookbook/post-an-outcome-to-your-own-system">
+    Send a JSON summary to an API endpoint when a HireData event occurs, then reuse the response in later tasks.
+  </Card>
+</CardGroup>
+
+## Build confidently
+
+After creating a recipe:
+
+1. [Test the automation](/automations/how-to-test-an-automation).
+2. Review its [event](/settings/logs/events) and [run](/settings/logs/runs).
+3. Confirm the result in the destination app.
+4. Activate it for a limited audience before expanding the conditions.
+
+For reusable starting points, also browse the template gallery from the HireData dashboard.

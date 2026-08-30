@@ -32,7 +32,15 @@ La palette propose des types texte, contact, date et heure, choix, numériques, 
 
 ### Paramètres des questions
 
-Cliquez sur une question pour ouvrir ses paramètres. Chaque question a une **Description**, une **Image** et des interrupteurs **Required** et **Hidden**. Les questions de texte ajoutent un **Placeholder**, les questions d'évaluation une échelle et un interrupteur **Reverse**, et les questions à choix leurs options. La liste complète par type se trouve dans [Paramètres communs à toutes les questions](/fr/reference/forms/question-types#paramètres-communs-à-toutes-les-questions).
+Cliquez sur une question pour ouvrir ses paramètres. Chaque question a une **Description** et une **Image**. Les questions de texte ajoutent un **Placeholder**, les questions d'évaluation une échelle et un interrupteur **Reverse**, et les questions à choix leurs options. La liste complète par type se trouve dans [Paramètres communs à toutes les questions](/fr/reference/forms/question-types#paramètres-communs-à-toutes-les-questions).
+
+Le bouton en bas à droite de la carte ouvre **Display & requirements**, qui contient trois interrupteurs :
+
+- **Hidden** garde la question hors du formulaire tandis que sa réponse stockée reste disponible pour vos automatisations.
+- **Required** empêche le répondant de continuer tant qu'il n'a pas répondu.
+- **Always include** empêche la question d'être désactivée pour un enregistrement individuel, et la rend obligatoire.
+
+Voir [Affichage et exigences](/fr/reference/forms/question-types#affichage-et-exigences) pour la façon dont les trois fonctionnent ensemble.
 
 ![Ajout d'une question à un formulaire](/images/intercom/50374651-Screenshot-2025-05-19-at-09_48_54.png)
 
@@ -86,6 +94,10 @@ _Aperçu du formulaire sur différents appareils :_
 ![Aperçu du formulaire](/images/intercom/50379844-Screenshot-2025-05-19-at-13_21_09.png)
 
 Une fois votre formulaire prêt, ajoutez-le à vos modèles d'e-mails dans HireData et envoyez-le via vos automatisations.
+
+## Adapter le formulaire par enregistrement
+
+Liez le formulaire à un objet tel qu'un poste, et vous pouvez activer ou désactiver des questions individuelles pour un enregistrement sans toucher au formulaire lui-même. Un seul formulaire de présélection couvre alors tous les postes, chacun ne servant que les questions qui lui appartiennent. Voir [Configurer un formulaire par enregistrement](/fr/content/configuring-a-form-per-record).
 
 ---
 

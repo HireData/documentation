@@ -45,7 +45,7 @@ Cliquez sur une question dans la liste pour ouvrir sa carte. La carte présente 
 - **Question**, jusqu'à 255 caractères. Les écrans de fin l'appellent **Title**.
 - **Description**, jusqu'à 1024 caractères, affichée sous la question.
 - **Image**, avec un sélecteur de placement défini par défaut sur **Above the Input Field**. Les autres placements sont **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page** et **Background**.
-- Les interrupteurs **Required** et **Hidden** dans le pied de carte.
+- Un bouton dans le pied de carte qui ouvre **Display & requirements**, décrit dans [Affichage et exigences](#affichage-et-exigences).
 - Un commutateur de type dans le pied de carte pour les types qui existent en deux variantes : Short Text et Long Text, les modes Checkbox et Toggle de Yes/No, Multiple Choice et Dropdown, Net Promoter Score et Opinion Scale.
 
 Les paramètres de texte tels que **Question**, **Description** et les placeholders acceptent des variables ; une question peut donc s'adresser au répondant par son nom ou mentionner le poste. Certaines variables ne deviennent disponibles qu'après l'ajout de leur objet au formulaire, voir [Objets](#objets). Pour la syntaxe des variables, consultez [Variables](/fr/variables/introduction).
@@ -57,9 +57,27 @@ Deux autres paramètres apparaissent sur la plupart des types de questions, mais
 
 Redirect URL n'a aucun de ces paramètres. C'est un champ unique, décrit dans [Ending Screen et Redirect URL](#ending-screen-et-redirect-url).
 
-![Une carte de question Email avec Required activé, montrant Question, Description, Image, Placeholder, les paramètres de longueur et de motif, les deux réponses automatiques et les interrupteurs Required et Hidden, à côté de l'Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
+![Une carte de question Email avec Required activé, montrant Question, Description, Image, Placeholder, les paramètres de longueur et de motif, les deux réponses automatiques et le bouton du pied de carte indiquant Required, à côté de l'Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
 
-Une question masquée est ignorée lorsque le répondant avance dans le formulaire, et les règles de logique ne peuvent pas y renvoyer. Sa réponse stockée reste disponible pour les automatisations : c'est ainsi que vous faites transiter une valeur par défaut à travers un formulaire.
+## Affichage et exigences
+
+Le bouton en bas à droite d'une carte de question ouvre **Display & requirements**. Son libellé vous indique l'état actuel de la question : **Optional**, **Required**, **Hidden** ou **Always included**.
+
+![La fenêtre Display & requirements sur une carte de question, avec les interrupteurs Hidden, Required et Always include](/images/forms-builder/22-display-and-requirements.png)
+
+**Hidden**, « Hide this field from respondents. »
+
+Une question masquée est ignorée lorsque le répondant avance dans le formulaire, et les règles de logique ne peuvent pas y renvoyer. Sa réponse stockée reste disponible pour les automatisations : c'est ainsi que vous faites transiter une valeur telle qu'une référence ou un identifiant à travers un formulaire sans la demander.
+
+**Required**, « Require respondents to answer this field. »
+
+Le répondant ne peut pas continuer tant que la question n'a pas de réponse. Voir [Questions obligatoires](#questions-obligatoires) pour savoir ce qui compte comme une réponse.
+
+**Always include**, « Prevent configurations from disabling this field. This will make the field required. »
+
+L'activer active aussi **Required**. Personne ne peut désactiver la question pour un enregistrement individuel, le formulaire la sert donc à chaque fois. Utilisez-le pour les questions dont votre processus ne peut pas se passer. Voir [Configurer un formulaire par enregistrement](/fr/content/configuring-a-form-per-record).
+
+Activer **Hidden** efface **Required** et **Always include** et verrouille les deux. Une question que le répondant ne voit jamais ne peut pas recevoir de réponse, elle ne peut donc pas non plus être obligatoire.
 
 ## Types de questions
 
@@ -148,10 +166,10 @@ Multiple Choice affiche les options sous forme de liste. Dropdown les affiche da
 **Paramètres :**
 
 - **Options**. Chaque option a un libellé que le répondant voit et une valeur qui est stockée. Faites glisser pour réordonner. La roue dentée d'une option contient l'**Auto reply (on answer)** de cette option.
-- **Add Data Source** remplit les options depuis une source de données de votre espace de travail, au lieu d'options que vous saisissez. Une question utilise l'un ou l'autre, jamais les deux.
+- **Add Data Source** remplit les options depuis une source de données de votre espace de travail, au lieu d'options que vous saisissez. Une question utilise l'un ou l'autre, jamais les deux. Voir [Sources de données](#sources-de-données).
 - **Conversational Button Text**, « When this field is shown as a select menu this will be the text shown on the button. » La valeur par défaut est « Choose ».
 - **Placeholder**, Dropdown uniquement.
-- **Multiple** dans le pied de carte, qui permet au répondant de choisir plusieurs options.
+- **Answer selection** dans le pied de carte, qui contient **Allow multiple answers**. Le libellé du bouton indique **Single Answer** ou **Multiple Answers**.
 
 **Stocke :**
 
@@ -279,6 +297,56 @@ Vous pouvez amener des objets de votre ATS ou d'autres apps dans le formulaire, 
 Pour en ajouter un, cliquez sur le bouton **Show objects** dans la barre d'outils en haut à droite de l'éditeur, puis choisissez les objets dont vous avez besoin dans le menu.
 
 ![La barre d'outils de l'éditeur à côté de Save et Publish, avec le bouton Show objects mis en évidence](/images/forms-builder/21-object-button.png)
+
+Le panneau **Objects** liste ce à quoi le formulaire est lié, au-dessus des **Available objects** que vous pouvez encore ajouter. Cliquez sur le **+** d'un objet pour le lier.
+
+![Le panneau Objects avec Vacancy et Match liés, montrant Label, Key, l'interrupteur Required et Remove](/images/forms-builder/23-objects-panel-linked.png)
+
+**Paramètres par objet :**
+
+- **Label**, le nom affiché dans l'éditeur.
+- **Key**, le préfixe que vous écrivez dans une variable. Un poste avec la clé `job` vous donne `{{ job.jobTitle }}`.
+- **Required**, activé par défaut. Voir [Objets obligatoires](#objets-obligatoires).
+- **Remove**, qui délie l'objet. Les variables qui utilisaient sa clé cessent de se résoudre.
+- Les flèches à côté de chaque objet le déplacent vers le haut et vers le bas de la liste.
+
+### Le premier objet de la liste
+
+L'ordre compte. Le premier objet est l'objet principal du formulaire, et il décide pour quels enregistrements vous pouvez configurer le formulaire. Avec Vacancy en premier, vous configurez le formulaire par poste, et le formulaire apparaît sur l'onglet **Forms** de chaque poste. Voir [Configurer un formulaire par enregistrement](/fr/content/configuring-a-form-per-record).
+
+Les objets en dessous ne font que fournir des données. Ils vous donnent leurs variables et rattachent la réponse à leur enregistrement, tel que le match ou le candidat auquel les réponses appartiennent. Vous ne pouvez pas configurer le formulaire par match ou par candidat.
+
+### Objets obligatoires
+
+**Required** est un garde-fou. Lorsque l'objet est obligatoire et qu'aucun enregistrement de ce type n'atteint le formulaire, l'étape qui sert le formulaire, telle qu'un e-mail ou un message WhatsApp, échoue au lieu d'envoyer. L'[exécution](/fr/settings/logs/runs) consigne l'échec.
+
+Désactivez-le lorsque le formulaire doit partir dans tous les cas. Donnez aux variables qui dépendent de l'objet une valeur de repli, pour qu'un enregistrement manquant ne laisse pas de vide dans la question :
+
+```
+Do you have transport to {{ job.workCity | default: "the workplace" }}?
+```
+
+Pour la syntaxe de repli, consultez [Modificateurs](/fr/variables/modifiers).
+
+## Sources de données
+
+Une source de données est une liste enregistrée que votre espace de travail peut réutiliser. Pointez une question Multiple Choice ou Dropdown vers l'une d'elles et ses options proviennent de cette liste au lieu d'options que vous saisissez.
+
+Cliquez sur **Add Data Source** sur la question pour ouvrir le sélecteur. Chaque carte montre la liste dont elle provient, et une puce **Filters** lorsque la liste a été restreinte.
+
+Pour en construire une nouvelle, cliquez sur **Add Data Source** dans le sélecteur. Vous pouvez puiser dans les données de votre propre espace de travail, telles que Brands, Users, Locations, Languages, Countries, Locale et Timezones, ou dans une liste d'une app connectée. Une connexion Carerix, par exemple, propose ses tables de codes, pour qu'une question puisse offrir les mêmes diplômes, langues, compétences ou étapes de match que vos recruteurs voient dans Carerix.
+
+![Le panneau de source de données pour Match : Stage, avec Name, Label, Description, Value, Avatar et un ensemble de filtres vide](/images/forms-builder/24-data-source-filters.png)
+
+**Paramètres :**
+
+- **Name**, la façon dont la source apparaît dans le sélecteur.
+- **Label**, **Description**, **Value** et **Avatar**, qui associent les champs de la liste à ce que le répondant voit et à ce que la réponse stocke.
+- **Filters**, qui restreignent la liste. **Add New Set** ajoute un groupe de conditions, et **Add Filter** ajoute une condition à ce groupe.
+
+Filtrez une liste lorsque seule une partie a sa place dans la question. Une liste d'étapes de match de trente entrées peut être réduite aux trois étapes qu'une présélection est autorisée à définir, pour qu'aucune autre étape ne puisse jamais être choisie. La source filtrée est enregistrée séparément et peut être réutilisée, c'est pourquoi le sélecteur montre à la fois « Match: Stage » et une copie filtrée à côté.
+
+Une source de données appartient à l'espace de travail, pas à la question ; en modifier une change donc chaque question qui l'utilise. Construisez une seconde source à partir de la même liste lorsqu'un seul formulaire doit voir la version raccourcie.
 
 ## Logique conditionnelle
 

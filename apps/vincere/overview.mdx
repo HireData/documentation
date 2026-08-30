@@ -4,11 +4,49 @@ sidebarTitle: "Overview"
 description: "Learn what the HireData Vincere integration syncs, which recruitment automations it supports, and how to get started connecting your Vincere account."
 ---
 
-<Note>
-  This article is a placeholder. The content below outlines what it will cover.
-</Note>
+Connect Vincere to HireData to automate communication, recruiter follow-up, and record updates from changes in your recruitment workflow.
 
-{/* TODO(docs-reorg): what syncs, sync frequency, supported tasks matrix, links. */}
+## What the integration provides
+
+HireData receives supported Vincere events and makes their fields and related records available to automations. For example, an application-status change can start a workflow. Conditions can then limit the workflow to the statuses, candidates, jobs, or other values you choose.
+
+## What you can automate
+
+Common Vincere workflows include:
+
+- Send personalized email, WhatsApp, or survey messages
+- Schedule candidate, contact, job, personal, or project tasks in Vincere
+- Add activities or items to Vincere records
+- Update Vincere fields from an automation
+- Add filters and delays before a follow-up
+- Assign recruiter tasks using Vincere user data
+
+## How data stays current
+
+HireData imports connection data such as users, objects, fields, and statuses after you connect and schedules daily resyncs. Run a [manual sync](/apps/vincere/manually-sync-vincere-with-hiredata) when a recent Vincere change needs to appear immediately.
+
+## Get started
+
+<Steps>
+  <Step title="Connect Vincere">
+    Add the Vincere app using your tenant, client ID, and API key, then authorize HireData with a Vincere admin user.
+  </Step>
+  <Step title="Choose the trigger">
+    Select a Vincere object and event, then include every relationship you need for recipients, senders, conditions, or later tasks.
+  </Step>
+  <Step title="Add conditions and tasks">
+    Filter the incoming records and configure the communication, record update, activity, or scheduled task.
+  </Step>
+  <Step title="Test and activate">
+    Test with a safe record, verify both HireData's run and the result in Vincere, then activate the automation.
+  </Step>
+</Steps>
+
+## Vincere guides
 
 - [Connect with Vincere](/apps/vincere/connect-with-vincere)
+- [Manually sync Vincere](/apps/vincere/manually-sync-vincere-with-hiredata)
 - [Create a Vincere automation](/apps/vincere/create-a-vincere-automation-in-hiredata)
+- [Schedule a task in Vincere](/apps/vincere/schedule-a-task-in-vincere-with-hiredata)
+- [Add an activity or item](/apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata)
+- [Update fields in Vincere](/apps/vincere/update-fields-in-vincere-with-hiredata)

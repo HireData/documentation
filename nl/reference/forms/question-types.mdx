@@ -45,7 +45,7 @@ Klik op een vraag in de lijst om zijn kaart te openen. De kaart heeft bovenaan e
 - **Question**, maximaal 255 tekens. Ending screens noemen dit **Title**.
 - **Description**, maximaal 1024 tekens, getoond onder de vraag.
 - **Image**, met een plaatsingsselector die standaard op **Above the Input Field** staat. De andere plaatsingen zijn **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page** en **Background**.
-- **Required**- en **Hidden**-toggles in de footer.
+- Een knop in de footer die **Display & requirements** opent, beschreven in [Weergave en vereisten](#weergave-en-vereisten).
 - Een typeswitch in de footer voor typen die in twee smaken komen: Short Text en Long Text, Yes/No's Checkbox en Toggle, Multiple Choice en Dropdown, Net Promoter Score en Opinion Scale.
 
 Tekstinstellingen zoals **Question**, **Description** en de placeholders accepteren variabelen, zodat een vraag de respondent bij naam kan aanspreken of de vacature kan noemen. Sommige variabelen komen pas beschikbaar nadat je hun object aan het formulier hebt toegevoegd, zie [Objecten](#objecten). Voor de variabelesyntax, zie [Variabelen](/nl/variables/introduction).
@@ -57,9 +57,27 @@ Op de meeste, maar niet alle, vraagtypen verschijnen nog twee instellingen. Beid
 
 Redirect URL heeft geen van deze. Het is één enkel veld, beschreven onder [Ending Screen en Redirect URL](#ending-screen-en-redirect-url).
 
-![Een Email-vraagkaart met Required aan, met Question, Description, Image, Placeholder, de lengte- en patrooninstellingen, beide auto replies en de Required- en Hidden-toggles, naast de Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
+![Een Email-vraagkaart met Required aan, met Question, Description, Image, Placeholder, de lengte- en patrooninstellingen, beide auto replies en de footerknop met de tekst Required, naast de Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
 
-Een verborgen vraag wordt overgeslagen wanneer de respondent door het formulier gaat, en logic rules kunnen er niet naartoe springen. Het opgeslagen antwoord blijft beschikbaar voor automatiseringen, en zo draag je een default-waarde door een formulier mee.
+## Weergave en vereisten
+
+De knop rechtsonder op een vraagkaart opent **Display & requirements**. Zijn label vertelt je de huidige status van de vraag: **Optional**, **Required**, **Hidden** of **Always included**.
+
+![De Display & requirements-popup op een vraagkaart, met de Hidden-, Required- en Always include-toggles](/images/forms-builder/22-display-and-requirements.png)
+
+**Hidden**, "Hide this field from respondents."
+
+Een verborgen vraag wordt overgeslagen wanneer de respondent door het formulier gaat, en logic rules kunnen er niet naartoe springen. Het opgeslagen antwoord blijft beschikbaar voor automatiseringen, en zo draag je een waarde zoals een referentie of een ID door een formulier mee zonder ernaar te vragen.
+
+**Required**, "Require respondents to answer this field."
+
+De respondent kan niet verdergaan totdat de vraag een antwoord heeft. Zie [Verplichte vragen](#verplichte-vragen) voor wat als antwoord telt.
+
+**Always include**, "Prevent configurations from disabling this field. This will make the field required."
+
+Aanzetten zet ook **Required** aan. Niemand kan de vraag voor een individueel record uitschakelen, dus het formulier serveert hem elke keer. Gebruik het voor de vragen waar je proces niet zonder kan. Zie [Een formulier per record configureren](/nl/content/configuring-a-form-per-record).
+
+**Hidden** aanzetten wist **Required** en **Always include** en vergrendelt beide. Een vraag die de respondent nooit ziet kan niet worden beantwoord, en kan dus ook niet verplicht zijn.
 
 ## Vraagtypen
 
@@ -148,10 +166,10 @@ Multiple Choice toont de opties als een lijst. Dropdown toont ze in een selectie
 **Instellingen:**
 
 - **Options**. Elke optie heeft een label dat de respondent ziet en een waarde die wordt opgeslagen. Versleep om de volgorde te wijzigen. Het tandwiel op een optie bevat de **Auto reply (on answer)** van die optie.
-- **Add Data Source** vult de opties vanuit een data source in je workspace, in plaats van opties die je zelf typt. Een vraag gebruikt het een of het ander, nooit beide.
+- **Add Data Source** vult de opties vanuit een data source in je workspace, in plaats van opties die je zelf typt. Een vraag gebruikt het een of het ander, nooit beide. Zie [Data sources](#data-sources).
 - **Conversational Button Text**, "When this field is shown as a select menu this will be the text shown on the button." Staat standaard op "Choose".
 - **Placeholder**, alleen bij Dropdown.
-- **Multiple** in de footer, waarmee de respondent meer dan één optie kan kiezen.
+- **Answer selection** in de footer, dat **Allow multiple answers** bevat. Het knoplabel toont **Single Answer** of **Multiple Answers**.
 
 **Slaat op:**
 
@@ -279,6 +297,56 @@ Je kunt objecten uit je ATS of andere apps in het formulier binnenhalen, zodat h
 Om er een toe te voegen klik je op de **Show objects**-knop in de toolbar rechtsboven in de builder en kies je vervolgens de objecten die je nodig hebt uit het menu.
 
 ![De buildertoolbar naast Save en Publish, met de Show objects-knop gemarkeerd](/images/forms-builder/21-object-button.png)
+
+Het **Objects**-paneel toont waaraan het formulier is gekoppeld, boven de **Available objects** die je nog kunt toevoegen. Klik op de **+** op een object om het te koppelen.
+
+![Het Objects-paneel met Vacancy en Match gekoppeld, met Label, Key, de Required-toggle en Remove](/images/forms-builder/23-objects-panel-linked.png)
+
+**Instellingen per object:**
+
+- **Label**, de naam die in de builder wordt getoond.
+- **Key**, de prefix die je in een variabele schrijft. Een vacature met de key `job` geeft je `{{ job.jobTitle }}`.
+- **Required**, staat standaard aan. Zie [Verplichte objecten](#verplichte-objecten).
+- **Remove**, dat het object ontkoppelt. Variabelen die zijn key gebruikten, worden niet meer ingevuld.
+- De pijlen naast elk object verplaatsen het omhoog en omlaag in de lijst.
+
+### Het eerste object in de lijst
+
+Volgorde is belangrijk. Het eerste object is het hoofdobject van het formulier, en het bepaalt voor welke records je het formulier kunt configureren. Met Vacancy als eerste configureer je het formulier per vacature, en het formulier verschijnt op het **Forms**-tabblad van elke vacature. Zie [Een formulier per record configureren](/nl/content/configuring-a-form-per-record).
+
+De objecten eronder leveren alleen data. Ze geven je hun variabelen en koppelen de response aan hun record, zoals de match of de kandidaat waar de antwoorden bij horen. Je kunt het formulier niet per match of per kandidaat configureren.
+
+### Verplichte objecten
+
+**Required** is een fail-safe. Wanneer het object verplicht is en geen record van dat type het formulier bereikt, mislukt de stap die het formulier serveert, zoals een e-mail of een WhatsApp-bericht, in plaats van te verzenden. De [run](/nl/settings/logs/runs) legt de mislukking vast.
+
+Zet het uit wanneer het formulier hoe dan ook de deur uit moet. Geef de variabelen die van het object afhangen een fallback-waarde, zodat een ontbrekend record geen gat in de vraag achterlaat:
+
+```
+Do you have transport to {{ job.workCity | default: "the workplace" }}?
+```
+
+Voor de fallback-syntax, zie [Modifiers](/nl/variables/modifiers).
+
+## Data sources
+
+Een data source is een opgeslagen lijst die je workspace kan hergebruiken. Richt een Multiple Choice- of Dropdown-vraag erop en zijn opties komen uit die lijst, in plaats van uit opties die je zelf typt.
+
+Klik op **Add Data Source** op de vraag om de picker te openen. Elke kaart toont de lijst waaruit hij put, en een **Filters**-chip wanneer de lijst is ingeperkt.
+
+Om een nieuwe te bouwen klik je op **Add Data Source** in de picker. Je kunt putten uit je eigen workspacedata, zoals Brands, Users, Locations, Languages, Countries, Locale en Timezones, of uit een lijst van een gekoppelde app. Een Carerix-koppeling biedt bijvoorbeeld zijn codetabellen, zodat een vraag dezelfde opleidingen, talen, skills of match stages kan aanbieden die je recruiters in Carerix zien.
+
+![Het data source-paneel voor Match: Stage, met Name, Label, Description, Value, Avatar en een lege filterset](/images/forms-builder/24-data-source-filters.png)
+
+**Instellingen:**
+
+- **Name**, hoe de source in de picker verschijnt.
+- **Label**, **Description**, **Value** en **Avatar**, die velden van de lijst koppelen aan wat de respondent ziet en wat het antwoord opslaat.
+- **Filters**, die de lijst inperken. **Add New Set** voegt een groep voorwaarden toe, en **Add Filter** voegt een voorwaarde aan die groep toe.
+
+Filter een lijst wanneer maar een deel ervan in de vraag thuishoort. Een match stage-lijst van dertig items kan worden teruggebracht tot de drie stages die een pre-screening mag zetten, zodat geen enkele andere stage ooit gekozen kan worden. De gefilterde source wordt apart opgeslagen en kan worden hergebruikt; daarom toont de picker zowel "Match: Stage" als een gefilterde kopie ernaast.
+
+Een data source hoort bij de workspace, niet bij de vraag, dus een bewerking wijzigt elke vraag die hem gebruikt. Bouw een tweede source vanuit dezelfde lijst wanneer maar één formulier de kortere versie hoort te zien.
 
 ## Conditionele logica
 

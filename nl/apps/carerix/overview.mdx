@@ -4,13 +4,61 @@ sidebarTitle: "Overzicht"
 description: "Ontdek wat de Carerix-integratie synchroniseert, welke automatiseringen worden ondersteund en hoe je Carerix aan HireData koppelt."
 ---
 
-<Note>
-  Dit artikel is een placeholder. De onderstaande inhoud schetst waar het over zal gaan.
-</Note>
+Koppel Carerix aan HireData om wijzigingen in je recruitmentdatabase om te zetten in geautomatiseerde communicatie, opvolging en databeheer. HireData ontvangt events uit Carerix, controleert je voorwaarden en voert de ingestelde taken uit.
 
-{/* TODO(docs-reorg): what syncs (candidates, users, contacts, matches, vacancies...),
-   sync frequency, supported tasks matrix, links into Connect / fields / task guides. */}
+## Wat de integratie beschikbaar maakt
+
+De Carerix-koppeling maakt recruitmentdata beschikbaar in je HireData-automatiseringen, waaronder veelgebruikte kandidaat-, user-, contact-, match- en vacaturegegevens. Je bepaalt zelf welke velden en relaties beschikbaar zijn.
+
+Een Carerix-event kan een automatisering starten wanneer een record wordt aangemaakt of bijgewerkt. Met filters beperk je de doelgroep vervolgens op stage, status, eigenaar of een ander beschikbaar veld.
+
+## Wat je kunt automatiseren
+
+Veelgebruikte Carerix-workflows zijn:
+
+- Gepersonaliseerde e-mails, WhatsApp-berichten of surveys versturen na een wijziging van een match stage
+- Recruitertaken en follow-ups in Carerix plannen
+- Activiteiten of andere items aan Carerix-records toevoegen
+- Carerix-velden bijwerken op basis van een workflowresultaat
+- E-mails en WhatsApp-gesprekken in Carerix loggen
+- Delays en voorwaarden toevoegen zodat communicatie op het juiste moment plaatsvindt
+
+Welke records en variabelen beschikbaar zijn, hangt af van de objecten, velden en relaties die je in de koppeling hebt ingeschakeld.
+
+## Formulieren binnen Carerix
+
+Recruiters hoeven Carerix niet te verlaten om met HireData-formulieren te werken. De Carerix RMA voegt twee tabbladen toe:
+
+- **Forms** op een vacature, waar je individuele vragen voor die vacature aan- of uitzet. Het is dezelfde configuratie als het **Forms**-tabblad van een vacaturerecord in HireData, beschreven in [Een formulier per record configureren](/nl/content/configuring-a-form-per-record).
+- **Forms & responses** op een match, waar je ziet wat de kandidaat heeft geantwoord. Open de volledige details om elk antwoord te lezen, en volg de links naar de kandidaat of de vacature waar de response bij hoort.
+
+Zo blijft één formulier over elke vacature draaien, terwijl elke klant, en elke rol, de vragen krijgt die hij nodig heeft.
+
+## Hoe data actueel blijft
+
+HireData voert na het koppelen een eerste synchronisatie uit en plant dagelijkse synchronisaties voor onder andere users, objecten, velden en statussen. Voer een [handmatige synchronisatie](/nl/apps/carerix/manually-sync-carerix-with-hiredata) uit als je een recente wijziging direct nodig hebt.
+
+Ontbreekt een veld of gerelateerd record in de automation builder? Controleer dan eerst de [Carerix-velden en -relaties](/nl/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) en synchroniseer opnieuw.
+
+## Aan de slag
+
+<Steps>
+  <Step title="Koppel Carerix">
+    Installeer en activeer de Carerix RMA vanuit de Marketplace. Beheer je meerdere tenants, volg dan de geavanceerde methode in [Verbinden met Carerix](/nl/apps/carerix/connect-with-carerix).
+  </Step>
+  <Step title="Kies de beschikbare data">
+    Schakel alleen de objecten, velden en relaties in die je workflows nodig hebben.
+  </Step>
+  <Step title="Bouw en test een automatisering">
+    Kies een Carerix-event, voeg voorwaarden en taken toe en [test de automatisering](/nl/automations/how-to-test-an-automation) voordat je deze activeert.
+  </Step>
+</Steps>
+
+## Carerix-handleidingen
 
 - [Verbinden met Carerix](/nl/apps/carerix/connect-with-carerix)
 - [Velden en relaties activeren](/nl/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations)
+- [Carerix handmatig synchroniseren](/nl/apps/carerix/manually-sync-carerix-with-hiredata)
 - [Een Carerix-automatisering maken](/nl/apps/carerix/create-a-carerix-automation-in-hiredata)
+- [Een taak in Carerix plannen](/nl/apps/carerix/schedule-a-task-in-carerix-with-hiredata)
+- [Velden in Carerix bijwerken](/nl/apps/carerix/update-fields-in-carerix-with-hiredata)

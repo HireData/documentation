@@ -45,7 +45,7 @@ Klicken Sie auf eine Frage in der Liste, um ihre Karte zu öffnen. Die Karte ent
 - **Question**, bis zu 255 Zeichen. Bei Ending Screens heißt das **Title**.
 - **Description**, bis zu 1024 Zeichen, angezeigt unter der Frage.
 - **Image**, mit einer Platzierungsauswahl, die standardmäßig auf **Above the Input Field** steht. Die anderen Platzierungen sind **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page** und **Background**.
-- Die Schalter **Required** und **Hidden** in der Fußzeile.
+- Eine Schaltfläche in der Fußzeile, die **Display & requirements** öffnet, beschrieben in [Anzeige und Anforderungen](#anzeige-und-anforderungen).
 - Ein Typumschalter in der Fußzeile für Typen, die in zwei Varianten vorkommen: Short Text und Long Text, Checkbox und Toggle bei Yes/No, Multiple Choice und Dropdown, Net Promoter Score und Opinion Scale.
 
 Texteinstellungen wie **Question**, **Description** und die Platzhalter akzeptieren Variablen, sodass eine Frage Befragte mit Namen ansprechen oder die Vakanz erwähnen kann. Manche Variablen werden erst verfügbar, nachdem Sie ihr Objekt zum Formular hinzugefügt haben, siehe [Objekte](#objekte). Zur Variablen-Syntax siehe [Variablen](/de/variables/introduction).
@@ -57,9 +57,27 @@ Zwei weitere Einstellungen erscheinen bei den meisten, aber nicht allen Fragetyp
 
 Redirect URL hat nichts davon. Es ist ein einzelnes Feld, beschrieben unter [Ending Screen und Redirect URL](#ending-screen-und-redirect-url).
 
-![Eine Email-Fragekarte mit eingeschaltetem Required, mit Question, Description, Image, Placeholder, den Längen- und Pattern-Einstellungen, beiden Auto Replies und den Schaltern Required und Hidden, neben der Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
+![Eine Email-Fragekarte mit eingeschaltetem Required, mit Question, Description, Image, Placeholder, den Längen- und Pattern-Einstellungen, beiden Auto Replies und der Fußzeilen-Schaltfläche mit der Beschriftung Required, neben der Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
 
-Eine verborgene Frage wird übersprungen, wenn die befragte Person durch das Formular geht, und Logikregeln können nicht zu ihr springen. Ihre gespeicherte Antwort bleibt für Automatisierungen verfügbar – so tragen Sie einen Standardwert durch ein Formular.
+## Anzeige und Anforderungen
+
+Die Schaltfläche unten rechts auf einer Fragekarte öffnet **Display & requirements**. Ihre Beschriftung zeigt den aktuellen Zustand der Frage: **Optional**, **Required**, **Hidden** oder **Always included**.
+
+![Das Display-&-requirements-Popup auf einer Fragekarte, mit den Schaltern Hidden, Required und Always include](/images/forms-builder/22-display-and-requirements.png)
+
+**Hidden**, „Hide this field from respondents."
+
+Eine verborgene Frage wird übersprungen, wenn die befragte Person durch das Formular geht, und Logikregeln können nicht zu ihr springen. Ihre gespeicherte Antwort bleibt für Automatisierungen verfügbar – so tragen Sie einen Wert wie eine Referenz oder eine ID durch ein Formular, ohne danach zu fragen.
+
+**Required**, „Require respondents to answer this field."
+
+Die befragte Person kann nicht weitergehen, bis die Frage eine Antwort hat. Was als Antwort zählt, steht in [Pflichtfragen](#pflichtfragen).
+
+**Always include**, „Prevent configurations from disabling this field. This will make the field required."
+
+Das Einschalten schaltet auch **Required** ein. Niemand kann die Frage für einen einzelnen Datensatz ausschalten, das Formular stellt sie also jedes Mal. Verwenden Sie es für die Fragen, ohne die Ihr Prozess nicht auskommt. Siehe [Ein Formular pro Datensatz konfigurieren](/de/content/configuring-a-form-per-record).
+
+Das Einschalten von **Hidden** löscht **Required** und **Always include** und sperrt beide. Eine Frage, die die befragte Person nie sieht, kann nicht beantwortet werden – also kann sie auch nicht verpflichtend sein.
 
 ## Fragetypen
 
@@ -148,10 +166,10 @@ Multiple Choice zeigt die Optionen als Liste. Dropdown zeigt sie in einem Auswah
 **Einstellungen:**
 
 - **Options**. Jede Option hat ein Label, das die befragte Person sieht, und einen Wert, der gespeichert wird. Ziehen Sie zum Umsortieren. Das Zahnrad einer Option enthält deren **Auto reply (on answer)**.
-- **Add Data Source** befüllt die Optionen aus einer Datenquelle in Ihrem Workspace, statt aus Optionen, die Sie eintippen. Eine Frage nutzt das eine oder das andere, nie beides.
+- **Add Data Source** befüllt die Optionen aus einer Datenquelle in Ihrem Workspace, statt aus Optionen, die Sie eintippen. Eine Frage nutzt das eine oder das andere, nie beides. Siehe [Datenquellen](#datenquellen).
 - **Conversational Button Text**, „When this field is shown as a select menu this will be the text shown on the button." Standard ist „Choose".
 - **Placeholder**, nur bei Dropdown.
-- **Multiple** in der Fußzeile, womit die befragte Person mehr als eine Option wählen kann.
+- **Answer selection** in der Fußzeile, das **Allow multiple answers** enthält. Die Beschriftung der Schaltfläche lautet **Single Answer** oder **Multiple Answers**.
 
 **Speichert:**
 
@@ -279,6 +297,56 @@ Sie können Objekte aus Ihrem ATS oder anderen Apps in das Formular holen, damit
 Um eines hinzuzufügen, klicken Sie auf die Schaltfläche **Show objects** in der Symbolleiste oben rechts im Builder und wählen Sie dann die benötigten Objekte aus dem Menü.
 
 ![Die Builder-Symbolleiste neben Save und Publish, mit hervorgehobener Show-objects-Schaltfläche](/images/forms-builder/21-object-button.png)
+
+Das **Objects**-Panel listet auf, womit das Formular verknüpft ist, oberhalb der **Available objects**, die Sie noch hinzufügen können. Klicken Sie auf das **+** eines Objekts, um es zu verknüpfen.
+
+![Das Objects-Panel mit verknüpftem Vacancy und Match, mit Label, Key, dem Required-Schalter und Remove](/images/forms-builder/23-objects-panel-linked.png)
+
+**Einstellungen pro Objekt:**
+
+- **Label**, der im Builder angezeigte Name.
+- **Key**, das Präfix, das Sie in einer Variablen schreiben. Eine Vakanz mit dem Key `job` gibt Ihnen `{{ job.jobTitle }}`.
+- **Required**, standardmäßig eingeschaltet. Siehe [Pflichtobjekte](#pflichtobjekte).
+- **Remove**, was die Verknüpfung des Objekts aufhebt. Variablen, die seinen Key verwendet haben, werden nicht mehr aufgelöst.
+- Die Pfeile neben jedem Objekt bewegen es in der Liste nach oben und unten.
+
+### Das erste Objekt in der Liste
+
+Die Reihenfolge zählt. Das erste Objekt ist das Hauptobjekt des Formulars, und es entscheidet, für welche Datensätze Sie das Formular konfigurieren können. Steht Vacancy an erster Stelle, konfigurieren Sie das Formular pro Vakanz, und das Formular erscheint auf dem **Forms**-Tab jeder Vakanz. Siehe [Ein Formular pro Datensatz konfigurieren](/de/content/configuring-a-form-per-record).
+
+Die Objekte darunter liefern nur Daten. Sie geben Ihnen ihre Variablen und binden die Antwort an ihren Datensatz, etwa den Match oder den Kandidaten, zu dem die Antworten gehören. Sie können das Formular nicht pro Match oder pro Kandidat konfigurieren.
+
+### Pflichtobjekte
+
+**Required** ist eine Absicherung. Wenn das Objekt verpflichtend ist und kein Datensatz dieses Typs das Formular erreicht, schlägt der Schritt, der das Formular ausliefert, etwa eine E-Mail oder eine WhatsApp-Nachricht, fehl, statt zu senden. Der [Run](/de/settings/logs/runs) protokolliert den Fehlschlag.
+
+Schalten Sie es aus, wenn das Formular in jedem Fall verschickt werden soll. Geben Sie den Variablen, die vom Objekt abhängen, einen Fallback-Wert, damit ein fehlender Datensatz keine Lücke in der Frage hinterlässt:
+
+```
+Do you have transport to {{ job.workCity | default: "the workplace" }}?
+```
+
+Zur Fallback-Syntax siehe [Modifiers](/de/variables/modifiers).
+
+## Datenquellen
+
+Eine Datenquelle ist eine gespeicherte Liste, die Ihr Workspace wiederverwenden kann. Richten Sie eine Multiple-Choice- oder Dropdown-Frage auf eine solche Liste, und ihre Optionen kommen aus dieser Liste statt aus Optionen, die Sie eintippen.
+
+Klicken Sie auf der Frage auf **Add Data Source**, um die Auswahl zu öffnen. Jede Karte zeigt die Liste, aus der sie schöpft, und einen **Filters**-Chip, wenn die Liste eingegrenzt wurde.
+
+Um eine neue zu bauen, klicken Sie in der Auswahl auf **Add Data Source**. Sie können auf Ihre eigenen Workspace-Daten zurückgreifen, etwa Brands, Users, Locations, Languages, Countries, Locale und Timezones, oder auf eine Liste aus einer verbundenen App. Eine Carerix-Verbindung bietet zum Beispiel ihre Code-Tabellen an, sodass eine Frage dieselben Abschlüsse, Sprachen, Skills oder Match-Phasen anbieten kann, die Ihre Recruiter in Carerix sehen.
+
+![Das Datenquellen-Panel für Match: Stage, mit Name, Label, Description, Value, Avatar und einem leeren Filter-Set](/images/forms-builder/24-data-source-filters.png)
+
+**Einstellungen:**
+
+- **Name**, wie die Quelle in der Auswahl erscheint.
+- **Label**, **Description**, **Value** und **Avatar**, die Felder der Liste darauf abbilden, was die befragte Person sieht und was die Antwort speichert.
+- **Filters**, die die Liste eingrenzen. **Add New Set** fügt eine Gruppe von Bedingungen hinzu, und **Add Filter** fügt dieser Gruppe eine Bedingung hinzu.
+
+Filtern Sie eine Liste, wenn nur ein Teil davon in die Frage gehört. Eine Match-Phasen-Liste mit dreißig Einträgen lässt sich auf die drei Phasen kürzen, die ein Pre-Screening setzen darf, sodass keine andere Phase je gewählt werden kann. Die gefilterte Quelle wird eigenständig gespeichert und kann wiederverwendet werden – deshalb zeigt die Auswahl sowohl „Match: Stage" als auch eine gefilterte Kopie daneben.
+
+Eine Datenquelle gehört dem Workspace, nicht der Frage. Wer eine bearbeitet, ändert also jede Frage, die sie verwendet. Bauen Sie eine zweite Quelle aus derselben Liste, wenn nur ein Formular die kürzere Version sehen soll.
 
 ## Bedingte Logik
 

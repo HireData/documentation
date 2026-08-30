@@ -4,21 +4,92 @@ sidebarTitle: "How HireData works"
 description: "Understand the core HireData model: events trigger automations, automations create runs, and runs execute tasks that update your ATS and messaging tools."
 ---
 
-<Note>
-  This article is a placeholder. The content below outlines what it will cover.
-</Note>
+HireData connects the changes in your recruitment tools to repeatable workflows. The core flow is:
 
-{/* TODO(docs-reorg): THE canonical concepts page. Cover, with a diagram:
-   - Event: a signal from your connected app (candidate created, stage changed...)
-   - Automation: your rules — a trigger plus filters plus tasks
-   - Run: one execution of an automation for one event
-   - Task: a single action inside a run (send email, update field, schedule task)
-   - Where to see each of these in the app (Events page, Runs page, Task History)
-   Cross-link: /settings/logs/events, /settings/logs/runs, /pages/task-history */}
+**Event → Automation → Run → Task**
 
-While this page is being written, the pieces are documented separately:
+Understanding these four parts makes it easier to build an automation and diagnose what happened afterward.
 
-- [Events](/settings/logs/events)
-- [Runs](/settings/logs/runs)
-- [Automations](/automations/automations)
-- [Task history](/pages/task-history)
+## Event: something changed
+
+An **event** is a signal from a connected app. It contains the record and values available at the moment the change occurred.
+
+Examples include:
+
+- A candidate was created
+- An application or match changed stage
+- A vacancy was updated
+- A placement was completed
+- A WhatsApp conversation ended
+
+HireData stores incoming events so you can inspect their data and see which automations processed them. Learn more in [Events](/settings/logs/events).
+
+## Automation: the rules you define
+
+An **automation** describes when HireData should act and what it should do. It normally contains:
+
+1. A trigger that selects the app, object, and event
+2. Conditions or filters that decide whether the record should continue
+3. Optional delays or branches
+4. One or more tasks
+
+An automation must be active before new matching events can start it. See [Automations](/automations/automations) and [Test your automations](/automations/how-to-test-an-automation).
+
+## Run: one execution of an automation
+
+A **run** is created when one event enters one automation. It records the exact path that event followed through the workflow.
+
+A run shows:
+
+- The trigger and event that started it
+- Which conditions passed or failed
+- Delays and branches
+- Every task that completed, stopped, or was cancelled
+- The fields used or created by each step
+
+Use [Runs](/settings/logs/runs) when you need to understand why a workflow produced a particular result.
+
+## Task: one action inside a run
+
+A **task** is an action performed by an automation. Examples include:
+
+- Send an email or WhatsApp message
+- Send a form or survey
+- Update a field in an ATS
+- Create an activity or scheduled recruiter task
+- Send an HTTP request to another system
+
+Completed and cancelled actions are also available in [Task history](/pages/task-history).
+
+## Example: follow up after a placement
+
+Suppose a match changes to **Placed** in your ATS:
+
+1. The ATS sends a match-updated **event** to HireData.
+2. An active placement-follow-up **automation** checks whether the stage is **Placed**.
+3. HireData creates a **run** for that event.
+4. The run waits seven days, then executes a **task** that sends the candidate a survey.
+5. The event, run, and task result remain available in the logs.
+
+Each new matching event creates its own run, so multiple candidates can move through the same automation independently.
+
+## Where to inspect each part
+
+| Part | What to check | Where to find it |
+| --- | --- | --- |
+| Event | Incoming fields, raw payload, and associated processes | [Events](/settings/logs/events) |
+| Automation | Trigger, conditions, steps, and active status | [Automations](/automations/automations) |
+| Run | Timeline, step result, fields, and related event | [Runs](/settings/logs/runs) |
+| Task | Completed or cancelled action and its source event | [Task history](/pages/task-history) |
+
+## When something does not run
+
+Start at the beginning of the flow:
+
+1. Confirm that the event arrived.
+2. Confirm that the automation was active and its trigger matched.
+3. Open the run, if one was created.
+4. Inspect the first step that stopped or was cancelled.
+5. Correct the configuration and test with a new event or a carefully reviewed replay.
+
+For the complete diagnostic flow, see [Why didn't my automation run?](/knowledge-base/why-didnt-my-automation-run).

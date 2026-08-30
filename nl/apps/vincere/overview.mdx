@@ -4,11 +4,49 @@ sidebarTitle: "Overzicht"
 description: "Ontdek wat de Vincere-integratie synchroniseert, welke automatiseringen worden ondersteund en hoe je Vincere koppelt aan HireData."
 ---
 
-<Note>
-  Dit artikel is een placeholder. De onderstaande inhoud schetst waar het over zal gaan.
-</Note>
+Koppel Vincere aan HireData om communicatie, recruiteropvolging en recordupdates te automatiseren vanuit wijzigingen in je recruitmentproces.
 
-{/* TODO(docs-reorg): what syncs, sync frequency, supported tasks matrix, links. */}
+## Wat de integratie beschikbaar maakt
+
+HireData ontvangt ondersteunde Vincere-events en maakt de velden en gerelateerde records beschikbaar in automatiseringen. Een wijziging van een application status kan bijvoorbeeld een workflow starten. Met voorwaarden beperk je de workflow tot de statussen, kandidaten, vacatures of andere waarden die je kiest.
+
+## Wat je kunt automatiseren
+
+Veelgebruikte Vincere-workflows zijn:
+
+- Gepersonaliseerde e-mails, WhatsApp-berichten of surveys versturen
+- Kandidaat-, contact-, vacature-, persoonlijke of projecttaken in Vincere plannen
+- Activiteiten of items aan Vincere-records toevoegen
+- Vincere-velden vanuit een automatisering bijwerken
+- Filters en delays toevoegen vóór een follow-up
+- Recruitertaken toewijzen met Vincere-userdata
+
+## Hoe data actueel blijft
+
+HireData importeert na het koppelen onder andere users, objecten, velden en statussen en plant dagelijkse synchronisaties. Voer een [handmatige synchronisatie](/nl/apps/vincere/manually-sync-vincere-with-hiredata) uit als een recente Vincere-wijziging direct zichtbaar moet zijn.
+
+## Aan de slag
+
+<Steps>
+  <Step title="Koppel Vincere">
+    Voeg de Vincere-app toe met je tenant, client ID en API-key en autoriseer HireData daarna met een Vincere-adminuser.
+  </Step>
+  <Step title="Kies de trigger">
+    Selecteer een Vincere-object en -event en voeg iedere relatie toe die je nodig hebt voor ontvangers, afzenders, voorwaarden of latere taken.
+  </Step>
+  <Step title="Voeg voorwaarden en taken toe">
+    Filter de inkomende records en configureer de communicatie, recordupdate, activiteit of geplande taak.
+  </Step>
+  <Step title="Test en activeer">
+    Test met een veilig record, controleer zowel de HireData-run als het resultaat in Vincere en activeer daarna de automatisering.
+  </Step>
+</Steps>
+
+## Vincere-handleidingen
 
 - [Verbinden met Vincere](/nl/apps/vincere/connect-with-vincere)
+- [Vincere handmatig synchroniseren](/nl/apps/vincere/manually-sync-vincere-with-hiredata)
 - [Een Vincere-automatisering maken](/nl/apps/vincere/create-a-vincere-automation-in-hiredata)
+- [Een taak in Vincere plannen](/nl/apps/vincere/schedule-a-task-in-vincere-with-hiredata)
+- [Een activiteit of item toevoegen](/nl/apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata)
+- [Velden in Vincere bijwerken](/nl/apps/vincere/update-fields-in-vincere-with-hiredata)

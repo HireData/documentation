@@ -1,0 +1,74 @@
+---
+title: "Configurer un formulaire par enregistrement"
+sidebarTitle: "Formulaires par enregistrement"
+description: "Activez ou désactivez des questions de formulaire individuelles pour un poste dans HireData, afin qu'un seul formulaire de présélection convienne à chaque client et à chaque rôle sans construire un formulaire pour chacun."
+keywords: ["formulaire par poste", "formulaire par enregistrement", "configurer les questions d'un formulaire", "questions disponibles", "enable all", "mandatory only", "onglet forms d'une collection", "réponses d'un enregistrement", "configuration par enregistrement", "présélection par poste"]
+---
+
+Un seul formulaire convient rarement à tous les postes. Un client exige une question éliminatoire qui n'a aucun sens pour le rôle suivant. Une question sur les années d'expérience est hors sujet pour un poste junior.
+
+Vous n'avez pas besoin d'un formulaire par poste pour autant. Construisez un formulaire, puis activez ou désactivez ses questions par enregistrement. Chaque poste ne sert que les questions qui lui appartiennent, et le formulaire lui-même ne change jamais.
+
+## Avant de commencer
+
+Vous pouvez configurer un formulaire par enregistrement dès que le formulaire est lié à un objet et que cet objet est en premier dans la liste du formulaire. Liez-le sur le panneau **Objects** de l'éditeur de formulaires, décrit dans [Objets](/fr/reference/forms/question-types#objets).
+
+Placez Vacancy en premier et vous configurez le formulaire par poste. Les objets en dessous, tels que Match ou Candidate, vous donnent toujours leurs variables et rattachent la réponse à leur enregistrement. Vous ne pouvez pas configurer le formulaire par rapport à eux.
+
+## Trouver les formulaires d'une collection
+
+Ouvrez **Data** dans le menu principal et choisissez une collection, par exemple **Vacancy**. Une collection contient tous les enregistrements d'un type d'objet qu'une app connectée synchronise dans HireData.
+
+Chaque collection a un onglet **Forms** et un onglet **Responses**.
+
+![La collection Vacancy avec ses onglets Records, Fields, People, Automations, Forms, Responses, Events, Runs et Tasks](/images/record-forms/01-collection-tabs.png)
+
+- **Forms** liste tous les formulaires liés à ce type d'objet, avec une puce par objet que le formulaire utilise et une icône qui indique si le formulaire est un brouillon ou est publié.
+- **Responses** liste toutes les réponses collectées pour un enregistrement de ce type.
+
+## Configurer un formulaire pour un enregistrement
+
+Ouvrez l'onglet **Records**, cliquez sur un enregistrement, puis ouvrez son onglet **Forms**. Chaque formulaire lié à la collection de cet enregistrement reçoit son propre onglet.
+
+![L'onglet Forms d'un enregistrement de poste, listant chaque question avec un contrôle Off et On et une question désactivée](/images/record-forms/02-record-forms-configuration.png)
+
+La colonne **Question** liste les questions qui peuvent être configurées pour cet enregistrement. La colonne **Available** décide si chacune est affichée. Réglez une question sur **Off** et ce poste la saute. Réglez-la sur **On** et elle revient.
+
+HireData enregistre chaque modification au fur et à mesure. La liste met en évidence chaque question qui ne suit plus le formulaire, pour que vous puissiez voir ce que cet enregistrement a changé.
+
+Deux choses restent telles quelles :
+
+- Les questions avec **Always include** activé dans l'éditeur de formulaires. Le formulaire les sert quoi que dise l'enregistrement. Voir [Affichage et exigences](/fr/reference/forms/question-types#affichage-et-exigences).
+- Les écrans de fin et les redirections. Ce ne sont pas des questions, elles n'atteignent donc jamais la liste.
+
+### Raccourcis
+
+**Preview** ouvre le formulaire tel que cet enregistrement le servirait, avec les valeurs propres à l'enregistrement remplies dans les questions. Il propose les mêmes vues **Interactive**, **Conversational** et **Test & Evaluate** que l'éditeur, ainsi qu'un sélecteur de langue. Utilisez-le pour vérifier qu'une question se lit toujours correctement une fois ses variables résolues.
+
+Le menu à côté de **Preview** contient trois actions :
+
+- **View form** ouvre le formulaire dans l'éditeur.
+- **Enable all** efface les modifications de cet enregistrement, pour que chaque question suive à nouveau le formulaire. Il apparaît dès qu'au moins une question est désactivée.
+- **Mandatory only** désactive tout sauf les questions qui doivent rester. Dans un formulaire où rien n'est réglé sur **Always include**, cela désactive toutes les questions.
+
+## Lire les réponses d'un enregistrement
+
+L'onglet **Responses** d'un enregistrement liste ce qui est revenu, quel que soit le canal par lequel c'est arrivé.
+
+![L'onglet Responses d'un enregistrement de poste, avec le formulaire, quand il a été reçu, quand il a été complété et la dernière activité](/images/record-forms/03-record-responses.png)
+
+Ouvrez une réponse pour lire les réponses données. Les points clés au-dessus d'elles montrent le canal, le nombre de messages, la part du formulaire que le répondant a terminée et le temps que cela a pris.
+
+![Une réponse avec ses points clés, ses réponses et les panneaux du répondant, de l'évaluation, de la chronologie et des enregistrements liés](/images/record-forms/04-response-detail.png)
+
+Les deux boutons au-dessus des réponses basculent entre une liste compacte et une mise en page plus aérée. **Previous** et **Next** parcourent les réponses sans revenir à la liste.
+
+## Pourquoi configurer par enregistrement
+
+Une agence de staffing fait tourner un seul formulaire de présélection sur des centaines de postes. La configuration par enregistrement est ce qui rend cela gérable.
+
+- Un client avec une exigence stricte obtient cette question activée pour ses postes uniquement.
+- Un poste sans fourchette salariale désactive la question du salaire, pour que personne n'ait à réagir à un chiffre qui n'existe pas.
+- Un rôle où l'expérience ne compte pas désactive la question de l'expérience, qui sort de l'évaluation avec elle.
+
+Un seul formulaire contient toujours les questions, la logique et l'évaluation. Seule la sélection par poste change.

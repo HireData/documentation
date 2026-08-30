@@ -58,7 +58,7 @@ On Team and Enterprise plans, an organisation owner first adds the connector in 
 1. Click **\[Connect\]**. Your browser opens HireData's consent screen: _"Connect Claude to HireData MCP"_.
 2. Check that you're signed in with the right HireData account.
 3. Under **Workspace access**, select the workspace(s) you want to grant access to.
-4. Under **What Claude can access**, review the permissions. By default all permissions available to you are selected — click the gear icon to narrow them down.
+4. Under **What Claude can access**, review the permissions. By default all permissions available to you are selected. Click the gear icon to narrow them down.
 5. Tick **"I recognise and trust the above URL"** to confirm the redirect back to Claude, and click **\[Authorize\]**.
 
 ![HireData's consent screen with workspace access and permissions](/images/mcp/hiredata-consent-screen.png)
@@ -112,7 +112,7 @@ The first time ChatGPT uses the server you'll be taken to HireData's sign-in and
 
 ## Connect from Gemini
 
-Google currently offers custom MCP connections in two places — the regular Gemini chat app does not support them yet:
+The regular Gemini chat app does not support custom MCP connections yet. Google currently offers them in two places:
 
 - **Gemini Spark** (Google AI Ultra): open **Connected Apps** in Spark's settings, add a custom app, and enter the MCP server URL `https://api.hiredata.com/mcp`. You'll be asked to sign in to HireData the first time you use it.
 - **Gemini Enterprise**: an administrator adds HireData as a custom MCP server connection in the Gemini Enterprise admin console using the same URL. After that, users sign in with their own HireData account.
@@ -121,20 +121,20 @@ Since Google's MCP support is evolving quickly, check Google's documentation for
 
 ## Connect from Microsoft Copilot
 
-Microsoft currently offers custom MCP connections through Copilot Studio — the consumer Copilot app does not support them yet:
+The consumer Copilot app does not support custom MCP connections yet. Microsoft currently offers them through Copilot Studio:
 
 1. In **Microsoft Copilot Studio**, open your agent's **Tools** page and choose **Add a tool** \> **New tool** \> **Model Context Protocol**.
 2. Enter a name and description (the agent uses the description to decide when to call HireData), and the server URL: `https://api.hiredata.com/mcp`
 3. Choose **OAuth 2.0** authentication with **Dynamic discovery**, create the connection, and add the tool to the agent.
 4. Publish the agent; users sign in to HireData with their own account on first use, with the same workspace selection and permissions as other assistants.
 
-Agents built this way can be made available in Microsoft 365 Copilot. Copilot Studio requires appropriate licensing, and MCP connections are subject to your organisation's Power Platform data policies — check Microsoft's documentation for current availability.
+Agents built this way can be made available in Microsoft 365 Copilot. Copilot Studio requires appropriate licensing, and MCP connections are subject to your organisation's Power Platform data policies. Check Microsoft's documentation for current availability.
 
 ## How access and security work
 
 - **Your permissions, nothing more.** The assistant works with the same rights you have in HireData, and only in the workspaces you selected during sign-in. Every request is re-checked on HireData's side.
 - **Audit trail.** Every action your assistant takes is recorded in the activity log, linked to the workspace it ran in.
-- **New capabilities need your approval.** When HireData adds new MCP capabilities, your existing connection does not widen automatically — you'll be asked to re-authorize first. No surprises.
+- **New capabilities need your approval.** When HireData adds new MCP capabilities, your existing connection does not widen automatically. You'll be asked to re-authorize first. No surprises.
 - **Safe changes.** Updates are partial (anything your assistant doesn't mention stays unchanged), your assistant can't silently overwrite newer work, and destructive or external-facing actions require explicit confirmation.
 - **Disconnect anytime.** Remove the connector in your assistant's settings, or revoke the grant from your HireData settings.
 

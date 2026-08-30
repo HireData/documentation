@@ -4,21 +4,92 @@ sidebarTitle: "Hoe HireData werkt"
 description: "Het kernmodel achter HireData uitgelegd: events triggeren automatiseringen, automatiseringen genereren runs, en runs voeren taken uit in je apps."
 ---
 
-<Note>
-  Dit artikel is een placeholder. De onderstaande inhoud schetst waar het over zal gaan.
-</Note>
+HireData koppelt wijzigingen in je recruitmenttools aan herhaalbare workflows. De kernflow is:
 
-{/* TODO(docs-reorg): THE canonical concepts page. Cover, with a diagram:
-   - Event: a signal from your connected app (candidate created, stage changed...)
-   - Automation: your rules — a trigger plus filters plus tasks
-   - Run: one execution of an automation for one event
-   - Task: a single action inside a run (send email, update field, schedule task)
-   - Where to see each of these in the app (Events page, Runs page, Task History)
-   Cross-link: /settings/logs/events, /settings/logs/runs, /pages/task-history */}
+**Event → Automatisering → Run → Taak**
 
-Terwijl deze pagina wordt geschreven, zijn de onderdelen apart gedocumenteerd:
+Als je deze vier onderdelen begrijpt, kun je makkelijker automatiseringen bouwen en achteraf onderzoeken wat er is gebeurd.
 
-- [Events](/nl/settings/logs/events)
-- [Runs](/nl/settings/logs/runs)
-- [Automatiseringen](/nl/automations/automations)
-- [Task history](/nl/pages/task-history)
+## Event: er is iets veranderd
+
+Een **event** is een signaal van een gekoppelde app. Het bevat het record en de waarden die beschikbaar waren op het moment van de wijziging.
+
+Voorbeelden:
+
+- Er is een kandidaat aangemaakt
+- Een sollicitatie of match is van stage veranderd
+- Een vacature is bijgewerkt
+- Een plaatsing is afgerond
+- Een WhatsApp-gesprek is geëindigd
+
+HireData bewaart inkomende events zodat je de data kunt bekijken en kunt zien welke automatiseringen ze hebben verwerkt. Lees meer bij [Events](/nl/settings/logs/events).
+
+## Automatisering: de regels die je instelt
+
+Een **automatisering** bepaalt wanneer HireData iets moet doen en welke stappen worden uitgevoerd. Deze bestaat meestal uit:
+
+1. Een trigger met de app, het object en het event
+2. Voorwaarden of filters die bepalen of het record verdergaat
+3. Eventuele delays of vertakkingen
+4. Een of meer taken
+
+Een automatisering moet actief zijn voordat nieuwe overeenkomende events deze kunnen starten. Bekijk [Automatiseringen](/nl/automations/automations) en [Een automatisering testen](/nl/automations/how-to-test-an-automation).
+
+## Run: één uitvoering van een automatisering
+
+Een **run** ontstaat wanneer één event door één automatisering wordt verwerkt. De run legt het exacte pad van dat event door de workflow vast.
+
+Een run toont:
+
+- De trigger en het event waarmee de run begon
+- Welke voorwaarden wel of niet voldeden
+- Delays en vertakkingen
+- Iedere taak die is voltooid, gestopt of geannuleerd
+- De velden die iedere stap gebruikte of maakte
+
+Gebruik [Runs](/nl/settings/logs/runs) als je wilt begrijpen waarom een workflow een bepaald resultaat gaf.
+
+## Taak: één actie binnen een run
+
+Een **taak** is een actie die door een automatisering wordt uitgevoerd. Voorbeelden:
+
+- Een e-mail of WhatsApp-bericht versturen
+- Een formulier of survey versturen
+- Een veld in een ATS bijwerken
+- Een activiteit of recruitertaak aanmaken
+- Een HTTP-request naar een ander systeem sturen
+
+Voltooide en geannuleerde acties vind je ook in [Task history](/nl/pages/task-history).
+
+## Voorbeeld: opvolging na een plaatsing
+
+Stel dat een match in je ATS naar **Placed** verandert:
+
+1. Het ATS stuurt een match-updated **event** naar HireData.
+2. Een actieve **automatisering** controleert of de stage **Placed** is.
+3. HireData maakt voor het event een **run** aan.
+4. De run wacht zeven dagen en voert daarna een **taak** uit die een survey naar de kandidaat stuurt.
+5. Het event, de run en het taakresultaat blijven beschikbaar in de logs.
+
+Ieder nieuw passend event krijgt een eigen run. Daardoor kunnen meerdere kandidaten onafhankelijk door dezelfde automatisering bewegen.
+
+## Waar je ieder onderdeel bekijkt
+
+| Onderdeel | Wat je controleert | Waar je dit vindt |
+| --- | --- | --- |
+| Event | Inkomende velden, ruwe payload en gekoppelde processen | [Events](/nl/settings/logs/events) |
+| Automatisering | Trigger, voorwaarden, stappen en actieve status | [Automatiseringen](/nl/automations/automations) |
+| Run | Timeline, stapresultaat, velden en gekoppeld event | [Runs](/nl/settings/logs/runs) |
+| Taak | Voltooide of geannuleerde actie en het bronevent | [Task history](/nl/pages/task-history) |
+
+## Als iets niet wordt uitgevoerd
+
+Begin bij het begin van de flow:
+
+1. Controleer of het event is ontvangen.
+2. Controleer of de automatisering actief was en de trigger overeenkwam.
+3. Open de run als die is aangemaakt.
+4. Bekijk de eerste stap die stopte of werd geannuleerd.
+5. Corrigeer de configuratie en test met een nieuw event of een zorgvuldig gecontroleerde replay.
+
+Bekijk voor de volledige diagnose [Waarom liep mijn automatisering niet?](/nl/knowledge-base/why-didnt-my-automation-run).

@@ -4,20 +4,80 @@ sidebarTitle: "Quickstart"
 description: "Build, test, and activate your first HireData automation in about 15 minutes with this quickstart guide, from connecting an app to going live in production."
 ---
 
+This quickstart takes you from a connected recruitment app to a tested automation. Use a safe test record and choose a workflow that does not contact real candidates while you learn.
+
+## Before you begin
+
+You need:
+
+- A HireData account with permission to manage apps and automations
+- Access credentials for your ATS or recruitment app
+- One test candidate, application, match, or other record
+- A clear outcome, such as sending an internal test email or creating a recruiter task
+
 <Note>
-  This article is a placeholder. The content below outlines what it will cover.
+  If your app is already connected, start at step 2.
 </Note>
 
-{/* TODO(docs-reorg): 15-minute Steps walkthrough:
-   1. Connect your ATS (link per-ATS connect pages)
-   2. Create a blank automation and pick a trigger
-   3. Add a task (e.g. send an email)
-   4. Test it with a test run
-   5. Activate and watch the first live run
-   End with Next steps: Your first week checklist, Core concepts. */}
+<Steps>
+  <Step title="Connect your recruitment app">
+    Open **Settings** \> **Apps**, choose your ATS, and create a connection.
 
-While this page is being written, these existing guides cover the same ground:
+    Use the connection guide for [Carerix](/apps/carerix/connect-with-carerix), [Vincere](/apps/vincere/connect-with-vincere), [OTYS](/apps/otys/connect-with-otys), [Recruitee](/apps/recruitee/connect-with-recruitee), or [Salesforce](/apps/salesforce/connect-with-salesforce).
 
-- [Automations](/automations/automations)
-- [How to test an automation](/automations/how-to-test-an-automation)
-- [Connect your ATS](/apps/introduction)
+    Wait for the initial sync to finish before building your trigger.
+  </Step>
+  <Step title="Create a blank automation">
+    Open **Automations**, select **Blank Automation**, and give it a name that describes the outcome.
+
+    In the **Start** block:
+
+    1. Select your connected app and connection.
+    2. Choose the object, such as Candidate, Match, Application, or Procedure.
+    3. Choose the event that should start the workflow.
+    4. Include any related records you will need for filters, recipients, senders, or tasks.
+  </Step>
+  <Step title="Limit the audience">
+    Add conditions to the **Start** block or add a separate filter step. Begin with one simple condition that your test record satisfies.
+
+    For example, run only when an application stage equals **Test** or when a specific test email address is present.
+  </Step>
+  <Step title="Add one safe task">
+    Add a task with an outcome you can verify. Good first tasks include:
+
+    - Send an email to your own address
+    - Create an internal recruiter task
+    - Update a dedicated test field
+    - Send a test form or survey to yourself
+
+    Map the recipient, sender, and other fields from the trigger data. Save the task.
+  </Step>
+  <Step title="Test the automation">
+    Use HireData's test option and select your test record or sample event. Review each step and confirm that the expected values are available.
+
+    If a step stops, open its details before changing the workflow. See [How to test an automation](/automations/how-to-test-an-automation).
+  </Step>
+  <Step title="Activate and monitor">
+    Activate the automation only after the test completes successfully. Make the expected change in your source app, then confirm that:
+
+    1. HireData received the [event](/settings/logs/events).
+    2. The automation created a [run](/settings/logs/runs).
+    3. The task completed with the expected result.
+  </Step>
+</Steps>
+
+## A safe first automation
+
+A useful first workflow is:
+
+**Test record updated → test condition passes → send an internal email**
+
+It exercises the complete HireData flow without messaging a candidate or changing production recruitment data.
+
+## Next steps
+
+- Learn [how HireData works](/concepts/how-hiredata-works)
+- Complete the [first-week checklist](/get-started/your-first-week)
+- Explore the template gallery from the HireData dashboard
+- Learn how to [read variables](/variables/introduction)
+- Review [automation safety limits](/settings/automation-safety-limits)

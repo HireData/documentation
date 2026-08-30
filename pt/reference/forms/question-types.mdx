@@ -1,7 +1,7 @@
 ---
 title: "Tipos de pergunta dos formulários"
 sidebarTitle: "Tipos de pergunta"
-description: "Todos os tipos de pergunta do construtor de formulários da HireData: o que recolhem, as suas definições, a resposta que armazenam, as regras de lógica que suportam e como se comportam as perguntas obrigatórias."
+description: "Referência de todos os tipos de pergunta do construtor de formulários da HireData: definições, respostas armazenadas, regras de lógica suportadas e comportamento das perguntas obrigatórias."
 keywords: ["tipos de pergunta de formulário", "tipos de campo de formulário", "pergunta yes/no", "escolha múltipla", "dropdown", "net promoter score", "opinion scale", "upload de ficheiros", "ecrã de fim", "redirect url", "pergunta obrigatória", "lógica de formulário", "regra de salto", "all other cases go to", "operadores de lógica", "formuliervelden", "vraagtypen"]
 ---
 
@@ -45,7 +45,7 @@ Clique numa pergunta na lista para abrir o respetivo cartão. O cartão tem as d
 - **Question**, até 255 caracteres. Os ecrãs de fim chamam-lhe **Title**.
 - **Description**, até 1024 caracteres, mostrada por baixo da pergunta.
 - **Image**, com um seletor de posicionamento cuja predefinição é **Above the Input Field**. Os outros posicionamentos são **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page** e **Background**.
-- Os interruptores **Required** e **Hidden** no rodapé.
+- Um botão no rodapé que abre **Display & requirements**, descrito em [Apresentação e requisitos](#apresentação-e-requisitos).
 - Um comutador de tipo no rodapé para os tipos que existem em duas variantes: Short Text e Long Text, o Checkbox e o Toggle de Yes/No, Multiple Choice e Dropdown, Net Promoter Score e Opinion Scale.
 
 As definições de texto como **Question**, **Description** e os placeholders aceitam variáveis, para que uma pergunta possa tratar o inquirido pelo nome ou mencionar a vaga. Algumas variáveis só ficam disponíveis depois de adicionar o respetivo objeto ao formulário, veja [Objetos](#objetos). Para a sintaxe das variáveis, veja [Variáveis](/pt/variables/introduction).
@@ -57,9 +57,27 @@ Mais duas definições aparecem na maioria dos tipos de pergunta, mas não em to
 
 Redirect URL não tem nenhuma destas. É um campo único, descrito em [Ending Screen e Redirect URL](#ending-screen-e-redirect-url).
 
-![Um cartão de pergunta Email com Required ativado, a mostrar Question, Description, Image, Placeholder, as definições de comprimento e de padrão, ambas as auto replies e os interruptores Required e Hidden, ao lado da Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
+![Um cartão de pergunta Email com Required ativado, a mostrar Question, Description, Image, Placeholder, as definições de comprimento e de padrão, ambas as auto replies e o botão do rodapé com o texto Required, ao lado da Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
 
-Uma pergunta oculta é saltada quando o inquirido avança pelo formulário, e as regras de lógica não podem saltar para ela. A resposta que armazena continua disponível para as automações, e é assim que transporta um valor por defeito através de um formulário.
+## Apresentação e requisitos
+
+O botão no canto inferior direito de um cartão de pergunta abre **Display & requirements**. A sua etiqueta indica-lhe o estado atual da pergunta: **Optional**, **Required**, **Hidden** ou **Always included**.
+
+![O popup Display & requirements num cartão de pergunta, com os interruptores Hidden, Required e Always include](/images/forms-builder/22-display-and-requirements.png)
+
+**Hidden**, "Hide this field from respondents."
+
+Uma pergunta oculta é saltada quando o inquirido avança pelo formulário, e as regras de lógica não podem saltar para ela. A resposta que armazena continua disponível para as automações, e é assim que transporta um valor como uma referência ou um ID através de um formulário sem o perguntar.
+
+**Required**, "Require respondents to answer this field."
+
+O inquirido não pode continuar até a pergunta ter uma resposta. Veja [Perguntas obrigatórias](#perguntas-obrigatórias) para saber o que conta como resposta.
+
+**Always include**, "Prevent configurations from disabling this field. This will make the field required."
+
+Ativá-lo também ativa **Required**. Ninguém pode desativar a pergunta para um registo individual, por isso o formulário serve-a sempre. Use-o para as perguntas sem as quais o seu processo não funciona. Veja [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record).
+
+Ativar **Hidden** limpa **Required** e **Always include** e bloqueia ambos. Uma pergunta que o inquirido nunca vê não pode ser respondida, por isso também não pode ser obrigatória.
 
 ## Tipos de pergunta
 
@@ -121,7 +139,7 @@ Apenas has response. O construtor não oferece comparações como "é anterior a
 
 ![Um cartão de pergunta Date apenas com as definições partilhadas, ao lado da pré-visualização a mostrar um seletor de data](/images/forms-builder/07-type-date.png)
 
-### Yes/No
+### Yes/No {#yes-no}
 
 Uma pergunta, duas respostas. As novas perguntas Yes/No começam como **Checkbox**, uma única caixa de seleção. Use o comutador de tipo do rodapé para mudar para **Toggle**, um interruptor ligado/desligado.
 
@@ -148,10 +166,10 @@ Multiple Choice mostra as opções como uma lista. Dropdown mostra-as num menu d
 **Definições:**
 
 - **Options**. Cada opção tem uma etiqueta que o inquirido vê e um valor que é armazenado. Arraste para reordenar. A roda dentada numa opção contém a **Auto reply (on answer)** dessa opção.
-- **Add Data Source** preenche as opções a partir de uma fonte de dados no seu workspace, em vez de opções escritas por si. Uma pergunta usa uma ou outra, nunca ambas.
+- **Add Data Source** preenche as opções a partir de uma fonte de dados no seu workspace, em vez de opções escritas por si. Uma pergunta usa uma ou outra, nunca ambas. Veja [Fontes de dados](#fontes-de-dados).
 - **Conversational Button Text**, "When this field is shown as a select menu this will be the text shown on the button." A predefinição é "Choose".
 - **Placeholder**, apenas no Dropdown.
-- **Multiple** no rodapé, que permite ao inquirido escolher mais do que uma opção.
+- **Answer selection** no rodapé, que contém **Allow multiple answers**. A etiqueta do botão lê-se **Single Answer** ou **Multiple Answers**.
 
 **Armazena:**
 
@@ -279,6 +297,56 @@ Pode trazer objetos do seu ATS ou de outras apps para o formulário, para que os
 Para adicionar um, clique no botão **Show objects** na barra de ferramentas no canto superior direito do construtor e escolha depois os objetos de que precisa no menu.
 
 ![A barra de ferramentas do construtor ao lado de Save e Publish, com o botão Show objects destacado](/images/forms-builder/21-object-button.png)
+
+O painel **Objects** lista aquilo a que o formulário está ligado, por cima dos **Available objects** que ainda pode adicionar. Clique no **+** de um objeto para o ligar.
+
+![O painel Objects com Vacancy e Match ligados, a mostrar Label, Key, o interruptor Required e Remove](/images/forms-builder/23-objects-panel-linked.png)
+
+**Definições por objeto:**
+
+- **Label**, o nome mostrado no construtor.
+- **Key**, o prefixo que escreve numa variável. Uma vaga com a key `job` dá-lhe `{{ job.jobTitle }}`.
+- **Required**, ativado por defeito. Veja [Objetos obrigatórios](#objetos-obrigatórios).
+- **Remove**, que desliga o objeto. As variáveis que usavam a sua key deixam de ser resolvidas.
+- As setas ao lado de cada objeto movem-no para cima e para baixo na lista.
+
+### O primeiro objeto da lista
+
+A ordem importa. O primeiro objeto é o objeto principal do formulário, e é ele que decide para que registos pode configurar o formulário. Com Vacancy em primeiro lugar, configura o formulário por vaga, e o formulário aparece no separador **Forms** de todas as vagas. Veja [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record).
+
+Os objetos abaixo dele apenas fornecem dados. Dão-lhe as suas variáveis e associam a resposta ao seu registo, como o match ou o candidato a quem as respostas pertencem. Não pode configurar o formulário por match ou por candidato.
+
+### Objetos obrigatórios
+
+**Required** é uma salvaguarda. Quando o objeto é obrigatório e nenhum registo desse tipo chega ao formulário, o passo que serve o formulário, como um email ou uma mensagem de WhatsApp, falha em vez de ser enviado. O [run](/pt/settings/logs/runs) regista a falha.
+
+Desative-o quando o formulário deve seguir de qualquer forma. Dê às variáveis que dependem do objeto um valor de fallback, para que um registo em falta não deixe um vazio na pergunta:
+
+```
+Do you have transport to {{ job.workCity | default: "the workplace" }}?
+```
+
+Para a sintaxe de fallback, veja [Modificadores](/pt/variables/modifiers).
+
+## Fontes de dados
+
+Uma fonte de dados é uma lista guardada que o seu workspace pode reutilizar. Aponte uma pergunta Multiple Choice ou Dropdown para uma e as suas opções passam a vir dessa lista, em vez de opções escritas por si.
+
+Clique em **Add Data Source** na pergunta para abrir o seletor. Cada cartão mostra a lista de onde retira os dados e um chip **Filters** quando a lista foi restringida.
+
+Para construir uma nova, clique em **Add Data Source** no seletor. Pode recorrer aos dados do seu próprio workspace, como Brands, Users, Locations, Languages, Countries, Locale e Timezones, ou a uma lista de uma app ligada. Uma ligação Carerix, por exemplo, oferece as suas tabelas de códigos, para que uma pergunta possa oferecer os mesmos graus académicos, idiomas, competências ou match stages que os seus recruiters veem no Carerix.
+
+![O painel de fonte de dados de Match: Stage, com Name, Label, Description, Value, Avatar e um conjunto de filtros vazio](/images/forms-builder/24-data-source-filters.png)
+
+**Definições:**
+
+- **Name**, como a fonte aparece no seletor.
+- **Label**, **Description**, **Value** e **Avatar**, que mapeiam campos da lista para aquilo que o inquirido vê e para o que a resposta armazena.
+- **Filters**, que restringem a lista. **Add New Set** adiciona um grupo de condições, e **Add Filter** adiciona uma condição a esse grupo.
+
+Filtre uma lista quando só parte dela pertence à pergunta. Uma lista de match stages com trinta entradas pode ser reduzida às três stages que uma pré-triagem pode definir, para que nenhuma outra stage possa alguma vez ser escolhida. A fonte filtrada é guardada à parte e pode ser reutilizada, e é por isso que o seletor mostra tanto "Match: Stage" como uma cópia filtrada ao seu lado.
+
+Uma fonte de dados pertence ao workspace, não à pergunta, por isso editar uma altera todas as perguntas que a usam. Construa uma segunda fonte a partir da mesma lista quando só um formulário deve ver a versão mais curta.
 
 ## Lógica condicional
 

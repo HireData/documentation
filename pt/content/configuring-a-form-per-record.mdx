@@ -1,0 +1,74 @@
+---
+title: "Configurar um formulário por registo"
+sidebarTitle: "Formulários por registo"
+description: "Ative ou desative perguntas individuais de um formulário para uma vaga na HireData, para que um único formulário de pré-triagem sirva todos os clientes e funções sem construir um formulário para cada uma."
+keywords: ["formulário por vaga", "formulário por registo", "configurar perguntas do formulário", "perguntas disponíveis", "enable all", "mandatory only", "separador forms da coleção", "respostas do registo", "configuração por registo", "pré-triagem por vaga"]
+---
+
+Um formulário raramente serve todas as vagas. Um cliente insiste numa killer question que nada significa para a função seguinte. Uma pergunta sobre anos de experiência não vem a propósito numa vaga júnior.
+
+Não precisa de um formulário por vaga para isso. Construa um formulário e depois ative ou desative as suas perguntas por registo. Cada vaga serve apenas as perguntas que lhe pertencem, e o próprio formulário nunca muda.
+
+## Antes de começar
+
+Pode configurar um formulário por registo assim que o formulário estiver ligado a um objeto e esse objeto for o primeiro da lista do formulário. Ligue-o no painel **Objects** do construtor de formulários, descrito em [Objetos](/pt/reference/forms/question-types#objetos).
+
+Coloque Vacancy em primeiro lugar e configura o formulário por vaga. Os objetos abaixo dele, como Match ou Candidate, continuam a dar-lhe as suas variáveis e a associar a resposta ao seu registo. Não pode configurar o formulário em relação a eles.
+
+## Encontrar os formulários de uma coleção
+
+Abra **Data** no menu principal e escolha uma coleção, por exemplo **Vacancy**. Uma coleção contém todos os registos de um tipo de objeto que uma app ligada sincroniza para a HireData.
+
+Cada coleção tem um separador **Forms** e um separador **Responses**.
+
+![A coleção Vacancy com os seus separadores Records, Fields, People, Automations, Forms, Responses, Events, Runs e Tasks](/images/record-forms/01-collection-tabs.png)
+
+- **Forms** lista todos os formulários ligados a este tipo de objeto, com um chip por objeto que o formulário usa e um ícone que mostra se o formulário é um rascunho ou está publicado.
+- **Responses** lista todas as respostas recolhidas em registos deste tipo.
+
+## Configurar um formulário para um registo
+
+Abra o separador **Records**, clique num registo e abra depois o seu separador **Forms**. Cada formulário ligado à coleção deste registo recebe um separador próprio.
+
+![O separador Forms de um registo de vaga, a listar todas as perguntas com um controlo Off e On e uma pergunta desativada](/images/record-forms/02-record-forms-configuration.png)
+
+A coluna **Question** lista as perguntas que podem ser configuradas para este registo. A coluna **Available** decide se cada uma é mostrada. Defina uma pergunta como **Off** e esta vaga salta-a. Defina-a como **On** e ela volta.
+
+A HireData guarda cada alteração à medida que a faz. A lista destaca todas as perguntas que já não seguem o formulário, para que consiga ver o que este registo alterou.
+
+Duas coisas ficam como estão:
+
+- As perguntas com **Always include** ativado no construtor de formulários. O formulário serve-as independentemente do que o registo diga. Veja [Apresentação e requisitos](/pt/reference/forms/question-types#apresentação-e-requisitos).
+- Os ecrãs de fim e os redirecionamentos. Não são perguntas, por isso nunca chegam à lista.
+
+### Atalhos
+
+**Preview** abre o formulário tal como este registo o serviria, com os valores do próprio registo preenchidos nas perguntas. Oferece as mesmas vistas **Interactive**, **Conversational** e **Test & Evaluate** do construtor, e um seletor de idioma. Use-o para verificar que uma pergunta continua a ler-se corretamente depois de as suas variáveis serem resolvidas.
+
+O menu ao lado de **Preview** contém três ações:
+
+- **View form** abre o formulário no construtor.
+- **Enable all** limpa as alterações deste registo, para que todas as perguntas voltem a seguir o formulário. Aparece assim que pelo menos uma pergunta está desativada.
+- **Mandatory only** desativa tudo exceto as perguntas que têm de ficar. Num formulário sem nada definido como **Always include**, isso desativa todas as perguntas.
+
+## Ler as respostas de um registo
+
+O separador **Responses** de um registo lista o que chegou, seja qual for o canal por onde chegou.
+
+![O separador Responses de um registo de vaga, com o formulário, quando foi recebida, quando foi concluída e a última atividade](/images/record-forms/03-record-responses.png)
+
+Abra uma resposta para ler as respostas dadas. Os destaques por cima delas mostram o canal, o número de mensagens, quanto do formulário o inquirido concluiu e quanto tempo demorou.
+
+![Uma resposta com os seus destaques, as suas respostas e os painéis do inquirido, da avaliação, da cronologia e dos registos relacionados](/images/record-forms/04-response-detail.png)
+
+Os dois botões por cima das respostas alternam entre uma lista compacta e um layout mais espaçoso. **Previous** e **Next** percorrem as respostas sem voltar à lista.
+
+## Porquê configurar por registo
+
+Uma agência de staffing usa um único formulário de pré-triagem em centenas de vagas. Configurar por registo é o que mantém isso viável.
+
+- Um cliente com um requisito rígido tem essa pergunta ativada apenas nas suas vagas.
+- Uma vaga sem intervalo salarial desativa a pergunta do salário, para que ninguém tenha de reagir a um valor que não existe.
+- Uma função em que a experiência não conta desativa a pergunta da experiência, e ela sai da avaliação juntamente com isso.
+
+Um único formulário continua a conter as perguntas, a lógica e a avaliação. Só a seleção por vaga muda.

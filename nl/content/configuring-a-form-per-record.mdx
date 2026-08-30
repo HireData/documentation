@@ -1,0 +1,74 @@
+---
+title: "Een formulier per record configureren"
+sidebarTitle: "Formulieren per record"
+description: "Zet individuele formuliervragen aan of uit voor één vacature in HireData, zodat één pre-screeningformulier past bij elke klant en elke rol zonder voor elk een formulier te bouwen."
+keywords: ["formulier per vacature", "formulier per record", "formuliervragen configureren", "beschikbare vragen", "enable all", "mandatory only", "forms-tabblad collectie", "record responses", "configuratie per record", "pre-screening per vacature", "form per record"]
+---
+
+Eén formulier past zelden bij elke vacature. Een klant staat erop een killervraag te stellen die voor de volgende rol niets betekent. Een vraag over jaren ervaring slaat nergens op bij een juniorfunctie.
+
+Daar heb je geen formulier per vacature voor nodig. Bouw één formulier en zet zijn vragen per record aan of uit. Elke vacature serveert alleen de vragen die erbij horen, en het formulier zelf verandert nooit.
+
+## Voordat je begint
+
+Je kunt een formulier per record configureren zodra het formulier aan een object is gekoppeld en dat object als eerste in de lijst van het formulier staat. Koppel het op het **Objects**-paneel in de formulierbuilder, beschreven in [Objecten](/nl/reference/forms/question-types#objecten).
+
+Zet Vacancy als eerste en je configureert het formulier per vacature. Objecten daaronder, zoals Match of Candidate, geven je nog steeds hun variabelen en koppelen de response aan hun record. Voor die objecten kun je het formulier niet configureren.
+
+## De formulieren van een collectie vinden
+
+Open **Data** in het hoofdmenu en kies een collectie, bijvoorbeeld **Vacancy**. Een collectie bevat elk record van één objecttype dat een gekoppelde app naar HireData synchroniseert.
+
+Elke collectie heeft een **Forms**-tabblad en een **Responses**-tabblad.
+
+![De Vacancy-collectie met zijn tabbladen Records, Fields, People, Automations, Forms, Responses, Events, Runs en Tasks](/images/record-forms/01-collection-tabs.png)
+
+- **Forms** toont elk formulier dat aan dit objecttype is gekoppeld, met een chip per object dat het formulier gebruikt en een icoon dat laat zien of het formulier een concept is of gepubliceerd.
+- **Responses** toont elke response die voor een record van dit type is verzameld.
+
+## Een formulier configureren voor één record
+
+Open het tabblad **Records**, klik op een record en open dan zijn tabblad **Forms**. Elk formulier dat aan de collectie van dit record is gekoppeld, krijgt een eigen tabblad.
+
+![Het Forms-tabblad van een vacaturerecord, met elke vraag met een Off- en On-control en één vraag uitgeschakeld](/images/record-forms/02-record-forms-configuration.png)
+
+De kolom **Question** toont de vragen die voor dit record kunnen worden geconfigureerd. De kolom **Available** bepaalt of elke vraag wordt getoond. Zet een vraag op **Off** en deze vacature slaat hem over. Zet hem op **On** en hij komt terug.
+
+HireData slaat elke wijziging op terwijl je die maakt. De lijst markeert elke vraag die niet langer het formulier volgt, zodat je kunt zien wat dit record heeft gewijzigd.
+
+Twee dingen blijven zoals ze zijn:
+
+- Vragen waarbij **Always include** in de formulierbuilder aan staat. Het formulier serveert ze wat het record ook zegt. Zie [Weergave en vereisten](/nl/reference/forms/question-types#weergave-en-vereisten).
+- Ending screens en redirects. Het zijn geen vragen, dus ze bereiken de lijst nooit.
+
+### Snelkoppelingen
+
+**Preview** opent het formulier zoals dit record het zou serveren, met de eigen waarden van het record ingevuld in de vragen. Het biedt dezelfde weergaven **Interactive**, **Conversational** en **Test & Evaluate** als de builder, plus een taalkiezer. Gebruik het om te controleren of een vraag nog goed leest zodra zijn variabelen zijn ingevuld.
+
+Het menu naast **Preview** bevat drie acties:
+
+- **View form** opent het formulier in de builder.
+- **Enable all** wist de wijzigingen van dit record, zodat elke vraag weer het formulier volgt. Het verschijnt zodra minstens één vraag uit staat.
+- **Mandatory only** schakelt alles uit behalve de vragen die moeten blijven. In een formulier waarin niets op **Always include** staat, schakelt dat elke vraag uit.
+
+## De responses van een record lezen
+
+Het tabblad **Responses** van een record toont wat er is teruggekomen, via welk kanaal het ook binnenkwam.
+
+![Het Responses-tabblad van een vacaturerecord, met het formulier, wanneer het is ontvangen, wanneer het is voltooid en de laatste activiteit](/images/record-forms/03-record-responses.png)
+
+Open een response om de antwoorden te lezen. De highlights erboven tonen het kanaal, het aantal berichten, hoeveel van het formulier de respondent heeft afgemaakt en hoelang het duurde.
+
+![Een response met zijn highlights, zijn antwoorden en de panelen voor de respondent, de evaluatie, de tijdlijn en gerelateerde records](/images/record-forms/04-response-detail.png)
+
+De twee knoppen boven de antwoorden wisselen tussen een compacte lijst en een ruimere weergave. **Previous** en **Next** bladeren door de responses zonder terug te gaan naar de lijst.
+
+## Waarom per record configureren
+
+Een uitzendbureau draait één pre-screeningformulier over honderden vacatures. Per record configureren is wat dat werkbaar houdt.
+
+- Een klant met een harde eis krijgt die vraag alleen voor zijn vacatures aangezet.
+- Een vacature zonder salarisrange schakelt de salarisvraag uit, zodat niemand wordt gevraagd te reageren op een bedrag dat er niet is.
+- Een rol waarbij ervaring er niet toe doet schakelt de ervaringsvraag uit, en die valt daarmee ook uit de evaluatie.
+
+Eén formulier bevat nog steeds de vragen, de logica en de evaluatie. Alleen de selectie per vacature verschilt.

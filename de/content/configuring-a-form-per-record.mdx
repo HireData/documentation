@@ -1,0 +1,74 @@
+---
+title: "Ein Formular pro Datensatz konfigurieren"
+sidebarTitle: "Formulare pro Datensatz"
+description: "Schalten Sie einzelne Formularfragen für eine Vakanz in HireData ein oder aus, damit ein einziges Pre-Screening-Formular zu jedem Kunden und jeder Rolle passt, ohne für jede ein eigenes Formular zu bauen."
+keywords: ["formular pro vakanz", "formular pro datensatz", "formularfragen konfigurieren", "verfügbare fragen", "enable all", "mandatory only", "forms-tab der collection", "datensatz-antworten", "konfiguration pro datensatz", "pre-screening pro vakanz"]
+---
+
+Ein Formular passt selten zu jeder Vakanz. Ein Kunde besteht auf einer Killer-Frage, die für die nächste Rolle nichts bedeutet. Eine Frage nach den Jahren an Erfahrung geht bei einer Junior-Stelle am Thema vorbei.
+
+Dafür brauchen Sie kein Formular pro Vakanz. Bauen Sie ein Formular und schalten Sie dessen Fragen dann pro Datensatz ein oder aus. Jede Vakanz stellt nur die Fragen, die zu ihr gehören, und das Formular selbst ändert sich nie.
+
+## Bevor Sie beginnen
+
+Sie können ein Formular pro Datensatz konfigurieren, sobald das Formular mit einem Objekt verknüpft ist und dieses Objekt an erster Stelle in der Liste des Formulars steht. Verknüpfen Sie es über das **Objects**-Panel im Formular-Builder, beschrieben in [Objekte](/de/reference/forms/question-types#objekte).
+
+Setzen Sie Vacancy an die erste Stelle, und Sie konfigurieren das Formular pro Vakanz. Objekte darunter, etwa Match oder Candidate, geben Ihnen weiterhin ihre Variablen und binden die Antwort an ihren Datensatz. Gegen sie können Sie das Formular nicht konfigurieren.
+
+## Die Formulare einer Collection finden
+
+Öffnen Sie **Data** im Hauptmenü und wählen Sie eine Collection, zum Beispiel **Vacancy**. Eine Collection enthält jeden Datensatz eines Objekttyps, den eine verbundene App nach HireData synchronisiert.
+
+Jede Collection hat einen **Forms**-Tab und einen **Responses**-Tab.
+
+![Die Vacancy-Collection mit ihren Tabs Records, Fields, People, Automations, Forms, Responses, Events, Runs und Tasks](/images/record-forms/01-collection-tabs.png)
+
+- **Forms** listet jedes Formular auf, das mit diesem Objekttyp verknüpft ist, mit einem Chip pro Objekt, das das Formular verwendet, und einem Symbol, das zeigt, ob das Formular ein Entwurf oder veröffentlicht ist.
+- **Responses** listet jede Antwort auf, die zu einem Datensatz dieses Typs gesammelt wurde.
+
+## Ein Formular für einen Datensatz konfigurieren
+
+Öffnen Sie den Tab **Records**, klicken Sie auf einen Datensatz und öffnen Sie dann dessen **Forms**-Tab. Jedes Formular, das mit der Collection dieses Datensatzes verknüpft ist, bekommt einen eigenen Tab.
+
+![Der Forms-Tab eines Vakanz-Datensatzes, der jede Frage mit einem Off- und On-Steuerelement auflistet, mit einer ausgeschalteten Frage](/images/record-forms/02-record-forms-configuration.png)
+
+Die Spalte **Question** listet die Fragen auf, die für diesen Datensatz konfiguriert werden können. Die Spalte **Available** entscheidet, ob die jeweilige Frage angezeigt wird. Setzen Sie eine Frage auf **Off**, und diese Vakanz überspringt sie. Setzen Sie sie auf **On**, und sie kommt zurück.
+
+HireData speichert jede Änderung, sobald Sie sie vornehmen. Die Liste hebt jede Frage hervor, die nicht mehr dem Formular folgt, damit Sie erkennen, was dieser Datensatz geändert hat.
+
+Zwei Dinge bleiben, wie sie sind:
+
+- Fragen, bei denen im Formular-Builder **Always include** eingeschaltet ist. Das Formular stellt sie, egal was der Datensatz sagt. Siehe [Anzeige und Anforderungen](/de/reference/forms/question-types#anzeige-und-anforderungen).
+- Ending Screens und Redirects. Sie sind keine Fragen, also erreichen sie die Liste nie.
+
+### Abkürzungen
+
+**Preview** öffnet das Formular so, wie dieser Datensatz es ausliefern würde, mit den eigenen Werten des Datensatzes in den Fragen. Es bietet dieselben Ansichten **Interactive**, **Conversational** und **Test & Evaluate** wie der Builder sowie eine Sprachauswahl. Prüfen Sie damit, ob eine Frage noch richtig klingt, sobald ihre Variablen aufgelöst sind.
+
+Das Menü neben **Preview** enthält drei Aktionen:
+
+- **View form** öffnet das Formular im Builder.
+- **Enable all** löscht die Änderungen dieses Datensatzes, sodass jede Frage wieder dem Formular folgt. Es erscheint, sobald mindestens eine Frage ausgeschaltet ist.
+- **Mandatory only** schaltet alles aus außer den Fragen, die bleiben müssen. In einem Formular, in dem nichts auf **Always include** steht, schaltet das jede Frage aus.
+
+## Die Antworten eines Datensatzes lesen
+
+Der **Responses**-Tab eines Datensatzes listet auf, was zurückkam, über welchen Kanal es auch eintraf.
+
+![Der Responses-Tab eines Vakanz-Datensatzes, mit dem Formular, wann es empfangen wurde, wann es abgeschlossen wurde und der letzten Aktivität](/images/record-forms/03-record-responses.png)
+
+Öffnen Sie eine Antwort, um die einzelnen Antworten zu lesen. Die Highlights darüber zeigen den Kanal, die Zahl der Nachrichten, wie viel vom Formular die befragte Person abgeschlossen hat und wie lange es gedauert hat.
+
+![Eine Antwort mit ihren Highlights, ihren einzelnen Antworten und den Panels für die befragte Person, die Evaluation, die Timeline und verwandte Datensätze](/images/record-forms/04-response-detail.png)
+
+Die zwei Schaltflächen über den Antworten wechseln zwischen einer kompakten Liste und einem großzügigeren Layout. **Previous** und **Next** bewegen sich durch die Antworten, ohne zur Liste zurückzukehren.
+
+## Warum pro Datensatz konfigurieren
+
+Ein Personaldienstleister betreibt ein einziges Pre-Screening-Formular über Hunderte von Vakanzen. Die Konfiguration pro Datensatz ist es, was das praktikabel hält.
+
+- Ein Kunde mit einer harten Anforderung bekommt diese Frage nur für seine Vakanzen eingeschaltet.
+- Eine Vakanz ohne Gehaltsspanne schaltet die Gehaltsfrage aus, damit niemand auf eine Zahl reagieren muss, die es nicht gibt.
+- Eine Rolle, bei der Erfahrung keine Rolle spielt, schaltet die Erfahrungsfrage aus, und sie fällt damit auch aus der Evaluation.
+
+Ein Formular enthält weiterhin die Fragen, die Logik und die Evaluation. Nur die Auswahl pro Vakanz bewegt sich.

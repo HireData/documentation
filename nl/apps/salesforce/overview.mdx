@@ -4,11 +4,49 @@ sidebarTitle: "Overzicht"
 description: "Ontdek wat de Salesforce-integratie synchroniseert, welke automatiseringen worden ondersteund en hoe je Salesforce koppelt aan HireData."
 ---
 
+Koppel Salesforce aan HireData om toegestane Salesforce-data beschikbaar te maken voor recruitmentworkflows. Welke records en acties je kunt gebruiken, hangt af van je Salesforce-configuratie en de rechten van de user die de koppeling autoriseert.
+
+## Hoe de koppeling werkt
+
+HireData maakt verbinding via de autorisatiestroom van Salesforce. Log in met een user die de vereiste beheerrechten heeft en keur de koppeling goed. Gebruikt je organisatie een aangepast Salesforce-domein? Kies dan **Use custom domain** tijdens het inloggen.
+
+Open na het koppelen de HireData automation builder en selecteer Salesforce om de beschikbare objecten, velden, events en taken te bekijken.
+
+## Wat je kunt bouwen
+
+Afhankelijk van de mogelijkheden van je koppeling kan een Salesforce-workflow:
+
+- Starten vanuit een ondersteund Salesforce-event
+- Voorwaarden toepassen op velden uit Salesforce
+- Salesforce- en HireData-waarden in berichten of formulieren gebruiken
+- Salesforce-data combineren met e-mail-, WhatsApp-, survey-, delay- en andere HireData-taken
+- Iedere uitvoering vastleggen in de event- en runlogs van HireData
+
 <Note>
-  Dit artikel is een placeholder. De onderstaande inhoud schetst waar het over zal gaan.
+  Salesforce-organisaties kunnen sterk van elkaar verschillen. Gebruik de automation builder als bron voor de objecten en acties die voor jouw koppeling beschikbaar zijn.
 </Note>
 
-{/* TODO(docs-reorg): what syncs, sync frequency, supported tasks matrix, links.
-   Note: Salesforce currently only has a connect guide — automation/task guides to be written. */}
+## Aan de slag
+
+<Steps>
+  <Step title="Koppel Salesforce">
+    Open **Apps** in HireData, selecteer Salesforce en maak een nieuwe koppeling.
+  </Step>
+  <Step title="Autoriseer de juiste organisatie">
+    Log in met een Salesforce-user met de vereiste rechten. Gebruik je aangepaste domein als je organisatie dit vereist.
+  </Step>
+  <Step title="Bekijk de beschikbare mogelijkheden">
+    Maak of open een automatisering en selecteer Salesforce om de beschikbare triggerobjecten, velden en taken te bekijken.
+  </Step>
+  <Step title="Test vóór activatie">
+    Gebruik een veilig testrecord en controleer de event data en run timeline voordat je live records verwerkt.
+  </Step>
+</Steps>
+
+## Salesforce-handleidingen
 
 - [Verbinden met Salesforce](/nl/apps/salesforce/connect-with-salesforce)
+- [Automatiseringen maken en beheren](/nl/automations/automations)
+- [Een automatisering testen](/nl/automations/how-to-test-an-automation)
+- [Events bekijken](/nl/settings/logs/events)
+- [Automation runs lezen](/nl/settings/logs/runs)

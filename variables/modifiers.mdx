@@ -10,19 +10,19 @@ Modifiers change how a [variable](/variables/introduction) value appears when yo
 
 A modifier goes after the field, separated by a pipe:
 
-```
+```text
 {{ candidate.first_name | uppercase }} → SOFIA
 ```
 
 Add more pipes to apply modifiers in order, from left to right:
 
-```
+```text
 {{ candidate.first_name | lowercase | capitalise }} → sofia → Sofia
 ```
 
 Some modifiers take extra values after a colon, separated by commas:
 
-```
+```text
 {{ job.title | truncate_chars: 20 }} → Senior Software Engin...
 {{ description | replace: "old", "new" }} → This is my new job
 ```
@@ -222,6 +222,6 @@ Conditions return true or false. Pair them with `boolean_label` to show a friend
 
 A condition combined with a label is a common pattern:
 
-```
+```text
 {{ score | greater_than: 80 | boolean_label: "Strong candidate", "Needs review" }}
 ```

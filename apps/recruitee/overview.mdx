@@ -4,11 +4,50 @@ sidebarTitle: "Overview"
 description: "Learn what the HireData Recruitee integration syncs, which recruitment automations it supports, and how to get started connecting your Recruitee account."
 ---
 
-<Note>
-  This article is a placeholder. The content below outlines what it will cover.
-</Note>
+Connect Recruitee to HireData to respond automatically to application and candidate changes. HireData can use Recruitee event data to select an audience, personalize communication, and run follow-up tasks.
 
-{/* TODO(docs-reorg): what syncs, sync frequency, supported tasks matrix, links. */}
+## What the integration provides
+
+The connection uses a Recruitee API token and Company ID. The permissions assigned to that token determine which candidate, job, hiring, and related data HireData can access.
+
+Supported Recruitee events can start an automation. For example, an application being created or updated can trigger a workflow, while conditions can limit it to a stage such as **Declined**.
+
+## What you can automate
+
+Common Recruitee workflows include:
+
+- Send a personalized email after an application-stage change
+- Request candidate feedback or send a survey
+- Add conditions so only the intended applications enter the workflow
+- Wait for a defined period before sending a follow-up
+- Use candidate, job, sender, and other related values in message templates
+
+## How data becomes available
+
+The initial connection may take a few minutes to sync. If expected records or fields are missing, first confirm that the Recruitee user behind the API token has the permissions listed in the connection guide.
+
+The objects, fields, and tasks displayed in the HireData automation builder reflect what is available through your connection.
+
+## Get started
+
+<Steps>
+  <Step title="Create a Recruitee API token">
+    Use a Recruitee user with permission to work with candidates, jobs, hires, and API tokens.
+  </Step>
+  <Step title="Connect Recruitee">
+    Enter the API token and Company ID in HireData, then wait for the initial connection to finish.
+  </Step>
+  <Step title="Build the workflow">
+    Choose a Recruitee object and event, add conditions, and configure the message or other available task.
+  </Step>
+  <Step title="Test and activate">
+    Confirm the trigger data, recipients, and task output before allowing live events to enter the automation.
+  </Step>
+</Steps>
+
+## Recruitee guides
 
 - [Connect with Recruitee](/apps/recruitee/connect-with-recruitee)
 - [Create a Recruitee automation](/apps/recruitee/create-a-recruitee-automation-in-hiredata)
+- [Test an automation](/automations/how-to-test-an-automation)
+- [Inspect incoming events](/settings/logs/events)
