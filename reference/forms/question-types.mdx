@@ -45,7 +45,7 @@ Click a question in the list to open its card. The card has the settings shared 
 - **Question**, up to 255 characters. Ending screens call this **Title**.
 - **Description**, up to 1024 characters, shown under the question.
 - **Image**, with a placement selector that defaults to **Above the Input Field**. The other placements are **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page**, and **Background**.
-- **Required** and **Hidden** toggles in the footer.
+- A button in the footer that opens **Display & requirements**, described in [Display and requirements](#display-and-requirements).
 - A type switch in the footer for types that come in two flavours: Short Text and Long Text, Yes/No's Checkbox and Toggle, Multiple Choice and Dropdown, Net Promoter Score and Opinion Scale.
 
 Text settings such as **Question**, **Description**, and the placeholders accept variables, so a question can address the respondent by name or mention the vacancy. Some variables only become available after you add their object to the form, see [Objects](#objects). For the variable syntax, see [Variables](/variables/introduction).
@@ -57,9 +57,27 @@ Two more settings appear on most, but not all, question types. Both are messages
 
 Redirect URL has none of these. It is a single field, described under [Ending Screen and Redirect URL](#ending-screen-and-redirect-url).
 
-![An Email question card with Required on, showing Question, Description, Image, Placeholder, the length and pattern settings, both auto replies, and the Required and Hidden toggles, next to the Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
+![An Email question card with Required on, showing Question, Description, Image, Placeholder, the length and pattern settings, both auto replies, and the footer button reading Required, next to the Interactive Preview](/images/forms-builder/02-question-card-common-settings.png)
 
-A hidden question is skipped when the respondent moves through the form, and logic rules cannot jump to it. Its stored answer stays available to automations, which is how you carry a default value through a form.
+## Display and requirements
+
+The button at the bottom right of a question card opens **Display & requirements**. Its label tells you the current state of the question: **Optional**, **Required**, **Hidden**, or **Always included**.
+
+![The Display & requirements popup on a question card, with the Hidden, Required, and Always include toggles](/images/forms-builder/22-display-and-requirements.png)
+
+**Hidden**, "Hide this field from respondents."
+
+A hidden question is skipped when the respondent moves through the form, and logic rules cannot jump to it. Its stored answer stays available to automations, which is how you carry a value such as a reference or an ID through a form without asking for it.
+
+**Required**, "Require respondents to answer this field."
+
+The respondent cannot continue until the question has an answer. See [Required questions](#required-questions) for what counts as an answer.
+
+**Always include**, "Prevent configurations from disabling this field. This will make the field required."
+
+Turning it on also turns **Required** on. Nobody can switch the question off for an individual record, so the form serves it every time. Use it for the questions your process cannot do without. See [Configuring a form per record](/content/configuring-a-form-per-record).
+
+Switching **Hidden** on clears **Required** and **Always include** and locks both. A question the respondent never sees cannot be answered, so it cannot be required either.
 
 ## Question types
 
@@ -148,10 +166,10 @@ Multiple Choice shows the options as a list. Dropdown shows them in a select men
 **Settings:**
 
 - **Options**. Each option has a label the respondent sees and a value that is stored. Drag to reorder. The cog on an option holds that option's **Auto reply (on answer)**.
-- **Add Data Source** fills the options from a data source in your workspace, instead of options you type. A question uses one or the other, never both.
+- **Add Data Source** fills the options from a data source in your workspace, instead of options you type. A question uses one or the other, never both. See [Data sources](#data-sources).
 - **Conversational Button Text**, "When this field is shown as a select menu this will be the text shown on the button." Defaults to "Choose".
 - **Placeholder**, Dropdown only.
-- **Multiple** in the footer, which lets the respondent pick more than one option.
+- **Answer selection** in the footer, which holds **Allow multiple answers**. The button label reads **Single Answer** or **Multiple Answers**.
 
 **Stores:**
 
@@ -279,6 +297,56 @@ You can bring objects from your ATS or other apps into the form, so their fields
 To add one, click the **Show objects** button in the toolbar at the top right of the builder, then pick the objects you need from the menu.
 
 ![The builder toolbar next to Save and Publish, with the Show objects button highlighted](/images/forms-builder/21-object-button.png)
+
+The **Objects** panel lists what the form is linked to, above the **Available objects** you can still add. Click the **+** on an object to link it.
+
+![The Objects panel with Vacancy and Match linked, showing Label, Key, the Required toggle, and Remove](/images/forms-builder/23-objects-panel-linked.png)
+
+**Settings per object:**
+
+- **Label**, the name shown in the builder.
+- **Key**, the prefix you write in a variable. A vacancy with the key `job` gives you `{{ job.jobTitle }}`.
+- **Required**, on by default. See [Required objects](#required-objects).
+- **Remove**, which unlinks the object. Variables that used its key stop resolving.
+- The arrows next to each object move it up and down the list.
+
+### The first object in the list
+
+Order matters. The first object is the form's main object, and it decides which records you can configure the form for. With Vacancy first, you configure the form per vacancy, and the form shows up on the **Forms** tab of every vacancy. See [Configuring a form per record](/content/configuring-a-form-per-record).
+
+The objects below it only supply data. They give you their variables and tie the response to their record, such as the match or the candidate the answers belong to. You cannot configure the form per match or per candidate.
+
+### Required objects
+
+**Required** is a fail-safe. When the object is required and no record of that type reaches the form, the step that serves the form, such as an email or a WhatsApp message, fails instead of sending. The [run](/settings/logs/runs) records the failure.
+
+Turn it off when the form should go out either way. Give the variables that depend on the object a fallback value, so a missing record does not leave a gap in the question:
+
+```
+Do you have transport to {{ job.workCity | default: "the workplace" }}?
+```
+
+For the fallback syntax, see [Modifiers](/variables/modifiers).
+
+## Data sources
+
+A data source is a saved list your workspace can reuse. Point a Multiple Choice or Dropdown question at one and its options come from that list instead of options you type.
+
+Click **Add Data Source** on the question to open the picker. Each card shows the list it draws from, and a **Filters** chip when the list has been narrowed.
+
+To build a new one, click **Add Data Source** in the picker. You can draw on your own workspace data, such as Brands, Users, Locations, Languages, Countries, Locale, and Timezones, or on a list from a connected app. A Carerix connection, for example, offers its code tables, so a question can offer the same degrees, languages, skills, or match stages your recruiters see in Carerix.
+
+![The data source panel for Match: Stage, with Name, Label, Description, Value, Avatar, and an empty filter set](/images/forms-builder/24-data-source-filters.png)
+
+**Settings:**
+
+- **Name**, how the source appears in the picker.
+- **Label**, **Description**, **Value**, and **Avatar**, which map fields of the list onto what the respondent sees and what the answer stores.
+- **Filters**, which narrow the list. **Add New Set** adds a group of conditions, and **Add Filter** adds a condition to that group.
+
+Filter a list when only part of it belongs in the question. A match stage list of thirty entries can be cut to the three stages a pre-screening is allowed to set, so no other stage can ever be chosen. The filtered source is saved on its own and can be reused, which is why the picker shows both "Match: Stage" and a filtered copy beside it.
+
+A data source belongs to the workspace, not to the question, so editing one changes every question that uses it. Build a second source from the same list when only one form should see the shorter version.
 
 ## Conditional logic
 

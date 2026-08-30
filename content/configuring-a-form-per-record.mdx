@@ -1,0 +1,74 @@
+---
+title: "Configuring a form per record"
+sidebarTitle: "Forms per record"
+description: "Switch individual form questions on or off for one vacancy in HireData, so a single pre-screening form fits every client and role without building a form for each one."
+keywords: ["form per vacancy", "form per record", "configure form questions", "available questions", "enable all", "mandatory only", "collection forms tab", "record responses", "per record configuration", "pre-screening per vacancy"]
+---
+
+One form rarely fits every vacancy. A client insists on a killer question that means nothing to the next role. A question about years of experience is beside the point for a junior opening.
+
+You do not need a form per vacancy for that. Build one form, then switch its questions on or off per record. Each vacancy serves only the questions that belong to it, and the form itself never changes.
+
+## Before you start
+
+You can configure a form per record once the form is linked to an object, and that object is first in the form's list. Link it on the **Objects** panel in the form builder, described in [Objects](/reference/forms/question-types#objects).
+
+Put Vacancy first and you configure the form per vacancy. Objects below it, such as Match or Candidate, still give you their variables and tie the response to their record. You cannot configure the form against them.
+
+## Find the forms for a collection
+
+Open **Data** in the main menu and pick a collection, for example **Vacancy**. A collection holds every record of one object type that a connected app syncs into HireData.
+
+Each collection has a **Forms** tab and a **Responses** tab.
+
+![The Vacancy collection with its Records, Fields, People, Automations, Forms, Responses, Events, Runs, and Tasks tabs](/images/record-forms/01-collection-tabs.png)
+
+- **Forms** lists every form linked to this object type, with a chip per object the form uses and an icon that shows whether the form is a draft or published.
+- **Responses** lists every response collected against a record of this type.
+
+## Configure a form for one record
+
+Open the **Records** tab, click a record, then open its **Forms** tab. Each form linked to this record's collection gets a tab of its own.
+
+![The Forms tab of a vacancy record, listing every question with an Off and On control and one question switched off](/images/record-forms/02-record-forms-configuration.png)
+
+The **Question** column lists the questions that can be configured for this record. The **Available** column decides whether each one is shown. Set a question to **Off** and this vacancy skips it. Set it to **On** and it comes back.
+
+HireData saves each change as you make it. The list highlights every question that no longer follows the form, so you can tell what this record changed.
+
+Two things stay as they are:
+
+- Questions with **Always include** turned on in the form builder. The form serves them whatever the record says. See [Display and requirements](/reference/forms/question-types#display-and-requirements).
+- Ending screens and redirects. They are not questions, so they never reach the list.
+
+### Shortcuts
+
+**Preview** opens the form as this record would serve it, with the record's own values filled into the questions. It offers the same **Interactive**, **Conversational**, and **Test & Evaluate** views as the builder, and a language picker. Use it to check that a question still reads correctly once its variables resolve.
+
+The menu next to **Preview** holds three actions:
+
+- **View form** opens the form in the builder.
+- **Enable all** clears this record's changes, so every question follows the form again. It appears once at least one question is off.
+- **Mandatory only** switches off everything except the questions that have to stay. In a form with nothing set to **Always include**, that switches off every question.
+
+## Read the responses for a record
+
+The **Responses** tab of a record lists what came back, whichever channel it arrived through.
+
+![The Responses tab of a vacancy record, with the form, when it was received, when it was completed, and the last activity](/images/record-forms/03-record-responses.png)
+
+Open a response to read the answers. The highlights above them show the channel, the number of messages, how much of the form the respondent finished, and how long it took.
+
+![A response with its highlights, its answers, and the panels for the respondent, the evaluation, the timeline, and related records](/images/record-forms/04-response-detail.png)
+
+The two buttons above the answers switch between a compact list and a roomier layout. **Previous** and **Next** move through the responses without going back to the list.
+
+## Why configure per record
+
+A staffing agency runs one pre-screening form across hundreds of vacancies. Configuring per record is what keeps that workable.
+
+- A client with a hard requirement gets that question switched on for their vacancies only.
+- A vacancy with no salary range switches the salary question off, so nobody is asked to react to a figure that is not there.
+- A role where experience does not matter switches the experience question off, and it drops out of the evaluation with it.
+
+One form still holds the questions, the logic, and the evaluation. Only the selection per vacancy moves.
