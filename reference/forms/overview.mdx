@@ -31,13 +31,9 @@ The **+** button opens the **Add Content** palette. It groups the entries by cat
 
 ### Logic tab {#logic-tab}
 
-The **Logic** tab decides where a respondent goes next. Every field gets an **Add Rule** button and a footer target that reads **All other cases go to** once the field has a rule, or **Always go to** when it has none.
+The **Logic** tab decides where a respondent goes next. Every question gets an **Add Rule** button and a footer target, and a rule reads `if <field> <operator> <value> then go to <target>`.
 
-A rule reads `if <field> <operator> <value> then go to <target>`. **Add Condition** puts a second condition in the same rule, and a rule fires only when every one of its conditions matches. To offer alternatives, add a second rule instead. A field can carry as many rules as it needs.
-
-HireData checks a field's rules from top to bottom and follows the first one whose conditions all match. When none match, it follows the footer target. Without a footer target, the respondent continues to the next field in the list.
-
-![A logic rule that jumps to a follow-up question when the score is 7 or less, with All other cases go to the ending](/images/forms-builder/04-logic-rule-and-fallback.png)
+See [Logic](/reference/forms/logic) for the operators each field type offers, the branching patterns worth copying, and what to check when a rule does not fire.
 
 ### Evaluation tab
 
@@ -77,7 +73,7 @@ Five buttons to the right open drawers over the preview:
 
 - **Show variable list** lists the variables the form can use, each with its type and current value, and a **Search** box to filter them. See [Variables](/variables/introduction).
 - **Manage Template** publishes the open form to the shared template library. It appears only for accounts that maintain that library, so most workspaces never see it. See [Templates](#templates).
-- **Show objects** links records such as a vacancy or a match to the form. See [Objects and data sources](#objects-and-data-sources).
+- **Show objects** links records such as a vacancy or a match to the form. See [Objects](/reference/forms/objects).
 - **Manage Languages** sets the form's default language and its translations. See [Languages and translations](#localization).
 - **Settings** holds the theme and the public toggle. See [Theme and publishing](#theme-and-publishing).
 
@@ -107,16 +103,7 @@ Every row below has a page of its own, covering that type's settings, what it st
 | [Ending Screen](/reference/forms/fields/ending-screen) | Ending | nothing |
 | [Redirect URL](/reference/forms/fields/redirect-url) | Ending | nothing |
 
-The type also decides which operators the [Logic tab](#logic-tab) offers.
-
-| Field types | Operators |
-|---|---|
-| Short Text, Long Text, Email, Phone Number, Website | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
-| Multiple Choice, Dropdown | has response, is equal to, is not equal to, is one of, is not one of |
-| Yes/No | has response, is equal to, is not equal to |
-| Number, Currency, Net Promoter Score, Opinion Scale | has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to |
-| Date, Time, Datetime, File Upload | has response |
-| Ending Screen, Redirect URL | no rules |
+The type also decides which operators a rule can use on that question. [Logic](/reference/forms/logic#operators) has the full table.
 
 Every field type except the two endings can feed the AI evaluators on the [Evaluation tab](#evaluation-tab): Criteria, Scoring, and Skills.
 
@@ -169,19 +156,19 @@ Turning **Hidden** on clears **Required** and **Always include** and locks both.
 
 An empty text box, an empty number box, no option chosen, and no file attached all count as no answer, and the web form shows a message under the question, such as "This field is required and cannot be empty."
 
-Answering No, turning a toggle off, and entering 0 are real answers and are meant to satisfy a required field.
+Answering No, leaving a toggle off, entering 0, and picking 0 on a rating are real answers and are meant to satisfy a required field.
 
 <Warning>
-  A bug in the web form blocks these answers. Answer No, leave a toggle off, or enter 0 on a required field and the respondent gets stuck. **Next** does nothing, no message appears, and any rule on that field does not fire. Until the fix ships, keep Yes/No fields optional and set a **Minimum Value** of 1 on required numeric fields.
+  A bug in the web form blocks these answers. Answer No, leave a toggle off, enter 0, or pick 0 on a rating, and the respondent gets stuck on a required question. **Next** does nothing, no message appears, and any rule on that field does not fire. Until the fix ships, leave Yes/No and Net Promoter Score questions optional, and set a **Minimum Value** of 1 on a required Number question.
 </Warning>
 
 In a conversational form, **Auto reply (on invalid answer)** is the message sent back when a required field receives no usable answer.
 
 ## Objects and data sources {#objects-and-data-sources}
 
-**Show objects** in the toolbar links records to the form. Link a vacancy and its fields become variables you can write into any question. The first object in the list is the form's main object, and it decides which records you can configure the form for. See [Configuring a form per record](/content/configuring-a-form-per-record).
+**Show objects** in the toolbar links records to the form. Link a vacancy and its fields become variables you can write into any question, and the object at the top of the list decides which records you can configure the form for. See [Objects](/reference/forms/objects).
 
-A data source is a saved list your workspace can reuse. Point a Multiple Choice or Dropdown field at one with **Add Data Source** and its options come from that list instead of options you type. The source belongs to the workspace, so editing one changes every field that uses it.
+**Add Data Source** on a Multiple Choice or Dropdown field fills its options from a list your workspace already keeps, instead of options you type. The list belongs to the workspace, so editing it changes every question that uses it. See [Data sources](/reference/forms/data-sources).
 
 ## Theme and publishing {#theme-and-publishing}
 
