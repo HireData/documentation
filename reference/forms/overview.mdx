@@ -5,7 +5,7 @@ description: "A tour of the HireData form builder: its three tabs, the toolbar d
 keywords: ["form builder", "form fields", "field types", "form theme", "form translations", "form templates", "make form public", "always include", "hidden field", "required field"]
 ---
 
-A form is a set of questions someone answers on the web or in a WhatsApp conversation. Open the **Forms** page from **Settings** and click **New Form** to start one, then build it in the form builder.
+A form is a set of questions someone answers on the web or in a WhatsApp conversation. Open the **Forms** page from **Settings** and click **New Form**. Pick **Blank Form** or one of the [templates](#templates), and the new form opens in the builder.
 
 This page maps the builder. For a walkthrough that takes one form from blank to published, read [Creating a form in HireData](/content/creating-a-form-in-hiredata).
 
@@ -18,6 +18,8 @@ The left column lists the form's fields in the order a respondent meets them. Ab
 The right column previews the form, with its own **Interactive Preview**, **Conversational Preview**, and **Test & Evaluate** tabs.
 
 The bar across the top holds the form name and the toolbar.
+
+![The form builder: the form name and toolbar across the top, the Content, Logic, and Evaluation tabs with the field list on the left, and the Interactive Preview on the right](/images/forms-builder/31-builder-at-a-glance.png)
 
 ### Content tab
 
@@ -55,7 +57,7 @@ Switch an evaluator on here and it also appears on every field card, so you can 
 
 **Test & Evaluate** starts empty. **Autofill with AI** invents a plausible response, and **Choose a test scenario** offers **Random answers**, **Ideal candidate**, **Borderline candidate**, **Unqualified candidate**, and **Partially completed**. The results appear underneath: the criteria verdict, the score and its rating, the strongest skill, the summary, and any generated fields. **Reset answers** clears them.
 
-![Test & Evaluate showing an ideal-candidate run: Meets criteria, 100% High, Availability at 71.43% contribution, with the summary and generated fields below](/images/forms-builder/30-test-and-evaluate.png)
+![Test & Evaluate after an ideal-candidate run, showing Meets criteria, 100% High, Availability at 66.67% contribution, the summary, and the generated fields](/images/forms-builder/30-test-and-evaluate.png)
 
 ## The toolbar
 
@@ -83,27 +85,36 @@ The three-dot menu at the end offers **Preview**, **Duplicate**, **Publish**, **
 
 The **Add Content** palette shows 18 entries, which make 15 field types. Short Text and Long Text, Multiple Choice and Dropdown, and Net Promoter Score and Opinion Scale are each one type with two settings, switched in the field card's footer.
 
-| Field type | Group | Stores | Logic operators |
-|---|---|---|---|
-| Short Text and Long Text | Text | text | text |
-| Email | Contact Info | text | text |
-| Phone Number | Contact Info | text | text |
-| Website | Contact Info | text | text |
-| Date | Temporal | a date and time | has response |
-| Time | Temporal | a date and time | has response |
-| Datetime | Temporal | a date and time | has response |
-| Yes/No | Choice | Yes or No | Yes/No |
-| Multiple Choice and Dropdown | Choice | the chosen options | choice |
-| Number | Numeric | a number | numeric |
-| Currency | Numeric | a number | numeric |
-| Net Promoter Score and Opinion Scale | Rating | a point on the scale, 0 to 10 for Net Promoter Score | numeric |
-| File Upload | Other | the uploaded files | has response |
-| Ending Screen | Ending | nothing | rules not available |
-| Redirect URL | Ending | nothing | rules not available |
+| Field type | Group | Stores |
+|---|---|---|
+| Short Text and Long Text | Text | text |
+| Email | Contact Info | text |
+| Phone Number | Contact Info | text |
+| Website | Contact Info | text |
+| Date | Temporal | a date and time |
+| Time | Temporal | a date and time |
+| Datetime | Temporal | a date and time |
+| Yes/No | Choice | Yes or No |
+| Multiple Choice and Dropdown | Choice | the chosen options |
+| Number | Numeric | a number |
+| Currency | Numeric | a number |
+| Net Promoter Score and Opinion Scale | Rating | a point on the scale, 0 to 10 for Net Promoter Score |
+| File Upload | Other | the uploaded files |
+| Ending Screen | Ending | nothing |
+| Redirect URL | Ending | nothing |
 
-Every field that takes rules offers **has response**, which is true once the field has any answer. Text and contact fields add **is equal to**, **is not equal to**, **starts with**, **ends with**, **contains**, and **does not contain**. Yes/No adds **is equal to** and **is not equal to**. Multiple Choice and Dropdown add those two, plus **is one of** and **is not one of**. Numeric and rating fields add **is equal to**, **is not equal to**, **is greater than**, **is less than**, **is greater than or equal to**, and **is less than or equal to**. Date, Time, Datetime, and File Upload add none, and the two endings take no rules.
+The type also decides which operators the [Logic tab](#logic-tab) offers.
 
-Every field type except the two endings can take part in Criteria, Scoring, and Skills.
+| Field types | Operators |
+|---|---|
+| Short Text, Long Text, Email, Phone Number, Website | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
+| Multiple Choice, Dropdown | has response, is equal to, is not equal to, is one of, is not one of |
+| Yes/No | has response, is equal to, is not equal to |
+| Number, Currency, Net Promoter Score, Opinion Scale | has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to |
+| Date, Time, Datetime, File Upload | has response |
+| Ending Screen, Redirect URL | no rules |
+
+Every field type except the two endings can feed the AI evaluators on the [Evaluation tab](#evaluation-tab): Criteria, Scoring, and Skills.
 
 <Note>
   A few more field types exist than the palette offers: Range, Color, and the Star, Thumbs, Emoji, and Slider variants of a rating. Only an integration such as the HireData API can add them. If one turns up in a form you did not build, it works, but the builder has no settings card for it.
@@ -128,7 +139,7 @@ Text settings such as **Question**, **Description**, and the placeholders accept
 
 Redirect URL has none of this. It is a single field for the address.
 
-![An Email field card showing Question, Description, Image, Placeholder, the length and pattern settings, both auto replies, the three evaluator switches, and the footer button reading Required](/images/forms-builder/02-question-card-common-settings.png)
+![A Dropdown field card showing Question, Description, Image, Placeholder, Conversational Button Text, the options with Add Data Source, the three evaluator switches, and a footer reading Dropdown, Single Answer, and Optional](/images/forms-builder/02-question-card-common-settings.png)
 
 ## Display and requirements {#display-and-requirements}
 
@@ -157,7 +168,7 @@ An empty text box, an empty number box, no option chosen, and no file attached a
 Answering No, turning a toggle off, and entering 0 are real answers and are meant to satisfy a required field.
 
 <Warning>
-  The web form at forms.hiredata.com currently gets this wrong. A respondent who answers No on a required Yes/No field, leaves a required toggle off, or enters 0 in a required Number, Currency, or rating field clicks **Next** and nothing happens. No message appears. The answer is saved, but the form does not advance, and any logic rule on that field does not fire. Until this is fixed, keep Yes/No fields optional, and set a **Minimum Value** of 1 on required numeric fields where 0 is not a meaningful answer.
+  A bug in the web form blocks these answers. Answer No, leave a toggle off, or enter 0 on a required field and the respondent gets stuck. **Next** does nothing, no message appears, and any rule on that field does not fire. Until the fix ships, keep Yes/No fields optional and set a **Minimum Value** of 1 on required numeric fields.
 </Warning>
 
 In a conversational form, **Auto reply (on invalid answer)** is the message sent back when a required field receives no usable answer.
@@ -172,7 +183,7 @@ A data source is a saved list your workspace can reuse. Point a Multiple Choice 
 
 The **Settings** drawer controls how the form looks and who can reach it.
 
-![The Settings drawer with Make form public, Logo, Alignment, Font Family, Text Color, Scale, the Input and Background sections, Button Text, and Border radius](/images/forms-builder/26-settings-drawer.png)
+![The Settings drawer with Make form public, Logo, Alignment, Font Family, Text Color, Scale, the collapsed Input and Background sections, Button Text, and Border radius](/images/forms-builder/26-settings-drawer.png)
 
 The drawer opens with **Make form public**, "Public forms can be anonymously answered by anyone with the form's URL." Leave it off and the form only opens for a respondent you sent it to. The theme settings follow:
 
@@ -194,7 +205,7 @@ Every colour starts as a value from the selected brand, shown as a name such as 
 
 Click **New Translation** to add one. Pick the **Language**, then either translate by hand or click **Create AI translation**, which fills the whole form for you.
 
-![The New Translation panel with English selected, the Create AI translation button, and the Settings and Fields sections showing each source string above an empty box](/images/forms-builder/27-translation-editor.png)
+![The New Translation panel with Dutch selected, the Create AI translation button, the Settings group, and the first field expanded to Question, Description, Min Label, and Max Label](/images/forms-builder/27-translation-editor.png)
 
 A translation covers three groups:
 
