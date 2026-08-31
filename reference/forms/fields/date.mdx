@@ -1,0 +1,39 @@
+---
+title: "Date"
+sidebarTitle: "Date"
+description: "The date field in a HireData form. It gives the respondent a calendar picker and can only be branched on with the has response operator."
+keywords: ["calendar", "start date", "availability date"]
+---
+
+Date gives the respondent a `dd/mm/yyyy` box with a calendar picker beside it. Use it for a start date, a notice period end, or any single day.
+
+It sits in the **Temporal** group of the **Add Content** palette.
+
+## Settings
+
+Date adds nothing to the [settings every field shares](/reference/forms/overview#settings-every-field-shares). There is no earliest or latest day to set, so a date the respondent should not be able to pick has to be caught after the answer arrives, either by an evaluator or by an automation.
+
+## What it stores
+
+A date and time. All three temporal types share one value, and Date fills in the day.
+
+## Logic operators
+
+The operator picker is fixed at **has response** and cannot be changed.
+
+<Note>
+  You cannot branch on how early or late a date is. A rule can ask whether the respondent gave a date at all, and nothing more. To act on the day itself, use [Criteria](/reference/forms/overview#evaluation-tab) or an automation.
+</Note>
+
+## Evaluation
+
+Switch **Criteria**, **Scoring**, or **Skills** on for the form in the [Evaluation tab](/reference/forms/overview#evaluation-tab) and each one gets a switch on this card. A start date is a good **Criteria** must-have, and it is the way to test a date that logic cannot reach.
+
+## In the builder
+
+![A Date field card showing Question, Description, Image, the auto reply, the three evaluator switches, and a footer reading Optional, beside a preview showing a dd/mm/yyyy box with a calendar picker](/images/forms-builder/fields/05-date.png)
+
+## Related
+
+- [Form builder overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
+- [Time](/reference/forms/fields/time) and [Datetime](/reference/forms/fields/datetime) are the other two Temporal fields.

@@ -1,0 +1,51 @@
+---
+title: "Email"
+sidebarTitle: "Email"
+description: "The email field in a HireData form. It checks the address is well formed and takes the same placeholder, length, and pattern settings as a text field."
+---
+
+Email is a single-line box that has to hold an email address. The respondent sees an @ mark in the empty box, and an address that is not well formed does not pass.
+
+It sits in the **Contact Info** group of the **Add Content** palette.
+
+## Settings
+
+The card carries the [settings every field shares](/reference/forms/overview#settings-every-field-shares). Email adds the same four a text field has.
+
+- **Placeholder**, up to 255 characters, shown in the empty box.
+- **Minimum Length** and **Maximum Length**, counted in characters.
+- **Validation Pattern**, a regular expression the answer has to match, on top of the address check.
+
+The message a respondent sees when the address is malformed sits under **Validation** in [Languages and translations](/reference/forms/overview#localization), as **Invalid Email**.
+
+## What it stores
+
+Text, the address as the respondent typed it.
+
+## Logic operators
+
+| Operator | Matches when |
+|---|---|
+| has response | the respondent answered at all |
+| is equal to | the answer is exactly the value |
+| is not equal to | the answer is anything else |
+| starts with | the answer begins with the value |
+| ends with | the answer ends with the value |
+| contains | the value appears somewhere in the answer |
+| does not contain | the value appears nowhere in the answer |
+
+**ends with** is the useful one here. A rule reading `if email ends with @yourcompany.com` tells an internal respondent apart from an external one.
+
+## Evaluation
+
+Switch **Criteria**, **Scoring**, or **Skills** on for the form in the [Evaluation tab](/reference/forms/overview#evaluation-tab) and each one gets a switch on this card. An address rarely says anything about a candidate, so most forms leave all three off here.
+
+## In the builder
+
+![An Email field card showing Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, both auto replies, the three evaluator switches, and a footer reading Required, beside a preview showing an answer box with an @ mark](/images/forms-builder/fields/02-email.png)
+
+## Related
+
+- [Form builder overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
+- [Phone Number](/reference/forms/fields/phone-number) and [Website](/reference/forms/fields/website) are the other two Contact Info fields.
+- [Short Text and Long Text](/reference/forms/fields/short-and-long-text) is the same box with no format check.

@@ -1,0 +1,50 @@
+---
+title: "Phone Number"
+sidebarTitle: "Phone Number"
+description: "The phone number field in a HireData form, with the placeholder, length, and pattern settings a text field has."
+keywords: ["telephone", "mobile number", "phone field"]
+---
+
+Phone Number is a single-line box for a telephone number. The respondent sees a handset mark in the empty box.
+
+It sits in the **Contact Info** group of the **Add Content** palette.
+
+## Settings
+
+The card carries the [settings every field shares](/reference/forms/overview#settings-every-field-shares). Phone Number adds the same four a text field has.
+
+- **Placeholder**, up to 255 characters, shown in the empty box.
+- **Minimum Length** and **Maximum Length**, counted in characters.
+- **Validation Pattern**, a regular expression the answer has to match.
+
+There is no phone-specific validation message, so **Validation Pattern** is how you insist on a format. If your process needs numbers in international form, ask for it in the **Description** and back it with a pattern.
+
+## What it stores
+
+Text, the number as the respondent typed it. HireData does not reformat it.
+
+## Logic operators
+
+| Operator | Matches when |
+|---|---|
+| has response | the respondent answered at all |
+| is equal to | the answer is exactly the value |
+| is not equal to | the answer is anything else |
+| starts with | the answer begins with the value |
+| ends with | the answer ends with the value |
+| contains | the value appears somewhere in the answer |
+| does not contain | the value appears nowhere in the answer |
+
+## Evaluation
+
+Switch **Criteria**, **Scoring**, or **Skills** on for the form in the [Evaluation tab](/reference/forms/overview#evaluation-tab) and each one gets a switch on this card. A number is rarely worth evaluating, so most forms leave all three off here.
+
+## In the builder
+
+![A Phone Number field card showing Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, the auto reply, the three evaluator switches, and a footer reading Optional, beside a preview showing an answer box with a handset mark](/images/forms-builder/fields/03-phone-number.png)
+
+## Related
+
+- [Form builder overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
+- [Email](/reference/forms/fields/email) and [Website](/reference/forms/fields/website) are the other two Contact Info fields.
+- [How to use forms in WhatsApp conversations](/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) explains where the auto replies go.

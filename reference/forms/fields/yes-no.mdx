@@ -1,0 +1,55 @@
+---
+title: "Yes/No"
+sidebarTitle: "Yes/No"
+description: "The yes or no field in a HireData form, as a checkbox or a toggle, with a separate WhatsApp auto reply for each answer."
+keywords: ["binary", "checkbox", "toggle", "boolean", "true false"]
+---
+
+Yes/No asks a question with two answers. **Checkbox** draws a box the respondent ticks. **Toggle** draws a switch they slide. The two behave the same and store the same value, so pick whichever suits the question.
+
+It sits in the **Choice** group of the **Add Content** palette. The button at the bottom left of the card switches between the two.
+
+## Settings
+
+The card carries the [settings every field shares](/reference/forms/overview#settings-every-field-shares), with one difference. Instead of the single **Auto reply (on answer)** most types have, Yes/No gives each answer its own WhatsApp message.
+
+- **Auto reply (Yes)**, sent when the answer is Yes.
+- **Auto reply (No)**, sent when the answer is No.
+
+There is nothing else to set. You cannot relabel the two answers. If you need wording of your own, such as "Full licence" against "Provisional", use [Multiple Choice](/reference/forms/fields/multiple-choice-and-dropdown) with two options.
+
+## What it stores
+
+Yes or No.
+
+## Logic operators
+
+| Operator | Matches when |
+|---|---|
+| has response | the respondent answered at all |
+| is equal to | the answer matches the one in the rule |
+| is not equal to | the answer is the other one |
+
+<Warning>
+  Do not make a Yes/No field required. A respondent who answers No cannot get past it. **Next** does nothing, no message appears, and any rule on the field never fires. Leave the field optional until the fix ships.
+</Warning>
+
+## Evaluation
+
+Switch **Criteria**, **Scoring**, or **Skills** on for the form in the [Evaluation tab](/reference/forms/overview#evaluation-tab) and each one gets a switch on this card.
+
+Yes/No is the cleanest field to hang a **Criteria** must-have on, because the answer is one of two known values and needs no interpretation. "Do you have a driving licence?" is either met or not.
+
+## In the builder
+
+![A Yes/No field card showing Question, Description, Image, Auto reply (Yes), Auto reply (No), the three evaluator switches with Criteria and Skills on, and a footer reading Checkbox and Optional](/images/forms-builder/fields/08-yes-no.png)
+
+The same field switched to Toggle:
+
+![The same field with a footer reading Toggle, beside a preview showing a slide switch instead of a tick box](/images/forms-builder/fields/08b-yes-no-toggle.png)
+
+## Related
+
+- [Form builder overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
+- [Multiple Choice and Dropdown](/reference/forms/fields/multiple-choice-and-dropdown) handles two answers in your own words, or more than two.
+- [Display and requirements](/reference/forms/overview#display-and-requirements) explains what counts as an answer.

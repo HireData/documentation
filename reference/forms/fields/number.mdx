@@ -1,0 +1,56 @@
+---
+title: "Number"
+sidebarTitle: "Number"
+description: "The number field in a HireData form, with a minimum, a maximum, and a step, and the full set of comparison operators in logic."
+keywords: ["numeric", "years of experience", "quantity"]
+---
+
+Number takes a plain number: years of experience, hours a week, how many of something. It is one of only two types logic can compare, which makes it the field to reach for when a rule has to weigh an answer rather than match it.
+
+It sits in the **Numeric** group of the **Add Content** palette.
+
+## Settings
+
+The card carries the [settings every field shares](/reference/forms/overview#settings-every-field-shares). Number adds four of its own.
+
+- **Placeholder**, up to 255 characters, shown in the empty box.
+- **Minimum Value** and **Maximum Value**, the ends of the range you accept.
+- **Steps**, the size of one step. Set it to 1 to insist on whole numbers.
+
+The messages a respondent sees when an answer falls outside the range sit under **Validation** in [Languages and translations](/reference/forms/overview#localization), as **Min Number** and **Max Number**.
+
+## What it stores
+
+A number.
+
+## Logic operators
+
+| Operator | Matches when |
+|---|---|
+| has response | the respondent answered at all |
+| is equal to | the answer is exactly the value |
+| is not equal to | the answer is anything else |
+| is greater than | the answer is above the value |
+| is less than | the answer is below the value |
+| is greater than or equal to | the answer is the value or above |
+| is less than or equal to | the answer is the value or below |
+
+<Warning>
+  A required Number field blocks the answer 0. **Next** does nothing and no message appears. Until the fix ships, set a **Minimum Value** of 1 on any required Number field, so 0 is refused with a message the respondent can read.
+</Warning>
+
+## Evaluation
+
+Switch **Criteria**, **Scoring**, or **Skills** on for the form in the [Evaluation tab](/reference/forms/overview#evaluation-tab) and each one gets a switch on this card.
+
+Number suits **Scoring** better than any other type. A threshold gives full points, a lower one gives some, and everything below gives none, all from the value itself.
+
+## In the builder
+
+![A Number field card showing Question, Description, Image, Placeholder, Minimum Value, Maximum Value, Steps, the auto reply, the three evaluator switches with Criteria and Scoring on, and a footer reading Optional](/images/forms-builder/fields/10-number.png)
+
+## Related
+
+- [Form builder overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
+- [Currency](/reference/forms/fields/currency) is the same field with a symbol on it.
+- [Net Promoter Score and Opinion Scale](/reference/forms/fields/net-promoter-score-and-opinion-scale) is a number the respondent picks off a scale.
