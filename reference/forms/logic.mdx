@@ -107,13 +107,13 @@ A required question has to be answered before the respondent can move on, which 
 
 ## When a rule does not fire
 
-Work down this list before you go looking for a bug.
+Work down this list when a rule does nothing, or sends people somewhere you did not intend.
 
 - **A rule above it matched first.** HireData stops at the first match. Move the narrow rule above the broad one.
-- **The rule needed both conditions.** Conditions inside one rule are joined with and. Split them into two rules to get or.
+- **The rule needed every condition.** All the conditions in one rule have to match. Split them into two rules to get either-or.
 - **The condition reads a question the respondent skipped.** A jump that steps over a question leaves it unanswered, so any later condition on it fails and the footer target applies.
 - **The question is required and the answer was No, off, or 0.** See the warning above.
-- **The target sends people backwards.** A rule can point at a question already behind the respondent, and nothing stops them going round the same questions twice. Try any backwards jump in **Interactive Preview** before you publish.
+- **The rule fired and sent them backwards.** A target can be a question the respondent has already passed, and nothing stops them going round the same questions twice. Try any backwards jump in **Interactive Preview** before you publish.
 - **You wrote the rule on the wrong question.** Rules live on the question being answered, not on the destination.
 
 **Interactive Preview** in the right-hand panel runs the same logic the published form runs, so it is the fastest way to check a route. **Test & Evaluate** fills in a whole response at once, which is better for checking the evaluators than the branching.
