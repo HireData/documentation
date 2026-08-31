@@ -13,11 +13,9 @@ Logic only moves people. It cannot reveal a question halfway through, and it can
 
 The **Logic** tab sits above the field list, between **Content** and **Evaluation**. Every question gets an **Add Rule** button and a footer target, and the rules you write belong to that question.
 
-The tab lists fields in form order, so the **Endings** divider falls wherever the first ending sits. That can be halfway down, with questions still to come underneath. The **Content** tab gathers endings at the bottom instead, so the two lists rarely match.
+Endings sit below the **Endings** divider and get neither. Nothing follows an ending, so a rule on one would have nowhere to point.
 
-![The Logic tab showing a question with Always go to, then the Endings divider, an ending with no Add Rule button, and the next question underneath](/images/forms-builder/32-logic-endings-divider.png)
-
-An ending has no **Add Rule** button and no footer target. Nothing follows it.
+![The Logic tab listing four questions, each with an Add Rule button and an Always go to target, then the Endings divider and an ending with neither](/images/forms-builder/32-logic-tab.png)
 
 ## Anatomy of a rule
 
@@ -63,7 +61,7 @@ The everyday case. One option leads somewhere the others do not.
 
 ![A rule on a Multiple Choice question: if the answer is Yes, by email, go to the email question, with All other cases go to the ending](/images/forms-builder/15-logic-choice-branch.png)
 
-Three options that all lead to the same follow-up need one rule with **is one of**, not three rules.
+Multiple Choice and Dropdown are the only types that offer **is one of**, and its value box takes several options at once. Three answers that all lead to the same follow-up are one rule, not three.
 
 ### Branch on a Yes/No
 
