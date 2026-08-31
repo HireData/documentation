@@ -33,7 +33,9 @@ The **+** button opens the **Add Content** palette. It groups the 18 palette ent
 
 The **Logic** tab decides where a respondent goes next. Every field gets an **Add Rule** button and a footer target that reads **All other cases go to** once the field has a rule, or **Always go to** when it has none.
 
-A rule reads `if <field> <operator> <value> then go to <target>`. HireData checks a field's rules from top to bottom and follows the first one whose conditions all match. When none match, it follows the footer target. Without a footer target, the respondent continues to the next field in the list.
+A rule reads `if <field> <operator> <value> then go to <target>`. **Add Condition** puts a second condition in the same rule, and a rule fires only when every one of its conditions matches. To offer alternatives, add a second rule instead. A field can carry as many rules as it needs.
+
+HireData checks a field's rules from top to bottom and follows the first one whose conditions all match. When none match, it follows the footer target. Without a footer target, the respondent continues to the next field in the list.
 
 ![A logic rule that jumps to a follow-up question when the score is 7 or less, with All other cases go to the ending](/images/forms-builder/04-logic-rule-and-fallback.png)
 
