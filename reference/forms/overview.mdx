@@ -1,0 +1,211 @@
+---
+title: "Form builder overview"
+sidebarTitle: "Overview"
+description: "A tour of the HireData form builder: its three tabs, the toolbar drawers, every field type, and the settings every field shares."
+keywords: ["form builder", "form fields", "field types", "form theme", "form translations", "form templates", "make form public", "always include", "hidden field", "required field"]
+---
+
+A form is a set of questions someone answers on the web or in a WhatsApp conversation. Open the **Forms** page from **Settings** and click **New Form**. Pick **Blank Form** or one of the [templates](#templates), and the new form opens in the builder.
+
+This page maps the builder. For a walkthrough that takes one form from blank to published, read [Creating a form in HireData](/content/creating-a-form-in-hiredata).
+
+## The builder at a glance
+
+The builder has three parts.
+
+The left column lists the form's fields in the order a respondent meets them. Above the list sit the **Content**, **Logic**, and **Evaluation** tabs, and the **+** button that opens the **Add Content** palette.
+
+The right column previews the form, with its own **Interactive Preview**, **Conversational Preview**, and **Test & Evaluate** tabs.
+
+The bar across the top holds the form name and the toolbar.
+
+![The form builder: the form name and toolbar across the top, the Content, Logic, and Evaluation tabs with the field list on the left, and the Interactive Preview on the right](/images/forms-builder/31-builder-at-a-glance.png)
+
+### Content tab
+
+The **Content** tab holds the fields and their settings. Click a field to open its card, and drag it by the handle on the left to change the order.
+
+The **+** button opens the **Add Content** palette. It groups the entries by category and repeats the most used ones under **Recommended**. **Find a field type** searches the list.
+
+![The Add Content palette with its Recommended list and the Text, Contact Info, Temporal, Choice, Numeric, Rating, Other, and Ending groups](/images/forms-builder/01-add-content-palette.png)
+
+### Logic tab {#logic-tab}
+
+The **Logic** tab decides where a respondent goes next. Every question gets an **Add Rule** button and a footer target, and a rule reads `if <field> <operator> <value> then go to <target>`.
+
+See [Logic](/reference/forms/logic) for the operators each field type offers, the branching patterns worth copying, and what to check when a rule does not fire.
+
+### Evaluation tab
+
+The **Evaluation** tab turns a finished response into something a recruiter can act on. It holds five evaluators, each with a switch: **Summary**, **Criteria**, **Scoring**, **Skills**, and **Generated fields**.
+
+Switch one on here and, for the three that work question by question, it also gets a switch on every field card, so you can configure it without leaving the **Content** tab.
+
+See [Evaluation](/reference/forms/evaluation/overview) for what each evaluator decides, what it hands back, and the order you have to switch them on in.
+
+### Preview panel
+
+**Interactive Preview** walks the web form, running the same logic the public form runs. **Conversational Preview** shows the chat version. **Test & Evaluate** fills in a whole response and runs the evaluators over it.
+
+See [Previews](/reference/forms/testing/previews) and [Test & Evaluate](/reference/forms/testing/test-and-evaluate).
+
+## The toolbar
+
+The toolbar runs along the top right of the builder, from **Save** to the three-dot menu.
+
+![The form builder toolbar, showing Save, the preview button, Publish, the brand selector, the five drawer buttons, and the more menu](/images/forms-builder/25-builder-toolbar.png)
+
+**Save** stores your changes. The eye button next to it saves the form and opens it in a [preview window](/reference/forms/testing/previews#the-preview-window) over the builder.
+
+**Publish** makes the form available to respondents. It reads **Withdraw** once the form is published.
+
+**Brand** picks the brand the form's colours come from, and **Reset to default** returns the form to your account's brand.
+
+Five buttons to the right open drawers over the preview:
+
+- **Show variable list** lists the variables the form can use, each with its type and current value, and a **Search** box to filter them. See [Variables](/variables/introduction).
+- **Manage Template** publishes the open form to the shared template library. It appears only for accounts that maintain that library, so most workspaces never see it. See [Templates](#templates).
+- **Show objects** links records such as a vacancy or a match to the form. See [Objects](/reference/forms/objects).
+- **Manage Languages** sets the form's default language and its translations. See [Languages and translations](#localization).
+- **Settings** holds the theme and the public toggle. See [Theme and publishing](#theme-and-publishing).
+
+The three-dot menu at the end offers **Preview**, **Duplicate**, **Publish**, **Archive**, **Export CSV**, **Export Excel**, and **Delete**.
+
+## Choosing a field type
+
+The palette shows more entries than there are field types. Short Text and Long Text, Multiple Choice and Dropdown, and Net Promoter Score and Opinion Scale are each one type with two settings, switched in the field card's footer.
+
+Every row below has a page of its own, covering that type's settings, what it stores, the operators logic offers for it, and what the AI evaluators can do with it.
+
+| Field type | Group | Stores |
+|---|---|---|
+| [Short Text and Long Text](/reference/forms/fields/short-and-long-text) | Text | text |
+| [Email](/reference/forms/fields/email) | Contact Info | text |
+| [Phone Number](/reference/forms/fields/phone-number) | Contact Info | text |
+| [Website](/reference/forms/fields/website) | Contact Info | text |
+| [Date](/reference/forms/fields/date) | Temporal | a date and time |
+| [Time](/reference/forms/fields/time) | Temporal | a date and time |
+| [Datetime](/reference/forms/fields/datetime) | Temporal | a date and time |
+| [Yes/No](/reference/forms/fields/yes-no) | Choice | Yes or No |
+| [Multiple Choice and Dropdown](/reference/forms/fields/multiple-choice-and-dropdown) | Choice | the chosen options |
+| [Number](/reference/forms/fields/number) | Numeric | a number |
+| [Currency](/reference/forms/fields/currency) | Numeric | a number |
+| [Net Promoter Score and Opinion Scale](/reference/forms/fields/net-promoter-score-and-opinion-scale) | Rating | a point on the scale, 0 to 10 for Net Promoter Score |
+| [File Upload](/reference/forms/fields/file-upload) | Other | the uploaded files |
+| [Ending Screen](/reference/forms/fields/ending-screen) | Ending | nothing |
+| [Redirect URL](/reference/forms/fields/redirect-url) | Ending | nothing |
+
+The type also decides which operators a rule can use on that question. [Logic](/reference/forms/logic#operators) has the full table.
+
+Every field type except the two endings can feed the AI evaluators: Criteria, Scoring, and Skills. See [Evaluation](/reference/forms/evaluation/overview).
+
+<Note>
+  A few more field types exist than the palette offers: Range, Color, and the Star, Thumbs, Emoji, and Slider variants of a rating. Only an integration such as the HireData API can add them. If one turns up in a form you did not build, it works, but the builder has no settings card for it.
+</Note>
+
+## Settings every field shares {#settings-every-field-shares}
+
+Click a field to open its card. The settings every field shares sit at the top and bottom, with the type's own settings in between.
+
+- **Question**, up to 255 characters. Ending screens call this **Title**.
+- **Description**, up to 1024 characters, shown under the question.
+- **Image**, with a placement selector that defaults to **Above the Input Field**. The other placements are **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page**, and **Background**.
+- A **Criteria**, **Scoring**, and **Skills** switch, one for each evaluator you turned on for the form.
+- A footer holding the button that opens [Display & requirements](#display-and-requirements), and the type switch for the types that come in two flavours: Short Text and Long Text, Yes/No's Checkbox and Toggle, Multiple Choice and Dropdown, Net Promoter Score and Opinion Scale.
+
+Two more settings appear on most, but not all, field types. Both are messages for forms answered in a WhatsApp conversation:
+
+- **Auto reply (on answer)** is sent as soon as the respondent answers the question. Yes/No replaces it with a reply per answer, and Multiple Choice and Dropdown move it onto each option.
+- **Auto reply (on invalid answer)** appears once **Required** is on. The builder describes it as the message sent when a required question is answered incorrectly.
+
+Text settings such as **Question**, **Description**, and the placeholders accept variables, so a question can address the respondent by name or mention the vacancy. Some variables only become available after you link their object to the form, see [Objects and data sources](#objects-and-data-sources). For the syntax, see [Variables](/variables/introduction).
+
+Redirect URL has none of this. It is a single field for the address.
+
+![A Dropdown field card showing Question, Description, Image, Placeholder, Conversational Button Text, the options with Add Data Source, the three evaluator switches, and a footer reading Dropdown, Single Answer, and Optional](/images/forms-builder/02-question-card-common-settings.png)
+
+## Display and requirements {#display-and-requirements}
+
+The button at the bottom right of a field card opens **Display & requirements**. Its label tells you the current state of the field: **Optional**, **Required**, **Hidden**, or **Always included**.
+
+![The Display & requirements popup on a field card, with the Hidden, Required, and Always include switches](/images/forms-builder/22-display-and-requirements.png)
+
+**Hidden**, "Hide this field from respondents."
+
+A hidden field is skipped as the respondent moves through the form, and logic rules cannot jump to it. Its stored answer stays available to automations, which is how you carry a value such as a reference or an ID through a form without asking for it.
+
+**Required**, "Require respondents to answer this field."
+
+An asterisk appears on the question label, and the respondent cannot continue until the field has an answer.
+
+**Always include**, "Prevent configurations from disabling this field. This will make the field required."
+
+Turning it on turns **Required** on too. Nobody can then switch the field off for an individual record, so the form serves it every time. Use it for the questions your process cannot do without. See [Configuring a form per record](/content/configuring-a-form-per-record).
+
+Turning **Hidden** on clears **Required** and **Always include** and locks both. A field the respondent never sees cannot be answered, so it cannot be required either.
+
+### What counts as an answer {#required-answers}
+
+An empty text box, an empty number box, no option chosen, and no file attached all count as no answer, and the web form shows a message under the question, such as "This field is required and cannot be empty."
+
+Answering No, leaving a toggle off, entering 0, and picking 0 on a rating are real answers and are meant to satisfy a required field.
+
+<Warning>
+  A bug in the web form blocks these answers. Answer No, leave a toggle off, enter 0, or pick 0 on a rating, and the respondent gets stuck on a required question. **Next** does nothing, no message appears, and any rule on that field does not fire. Until the fix ships, leave Yes/No and Net Promoter Score questions optional, and set a **Minimum Value** of 1 on a required Number question.
+</Warning>
+
+In a conversational form, **Auto reply (on invalid answer)** is the message sent back when a required field receives no usable answer.
+
+## Objects and data sources {#objects-and-data-sources}
+
+**Show objects** in the toolbar links records to the form. Link a vacancy and its fields become variables you can write into any question, and the object at the top of the list decides which records you can configure the form for. See [Objects](/reference/forms/objects).
+
+**Add Data Source** on a Multiple Choice or Dropdown field fills its options from a list your workspace already keeps, instead of options you type. The list belongs to the workspace, so editing it changes every question that uses it. See [Data sources](/reference/forms/data-sources).
+
+## Theme and publishing {#theme-and-publishing}
+
+The **Settings** drawer controls how the form looks and who can reach it.
+
+![The Settings drawer with Make form public, Logo, Alignment, Font Family, Text Color, Scale, the collapsed Input and Background sections, Button Text, and Border radius](/images/forms-builder/26-settings-drawer.png)
+
+The drawer opens with **Make form public**, "Public forms can be anonymously answered by anyone with the form's URL." Leave it off and the form only opens for a respondent you sent it to. The theme settings follow:
+
+- **Logo**, the image at the top of the form. It starts as your brand logo, and the cross next to the label removes it.
+- **Alignment**, which puts the question text and inputs on the left, in the centre, or on the right.
+- **Font Family**, the typeface the form uses.
+- **Text Color**, the colour of the form's text.
+- **Scale**, which sizes the text and inputs: **Default**, **Large**, or **Extra Large**.
+- **Input**, a section holding the answer boxes' **Variant** (**Solid**, **Soft**, or **Outline**), **Color**, **Background Color**, **Button Color**, and **Button Text Color**.
+- **Background**, a section holding a **Background Image** and a background **Color**.
+- **Button Text**, the label on the button that moves the respondent on. It reads "Ok" until you change it.
+- **Border radius**, offering **None**, **Normal**, **Large**, and **Custom**.
+
+Every colour starts as a value from the selected brand, shown as a name such as "Theme: Palette Background Text Color". Change one and it applies to this form only, so a form matches your brand until you decide it should not.
+
+## Languages and translations {#localization}
+
+**Manage Languages** in the toolbar sets the form's **Default language** and lists its translations. The default language is the one you wrote the questions in.
+
+Click **New Translation** to add one. Pick the **Language**, then either translate by hand or click **Create AI translation**, which fills the whole form for you.
+
+![The New Translation panel with Dutch selected, the Create AI translation button, the Settings group, and the first field expanded to Question, Description, Min Label, and Max Label](/images/forms-builder/27-translation-editor.png)
+
+A translation covers three groups:
+
+- **Settings**, the form **Name**, the **Button text**, the **Powered by** line, and the **Upload title** and **Upload description** of a file upload.
+- **Fields**, every field in the form. Each one holds its **Question** and **Description**, plus whatever text its type adds, such as a rating's **Min Label** and **Max Label**, a choice field's **Conversational button text**, and its options with their auto replies.
+- **Validation**, the messages a respondent sees when an answer does not pass, such as **Field Is Required**, **Invalid Email**, and **Max Number**.
+
+Each entry shows the source text above an empty box. Leave a box empty and the form falls back to the default language for that string.
+
+Respondents switch language with the picker at the top of the form. To set the language your workspace writes in, see [Setting a default language and AI tone of voice](/settings/setting-a-default-language-and-ai-tone-of-voice).
+
+## Templates
+
+Click **New Form** and a gallery opens with **Blank Form** as the first card. The rest are ready-made recruitment forms such as **Job Application (Pre-Intake)**, **Intake**, **Rejection**, and **Net Promoter Score (NPS)**, each with a description of what it asks and a tag for the record it suits. The **Candidate** and **Contact** chips at the top filter the gallery.
+
+Picking a template copies its fields into a new form, and everything in the copy is yours to change.
+
+![The New Form dialog showing the Candidate and Contact tag filters, the Blank Form card, and the recruitment form templates](/images/forms-builder/28-new-form-templates.png)
+
+If your account maintains the shared template library, the **Manage Template** button in the toolbar turns the open form into a template. **Configure Template** asks for a **Title**, a **Description**, and **Tags**, offers to write all three with AI, and puts the template in the gallery when you click **Enable**. **Feature Template** promotes it to the top.

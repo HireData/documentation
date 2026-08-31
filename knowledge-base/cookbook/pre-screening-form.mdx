@@ -1,0 +1,144 @@
+---
+title: "Screen and score applicants with a pre-screening form"
+sidebarTitle: "Pre-screening form"
+description: "Build a form that rejects the applicants who cannot do the job, ranks the ones who can, and writes your recruiter a summary before anyone opens the response."
+keywords: ["pre-screening form", "screening questions", "knock-out question", "score applicants", "rank candidates", "application form scoring", "AI screening"]
+---
+
+_Most application forms collect answers and leave a person to read them. This recipe builds one that decides. Criteria rules out the applicants who cannot do the job, Scoring ranks the ones who can, and the summary gives your recruiter the response in three sentences before they open it._
+
+## What you will build
+
+One form with four parts:
+
+1. Four questions, each of which decides something
+2. **Criteria** that rejects an applicant who fails a hard requirement
+3. **Scoring** that ranks everyone who passes
+4. A **summary** and a **generated field** your automation can act on
+
+Every setting used here is covered in the [evaluation reference](/reference/forms/evaluation/overview). This page walks one form from blank to published.
+
+## Before you start
+
+Decide two things with whoever owns the vacancy.
+
+- **What disqualifies someone.** These become must-have criteria. Be strict: a must-have that is really a preference rejects people you wanted to talk to.
+- **What makes one qualified applicant better than another.** This becomes the scoring, and it is usually one or two questions rather than all of them.
+
+Write both down before you open the builder. The form is quick. Agreeing on the rules is not.
+
+## Build the form
+
+### 1. Ask the fewest questions that decide something
+
+Open **Forms**, click **New Form**, and pick **Blank Form**. A pre-screening form earns its keep by being short, so add only the questions whose answers change what happens next.
+
+| Question | Field type | Why it is there |
+|---|---|---|
+| Do you have a driving licence? | [Yes/No](/reference/forms/fields/yes-no) | The knock-out. Two known answers, no interpretation needed. |
+| When can you start? | [Date](/reference/forms/fields/date) | The second knock-out, against the date the client needs someone. |
+| How many years of experience do you have? | [Number](/reference/forms/fields/number) | The ranking question. |
+| Why do you want this job? | [Long Text](/reference/forms/fields/short-and-long-text) | The one only AI can judge. |
+
+Finish with an [ending screen](/reference/forms/fields/ending-screen) so applicants know the form submitted.
+
+<Warning>
+  Leave the Yes/No question optional. A bug in the web form blocks a required Yes/No answered No, so a required licence question strands exactly the applicants Criteria is meant to reject. The criterion still works on an optional question.
+</Warning>
+
+### 2. Switch the evaluators on for the form
+
+Open the **Evaluation** tab and switch on **Criteria**, **Scoring**, and **Summary**. Leave **Skills** off: it sorts qualified people by strength, which is a different job from this one.
+
+Do this before you configure anything. A question's evaluator switch does nothing while the form-level switch is off, and it does not even appear on the question card. See [the enable order](/reference/forms/evaluation/overview#enable-order).
+
+### 3. Set the knock-outs with Criteria
+
+Click **Criteria** to open the list of questions, then switch on the three that matter.
+
+- **Do you have a driving licence?** Set **Must-have**, keep **Use answer rules**, and expect `is equal to Yes`.
+- **When can you start?** Set **Must-have**, keep **Use answer rules**, and expect `is less than or equal to` the date the client needs someone. Logic cannot compare dates, but a criterion can.
+- **Why do you want this job?** Set **Nice-to-have** and switch to **Evaluate with AI**. In **What should AI look for?**, say what a real answer contains, such as "Look for a specific reason connected to this work. Generic enthusiasm does not count."
+
+Leave the experience question out of Criteria for now. It is the ranking question, and putting it in both places means one answer can reject and rank at the same time, which makes a surprising result hard to read.
+
+The verdict is **Does not meet criteria** as soon as one answered must-have fails. An applicant who never reached a must-have question comes back **Incomplete** instead, so check that no [logic](/reference/forms/logic) jump can step over one.
+
+### 4. Rank the rest with Scoring
+
+Click **Scoring**. Keep the three ranges it starts with, **Low** at 0, **Medium** at 50, and **High** at 80, then switch on the experience question.
+
+- Set **How many points is this question worth?** to 20.
+- Add a rule: `is greater than or equal to 5`, worth 20 points.
+- Add a second rule: `is greater than or equal to 3`, worth 10 points.
+
+Both rules match an applicant with five years, and the total is capped at the question's maximum, so they score 20 rather than 30. That cap is what lets you write overlapping bands and stop worrying about the gaps between them.
+
+One 20-point question means the score is 20 out of 20 for five years, which is 100% and **High**. Add a second scored question and the maths spreads across both. See [how the percentage is worked out](/reference/forms/evaluation/scoring#how-the-percentage-is-worked-out).
+
+### 5. Let the AI write the handover
+
+**Summary** needs no configuration. It writes the finished response up in a few sentences for whoever picks it up.
+
+For the one decision your automation has to make, add a [generated field](/reference/forms/evaluation/generated-fields). Switch **Generated fields** on, click **Create custom**, and build a **List** output:
+
+- **Name**: Next step
+- **Reference as**: `next_step`
+- **What is it for?**: What should happen with this applicant now
+- **Options**: `Book an interview`, `Ask for more detail`, `Reject politely`
+
+A list output can only return one of your options, which is what makes it safe to branch on. A free-text output would give you a different sentence every time.
+
+In **Hints for the AI (optional)**, add "Leave a field empty when the answers do not say." Without it, an output gets guessed at when the response is thin.
+
+### 6. Test it before you publish
+
+Open **Test & Evaluate** and run all four scenarios with **Autofill with AI**. Each one has a result you should be able to predict.
+
+| Scenario | What you should see |
+|---|---|
+| **Ideal candidate** | **Meets criteria**, a high score, and a next step of booking an interview |
+| **Borderline candidate** | **Partially meets criteria** or a middling score. This is the run that finds a wrong points band |
+| **Unqualified candidate** | **Does not meet criteria**. If it passes, a must-have is not doing its job |
+| **Partially completed** | **Incomplete**, not a rejection. If it rejects, an unanswered question is being read as a failure |
+
+Open each result panel and check the per-question detail, not only the headline. A right verdict reached for the wrong reason breaks as soon as a real applicant answers differently.
+
+Remember that running an evaluation saves the form, so anything you were still deciding about gets committed.
+
+### 7. Act on the result in an automation
+
+Publish the form, then build the automation that does something with the result. **Automation variables** at the bottom of **Test & Evaluate** lists every value with the result from your test run beside it, which saves guessing at the exact wording.
+
+| Variable | Holds |
+|---|---|
+| `{{form_response.evaluation.screening}}` | `passed`, `passed_with_restrictions`, `rejected`, or `incomplete` |
+| `{{form_response.evaluation.scoring.score}}` | The percentage |
+| `{{form_response.evaluation.scoring.band.label}}` | The score range label, such as `High` |
+| `{{form_response.evaluation.ai_summary}}` | The summary |
+| `{{form_response.evaluation.ai_output.next_step}}` | Your generated next step |
+
+Start with one condition on the verdict, such as rejections going to a polite decline and everything else creating a task. Add the score once you trust it. See [Automations](/automations/automations).
+
+## Review and improve the form
+
+After twenty or thirty real responses, compare the verdicts against what your recruiters would have decided.
+
+- Are you rejecting people the team would have called? A must-have is too strict, or it belongs in Scoring.
+- Is everyone landing in the same score range? The minimums need moving, or the scored question does not separate applicants.
+- Does the AI criterion agree with a person reading the same answer? If not, the note is too vague. Say what a good answer contains, not that it should be good.
+- Are the summaries worth reading? If they only repeat the answers, the form is asking closed questions and the summary has nothing to add.
+
+Change one thing at a time and re-run the scenarios in **Test & Evaluate** before you publish again.
+
+## Need more help?
+
+If the evaluators return nothing, the usual cause is the enable order. Check the form-level switch as well as the per-question one, on [the Evaluation tab](/reference/forms/evaluation/overview#enable-order).
+
+If a criterion never fails, open the question in **Test & Evaluate** and read the expected answer under it. A criterion with no conditions is skipped rather than failed.
+
+If you still need help, contact [support@hiredata.com](mailto:support@hiredata.com) and include:
+
+- The form name
+- The question and the rule that behaved unexpectedly
+- The answer you tested with, and the result you expected

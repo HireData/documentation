@@ -1,0 +1,83 @@
+---
+title: "Form evaluation overview"
+sidebarTitle: "Overview"
+description: "The five evaluators on a HireData form: what each one decides, what it hands back, and the order you have to switch them on in."
+keywords: ["form evaluation", "AI screening", "candidate screening", "AI scoring", "evaluators"]
+---
+
+A form collects answers. The **Evaluation** tab turns a finished response into something a recruiter can act on: a verdict, a score, a skill, a summary, or any value you ask the AI for.
+
+The tab is the third one above the field list, after **Content** and **Logic**. It holds five evaluators, each a card with a switch and an information icon that explains it. Switch one on, then click its name to open its settings.
+
+![The Evaluation tab with Summary, Criteria, Scoring, Skills, and Generated fields all switched on](/images/forms-builder/29-evaluation-tab.png)
+
+## The five evaluators
+
+| Evaluator | What it does | What you get back |
+|---|---|---|
+| Summary | Writes the finished response up for internal use. There is nothing to configure. | A short paragraph. |
+| [Criteria](/reference/forms/evaluation/criteria) | Checks each selected answer against the requirement you set for it, must-have or nice-to-have. | One verdict for the response: **Meets criteria**, **Partially meets criteria**, **Does not meet criteria**, or **Incomplete**. |
+| [Scoring](/reference/forms/evaluation/scoring) | Awards points for each selected answer, up to a maximum you set per question. | A percentage and the score range it falls in. |
+| [Skills](/reference/forms/evaluation/skills) | Weighs the answers that point to each skill you listed. | A percentage per skill, and the strongest one. |
+| [Generated fields](/reference/forms/evaluation/generated-fields) | Fills in outputs you define, reading the whole response. | One value per output you defined. |
+
+Summary and Generated fields work on the response as a whole. Criteria, Scoring, and Skills work question by question, so each one needs a second switch on every question you want it to look at.
+
+## Switch it on for the form first {#enable-order}
+
+The order catches people out. A question's evaluator switch does nothing on its own.
+
+1. Open the **Evaluation** tab and switch the evaluator on for the form.
+2. Click the evaluator's name to open it. Every question in the form appears underneath with a switch of its own.
+3. Switch on the questions you want it to look at, and configure each one.
+
+<Warning>
+  A question's **Criteria**, **Scoring**, or **Skills** switch is ignored while the form-level switch is off. Switch the evaluator off for the form and the per-question switches stay as you left them, but nothing is evaluated.
+</Warning>
+
+The same per-question switches also appear on the question card in the **Content** tab, so you can configure a question without leaving it. They only appear there once the form-level switch is on, which is the other half of the same rule.
+
+## Which questions can be evaluated
+
+Every field type except [Ending Screen](/reference/forms/fields/ending-screen) and [Redirect URL](/reference/forms/fields/redirect-url). The two endings collect nothing, so there is nothing to evaluate.
+
+What differs by type is how precisely a rule can read the answer. A [Yes/No](/reference/forms/fields/yes-no) answer is one of two known values. A [File Upload](/reference/forms/fields/file-upload) answer can only be tested on its file name, type, and size. Each evaluator page carries the operator table for its rules.
+
+## Rules or AI
+
+Criteria, Scoring, and Skills each ask **How to evaluate?** per question, with two answers.
+
+- **Use answer rules** compares the answer against conditions you write. The same answer always gives the same result, and no AI call is made.
+- **Evaluate with AI** hands the question, the answer, and your note to the model, which decides. Use it for free text, where a rule cannot tell a good answer from a poor one.
+
+Rules are the default on every type except [Short and Long Text](/reference/forms/fields/short-and-long-text), where Criteria starts on the AI.
+
+### One note per question
+
+The box at the bottom of a question's evaluator settings takes an instruction for the AI. Its label changes with the evaluator you opened it from: **What should AI look for?**, **How should AI award points?**, **What skill signals should AI look for?**
+
+The box is one note per question, shared by all three. Write it under Criteria and the same text appears under Scoring and Skills. Keep it about the answer rather than about one evaluator.
+
+## When each evaluator runs
+
+A response is evaluated when it is completed, and again in [Test & Evaluate](/reference/forms/testing/test-and-evaluate) while you are building. The steps run in this order.
+
+1. Every rule-based question is evaluated. No AI is involved.
+2. The questions set to **Evaluate with AI** go to the model in one call.
+3. The per-question results become the verdict, the score, and the skill percentages.
+4. Generated fields runs last, over the whole response plus the results from step 3.
+
+Generated fields running last is what lets it use them. An output field can be filled from the score or the verdict as well as from the answers.
+
+## Where the results go
+
+- In the builder, [Test & Evaluate](/reference/forms/testing/test-and-evaluate) shows every result against the answers that produced it.
+- On a submitted response, the results are stored with it. **Export CSV** and **Export Excel** in the builder's three-dot menu add a column per result, including one per skill and one per generated field.
+- In an automation, each result is a variable, such as `{{form_response.evaluation.scoring.band.label}}`. **Test & Evaluate** lists them all under **Automation variables**, with the value from the run in front of you. See [Variables](/variables/introduction).
+
+## Related
+
+- [Criteria](/reference/forms/evaluation/criteria), [Scoring](/reference/forms/evaluation/scoring), [Skills](/reference/forms/evaluation/skills), and [Generated fields](/reference/forms/evaluation/generated-fields) cover the four evaluators you configure.
+- [Test & Evaluate](/reference/forms/testing/test-and-evaluate) runs the evaluators against a response you make up.
+- [Screen and score applicants with a pre-screening form](/knowledge-base/cookbook/pre-screening-form) builds one form that uses Criteria, Scoring, and Summary together.
+- [Form builder overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
