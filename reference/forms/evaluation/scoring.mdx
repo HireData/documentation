@@ -32,7 +32,9 @@ Click **Scoring**, switch a question on, and its settings open.
 
 ### Rules
 
-A rule is a set of conditions plus **How many points should be awarded?**. The conditions read the same way as a [Criteria](/reference/forms/evaluation/criteria#expected-answers) expectation, with the same operators per field type, and **Add condition** brings the **All** and **Any** switch. **Add rule** adds another rule underneath.
+A rule is a set of conditions plus **How many points should be awarded?**. A condition reads `<question> <operator> <value>` and can only test this question's answer. **Add condition** adds a second one and an **All** and **Any** switch above it, and **Add rule** adds another rule underneath.
+
+The operators are the same set Criteria offers, and the field type decides them: text operators on the text and contact types, comparisons on the numeric, rating, and date types, **is one of** on Multiple Choice and Dropdown, and file metadata on File Upload. See [the operator table](/reference/forms/evaluation/criteria#operators).
 
 Every matching rule pays out, and the total is then capped at the question's maximum. Two rules that both match a five-year answer, one worth 20 and one worth 10, award 20 on a question worth 20. Overlapping bands are safe as long as the maximum is right, which is what lets you write "5 years or more, 20 points" above "3 years or more, 10 points" and stop thinking about the gap.
 

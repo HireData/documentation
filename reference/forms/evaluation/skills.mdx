@@ -31,7 +31,9 @@ Click **Skills**, switch a question on, and its settings open.
 
 ### Rules and skill impact
 
-A rule is a set of conditions plus one or more skill impacts. The conditions read the same way as a [Criteria](/reference/forms/evaluation/criteria#expected-answers) expectation, with the same operators per field type.
+A rule is a set of conditions plus one or more skill impacts. A condition reads `<question> <operator> <value>` and can only test this question's answer. **Add condition** adds a second one and an **All** and **Any** switch above it.
+
+The operators are the same set Criteria offers, and the field type decides them: text operators on the text and contact types, comparisons on the numeric, rating, and date types, **is one of** on Multiple Choice and Dropdown, and file metadata on File Upload. See [the operator table](/reference/forms/evaluation/criteria#operators).
 
 Each impact has **Which skill does this answer indicate?** and **How much should it contribute?**. **Add skill impact** points the same rule at a second skill, so one answer can count towards two. **Add rule** adds another rule, which is how one question gives different weights to different answers.
 
