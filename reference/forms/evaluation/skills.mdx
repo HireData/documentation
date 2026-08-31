@@ -1,0 +1,60 @@
+---
+title: "Skills"
+sidebarTitle: "Skills"
+description: "List the skills a HireData form should assess, weight the answers that point to each one, and read back the strongest skill in the response."
+keywords: ["profiling", "skills assessment", "primary skill", "skill weighting", "candidate profile"]
+---
+
+Skills works out what a response is mostly telling you. You list the skills the role cares about, say which answers point to each one and how strongly, and HireData returns a percentage per skill and names the strongest.
+
+Criteria and Scoring both judge. Skills sorts. It is the evaluator for a pool of candidates who all qualify, where the question is who to put in front of which client.
+
+## The skills list
+
+Switch **Skills** on for the form, then click **Skills** to open **Which skills do you want to assess?**. Add one row per skill.
+
+![The Skills block open with two skills, Availability and Communication, and the description popup open on the first](/images/forms-builder/evaluation/06-skills-list.png)
+
+Each row has the **Skill name**, a gear, and a bin. The gear opens **Description (optional)**, a sentence explaining what the skill means. The description is the AI's only guide to what counts, so write it when any question is set to **Evaluate with AI**. **Add skill** adds a row.
+
+Removing a skill also removes it from every question that pointed to it. There is no undo, so check which questions use a skill before you delete it.
+
+## Settings per question
+
+Click **Skills**, switch a question on, and its settings open.
+
+- **How to evaluate?** with **Use answer rules** and **Evaluate with AI**.
+- **When should skill impact be applied?**, on the rules side, holding one or more rules.
+- The note box, labelled **What skill signals should AI look for?**.
+
+![A Yes/No question in the Skills block with a rule that adds a weight of 2 to Availability when the answer is Yes](/images/forms-builder/evaluation/07-skills-rules.png)
+
+### Rules and skill impact
+
+A rule is a set of conditions plus one or more skill impacts. The conditions read the same way as a [Criteria](/reference/forms/evaluation/criteria#expected-answers) expectation, with the same operators per field type.
+
+Each impact has **Which skill does this answer indicate?** and **How much should it contribute?**. **Add skill impact** points the same rule at a second skill, so one answer can count towards two. **Add rule** adds another rule, which is how one question gives different weights to different answers.
+
+### Evaluating with AI
+
+Switch to **Evaluate with AI** and the rules disappear. The model reads the answer, your note, and the skill descriptions, and returns a weight per skill.
+
+<Warning>
+  Add at least one skill to the form before switching a question to AI. AI skill assessment has nothing to weight without them, and the whole evaluation fails with an error.
+</Warning>
+
+## How the percentages are worked out
+
+Weights are not scores. HireData adds up the weight each skill collected across the whole response, then gives each skill its share of that total, so the percentages add up to 100.
+
+One answer worth 2 to Availability and one worth 1 to Communication makes Availability 66.67% and Communication 33.33%. Both numbers say where the signal came from, not how good the candidate is. The **strongest skill** is the highest percentage.
+
+That relative maths has a consequence worth planning for. Weighting one skill heavily in many questions drowns the others out, whatever the answers say. Keep the weights comparable and spread them across the questions that genuinely indicate each skill.
+
+Automations read `{{form_response.evaluation.profiling.primary_skill.key}}` and `{{form_response.evaluation.profiling.primary_skill.percentage}}`. Every skill you configured also gets its own percentage variable, so a rule can act on one skill without it having to win.
+
+## Related
+
+- [Form evaluation overview](/reference/forms/evaluation/overview) covers the five evaluators and the order you switch them on in.
+- [Criteria](/reference/forms/evaluation/criteria) and [Scoring](/reference/forms/evaluation/scoring) judge a response rather than sorting it.
+- [Test & Evaluate](/reference/forms/testing/test-and-evaluate) shows a bar per skill and the badges on the questions that feed them.

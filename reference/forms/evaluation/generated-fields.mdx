@@ -1,0 +1,66 @@
+---
+title: "Generated fields"
+sidebarTitle: "Generated fields"
+description: "Define your own outputs and let AI fill them from a whole form response, then read the values in an automation."
+keywords: ["AI output fields", "structured output", "generated fields", "extract from form response", "AI variables"]
+---
+
+Generated fields is the odd one out on the **Evaluation** tab. The other evaluators judge answers you already collected. This one produces values that were never asked for.
+
+You define the outputs you want, the AI reads the finished response, and each output comes back filled. A form that never asks "how should we contact you?" can still return a preferred contact channel, because one of the answers mentioned it.
+
+## What it is not
+
+The outputs are new. They are not the form's questions, and they do not touch them.
+
+- Defining an output does not add a question, change a question, or write into an answer.
+- An output is not tied to one question. Every output is filled from the whole response.
+- Switching **Generated fields** on does not put a switch on any question card, because there is nothing to switch on per question.
+
+Think of it as one AI pass over the completed response, returning a small record you designed.
+
+## Switch it on
+
+**Generated fields** is the last block on the **Evaluation** tab. Switch it on, then click it to open the settings. There is nothing to enable per question.
+
+![The Generated fields block open, with hints for the AI, two output fields, and the Suggest with AI, Data source, and Create custom buttons](/images/forms-builder/evaluation/08-generated-fields.png)
+
+- **Hints for the AI (optional)** is one instruction for the whole set. It is the place to say what to do when the answers do not cover an output, which otherwise gets guessed at.
+- **What should the AI return?** lists the outputs, in the order the AI is asked for them. The arrows on a row move it, the pencil edits it, and the bin removes it.
+
+Switch the evaluator on and add nothing and nothing is generated. The list needs at least one output before it runs.
+
+## Adding an output
+
+Three buttons sit under the list.
+
+**Create custom** opens **New output field**, a two-step panel. Step 1 chooses the type, with a search box and groups for the basics, dates and times, contact details, and web and media types. Step 2 is the configuration.
+
+![Step 2 of New output field, with the Name, Reference as, What is it for?, and Options settings for a list output](/images/forms-builder/evaluation/09-new-output-field.png)
+
+- **Name** is the label you see in results and in the variable picker.
+- **Reference as** is the key an automation uses. It fills in from the name and has to be unique in the form, with no spaces or curly braces.
+- **What is it for? (optional)** tells the AI what the value means. Write it. It does more for the result than the name does.
+- **Options** appears for a **List** output. Add at least one, and the AI has to pick from them instead of writing free text. It is the way to get a value your automation can branch on.
+
+**Done** adds the output. **Save & New** adds it and keeps the panel open for the next one.
+
+**Suggest with AI** reads the form's questions and your hints and proposes up to three outputs, then adds them straight to the list. Treat them as a starting point and edit the ones you keep.
+
+**Data source** opens the [data source](/reference/forms/data-sources) library. Pick a source and the output can only hold one of that list's items, so the AI has to match the response to a value your workspace already maintains. A data source output has no pencil: change the list, not the output.
+
+## When it runs and what it sees
+
+Generated fields runs after Criteria, Scoring, and Skills, over every answer in the response plus their results. That order is the point of it. An output can be filled from the score or the verdict as well as from the answers, which is how you get a one-line reason for a rejection or a next step that depends on the rating.
+
+## Reading the values
+
+Every output appears under **Generated fields** in [Test & Evaluate](/reference/forms/testing/test-and-evaluate), and again in the **Automation variables** list with the key to copy.
+
+In an automation, an output is `{{form_response.evaluation.ai_output.<key>}}`, so the `preferred_contact` output is `{{form_response.evaluation.ai_output.preferred_contact}}`. See [Variables](/variables/introduction).
+
+## Related
+
+- [Form evaluation overview](/reference/forms/evaluation/overview) covers the five evaluators and the order you switch them on in.
+- [Test & Evaluate](/reference/forms/testing/test-and-evaluate) shows the generated values from a run you control.
+- [Data sources](/reference/forms/data-sources) explains the lists a data source output draws on.

@@ -37,25 +37,17 @@ See [Logic](/reference/forms/logic) for the operators each field type offers, th
 
 ### Evaluation tab
 
-The **Evaluation** tab turns a finished response into something a recruiter can act on. It holds five evaluators, each with a switch:
+The **Evaluation** tab turns a finished response into something a recruiter can act on. It holds five evaluators, each with a switch: **Summary**, **Criteria**, **Scoring**, **Skills**, and **Generated fields**.
 
-- **Summary** writes a short internal summary of the response.
-- **Criteria** checks selected answers against must-have and nice-to-have requirements.
-- **Scoring** awards points for selected answers and converts the total into a percentage and a rating.
-- **Skills** works out how strongly the answers point to each skill you listed, as a percentage.
-- **Generated fields** asks the AI for extra values you define, such as a preferred contact channel.
+Switch one on here and, for the three that work question by question, it also gets a switch on every field card, so you can configure it without leaving the **Content** tab.
 
-Switch an evaluator on here and it also appears on every field card, so you can enable it per field without leaving the **Content** tab.
-
-![The Evaluation tab with Summary, Criteria, Scoring, Skills, and Generated fields all switched on](/images/forms-builder/29-evaluation-tab.png)
+See [Evaluation](/reference/forms/evaluation/overview) for what each evaluator decides, what it hands back, and the order you have to switch them on in.
 
 ### Preview panel
 
-**Interactive Preview** walks the web form, running the same logic the public form runs. **Conversational Preview** shows the chat version. **Test & Evaluate** fills in a set of answers and runs the evaluators over them, so you can check a rule before a real respondent hits it.
+**Interactive Preview** walks the web form, running the same logic the public form runs. **Conversational Preview** shows the chat version. **Test & Evaluate** fills in a whole response and runs the evaluators over it.
 
-**Test & Evaluate** starts empty. **Autofill with AI** invents a plausible response, and **Choose a test scenario** offers **Random answers**, **Ideal candidate**, **Borderline candidate**, **Unqualified candidate**, and **Partially completed**. The results appear underneath: the criteria verdict, the score and its rating, the strongest skill, the summary, and any generated fields. **Reset answers** clears them.
-
-![Test & Evaluate after an ideal-candidate run, showing Meets criteria, 100% High, Availability at 66.67% contribution, the summary, and the generated fields](/images/forms-builder/30-test-and-evaluate.png)
+See [Previews](/reference/forms/testing/previews) and [Test & Evaluate](/reference/forms/testing/test-and-evaluate).
 
 ## The toolbar
 
@@ -63,7 +55,7 @@ The toolbar runs along the top right of the builder, from **Save** to the three-
 
 ![The form builder toolbar, showing Save, the preview button, Publish, the brand selector, the five drawer buttons, and the more menu](/images/forms-builder/25-builder-toolbar.png)
 
-**Save** stores your changes. The eye button next to it opens the form in a new window.
+**Save** stores your changes. The eye button next to it saves the form and opens it in a [preview window](/reference/forms/testing/previews#the-preview-window) over the builder.
 
 **Publish** makes the form available to respondents. It reads **Withdraw** once the form is published.
 
@@ -105,7 +97,7 @@ Every row below has a page of its own, covering that type's settings, what it st
 
 The type also decides which operators a rule can use on that question. [Logic](/reference/forms/logic#operators) has the full table.
 
-Every field type except the two endings can feed the AI evaluators on the [Evaluation tab](#evaluation-tab): Criteria, Scoring, and Skills.
+Every field type except the two endings can feed the AI evaluators: Criteria, Scoring, and Skills. See [Evaluation](/reference/forms/evaluation/overview).
 
 <Note>
   A few more field types exist than the palette offers: Range, Color, and the Star, Thumbs, Emoji, and Slider variants of a rating. Only an integration such as the HireData API can add them. If one turns up in a form you did not build, it works, but the builder has no settings card for it.
