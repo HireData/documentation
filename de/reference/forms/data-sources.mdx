@@ -1,0 +1,52 @@
+---
+title: "Datenquellen"
+sidebarTitle: "Datenquellen"
+description: "Füllen Sie die Multiple-Choice- oder Dropdown-Frage eines HireData-Formulars aus einer gespeicherten Liste statt aus getippten Optionen, und was sich ändert, wenn Sie eine geteilte Liste bearbeiten."
+keywords: ["datenquelle", "add data source", "auswahloptionen", "optionsliste", "filter", "label", "value", "select data source"]
+---
+
+Eine Datenquelle ist eine gespeicherte Liste, die Ihr Workspace an einer Stelle führt, gespeist aus Ihren eigenen Datensätzen oder aus einer verbundenen App. Richten Sie eine [Multiple-Choice- oder Dropdown-Frage](/de/reference/forms/fields/multiple-choice-and-dropdown) auf eine, und ihre Optionen kommen aus dieser Liste statt aus Optionen, die Sie in das Feld tippen. Sechs Formulare, die fragen, welches Büro jemand möchte, teilen sich dann eine Liste, und das siebte Büro hinzuzufügen ist eine einzige Bearbeitung.
+
+## Eine Frage auf eine Datenquelle richten
+
+Öffnen Sie die Frage und klicken Sie über den Optionen auf **Add Data Source**. Das Fenster **Data Sources** listet jede Quelle, die der Workspace hat. Jede Karte trägt ein Badge mit der Liste, die sie liest, plus ein **Filters**-Badge, wenn die Quelle diese Liste eingrenzt. **Add Data Source** in der Kopfzeile des Fensters baut eine neue Quelle aus einer Workspace-Entität oder aus einer verbundenen App.
+
+![Das Data-Sources-Fenster mit den gespeicherten Listen des Workspace, mit ausgewähltem Countries und seinen Angaben Name, Label, Description, Value und Avatar neben der Schaltfläche Select Data Source](/images/forms-builder/34-data-source-library.png)
+
+Klicken Sie auf eine Karte, um zu sehen, was die Quelle abbildet, dann auf **Select Data Source**, um sie anzuhängen.
+
+Die von Ihnen getippten Optionen verschwinden, solange eine Quelle angehängt ist, und eine Frage hält immer nur eine Quelle. **Remove Data Source** löst sie und setzt ein leeres Optionspaar zurück – was Sie vorher getippt hatten, ist also endgültig weg.
+
+![Der Options-Bereich einer Dropdown-Karte mit angehängter Datenquelle, mit Remove Data Source, der Countries-Quelle und einer einzelnen Auto reply (on answer)](/images/forms-builder/36-choice-with-data-source.png)
+
+Eine Quelle anzuhängen fasst außerdem die Auto Replies pro Option zu einer einzigen **Auto reply (on answer)** zusammen, die gesendet wird, egal welche Option die befragte Person wählt. Es gibt keinen Weg, eine unterschiedliche WhatsApp-Antwort pro Land zu schreiben, wenn die Länder aus einer Liste kommen.
+
+## Was eine Quelle abbildet
+
+Der Stift neben **Select Data Source** öffnet die Quelle selbst. Jede Einstellung hier entscheidet, wie ein Datensatz zu einer Option wird.
+
+![Die Countries-Datenquelle geöffnet zum Bearbeiten, mit Name, Label, Description, Value, Avatar, dem Filters-Bereich und einer Save-Schaltfläche](/images/forms-builder/35-data-source-editor.png)
+
+- **Name** ist, wie die Quelle in der Bibliothek heißt. Es ist die einzige Einstellung, die Sie tippen. Der Rest sind Auswahlfelder mit den Feldern, die die Datensätze tragen.
+- **Label** ist das Feld, das die befragte Person liest. Wählen Sie hier falsch, sind Ihre Optionen eine Spalte voller IDs.
+- **Description** ergänzt eine zweite Zeile unter dem Label, wo Platz dafür ist. **None** lässt sie weg.
+- **Value** ist das Feld, das mit der Antwort gespeichert wird, üblicherweise die ID des Datensatzes statt seines Namens.
+- **Avatar** setzt ein Bild neben das Label. Angeboten werden nur Bildfelder, die meisten Quellen haben hier also nichts zu wählen.
+
+## Filter
+
+**Add New Set** beginnt einen Satz von Bedingungen. Jede Zeile wählt ein Feld, eine Bedingung und einen Wert, und **Add Filter** fügt dem Satz eine weitere Zeile hinzu. Ein erneutes **Add New Set** gibt Ihnen einen zweiten Satz.
+
+Filter sind, was eine Quelle das Speichern wert macht. Jedes Land der Welt ist selten die Liste, die Sie einem Kandidaten vorlegen möchten. Die Handvoll Länder, in denen Sie rekrutieren, meistens schon.
+
+## Eine Quelle, jede Frage, die sie verwendet
+
+Eine Datenquelle gehört dem Workspace, nicht dem Formular. **Save** im Editor schreibt sie für jede Frage in jedem Formular um, das auf sie zeigt, und es gibt keine Kopie pro Formular, auf die Sie zurückfallen könnten. Bevor Sie die Filter einer Quelle enger ziehen, finden Sie heraus, wer sie sonst noch liest.
+
+Die Datensätze selbst werden gelesen, wenn das Formular läuft. Ein Datensatz, der der zugrunde liegenden Liste hinzugefügt wird, taucht als neue Option auf, ohne dass jemand den Formular-Builder öffnet.
+
+## Verwandte Themen
+
+- [Multiple Choice und Dropdown](/de/reference/forms/fields/multiple-choice-and-dropdown) ist der einzige Feldtyp, der eine Datenquelle annimmt.
+- [Objekte](/de/reference/forms/objects) verknüpft einen Datensatz mit dem Formular und macht seine Felder zu Variablen.
+- [Der Formular-Builder im Überblick](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.

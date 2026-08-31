@@ -1,0 +1,70 @@
+---
+title: "Test & Evaluate"
+sidebarTitle: "Test & Evaluate"
+description: "Fill a whole HireData form response, let AI invent one for you, and read the verdict, score, skills, summary, and generated fields it produces."
+keywords: ["test and evaluate", "autofill with AI", "test scenario", "evaluate a form response", "ideal candidate"]
+---
+
+**Test & Evaluate** is the third tab of the preview panel, and the fastest way to see what the [evaluators](/reference/forms/evaluation/overview) actually do. You give it a response, it runs Criteria, Scoring, Skills, Summary, and Generated fields over it, and shows every result next to the answer that produced it.
+
+Use it whenever you change an evaluator. A rule that looks right on the card is often wrong the first time it meets an answer.
+
+## Filling in the answers
+
+The tab lists every question except the endings, as a compact input. Badges after the question label say what the evaluators will do with it: **Must** or **Nice** from [Criteria](/reference/forms/evaluation/criteria), and one badge per skill the question feeds.
+
+![Three questions in Test & Evaluate, one badged Must and Availability, one badged Nice](/images/forms-builder/testing/06-test-answers.png)
+
+Type the answers yourself, or let the AI write them. **Autofill with AI** fills every question in one go, and the chevron beside it picks the kind of respondent to imitate.
+
+![The Autofill with AI button with its menu open, listing Random answers, Ideal candidate, Borderline candidate, Unqualified candidate, and Partially completed](/images/forms-builder/testing/05-test-scenarios.png)
+
+- **Random answers** is plausible but uninformed. Good for a first look.
+- **Ideal candidate** answers the way someone who meets every criterion would.
+- **Borderline candidate** aims at the middle, which is where a scoring mistake shows.
+- **Unqualified candidate** should come back rejected. If it does not, a must-have is not doing its job.
+- **Partially completed** leaves questions unanswered, which is how you check an **Incomplete** verdict.
+
+The scenarios are not generic. The autofill sends your questions and your evaluation rules to the model, so "ideal" means ideal for this form's criteria, and "unqualified" is aimed at failing them.
+
+The evaluation runs on its own as soon as there is an answer, and again a moment after you change one. There is no button to press. **Reset answers** at the bottom clears everything.
+
+<Note>
+  Running an evaluation saves the form first. Any unsaved change in the builder is committed the moment the evaluation runs, so do not use this tab to look at a change you were still deciding about.
+</Note>
+
+## Reading the results
+
+The results appear under the answers, starting with one panel per evaluator you switched on. Each panel shows the headline result, and clicking one opens its detail underneath.
+
+![The results of an ideal-candidate run: Meets criteria, 100% High, Availability at 66.67%, the per-question criteria detail, the summary, and the generated fields](/images/forms-builder/testing/07-test-results.png)
+
+**Criteria** groups the questions under **Must-have** and **Nice-to-have**, with a tick or a cross, the answer, and the expected answer where you wrote one. A question judged by AI carries an AI chip and the model's one-line reasoning, which is the fastest way to see whether your note landed.
+
+**Scoring** shows the percentage, the points tally, and what each question earned out of its own maximum.
+
+![The Scoring panel: a 100% bar, Points 30 out of 30, and 10 and 20 points from the two scored questions](/images/forms-builder/testing/07b-test-results-scoring.png)
+
+**Skills** shows a bar per skill. **Summary** and **Generated fields** sit below the panels, so they stay in view whichever detail you have open.
+
+A grey **No result yet** is what the panels show before you enter an answer. If one stays grey after a run, that evaluator had nothing to work with. The usual cause is a question switched on with no rules written, which leaves the evaluator with no question to judge.
+
+## Automation variables
+
+**Automation variables** at the bottom lists every value this response makes available to an automation, with the variable to copy and the result from the run in front of you.
+
+![The Automation variables list, showing the criteria, score, score range, primary skill, and summary variables with their values](/images/forms-builder/testing/08-automation-variables.png)
+
+This is the list to build an automation against. Reading `passed` next to `{{form_response.evaluation.screening}}` tells you the exact value to compare, which guessing does not. See [Variables](/variables/introduction).
+
+## What it does not do
+
+A run here creates no response. The form's results are untouched, the response count does not move, and nothing reaches an automation. The evaluation is real, the response is not.
+
+If none of Criteria, Scoring, and Skills is on for the form, the tab shows an **Enable Criteria**, **Enable Scoring**, and **Enable Skills** button in place of the result panels. Each one switches that evaluator on for the form without leaving the tab. See the [Evaluation tab](/reference/forms/evaluation/overview) for what to configure next.
+
+## Related
+
+- [Form evaluation overview](/reference/forms/evaluation/overview) covers the five evaluators and the order you switch them on in.
+- [Previews](/reference/forms/testing/previews) run the form itself, as a web page or as a chat.
+- [Screen and score applicants with a pre-screening form](/knowledge-base/cookbook/pre-screening-form) uses this tab to check a form end to end.

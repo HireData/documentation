@@ -1,0 +1,42 @@
+---
+title: "Redirect URL"
+sidebarTitle: "Redirect URL"
+description: "La fin qui envoie le répondant d'un formulaire HireData directement vers une adresse au lieu de lui montrer un écran."
+keywords: ["transférer le répondant", "envoyer vers un site", "quitter le formulaire"]
+---
+
+Redirect URL est une fin sans écran. Le répondant l'atteint et le navigateur l'envoie vers l'adresse que vous avez définie. L'aperçu de l'éditeur le dit sans détour : « This field redirects the user automatically and won't have a display. »
+
+Utilisez-la pour passer quelqu'un vers une page de réservation, un site d'offres d'emploi ou votre propre site une fois le formulaire terminé.
+
+Comme l'autre fin, elle vit dans le groupe **Endings** au bas de la liste des champs de l'onglet **Content**. Elle se trouve dans le groupe **Ending** de la palette **Add Content**, et le bouton en bas à gauche de la carte la transforme en [Ending Screen](/fr/reference/forms/fields/ending-screen).
+
+## Paramètres
+
+Un seul, et c'est tout le champ.
+
+- **Redirect URL**, jusqu'à 255 caractères, l'adresse vers laquelle envoyer le répondant.
+
+Il n'y a ni titre, ni description, ni image, ni bouton, parce que le répondant ne voit jamais le champ. Si vous voulez qu'il lise quelque chose avant de partir, utilisez plutôt un [Ending Screen](/fr/reference/forms/fields/ending-screen) avec **Button** et **Redirect timer** activés.
+
+![Une carte Redirect URL contenant une seule zone Redirect URL et un pied de carte indiquant Redirect URL, à côté d'un aperçu disant que le champ redirige automatiquement l'utilisateur et n'aura pas d'affichage](/images/forms-builder/fields/15-redirect-url.png)
+
+## Ce que le champ stocke
+
+Rien.
+
+## Opérateurs de logique
+
+Aucun. Une fin n'a pas de bouton **Add Rule** dans l'onglet **Logic**. Pointez une règle d'une question vers cette fin pour y envoyer quelqu'un.
+
+![L'onglet Logic montrant une ligne de fin sans bouton Add Rule, à côté d'une ligne de question qui en a un](/images/forms-builder/fields/operators-endings.png)
+
+## Évaluation
+
+Une Redirect URL ne porte aucun interrupteur d'évaluateur.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Ending Screen](/fr/reference/forms/fields/ending-screen) est l'autre fin, avec un écran et un bouton facultatif.
+- [Logic](/fr/reference/forms/logic) explique comment envoyer différents répondants vers différentes fins.

@@ -1,0 +1,211 @@
+---
+title: "Der Formular-Builder im Überblick"
+sidebarTitle: "Überblick"
+description: "Ein Rundgang durch den HireData-Formular-Builder: seine drei Tabs, die Panels der Toolbar, jeder Feldtyp und die Einstellungen, die alle Felder teilen."
+keywords: ["formular-builder", "formularfelder", "feldtypen", "formular-theme", "formular-übersetzungen", "formularvorlagen", "formular öffentlich machen", "always include", "verborgenes feld", "pflichtfeld"]
+---
+
+Ein Formular ist eine Reihe von Fragen, die jemand im Web oder in einer WhatsApp-Konversation beantwortet. Öffnen Sie die Seite **Forms** über die **Settings** und klicken Sie auf **New Form**. Wählen Sie **Blank Form** oder eine der [Vorlagen](#templates), und das neue Formular öffnet sich im Builder.
+
+Diese Seite kartiert den Builder. Für eine Anleitung, die ein Formular von leer bis veröffentlicht begleitet, lesen Sie [Ein Formular in HireData erstellen](/de/content/creating-a-form-in-hiredata).
+
+## Der Builder auf einen Blick
+
+Der Builder hat drei Teile.
+
+Die linke Spalte listet die Felder des Formulars in der Reihenfolge, in der eine befragte Person ihnen begegnet. Über der Liste sitzen die Tabs **Content**, **Logic** und **Evaluation** sowie die **+**-Schaltfläche, die die **Add Content**-Palette öffnet.
+
+Die rechte Spalte zeigt die Vorschau des Formulars, mit eigenen Tabs **Interactive Preview**, **Conversational Preview** und **Test & Evaluate**.
+
+Die Leiste oben enthält den Formularnamen und die Toolbar.
+
+![Der Formular-Builder: oben der Formularname und die Toolbar, links die Tabs Content, Logic und Evaluation mit der Feldliste und rechts die Interactive Preview](/images/forms-builder/31-builder-at-a-glance.png)
+
+### Content-Tab
+
+Der **Content**-Tab enthält die Felder und ihre Einstellungen. Klicken Sie auf ein Feld, um seine Karte zu öffnen, und ziehen Sie es am Griff links, um die Reihenfolge zu ändern.
+
+Die **+**-Schaltfläche öffnet die **Add Content**-Palette. Sie gruppiert die Einträge nach Kategorie und wiederholt die meistgenutzten unter **Recommended**. **Find a field type** durchsucht die Liste.
+
+![Die Add-Content-Palette mit ihrer Recommended-Liste und den Gruppen Text, Contact Info, Temporal, Choice, Numeric, Rating, Other und Ending](/images/forms-builder/01-add-content-palette.png)
+
+### Logic-Tab {#logic-tab}
+
+Der **Logic**-Tab entscheidet, wohin eine befragte Person als Nächstes geht. Jede Frage bekommt eine **Add Rule**-Schaltfläche und ein Ziel in der Fußzeile, und eine Regel liest sich `if <field> <operator> <value> then go to <target>`.
+
+Siehe [Logik](/de/reference/forms/logic) für die Operatoren, die jeder Feldtyp anbietet, die Verzweigungsmuster, die sich zu kopieren lohnen, und was Sie prüfen sollten, wenn eine Regel nicht greift.
+
+### Evaluation-Tab
+
+Der **Evaluation**-Tab macht aus einer abgeschlossenen Antwort etwas, womit ein Recruiter arbeiten kann. Er enthält fünf Evaluatoren, jeder mit einem Schalter: **Summary**, **Criteria**, **Scoring**, **Skills** und **Generated fields**.
+
+Schalten Sie einen hier ein, bekommt er – bei den dreien, die Frage für Frage arbeiten – zusätzlich einen Schalter auf jeder Feldkarte, sodass Sie ihn konfigurieren können, ohne den **Content**-Tab zu verlassen.
+
+Siehe [Evaluation](/de/reference/forms/evaluation/overview) für das, was jeder Evaluator entscheidet, was er zurückliefert und in welcher Reihenfolge Sie sie einschalten müssen.
+
+### Vorschau-Panel
+
+**Interactive Preview** geht das Webformular durch und führt dieselbe Logik aus wie das öffentliche Formular. **Conversational Preview** zeigt die Chat-Version. **Test & Evaluate** füllt eine ganze Antwort aus und lässt die Evaluatoren darüber laufen.
+
+Siehe [Vorschauen](/de/reference/forms/testing/previews) und [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate).
+
+## Die Toolbar
+
+Die Toolbar verläuft oben rechts im Builder, von **Save** bis zum Drei-Punkte-Menü.
+
+![Die Toolbar des Formular-Builders mit Save, der Vorschau-Schaltfläche, Publish, der Brand-Auswahl, den fünf Panel-Schaltflächen und dem Mehr-Menü](/images/forms-builder/25-builder-toolbar.png)
+
+**Save** speichert Ihre Änderungen. Die Augen-Schaltfläche daneben speichert das Formular und öffnet es in einem [Vorschaufenster](/de/reference/forms/testing/previews#the-preview-window) über dem Builder.
+
+**Publish** macht das Formular für Befragte verfügbar. Sobald das Formular veröffentlicht ist, steht dort **Withdraw**.
+
+**Brand** wählt die Marke, aus der die Farben des Formulars stammen, und **Reset to default** setzt das Formular auf die Marke Ihres Kontos zurück.
+
+Fünf Schaltflächen rechts davon öffnen Panels über der Vorschau:
+
+- **Show variable list** listet die Variablen auf, die das Formular verwenden kann, jede mit Typ und aktuellem Wert, plus ein **Search**-Feld zum Filtern. Siehe [Variablen](/de/variables/introduction).
+- **Manage Template** veröffentlicht das geöffnete Formular in der geteilten Vorlagenbibliothek. Es erscheint nur für Konten, die diese Bibliothek pflegen, die meisten Workspaces sehen es also nie. Siehe [Vorlagen](#templates).
+- **Show objects** verknüpft Datensätze wie eine Vakanz oder einen Match mit dem Formular. Siehe [Objekte](/de/reference/forms/objects).
+- **Manage Languages** legt die Standardsprache des Formulars und seine Übersetzungen fest. Siehe [Sprachen und Übersetzungen](#localization).
+- **Settings** enthält das Theme und den Public-Schalter. Siehe [Theme und Veröffentlichung](#theme-and-publishing).
+
+Das Drei-Punkte-Menü am Ende bietet **Preview**, **Duplicate**, **Publish**, **Archive**, **Export CSV**, **Export Excel** und **Delete**.
+
+## Einen Feldtyp wählen
+
+Die Palette zeigt mehr Einträge, als es Feldtypen gibt. Short Text und Long Text, Multiple Choice und Dropdown sowie Net Promoter Score und Opinion Scale sind jeweils ein Typ mit zwei Einstellungen, umgeschaltet in der Fußzeile der Feldkarte.
+
+Jede Zeile unten hat eine eigene Seite, die die Einstellungen des Typs beschreibt, was er speichert, welche Operatoren die Logik für ihn anbietet und was die AI-Evaluatoren mit ihm anfangen können.
+
+| Feldtyp | Gruppe | Speichert |
+|---|---|---|
+| [Short Text und Long Text](/de/reference/forms/fields/short-and-long-text) | Text | Text |
+| [Email](/de/reference/forms/fields/email) | Contact Info | Text |
+| [Phone Number](/de/reference/forms/fields/phone-number) | Contact Info | Text |
+| [Website](/de/reference/forms/fields/website) | Contact Info | Text |
+| [Date](/de/reference/forms/fields/date) | Temporal | ein Datum und eine Uhrzeit |
+| [Time](/de/reference/forms/fields/time) | Temporal | ein Datum und eine Uhrzeit |
+| [Datetime](/de/reference/forms/fields/datetime) | Temporal | ein Datum und eine Uhrzeit |
+| [Yes/No](/de/reference/forms/fields/yes-no) | Choice | Yes oder No |
+| [Multiple Choice und Dropdown](/de/reference/forms/fields/multiple-choice-and-dropdown) | Choice | die gewählten Optionen |
+| [Number](/de/reference/forms/fields/number) | Numeric | eine Zahl |
+| [Currency](/de/reference/forms/fields/currency) | Numeric | eine Zahl |
+| [Net Promoter Score und Opinion Scale](/de/reference/forms/fields/net-promoter-score-and-opinion-scale) | Rating | einen Punkt auf der Skala, bei Net Promoter Score 0 bis 10 |
+| [File Upload](/de/reference/forms/fields/file-upload) | Other | die hochgeladenen Dateien |
+| [Ending Screen](/de/reference/forms/fields/ending-screen) | Ending | nichts |
+| [Redirect URL](/de/reference/forms/fields/redirect-url) | Ending | nichts |
+
+Der Typ entscheidet auch, welche Operatoren eine Regel auf dieser Frage verwenden kann. [Logik](/de/reference/forms/logic#operators) enthält die vollständige Tabelle.
+
+Jeder Feldtyp außer den beiden Endings kann die AI-Evaluatoren speisen: Criteria, Scoring und Skills. Siehe [Evaluation](/de/reference/forms/evaluation/overview).
+
+<Note>
+  Es gibt ein paar mehr Feldtypen, als die Palette anbietet: Range, Color sowie die Varianten Star, Thumbs, Emoji und Slider einer Bewertung. Nur eine Integration wie die HireData API kann sie hinzufügen. Taucht einer in einem Formular auf, das Sie nicht gebaut haben, funktioniert er, aber der Builder hat keine Einstellungskarte dafür.
+</Note>
+
+## Einstellungen, die alle Felder teilen {#settings-every-field-shares}
+
+Klicken Sie auf ein Feld, um seine Karte zu öffnen. Die Einstellungen, die alle Felder teilen, sitzen oben und unten, die typeigenen Einstellungen dazwischen.
+
+- **Question**, bis zu 255 Zeichen. Bei Ending Screens heißt das **Title**.
+- **Description**, bis zu 1024 Zeichen, angezeigt unter der Frage.
+- **Image**, mit einer Platzierungsauswahl, die standardmäßig auf **Above the Input Field** steht. Die anderen Platzierungen sind **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page** und **Background**.
+- Ein Schalter **Criteria**, **Scoring** und **Skills**, einer für jeden Evaluator, den Sie für das Formular eingeschaltet haben.
+- Eine Fußzeile mit der Schaltfläche, die [Display & requirements](#display-and-requirements) öffnet, und dem Typumschalter für die Typen, die in zwei Varianten vorkommen: Short Text und Long Text, Checkbox und Toggle bei Yes/No, Multiple Choice und Dropdown, Net Promoter Score und Opinion Scale.
+
+Zwei weitere Einstellungen erscheinen bei den meisten, aber nicht allen Feldtypen. Beide sind Nachrichten für Formulare, die in einer WhatsApp-Konversation beantwortet werden:
+
+- **Auto reply (on answer)** wird gesendet, sobald die befragte Person die Frage beantwortet. Yes/No ersetzt sie durch eine Antwort pro Antwortmöglichkeit, und Multiple Choice und Dropdown verlagern sie auf die einzelnen Optionen.
+- **Auto reply (on invalid answer)** erscheint, sobald **Required** eingeschaltet ist. Der Builder beschreibt sie als die Nachricht, die gesendet wird, wenn eine Pflichtfrage falsch beantwortet wird.
+
+Texteinstellungen wie **Question**, **Description** und die Platzhalter akzeptieren Variablen, sodass eine Frage die befragte Person mit Namen ansprechen oder die Vakanz erwähnen kann. Manche Variablen werden erst verfügbar, nachdem Sie ihr Objekt mit dem Formular verknüpft haben, siehe [Objekte und Datenquellen](#objects-and-data-sources). Zur Syntax siehe [Variablen](/de/variables/introduction).
+
+Redirect URL hat nichts davon. Es ist ein einzelnes Feld für die Adresse.
+
+![Eine Dropdown-Feldkarte mit Question, Description, Image, Placeholder, Conversational Button Text, den Optionen mit Add Data Source, den drei Evaluator-Schaltern und einer Fußzeile mit Dropdown, Single Answer und Optional](/images/forms-builder/02-question-card-common-settings.png)
+
+## Anzeige und Anforderungen {#display-and-requirements}
+
+Die Schaltfläche unten rechts auf einer Feldkarte öffnet **Display & requirements**. Ihre Beschriftung nennt den aktuellen Zustand des Feldes: **Optional**, **Required**, **Hidden** oder **Always included**.
+
+![Das Display-&-requirements-Popup auf einer Feldkarte mit den Schaltern Hidden, Required und Always include](/images/forms-builder/22-display-and-requirements.png)
+
+**Hidden**, „Hide this field from respondents."
+
+Ein verborgenes Feld wird übersprungen, während die befragte Person durch das Formular geht, und Logikregeln können nicht zu ihm springen. Seine gespeicherte Antwort bleibt für Automatisierungen verfügbar – so tragen Sie einen Wert wie eine Referenz oder eine ID durch ein Formular, ohne danach zu fragen.
+
+**Required**, „Require respondents to answer this field."
+
+Ein Sternchen erscheint an der Fragebeschriftung, und die befragte Person kann nicht weitergehen, bis das Feld eine Antwort hat.
+
+**Always include**, „Prevent configurations from disabling this field. This will make the field required."
+
+Schalten Sie es ein, wird auch **Required** eingeschaltet. Niemand kann das Feld dann für einen einzelnen Datensatz ausschalten, das Formular stellt es also jedes Mal. Verwenden Sie es für die Fragen, ohne die Ihr Prozess nicht auskommt. Siehe [Ein Formular pro Datensatz konfigurieren](/de/content/configuring-a-form-per-record).
+
+Schalten Sie **Hidden** ein, werden **Required** und **Always include** gelöscht und beide gesperrt. Ein Feld, das die befragte Person nie sieht, kann nicht beantwortet werden, also kann es auch nicht verpflichtend sein.
+
+### Was als Antwort zählt {#required-answers}
+
+Ein leeres Textfeld, ein leeres Zahlenfeld, keine gewählte Option und keine angehängte Datei zählen alle als keine Antwort, und das Webformular zeigt eine Meldung unter der Frage, etwa „This field is required and cannot be empty."
+
+Mit No zu antworten, einen Toggle aus zu lassen, 0 einzugeben und 0 auf einer Bewertung zu wählen sind echte Antworten und sollen ein Pflichtfeld erfüllen.
+
+<Warning>
+  Ein Bug im Webformular blockiert diese Antworten. Antwortet jemand mit No, lässt einen Toggle aus, gibt 0 ein oder wählt 0 auf einer Bewertung, bleibt die befragte Person an einer Pflichtfrage hängen. **Next** tut nichts, keine Meldung erscheint, und keine Regel auf diesem Feld greift. Bis der Fix ausgeliefert ist, lassen Sie Yes/No- und Net-Promoter-Score-Fragen optional und setzen Sie bei einer verpflichtenden Number-Frage einen **Minimum Value** von 1.
+</Warning>
+
+In einem konversationellen Formular ist **Auto reply (on invalid answer)** die Nachricht, die zurückgesendet wird, wenn ein Pflichtfeld keine verwertbare Antwort erhält.
+
+## Objekte und Datenquellen {#objects-and-data-sources}
+
+**Show objects** in der Toolbar verknüpft Datensätze mit dem Formular. Verknüpfen Sie eine Vakanz, und ihre Felder werden zu Variablen, die Sie in jede Frage schreiben können, und das Objekt an der Spitze der Liste entscheidet, für welche Datensätze Sie das Formular konfigurieren können. Siehe [Objekte](/de/reference/forms/objects).
+
+**Add Data Source** auf einem Multiple-Choice- oder Dropdown-Feld füllt dessen Optionen aus einer Liste, die Ihr Workspace bereits führt, statt aus Optionen, die Sie eintippen. Die Liste gehört dem Workspace, sie zu bearbeiten ändert also jede Frage, die sie verwendet. Siehe [Datenquellen](/de/reference/forms/data-sources).
+
+## Theme und Veröffentlichung {#theme-and-publishing}
+
+Das **Settings**-Panel steuert, wie das Formular aussieht und wer es erreichen kann.
+
+![Das Settings-Panel mit Make form public, Logo, Alignment, Font Family, Text Color, Scale, den eingeklappten Bereichen Input und Background, Button Text und Border radius](/images/forms-builder/26-settings-drawer.png)
+
+Das Panel öffnet mit **Make form public**, „Public forms can be anonymously answered by anyone with the form's URL." Lassen Sie es aus, öffnet sich das Formular nur für eine befragte Person, der Sie es geschickt haben. Es folgen die Theme-Einstellungen:
+
+- **Logo**, das Bild oben im Formular. Es startet als Ihr Markenlogo, und das Kreuz neben der Beschriftung entfernt es.
+- **Alignment**, das den Fragetext und die Eingaben links, mittig oder rechts platziert.
+- **Font Family**, die Schriftart des Formulars.
+- **Text Color**, die Farbe des Formulartexts.
+- **Scale**, das Text und Eingaben skaliert: **Default**, **Large** oder **Extra Large**.
+- **Input**, ein Bereich mit der **Variant** der Antwortfelder (**Solid**, **Soft** oder **Outline**), **Color**, **Background Color**, **Button Color** und **Button Text Color**.
+- **Background**, ein Bereich mit einem **Background Image** und einer Hintergrund-**Color**.
+- **Button Text**, die Beschriftung der Schaltfläche, mit der die befragte Person weitergeht. Sie lautet „Ok", bis Sie sie ändern.
+- **Border radius**, mit **None**, **Normal**, **Large** und **Custom**.
+
+Jede Farbe startet als Wert der gewählten Marke, angezeigt als Name wie „Theme: Palette Background Text Color". Ändern Sie eine, gilt das nur für dieses Formular – ein Formular entspricht also Ihrer Marke, bis Sie entscheiden, dass es das nicht mehr soll.
+
+## Sprachen und Übersetzungen {#localization}
+
+**Manage Languages** in der Toolbar legt die **Default language** des Formulars fest und listet seine Übersetzungen. Die Standardsprache ist die, in der Sie die Fragen geschrieben haben.
+
+Klicken Sie auf **New Translation**, um eine hinzuzufügen. Wählen Sie die **Language** und übersetzen Sie dann entweder von Hand, oder klicken Sie auf **Create AI translation**, das das ganze Formular für Sie ausfüllt.
+
+![Das New-Translation-Panel mit ausgewähltem Niederländisch, der Schaltfläche Create AI translation, der Settings-Gruppe und dem ersten Feld aufgeklappt zu Question, Description, Min Label und Max Label](/images/forms-builder/27-translation-editor.png)
+
+Eine Übersetzung deckt drei Gruppen ab:
+
+- **Settings**, der Formular-**Name**, der **Button text**, die **Powered by**-Zeile sowie **Upload title** und **Upload description** eines Datei-Uploads.
+- **Fields**, jedes Feld im Formular. Jedes enthält seine **Question** und **Description**, plus was sein Typ an Text hinzufügt, etwa **Min Label** und **Max Label** einer Bewertung, den **Conversational button text** eines Auswahlfelds und dessen Optionen mit ihren Auto Replies.
+- **Validation**, die Meldungen, die eine befragte Person sieht, wenn eine Antwort nicht durchgeht, etwa **Field Is Required**, **Invalid Email** und **Max Number**.
+
+Jeder Eintrag zeigt den Quelltext über einem leeren Feld. Lassen Sie ein Feld leer, fällt das Formular für diesen Text auf die Standardsprache zurück.
+
+Befragte wechseln die Sprache über die Auswahl oben im Formular. Wie Sie die Sprache festlegen, in der Ihr Workspace schreibt, steht in [Standardsprache und AI Tone of Voice festlegen](/de/settings/setting-a-default-language-and-ai-tone-of-voice).
+
+## Vorlagen {#templates}
+
+Klicken Sie auf **New Form**, und eine Galerie öffnet sich mit **Blank Form** als erster Karte. Der Rest sind fertige Recruitment-Formulare wie **Job Application (Pre-Intake)**, **Intake**, **Rejection** und **Net Promoter Score (NPS)**, jedes mit einer Beschreibung dessen, was es fragt, und einem Tag für den passenden Datensatz. Die Chips **Candidate** und **Contact** oben filtern die Galerie.
+
+Eine Vorlage zu wählen kopiert ihre Felder in ein neues Formular, und alles in der Kopie können Sie ändern.
+
+![Der New-Form-Dialog mit den Tag-Filtern Candidate und Contact, der Blank-Form-Karte und den Recruitment-Formularvorlagen](/images/forms-builder/28-new-form-templates.png)
+
+Wenn Ihr Konto die geteilte Vorlagenbibliothek pflegt, macht die Schaltfläche **Manage Template** in der Toolbar das geöffnete Formular zur Vorlage. **Configure Template** fragt nach einem **Title**, einer **Description** und **Tags**, bietet an, alle drei mit AI zu schreiben, und stellt die Vorlage in die Galerie, sobald Sie auf **Enable** klicken. **Feature Template** hebt sie an die Spitze.

@@ -1,0 +1,81 @@
+---
+title: "Criteria"
+sidebarTitle: "Criteria"
+description: "Toets een formulierrespons aan must-have- en nice-to-have-vereisten, met answer rules of met AI, en krijg één oordeel terug."
+keywords: ["screening", "must-have", "nice-to-have", "meets criteria", "pre-screening", "knock-outvraag"]
+---
+
+Criteria beantwoordt één vraag over een respons: voldoet deze persoon aan wat de rol nodig heeft? Je markeert elke vraag die ertoe doet als must-have of nice-to-have, zegt hoe een goed antwoord eruitziet, en HireData geeft één oordeel terug.
+
+Het is de evaluator om te pakken wanneer sommige antwoorden diskwalificerend zijn. Een kandidaat zonder rijbewijs kan geen chauffeursbaan doen, en Criteria zegt dat zonder dat iemand de respons hoeft te lezen.
+
+## Aanzetten
+
+Zet **Criteria** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview#enable-order) en klik daarna op **Criteria** om het te openen. Elke vraag in het formulier verschijnt eronder met een eigen schakelaar. Een vraag wordt pas getoetst zodra je hem hier aanzet.
+
+![Het Criteria-blok geopend, met de vragen van het formulier elk met een schakelaar en één vraag aangezet](/images/forms-builder/evaluation/01-criteria-field-list.png)
+
+## Instellingen per vraag
+
+Zet een vraag aan en de instellingen openen.
+
+- **How important is this requirement?** met **Must-have** en **Nice-to-have**. Een gefaalde must-have wijst de respons af. Een gefaalde nice-to-have waardeert hem alleen af.
+- **How to evaluate?** met **Use answer rules** en **Evaluate with AI**.
+- **What answer(s) do you expect?**, aan de rules-kant, met de condities waaraan het antwoord moet voldoen.
+- Het notitievak, met het label **What should AI look for?**. Het stuurt de AI en wordt door rules genegeerd. Zie [één notitie per vraag](/nl/reference/forms/evaluation/overview#one-note-per-question).
+
+![Een Yes/No-vraag in het Criteria-blok, ingesteld op Must-have en Use answer rules, met Yes als verwacht antwoord](/images/forms-builder/evaluation/02-criteria-rules.png)
+
+### Verwachte antwoorden
+
+Een conditie leest als `<vraag> <operator> <waarde>`. De vraag staat vast: een rule op deze vraag kan alleen het antwoord op deze vraag testen. Kies de operator en daarna de waarde.
+
+**Add condition** voegt een tweede conditie toe en een **All**- en **Any**-switch erboven. **All** vereist dat elke conditie matcht. **Any** vereist er één. Beide gelden voor de hele set, niet voor één paar.
+
+Laat je de condities leeg, dan wordt de vraag overgeslagen, wat de schakelaar ook zegt. Een vraag zonder iets om mee te vergelijken kan niet slagen of falen.
+
+### Operators {#operators}
+
+Het type van de vraag bepaalt de operators. Dit is een langere lijst dan [logica](/nl/reference/forms/logic#operators) biedt, dus een vraag waarop logica niet kan vertakken, kan nog steeds een criterium zijn.
+
+| Veldtypen | Operators |
+|---|---|
+| [Short en Long Text](/nl/reference/forms/fields/short-and-long-text), [Email](/nl/reference/forms/fields/email), [Phone Number](/nl/reference/forms/fields/phone-number), [Website](/nl/reference/forms/fields/website) | is equal to, is not equal to, contains, does not contain, starts with, ends with, does not start with, does not end with, is empty, is not empty |
+| [Number](/nl/reference/forms/fields/number), [Currency](/nl/reference/forms/fields/currency), [Net Promoter Score en Opinion Scale](/nl/reference/forms/fields/net-promoter-score-and-opinion-scale), [Date](/nl/reference/forms/fields/date), [Time](/nl/reference/forms/fields/time), [Datetime](/nl/reference/forms/fields/datetime) | is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to, is empty, is not empty |
+| [Multiple Choice en Dropdown](/nl/reference/forms/fields/multiple-choice-and-dropdown) | is equal to, is not equal to, is one of, is not one of, is empty, is not empty |
+| [Yes/No](/nl/reference/forms/fields/yes-no) | is equal to, is not equal to, is empty, is not empty |
+| [File Upload](/nl/reference/forms/fields/file-upload) | tekstoperators op de bestandsnaam, het type en het adres, numerieke operators op de grootte |
+
+Datums zijn de nuttige verrassing. Het tabblad **Logic** kan alleen vragen of er een datum is gegeven, maar een criterium kan vragen of de startdatum vóór de dag valt waarop je iemand nodig hebt.
+
+Een File Upload-vraag biedt een tweede kiezer boven de operator, voor welk deel van het bestand gelezen wordt: **Answer Name**, **Answer File Name**, **Answer Mime Type**, **Answer Size** en **Answer Url**. Een rule leest nooit wat er in het bestand staat. Alleen de AI doet dat.
+
+## Evalueren met AI
+
+Schakel naar **Evaluate with AI** en de condities verdwijnen. Het model krijgt de vraag, het antwoord en jouw notitie, en beslist of het antwoord aan de vereiste voldoet. Het geeft ook een zin redenering terug, die [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) onder het antwoord toont.
+
+![Een long text-vraag in het Criteria-blok, ingesteld op Nice-to-have en Evaluate with AI, met een notitie die de AI vertelt waar op te letten](/images/forms-builder/evaluation/03-criteria-ai.png)
+
+Gebruik AI voor vrije tekst en bestanden, waar de bewoordingen variëren en geen rule past. Houd rules voor antwoorden met een vaste set waarden. Een Yes/No- of keuzevraag heeft geen interpretatie nodig, en een rule is sneller, goedkoper en herhaalbaar.
+
+Een [File Upload](/nl/reference/forms/fields/file-upload)-vraag die op AI staat, stuurt de bijlage naar het model. JPEG-, PNG-, GIF-, WebP- en PDF-bestanden worden gelezen, tot vijf bestanden en 10 MB per respons. Al het andere wordt alleen op de bestandsnaam beoordeeld.
+
+## Het oordeel
+
+Elke vraag die je aanzette en configureerde stemt mee. HireData kiest daarna het oordeel in deze volgorde.
+
+1. **Does not meet criteria**, wanneer een beantwoorde must-have faalde.
+2. **Incomplete**, wanneer een vraag die je aanzette geen antwoord heeft.
+3. **Partially meets criteria**, wanneer elke must-have slaagde en een beantwoorde nice-to-have faalde.
+4. **Meets criteria**, wanneer alles slaagde.
+
+Een ontbrekend antwoord is geen falen. Een kandidaat die een must-have-vraag nooit bereikte is **Incomplete**, dus een afwijzing betekent altijd dat de persoon antwoordde en dat het antwoord tekortschoot. Let hierop bij vragen achter een [logic](/nl/reference/forms/logic)-jump, die sommige respondenten nooit zien.
+
+Het oordeel is voor automatiseringen beschikbaar als `{{form_response.evaluation.screening}}`, dat `passed`, `passed_with_restrictions`, `rejected` of `incomplete` bevat.
+
+## Gerelateerd
+
+- [Overzicht van formulierevaluatie](/nl/reference/forms/evaluation/overview) behandelt de vijf evaluatoren en de volgorde waarin je ze aanzet.
+- [Scoring](/nl/reference/forms/evaluation/scoring) rangschikt de responsen die slagen.
+- [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) toont het oordeel per vraag naast de antwoorden die het opleverden.
+- [Sollicitanten screenen en scoren met een pre-screeningformulier](/nl/knowledge-base/cookbook/pre-screening-form) bouwt een formulier rond deze evaluator.

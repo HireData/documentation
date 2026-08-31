@@ -1,0 +1,51 @@
+---
+title: "Ending Screen"
+sidebarTitle: "Ending Screen"
+description: "Der letzte Bildschirm eines HireData-Formulars. Er zeigt Titel und Beschreibung und kann eine Schaltfläche tragen, die die befragte Person weiterschickt, mit optionalem Timer."
+keywords: ["danke-seite", "danke-bildschirm", "letzte seite", "abschluss-bildschirm"]
+---
+
+Ein Ending Screen ist der Ort, an dem eine befragte Person landet, wenn das Formular vorbei ist. Er zeigt einen Titel, eine optionale Beschreibung und eine optionale Schaltfläche.
+
+Der **Content**-Tab sammelt Endings in ihrer eigenen **Endings**-Gruppe am Ende der Feldliste, getrennt von den Fragen. Ein Formular kann mehrere davon enthalten, und genau darum geht es. Eine Logikregel kann eine starke Kandidatin oder einen starken Kandidaten zu einem Ending schicken und alle anderen zu einem anderen.
+
+Es befindet sich in der Gruppe **Ending** der **Add Content**-Palette. Die Schaltfläche unten links auf der Karte schaltet es auf eine [Redirect URL](/de/reference/forms/fields/redirect-url) um.
+
+## Einstellungen
+
+Ein Ending hat weniger Einstellungen als eine Frage, weil niemand es beantwortet.
+
+- **Title**, bis zu 255 Zeichen. Das ist, was andere Feldtypen **Question** nennen.
+- **Description**, bis zu 1024 Zeichen.
+- **Image**, mit derselben Platzierungsauswahl wie jedes Feld.
+- **Button**, ein Schalter in der Fußzeile.
+
+Das Einschalten von **Button** ergänzt zwei Einstellungen und einen zweiten Schalter.
+
+- **Button Text**, die Beschriftung der Schaltfläche. Das Feld zeigt „Submit Form" als Platzhalter.
+- **Redirect URL**, die Adresse, die die Schaltfläche öffnet.
+- **Redirect timer**, ein Schalter, der einen **Timer** in Sekunden ergänzt, sodass die befragte Person nach so vielen Sekunden von selbst zur Adresse geschickt wird, statt auf einen Klick zu warten.
+
+Es gibt keine **Display & requirements**-Schaltfläche, keine Auto Reply und keinen Evaluator-Schalter. Ein Ending ist keine Frage, also trifft nichts davon zu.
+
+![Eine Ending-Screen-Karte mit Title, Description, Image, Button Text, Redirect URL, einem Timer in Sekunden und einer Fußzeile mit den beiden eingeschalteten Schaltern Button und Redirect timer, neben einer Vorschau mit dem Titel und einer Submit-Form-Schaltfläche](/images/forms-builder/fields/14-ending-screen.png)
+
+## Was gespeichert wird
+
+Nichts. Ein Ending hat keine Eingabe.
+
+## Logik-Operatoren
+
+Keine. Ein Ending hat keine **Add Rule**-Schaltfläche im **Logic**-Tab, weil ein Ending der Punkt ist, an dem das Formular endet. Regeln auf den Fragen zeigen auf Endings, nicht umgekehrt.
+
+![Der Logic-Tab mit einer Ending-Zeile ohne Add-Rule-Schaltfläche, neben einer Fragezeile, die eine hat](/images/forms-builder/fields/operators-endings.png)
+
+## Evaluation
+
+Ein Ending Screen trägt keine Evaluator-Schalter. Die KI-Evaluatoren lesen die Antworten, und ein Ending hat keine.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Redirect URL](/de/reference/forms/fields/redirect-url) ist das andere Ending, ganz ohne Bildschirm.
+- [Logik](/de/reference/forms/logic) erklärt, wie Sie unterschiedliche Befragte zu unterschiedlichen Endings schicken.

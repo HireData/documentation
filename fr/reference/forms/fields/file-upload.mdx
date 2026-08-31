@@ -1,0 +1,43 @@
+---
+title: "File Upload"
+sidebarTitle: "File Upload"
+description: "Le champ de téléversement de fichiers d'un formulaire HireData. Choisissez si le répondant peut joindre plus d'un fichier, et quels types de fichiers vous acceptez."
+keywords: ["pièce jointe", "cv", "resume", "téléversement de document", "déposer des fichiers"]
+---
+
+File Upload donne au répondant une zone de dépôt indiquant **Drop Files Here**, avec « Click here or drop files to upload them » en dessous. C'est ainsi qu'un formulaire collecte un CV, un certificat ou un portfolio.
+
+Il se trouve dans le groupe **Other** de la palette **Add Content**.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). File Upload en ajoute deux qui lui sont propres.
+
+- **Multiple**, **Yes** ou **No**, qui décide si le répondant peut joindre plus d'un fichier.
+- **File type**, un préréglage parmi **Any**, **Image**, **Audio**, **Video**, **Media**, **PDF**, **Document**, **Powerpoint**, **Word Document**, **Sheet** et **Archive**.
+
+**File type** est un préréglage, pas une liste que vous écrivez, donc un formulaire qui veut un PDF ou un document Word doit accepter **Document** et faire le tri ensuite. Il n'y a pas de limite de taille à définir.
+
+Le texte de la zone de dépôt est traduisible. Il se trouve sous **Settings** dans [Langues et traductions](/fr/reference/forms/overview#localization), sous les noms **Upload title** et **Upload description**.
+
+![Une carte de champ File Upload montrant Question, Description, Image, Multiple, File type défini sur PDF, la réponse automatique, les trois interrupteurs d'évaluateur et un pied de carte indiquant Optional, à côté d'un aperçu montrant la zone Drop Files Here](/images/forms-builder/fields/13-file-upload.png)
+
+## Ce que le champ stocke
+
+Les fichiers téléversés, avec le nom et le type de chacun.
+
+## Opérateurs de logique
+
+Le sélecteur d'opérateur est fixé sur **has response** et ne peut pas être changé. Une règle peut demander si le répondant a joint quelque chose, ce qui suffit pour envoyer ailleurs un candidat sans CV.
+
+![Une condition sur une question File Upload dans l'onglet Logic, avec l'opérateur affichant has response et aucune zone de valeur à côté](/images/forms-builder/fields/operators-file-upload.png)
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Langues et traductions](/fr/reference/forms/overview#localization) est l'endroit où reformuler la zone de dépôt.

@@ -1,0 +1,51 @@
+---
+title: "Currency"
+sidebarTitle: "Currency"
+description: "Das Währungsfeld in einem HireData-Formular. Es ist ein Zahlenfeld mit einem Symbol davor und bietet Euro, Dollar, Pfund, Schweizer Franken, Yen und Rupie an."
+keywords: ["gehalt", "geld", "betrag", "stundensatz", "vergütung"]
+---
+
+Currency ist ein Number-Feld mit einem Symbol vor dem Eingabefeld. Verwenden Sie es für eine Gehaltsvorstellung, einen Stundensatz oder ein Budget. Logik und Evaluatoren behandeln die Antwort als einfache Zahl – alles, was ein Number-Feld kann, kann ein Currency-Feld also auch.
+
+Es befindet sich in der Gruppe **Numeric** der **Add Content**-Palette.
+
+## Einstellungen
+
+Die Karte enthält die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares). Currency ergänzt fünf eigene.
+
+- **Placeholder**, bis zu 255 Zeichen, angezeigt im leeren Feld.
+- **Minimum Value** und **Maximum Value**, die Enden des Bereichs, den Sie akzeptieren.
+- **Currency Symbol**, eines von **Euro**, **Dollar**, **Pound**, **Swiss Franc**, **Yen** oder **Rupee**.
+- **Steps**, die Größe eines Schritts.
+
+Das Symbol ist Dekoration am Feld. HireData speichert die Zahl und rechnet nicht zwischen Währungen um. Ein Formular, das mehrere Währungen abdecken muss, braucht also eine eigene Frage danach, welche die befragte Person gemeint hat.
+
+![Eine Currency-Feldkarte mit Question, Description, Image, Placeholder, Minimum Value, Maximum Value, Currency Symbol auf Euro, Steps, der Auto Reply, den drei Evaluator-Schaltern und einer Fußzeile mit Optional, neben einer Vorschau mit einem Antwortfeld mit Euro-Zeichen](/images/forms-builder/fields/11-currency.png)
+
+## Was gespeichert wird
+
+Eine Zahl, ohne das Symbol.
+
+## Logik-Operatoren
+
+| Operator | Trifft zu, wenn |
+|---|---|
+| has response | die befragte Person überhaupt geantwortet hat |
+| is equal to | die Antwort genau dem Wert entspricht |
+| is not equal to | die Antwort irgendetwas anderes ist |
+| is greater than | die Antwort über dem Wert liegt |
+| is less than | die Antwort unter dem Wert liegt |
+| is greater than or equal to | die Antwort dem Wert entspricht oder darüber liegt |
+| is less than or equal to | die Antwort dem Wert entspricht oder darunter liegt |
+
+![Der Logic-Tab mit geöffneter Operator-Auswahl auf einer Currency-Bedingung, mit has response, is equal to, is not equal to und den vier Vergleichsoperatoren](/images/forms-builder/fields/operators-currency.png)
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte. Eine Gehaltsobergrenze ist ein sinnvolles **Criteria**-Must-have: über der Zahl liegt die Kandidatin oder der Kandidat außerhalb des Rahmens.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Number](/de/reference/forms/fields/number) ist dasselbe Feld ohne Symbol.

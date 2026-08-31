@@ -1,0 +1,53 @@
+---
+title: "Website"
+sidebarTitle: "Website"
+description: "Le champ site web d'un formulaire HireData. Il demande une adresse web et prend les paramètres de placeholder, de longueur et de motif d'un champ de texte."
+keywords: ["url", "lien", "adresse web", "profil linkedin"]
+---
+
+Website est une zone d'une seule ligne pour une adresse web, ce que la plupart des formulaires utilisent pour collecter un lien LinkedIn ou un portfolio.
+
+Il se trouve dans le groupe **Contact Info** de la palette **Add Content**.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Website ajoute les quatre mêmes qu'un champ de texte.
+
+- **Placeholder**, jusqu'à 255 caractères, affiché dans la zone vide.
+- **Minimum Length** et **Maximum Length**, comptés en caractères.
+- **Validation Pattern**, une expression régulière à laquelle la réponse doit correspondre, en plus du contrôle d'adresse.
+
+Le message que voit un répondant lorsque l'adresse est mal formée se trouve sous **Validation** dans [Langues et traductions](/fr/reference/forms/overview#localization), sous le nom **Invalid URL**.
+
+![Une carte de champ Website montrant Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, la réponse automatique, les trois interrupteurs d'évaluateur et un pied de carte indiquant Optional](/images/forms-builder/fields/04-website.png)
+
+## Ce que le champ stocke
+
+Du texte, l'adresse telle que le répondant l'a saisie.
+
+## Opérateurs de logique
+
+| Opérateur | Correspond quand |
+|---|---|
+| has response | le répondant a répondu, quelle que soit la réponse |
+| is equal to | la réponse est exactement la valeur |
+| is not equal to | la réponse est n'importe quoi d'autre |
+| starts with | la réponse commence par la valeur |
+| ends with | la réponse se termine par la valeur |
+| contains | la valeur apparaît quelque part dans la réponse |
+| does not contain | la valeur n'apparaît nulle part dans la réponse |
+
+**contains** est celui à privilégier. Une règle du type `if website contains linkedin.com` sépare un lien de profil d'un site personnel.
+
+![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Website, listant has response, is equal to, is not equal to, starts with, ends with, contains et does not contain](/images/forms-builder/fields/operators-website.png)
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte. Les évaluateurs lisent l'adresse comme du texte et ne l'ouvrent pas.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Email](/fr/reference/forms/fields/email) et [Phone Number](/fr/reference/forms/fields/phone-number) sont les deux autres champs Contact Info.
+- [Short Text et Long Text](/fr/reference/forms/fields/short-and-long-text) est la même zone sans contrôle de format.

@@ -1,0 +1,144 @@
+---
+title: "Sollicitanten screenen en scoren met een pre-screeningformulier"
+sidebarTitle: "Pre-screeningformulier"
+description: "Bouw een formulier dat de sollicitanten afwijst die het werk niet kunnen doen, de geschikte kandidaten rangschikt en een samenvatting voor je recruiter schrijft voordat iemand de response opent."
+keywords: ["pre-screeningformulier", "screeningvragen", "knock-outvraag", "sollicitanten scoren", "kandidaten rangschikken", "sollicitatieformulier scoring", "AI-screening"]
+---
+
+_De meeste sollicitatieformulieren verzamelen antwoorden en laten een mens ze lezen. Dit recept bouwt er een dat beslist. Criteria sluit de sollicitanten uit die het werk niet kunnen doen, Scoring rangschikt de geschikte kandidaten, en de samenvatting geeft je recruiter de response in drie zinnen voordat hij hem opent._
+
+## Wat je gaat bouwen
+
+Eén formulier met vier delen:
+
+1. Vier vragen, die elk iets beslissen
+2. **Criteria** die een sollicitant afwijst die niet aan een harde eis voldoet
+3. **Scoring** die iedereen rangschikt die slaagt
+4. Een **samenvatting** en een **generated field** waar je automatisering op kan handelen
+
+Elke instelling die hier wordt gebruikt staat in de [evaluatiereferentie](/nl/reference/forms/evaluation/overview). Deze pagina brengt één formulier van blanco naar gepubliceerd.
+
+## Voordat je begint
+
+Beslis twee dingen met degene die eigenaar is van de vacature.
+
+- **Wat iemand diskwalificeert.** Dit worden must-have-criteria. Wees streng: een must-have die eigenlijk een voorkeur is, wijst mensen af met wie je had willen praten.
+- **Wat de ene gekwalificeerde sollicitant beter maakt dan de andere.** Dit wordt de scoring, en het gaat meestal om een of twee vragen in plaats van allemaal.
+
+Schrijf beide op voordat je de builder opent. Het formulier is snel gemaakt. Het eens worden over de regels niet.
+
+## Bouw het formulier
+
+### 1. Stel de minste vragen die iets beslissen
+
+Open **Forms**, klik op **New Form** en kies **Blank Form**. Een pre-screeningformulier verdient zichzelf terug door kort te zijn, dus voeg alleen de vragen toe waarvan de antwoorden veranderen wat er daarna gebeurt.
+
+| Vraag | Veldtype | Waarom hij er staat |
+|---|---|---|
+| Heb je een rijbewijs? | [Yes/No](/nl/reference/forms/fields/yes-no) | De knock-out. Twee bekende antwoorden, geen interpretatie nodig. |
+| Wanneer kun je beginnen? | [Date](/nl/reference/forms/fields/date) | De tweede knock-out, tegen de datum waarop de klant iemand nodig heeft. |
+| Hoeveel jaar ervaring heb je? | [Number](/nl/reference/forms/fields/number) | De rangschikkingsvraag. |
+| Waarom wil je deze baan? | [Long Text](/nl/reference/forms/fields/short-and-long-text) | De enige die alleen AI kan beoordelen. |
+
+Sluit af met een [ending screen](/nl/reference/forms/fields/ending-screen), zodat sollicitanten weten dat het formulier is verzonden.
+
+<Warning>
+  Laat de Yes/No-vraag optioneel. Een bug in het webformulier blokkeert een verplichte Yes/No die met No is beantwoord, dus een verplichte rijbewijsvraag laat precies de sollicitanten stranden die Criteria hoort af te wijzen. Het criterium werkt nog steeds op een optionele vraag.
+</Warning>
+
+### 2. Zet de evaluators aan voor het formulier
+
+Open het tabblad **Evaluation** en zet **Criteria**, **Scoring** en **Summary** aan. Laat **Skills** uit: die sorteert gekwalificeerde mensen op sterkte, en dat is een andere klus dan deze.
+
+Doe dit voordat je iets configureert. De evaluator-schakelaar van een vraag doet niets zolang de schakelaar op formulierniveau uit staat, en hij verschijnt niet eens op de vraagkaart. Zie [de volgorde van aanzetten](/nl/reference/forms/evaluation/overview#enable-order).
+
+### 3. Stel de knock-outs in met Criteria
+
+Klik op **Criteria** om de lijst met vragen te openen, en zet dan de drie aan die ertoe doen.
+
+- **Heb je een rijbewijs?** Stel **Must-have** in, houd **Use answer rules** en verwacht `is equal to Yes`.
+- **Wanneer kun je beginnen?** Stel **Must-have** in, houd **Use answer rules** en verwacht `is less than or equal to` de datum waarop de klant iemand nodig heeft. Logica kan geen datums vergelijken, maar een criterium wel.
+- **Waarom wil je deze baan?** Stel **Nice-to-have** in en schakel over naar **Evaluate with AI**. Zeg in **What should AI look for?** wat een echt antwoord bevat, zoals "Zoek een specifieke reden die met dit werk te maken heeft. Generiek enthousiasme telt niet."
+
+Laat de ervaringsvraag voorlopig buiten Criteria. Het is de rangschikkingsvraag, en haar op beide plekken zetten betekent dat één antwoord tegelijk kan afwijzen en rangschikken, wat een verrassend resultaat moeilijk leesbaar maakt.
+
+Het oordeel is **Does not meet criteria** zodra één beantwoorde must-have faalt. Een sollicitant die een must-have-vraag nooit heeft bereikt komt in plaats daarvan terug als **Incomplete**, dus controleer dat geen enkele [logic](/nl/reference/forms/logic)-jump er overheen kan stappen.
+
+### 4. Rangschik de rest met Scoring
+
+Klik op **Scoring**. Houd de drie ranges waarmee het start, **Low** op 0, **Medium** op 50 en **High** op 80, en zet dan de ervaringsvraag aan.
+
+- Stel **How many points is this question worth?** in op 20.
+- Voeg een rule toe: `is greater than or equal to 5`, goed voor 20 punten.
+- Voeg een tweede rule toe: `is greater than or equal to 3`, goed voor 10 punten.
+
+Beide rules matchen een sollicitant met vijf jaar, en het totaal wordt afgetopt op het maximum van de vraag, dus die scoort 20 in plaats van 30. Die aftopping is wat je overlappende banden laat schrijven zonder je zorgen te maken over de gaten ertussen.
+
+Eén vraag van 20 punten betekent dat de score 20 van de 20 is voor vijf jaar, en dat is 100% en **High**. Voeg een tweede gescoorde vraag toe en de rekensom verdeelt zich over beide. Zie [hoe het percentage wordt berekend](/nl/reference/forms/evaluation/scoring#how-the-percentage-is-worked-out).
+
+### 5. Laat de AI de overdracht schrijven
+
+**Summary** heeft geen configuratie nodig. Het vat de afgeronde response in een paar zinnen samen voor degene die hem oppakt.
+
+Voeg voor de ene beslissing die je automatisering moet nemen een [generated field](/nl/reference/forms/evaluation/generated-fields) toe. Zet **Generated fields** aan, klik op **Create custom** en bouw een **List**-output:
+
+- **Name**: Next step
+- **Reference as**: `next_step`
+- **What is it for?**: Wat er nu met deze sollicitant moet gebeuren
+- **Options**: `Book an interview`, `Ask for more detail`, `Reject politely`
+
+Een list-output kan alleen een van jouw opties teruggeven, en dat maakt hem veilig om op te vertakken. Een vrije-tekstoutput zou je elke keer een andere zin geven.
+
+Voeg in **Hints for the AI (optional)** toe: "Laat een veld leeg wanneer de antwoorden het niet zeggen." Zonder die hint wordt een output gegokt wanneer de response mager is.
+
+### 6. Test het voordat je publiceert
+
+Open **Test & Evaluate** en draai alle vier de scenario's met **Autofill with AI**. Elk scenario heeft een resultaat dat je moet kunnen voorspellen.
+
+| Scenario | Wat je zou moeten zien |
+|---|---|
+| **Ideal candidate** | **Meets criteria**, een hoge score en een next step die een interview boekt |
+| **Borderline candidate** | **Partially meets criteria** of een middelmatige score. Dit is de run die een verkeerde puntenband vindt |
+| **Unqualified candidate** | **Does not meet criteria**. Slaagt hij, dan doet een must-have zijn werk niet |
+| **Partially completed** | **Incomplete**, geen afwijzing. Wijst hij af, dan wordt een onbeantwoorde vraag als een fout gelezen |
+
+Open elk resultaatpaneel en controleer het detail per vraag, niet alleen de kop. Een juist oordeel dat om de verkeerde reden is bereikt, breekt zodra een echte sollicitant anders antwoordt.
+
+Onthoud dat een evaluatie draaien het formulier opslaat, dus alles waar je nog over twijfelde wordt vastgelegd.
+
+### 7. Handel op het resultaat in een automatisering
+
+Publiceer het formulier en bouw dan de automatisering die iets met het resultaat doet. **Automation variables** onderaan **Test & Evaluate** toont elke waarde met daarnaast het resultaat van je testrun, wat je het gokken naar de exacte bewoording bespaart.
+
+| Variabele | Bevat |
+|---|---|
+| `{{form_response.evaluation.screening}}` | `passed`, `passed_with_restrictions`, `rejected` of `incomplete` |
+| `{{form_response.evaluation.scoring.score}}` | Het percentage |
+| `{{form_response.evaluation.scoring.band.label}}` | Het label van de scorerange, zoals `High` |
+| `{{form_response.evaluation.ai_summary}}` | De samenvatting |
+| `{{form_response.evaluation.ai_output.next_step}}` | Je gegenereerde next step |
+
+Begin met één conditie op het oordeel, zoals afwijzingen die naar een beleefde afwijzing gaan en al het andere dat een taak aanmaakt. Voeg de score toe zodra je hem vertrouwt. Zie [Automatiseringen](/nl/automations/automations).
+
+## Bekijk en verbeter het formulier
+
+Vergelijk na twintig of dertig echte responses de oordelen met wat je recruiters zouden hebben besloten.
+
+- Wijs je mensen af die het team zou hebben gebeld? Dan is een must-have te streng, of hij hoort in Scoring thuis.
+- Landt iedereen in dezelfde scorerange? Dan moeten de minimums verschuiven, of de gescoorde vraag maakt geen onderscheid tussen sollicitanten.
+- Is het AI-criterium het eens met een mens die hetzelfde antwoord leest? Zo niet, dan is de notitie te vaag. Zeg wat een goed antwoord bevat, niet dat het goed moet zijn.
+- Zijn de samenvattingen het lezen waard? Als ze alleen de antwoorden herhalen, stelt het formulier gesloten vragen en heeft de samenvatting niets toe te voegen.
+
+Wijzig één ding tegelijk en draai de scenario's in **Test & Evaluate** opnieuw voordat je weer publiceert.
+
+## Meer hulp nodig?
+
+Als de evaluators niets teruggeven, is de gebruikelijke oorzaak de volgorde van aanzetten. Controleer de schakelaar op formulierniveau én die per vraag, op [het Evaluation-tabblad](/nl/reference/forms/evaluation/overview#enable-order).
+
+Als een criterium nooit faalt, open de vraag dan in **Test & Evaluate** en lees het verwachte antwoord eronder. Een criterium zonder condities wordt overgeslagen in plaats van gefaald.
+
+Kom je er nog steeds niet uit, neem dan contact op met [support@hiredata.com](mailto:support@hiredata.com) en vermeld:
+
+- De naam van het formulier
+- De vraag en de rule die zich onverwacht gedroeg
+- Het antwoord waarmee je testte, en het resultaat dat je verwachtte

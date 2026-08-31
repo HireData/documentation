@@ -1,0 +1,70 @@
+---
+title: "Test & Evaluate"
+sidebarTitle: "Test & Evaluate"
+description: "Vul een hele HireData-formulierrespons in, laat AI er een voor je verzinnen, en lees het oordeel, de score, de skills, de samenvatting en de generated fields die eruit komen."
+keywords: ["test and evaluate", "autofill with AI", "testscenario", "een formulierrespons evalueren", "ideale kandidaat"]
+---
+
+**Test & Evaluate** is het derde tabblad van het previewpaneel, en de snelste manier om te zien wat de [evaluatoren](/nl/reference/forms/evaluation/overview) werkelijk doen. Je geeft het een respons, het draait Criteria, Scoring, Skills, Summary en Generated fields erover, en toont elk resultaat naast het antwoord dat het opleverde.
+
+Gebruik het telkens wanneer je een evaluator wijzigt. Een rule die er op de kaart goed uitziet, is vaak fout de eerste keer dat hij een antwoord tegenkomt.
+
+## De antwoorden invullen
+
+Het tabblad toont elke vraag behalve de endings, als een compacte invoer. Badges achter het vraaglabel zeggen wat de evaluatoren ermee gaan doen: **Must** of **Nice** van [Criteria](/nl/reference/forms/evaluation/criteria), en één badge per skill die de vraag voedt.
+
+![Drie vragen in Test & Evaluate, één met de badges Must en Availability, één met de badge Nice](/images/forms-builder/testing/06-test-answers.png)
+
+Typ de antwoorden zelf, of laat de AI ze schrijven. **Autofill with AI** vult elke vraag in één keer, en de chevron ernaast kiest het soort respondent om na te bootsen.
+
+![De Autofill with AI-knop met het menu open, met Random answers, Ideal candidate, Borderline candidate, Unqualified candidate en Partially completed](/images/forms-builder/testing/05-test-scenarios.png)
+
+- **Random answers** is plausibel maar ongeïnformeerd. Goed voor een eerste blik.
+- **Ideal candidate** antwoordt zoals iemand die aan elk criterium voldoet.
+- **Borderline candidate** mikt op het midden, en daar wordt een scoringsfout zichtbaar.
+- **Unqualified candidate** hoort afgewezen terug te komen. Zo niet, dan doet een must-have zijn werk niet.
+- **Partially completed** laat vragen onbeantwoord, en zo controleer je een **Incomplete**-oordeel.
+
+De scenario's zijn niet generiek. De autofill stuurt jouw vragen en jouw evaluatieregels naar het model, dus "ideaal" betekent ideaal voor de criteria van dit formulier, en "unqualified" is erop gericht eraan te falen.
+
+De evaluatie draait vanzelf zodra er een antwoord is, en opnieuw even nadat je er een wijzigt. Er is geen knop om in te drukken. **Reset answers** onderaan wist alles.
+
+<Note>
+  Een evaluatie draaien slaat het formulier eerst op. Elke niet-opgeslagen wijziging in de builder wordt vastgelegd op het moment dat de evaluatie draait, dus gebruik dit tabblad niet om te kijken naar een wijziging waarover je nog twijfelde.
+</Note>
+
+## De resultaten lezen
+
+De resultaten verschijnen onder de antwoorden, te beginnen met één paneel per evaluator die je aanzette. Elk paneel toont het hoofdresultaat, en op een paneel klikken opent het detail eronder.
+
+![De resultaten van een run met een ideale kandidaat: Meets criteria, 100% High, Availability op 66,67%, het criteria-detail per vraag, de samenvatting en de generated fields](/images/forms-builder/testing/07-test-results.png)
+
+**Criteria** groepeert de vragen onder **Must-have** en **Nice-to-have**, met een vinkje of een kruisje, het antwoord en het verwachte antwoord waar je er een schreef. Een door AI beoordeelde vraag draagt een AI-chip en de redenering van één regel van het model, en dat is de snelste manier om te zien of jouw notitie aankwam.
+
+**Scoring** toont het percentage, de puntentelling en wat elke vraag verdiende van zijn eigen maximum.
+
+![Het Scoring-paneel: een balk van 100%, Points 30 van 30, en 10 en 20 punten van de twee gescoorde vragen](/images/forms-builder/testing/07b-test-results-scoring.png)
+
+**Skills** toont een balk per skill. **Summary** en **Generated fields** staan onder de panelen, zodat ze in beeld blijven welk detail je ook open hebt.
+
+Een grijs **No result yet** is wat de panelen tonen voordat je een antwoord invoert. Blijft er een grijs na een run, dan had die evaluator niets om mee te werken. De gebruikelijke oorzaak is een vraag die aan staat zonder geschreven rules, waardoor de evaluator geen vraag heeft om te beoordelen.
+
+## Automation variables
+
+**Automation variables** onderaan somt elke waarde op die deze respons beschikbaar maakt voor een automatisering, met de variabele om te kopiëren en het resultaat uit de run voor je neus.
+
+![De lijst Automation variables, met de variabelen voor criteria, score, scorebereik, primaire skill en samenvatting met hun waarden](/images/forms-builder/testing/08-automation-variables.png)
+
+Dit is de lijst om een automatisering tegenaan te bouwen. `passed` lezen naast `{{form_response.evaluation.screening}}` vertelt je de exacte waarde om mee te vergelijken, en gokken doet dat niet. Zie [Variabelen](/nl/variables/introduction).
+
+## Wat het niet doet
+
+Een run hier maakt geen respons aan. De resultaten van het formulier blijven onaangeroerd, de responsteller beweegt niet en er bereikt niets een automatisering. De evaluatie is echt, de respons niet.
+
+Staat geen van Criteria, Scoring en Skills aan voor het formulier, dan toont het tabblad een **Enable Criteria**-, **Enable Scoring**- en **Enable Skills**-knop op de plek van de resultaatpanelen. Elke knop zet die evaluator aan voor het formulier zonder het tabblad te verlaten. Zie het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) voor wat je daarna configureert.
+
+## Gerelateerd
+
+- [Overzicht van formulierevaluatie](/nl/reference/forms/evaluation/overview) behandelt de vijf evaluatoren en de volgorde waarin je ze aanzet.
+- [Previews](/nl/reference/forms/testing/previews) draaien het formulier zelf, als webpagina of als chat.
+- [Sollicitanten screenen en scoren met een pre-screeningformulier](/nl/knowledge-base/cookbook/pre-screening-form) gebruikt dit tabblad om een formulier van begin tot eind te controleren.

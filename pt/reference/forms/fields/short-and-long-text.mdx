@@ -1,0 +1,57 @@
+---
+title: "Short Text e Long Text"
+sidebarTitle: "Short e Long Text"
+description: "O campo de texto livre num formulário da HireData. O Short Text dá uma caixa de uma linha, o Long Text uma mais alta, e ambos aceitam regras de comprimento e de padrão."
+keywords: ["campo de texto", "texto livre", "pergunta aberta", "textarea", "memo"]
+---
+
+Short Text e Long Text são um único tipo de campo com um comutador entre eles. O Short Text dá ao inquirido uma caixa de uma só linha. O Long Text dá uma caixa mais alta, que é o que quer para um motivo, uma explicação ou qualquer coisa que pretenda que os avaliadores de IA leiam.
+
+Ambos ficam no grupo **Text** da paleta **Add Content**. O botão no canto inferior esquerdo do cartão alterna entre eles.
+
+## Definições
+
+O cartão tem as [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). Short Text e Long Text acrescentam quatro próprias.
+
+- **Placeholder**, até 255 caracteres, mostrado na caixa vazia.
+- **Minimum Length** e **Maximum Length**, contados em caracteres.
+- **Validation Pattern**, uma expressão regular à qual a resposta tem de corresponder. A caixa mostra `/^[a-zA-Z0-9 ]*$/` como exemplo.
+
+As mensagens que o inquirido vê quando uma resposta viola uma destas regras ficam em **Validation**, em [Idiomas e traduções](/pt/reference/forms/overview#localization), como **Min Text**, **Max Text** e **Invalid Pattern**.
+
+![Um cartão de campo Short Text a mostrar Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, a auto reply, os três interruptores de avaliadores e um rodapé com Short Text e Optional](/images/forms-builder/fields/01-short-and-long-text.png)
+
+O mesmo campo alternado para Long Text, com Criteria e Skills ativados:
+
+![Um cartão de campo Long Text com Criteria e Skills ativados e um rodapé com Long Text e Optional, ao lado de uma pré-visualização a mostrar uma caixa de resposta de várias linhas](/images/forms-builder/fields/01b-long-text.png)
+
+## O que armazena
+
+Texto, exatamente como o inquirido o escreveu.
+
+## Operadores de lógica
+
+| Operador | Corresponde quando |
+|---|---|
+| has response | o inquirido deu alguma resposta |
+| is equal to | a resposta é exatamente o valor |
+| is not equal to | a resposta é qualquer outra coisa |
+| starts with | a resposta começa pelo valor |
+| ends with | a resposta termina no valor |
+| contains | o valor aparece algures na resposta |
+| does not contain | o valor não aparece em lado nenhum da resposta |
+
+![O separador Logic com o seletor de operadores aberto numa condição de Short Text, a listar has response, is equal to, is not equal to, starts with, ends with, contains e does not contain](/images/forms-builder/fields/operators-text.png)
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão.
+
+O Long Text é o campo com que a IA mais tem para trabalhar, porque a resposta é prosa em vez de um único valor. É o campo a que apontar **Skills**, e aquele em que vale a pena entregar uma verificação de **Criteria** à IA em vez de escrever uma regra.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Email](/pt/reference/forms/fields/email), [Phone Number](/pt/reference/forms/fields/phone-number) e [Website](/pt/reference/forms/fields/website) são a mesma caixa com uma verificação de formato.
+- [Criar um formulário na HireData](/pt/content/creating-a-form-in-hiredata) acompanha um formulário do zero até à publicação.

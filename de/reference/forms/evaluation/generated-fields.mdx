@@ -1,0 +1,66 @@
+---
+title: "Generated fields"
+sidebarTitle: "Generated fields"
+description: "Definieren Sie eigene Ausgaben, lassen Sie die KI sie aus einer ganzen Formularantwort füllen und lesen Sie die Werte in einer Automatisierung."
+keywords: ["KI-ausgabefelder", "strukturierte ausgabe", "generated fields", "aus formularantwort extrahieren", "KI-variablen"]
+---
+
+Generated fields ist der Sonderfall auf dem **Evaluation**-Tab. Die anderen Evaluatoren beurteilen Antworten, die Sie bereits gesammelt haben. Dieser erzeugt Werte, nach denen nie gefragt wurde.
+
+Sie definieren die gewünschten Ausgaben, die KI liest die abgeschlossene Antwort, und jede Ausgabe kommt gefüllt zurück. Ein Formular, das nie fragt „Wie sollen wir Sie kontaktieren?", kann trotzdem einen bevorzugten Kontaktkanal zurückgeben, weil eine der Antworten ihn erwähnt hat.
+
+## Was es nicht ist
+
+Die Ausgaben sind neu. Sie sind nicht die Fragen des Formulars und rühren sie nicht an.
+
+- Eine Ausgabe zu definieren fügt keine Frage hinzu, ändert keine Frage und schreibt nicht in eine Antwort.
+- Eine Ausgabe ist nicht an eine einzelne Frage gebunden. Jede Ausgabe wird aus der ganzen Antwort gefüllt.
+- Das Einschalten von **Generated fields** setzt keinen Schalter auf irgendeine Fragekarte, weil es pro Frage nichts einzuschalten gibt.
+
+Stellen Sie es sich als einen KI-Durchlauf über die abgeschlossene Antwort vor, der einen kleinen Datensatz zurückgibt, den Sie entworfen haben.
+
+## Einschalten
+
+**Generated fields** ist der letzte Block auf dem **Evaluation**-Tab. Schalten Sie ihn ein und klicken Sie ihn dann an, um die Einstellungen zu öffnen. Pro Frage gibt es nichts zu aktivieren.
+
+![Der geöffnete Generated-fields-Block mit Hinweisen für die KI, zwei Ausgabefeldern und den Schaltflächen Suggest with AI, Data source und Create custom](/images/forms-builder/evaluation/08-generated-fields.png)
+
+- **Hints for the AI (optional)** ist eine Anweisung für den ganzen Satz. Hier gehört hin, was zu tun ist, wenn die Antworten eine Ausgabe nicht abdecken, die sonst erraten wird.
+- **What should the AI return?** listet die Ausgaben in der Reihenfolge auf, in der die KI danach gefragt wird. Die Pfeile einer Zeile verschieben sie, der Stift bearbeitet sie, und der Papierkorb entfernt sie.
+
+Schalten Sie den Evaluator ein und fügen Sie nichts hinzu, wird nichts generiert. Die Liste braucht mindestens eine Ausgabe, bevor er läuft.
+
+## Eine Ausgabe hinzufügen
+
+Drei Schaltflächen stehen unter der Liste.
+
+**Create custom** öffnet **New output field**, ein zweistufiges Panel. Schritt 1 wählt den Typ, mit einem Suchfeld und Gruppen für die Grundtypen, Datums- und Zeittypen, Kontaktdaten sowie Web- und Medientypen. Schritt 2 ist die Konfiguration.
+
+![Schritt 2 von New output field, mit den Einstellungen Name, Reference as, What is it for? und Options für eine Listen-Ausgabe](/images/forms-builder/evaluation/09-new-output-field.png)
+
+- **Name** ist die Beschriftung, die Sie in Ergebnissen und in der Variablenauswahl sehen.
+- **Reference as** ist der Schlüssel, den eine Automatisierung verwendet. Er füllt sich aus dem Namen und muss im Formular eindeutig sein, ohne Leerzeichen oder geschweifte Klammern.
+- **What is it for? (optional)** sagt der KI, was der Wert bedeutet. Schreiben Sie es. Es tut mehr für das Ergebnis als der Name.
+- **Options** erscheint bei einer **List**-Ausgabe. Fügen Sie mindestens eine hinzu, und die KI muss daraus wählen, statt Freitext zu schreiben. So bekommen Sie einen Wert, nach dem Ihre Automatisierung verzweigen kann.
+
+**Done** fügt die Ausgabe hinzu. **Save & New** fügt sie hinzu und lässt das Panel für die nächste offen.
+
+**Suggest with AI** liest die Fragen des Formulars und Ihre Hinweise, schlägt bis zu drei Ausgaben vor und fügt sie direkt der Liste hinzu. Betrachten Sie sie als Ausgangspunkt und bearbeiten Sie die, die Sie behalten.
+
+**Data source** öffnet die Bibliothek der [Datenquellen](/de/reference/forms/data-sources). Wählen Sie eine Quelle, und die Ausgabe kann nur einen Eintrag dieser Liste enthalten, sodass die KI die Antwort einem Wert zuordnen muss, den Ihr Workspace bereits pflegt. Eine Datenquellen-Ausgabe hat keinen Stift: Ändern Sie die Liste, nicht die Ausgabe.
+
+## Wann es läuft und was es sieht
+
+Generated fields läuft nach Criteria, Scoring und Skills, über jede Antwort der Rückmeldung plus deren Ergebnisse. Diese Reihenfolge ist der Sinn der Sache. Eine Ausgabe kann aus dem Score oder dem Urteil ebenso gefüllt werden wie aus den Antworten – so bekommen Sie eine einzeilige Begründung für eine Ablehnung oder einen nächsten Schritt, der von der Bewertung abhängt.
+
+## Die Werte lesen
+
+Jede Ausgabe erscheint unter **Generated fields** in [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate) und noch einmal in der Liste **Automation variables** mit dem Schlüssel zum Kopieren.
+
+In einer Automatisierung ist eine Ausgabe `{{form_response.evaluation.ai_output.<key>}}`, die Ausgabe `preferred_contact` ist also `{{form_response.evaluation.ai_output.preferred_contact}}`. Siehe [Variablen](/de/variables/introduction).
+
+## Verwandte Themen
+
+- [Übersicht über die Formular-Evaluation](/de/reference/forms/evaluation/overview) behandelt die fünf Evaluatoren und die Reihenfolge, in der Sie sie einschalten.
+- [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate) zeigt die generierten Werte aus einem Lauf, den Sie steuern.
+- [Datenquellen](/de/reference/forms/data-sources) erklärt die Listen, aus denen eine Datenquellen-Ausgabe schöpft.

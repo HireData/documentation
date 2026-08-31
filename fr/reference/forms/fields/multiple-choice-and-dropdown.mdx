@@ -1,0 +1,59 @@
+---
+title: "Multiple Choice et Dropdown"
+sidebarTitle: "Multiple Choice et Dropdown"
+description: "Le champ à options d'un formulaire HireData. Multiple Choice liste les options, Dropdown les cache dans un menu, et les deux peuvent tirer leurs options d'une source de données."
+keywords: ["choix", "options", "select", "liste de choix", "boutons radio", "cases à cocher"]
+---
+
+Multiple Choice et Dropdown sont un seul type de champ avec un commutateur entre les deux. Multiple Choice liste chaque option à l'écran, si bien que le répondant les voit toutes d'un coup. Dropdown les place derrière un menu, la meilleure forme dès que la liste s'allonge.
+
+Les deux se trouvent dans le groupe **Choice** de la palette **Add Content**. Le bouton en bas à gauche de la carte permet de passer de l'un à l'autre.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Les options elles-mêmes et trois paramètres de plus appartiennent à ce type.
+
+- **Options**, la liste dans laquelle le répondant choisit.
+- **Add Data Source**, au-dessus de la liste, qui remplit les options depuis une liste enregistrée que votre espace de travail tient déjà, au lieu d'options que vous saisissez. Voir [Sources de données](/fr/reference/forms/data-sources).
+- **Conversational Button Text**, le libellé du bouton qui ouvre la liste dans une conversation WhatsApp. La zone affiche « Choose » comme placeholder.
+- **Placeholder**, sur Dropdown uniquement, le texte du menu fermé avant qu'un choix soit fait.
+- Le bouton de pied de carte indiquant **Single Answer** ouvre **Answer selection**, qui contient un seul interrupteur, **Allow multiple answers**. Activez-le et le répondant peut choisir plusieurs options.
+
+Chaque ligne d'option porte le texte de l'option, une roue dentée, un plus et un moins. La roue dentée ouvre l'**Auto reply (on answer)** de cette option, le message WhatsApp envoyé quand cette option est choisie. Le plus ajoute une ligne en dessous et le moins en retire une. Un champ à choix a besoin de deux options, donc le moins disparaît dès qu'il n'en reste que deux.
+
+![Une carte de champ Multiple Choice montrant Question, Description, Image, Conversational Button Text, la liste Options avec Add Data Source, la réponse automatique en cas de réponse invalide, les trois interrupteurs d'évaluateur et un pied de carte indiquant Multiple Choice, Single Answer et Required, à côté d'un aperçu listant les trois options](/images/forms-builder/fields/09-multiple-choice.png)
+
+Le même champ en Dropdown, qui ajoute un **Placeholder** :
+
+![Une carte de champ Dropdown avec un paramètre Placeholder au-dessus de Conversational Button Text et un pied de carte indiquant Dropdown, Single Answer et Optional, à côté d'un aperçu montrant un menu fermé](/images/forms-builder/fields/09b-dropdown.png)
+
+## Ce que le champ stocke
+
+Les options choisies, sous forme de liste. Un champ à réponse unique stocke une liste d'un seul élément.
+
+## Opérateurs de logique
+
+| Opérateur | Correspond quand |
+|---|---|
+| has response | le répondant a choisi quelque chose |
+| is equal to | la réponse est l'option que vous avez choisie |
+| is not equal to | la réponse est n'importe quelle autre option |
+| is one of | la réponse est l'une des options que vous avez choisies |
+| is not one of | la réponse n'est aucune des options que vous avez choisies |
+
+**is one of** est celui qui économise des règles. Trois options qui mènent toutes au même suivi n'ont besoin que d'une règle, pas de trois.
+
+![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Multiple Choice, listant has response, is equal to, is not equal to, is one of et is not one of](/images/forms-builder/fields/operators-choice.png)
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte.
+
+Un champ à choix est le plus facile à noter, parce que vous connaissez déjà toutes les réponses qu'il peut donner. Des points par option, c'est une règle que vous écrivez une fois et à laquelle vous pouvez vous fier.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Sources de données](/fr/reference/forms/data-sources) explique comment remplir les options depuis une liste enregistrée.
+- [Yes/No](/fr/reference/forms/fields/yes-no) est le champ à utiliser pour un simple oui ou non.

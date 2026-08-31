@@ -1,7 +1,7 @@
 ---
 title: "Configurer un formulaire par enregistrement"
 sidebarTitle: "Formulaires par enregistrement"
-description: "Activez ou désactivez des questions de formulaire individuelles pour un poste dans HireData, afin qu'un seul formulaire de présélection convienne à chaque client et à chaque rôle sans construire un formulaire pour chacun."
+description: "Activez ou désactivez des questions de formulaire individuelles par poste dans HireData, afin qu'un seul formulaire de présélection convienne à chaque client et à chaque rôle sans doublons."
 keywords: ["formulaire par poste", "formulaire par enregistrement", "configurer les questions d'un formulaire", "questions disponibles", "enable all", "mandatory only", "onglet forms d'une collection", "réponses d'un enregistrement", "configuration par enregistrement", "présélection par poste"]
 ---
 
@@ -11,7 +11,7 @@ Vous n'avez pas besoin d'un formulaire par poste pour autant. Construisez un for
 
 ## Avant de commencer
 
-Vous pouvez configurer un formulaire par enregistrement dès que le formulaire est lié à un objet et que cet objet est en premier dans la liste du formulaire. Liez-le sur le panneau **Objects** de l'éditeur de formulaires, décrit dans [Objets](/fr/reference/forms/question-types#objets).
+Vous pouvez configurer un formulaire par enregistrement dès que le formulaire est lié à un objet et que cet objet est en premier dans la liste du formulaire. Liez-le sur le panneau **Objects** de l'éditeur de formulaires, décrit dans [Objets](/fr/reference/forms/objects).
 
 Placez Vacancy en premier et vous configurez le formulaire par poste. Les objets en dessous, tels que Match ou Candidate, vous donnent toujours leurs variables et rattachent la réponse à leur enregistrement. Vous ne pouvez pas configurer le formulaire par rapport à eux.
 
@@ -38,12 +38,12 @@ HireData enregistre chaque modification au fur et à mesure. La liste met en év
 
 Deux choses restent telles quelles :
 
-- Les questions avec **Always include** activé dans l'éditeur de formulaires. Le formulaire les sert quoi que dise l'enregistrement. Voir [Affichage et exigences](/fr/reference/forms/question-types#affichage-et-exigences).
+- Les questions avec **Always include** activé dans l'éditeur de formulaires. Le formulaire les sert quoi que dise l'enregistrement. Voir [Affichage et exigences](/fr/reference/forms/overview#display-and-requirements).
 - Les écrans de fin et les redirections. Ce ne sont pas des questions, elles n'atteignent donc jamais la liste.
 
 ### Raccourcis
 
-**Preview** ouvre le formulaire tel que cet enregistrement le servirait, avec les valeurs propres à l'enregistrement remplies dans les questions. Il propose les mêmes vues **Interactive**, **Conversational** et **Test & Evaluate** que l'éditeur, ainsi qu'un sélecteur de langue. Utilisez-le pour vérifier qu'une question se lit toujours correctement une fois ses variables résolues.
+**Preview** ouvre le formulaire tel que cet enregistrement le servirait, avec les valeurs propres à l'enregistrement remplies dans les questions. Il propose les mêmes vues [Interactive, Conversational](/fr/reference/forms/testing/previews) et [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) que l'éditeur, ainsi qu'un sélecteur de langue. Utilisez-le pour vérifier qu'une question se lit toujours correctement une fois ses variables résolues.
 
 Le menu à côté de **Preview** contient trois actions :
 

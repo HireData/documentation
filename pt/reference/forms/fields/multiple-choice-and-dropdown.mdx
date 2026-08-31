@@ -1,0 +1,59 @@
+---
+title: "Multiple Choice e Dropdown"
+sidebarTitle: "Multiple Choice e Dropdown"
+description: "O campo de opções num formulário da HireData. Multiple Choice lista as opções, Dropdown esconde-as num menu, e ambos podem ir buscar as opções a uma data source."
+keywords: ["escolha", "opções", "select", "picklist", "botões de rádio", "caixas de seleção"]
+---
+
+Multiple Choice e Dropdown são um único tipo de campo com um comutador entre eles. Multiple Choice lista todas as opções no ecrã, para que o inquirido as veja todas de uma vez. Dropdown coloca-as atrás de um menu, que é a melhor forma quando a lista fica longa.
+
+Ambos ficam no grupo **Choice** da paleta **Add Content**. O botão no canto inferior esquerdo do cartão alterna entre eles.
+
+## Definições
+
+O cartão tem as [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). As próprias opções e mais três definições pertencem a este tipo.
+
+- **Options**, a lista de que o inquirido escolhe.
+- **Add Data Source**, acima da lista, que preenche as opções a partir de uma lista guardada que o seu workspace já mantém, em vez de opções que escreve. Veja [Data sources](/pt/reference/forms/data-sources).
+- **Conversational Button Text**, a etiqueta do botão que abre a lista numa conversa de WhatsApp. A caixa mostra "Choose" como placeholder.
+- **Placeholder**, apenas no Dropdown, o texto no menu fechado antes de algo ser escolhido.
+- O botão do rodapé com o texto **Single Answer** abre **Answer selection**, que contém um interruptor, **Allow multiple answers**. Ative-o e o inquirido pode escolher mais do que uma opção.
+
+Cada linha de opção tem o texto da opção, uma engrenagem, um mais e um menos. A engrenagem abre a **Auto reply (on answer)** dessa opção, a mensagem de WhatsApp enviada quando essa opção é escolhida. O mais adiciona uma linha por baixo e o menos remove uma. Um campo de escolha precisa de duas opções, por isso o menos desaparece quando só restam duas.
+
+![Um cartão de campo Multiple Choice a mostrar Question, Description, Image, Conversational Button Text, a lista Options com Add Data Source, a auto reply on invalid answer, os três interruptores de avaliadores e um rodapé com Multiple Choice, Single Answer e Required, ao lado de uma pré-visualização a listar as três opções](/images/forms-builder/fields/09-multiple-choice.png)
+
+O mesmo campo como Dropdown, que acrescenta um **Placeholder**:
+
+![Um cartão de campo Dropdown com uma definição Placeholder acima de Conversational Button Text e um rodapé com Dropdown, Single Answer e Optional, ao lado de uma pré-visualização a mostrar um menu fechado](/images/forms-builder/fields/09b-dropdown.png)
+
+## O que armazena
+
+As opções escolhidas, como lista. Um campo de resposta única armazena uma lista com um elemento.
+
+## Operadores de lógica
+
+| Operador | Corresponde quando |
+|---|---|
+| has response | o inquirido escolheu alguma coisa |
+| is equal to | a resposta é a opção que escolheu |
+| is not equal to | a resposta é qualquer outra opção |
+| is one of | a resposta é qualquer uma das opções que escolheu |
+| is not one of | a resposta não é nenhuma das opções que escolheu |
+
+**is one of** é o que poupa regras. Três opções que levam todas ao mesmo seguimento precisam de uma regra, não de três.
+
+![O separador Logic com o seletor de operadores aberto numa condição de Multiple Choice, a listar has response, is equal to, is not equal to, is one of e is not one of](/images/forms-builder/fields/operators-choice.png)
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão.
+
+Um campo de escolha é o mais fácil de pontuar, porque já conhece todas as respostas que ele pode dar. Pontos por opção é uma regra que escreve uma vez e em que pode confiar.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Data sources](/pt/reference/forms/data-sources) explica como preencher as opções a partir de uma lista guardada.
+- [Yes/No](/pt/reference/forms/fields/yes-no) é o campo a usar para um simples sim ou não.

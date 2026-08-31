@@ -1,0 +1,211 @@
+---
+title: "Overzicht van de formulierbuilder"
+sidebarTitle: "Overzicht"
+description: "Een rondleiding door de HireData-formulierbuilder: de drie tabbladen, de toolbar-drawers, elk veldtype en de instellingen die elk veld deelt."
+keywords: ["formulierbuilder", "formuliervelden", "veldtypen", "formulierthema", "formuliervertalingen", "formuliertemplates", "formulier openbaar maken", "always include", "verborgen veld", "verplicht veld"]
+---
+
+Een formulier is een set vragen die iemand op het web of in een WhatsApp-gesprek beantwoordt. Open de pagina **Forms** via **Settings** en klik op **New Form**. Kies **Blank Form** of een van de [templates](#templates), en het nieuwe formulier opent in de builder.
+
+Deze pagina brengt de builder in kaart. Voor een walkthrough die één formulier van blanco naar gepubliceerd brengt, lees je [Een formulier maken in HireData](/nl/content/creating-a-form-in-hiredata).
+
+## De builder in vogelvlucht
+
+De builder heeft drie delen.
+
+De linkerkolom toont de velden van het formulier in de volgorde waarin een respondent ze tegenkomt. Boven de lijst zitten de tabbladen **Content**, **Logic** en **Evaluation**, en de **+**-knop die het **Add Content**-palet opent.
+
+De rechterkolom toont een preview van het formulier, met eigen tabbladen **Interactive Preview**, **Conversational Preview** en **Test & Evaluate**.
+
+De balk bovenaan bevat de formuliernaam en de toolbar.
+
+![De formulierbuilder: de formuliernaam en toolbar bovenaan, de tabbladen Content, Logic en Evaluation met de veldenlijst links, en de Interactive Preview rechts](/images/forms-builder/31-builder-at-a-glance.png)
+
+### Content-tabblad
+
+Het tabblad **Content** bevat de velden en hun instellingen. Klik op een veld om zijn kaart te openen, en versleep het aan de handle links om de volgorde te wijzigen.
+
+De **+**-knop opent het **Add Content**-palet. Het groepeert de items per categorie en herhaalt de meest gebruikte onder **Recommended**. **Find a field type** doorzoekt de lijst.
+
+![Het Add Content-palet met de Recommended-lijst en de groepen Text, Contact Info, Temporal, Choice, Numeric, Rating, Other en Ending](/images/forms-builder/01-add-content-palette.png)
+
+### Logic-tabblad {#logic-tab}
+
+Het tabblad **Logic** bepaalt waar een respondent daarna heen gaat. Elke vraag krijgt een **Add Rule**-knop en een footer-target, en een rule leest als `if <field> <operator> <value> then go to <target>`.
+
+Zie [Logic](/nl/reference/forms/logic) voor de operators die elk veldtype biedt, de vertakkingspatronen die het kopiëren waard zijn en wat je controleert wanneer een rule niet afgaat.
+
+### Evaluation-tabblad
+
+Het tabblad **Evaluation** verandert een afgeronde response in iets waar een recruiter op kan handelen. Het bevat vijf evaluators, elk met een schakelaar: **Summary**, **Criteria**, **Scoring**, **Skills** en **Generated fields**.
+
+Zet er hier een aan en, voor de drie die vraag voor vraag werken, krijgt hij ook een schakelaar op elke veldkaart, zodat je hem kunt configureren zonder het tabblad **Content** te verlaten.
+
+Zie [Evaluatie](/nl/reference/forms/evaluation/overview) voor wat elke evaluator beslist, wat hij teruggeeft en de volgorde waarin je ze moet aanzetten.
+
+### Preview-paneel
+
+**Interactive Preview** loopt door het webformulier en draait dezelfde logica als het openbare formulier. **Conversational Preview** toont de chatversie. **Test & Evaluate** vult een hele response in en laat de evaluators erover draaien.
+
+Zie [Previews](/nl/reference/forms/testing/previews) en [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate).
+
+## De toolbar
+
+De toolbar loopt langs de rechterbovenkant van de builder, van **Save** tot het menu met drie puntjes.
+
+![De toolbar van de formulierbuilder, met Save, de preview-knop, Publish, de brand-selector, de vijf drawer-knoppen en het meer-menu](/images/forms-builder/25-builder-toolbar.png)
+
+**Save** slaat je wijzigingen op. De oog-knop ernaast slaat het formulier op en opent het in een [preview-venster](/nl/reference/forms/testing/previews#the-preview-window) over de builder heen.
+
+**Publish** maakt het formulier beschikbaar voor respondenten. Er staat **Withdraw** zodra het formulier is gepubliceerd.
+
+**Brand** kiest het merk waar de kleuren van het formulier vandaan komen, en **Reset to default** zet het formulier terug naar het merk van je account.
+
+Vijf knoppen rechts openen drawers over de preview:
+
+- **Show variable list** toont de variabelen die het formulier kan gebruiken, elk met zijn type en huidige waarde, en een **Search**-vak om ze te filteren. Zie [Variabelen](/nl/variables/introduction).
+- **Manage Template** publiceert het geopende formulier naar de gedeelde templatebibliotheek. Hij verschijnt alleen voor accounts die die bibliotheek beheren, dus de meeste workspaces zien hem nooit. Zie [Templates](#templates).
+- **Show objects** koppelt records zoals een vacature of een match aan het formulier. Zie [Objects](/nl/reference/forms/objects).
+- **Manage Languages** stelt de standaardtaal van het formulier en zijn vertalingen in. Zie [Talen en vertalingen](#localization).
+- **Settings** bevat het thema en de openbaar-toggle. Zie [Thema en publiceren](#theme-and-publishing).
+
+Het menu met drie puntjes aan het einde biedt **Preview**, **Duplicate**, **Publish**, **Archive**, **Export CSV**, **Export Excel** en **Delete**.
+
+## Een veldtype kiezen
+
+Het palet toont meer items dan er veldtypen zijn. Short Text en Long Text, Multiple Choice en Dropdown, en Net Promoter Score en Opinion Scale zijn elk één type met twee instellingen, gewisseld in de footer van de veldkaart.
+
+Elke rij hieronder heeft een eigen pagina, met de instellingen van dat type, wat het opslaat, de operators die logica ervoor biedt en wat de AI-evaluators ermee kunnen.
+
+| Veldtype | Groep | Slaat op |
+|---|---|---|
+| [Short Text en Long Text](/nl/reference/forms/fields/short-and-long-text) | Text | tekst |
+| [Email](/nl/reference/forms/fields/email) | Contact Info | tekst |
+| [Phone Number](/nl/reference/forms/fields/phone-number) | Contact Info | tekst |
+| [Website](/nl/reference/forms/fields/website) | Contact Info | tekst |
+| [Date](/nl/reference/forms/fields/date) | Temporal | een datum en tijd |
+| [Time](/nl/reference/forms/fields/time) | Temporal | een datum en tijd |
+| [Datetime](/nl/reference/forms/fields/datetime) | Temporal | een datum en tijd |
+| [Yes/No](/nl/reference/forms/fields/yes-no) | Choice | Yes of No |
+| [Multiple Choice en Dropdown](/nl/reference/forms/fields/multiple-choice-and-dropdown) | Choice | de gekozen opties |
+| [Number](/nl/reference/forms/fields/number) | Numeric | een getal |
+| [Currency](/nl/reference/forms/fields/currency) | Numeric | een getal |
+| [Net Promoter Score en Opinion Scale](/nl/reference/forms/fields/net-promoter-score-and-opinion-scale) | Rating | een punt op de schaal, 0 tot 10 voor Net Promoter Score |
+| [File Upload](/nl/reference/forms/fields/file-upload) | Other | de geüploade bestanden |
+| [Ending Screen](/nl/reference/forms/fields/ending-screen) | Ending | niets |
+| [Redirect URL](/nl/reference/forms/fields/redirect-url) | Ending | niets |
+
+Het type bepaalt ook welke operators een rule op die vraag kan gebruiken. [Logic](/nl/reference/forms/logic#operators) heeft de volledige tabel.
+
+Elk veldtype behalve de twee endings kan de AI-evaluators voeden: Criteria, Scoring en Skills. Zie [Evaluatie](/nl/reference/forms/evaluation/overview).
+
+<Note>
+  Er bestaan een paar meer veldtypen dan het palet biedt: Range, Color en de varianten Star, Thumbs, Emoji en Slider van een rating. Alleen een integratie zoals de HireData-API kan ze toevoegen. Duikt er een op in een formulier dat jij niet hebt gebouwd, dan werkt het, maar de builder heeft er geen instellingenkaart voor.
+</Note>
+
+## Instellingen die elk veld deelt {#settings-every-field-shares}
+
+Klik op een veld om zijn kaart te openen. De instellingen die elk veld deelt zitten bovenaan en onderaan, met de eigen instellingen van het type ertussenin.
+
+- **Question**, maximaal 255 tekens. Ending screens noemen dit **Title**.
+- **Description**, maximaal 1024 tekens, getoond onder de vraag.
+- **Image**, met een plaatsingsselector die standaard op **Above the Input Field** staat. De andere plaatsingen zijn **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page** en **Background**.
+- Een **Criteria**-, **Scoring**- en **Skills**-schakelaar, één voor elke evaluator die je voor het formulier hebt aangezet.
+- Een footer met de knop die [Display & requirements](#display-and-requirements) opent, en de typeswitch voor de typen die in twee smaken komen: Short Text en Long Text, Yes/No's Checkbox en Toggle, Multiple Choice en Dropdown, Net Promoter Score en Opinion Scale.
+
+Op de meeste, maar niet alle, veldtypen verschijnen nog twee instellingen. Beide zijn berichten voor formulieren die in een WhatsApp-gesprek worden beantwoord:
+
+- **Auto reply (on answer)** wordt verstuurd zodra de respondent de vraag beantwoordt. Yes/No vervangt het door een reply per antwoord, en Multiple Choice en Dropdown verplaatsen het naar elke optie.
+- **Auto reply (on invalid answer)** verschijnt zodra **Required** aan staat. De builder omschrijft het als het bericht dat wordt verstuurd wanneer een verplichte vraag onjuist wordt beantwoord.
+
+Tekstinstellingen zoals **Question**, **Description** en de placeholders accepteren variabelen, zodat een vraag de respondent bij naam kan aanspreken of de vacature kan noemen. Sommige variabelen komen pas beschikbaar nadat je hun object aan het formulier hebt gekoppeld, zie [Objecten en data sources](#objects-and-data-sources). Voor de syntax, zie [Variabelen](/nl/variables/introduction).
+
+Redirect URL heeft niets van dit alles. Het is één enkel veld voor het adres.
+
+![Een Dropdown-veldkaart met Question, Description, Image, Placeholder, Conversational Button Text, de opties met Add Data Source, de drie evaluator-schakelaars en een footer met Dropdown, Single Answer en Optional](/images/forms-builder/02-question-card-common-settings.png)
+
+## Weergave en vereisten {#display-and-requirements}
+
+De knop rechtsonder op een veldkaart opent **Display & requirements**. Zijn label vertelt je de huidige status van het veld: **Optional**, **Required**, **Hidden** of **Always included**.
+
+![De Display & requirements-popup op een veldkaart, met de schakelaars Hidden, Required en Always include](/images/forms-builder/22-display-and-requirements.png)
+
+**Hidden**, "Hide this field from respondents."
+
+Een verborgen veld wordt overgeslagen terwijl de respondent door het formulier gaat, en logic rules kunnen er niet naartoe springen. Het opgeslagen antwoord blijft beschikbaar voor automatiseringen, en zo draag je een waarde zoals een referentie of een ID door een formulier mee zonder ernaar te vragen.
+
+**Required**, "Require respondents to answer this field."
+
+Er verschijnt een sterretje op het vraaglabel, en de respondent kan niet verder totdat het veld een antwoord heeft.
+
+**Always include**, "Prevent configurations from disabling this field. This will make the field required."
+
+Zet je hem aan, dan gaat **Required** ook aan. Niemand kan het veld daarna uitschakelen voor een individueel record, dus het formulier serveert het elke keer. Gebruik het voor de vragen waar je proces niet zonder kan. Zie [Een formulier per record configureren](/nl/content/configuring-a-form-per-record).
+
+Zet je **Hidden** aan, dan worden **Required** en **Always include** gewist en vergrendeld. Een veld dat de respondent nooit ziet kan niet worden beantwoord, dus het kan ook niet verplicht zijn.
+
+### Wat telt als een antwoord {#required-answers}
+
+Een leeg tekstvak, een leeg getallenvak, geen gekozen optie en geen bijgevoegd bestand tellen allemaal als geen antwoord, en het webformulier toont een bericht onder de vraag, zoals "This field is required and cannot be empty."
+
+No antwoorden, een toggle uit laten, 0 invoeren en 0 kiezen op een rating zijn echte antwoorden en horen een verplicht veld te vervullen.
+
+<Warning>
+  Een bug in het webformulier blokkeert deze antwoorden. Antwoord No, laat een toggle uit, voer 0 in of kies 0 op een rating, en de respondent blijft steken op een verplichte vraag. **Next** doet niets, er verschijnt geen bericht en een rule op dat veld gaat niet af. Laat totdat de fix uitkomt Yes/No- en Net Promoter Score-vragen optioneel, en stel een **Minimum Value** van 1 in op een verplichte Number-vraag.
+</Warning>
+
+In een conversationeel formulier is **Auto reply (on invalid answer)** het bericht dat wordt teruggestuurd wanneer een verplicht veld geen bruikbaar antwoord ontvangt.
+
+## Objecten en data sources {#objects-and-data-sources}
+
+**Show objects** in de toolbar koppelt records aan het formulier. Koppel een vacature en haar velden worden variabelen die je in elke vraag kunt schrijven, en het object bovenaan de lijst bepaalt voor welke records je het formulier kunt configureren. Zie [Objects](/nl/reference/forms/objects).
+
+**Add Data Source** op een Multiple Choice- of Dropdown-veld vult zijn opties uit een lijst die je workspace al bijhoudt, in plaats van opties die je typt. De lijst is van de workspace, dus hem bewerken wijzigt elke vraag die hem gebruikt. Zie [Data sources](/nl/reference/forms/data-sources).
+
+## Thema en publiceren {#theme-and-publishing}
+
+De **Settings**-drawer bepaalt hoe het formulier eruitziet en wie het kan bereiken.
+
+![De Settings-drawer met Make form public, Logo, Alignment, Font Family, Text Color, Scale, de ingeklapte secties Input en Background, Button Text en Border radius](/images/forms-builder/26-settings-drawer.png)
+
+De drawer opent met **Make form public**, "Public forms can be anonymously answered by anyone with the form's URL." Laat hem uit en het formulier opent alleen voor een respondent naar wie je het hebt gestuurd. Daarna volgen de thema-instellingen:
+
+- **Logo**, de afbeelding bovenaan het formulier. Het begint als je merklogo, en het kruisje naast het label verwijdert het.
+- **Alignment**, dat de vraagtekst en invoervelden links, in het midden of rechts zet.
+- **Font Family**, het lettertype dat het formulier gebruikt.
+- **Text Color**, de kleur van de tekst van het formulier.
+- **Scale**, dat de tekst en invoervelden schaalt: **Default**, **Large** of **Extra Large**.
+- **Input**, een sectie met de **Variant** van de antwoordvakken (**Solid**, **Soft** of **Outline**), **Color**, **Background Color**, **Button Color** en **Button Text Color**.
+- **Background**, een sectie met een **Background Image** en een achtergrond-**Color**.
+- **Button Text**, het label op de knop waarmee de respondent verdergaat. Er staat "Ok" totdat je het wijzigt.
+- **Border radius**, met **None**, **Normal**, **Large** en **Custom**.
+
+Elke kleur begint als een waarde uit het geselecteerde merk, getoond als een naam zoals "Theme: Palette Background Text Color". Wijzig er een en hij geldt alleen voor dit formulier, zodat een formulier bij je merk past totdat jij beslist van niet.
+
+## Talen en vertalingen {#localization}
+
+**Manage Languages** in de toolbar stelt de **Default language** van het formulier in en toont zijn vertalingen. De standaardtaal is de taal waarin je de vragen hebt geschreven.
+
+Klik op **New Translation** om er een toe te voegen. Kies de **Language** en vertaal dan met de hand, of klik op **Create AI translation**, dat het hele formulier voor je invult.
+
+![Het New Translation-paneel met Nederlands geselecteerd, de knop Create AI translation, de groep Settings en het eerste veld uitgeklapt naar Question, Description, Min Label en Max Label](/images/forms-builder/27-translation-editor.png)
+
+Een vertaling dekt drie groepen:
+
+- **Settings**, de formulier-**Name**, de **Button text**, de **Powered by**-regel en de **Upload title** en **Upload description** van een file upload.
+- **Fields**, elk veld in het formulier. Elk bevat zijn **Question** en **Description**, plus de tekst die zijn type toevoegt, zoals de **Min Label** en **Max Label** van een rating, de **Conversational button text** van een keuzeveld en zijn opties met hun auto replies.
+- **Validation**, de berichten die een respondent ziet wanneer een antwoord niet door de controle komt, zoals **Field Is Required**, **Invalid Email** en **Max Number**.
+
+Elk item toont de brontekst boven een leeg vak. Laat een vak leeg en het formulier valt voor die string terug op de standaardtaal.
+
+Respondenten wisselen van taal met de kiezer bovenaan het formulier. Om de taal in te stellen waarin je workspace schrijft, zie [Een standaardtaal en AI tone of voice instellen](/nl/settings/setting-a-default-language-and-ai-tone-of-voice).
+
+## Templates
+
+Klik op **New Form** en er opent een galerij met **Blank Form** als eerste kaart. De rest zijn kant-en-klare recruitmentformulieren zoals **Job Application (Pre-Intake)**, **Intake**, **Rejection** en **Net Promoter Score (NPS)**, elk met een beschrijving van wat het vraagt en een tag voor het record waar het bij past. De chips **Candidate** en **Contact** bovenaan filteren de galerij.
+
+Een template kiezen kopieert zijn velden naar een nieuw formulier, en alles in de kopie mag je wijzigen.
+
+![De New Form-dialoog met de tagfilters Candidate en Contact, de Blank Form-kaart en de recruitmentformulier-templates](/images/forms-builder/28-new-form-templates.png)
+
+Beheert je account de gedeelde templatebibliotheek, dan maakt de knop **Manage Template** in de toolbar van het geopende formulier een template. **Configure Template** vraagt om een **Title**, een **Description** en **Tags**, biedt aan alle drie met AI te schrijven en zet de template in de galerij wanneer je op **Enable** klikt. **Feature Template** promoveert hem naar de top.

@@ -1,0 +1,51 @@
+---
+title: "Ending Screen"
+sidebarTitle: "Ending Screen"
+description: "O último ecrã de um formulário da HireData. Mostra um título e uma descrição, e pode ter um botão que encaminha o inquirido, com um temporizador opcional."
+keywords: ["página de agradecimento", "ecrã de agradecimento", "última página", "ecrã de conclusão"]
+---
+
+Um ecrã de fim é onde o inquirido chega quando o formulário termina. Mostra um título, uma descrição opcional e um botão opcional.
+
+O separador **Content** reúne os fins no seu próprio grupo **Endings**, no fundo da lista de campos, separados das perguntas. Um formulário pode ter vários, e é essa a ideia. Uma regra de lógica pode enviar um candidato forte para um fim e todos os outros para outro.
+
+Fica no grupo **Ending** da paleta **Add Content**. O botão no canto inferior esquerdo do cartão alterna-o para um [Redirect URL](/pt/reference/forms/fields/redirect-url).
+
+## Definições
+
+Um fim tem menos definições do que uma pergunta, porque ninguém lhe responde.
+
+- **Title**, até 255 caracteres. É o que os outros tipos de campo chamam **Question**.
+- **Description**, até 1024 caracteres.
+- **Image**, com o mesmo seletor de posicionamento que todos os campos têm.
+- **Button**, um interruptor no rodapé.
+
+Ativar **Button** acrescenta duas definições e um segundo interruptor.
+
+- **Button Text**, a etiqueta do botão. A caixa mostra "Submit Form" como placeholder.
+- **Redirect URL**, o endereço que o botão abre.
+- **Redirect timer**, um interruptor que acrescenta um **Timer** em segundos, para que o inquirido seja enviado sozinho para o endereço passados esses segundos, em vez de esperar por um clique.
+
+Não há botão **Display & requirements**, nem auto reply, nem interruptores de avaliadores. Um fim não é uma pergunta, por isso nenhum deles se aplica.
+
+![Um cartão de Ending Screen a mostrar Title, Description, Image, Button Text, Redirect URL, um Timer em segundos e um rodapé com os interruptores Button e Redirect timer ambos ativados, ao lado de uma pré-visualização a mostrar o título e um botão Submit Form](/images/forms-builder/fields/14-ending-screen.png)
+
+## O que armazena
+
+Nada. Um fim não tem input.
+
+## Operadores de lógica
+
+Nenhum. Um fim não tem botão **Add Rule** no separador **Logic**, porque um fim é onde o formulário para. As regras das perguntas apontam para os fins, não o contrário.
+
+![O separador Logic a mostrar uma linha de fim sem botão Add Rule, ao lado de uma linha de pergunta que tem um](/images/forms-builder/fields/operators-endings.png)
+
+## Avaliação
+
+Um ecrã de fim não tem interruptores de avaliadores. Os avaliadores de IA leem as respostas, e um fim não tem nenhumas.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Redirect URL](/pt/reference/forms/fields/redirect-url) é o outro fim, sem ecrã nenhum.
+- [Lógica](/pt/reference/forms/logic) explica como enviar inquiridos diferentes para fins diferentes.

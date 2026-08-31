@@ -1,0 +1,57 @@
+---
+title: "Short Text et Long Text"
+sidebarTitle: "Short et Long Text"
+description: "Le champ de texte libre d'un formulaire HireData. Short Text donne une zone d'une ligne, Long Text une zone plus haute, et les deux acceptent des règles de longueur et de motif."
+keywords: ["champ texte", "texte libre", "question ouverte", "textarea", "mémo"]
+---
+
+Short Text et Long Text sont un seul type de champ avec un commutateur entre les deux. Short Text donne au répondant une zone d'une seule ligne. Long Text donne une zone plus haute, celle qu'il vous faut pour une motivation, une explication, ou tout ce que les évaluateurs IA sont censés lire.
+
+Les deux se trouvent dans le groupe **Text** de la palette **Add Content**. Le bouton en bas à gauche de la carte permet de passer de l'un à l'autre.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Short Text et Long Text en ajoutent quatre qui leur sont propres.
+
+- **Placeholder**, jusqu'à 255 caractères, affiché dans la zone vide.
+- **Minimum Length** et **Maximum Length**, comptés en caractères.
+- **Validation Pattern**, une expression régulière à laquelle la réponse doit correspondre. La zone affiche `/^[a-zA-Z0-9 ]*$/` en exemple.
+
+Les messages que voit un répondant lorsqu'une réponse enfreint l'une de ces règles se trouvent sous **Validation** dans [Langues et traductions](/fr/reference/forms/overview#localization), sous les noms **Min Text**, **Max Text** et **Invalid Pattern**.
+
+![Une carte de champ Short Text montrant Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, la réponse automatique, les trois interrupteurs d'évaluateur et un pied de carte indiquant Short Text et Optional](/images/forms-builder/fields/01-short-and-long-text.png)
+
+Le même champ passé en Long Text, avec Criteria et Skills activés :
+
+![Une carte de champ Long Text avec Criteria et Skills activés et un pied de carte indiquant Long Text et Optional, à côté d'un aperçu montrant une zone de réponse multiligne](/images/forms-builder/fields/01b-long-text.png)
+
+## Ce que le champ stocke
+
+Du texte, exactement tel que le répondant l'a saisi.
+
+## Opérateurs de logique
+
+| Opérateur | Correspond quand |
+|---|---|
+| has response | le répondant a répondu, quelle que soit la réponse |
+| is equal to | la réponse est exactement la valeur |
+| is not equal to | la réponse est n'importe quoi d'autre |
+| starts with | la réponse commence par la valeur |
+| ends with | la réponse se termine par la valeur |
+| contains | la valeur apparaît quelque part dans la réponse |
+| does not contain | la valeur n'apparaît nulle part dans la réponse |
+
+![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Short Text, listant has response, is equal to, is not equal to, starts with, ends with, contains et does not contain](/images/forms-builder/fields/operators-text.png)
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte.
+
+Long Text est le champ qui donne le plus de matière à l'IA, parce que la réponse est de la prose plutôt qu'une seule valeur. C'est le champ à cibler avec **Skills**, et celui où une vérification **Criteria** mérite d'être confiée à l'IA plutôt que d'écrire une règle.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Email](/fr/reference/forms/fields/email), [Phone Number](/fr/reference/forms/fields/phone-number) et [Website](/fr/reference/forms/fields/website) sont la même zone avec un contrôle de format en plus.
+- [Créer un formulaire dans HireData](/fr/content/creating-a-form-in-hiredata) accompagne un formulaire de la page blanche à la publication.

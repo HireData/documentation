@@ -1,0 +1,43 @@
+---
+title: "File Upload"
+sidebarTitle: "File Upload"
+description: "Das Datei-Upload-Feld in einem HireData-Formular. Legen Sie fest, ob die befragte Person mehr als eine Datei anhängen kann und welche Dateitypen Sie akzeptieren."
+keywords: ["anhang", "cv", "lebenslauf", "dokument hochladen", "dateien ablegen"]
+---
+
+File Upload gibt der befragten Person einen Ablagebereich mit **Drop Files Here** und darunter „Click here or drop files to upload them". So sammelt ein Formular einen Lebenslauf, ein Zertifikat oder ein Portfolio ein.
+
+Es befindet sich in der Gruppe **Other** der **Add Content**-Palette.
+
+## Einstellungen
+
+Die Karte enthält die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares). File Upload ergänzt zwei eigene.
+
+- **Multiple**, **Yes** oder **No**, entscheidet, ob die befragte Person mehr als eine Datei anhängen kann.
+- **File type**, eine Voreinstellung aus **Any**, **Image**, **Audio**, **Video**, **Media**, **PDF**, **Document**, **Powerpoint**, **Word Document**, **Sheet** und **Archive**.
+
+**File type** ist eine Voreinstellung, keine Liste, die Sie selbst schreiben. Ein Formular, das ein PDF oder ein Word-Dokument möchte, muss also **Document** akzeptieren und es später aussortieren. Ein Größenlimit lässt sich nicht festlegen.
+
+Der Wortlaut des Ablagebereichs ist übersetzbar. Er steht unter **Settings** in [Sprachen und Übersetzungen](/de/reference/forms/overview#localization), als **Upload title** und **Upload description**.
+
+![Eine File-Upload-Feldkarte mit Question, Description, Image, Multiple, File type auf PDF, der Auto Reply, den drei Evaluator-Schaltern und einer Fußzeile mit Optional, neben einer Vorschau mit dem Drop-Files-Here-Bereich](/images/forms-builder/fields/13-file-upload.png)
+
+## Was gespeichert wird
+
+Die hochgeladenen Dateien, mit Dateiname und Typ jeder einzelnen.
+
+## Logik-Operatoren
+
+Die Operator-Auswahl ist fest auf **has response** gestellt und kann nicht geändert werden. Eine Regel kann fragen, ob die befragte Person überhaupt etwas angehängt hat – genug, um jemanden ohne Lebenslauf woandershin zu schicken.
+
+![Eine Bedingung auf einer File-Upload-Frage im Logic-Tab, mit dem Operator has response und ohne Wertefeld daneben](/images/forms-builder/fields/operators-file-upload.png)
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Sprachen und Übersetzungen](/de/reference/forms/overview#localization) ist der Ort, an dem Sie den Ablagebereich umformulieren.

@@ -1,0 +1,36 @@
+---
+title: "Datetime"
+sidebarTitle: "Datetime"
+description: "Le champ date et heure d'un formulaire HireData. Il demande un jour et une heure dans une seule réponse et ne peut être branché qu'avec l'opérateur has response."
+keywords: ["date et heure", "créneau d'entretien", "rendez-vous"]
+---
+
+Datetime demande un jour et une heure dans une seule réponse. Utilisez-le quand les deux moitiés comptent, comme pour un créneau d'entretien, et utilisez [Date](/fr/reference/forms/fields/date) quand le jour suffit.
+
+Il se trouve dans le groupe **Temporal** de la palette **Add Content**.
+
+## Paramètres
+
+Datetime n'ajoute rien aux [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Il n'y a pas de fenêtre à définir ni de limite d'horaires de travail.
+
+![Une carte de champ Datetime montrant Question, Description, Image, la réponse automatique, les trois interrupteurs d'évaluateur et un pied de carte indiquant Optional, à côté d'un aperçu montrant une zone combinée de date et d'heure](/images/forms-builder/fields/07-datetime.png)
+
+## Ce que le champ stocke
+
+Une date et une heure. Les trois types temporels partagent une même valeur, et Datetime remplit les deux moitiés.
+
+## Opérateurs de logique
+
+Le sélecteur d'opérateur est fixé sur **has response** et ne peut pas être changé. Une règle peut demander si le répondant a donné un créneau, pas s'il tombe dans la fenêtre que vous vouliez.
+
+![Une condition sur une question Datetime dans l'onglet Logic, avec l'opérateur affichant has response et aucune zone de valeur à côté](/images/forms-builder/fields/operators-datetime.png)
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Date](/fr/reference/forms/fields/date) et [Time](/fr/reference/forms/fields/time) sont les deux autres champs Temporal.

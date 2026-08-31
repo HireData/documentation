@@ -1,0 +1,83 @@
+---
+title: "Übersicht über die Formular-Evaluation"
+sidebarTitle: "Übersicht"
+description: "Die fünf Evaluatoren eines HireData-Formulars: was jeder entscheidet, was er zurückgibt und in welcher Reihenfolge Sie sie einschalten müssen."
+keywords: ["formular-evaluation", "KI-screening", "kandidaten-screening", "KI-scoring", "evaluatoren"]
+---
+
+Ein Formular sammelt Antworten. Der **Evaluation**-Tab macht aus einer abgeschlossenen Antwort etwas, mit dem eine Recruiterin oder ein Recruiter arbeiten kann: ein Urteil, einen Score, einen Skill, eine Zusammenfassung oder jeden Wert, den Sie von der KI verlangen.
+
+Der Tab ist der dritte über der Feldliste, nach **Content** und **Logic**. Er enthält fünf Evaluatoren, jeder eine Karte mit einem Schalter und einem Informationssymbol, das ihn erklärt. Schalten Sie einen ein und klicken Sie dann auf seinen Namen, um seine Einstellungen zu öffnen.
+
+![Der Evaluation-Tab mit eingeschaltetem Summary, Criteria, Scoring, Skills und Generated fields](/images/forms-builder/29-evaluation-tab.png)
+
+## Die fünf Evaluatoren
+
+| Evaluator | Was er tut | Was Sie zurückbekommen |
+|---|---|---|
+| Summary | Fasst die abgeschlossene Antwort für den internen Gebrauch zusammen. Es gibt nichts zu konfigurieren. | Einen kurzen Absatz. |
+| [Criteria](/de/reference/forms/evaluation/criteria) | Prüft jede ausgewählte Antwort gegen die Anforderung, die Sie dafür festgelegt haben, Must-have oder Nice-to-have. | Ein Urteil für die Antwort: **Meets criteria**, **Partially meets criteria**, **Does not meet criteria** oder **Incomplete**. |
+| [Scoring](/de/reference/forms/evaluation/scoring) | Vergibt Punkte für jede ausgewählte Antwort, bis zu einem Maximum, das Sie pro Frage festlegen. | Einen Prozentwert und den Score-Bereich, in den er fällt. |
+| [Skills](/de/reference/forms/evaluation/skills) | Gewichtet die Antworten, die auf jeden von Ihnen gelisteten Skill hindeuten. | Einen Prozentwert pro Skill und den stärksten. |
+| [Generated fields](/de/reference/forms/evaluation/generated-fields) | Füllt Ausgaben aus, die Sie definieren, und liest dabei die ganze Antwort. | Einen Wert pro definierter Ausgabe. |
+
+Summary und Generated fields arbeiten mit der Antwort als Ganzem. Criteria, Scoring und Skills arbeiten Frage für Frage, deshalb braucht jeder von ihnen einen zweiten Schalter auf jeder Frage, die er sich ansehen soll.
+
+## Zuerst für das Formular einschalten {#enable-order}
+
+Die Reihenfolge überrascht viele. Der Evaluator-Schalter einer Frage tut für sich allein nichts.
+
+1. Öffnen Sie den **Evaluation**-Tab und schalten Sie den Evaluator für das Formular ein.
+2. Klicken Sie auf den Namen des Evaluators, um ihn zu öffnen. Jede Frage des Formulars erscheint darunter mit einem eigenen Schalter.
+3. Schalten Sie die Fragen ein, die er sich ansehen soll, und konfigurieren Sie jede davon.
+
+<Warning>
+  Der **Criteria**-, **Scoring**- oder **Skills**-Schalter einer Frage wird ignoriert, solange der Schalter auf Formularebene aus ist. Schalten Sie den Evaluator für das Formular aus, bleiben die Schalter pro Frage, wie Sie sie hinterlassen haben, aber nichts wird evaluiert.
+</Warning>
+
+Dieselben Schalter pro Frage erscheinen auch auf der Fragekarte im **Content**-Tab, sodass Sie eine Frage konfigurieren können, ohne sie zu verlassen. Sie erscheinen dort erst, wenn der Schalter auf Formularebene an ist – die andere Hälfte derselben Regel.
+
+## Welche Fragen evaluiert werden können
+
+Jeder Feldtyp außer [Ending Screen](/de/reference/forms/fields/ending-screen) und [Redirect URL](/de/reference/forms/fields/redirect-url). Die beiden Endings sammeln nichts, also gibt es nichts zu evaluieren.
+
+Was sich je nach Typ unterscheidet, ist, wie präzise eine Regel die Antwort lesen kann. Eine [Yes/No](/de/reference/forms/fields/yes-no)-Antwort ist einer von zwei bekannten Werten. Eine [File Upload](/de/reference/forms/fields/file-upload)-Antwort lässt sich nur über Dateiname, Typ und Größe prüfen. Jede Evaluator-Seite enthält die Operator-Tabelle für ihre Regeln.
+
+## Regeln oder KI
+
+Criteria, Scoring und Skills fragen pro Frage **How to evaluate?**, mit zwei Antworten.
+
+- **Use answer rules** vergleicht die Antwort mit Bedingungen, die Sie schreiben. Dieselbe Antwort liefert immer dasselbe Ergebnis, und es findet kein KI-Aufruf statt.
+- **Evaluate with AI** übergibt die Frage, die Antwort und Ihre Notiz an das Modell, das entscheidet. Verwenden Sie es für Freitext, wo eine Regel eine gute Antwort nicht von einer schwachen unterscheiden kann.
+
+Regeln sind bei jedem Typ die Voreinstellung, außer bei [Short und Long Text](/de/reference/forms/fields/short-and-long-text), wo Criteria mit der KI startet.
+
+### Eine Notiz pro Frage {#one-note-per-question}
+
+Das Feld am Ende der Evaluator-Einstellungen einer Frage nimmt eine Anweisung für die KI auf. Seine Beschriftung ändert sich mit dem Evaluator, aus dem Sie es geöffnet haben: **What should AI look for?**, **How should AI award points?**, **What skill signals should AI look for?**
+
+Das Feld ist eine Notiz pro Frage, geteilt von allen dreien. Schreiben Sie sie unter Criteria, und derselbe Text erscheint unter Scoring und Skills. Halten Sie sie auf die Antwort bezogen statt auf einen einzelnen Evaluator.
+
+## Wann welcher Evaluator läuft
+
+Eine Antwort wird evaluiert, wenn sie abgeschlossen wird, und noch einmal in [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate), während Sie bauen. Die Schritte laufen in dieser Reihenfolge.
+
+1. Jede regelbasierte Frage wird evaluiert. Keine KI ist beteiligt.
+2. Die auf **Evaluate with AI** gestellten Fragen gehen in einem Aufruf an das Modell.
+3. Die Ergebnisse pro Frage werden zum Urteil, zum Score und zu den Skill-Prozentwerten.
+4. Generated fields läuft zuletzt, über die ganze Antwort plus die Ergebnisse aus Schritt 3.
+
+Dass Generated fields zuletzt läuft, ist genau das, was ihm erlaubt, sie zu nutzen. Ein Ausgabefeld kann aus dem Score oder dem Urteil ebenso gefüllt werden wie aus den Antworten.
+
+## Wohin die Ergebnisse gehen
+
+- Im Builder zeigt [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate) jedes Ergebnis neben den Antworten, die es erzeugt haben.
+- Bei einer eingereichten Antwort werden die Ergebnisse mit ihr gespeichert. **Export CSV** und **Export Excel** im Drei-Punkte-Menü des Builders ergänzen eine Spalte pro Ergebnis, einschließlich einer pro Skill und einer pro Generated field.
+- In einer Automatisierung ist jedes Ergebnis eine Variable, etwa `{{form_response.evaluation.scoring.band.label}}`. **Test & Evaluate** listet sie alle unter **Automation variables** auf, mit dem Wert aus dem Lauf direkt vor Ihnen. Siehe [Variablen](/de/variables/introduction).
+
+## Verwandte Themen
+
+- [Criteria](/de/reference/forms/evaluation/criteria), [Scoring](/de/reference/forms/evaluation/scoring), [Skills](/de/reference/forms/evaluation/skills) und [Generated fields](/de/reference/forms/evaluation/generated-fields) behandeln die vier Evaluatoren, die Sie konfigurieren.
+- [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate) lässt die Evaluatoren über eine Antwort laufen, die Sie sich ausdenken.
+- [Bewerbende mit einem Pre-Screening-Formular prüfen und bewerten](/de/knowledge-base/cookbook/pre-screening-form) baut ein Formular, das Criteria, Scoring und Summary gemeinsam nutzt.
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.

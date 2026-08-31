@@ -1,0 +1,70 @@
+---
+title: "Test & Evaluate"
+sidebarTitle: "Test & Evaluate"
+description: "Preencha uma resposta inteira de um formulário da HireData, deixe a IA inventar uma por si e leia o veredicto, a pontuação, as skills, o resumo e os generated fields que produz."
+keywords: ["test and evaluate", "autofill with AI", "cenário de teste", "avaliar uma resposta de formulário", "candidato ideal"]
+---
+
+**Test & Evaluate** é o terceiro separador do painel de pré-visualização, e a forma mais rápida de ver o que os [avaliadores](/pt/reference/forms/evaluation/overview) fazem realmente. Dá-lhe uma resposta, ele corre Criteria, Scoring, Skills, Summary e Generated fields sobre ela, e mostra cada resultado ao lado da resposta que o produziu.
+
+Use-o sempre que alterar um avaliador. Uma regra que parece certa no cartão está muitas vezes errada na primeira vez que encontra uma resposta.
+
+## Preencher as respostas
+
+O separador lista todas as perguntas exceto os fins, como um input compacto. Selos depois da etiqueta da pergunta dizem o que os avaliadores vão fazer com ela: **Must** ou **Nice** de [Criteria](/pt/reference/forms/evaluation/criteria), e um selo por skill que a pergunta alimenta.
+
+![Três perguntas em Test & Evaluate, uma com os selos Must e Availability, outra com o selo Nice](/images/forms-builder/testing/06-test-answers.png)
+
+Escreva as respostas você mesmo, ou deixe a IA escrevê-las. **Autofill with AI** preenche todas as perguntas de uma vez, e o chevron ao lado escolhe o tipo de inquirido a imitar.
+
+![O botão Autofill with AI com o menu aberto, a listar Random answers, Ideal candidate, Borderline candidate, Unqualified candidate e Partially completed](/images/forms-builder/testing/05-test-scenarios.png)
+
+- **Random answers** é plausível mas desinformado. Bom para um primeiro olhar.
+- **Ideal candidate** responde como alguém que cumpre todos os critérios responderia.
+- **Borderline candidate** aponta ao meio, que é onde um erro de pontuação aparece.
+- **Unqualified candidate** deve voltar rejeitado. Se não voltar, um must-have não está a fazer o seu trabalho.
+- **Partially completed** deixa perguntas sem resposta, que é como verifica um veredicto **Incomplete**.
+
+Os cenários não são genéricos. O autofill envia as suas perguntas e as suas regras de avaliação ao modelo, por isso "ideal" significa ideal para os critérios deste formulário, e "unqualified" está apontado a falhá-los.
+
+A avaliação corre sozinha assim que existe uma resposta, e outra vez pouco depois de alterar uma. Não há botão para carregar. **Reset answers**, em baixo, limpa tudo.
+
+<Note>
+  Correr uma avaliação guarda primeiro o formulário. Qualquer alteração por guardar no construtor fica gravada no momento em que a avaliação corre, por isso não use este separador para ver uma alteração sobre a qual ainda estava a decidir.
+</Note>
+
+## Ler os resultados
+
+Os resultados aparecem por baixo das respostas, começando por um painel por avaliador que ativou. Cada painel mostra o resultado principal, e clicar num abre o detalhe por baixo.
+
+![Os resultados de uma execução de candidato ideal: Meets criteria, 100% High, Availability a 66,67%, o detalhe dos criteria por pergunta, o resumo e os generated fields](/images/forms-builder/testing/07-test-results.png)
+
+**Criteria** agrupa as perguntas em **Must-have** e **Nice-to-have**, com um visto ou uma cruz, a resposta e a resposta esperada onde escreveu uma. Uma pergunta julgada por IA tem um chip de IA e a fundamentação de uma linha do modelo, que é a forma mais rápida de ver se a sua nota resultou.
+
+**Scoring** mostra a percentagem, a contagem de pontos e o que cada pergunta ganhou do seu próprio máximo.
+
+![O painel Scoring: uma barra de 100%, Points 30 em 30, e 10 e 20 pontos das duas perguntas pontuadas](/images/forms-builder/testing/07b-test-results-scoring.png)
+
+**Skills** mostra uma barra por skill. **Summary** e **Generated fields** ficam por baixo dos painéis, para que permaneçam à vista seja qual for o detalhe que tem aberto.
+
+Um **No result yet** cinzento é o que os painéis mostram antes de introduzir uma resposta. Se um continuar cinzento depois de uma execução, esse avaliador não teve nada com que trabalhar. A causa habitual é uma pergunta ativada sem regras escritas, o que deixa o avaliador sem pergunta para julgar.
+
+## Automation variables
+
+**Automation variables**, em baixo, lista todos os valores que esta resposta disponibiliza a uma automação, com a variável a copiar e o resultado da execução à sua frente.
+
+![A lista Automation variables, a mostrar as variáveis de criteria, pontuação, intervalo de pontuação, skill principal e resumo com os seus valores](/images/forms-builder/testing/08-automation-variables.png)
+
+Esta é a lista contra a qual construir uma automação. Ler `passed` ao lado de `{{form_response.evaluation.screening}}` diz-lhe o valor exato a comparar, o que adivinhar não faz. Veja [Variáveis](/pt/variables/introduction).
+
+## O que não faz
+
+Uma execução aqui não cria nenhuma resposta. Os resultados do formulário ficam intactos, a contagem de respostas não se move e nada chega a uma automação. A avaliação é real, a resposta não é.
+
+Se nenhum de Criteria, Scoring e Skills estiver ativado para o formulário, o separador mostra um botão **Enable Criteria**, **Enable Scoring** e **Enable Skills** no lugar dos painéis de resultados. Cada um ativa esse avaliador para o formulário sem sair do separador. Veja o [separador Evaluation](/pt/reference/forms/evaluation/overview) para saber o que configurar a seguir.
+
+## Relacionados
+
+- [Visão geral da avaliação de formulários](/pt/reference/forms/evaluation/overview) cobre os cinco avaliadores e a ordem pela qual os ativa.
+- [Pré-visualizações](/pt/reference/forms/testing/previews) correm o próprio formulário, como página web ou como chat.
+- [Triar e pontuar candidatos com um formulário de pré-triagem](/pt/knowledge-base/cookbook/pre-screening-form) usa este separador para verificar um formulário de ponta a ponta.

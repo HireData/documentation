@@ -1,0 +1,59 @@
+---
+title: "Pré-visualizações"
+sidebarTitle: "Pré-visualizações"
+description: "Experimente um formulário da HireData antes de o publicar: a pré-visualização web, a pré-visualização de chat de WhatsApp e a janela de pré-visualização atrás do botão do olho."
+keywords: ["pré-visualização de formulário", "interactive preview", "conversational preview", "pré-visualização de chat", "testar um formulário"]
+---
+
+O painel direito do construtor é uma cópia funcional do formulário. Dois dos seus separadores correm o formulário tal como um inquirido o encontra, e o terceiro corre os avaliadores sobre uma resposta que inventa. Esta página cobre os dois primeiros. Para o terceiro, veja [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate).
+
+## Interactive Preview
+
+**Interactive Preview** é o formulário web, com o seu tema, o seu logótipo e as perguntas na ordem que a [lógica](/pt/reference/forms/logic) decide. Responda a uma pergunta e clique em **Next** e chega onde um inquirido chegaria, o que faz dele a forma mais rápida de verificar um percurso.
+
+![A Interactive Preview a mostrar a primeira pergunta do formulário com a sua escala de classificação, o botão Next e o seletor de idioma](/images/forms-builder/testing/01-interactive-preview.png)
+
+- O seletor de idioma no canto superior direito começa no idioma predefinido do formulário e lista as suas [traduções](/pt/reference/forms/overview#localization).
+- As setas em baixo movem-se entre as perguntas sem lhes responder, ao longo do percurso que a lógica tomaria e não pela lista de campos.
+- Clicar numa pergunta no separador **Content** salta a pré-visualização para essa pergunta, para que o cartão que está a editar seja o que está a ver.
+
+Nada do que faz aqui cria uma resposta. As respostas que escreve na pré-visualização são deitadas fora.
+
+## Conversational Preview
+
+**Conversational Preview** é o mesmo formulário como conversa de WhatsApp. Começa num ecrã curto de preparação.
+
+![O ecrã de preparação da Conversational Preview com o seletor de idioma, a secção Objects, a caixa de primeira mensagem opcional e o botão Start Testing](/images/forms-builder/testing/02-conversational-preview-start.png)
+
+- O seletor de idioma define o idioma em que a conversa corre.
+- **Objects** contém valores de teste para os registos que o formulário liga, para que uma pergunta que cumprimenta alguém pelo nome tenha um nome para usar. Só aparece num formulário com [objects](/pt/reference/forms/objects) ligados.
+- **Optional first message** é o que o testador diz antes de o formulário começar. O botão de brilho escreve uma por si.
+- **Start Testing** abre a conversa.
+
+Assim que começa, o formulário envia-lhe uma pergunta de cada vez, com um botão onde o formulário web mostraria uma lista ou uma escala.
+
+![Uma conversa em curso: a primeira pergunta com um botão Choose, a resposta do testador e a pergunta de seguimento que a lógica escolheu](/images/forms-builder/testing/03-conversational-preview-chat.png)
+
+**Suggest reply** escreve uma resposta plausível no compositor como o testador, o que é mais rápido do que inventar respostas e suficiente para exercitar a ramificação. **Restart** limpa a conversa e leva-o de volta ao ecrã de preparação.
+
+Esta é a pré-visualização a usar antes de enviar um formulário por WhatsApp. É onde descobre que uma pergunta soa estranha como mensagem de chat, ou que as [auto replies](/pt/reference/forms/overview#settings-every-field-shares) disparam no sítio errado.
+
+## A janela de pré-visualização {#the-preview-window}
+
+O botão do olho ao lado de **Save** na barra de ferramentas é a outra forma de abrir o formulário. Guarda primeiro o formulário e depois abre a pré-visualização numa janela sobre o construtor.
+
+![A janela de pré-visualização na vista de telemóvel, com o botão de copiar, o comutador de dispositivo, o botão de atualizar e o seletor de idioma ao longo do topo](/images/forms-builder/testing/04-preview-modal.png)
+
+A janela carrega o próprio endereço de pré-visualização do formulário, por isso apresenta-o exatamente como o navegador de um inquirido o faria, e não dentro do layout do construtor. Ao longo do topo estão um botão de copiar para o link de pré-visualização, um comutador **mobile**, **tablet** e **desktop**, um botão de atualizar e o seletor de idioma.
+
+Use-a para duas coisas que o painel do construtor não consegue fazer: verificar o formulário à largura de um telemóvel e enviar o link a um colega. As submissões no endereço de pré-visualização também não são armazenadas, por isso um colega pode percorrer o formulário inteiro sem deixar uma resposta para trás.
+
+<Note>
+  Um formulário configurado para um registo tem uma terceira pré-visualização. Abra o registo, clique em **Preview** e o formulário é apresentado com os valores desse registo preenchidos. Veja [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record).
+</Note>
+
+## Relacionados
+
+- [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) preenche uma resposta inteira e corre os avaliadores sobre ela.
+- [Lógica](/pt/reference/forms/logic) cobre as regras que as pré-visualizações correm, e o que verificar quando uma não dispara.
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, a barra de ferramentas e o tema.

@@ -1,0 +1,69 @@
+---
+title: "Net Promoter Score en Opinion Scale"
+sidebarTitle: "NPS en Opinion Scale"
+description: "Het beoordelingsveld in een HireData-formulier. Net Promoter Score is een vaste schaal van 0 tot 10, en met Opinion Scale stel je de uiteinden en de labels zelf in."
+keywords: ["nps", "beoordeling", "schaal", "score", "tevredenheid", "likert"]
+---
+
+Net Promoter Score en Opinion Scale zijn één veldtype met een switch ertussen. De respondent kiest een punt op een rij getallen, en het formulier slaat het gekozen getal op.
+
+**Net Promoter Score** is de standaardvraag, vast op 0 tot 10, met **NOT LIKELY AT ALL** onder het ene uiteinde en **EXTREMELY LIKELY** onder het andere. Je kunt het bereik en de labels niet wijzigen.
+
+**Opinion Scale** is dezelfde rij met de uiteinden en de labels in jouw handen. Gebruik het voor tevredenheid, vertrouwen of elke beoordeling waar 0 tot 10 meer ruimte is dan de vraag nodig heeft.
+
+Beide staan in de groep **Rating** van het **Add Content**-palet. De knop linksonder op de kaart wisselt ertussen.
+
+## Instellingen
+
+De kaart heeft de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares). Net Promoter Score voegt één eigen instelling toe.
+
+- **Conversational Button Text**, het label op de knop die de schaal opent in een WhatsApp-gesprek.
+
+Opinion Scale voegt er nog vier toe.
+
+- **Scale**, het eerste en laatste punt. Het eerste is **0** of **1**, en het laatste gaat tot **10**.
+- **Min label**, **Mid label** en **Max label**, elk maximaal 50 tekens, getoond onder het begin, het midden en het einde van de rij.
+- De footerknop met **Order: Normal** opent **Rating order**, dat één schakelaar bevat, **Reverse order**, omschreven als "Show rating options from highest to lowest."
+
+![Een Net Promoter Score-veldkaart met Question, Description, Image, Conversational Button Text, beide auto replies, de drie evaluator-schakelaars met Scoring aan, en een footer met Net Promoter Score en Required, naast een preview met de rij van 0 tot 10 en de twee eindlabels](/images/forms-builder/fields/12-net-promoter-score.png)
+
+Hetzelfde type omgezet naar Opinion Scale, dat de **Scale**- en labelinstellingen toevoegt:
+
+![Een Opinion Scale-veldkaart met Scale ingesteld van 1 tot 5, Min label, Mid label en Max label, en een footer met Opinion Scale, Order: Normal en Optional, naast een preview met een rij van 1 tot 5](/images/forms-builder/fields/12b-opinion-scale.png)
+
+## Wat het opslaat
+
+Een getal, het punt dat de respondent koos.
+
+## Logica-operators
+
+| Operator | Komt overeen wanneer |
+|---|---|
+| has response | de respondent überhaupt heeft geantwoord |
+| is equal to | het antwoord exact de waarde is |
+| is not equal to | het antwoord iets anders is |
+| is greater than | het antwoord boven de waarde ligt |
+| is less than | het antwoord onder de waarde ligt |
+| is greater than or equal to | het antwoord de waarde of hoger is |
+| is less than or equal to | het antwoord de waarde of lager is |
+
+Een beoordeling is het veld dat het meest de moeite waard is om op te vertakken. `if score is less than or equal to 7 then go to "What could we do better?"` stuurt de ontevreden respondenten een vervolgpad in en laat alle anderen afronden.
+
+![Het tabblad Logic met de operatorkiezer open op een Net Promoter Score-conditie, met has response, is equal to, is not equal to en de vier vergelijkingsoperators](/images/forms-builder/fields/operators-rating.png)
+
+<Warning>
+  Een verplicht beoordelingsveld blokkeert het antwoord 0. De respondent kiest 0, het formulier gaat niet verder, **Next** doet niets en er verschijnt geen bericht. Net Promoter Score begint altijd bij 0, dus laat het optioneel. Een Opinion Scale kan bij 1 beginnen, wat het probleem vermijdt.
+</Warning>
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart.
+
+Een beoordeling en **Scoring** passen bij elkaar: 9 of 10 verdient volle punten, 7 of 8 verdient er een paar, en de rest verdient niets.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Number](/nl/reference/forms/fields/number) is het veld voor een getal dat de respondent typt.
+- [Multiple Choice en Dropdown](/nl/reference/forms/fields/multiple-choice-and-dropdown) is het veld voor benoemde antwoorden in plaats van een schaal.

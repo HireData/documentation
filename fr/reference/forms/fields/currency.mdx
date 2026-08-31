@@ -1,0 +1,51 @@
+---
+title: "Currency"
+sidebarTitle: "Currency"
+description: "Le champ devise d'un formulaire HireData. C'est un champ nombre avec un symbole devant, proposant l'euro, le dollar, la livre, le franc suisse, le yen et la roupie."
+keywords: ["salaire", "argent", "montant", "taux", "rémunération"]
+---
+
+Currency est un champ Number avec un symbole devant la zone. Utilisez-le pour une prétention salariale, un taux horaire ou un budget. La logique et les évaluateurs traitent la réponse comme un nombre simple, donc tout ce qu'un champ Number sait faire, un champ Currency le sait aussi.
+
+Il se trouve dans le groupe **Numeric** de la palette **Add Content**.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Currency en ajoute cinq qui lui sont propres.
+
+- **Placeholder**, jusqu'à 255 caractères, affiché dans la zone vide.
+- **Minimum Value** et **Maximum Value**, les bornes de la plage que vous acceptez.
+- **Currency Symbol**, l'un de **Euro**, **Dollar**, **Pound**, **Swiss Franc**, **Yen** ou **Rupee**.
+- **Steps**, la taille d'un pas.
+
+Le symbole n'est qu'une décoration de la zone. HireData stocke le nombre et ne convertit pas entre devises, donc un formulaire qui doit en gérer plusieurs a besoin d'une question distincte demandant laquelle le répondant voulait dire.
+
+![Une carte de champ Currency montrant Question, Description, Image, Placeholder, Minimum Value, Maximum Value, Currency Symbol défini sur Euro, Steps, la réponse automatique, les trois interrupteurs d'évaluateur et un pied de carte indiquant Optional, à côté d'un aperçu montrant une zone de réponse avec un signe euro](/images/forms-builder/fields/11-currency.png)
+
+## Ce que le champ stocke
+
+Un nombre, sans le symbole.
+
+## Opérateurs de logique
+
+| Opérateur | Correspond quand |
+|---|---|
+| has response | le répondant a répondu, quelle que soit la réponse |
+| is equal to | la réponse est exactement la valeur |
+| is not equal to | la réponse est n'importe quoi d'autre |
+| is greater than | la réponse est au-dessus de la valeur |
+| is less than | la réponse est en dessous de la valeur |
+| is greater than or equal to | la réponse est la valeur ou au-dessus |
+| is less than or equal to | la réponse est la valeur ou en dessous |
+
+![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Currency, listant has response, is equal to, is not equal to et les quatre opérateurs de comparaison](/images/forms-builder/fields/operators-currency.png)
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte. Un plafond de salaire fait un must-have de **Criteria** raisonnable : au-dessus du nombre, le candidat est hors budget.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Number](/fr/reference/forms/fields/number) est le même champ sans symbole.

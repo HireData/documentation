@@ -1,0 +1,36 @@
+---
+title: "Datetime"
+sidebarTitle: "Datetime"
+description: "Het datetime-veld in een HireData-formulier. Het vraagt om een dag en een tijd in één antwoord en kan alleen met de operator has response worden vertakt."
+keywords: ["datum en tijd", "gesprekstijdslot", "afspraak"]
+---
+
+Datetime vraagt om een dag en een tijd in één antwoord. Gebruik het wanneer beide helften ertoe doen, zoals een tijdslot voor een gesprek, en gebruik [Date](/nl/reference/forms/fields/date) wanneer de dag genoeg is.
+
+Het staat in de groep **Temporal** van het **Add Content**-palet.
+
+## Instellingen
+
+Datetime voegt niets toe aan de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares). Er is geen venster in te stellen en geen limiet op werkuren.
+
+![Een Datetime-veldkaart met Question, Description, Image, de auto reply, de drie evaluator-schakelaars en een footer met Optional, naast een preview met een gecombineerd datum- en tijdvak](/images/forms-builder/fields/07-datetime.png)
+
+## Wat het opslaat
+
+Een datum en tijd. De drie temporele typen delen één waarde, en Datetime vult beide helften in.
+
+## Logica-operators
+
+De operatorkiezer staat vast op **has response** en kan niet worden gewijzigd. Een rule kan vragen of de respondent een tijdslot gaf, niet of het in het venster valt dat je wilde.
+
+![Een conditie op een Datetime-vraag in het tabblad Logic, met de operator op has response en geen waardevak ernaast](/images/forms-builder/fields/operators-datetime.png)
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Date](/nl/reference/forms/fields/date) en [Time](/nl/reference/forms/fields/time) zijn de andere twee Temporal-velden.

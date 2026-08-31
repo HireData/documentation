@@ -1,0 +1,69 @@
+---
+title: "Net Promoter Score et Opinion Scale"
+sidebarTitle: "NPS et Opinion Scale"
+description: "Le champ de notation d'un formulaire HireData. Net Promoter Score est une échelle fixe de 0 à 10, et Opinion Scale vous laisse définir les bornes et les libeller."
+keywords: ["nps", "notation", "échelle", "score", "satisfaction", "likert"]
+---
+
+Net Promoter Score et Opinion Scale sont un seul type de champ avec un commutateur entre les deux. Le répondant choisit un point sur une rangée de nombres, et le formulaire stocke le nombre choisi.
+
+**Net Promoter Score** est la question standard, fixée de 0 à 10, avec **NOT LIKELY AT ALL** sous une extrémité et **EXTREMELY LIKELY** sous l'autre. Vous ne pouvez changer ni la plage ni les libellés.
+
+**Opinion Scale** est la même rangée avec les bornes et les libellés entre vos mains. Utilisez-le pour la satisfaction, la confiance, ou toute notation où 0 à 10 offre plus de place que la question n'en demande.
+
+Les deux se trouvent dans le groupe **Rating** de la palette **Add Content**. Le bouton en bas à gauche de la carte permet de passer de l'un à l'autre.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Net Promoter Score ajoute un paramètre qui lui est propre.
+
+- **Conversational Button Text**, le libellé du bouton qui ouvre l'échelle dans une conversation WhatsApp.
+
+Opinion Scale en ajoute quatre de plus.
+
+- **Scale**, le premier et le dernier point. Le premier est **0** ou **1**, et le dernier va jusqu'à **10**.
+- **Min label**, **Mid label** et **Max label**, jusqu'à 50 caractères chacun, imprimés sous le début, le milieu et la fin de la rangée.
+- Le bouton de pied de carte indiquant **Order: Normal** ouvre **Rating order**, qui contient un seul interrupteur, **Reverse order**, décrit comme « Show rating options from highest to lowest. »
+
+![Une carte de champ Net Promoter Score montrant Question, Description, Image, Conversational Button Text, les deux réponses automatiques, les trois interrupteurs d'évaluateur avec Scoring activé, et un pied de carte indiquant Net Promoter Score et Required, à côté d'un aperçu montrant la rangée de 0 à 10 avec ses deux libellés d'extrémité](/images/forms-builder/fields/12-net-promoter-score.png)
+
+Le même type passé en Opinion Scale, qui ajoute les paramètres **Scale** et de libellés :
+
+![Une carte de champ Opinion Scale montrant Scale réglé de 1 à 5, Min label, Mid label et Max label, et un pied de carte indiquant Opinion Scale, Order: Normal et Optional, à côté d'un aperçu montrant une rangée de 1 à 5](/images/forms-builder/fields/12b-opinion-scale.png)
+
+## Ce que le champ stocke
+
+Un nombre, le point choisi par le répondant.
+
+## Opérateurs de logique
+
+| Opérateur | Correspond quand |
+|---|---|
+| has response | le répondant a répondu, quelle que soit la réponse |
+| is equal to | la réponse est exactement la valeur |
+| is not equal to | la réponse est n'importe quoi d'autre |
+| is greater than | la réponse est au-dessus de la valeur |
+| is less than | la réponse est en dessous de la valeur |
+| is greater than or equal to | la réponse est la valeur ou au-dessus |
+| is less than or equal to | la réponse est la valeur ou en dessous |
+
+Une notation est le champ qui mérite le plus un branchement. `if score is less than or equal to 7 then go to "What could we do better?"` envoie les répondants insatisfaits vers un parcours de suivi et laisse tous les autres terminer.
+
+![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Net Promoter Score, listant has response, is equal to, is not equal to et les quatre opérateurs de comparaison](/images/forms-builder/fields/operators-rating.png)
+
+<Warning>
+  Un champ de notation obligatoire bloque la réponse 0. Le répondant choisit 0, le formulaire n'avance pas, **Next** ne fait rien et aucun message n'apparaît. Net Promoter Score commence toujours à 0, alors laissez-le facultatif. Une Opinion Scale peut commencer à 1, ce qui évite le problème.
+</Warning>
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte.
+
+Une notation et **Scoring** vont bien ensemble : 9 ou 10 rapporte tous les points, 7 ou 8 en rapporte une partie, et le reste n'en rapporte aucun.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Number](/fr/reference/forms/fields/number) est le champ à utiliser pour un nombre que le répondant saisit.
+- [Multiple Choice et Dropdown](/fr/reference/forms/fields/multiple-choice-and-dropdown) est le champ à utiliser pour des réponses nommées plutôt qu'une échelle.

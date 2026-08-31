@@ -1,0 +1,56 @@
+---
+title: "Yes/No"
+sidebarTitle: "Yes/No"
+description: "O campo de sim ou não num formulário da HireData, como checkbox ou toggle, com uma auto reply de WhatsApp separada para cada resposta."
+keywords: ["binário", "checkbox", "toggle", "booleano", "verdadeiro falso"]
+---
+
+Yes/No faz uma pergunta com duas respostas. **Checkbox** desenha uma caixa que o inquirido assinala. **Toggle** desenha um interruptor que ele desliza. Os dois comportam-se da mesma forma e armazenam o mesmo valor, por isso escolha o que melhor servir a pergunta.
+
+Fica no grupo **Choice** da paleta **Add Content**. O botão no canto inferior esquerdo do cartão alterna entre os dois.
+
+## Definições
+
+O cartão tem as [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares), com uma diferença. Em vez da única **Auto reply (on answer)** que a maioria dos tipos tem, Yes/No dá a cada resposta a sua própria mensagem de WhatsApp.
+
+- **Auto reply (Yes)**, enviada quando a resposta é Yes.
+- **Auto reply (No)**, enviada quando a resposta é No.
+
+Não há mais nada a definir. Não pode alterar a etiqueta das duas respostas. Se precisa de texto próprio, como "Carta definitiva" contra "Carta provisória", use [Multiple Choice](/pt/reference/forms/fields/multiple-choice-and-dropdown) com duas opções.
+
+![Um cartão de campo Yes/No a mostrar Question, Description, Image, Auto reply (Yes), Auto reply (No), os três interruptores de avaliadores com Criteria e Skills ativados, e um rodapé com Checkbox e Optional](/images/forms-builder/fields/08-yes-no.png)
+
+O mesmo campo alternado para Toggle:
+
+![O mesmo campo com um rodapé com Toggle, ao lado de uma pré-visualização a mostrar um interruptor deslizante em vez de uma caixa de assinalar](/images/forms-builder/fields/08b-yes-no-toggle.png)
+
+## O que armazena
+
+Yes ou No.
+
+## Operadores de lógica
+
+| Operador | Corresponde quando |
+|---|---|
+| has response | o inquirido deu alguma resposta |
+| is equal to | a resposta corresponde à da regra |
+| is not equal to | a resposta é a outra |
+
+![O separador Logic com o seletor de operadores aberto numa condição de Yes/No, a listar has response, is equal to e is not equal to, com a caixa de valor ao lado a mostrar Yes](/images/forms-builder/fields/operators-yes-no.png)
+
+<Warning>
+  Não torne um campo Yes/No obrigatório. Um inquirido que responda No não consegue passar dele. **Next** não faz nada, não aparece nenhuma mensagem e nenhuma regra no campo dispara. Deixe o campo opcional até a correção ser lançada.
+</Warning>
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão.
+
+Yes/No é o campo mais limpo para pendurar um must-have de **Criteria**, porque a resposta é um de dois valores conhecidos e não precisa de interpretação. "Tem carta de condução?" ou está cumprido ou não está.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Multiple Choice e Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) trata duas respostas com as suas próprias palavras, ou mais do que duas.
+- [Apresentação e requisitos](/pt/reference/forms/overview#display-and-requirements) explica o que conta como resposta.

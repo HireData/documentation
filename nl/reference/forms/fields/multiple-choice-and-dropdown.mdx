@@ -1,0 +1,59 @@
+---
+title: "Multiple Choice en Dropdown"
+sidebarTitle: "Multiple Choice en Dropdown"
+description: "Het optieveld in een HireData-formulier. Multiple Choice toont de opties als lijst, Dropdown verbergt ze in een menu, en beide kunnen hun opties uit een data source halen."
+keywords: ["keuze", "opties", "select", "picklist", "radiobuttons", "checkboxes"]
+---
+
+Multiple Choice en Dropdown zijn één veldtype met een switch ertussen. Multiple Choice toont elke optie op het scherm, zodat de respondent ze allemaal tegelijk ziet. Dropdown stopt ze achter een menu, en dat is de betere vorm zodra de lijst lang wordt.
+
+Beide staan in de groep **Choice** van het **Add Content**-palet. De knop linksonder op de kaart wisselt ertussen.
+
+## Instellingen
+
+De kaart heeft de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares). De opties zelf en drie extra instellingen horen bij dit type.
+
+- **Options**, de lijst waaruit de respondent kiest.
+- **Add Data Source**, boven de lijst, dat de opties vult uit een opgeslagen lijst die je workspace al bijhoudt, in plaats van opties die je zelf typt. Zie [Data sources](/nl/reference/forms/data-sources).
+- **Conversational Button Text**, het label op de knop die de lijst opent in een WhatsApp-gesprek. Het vak toont "Choose" als placeholder.
+- **Placeholder**, alleen bij Dropdown, de tekst in het gesloten menu voordat er iets is gekozen.
+- De footerknop met **Single Answer** opent **Answer selection**, dat één schakelaar bevat, **Allow multiple answers**. Zet die aan en de respondent kan meer dan één optie kiezen.
+
+Elke optierij heeft de optietekst, een tandwiel, een plus en een min. Het tandwiel opent de **Auto reply (on answer)** van die optie, het WhatsApp-bericht dat wordt verstuurd wanneer deze optie wordt gekozen. De plus voegt een rij eronder toe en de min verwijdert er een. Een keuzeveld heeft twee opties nodig, dus de min verdwijnt zodra er nog maar twee over zijn.
+
+![Een Multiple Choice-veldkaart met Question, Description, Image, Conversational Button Text, de Options-lijst met Add Data Source, de auto reply on invalid answer, de drie evaluator-schakelaars en een footer met Multiple Choice, Single Answer en Required, naast een preview met de drie opties als lijst](/images/forms-builder/fields/09-multiple-choice.png)
+
+Hetzelfde veld als Dropdown, dat een **Placeholder** toevoegt:
+
+![Een Dropdown-veldkaart met een Placeholder-instelling boven Conversational Button Text en een footer met Dropdown, Single Answer en Optional, naast een preview met een gesloten menu](/images/forms-builder/fields/09b-dropdown.png)
+
+## Wat het opslaat
+
+De gekozen opties, als lijst. Een veld met één antwoord slaat een lijst van één op.
+
+## Logica-operators
+
+| Operator | Komt overeen wanneer |
+|---|---|
+| has response | de respondent iets heeft gekozen |
+| is equal to | het antwoord de optie is die je koos |
+| is not equal to | het antwoord elke andere optie is |
+| is one of | het antwoord een van de opties is die je koos |
+| is not one of | het antwoord geen van de opties is die je koos |
+
+**is one of** is de operator die rules bespaart. Drie opties die allemaal naar dezelfde vervolgvraag leiden hebben één rule nodig, geen drie.
+
+![Het tabblad Logic met de operatorkiezer open op een Multiple Choice-conditie, met has response, is equal to, is not equal to, is one of en is not one of](/images/forms-builder/fields/operators-choice.png)
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart.
+
+Een keuzeveld is het makkelijkst te scoren, omdat je elk antwoord dat het kan geven al kent. Punten per optie is een rule die je één keer schrijft en kunt vertrouwen.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Data sources](/nl/reference/forms/data-sources) legt uit hoe je de opties vult uit een opgeslagen lijst.
+- [Yes/No](/nl/reference/forms/fields/yes-no) is het veld voor een gewone ja of nee.

@@ -1,0 +1,51 @@
+---
+title: "Phone Number"
+sidebarTitle: "Phone Number"
+description: "O campo de número de telefone num formulário da HireData, com as definições de placeholder, comprimento e padrão de um campo de texto."
+keywords: ["telefone", "número de telemóvel"]
+---
+
+Phone Number é uma caixa de uma só linha para um número de telefone. O inquirido vê um símbolo de auscultador na caixa vazia.
+
+Fica no grupo **Contact Info** da paleta **Add Content**.
+
+## Definições
+
+O cartão tem as [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). Phone Number acrescenta as mesmas quatro de um campo de texto.
+
+- **Placeholder**, até 255 caracteres, mostrado na caixa vazia.
+- **Minimum Length** e **Maximum Length**, contados em caracteres.
+- **Validation Pattern**, uma expressão regular à qual a resposta tem de corresponder.
+
+Não há uma mensagem de validação específica de telefone, por isso **Validation Pattern** é a forma de insistir num formato. Se o seu processo precisa de números em formato internacional, peça-o na **Description** e reforce-o com um padrão.
+
+![Um cartão de campo Phone Number a mostrar Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, a auto reply, os três interruptores de avaliadores e um rodapé com Optional, ao lado de uma pré-visualização a mostrar uma caixa de resposta com um símbolo de auscultador](/images/forms-builder/fields/03-phone-number.png)
+
+## O que armazena
+
+Texto, o número tal como o inquirido o escreveu. A HireData não o reformata.
+
+## Operadores de lógica
+
+| Operador | Corresponde quando |
+|---|---|
+| has response | o inquirido deu alguma resposta |
+| is equal to | a resposta é exatamente o valor |
+| is not equal to | a resposta é qualquer outra coisa |
+| starts with | a resposta começa pelo valor |
+| ends with | a resposta termina no valor |
+| contains | o valor aparece algures na resposta |
+| does not contain | o valor não aparece em lado nenhum da resposta |
+
+![O separador Logic com o seletor de operadores aberto numa condição de Phone Number, a listar has response, is equal to, is not equal to, starts with, ends with, contains e does not contain](/images/forms-builder/fields/operators-phone-number.png)
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão. Um número raramente vale a pena avaliar, por isso a maioria dos formulários deixa os três desligados aqui.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Email](/pt/reference/forms/fields/email) e [Website](/pt/reference/forms/fields/website) são os outros dois campos de Contact Info.
+- [Como usar formulários em conversas de WhatsApp](/pt/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) explica para onde vão as auto replies.

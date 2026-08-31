@@ -1,0 +1,40 @@
+---
+title: "Date"
+sidebarTitle: "Date"
+description: "Het datumveld in een HireData-formulier. Het geeft de respondent een kalenderkiezer en kan alleen met de operator has response worden vertakt."
+keywords: ["kalender", "startdatum", "beschikbaarheidsdatum"]
+---
+
+Date geeft de respondent een `dd/mm/yyyy`-vak met een kalenderkiezer ernaast. Gebruik het voor een startdatum, het einde van een opzegtermijn of elke andere losse dag.
+
+Het staat in de groep **Temporal** van het **Add Content**-palet.
+
+## Instellingen
+
+Date voegt niets toe aan de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares). Er is geen vroegste of laatste dag in te stellen, dus een datum die de respondent niet zou mogen kiezen moet worden afgevangen nadat het antwoord binnen is, door een evaluator of door een automatisering.
+
+![Een Date-veldkaart met Question, Description, Image, de auto reply, de drie evaluator-schakelaars en een footer met Optional, naast een preview met een dd/mm/yyyy-vak met een kalenderkiezer](/images/forms-builder/fields/05-date.png)
+
+## Wat het opslaat
+
+Een datum en tijd. De drie temporele typen delen één waarde, en Date vult de dag in.
+
+## Logica-operators
+
+De operatorkiezer staat vast op **has response** en kan niet worden gewijzigd.
+
+![Een conditie op een Date-vraag in het tabblad Logic, met de operator op has response en geen waardevak ernaast](/images/forms-builder/fields/operators-date.png)
+
+<Note>
+  Je kunt niet vertakken op hoe vroeg of laat een datum is. Een rule kan vragen of de respondent überhaupt een datum gaf, en meer niet. Om op de dag zelf te handelen, gebruik je [Criteria](/nl/reference/forms/evaluation/criteria) of een automatisering.
+</Note>
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart. Een startdatum is een goede must-have voor **Criteria**, en het is de manier om een datum te testen waar logica niet bij kan.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Time](/nl/reference/forms/fields/time) en [Datetime](/nl/reference/forms/fields/datetime) zijn de andere twee Temporal-velden.

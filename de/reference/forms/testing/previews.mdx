@@ -1,0 +1,59 @@
+---
+title: "Vorschauen"
+sidebarTitle: "Vorschauen"
+description: "Probieren Sie ein HireData-Formular vor der Veröffentlichung aus: die Web-Vorschau, die WhatsApp-Chat-Vorschau und das Vorschaufenster hinter der Augen-Schaltfläche."
+keywords: ["formular-vorschau", "interactive preview", "conversational preview", "chat-vorschau", "formular testen"]
+---
+
+Das rechte Panel des Builders ist eine funktionierende Kopie des Formulars. Zwei seiner Tabs führen das Formular so aus, wie eine befragte Person es erlebt, und der dritte lässt die Evaluatoren über eine Antwort laufen, die Sie sich ausdenken. Diese Seite behandelt die ersten beiden. Zum dritten siehe [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate).
+
+## Interactive Preview
+
+**Interactive Preview** ist das Webformular, mit Ihrem Theme, Ihrem Logo und den Fragen in der Reihenfolge, die die [Logik](/de/reference/forms/logic) bestimmt. Beantworten Sie eine Frage und klicken Sie auf **Next**, und Sie landen, wo eine befragte Person landen würde – der schnellste Weg, eine Route zu prüfen.
+
+![Die Interactive Preview mit der ersten Frage des Formulars samt Bewertungsskala, der Next-Schaltfläche und der Sprachauswahl](/images/forms-builder/testing/01-interactive-preview.png)
+
+- Die Sprachauswahl oben rechts startet mit der Standardsprache des Formulars und listet seine [Übersetzungen](/de/reference/forms/overview#localization) auf.
+- Die Pfeile unten bewegen sich zwischen den Fragen, ohne sie zu beantworten, entlang der Route, die die Logik nehmen würde, statt die Feldliste hinunter.
+- Ein Klick auf eine Frage im **Content**-Tab springt in der Vorschau zu dieser Frage, sodass die Karte, die Sie bearbeiten, die ist, die Sie vor sich sehen.
+
+Nichts, was Sie hier tun, erzeugt eine Antwort. In der Vorschau eingetippte Antworten werden verworfen.
+
+## Conversational Preview
+
+**Conversational Preview** ist dasselbe Formular als WhatsApp-Konversation. Sie startet mit einem kurzen Einrichtungsbildschirm.
+
+![Der Einrichtungsbildschirm der Conversational Preview mit der Sprachauswahl, dem Objects-Abschnitt, dem optionalen Feld für die erste Nachricht und der Start-Testing-Schaltfläche](/images/forms-builder/testing/02-conversational-preview-start.png)
+
+- Die Sprachauswahl legt die Sprache fest, in der die Konversation läuft.
+- **Objects** enthält Testwerte für die Datensätze, die das Formular verknüpft, sodass eine Frage, die jemanden mit Namen begrüßt, einen Namen zur Verfügung hat. Der Abschnitt erscheint nur bei einem Formular mit verknüpften [Objekten](/de/reference/forms/objects).
+- **Optional first message** ist das, was die testende Person sagt, bevor das Formular startet. Die Funkel-Schaltfläche schreibt eine für Sie.
+- **Start Testing** öffnet die Konversation.
+
+Sobald sie startet, schickt Ihnen das Formular eine Frage nach der anderen, mit einer Schaltfläche dort, wo das Webformular eine Liste oder eine Skala zeigen würde.
+
+![Eine laufende Konversation: die erste Frage mit einer Choose-Schaltfläche, die Antwort der testenden Person und die Folgefrage, die die Logik gewählt hat](/images/forms-builder/testing/03-conversational-preview-chat.png)
+
+**Suggest reply** schreibt eine plausible Antwort als testende Person in den Verfassenbereich – schneller, als sich selbst Antworten auszudenken, und gut genug, um die Verzweigungen durchzuspielen. **Restart** leert die Konversation und bringt Sie zurück zum Einrichtungsbildschirm.
+
+Das ist die Vorschau, die Sie nutzen, bevor Sie ein Formular über WhatsApp verschicken. Hier finden Sie heraus, dass sich eine Frage als Chatnachricht seltsam liest oder dass die [Auto Replies](/de/reference/forms/overview#settings-every-field-shares) an der falschen Stelle auslösen.
+
+## Das Vorschaufenster {#the-preview-window}
+
+Die Augen-Schaltfläche neben **Save** in der Werkzeugleiste ist der andere Weg, das Formular zu öffnen. Sie speichert das Formular zuerst und öffnet die Vorschau dann in einem Fenster über dem Builder.
+
+![Das Vorschaufenster in der Mobilansicht, mit der Kopier-Schaltfläche, dem Geräteumschalter, der Aktualisieren-Schaltfläche und der Sprachauswahl oben](/images/forms-builder/testing/04-preview-modal.png)
+
+Das Fenster lädt die eigene Vorschauadresse des Formulars, sodass es genau so rendert, wie es der Browser einer befragten Person täte, statt im Layout des Builders. Oben sitzen eine Kopier-Schaltfläche für den Vorschau-Link, ein Umschalter für **mobile**, **tablet** und **desktop**, eine Aktualisieren-Schaltfläche und die Sprachauswahl.
+
+Nutzen Sie es für zwei Dinge, die das Builder-Panel nicht kann: das Formular in Smartphone-Breite prüfen und den Link an eine Kollegin oder einen Kollegen schicken. Übermittlungen an der Vorschauadresse werden ebenfalls nicht gespeichert, sodass jemand das ganze Formular durchgehen kann, ohne eine Antwort zu hinterlassen.
+
+<Note>
+  Ein für einen Datensatz konfiguriertes Formular hat eine dritte Vorschau. Öffnen Sie den Datensatz, klicken Sie auf **Preview**, und das Formular rendert mit den ausgefüllten Werten dieses Datensatzes. Siehe [Ein Formular pro Datensatz konfigurieren](/de/content/configuring-a-form-per-record).
+</Note>
+
+## Verwandte Themen
+
+- [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate) füllt eine ganze Antwort aus und lässt die Evaluatoren darüber laufen.
+- [Logik](/de/reference/forms/logic) behandelt die Regeln, die die Vorschauen ausführen, und was Sie prüfen, wenn eine nicht auslöst.
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die Werkzeugleiste und das Theme.

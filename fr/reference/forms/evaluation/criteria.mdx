@@ -1,0 +1,81 @@
+---
+title: "Criteria"
+sidebarTitle: "Criteria"
+description: "Vérifiez une réponse de formulaire par rapport à des exigences must-have et nice-to-have, avec des règles de réponse ou avec l'IA, et obtenez un seul verdict en retour."
+keywords: ["présélection", "must-have", "nice-to-have", "meets criteria", "pre-screening", "question éliminatoire"]
+---
+
+Criteria répond à une seule question sur une réponse : cette personne répond-elle à ce que le poste exige ? Vous marquez chaque question qui vous importe comme must-have ou nice-to-have, dites à quoi ressemble une bonne réponse, et HireData renvoie un verdict unique.
+
+C'est l'évaluateur à privilégier quand certaines réponses sont éliminatoires. Un candidat sans permis de conduire ne peut pas occuper un poste de chauffeur, et Criteria le dit sans que personne ne lise la réponse.
+
+## L'activer
+
+Activez **Criteria** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview#enable-order), puis cliquez sur **Criteria** pour l'ouvrir. Chaque question du formulaire apparaît en dessous avec son propre interrupteur. Une question n'est vérifiée que lorsque vous l'activez ici.
+
+![Le bloc Criteria ouvert, listant les questions du formulaire avec un interrupteur chacune et une question activée](/images/forms-builder/evaluation/01-criteria-field-list.png)
+
+## Paramètres par question
+
+Activez une question et ses paramètres s'ouvrent.
+
+- **How important is this requirement?** avec **Must-have** et **Nice-to-have**. Un must-have échoué rejette la réponse. Un nice-to-have échoué ne fait que la déclasser.
+- **How to evaluate?** avec **Use answer rules** et **Evaluate with AI**.
+- **What answer(s) do you expect?**, côté règles, contenant les conditions que la réponse doit satisfaire.
+- La zone de note, libellée **What should AI look for?**. Elle guide l'IA et est ignorée par les règles. Voir [une note par question](/fr/reference/forms/evaluation/overview#one-note-per-question).
+
+![Une question Yes/No dans le bloc Criteria, réglée sur Must-have et Use answer rules, attendant la réponse Yes](/images/forms-builder/evaluation/02-criteria-rules.png)
+
+### Réponses attendues
+
+Une condition se lit `<question> <opérateur> <valeur>`. La question est fixe : une règle sur cette question ne peut tester que la réponse de cette question. Choisissez l'opérateur, puis la valeur.
+
+**Add condition** ajoute une seconde condition et un commutateur **All** et **Any** au-dessus. **All** exige que toutes les conditions correspondent. **Any** en exige une. Les deux s'appliquent à l'ensemble entier, pas à une paire.
+
+Laissez les conditions vides et la question est ignorée, quoi que dise son interrupteur. Une question sans rien à comparer ne peut ni réussir ni échouer.
+
+### Opérateurs {#operators}
+
+Le type de la question décide des opérateurs. C'est une liste plus longue que celle que propose la [logique](/fr/reference/forms/logic#operators), donc une question sur laquelle la logique ne peut pas brancher peut quand même être un critère.
+
+| Types de champs | Opérateurs |
+|---|---|
+| [Short et Long Text](/fr/reference/forms/fields/short-and-long-text), [Email](/fr/reference/forms/fields/email), [Phone Number](/fr/reference/forms/fields/phone-number), [Website](/fr/reference/forms/fields/website) | is equal to, is not equal to, contains, does not contain, starts with, ends with, does not start with, does not end with, is empty, is not empty |
+| [Number](/fr/reference/forms/fields/number), [Currency](/fr/reference/forms/fields/currency), [Net Promoter Score et Opinion Scale](/fr/reference/forms/fields/net-promoter-score-and-opinion-scale), [Date](/fr/reference/forms/fields/date), [Time](/fr/reference/forms/fields/time), [Datetime](/fr/reference/forms/fields/datetime) | is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to, is empty, is not empty |
+| [Multiple Choice et Dropdown](/fr/reference/forms/fields/multiple-choice-and-dropdown) | is equal to, is not equal to, is one of, is not one of, is empty, is not empty |
+| [Yes/No](/fr/reference/forms/fields/yes-no) | is equal to, is not equal to, is empty, is not empty |
+| [File Upload](/fr/reference/forms/fields/file-upload) | opérateurs de texte sur le nom du fichier, son type et son adresse, opérateurs numériques sur sa taille |
+
+Les dates sont la bonne surprise. L'onglet **Logic** peut seulement demander si une date a été donnée, mais un critère peut demander si la date de début tombe avant le jour où il vous faut quelqu'un.
+
+Une question File Upload propose un second sélecteur au-dessus de l'opérateur, pour la partie du fichier à lire : **Answer Name**, **Answer File Name**, **Answer Mime Type**, **Answer Size** et **Answer Url**. Une règle ne lit jamais ce qui est à l'intérieur du fichier. Seule l'IA le fait.
+
+## Évaluer avec l'IA
+
+Passez sur **Evaluate with AI** et les conditions disparaissent. Le modèle reçoit la question, la réponse et votre note, et décide si la réponse satisfait l'exigence. Il renvoie aussi une phrase de raisonnement, que [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) affiche sous la réponse.
+
+![Une question de texte long dans le bloc Criteria, réglée sur Nice-to-have et Evaluate with AI, avec une note disant à l'IA quoi chercher](/images/forms-builder/evaluation/03-criteria-ai.png)
+
+Utilisez l'IA pour le texte libre et les fichiers, où la formulation varie et où aucune règle ne convient. Gardez les règles pour les réponses à ensemble fixe de valeurs. Une question Yes/No ou à choix ne demande aucune interprétation, et une règle est plus rapide, moins chère et répétable.
+
+Une question [File Upload](/fr/reference/forms/fields/file-upload) réglée sur l'IA envoie la pièce jointe au modèle. Les fichiers JPEG, PNG, GIF, WebP et PDF sont lus, jusqu'à cinq fichiers et 10 Mo par réponse. Tout le reste est jugé sur son seul nom de fichier.
+
+## Le verdict
+
+Chaque question que vous avez activée et configurée vote. HireData choisit ensuite le verdict dans cet ordre.
+
+1. **Does not meet criteria**, quand un must-have ayant reçu une réponse a échoué.
+2. **Incomplete**, quand une question que vous avez activée n'a pas de réponse.
+3. **Partially meets criteria**, quand chaque must-have a réussi et qu'un nice-to-have ayant reçu une réponse a échoué.
+4. **Meets criteria**, quand tout a réussi.
+
+Une réponse manquante n'est pas un échec. Un candidat qui n'a jamais atteint une question must-have est **Incomplete**, donc un rejet signifie toujours que la personne a répondu et que la réponse était insuffisante. Surveillez ce point sur les questions situées derrière un saut de [logique](/fr/reference/forms/logic), que certains répondants ne voient jamais.
+
+Le verdict est disponible pour les automatisations sous `{{form_response.evaluation.screening}}`, qui stocke `passed`, `passed_with_restrictions`, `rejected` ou `incomplete`.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'évaluation de formulaire](/fr/reference/forms/evaluation/overview) couvre les cinq évaluateurs et l'ordre dans lequel les activer.
+- [Scoring](/fr/reference/forms/evaluation/scoring) classe les réponses qui passent.
+- [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) affiche le verdict par question en face des réponses qui l'ont produit.
+- [Présélectionner et noter les candidats avec un formulaire de présélection](/fr/knowledge-base/cookbook/pre-screening-form) construit un formulaire autour de cet évaluateur.

@@ -1,0 +1,40 @@
+---
+title: "Date"
+sidebarTitle: "Date"
+description: "O campo de data num formulário da HireData. Dá ao inquirido um seletor de calendário e só permite ramificações com o operador has response."
+keywords: ["calendário", "data de início", "data de disponibilidade"]
+---
+
+Date dá ao inquirido uma caixa `dd/mm/yyyy` com um seletor de calendário ao lado. Use-o para uma data de início, o fim de um período de aviso prévio ou qualquer dia único.
+
+Fica no grupo **Temporal** da paleta **Add Content**.
+
+## Definições
+
+Date não acrescenta nada às [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). Não há um dia mais cedo ou mais tarde a definir, por isso uma data que o inquirido não devia poder escolher tem de ser apanhada depois de a resposta chegar, por um avaliador ou por uma automação.
+
+![Um cartão de campo Date a mostrar Question, Description, Image, a auto reply, os três interruptores de avaliadores e um rodapé com Optional, ao lado de uma pré-visualização a mostrar uma caixa dd/mm/yyyy com um seletor de calendário](/images/forms-builder/fields/05-date.png)
+
+## O que armazena
+
+Uma data e hora. Os três tipos temporais partilham um único valor, e Date preenche o dia.
+
+## Operadores de lógica
+
+O seletor de operadores está fixo em **has response** e não pode ser alterado.
+
+![Uma condição numa pergunta Date no separador Logic, com o operador a mostrar has response e sem caixa de valor ao lado](/images/forms-builder/fields/operators-date.png)
+
+<Note>
+  Não pode ramificar com base em quão cedo ou tarde uma data é. Uma regra pode perguntar se o inquirido deu alguma data, e nada mais. Para agir sobre o dia em si, use [Criteria](/pt/reference/forms/evaluation/criteria) ou uma automação.
+</Note>
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão. Uma data de início é um bom must-have de **Criteria**, e é a forma de testar uma data que a lógica não consegue alcançar.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Time](/pt/reference/forms/fields/time) e [Datetime](/pt/reference/forms/fields/datetime) são os outros dois campos Temporal.

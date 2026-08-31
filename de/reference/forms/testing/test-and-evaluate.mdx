@@ -1,0 +1,70 @@
+---
+title: "Test & Evaluate"
+sidebarTitle: "Test & Evaluate"
+description: "Füllen Sie eine ganze HireData-Formularantwort aus, lassen Sie die KI eine für Sie erfinden und lesen Sie Urteil, Score, Skills, Zusammenfassung und Generated fields ab."
+keywords: ["test and evaluate", "autofill mit KI", "testszenario", "formularantwort evaluieren", "idealkandidat"]
+---
+
+**Test & Evaluate** ist der dritte Tab des Vorschau-Panels und der schnellste Weg zu sehen, was die [Evaluatoren](/de/reference/forms/evaluation/overview) tatsächlich tun. Sie geben ihm eine Antwort, er lässt Criteria, Scoring, Skills, Summary und Generated fields darüber laufen und zeigt jedes Ergebnis neben der Antwort, die es erzeugt hat.
+
+Nutzen Sie ihn immer, wenn Sie einen Evaluator ändern. Eine Regel, die auf der Karte richtig aussieht, ist oft falsch, sobald sie zum ersten Mal auf eine Antwort trifft.
+
+## Die Antworten ausfüllen
+
+Der Tab listet jede Frage außer den Endings als kompaktes Eingabefeld auf. Badges hinter der Fragebeschriftung sagen, was die Evaluatoren damit tun werden: **Must** oder **Nice** aus [Criteria](/de/reference/forms/evaluation/criteria) und ein Badge pro Skill, den die Frage speist.
+
+![Drei Fragen in Test & Evaluate, eine mit den Badges Must und Availability, eine mit dem Badge Nice](/images/forms-builder/testing/06-test-answers.png)
+
+Tippen Sie die Antworten selbst ein oder lassen Sie die KI sie schreiben. **Autofill with AI** füllt jede Frage in einem Zug, und der Chevron daneben wählt die Art der befragten Person, die imitiert werden soll.
+
+![Die Autofill-with-AI-Schaltfläche mit geöffnetem Menü, mit Random answers, Ideal candidate, Borderline candidate, Unqualified candidate und Partially completed](/images/forms-builder/testing/05-test-scenarios.png)
+
+- **Random answers** ist plausibel, aber uninformiert. Gut für einen ersten Blick.
+- **Ideal candidate** antwortet so, wie es jemand täte, der jedes Kriterium erfüllt.
+- **Borderline candidate** zielt auf die Mitte, wo sich ein Scoring-Fehler zeigt.
+- **Unqualified candidate** sollte abgelehnt zurückkommen. Wenn nicht, tut ein Must-have seinen Job nicht.
+- **Partially completed** lässt Fragen unbeantwortet – so prüfen Sie ein **Incomplete**-Urteil.
+
+Die Szenarien sind nicht generisch. Das Autofill sendet Ihre Fragen und Ihre Evaluationsregeln an das Modell, „ideal" heißt also ideal für die Kriterien dieses Formulars, und „unqualified" zielt darauf, an ihnen zu scheitern.
+
+Die Evaluation läuft von selbst, sobald eine Antwort vorhanden ist, und noch einmal einen Moment, nachdem Sie eine ändern. Es gibt keine Schaltfläche zu drücken. **Reset answers** unten löscht alles.
+
+<Note>
+  Das Ausführen einer Evaluation speichert zuerst das Formular. Jede ungespeicherte Änderung im Builder wird in dem Moment übernommen, in dem die Evaluation läuft – nutzen Sie diesen Tab also nicht, um sich eine Änderung anzusehen, über die Sie noch nachgedacht haben.
+</Note>
+
+## Die Ergebnisse lesen
+
+Die Ergebnisse erscheinen unter den Antworten, beginnend mit einem Panel pro eingeschaltetem Evaluator. Jedes Panel zeigt das Hauptergebnis, und ein Klick darauf öffnet darunter die Details.
+
+![Die Ergebnisse eines Idealkandidaten-Laufs: Meets criteria, 100 % High, Availability bei 66,67 %, die Criteria-Details pro Frage, die Zusammenfassung und die Generated fields](/images/forms-builder/testing/07-test-results.png)
+
+**Criteria** gruppiert die Fragen unter **Must-have** und **Nice-to-have**, mit einem Haken oder Kreuz, der Antwort und der erwarteten Antwort, wo Sie eine geschrieben haben. Eine von der KI beurteilte Frage trägt einen KI-Chip und die einzeilige Begründung des Modells – der schnellste Weg zu sehen, ob Ihre Notiz angekommen ist.
+
+**Scoring** zeigt den Prozentwert, die Punktebilanz und was jede Frage aus ihrem eigenen Maximum verdient hat.
+
+![Das Scoring-Panel: ein 100-%-Balken, Points 30 von 30 und 10 und 20 Punkte aus den beiden bewerteten Fragen](/images/forms-builder/testing/07b-test-results-scoring.png)
+
+**Skills** zeigt einen Balken pro Skill. **Summary** und **Generated fields** stehen unter den Panels, sodass sie im Blick bleiben, welches Detail Sie auch geöffnet haben.
+
+Ein graues **No result yet** zeigen die Panels, bevor Sie eine Antwort eingeben. Bleibt eines nach einem Lauf grau, hatte dieser Evaluator nichts zu tun. Die übliche Ursache ist eine eingeschaltete Frage ohne geschriebene Regeln, die dem Evaluator keine Frage zum Beurteilen lässt.
+
+## Automation variables
+
+**Automation variables** unten listet jeden Wert auf, den diese Antwort einer Automatisierung zur Verfügung stellt, mit der Variable zum Kopieren und dem Ergebnis aus dem Lauf direkt vor Ihnen.
+
+![Die Automation-variables-Liste mit den Variablen für Kriterien, Score, Score-Bereich, primären Skill und Zusammenfassung samt ihren Werten](/images/forms-builder/testing/08-automation-variables.png)
+
+Das ist die Liste, gegen die Sie eine Automatisierung bauen. `passed` neben `{{form_response.evaluation.screening}}` zu lesen sagt Ihnen den exakten Wert zum Vergleichen, was Raten nicht tut. Siehe [Variablen](/de/variables/introduction).
+
+## Was es nicht tut
+
+Ein Lauf hier erzeugt keine Antwort. Die Ergebnisse des Formulars bleiben unberührt, der Antwortzähler bewegt sich nicht, und nichts erreicht eine Automatisierung. Die Evaluation ist echt, die Antwort nicht.
+
+Ist keiner von Criteria, Scoring und Skills für das Formular eingeschaltet, zeigt der Tab anstelle der Ergebnis-Panels eine **Enable Criteria**-, **Enable Scoring**- und **Enable Skills**-Schaltfläche. Jede schaltet diesen Evaluator für das Formular ein, ohne den Tab zu verlassen. Siehe den [Evaluation-Tab](/de/reference/forms/evaluation/overview) für das, was als Nächstes zu konfigurieren ist.
+
+## Verwandte Themen
+
+- [Übersicht über die Formular-Evaluation](/de/reference/forms/evaluation/overview) behandelt die fünf Evaluatoren und die Reihenfolge, in der Sie sie einschalten.
+- [Vorschauen](/de/reference/forms/testing/previews) führen das Formular selbst aus, als Webseite oder als Chat.
+- [Bewerbende mit einem Pre-Screening-Formular prüfen und bewerten](/de/knowledge-base/cookbook/pre-screening-form) nutzt diesen Tab, um ein Formular von Anfang bis Ende zu prüfen.

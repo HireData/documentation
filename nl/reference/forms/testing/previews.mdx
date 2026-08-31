@@ -1,0 +1,59 @@
+---
+title: "Previews"
+sidebarTitle: "Previews"
+description: "Probeer een HireData-formulier uit voordat je het publiceert: de webpreview, de WhatsApp-chatpreview en het previewvenster achter de oog-knop."
+keywords: ["formulierpreview", "interactive preview", "conversational preview", "chatpreview", "een formulier testen"]
+---
+
+Het rechterpaneel van de builder is een werkende kopie van het formulier. Twee van de tabbladen draaien het formulier zoals een respondent het tegenkomt, en het derde draait de evaluatoren over een respons die je zelf verzint. Deze pagina behandelt de eerste twee. Voor het derde, zie [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate).
+
+## Interactive Preview
+
+**Interactive Preview** is het webformulier, met jouw thema, jouw logo en de vragen in de volgorde die de [logica](/nl/reference/forms/logic) bepaalt. Beantwoord een vraag, klik op **Next** en je belandt waar een respondent zou belanden, en dat maakt het de snelste manier om een route te controleren.
+
+![De Interactive Preview met de eerste vraag van het formulier met zijn beoordelingsschaal, de Next-knop en de taalkiezer](/images/forms-builder/testing/01-interactive-preview.png)
+
+- De taalkiezer rechtsboven begint op de standaardtaal van het formulier en somt de [vertalingen](/nl/reference/forms/overview#localization) ervan op.
+- De pijlen onderaan bewegen tussen vragen zonder ze te beantwoorden, langs de route die de logica zou nemen in plaats van de veldenlijst af.
+- Op een vraag klikken in het tabblad **Content** laat de preview naar die vraag springen, zodat de kaart die je bewerkt ook de kaart is waar je naar kijkt.
+
+Niets wat je hier doet maakt een respons aan. Antwoorden die je in de preview typt worden weggegooid.
+
+## Conversational Preview
+
+**Conversational Preview** is hetzelfde formulier als een WhatsApp-gesprek. Het begint op een kort instelscherm.
+
+![Het instelscherm van de Conversational Preview met de taalkiezer, de sectie Objects, het optionele vak voor het eerste bericht en de Start Testing-knop](/images/forms-builder/testing/02-conversational-preview-start.png)
+
+- De taalkiezer bepaalt de taal waarin het gesprek loopt.
+- **Objects** bevat testwaarden voor de records die het formulier koppelt, zodat een vraag die iemand bij naam begroet een naam heeft om te gebruiken. Het verschijnt alleen op een formulier met gekoppelde [objecten](/nl/reference/forms/objects).
+- **Optional first message** is wat de tester zegt voordat het formulier begint. De sparkle-knop schrijft er een voor je.
+- **Start Testing** opent het gesprek.
+
+Zodra het begint, stuurt het formulier je één vraag per keer, met een knop waar het webformulier een lijst of een schaal zou tonen.
+
+![Een lopend gesprek: de eerste vraag met een Choose-knop, het antwoord van de tester en de vervolgvraag die de logica koos](/images/forms-builder/testing/03-conversational-preview-chat.png)
+
+**Suggest reply** schrijft een plausibel antwoord in de composer als de tester, wat sneller is dan zelf antwoorden verzinnen en goed genoeg om de vertakkingen te oefenen. **Restart** wist het gesprek en brengt je terug naar het instelscherm.
+
+Dit is de preview om te gebruiken voordat je een formulier via WhatsApp verstuurt. Hier ontdek je dat een vraag vreemd leest als chatbericht, of dat de [auto replies](/nl/reference/forms/overview#settings-every-field-shares) op de verkeerde plek afgaan.
+
+## Het previewvenster {#the-preview-window}
+
+De oog-knop naast **Save** in de werkbalk is de andere manier om het formulier te openen. Hij slaat het formulier eerst op en opent daarna de preview in een venster over de builder.
+
+![Het previewvenster in de mobiele weergave, met de kopieerknop, de apparaatwissel, de ververs-knop en de taalkiezer bovenaan](/images/forms-builder/testing/04-preview-modal.png)
+
+Het venster laadt het eigen previewadres van het formulier, zodat het precies rendert zoals in de browser van een respondent in plaats van binnen de lay-out van de builder. Bovenaan staan een kopieerknop voor de previewlink, een switcher voor **mobile**, **tablet** en **desktop**, een ververs-knop en de taalkiezer.
+
+Gebruik het voor twee dingen die het builderpaneel niet kan: het formulier op telefoonbreedte controleren, en de link naar een collega sturen. Inzendingen op het previewadres worden ook niet opgeslagen, dus een collega kan het hele formulier doorlopen zonder een respons achter te laten.
+
+<Note>
+  Een formulier dat voor een record is geconfigureerd heeft een derde preview. Open het record, klik op **Preview**, en het formulier rendert met de waarden van dat record ingevuld. Zie [Een formulier per record configureren](/nl/content/configuring-a-form-per-record).
+</Note>
+
+## Gerelateerd
+
+- [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) vult een hele respons in en draait de evaluatoren erover.
+- [Logic](/nl/reference/forms/logic) behandelt de rules die de previews draaien, en wat je controleert wanneer er een niet afgaat.
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de werkbalk en het thema.

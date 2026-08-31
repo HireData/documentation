@@ -1,0 +1,57 @@
+---
+title: "Number"
+sidebarTitle: "Number"
+description: "Het getalveld in een HireData-formulier, met een minimum, een maximum en een stapgrootte, en de volledige set vergelijkingsoperators in logica."
+keywords: ["numeriek", "jaren ervaring", "aantal"]
+---
+
+Number neemt een kaal getal aan: jaren ervaring, uren per week, hoeveel van iets. Het is een van slechts twee typen die logica kan vergelijken, en daarmee het veld om te pakken wanneer een rule een antwoord moet wegen in plaats van matchen.
+
+Het staat in de groep **Numeric** van het **Add Content**-palet.
+
+## Instellingen
+
+De kaart heeft de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares). Number voegt er vier eigen instellingen aan toe.
+
+- **Placeholder**, maximaal 255 tekens, getoond in het lege vak.
+- **Minimum Value** en **Maximum Value**, de uiteinden van het bereik dat je accepteert.
+- **Steps**, de grootte van één stap. Zet het op 1 om hele getallen af te dwingen.
+
+De berichten die een respondent ziet wanneer een antwoord buiten het bereik valt, staan onder **Validation** in [Talen en vertalingen](/nl/reference/forms/overview#localization), als **Min Number** en **Max Number**.
+
+![Een Number-veldkaart met Question, Description, Image, Placeholder, Minimum Value, Maximum Value, Steps, de auto reply, de drie evaluator-schakelaars met Criteria en Scoring aan, en een footer met Optional](/images/forms-builder/fields/10-number.png)
+
+## Wat het opslaat
+
+Een getal.
+
+## Logica-operators
+
+| Operator | Komt overeen wanneer |
+|---|---|
+| has response | de respondent überhaupt heeft geantwoord |
+| is equal to | het antwoord exact de waarde is |
+| is not equal to | het antwoord iets anders is |
+| is greater than | het antwoord boven de waarde ligt |
+| is less than | het antwoord onder de waarde ligt |
+| is greater than or equal to | het antwoord de waarde of hoger is |
+| is less than or equal to | het antwoord de waarde of lager is |
+
+![Het tabblad Logic met de operatorkiezer open op een Number-conditie, met has response, is equal to, is not equal to en de vier vergelijkingsoperators](/images/forms-builder/fields/operators-number.png)
+
+<Warning>
+  Een verplicht Number-veld blokkeert het antwoord 0. **Next** doet niets en er verschijnt geen bericht. Stel totdat de fix is uitgerold een **Minimum Value** van 1 in op elk verplicht Number-veld, zodat 0 wordt geweigerd met een bericht dat de respondent kan lezen.
+</Warning>
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart.
+
+Number past beter bij **Scoring** dan welk ander type ook. Een drempel geeft volle punten, een lagere geeft er een paar, en alles daaronder geeft niets, allemaal op basis van de waarde zelf.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Currency](/nl/reference/forms/fields/currency) is hetzelfde veld met een symbool erop.
+- [Net Promoter Score en Opinion Scale](/nl/reference/forms/fields/net-promoter-score-and-opinion-scale) is een getal dat de respondent van een schaal kiest.

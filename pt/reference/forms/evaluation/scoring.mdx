@@ -1,0 +1,68 @@
+---
+title: "Scoring"
+sidebarTitle: "Scoring"
+description: "Atribua pontos às respostas de um formulário com regras ou com IA, transforme o total numa percentagem e etiquete-a com um intervalo de pontuação como Low, Medium ou High."
+keywords: ["pontuação de formulários", "pontos", "intervalo de pontuação", "classificação", "ponderar respostas", "pontuação de candidatos"]
+---
+
+Scoring transforma uma resposta num número. Decide quantos pontos vale cada pergunta e quando são atribuídos, e a HireData converte o total numa percentagem e etiqueta-a com um intervalo.
+
+Criteria diz-lhe quem está fora. Scoring diz-lhe a quem ligar primeiro.
+
+## Intervalos de pontuação
+
+Ative **Scoring** para o formulário e ele começa com três intervalos: **Low** em 0, **Medium** em 50 e **High** em 80. Clique em **Scoring** para os abrir.
+
+![O bloco Scoring aberto, a mostrar os intervalos de pontuação Low, Medium e High com as suas pontuações mínimas](/images/forms-builder/evaluation/04-scoring-ranges.png)
+
+Cada intervalo tem um **Label** e um **Minimum score (%)**. Uma resposta cai no intervalo mais alto cujo mínimo ultrapassa, por isso 82% é High e 79% é Medium. **Add range** acrescenta outro, e o caixote remove um. Dê a cada intervalo uma etiqueta e um mínimo diferente entre 0 e 100.
+
+Mantenha um intervalo em 0. Uma pontuação abaixo de todos os mínimos recebe uma percentagem e nenhuma etiqueta, o que se lê como um resultado em falta e não como um resultado baixo.
+
+## Definições por pergunta
+
+Clique em **Scoring**, ative uma pergunta e as definições dela abrem-se.
+
+- **How many points is this question worth?**, o máximo que esta pergunta pode acrescentar.
+- **How to evaluate?** com **Use answer rules** e **Evaluate with AI**.
+- **When should points be awarded?**, no lado das regras, com uma ou mais regras.
+- A caixa de nota, com a etiqueta **How should AI award points?**.
+
+![Uma pergunta numérica no bloco Scoring, a valer 20 pontos, com uma regra a atribuir 20 pontos por cinco anos ou mais e uma segunda a atribuir 10 por três ou mais](/images/forms-builder/evaluation/05-scoring-rules.png)
+
+### Regras
+
+Uma regra é um conjunto de condições mais **How many points should be awarded?**. Uma condição lê-se `<pergunta> <operador> <valor>` e só pode testar a resposta desta pergunta. **Add condition** acrescenta uma segunda e um comutador **All** e **Any** por cima, e **Add rule** acrescenta outra regra por baixo.
+
+Os operadores são o mesmo conjunto que Criteria oferece, e o tipo de campo decide-os: operadores de texto nos tipos de texto e de contacto, comparações nos tipos numéricos, de classificação e de data, **is one of** em Multiple Choice e Dropdown, e metadados do ficheiro em File Upload. Veja [a tabela de operadores](/pt/reference/forms/evaluation/criteria#operators).
+
+Todas as regras que correspondem pagam, e o total é depois limitado ao máximo da pergunta. Duas regras que correspondem ambas a uma resposta de cinco anos, uma a valer 20 e outra a valer 10, atribuem 20 numa pergunta que vale 20. Faixas sobrepostas são seguras desde que o máximo esteja certo, que é o que lhe permite escrever "5 anos ou mais, 20 pontos" acima de "3 anos ou mais, 10 pontos" e deixar de pensar no intervalo.
+
+Deixe **How many points is this question worth?** vazio e o máximo passa a ser a soma dos pontos das regras, para que nada possa ultrapassar 100%.
+
+### Avaliar com IA
+
+Mude para **Evaluate with AI** e as regras desaparecem. O modelo lê a resposta e a sua nota e devolve um número entre zero e o máximo da pergunta, com uma frase de fundamentação.
+
+<Warning>
+  Defina o máximo antes de mudar uma pergunta para IA. A pontuação com IA precisa de um máximo acima de zero, e toda a avaliação falha com um erro enquanto ele estiver vazio.
+</Warning>
+
+## Como a percentagem é calculada {#how-the-percentage-is-worked-out}
+
+Só participam as perguntas que ativou e configurou. A HireData soma os pontos que elas ganharam, divide pela soma dos máximos e arredonda a duas casas decimais.
+
+Um formulário com uma pergunta de 10 pontos e outra de 20 pontos é pontuado sobre 30. Ganhe 10 e 20 e a resposta pontua 100%.
+
+![Os resultados de Scoring em Test & Evaluate: uma barra de 100%, Points 30 em 30, e os pontos que cada pergunta ganhou](/images/forms-builder/testing/07b-test-results-scoring.png)
+
+Uma pergunta sem resposta pontua zero e continua a contar o seu máximo, por isso uma resposta meio terminada pontua baixo em vez de pontuar bem no que respondeu. Normalmente é isso que quer. Quando não for, coloque as perguntas pontuadas no início do formulário, antes de qualquer salto de [lógica](/pt/reference/forms/logic) que as possa saltar.
+
+As automações leem o resultado como `{{form_response.evaluation.scoring.score}}` para a percentagem, e `{{form_response.evaluation.scoring.band.label}}` para a etiqueta do intervalo.
+
+## Relacionados
+
+- [Visão geral da avaliação de formulários](/pt/reference/forms/evaluation/overview) cobre os cinco avaliadores e a ordem pela qual os ativa.
+- [Criteria](/pt/reference/forms/evaluation/criteria) decide quem se qualifica de todo.
+- [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) mostra os pontos que cada pergunta ganhou.
+- [Triar e pontuar candidatos com um formulário de pré-triagem](/pt/knowledge-base/cookbook/pre-screening-form) constrói um formulário à volta deste avaliador.

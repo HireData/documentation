@@ -1,0 +1,40 @@
+---
+title: "Date"
+sidebarTitle: "Date"
+description: "Le champ date d'un formulaire HireData. Il donne au répondant un sélecteur de calendrier et ne peut être branché qu'avec l'opérateur has response."
+keywords: ["calendrier", "date de début", "date de disponibilité"]
+---
+
+Date donne au répondant une zone `dd/mm/yyyy` avec un sélecteur de calendrier à côté. Utilisez-le pour une date de début, une fin de préavis, ou n'importe quel jour unique.
+
+Il se trouve dans le groupe **Temporal** de la palette **Add Content**.
+
+## Paramètres
+
+Date n'ajoute rien aux [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Il n'y a pas de jour au plus tôt ni au plus tard à définir, donc une date que le répondant ne devrait pas pouvoir choisir doit être interceptée après l'arrivée de la réponse, par un évaluateur ou par une automatisation.
+
+![Une carte de champ Date montrant Question, Description, Image, la réponse automatique, les trois interrupteurs d'évaluateur et un pied de carte indiquant Optional, à côté d'un aperçu montrant une zone dd/mm/yyyy avec un sélecteur de calendrier](/images/forms-builder/fields/05-date.png)
+
+## Ce que le champ stocke
+
+Une date et une heure. Les trois types temporels partagent une même valeur, et Date remplit le jour.
+
+## Opérateurs de logique
+
+Le sélecteur d'opérateur est fixé sur **has response** et ne peut pas être changé.
+
+![Une condition sur une question Date dans l'onglet Logic, avec l'opérateur affichant has response et aucune zone de valeur à côté](/images/forms-builder/fields/operators-date.png)
+
+<Note>
+  Vous ne pouvez pas brancher selon qu'une date est proche ou lointaine. Une règle peut demander si le répondant a donné une date, et rien de plus. Pour agir sur le jour lui-même, utilisez [Criteria](/fr/reference/forms/evaluation/criteria) ou une automatisation.
+</Note>
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte. Une date de début fait un bon must-have de **Criteria**, et c'est le moyen de tester une date que la logique ne peut pas atteindre.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Time](/fr/reference/forms/fields/time) et [Datetime](/fr/reference/forms/fields/datetime) sont les deux autres champs Temporal.

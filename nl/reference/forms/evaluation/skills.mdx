@@ -1,0 +1,62 @@
+---
+title: "Skills"
+sidebarTitle: "Skills"
+description: "Som de skills op die een HireData-formulier moet beoordelen, weeg de antwoorden die naar elke skill wijzen en lees terug welke skill in de respons het sterkst is."
+keywords: ["profilering", "skills-beoordeling", "primaire skill", "skill-weging", "kandidaatprofiel"]
+---
+
+Skills zoekt uit wat een respons je vooral vertelt. Je somt de skills op waar de rol om geeft, zegt welke antwoorden naar elke skill wijzen en hoe sterk, en HireData geeft een percentage per skill terug en benoemt de sterkste.
+
+Criteria en Scoring oordelen allebei. Skills sorteert. Het is de evaluator voor een pool van kandidaten die allemaal in aanmerking komen, waar de vraag is wie je bij welke klant voorstelt.
+
+## De skills-lijst
+
+Zet **Skills** aan voor het formulier en klik daarna op **Skills** om **Which skills do you want to assess?** te openen. Voeg één rij per skill toe.
+
+![Het Skills-blok geopend met twee skills, Availability en Communication, en de beschrijvingspopup open op de eerste](/images/forms-builder/evaluation/06-skills-list.png)
+
+Elke rij heeft de **Skill name**, een tandwiel en een prullenbak. Het tandwiel opent **Description (optional)**, een zin die uitlegt wat de skill betekent. De beschrijving is de enige gids van de AI voor wat meetelt, dus schrijf hem wanneer een vraag op **Evaluate with AI** staat. **Add skill** voegt een rij toe.
+
+Een skill verwijderen haalt hem ook weg bij elke vraag die ernaar wees. Er is geen ongedaan maken, dus controleer welke vragen een skill gebruiken voordat je hem verwijdert.
+
+## Instellingen per vraag
+
+Klik op **Skills**, zet een vraag aan en de instellingen openen.
+
+- **How to evaluate?** met **Use answer rules** en **Evaluate with AI**.
+- **When should skill impact be applied?**, aan de rules-kant, met een of meer rules.
+- Het notitievak, met het label **What skill signals should AI look for?**.
+
+![Een Yes/No-vraag in het Skills-blok met een rule die een gewicht van 2 toevoegt aan Availability wanneer het antwoord Yes is](/images/forms-builder/evaluation/07-skills-rules.png)
+
+### Rules en skill impact
+
+Een rule is een set condities plus een of meer skill impacts. Een conditie leest als `<vraag> <operator> <waarde>` en kan alleen het antwoord op deze vraag testen. **Add condition** voegt een tweede toe en een **All**- en **Any**-switch erboven.
+
+De operators zijn dezelfde set die Criteria biedt, en het veldtype bepaalt ze: tekstoperators op de tekst- en contacttypen, vergelijkingen op de numerieke, beoordelings- en datumtypen, **is one of** op Multiple Choice en Dropdown, en bestandsmetadata op File Upload. Zie [de operatortabel](/nl/reference/forms/evaluation/criteria#operators).
+
+Elke impact heeft **Which skill does this answer indicate?** en **How much should it contribute?**. **Add skill impact** richt dezelfde rule op een tweede skill, zodat één antwoord voor twee kan meetellen. **Add rule** voegt nog een rule toe, en zo geeft één vraag verschillende gewichten aan verschillende antwoorden.
+
+### Evalueren met AI
+
+Schakel naar **Evaluate with AI** en de rules verdwijnen. Het model leest het antwoord, jouw notitie en de skill-beschrijvingen, en geeft een gewicht per skill terug.
+
+<Warning>
+  Voeg minstens één skill toe aan het formulier voordat je een vraag op AI zet. AI-skillbeoordeling heeft zonder skills niets om te wegen, en de hele evaluatie faalt met een fout.
+</Warning>
+
+## Hoe de percentages worden berekend
+
+Gewichten zijn geen scores. HireData telt het gewicht op dat elke skill over de hele respons verzamelde, en geeft elke skill daarna zijn aandeel van dat totaal, zodat de percentages optellen tot 100.
+
+Eén antwoord van 2 voor Availability en één van 1 voor Communication maakt Availability 66,67% en Communication 33,33%. Beide getallen zeggen waar het signaal vandaan kwam, niet hoe goed de kandidaat is. De **strongest skill** is het hoogste percentage.
+
+Die relatieve rekensom heeft een gevolg om rekening mee te houden. Eén skill zwaar wegen in veel vragen overstemt de andere, wat de antwoorden ook zeggen. Houd de gewichten vergelijkbaar en verdeel ze over de vragen die elke skill echt aanwijzen.
+
+Automatiseringen lezen `{{form_response.evaluation.profiling.primary_skill.key}}` en `{{form_response.evaluation.profiling.primary_skill.percentage}}`. Elke skill die je configureerde krijgt ook een eigen percentagevariabele, zodat een rule op één skill kan handelen zonder dat die hoeft te winnen.
+
+## Gerelateerd
+
+- [Overzicht van formulierevaluatie](/nl/reference/forms/evaluation/overview) behandelt de vijf evaluatoren en de volgorde waarin je ze aanzet.
+- [Criteria](/nl/reference/forms/evaluation/criteria) en [Scoring](/nl/reference/forms/evaluation/scoring) beoordelen een respons in plaats van hem te sorteren.
+- [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) toont een balk per skill en de badges op de vragen die ze voeden.

@@ -1,0 +1,66 @@
+---
+title: "Generated fields"
+sidebarTitle: "Generated fields"
+description: "Defina os seus próprios outputs e deixe a IA preenchê-los a partir de uma resposta completa de formulário, e depois leia os valores numa automação."
+keywords: ["campos de output de IA", "output estruturado", "generated fields", "extrair de resposta de formulário", "variáveis de IA"]
+---
+
+Generated fields é a exceção no separador **Evaluation**. Os outros avaliadores julgam respostas que já recolheu. Este produz valores que nunca foram perguntados.
+
+Define os outputs que quer, a IA lê a resposta concluída e cada output volta preenchido. Um formulário que nunca pergunta "como devemos contactá-lo?" pode mesmo assim devolver um canal de contacto preferido, porque uma das respostas o mencionou.
+
+## O que não é
+
+Os outputs são novos. Não são as perguntas do formulário e não lhes tocam.
+
+- Definir um output não adiciona uma pergunta, não altera uma pergunta nem escreve numa resposta.
+- Um output não está ligado a uma pergunta. Cada output é preenchido a partir da resposta inteira.
+- Ativar **Generated fields** não coloca um interruptor em nenhum cartão de pergunta, porque não há nada a ativar por pergunta.
+
+Pense nele como uma única passagem de IA sobre a resposta concluída, que devolve um pequeno registo que desenhou.
+
+## Ativá-lo
+
+**Generated fields** é o último bloco do separador **Evaluation**. Ative-o e depois clique nele para abrir as definições. Não há nada a ativar por pergunta.
+
+![O bloco Generated fields aberto, com dicas para a IA, dois campos de output e os botões Suggest with AI, Data source e Create custom](/images/forms-builder/evaluation/08-generated-fields.png)
+
+- **Hints for the AI (optional)** é uma instrução para o conjunto inteiro. É o sítio para dizer o que fazer quando as respostas não cobrem um output, que de outra forma é adivinhado.
+- **What should the AI return?** lista os outputs, na ordem em que são pedidos à IA. As setas numa linha movem-na, o lápis edita-a e o caixote remove-a.
+
+Ative o avaliador e não adicione nada e nada é gerado. A lista precisa de pelo menos um output antes de correr.
+
+## Adicionar um output
+
+Três botões ficam por baixo da lista.
+
+**Create custom** abre **New output field**, um painel de dois passos. O passo 1 escolhe o tipo, com uma caixa de pesquisa e grupos para os básicos, datas e horas, dados de contacto e tipos de web e multimédia. O passo 2 é a configuração.
+
+![O passo 2 de New output field, com as definições Name, Reference as, What is it for? e Options para um output de lista](/images/forms-builder/evaluation/09-new-output-field.png)
+
+- **Name** é a etiqueta que vê nos resultados e no seletor de variáveis.
+- **Reference as** é a chave que uma automação usa. Preenche-se a partir do nome e tem de ser única no formulário, sem espaços nem chavetas.
+- **What is it for? (optional)** diz à IA o que o valor significa. Escreva-o. Faz mais pelo resultado do que o nome.
+- **Options** aparece para um output de **List**. Adicione pelo menos uma, e a IA tem de escolher de entre elas em vez de escrever texto livre. É a forma de obter um valor sobre o qual a sua automação pode ramificar.
+
+**Done** adiciona o output. **Save & New** adiciona-o e mantém o painel aberto para o próximo.
+
+**Suggest with AI** lê as perguntas do formulário e as suas dicas e propõe até três outputs, adicionando-os diretamente à lista. Trate-os como um ponto de partida e edite os que mantiver.
+
+**Data source** abre a biblioteca de [data sources](/pt/reference/forms/data-sources). Escolha uma fonte e o output só pode conter um dos itens dessa lista, para que a IA tenha de fazer corresponder a resposta a um valor que o seu workspace já mantém. Um output de data source não tem lápis: altere a lista, não o output.
+
+## Quando corre e o que vê
+
+Generated fields corre depois de Criteria, Scoring e Skills, sobre todas as respostas da resposta mais os respetivos resultados. Essa ordem é o objetivo dele. Um output pode ser preenchido a partir da pontuação ou do veredicto, além das respostas, que é como obtém um motivo de uma linha para uma rejeição ou um próximo passo que depende da classificação.
+
+## Ler os valores
+
+Cada output aparece em **Generated fields** em [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate), e novamente na lista **Automation variables** com a chave a copiar.
+
+Numa automação, um output é `{{form_response.evaluation.ai_output.<key>}}`, por isso o output `preferred_contact` é `{{form_response.evaluation.ai_output.preferred_contact}}`. Veja [Variáveis](/pt/variables/introduction).
+
+## Relacionados
+
+- [Visão geral da avaliação de formulários](/pt/reference/forms/evaluation/overview) cobre os cinco avaliadores e a ordem pela qual os ativa.
+- [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) mostra os valores gerados a partir de uma execução que controla.
+- [Data sources](/pt/reference/forms/data-sources) explica as listas de que um output de data source se serve.

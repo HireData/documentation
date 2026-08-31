@@ -1,0 +1,53 @@
+---
+title: "Website"
+sidebarTitle: "Website"
+description: "O campo de website num formulário da HireData. Pede um endereço web e aceita as definições de placeholder, comprimento e padrão de um campo de texto."
+keywords: ["url", "link", "endereço web", "perfil linkedin"]
+---
+
+Website é uma caixa de uma só linha para um endereço web, que é o que a maioria dos formulários usa para recolher um link de LinkedIn ou de portefólio.
+
+Fica no grupo **Contact Info** da paleta **Add Content**.
+
+## Definições
+
+O cartão tem as [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). Website acrescenta as mesmas quatro de um campo de texto.
+
+- **Placeholder**, até 255 caracteres, mostrado na caixa vazia.
+- **Minimum Length** e **Maximum Length**, contados em caracteres.
+- **Validation Pattern**, uma expressão regular à qual a resposta tem de corresponder, para além da verificação do endereço.
+
+A mensagem que o inquirido vê quando o endereço está mal formado fica em **Validation**, em [Idiomas e traduções](/pt/reference/forms/overview#localization), como **Invalid URL**.
+
+![Um cartão de campo Website a mostrar Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, a auto reply, os três interruptores de avaliadores e um rodapé com Optional](/images/forms-builder/fields/04-website.png)
+
+## O que armazena
+
+Texto, o endereço tal como o inquirido o escreveu.
+
+## Operadores de lógica
+
+| Operador | Corresponde quando |
+|---|---|
+| has response | o inquirido deu alguma resposta |
+| is equal to | a resposta é exatamente o valor |
+| is not equal to | a resposta é qualquer outra coisa |
+| starts with | a resposta começa pelo valor |
+| ends with | a resposta termina no valor |
+| contains | o valor aparece algures na resposta |
+| does not contain | o valor não aparece em lado nenhum da resposta |
+
+**contains** é o operador a escolher. Uma regra do género `if website contains linkedin.com` separa um link de perfil de um site pessoal.
+
+![O separador Logic com o seletor de operadores aberto numa condição de Website, a listar has response, is equal to, is not equal to, starts with, ends with, contains e does not contain](/images/forms-builder/fields/operators-website.png)
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão. Os avaliadores leem o endereço como texto e não o abrem.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Email](/pt/reference/forms/fields/email) e [Phone Number](/pt/reference/forms/fields/phone-number) são os outros dois campos de Contact Info.
+- [Short Text e Long Text](/pt/reference/forms/fields/short-and-long-text) é a mesma caixa sem verificação de formato.

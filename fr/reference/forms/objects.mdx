@@ -1,0 +1,61 @@
+---
+title: "Objets"
+sidebarTitle: "Objets"
+description: "Lier des enregistrements tels qu'un poste ou un match à un formulaire HireData, les paramètres de chaque lien et pourquoi le premier objet décide quels enregistrements il sert."
+keywords: ["objets", "lier un poste", "variables de formulaire", "objet principal", "objet requis", "show objects", "référence de données"]
+---
+
+Un objet est un type d'enregistrement qu'une app connectée synchronise dans HireData, tel qu'un poste, un candidat ou un match. En lier un à un formulaire indique au formulaire de quel enregistrement il s'agit, ce qui transforme un questionnaire générique en un questionnaire qui nomme le rôle auquel le candidat a postulé.
+
+## Ouvrir le panneau
+
+Le troisième des cinq boutons de panneaux de la barre d'outils ouvre **Objects**.
+
+![La barre d'outils de l'éditeur de formulaires avec le curseur sur le troisième bouton de panneau et son infobulle Show objects](/images/forms-builder/21-object-button.png)
+
+Le panneau liste les objets déjà liés à ce formulaire, puis **Available objects** avec tout ce que l'espace de travail peut offrir d'autre. Le **+** sur une ligne la lie. **Search objects** filtre une longue liste.
+
+![Le panneau Objects avec Vacancy développé sur ses contrôles Label, Key, Required et Remove, Match en dessous et la liste Available objects en dessous](/images/forms-builder/23-objects-panel-linked.png)
+
+## Ce que lier un objet vous apporte
+
+Chaque champ de l'enregistrement lié devient une variable. Vous pouvez l'écrire dans n'importe quel paramètre de texte du formulaire, y compris la question, la description, un placeholder et un libellé d'option, une question peut donc s'ouvrir sur l'intitulé du poste plutôt que sur « ce rôle ».
+
+La liste des variables dans la barre d'outils les montre toutes. Chacune porte le nom du label de l'objet et est adressée par sa clé.
+
+![Le panneau Variables filtré sur la clé job, listant Vacancy: Job Title et les autres champs du poste lié avec leurs noms de variables](/images/forms-builder/33-object-variables.png)
+
+Pour la syntaxe, consultez [Variables](/fr/variables/introduction).
+
+Le lien rattache aussi les réponses à l'enregistrement. Une collection de ce type reçoit un onglet **Forms** listant les formulaires qui lui sont liés, et chaque enregistrement reçoit un onglet **Responses** contenant ce qui est revenu. Voir [Configurer un formulaire par enregistrement](/fr/content/configuring-a-form-per-record).
+
+## Paramètres par objet
+
+Cliquez sur un objet lié pour l'ouvrir.
+
+- **Label** nomme l'objet dans la liste des variables, c'est de là que vient « Vacancy: Job Title ». Changez-le quand vous voulez.
+- **Key** est la première partie de la variable elle-même, comme dans `{{job.jobTitle}}`. HireData définit la clé lorsque vous liez l'objet et la verrouille ensuite, choisissez donc l'objet que vous voulez plutôt que de prévoir de le renommer plus tard.
+- **Required** décide de ce qui se passe quand rien ne fournit d'enregistrement. Voir [Ce que fait Required](#required).
+- **Remove** délie l'objet. Ses variables cessent de se résoudre, vérifiez donc chaque question qui en utilisait une.
+- Les flèches haut et bas déplacent l'objet dans la liste. L'objet qui se trouve en haut change ce que le formulaire peut faire, lisez donc [Le premier objet décide de la configuration](#first-object) avant de les utiliser.
+
+## Le premier objet décide de la configuration {#first-object}
+
+L'objet en haut de la liste est l'objet principal du formulaire, et il décide pour quels enregistrements vous pouvez configurer le formulaire. Placez Vacancy en premier et vous pouvez activer ou désactiver des questions par poste. Les objets en dessous fournissent toujours leurs variables et rattachent toujours la réponse à leur enregistrement, mais vous ne pouvez pas configurer le formulaire par rapport à eux.
+
+Réordonner la liste change donc plus que le panneau. Lisez [Configurer un formulaire par enregistrement](/fr/content/configuring-a-form-per-record) avant de déplacer l'objet du haut sur un formulaire déjà en service.
+
+## Ce que fait Required {#required}
+
+**Required** compte quand une automatisation envoie le formulaire. Si l'exécution n'a pas d'enregistrement pour un objet requis, la tâche échoue et rien ne part, ce qui vaut mieux qu'envoyer un formulaire dont les questions ont des trous là où l'intitulé du poste devrait se trouver.
+
+La page du formulaire elle-même est plus indulgente. Ouvrez un formulaire public sans rien qui fournisse l'enregistrement et il se charge quand même. Chaque variable de cet objet se résout en rien.
+
+Désactivez **Required** pour un objet qui n'ajoute que du contexte, tel qu'un match dont le formulaire peut se passer.
+
+## Voir aussi
+
+- [Sources de données](/fr/reference/forms/data-sources) remplit les options d'une question depuis une liste enregistrée.
+- [Configurer un formulaire par enregistrement](/fr/content/configuring-a-form-per-record) active et désactive des questions par poste.
+- [Variables](/fr/variables/introduction) couvre la syntaxe pour écrire une variable dans une question.
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.

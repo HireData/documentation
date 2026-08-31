@@ -1,0 +1,211 @@
+---
+title: "Visão geral do construtor de formulários"
+sidebarTitle: "Visão geral"
+description: "Um tour pelo construtor de formulários da HireData: os seus três separadores, os painéis da barra de ferramentas, todos os tipos de campo e as definições que todos os campos partilham."
+keywords: ["construtor de formulários", "campos de formulário", "tipos de campo", "tema do formulário", "traduções do formulário", "templates de formulário", "tornar o formulário público", "always include", "campo oculto", "campo obrigatório"]
+---
+
+Um formulário é um conjunto de perguntas a que alguém responde na web ou numa conversa de WhatsApp. Abra a página **Forms** a partir de **Settings** e clique em **New Form**. Escolha **Blank Form** ou um dos [templates](#templates), e o novo formulário abre-se no construtor.
+
+Esta página mapeia o construtor. Para um passo a passo que leva um formulário do zero à publicação, leia [Criar um formulário na HireData](/pt/content/creating-a-form-in-hiredata).
+
+## O construtor num relance
+
+O construtor tem três partes.
+
+A coluna da esquerda lista os campos do formulário pela ordem em que um inquirido os encontra. Acima da lista ficam os separadores **Content**, **Logic** e **Evaluation**, e o botão **+** que abre a paleta **Add Content**.
+
+A coluna da direita pré-visualiza o formulário, com os seus próprios separadores **Interactive Preview**, **Conversational Preview** e **Test & Evaluate**.
+
+A barra ao longo do topo contém o nome do formulário e a barra de ferramentas.
+
+![O construtor de formulários: o nome do formulário e a barra de ferramentas no topo, os separadores Content, Logic e Evaluation com a lista de campos à esquerda, e a Interactive Preview à direita](/images/forms-builder/31-builder-at-a-glance.png)
+
+### Separador Content
+
+O separador **Content** contém os campos e as suas definições. Clique num campo para abrir o seu cartão e arraste-o pela pega à esquerda para alterar a ordem.
+
+O botão **+** abre a paleta **Add Content**. Esta agrupa as entradas por categoria e repete as mais usadas em **Recommended**. **Find a field type** pesquisa a lista.
+
+![A paleta Add Content com a sua lista Recommended e os grupos Text, Contact Info, Temporal, Choice, Numeric, Rating, Other e Ending](/images/forms-builder/01-add-content-palette.png)
+
+### Separador Logic {#logic-tab}
+
+O separador **Logic** decide para onde um inquirido vai a seguir. Cada pergunta recebe um botão **Add Rule** e um alvo de rodapé, e uma regra lê-se `if <field> <operator> <value> then go to <target>`.
+
+Veja [Lógica](/pt/reference/forms/logic) para os operadores que cada tipo de campo oferece, os padrões de ramificação que vale a pena copiar e o que verificar quando uma regra não dispara.
+
+### Separador Evaluation
+
+O separador **Evaluation** transforma uma resposta concluída em algo sobre o qual um recrutador pode agir. Contém cinco avaliadores, cada um com um interruptor: **Summary**, **Criteria**, **Scoring**, **Skills** e **Generated fields**.
+
+Ative um aqui e, para os três que trabalham pergunta a pergunta, ele recebe também um interruptor em cada cartão de campo, para que o possa configurar sem sair do separador **Content**.
+
+Veja [Avaliação](/pt/reference/forms/evaluation/overview) para saber o que cada avaliador decide, o que devolve e a ordem pela qual tem de os ativar.
+
+### Painel de pré-visualização
+
+**Interactive Preview** percorre o formulário web, executando a mesma lógica que o formulário público executa. **Conversational Preview** mostra a versão de chat. **Test & Evaluate** preenche uma resposta completa e corre os avaliadores sobre ela.
+
+Veja [Pré-visualizações](/pt/reference/forms/testing/previews) e [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate).
+
+## A barra de ferramentas
+
+A barra de ferramentas percorre o canto superior direito do construtor, de **Save** até ao menu de três pontos.
+
+![A barra de ferramentas do construtor de formulários, a mostrar Save, o botão de pré-visualização, Publish, o seletor de marca, os cinco botões de painel e o menu de mais opções](/images/forms-builder/25-builder-toolbar.png)
+
+**Save** guarda as suas alterações. O botão do olho ao lado guarda o formulário e abre-o numa [janela de pré-visualização](/pt/reference/forms/testing/previews#the-preview-window) sobre o construtor.
+
+**Publish** torna o formulário disponível para os inquiridos. Passa a ler **Withdraw** assim que o formulário está publicado.
+
+**Brand** escolhe a marca de onde vêm as cores do formulário, e **Reset to default** devolve o formulário à marca da sua conta.
+
+Cinco botões à direita abrem painéis sobre a pré-visualização:
+
+- **Show variable list** lista as variáveis que o formulário pode usar, cada uma com o seu tipo e valor atual, e uma caixa **Search** para as filtrar. Veja [Variáveis](/pt/variables/introduction).
+- **Manage Template** publica o formulário aberto na biblioteca partilhada de templates. Só aparece nas contas que mantêm essa biblioteca, por isso a maioria dos workspaces nunca o vê. Veja [Templates](#templates).
+- **Show objects** liga registos como uma vaga ou um match ao formulário. Veja [Objetos](/pt/reference/forms/objects).
+- **Manage Languages** define o idioma por defeito do formulário e as suas traduções. Veja [Idiomas e traduções](#localization).
+- **Settings** contém o tema e o interruptor de acesso público. Veja [Tema e publicação](#theme-and-publishing).
+
+O menu de três pontos no fim oferece **Preview**, **Duplicate**, **Publish**, **Archive**, **Export CSV**, **Export Excel** e **Delete**.
+
+## Escolher um tipo de campo
+
+A paleta mostra mais entradas do que os tipos de campo que existem. Short Text e Long Text, Multiple Choice e Dropdown, e Net Promoter Score e Opinion Scale são, cada um deles, um único tipo com duas definições, alternadas no rodapé do cartão do campo.
+
+Cada linha abaixo tem uma página própria, que cobre as definições desse tipo, o que armazena, os operadores que a lógica oferece para ele e o que os avaliadores de IA podem fazer com ele.
+
+| Tipo de campo | Grupo | Armazena |
+|---|---|---|
+| [Short Text e Long Text](/pt/reference/forms/fields/short-and-long-text) | Text | texto |
+| [Email](/pt/reference/forms/fields/email) | Contact Info | texto |
+| [Phone Number](/pt/reference/forms/fields/phone-number) | Contact Info | texto |
+| [Website](/pt/reference/forms/fields/website) | Contact Info | texto |
+| [Date](/pt/reference/forms/fields/date) | Temporal | uma data e hora |
+| [Time](/pt/reference/forms/fields/time) | Temporal | uma data e hora |
+| [Datetime](/pt/reference/forms/fields/datetime) | Temporal | uma data e hora |
+| [Yes/No](/pt/reference/forms/fields/yes-no) | Choice | Yes ou No |
+| [Multiple Choice e Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) | Choice | as opções escolhidas |
+| [Number](/pt/reference/forms/fields/number) | Numeric | um número |
+| [Currency](/pt/reference/forms/fields/currency) | Numeric | um número |
+| [Net Promoter Score e Opinion Scale](/pt/reference/forms/fields/net-promoter-score-and-opinion-scale) | Rating | um ponto na escala, 0 a 10 para Net Promoter Score |
+| [File Upload](/pt/reference/forms/fields/file-upload) | Other | os ficheiros carregados |
+| [Ending Screen](/pt/reference/forms/fields/ending-screen) | Ending | nada |
+| [Redirect URL](/pt/reference/forms/fields/redirect-url) | Ending | nada |
+
+O tipo também decide que operadores uma regra pode usar nessa pergunta. [Lógica](/pt/reference/forms/logic#operators) tem a tabela completa.
+
+Todos os tipos de campo, exceto os dois fins, podem alimentar os avaliadores de IA: Criteria, Scoring e Skills. Veja [Avaliação](/pt/reference/forms/evaluation/overview).
+
+<Note>
+  Existem mais alguns tipos de campo do que os que a paleta oferece: Range, Color e as variantes Star, Thumbs, Emoji e Slider de uma classificação. Só uma integração como a API da HireData os pode adicionar. Se um deles aparecer num formulário que não construiu, funciona, mas o construtor não tem cartão de definições para ele.
+</Note>
+
+## Definições que todos os campos partilham {#settings-every-field-shares}
+
+Clique num campo para abrir o seu cartão. As definições que todos os campos partilham ficam no topo e no fundo, com as definições próprias do tipo no meio.
+
+- **Question**, até 255 caracteres. Os ecrãs de fim chamam-lhe **Title**.
+- **Description**, até 1024 caracteres, mostrada por baixo da pergunta.
+- **Image**, com um seletor de posicionamento cuja predefinição é **Above the Input Field**. Os outros posicionamentos são **Left Side of Field**, **Right Side of Field**, **Right Half of the Page**, **Left Half of the Page** e **Background**.
+- Um interruptor **Criteria**, **Scoring** e **Skills**, um por cada avaliador que ativou para o formulário.
+- Um rodapé com o botão que abre [Display & requirements](#display-and-requirements) e o comutador de tipo para os tipos que existem em duas variantes: Short Text e Long Text, o Checkbox e o Toggle de Yes/No, Multiple Choice e Dropdown, Net Promoter Score e Opinion Scale.
+
+Mais duas definições aparecem na maioria dos tipos de campo, mas não em todos. Ambas são mensagens para formulários respondidos numa conversa de WhatsApp:
+
+- **Auto reply (on answer)** é enviada assim que o inquirido responde à pergunta. Yes/No substitui-a por uma resposta por cada opção, e Multiple Choice e Dropdown movem-na para cada opção.
+- **Auto reply (on invalid answer)** aparece assim que **Required** está ativado. O construtor descreve-a como a mensagem enviada quando uma pergunta obrigatória é respondida incorretamente.
+
+As definições de texto como **Question**, **Description** e os placeholders aceitam variáveis, para que uma pergunta possa tratar o inquirido pelo nome ou mencionar a vaga. Algumas variáveis só ficam disponíveis depois de ligar o respetivo objeto ao formulário, veja [Objetos e fontes de dados](#objects-and-data-sources). Para a sintaxe, veja [Variáveis](/pt/variables/introduction).
+
+Redirect URL não tem nada disto. É um campo único para o endereço.
+
+![Um cartão de campo Dropdown a mostrar Question, Description, Image, Placeholder, Conversational Button Text, as opções com Add Data Source, os três interruptores de avaliador e um rodapé a ler Dropdown, Single Answer e Optional](/images/forms-builder/02-question-card-common-settings.png)
+
+## Apresentação e requisitos {#display-and-requirements}
+
+O botão no canto inferior direito de um cartão de campo abre **Display & requirements**. A sua etiqueta indica o estado atual do campo: **Optional**, **Required**, **Hidden** ou **Always included**.
+
+![O popup Display & requirements num cartão de campo, com os interruptores Hidden, Required e Always include](/images/forms-builder/22-display-and-requirements.png)
+
+**Hidden**, "Hide this field from respondents."
+
+Um campo oculto é saltado à medida que o inquirido avança pelo formulário, e as regras de lógica não podem saltar para ele. A resposta que armazena continua disponível para as automações, e é assim que transporta um valor como uma referência ou um ID através de um formulário sem o pedir.
+
+**Required**, "Require respondents to answer this field."
+
+Aparece um asterisco na etiqueta da pergunta, e o inquirido não pode continuar até o campo ter uma resposta.
+
+**Always include**, "Prevent configurations from disabling this field. This will make the field required."
+
+Ativá-lo ativa também **Required**. Ninguém pode depois desligar o campo para um registo individual, por isso o formulário serve-o sempre. Use-o para as perguntas sem as quais o seu processo não funciona. Veja [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record).
+
+Ativar **Hidden** limpa **Required** e **Always include** e bloqueia ambos. Um campo que o inquirido nunca vê não pode ser respondido, por isso também não pode ser obrigatório.
+
+### O que conta como resposta {#required-answers}
+
+Uma caixa de texto vazia, uma caixa numérica vazia, nenhuma opção escolhida e nenhum ficheiro anexado contam todos como sem resposta, e o formulário web mostra uma mensagem por baixo da pergunta, como "This field is required and cannot be empty."
+
+Responder No, deixar um toggle desligado, introduzir 0 e escolher 0 numa classificação são respostas reais e deveriam satisfazer um campo obrigatório.
+
+<Warning>
+  Um bug no formulário web bloqueia estas respostas. Responda No, deixe um toggle desligado, introduza 0 ou escolha 0 numa classificação, e o inquirido fica preso numa pergunta obrigatória. **Next** não faz nada, nenhuma mensagem aparece e qualquer regra nesse campo não dispara. Até a correção chegar, deixe as perguntas Yes/No e Net Promoter Score opcionais e defina um **Minimum Value** de 1 numa pergunta Number obrigatória.
+</Warning>
+
+Num formulário conversacional, **Auto reply (on invalid answer)** é a mensagem enviada de volta quando um campo obrigatório não recebe uma resposta utilizável.
+
+## Objetos e fontes de dados {#objects-and-data-sources}
+
+**Show objects** na barra de ferramentas liga registos ao formulário. Ligue uma vaga e os seus campos tornam-se variáveis que pode escrever em qualquer pergunta, e o objeto no topo da lista decide para que registos pode configurar o formulário. Veja [Objetos](/pt/reference/forms/objects).
+
+**Add Data Source** num campo Multiple Choice ou Dropdown preenche as suas opções a partir de uma lista que o seu workspace já mantém, em vez de opções escritas por si. A lista pertence ao workspace, por isso editá-la altera todas as perguntas que a usam. Veja [Fontes de dados](/pt/reference/forms/data-sources).
+
+## Tema e publicação {#theme-and-publishing}
+
+O painel **Settings** controla o aspeto do formulário e quem lhe pode aceder.
+
+![O painel Settings com Make form public, Logo, Alignment, Font Family, Text Color, Scale, as secções Input e Background recolhidas, Button Text e Border radius](/images/forms-builder/26-settings-drawer.png)
+
+O painel abre com **Make form public**, "Public forms can be anonymously answered by anyone with the form's URL." Deixe-o desligado e o formulário só abre para um inquirido a quem o enviou. Seguem-se as definições de tema:
+
+- **Logo**, a imagem no topo do formulário. Começa como o logótipo da sua marca, e a cruz ao lado da etiqueta remove-o.
+- **Alignment**, que coloca o texto das perguntas e os campos de resposta à esquerda, ao centro ou à direita.
+- **Font Family**, o tipo de letra que o formulário usa.
+- **Text Color**, a cor do texto do formulário.
+- **Scale**, que dimensiona o texto e os campos de resposta: **Default**, **Large** ou **Extra Large**.
+- **Input**, uma secção com a **Variant** das caixas de resposta (**Solid**, **Soft** ou **Outline**), **Color**, **Background Color**, **Button Color** e **Button Text Color**.
+- **Background**, uma secção com uma **Background Image** e uma **Color** de fundo.
+- **Button Text**, a etiqueta do botão que faz o inquirido avançar. Lê "Ok" até a alterar.
+- **Border radius**, com **None**, **Normal**, **Large** e **Custom**.
+
+Cada cor começa como um valor da marca selecionada, mostrado como um nome do género "Theme: Palette Background Text Color". Altere uma e ela aplica-se apenas a este formulário, para que um formulário corresponda à sua marca até decidir que não deve.
+
+## Idiomas e traduções {#localization}
+
+**Manage Languages** na barra de ferramentas define o **Default language** do formulário e lista as suas traduções. O idioma por defeito é aquele em que escreveu as perguntas.
+
+Clique em **New Translation** para adicionar uma. Escolha o **Language** e depois traduza à mão ou clique em **Create AI translation**, que preenche o formulário inteiro por si.
+
+![O painel New Translation com neerlandês selecionado, o botão Create AI translation, o grupo Settings e o primeiro campo expandido para Question, Description, Min Label e Max Label](/images/forms-builder/27-translation-editor.png)
+
+Uma tradução cobre três grupos:
+
+- **Settings**, o **Name** do formulário, o **Button text**, a linha **Powered by** e o **Upload title** e a **Upload description** de um upload de ficheiros.
+- **Fields**, todos os campos do formulário. Cada um contém a sua **Question** e **Description**, mais o texto que o seu tipo acrescenta, como o **Min Label** e o **Max Label** de uma classificação, o **Conversational button text** de um campo de escolha e as suas opções com as respetivas auto replies.
+- **Validation**, as mensagens que um inquirido vê quando uma resposta não passa, como **Field Is Required**, **Invalid Email** e **Max Number**.
+
+Cada entrada mostra o texto de origem por cima de uma caixa vazia. Deixe uma caixa vazia e o formulário recorre ao idioma por defeito para esse texto.
+
+Os inquiridos mudam de idioma com o seletor no topo do formulário. Para definir o idioma em que o seu workspace escreve, veja [Definir um idioma por defeito e tom de voz da IA](/pt/settings/setting-a-default-language-and-ai-tone-of-voice).
+
+## Templates
+
+Clique em **New Form** e abre-se uma galeria com **Blank Form** como primeiro cartão. Os restantes são formulários de recrutamento prontos a usar, como **Job Application (Pre-Intake)**, **Intake**, **Rejection** e **Net Promoter Score (NPS)**, cada um com uma descrição do que pergunta e uma tag para o registo a que se adequa. Os chips **Candidate** e **Contact** no topo filtram a galeria.
+
+Escolher um template copia os seus campos para um novo formulário, e tudo na cópia é seu para alterar.
+
+![A janela New Form a mostrar os filtros de tag Candidate e Contact, o cartão Blank Form e os templates de formulários de recrutamento](/images/forms-builder/28-new-form-templates.png)
+
+Se a sua conta mantém a biblioteca partilhada de templates, o botão **Manage Template** na barra de ferramentas transforma o formulário aberto num template. **Configure Template** pede um **Title**, uma **Description** e **Tags**, oferece-se para escrever os três com IA e coloca o template na galeria quando clica em **Enable**. **Feature Template** promove-o ao topo.

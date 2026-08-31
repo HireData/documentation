@@ -1,0 +1,61 @@
+---
+title: "Objects"
+sidebarTitle: "Objects"
+description: "Records zoals een vacature of een match koppelen aan een HireData-formulier, de instellingen die elke koppeling draagt en waarom het eerste object bepaalt welke records het formulier serveert."
+keywords: ["objects", "vacature koppelen", "formuliervariabelen", "hoofdobject", "verplicht object", "show objects", "data reference"]
+---
+
+Een object is een type record dat een gekoppelde app naar HireData synchroniseert, zoals een vacature, een kandidaat of een match. Er een aan een formulier koppelen vertelt het formulier over welk record het gaat, en dat is wat een generieke vragenlijst verandert in een die de rol noemt waarop de kandidaat solliciteerde.
+
+## Het paneel openen
+
+De derde van de vijf drawer-knoppen in de toolbar opent **Objects**.
+
+![De toolbar van de formulierbuilder met de cursor op de derde drawer-knop en zijn Show objects-tooltip](/images/forms-builder/21-object-button.png)
+
+Het paneel toont de objecten die al aan dit formulier zijn gekoppeld, en daarna **Available objects** met alles wat de workspace verder kan bieden. De **+** op een rij koppelt hem. **Search objects** filtert een lange lijst.
+
+![Het Objects-paneel met Vacancy uitgeklapt naar zijn Label-, Key-, Required- en Remove-controls, Match eronder, en de Available objects-lijst daaronder](/images/forms-builder/23-objects-panel-linked.png)
+
+## Wat het koppelen van een object je oplevert
+
+Elk veld op het gekoppelde record wordt een variabele. Je kunt hem in elke tekstinstelling van het formulier schrijven, waaronder de vraag, de beschrijving, een placeholder en een optielabel, zodat een vraag kan openen met de functietitel in plaats van met "deze rol".
+
+De variabelelijst in de toolbar toont ze allemaal. Elke variabele is genoemd naar het label van het object en wordt aangesproken via zijn key.
+
+![De Variables-drawer gefilterd op de key job, met Vacancy: Job Title en de andere velden van de gekoppelde vacature met hun variabelenamen](/images/forms-builder/33-object-variables.png)
+
+Voor de syntax, zie [Variabelen](/nl/variables/introduction).
+
+De koppeling verbindt ook de responses met het record. Een collectie van dat type krijgt een **Forms**-tabblad met de formulieren die eraan gekoppeld zijn, en elk record krijgt een **Responses**-tabblad met wat er terugkwam. Zie [Een formulier per record configureren](/nl/content/configuring-a-form-per-record).
+
+## Instellingen per object
+
+Klik op een gekoppeld object om het te openen.
+
+- **Label** benoemt het object in de variabelelijst, en daar komt "Vacancy: Job Title" vandaan. Wijzig het wanneer je wilt.
+- **Key** is het eerste deel van de variabele zelf, zoals in `{{job.jobTitle}}`. HireData stelt de key in wanneer je het object koppelt en vergrendelt hem daarna, dus kies het object dat je wilt in plaats van te plannen het later te hernoemen.
+- **Required** bepaalt wat er gebeurt wanneer niets een record levert. Zie [Wat Required doet](#required).
+- **Remove** ontkoppelt het object. Zijn variabelen worden dan niet meer ingevuld, dus controleer elke vraag die er een gebruikte.
+- De pijlen omhoog en omlaag verplaatsen het object door de lijst. Welk object bovenaan staat verandert wat het formulier kan, dus lees [Het eerste object bepaalt de configuratie](#first-object) voordat je ze gebruikt.
+
+## Het eerste object bepaalt de configuratie {#first-object}
+
+Het object bovenaan de lijst is het hoofdobject van het formulier, en het bepaalt voor welke records je het formulier kunt configureren. Zet Vacancy eerst en je kunt vragen per vacature aan- en uitzetten. Objecten eronder leveren nog steeds hun variabelen en verbinden de response nog steeds met hun record, maar je kunt het formulier niet voor ze configureren.
+
+De lijst herordenen verandert dus meer dan het paneel. Lees [Een formulier per record configureren](/nl/content/configuring-a-form-per-record) voordat je het bovenste object verplaatst op een formulier dat al in gebruik is.
+
+## Wat Required doet {#required}
+
+**Required** doet ertoe wanneer een automatisering het formulier verstuurt. Heeft de run geen record voor een verplicht object, dan faalt de taak en gaat er niets uit, wat beter is dan een formulier versturen waarvan de vragen gaten hebben waar de functietitel had moeten staan.
+
+De eigen pagina van het formulier is vergevingsgezinder. Open een openbaar formulier terwijl niets het record levert en het laadt nog steeds. Elke variabele van dat object wordt dan tot niets ingevuld.
+
+Zet **Required** uit voor een object dat alleen context toevoegt, zoals een match waar het formulier zonder kan.
+
+## Gerelateerd
+
+- [Data sources](/nl/reference/forms/data-sources) vult de opties van een vraag uit een opgeslagen lijst.
+- [Een formulier per record configureren](/nl/content/configuring-a-form-per-record) zet vragen per vacature aan en uit.
+- [Variabelen](/nl/variables/introduction) behandelt de syntax om een variabele in een vraag te schrijven.
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.

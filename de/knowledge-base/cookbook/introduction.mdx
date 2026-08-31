@@ -1,12 +1,59 @@
 ---
 title: "Cookbook"
 sidebarTitle: "Einführung"
-description: "Fertige Recruiting-Playbooks, die Sie in HireData nachbauen können – von No-Show-Follow-ups bis zu Placement-Umfragen und Onboarding-Sequenzen."
+description: "Fertige Recruiting-Playbooks, die Sie in HireData nachbauen können – von No-Show-Follow-ups bis zu Placement-Umfragen, mit Schritt-für-Schritt-Anleitungen und Automatisierungsvorlagen."
 ---
 
-<Note>
-  Dieser Artikel ist ein Platzhalter. Der Inhalt unten skizziert, was er abdecken wird.
-</Note>
+Das Cookbook enthält praxisnahe HireData-Rezepte für echte Recruitment-Ergebnisse. Die meisten kombinieren einen Trigger, Bedingungen, Tasks und Vorlagen zu einem Workflow, den Sie an Ihre eigenen Apps und Prozesse anpassen können. Einige wenige bauen ein einzelnes Stück Inhalt, etwa ein Formular, das seine eigenen Antworten prüft.
 
-{/* TODO(docs-reorg): explain what recipes are, how to read them, and list them as cards.
-   Each recipe composes a trigger + filters + tasks + templates for a real recruiting outcome. */}
+## So verwenden Sie ein Rezept
+
+Ein Rezept erklärt:
+
+1. **Das Ergebnis** — was der Workflow erreichen soll
+2. **Den Trigger** — welches Event oder welcher Zeitplan ihn startet
+3. **Die Bedingungen** — welche Datensätze weiterlaufen sollen
+4. **Die Tasks** — was HireData mit diesen Datensätzen tut
+5. **Den Test** — wie Sie den Workflow sicher überprüfen
+
+Nutzen Sie das Rezept als Ausgangspunkt. Objektnamen, Stages, Felder und verfügbare Tasks können sich zwischen ATS-Verbindungen unterscheiden, wählen Sie also die entsprechenden Werte aus Ihrem eigenen Automation-Builder.
+
+## Bevor Sie bauen
+
+- Verbinden Sie die App, die die Quelldaten liefert.
+- Bestimmen Sie einen sicheren Testdatensatz.
+- Prüfen Sie, welche Felder und Beziehungen verfügbar sind.
+- Legen Sie fest, wer für das Ergebnis verantwortlich ist, wenn ein Task menschliche Nacharbeit erfordert.
+- Sehen Sie in der Vorlagengalerie nach, ob es eine bestehende Automatisierung gibt, die Sie anpassen können.
+- Testen Sie jede externe Aktion, bevor Sie den Workflow aktivieren.
+
+<Warning>
+  Rezepte, die Nachrichten versenden, Datensätze aktualisieren oder externe Systeme aufrufen, können echte Daten beeinflussen. Verwenden Sie Testempfänger und Sandbox-Endpunkte, bis Sie den kompletten Run überprüft haben.
+</Warning>
+
+## Verfügbare Rezepte
+
+<CardGroup cols={2}>
+  <Card title="Unvollständige Kandidatenprofile finden" icon="user-magnifying-glass" href="/knowledge-base/cookbook/incomplete-candidate-profiles">
+    Finden Sie Profile mit fehlenden Informationen und leiten Sie sie an einen Recruiter, ein internes Team oder einen Workflow zur Vervollständigung durch den Kandidaten weiter.
+  </Card>
+
+  <Card title="Ein Ergebnis an Ihr eigenes System senden" icon="code" href="/knowledge-base/cookbook/post-an-outcome-to-your-own-system">
+    Senden Sie eine JSON-Zusammenfassung an einen API-Endpunkt, wenn ein HireData-Event eintritt, und verwenden Sie die Antwort in späteren Tasks weiter.
+  </Card>
+
+  <Card title="Bewerber prüfen und bewerten" icon="clipboard-check" href="/knowledge-base/cookbook/pre-screening-form">
+    Bauen Sie ein Pre-Screening-Formular, das Bewerber ablehnt, die den Job nicht machen können, den Rest einstuft und jede Antwort zusammenfasst.
+  </Card>
+</CardGroup>
+
+## Mit Vertrauen bauen
+
+Nach dem Erstellen eines Rezepts:
+
+1. [Testen Sie die Automatisierung](/automations/how-to-test-an-automation).
+2. Überprüfen Sie ihr [Event](/de/settings/logs/events) und ihren [Run](/de/settings/logs/runs).
+3. Bestätigen Sie das Ergebnis in der Ziel-App.
+4. Aktivieren Sie sie für eine begrenzte Zielgruppe, bevor Sie die Bedingungen erweitern.
+
+Für wiederverwendbare Ausgangspunkte lohnt sich auch ein Blick in die Vorlagengalerie im HireData-Dashboard.

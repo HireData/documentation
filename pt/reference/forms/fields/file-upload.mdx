@@ -1,0 +1,43 @@
+---
+title: "File Upload"
+sidebarTitle: "File Upload"
+description: "O campo de upload de ficheiros num formulário da HireData. Escolha se o inquirido pode anexar mais do que um ficheiro e que tipos de ficheiro aceita."
+keywords: ["anexo", "cv", "currículo", "upload de documentos", "largar ficheiros"]
+---
+
+File Upload dá ao inquirido uma área de largar com o texto **Drop Files Here** e "Click here or drop files to upload them" por baixo. É assim que um formulário recolhe um CV, um certificado ou um portefólio.
+
+Fica no grupo **Other** da paleta **Add Content**.
+
+## Definições
+
+O cartão tem as [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). File Upload acrescenta duas próprias.
+
+- **Multiple**, **Yes** ou **No**, que decide se o inquirido pode anexar mais do que um ficheiro.
+- **File type**, uma predefinição de entre **Any**, **Image**, **Audio**, **Video**, **Media**, **PDF**, **Document**, **Powerpoint**, **Word Document**, **Sheet** e **Archive**.
+
+**File type** é uma predefinição, não uma lista que escreve, por isso um formulário que quer um PDF ou um documento Word tem de aceitar **Document** e resolver isso mais tarde. Não há limite de tamanho a definir.
+
+O texto da área de largar é traduzível. Fica em **Settings**, em [Idiomas e traduções](/pt/reference/forms/overview#localization), como **Upload title** e **Upload description**.
+
+![Um cartão de campo File Upload a mostrar Question, Description, Image, Multiple, File type definido como PDF, a auto reply, os três interruptores de avaliadores e um rodapé com Optional, ao lado de uma pré-visualização a mostrar a área Drop Files Here](/images/forms-builder/fields/13-file-upload.png)
+
+## O que armazena
+
+Os ficheiros carregados, com o nome e o tipo de cada um.
+
+## Operadores de lógica
+
+O seletor de operadores está fixo em **has response** e não pode ser alterado. Uma regra pode perguntar se o inquirido anexou alguma coisa, o que basta para enviar um candidato sem CV para outro sítio.
+
+![Uma condição numa pergunta File Upload no separador Logic, com o operador a mostrar has response e sem caixa de valor ao lado](/images/forms-builder/fields/operators-file-upload.png)
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Idiomas e traduções](/pt/reference/forms/overview#localization) é onde altera o texto da área de largar.

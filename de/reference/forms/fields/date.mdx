@@ -1,0 +1,40 @@
+---
+title: "Date"
+sidebarTitle: "Date"
+description: "Das Datumsfeld in einem HireData-Formular. Es gibt der befragten Person eine Kalenderauswahl und lässt sich nur mit dem Operator has response verzweigen."
+keywords: ["kalender", "startdatum", "verfügbarkeitsdatum"]
+---
+
+Date gibt der befragten Person ein `dd/mm/yyyy`-Feld mit einer Kalenderauswahl daneben. Verwenden Sie es für ein Startdatum, das Ende einer Kündigungsfrist oder jeden einzelnen Tag.
+
+Es befindet sich in der Gruppe **Temporal** der **Add Content**-Palette.
+
+## Einstellungen
+
+Date ergänzt die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares), um nichts. Es gibt keinen frühesten oder spätesten Tag zum Festlegen, deshalb muss ein Datum, das die befragte Person nicht wählen dürfen sollte, nach Eingang der Antwort abgefangen werden, entweder durch einen Evaluator oder durch eine Automatisierung.
+
+![Eine Date-Feldkarte mit Question, Description, Image, der Auto Reply, den drei Evaluator-Schaltern und einer Fußzeile mit Optional, neben einer Vorschau mit einem dd/mm/yyyy-Feld und einer Kalenderauswahl](/images/forms-builder/fields/05-date.png)
+
+## Was gespeichert wird
+
+Ein Datum und eine Uhrzeit. Alle drei Temporal-Typen teilen sich einen Wert, und Date füllt den Tag aus.
+
+## Logik-Operatoren
+
+Die Operator-Auswahl ist fest auf **has response** gestellt und kann nicht geändert werden.
+
+![Eine Bedingung auf einer Date-Frage im Logic-Tab, mit dem Operator has response und ohne Wertefeld daneben](/images/forms-builder/fields/operators-date.png)
+
+<Note>
+  Sie können nicht danach verzweigen, wie früh oder spät ein Datum liegt. Eine Regel kann nur fragen, ob die befragte Person überhaupt ein Datum angegeben hat, mehr nicht. Um auf den Tag selbst zu reagieren, verwenden Sie [Criteria](/de/reference/forms/evaluation/criteria) oder eine Automatisierung.
+</Note>
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte. Ein Startdatum ist ein gutes **Criteria**-Must-have, und es ist der Weg, ein Datum zu prüfen, das die Logik nicht erreichen kann.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Time](/de/reference/forms/fields/time) und [Datetime](/de/reference/forms/fields/datetime) sind die anderen beiden Temporal-Felder.

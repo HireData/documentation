@@ -1,0 +1,61 @@
+---
+title: "Objekte"
+sidebarTitle: "Objekte"
+description: "Datensätze wie eine Vakanz oder einen Match mit einem HireData-Formular verknüpfen, die Einstellungen jeder Verknüpfung und warum das erste Objekt entscheidet, welche Datensätze das Formular bedient."
+keywords: ["objekte", "vakanz verknüpfen", "formular-variablen", "hauptobjekt", "erforderliches objekt", "show objects", "datenreferenz"]
+---
+
+Ein Objekt ist ein Datensatztyp, den eine verbundene App nach HireData synchronisiert, etwa eine Vakanz, ein Kandidat oder ein Match. Eines mit einem Formular zu verknüpfen sagt dem Formular, um welchen Datensatz es geht – das macht aus einem generischen Fragebogen einen, der die Rolle nennt, auf die sich die Person beworben hat.
+
+## Das Panel öffnen
+
+Die dritte der fünf Panel-Schaltflächen in der Toolbar öffnet **Objects**.
+
+![Die Toolbar des Formular-Builders mit dem Cursor auf der dritten Panel-Schaltfläche und ihrem Show-objects-Tooltip](/images/forms-builder/21-object-button.png)
+
+Das Panel listet die bereits mit diesem Formular verknüpften Objekte, darunter **Available objects** mit allem, was der Workspace sonst anbieten kann. Das **+** an einer Zeile verknüpft sie. **Search objects** filtert eine lange Liste.
+
+![Das Objects-Panel mit aufgeklapptem Vacancy und seinen Steuerelementen Label, Key, Required und Remove, darunter Match und die Liste Available objects](/images/forms-builder/23-objects-panel-linked.png)
+
+## Was Ihnen das Verknüpfen eines Objekts bringt
+
+Jedes Feld des verknüpften Datensatzes wird zu einer Variablen. Sie können sie in jede Texteinstellung des Formulars schreiben, einschließlich der Frage, der Beschreibung, eines Platzhalters und einer Optionsbeschriftung – eine Frage kann also mit dem Jobtitel beginnen statt mit „diese Rolle".
+
+Die Variablenliste in der Toolbar zeigt sie alle. Jede ist nach dem Label des Objekts benannt und über dessen Key adressiert.
+
+![Das Variables-Panel gefiltert auf den job-Key, mit Vacancy: Job Title und den anderen Feldern der verknüpften Vakanz mit ihren Variablennamen](/images/forms-builder/33-object-variables.png)
+
+Zur Syntax siehe [Variablen](/de/variables/introduction).
+
+Die Verknüpfung bindet auch die Antworten an den Datensatz. Eine Collection dieses Typs bekommt einen **Forms**-Tab mit den verknüpften Formularen, und jeder Datensatz bekommt einen **Responses**-Tab mit dem, was zurückkam. Siehe [Ein Formular pro Datensatz konfigurieren](/de/content/configuring-a-form-per-record).
+
+## Einstellungen pro Objekt
+
+Klicken Sie auf ein verknüpftes Objekt, um es zu öffnen.
+
+- **Label** benennt das Objekt in der Variablenliste – daher kommt „Vacancy: Job Title". Ändern Sie es, wann immer Sie möchten.
+- **Key** ist der erste Teil der Variablen selbst, wie in `{{job.jobTitle}}`. HireData setzt den Key beim Verknüpfen des Objekts und sperrt ihn danach – wählen Sie also gleich das gewünschte Objekt, statt eine spätere Umbenennung einzuplanen.
+- **Required** entscheidet, was passiert, wenn nichts einen Datensatz liefert. Siehe [Was Required bewirkt](#required).
+- **Remove** löst die Verknüpfung des Objekts. Seine Variablen werden nicht mehr aufgelöst, prüfen Sie also jede Frage, die eine verwendet hat.
+- Die Pfeile nach oben und unten bewegen das Objekt durch die Liste. Welches Objekt oben steht, ändert, was das Formular kann – lesen Sie also [Das erste Objekt entscheidet über die Konfiguration](#first-object), bevor Sie sie verwenden.
+
+## Das erste Objekt entscheidet über die Konfiguration {#first-object}
+
+Das Objekt an der Spitze der Liste ist das Hauptobjekt des Formulars, und es entscheidet, für welche Datensätze Sie das Formular konfigurieren können. Setzen Sie Vacancy an die erste Stelle, und Sie können Fragen pro Vakanz ein- und ausschalten. Objekte darunter liefern weiterhin ihre Variablen und binden die Antwort weiterhin an ihren Datensatz, aber Sie können das Formular nicht gegen sie konfigurieren.
+
+Die Liste umzusortieren ändert also mehr als nur das Panel. Lesen Sie [Ein Formular pro Datensatz konfigurieren](/de/content/configuring-a-form-per-record), bevor Sie das oberste Objekt eines Formulars verschieben, das bereits im Einsatz ist.
+
+## Was Required bewirkt {#required}
+
+**Required** zählt, wenn eine Automatisierung das Formular versendet. Hat der Run keinen Datensatz für ein erforderliches Objekt, schlägt der Task fehl und nichts geht raus – besser, als ein Formular zu versenden, dessen Fragen Lücken haben, wo der Jobtitel stehen sollte.
+
+Die eigene Seite des Formulars ist nachsichtiger. Öffnen Sie ein öffentliches Formular, ohne dass etwas den Datensatz liefert, lädt es trotzdem. Jede Variable aus diesem Objekt löst sich zu nichts auf.
+
+Schalten Sie **Required** für ein Objekt aus, das nur Kontext beisteuert, etwa einen Match, ohne den das Formular auskommt.
+
+## Verwandte Themen
+
+- [Datenquellen](/de/reference/forms/data-sources) füllt die Optionen einer Frage aus einer gespeicherten Liste.
+- [Ein Formular pro Datensatz konfigurieren](/de/content/configuring-a-form-per-record) schaltet Fragen pro Vakanz ein und aus.
+- [Variablen](/de/variables/introduction) behandelt die Syntax, mit der Sie eine Variable in eine Frage schreiben.
+- [Der Formular-Builder im Überblick](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.

@@ -1,0 +1,36 @@
+---
+title: "Datetime"
+sidebarTitle: "Datetime"
+description: "Das Datum-und-Uhrzeit-Feld in einem HireData-Formular. Es fragt Tag und Uhrzeit in einer Antwort ab und lässt sich nur mit dem Operator has response verzweigen."
+keywords: ["datum und uhrzeit", "interviewtermin", "termin"]
+---
+
+Datetime fragt einen Tag und eine Uhrzeit in einer Antwort ab. Verwenden Sie es, wenn beide Hälften zählen, etwa bei einem Interviewtermin, und [Date](/de/reference/forms/fields/date), wenn der Tag genügt.
+
+Es befindet sich in der Gruppe **Temporal** der **Add Content**-Palette.
+
+## Einstellungen
+
+Datetime ergänzt die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares), um nichts. Es gibt kein Zeitfenster zum Festlegen und keine Begrenzung auf Arbeitszeiten.
+
+![Eine Datetime-Feldkarte mit Question, Description, Image, der Auto Reply, den drei Evaluator-Schaltern und einer Fußzeile mit Optional, neben einer Vorschau mit einem kombinierten Datums- und Uhrzeitfeld](/images/forms-builder/fields/07-datetime.png)
+
+## Was gespeichert wird
+
+Ein Datum und eine Uhrzeit. Alle drei Temporal-Typen teilen sich einen Wert, und Datetime füllt beide Hälften aus.
+
+## Logik-Operatoren
+
+Die Operator-Auswahl ist fest auf **has response** gestellt und kann nicht geändert werden. Eine Regel kann fragen, ob die befragte Person einen Termin angegeben hat, nicht ob er in das gewünschte Zeitfenster fällt.
+
+![Eine Bedingung auf einer Datetime-Frage im Logic-Tab, mit dem Operator has response und ohne Wertefeld daneben](/images/forms-builder/fields/operators-datetime.png)
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Date](/de/reference/forms/fields/date) und [Time](/de/reference/forms/fields/time) sind die anderen beiden Temporal-Felder.

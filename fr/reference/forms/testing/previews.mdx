@@ -1,0 +1,59 @@
+---
+title: "Aperçus"
+sidebarTitle: "Aperçus"
+description: "Essayez un formulaire HireData avant de le publier : l'aperçu web, l'aperçu de conversation WhatsApp et la fenêtre d'aperçu derrière le bouton œil."
+keywords: ["aperçu de formulaire", "interactive preview", "conversational preview", "aperçu de chat", "tester un formulaire"]
+---
+
+Le panneau de droite de l'éditeur est une copie fonctionnelle du formulaire. Deux de ses onglets exécutent le formulaire tel qu'un répondant le rencontre, et le troisième exécute les évaluateurs sur une réponse que vous inventez. Cette page couvre les deux premiers. Pour le troisième, voir [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate).
+
+## Interactive Preview
+
+**Interactive Preview** est le formulaire web, avec votre thème, votre logo et les questions dans l'ordre que la [logique](/fr/reference/forms/logic) décide. Répondez à une question et cliquez sur **Next** et vous atterrissez là où un répondant atterrirait, ce qui en fait le moyen le plus rapide de vérifier un parcours.
+
+![L'Interactive Preview montrant la première question du formulaire avec son échelle de notation, le bouton Next et le sélecteur de langue](/images/forms-builder/testing/01-interactive-preview.png)
+
+- Le sélecteur de langue en haut à droite démarre sur la langue par défaut du formulaire et liste ses [traductions](/fr/reference/forms/overview#localization).
+- Les flèches en bas passent d'une question à l'autre sans y répondre, en suivant le parcours que la logique prendrait plutôt que l'ordre de la liste des champs.
+- Cliquer sur une question dans l'onglet **Content** fait sauter l'aperçu à cette question, si bien que la carte que vous modifiez est celle que vous regardez.
+
+Rien de ce que vous faites ici ne crée de réponse. Les réponses que vous saisissez dans l'aperçu sont jetées.
+
+## Conversational Preview
+
+**Conversational Preview** est le même formulaire sous forme de conversation WhatsApp. Il démarre sur un court écran de configuration.
+
+![L'écran de configuration du Conversational Preview avec le sélecteur de langue, la section Objects, la zone de premier message facultatif et le bouton Start Testing](/images/forms-builder/testing/02-conversational-preview-start.png)
+
+- Le sélecteur de langue définit la langue dans laquelle la conversation se déroule.
+- **Objects** contient des valeurs de test pour les enregistrements que le formulaire lie, pour qu'une question qui salue quelqu'un par son nom ait un nom à utiliser. Il n'apparaît que sur un formulaire avec des [objets](/fr/reference/forms/objects) liés.
+- **Optional first message** est ce que le testeur dit avant que le formulaire commence. Le bouton étincelle en écrit un pour vous.
+- **Start Testing** ouvre la conversation.
+
+Une fois lancé, le formulaire vous envoie les questions une par une, avec un bouton là où le formulaire web afficherait une liste ou une échelle.
+
+![Une conversation en cours : la première question avec un bouton Choose, la réponse du testeur et la question de suivi choisie par la logique](/images/forms-builder/testing/03-conversational-preview-chat.png)
+
+**Suggest reply** écrit une réponse plausible dans le composeur à la place du testeur, ce qui est plus rapide que d'inventer les réponses vous-même et suffisant pour exercer le branchement. **Restart** efface la conversation et vous ramène à l'écran de configuration.
+
+C'est l'aperçu à utiliser avant d'envoyer un formulaire par WhatsApp. C'est là que vous découvrez qu'une question se lit mal comme message de chat, ou que les [réponses automatiques](/fr/reference/forms/overview#settings-every-field-shares) se déclenchent au mauvais endroit.
+
+## La fenêtre d'aperçu {#the-preview-window}
+
+Le bouton œil à côté de **Save** dans la barre d'outils est l'autre façon d'ouvrir le formulaire. Il enregistre d'abord le formulaire, puis ouvre l'aperçu dans une fenêtre par-dessus l'éditeur.
+
+![La fenêtre d'aperçu en vue mobile, avec le bouton de copie, le commutateur d'appareil, le bouton d'actualisation et le sélecteur de langue en haut](/images/forms-builder/testing/04-preview-modal.png)
+
+La fenêtre charge la propre adresse d'aperçu du formulaire, donc il s'affiche exactement comme dans le navigateur d'un répondant plutôt que dans la mise en page de l'éditeur. En haut se trouvent un bouton de copie pour le lien d'aperçu, un commutateur **mobile**, **tablet** et **desktop**, un bouton d'actualisation et le sélecteur de langue.
+
+Utilisez-la pour deux choses que le panneau de l'éditeur ne sait pas faire : vérifier le formulaire à la largeur d'un téléphone, et envoyer le lien à un collègue. Les soumissions à l'adresse d'aperçu ne sont pas stockées non plus, donc un collègue peut parcourir tout le formulaire sans laisser de réponse derrière lui.
+
+<Note>
+  Un formulaire configuré pour un enregistrement a un troisième aperçu. Ouvrez l'enregistrement, cliquez sur **Preview**, et le formulaire s'affiche avec les valeurs de cet enregistrement remplies. Voir [Configurer un formulaire par enregistrement](/fr/content/configuring-a-form-per-record).
+</Note>
+
+## Voir aussi
+
+- [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) remplit une réponse entière et exécute les évaluateurs dessus.
+- [Logic](/fr/reference/forms/logic) couvre les règles que les aperçus exécutent, et quoi vérifier quand l'une d'elles ne se déclenche pas.
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, la barre d'outils et le thème.

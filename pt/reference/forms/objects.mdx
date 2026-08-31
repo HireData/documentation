@@ -1,0 +1,61 @@
+---
+title: "Objetos"
+sidebarTitle: "Objetos"
+description: "Ligar registos como uma vaga ou um match a um formulário HireData, as definições de cada ligação e porque é que o primeiro objeto decide que registos serve."
+keywords: ["objetos", "ligar uma vaga", "variáveis de formulário", "objeto principal", "objeto obrigatório", "show objects", "referência de dados"]
+---
+
+Um objeto é um tipo de registo que uma app ligada sincroniza para a HireData, como uma vaga, um candidato ou um match. Ligar um a um formulário diz ao formulário sobre que registo ele é, e é isso que transforma um questionário genérico num que nomeia a função a que o candidato se candidatou.
+
+## Abrir o painel
+
+O terceiro dos cinco botões de painel na barra de ferramentas abre **Objects**.
+
+![A barra de ferramentas do construtor de formulários com o cursor sobre o terceiro botão de painel e a sua tooltip Show objects](/images/forms-builder/21-object-button.png)
+
+O painel lista os objetos já ligados a este formulário e depois **Available objects** com tudo o resto que o workspace pode oferecer. O **+** numa linha liga-a. **Search objects** filtra uma lista longa.
+
+![O painel Objects com Vacancy expandido para os seus controlos Label, Key, Required e Remove, Match por baixo dele, e a lista Available objects mais abaixo](/images/forms-builder/23-objects-panel-linked.png)
+
+## O que ligar um objeto lhe dá
+
+Todos os campos do registo ligado tornam-se variáveis. Pode escrevê-las em qualquer definição de texto do formulário, incluindo a pergunta, a descrição, um placeholder e a etiqueta de uma opção, para que uma pergunta possa abrir com o título da vaga em vez de "esta função".
+
+A lista de variáveis na barra de ferramentas mostra-as todas. Cada uma tem o nome da etiqueta do objeto e é endereçada pela sua chave.
+
+![O painel Variables filtrado pela chave job, a listar Vacancy: Job Title e os outros campos da vaga ligada com os seus nomes de variável](/images/forms-builder/33-object-variables.png)
+
+Para a sintaxe, veja [Variáveis](/pt/variables/introduction).
+
+A ligação também associa as respostas ao registo. Uma coleção desse tipo recebe um separador **Forms** que lista os formulários ligados a ela, e cada registo recebe um separador **Responses** com o que chegou de volta. Veja [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record).
+
+## Definições por objeto
+
+Clique num objeto ligado para o abrir.
+
+- **Label** dá o nome ao objeto na lista de variáveis, que é de onde vem "Vacancy: Job Title". Altere-a quando quiser.
+- **Key** é a primeira parte da própria variável, como em `{{job.jobTitle}}`. A HireData define a chave quando liga o objeto e bloqueia-a depois, por isso escolha o objeto que quer em vez de planear renomeá-lo mais tarde.
+- **Required** decide o que acontece quando nada fornece um registo. Veja [O que Required faz](#required).
+- **Remove** desliga o objeto. As suas variáveis deixam de resolver, por isso verifique todas as perguntas que usaram uma.
+- As setas para cima e para baixo movem o objeto pela lista. O objeto que fica no topo altera o que o formulário pode fazer, por isso leia [O primeiro objeto decide a configuração](#first-object) antes de as usar.
+
+## O primeiro objeto decide a configuração {#first-object}
+
+O objeto no topo da lista é o objeto principal do formulário, e decide para que registos pode configurar o formulário. Ponha Vacancy em primeiro lugar e pode ativar e desativar perguntas por vaga. Os objetos abaixo dele continuam a fornecer as suas variáveis e a associar a resposta ao seu registo, mas não pode configurar o formulário em relação a eles.
+
+Reordenar a lista muda, portanto, mais do que o painel. Leia [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record) antes de mover o objeto do topo num formulário que já está em uso.
+
+## O que Required faz {#required}
+
+**Required** importa quando uma automação envia o formulário. Se a run não tiver registo para um objeto obrigatório, a tarefa falha e nada é enviado, o que é melhor do que enviar um formulário cujas perguntas têm lacunas onde o título da vaga devia estar.
+
+A página do próprio formulário é mais tolerante. Abra um formulário público sem nada a fornecer o registo e ele carrega na mesma. Todas as variáveis desse objeto resolvem para nada.
+
+Desligue **Required** num objeto que apenas acrescenta contexto, como um match sem o qual o formulário funciona.
+
+## Relacionados
+
+- [Fontes de dados](/pt/reference/forms/data-sources) preenche as opções de uma pergunta a partir de uma lista guardada.
+- [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record) ativa e desativa perguntas por vaga.
+- [Variáveis](/pt/variables/introduction) cobre a sintaxe para escrever uma variável numa pergunta.
+- A [visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.

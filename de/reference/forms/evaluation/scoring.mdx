@@ -1,0 +1,68 @@
+---
+title: "Scoring"
+sidebarTitle: "Scoring"
+description: "Vergeben Sie Punkte für Formularantworten mit Regeln oder mit KI, machen Sie aus der Summe einen Prozentwert und beschriften Sie ihn mit einem Score-Bereich wie Low, Medium oder High."
+keywords: ["formular-scoring", "punkte", "score-bereich", "bewertung", "antworten gewichten", "kandidaten-score"]
+---
+
+Scoring macht aus einer Antwort eine Zahl. Sie entscheiden, wie viele Punkte jede Frage wert ist und wann sie vergeben werden, und HireData rechnet die Summe in einen Prozentwert um und beschriftet ihn mit einem Bereich.
+
+Criteria sagt Ihnen, wer raus ist. Scoring sagt Ihnen, wen Sie zuerst anrufen.
+
+## Score-Bereiche
+
+Schalten Sie **Scoring** für das Formular ein, und es startet mit drei Bereichen: **Low** bei 0, **Medium** bei 50 und **High** bei 80. Klicken Sie auf **Scoring**, um sie zu öffnen.
+
+![Der geöffnete Scoring-Block mit den Score-Bereichen Low, Medium und High und ihren Mindest-Scores](/images/forms-builder/evaluation/04-scoring-ranges.png)
+
+Jeder Bereich hat ein **Label** und einen **Minimum score (%)**. Eine Antwort landet im höchsten Bereich, dessen Minimum sie erreicht: 82 % ist also High und 79 % ist Medium. **Add range** ergänzt einen weiteren, und der Papierkorb entfernt einen. Geben Sie jedem Bereich ein Label und ein anderes Minimum zwischen 0 und 100.
+
+Behalten Sie einen Bereich bei 0. Ein Score unter jedem Minimum bekommt einen Prozentwert und kein Label, was wie ein fehlendes Ergebnis aussieht statt wie ein niedriges.
+
+## Einstellungen pro Frage
+
+Klicken Sie auf **Scoring**, schalten Sie eine Frage ein, und ihre Einstellungen öffnen sich.
+
+- **How many points is this question worth?**, das Maximum, das diese Frage beitragen kann.
+- **How to evaluate?** mit **Use answer rules** und **Evaluate with AI**.
+- **When should points be awarded?**, auf der Regelseite, enthält eine oder mehrere Regeln.
+- Das Notizfeld mit der Beschriftung **How should AI award points?**.
+
+![Eine Zahlenfrage im Scoring-Block, 20 Punkte wert, mit einer Regel, die 20 Punkte für fünf Jahre oder mehr vergibt, und einer zweiten, die 10 für drei oder mehr vergibt](/images/forms-builder/evaluation/05-scoring-rules.png)
+
+### Regeln
+
+Eine Regel ist ein Satz von Bedingungen plus **How many points should be awarded?**. Eine Bedingung liest sich als `<question> <operator> <value>` und kann nur die Antwort dieser Frage prüfen. **Add condition** ergänzt eine zweite und darüber einen **All**- und **Any**-Umschalter, und **Add rule** ergänzt darunter eine weitere Regel.
+
+Die Operatoren sind derselbe Satz, den Criteria anbietet, und der Feldtyp bestimmt sie: Text-Operatoren bei den Text- und Kontakttypen, Vergleiche bei den numerischen, Bewertungs- und Datumstypen, **is one of** bei Multiple Choice und Dropdown und Datei-Metadaten bei File Upload. Siehe [die Operator-Tabelle](/de/reference/forms/evaluation/criteria#operators).
+
+Jede zutreffende Regel zahlt aus, und die Summe wird dann beim Maximum der Frage gekappt. Zwei Regeln, die beide auf eine Fünf-Jahre-Antwort zutreffen, eine 20 wert und eine 10, vergeben 20 bei einer Frage, die 20 wert ist. Überlappende Stufen sind unbedenklich, solange das Maximum stimmt – genau das erlaubt Ihnen, „5 Jahre oder mehr, 20 Punkte" über „3 Jahre oder mehr, 10 Punkte" zu schreiben und nicht mehr über die Lücke nachzudenken.
+
+Lassen Sie **How many points is this question worth?** leer, wird das Maximum zur Summe der Regelpunkte, sodass nichts über 100 % hinausgehen kann.
+
+### Mit KI evaluieren
+
+Wechseln Sie zu **Evaluate with AI**, und die Regeln verschwinden. Das Modell liest die Antwort und Ihre Notiz und gibt eine Zahl zwischen null und dem Maximum der Frage zurück, mit einem Begründungssatz.
+
+<Warning>
+  Legen Sie das Maximum fest, bevor Sie eine Frage auf KI umstellen. KI-Scoring braucht ein Maximum über null, und die gesamte Evaluation schlägt mit einem Fehler fehl, solange es leer ist.
+</Warning>
+
+## Wie der Prozentwert berechnet wird {#how-the-percentage-is-worked-out}
+
+Nur die Fragen, die Sie eingeschaltet und konfiguriert haben, nehmen teil. HireData addiert die Punkte, die sie verdient haben, teilt durch die Summe ihrer Maxima und rundet auf zwei Dezimalstellen.
+
+Ein Formular mit einer 10-Punkte-Frage und einer 20-Punkte-Frage wird aus 30 bewertet. Verdienen Sie 10 und 20, erreicht die Antwort 100 %.
+
+![Die Scoring-Ergebnisse in Test & Evaluate: ein 100-%-Balken, Points 30 von 30 und die Punkte, die jede Frage verdient hat](/images/forms-builder/testing/07b-test-results-scoring.png)
+
+Eine unbeantwortete Frage bekommt null Punkte und zählt trotzdem ihr Maximum, sodass eine halb ausgefüllte Antwort niedrig abschneidet, statt bei dem gut abzuschneiden, was sie beantwortet hat. Das ist meist genau das, was Sie wollen. Wenn nicht, setzen Sie die bewerteten Fragen früh in das Formular, vor jeden [Logik](/de/reference/forms/logic)-Sprung, der sie überspringen könnte.
+
+Automatisierungen lesen das Ergebnis als `{{form_response.evaluation.scoring.score}}` für den Prozentwert und `{{form_response.evaluation.scoring.band.label}}` für das Bereichs-Label.
+
+## Verwandte Themen
+
+- [Übersicht über die Formular-Evaluation](/de/reference/forms/evaluation/overview) behandelt die fünf Evaluatoren und die Reihenfolge, in der Sie sie einschalten.
+- [Criteria](/de/reference/forms/evaluation/criteria) entscheidet, wer sich überhaupt qualifiziert.
+- [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate) zeigt die Punkte, die jede Frage verdient hat.
+- [Bewerbende mit einem Pre-Screening-Formular prüfen und bewerten](/de/knowledge-base/cookbook/pre-screening-form) baut ein Formular rund um diesen Evaluator.

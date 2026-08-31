@@ -1,0 +1,37 @@
+---
+title: "Time"
+sidebarTitle: "Time"
+description: "O campo de hora num formulário da HireData. Dá ao inquirido um seletor de relógio e só permite ramificações com o operador has response."
+keywords: ["relógio", "hora do dia", "horário de chamada"]
+---
+
+Time dá ao inquirido uma caixa `--:-- --` com um seletor de relógio ao lado. Use-o para uma hora do dia sem data associada, como a hora a que alguém prefere ser contactado por telefone.
+
+Fica no grupo **Temporal** da paleta **Add Content**.
+
+## Definições
+
+Time não acrescenta nada às [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). Não há uma hora mais cedo ou mais tarde a definir, nem forma de oferecer um conjunto fixo de horários. Se quer que o inquirido escolha de uma lista curta, use antes [Multiple Choice](/pt/reference/forms/fields/multiple-choice-and-dropdown) e escreva os horários como opções.
+
+![Um cartão de campo Time a mostrar Question, Description, Image, a auto reply, os três interruptores de avaliadores e um rodapé com Optional, ao lado de uma pré-visualização a mostrar uma caixa de hora com um seletor de relógio](/images/forms-builder/fields/06-time.png)
+
+## O que armazena
+
+Uma data e hora. Os três tipos temporais partilham um único valor, e Time preenche a hora do relógio.
+
+## Operadores de lógica
+
+O seletor de operadores está fixo em **has response** e não pode ser alterado. Uma regra pode perguntar se o inquirido deu uma hora, não quão cedo ela é.
+
+![Uma condição numa pergunta Time no separador Logic, com o operador a mostrar has response e sem caixa de valor ao lado](/images/forms-builder/fields/operators-time.png)
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Date](/pt/reference/forms/fields/date) e [Datetime](/pt/reference/forms/fields/datetime) são os outros dois campos Temporal.
+- [Multiple Choice e Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) é o campo a usar para um conjunto fixo de horários.

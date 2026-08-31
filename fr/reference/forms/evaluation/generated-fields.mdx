@@ -1,0 +1,66 @@
+---
+title: "Generated fields"
+sidebarTitle: "Generated fields"
+description: "Définissez vos propres sorties et laissez l'IA les remplir à partir d'une réponse de formulaire entière, puis lisez les valeurs dans une automatisation."
+keywords: ["champs de sortie IA", "sortie structurée", "generated fields", "extraire d'une réponse de formulaire", "variables IA"]
+---
+
+Generated fields est l'intrus de l'onglet **Evaluation**. Les autres évaluateurs jugent des réponses que vous avez déjà collectées. Celui-ci produit des valeurs qui n'ont jamais été demandées.
+
+Vous définissez les sorties que vous voulez, l'IA lit la réponse terminée, et chaque sortie revient remplie. Un formulaire qui ne demande jamais « comment devons-nous vous contacter ? » peut quand même renvoyer un canal de contact préféré, parce qu'une des réponses le mentionnait.
+
+## Ce que ce n'est pas
+
+Les sorties sont nouvelles. Ce ne sont pas les questions du formulaire, et elles n'y touchent pas.
+
+- Définir une sortie n'ajoute pas de question, ne change pas de question et n'écrit pas dans une réponse.
+- Une sortie n'est pas liée à une question. Chaque sortie est remplie à partir de la réponse entière.
+- Activer **Generated fields** n'ajoute d'interrupteur sur aucune carte de question, parce qu'il n'y a rien à activer par question.
+
+Voyez-le comme un seul passage de l'IA sur la réponse complétée, renvoyant un petit enregistrement que vous avez conçu.
+
+## L'activer
+
+**Generated fields** est le dernier bloc de l'onglet **Evaluation**. Activez-le, puis cliquez dessus pour ouvrir les paramètres. Il n'y a rien à activer par question.
+
+![Le bloc Generated fields ouvert, avec des indications pour l'IA, deux champs de sortie et les boutons Suggest with AI, Data source et Create custom](/images/forms-builder/evaluation/08-generated-fields.png)
+
+- **Hints for the AI (optional)** est une instruction unique pour tout l'ensemble. C'est l'endroit où dire quoi faire quand les réponses ne couvrent pas une sortie, qui autrement se retrouve devinée.
+- **What should the AI return?** liste les sorties, dans l'ordre où elles sont demandées à l'IA. Les flèches d'une ligne la déplacent, le crayon la modifie et la corbeille la retire.
+
+Activez l'évaluateur sans rien ajouter et rien n'est généré. La liste a besoin d'au moins une sortie avant de s'exécuter.
+
+## Ajouter une sortie
+
+Trois boutons se trouvent sous la liste.
+
+**Create custom** ouvre **New output field**, un panneau en deux étapes. L'étape 1 choisit le type, avec une zone de recherche et des groupes pour les types de base, les dates et heures, les coordonnées, et les types web et médias. L'étape 2 est la configuration.
+
+![L'étape 2 de New output field, avec les paramètres Name, Reference as, What is it for? et Options pour une sortie de type liste](/images/forms-builder/evaluation/09-new-output-field.png)
+
+- **Name** est le libellé que vous voyez dans les résultats et dans le sélecteur de variables.
+- **Reference as** est la clé qu'une automatisation utilise. Elle se remplit à partir du nom et doit être unique dans le formulaire, sans espaces ni accolades.
+- **What is it for? (optional)** dit à l'IA ce que la valeur signifie. Écrivez-le. Il fait plus pour le résultat que le nom.
+- **Options** apparaît pour une sortie **List**. Ajoutez-en au moins une, et l'IA doit choisir parmi elles au lieu d'écrire du texte libre. C'est le moyen d'obtenir une valeur sur laquelle votre automatisation peut brancher.
+
+**Done** ajoute la sortie. **Save & New** l'ajoute et garde le panneau ouvert pour la suivante.
+
+**Suggest with AI** lit les questions du formulaire et vos indications et propose jusqu'à trois sorties, puis les ajoute directement à la liste. Traitez-les comme un point de départ et modifiez celles que vous gardez.
+
+**Data source** ouvre la bibliothèque de [sources de données](/fr/reference/forms/data-sources). Choisissez une source et la sortie ne peut contenir qu'un élément de cette liste, si bien que l'IA doit faire correspondre la réponse à une valeur que votre espace de travail maintient déjà. Une sortie de source de données n'a pas de crayon : changez la liste, pas la sortie.
+
+## Quand il s'exécute et ce qu'il voit
+
+Generated fields s'exécute après Criteria, Scoring et Skills, sur chaque réponse du formulaire plus leurs résultats. Cet ordre est tout son intérêt. Une sortie peut être remplie à partir du score ou du verdict aussi bien qu'à partir des réponses, ce qui vous donne une raison de rejet en une ligne ou une prochaine étape qui dépend de la note.
+
+## Lire les valeurs
+
+Chaque sortie apparaît sous **Generated fields** dans [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate), et de nouveau dans la liste **Automation variables** avec la clé à copier.
+
+Dans une automatisation, une sortie est `{{form_response.evaluation.ai_output.<key>}}`, donc la sortie `preferred_contact` est `{{form_response.evaluation.ai_output.preferred_contact}}`. Voir [Variables](/fr/variables/introduction).
+
+## Voir aussi
+
+- [Vue d'ensemble de l'évaluation de formulaire](/fr/reference/forms/evaluation/overview) couvre les cinq évaluateurs et l'ordre dans lequel les activer.
+- [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) affiche les valeurs générées à partir d'un run que vous contrôlez.
+- [Sources de données](/fr/reference/forms/data-sources) explique les listes sur lesquelles s'appuie une sortie de source de données.

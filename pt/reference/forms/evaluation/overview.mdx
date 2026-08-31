@@ -1,0 +1,83 @@
+---
+title: "Visão geral da avaliação de formulários"
+sidebarTitle: "Visão geral"
+description: "Os cinco avaliadores de um formulário da HireData: o que cada um decide, o que devolve e a ordem pela qual tem de os ativar."
+keywords: ["avaliação de formulários", "triagem com IA", "triagem de candidatos", "pontuação com IA", "avaliadores"]
+---
+
+Um formulário recolhe respostas. O separador **Evaluation** transforma uma resposta concluída em algo sobre o qual um recrutador pode agir: um veredicto, uma pontuação, uma skill, um resumo ou qualquer valor que peça à IA.
+
+O separador é o terceiro acima da lista de campos, depois de **Content** e **Logic**. Contém cinco avaliadores, cada um um cartão com um interruptor e um ícone de informação que o explica. Ative um e depois clique no nome dele para abrir as respetivas definições.
+
+![O separador Evaluation com Summary, Criteria, Scoring, Skills e Generated fields todos ativados](/images/forms-builder/29-evaluation-tab.png)
+
+## Os cinco avaliadores
+
+| Avaliador | O que faz | O que recebe de volta |
+|---|---|---|
+| Summary | Redige a resposta concluída para uso interno. Não há nada a configurar. | Um parágrafo curto. |
+| [Criteria](/pt/reference/forms/evaluation/criteria) | Verifica cada resposta selecionada contra o requisito que definiu para ela, must-have ou nice-to-have. | Um veredicto para a resposta: **Meets criteria**, **Partially meets criteria**, **Does not meet criteria** ou **Incomplete**. |
+| [Scoring](/pt/reference/forms/evaluation/scoring) | Atribui pontos por cada resposta selecionada, até um máximo que define por pergunta. | Uma percentagem e o intervalo de pontuação em que cai. |
+| [Skills](/pt/reference/forms/evaluation/skills) | Pesa as respostas que apontam para cada skill que listou. | Uma percentagem por skill, e a mais forte. |
+| [Generated fields](/pt/reference/forms/evaluation/generated-fields) | Preenche outputs que define, lendo a resposta inteira. | Um valor por output que definiu. |
+
+Summary e Generated fields trabalham sobre a resposta como um todo. Criteria, Scoring e Skills trabalham pergunta a pergunta, por isso cada um precisa de um segundo interruptor em cada pergunta que quer que ele analise.
+
+## Ative-o primeiro para o formulário {#enable-order}
+
+A ordem apanha as pessoas desprevenidas. O interruptor de avaliador de uma pergunta não faz nada sozinho.
+
+1. Abra o separador **Evaluation** e ative o avaliador para o formulário.
+2. Clique no nome do avaliador para o abrir. Todas as perguntas do formulário aparecem por baixo, cada uma com o seu interruptor.
+3. Ative as perguntas que quer que ele analise e configure cada uma.
+
+<Warning>
+  O interruptor **Criteria**, **Scoring** ou **Skills** de uma pergunta é ignorado enquanto o interruptor ao nível do formulário estiver desligado. Desligue o avaliador para o formulário e os interruptores por pergunta ficam como os deixou, mas nada é avaliado.
+</Warning>
+
+Os mesmos interruptores por pergunta também aparecem no cartão da pergunta no separador **Content**, para poder configurar uma pergunta sem sair dela. Só aparecem lá quando o interruptor ao nível do formulário está ligado, que é a outra metade da mesma regra.
+
+## Que perguntas podem ser avaliadas
+
+Todos os tipos de campo exceto [Ending Screen](/pt/reference/forms/fields/ending-screen) e [Redirect URL](/pt/reference/forms/fields/redirect-url). Os dois fins não recolhem nada, por isso não há nada a avaliar.
+
+O que difere por tipo é a precisão com que uma regra consegue ler a resposta. Uma resposta de [Yes/No](/pt/reference/forms/fields/yes-no) é um de dois valores conhecidos. Uma resposta de [File Upload](/pt/reference/forms/fields/file-upload) só pode ser testada pelo nome do ficheiro, pelo tipo e pelo tamanho. Cada página de avaliador tem a tabela de operadores das suas regras.
+
+## Regras ou IA
+
+Criteria, Scoring e Skills perguntam **How to evaluate?** por pergunta, com duas respostas.
+
+- **Use answer rules** compara a resposta com condições que escreve. A mesma resposta dá sempre o mesmo resultado, e não é feita nenhuma chamada à IA.
+- **Evaluate with AI** entrega a pergunta, a resposta e a sua nota ao modelo, que decide. Use-o para texto livre, onde uma regra não consegue distinguir uma boa resposta de uma fraca.
+
+As regras são a predefinição em todos os tipos exceto [Short e Long Text](/pt/reference/forms/fields/short-and-long-text), onde Criteria começa na IA.
+
+### Uma nota por pergunta {#one-note-per-question}
+
+A caixa no fundo das definições de avaliador de uma pergunta recebe uma instrução para a IA. A etiqueta muda consoante o avaliador de onde a abriu: **What should AI look for?**, **How should AI award points?**, **What skill signals should AI look for?**
+
+A caixa é uma nota por pergunta, partilhada pelos três. Escreva-a em Criteria e o mesmo texto aparece em Scoring e Skills. Mantenha-a sobre a resposta e não sobre um avaliador.
+
+## Quando cada avaliador corre
+
+Uma resposta é avaliada quando é concluída, e novamente em [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) enquanto está a construir. Os passos correm por esta ordem.
+
+1. Todas as perguntas baseadas em regras são avaliadas. Não há IA envolvida.
+2. As perguntas definidas como **Evaluate with AI** vão para o modelo numa única chamada.
+3. Os resultados por pergunta tornam-se o veredicto, a pontuação e as percentagens de skills.
+4. Generated fields corre por último, sobre a resposta inteira mais os resultados do passo 3.
+
+Generated fields correr por último é o que lhe permite usá-los. Um campo de output pode ser preenchido a partir da pontuação ou do veredicto, além das respostas.
+
+## Para onde vão os resultados
+
+- No construtor, [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) mostra cada resultado ao lado das respostas que o produziram.
+- Numa resposta submetida, os resultados são armazenados com ela. **Export CSV** e **Export Excel** no menu de três pontos do construtor acrescentam uma coluna por resultado, incluindo uma por skill e uma por generated field.
+- Numa automação, cada resultado é uma variável, como `{{form_response.evaluation.scoring.band.label}}`. **Test & Evaluate** lista-as todas em **Automation variables**, com o valor da execução à sua frente. Veja [Variáveis](/pt/variables/introduction).
+
+## Relacionados
+
+- [Criteria](/pt/reference/forms/evaluation/criteria), [Scoring](/pt/reference/forms/evaluation/scoring), [Skills](/pt/reference/forms/evaluation/skills) e [Generated fields](/pt/reference/forms/evaluation/generated-fields) cobrem os quatro avaliadores que configura.
+- [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) corre os avaliadores sobre uma resposta que inventa.
+- [Triar e pontuar candidatos com um formulário de pré-triagem](/pt/knowledge-base/cookbook/pre-screening-form) constrói um formulário que usa Criteria, Scoring e Summary em conjunto.
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.

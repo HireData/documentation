@@ -1,0 +1,59 @@
+---
+title: "Multiple Choice und Dropdown"
+sidebarTitle: "Multiple Choice und Dropdown"
+description: "Das Optionsfeld in einem HireData-Formular. Multiple Choice listet die Optionen auf, Dropdown verbirgt sie in einem Menü, und beide können ihre Optionen aus einer Datenquelle beziehen."
+keywords: ["auswahl", "optionen", "select", "auswahlliste", "radiobuttons", "checkboxen"]
+---
+
+Multiple Choice und Dropdown sind ein Feldtyp mit einem Umschalter dazwischen. Multiple Choice listet jede Option auf dem Bildschirm auf, sodass die befragte Person alle auf einmal sieht. Dropdown legt sie hinter ein Menü, was die bessere Form ist, sobald die Liste lang wird.
+
+Beide befinden sich in der Gruppe **Choice** der **Add Content**-Palette. Die Schaltfläche unten links auf der Karte wechselt zwischen beiden.
+
+## Einstellungen
+
+Die Karte enthält die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares). Die Optionen selbst und drei weitere Einstellungen gehören zu diesem Typ.
+
+- **Options**, die Liste, aus der die befragte Person wählt.
+- **Add Data Source**, über der Liste, füllt die Optionen aus einer gespeicherten Liste, die Ihr Workspace bereits führt, statt aus Optionen, die Sie eintippen. Siehe [Datenquellen](/de/reference/forms/data-sources).
+- **Conversational Button Text**, die Beschriftung der Schaltfläche, die die Liste in einer WhatsApp-Konversation öffnet. Das Feld zeigt „Choose" als Platzhalter.
+- **Placeholder**, nur bei Dropdown, der Text im geschlossenen Menü, bevor etwas gewählt wurde.
+- Die Fußzeilen-Schaltfläche **Single Answer** öffnet **Answer selection**, das einen Schalter enthält, **Allow multiple answers**. Schalten Sie ihn ein, und die befragte Person kann mehr als eine Option wählen.
+
+Jede Optionszeile hat den Optionstext, ein Zahnrad, ein Plus und ein Minus. Das Zahnrad öffnet die **Auto reply (on answer)** dieser Option, die WhatsApp-Nachricht, die gesendet wird, wenn diese Option gewählt wird. Das Plus fügt darunter eine Zeile hinzu, das Minus entfernt eine. Ein Auswahlfeld braucht zwei Optionen, deshalb verschwindet das Minus, sobald nur noch zwei übrig sind.
+
+![Eine Multiple-Choice-Feldkarte mit Question, Description, Image, Conversational Button Text, der Options-Liste mit Add Data Source, der Auto Reply bei ungültiger Antwort, den drei Evaluator-Schaltern und einer Fußzeile mit Multiple Choice, Single Answer und Required, neben einer Vorschau mit den drei Optionen](/images/forms-builder/fields/09-multiple-choice.png)
+
+Dasselbe Feld als Dropdown, das einen **Placeholder** ergänzt:
+
+![Eine Dropdown-Feldkarte mit einer Placeholder-Einstellung über Conversational Button Text und einer Fußzeile mit Dropdown, Single Answer und Optional, neben einer Vorschau mit einem geschlossenen Menü](/images/forms-builder/fields/09b-dropdown.png)
+
+## Was gespeichert wird
+
+Die gewählten Optionen, als Liste. Ein Feld mit einer einzigen Antwort speichert eine Liste mit einem Eintrag.
+
+## Logik-Operatoren
+
+| Operator | Trifft zu, wenn |
+|---|---|
+| has response | die befragte Person überhaupt etwas gewählt hat |
+| is equal to | die Antwort die von Ihnen gewählte Option ist |
+| is not equal to | die Antwort irgendeine andere Option ist |
+| is one of | die Antwort eine der von Ihnen gewählten Optionen ist |
+| is not one of | die Antwort keine der von Ihnen gewählten Optionen ist |
+
+**is one of** ist der Operator, der Regeln spart. Drei Optionen, die alle zur selben Folgefrage führen, brauchen eine Regel, nicht drei.
+
+![Der Logic-Tab mit geöffneter Operator-Auswahl auf einer Multiple-Choice-Bedingung, mit has response, is equal to, is not equal to, is one of und is not one of](/images/forms-builder/fields/operators-choice.png)
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte.
+
+Ein Auswahlfeld lässt sich am leichtesten bewerten, weil Sie bereits jede mögliche Antwort kennen. Punkte pro Option ist eine Regel, die Sie einmal schreiben und der Sie vertrauen können.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Datenquellen](/de/reference/forms/data-sources) erklärt das Befüllen der Optionen aus einer gespeicherten Liste.
+- [Yes/No](/de/reference/forms/fields/yes-no) ist das Feld für ein schlichtes Ja oder Nein.

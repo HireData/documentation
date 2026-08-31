@@ -1,0 +1,43 @@
+---
+title: "File Upload"
+sidebarTitle: "File Upload"
+description: "Het bestandsuploadveld in een HireData-formulier. Kies of de respondent meer dan één bestand kan bijvoegen, en welke bestandstypen je accepteert."
+keywords: ["bijlage", "cv", "resume", "document uploaden", "bestanden slepen"]
+---
+
+File Upload geeft de respondent een sleepgebied met **Drop Files Here**, met daaronder "Click here or drop files to upload them". Zo verzamelt een formulier een cv, een certificaat of een portfolio.
+
+Het staat in de groep **Other** van het **Add Content**-palet.
+
+## Instellingen
+
+De kaart heeft de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares). File Upload voegt er twee eigen instellingen aan toe.
+
+- **Multiple**, **Yes** of **No**, dat bepaalt of de respondent meer dan één bestand kan bijvoegen.
+- **File type**, één preset uit **Any**, **Image**, **Audio**, **Video**, **Media**, **PDF**, **Document**, **Powerpoint**, **Word Document**, **Sheet** en **Archive**.
+
+**File type** is een preset, geen lijst die je zelf schrijft, dus een formulier dat een pdf of een Word-document wil, moet **Document** accepteren en het later uitsorteren. Er is geen groottelimiet in te stellen.
+
+De tekst van het sleepgebied is vertaalbaar. Die staat onder **Settings** in [Talen en vertalingen](/nl/reference/forms/overview#localization), als **Upload title** en **Upload description**.
+
+![Een File Upload-veldkaart met Question, Description, Image, Multiple, File type ingesteld op PDF, de auto reply, de drie evaluator-schakelaars en een footer met Optional, naast een preview met het Drop Files Here-gebied](/images/forms-builder/fields/13-file-upload.png)
+
+## Wat het opslaat
+
+De geüploade bestanden, met de bestandsnaam en het type van elk bestand.
+
+## Logica-operators
+
+De operatorkiezer staat vast op **has response** en kan niet worden gewijzigd. Een rule kan vragen of de respondent iets heeft bijgevoegd, wat genoeg is om een kandidaat zonder cv ergens anders naartoe te sturen.
+
+![Een conditie op een File Upload-vraag in het tabblad Logic, met de operator op has response en geen waardevak ernaast](/images/forms-builder/fields/operators-file-upload.png)
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Talen en vertalingen](/nl/reference/forms/overview#localization) is waar je de tekst van het sleepgebied herformuleert.

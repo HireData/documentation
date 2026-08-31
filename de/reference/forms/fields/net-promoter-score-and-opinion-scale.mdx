@@ -1,0 +1,69 @@
+---
+title: "Net Promoter Score und Opinion Scale"
+sidebarTitle: "NPS und Opinion Scale"
+description: "Das Bewertungsfeld in einem HireData-Formular. Net Promoter Score ist eine feste Skala von 0 bis 10, und bei Opinion Scale legen Sie die Enden fest und beschriften sie."
+keywords: ["nps", "bewertung", "skala", "score", "zufriedenheit", "likert"]
+---
+
+Net Promoter Score und Opinion Scale sind ein Feldtyp mit einem Umschalter dazwischen. Die befragte Person wählt einen Punkt auf einer Zahlenreihe, und das Formular speichert die gewählte Zahl.
+
+**Net Promoter Score** ist die Standardfrage, fest auf 0 bis 10, mit **NOT LIKELY AT ALL** unter dem einen Ende und **EXTREMELY LIKELY** unter dem anderen. Bereich und Beschriftungen lassen sich nicht ändern.
+
+**Opinion Scale** ist dieselbe Reihe, aber mit den Enden und Beschriftungen in Ihrer Hand. Verwenden Sie sie für Zufriedenheit, Zuversicht oder jede Bewertung, bei der 0 bis 10 mehr Raum ist, als die Frage braucht.
+
+Beide befinden sich in der Gruppe **Rating** der **Add Content**-Palette. Die Schaltfläche unten links auf der Karte wechselt zwischen beiden.
+
+## Einstellungen
+
+Die Karte enthält die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares). Net Promoter Score ergänzt eine eigene Einstellung.
+
+- **Conversational Button Text**, die Beschriftung der Schaltfläche, die die Skala in einer WhatsApp-Konversation öffnet.
+
+Opinion Scale ergänzt vier weitere.
+
+- **Scale**, der erste und der letzte Punkt. Der erste ist **0** oder **1**, der letzte geht bis **10**.
+- **Min label**, **Mid label** und **Max label**, jeweils bis zu 50 Zeichen, angezeigt unter Anfang, Mitte und Ende der Reihe.
+- Die Fußzeilen-Schaltfläche **Order: Normal** öffnet **Rating order**, das einen Schalter enthält, **Reverse order**, beschrieben als „Show rating options from highest to lowest."
+
+![Eine Net-Promoter-Score-Feldkarte mit Question, Description, Image, Conversational Button Text, beiden Auto Replies, den drei Evaluator-Schaltern mit eingeschaltetem Scoring und einer Fußzeile mit Net Promoter Score und Required, neben einer Vorschau mit der Reihe von 0 bis 10 und ihren beiden Endbeschriftungen](/images/forms-builder/fields/12-net-promoter-score.png)
+
+Derselbe Typ, umgeschaltet auf Opinion Scale, was die **Scale**- und Beschriftungseinstellungen ergänzt:
+
+![Eine Opinion-Scale-Feldkarte mit Scale von 1 bis 5, Min label, Mid label und Max label und einer Fußzeile mit Opinion Scale, Order: Normal und Optional, neben einer Vorschau mit einer Reihe von 1 bis 5](/images/forms-builder/fields/12b-opinion-scale.png)
+
+## Was gespeichert wird
+
+Eine Zahl, der Punkt, den die befragte Person gewählt hat.
+
+## Logik-Operatoren
+
+| Operator | Trifft zu, wenn |
+|---|---|
+| has response | die befragte Person überhaupt geantwortet hat |
+| is equal to | die Antwort genau dem Wert entspricht |
+| is not equal to | die Antwort irgendetwas anderes ist |
+| is greater than | die Antwort über dem Wert liegt |
+| is less than | die Antwort unter dem Wert liegt |
+| is greater than or equal to | die Antwort dem Wert entspricht oder darüber liegt |
+| is less than or equal to | die Antwort dem Wert entspricht oder darunter liegt |
+
+Eine Bewertung ist das Feld, bei dem sich Verzweigen am meisten lohnt. `if score is less than or equal to 7 then go to "What could we do better?"` schickt die unzufriedenen Befragten auf einen Folgepfad und lässt alle anderen abschließen.
+
+![Der Logic-Tab mit geöffneter Operator-Auswahl auf einer Net-Promoter-Score-Bedingung, mit has response, is equal to, is not equal to und den vier Vergleichsoperatoren](/images/forms-builder/fields/operators-rating.png)
+
+<Warning>
+  Ein als Pflichtfrage gesetztes Bewertungsfeld blockiert die Antwort 0. Die befragte Person wählt 0, das Formular geht nicht weiter, **Next** tut nichts, und keine Meldung erscheint. Net Promoter Score beginnt immer bei 0, lassen Sie ihn also optional. Eine Opinion Scale kann stattdessen bei 1 beginnen, was das Problem vermeidet.
+</Warning>
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte.
+
+Eine Bewertung und **Scoring** passen zusammen: 9 oder 10 bringt die volle Punktzahl, 7 oder 8 einen Teil, und der Rest nichts.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Number](/de/reference/forms/fields/number) ist das Feld für eine Zahl, die die befragte Person eintippt.
+- [Multiple Choice und Dropdown](/de/reference/forms/fields/multiple-choice-and-dropdown) ist das Feld für benannte Antworten statt einer Skala.

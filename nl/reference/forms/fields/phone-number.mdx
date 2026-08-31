@@ -1,0 +1,51 @@
+---
+title: "Phone Number"
+sidebarTitle: "Phone Number"
+description: "Het telefoonnummerveld in een HireData-formulier, met de placeholder-, lengte- en patrooninstellingen die een tekstveld heeft."
+keywords: ["telefoon", "mobiel nummer"]
+---
+
+Phone Number is een vak van één regel voor een telefoonnummer. De respondent ziet een hoorntje in het lege vak.
+
+Het staat in de groep **Contact Info** van het **Add Content**-palet.
+
+## Instellingen
+
+De kaart heeft de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares). Phone Number voegt dezelfde vier toe die een tekstveld heeft.
+
+- **Placeholder**, maximaal 255 tekens, getoond in het lege vak.
+- **Minimum Length** en **Maximum Length**, geteld in tekens.
+- **Validation Pattern**, een reguliere expressie waaraan het antwoord moet voldoen.
+
+Er is geen telefoonspecifiek validatiebericht, dus **Validation Pattern** is de manier om een formaat af te dwingen. Heeft je proces nummers in internationale vorm nodig, vraag daar dan om in de **Description** en ondersteun het met een patroon.
+
+![Een Phone Number-veldkaart met Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, de auto reply, de drie evaluator-schakelaars en een footer met Optional, naast een preview met een antwoordvak met een hoorntje](/images/forms-builder/fields/03-phone-number.png)
+
+## Wat het opslaat
+
+Tekst, het nummer zoals de respondent het heeft getypt. HireData herformatteert het niet.
+
+## Logica-operators
+
+| Operator | Komt overeen wanneer |
+|---|---|
+| has response | de respondent überhaupt heeft geantwoord |
+| is equal to | het antwoord exact de waarde is |
+| is not equal to | het antwoord iets anders is |
+| starts with | het antwoord met de waarde begint |
+| ends with | het antwoord op de waarde eindigt |
+| contains | de waarde ergens in het antwoord voorkomt |
+| does not contain | de waarde nergens in het antwoord voorkomt |
+
+![Het tabblad Logic met de operatorkiezer open op een Phone Number-conditie, met has response, is equal to, is not equal to, starts with, ends with, contains en does not contain](/images/forms-builder/fields/operators-phone-number.png)
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart. Een nummer is zelden de moeite van het evalueren waard, dus de meeste formulieren laten alle drie hier uit.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Email](/nl/reference/forms/fields/email) en [Website](/nl/reference/forms/fields/website) zijn de andere twee Contact Info-velden.
+- [Formulieren gebruiken in WhatsApp-gesprekken](/nl/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) legt uit waar de auto replies naartoe gaan.

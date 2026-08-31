@@ -1,0 +1,57 @@
+---
+title: "Number"
+sidebarTitle: "Number"
+description: "O campo numérico num formulário da HireData, com um mínimo, um máximo e um passo, e o conjunto completo de operadores de comparação na lógica."
+keywords: ["numérico", "anos de experiência", "quantidade"]
+---
+
+Number recebe um número simples: anos de experiência, horas por semana, quantos de alguma coisa. É um de apenas dois tipos que a lógica consegue comparar, o que faz dele o campo a escolher quando uma regra tem de pesar uma resposta em vez de a igualar.
+
+Fica no grupo **Numeric** da paleta **Add Content**.
+
+## Definições
+
+O cartão tem as [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). Number acrescenta quatro próprias.
+
+- **Placeholder**, até 255 caracteres, mostrado na caixa vazia.
+- **Minimum Value** e **Maximum Value**, os extremos do intervalo que aceita.
+- **Steps**, o tamanho de um passo. Defina-o como 1 para insistir em números inteiros.
+
+As mensagens que o inquirido vê quando uma resposta cai fora do intervalo ficam em **Validation**, em [Idiomas e traduções](/pt/reference/forms/overview#localization), como **Min Number** e **Max Number**.
+
+![Um cartão de campo Number a mostrar Question, Description, Image, Placeholder, Minimum Value, Maximum Value, Steps, a auto reply, os três interruptores de avaliadores com Criteria e Scoring ativados, e um rodapé com Optional](/images/forms-builder/fields/10-number.png)
+
+## O que armazena
+
+Um número.
+
+## Operadores de lógica
+
+| Operador | Corresponde quando |
+|---|---|
+| has response | o inquirido deu alguma resposta |
+| is equal to | a resposta é exatamente o valor |
+| is not equal to | a resposta é qualquer outra coisa |
+| is greater than | a resposta é superior ao valor |
+| is less than | a resposta é inferior ao valor |
+| is greater than or equal to | a resposta é o valor ou superior |
+| is less than or equal to | a resposta é o valor ou inferior |
+
+![O separador Logic com o seletor de operadores aberto numa condição de Number, a listar has response, is equal to, is not equal to e os quatro operadores de comparação](/images/forms-builder/fields/operators-number.png)
+
+<Warning>
+  Um campo Number obrigatório bloqueia a resposta 0. **Next** não faz nada e não aparece nenhuma mensagem. Até a correção ser lançada, defina um **Minimum Value** de 1 em qualquer campo Number obrigatório, para que o 0 seja recusado com uma mensagem que o inquirido consiga ler.
+</Warning>
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão.
+
+Number serve **Scoring** melhor do que qualquer outro tipo. Um limiar dá pontos completos, um mais baixo dá alguns, e tudo abaixo não dá nenhuns, tudo a partir do próprio valor.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Currency](/pt/reference/forms/fields/currency) é o mesmo campo com um símbolo.
+- [Net Promoter Score e Opinion Scale](/pt/reference/forms/fields/net-promoter-score-and-opinion-scale) é um número que o inquirido escolhe numa escala.

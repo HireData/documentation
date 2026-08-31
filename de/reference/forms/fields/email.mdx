@@ -1,0 +1,52 @@
+---
+title: "Email"
+sidebarTitle: "Email"
+description: "Das E-Mail-Feld in einem HireData-Formular. Es prüft, ob die Adresse wohlgeformt ist, und übernimmt dieselben Platzhalter-, Längen- und Pattern-Einstellungen wie ein Textfeld."
+---
+
+Email ist ein einzeiliges Feld, das eine E-Mail-Adresse enthalten muss. Die befragte Person sieht ein @-Zeichen im leeren Feld, und eine Adresse, die nicht wohlgeformt ist, kommt nicht durch.
+
+Es befindet sich in der Gruppe **Contact Info** der **Add Content**-Palette.
+
+## Einstellungen
+
+Die Karte enthält die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares). Email ergänzt dieselben vier wie ein Textfeld.
+
+- **Placeholder**, bis zu 255 Zeichen, angezeigt im leeren Feld.
+- **Minimum Length** und **Maximum Length**, gezählt in Zeichen.
+- **Validation Pattern**, ein regulärer Ausdruck, dem die Antwort entsprechen muss, zusätzlich zur Adressprüfung.
+
+Die Meldung, die eine befragte Person sieht, wenn die Adresse fehlerhaft ist, steht unter **Validation** in [Sprachen und Übersetzungen](/de/reference/forms/overview#localization), als **Invalid Email**.
+
+![Eine Email-Feldkarte mit Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, beiden Auto Replies, den drei Evaluator-Schaltern und einer Fußzeile mit Required, neben einer Vorschau mit einem Antwortfeld mit @-Zeichen](/images/forms-builder/fields/02-email.png)
+
+## Was gespeichert wird
+
+Text, die Adresse so, wie die befragte Person sie eingetippt hat.
+
+## Logik-Operatoren
+
+| Operator | Trifft zu, wenn |
+|---|---|
+| has response | die befragte Person überhaupt geantwortet hat |
+| is equal to | die Antwort genau dem Wert entspricht |
+| is not equal to | die Antwort irgendetwas anderes ist |
+| starts with | die Antwort mit dem Wert beginnt |
+| ends with | die Antwort mit dem Wert endet |
+| contains | der Wert irgendwo in der Antwort vorkommt |
+| does not contain | der Wert nirgendwo in der Antwort vorkommt |
+
+**ends with** ist hier der nützliche Operator. Eine Regel wie `if email ends with @yourcompany.com` unterscheidet eine interne befragte Person von einer externen.
+
+![Der Logic-Tab mit geöffneter Operator-Auswahl auf einer Email-Bedingung, mit has response, is equal to, is not equal to, starts with, ends with, contains und does not contain](/images/forms-builder/fields/operators-email.png)
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte. Eine Adresse sagt selten etwas über eine Kandidatin oder einen Kandidaten aus, deshalb lassen die meisten Formulare hier alle drei aus.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Phone Number](/de/reference/forms/fields/phone-number) und [Website](/de/reference/forms/fields/website) sind die anderen beiden Contact-Info-Felder.
+- [Short Text und Long Text](/de/reference/forms/fields/short-and-long-text) ist dasselbe Feld ohne Formatprüfung.

@@ -1,0 +1,52 @@
+---
+title: "Email"
+sidebarTitle: "Email"
+description: "Le champ e-mail d'un formulaire HireData. Il vérifie que l'adresse est bien formée et prend les mêmes paramètres de placeholder, de longueur et de motif qu'un champ de texte."
+---
+
+Email est une zone d'une seule ligne qui doit contenir une adresse e-mail. Le répondant voit un signe @ dans la zone vide, et une adresse mal formée ne passe pas.
+
+Il se trouve dans le groupe **Contact Info** de la palette **Add Content**.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Email ajoute les quatre mêmes qu'un champ de texte.
+
+- **Placeholder**, jusqu'à 255 caractères, affiché dans la zone vide.
+- **Minimum Length** et **Maximum Length**, comptés en caractères.
+- **Validation Pattern**, une expression régulière à laquelle la réponse doit correspondre, en plus du contrôle d'adresse.
+
+Le message que voit un répondant lorsque l'adresse est mal formée se trouve sous **Validation** dans [Langues et traductions](/fr/reference/forms/overview#localization), sous le nom **Invalid Email**.
+
+![Une carte de champ Email montrant Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, les deux réponses automatiques, les trois interrupteurs d'évaluateur et un pied de carte indiquant Required, à côté d'un aperçu montrant une zone de réponse avec un signe @](/images/forms-builder/fields/02-email.png)
+
+## Ce que le champ stocke
+
+Du texte, l'adresse telle que le répondant l'a saisie.
+
+## Opérateurs de logique
+
+| Opérateur | Correspond quand |
+|---|---|
+| has response | le répondant a répondu, quelle que soit la réponse |
+| is equal to | la réponse est exactement la valeur |
+| is not equal to | la réponse est n'importe quoi d'autre |
+| starts with | la réponse commence par la valeur |
+| ends with | la réponse se termine par la valeur |
+| contains | la valeur apparaît quelque part dans la réponse |
+| does not contain | la valeur n'apparaît nulle part dans la réponse |
+
+**ends with** est le plus utile ici. Une règle du type `if email ends with @yourcompany.com` distingue un répondant interne d'un répondant externe.
+
+![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Email, listant has response, is equal to, is not equal to, starts with, ends with, contains et does not contain](/images/forms-builder/fields/operators-email.png)
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte. Une adresse dit rarement quelque chose d'un candidat, si bien que la plupart des formulaires laissent les trois désactivés ici.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Phone Number](/fr/reference/forms/fields/phone-number) et [Website](/fr/reference/forms/fields/website) sont les deux autres champs Contact Info.
+- [Short Text et Long Text](/fr/reference/forms/fields/short-and-long-text) est la même zone sans contrôle de format.

@@ -1,0 +1,51 @@
+---
+title: "Currency"
+sidebarTitle: "Currency"
+description: "Het valutaveld in een HireData-formulier. Het is een getalveld met een symbool ervoor, met keuze uit euro, dollar, pond, Zwitserse frank, yen en roepie."
+keywords: ["salaris", "geld", "bedrag", "tarief", "loon"]
+---
+
+Currency is een Number-veld met een symbool voor het vak. Gebruik het voor een salarisverwachting, een uurtarief of een budget. Logica en de evaluatoren behandelen het antwoord als een kaal getal, dus alles wat een Number-veld kan, kan een Currency-veld ook.
+
+Het staat in de groep **Numeric** van het **Add Content**-palet.
+
+## Instellingen
+
+De kaart heeft de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares). Currency voegt er vijf eigen instellingen aan toe.
+
+- **Placeholder**, maximaal 255 tekens, getoond in het lege vak.
+- **Minimum Value** en **Maximum Value**, de uiteinden van het bereik dat je accepteert.
+- **Currency Symbol**, een van **Euro**, **Dollar**, **Pound**, **Swiss Franc**, **Yen** of **Rupee**.
+- **Steps**, de grootte van één stap.
+
+Het symbool is decoratie op het vak. HireData slaat het getal op en rekent niet om tussen valuta's, dus een formulier dat er meerdere moet aankunnen heeft een aparte vraag nodig die vraagt welke de respondent bedoelde.
+
+![Een Currency-veldkaart met Question, Description, Image, Placeholder, Minimum Value, Maximum Value, Currency Symbol ingesteld op Euro, Steps, de auto reply, de drie evaluator-schakelaars en een footer met Optional, naast een preview met een antwoordvak met een euroteken](/images/forms-builder/fields/11-currency.png)
+
+## Wat het opslaat
+
+Een getal, zonder het symbool.
+
+## Logica-operators
+
+| Operator | Komt overeen wanneer |
+|---|---|
+| has response | de respondent überhaupt heeft geantwoord |
+| is equal to | het antwoord exact de waarde is |
+| is not equal to | het antwoord iets anders is |
+| is greater than | het antwoord boven de waarde ligt |
+| is less than | het antwoord onder de waarde ligt |
+| is greater than or equal to | het antwoord de waarde of hoger is |
+| is less than or equal to | het antwoord de waarde of lager is |
+
+![Het tabblad Logic met de operatorkiezer open op een Currency-conditie, met has response, is equal to, is not equal to en de vier vergelijkingsoperators](/images/forms-builder/fields/operators-currency.png)
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart. Een salarisplafond is een verstandige must-have voor **Criteria**: boven het getal valt de kandidaat buiten het bereik.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Number](/nl/reference/forms/fields/number) is hetzelfde veld zonder symbool.

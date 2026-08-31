@@ -1,0 +1,51 @@
+---
+title: "Phone Number"
+sidebarTitle: "Phone Number"
+description: "Le champ de numéro de téléphone d'un formulaire HireData, avec les paramètres de placeholder, de longueur et de motif d'un champ de texte."
+keywords: ["téléphone", "numéro de mobile"]
+---
+
+Phone Number est une zone d'une seule ligne pour un numéro de téléphone. Le répondant voit un pictogramme de combiné dans la zone vide.
+
+Il se trouve dans le groupe **Contact Info** de la palette **Add Content**.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Phone Number ajoute les quatre mêmes qu'un champ de texte.
+
+- **Placeholder**, jusqu'à 255 caractères, affiché dans la zone vide.
+- **Minimum Length** et **Maximum Length**, comptés en caractères.
+- **Validation Pattern**, une expression régulière à laquelle la réponse doit correspondre.
+
+Il n'existe pas de message de validation propre au téléphone, donc **Validation Pattern** est le moyen d'imposer un format. Si votre processus a besoin de numéros au format international, demandez-le dans la **Description** et appuyez la demande avec un motif.
+
+![Une carte de champ Phone Number montrant Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, la réponse automatique, les trois interrupteurs d'évaluateur et un pied de carte indiquant Optional, à côté d'un aperçu montrant une zone de réponse avec un pictogramme de combiné](/images/forms-builder/fields/03-phone-number.png)
+
+## Ce que le champ stocke
+
+Du texte, le numéro tel que le répondant l'a saisi. HireData ne le reformate pas.
+
+## Opérateurs de logique
+
+| Opérateur | Correspond quand |
+|---|---|
+| has response | le répondant a répondu, quelle que soit la réponse |
+| is equal to | la réponse est exactement la valeur |
+| is not equal to | la réponse est n'importe quoi d'autre |
+| starts with | la réponse commence par la valeur |
+| ends with | la réponse se termine par la valeur |
+| contains | la valeur apparaît quelque part dans la réponse |
+| does not contain | la valeur n'apparaît nulle part dans la réponse |
+
+![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Phone Number, listant has response, is equal to, is not equal to, starts with, ends with, contains et does not contain](/images/forms-builder/fields/operators-phone-number.png)
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte. Un numéro vaut rarement la peine d'être évalué, si bien que la plupart des formulaires laissent les trois désactivés ici.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Email](/fr/reference/forms/fields/email) et [Website](/fr/reference/forms/fields/website) sont les deux autres champs Contact Info.
+- [Comment utiliser des formulaires dans les conversations WhatsApp](/fr/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) explique où partent les réponses automatiques.

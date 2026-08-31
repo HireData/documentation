@@ -1,0 +1,53 @@
+---
+title: "Website"
+sidebarTitle: "Website"
+description: "Das Website-Feld in einem HireData-Formular. Es fragt nach einer Webadresse und übernimmt die Platzhalter-, Längen- und Pattern-Einstellungen eines Textfelds."
+keywords: ["url", "link", "webadresse", "linkedin-profil"]
+---
+
+Website ist ein einzeiliges Feld für eine Webadresse – so sammeln die meisten Formulare einen LinkedIn- oder Portfolio-Link.
+
+Es befindet sich in der Gruppe **Contact Info** der **Add Content**-Palette.
+
+## Einstellungen
+
+Die Karte enthält die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares). Website ergänzt dieselben vier wie ein Textfeld.
+
+- **Placeholder**, bis zu 255 Zeichen, angezeigt im leeren Feld.
+- **Minimum Length** und **Maximum Length**, gezählt in Zeichen.
+- **Validation Pattern**, ein regulärer Ausdruck, dem die Antwort entsprechen muss, zusätzlich zur Adressprüfung.
+
+Die Meldung, die eine befragte Person sieht, wenn die Adresse fehlerhaft ist, steht unter **Validation** in [Sprachen und Übersetzungen](/de/reference/forms/overview#localization), als **Invalid URL**.
+
+![Eine Website-Feldkarte mit Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, der Auto Reply, den drei Evaluator-Schaltern und einer Fußzeile mit Optional](/images/forms-builder/fields/04-website.png)
+
+## Was gespeichert wird
+
+Text, die Adresse so, wie die befragte Person sie eingetippt hat.
+
+## Logik-Operatoren
+
+| Operator | Trifft zu, wenn |
+|---|---|
+| has response | die befragte Person überhaupt geantwortet hat |
+| is equal to | die Antwort genau dem Wert entspricht |
+| is not equal to | die Antwort irgendetwas anderes ist |
+| starts with | die Antwort mit dem Wert beginnt |
+| ends with | die Antwort mit dem Wert endet |
+| contains | der Wert irgendwo in der Antwort vorkommt |
+| does not contain | der Wert nirgendwo in der Antwort vorkommt |
+
+**contains** ist hier die erste Wahl. Eine Regel wie `if website contains linkedin.com` trennt einen Profil-Link von einer persönlichen Website.
+
+![Der Logic-Tab mit geöffneter Operator-Auswahl auf einer Website-Bedingung, mit has response, is equal to, is not equal to, starts with, ends with, contains und does not contain](/images/forms-builder/fields/operators-website.png)
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte. Die Evaluatoren lesen die Adresse als Text und öffnen sie nicht.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Email](/de/reference/forms/fields/email) und [Phone Number](/de/reference/forms/fields/phone-number) sind die anderen beiden Contact-Info-Felder.
+- [Short Text und Long Text](/de/reference/forms/fields/short-and-long-text) ist dasselbe Feld ohne Formatprüfung.

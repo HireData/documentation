@@ -1,0 +1,51 @@
+---
+title: "Ending Screen"
+sidebarTitle: "Ending Screen"
+description: "Het laatste scherm van een HireData-formulier. Het toont een titel en beschrijving, en kan een knop dragen die de respondent doorstuurt, met een optionele timer."
+keywords: ["bedankpagina", "bedankscherm", "laatste pagina", "afrondingsscherm"]
+---
+
+Een ending screen is waar een respondent belandt wanneer het formulier klaar is. Het toont een titel, een optionele beschrijving en een optionele knop.
+
+Het tabblad **Content** verzamelt endings in hun eigen groep **Endings** onderaan de veldenlijst, los van de vragen. Een formulier kan er meerdere bevatten, en dat is precies de bedoeling. Een logic rule kan een sterke kandidaat naar de ene ending sturen en alle anderen naar een andere.
+
+Het staat in de groep **Ending** van het **Add Content**-palet. De knop linksonder op de kaart zet het om naar een [Redirect URL](/nl/reference/forms/fields/redirect-url).
+
+## Instellingen
+
+Een ending heeft minder instellingen dan een vraag, omdat niemand hem beantwoordt.
+
+- **Title**, maximaal 255 tekens. Dit is wat andere veldtypen **Question** noemen.
+- **Description**, maximaal 1024 tekens.
+- **Image**, met dezelfde plaatsingsselector die elk veld heeft.
+- **Button**, een schakelaar in de footer.
+
+**Button** aanzetten voegt twee instellingen en een tweede schakelaar toe.
+
+- **Button Text**, het label op de knop. Het vak toont "Submit Form" als placeholder.
+- **Redirect URL**, het adres dat de knop opent.
+- **Redirect timer**, een schakelaar die een **Timer** in seconden toevoegt, zodat de respondent na dat aantal seconden vanzelf naar het adres wordt gestuurd in plaats van op een klik te wachten.
+
+Er is geen **Display & requirements**-knop, geen auto reply en geen evaluator-schakelaar. Een ending is geen vraag, dus geen ervan is van toepassing.
+
+![Een Ending Screen-kaart met Title, Description, Image, Button Text, Redirect URL, een Timer in seconden en een footer met de schakelaars Button en Redirect timer beide aan, naast een preview met de titel en een Submit Form-knop](/images/forms-builder/fields/14-ending-screen.png)
+
+## Wat het opslaat
+
+Niets. Een ending heeft geen invoer.
+
+## Logica-operators
+
+Geen. Een ending heeft geen **Add Rule**-knop in het tabblad **Logic**, omdat een ending is waar het formulier stopt. Rules op de vragen wijzen naar endings, niet andersom.
+
+![Het tabblad Logic met een ending-rij zonder Add Rule-knop, naast een vraagrij die er wel een heeft](/images/forms-builder/fields/operators-endings.png)
+
+## Evaluatie
+
+Een ending screen heeft geen evaluator-schakelaars. De AI-evaluatoren lezen de antwoorden, en een ending heeft er geen.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Redirect URL](/nl/reference/forms/fields/redirect-url) is de andere ending, zonder enig scherm.
+- [Logic](/nl/reference/forms/logic) legt uit hoe je verschillende respondenten naar verschillende endings stuurt.

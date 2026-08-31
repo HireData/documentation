@@ -1,0 +1,83 @@
+---
+title: "Vue d'ensemble de l'évaluation de formulaire"
+sidebarTitle: "Vue d'ensemble"
+description: "Les cinq évaluateurs d'un formulaire HireData : ce que chacun décide, ce qu'il renvoie et l'ordre dans lequel vous devez les activer."
+keywords: ["évaluation de formulaire", "présélection IA", "présélection de candidats", "scoring IA", "évaluateurs"]
+---
+
+Un formulaire collecte des réponses. L'onglet **Evaluation** transforme une réponse terminée en quelque chose sur quoi un recruteur peut agir : un verdict, un score, un skill, un résumé, ou n'importe quelle valeur que vous demandez à l'IA.
+
+L'onglet est le troisième au-dessus de la liste des champs, après **Content** et **Logic**. Il contient cinq évaluateurs, chacun une carte avec un interrupteur et une icône d'information qui l'explique. Activez-en un, puis cliquez sur son nom pour ouvrir ses paramètres.
+
+![L'onglet Evaluation avec Summary, Criteria, Scoring, Skills et Generated fields tous activés](/images/forms-builder/29-evaluation-tab.png)
+
+## Les cinq évaluateurs
+
+| Évaluateur | Ce qu'il fait | Ce que vous obtenez |
+|---|---|---|
+| Summary | Rédige la réponse terminée pour un usage interne. Il n'y a rien à configurer. | Un court paragraphe. |
+| [Criteria](/fr/reference/forms/evaluation/criteria) | Vérifie chaque réponse sélectionnée par rapport à l'exigence que vous avez définie pour elle, must-have ou nice-to-have. | Un verdict pour la réponse : **Meets criteria**, **Partially meets criteria**, **Does not meet criteria** ou **Incomplete**. |
+| [Scoring](/fr/reference/forms/evaluation/scoring) | Attribue des points pour chaque réponse sélectionnée, jusqu'à un maximum que vous définissez par question. | Un pourcentage et la plage de score dans laquelle il tombe. |
+| [Skills](/fr/reference/forms/evaluation/skills) | Pèse les réponses qui pointent vers chaque skill que vous avez listé. | Un pourcentage par skill, et le plus fort. |
+| [Generated fields](/fr/reference/forms/evaluation/generated-fields) | Remplit des sorties que vous définissez, en lisant l'ensemble de la réponse. | Une valeur par sortie que vous avez définie. |
+
+Summary et Generated fields travaillent sur la réponse dans son ensemble. Criteria, Scoring et Skills travaillent question par question, si bien que chacun a besoin d'un second interrupteur sur chaque question que vous voulez lui faire examiner.
+
+## Activez-le d'abord pour le formulaire {#enable-order}
+
+L'ordre piège beaucoup de monde. L'interrupteur d'évaluateur d'une question ne fait rien à lui seul.
+
+1. Ouvrez l'onglet **Evaluation** et activez l'évaluateur pour le formulaire.
+2. Cliquez sur le nom de l'évaluateur pour l'ouvrir. Chaque question du formulaire apparaît en dessous avec son propre interrupteur.
+3. Activez les questions que vous voulez lui faire examiner, et configurez chacune.
+
+<Warning>
+  L'interrupteur **Criteria**, **Scoring** ou **Skills** d'une question est ignoré tant que l'interrupteur au niveau du formulaire est désactivé. Désactivez l'évaluateur pour le formulaire et les interrupteurs par question restent tels que vous les avez laissés, mais rien n'est évalué.
+</Warning>
+
+Les mêmes interrupteurs par question apparaissent aussi sur la carte de la question dans l'onglet **Content**, pour que vous puissiez configurer une question sans la quitter. Ils n'y apparaissent qu'une fois l'interrupteur au niveau du formulaire activé, ce qui est l'autre moitié de la même règle.
+
+## Quelles questions peuvent être évaluées
+
+Tous les types de champs sauf [Ending Screen](/fr/reference/forms/fields/ending-screen) et [Redirect URL](/fr/reference/forms/fields/redirect-url). Les deux fins ne collectent rien, donc il n'y a rien à évaluer.
+
+Ce qui diffère selon le type, c'est la précision avec laquelle une règle peut lire la réponse. Une réponse [Yes/No](/fr/reference/forms/fields/yes-no) est l'une de deux valeurs connues. Une réponse [File Upload](/fr/reference/forms/fields/file-upload) ne peut être testée que sur son nom de fichier, son type et sa taille. Chaque page d'évaluateur porte le tableau des opérateurs de ses règles.
+
+## Règles ou IA
+
+Criteria, Scoring et Skills demandent chacun **How to evaluate?** par question, avec deux réponses.
+
+- **Use answer rules** compare la réponse à des conditions que vous écrivez. La même réponse donne toujours le même résultat, et aucun appel à l'IA n'est fait.
+- **Evaluate with AI** confie la question, la réponse et votre note au modèle, qui décide. Utilisez-le pour le texte libre, où une règle ne sait pas distinguer une bonne réponse d'une mauvaise.
+
+Les règles sont la valeur par défaut sur tous les types sauf [Short et Long Text](/fr/reference/forms/fields/short-and-long-text), où Criteria démarre sur l'IA.
+
+### Une note par question {#one-note-per-question}
+
+La zone au bas des paramètres d'évaluateur d'une question prend une instruction pour l'IA. Son libellé change selon l'évaluateur depuis lequel vous l'avez ouverte : **What should AI look for?**, **How should AI award points?**, **What skill signals should AI look for?**
+
+La zone est une seule note par question, partagée par les trois. Écrivez-la sous Criteria et le même texte apparaît sous Scoring et Skills. Faites-la porter sur la réponse plutôt que sur un seul évaluateur.
+
+## Quand chaque évaluateur s'exécute
+
+Une réponse est évaluée quand elle est complétée, et de nouveau dans [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) pendant que vous construisez. Les étapes s'exécutent dans cet ordre.
+
+1. Chaque question basée sur des règles est évaluée. Aucune IA n'intervient.
+2. Les questions réglées sur **Evaluate with AI** partent au modèle en un seul appel.
+3. Les résultats par question deviennent le verdict, le score et les pourcentages de skills.
+4. Generated fields s'exécute en dernier, sur l'ensemble de la réponse plus les résultats de l'étape 3.
+
+Que Generated fields s'exécute en dernier est ce qui lui permet de les utiliser. Un champ de sortie peut être rempli à partir du score ou du verdict aussi bien qu'à partir des réponses.
+
+## Où vont les résultats
+
+- Dans l'éditeur, [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) affiche chaque résultat en face des réponses qui l'ont produit.
+- Sur une réponse soumise, les résultats sont stockés avec elle. **Export CSV** et **Export Excel** dans le menu à trois points de l'éditeur ajoutent une colonne par résultat, y compris une par skill et une par generated field.
+- Dans une automatisation, chaque résultat est une variable, comme `{{form_response.evaluation.scoring.band.label}}`. **Test & Evaluate** les liste toutes sous **Automation variables**, avec la valeur du run sous vos yeux. Voir [Variables](/fr/variables/introduction).
+
+## Voir aussi
+
+- [Criteria](/fr/reference/forms/evaluation/criteria), [Scoring](/fr/reference/forms/evaluation/scoring), [Skills](/fr/reference/forms/evaluation/skills) et [Generated fields](/fr/reference/forms/evaluation/generated-fields) couvrent les quatre évaluateurs que vous configurez.
+- [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) exécute les évaluateurs sur une réponse que vous inventez.
+- [Présélectionner et noter les candidats avec un formulaire de présélection](/fr/knowledge-base/cookbook/pre-screening-form) construit un formulaire qui utilise Criteria, Scoring et Summary ensemble.
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.

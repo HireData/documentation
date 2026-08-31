@@ -1,0 +1,62 @@
+---
+title: "Skills"
+sidebarTitle: "Skills"
+description: "Listen Sie die Skills auf, die ein HireData-Formular bewerten soll, gewichten Sie die Antworten, die auf jeden hindeuten, und lesen Sie den stärksten Skill der Antwort ab."
+keywords: ["profiling", "skills-bewertung", "primärer skill", "skill-gewichtung", "kandidatenprofil"]
+---
+
+Skills ermittelt, was eine Antwort Ihnen hauptsächlich sagt. Sie listen die Skills auf, die für die Rolle zählen, sagen, welche Antworten auf welchen hindeuten und wie stark, und HireData gibt einen Prozentwert pro Skill zurück und benennt den stärksten.
+
+Criteria und Scoring urteilen beide. Skills sortiert. Es ist der Evaluator für einen Pool von Kandidatinnen und Kandidaten, die sich alle qualifizieren, wo die Frage lautet, wen Sie welchem Kunden vorstellen.
+
+## Die Skills-Liste
+
+Schalten Sie **Skills** für das Formular ein und klicken Sie dann auf **Skills**, um **Which skills do you want to assess?** zu öffnen. Fügen Sie eine Zeile pro Skill hinzu.
+
+![Der geöffnete Skills-Block mit zwei Skills, Availability und Communication, und dem geöffneten Beschreibungs-Popup auf dem ersten](/images/forms-builder/evaluation/06-skills-list.png)
+
+Jede Zeile hat den **Skill name**, ein Zahnrad und einen Papierkorb. Das Zahnrad öffnet **Description (optional)**, einen Satz, der erklärt, was der Skill bedeutet. Die Beschreibung ist der einzige Anhaltspunkt der KI dafür, was zählt – schreiben Sie sie also, sobald irgendeine Frage auf **Evaluate with AI** steht. **Add skill** ergänzt eine Zeile.
+
+Das Entfernen eines Skills entfernt ihn auch aus jeder Frage, die auf ihn zeigte. Es gibt kein Rückgängig, prüfen Sie also, welche Fragen einen Skill nutzen, bevor Sie ihn löschen.
+
+## Einstellungen pro Frage
+
+Klicken Sie auf **Skills**, schalten Sie eine Frage ein, und ihre Einstellungen öffnen sich.
+
+- **How to evaluate?** mit **Use answer rules** und **Evaluate with AI**.
+- **When should skill impact be applied?**, auf der Regelseite, enthält eine oder mehrere Regeln.
+- Das Notizfeld mit der Beschriftung **What skill signals should AI look for?**.
+
+![Eine Yes/No-Frage im Skills-Block mit einer Regel, die Availability ein Gewicht von 2 hinzufügt, wenn die Antwort Yes ist](/images/forms-builder/evaluation/07-skills-rules.png)
+
+### Regeln und Skill-Impact
+
+Eine Regel ist ein Satz von Bedingungen plus ein oder mehrere Skill-Impacts. Eine Bedingung liest sich als `<question> <operator> <value>` und kann nur die Antwort dieser Frage prüfen. **Add condition** ergänzt eine zweite und darüber einen **All**- und **Any**-Umschalter.
+
+Die Operatoren sind derselbe Satz, den Criteria anbietet, und der Feldtyp bestimmt sie: Text-Operatoren bei den Text- und Kontakttypen, Vergleiche bei den numerischen, Bewertungs- und Datumstypen, **is one of** bei Multiple Choice und Dropdown und Datei-Metadaten bei File Upload. Siehe [die Operator-Tabelle](/de/reference/forms/evaluation/criteria#operators).
+
+Jeder Impact hat **Which skill does this answer indicate?** und **How much should it contribute?**. **Add skill impact** richtet dieselbe Regel auf einen zweiten Skill, sodass eine Antwort auf zwei einzahlen kann. **Add rule** ergänzt eine weitere Regel – so gibt eine Frage unterschiedlichen Antworten unterschiedliche Gewichte.
+
+### Mit KI evaluieren
+
+Wechseln Sie zu **Evaluate with AI**, und die Regeln verschwinden. Das Modell liest die Antwort, Ihre Notiz und die Skill-Beschreibungen und gibt ein Gewicht pro Skill zurück.
+
+<Warning>
+  Fügen Sie dem Formular mindestens einen Skill hinzu, bevor Sie eine Frage auf KI umstellen. Die KI-Skill-Bewertung hat ohne Skills nichts zu gewichten, und die gesamte Evaluation schlägt mit einem Fehler fehl.
+</Warning>
+
+## Wie die Prozentwerte berechnet werden
+
+Gewichte sind keine Scores. HireData addiert das Gewicht, das jeder Skill über die ganze Antwort hinweg gesammelt hat, und gibt dann jedem Skill seinen Anteil an dieser Summe, sodass sich die Prozentwerte zu 100 addieren.
+
+Eine Antwort mit Gewicht 2 für Availability und eine mit Gewicht 1 für Communication macht Availability zu 66,67 % und Communication zu 33,33 %. Beide Zahlen sagen, woher das Signal kam, nicht wie gut die Kandidatin oder der Kandidat ist. Der **stärkste Skill** ist der höchste Prozentwert.
+
+Diese relative Rechnung hat eine Konsequenz, die Sie einplanen sollten. Wird ein Skill in vielen Fragen stark gewichtet, übertönt er die anderen, egal was die Antworten sagen. Halten Sie die Gewichte vergleichbar und verteilen Sie sie auf die Fragen, die den jeweiligen Skill wirklich anzeigen.
+
+Automatisierungen lesen `{{form_response.evaluation.profiling.primary_skill.key}}` und `{{form_response.evaluation.profiling.primary_skill.percentage}}`. Jeder konfigurierte Skill bekommt außerdem eine eigene Prozentwert-Variable, sodass eine Regel auf einen Skill reagieren kann, ohne dass er gewinnen muss.
+
+## Verwandte Themen
+
+- [Übersicht über die Formular-Evaluation](/de/reference/forms/evaluation/overview) behandelt die fünf Evaluatoren und die Reihenfolge, in der Sie sie einschalten.
+- [Criteria](/de/reference/forms/evaluation/criteria) und [Scoring](/de/reference/forms/evaluation/scoring) beurteilen eine Antwort, statt sie zu sortieren.
+- [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate) zeigt einen Balken pro Skill und die Badges auf den Fragen, die sie speisen.

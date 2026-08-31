@@ -1,0 +1,56 @@
+---
+title: "Yes/No"
+sidebarTitle: "Yes/No"
+description: "Het ja/nee-veld in een HireData-formulier, als checkbox of als toggle, met een aparte WhatsApp auto reply per antwoord."
+keywords: ["binair", "checkbox", "toggle", "boolean", "waar onwaar"]
+---
+
+Yes/No stelt een vraag met twee antwoorden. **Checkbox** toont een vakje dat de respondent aanvinkt. **Toggle** toont een schakelaar die ze verschuiven. De twee gedragen zich hetzelfde en slaan dezelfde waarde op, dus kies wat bij de vraag past.
+
+Het staat in de groep **Choice** van het **Add Content**-palet. De knop linksonder op de kaart wisselt tussen de twee.
+
+## Instellingen
+
+De kaart heeft de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares), met één verschil. In plaats van de enkele **Auto reply (on answer)** die de meeste typen hebben, geeft Yes/No elk antwoord zijn eigen WhatsApp-bericht.
+
+- **Auto reply (Yes)**, verstuurd wanneer het antwoord Yes is.
+- **Auto reply (No)**, verstuurd wanneer het antwoord No is.
+
+Verder is er niets in te stellen. Je kunt de twee antwoorden geen ander label geven. Heb je eigen bewoordingen nodig, zoals "Volledig rijbewijs" tegenover "Voorlopig", gebruik dan [Multiple Choice](/nl/reference/forms/fields/multiple-choice-and-dropdown) met twee opties.
+
+![Een Yes/No-veldkaart met Question, Description, Image, Auto reply (Yes), Auto reply (No), de drie evaluator-schakelaars met Criteria en Skills aan, en een footer met Checkbox en Optional](/images/forms-builder/fields/08-yes-no.png)
+
+Hetzelfde veld omgezet naar Toggle:
+
+![Hetzelfde veld met een footer met Toggle, naast een preview met een schuifschakelaar in plaats van een aanvinkvakje](/images/forms-builder/fields/08b-yes-no-toggle.png)
+
+## Wat het opslaat
+
+Yes of No.
+
+## Logica-operators
+
+| Operator | Komt overeen wanneer |
+|---|---|
+| has response | de respondent überhaupt heeft geantwoord |
+| is equal to | het antwoord overeenkomt met dat in de rule |
+| is not equal to | het antwoord het andere is |
+
+![Het tabblad Logic met de operatorkiezer open op een Yes/No-conditie, met has response, is equal to en is not equal to, met het waardevak ernaast op Yes](/images/forms-builder/fields/operators-yes-no.png)
+
+<Warning>
+  Maak een Yes/No-veld niet verplicht. Een respondent die No antwoordt komt er niet voorbij. **Next** doet niets, er verschijnt geen bericht, en geen enkele rule op het veld gaat ooit af. Laat het veld optioneel totdat de fix is uitgerold.
+</Warning>
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart.
+
+Yes/No is het schoonste veld om een must-have voor **Criteria** aan op te hangen, omdat het antwoord een van twee bekende waarden is en geen interpretatie nodig heeft. "Heb je een rijbewijs?" is voldaan of niet.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Multiple Choice en Dropdown](/nl/reference/forms/fields/multiple-choice-and-dropdown) regelt twee antwoorden in je eigen woorden, of meer dan twee.
+- [Weergave en vereisten](/nl/reference/forms/overview#display-and-requirements) legt uit wat als antwoord telt.

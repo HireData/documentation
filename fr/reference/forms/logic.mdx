@@ -1,0 +1,123 @@
+---
+title: "Logique"
+sidebarTitle: "Logique"
+description: "La logique conditionnelle dans un formulaire HireData : comment se lit une règle, les opérateurs proposés par chaque type de champ et ce qu'il faut vérifier quand une règle ne se déclenche pas."
+keywords: ["logique conditionnelle", "branchement", "logique de saut", "saut", "add rule", "add condition", "all other cases go to", "always go to", "opérateurs"]
+---
+
+Un formulaire sans logique se déroule tout droit dans la liste. Tout le monde répond à toutes les questions et tout le monde arrive à la même fin. L'onglet **Logic** est là où vous changez cela. Chaque règle que vous écrivez décide où une réponse envoie le répondant ensuite.
+
+La logique ne fait que déplacer les gens. Elle ne peut pas révéler une question en cours de route, et elle ne peut pas changer une réponse. Pour garder une question entièrement hors du formulaire, utilisez **Hidden**. Pour en désactiver une pour un seul poste ou candidat, voir [Configurer un formulaire par enregistrement](/fr/content/configuring-a-form-per-record).
+
+## Où vivent les règles
+
+L'onglet **Logic** se trouve au-dessus de la liste des champs, entre **Content** et **Evaluation**. Chaque question reçoit un bouton **Add Rule** et une cible en pied de carte, et les règles que vous écrivez appartiennent à cette question.
+
+Les fins se trouvent sous le séparateur **Endings** et ne reçoivent ni l'un ni l'autre. Rien ne suit une fin, une règle sur l'une d'elles n'aurait donc nulle part où pointer.
+
+![L'onglet Logic listant quatre questions, chacune avec un bouton Add Rule et une cible Always go to, puis le séparateur Endings et une fin sans aucun des deux](/images/forms-builder/32-logic-tab.png)
+
+## Anatomie d'une règle
+
+Une règle se lit `if <question> <operator> <value> then go to <field>`.
+
+![Une règle de logique sur une question Net Promoter Score : si la note est inférieure ou égale à 7, aller à la question de suivi, avec All other cases go to vers la fin](/images/forms-builder/04-logic-rule-and-fallback.png)
+
+- **if** démarre la condition. Le sélecteur de question propose cette question et celles au-dessus d'elle, jamais une question plus loin ni une fin, une règle ne peut donc pas lire une réponse que personne n'a encore donnée.
+- La liste d'opérateurs vient du type de la question. Voir [Opérateurs par type de champ](#operators).
+- La case de valeur contient ce que l'opérateur compare. **has response** ne compare rien, aucune case n'apparaît donc à côté de lui.
+- **Add Condition** ajoute une deuxième condition dans la même règle. La règle ne se déclenche que lorsque toutes les conditions correspondent. Pour des alternatives, écrivez plutôt une deuxième règle.
+- **then go to** choisit la destination. Tous les champs sont proposés sauf celui-ci et tout ce qui est réglé sur **Hidden**, une règle peut donc envoyer quelqu'un en arrière aussi bien qu'en avant.
+- **Delete Rule** supprime la règle et ses conditions.
+
+Sous les règles se trouve la cible du pied de carte, qui indique **All other cases go to** dès que la question a une règle et **Always go to** quand elle n'en a aucune. Une question peut porter autant de règles qu'elle en a besoin.
+
+## Comment HireData choisit le champ suivant
+
+Dès qu'un répondant répond à une question, HireData lit les règles de cette question de haut en bas et suit la première dont toutes les conditions correspondent. Si aucune ne correspond, il suit la cible du pied de carte. S'il n'y a pas de cible en pied de carte, le répondant continue vers le champ suivant de la liste.
+
+L'ordre est ce que les gens se trompent le plus souvent. Une règle large au-dessus d'une règle étroite gagne toujours, placez donc la règle étroite en premier.
+
+## Opérateurs par type de champ {#operators}
+
+Le type de la question dans la condition décide des opérateurs. Chaque page de champ explique ce que ses opérateurs comparent.
+
+| Types de champs | Opérateurs |
+|---|---|
+| [Short Text et Long Text](/fr/reference/forms/fields/short-and-long-text), [Email](/fr/reference/forms/fields/email), [Phone Number](/fr/reference/forms/fields/phone-number), [Website](/fr/reference/forms/fields/website) | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
+| [Multiple Choice et Dropdown](/fr/reference/forms/fields/multiple-choice-and-dropdown) | has response, is equal to, is not equal to, is one of, is not one of |
+| [Yes/No](/fr/reference/forms/fields/yes-no) | has response, is equal to, is not equal to |
+| [Number](/fr/reference/forms/fields/number), [Currency](/fr/reference/forms/fields/currency), [Net Promoter Score et Opinion Scale](/fr/reference/forms/fields/net-promoter-score-and-opinion-scale) | has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to |
+| [Date](/fr/reference/forms/fields/date), [Time](/fr/reference/forms/fields/time), [Datetime](/fr/reference/forms/fields/datetime), [File Upload](/fr/reference/forms/fields/file-upload) | has response |
+| [Ending Screen](/fr/reference/forms/fields/ending-screen), [Redirect URL](/fr/reference/forms/fields/redirect-url) | aucune règle |
+
+La cinquième ligne est celle qui piège les gens. Les questions Date, Time, Datetime et File Upload ne peuvent que demander si une réponse est arrivée. Leur sélecteur d'opérateur est grisé, parce qu'il n'y a rien d'autre à choisir, vous ne pouvez donc pas brancher sur une date antérieure à une autre.
+
+## Schémas
+
+### Brancher sur un choix
+
+Le cas de tous les jours. Une option mène quelque part où les autres ne mènent pas.
+
+![Une règle sur une question Multiple Choice : si la réponse est Yes, by email, aller à la question e-mail, avec All other cases go to vers la fin](/images/forms-builder/15-logic-choice-branch.png)
+
+Multiple Choice et Dropdown sont les seuls types qui proposent **is one of**, et sa case de valeur accepte plusieurs options à la fois. Trois réponses qui mènent toutes à la même question de suivi font une seule règle, pas trois.
+
+### Brancher sur un Yes/No
+
+Même forme, deux réponses. La case de valeur propose Yes et No.
+
+![Une règle sur une question Yes/No : si la réponse est Yes, aller à la question de région, avec All other cases go to vers la question d'expérience](/images/forms-builder/17-logic-yes-no.png)
+
+### Poser une question de suivi seulement quand la question précédente a reçu une réponse
+
+**has response** est l'opérateur des questions facultatives. Il correspond quelle que soit la réponse, du moment qu'il y en a une.
+
+![Une règle sur une question File Upload : si elle a une réponse, aller à la fin, avec All other cases go to vers la redirection](/images/forms-builder/20-logic-file-has-response.png)
+
+### Exiger deux réponses à la fois
+
+**Add Condition** place les deux conditions dans une seule règle, et les deux doivent correspondre.
+
+![Une règle avec deux conditions : la note de satisfaction est de 4 ou plus et la réponse au permis de conduire est Yes, alors aller à la fin](/images/forms-builder/19-logic-two-conditions.png)
+
+Une question que le répondant n'a jamais atteinte n'a pas de réponse, une condition qui la lit ne peut donc pas correspondre et toute la règle reste silencieuse.
+
+### Envoyer des répondants différents vers des fins différentes
+
+Pointez la règle vers une fin et la cible du pied de carte vers une autre.
+
+![Une règle sur une question Dropdown envoyant North vers la fin de remerciement, avec All other cases go to vers une fin de redirection](/images/forms-builder/18-logic-two-endings.png)
+
+### Sauter un bloc de questions
+
+Une question sans règles peut quand même sauter. Réglez **Always go to** et tous ceux qui y répondent atterrissent sur la même question plus loin, quoi qu'ils aient dit.
+
+![Une question sans règles, montrant Always go to pointant vers une question plus bas dans le formulaire](/images/forms-builder/16-logic-always-go-to.png)
+
+## Questions obligatoires et logique
+
+Une question obligatoire doit recevoir une réponse avant que le répondant puisse avancer, ce qui signifie que ses règles ne s'exécutent qu'une fois qu'il y a une réponse à tester. Une catégorie de réponses reste actuellement bloquée à la place.
+
+<Warning>
+  Un bug du formulaire web bloque les réponses No, un toggle non touché, 0 et une note de 0 sur une question obligatoire. **Next** ne fait rien, aucun message n'apparaît, et les règles sur cette question ne se déclenchent jamais. En attendant le correctif, laissez les questions Yes/No et Net Promoter Score facultatives, et définissez une **Minimum Value** de 1 sur une question Number obligatoire.
+</Warning>
+
+## Quand une règle ne se déclenche pas
+
+Parcourez cette liste quand une règle ne fait rien, ou envoie les gens là où vous ne le vouliez pas.
+
+- **Une règle au-dessus a correspondu en premier.** HireData s'arrête à la première correspondance. Déplacez la règle étroite au-dessus de la règle large.
+- **La règle exigeait toutes les conditions.** Toutes les conditions d'une même règle doivent correspondre. Séparez-les en deux règles pour obtenir un ou-bien.
+- **La condition lit une question que le répondant a sautée.** Un saut qui enjambe une question la laisse sans réponse, toute condition ultérieure sur elle échoue donc et la cible du pied de carte s'applique.
+- **La question est obligatoire et la réponse était No, désactivé ou 0.** Voir l'avertissement ci-dessus.
+- **La règle s'est déclenchée et les a renvoyés en arrière.** Une cible peut être une question que le répondant a déjà passée, et rien ne l'empêche de refaire deux fois le tour des mêmes questions. Essayez tout saut en arrière dans **Interactive Preview** avant de publier.
+- **Vous avez écrit la règle sur la mauvaise question.** Les règles vivent sur la question à laquelle on répond, pas sur la destination.
+
+[Interactive Preview](/fr/reference/forms/testing/previews) dans le panneau de droite exécute la même logique que le formulaire publié, c'est donc le moyen le plus rapide de vérifier un parcours. [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) remplit une réponse complète d'un coup, ce qui convient mieux pour vérifier les évaluateurs que le branchement.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Objets](/fr/reference/forms/objects) et [Sources de données](/fr/reference/forms/data-sources) couvrent les enregistrements et les listes qu'un formulaire peut exploiter.
+- [Créer un formulaire dans HireData](/fr/content/creating-a-form-in-hiredata) mène un formulaire de la page vierge à la publication.

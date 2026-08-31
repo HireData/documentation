@@ -1,0 +1,52 @@
+---
+title: "Sources de données"
+sidebarTitle: "Sources de données"
+description: "Remplissez une question Multiple Choice ou Dropdown d'un formulaire HireData depuis une liste enregistrée plutôt que des options saisies, et ce qui change quand vous modifiez une liste partagée."
+keywords: ["source de données", "add data source", "options de choix", "liste d'options", "filtres", "label", "value", "select data source"]
+---
+
+Une source de données est une liste enregistrée que votre espace de travail conserve en un seul endroit, tirée de vos propres enregistrements ou d'une app connectée. Pointez une question [Multiple Choice ou Dropdown](/fr/reference/forms/fields/multiple-choice-and-dropdown) vers l'une d'elles et ses options viennent de cette liste plutôt que des options que vous saisissez dans le champ. Six formulaires demandant quel bureau quelqu'un préfère partagent alors une seule liste, et ajouter le septième bureau est une seule modification.
+
+## Pointer une question vers une source de données
+
+Ouvrez la question et cliquez sur **Add Data Source** au-dessus des options. La fenêtre **Data Sources** liste toutes les sources de l'espace de travail. Chaque carte porte un badge nommant la liste qu'elle lit, plus un badge **Filters** quand la source restreint cette liste. **Add Data Source** dans l'en-tête de la fenêtre en construit une nouvelle depuis une entité de l'espace de travail ou depuis une app connectée.
+
+![La fenêtre Data Sources listant les listes enregistrées de l'espace de travail, avec Countries sélectionné et ses Name, Label, Description, Value et Avatar affichés à côté du bouton Select Data Source](/images/forms-builder/34-data-source-library.png)
+
+Cliquez sur une carte pour voir ce que la source mappe, puis sur **Select Data Source** pour l'attacher.
+
+Les options que vous aviez saisies disparaissent tant qu'une source est attachée, et une question ne contient qu'une source à la fois. **Remove Data Source** la détache et remet une paire d'options vide, tout ce que vous aviez saisi avant est donc perdu pour de bon.
+
+![La section Options d'une carte Dropdown avec une source de données attachée, montrant Remove Data Source, la source Countries et un unique Auto reply (on answer)](/images/forms-builder/36-choice-with-data-source.png)
+
+Attacher une source réduit aussi les réponses automatiques par option en un seul **Auto reply (on answer)**, envoyé quelle que soit l'option choisie par le répondant. Il n'y a aucun moyen d'écrire une réponse WhatsApp différente par pays quand les pays viennent d'une liste.
+
+## Ce qu'une source mappe
+
+Le crayon à côté de **Select Data Source** ouvre la source elle-même. Chaque paramètre ici décide comment un enregistrement devient une option.
+
+![La source de données Countries ouverte en modification, avec Name, Label, Description, Value, Avatar, la section Filters et un bouton Save](/images/forms-builder/35-data-source-editor.png)
+
+- **Name** est le nom de la source dans la bibliothèque. C'est le seul paramètre que vous saisissez. Les autres sont des sélecteurs listant les champs que portent les enregistrements.
+- **Label** est le champ que le répondant lit. Trompez-vous ici et vos options sont une colonne d'identifiants.
+- **Description** ajoute une deuxième ligne sous le label là où il y a de la place pour une. **None** l'omet.
+- **Value** est le champ stocké avec la réponse, généralement l'identifiant de l'enregistrement plutôt que son nom.
+- **Avatar** place une image à côté du label. Seuls les champs d'image sont proposés, la plupart des sources n'ont donc rien à choisir.
+
+## Filtres
+
+**Add New Set** démarre un ensemble de conditions. Chaque ligne choisit un champ, une condition et une valeur, et **Add Filter** ajoute une ligne à l'ensemble. **Add New Set** à nouveau vous donne un deuxième ensemble.
+
+Les filtres sont ce qui rend une source digne d'être enregistrée. Tous les pays du monde sont rarement la liste que vous voulez mettre devant un candidat. La poignée de pays dans lesquels vous recrutez l'est généralement.
+
+## Une source, chaque question qui l'utilise
+
+Une source de données appartient à l'espace de travail, pas au formulaire. **Save** dans l'éditeur la réécrit pour chaque question de chaque formulaire qui pointe vers elle, et il n'y a pas de copie par formulaire sur laquelle se rabattre. Avant de restreindre les filtres d'une source, déterminez qui d'autre la lit.
+
+Les enregistrements eux-mêmes sont lus quand le formulaire s'exécute. Un enregistrement ajouté à la liste sous-jacente apparaît comme nouvelle option sans que personne n'ouvre l'éditeur de formulaires.
+
+## Voir aussi
+
+- [Multiple Choice et Dropdown](/fr/reference/forms/fields/multiple-choice-and-dropdown) est le seul type de champ qui accepte une source de données.
+- [Objets](/fr/reference/forms/objects) lie un enregistrement au formulaire et transforme ses champs en variables.
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.

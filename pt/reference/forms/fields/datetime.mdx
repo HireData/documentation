@@ -1,0 +1,36 @@
+---
+title: "Datetime"
+sidebarTitle: "Datetime"
+description: "O campo de data e hora num formulário da HireData. Pede um dia e uma hora numa só resposta e só permite ramificações com o operador has response."
+keywords: ["data e hora", "horário de entrevista", "marcação"]
+---
+
+Datetime pede um dia e uma hora numa só resposta. Use-o quando as duas metades importam, como num horário de entrevista, e use [Date](/pt/reference/forms/fields/date) quando o dia basta.
+
+Fica no grupo **Temporal** da paleta **Add Content**.
+
+## Definições
+
+Datetime não acrescenta nada às [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). Não há uma janela a definir nem um limite de horário de trabalho.
+
+![Um cartão de campo Datetime a mostrar Question, Description, Image, a auto reply, os três interruptores de avaliadores e um rodapé com Optional, ao lado de uma pré-visualização a mostrar uma caixa combinada de data e hora](/images/forms-builder/fields/07-datetime.png)
+
+## O que armazena
+
+Uma data e hora. Os três tipos temporais partilham um único valor, e Datetime preenche as duas metades.
+
+## Operadores de lógica
+
+O seletor de operadores está fixo em **has response** e não pode ser alterado. Uma regra pode perguntar se o inquirido deu um horário, não se ele cai na janela que queria.
+
+![Uma condição numa pergunta Datetime no separador Logic, com o operador a mostrar has response e sem caixa de valor ao lado](/images/forms-builder/fields/operators-datetime.png)
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Date](/pt/reference/forms/fields/date) e [Time](/pt/reference/forms/fields/time) são os outros dois campos Temporal.

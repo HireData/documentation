@@ -1,0 +1,62 @@
+---
+title: "Skills"
+sidebarTitle: "Skills"
+description: "Liste as skills que um formulário da HireData deve avaliar, pondere as respostas que apontam para cada uma e leia a skill mais forte da resposta."
+keywords: ["perfilagem", "avaliação de skills", "skill principal", "ponderação de skills", "perfil de candidato"]
+---
+
+Skills descobre o que uma resposta lhe está sobretudo a dizer. Lista as skills que interessam à função, diz que respostas apontam para cada uma e com que força, e a HireData devolve uma percentagem por skill e nomeia a mais forte.
+
+Criteria e Scoring julgam ambos. Skills ordena. É o avaliador para um conjunto de candidatos que se qualificam todos, em que a questão é quem colocar à frente de que cliente.
+
+## A lista de skills
+
+Ative **Skills** para o formulário e depois clique em **Skills** para abrir **Which skills do you want to assess?**. Adicione uma linha por skill.
+
+![O bloco Skills aberto com duas skills, Availability e Communication, e o popup de descrição aberto na primeira](/images/forms-builder/evaluation/06-skills-list.png)
+
+Cada linha tem o **Skill name**, uma engrenagem e um caixote. A engrenagem abre **Description (optional)**, uma frase que explica o que a skill significa. A descrição é o único guia da IA para o que conta, por isso escreva-a quando alguma pergunta estiver definida como **Evaluate with AI**. **Add skill** adiciona uma linha.
+
+Remover uma skill também a remove de todas as perguntas que apontavam para ela. Não há forma de anular, por isso verifique que perguntas usam uma skill antes de a apagar.
+
+## Definições por pergunta
+
+Clique em **Skills**, ative uma pergunta e as definições dela abrem-se.
+
+- **How to evaluate?** com **Use answer rules** e **Evaluate with AI**.
+- **When should skill impact be applied?**, no lado das regras, com uma ou mais regras.
+- A caixa de nota, com a etiqueta **What skill signals should AI look for?**.
+
+![Uma pergunta Yes/No no bloco Skills com uma regra que adiciona um peso de 2 a Availability quando a resposta é Yes](/images/forms-builder/evaluation/07-skills-rules.png)
+
+### Regras e impacto de skill
+
+Uma regra é um conjunto de condições mais um ou mais impactos de skill. Uma condição lê-se `<pergunta> <operador> <valor>` e só pode testar a resposta desta pergunta. **Add condition** acrescenta uma segunda e um comutador **All** e **Any** por cima.
+
+Os operadores são o mesmo conjunto que Criteria oferece, e o tipo de campo decide-os: operadores de texto nos tipos de texto e de contacto, comparações nos tipos numéricos, de classificação e de data, **is one of** em Multiple Choice e Dropdown, e metadados do ficheiro em File Upload. Veja [a tabela de operadores](/pt/reference/forms/evaluation/criteria#operators).
+
+Cada impacto tem **Which skill does this answer indicate?** e **How much should it contribute?**. **Add skill impact** aponta a mesma regra para uma segunda skill, para que uma resposta possa contar para duas. **Add rule** acrescenta outra regra, que é como uma pergunta dá pesos diferentes a respostas diferentes.
+
+### Avaliar com IA
+
+Mude para **Evaluate with AI** e as regras desaparecem. O modelo lê a resposta, a sua nota e as descrições das skills, e devolve um peso por skill.
+
+<Warning>
+  Adicione pelo menos uma skill ao formulário antes de mudar uma pergunta para IA. A avaliação de skills com IA não tem nada para ponderar sem elas, e toda a avaliação falha com um erro.
+</Warning>
+
+## Como as percentagens são calculadas
+
+Pesos não são pontuações. A HireData soma o peso que cada skill recolheu em toda a resposta e depois dá a cada skill a sua parte desse total, para que as percentagens somem 100.
+
+Uma resposta que vale 2 para Availability e uma que vale 1 para Communication fazem Availability 66,67% e Communication 33,33%. Ambos os números dizem de onde veio o sinal, não quão bom é o candidato. A **skill mais forte** é a percentagem mais alta.
+
+Essa matemática relativa tem uma consequência que vale a pena planear. Ponderar fortemente uma skill em muitas perguntas abafa as outras, digam o que disserem as respostas. Mantenha os pesos comparáveis e distribua-os pelas perguntas que genuinamente indicam cada skill.
+
+As automações leem `{{form_response.evaluation.profiling.primary_skill.key}}` e `{{form_response.evaluation.profiling.primary_skill.percentage}}`. Cada skill que configurou também recebe a sua própria variável de percentagem, para que uma regra possa agir sobre uma skill sem que esta tenha de vencer.
+
+## Relacionados
+
+- [Visão geral da avaliação de formulários](/pt/reference/forms/evaluation/overview) cobre os cinco avaliadores e a ordem pela qual os ativa.
+- [Criteria](/pt/reference/forms/evaluation/criteria) e [Scoring](/pt/reference/forms/evaluation/scoring) julgam uma resposta em vez de a ordenar.
+- [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) mostra uma barra por skill e os selos nas perguntas que as alimentam.

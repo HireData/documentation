@@ -1,0 +1,68 @@
+---
+title: "Scoring"
+sidebarTitle: "Scoring"
+description: "Attribuez des points aux réponses de formulaire avec des règles ou avec l'IA, transformez le total en pourcentage et étiquetez-le avec une plage de score comme Low, Medium ou High."
+keywords: ["scoring de formulaire", "points", "plage de score", "notation", "pondération des réponses", "score de candidat"]
+---
+
+Scoring transforme une réponse en nombre. Vous décidez combien de points vaut chaque question et quand ils sont attribués, et HireData convertit le total en pourcentage et l'étiquette avec une plage.
+
+Criteria vous dit qui est éliminé. Scoring vous dit qui appeler en premier.
+
+## Plages de score
+
+Activez **Scoring** pour le formulaire et il démarre avec trois plages : **Low** à 0, **Medium** à 50 et **High** à 80. Cliquez sur **Scoring** pour les ouvrir.
+
+![Le bloc Scoring ouvert, montrant les plages de score Low, Medium et High avec leurs scores minimums](/images/forms-builder/evaluation/04-scoring-ranges.png)
+
+Chaque plage a un **Label** et un **Minimum score (%)**. Une réponse atterrit dans la plus haute plage dont elle franchit le minimum, donc 82 % est High et 79 % est Medium. **Add range** en ajoute une autre, et la corbeille en retire une. Donnez à chaque plage un libellé et un minimum différent entre 0 et 100.
+
+Gardez une plage à 0. Un score en dessous de tous les minimums obtient un pourcentage sans libellé, ce qui se lit comme un résultat manquant plutôt que comme un résultat bas.
+
+## Paramètres par question
+
+Cliquez sur **Scoring**, activez une question, et ses paramètres s'ouvrent.
+
+- **How many points is this question worth?**, le maximum que cette question peut ajouter.
+- **How to evaluate?** avec **Use answer rules** et **Evaluate with AI**.
+- **When should points be awarded?**, côté règles, contenant une ou plusieurs règles.
+- La zone de note, libellée **How should AI award points?**.
+
+![Une question nombre dans le bloc Scoring, valant 20 points, avec une règle attribuant 20 points pour cinq ans ou plus et une seconde en attribuant 10 pour trois ou plus](/images/forms-builder/evaluation/05-scoring-rules.png)
+
+### Règles
+
+Une règle est un ensemble de conditions plus **How many points should be awarded?**. Une condition se lit `<question> <opérateur> <valeur>` et ne peut tester que la réponse de cette question. **Add condition** en ajoute une seconde et un commutateur **All** et **Any** au-dessus, et **Add rule** ajoute une autre règle en dessous.
+
+Les opérateurs sont le même ensemble que propose Criteria, et le type de champ les décide : opérateurs de texte sur les types texte et contact, comparaisons sur les types numériques, de notation et de date, **is one of** sur Multiple Choice et Dropdown, et métadonnées de fichier sur File Upload. Voir [le tableau des opérateurs](/fr/reference/forms/evaluation/criteria#operators).
+
+Chaque règle qui correspond paie, et le total est ensuite plafonné au maximum de la question. Deux règles qui correspondent toutes deux à une réponse de cinq ans, l'une valant 20 et l'autre 10, attribuent 20 sur une question valant 20. Les tranches qui se chevauchent sont sans danger tant que le maximum est juste, ce qui vous permet d'écrire « 5 ans ou plus, 20 points » au-dessus de « 3 ans ou plus, 10 points » et de ne plus penser à l'écart.
+
+Laissez **How many points is this question worth?** vide et le maximum devient la somme des points des règles, pour que rien ne puisse dépasser 100 %.
+
+### Évaluer avec l'IA
+
+Passez sur **Evaluate with AI** et les règles disparaissent. Le modèle lit la réponse et votre note et renvoie un nombre entre zéro et le maximum de la question, avec une phrase de raisonnement.
+
+<Warning>
+  Définissez le maximum avant de passer une question à l'IA. Le scoring IA a besoin d'un maximum au-dessus de zéro, et toute l'évaluation échoue avec une erreur tant qu'il est vide.
+</Warning>
+
+## Comment le pourcentage est calculé {#how-the-percentage-is-worked-out}
+
+Seules les questions que vous avez activées et configurées participent. HireData additionne les points qu'elles ont gagnés, divise par la somme de leurs maximums et arrondit à deux décimales.
+
+Un formulaire avec une question à 10 points et une question à 20 points est noté sur 30. Gagnez 10 et 20 et la réponse obtient 100 %.
+
+![Les résultats de Scoring dans Test & Evaluate : une barre à 100 %, Points 30 sur 30, et les points gagnés par chaque question](/images/forms-builder/testing/07b-test-results-scoring.png)
+
+Une question sans réponse rapporte zéro et compte quand même son maximum, si bien qu'une réponse à moitié terminée obtient un score bas plutôt qu'un bon score sur ce qu'elle a répondu. C'est en général ce que vous voulez. Quand ce ne l'est pas, placez les questions notées tôt dans le formulaire, avant tout saut de [logique](/fr/reference/forms/logic) qui pourrait les enjamber.
+
+Les automatisations lisent le résultat via `{{form_response.evaluation.scoring.score}}` pour le pourcentage, et `{{form_response.evaluation.scoring.band.label}}` pour le libellé de la plage.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'évaluation de formulaire](/fr/reference/forms/evaluation/overview) couvre les cinq évaluateurs et l'ordre dans lequel les activer.
+- [Criteria](/fr/reference/forms/evaluation/criteria) décide qui est qualifié tout court.
+- [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) affiche les points gagnés par chaque question.
+- [Présélectionner et noter les candidats avec un formulaire de présélection](/fr/knowledge-base/cookbook/pre-screening-form) construit un formulaire autour de cet évaluateur.

@@ -1,0 +1,123 @@
+---
+title: "Lógica"
+sidebarTitle: "Lógica"
+description: "A lógica condicional num formulário HireData: como se lê uma regra, que operadores cada tipo de campo oferece e o que verificar quando uma regra não dispara."
+keywords: ["lógica condicional", "ramificação", "skip logic", "salto", "add rule", "add condition", "all other cases go to", "always go to", "operadores"]
+---
+
+Um formulário sem lógica corre a lista de cima a baixo. Toda a gente responde a todas as perguntas e toda a gente chega ao mesmo fim. O separador **Logic** é onde muda isso. Cada regra que escreve decide para onde uma resposta envia o inquirido a seguir.
+
+A lógica apenas move pessoas. Não pode revelar uma pergunta a meio do caminho nem alterar uma resposta. Para manter uma pergunta totalmente fora do formulário, use **Hidden**. Para a desligar para uma única vaga ou um único candidato, veja [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record).
+
+## Onde vivem as regras
+
+O separador **Logic** fica por cima da lista de campos, entre **Content** e **Evaluation**. Cada pergunta recebe um botão **Add Rule** e um alvo de rodapé, e as regras que escreve pertencem a essa pergunta.
+
+Os fins ficam por baixo do divisor **Endings** e não recebem nem um nem outro. Nada se segue a um fim, por isso uma regra num fim não teria para onde apontar.
+
+![O separador Logic a listar quatro perguntas, cada uma com um botão Add Rule e um alvo Always go to, depois o divisor Endings e um fim sem nenhum dos dois](/images/forms-builder/32-logic-tab.png)
+
+## Anatomia de uma regra
+
+Uma regra lê-se `if <question> <operator> <value> then go to <field>`.
+
+![Uma regra de lógica numa pergunta Net Promoter Score: se a pontuação for menor ou igual a 7, ir para a pergunta de seguimento, com All other cases go to a apontar para o fim](/images/forms-builder/04-logic-rule-and-fallback.png)
+
+- **if** inicia a condição. O seletor de perguntas oferece esta pergunta e as que estão acima dela, nunca uma posterior e nunca um fim, para que uma regra não possa ler uma resposta que ainda ninguém deu.
+- A lista de operadores vem do tipo da pergunta. Veja [Operadores por tipo de campo](#operators).
+- A caixa de valor contém aquilo com que o operador compara. **has response** não compara nada, por isso nenhuma caixa aparece ao seu lado.
+- **Add Condition** coloca uma segunda condição na mesma regra. A regra só dispara quando todas as condições correspondem. Para alternativas, escreva antes uma segunda regra.
+- **then go to** escolhe o destino. Todos os campos são oferecidos exceto este e qualquer um definido como **Hidden**, por isso uma regra pode enviar alguém tanto para trás como para a frente.
+- **Delete Rule** remove a regra e as suas condições.
+
+Por baixo das regras fica o alvo de rodapé, que lê **All other cases go to** quando a pergunta tem uma regra e **Always go to** quando não tem nenhuma. Uma pergunta pode ter tantas regras quantas precisar.
+
+## Como a HireData escolhe o campo seguinte
+
+Assim que um inquirido responde a uma pergunta, a HireData lê as regras dessa pergunta de cima para baixo e segue a primeira cujas condições correspondam todas. Se nenhuma corresponder, segue o alvo de rodapé. Se não houver alvo de rodapé, o inquirido avança para o campo seguinte da lista.
+
+A ordem é o que as pessoas erram. Uma regra ampla acima de uma estreita ganha sempre, por isso ponha a regra estreita primeiro.
+
+## Operadores por tipo de campo {#operators}
+
+O tipo da pergunta na condição decide os operadores. Cada página de campo explica a que corresponde cada um dos seus operadores.
+
+| Tipos de campo | Operadores |
+|---|---|
+| [Short Text e Long Text](/pt/reference/forms/fields/short-and-long-text), [Email](/pt/reference/forms/fields/email), [Phone Number](/pt/reference/forms/fields/phone-number), [Website](/pt/reference/forms/fields/website) | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
+| [Multiple Choice e Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) | has response, is equal to, is not equal to, is one of, is not one of |
+| [Yes/No](/pt/reference/forms/fields/yes-no) | has response, is equal to, is not equal to |
+| [Number](/pt/reference/forms/fields/number), [Currency](/pt/reference/forms/fields/currency), [Net Promoter Score e Opinion Scale](/pt/reference/forms/fields/net-promoter-score-and-opinion-scale) | has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to |
+| [Date](/pt/reference/forms/fields/date), [Time](/pt/reference/forms/fields/time), [Datetime](/pt/reference/forms/fields/datetime), [File Upload](/pt/reference/forms/fields/file-upload) | has response |
+| [Ending Screen](/pt/reference/forms/fields/ending-screen), [Redirect URL](/pt/reference/forms/fields/redirect-url) | sem regras |
+
+A quinta linha é a que apanha as pessoas desprevenidas. As perguntas Date, Time, Datetime e File Upload só podem perguntar se chegou uma resposta. O seu seletor de operadores aparece acinzentado, porque não há mais nada para escolher, por isso não pode ramificar com base numa data ser anterior a outra.
+
+## Padrões
+
+### Ramificar numa escolha
+
+O caso do dia a dia. Uma opção leva a um sítio onde as outras não levam.
+
+![Uma regra numa pergunta Multiple Choice: se a resposta for Yes, by email, ir para a pergunta do email, com All other cases go to a apontar para o fim](/images/forms-builder/15-logic-choice-branch.png)
+
+Multiple Choice e Dropdown são os únicos tipos que oferecem **is one of**, e a sua caixa de valor aceita várias opções de uma vez. Três respostas que levam todas ao mesmo seguimento são uma regra, não três.
+
+### Ramificar num Yes/No
+
+A mesma forma, duas respostas. A caixa de valor oferece Yes e No.
+
+![Uma regra numa pergunta Yes/No: se a resposta for Yes, ir para a pergunta da região, com All other cases go to a apontar para a pergunta da experiência](/images/forms-builder/17-logic-yes-no.png)
+
+### Fazer um seguimento apenas quando a última pergunta foi respondida
+
+**has response** é o operador para perguntas opcionais. Corresponde seja qual for a resposta, desde que exista uma.
+
+![Uma regra numa pergunta File Upload: se tem resposta, ir para o fim, com All other cases go to a apontar para o redirecionamento](/images/forms-builder/20-logic-file-has-response.png)
+
+### Exigir duas respostas ao mesmo tempo
+
+**Add Condition** coloca ambas as condições numa regra, e ambas têm de corresponder.
+
+![Uma regra com duas condições: a classificação de satisfação é 4 ou mais e a resposta sobre a carta de condução é Yes, então ir para o fim](/images/forms-builder/19-logic-two-conditions.png)
+
+Uma pergunta a que o inquirido nunca chegou não tem resposta, por isso uma condição que a leia não pode corresponder e a regra inteira fica em silêncio.
+
+### Enviar inquiridos diferentes para fins diferentes
+
+Aponte a regra para um fim e o alvo de rodapé para outro.
+
+![Uma regra numa pergunta Dropdown a enviar North para o fim de agradecimento, com All other cases go to a apontar para um fim de redirecionamento](/images/forms-builder/18-logic-two-endings.png)
+
+### Saltar um bloco de perguntas
+
+Uma pergunta sem regras ainda pode saltar. Defina **Always go to** e todos os que lhe respondem chegam à mesma pergunta mais abaixo, digam o que disserem.
+
+![Uma pergunta sem regras, a mostrar Always go to a apontar para uma pergunta mais abaixo no formulário](/images/forms-builder/16-logic-always-go-to.png)
+
+## Perguntas obrigatórias e lógica
+
+Uma pergunta obrigatória tem de ser respondida antes de o inquirido poder avançar, o que significa que as suas regras só correm quando há uma resposta para testar. Uma classe de respostas fica atualmente presa em vez disso.
+
+<Warning>
+  Um bug no formulário web bloqueia as respostas No, um toggle intocado, 0 e uma classificação de 0 numa pergunta obrigatória. **Next** não faz nada, nenhuma mensagem aparece e as regras dessa pergunta nunca disparam. Até a correção chegar, deixe as perguntas Yes/No e Net Promoter Score opcionais e defina um **Minimum Value** de 1 numa pergunta Number obrigatória.
+</Warning>
+
+## Quando uma regra não dispara
+
+Percorra esta lista quando uma regra não faz nada, ou envia as pessoas para onde não pretendia.
+
+- **Uma regra acima dela correspondeu primeiro.** A HireData para na primeira correspondência. Mova a regra estreita para cima da ampla.
+- **A regra precisava de todas as condições.** Todas as condições de uma regra têm de corresponder. Divida-as em duas regras para obter uma alternativa.
+- **A condição lê uma pergunta que o inquirido saltou.** Um salto que passa por cima de uma pergunta deixa-a sem resposta, por isso qualquer condição posterior sobre ela falha e aplica-se o alvo de rodapé.
+- **A pergunta é obrigatória e a resposta foi No, desligado ou 0.** Veja o aviso acima.
+- **A regra disparou e enviou-os para trás.** Um alvo pode ser uma pergunta que o inquirido já passou, e nada os impede de dar duas voltas às mesmas perguntas. Experimente qualquer salto para trás na **Interactive Preview** antes de publicar.
+- **Escreveu a regra na pergunta errada.** As regras vivem na pergunta que está a ser respondida, não no destino.
+
+A [Interactive Preview](/pt/reference/forms/testing/previews) no painel da direita executa a mesma lógica que o formulário publicado executa, por isso é a forma mais rápida de verificar um percurso. [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) preenche uma resposta completa de uma vez, o que é melhor para verificar os avaliadores do que a ramificação.
+
+## Relacionados
+
+- A [visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Objetos](/pt/reference/forms/objects) e [Fontes de dados](/pt/reference/forms/data-sources) cobrem os registos e as listas de que um formulário se pode servir.
+- [Criar um formulário na HireData](/pt/content/creating-a-form-in-hiredata) leva um formulário do zero à publicação.

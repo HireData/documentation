@@ -1,0 +1,52 @@
+---
+title: "Fontes de dados"
+sidebarTitle: "Fontes de dados"
+description: "Preencha uma pergunta Multiple Choice ou Dropdown de um formulário HireData a partir de uma lista guardada em vez de opções escritas, e o que muda quando edita uma lista partilhada."
+keywords: ["fonte de dados", "add data source", "opções de escolha", "lista de opções", "filtros", "label", "value", "select data source"]
+---
+
+Uma fonte de dados é uma lista guardada que o seu workspace mantém num único sítio, extraída dos seus próprios registos ou de uma app ligada. Aponte uma pergunta [Multiple Choice ou Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) para uma e as suas opções passam a vir dessa lista, em vez de opções que escreve no campo. Seis formulários a perguntar que escritório alguém prefere partilham então uma única lista, e adicionar o sétimo escritório é uma única edição.
+
+## Apontar uma pergunta para uma fonte de dados
+
+Abra a pergunta e clique em **Add Data Source** por cima das opções. A janela **Data Sources** lista todas as fontes que o workspace tem. Cada cartão tem um selo com o nome da lista que lê, mais um selo **Filters** quando a fonte estreita essa lista. **Add Data Source** no cabeçalho da janela constrói uma nova a partir de uma entidade do workspace ou de uma app ligada.
+
+![A janela Data Sources a listar as listas guardadas do workspace, com Countries selecionada e os seus Name, Label, Description, Value e Avatar mostrados ao lado do botão Select Data Source](/images/forms-builder/34-data-source-library.png)
+
+Clique num cartão para ver o que a fonte mapeia, e depois em **Select Data Source** para a anexar.
+
+As opções que escreveu desaparecem enquanto uma fonte está anexada, e uma pergunta tem uma fonte de cada vez. **Remove Data Source** desanexa-a e repõe um par de opções vazio, por isso tudo o que tinha escrito antes desaparece de vez.
+
+![A secção Options de um cartão Dropdown com uma fonte de dados anexada, a mostrar Remove Data Source, a fonte Countries e uma única Auto reply (on answer)](/images/forms-builder/36-choice-with-data-source.png)
+
+Anexar uma fonte também colapsa as auto replies por opção numa única **Auto reply (on answer)**, enviada seja qual for a opção que o inquirido escolha. Não há forma de escrever uma resposta de WhatsApp diferente por país quando os países vêm de uma lista.
+
+## O que uma fonte mapeia
+
+O lápis ao lado de **Select Data Source** abre a própria fonte. Cada definição aqui decide como um registo se transforma numa opção.
+
+![A fonte de dados Countries aberta para edição, com Name, Label, Description, Value, Avatar, a secção Filters e um botão Save](/images/forms-builder/35-data-source-editor.png)
+
+- **Name** é o nome da fonte na biblioteca. É a única definição que escreve. As restantes são seletores que listam os campos que os registos têm.
+- **Label** é o campo que o inquirido lê. Erre aqui e as suas opções são uma coluna de IDs.
+- **Description** acrescenta uma segunda linha por baixo da etiqueta onde há espaço para ela. **None** deixa-a de fora.
+- **Value** é o campo armazenado com a resposta, normalmente o ID do registo em vez do seu nome.
+- **Avatar** coloca uma imagem ao lado da etiqueta. Só são oferecidos campos de imagem, por isso a maioria das fontes não tem nada para escolher.
+
+## Filtros
+
+**Add New Set** inicia um conjunto de condições. Cada linha escolhe um campo, uma condição e um valor, e **Add Filter** acrescenta outra linha ao conjunto. **Add New Set** outra vez dá-lhe um segundo conjunto.
+
+Os filtros são o que torna uma fonte digna de ser guardada. Todos os países do mundo raramente são a lista que quer pôr à frente de um candidato. O punhado em que recruta normalmente é.
+
+## Uma fonte, todas as perguntas que a usam
+
+Uma fonte de dados pertence ao workspace, não ao formulário. **Save** no editor reescreve-a para todas as perguntas de todos os formulários que apontam para ela, e não há uma cópia por formulário a que recorrer. Antes de estreitar os filtros de uma fonte, descubra quem mais a está a ler.
+
+Os próprios registos são lidos quando o formulário corre. Um registo adicionado à lista subjacente aparece como uma nova opção sem ninguém abrir o construtor de formulários.
+
+## Relacionados
+
+- [Multiple Choice e Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) é o único tipo de campo que aceita uma fonte de dados.
+- [Objetos](/pt/reference/forms/objects) liga um registo ao formulário e transforma os seus campos em variáveis.
+- A [visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.

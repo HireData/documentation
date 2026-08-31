@@ -1,0 +1,68 @@
+---
+title: "Scoring"
+sidebarTitle: "Scoring"
+description: "Ken punten toe voor formulierantwoorden met rules of met AI, zet het totaal om in een percentage en geef het een label met een scorebereik zoals Low, Medium of High."
+keywords: ["formulierscoring", "punten", "scorebereik", "beoordeling", "antwoorden wegen", "kandidaatscore"]
+---
+
+Scoring maakt van een respons een getal. Jij bepaalt hoeveel punten elke vraag waard is en wanneer ze worden toegekend, en HireData zet het totaal om in een percentage en geeft het een label met een bereik.
+
+Criteria vertelt je wie afvalt. Scoring vertelt je wie je als eerste belt.
+
+## Scorebereiken
+
+Zet **Scoring** aan voor het formulier en het begint met drie bereiken: **Low** op 0, **Medium** op 50 en **High** op 80. Klik op **Scoring** om ze te openen.
+
+![Het Scoring-blok geopend, met de scorebereiken Low, Medium en High en hun minimumscores](/images/forms-builder/evaluation/04-scoring-ranges.png)
+
+Elk bereik heeft een **Label** en een **Minimum score (%)**. Een respons belandt in het hoogste bereik waarvan hij het minimum haalt, dus 82% is High en 79% is Medium. **Add range** voegt er een toe, en de prullenbak verwijdert er een. Geef elk bereik een label en een ander minimum tussen 0 en 100.
+
+Houd één bereik op 0. Een score onder elk minimum krijgt een percentage en geen label, wat leest als een ontbrekend resultaat in plaats van een laag resultaat.
+
+## Instellingen per vraag
+
+Klik op **Scoring**, zet een vraag aan en de instellingen openen.
+
+- **How many points is this question worth?**, het meeste dat deze vraag kan toevoegen.
+- **How to evaluate?** met **Use answer rules** en **Evaluate with AI**.
+- **When should points be awarded?**, aan de rules-kant, met een of meer rules.
+- Het notitievak, met het label **How should AI award points?**.
+
+![Een getalvraag in het Scoring-blok, 20 punten waard, met een rule die 20 punten toekent voor vijf jaar of meer en een tweede die 10 toekent voor drie of meer](/images/forms-builder/evaluation/05-scoring-rules.png)
+
+### Rules
+
+Een rule is een set condities plus **How many points should be awarded?**. Een conditie leest als `<vraag> <operator> <waarde>` en kan alleen het antwoord op deze vraag testen. **Add condition** voegt een tweede toe en een **All**- en **Any**-switch erboven, en **Add rule** voegt er een rule onder toe.
+
+De operators zijn dezelfde set die Criteria biedt, en het veldtype bepaalt ze: tekstoperators op de tekst- en contacttypen, vergelijkingen op de numerieke, beoordelings- en datumtypen, **is one of** op Multiple Choice en Dropdown, en bestandsmetadata op File Upload. Zie [de operatortabel](/nl/reference/forms/evaluation/criteria#operators).
+
+Elke matchende rule keert uit, en het totaal wordt daarna afgetopt op het maximum van de vraag. Twee rules die allebei matchen op een antwoord van vijf jaar, één van 20 en één van 10, kennen 20 toe op een vraag van 20 punten. Overlappende banden zijn veilig zolang het maximum klopt, en dat is wat je "5 jaar of meer, 20 punten" boven "3 jaar of meer, 10 punten" laat schrijven zonder verder over het gat na te denken.
+
+Laat je **How many points is this question worth?** leeg, dan wordt het maximum de som van de rule-punten, zodat niets boven 100% kan uitkomen.
+
+### Evalueren met AI
+
+Schakel naar **Evaluate with AI** en de rules verdwijnen. Het model leest het antwoord en jouw notitie en geeft een getal terug tussen nul en het maximum van de vraag, met een zin redenering.
+
+<Warning>
+  Stel het maximum in voordat je een vraag op AI zet. AI-scoring heeft een maximum boven nul nodig, en de hele evaluatie faalt met een fout zolang het leeg is.
+</Warning>
+
+## Hoe het percentage wordt berekend {#how-the-percentage-is-worked-out}
+
+Alleen de vragen die je aanzette en configureerde doen mee. HireData telt de punten op die ze verdienden, deelt door de som van hun maxima en rondt af op twee decimalen.
+
+Een formulier met een vraag van 10 punten en een vraag van 20 punten wordt gescoord uit 30. Verdien 10 en 20 en de respons scoort 100%.
+
+![De Scoring-resultaten in Test & Evaluate: een balk van 100%, Points 30 van 30, en de punten die elke vraag verdiende](/images/forms-builder/testing/07b-test-results-scoring.png)
+
+Een onbeantwoorde vraag scoort nul en telt zijn maximum toch mee, dus een half afgemaakte respons scoort laag in plaats van goed op wat hij wél beantwoordde. Dat is meestal wat je wilt. Wanneer dat niet zo is, zet je de gescoorde vragen vroeg in het formulier, vóór elke [logic](/nl/reference/forms/logic)-jump die eroverheen zou kunnen stappen.
+
+Automatiseringen lezen het resultaat als `{{form_response.evaluation.scoring.score}}` voor het percentage en `{{form_response.evaluation.scoring.band.label}}` voor het bereiklabel.
+
+## Gerelateerd
+
+- [Overzicht van formulierevaluatie](/nl/reference/forms/evaluation/overview) behandelt de vijf evaluatoren en de volgorde waarin je ze aanzet.
+- [Criteria](/nl/reference/forms/evaluation/criteria) beslist wie überhaupt in aanmerking komt.
+- [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) toont de punten die elke vraag verdiende.
+- [Sollicitanten screenen en scoren met een pre-screeningformulier](/nl/knowledge-base/cookbook/pre-screening-form) bouwt een formulier rond deze evaluator.

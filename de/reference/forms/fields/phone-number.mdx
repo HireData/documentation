@@ -1,0 +1,51 @@
+---
+title: "Phone Number"
+sidebarTitle: "Phone Number"
+description: "Das Telefonnummern-Feld in einem HireData-Formular, mit den Platzhalter-, Längen- und Pattern-Einstellungen eines Textfelds."
+keywords: ["telefon", "mobilnummer"]
+---
+
+Phone Number ist ein einzeiliges Feld für eine Telefonnummer. Die befragte Person sieht ein Hörer-Symbol im leeren Feld.
+
+Es befindet sich in der Gruppe **Contact Info** der **Add Content**-Palette.
+
+## Einstellungen
+
+Die Karte enthält die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares). Phone Number ergänzt dieselben vier wie ein Textfeld.
+
+- **Placeholder**, bis zu 255 Zeichen, angezeigt im leeren Feld.
+- **Minimum Length** und **Maximum Length**, gezählt in Zeichen.
+- **Validation Pattern**, ein regulärer Ausdruck, dem die Antwort entsprechen muss.
+
+Es gibt keine telefonspezifische Validierungsmeldung, deshalb ist **Validation Pattern** der Weg, ein Format zu erzwingen. Wenn Ihr Prozess Nummern im internationalen Format braucht, bitten Sie in der **Description** darum und sichern Sie es mit einem Pattern ab.
+
+![Eine Phone-Number-Feldkarte mit Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, der Auto Reply, den drei Evaluator-Schaltern und einer Fußzeile mit Optional, neben einer Vorschau mit einem Antwortfeld mit Hörer-Symbol](/images/forms-builder/fields/03-phone-number.png)
+
+## Was gespeichert wird
+
+Text, die Nummer so, wie die befragte Person sie eingetippt hat. HireData formatiert sie nicht um.
+
+## Logik-Operatoren
+
+| Operator | Trifft zu, wenn |
+|---|---|
+| has response | die befragte Person überhaupt geantwortet hat |
+| is equal to | die Antwort genau dem Wert entspricht |
+| is not equal to | die Antwort irgendetwas anderes ist |
+| starts with | die Antwort mit dem Wert beginnt |
+| ends with | die Antwort mit dem Wert endet |
+| contains | der Wert irgendwo in der Antwort vorkommt |
+| does not contain | der Wert nirgendwo in der Antwort vorkommt |
+
+![Der Logic-Tab mit geöffneter Operator-Auswahl auf einer Phone-Number-Bedingung, mit has response, is equal to, is not equal to, starts with, ends with, contains und does not contain](/images/forms-builder/fields/operators-phone-number.png)
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte. Eine Nummer ist selten eine Evaluation wert, deshalb lassen die meisten Formulare hier alle drei aus.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Email](/de/reference/forms/fields/email) und [Website](/de/reference/forms/fields/website) sind die anderen beiden Contact-Info-Felder.
+- [So verwenden Sie Formulare in WhatsApp-Konversationen](/de/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) erklärt, wohin die Auto Replies gehen.

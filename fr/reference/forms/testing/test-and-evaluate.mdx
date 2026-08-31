@@ -1,0 +1,70 @@
+---
+title: "Test & Evaluate"
+sidebarTitle: "Test & Evaluate"
+description: "Remplissez une réponse entière de formulaire HireData, laissez l'IA en inventer une pour vous, et lisez le verdict, le score, les skills, le résumé et les generated fields produits."
+keywords: ["test and evaluate", "remplissage automatique par IA", "scénario de test", "évaluer une réponse de formulaire", "candidat idéal"]
+---
+
+**Test & Evaluate** est le troisième onglet du panneau d'aperçu, et le moyen le plus rapide de voir ce que font réellement les [évaluateurs](/fr/reference/forms/evaluation/overview). Vous lui donnez une réponse, il exécute Criteria, Scoring, Skills, Summary et Generated fields dessus, et affiche chaque résultat à côté de la réponse qui l'a produit.
+
+Utilisez-le chaque fois que vous modifiez un évaluateur. Une règle qui semble juste sur la carte est souvent fausse la première fois qu'elle rencontre une réponse.
+
+## Remplir les réponses
+
+L'onglet liste chaque question sauf les fins, sous forme de saisie compacte. Des badges après le libellé de la question disent ce que les évaluateurs en feront : **Must** ou **Nice** venant de [Criteria](/fr/reference/forms/evaluation/criteria), et un badge par skill que la question alimente.
+
+![Trois questions dans Test & Evaluate, l'une badgée Must et Availability, l'autre badgée Nice](/images/forms-builder/testing/06-test-answers.png)
+
+Saisissez les réponses vous-même, ou laissez l'IA les écrire. **Autofill with AI** remplit toutes les questions d'un coup, et le chevron à côté choisit le type de répondant à imiter.
+
+![Le bouton Autofill with AI avec son menu ouvert, listant Random answers, Ideal candidate, Borderline candidate, Unqualified candidate et Partially completed](/images/forms-builder/testing/05-test-scenarios.png)
+
+- **Random answers** est plausible mais non informé. Bien pour un premier regard.
+- **Ideal candidate** répond comme le ferait quelqu'un qui remplit chaque critère.
+- **Borderline candidate** vise le milieu, là où une erreur de scoring se voit.
+- **Unqualified candidate** devrait revenir rejeté. Si ce n'est pas le cas, un must-have ne fait pas son travail.
+- **Partially completed** laisse des questions sans réponse, ce qui est le moyen de vérifier un verdict **Incomplete**.
+
+Les scénarios ne sont pas génériques. Le remplissage automatique envoie vos questions et vos règles d'évaluation au modèle, donc « idéal » signifie idéal pour les critères de ce formulaire, et « non qualifié » est conçu pour y échouer.
+
+L'évaluation se lance d'elle-même dès qu'il y a une réponse, et de nouveau un instant après que vous en changez une. Il n'y a aucun bouton à presser. **Reset answers** en bas efface tout.
+
+<Note>
+  Lancer une évaluation enregistre d'abord le formulaire. Toute modification non enregistrée dans l'éditeur est validée au moment où l'évaluation s'exécute, alors n'utilisez pas cet onglet pour regarder un changement dont vous étiez encore en train de décider.
+</Note>
+
+## Lire les résultats
+
+Les résultats apparaissent sous les réponses, en commençant par un panneau par évaluateur activé. Chaque panneau affiche le résultat principal, et cliquer sur l'un ouvre son détail en dessous.
+
+![Les résultats d'un run de candidat idéal : Meets criteria, 100 % High, Availability à 66,67 %, le détail des critères par question, le résumé et les generated fields](/images/forms-builder/testing/07-test-results.png)
+
+**Criteria** regroupe les questions sous **Must-have** et **Nice-to-have**, avec une coche ou une croix, la réponse et la réponse attendue là où vous en avez écrit une. Une question jugée par l'IA porte une pastille AI et le raisonnement en une ligne du modèle, ce qui est le moyen le plus rapide de voir si votre note a porté.
+
+**Scoring** affiche le pourcentage, le décompte des points et ce que chaque question a gagné sur son propre maximum.
+
+![Le panneau Scoring : une barre à 100 %, Points 30 sur 30, et 10 et 20 points venant des deux questions notées](/images/forms-builder/testing/07b-test-results-scoring.png)
+
+**Skills** affiche une barre par skill. **Summary** et **Generated fields** se trouvent sous les panneaux, si bien qu'ils restent visibles quel que soit le détail ouvert.
+
+Un **No result yet** gris est ce que les panneaux affichent avant que vous saisissiez une réponse. Si l'un reste gris après un run, cet évaluateur n'avait rien à traiter. La cause habituelle est une question activée sans règles écrites, ce qui laisse l'évaluateur sans question à juger.
+
+## Automation variables
+
+**Automation variables** en bas liste chaque valeur que cette réponse met à disposition d'une automatisation, avec la variable à copier et le résultat du run sous vos yeux.
+
+![La liste Automation variables, montrant les variables de critères, de score, de plage de score, de skill principal et de résumé avec leurs valeurs](/images/forms-builder/testing/08-automation-variables.png)
+
+C'est la liste sur laquelle bâtir une automatisation. Lire `passed` à côté de `{{form_response.evaluation.screening}}` vous donne la valeur exacte à comparer, ce que deviner ne fait pas. Voir [Variables](/fr/variables/introduction).
+
+## Ce qu'il ne fait pas
+
+Un run ici ne crée aucune réponse. Les résultats du formulaire restent intacts, le compteur de réponses ne bouge pas et rien n'atteint une automatisation. L'évaluation est réelle, la réponse ne l'est pas.
+
+Si aucun de Criteria, Scoring et Skills n'est activé pour le formulaire, l'onglet affiche un bouton **Enable Criteria**, **Enable Scoring** et **Enable Skills** à la place des panneaux de résultats. Chacun active cet évaluateur pour le formulaire sans quitter l'onglet. Voir l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) pour la suite de la configuration.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'évaluation de formulaire](/fr/reference/forms/evaluation/overview) couvre les cinq évaluateurs et l'ordre dans lequel les activer.
+- [Aperçus](/fr/reference/forms/testing/previews) exécutent le formulaire lui-même, comme page web ou comme chat.
+- [Présélectionner et noter les candidats avec un formulaire de présélection](/fr/knowledge-base/cookbook/pre-screening-form) utilise cet onglet pour vérifier un formulaire de bout en bout.

@@ -1,0 +1,81 @@
+---
+title: "Criteria"
+sidebarTitle: "Criteria"
+description: "Verifique uma resposta de formulário contra requisitos must-have e nice-to-have, com regras de resposta ou com IA, e receba um único veredicto."
+keywords: ["triagem", "must-have", "nice-to-have", "meets criteria", "pré-triagem", "pergunta eliminatória"]
+---
+
+Criteria responde a uma pergunta sobre uma resposta: esta pessoa cumpre o que a função precisa? Marca cada pergunta que lhe interessa como must-have ou nice-to-have, diz como é uma boa resposta, e a HireData devolve um único veredicto.
+
+É o avaliador a escolher quando algumas respostas são eliminatórias. Um candidato sem carta de condução não pode fazer um trabalho de condução, e Criteria di-lo sem ninguém ler a resposta.
+
+## Ativá-lo
+
+Ative **Criteria** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview#enable-order) e depois clique em **Criteria** para o abrir. Todas as perguntas do formulário aparecem por baixo, cada uma com o seu interruptor. Uma pergunta só é verificada depois de a ativar aqui.
+
+![O bloco Criteria aberto, a listar as perguntas do formulário com um interruptor cada e uma pergunta ativada](/images/forms-builder/evaluation/01-criteria-field-list.png)
+
+## Definições por pergunta
+
+Ative uma pergunta e as definições dela abrem-se.
+
+- **How important is this requirement?** com **Must-have** e **Nice-to-have**. Um must-have falhado rejeita a resposta. Um nice-to-have falhado apenas a despromove.
+- **How to evaluate?** com **Use answer rules** e **Evaluate with AI**.
+- **What answer(s) do you expect?**, no lado das regras, com as condições que a resposta tem de satisfazer.
+- A caixa de nota, com a etiqueta **What should AI look for?**. Orienta a IA e é ignorada pelas regras. Veja [uma nota por pergunta](/pt/reference/forms/evaluation/overview#one-note-per-question).
+
+![Uma pergunta Yes/No no bloco Criteria, definida como Must-have e Use answer rules, à espera da resposta Yes](/images/forms-builder/evaluation/02-criteria-rules.png)
+
+### Respostas esperadas
+
+Uma condição lê-se `<pergunta> <operador> <valor>`. A pergunta é fixa: uma regra nesta pergunta só pode testar a resposta desta pergunta. Escolha o operador e depois o valor.
+
+**Add condition** acrescenta uma segunda condição e um comutador **All** e **Any** por cima. **All** exige que todas as condições correspondam. **Any** exige uma. Ambos se aplicam ao conjunto inteiro, não a um par.
+
+Deixe as condições vazias e a pergunta é saltada, diga o que disser o interruptor. Uma pergunta sem nada para comparar não pode passar nem falhar.
+
+### Operadores {#operators}
+
+O tipo da pergunta decide os operadores. É uma lista mais longa do que a [lógica](/pt/reference/forms/logic#operators) oferece, por isso uma pergunta em que a lógica não consegue ramificar pode mesmo assim ser um critério.
+
+| Tipos de campo | Operadores |
+|---|---|
+| [Short e Long Text](/pt/reference/forms/fields/short-and-long-text), [Email](/pt/reference/forms/fields/email), [Phone Number](/pt/reference/forms/fields/phone-number), [Website](/pt/reference/forms/fields/website) | is equal to, is not equal to, contains, does not contain, starts with, ends with, does not start with, does not end with, is empty, is not empty |
+| [Number](/pt/reference/forms/fields/number), [Currency](/pt/reference/forms/fields/currency), [Net Promoter Score e Opinion Scale](/pt/reference/forms/fields/net-promoter-score-and-opinion-scale), [Date](/pt/reference/forms/fields/date), [Time](/pt/reference/forms/fields/time), [Datetime](/pt/reference/forms/fields/datetime) | is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to, is empty, is not empty |
+| [Multiple Choice e Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) | is equal to, is not equal to, is one of, is not one of, is empty, is not empty |
+| [Yes/No](/pt/reference/forms/fields/yes-no) | is equal to, is not equal to, is empty, is not empty |
+| [File Upload](/pt/reference/forms/fields/file-upload) | operadores de texto no nome do ficheiro, no tipo e no endereço, operadores numéricos no tamanho |
+
+As datas são a surpresa útil. O separador **Logic** só pode perguntar se uma data foi dada, mas um critério pode perguntar se a data de início cai antes do dia em que precisa de alguém.
+
+Uma pergunta File Upload oferece um segundo seletor acima do operador, para a parte do ficheiro a ler: **Answer Name**, **Answer File Name**, **Answer Mime Type**, **Answer Size** e **Answer Url**. Uma regra nunca lê o que está dentro do ficheiro. Só a IA lê.
+
+## Avaliar com IA
+
+Mude para **Evaluate with AI** e as condições desaparecem. O modelo recebe a pergunta, a resposta e a sua nota, e decide se a resposta cumpre o requisito. Devolve também uma frase de fundamentação, que o [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) mostra por baixo da resposta.
+
+![Uma pergunta de texto longo no bloco Criteria, definida como Nice-to-have e Evaluate with AI, com uma nota a dizer à IA o que procurar](/images/forms-builder/evaluation/03-criteria-ai.png)
+
+Use a IA para texto livre e ficheiros, onde a formulação varia e nenhuma regra serve. Mantenha as regras para respostas com um conjunto fixo de valores. Uma pergunta Yes/No ou de escolha não precisa de interpretação, e uma regra é mais rápida, mais barata e repetível.
+
+Uma pergunta [File Upload](/pt/reference/forms/fields/file-upload) definida como IA envia o anexo ao modelo. Ficheiros JPEG, PNG, GIF, WebP e PDF são lidos, até cinco ficheiros e 10 MB por resposta. Tudo o resto é julgado apenas pelo nome do ficheiro.
+
+## O veredicto
+
+Cada pergunta que ativou e configurou vota. A HireData escolhe depois o veredicto por esta ordem.
+
+1. **Does not meet criteria**, quando um must-have respondido falhou.
+2. **Incomplete**, quando uma pergunta que ativou não tem resposta.
+3. **Partially meets criteria**, quando todos os must-haves passaram e um nice-to-have respondido falhou.
+4. **Meets criteria**, quando tudo passou.
+
+Uma resposta em falta não é uma falha. Um candidato que nunca chegou a uma pergunta must-have fica **Incomplete**, por isso uma rejeição significa sempre que a pessoa respondeu e a resposta ficou aquém. Tenha atenção a isto em perguntas atrás de um salto de [lógica](/pt/reference/forms/logic), que alguns inquiridos nunca veem.
+
+O veredicto fica disponível para as automações como `{{form_response.evaluation.screening}}`, que armazena `passed`, `passed_with_restrictions`, `rejected` ou `incomplete`.
+
+## Relacionados
+
+- [Visão geral da avaliação de formulários](/pt/reference/forms/evaluation/overview) cobre os cinco avaliadores e a ordem pela qual os ativa.
+- [Scoring](/pt/reference/forms/evaluation/scoring) ordena as respostas que passam.
+- [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) mostra o veredicto por pergunta ao lado das respostas que o produziram.
+- [Triar e pontuar candidatos com um formulário de pré-triagem](/pt/knowledge-base/cookbook/pre-screening-form) constrói um formulário à volta deste avaliador.

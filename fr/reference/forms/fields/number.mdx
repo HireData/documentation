@@ -1,0 +1,57 @@
+---
+title: "Number"
+sidebarTitle: "Number"
+description: "Le champ nombre d'un formulaire HireData, avec un minimum, un maximum et un pas, et l'ensemble complet des opérateurs de comparaison dans la logique."
+keywords: ["numérique", "années d'expérience", "quantité"]
+---
+
+Number prend un nombre simple : des années d'expérience, des heures par semaine, une quantité de quelque chose. C'est l'un des deux seuls types que la logique peut comparer, ce qui en fait le champ à privilégier quand une règle doit peser une réponse plutôt que la faire correspondre.
+
+Il se trouve dans le groupe **Numeric** de la palette **Add Content**.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Number en ajoute quatre qui lui sont propres.
+
+- **Placeholder**, jusqu'à 255 caractères, affiché dans la zone vide.
+- **Minimum Value** et **Maximum Value**, les bornes de la plage que vous acceptez.
+- **Steps**, la taille d'un pas. Réglez-le sur 1 pour exiger des nombres entiers.
+
+Les messages que voit un répondant lorsqu'une réponse sort de la plage se trouvent sous **Validation** dans [Langues et traductions](/fr/reference/forms/overview#localization), sous les noms **Min Number** et **Max Number**.
+
+![Une carte de champ Number montrant Question, Description, Image, Placeholder, Minimum Value, Maximum Value, Steps, la réponse automatique, les trois interrupteurs d'évaluateur avec Criteria et Scoring activés, et un pied de carte indiquant Optional](/images/forms-builder/fields/10-number.png)
+
+## Ce que le champ stocke
+
+Un nombre.
+
+## Opérateurs de logique
+
+| Opérateur | Correspond quand |
+|---|---|
+| has response | le répondant a répondu, quelle que soit la réponse |
+| is equal to | la réponse est exactement la valeur |
+| is not equal to | la réponse est n'importe quoi d'autre |
+| is greater than | la réponse est au-dessus de la valeur |
+| is less than | la réponse est en dessous de la valeur |
+| is greater than or equal to | la réponse est la valeur ou au-dessus |
+| is less than or equal to | la réponse est la valeur ou en dessous |
+
+![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Number, listant has response, is equal to, is not equal to et les quatre opérateurs de comparaison](/images/forms-builder/fields/operators-number.png)
+
+<Warning>
+  Un champ Number obligatoire bloque la réponse 0. **Next** ne fait rien et aucun message n'apparaît. En attendant le correctif, définissez une **Minimum Value** de 1 sur tout champ Number obligatoire, pour que 0 soit refusé avec un message que le répondant peut lire.
+</Warning>
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte.
+
+Number convient à **Scoring** mieux qu'aucun autre type. Un seuil donne tous les points, un seuil plus bas en donne une partie, et tout ce qui est en dessous n'en donne aucun, le tout à partir de la valeur elle-même.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Currency](/fr/reference/forms/fields/currency) est le même champ avec un symbole devant.
+- [Net Promoter Score et Opinion Scale](/fr/reference/forms/fields/net-promoter-score-and-opinion-scale) est un nombre que le répondant choisit sur une échelle.

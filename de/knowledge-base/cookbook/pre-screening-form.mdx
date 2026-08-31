@@ -1,0 +1,144 @@
+---
+title: "Bewerber mit einem Pre-Screening-Formular prüfen und bewerten"
+sidebarTitle: "Pre-Screening-Formular"
+description: "Bauen Sie ein Formular, das Bewerber ablehnt, die den Job nicht machen können, die geeigneten einstuft und Ihrem Recruiter eine Zusammenfassung schreibt, bevor jemand die Antwort öffnet."
+keywords: ["pre-screening-formular", "screening-fragen", "killer-frage", "bewerber bewerten", "kandidaten einstufen", "bewerbungsformular-scoring", "ai-screening"]
+---
+
+_Die meisten Bewerbungsformulare sammeln Antworten und überlassen es einer Person, sie zu lesen. Dieses Rezept baut eines, das entscheidet. Criteria schließt die Bewerber aus, die den Job nicht machen können, Scoring stuft die geeigneten ein, und die Zusammenfassung gibt Ihrem Recruiter die Antwort in drei Sätzen, bevor er sie öffnet._
+
+## Was Sie bauen werden
+
+Ein Formular mit vier Teilen:
+
+1. Vier Fragen, von denen jede etwas entscheidet
+2. **Criteria**, das einen Bewerber ablehnt, der an einer harten Anforderung scheitert
+3. **Scoring**, das alle einstuft, die bestehen
+4. Eine **Zusammenfassung** und ein **generiertes Feld**, auf das Ihre Automatisierung reagieren kann
+
+Jede hier verwendete Einstellung ist in der [Evaluation-Referenz](/de/reference/forms/evaluation/overview) beschrieben. Diese Seite begleitet ein Formular von leer bis veröffentlicht.
+
+## Bevor Sie beginnen
+
+Klären Sie zwei Dinge mit der Person, der die Vakanz gehört.
+
+- **Was jemanden disqualifiziert.** Daraus werden Must-have-Kriterien. Seien Sie streng: Ein Must-have, das eigentlich eine Präferenz ist, lehnt Leute ab, mit denen Sie sprechen wollten.
+- **Was einen qualifizierten Bewerber besser macht als einen anderen.** Daraus wird das Scoring, und das sind meist ein oder zwei Fragen statt aller.
+
+Schreiben Sie beides auf, bevor Sie den Builder öffnen. Das Formular ist schnell gebaut. Sich auf die Regeln zu einigen nicht.
+
+## Das Formular bauen
+
+### 1. Stellen Sie so wenige Fragen wie möglich, die etwas entscheiden
+
+Öffnen Sie **Forms**, klicken Sie auf **New Form** und wählen Sie **Blank Form**. Ein Pre-Screening-Formular verdient seinen Platz, indem es kurz ist – ergänzen Sie also nur die Fragen, deren Antworten ändern, was als Nächstes passiert.
+
+| Frage | Feldtyp | Warum sie dabei ist |
+|---|---|---|
+| Haben Sie einen Führerschein? | [Yes/No](/de/reference/forms/fields/yes-no) | Die Killer-Frage. Zwei bekannte Antworten, keine Interpretation nötig. |
+| Wann können Sie anfangen? | [Date](/de/reference/forms/fields/date) | Die zweite Killer-Frage, gegen das Datum, zu dem der Kunde jemanden braucht. |
+| Wie viele Jahre Erfahrung haben Sie? | [Number](/de/reference/forms/fields/number) | Die Ranking-Frage. |
+| Warum möchten Sie diesen Job? | [Long Text](/de/reference/forms/fields/short-and-long-text) | Die einzige, die nur AI beurteilen kann. |
+
+Schließen Sie mit einem [Ending Screen](/de/reference/forms/fields/ending-screen) ab, damit Bewerber wissen, dass das Formular abgeschickt wurde.
+
+<Warning>
+  Lassen Sie die Yes/No-Frage optional. Ein Bug im Webformular blockiert eine verpflichtende Yes/No-Frage, die mit No beantwortet wird – eine verpflichtende Führerschein-Frage lässt also genau die Bewerber stranden, die Criteria ablehnen soll. Das Kriterium funktioniert auch auf einer optionalen Frage.
+</Warning>
+
+### 2. Schalten Sie die Evaluatoren für das Formular ein
+
+Öffnen Sie den **Evaluation**-Tab und schalten Sie **Criteria**, **Scoring** und **Summary** ein. Lassen Sie **Skills** aus: Es sortiert qualifizierte Personen nach Stärke, und das ist eine andere Aufgabe als diese.
+
+Tun Sie das, bevor Sie irgendetwas konfigurieren. Der Evaluator-Schalter einer Frage tut nichts, solange der Schalter auf Formularebene aus ist, und er erscheint nicht einmal auf der Fragekarte. Siehe [die Einschaltreihenfolge](/de/reference/forms/evaluation/overview#enable-order).
+
+### 3. Setzen Sie die Ausschlusskriterien mit Criteria
+
+Klicken Sie auf **Criteria**, um die Fragenliste zu öffnen, und schalten Sie die drei ein, auf die es ankommt.
+
+- **Haben Sie einen Führerschein?** Setzen Sie **Must-have**, behalten Sie **Use answer rules** und erwarten Sie `is equal to Yes`.
+- **Wann können Sie anfangen?** Setzen Sie **Must-have**, behalten Sie **Use answer rules** und erwarten Sie `is less than or equal to` mit dem Datum, zu dem der Kunde jemanden braucht. Logik kann keine Daten vergleichen, ein Kriterium schon.
+- **Warum möchten Sie diesen Job?** Setzen Sie **Nice-to-have** und wechseln Sie zu **Evaluate with AI**. Sagen Sie in **What should AI look for?**, was eine echte Antwort enthält, etwa „Achte auf einen konkreten Grund mit Bezug zu dieser Arbeit. Generische Begeisterung zählt nicht."
+
+Lassen Sie die Erfahrungsfrage vorerst aus Criteria heraus. Sie ist die Ranking-Frage, und sie an beiden Stellen zu verwenden heißt, dass eine Antwort zugleich ablehnen und einstufen kann, was ein überraschendes Ergebnis schwer lesbar macht.
+
+Das Urteil lautet **Does not meet criteria**, sobald ein beantwortetes Must-have scheitert. Ein Bewerber, der eine Must-have-Frage nie erreicht hat, kommt stattdessen als **Incomplete** zurück – prüfen Sie also, dass kein [Logik](/de/reference/forms/logic)-Sprung über eine hinwegspringen kann.
+
+### 4. Stufen Sie den Rest mit Scoring ein
+
+Klicken Sie auf **Scoring**. Behalten Sie die drei Bereiche, mit denen es startet – **Low** bei 0, **Medium** bei 50 und **High** bei 80 – und schalten Sie dann die Erfahrungsfrage ein.
+
+- Setzen Sie **How many points is this question worth?** auf 20.
+- Fügen Sie eine Regel hinzu: `is greater than or equal to 5`, 20 Punkte wert.
+- Fügen Sie eine zweite Regel hinzu: `is greater than or equal to 3`, 10 Punkte wert.
+
+Beide Regeln treffen auf einen Bewerber mit fünf Jahren zu, und die Summe ist auf das Maximum der Frage gedeckelt, er bekommt also 20 statt 30 Punkte. Dieser Deckel ist es, was Ihnen überlappende Bänder erlaubt, ohne sich über die Lücken dazwischen Gedanken machen zu müssen.
+
+Eine 20-Punkte-Frage heißt, der Score ist 20 von 20 für fünf Jahre, also 100% und **High**. Ergänzen Sie eine zweite bewertete Frage, verteilt sich die Rechnung auf beide. Siehe [wie der Prozentsatz berechnet wird](/de/reference/forms/evaluation/scoring#how-the-percentage-is-worked-out).
+
+### 5. Lassen Sie die AI die Übergabe schreiben
+
+**Summary** braucht keine Konfiguration. Es fasst die abgeschlossene Antwort in wenigen Sätzen für die Person zusammen, die sie übernimmt.
+
+Für die eine Entscheidung, die Ihre Automatisierung treffen muss, ergänzen Sie ein [generiertes Feld](/de/reference/forms/evaluation/generated-fields). Schalten Sie **Generated fields** ein, klicken Sie auf **Create custom** und bauen Sie eine **List**-Ausgabe:
+
+- **Name**: Next step
+- **Reference as**: `next_step`
+- **What is it for?**: Was mit diesem Bewerber jetzt passieren soll
+- **Options**: `Book an interview`, `Ask for more detail`, `Reject politely`
+
+Eine List-Ausgabe kann nur eine Ihrer Optionen zurückgeben, und genau das macht sie sicher zum Verzweigen. Eine Freitext-Ausgabe würde Ihnen jedes Mal einen anderen Satz liefern.
+
+Ergänzen Sie in **Hints for the AI (optional)** den Hinweis „Lass ein Feld leer, wenn die Antworten nichts dazu sagen." Ohne ihn wird eine Ausgabe geraten, wenn die Antwort dünn ist.
+
+### 6. Testen Sie es, bevor Sie veröffentlichen
+
+Öffnen Sie **Test & Evaluate** und lassen Sie alle vier Szenarien mit **Autofill with AI** laufen. Jedes hat ein Ergebnis, das Sie vorhersagen können sollten.
+
+| Szenario | Was Sie sehen sollten |
+|---|---|
+| **Ideal candidate** | **Meets criteria**, ein hoher Score und ein nächster Schritt, der ein Interview bucht |
+| **Borderline candidate** | **Partially meets criteria** oder ein mittlerer Score. Dieser Lauf findet ein falsches Punkteband |
+| **Unqualified candidate** | **Does not meet criteria**. Besteht er, tut ein Must-have nicht seinen Job |
+| **Partially completed** | **Incomplete**, keine Ablehnung. Lehnt er ab, wird eine unbeantwortete Frage als Scheitern gelesen |
+
+Öffnen Sie jedes Ergebnispanel und prüfen Sie die Details pro Frage, nicht nur die Überschrift. Ein richtiges Urteil aus dem falschen Grund bricht, sobald ein echter Bewerber anders antwortet.
+
+Denken Sie daran, dass das Ausführen einer Evaluation das Formular speichert – alles, worüber Sie noch nachdachten, wird also festgeschrieben.
+
+### 7. Reagieren Sie in einer Automatisierung auf das Ergebnis
+
+Veröffentlichen Sie das Formular und bauen Sie dann die Automatisierung, die etwas mit dem Ergebnis anfängt. **Automation variables** unten in **Test & Evaluate** listet jeden Wert mit dem Ergebnis Ihres Testlaufs daneben, was das Raten über die exakte Schreibweise erspart.
+
+| Variable | Enthält |
+|---|---|
+| `{{form_response.evaluation.screening}}` | `passed`, `passed_with_restrictions`, `rejected` oder `incomplete` |
+| `{{form_response.evaluation.scoring.score}}` | Den Prozentsatz |
+| `{{form_response.evaluation.scoring.band.label}}` | Das Label des Score-Bereichs, etwa `High` |
+| `{{form_response.evaluation.ai_summary}}` | Die Zusammenfassung |
+| `{{form_response.evaluation.ai_output.next_step}}` | Ihren generierten nächsten Schritt |
+
+Beginnen Sie mit einer Bedingung auf dem Urteil, etwa dass Ablehnungen zu einer höflichen Absage führen und alles andere einen Task erstellt. Ergänzen Sie den Score, sobald Sie ihm vertrauen. Siehe [Automatisierungen](/automations/automations).
+
+## Das Formular prüfen und verbessern
+
+Vergleichen Sie nach zwanzig oder dreißig echten Antworten die Urteile mit dem, was Ihre Recruiter entschieden hätten.
+
+- Lehnen Sie Leute ab, die das Team angerufen hätte? Ein Must-have ist zu streng, oder es gehört ins Scoring.
+- Landen alle im selben Score-Bereich? Die Minima müssen verschoben werden, oder die bewertete Frage trennt Bewerber nicht.
+- Stimmt das AI-Kriterium mit einer Person überein, die dieselbe Antwort liest? Wenn nicht, ist die Notiz zu vage. Sagen Sie, was eine gute Antwort enthält, nicht, dass sie gut sein soll.
+- Sind die Zusammenfassungen das Lesen wert? Wenn sie nur die Antworten wiederholen, stellt das Formular geschlossene Fragen, und die Zusammenfassung hat nichts hinzuzufügen.
+
+Ändern Sie eine Sache auf einmal und lassen Sie die Szenarien in **Test & Evaluate** erneut laufen, bevor Sie wieder veröffentlichen.
+
+## Brauchen Sie mehr Hilfe?
+
+Wenn die Evaluatoren nichts zurückgeben, ist die übliche Ursache die Einschaltreihenfolge. Prüfen Sie den Schalter auf Formularebene ebenso wie den pro Frage, auf [dem Evaluation-Tab](/de/reference/forms/evaluation/overview#enable-order).
+
+Wenn ein Kriterium nie scheitert, öffnen Sie die Frage in **Test & Evaluate** und lesen Sie die erwartete Antwort darunter. Ein Kriterium ohne Bedingungen wird übersprungen statt als gescheitert gewertet.
+
+Wenn Sie weiterhin Hilfe brauchen, wenden Sie sich an [support@hiredata.com](mailto:support@hiredata.com) und geben Sie an:
+
+- Den Formularnamen
+- Die Frage und die Regel, die sich unerwartet verhalten hat
+- Die Antwort, mit der Sie getestet haben, und das erwartete Ergebnis

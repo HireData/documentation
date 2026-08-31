@@ -1,0 +1,66 @@
+---
+title: "Generated fields"
+sidebarTitle: "Generated fields"
+description: "Definieer je eigen outputs en laat AI ze vullen vanuit een hele formulierrespons, en lees de waarden daarna in een automatisering."
+keywords: ["AI-outputvelden", "gestructureerde output", "generated fields", "uit formulierrespons halen", "AI-variabelen"]
+---
+
+Generated fields is de vreemde eend op het tabblad **Evaluation**. De andere evaluatoren beoordelen antwoorden die je al verzamelde. Deze produceert waarden waar nooit om is gevraagd.
+
+Jij definieert de outputs die je wilt, de AI leest de afgeronde respons, en elke output komt gevuld terug. Een formulier dat nooit vraagt "hoe moeten we contact opnemen?" kan toch een voorkeurskanaal teruggeven, omdat een van de antwoorden het noemde.
+
+## Wat het niet is
+
+De outputs zijn nieuw. Ze zijn niet de vragen van het formulier, en ze raken die ook niet aan.
+
+- Een output definiëren voegt geen vraag toe, wijzigt geen vraag en schrijft niet in een antwoord.
+- Een output is niet gebonden aan één vraag. Elke output wordt gevuld vanuit de hele respons.
+- **Generated fields** aanzetten zet geen schakelaar op een vraagkaart, want er valt per vraag niets aan te zetten.
+
+Zie het als één AI-doorloop over de afgeronde respons, die een klein record teruggeeft dat jij ontwierp.
+
+## Aanzetten
+
+**Generated fields** is het laatste blok op het tabblad **Evaluation**. Zet het aan en klik erop om de instellingen te openen. Er valt per vraag niets in te schakelen.
+
+![Het Generated fields-blok geopend, met hints voor de AI, twee outputvelden en de knoppen Suggest with AI, Data source en Create custom](/images/forms-builder/evaluation/08-generated-fields.png)
+
+- **Hints for the AI (optional)** is één instructie voor de hele set. Het is de plek om te zeggen wat er moet gebeuren wanneer de antwoorden een output niet dekken, die anders gegokt wordt.
+- **What should the AI return?** somt de outputs op, in de volgorde waarin de AI erom wordt gevraagd. De pijlen op een rij verplaatsen hem, het potlood bewerkt hem en de prullenbak verwijdert hem.
+
+Zet je de evaluator aan en voeg je niets toe, dan wordt er niets gegenereerd. De lijst heeft minstens één output nodig voordat hij draait.
+
+## Een output toevoegen
+
+Onder de lijst staan drie knoppen.
+
+**Create custom** opent **New output field**, een paneel in twee stappen. Stap 1 kiest het type, met een zoekvak en groepen voor de basistypen, datums en tijden, contactgegevens, en web- en mediatypen. Stap 2 is de configuratie.
+
+![Stap 2 van New output field, met de instellingen Name, Reference as, What is it for? en Options voor een lijstoutput](/images/forms-builder/evaluation/09-new-output-field.png)
+
+- **Name** is het label dat je ziet in resultaten en in de variabelekiezer.
+- **Reference as** is de key die een automatisering gebruikt. Hij wordt ingevuld vanuit de naam en moet uniek zijn in het formulier, zonder spaties of accolades.
+- **What is it for? (optional)** vertelt de AI wat de waarde betekent. Schrijf het. Het doet meer voor het resultaat dan de naam.
+- **Options** verschijnt bij een **List**-output. Voeg er minstens één toe, en de AI moet daaruit kiezen in plaats van vrije tekst te schrijven. Zo krijg je een waarde waar je automatisering op kan vertakken.
+
+**Done** voegt de output toe. **Save & New** voegt hem toe en houdt het paneel open voor de volgende.
+
+**Suggest with AI** leest de vragen van het formulier en jouw hints en stelt tot drie outputs voor, en voegt ze direct aan de lijst toe. Behandel ze als startpunt en bewerk de outputs die je houdt.
+
+**Data source** opent de bibliotheek met [data sources](/nl/reference/forms/data-sources). Kies een source en de output kan alleen een van de items van die lijst bevatten, zodat de AI de respons moet matchen met een waarde die je workspace al bijhoudt. Een data source-output heeft geen potlood: wijzig de lijst, niet de output.
+
+## Wanneer het draait en wat het ziet
+
+Generated fields draait na Criteria, Scoring en Skills, over elk antwoord in de respons plus hun resultaten. Die volgorde is precies het punt. Een output kan worden gevuld vanuit de score of het oordeel, net zo goed als vanuit de antwoorden, en zo krijg je een reden van één regel voor een afwijzing of een vervolgstap die van de beoordeling afhangt.
+
+## De waarden lezen
+
+Elke output verschijnt onder **Generated fields** in [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate), en nogmaals in de lijst **Automation variables** met de key om te kopiëren.
+
+In een automatisering is een output `{{form_response.evaluation.ai_output.<key>}}`, dus de output `preferred_contact` is `{{form_response.evaluation.ai_output.preferred_contact}}`. Zie [Variabelen](/nl/variables/introduction).
+
+## Gerelateerd
+
+- [Overzicht van formulierevaluatie](/nl/reference/forms/evaluation/overview) behandelt de vijf evaluatoren en de volgorde waarin je ze aanzet.
+- [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) toont de gegenereerde waarden uit een run die jij bepaalt.
+- [Data sources](/nl/reference/forms/data-sources) legt de lijsten uit waar een data source-output uit put.

@@ -1,0 +1,51 @@
+---
+title: "Ending Screen"
+sidebarTitle: "Ending Screen"
+description: "Le dernier écran d'un formulaire HireData. Il affiche un titre et une description, et peut porter un bouton qui envoie le répondant plus loin, avec un minuteur facultatif."
+keywords: ["page de remerciement", "écran de remerciement", "dernière page", "écran de fin"]
+---
+
+Un écran de fin est l'endroit où atterrit un répondant quand le formulaire est terminé. Il affiche un titre, une description facultative et un bouton facultatif.
+
+L'onglet **Content** regroupe les fins dans leur propre groupe **Endings** au bas de la liste des champs, à l'écart des questions. Un formulaire peut en contenir plusieurs, et c'est bien là l'intérêt. Une règle de logique peut envoyer un bon candidat vers une fin et tous les autres vers une autre.
+
+Il se trouve dans le groupe **Ending** de la palette **Add Content**. Le bouton en bas à gauche de la carte le transforme en [Redirect URL](/fr/reference/forms/fields/redirect-url).
+
+## Paramètres
+
+Une fin a moins de paramètres qu'une question, parce que personne n'y répond.
+
+- **Title**, jusqu'à 255 caractères. C'est ce que les autres types de champs appellent **Question**.
+- **Description**, jusqu'à 1024 caractères.
+- **Image**, avec le même sélecteur de placement que tous les champs.
+- **Button**, un interrupteur dans le pied de carte.
+
+Activer **Button** ajoute deux paramètres et un second interrupteur.
+
+- **Button Text**, le libellé du bouton. La zone affiche « Submit Form » comme placeholder.
+- **Redirect URL**, l'adresse que le bouton ouvre.
+- **Redirect timer**, un interrupteur qui ajoute un **Timer** en secondes, pour que le répondant soit envoyé de lui-même vers l'adresse après ce nombre de secondes plutôt que d'attendre un clic.
+
+Il n'y a pas de bouton **Display & requirements**, pas de réponse automatique et pas d'interrupteur d'évaluateur. Une fin n'est pas une question, donc rien de tout cela ne s'applique.
+
+![Une carte Ending Screen montrant Title, Description, Image, Button Text, Redirect URL, un Timer en secondes et un pied de carte avec les interrupteurs Button et Redirect timer tous deux activés, à côté d'un aperçu montrant le titre et un bouton Submit Form](/images/forms-builder/fields/14-ending-screen.png)
+
+## Ce que le champ stocke
+
+Rien. Une fin n'a pas de saisie.
+
+## Opérateurs de logique
+
+Aucun. Une fin n'a pas de bouton **Add Rule** dans l'onglet **Logic**, parce qu'une fin est l'endroit où le formulaire s'arrête. Les règles des questions pointent vers les fins, pas l'inverse.
+
+![L'onglet Logic montrant une ligne de fin sans bouton Add Rule, à côté d'une ligne de question qui en a un](/images/forms-builder/fields/operators-endings.png)
+
+## Évaluation
+
+Un écran de fin ne porte aucun interrupteur d'évaluateur. Les évaluateurs IA lisent les réponses, et une fin n'en a pas.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Redirect URL](/fr/reference/forms/fields/redirect-url) est l'autre fin, sans écran du tout.
+- [Logic](/fr/reference/forms/logic) explique comment envoyer différents répondants vers différentes fins.

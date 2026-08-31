@@ -1,0 +1,51 @@
+---
+title: "Currency"
+sidebarTitle: "Currency"
+description: "O campo de moeda num formulário da HireData. É um campo numérico com um símbolo à frente, com Euro, Dollar, Pound, Swiss Franc, Yen e Rupee disponíveis."
+keywords: ["salário", "dinheiro", "montante", "tarifa", "remuneração"]
+---
+
+Currency é um campo Number com um símbolo à frente da caixa. Use-o para uma expectativa salarial, uma tarifa horária ou um orçamento. A lógica e os avaliadores tratam a resposta como um número simples, por isso tudo o que um campo Number consegue fazer, um campo Currency também consegue.
+
+Fica no grupo **Numeric** da paleta **Add Content**.
+
+## Definições
+
+O cartão tem as [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). Currency acrescenta cinco próprias.
+
+- **Placeholder**, até 255 caracteres, mostrado na caixa vazia.
+- **Minimum Value** e **Maximum Value**, os extremos do intervalo que aceita.
+- **Currency Symbol**, um de **Euro**, **Dollar**, **Pound**, **Swiss Franc**, **Yen** ou **Rupee**.
+- **Steps**, o tamanho de um passo.
+
+O símbolo é decoração na caixa. A HireData armazena o número e não converte entre moedas, por isso um formulário que tenha de lidar com várias precisa de uma pergunta separada sobre qual delas o inquirido quis dizer.
+
+![Um cartão de campo Currency a mostrar Question, Description, Image, Placeholder, Minimum Value, Maximum Value, Currency Symbol definido como Euro, Steps, a auto reply, os três interruptores de avaliadores e um rodapé com Optional, ao lado de uma pré-visualização a mostrar uma caixa de resposta com um símbolo de euro](/images/forms-builder/fields/11-currency.png)
+
+## O que armazena
+
+Um número, sem o símbolo.
+
+## Operadores de lógica
+
+| Operador | Corresponde quando |
+|---|---|
+| has response | o inquirido deu alguma resposta |
+| is equal to | a resposta é exatamente o valor |
+| is not equal to | a resposta é qualquer outra coisa |
+| is greater than | a resposta é superior ao valor |
+| is less than | a resposta é inferior ao valor |
+| is greater than or equal to | a resposta é o valor ou superior |
+| is less than or equal to | a resposta é o valor ou inferior |
+
+![O separador Logic com o seletor de operadores aberto numa condição de Currency, a listar has response, is equal to, is not equal to e os quatro operadores de comparação](/images/forms-builder/fields/operators-currency.png)
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão. Um teto salarial é um must-have sensato de **Criteria**: acima do número, o candidato está fora do intervalo.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Number](/pt/reference/forms/fields/number) é o mesmo campo sem símbolo.

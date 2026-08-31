@@ -4,9 +4,56 @@ sidebarTitle: "Introdução"
 description: "Playbooks de recrutamento prontos a construir na HireData: desde seguimentos de no-show a inquéritos pós-colocação, com passos práticos e exemplos reais."
 ---
 
-<Note>
-  Este artigo é um marcador de posição. O conteúdo abaixo descreve aquilo que irá abranger.
-</Note>
+O cookbook contém receitas práticas da HireData para resultados de recrutamento reais. A maioria combina um trigger, condições, tarefas e templates num workflow que pode adaptar às suas próprias apps e ao seu processo. Algumas constroem uma única peça de conteúdo, como um formulário que faz a triagem das suas próprias respostas.
 
-{/* TODO(docs-reorg): explain what recipes are, how to read them, and list them as cards.
-   Each recipe composes a trigger + filters + tasks + templates for a real recruiting outcome. */}
+## Como usar uma receita
+
+Uma receita explica:
+
+1. **O resultado** — o que o workflow deve alcançar
+2. **O trigger** — que evento ou agendamento o inicia
+3. **As condições** — que registos devem continuar
+4. **As tarefas** — o que a HireData faz com esses registos
+5. **O teste** — como verificar o workflow em segurança
+
+Use a receita como ponto de partida. Os nomes dos objetos, as stages, os campos e as tarefas disponíveis podem diferir entre ligações de ATS, por isso escolha os valores equivalentes no seu próprio construtor de automações.
+
+## Antes de construir
+
+- Ligue a app que fornece os dados de origem.
+- Identifique um registo de teste seguro.
+- Confirme que campos e relações estão disponíveis.
+- Decida quem é responsável pelo resultado quando uma tarefa exige seguimento humano.
+- Verifique na galeria de templates se existe uma automação que possa adaptar.
+- Teste todas as ações externas antes de ativar o workflow.
+
+<Warning>
+  As receitas que enviam mensagens, atualizam registos ou chamam sistemas externos podem afetar dados reais. Use destinatários de teste e endpoints de sandbox até ter revisto a run completa.
+</Warning>
+
+## Receitas disponíveis
+
+<CardGroup cols={2}>
+  <Card title="Encontrar perfis de candidato incompletos" icon="user-magnifying-glass" href="/knowledge-base/cookbook/incomplete-candidate-profiles">
+    Encontre perfis com informação em falta e encaminhe-os para um recrutador, uma equipa interna ou um workflow de conclusão pelo candidato.
+  </Card>
+
+  <Card title="Publicar um resultado no seu próprio sistema" icon="code" href="/knowledge-base/cookbook/post-an-outcome-to-your-own-system">
+    Envie um resumo JSON para um endpoint de API quando ocorre um evento da HireData e reutilize a resposta em tarefas posteriores.
+  </Card>
+
+  <Card title="Triar e pontuar candidatos" icon="clipboard-check" href="/knowledge-base/cookbook/pre-screening-form">
+    Construa um formulário de pré-triagem que rejeita os candidatos que não conseguem fazer o trabalho, classifica os restantes e resume cada resposta.
+  </Card>
+</CardGroup>
+
+## Construir com confiança
+
+Depois de criar uma receita:
+
+1. [Teste a automação](/pt/automations/how-to-test-an-automation).
+2. Reveja o seu [event](/pt/settings/logs/events) e a sua [run](/pt/settings/logs/runs).
+3. Confirme o resultado na app de destino.
+4. Ative-a para um público limitado antes de alargar as condições.
+
+Para pontos de partida reutilizáveis, explore também a galeria de templates a partir do dashboard da HireData.

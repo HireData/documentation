@@ -1,0 +1,144 @@
+---
+title: "Présélectionner et noter les candidats avec un formulaire de présélection"
+sidebarTitle: "Formulaire de présélection"
+description: "Construisez un formulaire qui rejette les candidats qui ne peuvent pas faire le travail, classe ceux qui le peuvent et écrit un résumé pour votre recruteur avant que quiconque ouvre la réponse."
+keywords: ["formulaire de présélection", "questions de présélection", "question éliminatoire", "noter les candidats", "classer les candidats", "notation de formulaire de candidature", "présélection par IA"]
+---
+
+_La plupart des formulaires de candidature collectent des réponses et laissent une personne les lire. Cette recette en construit un qui décide. Criteria élimine les candidats qui ne peuvent pas faire le travail, Scoring classe ceux qui le peuvent, et le résumé donne à votre recruteur la réponse en trois phrases avant qu'il ne l'ouvre._
+
+## Ce que vous allez construire
+
+Un formulaire en quatre parties :
+
+1. Quatre questions, dont chacune décide quelque chose
+2. Des **Criteria** qui rejettent un candidat qui échoue à une exigence stricte
+3. Un **Scoring** qui classe tous ceux qui passent
+4. Un **résumé** et un **champ généré** sur lesquels votre automatisation peut agir
+
+Chaque paramètre utilisé ici est couvert dans la [référence de l'évaluation](/fr/reference/forms/evaluation/overview). Cette page mène un formulaire de la page vierge à la publication.
+
+## Avant de commencer
+
+Décidez deux choses avec la personne responsable du poste.
+
+- **Ce qui disqualifie quelqu'un.** Cela devient des critères must-have. Soyez strict : un must-have qui est en réalité une préférence rejette des gens à qui vous vouliez parler.
+- **Ce qui rend un candidat qualifié meilleur qu'un autre.** Cela devient la notation, et c'est généralement une ou deux questions plutôt que toutes.
+
+Écrivez les deux avant d'ouvrir l'éditeur. Le formulaire est rapide. Se mettre d'accord sur les règles ne l'est pas.
+
+## Construire le formulaire
+
+### 1. Posez le moins de questions possible, chacune décidant quelque chose
+
+Ouvrez **Forms**, cliquez sur **New Form** et choisissez **Blank Form**. Un formulaire de présélection vaut par sa brièveté, n'ajoutez donc que les questions dont les réponses changent ce qui se passe ensuite.
+
+| Question | Type de champ | Pourquoi elle est là |
+|---|---|---|
+| Avez-vous un permis de conduire ? | [Yes/No](/fr/reference/forms/fields/yes-no) | La question éliminatoire. Deux réponses connues, aucune interprétation nécessaire. |
+| Quand pouvez-vous commencer ? | [Date](/fr/reference/forms/fields/date) | La deuxième question éliminatoire, comparée à la date à laquelle le client a besoin de quelqu'un. |
+| Combien d'années d'expérience avez-vous ? | [Number](/fr/reference/forms/fields/number) | La question de classement. |
+| Pourquoi voulez-vous ce poste ? | [Long Text](/fr/reference/forms/fields/short-and-long-text) | La seule que seule l'IA peut juger. |
+
+Terminez par un [écran de fin](/fr/reference/forms/fields/ending-screen) pour que les candidats sachent que le formulaire a été envoyé.
+
+<Warning>
+  Laissez la question Yes/No facultative. Un bug du formulaire web bloque une question Yes/No obligatoire à laquelle on répond No, une question de permis obligatoire bloque donc exactement les candidats que Criteria est censé rejeter. Le critère fonctionne toujours sur une question facultative.
+</Warning>
+
+### 2. Activez les évaluateurs pour le formulaire
+
+Ouvrez l'onglet **Evaluation** et activez **Criteria**, **Scoring** et **Summary**. Laissez **Skills** désactivé : il trie les personnes qualifiées par force, ce qui est un autre travail que celui-ci.
+
+Faites-le avant de configurer quoi que ce soit. L'interrupteur d'évaluateur d'une question ne fait rien tant que l'interrupteur au niveau du formulaire est désactivé, et il n'apparaît même pas sur la carte de la question. Voir [l'ordre d'activation](/fr/reference/forms/evaluation/overview#enable-order).
+
+### 3. Définissez les questions éliminatoires avec Criteria
+
+Cliquez sur **Criteria** pour ouvrir la liste des questions, puis activez les trois qui comptent.
+
+- **Avez-vous un permis de conduire ?** Réglez **Must-have**, conservez **Use answer rules** et attendez `is equal to Yes`.
+- **Quand pouvez-vous commencer ?** Réglez **Must-have**, conservez **Use answer rules** et attendez `is less than or equal to` la date à laquelle le client a besoin de quelqu'un. La logique ne peut pas comparer des dates, mais un critère le peut.
+- **Pourquoi voulez-vous ce poste ?** Réglez **Nice-to-have** et passez sur **Evaluate with AI**. Dans **What should AI look for?**, dites ce que contient une vraie réponse, par exemple « Cherchez une raison précise liée à ce travail. L'enthousiasme générique ne compte pas. »
+
+Laissez la question d'expérience hors de Criteria pour l'instant. C'est la question de classement, et la mettre aux deux endroits signifie qu'une réponse peut rejeter et classer en même temps, ce qui rend un résultat surprenant difficile à lire.
+
+Le verdict est **Does not meet criteria** dès qu'un must-have ayant reçu une réponse échoue. Un candidat qui n'a jamais atteint une question must-have revient **Incomplete** à la place, vérifiez donc qu'aucun saut de [logique](/fr/reference/forms/logic) ne peut en enjamber une.
+
+### 4. Classez les autres avec Scoring
+
+Cliquez sur **Scoring**. Conservez les trois plages de départ, **Low** à 0, **Medium** à 50 et **High** à 80, puis activez la question d'expérience.
+
+- Réglez **How many points is this question worth?** sur 20.
+- Ajoutez une règle : `is greater than or equal to 5`, valant 20 points.
+- Ajoutez une deuxième règle : `is greater than or equal to 3`, valant 10 points.
+
+Les deux règles correspondent pour un candidat avec cinq ans, et le total est plafonné au maximum de la question, il obtient donc 20 plutôt que 30. Ce plafond est ce qui vous permet d'écrire des tranches qui se chevauchent et d'arrêter de vous soucier des écarts entre elles.
+
+Une seule question à 20 points signifie que le score est de 20 sur 20 pour cinq ans, soit 100 % et **High**. Ajoutez une deuxième question notée et le calcul se répartit sur les deux. Voir [comment le pourcentage est calculé](/fr/reference/forms/evaluation/scoring#how-the-percentage-is-worked-out).
+
+### 5. Laissez l'IA écrire la passation
+
+**Summary** ne demande aucune configuration. Il rédige la réponse terminée en quelques phrases pour la personne qui la reprend.
+
+Pour la seule décision que votre automatisation doit prendre, ajoutez un [champ généré](/fr/reference/forms/evaluation/generated-fields). Activez **Generated fields**, cliquez sur **Create custom** et construisez une sortie **List** :
+
+- **Name** : Next step
+- **Reference as** : `next_step`
+- **What is it for?** : Ce qui doit se passer maintenant avec ce candidat
+- **Options** : `Book an interview`, `Ask for more detail`, `Reject politely`
+
+Une sortie de type liste ne peut renvoyer qu'une de vos options, c'est ce qui la rend sûre pour un branchement. Une sortie en texte libre vous donnerait une phrase différente à chaque fois.
+
+Dans **Hints for the AI (optional)**, ajoutez « Laissez un champ vide quand les réponses ne le disent pas. » Sans cela, une sortie est devinée quand la réponse est maigre.
+
+### 6. Testez avant de publier
+
+Ouvrez **Test & Evaluate** et exécutez les quatre scénarios avec **Autofill with AI**. Chacun a un résultat que vous devriez pouvoir prédire.
+
+| Scénario | Ce que vous devriez voir |
+|---|---|
+| **Ideal candidate** | **Meets criteria**, un score élevé et une prochaine étape de prise de rendez-vous d'entretien |
+| **Borderline candidate** | **Partially meets criteria** ou un score moyen. C'est l'exécution qui révèle une tranche de points mal réglée |
+| **Unqualified candidate** | **Does not meet criteria**. Si elle passe, un must-have ne fait pas son travail |
+| **Partially completed** | **Incomplete**, pas un rejet. Si elle rejette, une question sans réponse est lue comme un échec |
+
+Ouvrez chaque panneau de résultat et vérifiez le détail par question, pas seulement le verdict global. Un verdict juste atteint pour la mauvaise raison casse dès qu'un vrai candidat répond différemment.
+
+Rappelez-vous qu'exécuter une évaluation enregistre le formulaire, tout ce que vous étiez encore en train de décider est donc entériné.
+
+### 7. Agissez sur le résultat dans une automatisation
+
+Publiez le formulaire, puis construisez l'automatisation qui fait quelque chose du résultat. **Automation variables**, en bas de **Test & Evaluate**, liste chaque valeur avec, à côté, le résultat de votre exécution de test, ce qui évite de deviner la formulation exacte.
+
+| Variable | Contient |
+|---|---|
+| `{{form_response.evaluation.screening}}` | `passed`, `passed_with_restrictions`, `rejected` ou `incomplete` |
+| `{{form_response.evaluation.scoring.score}}` | Le pourcentage |
+| `{{form_response.evaluation.scoring.band.label}}` | Le libellé de la plage de score, tel que `High` |
+| `{{form_response.evaluation.ai_summary}}` | Le résumé |
+| `{{form_response.evaluation.ai_output.next_step}}` | Votre prochaine étape générée |
+
+Commencez par une condition sur le verdict, par exemple les rejets partant vers un refus poli et tout le reste créant une tâche. Ajoutez le score une fois que vous lui faites confiance. Voir [Automatisations](/fr/automations/automations).
+
+## Relire et améliorer le formulaire
+
+Après vingt ou trente vraies réponses, comparez les verdicts à ce que vos recruteurs auraient décidé.
+
+- Rejetez-vous des gens que l'équipe aurait appelés ? Un must-have est trop strict, ou il a sa place dans Scoring.
+- Tout le monde atterrit-il dans la même plage de score ? Les minimums doivent bouger, ou la question notée ne sépare pas les candidats.
+- Le critère IA est-il d'accord avec une personne lisant la même réponse ? Sinon, la note est trop vague. Dites ce que contient une bonne réponse, pas qu'elle doit être bonne.
+- Les résumés valent-ils la lecture ? S'ils ne font que répéter les réponses, le formulaire pose des questions fermées et le résumé n'a rien à ajouter.
+
+Changez une chose à la fois et réexécutez les scénarios dans **Test & Evaluate** avant de publier à nouveau.
+
+## Besoin d'aide supplémentaire ?
+
+Si les évaluateurs ne renvoient rien, la cause habituelle est l'ordre d'activation. Vérifiez l'interrupteur au niveau du formulaire ainsi que celui par question, sur [l'onglet Evaluation](/fr/reference/forms/evaluation/overview#enable-order).
+
+Si un critère n'échoue jamais, ouvrez la question dans **Test & Evaluate** et lisez la réponse attendue en dessous. Un critère sans conditions est sauté plutôt qu'échoué.
+
+Si vous avez encore besoin d'aide, contactez [support@hiredata.com](mailto:support@hiredata.com) en incluant :
+
+- Le nom du formulaire
+- La question et la règle qui se sont comportées de manière inattendue
+- La réponse avec laquelle vous avez testé, et le résultat que vous attendiez

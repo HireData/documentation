@@ -1,0 +1,52 @@
+---
+title: "Data sources"
+sidebarTitle: "Data sources"
+description: "Vul een Multiple Choice- of Dropdown-vraag in een HireData-formulier vanuit een opgeslagen lijst in plaats van getypte opties, en wat er verandert wanneer je een gedeelde lijst bewerkt."
+keywords: ["data source", "add data source", "keuzeopties", "optielijst", "filters", "label", "value", "select data source"]
+---
+
+Een data source is een opgeslagen lijst die je workspace op één plek bijhoudt, samengesteld uit je eigen records of uit een gekoppelde app. Wijs een [Multiple Choice- of Dropdown](/nl/reference/forms/fields/multiple-choice-and-dropdown)-vraag ernaar en haar opties komen uit die lijst in plaats van uit opties die je in het veld typt. Zes formulieren die vragen welk kantoor iemand wil, delen dan één lijst, en het zevende kantoor toevoegen is één bewerking.
+
+## Een vraag naar een data source wijzen
+
+Open de vraag en klik op **Add Data Source** boven de opties. Het venster **Data Sources** toont elke source die de workspace heeft. Elke kaart draagt een badge met de naam van de lijst die hij leest, plus een **Filters**-badge wanneer de source die lijst versmalt. **Add Data Source** in de header van het venster bouwt een nieuwe vanuit een workspace-entiteit of vanuit een gekoppelde app.
+
+![Het Data Sources-venster met de opgeslagen lijsten van de workspace, met Countries geselecteerd en zijn Name, Label, Description, Value en Avatar naast de Select Data Source-knop](/images/forms-builder/34-data-source-library.png)
+
+Klik op een kaart om te zien wat de source mapt, en dan op **Select Data Source** om hem te koppelen.
+
+De opties die je typte verdwijnen zolang een source is gekoppeld, en een vraag houdt één source tegelijk. **Remove Data Source** ontkoppelt hem en zet een leeg paar opties terug, dus alles wat je eerder typte is voorgoed weg.
+
+![De Options-sectie van een Dropdown-kaart met een data source gekoppeld, met Remove Data Source, de Countries-source en één enkele Auto reply (on answer)](/images/forms-builder/36-choice-with-data-source.png)
+
+Een source koppelen vouwt ook de auto replies per optie samen tot één **Auto reply (on answer)**, verstuurd welke optie de respondent ook kiest. Er is geen manier om een andere WhatsApp-reply per land te schrijven wanneer de landen uit een lijst komen.
+
+## Wat een source mapt
+
+Het potlood naast **Select Data Source** opent de source zelf. Elke instelling hier bepaalt hoe een record een optie wordt.
+
+![De Countries-data source geopend om te bewerken, met Name, Label, Description, Value, Avatar, de Filters-sectie en een Save-knop](/images/forms-builder/35-data-source-editor.png)
+
+- **Name** is hoe de source in de bibliotheek heet. Het is de enige instelling die je typt. De rest zijn kiezers met de velden die de records dragen.
+- **Label** is het veld dat de respondent leest. Kies dit verkeerd en je opties zijn een kolom ID's.
+- **Description** voegt een tweede regel toe onder het label waar daar ruimte voor is. **None** laat hem weg.
+- **Value** is het veld dat met het antwoord wordt opgeslagen, meestal het ID van het record in plaats van zijn naam.
+- **Avatar** zet een afbeelding naast het label. Alleen afbeeldingsvelden worden aangeboden, dus bij de meeste sources valt er niets te kiezen.
+
+## Filters
+
+**Add New Set** start een set condities. Elke rij kiest een veld, een conditie en een waarde, en **Add Filter** voegt een rij toe aan de set. Nogmaals **Add New Set** geeft je een tweede set.
+
+Filters zijn wat een source het opslaan waard maakt. Elk land ter wereld is zelden de lijst die je aan een kandidaat wilt voorleggen. Het handjevol waarin je werft meestal wel.
+
+## Eén source, elke vraag die hem gebruikt
+
+Een data source is van de workspace, niet van het formulier. **Save** in de editor herschrijft hem voor elke vraag in elk formulier dat ernaar wijst, en er is geen kopie per formulier om op terug te vallen. Zoek uit wie hem nog meer leest voordat je de filters van een source versmalt.
+
+De records zelf worden gelezen wanneer het formulier draait. Een record dat aan de onderliggende lijst wordt toegevoegd, duikt op als nieuwe optie zonder dat iemand de formulierbuilder opent.
+
+## Gerelateerd
+
+- [Multiple Choice en Dropdown](/nl/reference/forms/fields/multiple-choice-and-dropdown) is het enige veldtype dat een data source aanneemt.
+- [Objects](/nl/reference/forms/objects) koppelt een record aan het formulier en verandert zijn velden in variabelen.
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.

@@ -1,0 +1,56 @@
+---
+title: "Yes/No"
+sidebarTitle: "Yes/No"
+description: "Le champ oui ou non d'un formulaire HireData, en case à cocher ou en interrupteur, avec une réponse automatique WhatsApp distincte pour chaque réponse."
+keywords: ["binaire", "case à cocher", "toggle", "booléen", "vrai faux"]
+---
+
+Yes/No pose une question à deux réponses. **Checkbox** dessine une case que le répondant coche. **Toggle** dessine un interrupteur qu'il fait glisser. Les deux se comportent pareil et stockent la même valeur, alors choisissez celui qui convient à la question.
+
+Il se trouve dans le groupe **Choice** de la palette **Add Content**. Le bouton en bas à gauche de la carte permet de passer de l'un à l'autre.
+
+## Paramètres
+
+La carte porte les [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares), avec une différence. À la place de l'unique **Auto reply (on answer)** de la plupart des types, Yes/No donne à chaque réponse son propre message WhatsApp.
+
+- **Auto reply (Yes)**, envoyé quand la réponse est Yes.
+- **Auto reply (No)**, envoyé quand la réponse est No.
+
+Il n'y a rien d'autre à régler. Vous ne pouvez pas renommer les deux réponses. S'il vous faut vos propres libellés, comme « Permis complet » contre « Permis probatoire », utilisez [Multiple Choice](/fr/reference/forms/fields/multiple-choice-and-dropdown) avec deux options.
+
+![Une carte de champ Yes/No montrant Question, Description, Image, Auto reply (Yes), Auto reply (No), les trois interrupteurs d'évaluateur avec Criteria et Skills activés, et un pied de carte indiquant Checkbox et Optional](/images/forms-builder/fields/08-yes-no.png)
+
+Le même champ passé en Toggle :
+
+![Le même champ avec un pied de carte indiquant Toggle, à côté d'un aperçu montrant un interrupteur à glisser au lieu d'une case à cocher](/images/forms-builder/fields/08b-yes-no-toggle.png)
+
+## Ce que le champ stocke
+
+Yes ou No.
+
+## Opérateurs de logique
+
+| Opérateur | Correspond quand |
+|---|---|
+| has response | le répondant a répondu, quelle que soit la réponse |
+| is equal to | la réponse correspond à celle de la règle |
+| is not equal to | la réponse est l'autre |
+
+![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Yes/No, listant has response, is equal to et is not equal to, avec la zone de valeur à côté affichant Yes](/images/forms-builder/fields/operators-yes-no.png)
+
+<Warning>
+  Ne rendez pas un champ Yes/No obligatoire. Un répondant qui répond No ne peut pas le dépasser. **Next** ne fait rien, aucun message n'apparaît, et aucune règle sur le champ ne se déclenche jamais. Laissez le champ facultatif jusqu'à ce que le correctif soit livré.
+</Warning>
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte.
+
+Yes/No est le champ le plus propre pour accrocher un must-have de **Criteria**, parce que la réponse est l'une de deux valeurs connues et ne demande aucune interprétation. « Avez-vous le permis de conduire ? » est soit rempli, soit non.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Multiple Choice et Dropdown](/fr/reference/forms/fields/multiple-choice-and-dropdown) gère deux réponses dans vos propres mots, ou plus de deux.
+- [Display and requirements](/fr/reference/forms/overview#display-and-requirements) explique ce qui compte comme une réponse.

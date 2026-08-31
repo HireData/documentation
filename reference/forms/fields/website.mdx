@@ -1,0 +1,53 @@
+---
+title: "Website"
+sidebarTitle: "Website"
+description: "The website field in a HireData form. It asks for a web address and takes the placeholder, length, and pattern settings a text field has."
+keywords: ["url", "link", "web address", "linkedin profile"]
+---
+
+Website is a single-line box for a web address, which is what most forms use to collect a LinkedIn or portfolio link.
+
+It sits in the **Contact Info** group of the **Add Content** palette.
+
+## Settings
+
+The card carries the [settings every field shares](/reference/forms/overview#settings-every-field-shares). Website adds the same four a text field has.
+
+- **Placeholder**, up to 255 characters, shown in the empty box.
+- **Minimum Length** and **Maximum Length**, counted in characters.
+- **Validation Pattern**, a regular expression the answer has to match, on top of the address check.
+
+The message a respondent sees when the address is malformed sits under **Validation** in [Languages and translations](/reference/forms/overview#localization), as **Invalid URL**.
+
+![A Website field card showing Question, Description, Image, Placeholder, Minimum Length, Maximum Length, Validation Pattern, the auto reply, the three evaluator switches, and a footer reading Optional](/images/forms-builder/fields/04-website.png)
+
+## What it stores
+
+Text, the address as the respondent typed it.
+
+## Logic operators
+
+| Operator | Matches when |
+|---|---|
+| has response | the respondent answered at all |
+| is equal to | the answer is exactly the value |
+| is not equal to | the answer is anything else |
+| starts with | the answer begins with the value |
+| ends with | the answer ends with the value |
+| contains | the value appears somewhere in the answer |
+| does not contain | the value appears nowhere in the answer |
+
+**contains** is the one to reach for. A rule reading `if website contains linkedin.com` separates a profile link from a personal site.
+
+![The Logic tab with the operator picker open on a Website condition, listing has response, is equal to, is not equal to, starts with, ends with, contains, and does not contain](/images/forms-builder/fields/operators-website.png)
+
+## Evaluation
+
+Switch **Criteria**, **Scoring**, or **Skills** on for the form in the [Evaluation tab](/reference/forms/evaluation/overview) and each one gets a switch on this card. The evaluators read the address as text and do not open it.
+
+## Related
+
+- [Form builder overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
+- [Logic](/reference/forms/logic) covers the operators, the branching patterns, and what to check when a rule does not fire.
+- [Email](/reference/forms/fields/email) and [Phone Number](/reference/forms/fields/phone-number) are the other two Contact Info fields.
+- [Short Text and Long Text](/reference/forms/fields/short-and-long-text) is the same box with no format check.

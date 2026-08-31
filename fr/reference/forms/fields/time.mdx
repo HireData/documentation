@@ -1,0 +1,37 @@
+---
+title: "Time"
+sidebarTitle: "Time"
+description: "Le champ heure d'un formulaire HireData. Il donne au répondant un sélecteur d'horloge et ne peut être branché qu'avec l'opérateur has response."
+keywords: ["horloge", "heure de la journée", "créneau d'appel"]
+---
+
+Time donne au répondant une zone `--:-- --` avec un sélecteur d'horloge à côté. Utilisez-le pour une heure de la journée sans date attachée, par exemple le moment où quelqu'un préfère être appelé.
+
+Il se trouve dans le groupe **Temporal** de la palette **Add Content**.
+
+## Paramètres
+
+Time n'ajoute rien aux [paramètres partagés par tous les champs](/fr/reference/forms/overview#settings-every-field-shares). Il n'y a pas d'heure au plus tôt ni au plus tard à définir, et aucun moyen de proposer un ensemble fixe de créneaux. Si vous voulez que le répondant choisisse dans une liste restreinte, utilisez plutôt [Multiple Choice](/fr/reference/forms/fields/multiple-choice-and-dropdown) et écrivez les créneaux comme options.
+
+![Une carte de champ Time montrant Question, Description, Image, la réponse automatique, les trois interrupteurs d'évaluateur et un pied de carte indiquant Optional, à côté d'un aperçu montrant une zone d'heure avec un sélecteur d'horloge](/images/forms-builder/fields/06-time.png)
+
+## Ce que le champ stocke
+
+Une date et une heure. Les trois types temporels partagent une même valeur, et Time remplit l'heure.
+
+## Opérateurs de logique
+
+Le sélecteur d'opérateur est fixé sur **has response** et ne peut pas être changé. Une règle peut demander si le répondant a donné une heure, pas si elle est matinale ou tardive.
+
+![Une condition sur une question Time dans l'onglet Logic, avec l'opérateur affichant has response et aucune zone de valeur à côté](/images/forms-builder/fields/operators-time.png)
+
+## Évaluation
+
+Activez **Criteria**, **Scoring** ou **Skills** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview) et chacun obtient un interrupteur sur cette carte.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Logic](/fr/reference/forms/logic) couvre les opérateurs, les schémas de branchement et quoi vérifier quand une règle ne se déclenche pas.
+- [Date](/fr/reference/forms/fields/date) et [Datetime](/fr/reference/forms/fields/datetime) sont les deux autres champs Temporal.
+- [Multiple Choice et Dropdown](/fr/reference/forms/fields/multiple-choice-and-dropdown) est le champ à utiliser pour un ensemble fixe de créneaux.

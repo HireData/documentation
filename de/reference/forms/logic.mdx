@@ -1,0 +1,123 @@
+---
+title: "Logik"
+sidebarTitle: "Logik"
+description: "Bedingte Logik in einem HireData-Formular: wie sich eine Regel liest, welche Operatoren jeder Feldtyp anbietet und was zu prüfen ist, wenn eine Regel nicht greift."
+keywords: ["bedingte logik", "verzweigung", "skip-logik", "sprung", "add rule", "add condition", "all other cases go to", "always go to", "operatoren"]
+---
+
+Ein Formular ohne Logik läuft die Liste gerade hinunter. Alle beantworten jede Frage, und alle landen auf demselben Ende. Auf dem **Logic**-Tab ändern Sie das. Jede Regel, die Sie schreiben, entscheidet, wohin eine Antwort die befragte Person als Nächstes schickt.
+
+Logik bewegt nur Personen. Sie kann keine Frage mittendrin einblenden und keine Antwort ändern. Um eine Frage ganz aus dem Formular herauszuhalten, verwenden Sie **Hidden**. Um eine für eine einzelne Vakanz oder einen einzelnen Kandidaten auszuschalten, siehe [Ein Formular pro Datensatz konfigurieren](/de/content/configuring-a-form-per-record).
+
+## Wo die Regeln stehen
+
+Der **Logic**-Tab sitzt über der Feldliste, zwischen **Content** und **Evaluation**. Jede Frage bekommt eine **Add Rule**-Schaltfläche und ein Ziel in der Fußzeile, und die Regeln, die Sie schreiben, gehören zu dieser Frage.
+
+Endings sitzen unter dem **Endings**-Trenner und bekommen weder das eine noch das andere. Auf ein Ending folgt nichts, eine Regel darauf hätte also kein Ziel.
+
+![Der Logic-Tab mit vier Fragen, jede mit einer Add-Rule-Schaltfläche und einem Always-go-to-Ziel, darunter der Endings-Trenner und ein Ending ohne beides](/images/forms-builder/32-logic-tab.png)
+
+## Anatomie einer Regel
+
+Eine Regel liest sich `if <question> <operator> <value> then go to <field>`.
+
+![Eine Logikregel auf einer Net-Promoter-Score-Frage: ist der Score kleiner oder gleich 7, gehe zur Folgefrage, mit All other cases go to zum Ending](/images/forms-builder/04-logic-rule-and-fallback.png)
+
+- **if** beginnt die Bedingung. Die Fragenauswahl bietet diese Frage und die darüber an, nie eine spätere und nie ein Ending – eine Regel kann also keine Antwort lesen, die noch niemand gegeben hat.
+- Die Operatorliste ergibt sich aus dem Typ der Frage. Siehe [Operatoren nach Feldtyp](#operators).
+- Das Wertefeld enthält, womit der Operator vergleicht. **has response** vergleicht nichts, also erscheint daneben kein Feld.
+- **Add Condition** setzt eine zweite Bedingung in dieselbe Regel. Die Regel greift nur, wenn jede Bedingung zutrifft. Für Alternativen schreiben Sie stattdessen eine zweite Regel.
+- **then go to** wählt das Ziel. Angeboten wird jedes Feld außer diesem und allem, was auf **Hidden** steht – eine Regel kann also auch rückwärts schicken, nicht nur vorwärts.
+- **Delete Rule** entfernt die Regel und ihre Bedingungen.
+
+Unter den Regeln sitzt das Ziel in der Fußzeile: Es liest sich **All other cases go to**, sobald die Frage eine Regel hat, und **Always go to**, wenn sie keine hat. Eine Frage kann so viele Regeln tragen, wie sie braucht.
+
+## Wie HireData das nächste Feld wählt
+
+Sobald eine befragte Person eine Frage beantwortet, liest HireData die Regeln dieser Frage von oben nach unten und folgt der ersten, deren Bedingungen alle zutreffen. Trifft keine zu, folgt es dem Ziel in der Fußzeile. Gibt es kein Ziel in der Fußzeile, geht die befragte Person zum nächsten Feld in der Liste weiter.
+
+Die Reihenfolge ist, was viele falsch machen. Eine breite Regel über einer engen gewinnt immer, setzen Sie die enge Regel also nach oben.
+
+## Operatoren nach Feldtyp {#operators}
+
+Der Typ der Frage in der Bedingung bestimmt die Operatoren. Jede Feldseite erklärt, was ihre Operatoren abgleichen.
+
+| Feldtypen | Operatoren |
+|---|---|
+| [Short Text und Long Text](/de/reference/forms/fields/short-and-long-text), [Email](/de/reference/forms/fields/email), [Phone Number](/de/reference/forms/fields/phone-number), [Website](/de/reference/forms/fields/website) | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
+| [Multiple Choice und Dropdown](/de/reference/forms/fields/multiple-choice-and-dropdown) | has response, is equal to, is not equal to, is one of, is not one of |
+| [Yes/No](/de/reference/forms/fields/yes-no) | has response, is equal to, is not equal to |
+| [Number](/de/reference/forms/fields/number), [Currency](/de/reference/forms/fields/currency), [Net Promoter Score und Opinion Scale](/de/reference/forms/fields/net-promoter-score-and-opinion-scale) | has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to |
+| [Date](/de/reference/forms/fields/date), [Time](/de/reference/forms/fields/time), [Datetime](/de/reference/forms/fields/datetime), [File Upload](/de/reference/forms/fields/file-upload) | has response |
+| [Ending Screen](/de/reference/forms/fields/ending-screen), [Redirect URL](/de/reference/forms/fields/redirect-url) | keine Regeln |
+
+Die fünfte Zeile ist die, die viele überrascht. Date-, Time-, Datetime- und File-Upload-Fragen können nur fragen, ob eine Antwort eingegangen ist. Ihre Operatorauswahl ist ausgegraut, weil es nichts anderes zu wählen gibt – Sie können also nicht darauf verzweigen, dass ein Datum vor einem anderen liegt.
+
+## Muster
+
+### Auf eine Auswahl verzweigen
+
+Der Alltagsfall. Eine Option führt woandershin als die übrigen.
+
+![Eine Regel auf einer Multiple-Choice-Frage: lautet die Antwort Yes, by email, gehe zur E-Mail-Frage, mit All other cases go to zum Ending](/images/forms-builder/15-logic-choice-branch.png)
+
+Multiple Choice und Dropdown sind die einzigen Typen, die **is one of** anbieten, und sein Wertefeld nimmt mehrere Optionen auf einmal auf. Drei Antworten, die alle zur selben Folgefrage führen, sind eine Regel, nicht drei.
+
+### Auf ein Yes/No verzweigen
+
+Dieselbe Form, zwei Antworten. Das Wertefeld bietet Yes und No an.
+
+![Eine Regel auf einer Yes/No-Frage: lautet die Antwort Yes, gehe zur Regionsfrage, mit All other cases go to zur Erfahrungsfrage](/images/forms-builder/17-logic-yes-no.png)
+
+### Eine Folgefrage nur stellen, wenn die letzte Frage beantwortet wurde
+
+**has response** ist der Operator für optionale Fragen. Er trifft zu, was auch immer die Antwort war, solange es eine gibt.
+
+![Eine Regel auf einer File-Upload-Frage: hat sie eine Antwort, gehe zum Ending, mit All other cases go to zum Redirect](/images/forms-builder/20-logic-file-has-response.png)
+
+### Zwei Antworten auf einmal verlangen
+
+**Add Condition** setzt beide Bedingungen in eine Regel, und beide müssen zutreffen.
+
+![Eine Regel mit zwei Bedingungen: die Zufriedenheitsbewertung ist 4 oder mehr und die Führerschein-Antwort ist Yes, dann gehe zum Ending](/images/forms-builder/19-logic-two-conditions.png)
+
+Eine Frage, die die befragte Person nie erreicht hat, hat keine Antwort – eine Bedingung, die sie liest, kann also nicht zutreffen, und die ganze Regel bleibt stumm.
+
+### Verschiedene Befragte zu verschiedenen Endings schicken
+
+Richten Sie die Regel auf ein Ending und das Ziel in der Fußzeile auf ein anderes.
+
+![Eine Regel auf einer Dropdown-Frage, die North zum Danke-Ending schickt, mit All other cases go to zu einem Redirect-Ending](/images/forms-builder/18-logic-two-endings.png)
+
+### Einen Block von Fragen überspringen
+
+Eine Frage ohne Regeln kann trotzdem springen. Setzen Sie **Always go to**, und alle, die sie beantworten, landen auf derselben späteren Frage, egal was sie gesagt haben.
+
+![Eine Frage ohne Regeln, deren Always go to auf eine Frage weiter unten im Formular zeigt](/images/forms-builder/16-logic-always-go-to.png)
+
+## Pflichtfragen und Logik
+
+Eine Pflichtfrage muss beantwortet werden, bevor die befragte Person weitergehen kann – ihre Regeln laufen also erst, wenn es eine Antwort zu prüfen gibt. Eine Klasse von Antworten bleibt derzeit stattdessen hängen.
+
+<Warning>
+  Ein Bug im Webformular blockiert die Antworten No, einen unberührten Toggle, 0 und eine Bewertung von 0 auf einer Pflichtfrage. **Next** tut nichts, keine Meldung erscheint, und die Regeln auf dieser Frage greifen nie. Bis der Fix ausgeliefert ist, lassen Sie Yes/No- und Net-Promoter-Score-Fragen optional und setzen Sie bei einer verpflichtenden Number-Frage einen **Minimum Value** von 1.
+</Warning>
+
+## Wenn eine Regel nicht greift
+
+Gehen Sie diese Liste durch, wenn eine Regel nichts tut oder Personen dorthin schickt, wo Sie es nicht wollten.
+
+- **Eine Regel darüber hat zuerst gegriffen.** HireData stoppt beim ersten Treffer. Verschieben Sie die enge Regel über die breite.
+- **Die Regel brauchte jede Bedingung.** Alle Bedingungen in einer Regel müssen zutreffen. Teilen Sie sie in zwei Regeln auf, um ein Entweder-oder zu bekommen.
+- **Die Bedingung liest eine Frage, die die befragte Person übersprungen hat.** Ein Sprung, der über eine Frage hinweggeht, lässt sie unbeantwortet – jede spätere Bedingung darauf schlägt also fehl, und das Ziel in der Fußzeile gilt.
+- **Die Frage ist verpflichtend und die Antwort war No, aus oder 0.** Siehe die Warnung oben.
+- **Die Regel hat gegriffen und rückwärts geschickt.** Ein Ziel kann eine Frage sein, an der die befragte Person schon vorbei ist, und nichts hindert sie daran, dieselben Fragen zweimal zu durchlaufen. Probieren Sie jeden Rückwärtssprung in der **Interactive Preview** aus, bevor Sie veröffentlichen.
+- **Sie haben die Regel auf die falsche Frage geschrieben.** Regeln stehen auf der Frage, die beantwortet wird, nicht auf dem Ziel.
+
+Die [Interactive Preview](/de/reference/forms/testing/previews) im rechten Panel führt dieselbe Logik aus wie das veröffentlichte Formular und ist damit der schnellste Weg, eine Route zu prüfen. [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate) füllt eine ganze Antwort auf einmal aus, was sich besser für die Prüfung der Evaluatoren eignet als für die Verzweigung.
+
+## Verwandte Themen
+
+- [Der Formular-Builder im Überblick](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Objekte](/de/reference/forms/objects) und [Datenquellen](/de/reference/forms/data-sources) behandeln die Datensätze und Listen, aus denen ein Formular schöpfen kann.
+- [Ein Formular in HireData erstellen](/de/content/creating-a-form-in-hiredata) begleitet ein Formular von leer bis veröffentlicht.

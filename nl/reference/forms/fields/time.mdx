@@ -1,0 +1,37 @@
+---
+title: "Time"
+sidebarTitle: "Time"
+description: "Het tijdveld in een HireData-formulier. Het geeft de respondent een klokkiezer en kan alleen met de operator has response worden vertakt."
+keywords: ["klok", "tijdstip", "belmoment"]
+---
+
+Time geeft de respondent een `--:-- --`-vak met een klokkiezer ernaast. Gebruik het voor een tijdstip zonder datum eraan vast, zoals wanneer iemand liever gebeld wil worden.
+
+Het staat in de groep **Temporal** van het **Add Content**-palet.
+
+## Instellingen
+
+Time voegt niets toe aan de [instellingen die elk veld deelt](/nl/reference/forms/overview#settings-every-field-shares). Er is geen vroegste of laatste tijd in te stellen, en geen manier om een vaste set tijdsloten aan te bieden. Wil je dat de respondent uit een korte lijst kiest, gebruik dan [Multiple Choice](/nl/reference/forms/fields/multiple-choice-and-dropdown) en schrijf de tijdsloten als opties.
+
+![Een Time-veldkaart met Question, Description, Image, de auto reply, de drie evaluator-schakelaars en een footer met Optional, naast een preview met een tijdvak met een klokkiezer](/images/forms-builder/fields/06-time.png)
+
+## Wat het opslaat
+
+Een datum en tijd. De drie temporele typen delen één waarde, en Time vult de kloktijd in.
+
+## Logica-operators
+
+De operatorkiezer staat vast op **has response** en kan niet worden gewijzigd. Een rule kan vragen of de respondent een tijd gaf, niet hoe vroeg die is.
+
+![Een conditie op een Time-vraag in het tabblad Logic, met de operator op has response en geen waardevak ernaast](/images/forms-builder/fields/operators-time.png)
+
+## Evaluatie
+
+Zet **Criteria**, **Scoring** of **Skills** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview) en elk ervan krijgt een schakelaar op deze kaart.
+
+## Gerelateerd
+
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Logic](/nl/reference/forms/logic) behandelt de operators, de vertakkingspatronen en wat je controleert wanneer een rule niet afgaat.
+- [Date](/nl/reference/forms/fields/date) en [Datetime](/nl/reference/forms/fields/datetime) zijn de andere twee Temporal-velden.
+- [Multiple Choice en Dropdown](/nl/reference/forms/fields/multiple-choice-and-dropdown) is het veld voor een vaste set tijdsloten.

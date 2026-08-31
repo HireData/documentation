@@ -1,0 +1,37 @@
+---
+title: "Time"
+sidebarTitle: "Time"
+description: "Das Uhrzeitfeld in einem HireData-Formular. Es gibt der befragten Person eine Uhrauswahl und lässt sich nur mit dem Operator has response verzweigen."
+keywords: ["uhr", "tageszeit", "anrufzeit"]
+---
+
+Time gibt der befragten Person ein `--:-- --`-Feld mit einer Uhrauswahl daneben. Verwenden Sie es für eine Tageszeit ohne Datum, etwa wann jemand lieber angerufen werden möchte.
+
+Es befindet sich in der Gruppe **Temporal** der **Add Content**-Palette.
+
+## Einstellungen
+
+Time ergänzt die [Einstellungen, die alle Felder gemeinsam haben](/de/reference/forms/overview#settings-every-field-shares), um nichts. Es gibt keine früheste oder späteste Uhrzeit zum Festlegen und keine Möglichkeit, eine feste Auswahl von Zeitfenstern anzubieten. Wenn die befragte Person aus einer kurzen Liste wählen soll, verwenden Sie stattdessen [Multiple Choice](/de/reference/forms/fields/multiple-choice-and-dropdown) und schreiben Sie die Zeitfenster als Optionen.
+
+![Eine Time-Feldkarte mit Question, Description, Image, der Auto Reply, den drei Evaluator-Schaltern und einer Fußzeile mit Optional, neben einer Vorschau mit einem Uhrzeitfeld und einer Uhrauswahl](/images/forms-builder/fields/06-time.png)
+
+## Was gespeichert wird
+
+Ein Datum und eine Uhrzeit. Alle drei Temporal-Typen teilen sich einen Wert, und Time füllt die Uhrzeit aus.
+
+## Logik-Operatoren
+
+Die Operator-Auswahl ist fest auf **has response** gestellt und kann nicht geändert werden. Eine Regel kann fragen, ob die befragte Person eine Uhrzeit angegeben hat, nicht wie früh sie liegt.
+
+![Eine Bedingung auf einer Time-Frage im Logic-Tab, mit dem Operator has response und ohne Wertefeld daneben](/images/forms-builder/fields/operators-time.png)
+
+## Evaluation
+
+Schalten Sie **Criteria**, **Scoring** oder **Skills** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview) ein, und jeder davon erhält einen Schalter auf dieser Karte.
+
+## Verwandte Themen
+
+- [Formular-Builder-Übersicht](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Logik](/de/reference/forms/logic) behandelt die Operatoren, die Verzweigungsmuster und was Sie prüfen, wenn eine Regel nicht auslöst.
+- [Date](/de/reference/forms/fields/date) und [Datetime](/de/reference/forms/fields/datetime) sind die anderen beiden Temporal-Felder.
+- [Multiple Choice und Dropdown](/de/reference/forms/fields/multiple-choice-and-dropdown) ist das Feld für eine feste Auswahl von Zeitfenstern.

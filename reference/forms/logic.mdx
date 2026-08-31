@@ -1,0 +1,123 @@
+---
+title: "Logic"
+sidebarTitle: "Logic"
+description: "Conditional logic in a HireData form: how a rule reads, which operators each field type offers, and what to check when a rule does not fire."
+keywords: ["conditional logic", "branching", "skip logic", "jump", "add rule", "add condition", "all other cases go to", "always go to", "operators"]
+---
+
+A form with no logic runs straight down the list. Everyone answers every question and everyone lands on the same ending. The **Logic** tab is where you change that. Each rule you write decides where one answer sends the respondent next.
+
+Logic only moves people. It cannot reveal a question halfway through, and it cannot change an answer. To keep a question out of the form entirely, use **Hidden**. To switch one off for a single vacancy or candidate, see [Configuring a form per record](/content/configuring-a-form-per-record).
+
+## Where the rules live
+
+The **Logic** tab sits above the field list, between **Content** and **Evaluation**. Every question gets an **Add Rule** button and a footer target, and the rules you write belong to that question.
+
+Endings sit below the **Endings** divider and get neither. Nothing follows an ending, so a rule on one would have nowhere to point.
+
+![The Logic tab listing four questions, each with an Add Rule button and an Always go to target, then the Endings divider and an ending with neither](/images/forms-builder/32-logic-tab.png)
+
+## Anatomy of a rule
+
+A rule reads `if <question> <operator> <value> then go to <field>`.
+
+![A logic rule on a Net Promoter Score question: if the score is less than or equal to 7, go to the follow-up question, with All other cases go to the ending](/images/forms-builder/04-logic-rule-and-fallback.png)
+
+- **if** starts the condition. The question picker offers this question and the ones above it, never a later one and never an ending, so a rule cannot read an answer nobody has given yet.
+- The operator list comes from the question's type. See [Operators by field type](#operators).
+- The value box holds whatever the operator compares against. **has response** compares nothing, so no box appears beside it.
+- **Add Condition** puts a second condition in the same rule. The rule fires only when every condition matches. For alternatives, write a second rule instead.
+- **then go to** picks the destination. Every field is offered except this one and anything set to **Hidden**, so a rule can send someone backwards as well as forwards.
+- **Delete Rule** removes the rule and its conditions.
+
+Under the rules sits the footer target, reading **All other cases go to** once the question has a rule and **Always go to** when it has none. A question can carry as many rules as it needs.
+
+## How HireData picks the next field
+
+Once a respondent answers a question, HireData reads that question's rules from top to bottom and follows the first one whose conditions all match. If none match, it follows the footer target. If there is no footer target, the respondent goes on to the next field in the list.
+
+Order is what people get wrong. A broad rule above a narrow one always wins, so put the narrow rule first.
+
+## Operators by field type {#operators}
+
+The type of the question in the condition decides the operators. Each field page explains what its operators match.
+
+| Field types | Operators |
+|---|---|
+| [Short Text and Long Text](/reference/forms/fields/short-and-long-text), [Email](/reference/forms/fields/email), [Phone Number](/reference/forms/fields/phone-number), [Website](/reference/forms/fields/website) | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
+| [Multiple Choice and Dropdown](/reference/forms/fields/multiple-choice-and-dropdown) | has response, is equal to, is not equal to, is one of, is not one of |
+| [Yes/No](/reference/forms/fields/yes-no) | has response, is equal to, is not equal to |
+| [Number](/reference/forms/fields/number), [Currency](/reference/forms/fields/currency), [Net Promoter Score and Opinion Scale](/reference/forms/fields/net-promoter-score-and-opinion-scale) | has response, is equal to, is not equal to, is greater than, is less than, is greater than or equal to, is less than or equal to |
+| [Date](/reference/forms/fields/date), [Time](/reference/forms/fields/time), [Datetime](/reference/forms/fields/datetime), [File Upload](/reference/forms/fields/file-upload) | has response |
+| [Ending Screen](/reference/forms/fields/ending-screen), [Redirect URL](/reference/forms/fields/redirect-url) | no rules |
+
+The fifth row is the one that catches people out. Date, Time, Datetime, and File Upload questions can only ask whether an answer arrived. Their operator picker is greyed out, because there is nothing else to choose, so you cannot branch on one date falling before another.
+
+## Patterns
+
+### Branch on a choice
+
+The everyday case. One option leads somewhere the others do not.
+
+![A rule on a Multiple Choice question: if the answer is Yes, by email, go to the email question, with All other cases go to the ending](/images/forms-builder/15-logic-choice-branch.png)
+
+Multiple Choice and Dropdown are the only types that offer **is one of**, and its value box takes several options at once. Three answers that all lead to the same follow-up are one rule, not three.
+
+### Branch on a Yes/No
+
+Same shape, two answers. The value box offers Yes and No.
+
+![A rule on a Yes/No question: if the answer is Yes, go to the region question, with All other cases go to the experience question](/images/forms-builder/17-logic-yes-no.png)
+
+### Ask a follow-up only when the last question was answered
+
+**has response** is the operator for optional questions. It matches whatever the answer was, so long as there is one.
+
+![A rule on a File Upload question: if it has response, go to the ending, with All other cases go to the redirect](/images/forms-builder/20-logic-file-has-response.png)
+
+### Require two answers at once
+
+**Add Condition** puts both conditions in one rule, and both have to match.
+
+![A rule with two conditions: the satisfaction rating is 4 or more and the driving licence answer is Yes, then go to the ending](/images/forms-builder/19-logic-two-conditions.png)
+
+A question the respondent never reached has no answer, so a condition reading it cannot match and the whole rule stays quiet.
+
+### Send different respondents to different endings
+
+Point the rule at one ending and the footer target at another.
+
+![A rule on a Dropdown question sending North to the thank-you ending, with All other cases go to a redirect ending](/images/forms-builder/18-logic-two-endings.png)
+
+### Skip a block of questions
+
+A question with no rules can still jump. Set **Always go to** and everyone who answers it lands on the same later question, whatever they said.
+
+![A question with no rules, showing Always go to pointing at a question further down the form](/images/forms-builder/16-logic-always-go-to.png)
+
+## Required questions and logic
+
+A required question has to be answered before the respondent can move on, which means its rules only run once there is an answer to test. One class of answer currently gets stuck instead.
+
+<Warning>
+  A bug in the web form blocks the answers No, an untouched toggle, 0, and a rating of 0 on a required question. **Next** does nothing, no message appears, and the rules on that question never fire. Until the fix ships, leave Yes/No and Net Promoter Score questions optional, and set a **Minimum Value** of 1 on a required Number question.
+</Warning>
+
+## When a rule does not fire
+
+Work down this list when a rule does nothing, or sends people somewhere you did not intend.
+
+- **A rule above it matched first.** HireData stops at the first match. Move the narrow rule above the broad one.
+- **The rule needed every condition.** All the conditions in one rule have to match. Split them into two rules to get either-or.
+- **The condition reads a question the respondent skipped.** A jump that steps over a question leaves it unanswered, so any later condition on it fails and the footer target applies.
+- **The question is required and the answer was No, off, or 0.** See the warning above.
+- **The rule fired and sent them backwards.** A target can be a question the respondent has already passed, and nothing stops them going round the same questions twice. Try any backwards jump in **Interactive Preview** before you publish.
+- **You wrote the rule on the wrong question.** Rules live on the question being answered, not on the destination.
+
+[Interactive Preview](/reference/forms/testing/previews) in the right-hand panel runs the same logic the published form runs, so it is the fastest way to check a route. [Test & Evaluate](/reference/forms/testing/test-and-evaluate) fills in a whole response at once, which is better for checking the evaluators than the branching.
+
+## Related
+
+- [Form builder overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
+- [Objects](/reference/forms/objects) and [Data sources](/reference/forms/data-sources) cover the records and lists a form can draw on.
+- [Creating a form in HireData](/content/creating-a-form-in-hiredata) walks one form from blank to published.

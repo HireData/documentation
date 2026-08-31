@@ -1,0 +1,83 @@
+---
+title: "Overzicht van formulierevaluatie"
+sidebarTitle: "Overzicht"
+description: "De vijf evaluatoren op een HireData-formulier: wat elk ervan beslist, wat het teruggeeft en de volgorde waarin je ze moet aanzetten."
+keywords: ["formulierevaluatie", "AI-screening", "kandidaten screenen", "AI-scoring", "evaluatoren"]
+---
+
+Een formulier verzamelt antwoorden. Het tabblad **Evaluation** maakt van een afgeronde respons iets waar een recruiter op kan handelen: een oordeel, een score, een skill, een samenvatting of elke waarde die je de AI vraagt.
+
+Het tabblad is het derde boven de veldenlijst, na **Content** en **Logic**. Het bevat vijf evaluatoren, elk een kaart met een schakelaar en een informatie-icoon dat hem toelicht. Zet er een aan en klik daarna op de naam om de instellingen te openen.
+
+![Het tabblad Evaluation met Summary, Criteria, Scoring, Skills en Generated fields allemaal aangezet](/images/forms-builder/29-evaluation-tab.png)
+
+## De vijf evaluatoren
+
+| Evaluator | Wat hij doet | Wat je terugkrijgt |
+|---|---|---|
+| Summary | Schrijft de afgeronde respons uit voor intern gebruik. Er valt niets te configureren. | Een korte alinea. |
+| [Criteria](/nl/reference/forms/evaluation/criteria) | Toetst elk geselecteerd antwoord aan de vereiste die je ervoor instelt, must-have of nice-to-have. | Eén oordeel voor de respons: **Meets criteria**, **Partially meets criteria**, **Does not meet criteria** of **Incomplete**. |
+| [Scoring](/nl/reference/forms/evaluation/scoring) | Kent punten toe voor elk geselecteerd antwoord, tot een maximum dat je per vraag instelt. | Een percentage en het scorebereik waarin het valt. |
+| [Skills](/nl/reference/forms/evaluation/skills) | Weegt de antwoorden die naar elke skill wijzen die je opsomde. | Een percentage per skill, en de sterkste. |
+| [Generated fields](/nl/reference/forms/evaluation/generated-fields) | Vult outputs in die jij definieert, op basis van de hele respons. | Eén waarde per output die je definieerde. |
+
+Summary en Generated fields werken op de respons als geheel. Criteria, Scoring en Skills werken vraag voor vraag, dus elk ervan heeft een tweede schakelaar nodig op elke vraag waar je hem naar wilt laten kijken.
+
+## Zet hem eerst aan voor het formulier {#enable-order}
+
+De volgorde verrast mensen. De evaluator-schakelaar van een vraag doet in zijn eentje niets.
+
+1. Open het tabblad **Evaluation** en zet de evaluator aan voor het formulier.
+2. Klik op de naam van de evaluator om hem te openen. Elke vraag in het formulier verschijnt eronder met een eigen schakelaar.
+3. Zet de vragen aan waar hij naar moet kijken, en configureer elke vraag.
+
+<Warning>
+  De **Criteria**-, **Scoring**- of **Skills**-schakelaar van een vraag wordt genegeerd zolang de schakelaar op formulierniveau uit staat. Zet je de evaluator uit voor het formulier, dan blijven de schakelaars per vraag staan zoals je ze achterliet, maar wordt er niets geëvalueerd.
+</Warning>
+
+Dezelfde schakelaars per vraag verschijnen ook op de vraagkaart in het tabblad **Content**, zodat je een vraag kunt configureren zonder hem te verlaten. Ze verschijnen daar pas zodra de schakelaar op formulierniveau aan staat, wat de andere helft van dezelfde regel is.
+
+## Welke vragen geëvalueerd kunnen worden
+
+Elk veldtype behalve [Ending Screen](/nl/reference/forms/fields/ending-screen) en [Redirect URL](/nl/reference/forms/fields/redirect-url). De twee endings verzamelen niets, dus er valt niets te evalueren.
+
+Wat per type verschilt, is hoe precies een rule het antwoord kan lezen. Een [Yes/No](/nl/reference/forms/fields/yes-no)-antwoord is een van twee bekende waarden. Een [File Upload](/nl/reference/forms/fields/file-upload)-antwoord kan alleen worden getest op bestandsnaam, type en grootte. Elke evaluatorpagina bevat de operatortabel voor zijn rules.
+
+## Rules of AI
+
+Criteria, Scoring en Skills vragen elk per vraag **How to evaluate?**, met twee antwoorden.
+
+- **Use answer rules** vergelijkt het antwoord met condities die jij schrijft. Hetzelfde antwoord geeft altijd hetzelfde resultaat, en er wordt geen AI-call gedaan.
+- **Evaluate with AI** geeft de vraag, het antwoord en jouw notitie aan het model, dat beslist. Gebruik het voor vrije tekst, waar een rule een goed antwoord niet van een zwak antwoord kan onderscheiden.
+
+Rules zijn de standaard op elk type behalve [Short en Long Text](/nl/reference/forms/fields/short-and-long-text), waar Criteria op de AI begint.
+
+### Eén notitie per vraag {#one-note-per-question}
+
+Het vak onderaan de evaluatorinstellingen van een vraag neemt een instructie voor de AI aan. Het label verandert met de evaluator waaruit je het opende: **What should AI look for?**, **How should AI award points?**, **What skill signals should AI look for?**
+
+Het vak is één notitie per vraag, gedeeld door alle drie. Schrijf hem onder Criteria en dezelfde tekst verschijnt onder Scoring en Skills. Houd hem over het antwoord in plaats van over één evaluator.
+
+## Wanneer elke evaluator draait
+
+Een respons wordt geëvalueerd wanneer hij wordt afgerond, en opnieuw in [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) terwijl je aan het bouwen bent. De stappen draaien in deze volgorde.
+
+1. Elke rule-gebaseerde vraag wordt geëvalueerd. Er komt geen AI aan te pas.
+2. De vragen die op **Evaluate with AI** staan gaan in één call naar het model.
+3. De resultaten per vraag worden het oordeel, de score en de skill-percentages.
+4. Generated fields draait als laatste, over de hele respons plus de resultaten uit stap 3.
+
+Dat Generated fields als laatste draait, is wat hem die resultaten laat gebruiken. Een outputveld kan worden gevuld vanuit de score of het oordeel, net zo goed als vanuit de antwoorden.
+
+## Waar de resultaten naartoe gaan
+
+- In de builder toont [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) elk resultaat naast de antwoorden die het opleverden.
+- Op een ingediende respons worden de resultaten erbij opgeslagen. **Export CSV** en **Export Excel** in het driepuntsmenu van de builder voegen een kolom per resultaat toe, inclusief één per skill en één per generated field.
+- In een automatisering is elk resultaat een variabele, zoals `{{form_response.evaluation.scoring.band.label}}`. **Test & Evaluate** somt ze allemaal op onder **Automation variables**, met de waarde uit de run voor je neus. Zie [Variabelen](/nl/variables/introduction).
+
+## Gerelateerd
+
+- [Criteria](/nl/reference/forms/evaluation/criteria), [Scoring](/nl/reference/forms/evaluation/scoring), [Skills](/nl/reference/forms/evaluation/skills) en [Generated fields](/nl/reference/forms/evaluation/generated-fields) behandelen de vier evaluatoren die je configureert.
+- [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) draait de evaluatoren over een respons die je zelf verzint.
+- [Sollicitanten screenen en scoren met een pre-screeningformulier](/nl/knowledge-base/cookbook/pre-screening-form) bouwt één formulier dat Criteria, Scoring en Summary samen gebruikt.
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.

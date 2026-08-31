@@ -1,0 +1,69 @@
+---
+title: "Net Promoter Score e Opinion Scale"
+sidebarTitle: "NPS e Opinion Scale"
+description: "O campo de classificação num formulário da HireData. Net Promoter Score é uma escala fixa de 0 a 10, e Opinion Scale deixa-o definir os extremos e etiquetá-los."
+keywords: ["nps", "classificação", "escala", "pontuação", "satisfação", "likert"]
+---
+
+Net Promoter Score e Opinion Scale são um único tipo de campo com um comutador entre eles. O inquirido escolhe um ponto numa fila de números, e o formulário armazena o número escolhido.
+
+**Net Promoter Score** é a pergunta padrão, fixa de 0 a 10, com **NOT LIKELY AT ALL** por baixo de um extremo e **EXTREMELY LIKELY** por baixo do outro. Não pode alterar o intervalo nem as etiquetas.
+
+**Opinion Scale** é a mesma fila com os extremos e as etiquetas nas suas mãos. Use-o para satisfação, confiança ou qualquer classificação em que 0 a 10 é mais espaço do que a pergunta precisa.
+
+Ambos ficam no grupo **Rating** da paleta **Add Content**. O botão no canto inferior esquerdo do cartão alterna entre eles.
+
+## Definições
+
+O cartão tem as [definições que todos os campos partilham](/pt/reference/forms/overview#settings-every-field-shares). Net Promoter Score acrescenta uma definição própria.
+
+- **Conversational Button Text**, a etiqueta do botão que abre a escala numa conversa de WhatsApp.
+
+Opinion Scale acrescenta mais quatro.
+
+- **Scale**, o primeiro e o último ponto. O primeiro é **0** ou **1**, e o último vai até **10**.
+- **Min label**, **Mid label** e **Max label**, até 50 caracteres cada, impressos por baixo do início, do meio e do fim da fila.
+- O botão do rodapé com o texto **Order: Normal** abre **Rating order**, que contém um interruptor, **Reverse order**, descrito como "Show rating options from highest to lowest."
+
+![Um cartão de campo Net Promoter Score a mostrar Question, Description, Image, Conversational Button Text, as duas auto replies, os três interruptores de avaliadores com Scoring ativado, e um rodapé com Net Promoter Score e Required, ao lado de uma pré-visualização a mostrar a fila de 0 a 10 com as duas etiquetas dos extremos](/images/forms-builder/fields/12-net-promoter-score.png)
+
+O mesmo tipo alternado para Opinion Scale, que acrescenta o **Scale** e as definições de etiquetas:
+
+![Um cartão de campo Opinion Scale a mostrar Scale definido de 1 a 5, Min label, Mid label e Max label, e um rodapé com Opinion Scale, Order: Normal e Optional, ao lado de uma pré-visualização a mostrar uma fila de 1 a 5](/images/forms-builder/fields/12b-opinion-scale.png)
+
+## O que armazena
+
+Um número, o ponto que o inquirido escolheu.
+
+## Operadores de lógica
+
+| Operador | Corresponde quando |
+|---|---|
+| has response | o inquirido deu alguma resposta |
+| is equal to | a resposta é exatamente o valor |
+| is not equal to | a resposta é qualquer outra coisa |
+| is greater than | a resposta é superior ao valor |
+| is less than | a resposta é inferior ao valor |
+| is greater than or equal to | a resposta é o valor ou superior |
+| is less than or equal to | a resposta é o valor ou inferior |
+
+Uma classificação é o campo em que mais vale a pena ramificar. `if score is less than or equal to 7 then go to "What could we do better?"` envia os inquiridos insatisfeitos por um caminho de seguimento e deixa todos os outros terminar.
+
+![O separador Logic com o seletor de operadores aberto numa condição de Net Promoter Score, a listar has response, is equal to, is not equal to e os quatro operadores de comparação](/images/forms-builder/fields/operators-rating.png)
+
+<Warning>
+  Um campo de classificação obrigatório bloqueia a resposta 0. O inquirido escolhe 0, o formulário não avança, **Next** não faz nada e não aparece nenhuma mensagem. Net Promoter Score começa sempre em 0, por isso deixe-o opcional. Um Opinion Scale pode começar em 1, o que evita o problema.
+</Warning>
+
+## Avaliação
+
+Ative **Criteria**, **Scoring** ou **Skills** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview) e cada um ganha um interruptor neste cartão.
+
+Uma classificação e **Scoring** encaixam bem: 9 ou 10 ganha pontos completos, 7 ou 8 ganha alguns, e o resto não ganha nenhuns.
+
+## Relacionados
+
+- [Visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Lógica](/pt/reference/forms/logic) cobre os operadores, os padrões de ramificação e o que verificar quando uma regra não dispara.
+- [Number](/pt/reference/forms/fields/number) é o campo a usar para um número que o inquirido escreve.
+- [Multiple Choice e Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) é o campo a usar para respostas com nome em vez de uma escala.
