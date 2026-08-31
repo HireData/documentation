@@ -13,15 +13,19 @@ Both sit in the **Choice** group of the **Add Content** palette. The button at t
 
 The card carries the [settings every field shares](/reference/forms/overview#settings-every-field-shares). The options themselves and three more settings belong to this type.
 
-**Options** is the list. Each row has the option text, a gear, a plus, and a minus. The gear opens that option's **Auto reply (on answer)**, the WhatsApp message sent when this option is chosen. The plus adds a row underneath, and the minus removes one. A choice field needs two options, so the minus disappears once only two are left.
+- **Options**, the list the respondent picks from.
+- **Add Data Source**, above the list, which fills the options from a saved list your workspace already keeps instead of options you type. See [Objects and data sources](/reference/forms/overview#objects-and-data-sources).
+- **Conversational Button Text**, the label on the button that opens the list in a WhatsApp conversation. The box shows "Choose" as its placeholder.
+- **Placeholder**, on Dropdown only, the text in the closed menu before anything is picked.
+- The footer button reading **Single Answer** opens **Answer selection**, which holds one switch, **Allow multiple answers**. Turn it on and the respondent can pick more than one option.
 
-**Add Data Source** above the list fills the options from a saved list your workspace already keeps, instead of options you type. See [Objects and data sources](/reference/forms/overview#objects-and-data-sources).
+Each option row has the option text, a gear, a plus, and a minus. The gear opens that option's **Auto reply (on answer)**, the WhatsApp message sent when this option is chosen. The plus adds a row underneath and the minus removes one. A choice field needs two options, so the minus disappears once only two are left.
 
-**Conversational Button Text** is the label on the button that opens the list when the form runs in a WhatsApp conversation. It is blank by default, and the box shows "Choose" as its placeholder.
+![A Multiple Choice field card showing Question, Description, Image, Conversational Button Text, the Options list with Add Data Source, the auto reply on invalid answer, the three evaluator switches, and a footer reading Multiple Choice, Single Answer, and Required, beside a preview listing the three options](/images/forms-builder/fields/09-multiple-choice.png)
 
-**Placeholder** appears on Dropdown only. It is the text in the closed menu before anything is picked.
+The same field as a Dropdown, which adds a **Placeholder**:
 
-The footer button reading **Single Answer** opens **Answer selection**, which holds one switch, **Allow multiple answers**. Turn it on and the respondent can pick more than one option.
+![A Dropdown field card with a Placeholder setting above Conversational Button Text and a footer reading Dropdown, Single Answer, and Optional, beside a preview showing a closed menu](/images/forms-builder/fields/09b-dropdown.png)
 
 ## What it stores
 
@@ -39,19 +43,13 @@ The chosen options, as a list. A single-answer field stores a list of one.
 
 **is one of** is the one that saves rules. Three options that all lead to the same follow-up need one rule, not three.
 
+![The Logic tab with the operator picker open on a Multiple Choice condition, listing has response, is equal to, is not equal to, is one of, and is not one of](/images/forms-builder/fields/operators-choice.png)
+
 ## Evaluation
 
 Switch **Criteria**, **Scoring**, or **Skills** on for the form in the [Evaluation tab](/reference/forms/overview#evaluation-tab) and each one gets a switch on this card.
 
 A choice field is the easiest to score, because you already know every answer it can give. Points per option is a rule you can write once and trust.
-
-## In the builder
-
-![A Multiple Choice field card showing Question, Description, Image, Conversational Button Text, the Options list with Add Data Source, the auto reply on invalid answer, the three evaluator switches, and a footer reading Multiple Choice, Single Answer, and Required, beside a preview listing the three options](/images/forms-builder/fields/09-multiple-choice.png)
-
-The same field as a Dropdown, which adds a **Placeholder**:
-
-![A Dropdown field card with a Placeholder setting above Conversational Button Text and a footer reading Dropdown, Single Answer, and Optional, beside a preview showing a closed menu](/images/forms-builder/fields/09b-dropdown.png)
 
 ## Related
 
