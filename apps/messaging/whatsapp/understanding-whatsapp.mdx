@@ -1,0 +1,214 @@
+---
+title: "Understanding WhatsApp"
+description: "Learn the difference between WhatsApp products and understand the accounts, terms, and IDs used by the WhatsApp Business Platform."
+icon: "message-circle"
+---
+
+WhatsApp offers different products for individuals and businesses. Customers always use the familiar WhatsApp interface, but the way a business manages their messages can differ significantly.
+
+## The different types of WhatsApp
+
+<Columns cols={3}>
+  <Card title="WhatsApp Messenger">
+    The familiar personal app for messages, calls, groups, and status updates. Most people already use this version every day.
+  </Card>
+
+  <Card title="WhatsApp Business App">
+    A mobile app for small businesses that manage customer conversations manually.
+  </Card>
+
+  <Card title="WhatsApp Business Platform">
+    The professional infrastructure used to connect WhatsApp to business software, integrations, and automations.
+  </Card>
+</Columns>
+
+### WhatsApp Business App
+
+The WhatsApp Business App adds business features such as a company profile, greeting messages, quick replies, labels, and a product catalogue.
+
+We do not offer or integrate with the WhatsApp Business App. It is included here because it is often confused with the WhatsApp Business Platform.
+
+### WhatsApp Business Platform
+
+The **WhatsApp Business Platform**, also known as the **WhatsApp API** or **Cloud API**, allows companies to connect WhatsApp to professional business software.
+
+Businesses can use it for:
+
+- Automated notifications and reminders
+- Customer service conversations
+- Recruitment and candidate communication
+- Marketing campaigns
+- Chatbots and AI assistants
+- Shared access for multiple employees
+- Connections with a CRM, ATS, or automation platform
+
+<Tip>
+  The WhatsApp Business App is operated manually on a phone. The WhatsApp Business Platform connects WhatsApp to business software and automations.
+</Tip>
+
+## How a WhatsApp setup fits together
+
+A typical WhatsApp Business Platform setup contains several connected parts:
+
+```text
+Meta Business Portfolio
+└── WhatsApp Business Account (WABA)
+    ├── Business phone number
+    │   ├── Display name
+    │   ├── Business profile
+    │   └── Phone Number ID
+    └── Message templates
+```
+
+Each part has its own purpose and, in many cases, its own ID.
+
+## Accounts and IDs
+
+### Meta Business Portfolio
+
+A **Meta Business Portfolio**, previously called a **Business Manager account**, is the main environment in which a company manages its Meta assets.
+
+It can contain Facebook Pages, advertising accounts, users, and WhatsApp Business Accounts.
+
+The **Business Portfolio ID**, also called the **Business ID** or **Business Manager ID**, uniquely identifies this environment.
+
+### WhatsApp Business Account (WABA)
+
+A **WhatsApp Business Account**, usually abbreviated to **WABA**, is the administrative account containing a company's WhatsApp Business Platform assets.
+
+A WABA can contain business phone numbers, message templates, account settings, quality information, and payment information.
+
+The **WABA ID** identifies the account as a whole. It does not identify an individual phone number.
+
+### Business phone number
+
+The business phone number is the real number customers see and contact on WhatsApp—for example, `+31 20 123 4567`.
+
+The business must prove that it controls this number during setup.
+
+### Phone Number ID
+
+The **Phone Number ID** is an internal Meta identifier assigned to a business phone number.
+
+For example:
+
+- Telephone number customers see: `+31 20 123 4567`
+- Internal Phone Number ID: `107654321234567`
+
+The WhatsApp API uses the Phone Number ID to determine which business number should send a message. It is not interchangeable with the actual telephone number.
+
+### Display name
+
+The **display name** is the business name customers see in their WhatsApp conversation—for example, “Example Recruitment.”
+
+Meta reviews this name. It must accurately represent the business and comply with WhatsApp's naming rules.
+
+Display-name approval is separate from verifying control of the phone number, completing Meta business verification, and receiving a verified badge.
+
+### WhatsApp ID (`wa_id`)
+
+A **WhatsApp ID**, commonly shown as `wa_id`, identifies a person on WhatsApp.
+
+It is normally based on the person's international phone number without spaces or a plus sign. For example, `31612345678`.
+
+- A **Phone Number ID** identifies the company's sending number inside Meta.
+- A **`wa_id`** identifies a WhatsApp user or recipient.
+
+### Meta App ID
+
+A **Meta App** provides the technical connection between WhatsApp and another software platform.
+
+The **App ID** identifies that application. It does not identify the company, its WABA, or its phone number.
+
+### Access token
+
+An **access token** is a secret credential that allows software to access the WhatsApp API.
+
+<Warning>
+  Treat an access token like a password. Never include it in screenshots, support tickets, public documents, or source code.
+</Warning>
+
+### Message ID
+
+Every sent and received message has a unique **Message ID**. WhatsApp message IDs often begin with `wamid`.
+
+A system uses this ID to match replies to earlier messages, mark incoming messages as read, track delivery, and determine whether a message was sent, delivered, read, or failed.
+
+### Template ID and template name
+
+A **message template** is a reusable message format reviewed by WhatsApp.
+
+Each template has a name, language, category, review status, Template ID, and content with optional variables and buttons.
+
+The template name is normally used when sending the message. The numerical Template ID identifies the template inside Meta.
+
+## Important messaging terms
+
+### The 24-hour customer service window
+
+When a person sends a message to a business, a 24-hour customer service window opens. Every new message from that person restarts the window.
+
+During this window, the business can normally send free-form service responses. Outside it, an approved message template is generally required to restart the conversation.
+
+### Message templates
+
+A **message template** is used when a business initiates a conversation or sends a message outside the 24-hour customer service window.
+
+Templates are submitted to WhatsApp for review. They can contain fixed text, variables, media, and buttons.
+
+A variable represents information that changes for each recipient:
+
+```text Example template
+Hi {{1}}, your interview is scheduled for {{2}} at {{3}}.
+```
+
+The system could replace these variables with a candidate's name, interview date, and interview time.
+
+### Message categories
+
+<Columns cols={2}>
+  <Card title="Service" icon="headset">
+    Responses to customer questions during the 24-hour customer service window.
+  </Card>
+
+  <Card title="Utility" icon="bell-ring">
+    Requested or transactional updates, such as appointment reminders.
+  </Card>
+
+  <Card title="Authentication" icon="shield-check">
+    One-time passwords and identity verification messages.
+  </Card>
+
+  <Card title="Marketing" icon="megaphone">
+    Promotions, recommendations, and re-engagement messages.
+  </Card>
+</Columns>
+
+The category affects when a message may be sent and how it is priced.
+
+### Embedded Signup
+
+**Embedded Signup** is Meta's guided process for connecting a company's WhatsApp account to a software platform.
+
+During this process, the customer signs in to Meta and selects or creates:
+
+- A Meta Business Portfolio
+- A WhatsApp Business Account
+- A business phone number
+- The permissions required by the connected software
+
+## IDs at a glance
+
+| ID | What it identifies |
+| --- | --- |
+| **Business Portfolio ID** | The company's overall business environment in Meta |
+| **WABA ID** | The company's WhatsApp Business Account |
+| **Phone Number ID** | A business sending number inside the API |
+| **WhatsApp ID** | A WhatsApp user or recipient |
+| **App ID** | The application connected to WhatsApp |
+| **Template ID** | An approved message template |
+| **Message ID** | One individual sent or received message |
+
+<Note>
+  Many of these IDs are long numbers and can look similar. Each belongs to a different part of the setup, so they cannot be used interchangeably.
+</Note>
