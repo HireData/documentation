@@ -1,0 +1,107 @@
+---
+title: "Email builder overview"
+sidebarTitle: "Overview"
+description: "A tour of the HireData email builder: the canvas and the settings panel, how you add a block, every block type, the toolbar, the theme, and saving."
+keywords: ["email builder", "email template", "email blocks", "email sections", "email theme", "email brand", "send test mail", "email preview", "unsaved changes"]
+---
+
+An email template is a message you write once and send many times, in an automation or a newsletter. Open **Settings**, then **Emails** under **Templates**, and click **New Email**. Pick **Blank Email** or one of the ready-made templates, and the new template opens in the builder.
+
+This page maps the builder. For a walkthrough that takes one email from blank to ready, read [Setting up an email template in HireData](/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+## The builder at a glance
+
+The builder has three parts.
+
+The **Subject** box sits across the top. It is the line the recipient sees in their inbox, and it takes variables.
+
+The left column is the email itself. Click any text in it and type. Click any block to select it.
+
+The right column is the settings panel. It shows the settings of whatever you last selected. Above them sits a breadcrumb of everything that contains it.
+
+![The email builder: the Subject box across the top, the email on the left, and the Template settings panel on the right](/images/email-builder/01-builder-at-a-glance.png)
+
+A template holds sections, and a section holds the blocks the recipient reads. **Template** sits at the root of the breadcrumb. Every email has one, and you cannot delete it.
+
+## Adding a block
+
+Every settings panel that can contain other blocks lists them under **Blocks**, numbered, in the order they appear in the email. Each row carries three controls.
+
+- The **+** adds a new block below that row. Where the container accepts more than one kind of block, it opens a menu of them.
+- The **−** deletes that block.
+- The handle on the left drags the block up and down the list.
+
+![The settings panel for a section, showing its numbered Blocks list and the menu of blocks a section can hold](/images/email-builder/03-section-blocks-menu.png)
+
+Click a block's own row to select it and open its settings. The breadcrumb above the panel walks back out. Click **Sections** to return to the section that holds the block, and **Template** to return to the email.
+
+## Choosing a block
+
+Two entries in the list cover more than one block. A **Two Columns** block arrives with its two columns already inside it, and a **Socials** block holds one child per network you link.
+
+| Block | Where you can add it | What it puts in the email |
+|---|---|---|
+| Section | Template | a band across the email, with its own background, padding, and border |
+| Paragraph | a section or a column | body text |
+| Heading | a section or a column | a heading, at the level you pick |
+| Two Columns | a section | two columns side by side, each holding its own blocks |
+| Form | a section | buttons that answer a question from one of your forms |
+| Image | a section or a column | a picture from your media library, or one held in a variable |
+| Socials | a section | a row of social icons, one per link |
+| Button | a section or a column | a call to action that opens a URL |
+| HTML | a section or a column | markup you write yourself |
+| Signature | a section | a picture beside a block of sign-off text |
+
+A column takes fewer kinds of block than a section. It cannot hold a Two Columns, a Form, or a Signature.
+
+## The toolbar
+
+The toolbar runs along the top of the builder, from **Save** to the four drawer buttons on the right.
+
+![The email builder toolbar, showing Save, the preview and test buttons, the brand selector, the variable and code toggles, and the four drawer buttons](/images/email-builder/02-builder-toolbar.png)
+
+**Save** stores your changes.
+
+Two buttons follow it:
+
+- The eye opens a **preview** of the finished email, at mobile, tablet, or desktop width, with a language picker and a **Copy Preview URL** button. Its tooltip warns that it saves the email first.
+- The paper plane opens **Test Email**. It sends the email to you with realistic values filled in.
+
+**Brand** picks the brand the email's colours, fonts, and logo come from.
+
+Two toggles follow the brand selector:
+
+- **Show variable values** swaps each variable's label for the default value it carries. A variable with no default keeps its label.
+- **Show code editor** opens the generated markup. It appears only for accounts that may edit templates directly.
+
+Four buttons at the end open drawers over the email:
+
+- **Show variable list** lists the variables this email can use. See [Variables](/variables/introduction).
+- **Manage Template** publishes the open email to the shared template library. It appears only for accounts that maintain that library.
+- **Show objects** links records such as a vacancy or a match to the email. Their fields then become variables you can write into it.
+- **Manage Languages** sets the email's default language and its translations.
+
+## Theme
+
+Every colour and font in a new email starts as a value from the selected brand. The panel names the value rather than showing a hex code, such as "Theme: Palette Surface Color". Change one and it applies to this email only, so an email matches your brand until you decide it should not. Switching **Brand** switches the whole set.
+
+**Theme** in the **Template** settings carries the styling for blocks you add from now on. The panel puts it plainly: "Will be applied to newly added blocks." Set the section background there and every section you add afterwards starts with it. Blocks already in the email keep what they have.
+
+**Metadata** below it holds **UTM Campaign**. HireData tags every link in a sent email whether or not you fill these in. The boxes set **Campaign Source**, **Campaign Medium**, **Campaign Name**, **Campaign Term**, and **Campaign Content** rather than switching tagging on.
+
+## Saving
+
+The email builder does not save as you type. **Save** saves. The preview button and **Send test email** each save before they run, so either of those commits whatever you have changed.
+
+Try to leave the builder with unsaved changes and a warning appears. It offers to **Save** them, or to **Discard** them and carry on.
+
+![The Unsaved Changes warning, reading "You have unsaved changes. Save before leaving.", with Save and Discard buttons](/images/email-builder/04-unsaved-changes.png)
+
+Reload the page or close the tab instead and your browser asks you to confirm before you lose them.
+
+## Related
+
+- [Setting up an email template in HireData](/apps/messaging/emails/setting-up-an-email-template-in-hiredata) walks one email from blank to ready.
+- [Adding images to your emails](/apps/messaging/emails/adding-images-to-your-emails) covers the media library.
+- [Variables](/variables/introduction) covers the `{{ }}` syntax and the fallbacks available to it.
+- [Form builder overview](/reference/forms/overview) covers the forms a Form block can point at.
