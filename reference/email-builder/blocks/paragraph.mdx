@@ -1,0 +1,39 @@
+---
+title: "Paragraph"
+sidebarTitle: "Paragraph"
+description: "The Paragraph block in the HireData email builder: body text, its font and colour settings, the formatting menu, and the link colour it can override."
+keywords: ["email paragraph", "body text", "email font", "line height", "letter spacing", "bold italic", "email link"]
+---
+
+A paragraph is body text. You edit it by clicking the words in the email and typing, the same way you would in a document.
+
+Add it from the **Blocks** menu of a section or a column. Both offer it first.
+
+## Settings
+
+- **Font Family** picks the typeface, with a weight selector beside it running from Ultra Light to Heavy. The brand's own fonts sit at the top of the list, above the rest.
+- **Size** is a slider and a box, 8 to 48 pixels. New paragraphs start at 16.
+- **Color** sets the text colour and starts on the brand's surface text colour.
+- **Alignment** is left, centre, or right.
+- **Links** holds **Link color** and **Underlined** for the links in this paragraph only. Both offer **Inherit**, which hands the decision back to the [template](/reference/email-builder/template#settings). That is what a new paragraph uses.
+- **Advanced** holds **Letter Spacing** (0 to 10), **Line Height** (1 to 2), and **Margin**, the gap above and below the paragraph.
+
+Type `{{` anywhere in a paragraph to drop in a variable.
+
+![The Paragraph settings panel showing Font Family, Size, Color, Alignment, the Links group with Inherit selected, and the Advanced group with Letter Spacing, Line Height, and Margin](/images/email-builder/blocks/02-paragraph-settings.png)
+
+## How it renders
+
+The paragraph becomes a block of text the full width of whatever holds it, wrapping at that width.
+
+Select words in the email and a small menu appears over them. It holds bold, underline, italic, strikethrough, a text colour, and a link. The three dots at the end hold subscript and superscript.
+
+A link you add from that menu can be a web address, an email address, or a phone number. HireData accepts `http`, `https`, `mailto`, and `tel`.
+
+## Related
+
+- [Email builder overview](/reference/email-builder/overview) covers the builder, the toolbar, the theme, and every block type.
+- [Heading](/reference/email-builder/blocks/heading) is the same text controls at a heading level.
+- [Template](/reference/email-builder/template#settings) sets the link colour a paragraph inherits.
+- [Variables](/variables/introduction) covers the `{{ }}` syntax and its fallbacks.
+- [Button](/reference/email-builder/blocks/button) is the block to use when the link is the point.

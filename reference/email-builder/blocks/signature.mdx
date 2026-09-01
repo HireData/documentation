@@ -1,0 +1,50 @@
+---
+title: "Signature"
+sidebarTitle: "Signature"
+description: "The Signature block in the HireData email builder: a picture beside a block of sign-off text, what you can change about it, and what is fixed."
+keywords: ["email signature", "sign off", "sender avatar", "signature image", "signature lines"]
+---
+
+A Signature block is a picture beside a block of sign-off text. It is the usual way to close an email, with the sender's name, email address, and website under a "Kind regards".
+
+Add it from a section's **Blocks** menu. A column cannot hold one.
+
+## Settings
+
+- **Image** opens the media library. Pick an uploaded picture, or a variable such as the sender's avatar or the brand logo, which then changes with whoever sends the email.
+- **Color** sets the text colour for the whole signature.
+- **Background color** sets the colour behind it.
+- **Blocks** lists the lines of the signature, one row per paragraph. The rows drag to reorder and nothing else. There is no **+** and no **−**.
+- **Spacing** holds **Margin**, the space above and below the block. It has no padding and no width.
+
+![The Signature settings panel showing the Image with a brand mark, Color, Background color, the Blocks list of five paragraphs with drag handles only, and the Spacing group holding Margin](/images/email-builder/blocks/10-signature-settings.png)
+
+You add and remove lines in the email rather than on the panel. Click at the end of a line and press **Enter** for a new one, and delete a line the way you would delete any other text.
+
+## How it renders
+
+The signature is a fixed two-column layout. The picture goes in a 125 pixel column on the left, cropped to a circle at 100 by 100 pixels, and the text fills the column beside it.
+
+![A circular brand mark on the left, with Kind regards, a sender name variable, an email variable, and a website variable stacked in the column beside it](/images/email-builder/blocks/10b-signature-rendered.png)
+
+Leave **Image** empty and the picture column disappears. The text then runs the full width of the section, which is the layout to use for a plain text sign-off.
+
+Every line is a [paragraph](/reference/email-builder/blocks/paragraph), so each one carries its own font, size, colour, and alignment. Select a line and the breadcrumb reads `Template > Sections > Signature > Paragraph`.
+
+## Limits
+
+The layout is the one thing you cannot touch. There is no setting for the column widths, for putting the picture on the right, for squaring off the circle, or for a second picture. If you need a different shape, build it out of a [Two Columns](/reference/email-builder/blocks/columns) block instead.
+
+The **Blocks** list holds paragraphs and nothing else. A signature cannot contain a button, an image, or a heading.
+
+<Note>
+  A signature image set to the sender's avatar resolves per sender, so the same template sends a different photograph for every colleague who uses it. Point it at the brand logo instead when the email should not carry a face.
+</Note>
+
+## Related
+
+- [Email builder overview](/reference/email-builder/overview) covers the builder, the toolbar, the theme, and every block type.
+- [Paragraph](/reference/email-builder/blocks/paragraph) is the block every signature line is made of.
+- [Image](/reference/email-builder/blocks/image) is the block for a picture you want to size yourself.
+- [Two Columns](/reference/email-builder/blocks/columns) is the way to build a sign-off the signature block cannot.
+- [Variables](/variables/introduction) covers the sender and brand tokens a signature usually carries.
