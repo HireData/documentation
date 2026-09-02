@@ -39,14 +39,30 @@ Click **Template** in the breadcrumb and the panel fills with the settings for t
 - **Background color** sits behind every section, so it is what a recipient sees around them and in the gaps between them. It starts on the brand's background colour, which the control names rather than showing as a hex code.
 - **Links** holds **Link color** and **Underlined**. Both apply to every link in the email. A paragraph can override either one, and its own **Links** group offers **Inherit** as a third choice so it can hand the decision back.
 - **Blocks** lists the sections in the order they appear. Drag a row to move a section, **+** adds one below it, and **−** deletes it with everything inside.
-- **Theme** carries the styling that blocks you add from now on will start with. It changes nothing already in the email. See [Theme](/reference/email-builder/overview#theme).
-- **Metadata** holds **UTM Campaign**, the five boxes that name the campaign on every link HireData tags. Filling them in changes the values rather than switching tagging on.
+- **Theme** is the styling that blocks you add from now on will start with. See [Brand, theme, and metadata](#brand-theme-and-metadata).
+- **Metadata** holds **UTM Campaign**. See [Brand, theme, and metadata](#brand-theme-and-metadata).
 
 <img src="/images/email-builder/09-template-settings.png" alt="The Template settings panel with Background color, the Links group expanded to Link color and Underlined, the Blocks list of five sections, Theme, and Metadata" width="384" />
+
+## Brand, theme, and metadata
+
+Three settings decide how an email is styled, and they reach different blocks. Getting them the wrong way round is the usual reason a change lands somewhere you did not expect.
+
+- **Brand**, in the toolbar, restyles the **whole email**. Every colour and font still set to a theme value changes at once, in blocks you wrote weeks ago as much as in blocks you add next. Switching a fixture from one brand to another moved its section background, its button colour, and its heading colour together.
+- **Theme**, in the Template settings, reaches **only blocks you add afterwards**. The panel says so itself: "Will be applied to newly added blocks." Set the section background there and every section you add from then on starts with it. Sections already in the email keep what they have.
+- **A value you set on a block yourself** reaches **that block alone**, and takes it out of the brand's reach for good. The control stops naming a theme value and shows your colour instead, and a later brand switch leaves it where you put it.
+
+So the panel tells you which is which. A control reading "Theme: Palette Surface Color" is still following the brand. One reading `#ff0000` is not.
+
+<img src="/images/email-builder/06-template-theme.png" alt="The Theme group in the Template settings, described as Will be applied to newly added blocks, with the Section entry expanded to Background color, Spacing, and Border" width="380" />
+
+**Metadata** below it holds **UTM Campaign**, five boxes named **Campaign Source**, **Campaign Medium**, **Campaign Name**, **Campaign Term**, and **Campaign Content**. HireData tags every link in a sent email whether or not you fill them in, so these set the values rather than switching tagging on.
+
+<img src="/images/email-builder/07-template-utm-campaign.png" alt="The UTM Campaign group expanded to Campaign Source, Campaign Medium, Campaign Name, Campaign Term, and Campaign Content, each with an example and a description" width="380" />
 
 ## Related
 
 - [Email builder overview](/reference/email-builder/overview) covers the canvas, the toolbar, the theme, and saving.
-- [Section](/reference/email-builder/blocks/section) is the band that holds everything a recipient reads.
+- [Section](/reference/email-builder/sections) is the band that holds everything a recipient reads.
 - [Two Columns](/reference/email-builder/blocks/columns) explains the one block that nests further.
 - [Paragraph](/reference/email-builder/blocks/paragraph) covers the per-block link colour that overrides the template.

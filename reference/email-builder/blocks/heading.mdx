@@ -7,6 +7,16 @@ keywords: ["email heading", "heading level", "h1", "email title", "heading size"
 
 A Heading block is a line of text set larger than the body around it. Add it from the **Blocks** menu of a section or a column, which offers **Heading 1**, **Heading 2**, and **Heading 3**.
 
+## How it renders
+
+A heading comes out of the email builder as a styled line of text. It is not wrapped in an HTML heading tag, so the level you pick does not mark the line as a heading for a screen reader. Treat the level as a size preset, and pick it for the size you want rather than for the outline it implies.
+
+![A level 1 heading at 32 pixels above a level 2 heading at 24 pixels, above body text at 16 pixels, in a rendered email](/images/email-builder/blocks/03b-heading-rendered.png)
+
+That leaves the wording to carry the structure. Write headings that read as headings on their own, and keep them short enough to scan.
+
+The breadcrumb reads **Heading** with no number, so it will not tell you which level you are on. The **Size** box will.
+
 ## Settings
 
 - **Font Family** picks the typeface, with a weight selector beside it. It starts on the brand's heading font, which is a separate setting from the brand's body font.
@@ -35,19 +45,9 @@ Type `{{` in a heading to drop in a variable.
 
 <img src="/images/email-builder/blocks/03-heading-settings.png" alt="The Heading settings panel showing Font Family on the brand heading font, Size, Color, Alignment, and the Advanced group with Letter Spacing, Line Height, and Margin" width="384" />
 
-## How it renders
-
-A heading comes out of the email builder as a styled line of text. It is not wrapped in an HTML heading tag, so the level you pick does not mark the line as a heading for a screen reader. Treat the level as a size preset, and pick it for the size you want rather than for the outline it implies.
-
-![A level 1 heading at 32 pixels above a level 2 heading at 24 pixels, above body text at 16 pixels, in a rendered email](/images/email-builder/blocks/03b-heading-rendered.png)
-
-That leaves the wording to carry the structure. Write headings that read as headings on their own, and keep them short enough to scan.
-
-The breadcrumb reads **Heading** with no number, so it will not tell you which level you are on. The **Size** box will.
-
 ## Related
 
 - [Email builder overview](/reference/email-builder/overview) covers the builder, the toolbar, the theme, and every block type.
 - [Paragraph](/reference/email-builder/blocks/paragraph) shares the same text controls and adds a link colour.
-- [Section](/reference/email-builder/blocks/section) is the band a heading sits in.
+- [Section](/reference/email-builder/sections) is the band a heading sits in.
 - [Variables](/variables/introduction) covers the `{{ }}` syntax and its fallbacks.

@@ -9,6 +9,16 @@ A Signature block is a picture beside a block of sign-off text. It is the usual 
 
 Add it from a section's **Blocks** menu. A column cannot hold one.
 
+## How it renders
+
+The signature is a fixed two-column layout. The picture goes in a 125 pixel column on the left, cropped to a circle at 100 by 100 pixels, and the text fills the column beside it.
+
+![A circular brand mark on the left, with Kind regards, a sender name variable, an email variable, and a website variable stacked in the column beside it](/images/email-builder/blocks/10b-signature-rendered.png)
+
+Leave **Image** empty and the picture column disappears. The text then runs the full width of the section, which is the layout to use for a plain text sign-off.
+
+Every line is a [paragraph](/reference/email-builder/blocks/paragraph), so each one carries its own font, size, colour, and alignment. Select a line and the breadcrumb reads `Template > Sections > Signature > Paragraph`.
+
 ## Settings
 
 - **Image** opens the media library. Pick an uploaded picture, or a variable such as the sender's avatar or the brand logo, which then changes with whoever sends the email.
@@ -20,16 +30,6 @@ Add it from a section's **Blocks** menu. A column cannot hold one.
 <img src="/images/email-builder/blocks/10-signature-settings.png" alt="The Signature settings panel showing the Image with a brand mark, Color, Background color, the Blocks list of five paragraphs with drag handles only, and the Spacing group holding Margin" width="384" />
 
 You add and remove lines in the email rather than on the panel. Click at the end of a line and press **Enter** for a new one, and delete a line the way you would delete any other text.
-
-## How it renders
-
-The signature is a fixed two-column layout. The picture goes in a 125 pixel column on the left, cropped to a circle at 100 by 100 pixels, and the text fills the column beside it.
-
-![A circular brand mark on the left, with Kind regards, a sender name variable, an email variable, and a website variable stacked in the column beside it](/images/email-builder/blocks/10b-signature-rendered.png)
-
-Leave **Image** empty and the picture column disappears. The text then runs the full width of the section, which is the layout to use for a plain text sign-off.
-
-Every line is a [paragraph](/reference/email-builder/blocks/paragraph), so each one carries its own font, size, colour, and alignment. Select a line and the breadcrumb reads `Template > Sections > Signature > Paragraph`.
 
 ## Limits
 

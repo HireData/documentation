@@ -7,14 +7,6 @@ keywords: ["email html", "raw html", "code block", "custom markup", "html editor
 
 An HTML block drops markup you write yourself into the email. Use it for the thing the other blocks cannot do. Add it from the **Blocks** menu of a section or a column.
 
-## Settings
-
-There are no settings. The panel is the editor, with line numbers down the left. Type or paste your markup and it appears in the email as you go.
-
-<img src="/images/email-builder/blocks/09-html-settings.png" alt="The HTML block settings panel, showing a dark code editor with line numbers holding a single paragraph tag" width="384" />
-
-The block does not style anything for you. Colours, fonts, and spacing that the other blocks take from the brand are yours to write out.
-
 ## How it renders
 
 HireData drops your markup into the email untouched, with one exception it has to make.
@@ -29,6 +21,14 @@ Paste a whole HTML document and only what is inside `<body>` survives. Paste som
 
 An HTML block carries no translations. What you write in it goes out unchanged in every language the email is sent in.
 
+## Settings
+
+There are no settings. The panel is the editor, with line numbers down the left. Type or paste your markup and it appears in the email as you go.
+
+<img src="/images/email-builder/blocks/09-html-settings.png" alt="The HTML block settings panel, showing a dark code editor with line numbers holding a single paragraph tag" width="384" />
+
+The block does not style anything for you. Colours, fonts, and spacing that the other blocks take from the brand are yours to write out.
+
 ## Limits
 
 An email template sent to the HireData API is refused if an HTML block runs past 100,000 characters. The editor counts nothing for you, so a paste that large is worth trimming before it becomes someone else's problem.
@@ -36,5 +36,5 @@ An email template sent to the HireData API is refused if an HTML block runs past
 ## Related
 
 - [Email builder overview](/reference/email-builder/overview) covers the builder, the toolbar, the theme, and every block type.
-- [Section](/reference/email-builder/blocks/section) and [Two Columns](/reference/email-builder/blocks/columns) both accept an HTML block.
+- [Section](/reference/email-builder/sections) and [Two Columns](/reference/email-builder/blocks/columns) both accept an HTML block.
 - [Paragraph](/reference/email-builder/blocks/paragraph) is the block to reach for first, because it takes the brand's fonts and colours without being told.

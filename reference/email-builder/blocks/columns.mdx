@@ -9,6 +9,16 @@ A Two Columns block puts two columns side by side inside one section. Each colum
 
 Add it from a section's **Blocks** menu. It arrives with both columns already in it.
 
+## How it renders
+
+The two columns divide the width of the section between them, minus the padding and the gap, in the proportion **Layout** sets.
+
+![A 50-50 Two Columns block: a paragraph and a logo on the left, a paragraph and a button on the right, side by side](/images/email-builder/blocks/04b-columns-rendered.png)
+
+On a screen narrower than 480 pixels they stop being columns. The left one renders first at full width, the right one underneath it, and the gap becomes vertical space. Put the thing you most want read in the left column, because on a phone that is the thing at the top.
+
+<img src="/images/email-builder/blocks/04c-columns-stacked.png" alt="The same block rendered at 400 pixels wide, with the left column's paragraph and logo stacked above the right column's paragraph and button" width="386" />
+
 ## Settings
 
 - **Background color** fills both columns.
@@ -19,16 +29,6 @@ Add it from a section's **Blocks** menu. It arrives with both columns already in
 - **Padding** is the gap inside each column, around its blocks.
 
 <img src="/images/email-builder/blocks/04-columns-settings.png" alt="The Two Columns settings panel showing Background color, the five Layout buttons with 50-50 selected, the Gap slider at 24, the Column 1 and Column 2 block lists, Margin, and Padding" width="384" />
-
-## How it renders
-
-The two columns divide the width of the section between them, minus the padding and the gap, in the proportion **Layout** sets.
-
-![A 50-50 Two Columns block: a paragraph and a logo on the left, a paragraph and a button on the right, side by side](/images/email-builder/blocks/04b-columns-rendered.png)
-
-On a screen narrower than 480 pixels they stop being columns. The left one renders first at full width, the right one underneath it, and the gap becomes vertical space. Put the thing you most want read in the left column, because on a phone that is the thing at the top.
-
-<img src="/images/email-builder/blocks/04c-columns-stacked.png" alt="The same block rendered at 400 pixels wide, with the left column's paragraph and logo stacked above the right column's paragraph and button" width="386" />
 
 ## Limits
 
@@ -41,6 +41,6 @@ Outside the builder the rule is enforced on the way in. An email template sent t
 ## Related
 
 - [Email builder overview](/reference/email-builder/overview) covers the builder, the toolbar, the theme, and every block type.
-- [Section](/reference/email-builder/blocks/section) is the only block a Two Columns can go in.
+- [Section](/reference/email-builder/sections) is the only block a Two Columns can go in.
 - [Template](/reference/email-builder/template#how-an-email-nests) explains where the column level sits and why you never see it.
 - [Image](/reference/email-builder/blocks/image) behaves differently in a column, where it takes the column's width.

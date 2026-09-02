@@ -47,7 +47,7 @@ Two entries in the list cover more than one block. A **Two Columns** block arriv
 
 | Block | Where you can add it | What it puts in the email |
 |---|---|---|
-| [Section](/reference/email-builder/blocks/section) | Template | a band across the email, with its own background, padding, and border |
+| [Section](/reference/email-builder/sections) | Template | a band across the email, with its own background, padding, and border |
 | [Paragraph](/reference/email-builder/blocks/paragraph) | Section or column | body text |
 | [Heading](/reference/email-builder/blocks/heading) | Section or column | a heading, at the level you pick |
 | [Two Columns](/reference/email-builder/blocks/columns) | Section | two columns side by side, each holding its own blocks |
@@ -89,17 +89,11 @@ Four buttons at the end open drawers over the email:
 - **Show objects** links records such as a vacancy or a match to the email. Their fields then become variables you can write into it.
 - **Manage Languages** sets the email's default language and its translations.
 
-## Theme
+## Brand and theme
 
-Every colour and font in a new email starts as a value from the selected brand. The panel names the value rather than showing a hex code, such as "Theme: Palette Surface Color". Change one and it applies to this email only, so an email matches your brand until you decide it should not. Switching **Brand** switches the whole set.
+Every colour and font in a new email starts as a value from the brand you pick in **Brand**, and the panel names the value rather than showing a hex code, such as "Theme: Palette Surface Color".
 
-**Theme** in the **Template** settings carries the styling for blocks you add from now on. The panel puts it plainly: "Will be applied to newly added blocks." Set the section background there and every section you add afterwards starts with it. Blocks already in the email keep what they have.
-
-![The Theme group in the Template settings, described as "Will be applied to newly added blocks.", with the Section entry expanded to Background color, Spacing, and Border](/images/email-builder/06-template-theme.png)
-
-**Metadata** below it holds **UTM Campaign**. HireData tags every link in a sent email whether or not you fill these in. The boxes set the values rather than switching tagging on.
-
-![The UTM Campaign group expanded to Campaign Source, Campaign Medium, Campaign Name, Campaign Term, and Campaign Content, each with an example and a description](/images/email-builder/07-template-utm-campaign.png)
+Switch **Brand** and the whole email restyles, blocks you already wrote included. Replace one of those values with a colour of your own and that one control stops following the brand. See [Template](/reference/email-builder/template#brand-theme-and-metadata) for the settings that decide it, and for the difference between switching brand and setting a theme.
 
 ## Saving
 
