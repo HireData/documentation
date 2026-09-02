@@ -2,7 +2,13 @@
 title: "Net Promoter Score and Opinion Scale"
 sidebarTitle: "NPS and Opinion Scale"
 description: "The rating field in a HireData form. Net Promoter Score is a fixed 0 to 10 scale, and Opinion Scale lets you set the ends and label them."
-keywords: ["nps", "rating", "scale", "score", "satisfaction", "likert"]
+keywords:
+  - "nps"
+  - "rating"
+  - "scale"
+  - "score"
+  - "satisfaction"
+  - "likert"
 ---
 
 Net Promoter Score and Opinion Scale are one field type with a switch between them. The respondent picks a point on a row of numbers, and the form stores the number they picked.
@@ -38,7 +44,7 @@ A number, the point the respondent picked.
 ## Logic operators
 
 | Operator | Matches when |
-|---|---|
+| --- | --- |
 | has response | the respondent answered at all |
 | is equal to | the answer is exactly the value |
 | is not equal to | the answer is anything else |
@@ -50,10 +56,6 @@ A number, the point the respondent picked.
 A rating is the field most worth branching on. `if score is less than or equal to 7 then go to "What could we do better?"` sends the unhappy respondents down a follow-up path and lets everyone else finish.
 
 ![The Logic tab with the operator picker open on a Net Promoter Score condition, listing has response, is equal to, is not equal to, and the four comparison operators](/images/forms-builder/fields/operators-rating.png)
-
-<Warning>
-  A required rating field blocks the answer 0. The respondent picks 0, the form does not move on, **Next** does nothing, and no message appears. Net Promoter Score always starts at 0, so leave it optional. An Opinion Scale can start at 1 instead, which avoids the problem.
-</Warning>
 
 ## Evaluation
 

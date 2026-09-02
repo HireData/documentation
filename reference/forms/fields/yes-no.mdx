@@ -2,7 +2,12 @@
 title: "Yes/No"
 sidebarTitle: "Yes/No"
 description: "The yes or no field in a HireData form, drawn as a checkbox or a toggle, with a separate WhatsApp auto reply for the Yes and the No answer."
-keywords: ["binary", "checkbox", "toggle", "boolean", "true false"]
+keywords:
+  - "binary"
+  - "checkbox"
+  - "toggle"
+  - "boolean"
+  - "true false"
 ---
 
 Yes/No asks a question with two answers. **Checkbox** draws a box the respondent ticks. **Toggle** draws a switch they slide. The two behave the same and store the same value, so pick whichever suits the question.
@@ -31,16 +36,12 @@ Yes or No.
 ## Logic operators
 
 | Operator | Matches when |
-|---|---|
+| --- | --- |
 | has response | the respondent answered at all |
 | is equal to | the answer matches the one in the rule |
 | is not equal to | the answer is the other one |
 
 ![The Logic tab with the operator picker open on a Yes/No condition, listing has response, is equal to, and is not equal to, with the value box beside it reading Yes](/images/forms-builder/fields/operators-yes-no.png)
-
-<Warning>
-  Do not make a Yes/No field required. A respondent who answers No cannot get past it. **Next** does nothing, no message appears, and any rule on the field never fires. Leave the field optional until the fix ships.
-</Warning>
 
 ## Evaluation
 

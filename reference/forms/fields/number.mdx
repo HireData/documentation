@@ -2,7 +2,10 @@
 title: "Number"
 sidebarTitle: "Number"
 description: "The number field in a HireData form, with minimum, maximum, and step settings, and the full set of comparison operators in conditional logic."
-keywords: ["numeric", "years of experience", "quantity"]
+keywords:
+  - "numeric"
+  - "years of experience"
+  - "quantity"
 ---
 
 Number takes a plain number: years of experience, hours a week, how many of something. It is one of only two types logic can compare, which makes it the field to reach for when a rule has to weigh an answer rather than match it.
@@ -28,7 +31,7 @@ A number.
 ## Logic operators
 
 | Operator | Matches when |
-|---|---|
+| --- | --- |
 | has response | the respondent answered at all |
 | is equal to | the answer is exactly the value |
 | is not equal to | the answer is anything else |
@@ -38,10 +41,6 @@ A number.
 | is less than or equal to | the answer is the value or below |
 
 ![The Logic tab with the operator picker open on a Number condition, listing has response, is equal to, is not equal to, and the four comparison operators](/images/forms-builder/fields/operators-number.png)
-
-<Warning>
-  A required Number field blocks the answer 0. **Next** does nothing and no message appears. Until the fix ships, set a **Minimum Value** of 1 on any required Number field, so 0 is refused with a message the respondent can read.
-</Warning>
 
 ## Evaluation
 

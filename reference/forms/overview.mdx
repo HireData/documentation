@@ -2,7 +2,17 @@
 title: "Form builder overview"
 sidebarTitle: "Overview"
 description: "A tour of the HireData form builder: the Content, Logic, and Evaluation tabs, the toolbar drawers, every field type, and the settings every field shares."
-keywords: ["form builder", "form fields", "field types", "form theme", "form translations", "form templates", "make form public", "always include", "hidden field", "required field"]
+keywords:
+  - "form builder"
+  - "form fields"
+  - "field types"
+  - "form theme"
+  - "form translations"
+  - "form templates"
+  - "make form public"
+  - "always include"
+  - "hidden field"
+  - "required field"
 ---
 
 A form is a set of questions someone answers on the web or in a WhatsApp conversation. Open the **Forms** page from **Settings** and click **New Form**. Pick **Blank Form** or one of the [templates](#templates), and the new form opens in the builder.
@@ -13,7 +23,7 @@ This page maps the builder. For a walkthrough that takes one form from blank to 
 
 The builder has three parts.
 
-The left column lists the form's fields in the order a respondent meets them. Above the list sit the **Content**, **Logic**, and **Evaluation** tabs, and the **+** button that opens the **Add Content** palette.
+The left column lists the form's fields in the order a respondent meets them. Above the list sit the **Content**, **Logic**, and **Evaluation** tabs, and the **\+** button that opens the **Add Content** palette.
 
 The right column previews the form, with its own **Interactive Preview**, **Conversational Preview**, and **Test & Evaluate** tabs.
 
@@ -25,7 +35,7 @@ The bar across the top holds the form name and the toolbar.
 
 The **Content** tab holds the fields and their settings. Click a field to open its card, and drag it by the handle on the left to change the order.
 
-The **+** button opens the **Add Content** palette. It groups the entries by category and repeats the most used ones under **Recommended**. **Find a field type** searches the list.
+The **\+** button opens the **Add Content** palette. It groups the entries by category and repeats the most used ones under **Recommended**. **Find a field type** searches the list.
 
 ![The Add Content palette with its Recommended list and the Text, Contact Info, Temporal, Choice, Numeric, Rating, Other, and Ending groups](/images/forms-builder/01-add-content-palette.png)
 
@@ -78,7 +88,7 @@ The palette shows more entries than there are field types. Short Text and Long T
 Every row below has a page of its own, covering that type's settings, what it stores, the operators logic offers for it, and what the AI evaluators can do with it.
 
 | Field type | Group | Stores |
-|---|---|---|
+| --- | --- | --- |
 | [Short Text and Long Text](/reference/forms/fields/short-and-long-text) | Text | text |
 | [Email](/reference/forms/fields/email) | Contact Info | text |
 | [Phone Number](/reference/forms/fields/phone-number) | Contact Info | text |
@@ -147,12 +157,6 @@ Turning **Hidden** on clears **Required** and **Always include** and locks both.
 ### What counts as an answer {#required-answers}
 
 An empty text box, an empty number box, no option chosen, and no file attached all count as no answer. The web form then shows a message under the question, such as "This field is required and cannot be empty."
-
-Answering No, leaving a toggle off, entering 0, and picking 0 on a rating are real answers and are meant to satisfy a required field.
-
-<Warning>
-  A bug in the web form blocks these answers. Answer No, leave a toggle off, enter 0, or pick 0 on a rating, and the respondent gets stuck on a required question. **Next** does nothing, no message appears, and any rule on that field does not fire. Until the fix ships, leave Yes/No and Net Promoter Score questions optional, and set a **Minimum Value** of 1 on a required Number question.
-</Warning>
 
 In a conversational form, **Auto reply (on invalid answer)** is the message sent back when a required field receives no usable answer.
 
