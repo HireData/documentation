@@ -2,7 +2,16 @@
 title: "Logic"
 sidebarTitle: "Logic"
 description: "Conditional logic in a HireData form: how a rule reads, which operators each field type offers, and what to check when a rule does not fire."
-keywords: ["conditional logic", "branching", "skip logic", "jump", "add rule", "add condition", "all other cases go to", "always go to", "operators"]
+keywords:
+  - "conditional logic"
+  - "branching"
+  - "skip logic"
+  - "jump"
+  - "add rule"
+  - "add condition"
+  - "all other cases go to"
+  - "always go to"
+  - "operators"
 ---
 
 A form with no logic runs straight down the list. Everyone answers every question and everyone lands on the same ending. The **Logic** tab is where you change that. Each rule you write decides where one answer sends the respondent next.
@@ -43,7 +52,7 @@ Order is what people get wrong. A broad rule above a narrow one always wins, so 
 The type of the question in the condition decides the operators. Each field page explains what its operators match.
 
 | Field types | Operators |
-|---|---|
+| --- | --- |
 | [Short Text and Long Text](/reference/forms/fields/short-and-long-text), [Email](/reference/forms/fields/email), [Phone Number](/reference/forms/fields/phone-number), [Website](/reference/forms/fields/website) | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
 | [Multiple Choice and Dropdown](/reference/forms/fields/multiple-choice-and-dropdown) | has response, is equal to, is not equal to, is one of, is not one of |
 | [Yes/No](/reference/forms/fields/yes-no) | has response, is equal to, is not equal to |
@@ -97,11 +106,7 @@ A question with no rules can still jump. Set **Always go to** and everyone who a
 
 ## Required questions and logic
 
-A required question has to be answered before the respondent can move on, which means its rules only run once there is an answer to test. One class of answer currently gets stuck instead.
-
-<Warning>
-  A bug in the web form blocks the answers No, an untouched toggle, 0, and a rating of 0 on a required question. **Next** does nothing, no message appears, and the rules on that question never fire. Until the fix ships, leave Yes/No and Net Promoter Score questions optional, and set a **Minimum Value** of 1 on a required Number question.
-</Warning>
+A required question has to be answered before the respondent can move on, which means its rules only run once there is an answer to test.
 
 ## When a rule does not fire
 
