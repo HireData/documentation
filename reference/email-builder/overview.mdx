@@ -72,22 +72,22 @@ The toolbar runs along the top of the builder, from **Save** to the four drawer 
 
 Two buttons follow it:
 
-- The eye opens a **preview** of the finished email, at mobile, tablet, or desktop width, with a language picker and a **Copy Preview URL** button. Its tooltip warns that it saves the email first.
-- The paper plane opens **Test Email**. It sends the email to you with realistic values filled in.
+- The eye opens a [preview](/reference/email-builder/testing#the-preview) of the finished email, at mobile, tablet, or desktop width, with a language picker and a **Copy Preview URL** button. Its tooltip warns that it saves the email first.
+- The paper plane opens [Test Email](/reference/email-builder/testing#sending-a-test-email). It sends the email to you with realistic values filled in.
 
 **Brand** picks the brand the email's colours, fonts, and logo come from.
 
 Two toggles follow the brand selector:
 
-- **Show variable values** swaps each variable's label for the default value it carries. A variable with no default keeps its label.
+- **Show variable values** does not fill the canvas in. Variable chips keep their labels either way, so use the [preview](/reference/email-builder/testing#the-preview) to see an email with real values in it.
 - **Show code editor** opens the generated markup. It appears only for accounts that may edit templates directly.
 
 Four buttons at the end open drawers over the email:
 
-- **Show variable list** lists the variables this email can use. See [Variables](/variables/introduction).
+- **Show variable list** lists the variables this email can use, and adds ones of your own. See [Variables](/reference/email-builder/variables).
 - **Manage Template** publishes the open email to the shared template library. It appears only for accounts that maintain that library.
 - **Show objects** links records such as a vacancy or a match to the email. Their fields then become variables you can write into it.
-- **Manage Languages** sets the email's default language and its translations.
+- **Manage Languages** sets the email's default language and its [translations](/reference/email-builder/translations).
 
 ## Brand and theme
 
@@ -97,7 +97,7 @@ Switch **Brand** and the whole email restyles, blocks you already wrote included
 
 ## Saving
 
-The email builder does not save as you type. **Save** saves. The preview button and **Send test email** each save before they run, so either of those commits whatever you have changed.
+The email builder does not save as you type. **Save** saves. The preview button and **Send test email** each save before they run, so either of those commits whatever you have changed. See [Testing](/reference/email-builder/testing).
 
 Try to leave the builder with unsaved changes and a warning appears. It offers to **Save** them, or to **Discard** them and carry on.
 
@@ -109,5 +109,7 @@ Reload the page or close the tab instead and your browser asks you to confirm be
 
 - [Setting up an email template in HireData](/apps/messaging/emails/setting-up-an-email-template-in-hiredata) walks one email from blank to ready.
 - [Adding images to your emails](/apps/messaging/emails/adding-images-to-your-emails) covers the media library.
-- [Variables](/variables/introduction) covers the `{{ }}` syntax and the fallbacks available to it.
+- [Variables](/reference/email-builder/variables) covers the picker, the fallbacks, and what a missing value looks like.
+- [Translations](/reference/email-builder/translations) covers sending one email in several languages.
+- [Testing](/reference/email-builder/testing) covers the preview, the test send, and what neither of them proves.
 - [Form builder overview](/reference/forms/overview) covers the forms a Form block can point at.

@@ -1,0 +1,86 @@
+---
+title: "Variables"
+sidebarTitle: "Variables"
+description: "Personalise a HireData email with variables: the picker, where they work, what a recipient sees when a value is missing, and how to give one a fallback."
+keywords: ["email variables", "variable picker", "merge tags", "personalisation", "default value", "fallback", "custom variable", "show variable values"]
+---
+
+A variable is a placeholder HireData fills in when the email goes out. Write `{{recipient.first_name}}` once and every recipient reads their own name.
+
+The email builder shows a variable as a chip carrying its label, not its value. `{{recipient.first_name}}` reads **Recipient: First Name** on the canvas, and the chip behaves as one object rather than as the characters it stands for.
+
+## Inserting a variable
+
+Type `{{` and a picker opens under the cursor. Each row gives the variable's label, its `{{key}}`, and the kind of value it holds.
+
+Keep typing to narrow the list. The search is forgiving. Type `frist` and **Recipient: First Name** still comes up.
+
+![The Subject box with a variable chip in it and a part-typed token at the end, and the picker below listing Recipient: Last Name and Sender: Last Name with their keys and types](/images/email-builder/10-variable-picker.png)
+
+Press Enter or click a row and the token turns into a chip.
+
+## Where variables work
+
+Anywhere you can type into an email, and in several places you cannot.
+
+- The **Subject** box, which is the line a recipient reads in their inbox.
+- [Paragraph](/reference/email-builder/blocks/paragraph) and [heading](/reference/email-builder/blocks/heading) text.
+- A link's address. Select some text, click the link button in the bubble menu, and the popover offers a dropdown of every variable that holds a URL, including `{{template::unsubscribe_url}}`.
+- The **URL** box on a [Button](/reference/email-builder/blocks/button) and on each [Social](/reference/email-builder/blocks/socials) row.
+- A picture. The media library's **Fields** tab lists the variables that carry an image, for both the [Image](/reference/email-builder/blocks/image) block and the [Signature](/reference/email-builder/blocks/signature).
+- A colour. Colour controls pick from the brand's colour variables by name, which is what "Theme: Palette Primary Color" means. See [Brand, theme, and metadata](/reference/email-builder/template#brand-theme-and-metadata).
+
+## The variable list
+
+The curly-brackets button in the toolbar opens **Variables**, a drawer listing everything this email can use. Search by label or key. Where HireData already knows a value, the card shows it, so you can tell `{{brand.name}}` from `{{account.name}}` without guessing.
+
+<img src="/images/email-builder/11-variable-list.png" alt="The Variables drawer with a search box and a plus button, listing Template unsubscribe_url, Template Subject, Template Form URL, Brand Id, Brand Name, Brand Slug, and Brand Avatar, each with its key, its type, and its value" width="350" />
+
+The **+** beside the search box adds a variable of your own to this email. Pick a type, then fill in four fields.
+
+- **Name** is what the chip reads on the canvas.
+- **Default value** is what HireData uses when nothing supplies one.
+- **Reference as** is the key you type between the braces. It fills itself in from the name.
+- **What is it for?** is an optional note for whoever opens the template next.
+
+A variable you add here belongs to this email only. The template stores it, so **Save** before you leave.
+
+<Note>
+  The bolt button in the toolbar switches between **Show variable values** and **Hide variable values**. Either way the canvas keeps showing labels, so it is not a preview of a filled-in email. Use the [preview](/reference/email-builder/testing) for that.
+</Note>
+
+## What a recipient actually sees
+
+Three things can happen to a token, and only one of them is what you meant.
+
+- **The variable resolves.** HireData has a value and writes it in.
+- **The variable resolves to nothing.** The recipient has no phone number on file, so `{{recipient.phone_number}}` comes out as an empty space. "Call us on ." is the classic way this shows up.
+- **There is no such variable.** HireData leaves a key it does not recognise exactly as you typed it. The recipient reads `{{recipient.favourite_biscuit}}`, braces and all.
+
+The builder tells you which of the three you are heading for. A key it recognises becomes a chip. A key it does not stays as plain text, braces showing. If a token still looks like code in the canvas, it will look like code in the inbox.
+
+<Warning>
+  A token you paste in from somewhere else is the usual source of the third case. Paste it, then check it turned into a chip.
+</Warning>
+
+## Giving a variable a fallback
+
+Add the `default` modifier and HireData uses your words instead of leaving a gap.
+
+```text
+Hi {{ recipient.first_name | default: "there" }},
+```
+
+It fires in both of the failure cases above: when the value is blank, and when the key does not exist at all. The email above reads "Hi Sofia," for Sofia and "Hi there," for everyone whose first name is missing.
+
+A token carrying a modifier stays plain text in the canvas rather than becoming a chip, because the picker only inserts bare keys. Type the modifier yourself after inserting the variable, and confirm it in the preview.
+
+`default` is one of a long list. See [Modifiers](/variables/modifiers) for the rest, and for chaining several together.
+
+## Related
+
+- [Testing](/reference/email-builder/testing) is where you find out what your variables resolve to.
+- [Variables](/variables/introduction) covers the `{{ }}` syntax across forms, messages, and automations as well as email.
+- [Modifiers](/variables/modifiers) lists everything you can do to a value on its way into the email.
+- [Translations](/reference/email-builder/translations) keeps your variables intact in every language.
+- [AI variables](/variables/ai-variables) work out a value per recipient instead of looking one up.
