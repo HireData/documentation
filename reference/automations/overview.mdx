@@ -1,0 +1,130 @@
+---
+title: "Automation builder overview"
+sidebarTitle: "Overview"
+description: "A tour of the HireData automation builder: the start node, the step picker, the step drawers, and how a saved automation becomes events, runs, and tasks."
+keywords:
+  - "automation builder"
+  - "automation steps"
+  - "step picker"
+  - "next step"
+  - "start node"
+  - "setup drawer"
+  - "filter step"
+  - "delay step"
+  - "split step"
+  - "loop step"
+  - "ask ai"
+  - "automation run"
+  - "run steps"
+  - "automation tasks"
+---
+
+An automation is a start node followed by steps. The start decides which event begins a run, and each step either checks, waits, branches, repeats, or hands work to an app. Open **Automations** in the left navigation and click **New Automation**. Pick a template from the gallery, or open the **All** tab and click **Start From Scratch** on the **Blank Automation** card, and the builder opens.
+
+This page maps the builder. For the first-time walkthrough, read [Automations](/automations/automations). For a safe way to run one before it goes live, read [How to test an automation](/automations/how-to-test-an-automation).
+
+## The builder at a glance
+
+The canvas draws the automation top to bottom. The **Start** node comes first, a **+** sits between every pair of steps, and each step is a card with a badge naming its type: **Filter**, **Delay**, **Split**, **Loop**, or **Task**. Click a card to open its drawer on the right. Click a **+** to add a step at that point.
+
+![The automation builder showing the Start node for a completed form response, then a Filter, a Delay, a Split with two Filter branches, and a Loop, with a plus button between each step](/images/automations/03-builder-at-a-glance.png)
+
+The bar across the top holds the automation's name, which saves when you click away from it, and the time it was last updated. To its right:
+
+- **Activate** turns the automation on. It reads **Pause** while the automation is active.
+- The flask button opens **Automation Test**. See [How to test an automation](/automations/how-to-test-an-automation).
+- The curly-braces button opens **Variables**, the list of values this automation can use. See [Variables](/variables/introduction).
+- The star button opens **Configure Template**, which publishes the automation to the shared template library. Most workspaces never need it.
+- The three-dot menu offers **Pause**, **Duplicate**, **Settings**, **Related**, **Events**, **Runs**, and **Tasks**. The last three open the logs filtered to this automation.
+
+There is no save button for the automation as a whole. Every drawer has its own **Save**, and the change is stored the moment you click it.
+
+## The start node
+
+Click **Start** to open the **Setup** drawer. For a new automation it walks you through the choices below, then shows a summary you can edit row by row.
+
+1. **App**. The app whose event starts the run: HireData itself, a connected app such as Carerix or WhatsApp, or a custom app.
+2. **Object**. The kind of record the event is about. For HireData the choices are **Conversation**, **Email**, **Person**, and **Response**.
+3. **Trigger**, under the heading **WHEN SOMETHING HAPPENS**. For a response the choices are **Completed**, **Created**, **Created or Updated**, and **Updated**.
+
+Some triggers add a **Config** card. A response trigger asks which **Form** it listens to. The **All** switch is on by default, and the drawer explains that you have to pick one form before the automation can use that form's questions as variables.
+
+![The Setup drawer for a trigger automation, showing App HireData, Object Response, Trigger Completed, and a Config card where the All switch is off and the docs test form is selected](/images/automations/01-setup-drawer.png)
+
+An automation installed from a template arrives with its start filled in. Its Setup drawer shows **App**, **Connection**, **Object**, **Trigger**, and, when the template waits before starting, a **Delay** row such as "4 weeks after", each with an **Edit** button.
+
+Once you save the Setup drawer of a new automation, the builder opens the step picker for you.
+
+## The step picker
+
+Every **+** opens the **Next step** drawer. It always lists the same entries, in this order and with these descriptions.
+
+![The Next step drawer listing Add, Delay, Filter, Find, Loop, Message, Prompt, Split, and Update, each with a one-line description](/images/automations/02-step-picker.png)
+
+- **Add**, "Creates something new."
+- **Delay**, "Pauses for a set time before continuing."
+- **Filter**, "Decides whether to continue based on conditions."
+- **Find**, "Looks for something that already exists."
+- **Loop**, "Repeats a set of actions."
+- **Message**, "Sends a message via any channel."
+- **Prompt**, "Asks an AI model to do something."
+- **Split**, "Takes different paths based on conditions."
+- **Update**, "Changes something that's already there."
+
+Delay, Filter, Loop, Prompt, and Split are steps the builder runs itself. **Delay**, **Filter**, **Loop**, and **Prompt** open their own drawer when you click them. **Split** is different: clicking it shows a **Create Split** button in the footer, and that button puts a Split with two empty branches on the canvas and opens the first branch's Filter drawer.
+
+Add, Find, Message, and Update are categories of tasks, and their contents come from your connected apps. **Add**, **Find**, and **Message** open a list of the tasks that fit the category, each with the icon of the app that provides it, and **Back** returns you to the picker. When only one task fits, clicking the category opens that task directly. A category only appears in the picker when a connected app offers a task for it, so a workspace without a messaging app has no **Message** entry.
+
+## The step drawer
+
+Every drawer shares the same frame. The header names the step type, with the app icon for a task. The footer has **Back** where there is a previous panel, **Cancel**, and a **Save** button named after the step: **Save Filters**, **Save Delay**, or **Save Task**. Saving writes the change at once and closes the drawer, and the card on the canvas summarises what you set.
+
+A few settings turn up on more than one step:
+
+- **Step name**. A task's automatic name, such as "Ask AI: Custom", can be replaced under **Advanced** where the drawer offers it.
+- **Connection**. A task that talks to an app runs on one of that app's connections. The card shows it: a WhatsApp task shows its phone number, a Carerix task shows the connection name.
+- **Output Variable**. A Loop lets you name the value it hands to the steps inside it, so a later step can refer to `candidate.index` instead of a step id. AI output fields have a **Reference as** name for the same reason.
+
+Filters, in the Filter step and inside a Loop, are built the same way everywhere: a set of rows, each with a field, an operator, and a value where the operator needs one. **Add Filter** adds a row to the set, and **Add New Set** adds another set. The operators offered depend on the field's type, so a text answer offers **contains** and **starts with** while a number offers **greater than** and **less than**.
+
+## Choosing a step
+
+Each row below gets a page of its own in the **Steps** group, covering that step's settings, what it outputs, and what stops the run.
+
+| Step | Kind | What it does in a run |
+| --- | --- | --- |
+| Setup (the start node) | Start | Decides which event starts a run and which record it is about |
+| Add | Task category | Creates a record in an app: a Carerix note, task, email, or job application, a Google Sheets row, or an HTTP request |
+| Delay | Step | Pauses the run for a preset such as 5 minutes or 1 day, or until a set weekday and time |
+| Filter | Step | Continues when its conditions pass and cancels the run when they do not |
+| Find | Task category | Looks a record up in an app, or finds an email address or company domain |
+| Loop | Step | Retrieves a set of records from a connected app and runs the steps inside it once per record |
+| Message | Task category | Sends an email, a WhatsApp message, a survey, or an HTTP request |
+| Prompt | Task | Asks an AI model to do something and returns the fields you define |
+| Split | Step | Runs its branches side by side, each branch starting with its own Filter |
+| Update | Task category | Changes a record that already exists in an app |
+
+The tasks each category holds depend on the apps your workspace has connected. [HTTP Request](/reference/automation-tasks/http-request-task) has its own page, and appears under both **Add** and **Message**.
+
+## From automation to events, runs, and tasks
+
+A saved automation does nothing on its own. When the app named in its start node reports something, an **event** arrives in HireData. If the event matches the start node, it begins a **run**. The run walks the steps in order, recording a **run step** for each one it reaches, with a status and a message. Whenever a step acts on an app, it also leaves a **task**, the record of what the app was asked to do.
+
+Each of those has a log of its own in the left navigation, and the three-dot menu on the builder opens each log filtered to the current automation. The runs list shows every run's **State**, **Automation**, and **Step**, and for a cancelled run the Step column names the step that stopped it.
+
+Open a run and you see the same diagram as the builder, read-only, with a status line above every step the run reached: "Run Started" above the start node, then "Completed" or "Cancelled" with a time above each step. Steps the run never reached carry no line. A Split shows a line on the Split itself and on each branch, so you can see which branch passed and which was cancelled. The panel on the right opens on the event, with **Overview**, **Fields**, and **Related** tabs and a **Timeline** of everything that happened, including a message for each cancelled step such as "Filter not passed."
+
+Click any task step on the run page and the panel switches to that step: its status badges, an **Overview** of what it changed, and a **Fields** tab listing every field the task used, with its source, type, and value.
+
+![The step drawer on a run page for a Carerix Update Match task, with Field Updated, Run Moved, and Completed badges, and the Fields tab listing Match Id, Match Stage, the survey score, and the stage the filter set](/images/automations/20-run-step-fields.png)
+
+## Related
+
+- [Automations](/automations/automations) introduces the feature and its concepts.
+- [How to test an automation](/automations/how-to-test-an-automation) runs one against a record of your choosing without sending anything real.
+- [Events](/settings/logs/events) explains the event log and how to replay an event.
+- [Runs](/settings/logs/runs) explains the run log and how to read a run.
+- [Tasks](/pages/task-history) explains the task log.
+- [Run cancellation reasons](/knowledge-base/run-cancellation-reasons) explains the messages a cancelled run leaves behind.
+- [Automation safety limits](/settings/automation-safety-limits) caps how many emails and conversations an automation may start.
+- [Variables](/variables/introduction) covers the values steps read and write.
