@@ -57,6 +57,10 @@ Pick a type and four settings open beside it.
 
 A variable of your own earns its keep when one value belongs in several places. Put your phone number in a `{{phone}}` variable and write that into the signature, the footer, and the body, and changing the number afterwards is one edit rather than three.
 
+<Warning>
+  Deleting a variable does not clear it out of the email. Every chip that used it turns back into plain `{{key}}` text and stays where it is, so the key goes out with its braces showing. Delete the variable, then find each place you used it.
+</Warning>
+
 <Note>
   **AI variable** is the first type in the dialog. Rather than look a value up, it works one out for each recipient from an instruction you write. See [AI variables](/variables/ai-variables).
 </Note>
