@@ -5,7 +5,7 @@ description: "Build a feedback email whose rating question renders as one button
 keywords: ["feedback email", "candidate experience survey", "NPS email", "rating buttons", "form block", "one click feedback", "placement survey"]
 ---
 
-_Most feedback requests ask twice. The email asks you to give feedback, the form asks the actual question, and half the people you asked never see the question. A Form block collapses that into one step: the rating question is in the email as a row of buttons, and the click that answers it is the click that opens the form._
+_Most feedback requests ask twice. The email asks you to give feedback, the form asks the actual question, and half the people you asked never get as far as the question. A Form block collapses that into one step. The rating sits in the email as a row of buttons, and the click that answers it is the same click that opens the form._
 
 ## What you will build
 
@@ -14,7 +14,7 @@ _Most feedback requests ask twice. The email asks you to give feedback, the form
 3. A test send that proves the buttons carry the answer
 4. Somewhere for the answers to land, tied to the right record
 
-The whole thing is two objects and no automation logic. What takes the thought is the question, because it is the one a recipient answers in their inbox and cannot take back.
+One form, one email, and no automation logic. What takes the thought is the question, because it is the one a recipient answers in their inbox and cannot take back.
 
 ## Before you start
 
@@ -46,7 +46,7 @@ Finish with an [ending screen](/reference/forms/fields/ending-screen). A recipie
 
 ### 2. Link the record the feedback is about
 
-Open the **Objects** drawer and link the object the response belongs to, usually **Match** or **Vacancy**. Two things follow from it. Every field on that record becomes a variable you can write into the question, so you can ask about the role by name. And the response arrives on that record's **Responses** tab instead of in an undifferentiated list.
+Open the **Objects** drawer and link the object the response belongs to, usually **Match** or **Vacancy**. Two things follow from it. Every field on that record becomes a variable you can write into the question, so you can ask about the role by name. And the response arrives on that record's **Responses** tab, rather than in a pile of responses you have to match up by hand.
 
 Whichever object you put at the top is the form's main object. See [Objects](/reference/forms/objects).
 
@@ -60,7 +60,7 @@ Leave **Make form public** off unless you are posting the link somewhere. The to
 
 ### 4. Create the email and pick the brand
 
-Open **Emails** from **Settings**, click **New Email**, and choose **Blank Email** or one of the supplied templates. Set **Brand** in the top right before you write anything, because the brand decides the colours the buttons inherit. See [Setting up an email template](/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+Open **Emails** from **Settings**, click **New Email**, and choose **Blank Email** or one of the supplied templates. Set **Brand** in the top right first. It restyles the whole email, including the button colours, so choosing it early saves you checking the contrast twice. See [Setting up an email template](/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
 
 ### 5. Write the shortest ask you can stand behind
 
@@ -102,7 +102,7 @@ Each button is its own column, so below 480 pixels the row stops fitting and the
 
 Open **Test Email**, leave the name and address empty to send it to yourself, and click **Send test email**. Then click a number in the email that arrives.
 
-You should land on the form with the score already answered. If the rating is sitting there blank, the **Leading Question** is not the field you think it is.
+You should land on the form with the rating already filled in. If it is sitting there blank, the **Leading Question** is not the field you think it is.
 
 A click from a test email records nothing, which is what you want while you are still editing. The score only lands on a response for a real send.
 
@@ -135,7 +135,7 @@ Start with one branch. A low score creates a task for whoever owns the relations
 
 If the buttons render as a single **Give Feedback** button, the leading question is a type that has no buttons of its own. Only rating and choice questions get one button per value. Everything else falls back to one call to action, which you can click in the canvas to reword.
 
-If a choice question is missing options, it is the five-option cap: a Form block renders the first five and gives no warning about the rest. See [Limits](/reference/email-builder/blocks/form#limits).
+If a choice question is missing options, you have hit the five-option cap. A Form block renders the first five and gives no warning about the rest. See [Limits](/reference/email-builder/blocks/form#limits).
 
 If you still need help, contact [support@hiredata.com](mailto:support@hiredata.com) and include:
 
