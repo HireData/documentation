@@ -1,0 +1,46 @@
+---
+title: "Two Columns"
+sidebarTitle: "Two Columns"
+description: "The Two Columns block in the HireData email builder: the five layouts, the gap, what each column can hold, and how the pair behaves on a phone."
+keywords: ["email columns", "two columns", "column layout", "email gap", "side by side", "stacking"]
+---
+
+A Two Columns block puts two columns side by side inside one section. Each column holds its own blocks, so it is how you get a picture beside a paragraph, or a paragraph beside a button.
+
+Add it from a section's **Blocks** menu. It arrives with both columns already in it.
+
+## How it renders
+
+The two columns divide the width of the section between them, minus the padding and the gap, in the proportion **Layout** sets.
+
+![A 50-50 Two Columns block: a paragraph and a logo on the left, a paragraph and a button on the right, side by side](/images/email-builder/blocks/04b-columns-rendered.png)
+
+On a screen narrower than 480 pixels they stop being columns. The left one renders first at full width, the right one underneath it, and the gap becomes vertical space. Put the thing you most want read in the left column, because on a phone that is the thing at the top.
+
+<img src="/images/email-builder/blocks/04c-columns-stacked.png" alt="The same block rendered at 400 pixels wide, with the left column's paragraph and logo stacked above the right column's paragraph and button" width="386" />
+
+## Settings
+
+- **Background color** fills both columns.
+- **Layout** sets the split: **50-50**, **60-40**, **40-60**, **66-33**, or **33-66**. The first number is the left column.
+- **Gap** is the space between the two columns, a slider and a box from 0 to 48 pixels.
+- **Column 1 Blocks** and **Column 2 Blocks** are two separate lists, one per column, each with the usual **+**, **−**, and drag handle.
+- **Margin** is the gap above and below the pair.
+- **Padding** is the gap inside each column, around its blocks.
+
+<img src="/images/email-builder/blocks/04-columns-settings.png" alt="The Two Columns settings panel showing Background color, the five Layout buttons with 50-50 selected, the Gap slider at 24, the Column 1 and Column 2 block lists, Margin, and Padding" width="384" />
+
+## Limits
+
+A Two Columns block always holds exactly two columns. Nothing adds a third and nothing removes one, the **Blocks** lists on either column only add blocks inside that column, and the breadcrumb skips the column level entirely. Three columns side by side is not a layout the email builder can make.
+
+A column takes fewer kinds of block than a section does. Its menu offers Paragraph, Heading, Image, Socials, Button, and HTML. It has no Two Columns, no Form, and no Signature, so columns never nest.
+
+Outside the builder the rule is enforced on the way in. An email template sent to the HireData API with a columns block that does not hold exactly two columns is rejected with "A columns block must contain exactly two column blocks."
+
+## Related
+
+- [Email builder overview](/reference/email-builder/overview) covers the builder, the toolbar, the theme, and every block type.
+- [Section](/reference/email-builder/sections) is the only block a Two Columns can go in.
+- [Template](/reference/email-builder/template#how-an-email-nests) explains where the column level sits and why you never see it.
+- [Image](/reference/email-builder/blocks/image) behaves differently in a column, where it takes the column's width.
