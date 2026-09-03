@@ -59,7 +59,7 @@ The paper-plane button opens **Test Email**. It saves the email first, then send
 Six things worth doing in this order.
 
 1. **Read the subject line.** It is the first thing a recipient sees, it takes variables like everything else, and it is the easiest line to leave half-written.
-2. **Check the canvas for stray braces.** A token that HireData recognises is a chip. One that still shows `{{` and `}}` will reach the inbox that way. See [Variables](/reference/email-builder/variables).
+2. **Check the canvas for stray braces.** A plain variable that HireData recognises is a chip, so one still showing `{{` and `}}` is either a typo or a token carrying a [modifier](/variables/modifiers), which stays plain text on purpose. Read each one and make sure it is the second kind. See [Variables](/reference/email-builder/variables).
 3. **Walk the Links panel.** Every link, including the ones inside a Form block and the unsubscribe link in the footer.
 4. **Look at the email at mobile width.** Columns stack and buttons reflow, and a line that fits on a desktop can break badly.
 5. **Check each language.** Switch the preview's language picker through every translation you have written.

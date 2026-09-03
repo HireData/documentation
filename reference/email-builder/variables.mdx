@@ -75,7 +75,9 @@ Three things can happen to a token, and only one of them is what you meant.
 - **The variable resolves to nothing.** The recipient has no phone number on file, so `{{recipient.phone_number}}` comes out as an empty space. "Call us on ." is the classic way this shows up.
 - **There is no such variable.** HireData leaves a key it does not recognise exactly as you typed it. The recipient reads `{{recipient.favourite_biscuit}}`, braces and all.
 
-The builder tells you which of the three you are heading for. A key it recognises becomes a chip. A key it does not stays as plain text, braces showing. If a token still looks like code in the canvas, it will look like code in the inbox.
+The builder tells you which of the three you are heading for. A key it recognises becomes a chip. A key it does not stays as plain text, braces showing, and reaches the inbox that way.
+
+The one exception is a token carrying a [modifier](#giving-a-variable-a-fallback). That stays plain text however good the key is, because the picker only ever inserts a bare key. So braces on the canvas mean one of two things: a variable you got wrong, or a modifier working as intended.
 
 <Warning>
   A token you paste in from somewhere else is the usual source of the third case. Paste it, then check it turned into a chip.
