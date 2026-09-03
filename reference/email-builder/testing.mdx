@@ -13,6 +13,8 @@ The eye button in the toolbar opens the preview. Its tooltip warns you that it s
 
 The preview loads the email's own public address rather than rendering it inside the builder, so what you see is the finished email rather than the canvas.
 
+<img src="/images/email-builder/20-preview-rendered.png" alt="A whole email as the preview renders it: the brand logo, a coloured header band, a greeting, body text, three answer buttons, a signature, and the address and unsubscribe footer" width="420" />
+
 The template's name sits at the top left. The controls run from the middle of the header across to the right edge.
 
 <img src="/images/email-builder/15-preview-header.png" alt="The preview controls: a copy button, mobile, tablet and desktop buttons with desktop selected, a refresh button, a language picker reading English, and a close button" width="640" />
@@ -24,9 +26,9 @@ The template's name sits at the top left. The controls run from the middle of th
 
 ### Links
 
-A **Links** panel down the side lists every link in the email, in order. Hover a row and that link highlights in the preview, with a popover showing the full address and a table of the [UTM parameters](/reference/email-builder/template#brand-theme-and-metadata) HireData added to it.
+A **Links** panel down the side lists every link in the email, in order, and a **UTM Campaign** card under it repeats the [campaign parameters](/reference/email-builder/template#brand-theme-and-metadata) HireData adds to all of them. Hover a row and that link is outlined in the preview, with a popover showing the full address and the parameters on it.
 
-<img src="/images/email-builder/16-preview-links.png" alt="The Links panel listing each link in the email, beside a popover showing a full URL and a table of utm_source, utm_medium, and utm_campaign values" width="640" />
+<img src="/images/email-builder/16-preview-links.png" alt="The Links panel with four rows, the hovered row's button outlined in the preview beside it, a popover showing the full URL and its utm_source, utm_medium, and utm_campaign values, and a UTM Campaign card below the list" width="640" />
 
 This is the quickest check in the builder. A link with the wrong address, or a button pointing at a variable that resolved to nothing, shows up here in seconds.
 
@@ -44,13 +46,13 @@ The paper-plane button opens **Test Email**. It saves the email first, then send
 
 - **First name**, **Last name**, and **Email** are all optional. Leave them and HireData uses your own. Fill them in to send the test somewhere else, or to see how a longer name sits in the layout.
 - **Language** appears once the template has a translation, and picks which one to send.
-- **Objects** appears when the email is bound to a [form](/reference/email-builder/blocks/form) that links records. Each card takes either made-up **Fields** or a real **Record**.
+- **Objects** appears when the email links [records](/reference/email-builder/variables#bringing-in-a-records-fields), or when it is bound to a [form](/reference/email-builder/blocks/form) that does. Each card takes either made-up **Fields** or a real **Record**, and **Auto fill** picks a record for you.
 
 **Send test email** raises a **Test mail scheduled!** notification and closes the modal. The email arrives a moment later.
 
-<Warning>
-  The **Objects** group says "Optional: leave empty to resolve automatically." For a record marked with a red asterisk it is not optional. Leave one empty and the send fails with no message at all: no notification, no error on the field, and the modal stays open. If clicking **Send test email** appears to do nothing, pick a record for every object marked with an asterisk and try again.
-</Warning>
+<Note>
+  An object marked with a red asterisk needs a record, whatever the line under the group says about leaving it empty. Leave one out and the send fails with a **Failed to send test email** notification naming the first object it is missing, by key rather than by label: "Required data reference [job] is missing."
+</Note>
 
 ## Before you send
 
@@ -67,7 +69,7 @@ Six things worth doing in this order.
 
 The builder has no Gmail preview, no Outlook preview, and no dark-mode preview. HireData does not model any email client, so nothing here predicts how one will render your email. A test send to your own address, opened in the client your recipients use, is the only check that does.
 
-The three preview sizes resize the preview window. They do not simulate a device, and the widths they land on depend on your own screen, so treat them as narrow, medium, and wide rather than as a phone, a tablet, and a desktop.
+The three preview sizes resize the preview window to roughly a phone, a tablet, and the width of your screen. They change the width and nothing else, so what they show you is how your email reflows, not how a given device renders it. The narrow view is narrower than most phones, which makes it a strict test: a layout that holds together there will hold together on a real one.
 
 Stacking at narrow widths is standard behaviour from MJML, the framework HireData builds the email with. HireData does not set the width at which it happens and offers no control over it. What you can control is what stacks: see [Two Columns](/reference/email-builder/blocks/columns#how-it-renders).
 

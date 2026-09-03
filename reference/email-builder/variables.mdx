@@ -1,8 +1,8 @@
 ---
 title: "Variables"
 sidebarTitle: "Variables"
-description: "Personalise a HireData email with variables: the picker, where they work, what a recipient sees when a value is missing, and how to give one a fallback."
-keywords: ["email variables", "variable picker", "merge tags", "personalisation", "default value", "fallback", "custom variable", "show variable values"]
+description: "Personalise a HireData email with variables: the picker, where they work, adding one of your own, what a recipient sees when a value is missing, and fallbacks."
+keywords: ["email variables", "variable picker", "merge tags", "personalisation", "default value", "fallback", "custom variable", "AI variable", "objects"]
 ---
 
 A variable is a placeholder HireData fills in when the email goes out. Write `{{recipient.first_name}}` once and every recipient reads their own name.
@@ -34,20 +34,38 @@ Anywhere you can type into an email, and in several places you cannot.
 
 The curly-brackets button in the toolbar opens **Variables**, a drawer listing everything this email can use. Search by label or key. Where HireData already knows a value, the card shows it, so you can tell `{{brand.name}}` from `{{account.name}}` without guessing.
 
-<img src="/images/email-builder/11-variable-list.png" alt="The Variables drawer with a search box and a plus button, listing Template unsubscribe_url, Template Subject, Template Form URL, Brand Id, Brand Name, Brand Slug, and Brand Avatar, each with its key, its type, and its value" width="350" />
+Variables you added yourself sit at the top, each marked with a sparkle, and the `{{` picker puts the same ones first. Click one to reopen its settings.
 
-The **+** beside the search box adds a variable of your own to this email. Pick a type, then fill in four fields.
+<img src="/images/email-builder/11-variable-list.png" alt="The Variables drawer with a search box and a plus button, listing three sparkle-marked variables of the template's own above Template unsubscribe_url, Template Subject, Template Form URL, and Brand Id, each with its key, its type, and its value" width="350" />
+
+## Adding your own variable
+
+The **+** beside the search box opens a **Variables** dialog: your **Fields** down the left, and on the right the types you can choose from, in six groups. They run from **Text**, **Number**, and **Yes / No** through **Email**, **Phone**, and **Address** to **Color**, **Font**, and **JSON**. **Search types** narrows the list.
+
+<img src="/images/email-builder/18-variable-types.png" alt="The type picker in the Variables dialog, with a Search types box above groups headed Intelligent, Basics, Date and time, People and places, Web and media, and Advanced" width="380" />
+
+Pick a type and four settings open beside it.
 
 - **Name** is what the chip reads on the canvas.
-- **Default value** is what HireData uses when nothing supplies one.
+- **Default value** is what HireData writes in when nothing else supplies one. The control matches the type you picked.
 - **Reference as** is the key you type between the braces. It fills itself in from the name.
 - **What is it for?** is an optional note for whoever opens the template next.
 
-A variable you add here belongs to this email only. The template stores it, so **Save** before you leave.
+**Save changes** keeps them. A variable you add belongs to this email alone, so **Save** the template before you leave.
+
+<img src="/images/email-builder/19-variable-settings.png" alt="The Variables dialog with a Fields list holding AI variable, Phone, and ID, and the Phone settings open at Name, Default value, Reference as, and What is it for, above Cancel and Save changes" width="620" />
+
+A variable of your own earns its keep when one value belongs in several places. Put your phone number in a `{{phone}}` variable and write that into the signature, the footer, and the body, and changing the number afterwards is one edit rather than three.
 
 <Note>
-  The bolt button in the toolbar switches between **Show variable values** and **Hide variable values**. Either way the canvas keeps showing labels, so it is not a preview of a filled-in email. Use the [preview](/reference/email-builder/testing) for that.
+  **AI variable** is the first type in the dialog. Rather than look a value up, it works one out for each recipient from an instruction you write. See [AI variables](/variables/ai-variables).
 </Note>
+
+## Bringing in a record's fields {#bringing-in-a-records-fields}
+
+The database button in the toolbar opens **Objects**, which links a record type to the email: a candidate, a vacancy, a match. Link one and every field on that record joins the variable list, addressed by the object's key, as in `{{candidate.first_name}}`.
+
+[Objects](/reference/forms/objects) explains what an object is and what linking one does. It is written for the form builder, which offers more settings per object, but the records and their keys are the same.
 
 ## What a recipient actually sees
 
@@ -73,7 +91,7 @@ Hi {{ recipient.first_name | default: "there" }},
 
 It fires in both of the failure cases above: when the value is blank, and when the key does not exist at all. The email above reads "Hi Sofia," for Sofia and "Hi there," for everyone whose first name is missing.
 
-A token carrying a modifier stays plain text in the canvas rather than becoming a chip, because the picker only inserts bare keys. Type the modifier yourself after inserting the variable, and confirm it in the preview.
+A chip cannot be edited. It is one object on the canvas rather than the characters it stands for, so there is nowhere to put a modifier. Type the whole token by hand instead, braces and all, and let the picker open and close around you. What you typed stays plain text rather than becoming a chip, which is what a modifier looks like when it is right. Read it back in the preview.
 
 `default` is one of a long list. See [Modifiers](/variables/modifiers) for the rest, and for chaining several together.
 
@@ -82,5 +100,6 @@ A token carrying a modifier stays plain text in the canvas rather than becoming 
 - [Testing](/reference/email-builder/testing) is where you find out what your variables resolve to.
 - [Variables](/variables/introduction) covers the `{{ }}` syntax across forms, messages, and automations as well as email.
 - [Modifiers](/variables/modifiers) lists everything you can do to a value on its way into the email.
-- [Translations](/reference/email-builder/translations) keeps your variables intact in every language.
 - [AI variables](/variables/ai-variables) work out a value per recipient instead of looking one up.
+- [Objects](/reference/forms/objects) covers the records whose fields become variables.
+- [Translations](/reference/email-builder/translations) keeps your variables intact in every language.
