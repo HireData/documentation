@@ -1,0 +1,62 @@
+---
+title: "Message"
+sidebarTitle: "Message"
+description: "The Message category in a HireData automation: send an email, a WhatsApp message or survey, a Ratecard survey, or an HTTP request, and what stops a send."
+keywords:
+  - "message step"
+  - "send email"
+  - "send whatsapp"
+  - "send survey"
+  - "send message"
+  - "http request"
+  - "invalid sender email"
+  - "send limits"
+---
+
+**Message** sends something out. The picker describes it as "Sends a message via any channel." It is a category: choosing it opens a list headed **Message** with one entry per task, each marked with its app's icon, and **Back** returns to the picker.
+
+Message appears in the picker only when a connected app offers a task in this category. Two entries can share a name, as the two **Send Survey** tasks below do; the icon tells them apart.
+
+![The Message list showing HTTP Request, Post Webhook, Send Email, Send Message, and two Send Survey entries, each with its app icon](/images/automations/18-message-tasks.png)
+
+## Settings
+
+Each task has its own drawer. The shared settings are the recipient, the sender or channel, and the content to send: a template, a form, or a request body. The footer ends in **Save Task**. Send Email is a wizard with a progress bar whose final step, **Preview your email**, shows the rendered email under **Summary** and every setting under **Settings**.
+
+The tasks that fill the category in a workspace with HireData, Ratecard, and WhatsApp connected:
+
+| Task | App | What it sends |
+| --- | --- | --- |
+| Send Email | HireData | An email built from an email template, to a fixed address or a person from the event |
+| Send Message | WhatsApp | A WhatsApp message from a message template |
+| Send Survey | WhatsApp | A form as a WhatsApp conversation, one question at a time |
+| Send Survey | Ratecard | A form as a Ratecard survey |
+| [HTTP Request](/reference/automation-tasks/http-request-task) | HireData | A request to any external API |
+| Post Webhook | HireData | The older form of HTTP Request. See [Existing Post Webhook tasks](/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+
+The task catalogue lists every task per app.
+
+## What it outputs
+
+What the channel reports back. A survey outputs the answers once the person replies, which is how a Filter after a WhatsApp survey can branch on an answer. An HTTP Request outputs the response you described. The run step's **Fields** tab lists the values the task used, such as the subject, recipient, and sender of an email.
+
+A survey holds the run while it waits for the reply: the step shows Waiting and the timeline records "Message Sent" and, when the answer arrives, "Message Received".
+
+## What stops the run
+
+A send that the channel refuses. The task card turns red with the line "Cancelled" and the time, and the timeline records the task name with "Cancelled" and the message. In the runs list the **Step** column names the task, such as "HireData: Send Email".
+
+The messages you are most likely to meet, each explained in [Run cancellation reasons](/knowledge-base/run-cancellation-reasons):
+
+| Message | Meaning |
+| --- | --- |
+| `Invalid sender email.` | The sender's domain is not verified in HireData |
+| `Send Limits Exceeded` | The recipient reached an account-level limit under **Settings** > **Safety Limits** |
+| `Send Limits Per Automation Exceeded` | The recipient reached a limit set in this automation's **Settings** |
+
+## Related
+
+- [Automation safety limits](/settings/automation-safety-limits) explains the limits behind the two send-limit messages.
+- [Adding CC and BCC to an email](/apps/messaging/emails/adding-cc-and-bcc-to-an-email) covers the CC and BCC rows of the Send Email settings.
+- [HTTP Request task](/reference/automation-tasks/http-request-task) documents the request, authentication, and response settings.
+- [Add](/reference/automations/steps/add) also lists HTTP Request, because a request can create a record as well as send one.

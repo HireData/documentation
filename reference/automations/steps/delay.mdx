@@ -1,0 +1,42 @@
+---
+title: "Delay"
+sidebarTitle: "Delay"
+description: "The Delay step in a HireData automation: presets, custom amounts, weekend skipping, and set times, and what the run shows while it waits."
+keywords:
+  - "delay step"
+  - "wait"
+  - "pause"
+  - "skip weekends"
+  - "next monday"
+  - "set time"
+  - "run delayed"
+---
+
+**Delay** pauses the run for a set time before the next step. The picker describes it as "Pauses for a set time before continuing." The drawer is headed **Delay** and its footer holds **Back**, **Cancel**, and **Save Delay**.
+
+![The Delay drawer with the preset select reading 5 minutes, a Skip Weekends checkbox, and a Custom switch](/images/automations/12-delay-drawer.png)
+
+## Settings
+
+- **Preset**. A select of ready-made waits, default **1 day**. Durations: **None**, **5 minutes**, **15 minutes**, **30 minutes**, **1 hour**, **8 hours**, **12 hours**, **1 day**, **3 days**, **5 days**, **1 week**. Weekdays: **Next Monday** through **Next Sunday**, which wait until that day. **None** adds no wait.
+- **Skip Weekends**. A checkbox. When the wait would end on a Saturday or Sunday, the run continues on the Monday instead. Disabled for the weekday presets, which already name a day.
+- **Custom**. A switch that replaces the preset select with a number box, default 0, and a period select of **minute**, **hour**, **day**, or **week**.
+- **Set time**. A button that appears for the weekday presets. It sets the time of day, and its timezone, at which the run continues on that weekday. Duration presets have no time setting; the run continues exactly the duration after it reached the step.
+
+The canvas card reads the wait in words, such as "Delay for 5 minutes".
+
+## What it outputs
+
+Nothing. The variables available after a Delay are the same as before it.
+
+While the run waits, the run page shows the step as Waiting with the message "Run Delayed", and the timeline records "Run Scheduled" with the time it will continue. When the wait ends the timeline records "Run Moved" and the next step starts. A test run does not wait: the step completes at once with "Run Moved".
+
+## What stops the run
+
+A Delay never stops a run by itself. A run that is waiting stops when the automation is paused or deleted, or when the step is deleted, before the wait ends. The run then shows as Cancelled and its reason names what changed. See [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
+
+## Related
+
+- [Setup](/reference/automations/steps/setup) holds the start delay, which waits before the run begins rather than between steps.
+- [Filter](/reference/automations/steps/filter) after a Delay checks that the record still qualifies once the wait is over.
+- [Automation steps overview](/reference/automations/overview) lists every step.

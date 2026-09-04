@@ -23,15 +23,15 @@ An automation is a start node followed by steps. An event that matches the start
 
 | Step | Kind | What it does in a run |
 | --- | --- | --- |
-| Setup (the **Start** node) | Start | Names the app, object, and trigger whose event begins a run |
-| Add | Task category | Creates a record in a connected app, such as a note, task, or job application in your ATS, or a Google Sheets row |
-| Delay | Step | Pauses the run for a preset such as 5 minutes or 1 day, or until a chosen weekday |
-| Filter | Step | Continues when its conditions pass and cancels the run when they do not |
-| Find | Task category | Looks up a record in a connected app, or finds an email address or a company domain |
-| Loop | Step | Retrieves records from a connected app and runs the steps inside it once per record |
-| Message | Task category | Sends an email, a WhatsApp message, a survey, or an HTTP request |
-| Prompt | Task | Asks an AI model to do something and returns the output fields you define |
-| Split | Step | Runs its branches side by side, each branch starting with its own Filter |
-| Update | Task category | Changes a record that already exists in a connected app |
+| [Setup](/reference/automations/steps/setup) (the **Start** node) | Start | Names the app, object, and trigger whose event begins a run |
+| [Add](/reference/automations/steps/add) | Task category | Creates a record in a connected app, such as a note, task, or job application in your ATS, or a Google Sheets row |
+| [Delay](/reference/automations/steps/delay) | Step | Pauses the run for a preset such as 5 minutes or 1 day, or until a chosen weekday |
+| [Filter](/reference/automations/steps/filter) | Step | Continues when its conditions pass and cancels the run when they do not |
+| [Find](/reference/automations/steps/find) | Task category | Looks up a record in a connected app, or finds an email address or a company domain |
+| [Loop](/reference/automations/steps/loop) | Step | Retrieves records from a connected app and runs the steps inside it once per record |
+| [Message](/reference/automations/steps/message) | Task category | Sends an email, a WhatsApp message, a survey, or an HTTP request |
+| [Prompt](/reference/automations/steps/prompt) | Task | Asks an AI model to do something and returns the output fields you define |
+| [Split](/reference/automations/steps/split) | Step | Runs its branches side by side, each branch starting with its own Filter |
+| [Update](/reference/automations/steps/update) | Task category | Changes a record that already exists in a connected app |
 
 Add, Find, Message, and Update appear in the picker only when a connected app offers a task in that category, and the task catalogue lists those tasks per app.
