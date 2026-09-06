@@ -12,9 +12,15 @@ keywords:
   - "sub run"
 ---
 
-**Loop** repeats the steps inside it once per record. The picker describes it as "Repeats a set of actions." The drawer is headed **Loop** and opens with one option, **Custom**, described as "Loops through a selection of records." Choosing it leads to the object list, then the filter panel. The footer holds **Cancel** and **Save**, then **Back** and **Save** on the later panels.
+**Loop** repeats the steps inside it once per record. The drawer is headed **Loop** and opens with one option, **Custom**, described as "Loops through a selection of records." Choosing it leads to the object list, then the filter panel. The footer holds **Cancel** and **Save**.
 
-After you save, the **Next step** picker opens for the first step inside the loop. The canvas card shows a **Loop** badge, a line such as "Retrieve Candidates from Carerix", the connection name, the filter, and a **+** inside the card for the loop's own steps.
+After you save, the **Next step** picker opens for the first step inside the loop.
+
+<Note>
+  **On the canvas.** The Loop draws a box with a **Loop** badge. Inside it sits the record card, with a line such as "Retrieve Candidates from Carerix", the connection name, and the filter, followed by the loop's own steps and a **+** to add more.
+
+  ![A Loop box on the canvas with a Loop badge and a card reading Retrieve Candidates from Carerix, hiredata, Filter 1 Id equals 6416](/images/automations/26-loop-card.png)
+</Note>
 
 ![The Loop drawer with a filter reading Id equals 6416, Stop on first success set to No, and Output Variable reading candidate with its help text](/images/automations/15-loop-drawer.png)
 
@@ -40,9 +46,11 @@ Each iteration is a sub-run. The runs list shows a row per sub-run, so the runs 
 
 ## What stops the run
 
-- Records that cannot be retrieved. The Loop shows Cancelled with the message `data_lookup_failed`. Check the connection and the filter fields.
-- A loop with no step inside it. The Loop shows Failed with the message `step_not_found`.
+- A loop with no step inside it. The timeline records "Loop: Failed" with the message "Step not found." and the run ends there. The Loop box itself carries no status line.
+- Records that cannot be retrieved. The Loop shows Cancelled with the message "Data lookup failed." Check the connection and the filter fields.
 - A step inside the loop that stops. It stops that iteration's sub-run only; the other iterations and the steps after the loop continue.
+
+![A run timeline with Run Scheduled, Run Started, then Loop: Failed with the message Step not found.](/images/automations/30-loop-failed-timeline.png)
 
 See [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
 

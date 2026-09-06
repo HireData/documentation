@@ -11,9 +11,11 @@ keywords:
   - "data lookup"
 ---
 
-**Find** looks for something that already exists. The picker describes it as "Looks for something that already exists." It is a category: choosing it opens a list headed **Find** with one entry per task, and **Back** returns to the picker.
+**Find** looks for something that already exists. It is a category: choosing it opens a list headed **Find** with one entry per task, and **Back** returns to the picker.
 
-Find appears in the picker only when a connected app offers a task in this category.
+<Note>
+  Find appears in the picker only when a connected app offers a task in this category.
+</Note>
 
 ## Settings
 
@@ -27,15 +29,17 @@ The tasks that fill the category in a workspace with Carerix and HireData connec
 | Find Email | HireData | An email address for a person, from their name and company domain |
 | Search Domain | HireData | The web domain of a company, from its name |
 
-The task catalogue lists every task per app.
-
 ## What it outputs
 
 The record, address, or domain found. Its fields are listed under the run step's **Fields** tab and are available to later steps under the task's name, so a Message task can address the email Find Email returned.
 
 ## What stops the run
 
-A Find that returns nothing. The task card turns red with the line "Cancelled" and the time, and the timeline records the task name with "Cancelled" and the reason. Steps after it show no status line. Open the card's **Fields** tab to see the values the task searched with.
+A Find that returns nothing. The task card turns red with the line "Cancelled" and the time, and the timeline records the task name with "Cancelled" and the reason, such as "Search domain failure." for a Search Domain that found no domain. Steps after it show no status line. Open the card's **Fields** tab to see the values the task searched with.
+
+![A Search Domain task card in a run, red, with Company set to Respondent: Address Company and the line Cancelled: Today at 10:18 AM below it](/images/automations/31-find-cancelled-card.png)
+
+![A run timeline with Search Domain: Cancelled, the message Search domain failure., and Search Domain: Run Cancelled](/images/automations/32-find-cancelled-timeline.png)
 
 Reasons are explained in [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
 

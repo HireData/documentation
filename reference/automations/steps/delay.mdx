@@ -12,7 +12,7 @@ keywords:
   - "run delayed"
 ---
 
-**Delay** pauses the run for a set time before the next step. The picker describes it as "Pauses for a set time before continuing." The drawer is headed **Delay** and its footer holds **Back**, **Cancel**, and **Save Delay**.
+**Delay** pauses the run for a set time before the next step. The drawer is headed **Delay** and its footer holds **Cancel** and **Save Delay**.
 
 ![The Delay drawer with the preset select reading 5 minutes, a Skip Weekends checkbox, and a Custom switch](/images/automations/12-delay-drawer.png)
 
@@ -23,13 +23,25 @@ keywords:
 - **Custom**. A switch that replaces the preset select with a number box, default 0, and a period select of **minute**, **hour**, **day**, or **week**.
 - **Set time**. A button that appears for the weekday presets. It sets the time of day, and its timezone, at which the run continues on that weekday. Duration presets have no time setting; the run continues exactly the duration after it reached the step.
 
-The canvas card reads the wait in words, such as "Delay for 5 minutes".
+<Note>
+  Without **Set time**, a weekday preset continues at the time of day the run reached the Delay. A run that reached it at 16:20 on Thursday continues at 16:20 on the chosen day.
+</Note>
+
+<Note>
+  **On the canvas.** The card reads the wait in words.
+
+  ![A Delay card on the canvas reading Delay for 5 minutes](/images/automations/24-delay-card.png)
+</Note>
 
 ## What it outputs
 
 Nothing. The variables available after a Delay are the same as before it.
 
-While the run waits, the run page shows the step as Waiting with the message "Run Delayed", and the timeline records "Run Scheduled" with the time it will continue. When the wait ends the timeline records "Run Moved" and the next step starts. A test run does not wait: the step completes at once with "Run Moved".
+While the run waits, the run page shows the step as Waiting with the message "Run Delayed", and the timeline records "Run Scheduled" with the time it will continue. When the wait ends the timeline records "Run Moved" and the next step starts.
+
+<Warning>
+  A test run does not wait. Every Delay completes at once with "Run Moved", so a test shows the steps but not the timing.
+</Warning>
 
 ## What stops the run
 
