@@ -2,7 +2,13 @@
 title: "Net Promoter Score und Opinion Scale"
 sidebarTitle: "NPS und Opinion Scale"
 description: "Das Bewertungsfeld in einem HireData-Formular. Net Promoter Score ist eine feste Skala von 0 bis 10, und bei Opinion Scale legen Sie die Enden fest und beschriften sie."
-keywords: ["nps", "bewertung", "skala", "score", "zufriedenheit", "likert"]
+keywords:
+  - "nps"
+  - "bewertung"
+  - "skala"
+  - "score"
+  - "zufriedenheit"
+  - "likert"
 ---
 
 Net Promoter Score und Opinion Scale sind ein Feldtyp mit einem Umschalter dazwischen. Die befragte Person wählt einen Punkt auf einer Zahlenreihe, und das Formular speichert die gewählte Zahl.
@@ -38,7 +44,7 @@ Eine Zahl, der Punkt, den die befragte Person gewählt hat.
 ## Logik-Operatoren
 
 | Operator | Trifft zu, wenn |
-|---|---|
+| --- | --- |
 | has response | die befragte Person überhaupt geantwortet hat |
 | is equal to | die Antwort genau dem Wert entspricht |
 | is not equal to | die Antwort irgendetwas anderes ist |
@@ -50,10 +56,6 @@ Eine Zahl, der Punkt, den die befragte Person gewählt hat.
 Eine Bewertung ist das Feld, bei dem sich Verzweigen am meisten lohnt. `if score is less than or equal to 7 then go to "What could we do better?"` schickt die unzufriedenen Befragten auf einen Folgepfad und lässt alle anderen abschließen.
 
 ![Der Logic-Tab mit geöffneter Operator-Auswahl auf einer Net-Promoter-Score-Bedingung, mit has response, is equal to, is not equal to und den vier Vergleichsoperatoren](/images/forms-builder/fields/operators-rating.png)
-
-<Warning>
-  Ein als Pflichtfrage gesetztes Bewertungsfeld blockiert die Antwort 0. Die befragte Person wählt 0, das Formular geht nicht weiter, **Next** tut nichts, und keine Meldung erscheint. Net Promoter Score beginnt immer bei 0, lassen Sie ihn also optional. Eine Opinion Scale kann stattdessen bei 1 beginnen, was das Problem vermeidet.
-</Warning>
 
 ## Evaluation
 

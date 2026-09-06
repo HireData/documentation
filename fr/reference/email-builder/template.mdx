@@ -1,0 +1,68 @@
+---
+title: "Template"
+sidebarTitle: "Template"
+description: "La racine d'un e-mail HireData. Comment Template, sections et blocs s'emboîtent, comment le fil d'Ariane circule entre eux, et les paramètres qui s'appliquent à tout l'e-mail."
+keywords: ["modèle d'e-mail", "hiérarchie d'e-mail", "sections", "fil d'Ariane", "couleur des liens", "fond d'e-mail", "campagne UTM"]
+---
+
+Template est l'e-mail lui-même. Il se trouve à la racine de tout ce que vous construisez dans l'éditeur d'e-mails, il contient les sections, et ses paramètres s'appliquent à chaque bloc qu'elles contiennent.
+
+Vous n'ajoutez jamais de Template et vous ne pouvez pas en supprimer un. Aucun menu de l'éditeur ne propose de Template, et aucune liste **Blocks** n'en contient. Chaque e-mail en a exactement un dès sa création, ce qui explique pourquoi le fil d'Ariane commence toujours là.
+
+## Comment un e-mail s'emboîte {#how-an-email-nests}
+
+Trois niveaux, et une exception.
+
+- **Template** contient des sections et rien d'autre. La liste **Blocks** du panneau Template ajoute une section sans ouvrir de menu, parce qu'une section est la seule chose qu'il accepte.
+- Une **section** est une bande en travers de l'e-mail. Elle contient les blocs qu'un destinataire lit : paragraphe, titre, Two Columns, formulaire, image, socials, bouton, HTML et signature.
+- Un bloc **Two Columns** est l'exception. Il se place dans une section, arrive avec exactement deux colonnes déjà à l'intérieur, et chaque colonne contient ses propres blocs. Une colonne accepte moins de types de blocs qu'une section : pas de Two Columns, pas de Form, pas de Signature.
+
+[Choisir un bloc](/fr/reference/email-builder/overview#choosing-a-block) liste chaque bloc et où vous pouvez le placer.
+
+## Le fil d'Ariane {#the-breadcrumb}
+
+Le panneau des paramètres est surmonté d'un fil d'Ariane nommant tout ce qui contient le bloc que vous avez sélectionné. Sélectionnez une ligne d'une signature et vous obtenez les quatre niveaux.
+
+<img src="/images/email-builder/02-breadcrumb.png" alt="Le fil d'Ariane du panneau des paramètres affichant Template, puis Sections, puis Signature, puis Paragraph, avec Paragraph grisé comme niveau actuel" width="402" />
+
+Chaque niveau sauf celui où vous êtes est un bouton. Cliquez sur **Sections** pour la section qui contient le bloc, et sur **Template** pour l'e-mail dans son ensemble. L'e-mail à gauche ne bouge pas. Seul le panneau change.
+
+Deux choses méritent d'être connues avant qu'elles ne vous piègent.
+
+- **Une section seule est étiquetée « Sections », au pluriel.** C'est ce qu'on lit dans le fil d'Ariane et sur chaque ligne de la liste **Blocks** du Template, donc une liste de cinq sections est faite de cinq lignes affichant toutes « Sections ». Le pluriel est le libellé du type de bloc plutôt qu'un décompte, et il ne vous dit jamais sur quelle section vous êtes. L'e-mail à gauche, lui, vous le dit.
+- **Il n'y a pas de niveau colonne.** Sélectionnez un bloc à l'intérieur d'une colonne et le fil d'Ariane affiche `Template > Sections > Two Columns` puis passe directement au bloc. Une colonne n'a pas de panneau de paramètres propre, donc rien ne manque à la chaîne.
+
+## Paramètres {#settings}
+
+Cliquez sur **Template** dans le fil d'Ariane et le panneau se remplit avec les paramètres de tout l'e-mail. C'est le seul niveau que vous ne pouvez pas atteindre en cliquant sur l'e-mail lui-même, car cliquer à côté d'un bloc sélectionne la section plutôt que le template.
+
+- **Background color** se place derrière chaque section, c'est donc ce qu'un destinataire voit autour d'elles et dans les espaces entre elles. Il démarre sur la couleur de fond de la marque, que la commande nomme plutôt que de l'afficher en code hexadécimal.
+- **Links** contient **Link color** et **Underlined**. Les deux s'appliquent à chaque lien de l'e-mail. Un paragraphe peut remplacer l'un ou l'autre, et son propre groupe **Links** propose **Inherit** comme troisième choix pour rendre la décision.
+- **Blocks** liste les sections dans l'ordre où elles apparaissent. Faites glisser une ligne pour déplacer une section, **+** en ajoute une en dessous, et **−** la supprime avec tout ce qu'elle contient.
+- **Theme** est le style avec lequel les blocs que vous ajoutez à partir de maintenant démarreront. Voir [Marque, thème et métadonnées](#brand-theme-and-metadata).
+- **Metadata** contient **UTM Campaign**. Voir [Marque, thème et métadonnées](#brand-theme-and-metadata).
+
+<img src="/images/email-builder/09-template-settings.png" alt="Le panneau des paramètres Template avec Background color, le groupe Links déplié en Link color et Underlined, la liste Blocks de cinq sections, Theme et Metadata" width="384" />
+
+## Marque, thème et métadonnées {#brand-theme-and-metadata}
+
+Trois paramètres décident du style d'un e-mail, et ils atteignent des blocs différents. Les confondre est la raison habituelle pour laquelle une modification atterrit là où vous ne l'attendiez pas.
+
+- **Brand**, dans la barre d'outils, restyle **tout l'e-mail**. Chaque couleur et chaque police encore réglées sur une valeur du thème changent en même temps, dans les blocs rédigés il y a des semaines comme dans les blocs que vous ajouterez ensuite. Faire passer un exemple d'une marque à une autre a déplacé ensemble le fond de sa section, la couleur de son bouton et la couleur de son titre.
+- **Theme**, dans les paramètres du Template, n'atteint **que les blocs que vous ajoutez ensuite**. Le panneau le dit lui-même : « Will be applied to newly added blocks. » Définissez-y le fond de section et chaque section ajoutée à partir de là démarre avec. Les sections déjà dans l'e-mail gardent ce qu'elles ont.
+- **Une valeur que vous définissez vous-même sur un bloc** n'atteint **que ce bloc**, et le fait sortir définitivement de la portée de la marque. La commande cesse de nommer une valeur de thème et affiche votre couleur à la place, et un changement de marque ultérieur la laisse là où vous l'avez mise.
+
+Le panneau vous dit donc lequel est lequel. Une commande affichant « Theme: Palette Surface Color » suit encore la marque. Une commande affichant `#ff0000` ne la suit plus.
+
+<img src="/images/email-builder/06-template-theme.png" alt="Le groupe Theme dans les paramètres Template, décrit comme Will be applied to newly added blocks, avec l'entrée Section dépliée en Background color, Spacing et Border" width="380" />
+
+**Metadata** en dessous contient **UTM Campaign**, cinq champs nommés **Campaign Source**, **Campaign Medium**, **Campaign Name**, **Campaign Term** et **Campaign Content**. HireData marque chaque lien d'un e-mail envoyé, que vous les remplissiez ou non, donc ces champs définissent les valeurs plutôt que d'activer le marquage.
+
+<img src="/images/email-builder/07-template-utm-campaign.png" alt="Le groupe UTM Campaign déplié en Campaign Source, Campaign Medium, Campaign Name, Campaign Term et Campaign Content, chacun avec un exemple et une description" width="380" />
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre le canevas, la barre d'outils, le thème et l'enregistrement.
+- [Sections](/fr/reference/email-builder/sections) est la bande qui contient tout ce qu'un destinataire lit.
+- [Two Columns](/fr/reference/email-builder/blocks/columns) explique le seul bloc qui s'emboîte davantage.
+- [Paragraph](/fr/reference/email-builder/blocks/paragraph) couvre la couleur de lien par bloc qui remplace celle du template.

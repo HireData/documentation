@@ -1,0 +1,115 @@
+---
+title: "Visão geral do Email builder"
+sidebarTitle: "Visão geral"
+description: "Um tour pelo construtor de emails da HireData: o canvas e o painel de definições, como adicionar um bloco, todos os tipos de bloco, a barra de ferramentas, o tema e como guardar."
+keywords: ["construtor de emails", "template de email", "blocos de email", "secções de email", "tema do email", "marca do email", "enviar email de teste", "pré-visualização de email", "alterações por guardar"]
+---
+
+Um template de email é uma mensagem que escreve uma vez e envia muitas vezes, numa automação ou numa newsletter. Abra **Settings**, depois **Emails** em **Templates**, e clique em **New Email**. Escolha **Blank Email** ou um dos templates prontos a usar, e o novo template abre-se no construtor.
+
+Esta página mapeia o construtor. Para um passo a passo que leva um email do zero até estar pronto, leia [Configurar um template de email na HireData](/pt/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+## O construtor num relance
+
+O construtor tem três partes.
+
+- A caixa **Subject** ao longo do topo. É a linha que o destinatário vê na caixa de entrada, e aceita variáveis.
+- O próprio email à esquerda. Clique em qualquer texto dele e escreva. Clique em qualquer bloco para o selecionar.
+- O painel de definições à direita, que mostra as definições do que quer que tenha selecionado por último.
+
+![O construtor de emails: a caixa Subject ao longo do topo, o email à esquerda e o painel de definições do Template à direita](/images/email-builder/01-builder-at-a-glance.png)
+
+<Tip>
+  Ao clicar no texto de um bloco seleciona esse bloco, pelo que o painel se enche com as definições do próprio bloco. Para selecionar a **secção** que o contém, clique ao lado do bloco, à esquerda ou à direita do texto. As secções não têm contorno no canvas, por isso aponte para a faixa de cor de fundo que a secção preenche.
+</Tip>
+
+Um template contém secções, e uma secção contém os blocos que o destinatário lê. [Template](/pt/reference/email-builder/template) explica como os três níveis se aninham, como se move entre eles e porque é que nunca adiciona um Template nem o pode eliminar.
+
+Um breadcrumb acima das definições nomeia tudo o que contém o bloco selecionado. Selecione uma linha de uma assinatura e aparecem os quatro níveis.
+
+<img src="/images/email-builder/02-breadcrumb.png" alt="O breadcrumb do painel de definições a ler Template, depois Sections, depois Signature, depois Paragraph, com Paragraph esbatido como nível atual" width="402" />
+
+## Adicionar um bloco
+
+Todos os painéis de definições que podem conter outros blocos listam-nos em **Blocks**, numerados, pela ordem em que aparecem no email. Cada linha tem três controlos.
+
+- O **+** adiciona um novo bloco abaixo dessa linha. Onde o contentor aceita mais do que um tipo de bloco, abre um menu com eles.
+- O **−** elimina esse bloco.
+- A pega à esquerda arrasta o bloco para cima e para baixo na lista.
+
+<img src="/images/email-builder/03-section-blocks-list.png" alt="O painel de definições de uma secção, a mostrar a sua lista Blocks com uma linha numerada por bloco e os controlos de adicionar, eliminar e arrastar" width="400" />
+
+Clique na própria linha de um bloco para o selecionar e abrir as suas definições. [O breadcrumb](/pt/reference/email-builder/template#the-breadcrumb) faz o caminho de volta. Clique em **Sections** para as definições da secção que contém o bloco, e em **Template** para as definições do email como um todo. O email à esquerda não muda. Só o painel.
+
+## Escolher um bloco {#choosing-a-block}
+
+Duas entradas na lista cobrem mais do que um bloco. Um bloco **Two Columns** chega já com as suas duas colunas lá dentro, e um bloco **Socials** contém um filho por cada rede que ligar.
+
+| Bloco | Onde pode adicioná-lo | O que coloca no email |
+|---|---|---|
+| [Section](/pt/reference/email-builder/sections) | Template | uma faixa ao longo do email, com o seu próprio fundo, padding e borda |
+| [Paragraph](/pt/reference/email-builder/blocks/paragraph) | Secção ou coluna | texto de corpo |
+| [Heading](/pt/reference/email-builder/blocks/heading) | Secção ou coluna | um título, no nível que escolher |
+| [Two Columns](/pt/reference/email-builder/blocks/columns) | Secção | duas colunas lado a lado, cada uma com os seus próprios blocos |
+| [Form](/pt/reference/email-builder/blocks/form) | Secção | botões que respondem a uma pergunta de um dos seus formulários |
+| [Image](/pt/reference/email-builder/blocks/image) | Secção ou coluna | uma imagem da sua Media Library, ou uma guardada numa variável |
+| [Socials](/pt/reference/email-builder/blocks/socials) | Secção | uma fila de ícones sociais, um por link |
+| [Button](/pt/reference/email-builder/blocks/button) | Secção ou coluna | uma chamada à ação que abre um URL |
+| [HTML](/pt/reference/email-builder/blocks/html) | Secção ou coluna | markup escrito por si |
+| [Signature](/pt/reference/email-builder/blocks/signature) | Secção | uma imagem ao lado de um bloco de texto de despedida |
+
+<img src="/images/email-builder/04-block-menu.png" alt="O menu de adicionar na lista Blocks de uma secção, a listar Paragraph, os níveis de título, Two Columns, Form, Image, Socials, Button, HTML e Signature" width="193" />
+
+Uma coluna aceita menos tipos de bloco do que uma secção. Não pode conter um Two Columns, um Form nem uma Signature.
+
+## A barra de ferramentas
+
+A barra de ferramentas percorre o topo do construtor, de **Save** até aos quatro botões de painel à direita.
+
+![A barra de ferramentas do construtor de emails, a mostrar Save, os botões de pré-visualização e de teste, o seletor de marca, os interruptores de variáveis e de código e os quatro botões de painel](/images/email-builder/05-builder-toolbar.png)
+
+**Save** guarda as suas alterações.
+
+Seguem-se dois botões:
+
+- O olho abre uma [pré-visualização](/pt/reference/email-builder/testing#the-preview) do email final, à largura de telemóvel, tablet ou desktop, com um seletor de idioma e um botão **Copy Preview URL**. A sua tooltip avisa que guarda primeiro o email.
+- O avião de papel abre o [Test Email](/pt/reference/email-builder/testing#sending-a-test-email). Envia-lhe o email a si, com valores realistas preenchidos.
+
+**Brand** escolhe a marca de onde vêm as cores, as fontes e o logótipo do email.
+
+Dois interruptores seguem-se ao seletor de marca:
+
+- **Show variable values** é um interruptor de apresentação para o canvas. Para ler um email com valores reais, use a [pré-visualização](/pt/reference/email-builder/testing#the-preview).
+- **Show code editor** abre o markup gerado. Só aparece para contas que podem editar templates diretamente.
+
+Quatro botões no fim abrem painéis sobre o email:
+
+- **Show variable list** lista as variáveis que este email pode usar, e adiciona variáveis suas. Veja [Variáveis](/pt/reference/email-builder/variables).
+- **Manage Template** publica o email aberto na biblioteca partilhada de templates. Só aparece para contas que mantêm essa biblioteca.
+- **Show objects** liga registos, como uma vaga ou um match, ao email. Os campos desses registos tornam-se então [variáveis](/pt/reference/email-builder/variables#bringing-in-a-records-fields) que pode escrever nele.
+- **Manage Languages** define o idioma por defeito do email e as suas [traduções](/pt/reference/email-builder/translations).
+
+## Marca e tema
+
+Todas as cores e fontes de um email novo começam como um valor da marca que escolher em **Brand**, e o painel nomeia o valor em vez de mostrar um código hexadecimal, como "Theme: Palette Surface Color".
+
+Mude o **Brand** e o email inteiro é reestilizado, incluindo os blocos que já escreveu. Substitua um desses valores por uma cor sua e esse controlo deixa de seguir a marca. Veja [Template](/pt/reference/email-builder/template#brand-theme-and-metadata) para as definições que o decidem, e para a diferença entre mudar de marca e definir um tema.
+
+## Guardar
+
+O construtor de emails não guarda enquanto escreve. **Save** guarda. O botão de pré-visualização e **Send test email** guardam ambos antes de correr, por isso qualquer um deles regista o que quer que tenha alterado. Veja [Testar](/pt/reference/email-builder/testing).
+
+Tente sair do construtor com alterações por guardar e aparece um aviso. Oferece-se para as guardar com **Save**, ou para as descartar com **Discard** e seguir em frente.
+
+<img src="/images/email-builder/08-unsaved-changes.png" alt="O aviso Unsaved Changes, a ler You have unsaved changes, Save before leaving, com os botões Save e Discard" width="338" />
+
+Recarregue a página ou feche o separador e é o seu browser que lhe pede confirmação antes de as perder.
+
+## Relacionados
+
+- [Configurar um template de email na HireData](/pt/apps/messaging/emails/setting-up-an-email-template-in-hiredata) leva um email do zero até estar pronto.
+- [Adicionar imagens aos seus emails](/pt/apps/messaging/emails/adding-images-to-your-emails) cobre a Media Library.
+- [Variáveis](/pt/reference/email-builder/variables) cobre o seletor, os valores de recurso e o aspeto de um valor em falta.
+- [Traduções](/pt/reference/email-builder/translations) cobre o envio de um email em vários idiomas.
+- [Testar](/pt/reference/email-builder/testing) cobre a pré-visualização, o envio de teste e o que nenhum dos dois prova.
+- A [visão geral do construtor de formulários](/pt/reference/forms/overview) cobre os formulários para os quais um bloco Form pode apontar.

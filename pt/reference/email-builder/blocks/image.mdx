@@ -1,0 +1,44 @@
+---
+title: "Image"
+sidebarTitle: "Image"
+description: "O bloco Image no construtor de emails da HireData: escolher uma imagem da Media Library ou de uma variável, dimensioná-la e de onde vem o seu texto alternativo."
+keywords: ["imagem de email", "media library", "texto alternativo", "largura da imagem", "altura da imagem", "border radius", "variável de imagem"]
+---
+
+Um bloco Image coloca uma imagem no email. Adicione-o a partir do menu **Blocks** de uma secção ou de uma coluna.
+
+## Como é renderizado
+
+A imagem entra no email como uma imagem simples, dimensionada por **Width** e **Height** e alinhada por **Alignment**.
+
+![Um bloco de imagem à largura Full num email renderizado, a preencher a secção de ponta a ponta sob uma linha de texto de corpo](/images/email-builder/blocks/06c-image-rendered.png)
+
+Dentro de uma coluna ignora o **Width** e toma a largura da coluna, por isso uma imagem numa coluna de 40 por cento sai a 40 por cento da secção. É isso que faz uma imagem ao lado de um parágrafo alinhar.
+
+O bloco não define nenhum máximo para o tamanho do ficheiro nem para as dimensões em píxeis do que escolher. Uma fotografia saída diretamente de um telemóvel sai com o seu peso total, por isso reduza-a antes de a carregar.
+
+## Definições
+
+- **Image** abre a Media Library, com **Upload media** para um ficheiro novo e dois separadores para o que já lá está. **Fields** lista as variáveis que carregam uma imagem, como um logótipo de marca ou um avatar de remetente. Escolha uma dessas e a imagem muda consoante a pessoa de que o email trata.
+- **Width** é **Auto**, que mantém a imagem no seu próprio tamanho, ou **Full**, que a estica para preencher o que a contém.
+- **Alignment** é esquerda, centro ou direita, e não faz nada à largura **Full**.
+- **Height** é **Auto**, **Full** ou **Custom**, que abre um slider de 10 a 300 píxeis.
+- **Border radius** arredonda os cantos: **None**, **Normal**, **Large** ou **Custom**, para um valor por canto.
+
+<img src="/images/email-builder/blocks/06-image-settings.png" alt="O painel de definições do Image a mostrar a imagem escolhida, Width em Auto, Alignment, Height em Auto e Border radius" width="384" />
+
+O texto alternativo não está neste painel. Pertence à imagem, por isso define-o na Media Library. Abra **Image**, clique na imagem e preencha o **Alt text** no cartão que se abre. Recorre ao título da imagem quando o deixa vazio, e é por isso que vale a pena renomear um upload chamado `image.png`.
+
+Uma imagem do separador **Fields** é a exceção. Aí ambas as caixas são só de leitura, por isso um logótipo de marca ou uma foto de remetente carrega o título da variável como texto alternativo e não pode receber outro.
+
+<img src="/images/email-builder/blocks/06b-image-alt-text.png" alt="O cartão da Media Library para uma imagem vinda de um campo, com um Title só de leitura a ler Brand: Banner, uma caixa Alt text vazia e uma nota a dizer que recorre ao título da imagem se ficar vazia" width="464" />
+
+Escreva texto alternativo que diga para que serve a imagem, não qual é o seu aspeto. Um destinatário cujo cliente bloqueia imagens vê essa linha em vez da imagem, e imagens bloqueadas são o caso normal e não a exceção.
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- [Adicionar imagens aos seus emails](/pt/apps/messaging/emails/adding-images-to-your-emails) percorre a Media Library.
+- [Two Columns](/pt/reference/email-builder/blocks/columns) é onde uma imagem toma a largura da coluna.
+- [Variáveis](/pt/reference/email-builder/variables) cobre os tokens por trás do separador **Fields**.
+- [Signature](/pt/reference/email-builder/blocks/signature) tem a sua própria imagem, dimensionada e recortada por si.

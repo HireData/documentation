@@ -1,0 +1,144 @@
+---
+title: "Demander un feedback en un clic"
+sidebarTitle: "E-mail de feedback en un clic"
+description: "Construisez un e-mail de feedback dont la question de notation s'affiche comme un bouton par score, pour qu'un candidat réponde depuis sa boîte de réception au lieu d'ouvrir d'abord un formulaire."
+keywords: ["e-mail de feedback", "enquête d'expérience candidat", "e-mail NPS", "boutons de notation", "bloc form", "feedback en un clic", "enquête de placement"]
+---
+
+_La plupart des demandes de feedback demandent deux fois. L'e-mail vous demande de donner votre avis, le formulaire pose la vraie question, et la moitié des personnes sollicitées n'arrivent jamais jusqu'à la question. Un bloc Form réduit tout cela à une seule étape. La notation se trouve dans l'e-mail sous forme d'une rangée de boutons, et le clic qui y répond est le même clic qui ouvre le formulaire._
+
+## Ce que vous allez construire
+
+1. Un court formulaire de feedback dont la première question est la notation
+2. Un e-mail qui transforme cette question en un bouton par score
+3. Un envoi de test qui prouve que les boutons portent la réponse
+4. Un endroit où les réponses atterrissent, rattaché au bon enregistrement
+
+Un formulaire, un e-mail, et aucune logique d'automatisation. Ce qui demande de la réflexion, c'est la question, parce que c'est celle à laquelle un destinataire répond depuis sa boîte de réception et qu'il ne peut pas reprendre.
+
+## Avant de commencer
+
+Décidez à qui vous demandez et quand. Une enquête de placement une semaine après une prise de poste, un e-mail sur l'expérience d'entretien le même après-midi, une vérification de réengagement pour un candidat devenu silencieux. Le moment change la formulation plus qu'il ne change la construction.
+
+Décidez ensuite de la question unique. Seule la question directrice du formulaire devient des boutons, donc tout ce que vous voulez savoir d'autre passe derrière elle, répondu sur le formulaire lui-même par les personnes qui tiennent assez à vous répondre pour continuer.
+
+## Construire le formulaire
+
+### 1. Placez la notation en premier
+
+Ouvrez **Forms**, cliquez sur **New Form**, choisissez **Blank Form** et ajoutez une question [Net Promoter Score](/fr/reference/forms/fields/net-promoter-score-and-opinion-scale) comme premier champ : « How likely are you to recommend us to a friend? » Elle est fixée de 0 à 10 avec **NOT LIKELY AT ALL** et **EXTREMELY LIKELY** sous les extrémités, et ces deux libellés sont ce qui empêche une simple rangée de nombres d'être ambiguë.
+
+Laissez-la en **Optional**. Un champ de notation obligatoire bloque la réponse 0, et 0 est la réponse dont vous voulez le plus entendre parler.
+
+Ajoutez ensuite les questions qui ne comptent qu'une fois le score obtenu. Deux suffisent en général.
+
+| Question | Type de champ | Pourquoi elle est là |
+|---|---|---|
+| How likely are you to recommend us to a friend? | [NPS](/fr/reference/forms/fields/net-promoter-score-and-opinion-scale) | La question directrice. C'est la rangée de boutons dans l'e-mail. |
+| What is the main reason for your score? | [Long Text](/fr/reference/forms/fields/short-and-long-text) | La réponse qui vous dit quoi changer. |
+| May we quote you? | [Yes/No](/fr/reference/forms/fields/yes-no) | Posée en dernier, parce qu'elle n'a de sens qu'après qu'ils ont dit quelque chose. |
+
+Terminez par un [écran de fin](/fr/reference/forms/fields/ending-screen). Un destinataire qui a cliqué sur un chiffre depuis sa boîte de réception et atterrit sur une page vide suppose que le clic a échoué.
+
+<Tip>
+  Préférez une **Opinion Scale** de 1 à 5 si la plupart de vos destinataires lisent leurs e-mails sur un téléphone. Onze boutons s'empilent en onze lignes sur un écran étroit, cinq s'empilent en cinq, et une Opinion Scale vous laisse rédiger vous-même les trois libellés d'extrémité.
+</Tip>
+
+### 2. Liez l'enregistrement concerné par le feedback
+
+Ouvrez le panneau **Objects** et liez l'objet auquel la réponse appartient, généralement **Match** ou **Vacancy**. Deux choses en découlent. Chaque champ de cet enregistrement devient une variable que vous pouvez écrire dans la question, donc vous pouvez parler du poste par son nom. Et la réponse arrive sur l'onglet **Responses** de cet enregistrement, plutôt que dans une pile de réponses à rapprocher à la main.
+
+L'objet que vous placez en haut est l'objet principal du formulaire. Voir [Objets](/fr/reference/forms/objects).
+
+### 3. Publiez-le
+
+Cliquez sur **Publish**. Chaque bouton de l'e-mail porte un lien tokenisé par destinataire, qui ouvre le formulaire quel que soit son statut, donc un brouillon fonctionnerait techniquement. Publiez quand même. Un brouillon est le formulaire qu'un collègue range, et un formulaire publié est aussi celui que vous pouvez envoyer par n'importe quel autre canal.
+
+Laissez **Make form public** désactivé, sauf si vous publiez le lien quelque part. Le jeton dans le lien envoyé par e-mail est ce qui laisse entrer le destinataire, donc le formulaire n'a pas besoin d'être ouvert à quiconque trouve son adresse.
+
+## Construire l'e-mail
+
+### 4. Créez l'e-mail et choisissez la marque
+
+Ouvrez **Emails** depuis les **Settings**, cliquez sur **New Email** et choisissez **Blank Email** ou l'un des modèles fournis. Réglez d'abord **Brand** en haut à droite. Cela restyle tout l'e-mail, couleurs de boutons comprises, donc le choisir tôt vous évite de vérifier le contraste deux fois. Voir [Créer un modèle d'e-mail](/fr/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+### 5. Rédigez la demande la plus courte que vous puissiez assumer
+
+Un [titre](/fr/reference/email-builder/blocks/heading) et un [paragraphe](/fr/reference/email-builder/blocks/paragraph) au-dessus des boutons. Dites qui demande, à quoi sert le score et combien de temps prend la suite. « Une question, et une zone pour tout ce que vous voulez nous dire d'autre » est une promesse que le formulaire peut tenir.
+
+N'expliquez pas l'échelle dans le paragraphe. Les libellés d'extrémité sous les boutons s'en chargent.
+
+### 6. Ajoutez le bloc Form
+
+Cliquez sur le **+** dans la liste **Blocks** de la section et choisissez **Form**, puis réglez les deux sélecteurs en haut de son panneau.
+
+- **Form** est le formulaire de feedback que vous venez de publier.
+- **Leading Question** est la question NPS. Les champs masqués et les écrans de fin sont exclus de la liste.
+
+Les deux appartiennent à l'e-mail plutôt qu'au bloc, donc un e-mail pose une question. Un deuxième bloc Form arrive en ciblant la même question, ce qui vaut la peine d'être su avant d'essayer de mettre deux notations dans un même envoi.
+
+Onze boutons apparaissent dans le canevas, de 0 à 10, avec les libellés d'extrémité en dessous, en capitales.
+
+![Onze boutons numérotés de 0 à 10 sous la question « How likely are you to recommend us to a friend? », avec NOT LIKELY AT ALL et EXTREMELY LIKELY sous les extrémités](/images/email-builder/blocks/05b-form-rendered.png)
+
+Chaque bouton porte le lien du formulaire avec ce score attaché, et HireData enregistre le score en redirigeant le destinataire vers le formulaire. Un destinataire qui clique sur 4 puis ferme l'onglet vous a donc quand même dit 4. Tout ce qui suit la notation est un bonus. Voir [Form](/fr/reference/email-builder/blocks/form).
+
+### 7. Stylisez les boutons pour qu'ils se lisent comme une échelle
+
+Laissez **Show Question** activé. La question se place au-dessus de la rangée, et un e-mail qui montre des chiffres sans la question à laquelle ils répondent est ignoré.
+
+- **Size: Medium** et **Rounded corners: Full** transforment les nombres en une rangée de cercles, qui se lit comme une notation plutôt que comme onze liens.
+- **Background color** et **Color** sont le fond du bouton et le chiffre. Gardez un contraste fort. Beaucoup de destinataires lisent leurs e-mails en mode sombre, et un fond pâle avec des chiffres blancs disparaît.
+- **Width: Auto** laisse les onze boutons se partager la rangée. **Full** donne à chacun la largeur de l'e-mail, ce qui les empile quel que soit l'écran.
+- **Alignment : centre** pour une échelle.
+
+### 8. Vérifiez-le en largeur téléphone avant d'envoyer
+
+Chaque bouton est sa propre colonne, donc en dessous de 480 pixels la rangée cesse de tenir et les boutons s'empilent un par ligne. Onze boutons deviennent onze lignes. Ouvrez l'aperçu et rétrécissez la fenêtre jusqu'à ce que cela se produise, puis décidez si vous pouvez vivre avec ou si vous préférez l'échelle à cinq points.
+
+## Testez-le
+
+### 9. Envoyez-vous la vraie version
+
+Ouvrez **Test Email**, laissez le nom et l'adresse vides pour vous l'envoyer à vous-même, et cliquez sur **Send test email**. Puis cliquez sur un chiffre dans l'e-mail qui arrive.
+
+Vous devriez atterrir sur le formulaire avec la notation déjà remplie. Si elle reste vide, la **Leading Question** n'est pas le champ que vous croyez.
+
+Un clic depuis un e-mail de test n'enregistre rien, ce qui est exactement ce que vous voulez pendant que vous éditez encore. Le score n'atterrit sur une réponse que pour un envoi réel.
+
+<Note>
+  Si le formulaire lie un objet requis, l'envoi de test a besoin d'un enregistrement pour lui. Choisissez-en un sous **Objects** dans la fenêtre, ou utilisez **Auto fill**. Laissez-le vide et l'envoi échoue avec une notification **Failed to send test email** nommant l'objet par sa clé. Voir [Tester](/fr/reference/email-builder/testing).
+</Note>
+
+### 10. Ajoutez les autres langues, si vous en avez
+
+Le bloc Form s'affiche dans la langue du formulaire qu'il cible, pas dans la langue de l'e-mail, donc un formulaire néerlandais place des boutons néerlandais dans un modèle anglais. Les libellés de notation et l'appel à l'action de repli se traduisent par langue depuis le panneau **Manage Languages** de l'e-mail. Voir [Traductions](/fr/reference/email-builder/translations).
+
+## Envoyez-le et lisez les réponses
+
+Branchez le modèle terminé dans une tâche **Send Email** et choisissez l'audience comme pour n'importe quel autre envoi. Voir [Automatisations](/fr/automations/automations).
+
+Les réponses arrivent sur l'onglet **Responses** de l'enregistrement auquel le formulaire était lié, et sur le formulaire lui-même. Voir [Configurer un formulaire par enregistrement](/fr/content/configuring-a-form-per-record).
+
+Une automatisation peut agir sur la réponse dès qu'elle arrive. Avant d'écrire la condition, ouvrez **Test & Evaluate** sur le formulaire et lisez **Automation variables**, qui liste chaque valeur avec, à côté, la variable exacte à copier. Voir [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate).
+
+Commencez avec une seule branche. Un score bas crée une tâche pour la personne qui gère la relation, et tout le reste ne fait rien. Tout ce qui est plus élaboré peut attendre que vous ayez vu trente vraies réponses.
+
+## Analyser et améliorer
+
+- **Les gens cliquent-ils sur un chiffre puis s'arrêtent ?** C'est un e-mail qui fonctionne et un formulaire qui demande trop. Supprimez une question.
+- **Chaque score est-il un 8, un 9 ou un 10 ?** Vérifiez à qui vous demandez. Une enquête qui ne va qu'aux placements dont vous êtes satisfait mesure votre liste d'envoi.
+- **Personne ne clique du tout ?** Regardez les boutons dans un client en mode sombre et sur un téléphone avant de réécrire le texte.
+- **La réponse libre vous apprend-elle quelque chose que vous ne saviez pas ?** Sinon, la question est trop générale. « What is the main reason for your score? » bat « Any other comments? »
+
+## Besoin d'aide supplémentaire ?
+
+Si les boutons s'affichent comme un unique bouton **Give Feedback**, la question directrice est d'un type qui n'a pas de boutons propres. Seules les questions de notation et de choix obtiennent un bouton par valeur. Tout le reste retombe sur un appel à l'action unique, que vous pouvez cliquer dans le canevas pour le reformuler.
+
+Si une question à choix manque d'options, vous avez atteint le plafond de cinq options. Un bloc Form affiche les cinq premières et ne donne aucun avertissement pour le reste. Voir [Limites](/fr/reference/email-builder/blocks/form#limits).
+
+Si vous avez encore besoin d'aide, contactez [support@hiredata.com](mailto:support@hiredata.com) en précisant :
+
+- Le nom du modèle d'e-mail et le nom du formulaire
+- La question directrice et ce qui s'est affiché à la place
+- S'il s'agissait d'un envoi de test ou d'un envoi réel

@@ -1,8 +1,18 @@
 ---
 title: "Der Formular-Builder im Überblick"
 sidebarTitle: "Überblick"
-description: "Ein Rundgang durch den HireData-Formular-Builder: seine drei Tabs, die Panels der Toolbar, jeder Feldtyp und die Einstellungen, die alle Felder teilen."
-keywords: ["formular-builder", "formularfelder", "feldtypen", "formular-theme", "formular-übersetzungen", "formularvorlagen", "formular öffentlich machen", "always include", "verborgenes feld", "pflichtfeld"]
+description: "Ein Rundgang durch den HireData-Formular-Builder: die Tabs Content, Logic und Evaluation, die Panels der Toolbar, jeder Feldtyp und die Einstellungen, die alle Felder teilen."
+keywords:
+  - "formular-builder"
+  - "formularfelder"
+  - "feldtypen"
+  - "formular-theme"
+  - "formular-übersetzungen"
+  - "formularvorlagen"
+  - "formular öffentlich machen"
+  - "always include"
+  - "verborgenes feld"
+  - "pflichtfeld"
 ---
 
 Ein Formular ist eine Reihe von Fragen, die jemand im Web oder in einer WhatsApp-Konversation beantwortet. Öffnen Sie die Seite **Forms** über die **Settings** und klicken Sie auf **New Form**. Wählen Sie **Blank Form** oder eine der [Vorlagen](#templates), und das neue Formular öffnet sich im Builder.
@@ -13,7 +23,7 @@ Diese Seite kartiert den Builder. Für eine Anleitung, die ein Formular von leer
 
 Der Builder hat drei Teile.
 
-Die linke Spalte listet die Felder des Formulars in der Reihenfolge, in der eine befragte Person ihnen begegnet. Über der Liste sitzen die Tabs **Content**, **Logic** und **Evaluation** sowie die **+**-Schaltfläche, die die **Add Content**-Palette öffnet.
+Die linke Spalte listet die Felder des Formulars in der Reihenfolge, in der eine befragte Person ihnen begegnet. Über der Liste sitzen die Tabs **Content**, **Logic** und **Evaluation** sowie die **\+**-Schaltfläche, die die **Add Content**-Palette öffnet.
 
 Die rechte Spalte zeigt die Vorschau des Formulars, mit eigenen Tabs **Interactive Preview**, **Conversational Preview** und **Test & Evaluate**.
 
@@ -25,7 +35,7 @@ Die Leiste oben enthält den Formularnamen und die Toolbar.
 
 Der **Content**-Tab enthält die Felder und ihre Einstellungen. Klicken Sie auf ein Feld, um seine Karte zu öffnen, und ziehen Sie es am Griff links, um die Reihenfolge zu ändern.
 
-Die **+**-Schaltfläche öffnet die **Add Content**-Palette. Sie gruppiert die Einträge nach Kategorie und wiederholt die meistgenutzten unter **Recommended**. **Find a field type** durchsucht die Liste.
+Die **\+**-Schaltfläche öffnet die **Add Content**-Palette. Sie gruppiert die Einträge nach Kategorie und wiederholt die meistgenutzten unter **Recommended**. **Find a field type** durchsucht die Liste.
 
 ![Die Add-Content-Palette mit ihrer Recommended-Liste und den Gruppen Text, Contact Info, Temporal, Choice, Numeric, Rating, Other und Ending](/images/forms-builder/01-add-content-palette.png)
 
@@ -78,7 +88,7 @@ Die Palette zeigt mehr Einträge, als es Feldtypen gibt. Short Text und Long Tex
 Jede Zeile unten hat eine eigene Seite, die die Einstellungen des Typs beschreibt, was er speichert, welche Operatoren die Logik für ihn anbietet und was die AI-Evaluatoren mit ihm anfangen können.
 
 | Feldtyp | Gruppe | Speichert |
-|---|---|---|
+| --- | --- | --- |
 | [Short Text und Long Text](/de/reference/forms/fields/short-and-long-text) | Text | Text |
 | [Email](/de/reference/forms/fields/email) | Contact Info | Text |
 | [Phone Number](/de/reference/forms/fields/phone-number) | Contact Info | Text |
@@ -146,13 +156,7 @@ Schalten Sie **Hidden** ein, werden **Required** und **Always include** gelösch
 
 ### Was als Antwort zählt {#required-answers}
 
-Ein leeres Textfeld, ein leeres Zahlenfeld, keine gewählte Option und keine angehängte Datei zählen alle als keine Antwort, und das Webformular zeigt eine Meldung unter der Frage, etwa „This field is required and cannot be empty."
-
-Mit No zu antworten, einen Toggle aus zu lassen, 0 einzugeben und 0 auf einer Bewertung zu wählen sind echte Antworten und sollen ein Pflichtfeld erfüllen.
-
-<Warning>
-  Ein Bug im Webformular blockiert diese Antworten. Antwortet jemand mit No, lässt einen Toggle aus, gibt 0 ein oder wählt 0 auf einer Bewertung, bleibt die befragte Person an einer Pflichtfrage hängen. **Next** tut nichts, keine Meldung erscheint, und keine Regel auf diesem Feld greift. Bis der Fix ausgeliefert ist, lassen Sie Yes/No- und Net-Promoter-Score-Fragen optional und setzen Sie bei einer verpflichtenden Number-Frage einen **Minimum Value** von 1.
-</Warning>
+Ein leeres Textfeld, ein leeres Zahlenfeld, keine gewählte Option und keine angehängte Datei zählen alle als keine Antwort. Das Webformular zeigt dann eine Meldung unter der Frage, etwa „This field is required and cannot be empty."
 
 In einem konversationellen Formular ist **Auto reply (on invalid answer)** die Nachricht, die zurückgesendet wird, wenn ein Pflichtfeld keine verwertbare Antwort erhält.
 

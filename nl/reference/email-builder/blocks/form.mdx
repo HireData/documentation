@@ -1,0 +1,61 @@
+---
+title: "Form"
+sidebarTitle: "Form"
+description: "Het Form-block in de HireData-e-mailbuilder: knoppen die een van je formuliervragen beantwoorden vanuit de e-mail, en waar elk vraagtype in verandert."
+keywords: ["e-mailformulier", "leading question", "feedbackknoppen", "NPS-e-mail", "ratingknoppen", "give feedback"]
+---
+
+Een Form-block zet één vraag uit een van je formulieren rechtstreeks in de e-mail. De ontvanger antwoordt door op een knop te klikken, die het formulier opent met dat antwoord al ingevuld. Zo krijgt een feedbackmail een antwoord in één klik in plaats van twee.
+
+Voeg het toe vanuit het **Blocks**-menu van een sectie. Een kolom kan er geen bevatten.
+
+## Hoe het rendert
+
+Wat het block in de e-mail zet, hangt af van het type van de leidende vraag.
+
+- **Net Promoter Score** rendert elf knoppen, 0 tot 10, wat voor bereik de vraag zelf ook heeft.
+- **Opinion Scale** rendert één knop per punt op zijn eigen bereik, met de eindlabels van de vraag eronder in kapitalen.
+- **Multiple Choice** en **Dropdown** renderen één knop per optie.
+- Al het andere rendert één call-to-action met "Give Feedback". Klik erop in de e-mail om je eigen formulering te schrijven.
+
+![Elf knoppen genummerd 0 tot 10 onder de vraag "How likely are you to recommend us to a friend?", met NOT LIKELY AT ALL en EXTREMELY LIKELY onder de uiteinden](/images/email-builder/blocks/05b-form-rendered.png)
+
+De ster- en emoji-ratingvarianten die [alleen een integratie kan toevoegen](/nl/reference/forms/overview) tekenen ook één knop per waarde, een ster of een emoji in plaats van een getal. Duimpjes en slider krijgen de enkele call-to-action.
+
+Elke knop is zijn eigen kolom, dus op een scherm smaller dan 480 pixels past de rij niet meer en stapelen de knoppen zich één per regel. Een Net Promoter Score-vraag wordt elf gestapelde knoppen op een telefoon, wat het bekijken in de preview waard is voordat je verstuurt.
+
+Het block rendert in de taal van het formulier waar het naar wijst, niet in de taal van de e-mail. Een Engelse template gebonden aan een Nederlands formulier zet Nederlandse knoppen in de e-mail. Controleer het canvas voordat je verstuurt.
+
+## Instellingen
+
+- **Form** kiest het formulier om naar te wijzen. De lijst doorzoekt elk formulier in de workspace.
+- **Leading Question** kiest de vraag die de knoppen beantwoorden. Verborgen vragen en ending screens staan niet in de lijst.
+- **Background color** en **Color** stylen de knoppen.
+- **Show Question** zet de eigen formulering van de vraag boven de knoppen, of laat hem weg.
+- **Size** is **Small**, **Medium** of **Large**, dat de tekstgrootte en de padding samen instelt.
+- **Rounded corners** is **None**, **Normal**, **Large** of **Full**, van vierkant tot een volledige pil.
+- **Width** is **Auto**, **Half**, **Full** of **Custom**, dat een slider opent van 35 tot 100 procent.
+- **Alignment** is links, midden of rechts.
+- **Text** bevat **Font Family** met een gewichtselector, **Size**, **Letter Spacing** en **Line Height**.
+- **Spacing** bevat twee knoppen.
+  - **Margin**, de ruimte boven en onder de knoppen.
+  - **Padding**, de ruimte tussen het label en de rand van elke knop.
+- **Border** bevat **Border color**, **Border width** en **Border radius**.
+
+<img src="/images/email-builder/blocks/05-form-settings.png" alt="Het Form-instellingenpaneel met de Form-select, Leading Question, Background color en Color, Show Question, Size, Rounded corners, Width, Alignment en de groepen Text, Spacing en Border" width="384" />
+
+**Form** en **Leading Question** horen bij de e-mail in plaats van bij het block. Voeg een tweede Form-block toe en het komt al wijzend naar hetzelfde formulier en dezelfde vraag, en een van beide wijzigen wijzigt beide blocks.
+
+## Beperkingen {#limits}
+
+- Een keuzevraag rendert alleen zijn **eerste vijf opties**. Een zesde optie krijgt geen knop, geen waarschuwing en geen teken in het canvas dat hij ontbreekt. Herorden de vraag zodat de vijf die ertoe doen vooraan staan, of wijs het block naar een kortere vraag.
+- Een Net Promoter Score-vraag is hier altijd 0 tot 10. Welk bereik de vraag ook heeft, het wordt genegeerd.
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de builder, de toolbar, het thema en elk blocktype.
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de formulieren waar een Form-block naar kan wijzen.
+- [Net Promoter Score en Opinion Scale](/nl/reference/forms/fields/net-promoter-score-and-opinion-scale) is het vraagtype achter de elf knoppen.
+- [Multiple Choice en Dropdown](/nl/reference/forms/fields/multiple-choice-and-dropdown) is het vraagtype dat op vijf knoppen is begrensd.
+- [Sectie](/nl/reference/email-builder/sections) is het enige block waar een Form in kan.
+- [Vertalingen](/nl/reference/email-builder/translations) behandelt de ratinglabels en call-to-action die een Form-block per taal aanbiedt.

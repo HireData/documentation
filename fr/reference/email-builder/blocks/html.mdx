@@ -1,0 +1,41 @@
+---
+title: "HTML"
+sidebarTitle: "HTML"
+description: "Le bloc HTML dans l'éditeur d'e-mails HireData : un éditeur de code pour votre propre balisage, la taille de police que HireData y ajoute, et la limite de caractères."
+keywords: ["html d'e-mail", "html brut", "bloc de code", "balisage personnalisé", "éditeur html", "taille de police d'e-mail"]
+---
+
+Un bloc HTML dépose dans l'e-mail du balisage que vous écrivez vous-même. Utilisez-le pour ce que les autres blocs ne savent pas faire. Ajoutez-le depuis le menu **Blocks** d'une section ou d'une colonne.
+
+## Comment il s'affiche
+
+HireData dépose votre balisage dans l'e-mail sans y toucher, à une exception près qu'il est obligé de faire.
+
+L'e-mail est construit avec MJML, qui met à zéro la taille de police de tout ce qu'il n'a pas mis en page lui-même. Du texte collé dans un bloc HTML arriverait invisible. Alors avant l'envoi, HireData parcourt votre balisage et ajoute `font-size: 16px` à tout élément `body`, `table`, `p`, `span` ou `a` qui n'en porte pas déjà une, et enveloppe le texte libre dans un `span` à la même taille.
+
+Définissez vous-même une taille de police et HireData n'y touche pas. C'est la façon d'obtenir toute taille autre que 16 pixels d'un bloc HTML.
+
+![Un bloc HTML rendu montrant sa ligne de texte dans la police serif par défaut du navigateur, contrairement à la police de marque utilisée par tous les autres blocs autour](/images/email-builder/blocks/09b-html-rendered.png)
+
+Collez un document HTML entier et seul ce qui se trouve dans `<body>` survit. Collez quelque chose que l'analyseur ne peut pas lire du tout et cela passe exactement tel qu'écrit.
+
+Un bloc HTML ne porte aucune [traduction](/fr/reference/email-builder/translations). Ce que vous y écrivez part inchangé dans chaque langue dans laquelle l'e-mail est envoyé.
+
+## Paramètres
+
+Il n'y a pas de paramètres. Le panneau est l'éditeur, avec les numéros de ligne à gauche. Tapez ou collez votre balisage et il apparaît dans l'e-mail au fur et à mesure.
+
+<img src="/images/email-builder/blocks/09-html-settings.png" alt="Le panneau des paramètres du bloc HTML, montrant un éditeur de code sombre avec numéros de ligne contenant une seule balise de paragraphe" width="384" />
+
+Le bloc ne style rien pour vous. Les couleurs, les polices et les espacements que les autres blocs prennent de la marque sont à vous d'écrire.
+
+## Limites
+
+Un modèle d'e-mail envoyé à l'API HireData est refusé si un bloc HTML dépasse 100 000 caractères. L'éditeur ne compte rien pour vous, donc un collage de cette taille mérite d'être élagué avant de devenir le problème de quelqu'un d'autre.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre l'éditeur, la barre d'outils, le thème et chaque type de bloc.
+- [Sections](/fr/reference/email-builder/sections) et [Two Columns](/fr/reference/email-builder/blocks/columns) acceptent tous deux un bloc HTML.
+- [Paragraph](/fr/reference/email-builder/blocks/paragraph) est le bloc à privilégier d'abord, parce qu'il prend les polices et les couleurs de la marque sans qu'on le lui dise.
+- [Traductions](/fr/reference/email-builder/translations) explique pourquoi un bloc HTML est la seule chose que vous ne pouvez pas traduire.

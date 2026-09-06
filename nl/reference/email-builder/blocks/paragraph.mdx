@@ -1,0 +1,46 @@
+---
+title: "Paragraph"
+sidebarTitle: "Paragraph"
+description: "Het Paragraph-block in de HireData-e-mailbuilder: lopende tekst, de lettertype- en kleurinstellingen, het opmaakmenu en de linkkleur die het kan overschrijven."
+keywords: ["e-mailalinea", "lopende tekst", "e-maillettertype", "regelhoogte", "letterafstand", "vet cursief", "e-maillink"]
+---
+
+Een Paragraph-block is lopende tekst. Je bewerkt het door op de woorden in de e-mail te klikken en te typen, net zoals je in een document zou doen.
+
+Voeg het toe vanuit het **Blocks**-menu van een sectie of een kolom. Beide bieden het als eerste aan.
+
+## Hoe het rendert
+
+De paragraph wordt een blok tekst over de volle breedte van wat hem bevat, en loopt op die breedte door naar de volgende regel.
+
+Selecteer woorden in de e-mail en er verschijnt een klein menu erboven. Het bevat vet, onderstrepen, cursief, doorhalen, een tekstkleur en een link. De drie puntjes aan het eind bevatten subscript en superscript.
+
+Een link die je vanuit dat menu toevoegt kan een webadres, een e-mailadres of een telefoonnummer zijn. HireData accepteert `http`, `https`, `mailto` en `tel`.
+
+![Een gerenderde alinea die over de breedte van zijn sectie doorloopt, met een uitschrijflink in de merkkleur en onderstreept, en drie variabele-chips in de tekst](/images/email-builder/blocks/02b-paragraph-rendered.png)
+
+## Instellingen
+
+- **Font Family** kiest het lettertype, met een gewichtselector ernaast van Ultra Light tot Heavy. De eigen lettertypes van het merk staan bovenaan de lijst, boven de rest.
+- **Size** is een slider en een vak, 8 tot 48 pixels. Nieuwe paragraphs beginnen op 16.
+- **Color** bepaalt de tekstkleur en begint op de surface-tekstkleur van het merk.
+- **Alignment** is links, midden of rechts.
+- **Links** bevat twee knoppen voor alleen de links in deze paragraph. Beide bieden **Inherit**, dat de beslissing teruggeeft aan de [template](/nl/reference/email-builder/template#settings), en dat is wat een nieuwe paragraph gebruikt.
+  - **Link color**.
+  - **Underlined**, **Inherit**, **Yes** of **No**.
+- **Advanced** bevat drie knoppen.
+  - **Letter Spacing**, 0 tot 10.
+  - **Line Height**, 1 tot 2.
+  - **Margin**, de ruimte boven en onder de paragraph.
+
+Typ `{{` waar dan ook in een paragraph om een variabele in te voegen.
+
+<img src="/images/email-builder/blocks/02-paragraph-settings.png" alt="Het Paragraph-instellingenpaneel met Font Family, Size, Color, Alignment, de Links-groep met Inherit geselecteerd, en de Advanced-groep met Letter Spacing, Line Height en Margin" width="384" />
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de builder, de toolbar, het thema en elk blocktype.
+- [Heading](/nl/reference/email-builder/blocks/heading) is dezelfde tekstknoppen op kopniveau.
+- [Template](/nl/reference/email-builder/template#settings) bepaalt de linkkleur die een paragraph erft.
+- [Variabelen](/nl/reference/email-builder/variables) behandelt de picker, de fallbacks en hoe een ontbrekende waarde eruitziet.
+- [Button](/nl/reference/email-builder/blocks/button) is het block om te gebruiken wanneer de link het punt is.

@@ -1,0 +1,48 @@
+---
+title: "Socials"
+sidebarTitle: "Socials"
+description: "Der Socials-Block im HireData-E-Mail-Builder: eine Reihe von Social-Icons, die URL und das Icon pro Link und wie HireData ein Icon aus der Adresse ableitet."
+keywords: ["e-mail-social-icons", "social-links", "linkedin", "instagram", "icon-größe", "social-footer"]
+---
+
+Ein Socials-Block ist eine Reihe von Social-Icons, eines pro Link. Er ist der übliche Weg, wie eine E-Mail auf Ihre Konten zeigt, und er sitzt meist in der letzten Sektion. Fügen Sie ihn aus dem **Blocks**-Menü einer Sektion oder einer Spalte hinzu.
+
+Jedes Icon in der Reihe ist ein **Social**, ein eigener Block, der eine Adresse und ein Bild enthält. Sie fügen sie über den übergeordneten Socials-Block hinzu und entfernen sie dort, nicht über ein Menü.
+
+## Wie er gerendert wird
+
+HireData liest die Adresse und leitet das Icon daraus ab, sodass ein `linkedin.com`-Link das LinkedIn-Zeichen bekommt, ohne dass Sie eines wählen. Eine Adresse, die es nicht erkennt, bekommt ein einfaches Web-Icon.
+
+![Eine gerenderte Reihe von drei Social-Icons, jedes mit seinem Label daneben: LinkedIn, Instagram und YouTube, zentriert in der Sektion](/images/email-builder/blocks/07c-socials-rendered.png)
+
+Es repariert auch Adressen, die keine Links sind. Eine nackte E-Mail-Adresse wird zu einem `mailto:`-Link und eine nackte Telefonnummer zu einem `tel:`-Link, sodass ein Icon wählen oder einen Mail-Client öffnen kann.
+
+Das Label neben einem Icon ist Text in der E-Mail und keine Einstellung. Klicken Sie es auf der Arbeitsfläche an und tippen Sie, und verwenden Sie **Text** auf dem übergeordneten Block, um es zu dimensionieren. Lassen Sie es leer, besteht die Reihe nur aus Icons.
+
+## Einstellungen
+
+Der Socials-Block trägt die Einstellungen für die Reihe.
+
+- **Alignment** setzt die Reihe links, zentriert oder rechts.
+- **Icon Size** ist ein Schieberegler und ein Feld, in Pixeln.
+- **Socials** ist die Liste der Links, jede Zeile beschriftet mit ihrer Adresse. **+** fügt sofort einen weiteren Social hinzu, ohne Menü, denn Social ist das Einzige, was der Block akzeptiert. **−** entfernt einen, und der Griff ordnet sie um.
+- **Spacing** enthält zwei Bedienelemente.
+  - **Margin**, der Raum über und unter der Reihe.
+  - **Gap**, der Raum zwischen den Icons.
+- **Text** enthält **Size**, das die Größe des Labels neben einem Icon setzt. Es gibt hier kein Farb-Bedienelement.
+
+<img src="/images/email-builder/blocks/07-socials-settings.png" alt="Das Socials-Einstellungspanel mit Alignment, Icon Size auf 20, der Socials-Liste mit Zeilen für LinkedIn, Instagram und YouTube, der Spacing-Gruppe mit Margin und Gap und der Text-Gruppe" width="384" />
+
+Klicken Sie auf eine Zeile in der **Socials**-Liste, und das Panel wechselt zu diesem einen Link.
+
+- **URL** nimmt die Adresse auf. Das Feld bietet auch jede Variable im Workspace an, die eine URL, eine Telefonnummer oder eine E-Mail-Adresse trägt, sodass ein Link der Marke folgen kann, statt eingetippt zu werden.
+- **Icon** ersetzt das Bild durch ein eigenes. Das Kreuz neben dem Label löscht es und gibt die Wahl an HireData zurück.
+
+<img src="/images/email-builder/blocks/07b-social-settings.png" alt="Das Social-Einstellungspanel mit dem URL-Feld mit einer LinkedIn-Unternehmensadresse und dem Icon darunter mit dem LinkedIn-Zeichen" width="384" />
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Sektion](/de/reference/email-builder/sections) ist das Band, das eine Socials-Reihe üblicherweise abschließt.
+- [Button](/de/reference/email-builder/blocks/button) ist der Block für einen Link, den Leute anklicken sollen, statt einer Footer-Reihe.
+- [Variablen](/de/reference/email-builder/variables) behandelt die Token, die das **URL**-Feld anbietet.

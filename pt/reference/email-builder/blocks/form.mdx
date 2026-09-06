@@ -1,0 +1,61 @@
+---
+title: "Form"
+sidebarTitle: "Form"
+description: "O bloco Form no construtor de emails da HireData: botões que respondem a uma das perguntas dos seus formulários a partir do email, e em que se torna cada tipo de pergunta."
+keywords: ["formulário no email", "leading question", "botões de feedback", "email de NPS", "botões de classificação", "give feedback"]
+---
+
+Um bloco Form coloca uma pergunta de um dos seus formulários diretamente no email. O destinatário responde clicando num botão, que abre o formulário com essa resposta já preenchida. É assim que um email de feedback consegue uma resposta num clique em vez de dois.
+
+Adicione-o a partir do menu **Blocks** de uma secção. Uma coluna não pode conter um.
+
+## Como é renderizado
+
+O que o bloco coloca no email depende do tipo da leading question.
+
+- **Net Promoter Score** renderiza onze botões, de 0 a 10, seja qual for o intervalo que a própria pergunta carrega.
+- **Opinion Scale** renderiza um botão por ponto do seu próprio intervalo, com os rótulos das extremidades da pergunta por baixo, em maiúsculas.
+- **Multiple Choice** e **Dropdown** renderizam um botão por opção.
+- Tudo o resto renderiza uma única chamada à ação a ler "Give Feedback". Clique nela no email para escrever a sua própria redação.
+
+![Onze botões numerados de 0 a 10 sob a pergunta "How likely are you to recommend us to a friend?", com NOT LIKELY AT ALL e EXTREMELY LIKELY sob as extremidades](/images/email-builder/blocks/05b-form-rendered.png)
+
+As variantes de classificação com estrelas e emojis que [só uma integração pode adicionar](/pt/reference/forms/overview) desenham também um botão por valor, uma estrela ou um emoji no lugar de um número. Polegares e slider recebem a chamada à ação única.
+
+Cada botão é a sua própria coluna, por isso num ecrã com menos de 480 píxeis a fila deixa de caber e os botões empilham-se um por linha. Uma pergunta de Net Promoter Score torna-se onze botões empilhados num telemóvel, o que vale a pena ver na pré-visualização antes de enviar.
+
+O bloco renderiza no idioma do formulário para que aponta, não no idioma do email. Um template em inglês associado a um formulário em neerlandês coloca botões em neerlandês no email. Verifique o canvas antes de enviar.
+
+## Definições
+
+- **Form** escolhe o formulário para que apontar. A lista pesquisa todos os formulários do workspace.
+- **Leading Question** escolhe a pergunta a que os botões respondem. As perguntas ocultas e os ecrãs finais ficam fora da lista.
+- **Background color** e **Color** estilizam os botões.
+- **Show Question** coloca a redação da própria pergunta acima dos botões, ou deixa-a de fora.
+- **Size** é **Small**, **Medium** ou **Large**, que define em conjunto o tamanho do texto e o padding.
+- **Rounded corners** é **None**, **Normal**, **Large** ou **Full**, do quadrado à pílula completa.
+- **Width** é **Auto**, **Half**, **Full** ou **Custom**, que abre um slider de 35 a 100 por cento.
+- **Alignment** é esquerda, centro ou direita.
+- **Text** contém **Font Family** com um seletor de peso, **Size**, **Letter Spacing** e **Line Height**.
+- **Spacing** contém dois controlos.
+  - **Margin**, o espaço acima e abaixo dos botões.
+  - **Padding**, o espaço entre o rótulo e o rebordo de cada botão.
+- **Border** contém **Border color**, **Border width** e **Border radius**.
+
+<img src="/images/email-builder/blocks/05-form-settings.png" alt="O painel de definições do Form a mostrar o seletor Form, Leading Question, Background color e Color, Show Question, Size, Rounded corners, Width, Alignment e os grupos Text, Spacing e Border" width="384" />
+
+**Form** e **Leading Question** pertencem ao email e não ao bloco. Adicione um segundo bloco Form e ele chega já a apontar para o mesmo formulário e para a mesma pergunta, e mudar qualquer um dos dois muda ambos os blocos.
+
+## Limites {#limits}
+
+- Uma pergunta de escolha renderiza apenas as suas **primeiras cinco opções**. Uma sexta opção não recebe botão, nem aviso, nem nenhum sinal no canvas de que está em falta. Reordene a pergunta para que as cinco que importam venham primeiro, ou aponte o bloco para uma pergunta mais curta.
+- Uma pergunta de Net Promoter Score é aqui sempre de 0 a 10. Seja qual for o intervalo que a pergunta carrega, é ignorado.
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- A [visão geral do construtor de formulários](/pt/reference/forms/overview) cobre os formulários para os quais um bloco Form pode apontar.
+- [Net Promoter Score e Opinion Scale](/pt/reference/forms/fields/net-promoter-score-and-opinion-scale) é o tipo de pergunta por trás dos onze botões.
+- [Multiple Choice e Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) é o tipo de pergunta limitado a cinco botões.
+- [Section](/pt/reference/email-builder/sections) é o único bloco em que um Form pode ir.
+- [Traduções](/pt/reference/email-builder/translations) cobre os rótulos de classificação e a chamada à ação que um bloco Form oferece por idioma.

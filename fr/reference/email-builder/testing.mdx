@@ -1,0 +1,81 @@
+---
+title: "Tester"
+sidebarTitle: "Tester"
+description: "Vérifiez un e-mail HireData avant son envoi : l'aperçu et ses trois largeurs, le panneau Links, s'envoyer un e-mail de test, et ce que les tests ne peuvent pas vous dire."
+keywords: ["aperçu d'e-mail", "e-mail de test", "envoyer un e-mail de test", "largeurs d'aperçu", "liens d'e-mail", "checklist avant envoi", "test d'e-mail"]
+---
+
+L'éditeur vous donne deux façons de regarder un e-mail avant quiconque : un aperçu, et un envoi de test vers votre propre boîte de réception. Cette page couvre les deux, et termine par ce qu'aucun des deux ne prouve.
+
+## L'aperçu {#the-preview}
+
+Le bouton œil dans la barre d'outils ouvre l'aperçu. Son infobulle vous avertit qu'il enregistre d'abord l'e-mail, donc ouvrir un aperçu valide tout ce que vous avez modifié.
+
+L'aperçu charge l'adresse publique propre à l'e-mail plutôt que de l'afficher dans l'éditeur, donc ce que vous voyez est l'e-mail fini plutôt que le canevas.
+
+<img src="/images/email-builder/20-preview-rendered.png" alt="Un e-mail entier tel que l'aperçu le rend : le logo de la marque, une bande d'en-tête colorée, une salutation, du texte de corps, trois boutons de réponse, une signature, et le pied de page avec l'adresse et le lien de désabonnement" width="420" />
+
+Le nom du modèle figure en haut à gauche. Les commandes vont du milieu de l'en-tête jusqu'au bord droit.
+
+<img src="/images/email-builder/15-preview-header.png" alt="Les commandes de l'aperçu : un bouton de copie, des boutons mobile, tablette et ordinateur avec ordinateur sélectionné, un bouton d'actualisation, un sélecteur de langue affichant English, et un bouton de fermeture" width="640" />
+
+- **Copy Preview URL**, le premier bouton, copie un lien que vous pouvez envoyer à un collègue.
+- Les trois boutons suivants basculent entre **mobile**, **tablette** et **ordinateur**.
+- Le bouton d'actualisation recharge l'e-mail.
+- Le sélecteur de langue apparaît dès que le modèle a une [traduction](/fr/reference/email-builder/translations), et fait passer l'aperçu de l'une à l'autre.
+
+### Liens
+
+Un panneau **Links** sur le côté liste chaque lien de l'e-mail, dans l'ordre, et une carte **UTM Campaign** en dessous répète les [paramètres de campagne](/fr/reference/email-builder/template#brand-theme-and-metadata) que HireData ajoute à tous. Survolez une ligne et ce lien est encadré dans l'aperçu, avec une fenêtre montrant l'adresse complète et ses paramètres.
+
+<img src="/images/email-builder/16-preview-links.png" alt="Le panneau Links avec quatre lignes, le bouton de la ligne survolée encadré dans l'aperçu à côté, une fenêtre montrant l'URL complète et ses valeurs utm_source, utm_medium et utm_campaign, et une carte UTM Campaign sous la liste" width="640" />
+
+C'est la vérification la plus rapide de l'éditeur. Un lien à la mauvaise adresse, ou un bouton pointant vers une variable résolue en rien, s'y révèle en quelques secondes.
+
+### Ce que l'aperçu remplit
+
+L'aperçu résout vos variables contre votre propre compte, parce que vous êtes la seule personne dont HireData sait qu'elle le lit. Une valeur vide pour vous apparaît donc vide ici, et un jeton qui n'est pas du tout une variable apparaît exactement tel que vous l'avez tapé. Voir [Ce que voit réellement un destinataire](/fr/reference/email-builder/variables#what-a-recipient-actually-sees).
+
+Ouvrez le lien **Copy Preview URL** là où vous n'êtes pas connecté et le même e-mail remplit ces champs avec des données d'exemple inventées. Utilisez ce lien pour montrer la mise en page à un collègue, pas pour vérifier la formulation d'une ligne personnalisée.
+
+## Envoyer un e-mail de test {#sending-a-test-email}
+
+Le bouton avion en papier ouvre **Test Email**. Il enregistre d'abord l'e-mail, puis vous l'envoie avec des valeurs plausibles à la place de celles d'un vrai destinataire.
+
+<img src="/images/email-builder/17-test-email.png" alt="La fenêtre Test Email avec les champs facultatifs First name, Last name et Email, un sélecteur Language, un groupe Objects contenant des sélecteurs d'enregistrement Vacancy et Match, et un bouton Send test email" width="525" />
+
+- **First name**, **Last name** et **Email** sont tous facultatifs. Laissez-les vides et HireData utilise les vôtres. Remplissez-les pour envoyer le test ailleurs, ou pour voir comment un nom plus long tient dans la mise en page.
+- **Language** apparaît dès que le modèle a une traduction, et choisit laquelle envoyer.
+- **Objects** apparaît quand l'e-mail lie des [enregistrements](/fr/reference/email-builder/variables#bringing-in-a-records-fields), ou quand il est rattaché à un [formulaire](/fr/reference/email-builder/blocks/form) qui en lie. Chaque carte prend soit des **Fields** inventés, soit un vrai **Record**, et **Auto fill** choisit un enregistrement pour vous.
+
+**Send test email** déclenche une notification **Test mail scheduled!** et ferme la fenêtre. L'e-mail arrive un instant plus tard.
+
+<Note>
+  Un objet marqué d'un astérisque rouge exige un enregistrement, quoi que dise la ligne sous le groupe sur la possibilité de le laisser vide. Omettez-en un et l'envoi échoue avec une notification **Failed to send test email** nommant le premier objet manquant, par sa clé plutôt que par son libellé : « Required data reference [job] is missing. »
+</Note>
+
+## Avant d'envoyer
+
+Six choses qui valent la peine d'être faites dans cet ordre.
+
+1. **Relisez l'objet.** C'est la première chose qu'un destinataire voit, il accepte les variables comme tout le reste, et c'est la ligne la plus facile à laisser à moitié écrite.
+2. **Cherchez les accolades orphelines dans le canevas.** Une variable simple que HireData reconnaît est une pastille, donc une qui affiche encore `{{` et `}}` est soit une faute de frappe, soit un jeton portant un [modificateur](/fr/variables/modifiers), qui reste volontairement en texte brut. Lisez chacune et assurez-vous que c'est le second cas. Voir [Variables](/fr/reference/email-builder/variables).
+3. **Parcourez le panneau Links.** Chaque lien, y compris ceux à l'intérieur d'un bloc Form et le lien de désabonnement dans le pied de page.
+4. **Regardez l'e-mail en largeur mobile.** Les colonnes s'empilent et les boutons se réorganisent, et une ligne qui tient sur un ordinateur peut mal se couper.
+5. **Vérifiez chaque langue.** Passez le sélecteur de langue de l'aperçu par chaque traduction que vous avez rédigée.
+6. **Envoyez-vous un e-mail de test et lisez-le dans votre client de messagerie.** C'est la seule étape qui vous montre une vraie boîte de réception.
+
+## Ce que les tests ne vous disent pas
+
+L'éditeur n'a pas d'aperçu Gmail, pas d'aperçu Outlook et pas d'aperçu en mode sombre. HireData ne modélise aucun client de messagerie, donc rien ici ne prédit comment l'un d'eux rendra votre e-mail. Un envoi de test à votre propre adresse, ouvert dans le client que vos destinataires utilisent, est la seule vérification qui le fait.
+
+Les trois tailles d'aperçu redimensionnent la fenêtre d'aperçu à peu près à un téléphone, une tablette et la largeur de votre écran. Elles changent la largeur et rien d'autre, donc ce qu'elles vous montrent est la façon dont votre e-mail se réorganise, pas la façon dont un appareil donné le rend. La vue étroite est plus étroite que la plupart des téléphones, ce qui en fait un test strict : une mise en page qui tient là tiendra sur un vrai téléphone.
+
+L'empilement aux largeurs étroites est le comportement standard de MJML, le framework avec lequel HireData construit l'e-mail. HireData ne définit pas la largeur à laquelle il se produit et n'offre aucun contrôle dessus. Ce que vous pouvez contrôler, c'est ce qui s'empile : voir [Two Columns](/fr/reference/email-builder/blocks/columns#how-it-renders).
+
+## Voir aussi
+
+- [Variables](/fr/reference/email-builder/variables) explique ce que l'aperçu vous montre quand une valeur manque.
+- [Traductions](/fr/reference/email-builder/translations) couvre le sélecteur de langue de l'aperçu et de la fenêtre de test.
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre la barre d'outils et l'enregistrement.
+- [Two Columns](/fr/reference/email-builder/blocks/columns) est le bloc dont le comportement change le plus entre les largeurs d'aperçu.

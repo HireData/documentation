@@ -1,0 +1,48 @@
+---
+title: "Socials"
+sidebarTitle: "Socials"
+description: "O bloco Socials no construtor de emails da HireData: uma fila de ícones sociais, o URL e o ícone por link, e como a HireData escolhe um ícone a partir do endereço."
+keywords: ["ícones sociais de email", "links sociais", "linkedin", "instagram", "tamanho do ícone", "rodapé social"]
+---
+
+Um bloco Socials é uma fila de ícones sociais, um por link. É a forma habitual de um email apontar para as suas contas, e costuma ficar na última secção. Adicione-o a partir do menu **Blocks** de uma secção ou de uma coluna.
+
+Cada ícone da fila é um **Social**, um bloco próprio que contém um endereço e uma imagem. Adiciona-os e remove-os a partir do bloco Socials pai, e não de nenhum menu.
+
+## Como é renderizado
+
+A HireData lê o endereço e escolhe o ícone a partir dele, por isso um link `linkedin.com` recebe a marca do LinkedIn sem que escolha uma. Um endereço que ela não reconhece recebe um ícone web simples.
+
+![Uma fila renderizada de três ícones sociais, cada um com o seu rótulo ao lado: LinkedIn, Instagram e YouTube, centrados na secção](/images/email-builder/blocks/07c-socials-rendered.png)
+
+Também corrige endereços que não são links. Um endereço de email simples torna-se um link `mailto:` e um número de telefone simples torna-se um link `tel:`, para que um ícone possa marcar um número ou abrir um cliente de email.
+
+O rótulo ao lado de um ícone é texto no email e não uma definição. Clique nele no canvas e escreva, e use **Text** no bloco pai para o dimensionar. Deixe-o vazio e a fila fica só com ícones.
+
+## Definições
+
+O bloco Socials carrega as definições da fila.
+
+- **Alignment** coloca a fila à esquerda, ao centro ou à direita.
+- **Icon Size** é um slider e uma caixa, em píxeis.
+- **Socials** é a lista de links, cada linha rotulada com o seu endereço. **+** adiciona logo outro Social, sem menu, porque um Social é a única coisa que o bloco aceita. **−** remove um e a pega reordena-os.
+- **Spacing** contém dois controlos.
+  - **Margin**, o espaço acima e abaixo da fila.
+  - **Gap**, o espaço entre os ícones.
+- **Text** contém **Size**, que define o tamanho do rótulo ao lado de um ícone. Não há aqui controlo de cor.
+
+<img src="/images/email-builder/blocks/07-socials-settings.png" alt="O painel de definições do Socials a mostrar Alignment, Icon Size em 20, a lista Socials com as linhas LinkedIn, Instagram e YouTube, o grupo Spacing com Margin e Gap, e o grupo Text" width="384" />
+
+Clique numa linha da lista **Socials** e o painel desce para esse link.
+
+- **URL** recebe o endereço. A caixa também oferece todas as variáveis do workspace que carregam um URL, um número de telefone ou um endereço de email, para que um link possa seguir a marca em vez de ser escrito à mão.
+- **Icon** substitui a imagem por uma sua. A cruz ao lado do rótulo limpa-a e devolve a escolha à HireData.
+
+<img src="/images/email-builder/blocks/07b-social-settings.png" alt="O painel de definições do Social a mostrar a caixa URL com um endereço de empresa do LinkedIn e o Icon por baixo com a marca do LinkedIn" width="384" />
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- [Section](/pt/reference/email-builder/sections) é a faixa que uma fila de Socials costuma fechar.
+- [Button](/pt/reference/email-builder/blocks/button) é o bloco para um link em que quer que as pessoas cliquem, e não uma fila de rodapé.
+- [Variáveis](/pt/reference/email-builder/variables) cobre os tokens que a caixa **URL** oferece.

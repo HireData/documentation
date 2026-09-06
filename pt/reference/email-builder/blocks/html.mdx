@@ -1,0 +1,41 @@
+---
+title: "HTML"
+sidebarTitle: "HTML"
+description: "O bloco HTML no construtor de emails da HireData: um editor de código para markup seu, o tamanho de fonte que a HireData lhe acrescenta e o limite de carateres."
+keywords: ["html de email", "html em bruto", "bloco de código", "markup personalizado", "editor de html", "tamanho de fonte do email"]
+---
+
+Um bloco HTML insere no email markup escrito por si. Use-o para aquilo que os outros blocos não conseguem fazer. Adicione-o a partir do menu **Blocks** de uma secção ou de uma coluna.
+
+## Como é renderizado
+
+A HireData insere o seu markup no email sem lhe tocar, com uma exceção que tem de fazer.
+
+O email é construído com MJML, que põe a zero o tamanho de fonte de tudo o que não foi ele próprio a dispor. O texto colado num bloco HTML chegaria invisível. Por isso, antes de enviar, a HireData percorre o seu markup e acrescenta `font-size: 16px` a qualquer elemento `body`, `table`, `p`, `span` ou `a` que ainda não carregue um, e envolve o texto solto num `span` com o mesmo tamanho.
+
+Defina você mesmo um tamanho de fonte e a HireData deixa-o em paz. É essa a forma de conseguir qualquer tamanho que não 16 píxeis num bloco HTML.
+
+![Um bloco HTML renderizado a mostrar a sua única linha de texto na fonte serifada por defeito do browser, ao contrário da fonte da marca usada por todos os outros blocos à volta](/images/email-builder/blocks/09b-html-rendered.png)
+
+Cole um documento HTML inteiro e só sobrevive o que está dentro de `<body>`. Cole algo que o parser não consegue de todo ler e passa exatamente como foi escrito.
+
+Um bloco HTML não carrega [traduções](/pt/reference/email-builder/translations). O que escrever nele sai inalterado em todos os idiomas em que o email for enviado.
+
+## Definições
+
+Não há definições. O painel é o editor, com números de linha à esquerda. Escreva ou cole o seu markup e ele aparece no email à medida que avança.
+
+<img src="/images/email-builder/blocks/09-html-settings.png" alt="O painel de definições do bloco HTML, a mostrar um editor de código escuro com números de linha e uma única tag de parágrafo" width="384" />
+
+O bloco não estiliza nada por si. As cores, as fontes e o espaçamento que os outros blocos vão buscar à marca são seus para escrever por extenso.
+
+## Limites
+
+Um template de email enviado para a API da HireData é recusado se um bloco HTML passar dos 100.000 carateres. O editor não conta nada por si, por isso uma colagem desse tamanho merece ser aparada antes de se tornar um problema de outra pessoa.
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- [Section](/pt/reference/email-builder/sections) e [Two Columns](/pt/reference/email-builder/blocks/columns) aceitam ambos um bloco HTML.
+- [Paragraph](/pt/reference/email-builder/blocks/paragraph) é o bloco a que recorrer primeiro, porque vai buscar as fontes e as cores da marca sem que ninguém lho diga.
+- [Traduções](/pt/reference/email-builder/translations) explica porque é que um bloco HTML é a única coisa que não pode traduzir.

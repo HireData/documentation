@@ -1,0 +1,44 @@
+---
+title: "Image"
+sidebarTitle: "Image"
+description: "Der Image-Block im HireData-E-Mail-Builder: ein Bild aus der Medienbibliothek oder einer Variablen wählen, es dimensionieren und woher sein Alt-Text kommt."
+keywords: ["e-mail-bild", "medienbibliothek", "alt-text", "bildbreite", "bildhöhe", "eckenradius", "bildvariable"]
+---
+
+Ein Image-Block setzt ein Bild in die E-Mail. Fügen Sie ihn aus dem **Blocks**-Menü einer Sektion oder einer Spalte hinzu.
+
+## Wie er gerendert wird
+
+Das Bild geht als einfaches Bild in die E-Mail, dimensioniert durch **Width** und **Height** und ausgerichtet durch **Alignment**.
+
+![Ein Image-Block in Full-Breite in einer gerenderten E-Mail, der die Sektion von Rand zu Rand unter einer Zeile Fließtext füllt](/images/email-builder/blocks/06c-image-rendered.png)
+
+In einer Spalte ignoriert er **Width** und nimmt stattdessen die Breite der Spalte an, sodass ein Bild in einer 40-Prozent-Spalte mit 40 Prozent der Sektion herauskommt. Das ist es, was ein Bild neben einem Absatz bündig macht.
+
+Der Block setzt kein Maximum für die Dateigröße oder die Pixelmaße dessen, was Sie wählen. Ein Foto direkt vom Telefon geht mit seinem vollen Gewicht hinaus, skalieren Sie es also herunter, bevor Sie es hochladen.
+
+## Einstellungen
+
+- **Image** öffnet die Medienbibliothek, mit **Upload media** für eine neue Datei und zwei Tabs für das, was bereits da ist. **Fields** listet die Variablen auf, die ein Bild tragen, etwa ein Markenlogo oder einen Absender-Avatar. Wählen Sie eine davon, und das Bild ändert sich mit der Person, um die es in der E-Mail geht.
+- **Width** ist **Auto**, was das Bild bei seiner eigenen Größe belässt, oder **Full**, was es streckt, um das zu füllen, was es enthält.
+- **Alignment** ist links, zentriert oder rechts und bewirkt bei **Full**-Breite nichts.
+- **Height** ist **Auto**, **Full** oder **Custom**, was einen Schieberegler von 10 bis 300 Pixeln öffnet.
+- **Border radius** rundet die Ecken ab: **None**, **Normal**, **Large** oder **Custom** für einen Wert pro Ecke.
+
+<img src="/images/email-builder/blocks/06-image-settings.png" alt="Das Image-Einstellungspanel mit dem gewählten Bild, Width auf Auto, Alignment, Height auf Auto und Border radius" width="384" />
+
+Alt-Text ist nicht in diesem Panel. Er gehört zum Bild, Sie setzen ihn also in der Medienbibliothek. Öffnen Sie **Image**, klicken Sie auf das Bild und füllen Sie **Alt text** auf der Karte aus, die sich öffnet. Er fällt auf den Bildtitel zurück, wenn Sie ihn leer lassen, weshalb es sich lohnt, einen Upload namens `image.png` umzubenennen.
+
+Ein Bild aus dem **Fields**-Tab ist die Ausnahme. Dort sind beide Felder schreibgeschützt, ein Markenlogo oder ein Absenderfoto trägt also den Titel der Variablen als Alt-Text und kann nichts anderes bekommen.
+
+<img src="/images/email-builder/blocks/06b-image-alt-text.png" alt="Die Medienbibliothekskarte für ein variablengestütztes Bild, mit einem schreibgeschützten Title mit Brand: Banner, einem leeren Alt-text-Feld und einem Hinweis, dass es bei Leerlassen auf den Bildtitel zurückfällt" width="464" />
+
+Schreiben Sie Alt-Text, der sagt, wofür das Bild da ist, nicht, wie es aussieht. Ein Empfänger, dessen Client Bilder blockiert, sieht diese Zeile anstelle des Bildes, und blockierte Bilder sind der Normalfall und nicht die Ausnahme.
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Bilder zu Ihren E-Mails hinzufügen](/de/apps/messaging/emails/adding-images-to-your-emails) führt durch die Medienbibliothek.
+- [Two Columns](/de/reference/email-builder/blocks/columns) ist der Ort, an dem ein Bild seine Breite von der Spalte nimmt.
+- [Variablen](/de/reference/email-builder/variables) behandelt die Token hinter dem **Fields**-Tab.
+- [Signature](/de/reference/email-builder/blocks/signature) hat ihr eigenes Bild, für Sie dimensioniert und zugeschnitten.

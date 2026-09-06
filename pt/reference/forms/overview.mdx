@@ -1,8 +1,18 @@
 ---
 title: "Visão geral do construtor de formulários"
 sidebarTitle: "Visão geral"
-description: "Um tour pelo construtor de formulários da HireData: os seus três separadores, os painéis da barra de ferramentas, todos os tipos de campo e as definições que todos os campos partilham."
-keywords: ["construtor de formulários", "campos de formulário", "tipos de campo", "tema do formulário", "traduções do formulário", "templates de formulário", "tornar o formulário público", "always include", "campo oculto", "campo obrigatório"]
+description: "Um tour pelo construtor de formulários da HireData: os separadores Content, Logic e Evaluation, os painéis da barra de ferramentas, todos os tipos de campo e as definições que todos os campos partilham."
+keywords:
+  - "construtor de formulários"
+  - "campos de formulário"
+  - "tipos de campo"
+  - "tema do formulário"
+  - "traduções do formulário"
+  - "templates de formulário"
+  - "tornar o formulário público"
+  - "always include"
+  - "campo oculto"
+  - "campo obrigatório"
 ---
 
 Um formulário é um conjunto de perguntas a que alguém responde na web ou numa conversa de WhatsApp. Abra a página **Forms** a partir de **Settings** e clique em **New Form**. Escolha **Blank Form** ou um dos [templates](#templates), e o novo formulário abre-se no construtor.
@@ -13,7 +23,7 @@ Esta página mapeia o construtor. Para um passo a passo que leva um formulário 
 
 O construtor tem três partes.
 
-A coluna da esquerda lista os campos do formulário pela ordem em que um inquirido os encontra. Acima da lista ficam os separadores **Content**, **Logic** e **Evaluation**, e o botão **+** que abre a paleta **Add Content**.
+A coluna da esquerda lista os campos do formulário pela ordem em que um inquirido os encontra. Acima da lista ficam os separadores **Content**, **Logic** e **Evaluation**, e o botão **\+** que abre a paleta **Add Content**.
 
 A coluna da direita pré-visualiza o formulário, com os seus próprios separadores **Interactive Preview**, **Conversational Preview** e **Test & Evaluate**.
 
@@ -25,7 +35,7 @@ A barra ao longo do topo contém o nome do formulário e a barra de ferramentas.
 
 O separador **Content** contém os campos e as suas definições. Clique num campo para abrir o seu cartão e arraste-o pela pega à esquerda para alterar a ordem.
 
-O botão **+** abre a paleta **Add Content**. Esta agrupa as entradas por categoria e repete as mais usadas em **Recommended**. **Find a field type** pesquisa a lista.
+O botão **\+** abre a paleta **Add Content**. Esta agrupa as entradas por categoria e repete as mais usadas em **Recommended**. **Find a field type** pesquisa a lista.
 
 ![A paleta Add Content com a sua lista Recommended e os grupos Text, Contact Info, Temporal, Choice, Numeric, Rating, Other e Ending](/images/forms-builder/01-add-content-palette.png)
 
@@ -78,7 +88,7 @@ A paleta mostra mais entradas do que os tipos de campo que existem. Short Text e
 Cada linha abaixo tem uma página própria, que cobre as definições desse tipo, o que armazena, os operadores que a lógica oferece para ele e o que os avaliadores de IA podem fazer com ele.
 
 | Tipo de campo | Grupo | Armazena |
-|---|---|---|
+| --- | --- | --- |
 | [Short Text e Long Text](/pt/reference/forms/fields/short-and-long-text) | Text | texto |
 | [Email](/pt/reference/forms/fields/email) | Contact Info | texto |
 | [Phone Number](/pt/reference/forms/fields/phone-number) | Contact Info | texto |
@@ -146,13 +156,7 @@ Ativar **Hidden** limpa **Required** e **Always include** e bloqueia ambos. Um c
 
 ### O que conta como resposta {#required-answers}
 
-Uma caixa de texto vazia, uma caixa numérica vazia, nenhuma opção escolhida e nenhum ficheiro anexado contam todos como sem resposta, e o formulário web mostra uma mensagem por baixo da pergunta, como "This field is required and cannot be empty."
-
-Responder No, deixar um toggle desligado, introduzir 0 e escolher 0 numa classificação são respostas reais e deveriam satisfazer um campo obrigatório.
-
-<Warning>
-  Um bug no formulário web bloqueia estas respostas. Responda No, deixe um toggle desligado, introduza 0 ou escolha 0 numa classificação, e o inquirido fica preso numa pergunta obrigatória. **Next** não faz nada, nenhuma mensagem aparece e qualquer regra nesse campo não dispara. Até a correção chegar, deixe as perguntas Yes/No e Net Promoter Score opcionais e defina um **Minimum Value** de 1 numa pergunta Number obrigatória.
-</Warning>
+Uma caixa de texto vazia, uma caixa numérica vazia, nenhuma opção escolhida e nenhum ficheiro anexado contam todos como sem resposta. O formulário web mostra então uma mensagem por baixo da pergunta, como "This field is required and cannot be empty."
 
 Num formulário conversacional, **Auto reply (on invalid answer)** é a mensagem enviada de volta quando um campo obrigatório não recebe uma resposta utilizável.
 

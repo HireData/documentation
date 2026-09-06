@@ -1,8 +1,18 @@
 ---
 title: "Overzicht van de formulierbuilder"
 sidebarTitle: "Overzicht"
-description: "Een rondleiding door de HireData-formulierbuilder: de drie tabbladen, de toolbar-drawers, elk veldtype en de instellingen die elk veld deelt."
-keywords: ["formulierbuilder", "formuliervelden", "veldtypen", "formulierthema", "formuliervertalingen", "formuliertemplates", "formulier openbaar maken", "always include", "verborgen veld", "verplicht veld"]
+description: "Een rondleiding door de HireData-formulierbuilder: de tabbladen Content, Logic en Evaluation, de toolbar-drawers, elk veldtype en de instellingen die elk veld deelt."
+keywords:
+  - "formulierbuilder"
+  - "formuliervelden"
+  - "veldtypen"
+  - "formulierthema"
+  - "formuliervertalingen"
+  - "formuliertemplates"
+  - "formulier openbaar maken"
+  - "always include"
+  - "verborgen veld"
+  - "verplicht veld"
 ---
 
 Een formulier is een set vragen die iemand op het web of in een WhatsApp-gesprek beantwoordt. Open de pagina **Forms** via **Settings** en klik op **New Form**. Kies **Blank Form** of een van de [templates](#templates), en het nieuwe formulier opent in de builder.
@@ -13,7 +23,7 @@ Deze pagina brengt de builder in kaart. Voor een walkthrough die één formulier
 
 De builder heeft drie delen.
 
-De linkerkolom toont de velden van het formulier in de volgorde waarin een respondent ze tegenkomt. Boven de lijst zitten de tabbladen **Content**, **Logic** en **Evaluation**, en de **+**-knop die het **Add Content**-palet opent.
+De linkerkolom toont de velden van het formulier in de volgorde waarin een respondent ze tegenkomt. Boven de lijst zitten de tabbladen **Content**, **Logic** en **Evaluation**, en de **\+**-knop die het **Add Content**-palet opent.
 
 De rechterkolom toont een preview van het formulier, met eigen tabbladen **Interactive Preview**, **Conversational Preview** en **Test & Evaluate**.
 
@@ -25,7 +35,7 @@ De balk bovenaan bevat de formuliernaam en de toolbar.
 
 Het tabblad **Content** bevat de velden en hun instellingen. Klik op een veld om zijn kaart te openen, en versleep het aan de handle links om de volgorde te wijzigen.
 
-De **+**-knop opent het **Add Content**-palet. Het groepeert de items per categorie en herhaalt de meest gebruikte onder **Recommended**. **Find a field type** doorzoekt de lijst.
+De **\+**-knop opent het **Add Content**-palet. Het groepeert de items per categorie en herhaalt de meest gebruikte onder **Recommended**. **Find a field type** doorzoekt de lijst.
 
 ![Het Add Content-palet met de Recommended-lijst en de groepen Text, Contact Info, Temporal, Choice, Numeric, Rating, Other en Ending](/images/forms-builder/01-add-content-palette.png)
 
@@ -78,7 +88,7 @@ Het palet toont meer items dan er veldtypen zijn. Short Text en Long Text, Multi
 Elke rij hieronder heeft een eigen pagina, met de instellingen van dat type, wat het opslaat, de operators die logica ervoor biedt en wat de AI-evaluators ermee kunnen.
 
 | Veldtype | Groep | Slaat op |
-|---|---|---|
+| --- | --- | --- |
 | [Short Text en Long Text](/nl/reference/forms/fields/short-and-long-text) | Text | tekst |
 | [Email](/nl/reference/forms/fields/email) | Contact Info | tekst |
 | [Phone Number](/nl/reference/forms/fields/phone-number) | Contact Info | tekst |
@@ -146,13 +156,7 @@ Zet je **Hidden** aan, dan worden **Required** en **Always include** gewist en v
 
 ### Wat telt als een antwoord {#required-answers}
 
-Een leeg tekstvak, een leeg getallenvak, geen gekozen optie en geen bijgevoegd bestand tellen allemaal als geen antwoord, en het webformulier toont een bericht onder de vraag, zoals "This field is required and cannot be empty."
-
-No antwoorden, een toggle uit laten, 0 invoeren en 0 kiezen op een rating zijn echte antwoorden en horen een verplicht veld te vervullen.
-
-<Warning>
-  Een bug in het webformulier blokkeert deze antwoorden. Antwoord No, laat een toggle uit, voer 0 in of kies 0 op een rating, en de respondent blijft steken op een verplichte vraag. **Next** doet niets, er verschijnt geen bericht en een rule op dat veld gaat niet af. Laat totdat de fix uitkomt Yes/No- en Net Promoter Score-vragen optioneel, en stel een **Minimum Value** van 1 in op een verplichte Number-vraag.
-</Warning>
+Een leeg tekstvak, een leeg getallenvak, geen gekozen optie en geen bijgevoegd bestand tellen allemaal als geen antwoord. Het webformulier toont dan een bericht onder de vraag, zoals "This field is required and cannot be empty."
 
 In een conversationeel formulier is **Auto reply (on invalid answer)** het bericht dat wordt teruggestuurd wanneer een verplicht veld geen bruikbaar antwoord ontvangt.
 

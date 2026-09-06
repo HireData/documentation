@@ -1,0 +1,77 @@
+---
+title: "Traduções"
+sidebarTitle: "Traduções"
+description: "Envie um email da HireData em vários idiomas: o painel Localization, o que o construtor oferece para tradução, o que deixa de fora e que idioma um destinatário recebe."
+keywords: ["tradução de email", "localização", "manage languages", "tradução automática", "idioma por defeito", "email multilingue"]
+---
+
+Um template de email pode sair em vários idiomas. Escreva-o uma vez num idioma por defeito e depois adicione uma tradução para cada outro idioma em que envia. A HireData escolhe a certa por destinatário.
+
+## Manage Languages
+
+O botão de idioma no fim da barra de ferramentas abre **Localization**.
+
+<img src="/images/email-builder/12-localization-drawer.png" alt="O painel Localization a mostrar Default language definido como English, Auto Translate definido como Disabled e uma lista Translations com Dutch e um botão New Translation" width="425" />
+
+- **Default language** é o idioma em que o email está escrito. É o que um destinatário recebe quando não há nada melhor disponível.
+- **Auto Translate** decide o que acontece quando o idioma de um destinatário não tem tradução. Veja [Que idioma recebe um destinatário](#which-language-a-recipient-gets).
+- **Translations** lista o que escreveu até agora, com **New Translation** por baixo.
+
+## O que o construtor oferece para tradução
+
+Abra uma tradução e recebe uma caixa por cada pedaço de conteúdo traduzível, rotulada com o caminho para o bloco a que pertence, como `Template > Sections > Signature > Paragraph: Content`. Acima de cada caixa está o original, para ver o que está a traduzir.
+
+O construtor oferece:
+
+- O **Subject**.
+- O **Name** do template, que é interno.
+- O texto dos [Paragraph](/pt/reference/email-builder/blocks/paragraph) e dos [Heading](/pt/reference/email-builder/blocks/heading).
+- As palavras num [Button](/pt/reference/email-builder/blocks/button).
+- Os parágrafos dentro de uma [Signature](/pt/reference/email-builder/blocks/signature).
+- A chamada à ação de um bloco [Form](/pt/reference/email-builder/blocks/form) e os seus três rótulos de classificação.
+
+Quatro coisas nunca aparecem, por isso planeie a contar com elas.
+
+- Uma [Image](/pt/reference/email-builder/blocks/image) e o seu texto alternativo.
+- Um bloco [HTML](/pt/reference/email-builder/blocks/html). O que escrever nele sai inalterado em todos os idiomas.
+- Uma linha de [Socials](/pt/reference/email-builder/blocks/socials).
+- **Tudo o que estiver dentro de um bloco [Two Columns](/pt/reference/email-builder/blocks/columns).** Um parágrafo numa secção é oferecido; o mesmo parágrafo movido para uma coluna não é. Se uma passagem tem de ser traduzida, mantenha-a fora das colunas.
+
+## Escrever uma tradução
+
+Clique em **New Translation**, escolha o **Language** e preencha as caixas.
+
+**Create AI translation** preenche todas as caixas de uma vez. Mantém os seus chips de variável onde estão e traduz as palavras à volta deles, por isso `Hi {{recipient.first_name}},` volta como `Hoi {{recipient.first_name}},` em vez de perder o nome. Leia o que ela escreveu antes de a manter, e edite qualquer caixa de que discorde.
+
+<img src="/images/email-builder/13-translation-editor.png" alt="Uma tradução para neerlandês aberta no painel, com Rewrite translations with AI e um botão de eliminar no topo, linhas para Subject e Name a mostrar o original em inglês acima da tradução em neerlandês, e Update e Cancel no fundo" width="400" />
+
+O botão ao fundo do painel guarda a tradução sozinha, sem guardar o resto do template. Lê **Create** numa tradução nova e **Update** numa que reabriu. **Cancel** fecha o painel sem guardar.
+
+## Que idioma recebe um destinatário {#which-language-a-recipient-gets}
+
+A HireData procura uma tradução no idioma do destinatário.
+
+- **Encontra uma.** O destinatário lê essa tradução.
+- **Não encontra nenhuma e o Auto Translate está Disabled.** O destinatário lê o idioma por defeito. Nada se parte, e nada o avisa.
+- **Não encontra nenhuma e o Auto Translate está Enabled.** A HireData escreve a tradução com IA no momento do envio e guarda-a, para que o próximo destinatário nesse idioma receba a mesma redação.
+
+O Auto Translate está **Disabled** num template novo. Ligue-o para um email que vai para uma audiência que não controla, como uma newsletter. Deixe-o desligado quando a redação importa o suficiente para a querer ler primeiro.
+
+A [pré-visualização](/pt/reference/email-builder/testing) tem um seletor de idioma assim que um template tem pelo menos uma tradução, e lista o idioma por defeito ao lado das traduções. É a forma mais rápida de ler uma tradução no seu lugar.
+
+## Alterar ou eliminar uma tradução
+
+Clique num idioma na lista **Translations** para o reabrir. O idioma não pode ser alterado, e o botão de IA passa a ler **Rewrite translations with AI**, que reescreve o que já lá está em vez de preencher os espaços em falta.
+
+O botão do caixote ao lado elimina a tradução. A HireData pergunta primeiro.
+
+<img src="/images/email-builder/14-delete-translation.png" alt="Uma confirmação a ler Delete translation, This action cannot be undone, com os botões Delete e Cancel" width="310" />
+
+Eliminar uma tradução não toca no email. Os destinatários nesse idioma recorrem ao idioma por defeito, ou a uma nova tradução de IA se o Auto Translate estiver ligado.
+
+## Relacionados
+
+- [Testar](/pt/reference/email-builder/testing) cobre o seletor de idioma da pré-visualização e o envio de teste.
+- [Variáveis](/pt/reference/email-builder/variables) explica os chips que sobrevivem à tradução.
+- [Template](/pt/reference/email-builder/template) cobre as definições que se aplicam ao email em todos os idiomas.
+- [Two Columns](/pt/reference/email-builder/blocks/columns) é o bloco cujo conteúdo não é oferecido para tradução.

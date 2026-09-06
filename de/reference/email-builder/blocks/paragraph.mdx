@@ -1,0 +1,46 @@
+---
+title: "Paragraph"
+sidebarTitle: "Paragraph"
+description: "Der Paragraph-Block im HireData-E-Mail-Builder: Fließtext, seine Schrift- und Farbeinstellungen, das Formatierungsmenü und die Linkfarbe, die er überschreiben kann."
+keywords: ["e-mail-absatz", "fließtext", "e-mail-schriftart", "zeilenhöhe", "buchstabenabstand", "fett kursiv", "e-mail-link"]
+---
+
+Ein Paragraph-Block ist Fließtext. Sie bearbeiten ihn, indem Sie auf die Worte in der E-Mail klicken und tippen, genauso wie in einem Dokument.
+
+Fügen Sie ihn aus dem **Blocks**-Menü einer Sektion oder einer Spalte hinzu. Beide bieten ihn zuerst an.
+
+## Wie er gerendert wird
+
+Der Absatz wird zu einem Textblock in der vollen Breite dessen, was ihn enthält, und bricht bei dieser Breite um.
+
+Wählen Sie Worte in der E-Mail aus, und ein kleines Menü erscheint darüber. Es enthält fett, unterstrichen, kursiv, durchgestrichen, eine Textfarbe und einen Link. Die drei Punkte am Ende enthalten tiefgestellt und hochgestellt.
+
+Ein Link, den Sie aus diesem Menü hinzufügen, kann eine Webadresse, eine E-Mail-Adresse oder eine Telefonnummer sein. HireData akzeptiert `http`, `https`, `mailto` und `tel`.
+
+![Ein gerenderter Absatz, der über die Breite seiner Sektion umbricht, mit einem Abmeldelink in der Markenfarbe und unterstrichen sowie drei Variablen-Chips im Text](/images/email-builder/blocks/02b-paragraph-rendered.png)
+
+## Einstellungen
+
+- **Font Family** wählt die Schriftart, mit einer Gewichtsauswahl daneben von Ultra Light bis Heavy. Die eigenen Schriftarten der Marke sitzen oben in der Liste, über dem Rest.
+- **Size** ist ein Schieberegler und ein Feld, 8 bis 48 Pixel. Neue Absätze beginnen bei 16.
+- **Color** setzt die Textfarbe und beginnt mit der Oberflächen-Textfarbe der Marke.
+- **Alignment** ist links, zentriert oder rechts.
+- **Links** enthält zwei Bedienelemente nur für die Links in diesem Absatz. Beide bieten **Inherit** an, was die Entscheidung an das [Template](/de/reference/email-builder/template#settings) zurückgibt, und das verwendet ein neuer Absatz.
+  - **Link color**.
+  - **Underlined**, **Inherit**, **Yes** oder **No**.
+- **Advanced** enthält drei Bedienelemente.
+  - **Letter Spacing**, 0 bis 10.
+  - **Line Height**, 1 bis 2.
+  - **Margin**, die Lücke über und unter dem Absatz.
+
+Tippen Sie `{{` an einer beliebigen Stelle in einem Absatz, um eine Variable einzufügen.
+
+<img src="/images/email-builder/blocks/02-paragraph-settings.png" alt="Das Paragraph-Einstellungspanel mit Font Family, Size, Color, Alignment, der Links-Gruppe mit ausgewähltem Inherit und der Advanced-Gruppe mit Letter Spacing, Line Height und Margin" width="384" />
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Heading](/de/reference/email-builder/blocks/heading) sind dieselben Textbedienelemente auf Überschriftenebene.
+- [Template](/de/reference/email-builder/template#settings) setzt die Linkfarbe, die ein Absatz erbt.
+- [Variablen](/de/reference/email-builder/variables) behandelt die Auswahl, die Fallbacks und wie ein fehlender Wert aussieht.
+- [Button](/de/reference/email-builder/blocks/button) ist der Block, den Sie verwenden, wenn der Link die Hauptsache ist.

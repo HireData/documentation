@@ -1,0 +1,46 @@
+---
+title: "Two Columns"
+sidebarTitle: "Two Columns"
+description: "Het Two Columns-block in de HireData-e-mailbuilder: de vijf lay-outs, de tussenruimte, wat elke kolom kan bevatten en hoe het paar zich gedraagt op een telefoon."
+keywords: ["e-mailkolommen", "twee kolommen", "kolomlay-out", "e-mail gap", "naast elkaar", "stapelen"]
+---
+
+Een Two Columns-block zet twee kolommen naast elkaar in één sectie. Elke kolom bevat eigen blocks, dus zo krijg je een afbeelding naast een alinea, of een alinea naast een knop.
+
+Voeg het toe vanuit het **Blocks**-menu van een sectie. Het komt met beide kolommen er al in.
+
+## Hoe het rendert {#how-it-renders}
+
+De twee kolommen verdelen de breedte van de sectie onderling, minus de padding en de tussenruimte, in de verhouding die **Layout** bepaalt.
+
+![Een 50-50 Two Columns-block: een alinea en een logo links, een alinea en een knop rechts, naast elkaar](/images/email-builder/blocks/04b-columns-rendered.png)
+
+Op een scherm smaller dan 480 pixels houden ze op kolommen te zijn. De linker rendert eerst op volle breedte, de rechter eronder, en de tussenruimte wordt verticale ruimte. Zet wat je het liefst gelezen wilt hebben in de linkerkolom, want op een telefoon is dat wat bovenaan staat.
+
+<img src="/images/email-builder/blocks/04c-columns-stacked.png" alt="Hetzelfde block gerenderd op 400 pixels breed, met de alinea en het logo van de linkerkolom gestapeld boven de alinea en de knop van de rechterkolom" width="386" />
+
+## Instellingen
+
+- **Background color** vult beide kolommen.
+- **Layout** bepaalt de verdeling: **50-50**, **60-40**, **40-60**, **66-33** of **33-66**. Het eerste getal is de linkerkolom.
+- **Gap** is de ruimte tussen de twee kolommen, een slider en een vak van 0 tot 48 pixels.
+- **Column 1 Blocks** en **Column 2 Blocks** zijn twee aparte lijsten, één per kolom, elk met de gebruikelijke **+**, **−** en handle.
+- **Margin** is de ruimte boven en onder het paar.
+- **Padding** is de ruimte binnen elke kolom, rond haar blocks.
+
+<img src="/images/email-builder/blocks/04-columns-settings.png" alt="Het Two Columns-instellingenpaneel met Background color, de vijf Layout-knoppen met 50-50 geselecteerd, de Gap-slider op 24, de blocklijsten van Column 1 en Column 2, Margin en Padding" width="384" />
+
+## Beperkingen
+
+Een Two Columns-block bevat altijd precies twee kolommen. Niets voegt een derde toe en niets verwijdert er een, de **Blocks**-lijsten op elke kolom voegen alleen blocks toe binnen die kolom, en de breadcrumb slaat het kolomniveau helemaal over. Drie kolommen naast elkaar is geen lay-out die de e-mailbuilder kan maken.
+
+Een kolom accepteert minder soorten blocks dan een sectie. Haar menu biedt Paragraph, Heading, Image, Socials, Button en HTML. Ze heeft geen Two Columns, geen Form en geen Signature, dus kolommen nesten nooit.
+
+Buiten de builder wordt de regel afgedwongen bij binnenkomst. Een e-mailtemplate die naar de HireData-API wordt gestuurd met een columns-block dat niet precies twee kolomblocks bevat, wordt geweigerd met "A columns block must contain exactly two column blocks."
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de builder, de toolbar, het thema en elk blocktype.
+- [Sectie](/nl/reference/email-builder/sections) is het enige block waar een Two Columns in kan.
+- [Template](/nl/reference/email-builder/template#how-an-email-nests) legt uit waar het kolomniveau zit en waarom je het nooit ziet.
+- [Image](/nl/reference/email-builder/blocks/image) gedraagt zich anders in een kolom, waar het de breedte van de kolom aanneemt.

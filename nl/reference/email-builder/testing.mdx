@@ -1,0 +1,81 @@
+---
+title: "Testen"
+sidebarTitle: "Testen"
+description: "Controleer een HireData-e-mail voordat hij de deur uit gaat: de preview en zijn drie breedtes, het Links-paneel, jezelf een testmail sturen, en wat testen je niet kan vertellen."
+keywords: ["e-mailpreview", "testmail", "testmail versturen", "previewbreedtes", "e-maillinks", "checklist voor verzending", "e-mails testen"]
+---
+
+De builder geeft je twee manieren om naar een e-mail te kijken voordat iemand anders dat doet: een preview, en een testverzending naar je eigen inbox. Deze pagina behandelt beide, en eindigt met wat geen van beide bewijst.
+
+## De preview {#the-preview}
+
+De oogknop in de toolbar opent de preview. De tooltip waarschuwt je dat hij de e-mail eerst opslaat, dus een preview openen legt vast wat je hebt gewijzigd.
+
+De preview laadt het eigen openbare adres van de e-mail in plaats van hem in de builder te renderen, dus wat je ziet is de afgewerkte e-mail in plaats van het canvas.
+
+<img src="/images/email-builder/20-preview-rendered.png" alt="Een hele e-mail zoals de preview hem rendert: het merklogo, een gekleurde headerband, een begroeting, bodytekst, drie antwoordknoppen, een handtekening en de footer met adres en uitschrijflink" width="420" />
+
+De naam van de template staat linksboven. De knoppen lopen van het midden van de header tot aan de rechterrand.
+
+<img src="/images/email-builder/15-preview-header.png" alt="De preview-knoppen: een kopieerknop, knoppen voor mobiel, tablet en desktop met desktop geselecteerd, een verversknop, een taalkiezer met English en een sluitknop" width="640" />
+
+- **Copy Preview URL**, de eerste knop, kopieert een link die je naar een collega kunt sturen.
+- De drie knoppen erna wisselen tussen **mobiel**, **tablet** en **desktop**.
+- De verversknop herlaadt de e-mail.
+- De taalkiezer verschijnt zodra de template een [vertaling](/nl/reference/email-builder/translations) heeft, en wisselt de preview ertussen.
+
+### Links
+
+Een **Links**-paneel aan de zijkant toont elke link in de e-mail, op volgorde, en een **UTM Campaign**-kaart eronder herhaalt de [campagneparameters](/nl/reference/email-builder/template#brand-theme-and-metadata) die HireData aan alle links toevoegt. Beweeg over een rij en die link wordt omlijnd in de preview, met een popover die het volledige adres en de parameters erop toont.
+
+<img src="/images/email-builder/16-preview-links.png" alt="Het Links-paneel met vier rijen, de knop van de rij waarover je zweeft omlijnd in de preview ernaast, een popover met de volledige URL en zijn utm_source-, utm_medium- en utm_campaign-waarden, en een UTM Campaign-kaart onder de lijst" width="640" />
+
+Dit is de snelste controle in de builder. Een link met het verkeerde adres, of een knop die naar een variabele wijst die naar niets resolvde, verschijnt hier binnen seconden.
+
+### Wat de preview invult
+
+De preview resolvet je variabelen tegen je eigen account, omdat jij de enige persoon bent van wie HireData weet dat hij leest. Dus een waarde die voor jou leeg is verschijnt hier leeg, en een token dat helemaal geen variabele is verschijnt precies zoals je het typte. Zie [Wat een ontvanger daadwerkelijk ziet](/nl/reference/email-builder/variables#what-a-recipient-actually-sees).
+
+Open de **Copy Preview URL**-link ergens waar je niet bent ingelogd en dezelfde e-mail vult die velden in plaats daarvan met verzonnen voorbeelddata. Gebruik die link om een collega de lay-out te laten zien, niet om de formulering van een gepersonaliseerde regel te controleren.
+
+## Een testmail versturen {#sending-a-test-email}
+
+De papieren-vliegtuigknop opent **Test Email**. Hij slaat de e-mail eerst op en stuurt hem dan naar jou met plausibele waarden in plaats van die van een echte ontvanger.
+
+<img src="/images/email-builder/17-test-email.png" alt="De Test Email-modal met optionele vakken voor First name, Last name en Email, een Language-selector, een Objects-groep met recordpickers voor Vacancy en Match, en een Send test email-knop" width="525" />
+
+- **First name**, **Last name** en **Email** zijn allemaal optioneel. Laat ze staan en HireData gebruikt die van jou. Vul ze in om de test ergens anders heen te sturen, of om te zien hoe een langere naam in de lay-out valt.
+- **Language** verschijnt zodra de template een vertaling heeft, en kiest welke wordt verstuurd.
+- **Objects** verschijnt wanneer de e-mail [records](/nl/reference/email-builder/variables#bringing-in-a-records-fields) koppelt, of wanneer hij is gebonden aan een [formulier](/nl/reference/email-builder/blocks/form) dat dat doet. Elke kaart accepteert verzonnen **Fields** of een echt **Record**, en **Auto fill** kiest een record voor je.
+
+**Send test email** toont een **Test mail scheduled!**-melding en sluit de modal. De e-mail komt een moment later aan.
+
+<Note>
+  Een object gemarkeerd met een rood sterretje heeft een record nodig, wat de regel onder de groep ook zegt over hem leeg laten. Laat er een weg en de verzending mislukt met een **Failed to send test email**-melding die het eerste ontbrekende object benoemt, op key in plaats van op label: "Required data reference [job] is missing."
+</Note>
+
+## Voordat je verstuurt
+
+Zes dingen die het doen waard zijn, in deze volgorde.
+
+1. **Lees de onderwerpregel.** Het is het eerste dat een ontvanger ziet, hij accepteert variabelen zoals al het andere, en het is de makkelijkste regel om half geschreven achter te laten.
+2. **Controleer het canvas op losse accolades.** Een kale variabele die HireData herkent is een chip, dus een die nog `{{` en `}}` toont is óf een typefout óf een token met een [modifier](/nl/variables/modifiers), dat met opzet platte tekst blijft. Lees ze allemaal en controleer of het het tweede geval is. Zie [Variabelen](/nl/reference/email-builder/variables).
+3. **Loop het Links-paneel door.** Elke link, inclusief die binnen een Form-block en de uitschrijflink in de footer.
+4. **Bekijk de e-mail op mobiele breedte.** Kolommen stapelen en knoppen herschikken zich, en een regel die op een desktop past kan lelijk breken.
+5. **Controleer elke taal.** Loop met de taalkiezer van de preview elke vertaling door die je hebt geschreven.
+6. **Stuur jezelf een testmail en lees hem in je mailclient.** Het is de enige stap die je een echte inbox laat zien.
+
+## Wat testen je niet vertelt
+
+De builder heeft geen Gmail-preview, geen Outlook-preview en geen dark-mode-preview. HireData modelleert geen enkele mailclient, dus niets hier voorspelt hoe een client je e-mail zal renderen. Een testverzending naar je eigen adres, geopend in de client die je ontvangers gebruiken, is de enige controle die dat wel doet.
+
+De drie previewformaten schalen het previewvenster naar ongeveer een telefoon, een tablet en de breedte van je scherm. Ze veranderen de breedte en niets anders, dus wat ze je laten zien is hoe je e-mail zich herschikt, niet hoe een bepaald apparaat hem rendert. De smalle weergave is smaller dan de meeste telefoons, wat het een strenge test maakt: een lay-out die daar overeind blijft, blijft ook overeind op een echte.
+
+Stapelen op smalle breedtes is standaardgedrag van MJML, het framework waarmee HireData de e-mail bouwt. HireData bepaalt niet de breedte waarop het gebeurt en biedt er geen knop voor. Wat je wel in de hand hebt is wat er stapelt: zie [Two Columns](/nl/reference/email-builder/blocks/columns#how-it-renders).
+
+## Gerelateerd
+
+- [Variabelen](/nl/reference/email-builder/variables) legt uit wat de preview je toont waar een waarde ontbreekt.
+- [Vertalingen](/nl/reference/email-builder/translations) behandelt de taalkiezer in de preview en de testmodal.
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de toolbar en opslaan.
+- [Two Columns](/nl/reference/email-builder/blocks/columns) is het block waarvan het gedrag het meest verandert tussen de previewbreedtes.

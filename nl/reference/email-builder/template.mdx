@@ -1,0 +1,68 @@
+---
+title: "Template"
+sidebarTitle: "Template"
+description: "De root van een HireData-e-mail. Hoe Template, secties en blocks nesten, hoe de breadcrumb ertussen beweegt, en de instellingen die op de hele e-mail van toepassing zijn."
+keywords: ["e-mailtemplate", "e-mailhiërarchie", "secties", "breadcrumb", "linkkleur", "e-mailachtergrond", "UTM-campagne"]
+---
+
+Template is de e-mail zelf. Hij staat aan de root van alles wat je in de e-mailbuilder bouwt, hij bevat de secties, en zijn instellingen gelden voor elk block erin.
+
+Je voegt nooit een Template toe en je kunt er geen verwijderen. Geen enkel menu in de builder biedt een Template aan, en geen enkele **Blocks**-lijst bevat er een. Elke e-mail heeft er precies één vanaf het moment dat je hem aanmaakt, en daarom begint de breadcrumb daar altijd.
+
+## Hoe een e-mail nest {#how-an-email-nests}
+
+Drie niveaus, en één uitzondering.
+
+- **Template** bevat secties en niets anders. De **Blocks**-lijst op het Template-paneel voegt een sectie toe zonder een menu te openen, omdat een sectie het enige is dat hij accepteert.
+- Een **sectie** is een band over de e-mail. Ze bevat de blocks die een ontvanger leest: paragraph, heading, Two Columns, form, image, socials, button, HTML en signature.
+- Een **Two Columns**-block is de uitzondering. Het zit in een sectie, komt met precies twee kolommen er al in, en elke kolom bevat eigen blocks. Een kolom accepteert minder soorten blocks dan een sectie: geen Two Columns, geen Form, geen Signature.
+
+[Een block kiezen](/nl/reference/email-builder/overview#choosing-a-block) toont elk block en waar je het kunt plaatsen.
+
+## De breadcrumb {#the-breadcrumb}
+
+Boven het instellingenpaneel staat een breadcrumb die alles benoemt wat het geselecteerde block bevat. Selecteer een regel van een handtekening en je krijgt alle vier de niveaus.
+
+<img src="/images/email-builder/02-breadcrumb.png" alt="De breadcrumb van het instellingenpaneel met Template, dan Sections, dan Signature, dan Paragraph, waarbij Paragraph grijs is als het huidige niveau" width="402" />
+
+Elk niveau behalve het niveau waarop je zit is een knop. Klik op **Sections** voor de sectie die het block bevat, en op **Template** voor de e-mail als geheel. De e-mail links beweegt niet. Alleen het paneel verandert.
+
+Twee dingen zijn de moeite van het weten waard voordat ze je in de weg zitten.
+
+- **Eén enkele sectie heet "Sections", meervoud.** Zo staat het in de breadcrumb en op elke rij van de Template-**Blocks**-lijst, dus een lijst van vijf secties is vijf rijen die allemaal "Sections" zeggen. Het meervoud is het label voor het blocktype in plaats van een aantal, en het vertelt je nooit op welke sectie je zit. De e-mail links doet dat wel.
+- **Er is geen kolomniveau.** Selecteer een block in een kolom en de breadcrumb loopt `Template > Sections > Two Columns` en dan rechtstreeks naar het block. Een kolom heeft geen eigen instellingenpaneel, dus er ontbreekt niets in de keten.
+
+## Instellingen {#settings}
+
+Klik op **Template** in de breadcrumb en het paneel vult zich met de instellingen voor de hele e-mail. Het is het enige niveau dat je niet kunt bereiken door op de e-mail zelf te klikken, want naast een block klikken selecteert de sectie in plaats van de template.
+
+- **Background color** zit achter elke sectie, dus het is wat een ontvanger eromheen ziet en in de tussenruimtes ertussen. Hij begint op de achtergrondkleur van het merk, die de knop benoemt in plaats van als hexcode te tonen.
+- **Links** bevat **Link color** en **Underlined**. Beide gelden voor elke link in de e-mail. Een paragraph kan elk van beide overschrijven, en zijn eigen **Links**-groep biedt **Inherit** als derde keuze zodat hij de beslissing kan teruggeven.
+- **Blocks** toont de secties in de volgorde waarin ze staan. Versleep een rij om een sectie te verplaatsen, **+** voegt er een onder toe, en **−** verwijdert er een met alles erin.
+- **Theme** is de styling waarmee blocks die je vanaf nu toevoegt beginnen. Zie [Merk, thema en metadata](#brand-theme-and-metadata).
+- **Metadata** bevat **UTM Campaign**. Zie [Merk, thema en metadata](#brand-theme-and-metadata).
+
+<img src="/images/email-builder/09-template-settings.png" alt="Het Template-instellingenpaneel met Background color, de Links-groep uitgeklapt naar Link color en Underlined, de Blocks-lijst van vijf secties, Theme en Metadata" width="384" />
+
+## Merk, thema en metadata {#brand-theme-and-metadata}
+
+Drie instellingen bepalen hoe een e-mail wordt gestyled, en ze bereiken verschillende blocks. Ze verwisselen is de gebruikelijke reden dat een wijziging ergens landt waar je hem niet verwachtte.
+
+- **Brand**, in de toolbar, restylet de **hele e-mail**. Elke kleur en elk lettertype dat nog op een themawaarde staat verandert tegelijk, in blocks die je weken geleden schreef net zo goed als in blocks die je hierna toevoegt. Een testcase van het ene merk naar het andere omzetten verplaatste zijn sectieachtergrond, zijn knopkleur en zijn kopkleur samen.
+- **Theme**, in de Template-instellingen, bereikt **alleen blocks die je daarna toevoegt**. Het paneel zegt het zelf: "Will be applied to newly added blocks." Stel daar de sectieachtergrond in en elke sectie die je vanaf dan toevoegt begint ermee. Secties die al in de e-mail staan houden wat ze hebben.
+- **Een waarde die je zelf op een block instelt** bereikt **alleen dat block**, en haalt het voorgoed buiten het bereik van het merk. De knop benoemt niet langer een themawaarde en toont in plaats daarvan jouw kleur, en een latere merkwissel laat hem staan waar jij hem zette.
+
+Het paneel vertelt je dus welke welke is. Een knop met "Theme: Palette Surface Color" volgt nog steeds het merk. Een met `#ff0000` niet.
+
+<img src="/images/email-builder/06-template-theme.png" alt="De Theme-groep in de Template-instellingen, beschreven als Will be applied to newly added blocks, met het Section-item uitgeklapt naar Background color, Spacing en Border" width="380" />
+
+**Metadata** eronder bevat **UTM Campaign**, vijf vakken genaamd **Campaign Source**, **Campaign Medium**, **Campaign Name**, **Campaign Term** en **Campaign Content**. HireData tagt elke link in een verzonden e-mail of je ze nu invult of niet, dus deze bepalen de waarden in plaats van het taggen aan te zetten.
+
+<img src="/images/email-builder/07-template-utm-campaign.png" alt="De UTM Campaign-groep uitgeklapt naar Campaign Source, Campaign Medium, Campaign Name, Campaign Term en Campaign Content, elk met een voorbeeld en een beschrijving" width="380" />
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt het canvas, de toolbar, het thema en opslaan.
+- [Sectie](/nl/reference/email-builder/sections) is de band die alles bevat wat een ontvanger leest.
+- [Two Columns](/nl/reference/email-builder/blocks/columns) legt het ene block uit dat verder nest.
+- [Paragraph](/nl/reference/email-builder/blocks/paragraph) behandelt de linkkleur per block die de template overschrijft.

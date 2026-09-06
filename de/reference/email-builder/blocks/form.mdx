@@ -1,0 +1,61 @@
+---
+title: "Form"
+sidebarTitle: "Form"
+description: "Der Form-Block im HireData-E-Mail-Builder: Schaltflächen, die eine Ihrer Formularfragen direkt aus der E-Mail beantworten, und was jeder Fragetyp wird."
+keywords: ["e-mail-formular", "leading question", "feedback-schaltflächen", "nps-e-mail", "bewertungsschaltflächen", "give feedback"]
+---
+
+Ein Form-Block setzt eine Frage aus einem Ihrer Formulare direkt in die E-Mail. Der Empfänger antwortet mit einem Klick auf eine Schaltfläche, die das Formular mit dieser Antwort bereits ausgefüllt öffnet. So bekommt eine Feedback-E-Mail eine Antwort mit einem Klick statt zwei.
+
+Fügen Sie ihn aus dem **Blocks**-Menü einer Sektion hinzu. Eine Spalte kann keinen enthalten.
+
+## Wie er gerendert wird
+
+Was der Block in die E-Mail setzt, hängt vom Typ der Leading Question ab.
+
+- **Net Promoter Score** rendert elf Schaltflächen, 0 bis 10, egal welchen Bereich die Frage selbst trägt.
+- **Opinion Scale** rendert eine Schaltfläche pro Punkt ihres eigenen Bereichs, mit den Endlabels der Frage darunter in Großbuchstaben.
+- **Multiple Choice** und **Dropdown** rendern eine Schaltfläche pro Option.
+- Alles andere rendert einen einzelnen Call-to-Action mit "Give Feedback". Klicken Sie ihn in der E-Mail an, um Ihren eigenen Wortlaut zu schreiben.
+
+![Elf Schaltflächen nummeriert von 0 bis 10 unter der Frage "How likely are you to recommend us to a friend?", mit NOT LIKELY AT ALL und EXTREMELY LIKELY unter den Enden](/images/email-builder/blocks/05b-form-rendered.png)
+
+Die Stern- und Emoji-Bewertungsvarianten, die [nur eine Integration hinzufügen kann](/de/reference/forms/overview), zeichnen ebenfalls eine Schaltfläche pro Wert, einen Stern oder ein Emoji anstelle einer Zahl. Daumen und Schieberegler bekommen den einzelnen Call-to-Action.
+
+Jede Schaltfläche ist ihre eigene Spalte, auf einem Bildschirm schmaler als 480 Pixel passt die Reihe also nicht mehr, und die Schaltflächen stapeln sich eine pro Zeile. Eine Net-Promoter-Score-Frage wird auf einem Telefon zu elf gestapelten Schaltflächen, was es wert ist, vor dem Senden in der Vorschau gesehen zu werden.
+
+Der Block wird in der Sprache des Formulars gerendert, auf das er zeigt, nicht in der Sprache der E-Mail. Eine englische Vorlage, die an ein niederländisches Formular gebunden ist, setzt niederländische Schaltflächen in die E-Mail. Prüfen Sie die Arbeitsfläche, bevor Sie senden.
+
+## Einstellungen
+
+- **Form** wählt das Formular, auf das gezeigt wird. Die Liste durchsucht jedes Formular im Workspace.
+- **Leading Question** wählt die Frage, die die Schaltflächen beantworten. Verborgene Fragen und Endbildschirme werden in der Liste ausgelassen.
+- **Background color** und **Color** stylen die Schaltflächen.
+- **Show Question** stellt den eigenen Wortlaut der Frage über die Schaltflächen oder lässt ihn weg.
+- **Size** ist **Small**, **Medium** oder **Large**, was Textgröße und Innenabstand zusammen setzt.
+- **Rounded corners** ist **None**, **Normal**, **Large** oder **Full**, von eckig bis zur vollen Pillenform.
+- **Width** ist **Auto**, **Half**, **Full** oder **Custom**, was einen Schieberegler von 35 bis 100 Prozent öffnet.
+- **Alignment** ist links, zentriert oder rechts.
+- **Text** enthält **Font Family** mit einer Gewichtsauswahl, **Size**, **Letter Spacing** und **Line Height**.
+- **Spacing** enthält zwei Bedienelemente.
+  - **Margin**, die Lücke über und unter den Schaltflächen.
+  - **Padding**, der Raum zwischen dem Label und dem Rand jeder Schaltfläche.
+- **Border** enthält **Border color**, **Border width** und **Border radius**.
+
+<img src="/images/email-builder/blocks/05-form-settings.png" alt="Das Form-Einstellungspanel mit der Form-Auswahl, Leading Question, Background color und Color, Show Question, Size, Rounded corners, Width, Alignment und den Gruppen Text, Spacing und Border" width="384" />
+
+**Form** und **Leading Question** gehören zur E-Mail und nicht zum Block. Fügen Sie einen zweiten Form-Block hinzu, kommt er bereits auf dasselbe Formular und dieselbe Frage zeigend an, und das Ändern von einem der beiden ändert beide Blöcke.
+
+## Grenzen {#limits}
+
+- Eine Auswahlfrage rendert nur ihre **ersten fünf Optionen**. Eine sechste Option bekommt keine Schaltfläche, keine Warnung und kein Zeichen auf der Arbeitsfläche, dass sie fehlt. Ordnen Sie die Frage so um, dass die fünf wichtigen zuerst kommen, oder richten Sie den Block auf eine kürzere Frage.
+- Eine Net-Promoter-Score-Frage ist hier immer 0 bis 10. Welchen Bereich die Frage auch trägt, er wird ignoriert.
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Der Formular-Builder im Überblick](/de/reference/forms/overview) behandelt die Formulare, auf die ein Form-Block zeigen kann.
+- [Net Promoter Score und Opinion Scale](/de/reference/forms/fields/net-promoter-score-and-opinion-scale) ist der Fragetyp hinter den elf Schaltflächen.
+- [Multiple Choice und Dropdown](/de/reference/forms/fields/multiple-choice-and-dropdown) ist der Fragetyp, der bei fünf Schaltflächen gedeckelt ist.
+- [Sektion](/de/reference/email-builder/sections) ist der einzige Block, in den ein Form gehen kann.
+- [Übersetzungen](/de/reference/email-builder/translations) behandelt die Bewertungslabels und den Call-to-Action, die ein Form-Block pro Sprache anbietet.

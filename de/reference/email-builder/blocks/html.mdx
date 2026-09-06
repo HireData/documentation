@@ -1,0 +1,41 @@
+---
+title: "HTML"
+sidebarTitle: "HTML"
+description: "Der HTML-Block im HireData-E-Mail-Builder: ein Code-Editor für eigenes Markup, die Schriftgröße, die HireData ihm hinzufügt, und das Zeichenlimit."
+keywords: ["e-mail-html", "raw html", "code-block", "eigenes markup", "html-editor", "e-mail-schriftgröße"]
+---
+
+Ein HTML-Block setzt Markup, das Sie selbst schreiben, in die E-Mail. Verwenden Sie ihn für das, was die anderen Blöcke nicht können. Fügen Sie ihn aus dem **Blocks**-Menü einer Sektion oder einer Spalte hinzu.
+
+## Wie er gerendert wird
+
+HireData setzt Ihr Markup unangetastet in die E-Mail, mit einer Ausnahme, die es machen muss.
+
+Die E-Mail wird mit MJML gebaut, das die Schriftgröße von allem, was es nicht selbst angeordnet hat, auf null setzt. In einen HTML-Block eingefügter Text käme unsichtbar an. Vor dem Senden geht HireData Ihr Markup also durch und fügt `font-size: 16px` jedem `body`-, `table`-, `p`-, `span`- oder `a`-Element hinzu, das noch keine trägt, und fasst losen Text in ein `span` derselben Größe.
+
+Setzen Sie selbst eine Schriftgröße, lässt HireData sie in Ruhe. Das ist der Weg, jede andere Größe als 16 Pixel aus einem HTML-Block zu bekommen.
+
+![Ein gerenderter HTML-Block, der seine eine Textzeile in der Standard-Serifenschrift des Browsers zeigt, anders als die Markenschrift jedes anderen Blocks darum herum](/images/email-builder/blocks/09b-html-rendered.png)
+
+Fügen Sie ein ganzes HTML-Dokument ein, überlebt nur, was innerhalb von `<body>` steht. Fügen Sie etwas ein, das der Parser gar nicht lesen kann, geht es genau so durch, wie es geschrieben ist.
+
+Ein HTML-Block trägt keine [Übersetzungen](/de/reference/email-builder/translations). Was Sie hineinschreiben, geht in jeder Sprache, in der die E-Mail gesendet wird, unverändert hinaus.
+
+## Einstellungen
+
+Es gibt keine Einstellungen. Das Panel ist der Editor, mit Zeilennummern links. Tippen oder fügen Sie Ihr Markup ein, und es erscheint fortlaufend in der E-Mail.
+
+<img src="/images/email-builder/blocks/09-html-settings.png" alt="Das Einstellungspanel des HTML-Blocks mit einem dunklen Code-Editor mit Zeilennummern, der ein einzelnes Paragraph-Tag enthält" width="384" />
+
+Der Block stylt nichts für Sie. Farben, Schriftarten und Abstände, die die anderen Blöcke von der Marke übernehmen, müssen Sie selbst ausschreiben.
+
+## Grenzen
+
+Eine E-Mail-Vorlage, die an die HireData-API gesendet wird, wird abgelehnt, wenn ein HTML-Block über 100.000 Zeichen hinausläuft. Der Editor zählt nichts für Sie, ein so großes Einfügen lohnt es sich also zu kürzen, bevor es das Problem von jemand anderem wird.
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Sektion](/de/reference/email-builder/sections) und [Two Columns](/de/reference/email-builder/blocks/columns) akzeptieren beide einen HTML-Block.
+- [Paragraph](/de/reference/email-builder/blocks/paragraph) ist der Block, zu dem Sie zuerst greifen sollten, weil er die Schriftarten und Farben der Marke ungefragt übernimmt.
+- [Übersetzungen](/de/reference/email-builder/translations) erklärt, warum ein HTML-Block das Eine ist, das Sie nicht übersetzen können.

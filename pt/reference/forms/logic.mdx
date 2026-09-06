@@ -2,7 +2,16 @@
 title: "Lógica"
 sidebarTitle: "Lógica"
 description: "A lógica condicional num formulário HireData: como se lê uma regra, que operadores cada tipo de campo oferece e o que verificar quando uma regra não dispara."
-keywords: ["lógica condicional", "ramificação", "skip logic", "salto", "add rule", "add condition", "all other cases go to", "always go to", "operadores"]
+keywords:
+  - "lógica condicional"
+  - "ramificação"
+  - "skip logic"
+  - "salto"
+  - "add rule"
+  - "add condition"
+  - "all other cases go to"
+  - "always go to"
+  - "operadores"
 ---
 
 Um formulário sem lógica corre a lista de cima a baixo. Toda a gente responde a todas as perguntas e toda a gente chega ao mesmo fim. O separador **Logic** é onde muda isso. Cada regra que escreve decide para onde uma resposta envia o inquirido a seguir.
@@ -43,7 +52,7 @@ A ordem é o que as pessoas erram. Uma regra ampla acima de uma estreita ganha s
 O tipo da pergunta na condição decide os operadores. Cada página de campo explica a que corresponde cada um dos seus operadores.
 
 | Tipos de campo | Operadores |
-|---|---|
+| --- | --- |
 | [Short Text e Long Text](/pt/reference/forms/fields/short-and-long-text), [Email](/pt/reference/forms/fields/email), [Phone Number](/pt/reference/forms/fields/phone-number), [Website](/pt/reference/forms/fields/website) | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
 | [Multiple Choice e Dropdown](/pt/reference/forms/fields/multiple-choice-and-dropdown) | has response, is equal to, is not equal to, is one of, is not one of |
 | [Yes/No](/pt/reference/forms/fields/yes-no) | has response, is equal to, is not equal to |
@@ -97,11 +106,7 @@ Uma pergunta sem regras ainda pode saltar. Defina **Always go to** e todos os qu
 
 ## Perguntas obrigatórias e lógica
 
-Uma pergunta obrigatória tem de ser respondida antes de o inquirido poder avançar, o que significa que as suas regras só correm quando há uma resposta para testar. Uma classe de respostas fica atualmente presa em vez disso.
-
-<Warning>
-  Um bug no formulário web bloqueia as respostas No, um toggle intocado, 0 e uma classificação de 0 numa pergunta obrigatória. **Next** não faz nada, nenhuma mensagem aparece e as regras dessa pergunta nunca disparam. Até a correção chegar, deixe as perguntas Yes/No e Net Promoter Score opcionais e defina um **Minimum Value** de 1 numa pergunta Number obrigatória.
-</Warning>
+Uma pergunta obrigatória tem de ser respondida antes de o inquirido poder avançar, o que significa que as suas regras só correm quando há uma resposta para testar.
 
 ## Quando uma regra não dispara
 

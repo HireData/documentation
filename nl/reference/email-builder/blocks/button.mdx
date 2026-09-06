@@ -1,0 +1,49 @@
+---
+title: "Button"
+sidebarTitle: "Button"
+description: "Het Button-block in de HireData-e-mailbuilder: de URL die het opent, de presets voor grootte en hoeken, en hoe je de tekst erop schrijft."
+keywords: ["e-mailknop", "call-to-action", "knop-URL", "afgeronde hoeken", "knopbreedte", "linktekst"]
+---
+
+Een Button-block is een call-to-action die een URL opent. Voeg het toe vanuit het **Blocks**-menu van een sectie of een kolom.
+
+Een nieuwe knop komt met "Click Me" erop. Klik erop in de e-mail en typ eroverheen.
+
+## Hoe het rendert
+
+De knop komt eruit als een link die is gestyled om op een knop te lijken, op de breedte en uitlijning die jij instelt, op een eigen rij. **Width: Full** rekt hem uit over de sectie; in een kolom rekt hij zich uit over de kolom.
+
+![Een gerenderde knop met Read the reference, gecentreerd op een eigen rij op Auto-breedte met normale afgeronde hoeken](/images/email-builder/blocks/08b-button-rendered.png)
+
+## Instellingen
+
+- **URL** is het adres dat de knop opent. Het vak accepteert een variabele, zodat een knop naar een link kan wijzen die per ontvanger verandert.
+- **Background color** en **Color** zitten naast elkaar en stylen de knop en zijn tekst.
+- **Size** is **Small**, **Medium** of **Large**. Het beweegt de tekstgrootte en de padding samen, van tekst van 12 pixels in een krap vak tot tekst van 24 pixels in een royaal vak.
+- **Rounded corners** is **None**, **Normal**, **Large** of **Full**, dat loopt van vierkant tot een pil.
+- **Width** is **Auto**, dat de knop op zijn tekst laat aansluiten, of **Full**, dat hem uitrekt over wat hem bevat.
+- **Alignment** is links, midden of rechts, en doet niets op **Full** breedte.
+- **Text** bevat **Font Family** met een gewichtselector, **Size**, **Letter Spacing** en **Line Height**.
+- **Spacing** bevat twee knoppen.
+  - **Margin**, de ruimte boven en onder de knop.
+  - **Padding**, de ruimte tussen de tekst en de rand van de knop.
+- **Border** bevat **Border color**, **Border width** en **Border radius**.
+
+<img src="/images/email-builder/blocks/08-button-settings.png" alt="Het Button-instellingenpaneel met het URL-vak, Background color en Color, Size op Medium, Rounded corners op Normal, Width op Auto, Alignment en de groepen Text, Spacing en Border" width="384" />
+
+**Size** en **Text** bepalen beide de tekstgrootte, en wat je het laatst aanraakt wint. Een **Size** kiezen herschrijft de grootte in **Text**, dus stel eerst de grootte in en pas hem daarna aan als je een waarde wilt die de drie presets niet bieden.
+
+De woorden op een knop zijn de linktekst, en het is alles wat een schermlezer voorleest. "Lees de referentie" of "Boek je plek" vertelt iemand wat er gebeurt. "Klik hier" en "Lees meer" vertellen niets, en een ontvanger die door de e-mail springt hoort een lijst identieke links. Zeg wat er aan de andere kant is.
+
+## Beperkingen
+
+HireData ondersteunt `http`-, `https`-, `mailto`- en `tel`-adressen, en een variabele die naar een ervan resolvet. Het **URL**-vak controleert niet wat je typt, dus een verkeerd getypt schema bereikt de ontvanger als een dode link. Test de e-mail voordat je hem verstuurt.
+
+Een e-mailtemplate die naar de HireData-API wordt gestuurd met een ander schema wordt geweigerd met "Builder links and images must use a supported URL scheme or a HireData variable."
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de builder, de toolbar, het thema en elk blocktype.
+- [Paragraph](/nl/reference/email-builder/blocks/paragraph) behandelt links in lopende tekst, die dezelfde schema's accepteren.
+- [Form](/nl/reference/email-builder/blocks/form) tekent zijn eigen knoppen, en wijst ze naar een formulier in plaats van een URL.
+- [Variabelen](/nl/reference/email-builder/variables) behandelt de tokens die het **URL**-vak accepteert.

@@ -1,0 +1,50 @@
+---
+title: "Signature"
+sidebarTitle: "Signature"
+description: "O bloco Signature no construtor de emails da HireData: uma imagem ao lado de um bloco de texto de despedida, o que pode mudar nele e o que está fixo."
+keywords: ["assinatura de email", "despedida", "avatar do remetente", "imagem da assinatura", "linhas da assinatura"]
+---
+
+Um bloco Signature é uma imagem ao lado de um bloco de texto de despedida. É a forma habitual de fechar um email, com o nome, o endereço de email e o website do remetente sob um "Com os melhores cumprimentos".
+
+Adicione-o a partir do menu **Blocks** de uma secção. Uma coluna não pode conter um.
+
+## Como é renderizado
+
+A assinatura é um layout fixo de duas colunas. A imagem vai numa coluna de 125 píxeis à esquerda, recortada num círculo a 100 por 100 píxeis, e o texto preenche a coluna ao lado.
+
+![Uma marca circular à esquerda, com Kind regards, uma variável de nome do remetente, uma variável de email e uma variável de website empilhadas na coluna ao lado](/images/email-builder/blocks/10b-signature-rendered.png)
+
+Deixe **Image** vazio e a coluna da imagem desaparece. O texto passa então a correr a toda a largura da secção, que é o layout a usar para uma despedida só de texto.
+
+Cada linha é um [parágrafo](/pt/reference/email-builder/blocks/paragraph), por isso cada uma carrega a sua própria fonte, tamanho, cor e alinhamento. Selecione uma linha e o breadcrumb lê `Template > Sections > Signature > Paragraph`.
+
+## Definições
+
+- **Image** abre a Media Library. Escolha uma imagem carregada, ou uma variável como o avatar do remetente ou o logótipo da marca, que muda então consoante quem envia o email.
+- **Color** define a cor do texto de toda a assinatura.
+- **Background color** define a cor por trás dela.
+- **Blocks** lista as linhas da assinatura, uma fila por parágrafo. As filas arrastam-se para reordenar e nada mais. Não há **+** nem **−**.
+- **Spacing** contém **Margin**, o espaço acima e abaixo do bloco. Não tem padding nem largura.
+
+<img src="/images/email-builder/blocks/10-signature-settings.png" alt="O painel de definições da Signature a mostrar o Image com uma marca, Color, Background color, a lista Blocks de cinco parágrafos apenas com pegas de arrastar e o grupo Spacing com Margin" width="384" />
+
+Adiciona e remove linhas no email e não no painel. Clique no fim de uma linha e prima **Enter** para uma nova, e apague uma linha como apagaria qualquer outro texto.
+
+## Limites
+
+O layout é a única coisa em que não pode tocar. Não há definição para as larguras das colunas, para pôr a imagem à direita, para tirar o recorte circular ou para uma segunda imagem. Se precisar de uma forma diferente, construa-a com um bloco [Two Columns](/pt/reference/email-builder/blocks/columns).
+
+A lista **Blocks** contém parágrafos e nada mais. Uma assinatura não pode conter um botão, uma imagem ou um título.
+
+<Note>
+  Uma imagem de assinatura definida como o avatar do remetente resolve-se por remetente, por isso o mesmo template envia uma fotografia diferente por cada colega que o usa. Aponte-a para o logótipo da marca quando o email não deve levar um rosto.
+</Note>
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- [Paragraph](/pt/reference/email-builder/blocks/paragraph) é o bloco de que cada linha de assinatura é feita.
+- [Image](/pt/reference/email-builder/blocks/image) é o bloco para uma imagem que quer dimensionar você mesmo.
+- [Two Columns](/pt/reference/email-builder/blocks/columns) é a forma de construir uma despedida que o bloco de assinatura não consegue.
+- [Variáveis](/pt/reference/email-builder/variables) cobre os tokens de remetente e de marca que uma assinatura costuma carregar.

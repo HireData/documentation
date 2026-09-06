@@ -1,0 +1,50 @@
+---
+title: "Signature"
+sidebarTitle: "Signature"
+description: "Le bloc Signature dans l'éditeur d'e-mails HireData : une image à côté d'un bloc de texte de signature, ce que vous pouvez y changer et ce qui est figé."
+keywords: ["signature d'e-mail", "formule de politesse", "avatar d'expéditeur", "image de signature", "lignes de signature"]
+---
+
+Un bloc Signature est une image à côté d'un bloc de texte de signature. C'est la façon habituelle de clore un e-mail, avec le nom de l'expéditeur, son adresse e-mail et son site web sous un « Kind regards ».
+
+Ajoutez-le depuis le menu **Blocks** d'une section. Une colonne ne peut pas en contenir.
+
+## Comment il s'affiche
+
+La signature est une disposition figée à deux colonnes. L'image va dans une colonne de 125 pixels à gauche, recadrée en cercle de 100 par 100 pixels, et le texte remplit la colonne à côté.
+
+![Un logo de marque circulaire à gauche, avec Kind regards, une variable de nom d'expéditeur, une variable d'e-mail et une variable de site web empilées dans la colonne à côté](/images/email-builder/blocks/10b-signature-rendered.png)
+
+Laissez **Image** vide et la colonne d'image disparaît. Le texte court alors sur toute la largeur de la section, ce qui est la disposition à utiliser pour une signature en texte simple.
+
+Chaque ligne est un [paragraphe](/fr/reference/email-builder/blocks/paragraph), donc chacune porte sa propre police, sa taille, sa couleur et son alignement. Sélectionnez une ligne et le fil d'Ariane affiche `Template > Sections > Signature > Paragraph`.
+
+## Paramètres
+
+- **Image** ouvre la médiathèque. Choisissez une image téléversée, ou une variable telle que l'avatar de l'expéditeur ou le logo de la marque, qui change alors selon la personne qui envoie l'e-mail.
+- **Color** définit la couleur du texte pour toute la signature.
+- **Background color** définit la couleur derrière elle.
+- **Blocks** liste les lignes de la signature, une ligne par paragraphe. Les lignes se glissent pour être réordonnées et rien d'autre. Il n'y a ni **+** ni **−**.
+- **Spacing** contient **Margin**, l'espace au-dessus et en dessous du bloc. Il n'a ni padding ni largeur.
+
+<img src="/images/email-builder/blocks/10-signature-settings.png" alt="Le panneau des paramètres Signature montrant l'Image avec un logo de marque, Color, Background color, la liste Blocks de cinq paragraphes avec poignées de glissement uniquement, et le groupe Spacing contenant Margin" width="384" />
+
+Vous ajoutez et supprimez des lignes dans l'e-mail plutôt que sur le panneau. Cliquez à la fin d'une ligne et appuyez sur **Entrée** pour en créer une nouvelle, et supprimez une ligne comme vous supprimeriez n'importe quel autre texte.
+
+## Limites
+
+La disposition est la seule chose que vous ne pouvez pas toucher. Il n'y a pas de paramètre pour la largeur des colonnes, pour mettre l'image à droite, pour rendre le cercle carré ou pour une deuxième image. S'il vous faut une autre forme, construisez-la avec un bloc [Two Columns](/fr/reference/email-builder/blocks/columns) à la place.
+
+La liste **Blocks** contient des paragraphes et rien d'autre. Une signature ne peut pas contenir un bouton, une image ou un titre.
+
+<Note>
+  Une image de signature réglée sur l'avatar de l'expéditeur se résout par expéditeur, donc le même modèle envoie une photo différente pour chaque collègue qui l'utilise. Pointez-la plutôt vers le logo de la marque quand l'e-mail ne doit pas porter de visage.
+</Note>
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre l'éditeur, la barre d'outils, le thème et chaque type de bloc.
+- [Paragraph](/fr/reference/email-builder/blocks/paragraph) est le bloc dont chaque ligne de signature est faite.
+- [Image](/fr/reference/email-builder/blocks/image) est le bloc pour une image que vous voulez dimensionner vous-même.
+- [Two Columns](/fr/reference/email-builder/blocks/columns) est la façon de construire une signature que le bloc Signature ne permet pas.
+- [Variables](/fr/reference/email-builder/variables) couvre les jetons d'expéditeur et de marque qu'une signature porte habituellement.

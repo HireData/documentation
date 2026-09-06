@@ -1,0 +1,43 @@
+---
+title: "Secties"
+sidebarTitle: "Secties"
+description: "Secties in de HireData-e-mailbuilder: de band die de blocks bevat die een ontvanger leest, met eigen achtergrond, spacing, breedte en rand."
+keywords: ["e-mailsectie", "e-mailachtergrond", "sectiebreedte", "sectie-padding", "sectierand", "achtergrondafbeelding"]
+---
+
+Een sectie is een band over de e-mail. Ze bevat de blocks die een ontvanger leest, en ze draagt de achtergrond, de padding en de rand erachter. Elk block in een e-mail zit er in een, dus een sectie is het niveau waarop je werkt wanneer je niet in een block zit.
+
+Secties zijn het enige dat een [Template](/nl/reference/email-builder/template) bevat, en het **Template**-paneel is de enige plek waar je er een toevoegt. Open daar **Blocks** en druk op **+** op een willekeurige rij. Er opent geen menu, omdat een sectie het enige is dat een Template accepteert. Ook het eigen menu van een sectie biedt geen Sectie aan, dus secties nesten nooit.
+
+De builder labelt een sectie overal waar hij er een benoemt als **Sections**, meervoud, wat het weten waard is voordat je op zoek gaat naar een rij die zegt op welke sectie je zit. [De breadcrumb](/nl/reference/email-builder/template#the-breadcrumb) behandelt dat.
+
+## Hoe het rendert
+
+De e-mailbody is 600 pixels breed. Een sectie vult die breedte van rand tot rand, en haar blocks zitten in een kolom binnen de padding die jij instelt.
+
+![Eén sectie in een gerenderde e-mail: een band met crèmekleurige achtergrond met een kop, een tweede kop, een alinea en een gecentreerde knop, met de witte pagina erboven en eronder](/images/email-builder/blocks/01b-section-rendered.png)
+
+Een sectie met meerdere blocks rendert als een stapel rijen die één achtergrond delen. De rand en de afgeronde hoeken horen bij de sectie in plaats van bij een rij, dus de bovenrand en de bovenhoeken landen op het eerste block, de onderrand en de onderhoeken op het laatste, en de rijen ertussen lopen recht door.
+
+## Instellingen
+
+- **Background color** vult de band. Hij begint op de surface-kleur van het merk, die de knop benoemt in plaats van als hexcode te tonen.
+- **Background image** neemt via **Choose image** een afbeelding uit de mediabibliotheek, en die zit achter de hele band. Dezelfde picker biedt de variabelen die een afbeelding dragen, zodat de achtergrond het merk kan volgen.
+- **Blocks** toont wat de sectie bevat, op volgorde. **+** opent het menu met blocks die je kunt toevoegen, **−** verwijdert een rij, en met de handle links versleep je haar.
+- **Spacing** bevat drie knoppen.
+  - **Margin** is de ruimte buiten de band: **None**, **Normal**, **Large** of **Custom** voor een boven- en onderwaarde in pixels.
+  - **Padding** is de ruimte erbinnen, met dezelfde vier keuzes en een vak per zijde.
+  - **Width** bepaalt hoe breed de blocks in de sectie lopen: **Default**, **Large**, **Full** of **Custom**, dat een slider opent van 640 tot 1240 pixels.
+- **Border** bevat drie knoppen.
+  - **Border color** is een kleurkiezer.
+  - **Border width** is **None**, **Normal**, **Large** of **Custom** voor een waarde per zijde.
+  - **Border radius** is dezelfde vier keuzes, voor een waarde per hoek.
+
+<img src="/images/email-builder/blocks/01-section-settings.png" alt="Het sectie-instellingenpaneel met Background color, Background image, de Blocks-lijst, de Spacing-groep met Margin, Padding en Width, en de Border-groep" width="384" />
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de builder, de toolbar, het thema en elk blocktype.
+- [Template](/nl/reference/email-builder/template) is de enige plek waar een sectie kan staan.
+- [Two Columns](/nl/reference/email-builder/blocks/columns) splitst één sectie in tweeën.
+- [Variabelen](/nl/reference/email-builder/variables) behandelt de afbeeldingstokens die de **Background image**-picker aanbiedt.

@@ -36,7 +36,7 @@ A rule is a set of conditions plus **How many points should be awarded?**. A con
 
 The operators are the same set Criteria offers, and the field type decides them: text operators on the text and contact types, comparisons on the numeric, rating, and date types, **is one of** on Multiple Choice and Dropdown, and file metadata on File Upload. See [the operator table](/reference/forms/evaluation/criteria#operators).
 
-Every matching rule pays out, and the total is then capped at the question's maximum. Two rules that both match a five-year answer, one worth 20 and one worth 10, award 20 on a question worth 20. Overlapping bands are safe as long as the maximum is right, which is what lets you write "5 years or more, 20 points" above "3 years or more, 10 points" and stop thinking about the gap.
+Every matching rule pays out, and the total is then capped at the question's maximum. Two rules that both match a five-year answer, one worth 20 and one worth 10, award 20 on a question worth 20. Overlapping bands are safe as long as the maximum is right. That is what lets you write "5 years or more, 20 points" above "3 years or more, 10 points" and stop thinking about the gap.
 
 Leave **How many points is this question worth?** empty and the maximum becomes the sum of the rule points, so nothing can go over 100%.
 

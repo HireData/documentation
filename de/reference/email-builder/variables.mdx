@@ -1,0 +1,111 @@
+---
+title: "Variablen"
+sidebarTitle: "Variablen"
+description: "Personalisieren Sie eine HireData-E-Mail mit Variablen: die Auswahl, wo sie funktionieren, eine eigene hinzufügen, was ein Empfänger bei fehlendem Wert sieht, und Fallbacks."
+keywords: ["e-mail-variablen", "variablenauswahl", "merge-tags", "personalisierung", "standardwert", "fallback", "eigene variable", "ai-variable", "objekte"]
+---
+
+Eine Variable ist ein Platzhalter, den HireData ausfüllt, wenn die E-Mail hinausgeht. Schreiben Sie `{{recipient.first_name}}` einmal, und jeder Empfänger liest seinen eigenen Namen.
+
+Der E-Mail-Builder zeigt eine Variable als Chip mit ihrem Label, nicht mit ihrem Wert. `{{recipient.first_name}}` steht auf der Arbeitsfläche als **Recipient: First Name**, und der Chip verhält sich als ein Objekt und nicht als die Zeichen, für die er steht.
+
+## Eine Variable einfügen
+
+Tippen Sie `{{`, und eine Auswahl öffnet sich unter dem Cursor. Jede Zeile zeigt das Label der Variablen, ihren `{{key}}` und die Art von Wert, den sie enthält.
+
+Tippen Sie weiter, um die Liste einzugrenzen. Die Suche ist nachsichtig. Tippen Sie `frist`, und **Recipient: First Name** erscheint trotzdem.
+
+![Das Subject-Feld mit einem Variablen-Chip darin und einem halb getippten Token am Ende, darunter die Auswahl mit Recipient: Last Name und Sender: Last Name samt ihren Keys und Typen](/images/email-builder/10-variable-picker.png)
+
+Drücken Sie Enter oder klicken Sie eine Zeile, und das Token wird zu einem Chip.
+
+## Wo Variablen funktionieren
+
+Überall, wo Sie in eine E-Mail tippen können, und an mehreren Stellen, wo Sie es nicht können.
+
+- Das **Subject**-Feld, die Zeile, die ein Empfänger in seinem Posteingang liest.
+- [Paragraph](/de/reference/email-builder/blocks/paragraph)- und [Heading](/de/reference/email-builder/blocks/heading)-Text.
+- Die Adresse eines Links. Wählen Sie Text aus, klicken Sie die Link-Schaltfläche im Bubble-Menü, und das Popover bietet ein Dropdown mit jeder Variablen, die eine URL enthält, einschließlich `{{template::unsubscribe_url}}`.
+- Das **URL**-Feld auf einem [Button](/de/reference/email-builder/blocks/button) und in jeder [Social](/de/reference/email-builder/blocks/socials)-Zeile.
+- Ein Bild. Der **Fields**-Tab der Medienbibliothek listet die Variablen auf, die ein Bild tragen, sowohl für den [Image](/de/reference/email-builder/blocks/image)-Block als auch für die [Signature](/de/reference/email-builder/blocks/signature).
+- Eine Farbe. Farb-Bedienelemente wählen die Farbvariablen der Marke nach Namen aus, was "Theme: Palette Primary Color" bedeutet. Siehe [Brand, Theme und Metadata](/de/reference/email-builder/template#brand-theme-and-metadata).
+
+## Die Variablenliste
+
+Die Schaltfläche mit den geschweiften Klammern in der Toolbar öffnet **Variables**, einen Drawer, der alles auflistet, was diese E-Mail verwenden kann. Suchen Sie nach Label oder Key. Wo HireData einen Wert bereits kennt, zeigt die Karte ihn, sodass Sie `{{brand.name}}` von `{{account.name}}` unterscheiden können, ohne zu raten.
+
+Variablen, die Sie selbst hinzugefügt haben, sitzen oben, jede mit einem Funkeln markiert, und die `{{`-Auswahl stellt dieselben an den Anfang. Klicken Sie auf eine, um ihre Einstellungen erneut zu öffnen.
+
+<img src="/images/email-builder/11-variable-list.png" alt="Der Variables-Drawer mit einem Suchfeld und einer Plus-Schaltfläche, der drei mit Funkeln markierte eigene Variablen der Vorlage über Template unsubscribe_url, Template Subject, Template Form URL und Brand Id auflistet, jeweils mit Key, Typ und Wert" width="350" />
+
+## Eine eigene Variable hinzufügen
+
+Das **+** neben dem Suchfeld öffnet einen **Variables**-Dialog: links Ihre **Fields**, rechts die Typen, aus denen Sie wählen können, in sechs Gruppen. Sie reichen von **Text**, **Number** und **Yes / No** über **Email**, **Phone** und **Address** bis zu **Color**, **Font** und **JSON**. **Search types** grenzt die Liste ein.
+
+<img src="/images/email-builder/18-variable-types.png" alt="Die Typauswahl im Variables-Dialog mit einem Search-types-Feld über Gruppen namens Intelligent, Basics, Date and time, People and places, Web and media und Advanced" width="380" />
+
+Wählen Sie einen Typ, und daneben öffnen sich vier Einstellungen.
+
+- **Name** ist, was der Chip auf der Arbeitsfläche zeigt.
+- **Default value** ist, was HireData einträgt, wenn nichts anderes einen Wert liefert. Das Bedienelement entspricht dem gewählten Typ.
+- **Reference as** ist der Key, den Sie zwischen die Klammern tippen. Er füllt sich aus dem Namen selbst aus.
+- **What is it for?** ist eine optionale Notiz für die Person, die die Vorlage als Nächstes öffnet.
+
+**Save changes** behält sie. Eine Variable, die Sie hinzufügen, gehört nur zu dieser E-Mail, speichern Sie die Vorlage also mit **Save**, bevor Sie gehen.
+
+<img src="/images/email-builder/19-variable-settings.png" alt="Der Variables-Dialog mit einer Fields-Liste mit AI variable, Phone und ID, den Phone-Einstellungen geöffnet bei Name, Default value, Reference as und What is it for, über Cancel und Save changes" width="620" />
+
+Eine eigene Variable lohnt sich, wenn ein Wert an mehrere Stellen gehört. Legen Sie Ihre Telefonnummer in eine `{{phone}}`-Variable und schreiben Sie diese in die Signatur, den Footer und den Text, und die Nummer später zu ändern ist eine Bearbeitung statt drei.
+
+<Warning>
+  Das Löschen einer Variablen entfernt sie nicht aus der E-Mail. Jeder Chip, der sie verwendet hat, wird wieder zu reinem `{{key}}`-Text und bleibt, wo er ist, sodass der Key mit sichtbaren Klammern hinausgeht. Löschen Sie die Variable, und suchen Sie dann jede Stelle, an der Sie sie verwendet haben.
+</Warning>
+
+<Note>
+  **AI variable** ist der erste Typ im Dialog. Statt einen Wert nachzuschlagen, ermittelt er für jeden Empfänger einen aus einer Anweisung, die Sie schreiben. Siehe [AI-Variablen](/de/variables/ai-variables).
+</Note>
+
+## Felder eines Datensatzes einbeziehen {#bringing-in-a-records-fields}
+
+Die Datenbank-Schaltfläche in der Toolbar öffnet **Objects**, das einen Datensatztyp mit der E-Mail verknüpft: einen Kandidaten, eine Vakanz, einen Match. Verknüpfen Sie einen, und jedes Feld dieses Datensatzes tritt der Variablenliste bei, adressiert über den Key des Objekts, wie in `{{candidate.first_name}}`.
+
+[Objekte](/de/reference/forms/objects) erklärt, was ein Objekt ist und was das Verknüpfen bewirkt. Die Seite ist für den Formular-Builder geschrieben, der mehr Einstellungen pro Objekt anbietet, aber die Datensätze und ihre Keys sind dieselben.
+
+## Was ein Empfänger tatsächlich sieht {#what-a-recipient-actually-sees}
+
+Drei Dinge können mit einem Token passieren, und nur eines davon ist das, was Sie gemeint haben.
+
+- **Die Variable wird aufgelöst.** HireData hat einen Wert und trägt ihn ein.
+- **Die Variable wird zu nichts aufgelöst.** Der Empfänger hat keine Telefonnummer hinterlegt, also kommt `{{recipient.phone_number}}` als Leerstelle heraus. "Rufen Sie uns an unter ." ist die klassische Erscheinungsform.
+- **Es gibt keine solche Variable.** Einen Key, den HireData nicht erkennt, lässt es genau so stehen, wie Sie ihn getippt haben. Der Empfänger liest `{{recipient.favourite_biscuit}}`, mitsamt Klammern.
+
+Der Builder sagt Ihnen, auf welchen der drei Fälle Sie zusteuern. Ein Key, den er erkennt, wird zu einem Chip. Einer, den er nicht erkennt, bleibt reiner Text mit sichtbaren Klammern und erreicht den Posteingang so.
+
+Die eine Ausnahme ist ein Token mit einem [Modifier](#giving-a-variable-a-fallback). Der bleibt reiner Text, egal wie gut der Key ist, denn die Auswahl fügt immer nur einen nackten Key ein. Klammern auf der Arbeitsfläche bedeuten also eines von zwei Dingen: eine Variable, die Sie falsch geschrieben haben, oder einen Modifier, der wie beabsichtigt funktioniert.
+
+<Warning>
+  Ein Token, das Sie von woanders einfügen, ist die übliche Quelle des dritten Falls. Fügen Sie es ein, und prüfen Sie dann, dass es zu einem Chip geworden ist.
+</Warning>
+
+## Einer Variablen einen Fallback geben {#giving-a-variable-a-fallback}
+
+Fügen Sie den `default`-Modifier hinzu, und HireData verwendet Ihre Worte, statt eine Lücke zu lassen.
+
+```text
+Hi {{ recipient.first_name | default: "there" }},
+```
+
+Er greift in beiden oben genannten Fehlerfällen: wenn der Wert leer ist und wenn der Key gar nicht existiert. Die E-Mail oben lautet "Hi Sofia," für Sofia und "Hi there," für alle, deren Vorname fehlt.
+
+Ein Chip kann nicht bearbeitet werden. Er ist ein Objekt auf der Arbeitsfläche und nicht die Zeichen, für die er steht, es gibt also keine Stelle für einen Modifier. Tippen Sie das ganze Token stattdessen von Hand, mitsamt Klammern, und lassen Sie die Auswahl sich um Sie herum öffnen und schließen. Was Sie getippt haben, bleibt reiner Text, statt ein Chip zu werden — so sieht ein Modifier aus, wenn er richtig ist. Lesen Sie ihn in der Vorschau nach.
+
+`default` ist einer aus einer langen Liste. Siehe [Modifier](/de/variables/modifiers) für den Rest und für das Verketten mehrerer.
+
+## Verwandte Themen
+
+- [Testen](/de/reference/email-builder/testing) ist der Ort, an dem Sie herausfinden, wozu Ihre Variablen aufgelöst werden.
+- [Variablen](/de/variables/introduction) behandelt die `{{ }}`-Syntax in Formularen, Nachrichten und Automatisierungen genauso wie in E-Mails.
+- [Modifier](/de/variables/modifiers) listet alles auf, was Sie mit einem Wert auf seinem Weg in die E-Mail tun können.
+- [AI-Variablen](/de/variables/ai-variables) ermitteln einen Wert pro Empfänger, statt einen nachzuschlagen.
+- [Objekte](/de/reference/forms/objects) behandelt die Datensätze, deren Felder zu Variablen werden.
+- [Übersetzungen](/de/reference/email-builder/translations) hält Ihre Variablen in jeder Sprache intakt.

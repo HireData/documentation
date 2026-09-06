@@ -1,0 +1,53 @@
+---
+title: "Heading"
+sidebarTitle: "Heading"
+description: "O bloco Heading no construtor de emails da HireData: os seis níveis, o tamanho por defeito que cada um lhe dá e o que um nível significa e não significa num email enviado."
+keywords: ["título de email", "nível de título", "h1", "cabeçalho de email", "tamanho do título", "tipografia de email"]
+---
+
+Um bloco Heading é uma linha de texto composta maior do que o corpo à sua volta. Adicione-o a partir do menu **Blocks** de uma secção ou de uma coluna, que oferece **Heading 1**, **Heading 2** e **Heading 3**.
+
+## Como é renderizado
+
+Um título sai do construtor de emails como uma linha de texto estilizada. Não é envolvido numa tag de título HTML, por isso o nível que escolher não marca a linha como título para um leitor de ecrã. Trate o nível como uma predefinição de tamanho, e escolha-o pelo tamanho que quer e não pela estrutura que ele sugere.
+
+![Um título de nível 1 a 32 píxeis acima de um título de nível 2 a 24 píxeis, acima de texto de corpo a 16 píxeis, num email renderizado](/images/email-builder/blocks/03b-heading-rendered.png)
+
+Isso deixa a estrutura por conta da redação. Escreva títulos que se leiam como títulos por si sós, e mantenha-os curtos o suficiente para se percorrerem com o olhar.
+
+O breadcrumb lê **Heading** sem número, por isso não lhe vai dizer em que nível está. A caixa **Size** diz.
+
+## Definições
+
+- **Font Family** escolhe o tipo de letra, com um seletor de peso ao lado. Começa na fonte de títulos da marca, que é uma definição separada da fonte de corpo da marca.
+- **Size** é um slider e uma caixa, de 8 a 48 píxeis.
+- **Color** define a cor do texto.
+- **Alignment** é esquerda, centro ou direita.
+- **Advanced** contém três controlos.
+  - **Letter Spacing**, de 0 a 10.
+  - **Line Height**, de 1 a 2.
+  - **Margin**, o espaço acima e abaixo do título.
+
+Não há controlo de nível no painel. Para mudar o nível de um título, clique nele no email e prima **Cmd + Alt** e um número num Mac, ou **Ctrl + Alt** e um número no Windows. Os seis níveis funcionam todos, incluindo os três que o menu não oferece.
+
+Cada nível traz o seu próprio tamanho por defeito, e mudar de nível repõe o **Size** nesse valor.
+
+| Nível | Tamanho por defeito |
+|---|---|
+| Heading 1 | 32 px |
+| Heading 2 | 24 px |
+| Heading 3 | 19 px |
+| Heading 4 | 16 px |
+| Heading 5 | 13 px |
+| Heading 6 | 11 px |
+
+Escreva `{{` num título para inserir uma variável.
+
+<img src="/images/email-builder/blocks/03-heading-settings.png" alt="O painel de definições do Heading a mostrar Font Family na fonte de títulos da marca, Size, Color, Alignment e o grupo Advanced com Letter Spacing, Line Height e Margin" width="384" />
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- [Paragraph](/pt/reference/email-builder/blocks/paragraph) partilha os mesmos controlos de texto e acrescenta uma cor de link.
+- [Section](/pt/reference/email-builder/sections) é a faixa em que um título fica.
+- [Variáveis](/pt/reference/email-builder/variables) cobre o seletor, os valores de recurso e o aspeto de um valor em falta.

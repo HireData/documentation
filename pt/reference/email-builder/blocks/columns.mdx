@@ -1,0 +1,46 @@
+---
+title: "Two Columns"
+sidebarTitle: "Two Columns"
+description: "O bloco Two Columns no construtor de emails da HireData: os cinco layouts, o intervalo, o que cada coluna pode conter e como o par se comporta num telemóvel."
+keywords: ["colunas de email", "duas colunas", "layout de colunas", "intervalo entre colunas", "lado a lado", "empilhamento"]
+---
+
+Um bloco Two Columns coloca duas colunas lado a lado dentro de uma secção. Cada coluna contém os seus próprios blocos, por isso é assim que consegue uma imagem ao lado de um parágrafo, ou um parágrafo ao lado de um botão.
+
+Adicione-o a partir do menu **Blocks** de uma secção. Chega com as duas colunas já lá dentro.
+
+## Como é renderizado {#how-it-renders}
+
+As duas colunas dividem entre si a largura da secção, menos o padding e o intervalo, na proporção que o **Layout** define.
+
+![Um bloco Two Columns a 50-50: um parágrafo e um logótipo à esquerda, um parágrafo e um botão à direita, lado a lado](/images/email-builder/blocks/04b-columns-rendered.png)
+
+Num ecrã com menos de 480 píxeis de largura deixam de ser colunas. A da esquerda renderiza primeiro a toda a largura, a da direita por baixo dela, e o intervalo torna-se espaço vertical. Ponha o que mais quer que seja lido na coluna da esquerda, porque num telemóvel é isso que fica no topo.
+
+<img src="/images/email-builder/blocks/04c-columns-stacked.png" alt="O mesmo bloco renderizado a 400 píxeis de largura, com o parágrafo e o logótipo da coluna da esquerda empilhados acima do parágrafo e do botão da coluna da direita" width="386" />
+
+## Definições
+
+- **Background color** preenche ambas as colunas.
+- **Layout** define a divisão: **50-50**, **60-40**, **40-60**, **66-33** ou **33-66**. O primeiro número é a coluna da esquerda.
+- **Gap** é o espaço entre as duas colunas, um slider e uma caixa de 0 a 48 píxeis.
+- **Column 1 Blocks** e **Column 2 Blocks** são duas listas separadas, uma por coluna, cada uma com os habituais **+**, **−** e pega de arrastar.
+- **Margin** é o espaço acima e abaixo do par.
+- **Padding** é o espaço dentro de cada coluna, à volta dos seus blocos.
+
+<img src="/images/email-builder/blocks/04-columns-settings.png" alt="O painel de definições do Two Columns a mostrar Background color, os cinco botões de Layout com 50-50 selecionado, o slider Gap em 24, as listas de blocos Column 1 e Column 2, Margin e Padding" width="384" />
+
+## Limites
+
+Um bloco Two Columns contém sempre exatamente duas colunas. Nada adiciona uma terceira e nada remove uma, as listas **Blocks** de cada coluna só adicionam blocos dentro dessa coluna, e o breadcrumb salta por completo o nível da coluna. Três colunas lado a lado não é um layout que o construtor de emails consiga fazer.
+
+Uma coluna aceita menos tipos de bloco do que uma secção. O seu menu oferece Paragraph, Heading, Image, Socials, Button e HTML. Não tem Two Columns, nem Form, nem Signature, por isso as colunas nunca se aninham.
+
+Fora do construtor a regra é imposta à entrada. Um template de email enviado para a API da HireData com um bloco de colunas que não contenha exatamente duas colunas é rejeitado com "A columns block must contain exactly two column blocks."
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- [Section](/pt/reference/email-builder/sections) é o único bloco em que um Two Columns pode ir.
+- [Template](/pt/reference/email-builder/template#how-an-email-nests) explica onde fica o nível da coluna e porque nunca o vê.
+- [Image](/pt/reference/email-builder/blocks/image) comporta-se de forma diferente numa coluna, onde toma a largura da coluna.

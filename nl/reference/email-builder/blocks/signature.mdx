@@ -1,0 +1,50 @@
+---
+title: "Signature"
+sidebarTitle: "Signature"
+description: "Het Signature-block in de HireData-e-mailbuilder: een afbeelding naast een blok afsluitende tekst, wat je eraan kunt wijzigen, en wat vaststaat."
+keywords: ["e-mailhandtekening", "afsluiting", "afzender-avatar", "handtekeningafbeelding", "handtekeningregels"]
+---
+
+Een Signature-block is een afbeelding naast een blok afsluitende tekst. Het is de gebruikelijke manier om een e-mail af te sluiten, met de naam, het e-mailadres en de website van de afzender onder een "Met vriendelijke groet".
+
+Voeg het toe vanuit het **Blocks**-menu van een sectie. Een kolom kan er geen bevatten.
+
+## Hoe het rendert
+
+De handtekening is een vaste lay-out van twee kolommen. De afbeelding gaat in een kolom van 125 pixels links, bijgesneden tot een cirkel van 100 bij 100 pixels, en de tekst vult de kolom ernaast.
+
+![Een rond merkteken links, met Kind regards, een variabele met de afzendernaam, een e-mailvariabele en een websitevariabele gestapeld in de kolom ernaast](/images/email-builder/blocks/10b-signature-rendered.png)
+
+Laat **Image** leeg en de afbeeldingskolom verdwijnt. De tekst loopt dan over de volle breedte van de sectie, en dat is de lay-out voor een afsluiting van alleen tekst.
+
+Elke regel is een [paragraph](/nl/reference/email-builder/blocks/paragraph), dus elke regel draagt zijn eigen lettertype, grootte, kleur en uitlijning. Selecteer een regel en de breadcrumb toont `Template > Sections > Signature > Paragraph`.
+
+## Instellingen
+
+- **Image** opent de mediabibliotheek. Kies een geüploade afbeelding, of een variabele zoals de avatar van de afzender of het merklogo, die dan verandert met wie de e-mail verstuurt.
+- **Color** bepaalt de tekstkleur voor de hele handtekening.
+- **Background color** bepaalt de kleur erachter.
+- **Blocks** toont de regels van de handtekening, één rij per paragraph. De rijen zijn te verslepen om te herordenen en verder niets. Er is geen **+** en geen **−**.
+- **Spacing** bevat **Margin**, de ruimte boven en onder het block. Het heeft geen padding en geen breedte.
+
+<img src="/images/email-builder/blocks/10-signature-settings.png" alt="Het Signature-instellingenpaneel met de Image met een merkteken, Color, Background color, de Blocks-lijst van vijf paragraphs met alleen handles, en de Spacing-groep met Margin" width="384" />
+
+Je voegt regels toe en verwijdert ze in de e-mail in plaats van op het paneel. Klik aan het eind van een regel en druk op **Enter** voor een nieuwe, en verwijder een regel zoals je elke andere tekst zou verwijderen.
+
+## Beperkingen
+
+De lay-out is het ene ding dat je niet kunt aanraken. Er is geen instelling voor de kolombreedtes, om de afbeelding rechts te zetten, om de cirkel vierkant te maken, of voor een tweede afbeelding. Heb je een andere vorm nodig, bouw hem dan met een [Two Columns](/nl/reference/email-builder/blocks/columns)-block.
+
+De **Blocks**-lijst bevat paragraphs en niets anders. Een handtekening kan geen knop, afbeelding of kop bevatten.
+
+<Note>
+  Een handtekeningafbeelding ingesteld op de avatar van de afzender resolvet per afzender, dus dezelfde template verstuurt een andere foto voor elke collega die hem gebruikt. Wijs hem in plaats daarvan naar het merklogo wanneer de e-mail geen gezicht hoort te dragen.
+</Note>
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de builder, de toolbar, het thema en elk blocktype.
+- [Paragraph](/nl/reference/email-builder/blocks/paragraph) is het block waar elke handtekeningregel van is gemaakt.
+- [Image](/nl/reference/email-builder/blocks/image) is het block voor een afbeelding die je zelf op maat wilt zetten.
+- [Two Columns](/nl/reference/email-builder/blocks/columns) is de manier om een afsluiting te bouwen die het signature-block niet kan.
+- [Variabelen](/nl/reference/email-builder/variables) behandelt de afzender- en merktokens die een handtekening meestal draagt.

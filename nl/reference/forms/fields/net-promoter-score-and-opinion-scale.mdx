@@ -2,7 +2,13 @@
 title: "Net Promoter Score en Opinion Scale"
 sidebarTitle: "NPS en Opinion Scale"
 description: "Het beoordelingsveld in een HireData-formulier. Net Promoter Score is een vaste schaal van 0 tot 10, en met Opinion Scale stel je de uiteinden en de labels zelf in."
-keywords: ["nps", "beoordeling", "schaal", "score", "tevredenheid", "likert"]
+keywords:
+  - "nps"
+  - "beoordeling"
+  - "schaal"
+  - "score"
+  - "tevredenheid"
+  - "likert"
 ---
 
 Net Promoter Score en Opinion Scale zijn één veldtype met een switch ertussen. De respondent kiest een punt op een rij getallen, en het formulier slaat het gekozen getal op.
@@ -38,7 +44,7 @@ Een getal, het punt dat de respondent koos.
 ## Logica-operators
 
 | Operator | Komt overeen wanneer |
-|---|---|
+| --- | --- |
 | has response | de respondent überhaupt heeft geantwoord |
 | is equal to | het antwoord exact de waarde is |
 | is not equal to | het antwoord iets anders is |
@@ -50,10 +56,6 @@ Een getal, het punt dat de respondent koos.
 Een beoordeling is het veld dat het meest de moeite waard is om op te vertakken. `if score is less than or equal to 7 then go to "What could we do better?"` stuurt de ontevreden respondenten een vervolgpad in en laat alle anderen afronden.
 
 ![Het tabblad Logic met de operatorkiezer open op een Net Promoter Score-conditie, met has response, is equal to, is not equal to en de vier vergelijkingsoperators](/images/forms-builder/fields/operators-rating.png)
-
-<Warning>
-  Een verplicht beoordelingsveld blokkeert het antwoord 0. De respondent kiest 0, het formulier gaat niet verder, **Next** doet niets en er verschijnt geen bericht. Net Promoter Score begint altijd bij 0, dus laat het optioneel. Een Opinion Scale kan bij 1 beginnen, wat het probleem vermijdt.
-</Warning>
 
 ## Evaluatie
 

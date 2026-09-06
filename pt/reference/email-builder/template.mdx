@@ -1,0 +1,68 @@
+---
+title: "Template"
+sidebarTitle: "Template"
+description: "A raiz de um email da HireData. Como o Template, as secções e os blocos se aninham, como o breadcrumb se move entre eles e as definições que se aplicam ao email inteiro."
+keywords: ["template de email", "hierarquia do email", "secções", "breadcrumb", "cor dos links", "fundo do email", "campanha UTM"]
+---
+
+O Template é o próprio email. Está na raiz de tudo o que constrói no construtor de emails, contém as secções, e as suas definições aplicam-se a todos os blocos dentro delas.
+
+Nunca adiciona um Template e não pode eliminar um. Nenhum menu do construtor oferece um Template, e nenhuma lista **Blocks** contém um. Cada email tem exatamente um desde o momento em que o cria, e é por isso que o breadcrumb começa sempre aí.
+
+## Como um email se aninha {#how-an-email-nests}
+
+Três níveis, e uma exceção.
+
+- O **Template** contém secções e nada mais. A lista **Blocks** no painel do Template adiciona uma secção sem abrir um menu, porque uma secção é a única coisa que ele aceita.
+- Uma **secção** é uma faixa ao longo do email. Contém os blocos que um destinatário lê: parágrafo, título, Two Columns, formulário, imagem, socials, botão, HTML e assinatura.
+- Um bloco **Two Columns** é a exceção. Fica dentro de uma secção, chega com exatamente duas colunas já lá dentro, e cada coluna contém os seus próprios blocos. Uma coluna aceita menos tipos de bloco do que uma secção: nada de Two Columns, nada de Form, nada de Signature.
+
+[Escolher um bloco](/pt/reference/email-builder/overview#choosing-a-block) lista todos os blocos e onde os pode colocar.
+
+## O breadcrumb {#the-breadcrumb}
+
+O painel de definições é encabeçado por um breadcrumb que nomeia tudo o que contém o bloco que selecionou. Selecione uma linha de uma assinatura e obtém os quatro níveis.
+
+<img src="/images/email-builder/02-breadcrumb.png" alt="O breadcrumb do painel de definições a ler Template, depois Sections, depois Signature, depois Paragraph, com Paragraph esbatido como nível atual" width="402" />
+
+Todos os níveis exceto aquele em que está são botões. Clique em **Sections** para a secção que contém o bloco, e em **Template** para o email como um todo. O email à esquerda não se move. Só o painel muda.
+
+Vale a pena conhecer duas coisas sobre ele antes que o atrapalhem.
+
+- **Uma única secção tem o rótulo "Sections", no plural.** Lê-se assim no breadcrumb e em cada linha da lista **Blocks** do Template, por isso uma lista de cinco secções são cinco linhas todas a ler "Sections". O plural é o rótulo do tipo de bloco e não uma contagem, e nunca lhe diz em que secção está. O email à esquerda diz.
+- **Não há um nível de coluna.** Selecione um bloco dentro de uma coluna e o breadcrumb lê `Template > Sections > Two Columns` e depois vai direto ao bloco. Uma coluna não tem painel de definições próprio, por isso não falta nada na cadeia.
+
+## Definições {#settings}
+
+Clique em **Template** no breadcrumb e o painel enche-se com as definições do email inteiro. É o único nível que não consegue alcançar clicando no próprio email, porque clicar ao lado de um bloco seleciona a secção e não o template.
+
+- **Background color** fica atrás de todas as secções, por isso é o que um destinatário vê à volta delas e nos espaços entre elas. Começa na cor de fundo da marca, que o controlo nomeia em vez de mostrar como código hexadecimal.
+- **Links** contém **Link color** e **Underlined**. Ambos se aplicam a todos os links do email. Um parágrafo pode sobrepor-se a qualquer um deles, e o seu próprio grupo **Links** oferece **Inherit** como terceira escolha, para poder devolver a decisão.
+- **Blocks** lista as secções pela ordem em que aparecem. Arraste uma linha para mover uma secção, **+** adiciona uma abaixo dela, e **−** elimina-a com tudo o que tem dentro.
+- **Theme** é o estilo com que os blocos que adicionar a partir de agora vão começar. Veja [Marca, tema e metadados](#brand-theme-and-metadata).
+- **Metadata** contém **UTM Campaign**. Veja [Marca, tema e metadados](#brand-theme-and-metadata).
+
+<img src="/images/email-builder/09-template-settings.png" alt="O painel de definições do Template com Background color, o grupo Links expandido em Link color e Underlined, a lista Blocks com cinco secções, Theme e Metadata" width="384" />
+
+## Marca, tema e metadados {#brand-theme-and-metadata}
+
+Três definições decidem o estilo de um email, e alcançam blocos diferentes. Trocá-las é a razão habitual para uma alteração aterrar onde não esperava.
+
+- **Brand**, na barra de ferramentas, reestiliza o **email inteiro**. Todas as cores e fontes ainda definidas com um valor do tema mudam de uma vez, tanto nos blocos que escreveu há semanas como nos que adicionar a seguir. Mudar um exemplo de uma marca para outra moveu ao mesmo tempo o fundo da secção, a cor do botão e a cor do título.
+- **Theme**, nas definições do Template, só alcança **os blocos que adicionar depois**. O próprio painel o diz: "Will be applied to newly added blocks." Defina aí o fundo das secções e todas as secções que adicionar a partir daí começam com ele. As secções que já estão no email mantêm o que têm.
+- **Um valor que definir num bloco você mesmo** alcança **apenas esse bloco**, e tira-o do alcance da marca de vez. O controlo deixa de nomear um valor do tema e passa a mostrar a sua cor, e uma mudança de marca posterior deixa-o onde o pôs.
+
+Ou seja, o painel diz-lhe qual é qual. Um controlo a ler "Theme: Palette Surface Color" ainda segue a marca. Um a ler `#ff0000` não.
+
+<img src="/images/email-builder/06-template-theme.png" alt="O grupo Theme nas definições do Template, descrito como Will be applied to newly added blocks, com a entrada Section expandida em Background color, Spacing e Border" width="380" />
+
+**Metadata**, por baixo, contém **UTM Campaign**, cinco caixas chamadas **Campaign Source**, **Campaign Medium**, **Campaign Name**, **Campaign Term** e **Campaign Content**. A HireData etiqueta todos os links de um email enviado quer as preencha quer não, por isso estas caixas definem os valores em vez de ligarem a etiquetagem.
+
+<img src="/images/email-builder/07-template-utm-campaign.png" alt="O grupo UTM Campaign expandido em Campaign Source, Campaign Medium, Campaign Name, Campaign Term e Campaign Content, cada um com um exemplo e uma descrição" width="380" />
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o canvas, a barra de ferramentas, o tema e como guardar.
+- [Section](/pt/reference/email-builder/sections) é a faixa que contém tudo o que um destinatário lê.
+- [Two Columns](/pt/reference/email-builder/blocks/columns) explica o único bloco que se aninha mais fundo.
+- [Paragraph](/pt/reference/email-builder/blocks/paragraph) cobre a cor de link por bloco que se sobrepõe à do template.

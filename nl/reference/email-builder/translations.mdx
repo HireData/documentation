@@ -1,0 +1,77 @@
+---
+title: "Vertalingen"
+sidebarTitle: "Vertalingen"
+description: "Verstuur één HireData-e-mail in meerdere talen: de Localization-drawer, wat de builder ter vertaling aanbiedt, wat hij weglaat, en welke taal een ontvanger krijgt."
+keywords: ["e-mailvertaling", "localization", "manage languages", "automatisch vertalen", "standaardtaal", "meertalige e-mail"]
+---
+
+Eén e-mailtemplate kan in meerdere talen de deur uit. Schrijf hem één keer in een standaardtaal, en voeg dan een vertaling toe voor elke andere taal waarin je verstuurt. HireData kiest per ontvanger de juiste.
+
+## Manage Languages
+
+De taalknop aan het eind van de toolbar opent **Localization**.
+
+<img src="/images/email-builder/12-localization-drawer.png" alt="De Localization-drawer met Default language op English, Auto Translate op Disabled, en een Translations-lijst met Dutch en een New Translation-knop" width="425" />
+
+- **Default language** is de taal waarin de e-mail is geschreven. Het is wat een ontvanger krijgt wanneer er niets beters beschikbaar is.
+- **Auto Translate** bepaalt wat er gebeurt wanneer de taal van een ontvanger geen vertaling heeft. Zie [Welke taal een ontvanger krijgt](#which-language-a-recipient-gets).
+- **Translations** toont wat je tot nu toe hebt geschreven, met **New Translation** eronder.
+
+## Wat de builder ter vertaling aanbiedt
+
+Open een vertaling en je krijgt één vak per stuk vertaalbare content, gelabeld met het pad naar het block waar het bij hoort, zoals `Template > Sections > Signature > Paragraph: Content`. Boven elk vak staat het origineel, zodat je ziet wat je vertaalt.
+
+De builder biedt aan:
+
+- Het **Subject**.
+- De **Name** van de template, die intern is.
+- [Paragraph](/nl/reference/email-builder/blocks/paragraph)- en [heading](/nl/reference/email-builder/blocks/heading)-tekst.
+- De woorden op een [Button](/nl/reference/email-builder/blocks/button).
+- De alinea's in een [Signature](/nl/reference/email-builder/blocks/signature).
+- De call-to-action van een [Form](/nl/reference/email-builder/blocks/form)-block en zijn drie ratinglabels.
+
+Vier dingen verschijnen nooit, dus plan eromheen.
+
+- Een [Image](/nl/reference/email-builder/blocks/image) en zijn alt-tekst.
+- Een [HTML](/nl/reference/email-builder/blocks/html)-block. Wat je erin schrijft gaat in elke taal onveranderd de deur uit.
+- Een [Socials](/nl/reference/email-builder/blocks/socials)-rij.
+- **Alles binnen een [Two Columns](/nl/reference/email-builder/blocks/columns)-block.** Een paragraph in een sectie wordt aangeboden; dezelfde paragraph verplaatst naar een kolom niet. Als een passage vertaald moet worden, houd hem dan buiten de kolommen.
+
+## Een vertaling schrijven
+
+Klik op **New Translation**, kies de **Language** en vul de vakken in.
+
+**Create AI translation** vult elk vak in één keer. Het laat je variabele-chips staan waar ze staan en vertaalt de woorden eromheen, dus `Hi {{recipient.first_name}},` komt terug als `Hoi {{recipient.first_name}},` in plaats van de naam te verliezen. Lees wat het schreef voordat je het houdt, en bewerk elk vak waar je het niet mee eens bent.
+
+<img src="/images/email-builder/13-translation-editor.png" alt="Een Nederlandse vertaling open in de drawer, met Rewrite translations with AI en een verwijderknop bovenaan, rijen voor Subject en Name met het Engelse origineel boven de Nederlandse vertaling, en Update en Cancel onderaan" width="400" />
+
+De knop onderaan de drawer slaat de vertaling zelfstandig op, zonder de rest van de template op te slaan. Er staat **Create** op een nieuwe vertaling en **Update** op een die je opnieuw opende. **Cancel** sluit de drawer zonder op te slaan.
+
+## Welke taal een ontvanger krijgt {#which-language-a-recipient-gets}
+
+HireData zoekt een vertaling in de taal van de ontvanger.
+
+- **Hij vindt er een.** De ontvanger leest die vertaling.
+- **Hij vindt er geen en Auto Translate staat op Disabled.** De ontvanger leest de standaardtaal. Er breekt niets, en niets waarschuwt je.
+- **Hij vindt er geen en Auto Translate staat op Enabled.** HireData schrijft de vertaling met AI op het moment van verzenden en bewaart hem, zodat de volgende ontvanger in die taal dezelfde formulering krijgt.
+
+Auto Translate staat op **Disabled** op een nieuwe template. Zet hem aan voor een e-mail die naar een publiek gaat dat je niet in de hand hebt, zoals een nieuwsbrief. Laat hem uit wanneer de formulering belangrijk genoeg is dat je hem eerst wilt lezen.
+
+De [preview](/nl/reference/email-builder/testing) heeft een taalkiezer zodra een template ten minste één vertaling heeft, en die toont de standaardtaal naast de vertalingen. Het is de snelste manier om een vertaling in context te lezen.
+
+## Een vertaling wijzigen of verwijderen
+
+Klik op een taal in de **Translations**-lijst om hem opnieuw te openen. De taal kan niet worden gewijzigd, en op de AI-knop staat nu **Rewrite translations with AI**, dat herschrijft wat er al staat in plaats van de gaten te vullen.
+
+De prullenbakknop ernaast verwijdert de vertaling. HireData vraagt het eerst.
+
+<img src="/images/email-builder/14-delete-translation.png" alt="Een bevestiging met Delete translation, This action cannot be undone, met de knoppen Delete en Cancel" width="310" />
+
+Een vertaling verwijderen raakt de e-mail niet. Ontvangers in die taal vallen terug op de standaardtaal, of op een verse AI-vertaling als Auto Translate aanstaat.
+
+## Gerelateerd
+
+- [Testen](/nl/reference/email-builder/testing) behandelt de taalkiezer van de preview en de testverzending.
+- [Variabelen](/nl/reference/email-builder/variables) legt de chips uit die een vertaling overleven.
+- [Template](/nl/reference/email-builder/template) behandelt de instellingen die in elke taal voor de e-mail gelden.
+- [Two Columns](/nl/reference/email-builder/blocks/columns) is het block waarvan de inhoud niet ter vertaling wordt aangeboden.

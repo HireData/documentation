@@ -1,0 +1,46 @@
+---
+title: "Two Columns"
+sidebarTitle: "Two Columns"
+description: "Le bloc Two Columns dans l'éditeur d'e-mails HireData : les cinq dispositions, l'écart, ce que chaque colonne peut contenir, et comment la paire se comporte sur un téléphone."
+keywords: ["colonnes d'e-mail", "deux colonnes", "disposition en colonnes", "écart", "côte à côte", "empilement"]
+---
+
+Un bloc Two Columns place deux colonnes côte à côte dans une même section. Chaque colonne contient ses propres blocs, c'est donc ainsi que vous obtenez une image à côté d'un paragraphe, ou un paragraphe à côté d'un bouton.
+
+Ajoutez-le depuis le menu **Blocks** d'une section. Il arrive avec ses deux colonnes déjà à l'intérieur.
+
+## Comment il s'affiche {#how-it-renders}
+
+Les deux colonnes se partagent la largeur de la section, moins le padding et l'écart, dans la proportion définie par **Layout**.
+
+![Un bloc Two Columns en 50-50 : un paragraphe et un logo à gauche, un paragraphe et un bouton à droite, côte à côte](/images/email-builder/blocks/04b-columns-rendered.png)
+
+Sur un écran de moins de 480 pixels de large, elles cessent d'être des colonnes. Celle de gauche s'affiche en premier sur toute la largeur, celle de droite en dessous, et l'écart devient un espace vertical. Placez ce que vous voulez le plus faire lire dans la colonne de gauche, parce que sur un téléphone c'est ce qui se trouve en haut.
+
+<img src="/images/email-builder/blocks/04c-columns-stacked.png" alt="Le même bloc rendu à 400 pixels de large, avec le paragraphe et le logo de la colonne de gauche empilés au-dessus du paragraphe et du bouton de la colonne de droite" width="386" />
+
+## Paramètres
+
+- **Background color** remplit les deux colonnes.
+- **Layout** définit la répartition : **50-50**, **60-40**, **40-60**, **66-33** ou **33-66**. Le premier nombre est la colonne de gauche.
+- **Gap** est l'espace entre les deux colonnes, un curseur et un champ de 0 à 48 pixels.
+- **Column 1 Blocks** et **Column 2 Blocks** sont deux listes distinctes, une par colonne, chacune avec les habituels **+**, **−** et poignée de glissement.
+- **Margin** est l'espace au-dessus et en dessous de la paire.
+- **Padding** est l'espace à l'intérieur de chaque colonne, autour de ses blocs.
+
+<img src="/images/email-builder/blocks/04-columns-settings.png" alt="Le panneau des paramètres Two Columns montrant Background color, les cinq boutons Layout avec 50-50 sélectionné, le curseur Gap à 24, les listes de blocs Column 1 et Column 2, Margin et Padding" width="384" />
+
+## Limites
+
+Un bloc Two Columns contient toujours exactement deux colonnes. Rien n'en ajoute une troisième et rien n'en retire une, les listes **Blocks** de chaque colonne n'ajoutent des blocs qu'à l'intérieur de cette colonne, et le fil d'Ariane saute entièrement le niveau colonne. Trois colonnes côte à côte n'est pas une disposition que l'éditeur d'e-mails peut produire.
+
+Une colonne accepte moins de types de blocs qu'une section. Son menu propose Paragraph, Heading, Image, Socials, Button et HTML. Elle n'a pas de Two Columns, pas de Form et pas de Signature, donc les colonnes ne s'emboîtent jamais.
+
+Hors de l'éditeur, la règle est appliquée à l'entrée. Un modèle d'e-mail envoyé à l'API HireData avec un bloc de colonnes qui ne contient pas exactement deux colonnes est rejeté avec « A columns block must contain exactly two column blocks. »
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre l'éditeur, la barre d'outils, le thème et chaque type de bloc.
+- [Sections](/fr/reference/email-builder/sections) est le seul bloc dans lequel un Two Columns peut aller.
+- [Template](/fr/reference/email-builder/template#how-an-email-nests) explique où se situe le niveau colonne et pourquoi vous ne le voyez jamais.
+- [Image](/fr/reference/email-builder/blocks/image) se comporte différemment dans une colonne, où elle prend la largeur de la colonne.

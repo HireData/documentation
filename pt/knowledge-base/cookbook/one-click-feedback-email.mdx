@@ -1,0 +1,144 @@
+---
+title: "Pedir feedback com um clique"
+sidebarTitle: "Email de feedback com um clique"
+description: "Construa um email de feedback cuja pergunta de classificação é renderizada como um botão por pontuação, para que um candidato responda a partir da caixa de entrada em vez de abrir primeiro um formulário."
+keywords: ["email de feedback", "inquérito de experiência do candidato", "email de NPS", "botões de classificação", "bloco form", "feedback num clique", "inquérito de colocação"]
+---
+
+_A maioria dos pedidos de feedback pede duas vezes. O email pede-lhe que dê feedback, o formulário faz a pergunta a sério, e metade das pessoas a quem pediu nunca chega à pergunta. Um bloco Form reduz isso a um passo. A classificação fica no email como uma fila de botões, e o clique que a responde é o mesmo clique que abre o formulário._
+
+## O que vai construir
+
+1. Um formulário de feedback curto cuja primeira pergunta é a classificação
+2. Um email que transforma essa pergunta num botão por pontuação
+3. Um envio de teste que prova que os botões carregam a resposta
+4. Um sítio onde as respostas aterram, ligado ao registo certo
+
+Um formulário, um email, e nenhuma lógica de automação. O que exige reflexão é a pergunta, porque é a que um destinatário responde na caixa de entrada e não pode retirar.
+
+## Antes de começar
+
+Decida a quem está a perguntar e quando. Um inquérito de colocação uma semana depois de uma data de início, um email de experiência de entrevista na mesma tarde, uma verificação de reativação a um candidato que ficou em silêncio. O momento muda mais a redação do que muda a construção.
+
+Depois decida a única pergunta. Só a leading question do formulário se torna botões, por isso tudo o resto que quer saber vai atrás dela, respondido no próprio formulário pelas pessoas que se importam o suficiente para continuar.
+
+## Construir o formulário
+
+### 1. Ponha a classificação primeiro
+
+Abra **Forms**, clique em **New Form**, escolha **Blank Form** e adicione uma pergunta de [Net Promoter Score](/pt/reference/forms/fields/net-promoter-score-and-opinion-scale) como primeiro campo: "Qual é a probabilidade de nos recomendar a um amigo?" Vem fixa de 0 a 10 com **NOT LIKELY AT ALL** e **EXTREMELY LIKELY** sob as extremidades, e são esses dois rótulos que impedem que uma fila nua de números seja ambígua.
+
+Deixe-a **Optional**. Um campo de classificação obrigatório bloqueia a resposta 0, e 0 é a resposta de que mais quer ouvir falar.
+
+Depois adicione as perguntas que só importam depois de ter a pontuação. Duas costumam chegar.
+
+| Pergunta | Tipo de campo | Porque está lá |
+|---|---|---|
+| Qual é a probabilidade de nos recomendar a um amigo? | [NPS](/pt/reference/forms/fields/net-promoter-score-and-opinion-scale) | A leading question. É esta a fila de botões no email. |
+| Qual é a principal razão da sua pontuação? | [Long Text](/pt/reference/forms/fields/short-and-long-text) | A resposta que lhe diz o que mudar. |
+| Podemos citá-lo? | [Yes/No](/pt/reference/forms/fields/yes-no) | Perguntada no fim, porque só faz sentido depois de a pessoa ter dito alguma coisa. |
+
+Termine com um [ecrã final](/pt/reference/forms/fields/ending-screen). Um destinatário que clicou num número a partir da caixa de entrada e aterra numa página em branco assume que o clique falhou.
+
+<Tip>
+  Prefira uma **Opinion Scale** de 1 a 5 se a maioria dos seus destinatários lê email num telemóvel. Onze botões empilham-se em onze filas num ecrã estreito, cinco empilham-se em cinco, e uma Opinion Scale deixa-o escrever você mesmo os três rótulos das extremidades.
+</Tip>
+
+### 2. Ligue o registo a que o feedback diz respeito
+
+Abra o painel **Objects** e ligue o objeto a que a resposta pertence, normalmente **Match** ou **Vacancy**. Duas coisas decorrem daí. Todos os campos desse registo se tornam uma variável que pode escrever na pergunta, para poder perguntar sobre a função pelo nome. E a resposta chega ao separador **Responses** desse registo, em vez de a uma pilha de respostas que tem de emparelhar à mão.
+
+O objeto que puser no topo é o objeto principal do formulário. Veja [Objetos](/pt/reference/forms/objects).
+
+### 3. Publique-o
+
+Clique em **Publish**. Cada botão no email carrega um link tokenizado por destinatário, que abre o formulário seja qual for o seu estado, por isso um rascunho tecnicamente funcionaria. Publique na mesma. Um rascunho é o formulário que um colega arruma, e um formulário publicado é também o que pode enviar por qualquer outro canal.
+
+Deixe **Make form public** desligado a menos que esteja a publicar o link algures. O token no link enviado por email é o que deixa o destinatário entrar, por isso o formulário não precisa de estar aberto a quem quer que encontre o seu endereço.
+
+## Construir o email
+
+### 4. Crie o email e escolha a marca
+
+Abra **Emails** a partir de **Settings**, clique em **New Email** e escolha **Blank Email** ou um dos templates fornecidos. Defina primeiro o **Brand** no canto superior direito. Ele reestiliza o email inteiro, incluindo as cores dos botões, por isso escolhê-lo cedo poupa-lhe verificar o contraste duas vezes. Veja [Configurar um template de email](/pt/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+### 5. Escreva o pedido mais curto que consiga defender
+
+Um [título](/pt/reference/email-builder/blocks/heading) e um [parágrafo](/pt/reference/email-builder/blocks/paragraph) acima dos botões. Diga quem está a perguntar, a que se refere a pontuação e quanto tempo demora o resto. "Uma pergunta, e uma caixa para tudo o mais que nos quiser dizer" é uma promessa que o formulário consegue cumprir.
+
+Não explique a escala no parágrafo. Os rótulos das extremidades sob os botões fazem isso.
+
+### 6. Adicione o bloco Form
+
+Clique no **+** da lista **Blocks** da secção e escolha **Form**, depois defina os dois seletores no topo do seu painel.
+
+- **Form** é o formulário de feedback que acabou de publicar.
+- **Leading Question** é a pergunta de NPS. Os campos ocultos e os ecrãs finais ficam fora da lista.
+
+Ambos pertencem ao email e não ao bloco, por isso um email faz uma pergunta. Um segundo bloco Form chega a apontar para a mesma pergunta, o que vale a pena saber antes de tentar pôr duas classificações num só envio.
+
+Aparecem onze botões no canvas, de 0 a 10, com os rótulos das extremidades por baixo em maiúsculas.
+
+![Onze botões numerados de 0 a 10 sob a pergunta "How likely are you to recommend us to a friend?", com NOT LIKELY AT ALL e EXTREMELY LIKELY sob as extremidades](/images/email-builder/blocks/05b-form-rendered.png)
+
+Cada botão carrega o link do formulário com essa pontuação anexada, e a HireData regista a pontuação ao encaminhar o destinatário para o formulário. Assim, um destinatário que clica em 4 e depois fecha o separador ainda lhe disse 4. Tudo o que vem depois da classificação é um bónus. Veja [Form](/pt/reference/email-builder/blocks/form).
+
+### 7. Estilize os botões para que se leiam como uma escala
+
+Deixe **Show Question** ligado. A pergunta fica acima da fila, e um email que mostra números sem a pergunta a que respondem é ignorado.
+
+- **Size: Medium** e **Rounded corners: Full** transformam os números numa fila de círculos, que se lê como uma classificação e não como onze links.
+- **Background color** e **Color** são o preenchimento do botão e o número. Mantenha o contraste forte. Muitos destinatários leem email em modo escuro, e um preenchimento pálido com numerais brancos desaparece.
+- **Width: Auto** deixa os onze botões partilhar a fila. **Full** faz cada um da largura do email, o que os empilha seja qual for o ecrã.
+- **Alignment: centro** para uma escala.
+
+### 8. Verifique-o à largura de telemóvel antes de enviar
+
+Cada botão é a sua própria coluna, por isso abaixo de 480 píxeis a fila deixa de caber e os botões empilham-se um por linha. Onze botões tornam-se onze filas. Abra a pré-visualização e estreite a janela até acontecer, e depois decida se consegue viver com isso ou se prefere a escala de cinco pontos.
+
+## Testar
+
+### 9. Envie a si próprio a versão real
+
+Abra **Test Email**, deixe o nome e o endereço vazios para o enviar a si próprio, e clique em **Send test email**. Depois clique num número no email que chega.
+
+Deve aterrar no formulário com a classificação já preenchida. Se ela estiver lá em branco, a **Leading Question** não é o campo que pensa que é.
+
+Um clique num email de teste não regista nada, que é o que quer enquanto ainda está a editar. A pontuação só aterra numa resposta num envio real.
+
+<Note>
+  Se o formulário liga um objeto obrigatório, o envio de teste precisa de um registo para ele. Escolha um em **Objects** na janela, ou use **Auto fill**. Deixe-o vazio e o envio falha com uma notificação **Failed to send test email** que nomeia o objeto pela sua chave. Veja [Testar](/pt/reference/email-builder/testing).
+</Note>
+
+### 10. Adicione os outros idiomas, se os tiver
+
+O bloco Form renderiza no idioma do formulário para que aponta, não no idioma do email, por isso um formulário em neerlandês põe botões em neerlandês num template em inglês. Os rótulos de classificação e a chamada à ação de recurso são traduzíveis por idioma no próprio painel **Manage Languages** do email. Veja [Traduções](/pt/reference/email-builder/translations).
+
+## Enviar e ler as respostas
+
+Ligue o template terminado a uma tarefa **Send Email** e escolha a audiência da mesma forma que faria para qualquer outro envio. Veja [Automações](/pt/automations/automations).
+
+As respostas chegam ao separador **Responses** do registo a que o formulário foi ligado, e ao próprio formulário. Veja [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record).
+
+Uma automação pode agir sobre a resposta assim que ela chega. Antes de escrever a condição, abra **Test & Evaluate** no formulário e leia **Automation variables**, que lista cada valor com a variável exata para copiar ao lado. Veja [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate).
+
+Comece com um ramo. Uma pontuação baixa cria uma tarefa para quem gere a relação, e tudo o resto não faz nada. Qualquer coisa mais elaborada pode esperar até ter visto trinta respostas reais.
+
+## Rever e melhorar
+
+- **As pessoas estão a clicar num número e a parar?** Isso é um email a funcionar e um formulário que pede demasiado. Corte uma pergunta.
+- **Todas as pontuações são 8, 9 ou 10?** Verifique a quem está a perguntar. Um inquérito que só vai para colocações de que se orgulha mede a sua lista de envio.
+- **Ninguém está a clicar de todo?** Olhe para os botões num cliente em modo escuro e num telemóvel antes de reescrever o texto.
+- **A resposta de texto livre diz alguma coisa que não sabia?** Se não, a pergunta é demasiado geral. "Qual é a principal razão da sua pontuação?" bate "Mais algum comentário?"
+
+## Precisa de mais ajuda?
+
+Se os botões forem renderizados como um único botão **Give Feedback**, a leading question é de um tipo que não tem botões próprios. Só as perguntas de classificação e de escolha recebem um botão por valor. Tudo o resto recorre a uma única chamada à ação, na qual pode clicar no canvas para a reformular.
+
+Se a uma pergunta de escolha faltam opções, bateu no limite de cinco opções. Um bloco Form renderiza as primeiras cinco e não dá nenhum aviso sobre as restantes. Veja [Limites](/pt/reference/email-builder/blocks/form#limits).
+
+Se ainda precisar de ajuda, contacte [support@hiredata.com](mailto:support@hiredata.com) e inclua:
+
+- O nome do template de email e o nome do formulário
+- A leading question e o que foi renderizado em vez do esperado
+- Se foi um envio de teste ou um envio real

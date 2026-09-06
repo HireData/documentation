@@ -1,8 +1,13 @@
 ---
 title: "Yes/No"
 sidebarTitle: "Yes/No"
-description: "Le champ oui ou non d'un formulaire HireData, en case à cocher ou en interrupteur, avec une réponse automatique WhatsApp distincte pour chaque réponse."
-keywords: ["binaire", "case à cocher", "toggle", "booléen", "vrai faux"]
+description: "Le champ oui ou non d'un formulaire HireData, dessiné en case à cocher ou en interrupteur, avec une réponse automatique WhatsApp distincte pour la réponse Yes et la réponse No."
+keywords:
+  - "binaire"
+  - "case à cocher"
+  - "toggle"
+  - "booléen"
+  - "vrai faux"
 ---
 
 Yes/No pose une question à deux réponses. **Checkbox** dessine une case que le répondant coche. **Toggle** dessine un interrupteur qu'il fait glisser. Les deux se comportent pareil et stockent la même valeur, alors choisissez celui qui convient à la question.
@@ -31,16 +36,12 @@ Yes ou No.
 ## Opérateurs de logique
 
 | Opérateur | Correspond quand |
-|---|---|
+| --- | --- |
 | has response | le répondant a répondu, quelle que soit la réponse |
 | is equal to | la réponse correspond à celle de la règle |
 | is not equal to | la réponse est l'autre |
 
 ![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Yes/No, listant has response, is equal to et is not equal to, avec la zone de valeur à côté affichant Yes](/images/forms-builder/fields/operators-yes-no.png)
-
-<Warning>
-  Ne rendez pas un champ Yes/No obligatoire. Un répondant qui répond No ne peut pas le dépasser. **Next** ne fait rien, aucun message n'apparaît, et aucune règle sur le champ ne se déclenche jamais. Laissez le champ facultatif jusqu'à ce que le correctif soit livré.
-</Warning>
 
 ## Évaluation
 

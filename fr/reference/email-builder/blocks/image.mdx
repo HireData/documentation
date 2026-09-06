@@ -1,0 +1,44 @@
+---
+title: "Image"
+sidebarTitle: "Image"
+description: "Le bloc Image dans l'éditeur d'e-mails HireData : choisir une image dans la médiathèque ou une variable, la dimensionner, et d'où vient son texte alternatif."
+keywords: ["image d'e-mail", "médiathèque", "texte alternatif", "largeur d'image", "hauteur d'image", "coins arrondis", "variable d'image"]
+---
+
+Un bloc Image place une image dans l'e-mail. Ajoutez-le depuis le menu **Blocks** d'une section ou d'une colonne.
+
+## Comment il s'affiche
+
+L'image entre dans l'e-mail comme une simple image, dimensionnée par **Width** et **Height** et alignée par **Alignment**.
+
+![Un bloc image en largeur Full dans un e-mail rendu, remplissant la section bord à bord sous une ligne de texte de corps](/images/email-builder/blocks/06c-image-rendered.png)
+
+Dans une colonne, elle ignore **Width** et prend la largeur de la colonne à la place, donc une image dans une colonne de 40 pour cent sort à 40 pour cent de la section. C'est ce qui fait qu'une image à côté d'un paragraphe s'aligne.
+
+Le bloc ne fixe aucun maximum pour le poids du fichier ni pour les dimensions en pixels de ce que vous choisissez. Une photo sortie tout droit d'un téléphone part avec son poids complet, alors réduisez-la avant de la téléverser.
+
+## Paramètres
+
+- **Image** ouvre la médiathèque, avec **Upload media** pour un nouveau fichier et deux onglets pour ce qui s'y trouve déjà. **Fields** liste les variables qui portent une image, comme un logo de marque ou un avatar d'expéditeur. Choisissez-en une et l'image change selon la personne dont parle l'e-mail.
+- **Width** est **Auto**, qui garde l'image à sa propre taille, ou **Full**, qui l'étire pour remplir ce qui la contient.
+- **Alignment** est gauche, centre ou droite, et ne fait rien en largeur **Full**.
+- **Height** est **Auto**, **Full** ou **Custom**, qui ouvre un curseur de 10 à 300 pixels.
+- **Border radius** arrondit les coins : **None**, **Normal**, **Large** ou **Custom** pour une valeur par coin.
+
+<img src="/images/email-builder/blocks/06-image-settings.png" alt="Le panneau des paramètres Image montrant l'image choisie, Width réglé sur Auto, Alignment, Height réglé sur Auto, et Border radius" width="384" />
+
+Le texte alternatif n'est pas sur ce panneau. Il appartient à l'image, donc vous le définissez dans la médiathèque. Ouvrez **Image**, cliquez sur l'image et remplissez **Alt text** sur la carte qui s'ouvre. Il retombe sur le titre de l'image quand vous le laissez vide, ce qui explique pourquoi un fichier téléversé nommé `image.png` mérite d'être renommé.
+
+Une image de l'onglet **Fields** est l'exception. Les deux champs y sont en lecture seule, donc un logo de marque ou une photo d'expéditeur porte le titre de la variable comme texte alternatif et ne peut rien recevoir d'autre.
+
+<img src="/images/email-builder/blocks/06b-image-alt-text.png" alt="La carte de la médiathèque pour une image issue d'un champ, avec un Title en lecture seule indiquant Brand: Banner, un champ Alt text vide, et une note disant qu'il retombe sur le titre de l'image s'il est laissé vide" width="464" />
+
+Écrivez un texte alternatif qui dit à quoi sert l'image, pas à quoi elle ressemble. Un destinataire dont le client bloque les images voit cette ligne à la place de l'image, et les images bloquées sont le cas normal plutôt que l'exception.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre l'éditeur, la barre d'outils, le thème et chaque type de bloc.
+- [Ajouter des images à vos e-mails](/fr/apps/messaging/emails/adding-images-to-your-emails) parcourt la médiathèque.
+- [Two Columns](/fr/reference/email-builder/blocks/columns) est l'endroit où une image prend sa largeur de la colonne.
+- [Variables](/fr/reference/email-builder/variables) couvre les jetons derrière l'onglet **Fields**.
+- [Signature](/fr/reference/email-builder/blocks/signature) a sa propre image, dimensionnée et recadrée pour vous.

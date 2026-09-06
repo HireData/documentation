@@ -1,0 +1,115 @@
+---
+title: "Der E-Mail-Builder im Überblick"
+sidebarTitle: "Überblick"
+description: "Ein Rundgang durch den HireData-E-Mail-Builder: die Arbeitsfläche und das Einstellungspanel, wie Sie einen Block hinzufügen, jeder Blocktyp, die Toolbar, das Theme und das Speichern."
+keywords: ["e-mail-builder", "e-mail-vorlage", "e-mail-blöcke", "e-mail-sektionen", "e-mail-theme", "e-mail-brand", "test-mail senden", "e-mail-vorschau", "ungespeicherte änderungen"]
+---
+
+Eine E-Mail-Vorlage ist eine Nachricht, die Sie einmal schreiben und viele Male versenden, in einer Automatisierung oder einem Newsletter. Öffnen Sie **Settings**, dann **Emails** unter **Templates**, und klicken Sie auf **New Email**. Wählen Sie **Blank Email** oder eine der fertigen Vorlagen, und die neue Vorlage öffnet sich im Builder.
+
+Diese Seite kartiert den Builder. Für eine Anleitung, die eine E-Mail von leer bis fertig begleitet, lesen Sie [Eine E-Mail-Vorlage in HireData einrichten](/de/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+## Der Builder auf einen Blick
+
+Der Builder hat drei Teile.
+
+- Das **Subject**-Feld oben quer über die Breite. Es ist die Zeile, die der Empfänger in seinem Posteingang sieht, und es akzeptiert Variablen.
+- Die E-Mail selbst auf der linken Seite. Klicken Sie auf einen beliebigen Text darin und tippen Sie. Klicken Sie auf einen Block, um ihn auszuwählen.
+- Das Einstellungspanel auf der rechten Seite, das die Einstellungen dessen zeigt, was Sie zuletzt ausgewählt haben.
+
+![Der E-Mail-Builder: oben das Subject-Feld, links die E-Mail und rechts das Panel mit den Template-Einstellungen](/images/email-builder/01-builder-at-a-glance.png)
+
+<Tip>
+  Klicken Sie auf den Text eines Blocks, wählen Sie diesen Block aus, und das Panel füllt sich mit den Einstellungen des Blocks. Um die **Sektion** auszuwählen, die ihn enthält, klicken Sie stattdessen neben den Block, links oder rechts vom Text. Sektionen sind auf der Arbeitsfläche nicht umrandet, zielen Sie also auf das Band der Hintergrundfarbe, das eine Sektion füllt.
+</Tip>
+
+Eine Vorlage enthält Sektionen, und eine Sektion enthält die Blöcke, die der Empfänger liest. [Template](/de/reference/email-builder/template) erklärt, wie die drei Ebenen ineinander verschachtelt sind, wie Sie sich zwischen ihnen bewegen und warum Sie nie eines hinzufügen und keines löschen können.
+
+Eine Breadcrumb über den Einstellungen benennt alles, was den ausgewählten Block enthält. Wählen Sie eine Zeile einer Signatur aus, und alle vier Ebenen erscheinen.
+
+<img src="/images/email-builder/02-breadcrumb.png" alt="Die Breadcrumb des Einstellungspanels mit Template, dann Sections, dann Signature, dann Paragraph, wobei Paragraph als aktuelle Ebene ausgegraut ist" width="402" />
+
+## Einen Block hinzufügen
+
+Jedes Einstellungspanel, das andere Blöcke enthalten kann, listet sie unter **Blocks** auf, nummeriert, in der Reihenfolge, in der sie in der E-Mail erscheinen. Jede Zeile trägt drei Bedienelemente.
+
+- Das **+** fügt einen neuen Block unter dieser Zeile hinzu. Wo der Container mehr als eine Art von Block akzeptiert, öffnet es ein Menü mit ihnen.
+- Das **−** löscht diesen Block.
+- Der Griff links zieht den Block in der Liste nach oben und unten.
+
+<img src="/images/email-builder/03-section-blocks-list.png" alt="Das Einstellungspanel einer Sektion mit ihrer Blocks-Liste, einer nummerierten Zeile pro Block und den Bedienelementen zum Hinzufügen, Löschen und Ziehen" width="400" />
+
+Klicken Sie auf die Zeile eines Blocks, um ihn auszuwählen und seine Einstellungen zu öffnen. [Die Breadcrumb](/de/reference/email-builder/template#the-breadcrumb) führt wieder hinaus. Klicken Sie auf **Sections** für die Einstellungen der Sektion, die den Block enthält, und auf **Template** für die Einstellungen der E-Mail als Ganzes. Die E-Mail auf der linken Seite ändert sich nicht. Nur das Panel.
+
+## Einen Block auswählen {#choosing-a-block}
+
+Zwei Einträge in der Liste decken mehr als einen Block ab. Ein **Two Columns**-Block kommt mit seinen beiden Spalten bereits darin an, und ein **Socials**-Block enthält ein Kind pro Netzwerk, das Sie verlinken.
+
+| Block | Wo Sie ihn hinzufügen können | Was er in die E-Mail setzt |
+|---|---|---|
+| [Section](/de/reference/email-builder/sections) | Template | ein Band quer über die E-Mail, mit eigenem Hintergrund, Innenabstand und Rahmen |
+| [Paragraph](/de/reference/email-builder/blocks/paragraph) | Sektion oder Spalte | Fließtext |
+| [Heading](/de/reference/email-builder/blocks/heading) | Sektion oder Spalte | eine Überschrift, auf der Ebene, die Sie wählen |
+| [Two Columns](/de/reference/email-builder/blocks/columns) | Sektion | zwei Spalten nebeneinander, jede mit eigenen Blöcken |
+| [Form](/de/reference/email-builder/blocks/form) | Sektion | Schaltflächen, die eine Frage aus einem Ihrer Formulare beantworten |
+| [Image](/de/reference/email-builder/blocks/image) | Sektion oder Spalte | ein Bild aus Ihrer Medienbibliothek oder eines aus einer Variablen |
+| [Socials](/de/reference/email-builder/blocks/socials) | Sektion | eine Reihe von Social-Icons, eines pro Link |
+| [Button](/de/reference/email-builder/blocks/button) | Sektion oder Spalte | ein Call-to-Action, der eine URL öffnet |
+| [HTML](/de/reference/email-builder/blocks/html) | Sektion oder Spalte | Markup, das Sie selbst schreiben |
+| [Signature](/de/reference/email-builder/blocks/signature) | Sektion | ein Bild neben einem Block mit Grußtext |
+
+<img src="/images/email-builder/04-block-menu.png" alt="Das Hinzufügen-Menü der Blocks-Liste einer Sektion mit Paragraph, den Überschriftenebenen, Two Columns, Form, Image, Socials, Button, HTML und Signature" width="193" />
+
+Eine Spalte akzeptiert weniger Arten von Blöcken als eine Sektion. Sie kann kein Two Columns, kein Form und keine Signature enthalten.
+
+## Die Toolbar
+
+Die Toolbar verläuft oben im Builder, von **Save** bis zu den vier Drawer-Schaltflächen rechts.
+
+![Die Toolbar des E-Mail-Builders mit Save, den Vorschau- und Test-Schaltflächen, der Brand-Auswahl, den Variablen- und Code-Umschaltern und den vier Drawer-Schaltflächen](/images/email-builder/05-builder-toolbar.png)
+
+**Save** speichert Ihre Änderungen.
+
+Zwei Schaltflächen folgen darauf:
+
+- Das Auge öffnet eine [Vorschau](/de/reference/email-builder/testing#the-preview) der fertigen E-Mail, in Mobil-, Tablet- oder Desktop-Breite, mit einer Sprachauswahl und einer **Copy Preview URL**-Schaltfläche. Der Tooltip warnt, dass die E-Mail zuerst gespeichert wird.
+- Der Papierflieger öffnet [Test Email](/de/reference/email-builder/testing#sending-a-test-email). Er sendet die E-Mail mit realistisch ausgefüllten Werten an Sie.
+
+**Brand** wählt die Marke, aus der die Farben, Schriftarten und das Logo der E-Mail stammen.
+
+Zwei Umschalter folgen auf die Brand-Auswahl:
+
+- **Show variable values** ist ein Anzeige-Umschalter für die Arbeitsfläche. Um eine E-Mail mit echten Werten zu lesen, verwenden Sie die [Vorschau](/de/reference/email-builder/testing#the-preview).
+- **Show code editor** öffnet das generierte Markup. Er erscheint nur für Konten, die Vorlagen direkt bearbeiten dürfen.
+
+Vier Schaltflächen am Ende öffnen Drawer über der E-Mail:
+
+- **Show variable list** listet die Variablen auf, die diese E-Mail verwenden kann, und fügt eigene hinzu. Siehe [Variablen](/de/reference/email-builder/variables).
+- **Manage Template** veröffentlicht die geöffnete E-Mail in der geteilten Vorlagenbibliothek. Sie erscheint nur für Konten, die diese Bibliothek pflegen.
+- **Show objects** verknüpft Datensätze wie eine Vakanz oder einen Match mit der E-Mail. Ihre Felder werden dann zu [Variablen](/de/reference/email-builder/variables#bringing-in-a-records-fields), die Sie hineinschreiben können.
+- **Manage Languages** legt die Standardsprache der E-Mail und ihre [Übersetzungen](/de/reference/email-builder/translations) fest.
+
+## Brand und Theme
+
+Jede Farbe und Schriftart in einer neuen E-Mail beginnt als Wert aus der Marke, die Sie in **Brand** wählen, und das Panel benennt den Wert, statt einen Hex-Code zu zeigen, etwa "Theme: Palette Surface Color".
+
+Wechseln Sie **Brand**, und die ganze E-Mail wird neu gestylt, einschließlich der Blöcke, die Sie bereits geschrieben haben. Ersetzen Sie einen dieser Werte durch eine eigene Farbe, und dieses eine Bedienelement folgt der Marke nicht mehr. Siehe [Template](/de/reference/email-builder/template#brand-theme-and-metadata) für die Einstellungen, die das entscheiden, und für den Unterschied zwischen dem Wechseln der Marke und dem Setzen eines Themes.
+
+## Speichern
+
+Der E-Mail-Builder speichert nicht, während Sie tippen. **Save** speichert. Die Vorschau-Schaltfläche und **Send test email** speichern jeweils, bevor sie laufen, sodass beide alles übernehmen, was Sie geändert haben. Siehe [Testen](/de/reference/email-builder/testing).
+
+Versuchen Sie, den Builder mit ungespeicherten Änderungen zu verlassen, erscheint eine Warnung. Sie bietet an, sie zu speichern (**Save**) oder sie zu verwerfen (**Discard**) und fortzufahren.
+
+<img src="/images/email-builder/08-unsaved-changes.png" alt="Die Warnung Unsaved Changes mit dem Text You have unsaved changes, Save before leaving, und den Schaltflächen Save und Discard" width="338" />
+
+Laden Sie die Seite stattdessen neu oder schließen Sie den Tab, bittet Ihr Browser um Bestätigung, bevor Sie die Änderungen verlieren.
+
+## Verwandte Themen
+
+- [Eine E-Mail-Vorlage in HireData einrichten](/de/apps/messaging/emails/setting-up-an-email-template-in-hiredata) begleitet eine E-Mail von leer bis fertig.
+- [Bilder zu Ihren E-Mails hinzufügen](/de/apps/messaging/emails/adding-images-to-your-emails) behandelt die Medienbibliothek.
+- [Variablen](/de/reference/email-builder/variables) behandelt die Auswahl, die Fallbacks und wie ein fehlender Wert aussieht.
+- [Übersetzungen](/de/reference/email-builder/translations) behandelt das Versenden einer E-Mail in mehreren Sprachen.
+- [Testen](/de/reference/email-builder/testing) behandelt die Vorschau, den Test-Versand und was keines von beiden beweist.
+- [Der Formular-Builder im Überblick](/de/reference/forms/overview) behandelt die Formulare, auf die ein Form-Block zeigen kann.

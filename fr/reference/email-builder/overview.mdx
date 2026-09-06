@@ -1,0 +1,115 @@
+---
+title: "Vue d'ensemble de l'éditeur d'e-mails"
+sidebarTitle: "Vue d'ensemble"
+description: "Un tour de l'éditeur d'e-mails HireData : le canevas et le panneau des paramètres, comment ajouter un bloc, chaque type de bloc, la barre d'outils, le thème et l'enregistrement."
+keywords: ["éditeur d'e-mails", "modèle d'e-mail", "blocs d'e-mail", "sections d'e-mail", "thème d'e-mail", "marque d'e-mail", "envoyer un e-mail de test", "aperçu d'e-mail", "modifications non enregistrées"]
+---
+
+Un modèle d'e-mail est un message que vous rédigez une fois et envoyez de nombreuses fois, dans une automatisation ou une newsletter. Ouvrez **Settings**, puis **Emails** sous **Templates**, et cliquez sur **New Email**. Choisissez **Blank Email** ou l'un des modèles prêts à l'emploi, et le nouveau modèle s'ouvre dans l'éditeur.
+
+Cette page cartographie l'éditeur. Pour un guide qui mène un e-mail de la page vierge au prêt-à-envoyer, lisez [Créer un modèle d'e-mail dans HireData](/fr/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+## L'éditeur en un coup d'œil
+
+L'éditeur se compose de trois parties.
+
+- Le champ **Subject** en haut. C'est la ligne que le destinataire voit dans sa boîte de réception, et il accepte les variables.
+- L'e-mail lui-même à gauche. Cliquez sur n'importe quel texte et tapez. Cliquez sur n'importe quel bloc pour le sélectionner.
+- Le panneau des paramètres à droite, qui affiche les paramètres du dernier élément sélectionné.
+
+![L'éditeur d'e-mails : le champ Subject en haut, l'e-mail à gauche et le panneau des paramètres Template à droite](/images/email-builder/01-builder-at-a-glance.png)
+
+<Tip>
+  Cliquer sur le texte d'un bloc sélectionne ce bloc, et le panneau se remplit avec les paramètres du bloc lui-même. Pour sélectionner la **section** qui le contient, cliquez à côté du bloc, à gauche ou à droite du texte. Les sections ne sont pas encadrées dans le canevas, alors visez la bande de couleur de fond qu'une section remplit.
+</Tip>
+
+Un modèle contient des sections, et une section contient les blocs que le destinataire lit. [Template](/fr/reference/email-builder/template) explique comment les trois niveaux s'emboîtent, comment vous passez de l'un à l'autre, et pourquoi vous n'en ajoutez jamais un et ne pouvez pas le supprimer.
+
+Un fil d'Ariane au-dessus des paramètres nomme tout ce qui contient le bloc sélectionné. Sélectionnez une ligne d'une signature et les quatre niveaux apparaissent.
+
+<img src="/images/email-builder/02-breadcrumb.png" alt="Le fil d'Ariane du panneau des paramètres affichant Template, puis Sections, puis Signature, puis Paragraph, avec Paragraph grisé comme niveau actuel" width="402" />
+
+## Ajouter un bloc
+
+Chaque panneau de paramètres qui peut contenir d'autres blocs les liste sous **Blocks**, numérotés, dans l'ordre où ils apparaissent dans l'e-mail. Chaque ligne porte trois commandes.
+
+- Le **+** ajoute un nouveau bloc sous cette ligne. Là où le conteneur accepte plus d'un type de bloc, il ouvre un menu qui les liste.
+- Le **−** supprime ce bloc.
+- La poignée à gauche fait glisser le bloc vers le haut ou le bas de la liste.
+
+<img src="/images/email-builder/03-section-blocks-list.png" alt="Le panneau des paramètres d'une section, montrant sa liste Blocks avec une ligne numérotée par bloc et les commandes d'ajout, de suppression et de glissement" width="400" />
+
+Cliquez sur la ligne d'un bloc pour le sélectionner et ouvrir ses paramètres. [Le fil d'Ariane](/fr/reference/email-builder/template#the-breadcrumb) permet de remonter. Cliquez sur **Sections** pour les paramètres de la section qui contient le bloc, et sur **Template** pour les paramètres de l'e-mail dans son ensemble. L'e-mail à gauche ne change pas. Seul le panneau change.
+
+## Choisir un bloc {#choosing-a-block}
+
+Deux entrées de la liste couvrent plus d'un bloc. Un bloc **Two Columns** arrive avec ses deux colonnes déjà à l'intérieur, et un bloc **Socials** contient un enfant par réseau que vous liez.
+
+| Bloc | Où l'ajouter | Ce qu'il place dans l'e-mail |
+|---|---|---|
+| [Section](/fr/reference/email-builder/sections) | Template | une bande en travers de l'e-mail, avec son propre fond, son padding et sa bordure |
+| [Paragraph](/fr/reference/email-builder/blocks/paragraph) | Section ou colonne | du texte de corps |
+| [Heading](/fr/reference/email-builder/blocks/heading) | Section ou colonne | un titre, au niveau que vous choisissez |
+| [Two Columns](/fr/reference/email-builder/blocks/columns) | Section | deux colonnes côte à côte, contenant chacune ses propres blocs |
+| [Form](/fr/reference/email-builder/blocks/form) | Section | des boutons qui répondent à une question de l'un de vos formulaires |
+| [Image](/fr/reference/email-builder/blocks/image) | Section ou colonne | une image de votre médiathèque, ou une image portée par une variable |
+| [Socials](/fr/reference/email-builder/blocks/socials) | Section | une rangée d'icônes sociales, une par lien |
+| [Button](/fr/reference/email-builder/blocks/button) | Section ou colonne | un appel à l'action qui ouvre une URL |
+| [HTML](/fr/reference/email-builder/blocks/html) | Section ou colonne | du balisage que vous écrivez vous-même |
+| [Signature](/fr/reference/email-builder/blocks/signature) | Section | une image à côté d'un bloc de texte de signature |
+
+<img src="/images/email-builder/04-block-menu.png" alt="Le menu d'ajout de la liste Blocks d'une section, listant Paragraph, les niveaux de titre, Two Columns, Form, Image, Socials, Button, HTML et Signature" width="193" />
+
+Une colonne accepte moins de types de blocs qu'une section. Elle ne peut pas contenir de Two Columns, de Form ni de Signature.
+
+## La barre d'outils
+
+La barre d'outils court le long du haut de l'éditeur, de **Save** jusqu'aux quatre boutons de panneaux à droite.
+
+![La barre d'outils de l'éditeur d'e-mails, montrant Save, les boutons d'aperçu et de test, le sélecteur de marque, les commutateurs de variables et de code, et les quatre boutons de panneaux](/images/email-builder/05-builder-toolbar.png)
+
+**Save** enregistre vos modifications.
+
+Deux boutons le suivent :
+
+- L'œil ouvre un [aperçu](/fr/reference/email-builder/testing#the-preview) de l'e-mail fini, en largeur mobile, tablette ou ordinateur, avec un sélecteur de langue et un bouton **Copy Preview URL**. Son infobulle vous avertit qu'il enregistre d'abord l'e-mail.
+- L'avion en papier ouvre [Test Email](/fr/reference/email-builder/testing#sending-a-test-email). Il vous envoie l'e-mail avec des valeurs réalistes remplies.
+
+**Brand** choisit la marque d'où viennent les couleurs, les polices et le logo de l'e-mail.
+
+Deux commutateurs suivent le sélecteur de marque :
+
+- **Show variable values** est un commutateur d'affichage pour le canevas. Pour lire un e-mail avec de vraies valeurs, utilisez l'[aperçu](/fr/reference/email-builder/testing#the-preview).
+- **Show code editor** ouvre le balisage généré. Il n'apparaît que pour les comptes autorisés à modifier les modèles directement.
+
+Quatre boutons à la fin ouvrent des panneaux au-dessus de l'e-mail :
+
+- **Show variable list** liste les variables que cet e-mail peut utiliser, et en ajoute qui vous appartiennent. Voir [Variables](/fr/reference/email-builder/variables).
+- **Manage Template** publie l'e-mail ouvert dans la bibliothèque de modèles partagée. Il n'apparaît que pour les comptes qui maintiennent cette bibliothèque.
+- **Show objects** lie des enregistrements tels qu'un poste ou un match à l'e-mail. Leurs champs deviennent alors des [variables](/fr/reference/email-builder/variables#bringing-in-a-records-fields) que vous pouvez y écrire.
+- **Manage Languages** définit la langue par défaut de l'e-mail et ses [traductions](/fr/reference/email-builder/translations).
+
+## Marque et thème
+
+Chaque couleur et chaque police d'un nouvel e-mail démarre sur une valeur de la marque que vous choisissez dans **Brand**, et le panneau nomme la valeur plutôt que d'afficher un code hexadécimal, par exemple « Theme: Palette Surface Color ».
+
+Changez de **Brand** et l'e-mail entier se restyle, blocs déjà rédigés compris. Remplacez l'une de ces valeurs par une couleur à vous et cette commande cesse de suivre la marque. Voir [Template](/fr/reference/email-builder/template#brand-theme-and-metadata) pour les paramètres qui en décident, et pour la différence entre changer de marque et définir un thème.
+
+## Enregistrer
+
+L'éditeur d'e-mails n'enregistre pas pendant que vous tapez. C'est **Save** qui enregistre. Le bouton d'aperçu et **Send test email** enregistrent chacun avant de s'exécuter, donc l'un comme l'autre valide tout ce que vous avez modifié. Voir [Tester](/fr/reference/email-builder/testing).
+
+Essayez de quitter l'éditeur avec des modifications non enregistrées et un avertissement apparaît. Il propose de les **Save**, ou de les **Discard** et de continuer.
+
+<img src="/images/email-builder/08-unsaved-changes.png" alt="L'avertissement Unsaved Changes, indiquant You have unsaved changes, Save before leaving, avec les boutons Save et Discard" width="338" />
+
+Rechargez la page ou fermez l'onglet et votre navigateur vous demande de confirmer avant de les perdre.
+
+## Voir aussi
+
+- [Créer un modèle d'e-mail dans HireData](/fr/apps/messaging/emails/setting-up-an-email-template-in-hiredata) mène un e-mail de la page vierge au prêt-à-envoyer.
+- [Ajouter des images à vos e-mails](/fr/apps/messaging/emails/adding-images-to-your-emails) couvre la médiathèque.
+- [Variables](/fr/reference/email-builder/variables) couvre le sélecteur, les valeurs de repli et l'apparence d'une valeur manquante.
+- [Traductions](/fr/reference/email-builder/translations) couvre l'envoi d'un même e-mail en plusieurs langues.
+- [Tester](/fr/reference/email-builder/testing) couvre l'aperçu, l'envoi de test et ce qu'aucun des deux ne prouve.
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre les formulaires qu'un bloc Form peut cibler.

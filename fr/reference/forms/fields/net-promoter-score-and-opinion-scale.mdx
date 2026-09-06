@@ -2,7 +2,13 @@
 title: "Net Promoter Score et Opinion Scale"
 sidebarTitle: "NPS et Opinion Scale"
 description: "Le champ de notation d'un formulaire HireData. Net Promoter Score est une échelle fixe de 0 à 10, et Opinion Scale vous laisse définir les bornes et les libeller."
-keywords: ["nps", "notation", "échelle", "score", "satisfaction", "likert"]
+keywords:
+  - "nps"
+  - "notation"
+  - "échelle"
+  - "score"
+  - "satisfaction"
+  - "likert"
 ---
 
 Net Promoter Score et Opinion Scale sont un seul type de champ avec un commutateur entre les deux. Le répondant choisit un point sur une rangée de nombres, et le formulaire stocke le nombre choisi.
@@ -38,7 +44,7 @@ Un nombre, le point choisi par le répondant.
 ## Opérateurs de logique
 
 | Opérateur | Correspond quand |
-|---|---|
+| --- | --- |
 | has response | le répondant a répondu, quelle que soit la réponse |
 | is equal to | la réponse est exactement la valeur |
 | is not equal to | la réponse est n'importe quoi d'autre |
@@ -50,10 +56,6 @@ Un nombre, le point choisi par le répondant.
 Une notation est le champ qui mérite le plus un branchement. `if score is less than or equal to 7 then go to "What could we do better?"` envoie les répondants insatisfaits vers un parcours de suivi et laisse tous les autres terminer.
 
 ![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Net Promoter Score, listant has response, is equal to, is not equal to et les quatre opérateurs de comparaison](/images/forms-builder/fields/operators-rating.png)
-
-<Warning>
-  Un champ de notation obligatoire bloque la réponse 0. Le répondant choisit 0, le formulaire n'avance pas, **Next** ne fait rien et aucun message n'apparaît. Net Promoter Score commence toujours à 0, alors laissez-le facultatif. Une Opinion Scale peut commencer à 1, ce qui évite le problème.
-</Warning>
 
 ## Évaluation
 

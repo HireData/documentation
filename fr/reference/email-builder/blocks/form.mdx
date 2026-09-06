@@ -1,0 +1,61 @@
+---
+title: "Form"
+sidebarTitle: "Form"
+description: "Le bloc Form dans l'éditeur d'e-mails HireData : des boutons qui répondent à l'une de vos questions de formulaire depuis l'e-mail, et ce que chaque type de question devient."
+keywords: ["formulaire d'e-mail", "leading question", "boutons de feedback", "e-mail NPS", "boutons de notation", "give feedback"]
+---
+
+Un bloc Form place une question de l'un de vos formulaires directement dans l'e-mail. Le destinataire répond en cliquant sur un bouton, qui ouvre le formulaire avec cette réponse déjà remplie. C'est ainsi qu'un e-mail de feedback obtient une réponse en un clic plutôt que deux.
+
+Ajoutez-le depuis le menu **Blocks** d'une section. Une colonne ne peut pas en contenir.
+
+## Comment il s'affiche
+
+Ce que le bloc place dans l'e-mail dépend du type de la question directrice.
+
+- **Net Promoter Score** affiche onze boutons, de 0 à 10, quelle que soit la plage portée par la question elle-même.
+- **Opinion Scale** affiche un bouton par point de sa propre plage, avec les libellés des extrémités de la question en dessous, en capitales.
+- **Multiple Choice** et **Dropdown** affichent un bouton par option.
+- Tout le reste affiche un unique appel à l'action indiquant « Give Feedback ». Cliquez dessus dans l'e-mail pour écrire votre propre formulation.
+
+![Onze boutons numérotés de 0 à 10 sous la question « How likely are you to recommend us to a friend? », avec NOT LIKELY AT ALL et EXTREMELY LIKELY sous les extrémités](/images/email-builder/blocks/05b-form-rendered.png)
+
+Les variantes de notation en étoiles et en émojis que [seule une intégration peut ajouter](/fr/reference/forms/overview) dessinent elles aussi un bouton par valeur, une étoile ou un émoji à la place d'un nombre. Les pouces et le curseur reçoivent l'appel à l'action unique.
+
+Chaque bouton est sa propre colonne, donc sur un écran de moins de 480 pixels la rangée cesse de tenir et les boutons s'empilent un par ligne. Une question Net Promoter Score devient onze boutons empilés sur un téléphone, ce qui mérite d'être vu dans l'aperçu avant l'envoi.
+
+Le bloc s'affiche dans la langue du formulaire qu'il cible, pas dans la langue de l'e-mail. Un modèle anglais rattaché à un formulaire néerlandais place des boutons néerlandais dans l'e-mail. Vérifiez le canevas avant d'envoyer.
+
+## Paramètres
+
+- **Form** choisit le formulaire à cibler. La liste recherche dans tous les formulaires de l'espace de travail.
+- **Leading Question** choisit la question à laquelle les boutons répondent. Les questions masquées et les écrans de fin sont exclus de la liste.
+- **Background color** et **Color** stylisent les boutons.
+- **Show Question** place la formulation propre à la question au-dessus des boutons, ou l'omet.
+- **Size** est **Small**, **Medium** ou **Large**, qui règle ensemble la taille du texte et le padding.
+- **Rounded corners** est **None**, **Normal**, **Large** ou **Full**, du carré à la pilule complète.
+- **Width** est **Auto**, **Half**, **Full** ou **Custom**, qui ouvre un curseur de 35 à 100 pour cent.
+- **Alignment** est gauche, centre ou droite.
+- **Text** contient **Font Family** avec un sélecteur de graisse, **Size**, **Letter Spacing** et **Line Height**.
+- **Spacing** contient deux commandes.
+  - **Margin**, l'espace au-dessus et en dessous des boutons.
+  - **Padding**, l'espace entre le libellé et le bord de chaque bouton.
+- **Border** contient **Border color**, **Border width** et **Border radius**.
+
+<img src="/images/email-builder/blocks/05-form-settings.png" alt="Le panneau des paramètres Form montrant le sélecteur Form, Leading Question, Background color et Color, Show Question, Size, Rounded corners, Width, Alignment, et les groupes Text, Spacing et Border" width="384" />
+
+**Form** et **Leading Question** appartiennent à l'e-mail plutôt qu'au bloc. Ajoutez un deuxième bloc Form et il arrive en ciblant déjà le même formulaire et la même question, et changer l'un ou l'autre change les deux blocs.
+
+## Limites {#limits}
+
+- Une question à choix n'affiche que ses **cinq premières options**. Une sixième option n'obtient ni bouton, ni avertissement, ni aucun signe dans le canevas qu'elle manque. Réordonnez la question pour que les cinq qui comptent viennent en premier, ou pointez le bloc vers une question plus courte.
+- Une question Net Promoter Score va toujours de 0 à 10 ici. La plage que la question porte est ignorée.
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre l'éditeur, la barre d'outils, le thème et chaque type de bloc.
+- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre les formulaires qu'un bloc Form peut cibler.
+- [Net Promoter Score et Opinion Scale](/fr/reference/forms/fields/net-promoter-score-and-opinion-scale) est le type de question derrière les onze boutons.
+- [Multiple Choice et Dropdown](/fr/reference/forms/fields/multiple-choice-and-dropdown) est le type de question plafonné à cinq boutons.
+- [Sections](/fr/reference/email-builder/sections) est le seul bloc dans lequel un Form peut aller.
+- [Traductions](/fr/reference/email-builder/translations) couvre les libellés de notation et l'appel à l'action qu'un bloc Form propose par langue.

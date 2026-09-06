@@ -1,0 +1,48 @@
+---
+title: "Socials"
+sidebarTitle: "Socials"
+description: "Het Socials-block in de HireData-e-mailbuilder: een rij social-iconen, de URL en het icoon per link, en hoe HireData een icoon uit het adres kiest."
+keywords: ["e-mail social-iconen", "social links", "linkedin", "instagram", "icoongrootte", "social footer"]
+---
+
+Een Socials-block is een rij social-iconen, één per link. Het is de gebruikelijke manier waarop een e-mail naar je accounts wijst, en het staat meestal in de laatste sectie. Voeg het toe vanuit het **Blocks**-menu van een sectie of een kolom.
+
+Elk icoon in de rij is een **Social**, een eigen block dat één adres en één afbeelding bevat. Je voegt ze toe en verwijdert ze vanuit het bovenliggende Socials-block in plaats van vanuit een menu.
+
+## Hoe het rendert
+
+HireData leest het adres en kiest het icoon eruit, dus een `linkedin.com`-link krijgt het LinkedIn-merkteken zonder dat je er een kiest. Een adres dat het niet herkent krijgt een gewoon webicoon.
+
+![Een gerenderde rij van drie social-iconen, elk met zijn label ernaast: LinkedIn, Instagram en YouTube, gecentreerd in de sectie](/images/email-builder/blocks/07c-socials-rendered.png)
+
+Het repareert ook adressen die geen links zijn. Een kaal e-mailadres wordt een `mailto:`-link en een kaal telefoonnummer een `tel:`-link, zodat een icoon kan bellen of een mailclient kan openen.
+
+Het label naast een icoon is tekst in de e-mail in plaats van een instelling. Klik erop in het canvas en typ, en gebruik **Text** op het bovenliggende block om het op maat te zetten. Laat het leeg en de rij bestaat alleen uit iconen.
+
+## Instellingen
+
+Het Socials-block draagt de instellingen voor de rij.
+
+- **Alignment** zet de rij links, in het midden of rechts.
+- **Icon Size** is een slider en een vak, in pixels.
+- **Socials** is de lijst met links, elke rij gelabeld met zijn adres. **+** voegt meteen een nieuwe Social toe, zonder menu, omdat Social het enige is dat het block accepteert. **−** verwijdert er een en de handle herordent ze.
+- **Spacing** bevat twee knoppen.
+  - **Margin**, de ruimte boven en onder de rij.
+  - **Gap**, de ruimte tussen de iconen.
+- **Text** bevat **Size**, dat de grootte van het label naast een icoon bepaalt. Er is hier geen kleurknop.
+
+<img src="/images/email-builder/blocks/07-socials-settings.png" alt="Het Socials-instellingenpaneel met Alignment, Icon Size op 20, de Socials-lijst met rijen voor LinkedIn, Instagram en YouTube, de Spacing-groep met Margin en Gap, en de Text-groep" width="384" />
+
+Klik op een rij in de **Socials**-lijst en het paneel verplaatst zich naar die ene link.
+
+- **URL** accepteert het adres. Het vak biedt ook elke variabele in de workspace die een URL, een telefoonnummer of een e-mailadres draagt, zodat een link het merk kan volgen in plaats van getypt te worden.
+- **Icon** vervangt de afbeelding door een eigen. Het kruisje naast het label wist hem en geeft de keuze terug aan HireData.
+
+<img src="/images/email-builder/blocks/07b-social-settings.png" alt="Het Social-instellingenpaneel met het URL-vak met een LinkedIn-bedrijfsadres en het Icon eronder met het LinkedIn-merkteken" width="384" />
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de builder, de toolbar, het thema en elk blocktype.
+- [Sectie](/nl/reference/email-builder/sections) is de band die een Socials-rij meestal afsluit.
+- [Button](/nl/reference/email-builder/blocks/button) is het block voor een link waar je mensen op wilt laten klikken, in plaats van een rij footers.
+- [Variabelen](/nl/reference/email-builder/variables) behandelt de tokens die het **URL**-vak aanbiedt.

@@ -2,7 +2,16 @@
 title: "Logik"
 sidebarTitle: "Logik"
 description: "Bedingte Logik in einem HireData-Formular: wie sich eine Regel liest, welche Operatoren jeder Feldtyp anbietet und was zu prüfen ist, wenn eine Regel nicht greift."
-keywords: ["bedingte logik", "verzweigung", "skip-logik", "sprung", "add rule", "add condition", "all other cases go to", "always go to", "operatoren"]
+keywords:
+  - "bedingte logik"
+  - "verzweigung"
+  - "skip-logik"
+  - "sprung"
+  - "add rule"
+  - "add condition"
+  - "all other cases go to"
+  - "always go to"
+  - "operatoren"
 ---
 
 Ein Formular ohne Logik läuft die Liste gerade hinunter. Alle beantworten jede Frage, und alle landen auf demselben Ende. Auf dem **Logic**-Tab ändern Sie das. Jede Regel, die Sie schreiben, entscheidet, wohin eine Antwort die befragte Person als Nächstes schickt.
@@ -43,7 +52,7 @@ Die Reihenfolge ist, was viele falsch machen. Eine breite Regel über einer enge
 Der Typ der Frage in der Bedingung bestimmt die Operatoren. Jede Feldseite erklärt, was ihre Operatoren abgleichen.
 
 | Feldtypen | Operatoren |
-|---|---|
+| --- | --- |
 | [Short Text und Long Text](/de/reference/forms/fields/short-and-long-text), [Email](/de/reference/forms/fields/email), [Phone Number](/de/reference/forms/fields/phone-number), [Website](/de/reference/forms/fields/website) | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
 | [Multiple Choice und Dropdown](/de/reference/forms/fields/multiple-choice-and-dropdown) | has response, is equal to, is not equal to, is one of, is not one of |
 | [Yes/No](/de/reference/forms/fields/yes-no) | has response, is equal to, is not equal to |
@@ -97,11 +106,7 @@ Eine Frage ohne Regeln kann trotzdem springen. Setzen Sie **Always go to**, und 
 
 ## Pflichtfragen und Logik
 
-Eine Pflichtfrage muss beantwortet werden, bevor die befragte Person weitergehen kann – ihre Regeln laufen also erst, wenn es eine Antwort zu prüfen gibt. Eine Klasse von Antworten bleibt derzeit stattdessen hängen.
-
-<Warning>
-  Ein Bug im Webformular blockiert die Antworten No, einen unberührten Toggle, 0 und eine Bewertung von 0 auf einer Pflichtfrage. **Next** tut nichts, keine Meldung erscheint, und die Regeln auf dieser Frage greifen nie. Bis der Fix ausgeliefert ist, lassen Sie Yes/No- und Net-Promoter-Score-Fragen optional und setzen Sie bei einer verpflichtenden Number-Frage einen **Minimum Value** von 1.
-</Warning>
+Eine Pflichtfrage muss beantwortet werden, bevor die befragte Person weitergehen kann – ihre Regeln laufen also erst, wenn es eine Antwort zu prüfen gibt.
 
 ## Wenn eine Regel nicht greift
 

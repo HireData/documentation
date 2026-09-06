@@ -2,7 +2,16 @@
 title: "Logique"
 sidebarTitle: "Logique"
 description: "La logique conditionnelle dans un formulaire HireData : comment se lit une règle, les opérateurs proposés par chaque type de champ et ce qu'il faut vérifier quand une règle ne se déclenche pas."
-keywords: ["logique conditionnelle", "branchement", "logique de saut", "saut", "add rule", "add condition", "all other cases go to", "always go to", "opérateurs"]
+keywords:
+  - "logique conditionnelle"
+  - "branchement"
+  - "logique de saut"
+  - "saut"
+  - "add rule"
+  - "add condition"
+  - "all other cases go to"
+  - "always go to"
+  - "opérateurs"
 ---
 
 Un formulaire sans logique se déroule tout droit dans la liste. Tout le monde répond à toutes les questions et tout le monde arrive à la même fin. L'onglet **Logic** est là où vous changez cela. Chaque règle que vous écrivez décide où une réponse envoie le répondant ensuite.
@@ -43,7 +52,7 @@ L'ordre est ce que les gens se trompent le plus souvent. Une règle large au-des
 Le type de la question dans la condition décide des opérateurs. Chaque page de champ explique ce que ses opérateurs comparent.
 
 | Types de champs | Opérateurs |
-|---|---|
+| --- | --- |
 | [Short Text et Long Text](/fr/reference/forms/fields/short-and-long-text), [Email](/fr/reference/forms/fields/email), [Phone Number](/fr/reference/forms/fields/phone-number), [Website](/fr/reference/forms/fields/website) | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
 | [Multiple Choice et Dropdown](/fr/reference/forms/fields/multiple-choice-and-dropdown) | has response, is equal to, is not equal to, is one of, is not one of |
 | [Yes/No](/fr/reference/forms/fields/yes-no) | has response, is equal to, is not equal to |
@@ -97,11 +106,7 @@ Une question sans règles peut quand même sauter. Réglez **Always go to** et t
 
 ## Questions obligatoires et logique
 
-Une question obligatoire doit recevoir une réponse avant que le répondant puisse avancer, ce qui signifie que ses règles ne s'exécutent qu'une fois qu'il y a une réponse à tester. Une catégorie de réponses reste actuellement bloquée à la place.
-
-<Warning>
-  Un bug du formulaire web bloque les réponses No, un toggle non touché, 0 et une note de 0 sur une question obligatoire. **Next** ne fait rien, aucun message n'apparaît, et les règles sur cette question ne se déclenchent jamais. En attendant le correctif, laissez les questions Yes/No et Net Promoter Score facultatives, et définissez une **Minimum Value** de 1 sur une question Number obligatoire.
-</Warning>
+Une question obligatoire doit recevoir une réponse avant que le répondant puisse avancer, ce qui signifie que ses règles ne s'exécutent qu'une fois qu'il y a une réponse à tester.
 
 ## Quand une règle ne se déclenche pas
 

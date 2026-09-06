@@ -1,0 +1,68 @@
+---
+title: "Template"
+sidebarTitle: "Template"
+description: "Die Wurzel einer HireData-E-Mail. Wie Template, Sektionen und Blöcke ineinander verschachtelt sind, wie die Breadcrumb zwischen ihnen wechselt und die Einstellungen für die ganze E-Mail."
+keywords: ["e-mail-vorlage", "e-mail-hierarchie", "sektionen", "breadcrumb", "linkfarbe", "e-mail-hintergrund", "utm-kampagne"]
+---
+
+Template ist die E-Mail selbst. Es sitzt an der Wurzel von allem, was Sie im E-Mail-Builder bauen, es enthält die Sektionen, und seine Einstellungen gelten für jeden Block darin.
+
+Sie fügen nie ein Template hinzu und können keines löschen. Kein Menü im Builder bietet ein Template an, und keine **Blocks**-Liste enthält eines. Jede E-Mail hat vom Moment ihrer Erstellung an genau eines, weshalb die Breadcrumb immer dort beginnt.
+
+## Wie eine E-Mail verschachtelt ist {#how-an-email-nests}
+
+Drei Ebenen und eine Ausnahme.
+
+- **Template** enthält Sektionen und sonst nichts. Die **Blocks**-Liste im Template-Panel fügt eine Sektion hinzu, ohne ein Menü zu öffnen, denn eine Sektion ist das Einzige, was es akzeptiert.
+- Eine **Sektion** ist ein Band quer über die E-Mail. Sie enthält die Blöcke, die ein Empfänger liest: Paragraph, Heading, Two Columns, Form, Image, Socials, Button, HTML und Signature.
+- Ein **Two Columns**-Block ist die Ausnahme. Er sitzt in einer Sektion, kommt mit genau zwei Spalten darin an, und jede Spalte enthält ihre eigenen Blöcke. Eine Spalte akzeptiert weniger Arten von Blöcken als eine Sektion: kein Two Columns, kein Form, keine Signature.
+
+[Einen Block auswählen](/de/reference/email-builder/overview#choosing-a-block) listet jeden Block auf und wo Sie ihn platzieren können.
+
+## Die Breadcrumb {#the-breadcrumb}
+
+Über dem Einstellungspanel steht eine Breadcrumb, die alles benennt, was den ausgewählten Block enthält. Wählen Sie eine Zeile einer Signatur aus, und Sie bekommen alle vier Ebenen.
+
+<img src="/images/email-builder/02-breadcrumb.png" alt="Die Breadcrumb des Einstellungspanels mit Template, dann Sections, dann Signature, dann Paragraph, wobei Paragraph als aktuelle Ebene ausgegraut ist" width="402" />
+
+Jede Ebene außer der, auf der Sie sich befinden, ist eine Schaltfläche. Klicken Sie auf **Sections** für die Sektion, die den Block enthält, und auf **Template** für die E-Mail als Ganzes. Die E-Mail auf der linken Seite bewegt sich nicht. Nur das Panel ändert sich.
+
+Zwei Dinge daran sind es wert, sie zu kennen, bevor sie Sie stolpern lassen.
+
+- **Eine einzelne Sektion trägt das Label "Sections", im Plural.** So steht es in der Breadcrumb und in jeder Zeile der Template-**Blocks**-Liste, sodass eine Liste von fünf Sektionen fünf Zeilen sind, die alle "Sections" lauten. Der Plural ist das Label für den Blocktyp und keine Anzahl, und er verrät Ihnen nie, in welcher Sektion Sie sich befinden. Die E-Mail auf der linken Seite tut es.
+- **Es gibt keine Spaltenebene.** Wählen Sie einen Block in einer Spalte aus, und die Breadcrumb lautet `Template > Sections > Two Columns` und dann direkt der Block. Eine Spalte hat kein eigenes Einstellungspanel, es fehlt also nichts in der Kette.
+
+## Einstellungen {#settings}
+
+Klicken Sie auf **Template** in der Breadcrumb, und das Panel füllt sich mit den Einstellungen für die ganze E-Mail. Es ist die eine Ebene, die Sie nicht durch Klicken auf die E-Mail selbst erreichen können, denn ein Klick neben einen Block wählt die Sektion statt des Templates aus.
+
+- **Background color** liegt hinter jeder Sektion, es ist also das, was ein Empfänger um sie herum und in den Lücken dazwischen sieht. Es beginnt mit der Hintergrundfarbe der Marke, die das Bedienelement benennt, statt sie als Hex-Code zu zeigen.
+- **Links** enthält **Link color** und **Underlined**. Beide gelten für jeden Link in der E-Mail. Ein Paragraph kann beide überschreiben, und seine eigene **Links**-Gruppe bietet **Inherit** als dritte Wahl, damit er die Entscheidung zurückgeben kann.
+- **Blocks** listet die Sektionen in der Reihenfolge auf, in der sie erscheinen. Ziehen Sie eine Zeile, um eine Sektion zu verschieben, **+** fügt eine darunter hinzu, und **−** löscht sie mit allem darin.
+- **Theme** ist das Styling, mit dem Blöcke beginnen, die Sie ab jetzt hinzufügen. Siehe [Brand, Theme und Metadata](#brand-theme-and-metadata).
+- **Metadata** enthält **UTM Campaign**. Siehe [Brand, Theme und Metadata](#brand-theme-and-metadata).
+
+<img src="/images/email-builder/09-template-settings.png" alt="Das Template-Einstellungspanel mit Background color, der zu Link color und Underlined ausgeklappten Links-Gruppe, der Blocks-Liste mit fünf Sektionen, Theme und Metadata" width="384" />
+
+## Brand, Theme und Metadata {#brand-theme-and-metadata}
+
+Drei Einstellungen entscheiden, wie eine E-Mail gestylt wird, und sie erreichen unterschiedliche Blöcke. Sie zu verwechseln ist der übliche Grund, warum eine Änderung an einer Stelle landet, die Sie nicht erwartet haben.
+
+- **Brand**, in der Toolbar, stylt die **ganze E-Mail** neu. Jede Farbe und Schriftart, die noch auf einem Theme-Wert steht, ändert sich auf einmal, in Blöcken, die Sie vor Wochen geschrieben haben, genauso wie in Blöcken, die Sie als Nächstes hinzufügen. Bei einem Test verschob der Wechsel von einer Marke zur anderen den Sektionshintergrund, die Buttonfarbe und die Überschriftenfarbe zusammen.
+- **Theme**, in den Template-Einstellungen, erreicht **nur Blöcke, die Sie danach hinzufügen**. Das Panel sagt es selbst: "Will be applied to newly added blocks." Setzen Sie dort den Sektionshintergrund, und jede Sektion, die Sie von da an hinzufügen, beginnt damit. Sektionen, die bereits in der E-Mail sind, behalten, was sie haben.
+- **Ein Wert, den Sie selbst auf einem Block setzen**, erreicht **nur diesen Block** und nimmt ihn dauerhaft aus der Reichweite der Marke. Das Bedienelement benennt keinen Theme-Wert mehr, sondern zeigt Ihre Farbe, und ein späterer Markenwechsel lässt sie, wo Sie sie hingesetzt haben.
+
+Das Panel sagt Ihnen also, was was ist. Ein Bedienelement mit "Theme: Palette Surface Color" folgt noch der Marke. Eines mit `#ff0000` nicht.
+
+<img src="/images/email-builder/06-template-theme.png" alt="Die Theme-Gruppe in den Template-Einstellungen, beschrieben als Will be applied to newly added blocks, mit dem Section-Eintrag ausgeklappt zu Background color, Spacing und Border" width="380" />
+
+**Metadata** darunter enthält **UTM Campaign**, fünf Felder namens **Campaign Source**, **Campaign Medium**, **Campaign Name**, **Campaign Term** und **Campaign Content**. HireData markiert jeden Link in einer gesendeten E-Mail, ob Sie sie ausfüllen oder nicht, diese Felder setzen also die Werte, statt das Markieren einzuschalten.
+
+<img src="/images/email-builder/07-template-utm-campaign.png" alt="Die UTM-Campaign-Gruppe ausgeklappt zu Campaign Source, Campaign Medium, Campaign Name, Campaign Term und Campaign Content, jeweils mit einem Beispiel und einer Beschreibung" width="380" />
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt die Arbeitsfläche, die Toolbar, das Theme und das Speichern.
+- [Sektion](/de/reference/email-builder/sections) ist das Band, das alles enthält, was ein Empfänger liest.
+- [Two Columns](/de/reference/email-builder/blocks/columns) erklärt den einen Block, der weiter verschachtelt.
+- [Paragraph](/de/reference/email-builder/blocks/paragraph) behandelt die Linkfarbe pro Block, die das Template überschreibt.

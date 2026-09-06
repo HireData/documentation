@@ -9,24 +9,20 @@ _Chaque image d'un e-mail HireData provient de la **Media Library** : votre logo
 
 ## Étape 1 : Ouvrir la Media Library
 
-Ouvrez un modèle d'e-mail dans **Settings** \> **Emails**, puis cliquez sur n'importe quel champ d'image dans l'éditeur — par exemple **Background image** \> **\[Choose image\]** dans le panneau de droite, ou un bloc d'image dans le corps de l'e-mail ou la signature.
+Ouvrez un modèle d'e-mail dans **Settings** \> **Emails**, puis cliquez sur n'importe quel champ d'image dans l'éditeur. Sélectionnez une section et son panneau propose **Background image** avec un bouton **Choose image**, et un bloc d'image ou la photo d'une signature ouvre la même bibliothèque.
 
-<Frame caption="Replace with Screenshot 1: The Background image field with the [Choose image] button">
-  ![Champ Choose image dans l'éditeur d'e-mails](https://placehold.co/1000x300/eef2f6/64748b?text=Screenshot+1%0ABackground+image+-+Choose+image)
-</Frame>
+<img src="/images/media-library/01-choose-image.png" alt="Le panneau des paramètres de section avec Background color au-dessus d'un champ Background image contenant un bouton Choose image" width="384" />
 
-La Media Library s'ouvre dans une fenêtre pop-up avec deux onglets :
+La Media Library s'ouvre dans une fenêtre pop-up avec deux onglets.
 
-- **Home** — les images qui appartiennent à l'e-mail dans lequel vous travaillez, comme l'avatar, la bannière et le logo de votre marque, et la photo de l'expéditeur. Elles restent dynamiques : elles suivent la marque ou l'expéditeur que l'automatisation utilise au moment de l'envoi de l'e-mail.
-- **Fields** — les médias stockés dans votre workspace, y compris tout ce que vous téléversez vous-même. Utilisez la barre de recherche et la pagination en bas pour trouver une image.
+- **Home** regroupe les médias stockés dans votre workspace, y compris tout ce que vous ou un collègue téléversez. L'onglet affiche le nombre d'éléments, avec **Show** et les numéros de page en bas pour parcourir une longue bibliothèque.
+- **Fields** regroupe les images qui proviennent d'une variable, comme l'avatar, la bannière et le logo de votre marque, et la photo de l'expéditeur. Elles restent dynamiques : elles suivent la marque ou l'expéditeur que l'automatisation utilise au moment de l'envoi de l'e-mail.
 
-<Frame caption="Replace with Screenshot 2: The Media Library pop-up with the Home and Fields tabs">
-  ![Pop-up de la Media Library](https://placehold.co/1400x900/eef2f6/64748b?text=Screenshot+2%0AMedia+Library+-+Home+%26+Fields)
-</Frame>
+![L'en-tête de la pop-up Media Library avec les onglets Home et Fields, une zone Search, un bouton Upload media et un compteur indiquant 42 items](/images/media-library/02-media-library.png)
 
 ## Étape 2 : Téléverser votre image
 
-Cliquez sur **\[Upload media\]** dans le coin supérieur droit de la Media Library et sélectionnez le fichier sur votre appareil. L'image apparaît immédiatement dans la grille et reste disponible pour tous les autres modèles de votre workspace : vous ne téléversez donc chaque logo ou icône qu'une seule fois.
+Cliquez sur **Upload media** dans le coin supérieur droit de la Media Library et sélectionnez le fichier sur votre appareil. L'image apparaît immédiatement dans la grille et reste disponible pour tous les autres modèles de votre workspace : vous ne téléversez donc chaque logo ou icône qu'une seule fois.
 
 <Tip>
   **Quel fichier téléverser :**
@@ -41,14 +37,16 @@ Cliquez sur **\[Upload media\]** dans le coin supérieur droit de la Media Libra
 
 Cliquez sur une image dans la grille pour ouvrir ses détails à droite.
 
-- **Title** — le nom que vous et vos collègues utilisez pour retrouver l'image.
+- **Title** — le nom que vous et vos collègues utilisez pour retrouver l'image. Un téléversement arrive nommé d'après le fichier, alors `image.png` mérite d'être renommé.
 - **Alt text** — le texte affiché lorsque l'image ne peut pas se charger, et le texte lu par un lecteur d'écran. Si vous le laissez vide, HireData utilise le titre de l'image par défaut.
 
 Sous **More info**, vous trouverez l'**Id** et le **Mime type** de l'image.
 
-<Frame caption="Replace with Screenshot 3: Image details with the Title and Alt text fields">
-  ![Panneau des détails de l'image avec titre et texte alternatif](https://placehold.co/900x1100/eef2f6/64748b?text=Screenshot+3%0AImage+details+-+Title+%26+Alt+text)
-</Frame>
+<img src="/images/media-library/03-image-details.png" alt="La carte des détails d'une image téléversée, avec les boutons de partage et de fermeture à côté du titre, les onglets Description et More info, un Title indiquant image.png et une zone Alt text vide précisant qu'elle retombe sur le titre de l'image" width="448" />
+
+<Warning>
+  Les deux zones sont en lecture seule sur l'onglet **Fields**. Une image qui provient d'une variable tire son titre et son texte alternatif de la variable ; une image issue de cette source ne peut donc pas recevoir son propre texte alternatif. Seul un téléversement de l'onglet **Home** le peut.
+</Warning>
 
 <Note>
   De nombreux destinataires bloquent les images par défaut, et certains clients de messagerie d'entreprise ne les chargent jamais. Le texte alternatif est ce qu'ils voient à la place, alors écrivez quelque chose de parlant — « Logo HireData » plutôt que « image1 ».
@@ -56,7 +54,7 @@ Sous **More info**, vous trouverez l'**Id** et le **Mime type** de l'image.
 
 ## Étape 4 : Utiliser l'image dans votre e-mail
 
-Avec l'image sélectionnée, cliquez sur **\[Add media to field\]** en bas du panneau des détails. L'image est placée dans le champ depuis lequel vous avez ouvert la Media Library, et la pop-up se ferme.
+Avec l'image sélectionnée, cliquez sur **Add media to field** en bas du panneau des détails. L'image est placée dans le champ depuis lequel vous avez ouvert la Media Library, et la pop-up se ferme.
 
 Enregistrez le modèle et utilisez l'aperçu ou un e-mail de test pour vérifier le rendu de l'image avant d'utiliser le modèle dans une automatisation.
 
@@ -66,12 +64,10 @@ Certains endroits demandent un **lien** d'image plutôt qu'un fichier — les ic
 
 1. Ouvrez l'image dans la Media Library.
 2. Cliquez sur l'icône de **partage** dans le coin supérieur droit du panneau des détails.
-3. Une confirmation **URL Copied** apparaît. Le lien est maintenant dans votre presse-papiers, et **\[Open URL\]** vous permet de le vérifier dans un nouvel onglet.
+3. Une confirmation **URL Copied** apparaît. Le lien est maintenant dans votre presse-papiers, et **Open URL** vous permet de le vérifier dans un nouvel onglet.
 4. Collez le lien partout où l'URL de l'image est demandée.
 
-<Frame caption="Replace with Screenshot 4: The share icon and the URL Copied confirmation">
-  ![Confirmation d'URL copiée](https://placehold.co/900x260/eef2f6/64748b?text=Screenshot+4%0AURL+Copied+-+Open+URL)
-</Frame>
+![La notification URL Copied avec un bouton Open URL à côté](/images/media-library/04-url-copied.png)
 
 <Warning>
   Cette URL est publique : toute personne disposant du lien peut ouvrir l'image. Ne téléversez que des images que vous acceptez de voir sur l'internet ouvert — pas de documents de candidats, de scans de pièces d'identité, ni quoi que ce soit d'autre de confidentiel.
@@ -81,9 +77,9 @@ Certains endroits demandent un **lien** d'image plutôt qu'un fichier — les ic
 
 Votre signature fait partie du modèle d'e-mail, donc les images de signature fonctionnent de la même manière que toute autre image :
 
-1. Téléversez les icônes que vous souhaitez utiliser (par exemple LinkedIn, Instagram ou un badge de certification) via **\[Upload media\]**.
+1. Téléversez les icônes que vous souhaitez utiliser (par exemple LinkedIn, Instagram ou un badge de certification) via **Upload media**.
 2. Cliquez sur le bloc de signature dans l'éditeur d'e-mails et sélectionnez l'élément d'image que vous souhaitez remplir.
-3. Choisissez l'icône dans la Media Library et cliquez sur **\[Add media to field\]**, ou collez l'URL de l'image si l'élément demande un lien.
+3. Choisissez l'icône dans la Media Library et cliquez sur **Add media to field**, ou collez l'URL de l'image si l'élément demande un lien.
 
 <Tip>
   Limitez les icônes de signature à trois ou quatre maximum, toutes de la même taille, et donnez à chacune un texte alternatif (« LinkedIn »). Une signature remplie d'images ressemble à une newsletter pour les filtres anti-spam.
@@ -96,7 +92,7 @@ Votre signature fait partie du modèle d'e-mail, donc les images de signature fo
 ## Bon à savoir
 
 - La Media Library est partagée dans tout votre workspace : une image téléversée par un collègue est disponible pour tous ceux qui créent des modèles.
-- Les images que vous ajoutez via l'onglet **Home** (avatar, bannière, logo de la marque, photo de l'expéditeur) restent dynamiques. Changez le logo dans **Settings** \> **Brands** et chaque e-mail utilisant cette marque se met à jour automatiquement — pas besoin de toucher aux modèles.
+- Les images que vous ajoutez via l'onglet **Fields** (avatar, bannière, logo de la marque, photo de l'expéditeur) restent dynamiques. Changez le logo dans **Settings** \> **Brands** et chaque e-mail utilisant cette marque se met à jour automatiquement, sans avoir à toucher aux modèles.
 - Envoyez-vous toujours un e-mail de test avant de mettre un modèle en production. Le rendu des images diffère entre Outlook, Gmail et Apple Mail.
 
 ---
@@ -105,5 +101,6 @@ Votre signature fait partie du modèle d'e-mail, donc les images de signature fo
 
 - [Créer un modèle d'e-mail dans HireData](/fr/apps/messaging/emails/setting-up-an-email-template-in-hiredata)
 - [Marques](/fr/settings/brands)
+- [Bloc Image](/fr/reference/email-builder/blocks/image)
 - [Envoyer une newsletter par e-mail à votre audience](/fr/apps/messaging/emails/sending-an-email-newsletter-to-your-audience)
 - [Vérifier un domaine dans HireData pour envoyer des e-mails](/fr/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails)

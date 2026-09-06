@@ -1,0 +1,53 @@
+---
+title: "Heading"
+sidebarTitle: "Heading"
+description: "Le bloc Heading dans l'éditeur d'e-mails HireData : les six niveaux, la taille par défaut de chacun, et ce qu'un niveau signifie ou non dans un e-mail envoyé."
+keywords: ["titre d'e-mail", "niveau de titre", "h1", "titre", "taille de titre", "typographie d'e-mail"]
+---
+
+Un bloc Heading est une ligne de texte composée plus grande que le corps qui l'entoure. Ajoutez-le depuis le menu **Blocks** d'une section ou d'une colonne, qui propose **Heading 1**, **Heading 2** et **Heading 3**.
+
+## Comment il s'affiche
+
+Un titre sort de l'éditeur d'e-mails comme une ligne de texte stylisée. Il n'est pas enveloppé dans une balise de titre HTML, donc le niveau que vous choisissez ne marque pas la ligne comme un titre pour un lecteur d'écran. Traitez le niveau comme un préréglage de taille, et choisissez-le pour la taille que vous voulez plutôt que pour le plan qu'il suggère.
+
+![Un titre de niveau 1 à 32 pixels au-dessus d'un titre de niveau 2 à 24 pixels, au-dessus d'un texte de corps à 16 pixels, dans un e-mail rendu](/images/email-builder/blocks/03b-heading-rendered.png)
+
+C'est donc à la formulation de porter la structure. Écrivez des titres qui se lisent comme des titres par eux-mêmes, et gardez-les assez courts pour être parcourus d'un coup d'œil.
+
+Le fil d'Ariane affiche **Heading** sans numéro, donc il ne vous dira pas à quel niveau vous êtes. Le champ **Size**, si.
+
+## Paramètres
+
+- **Font Family** choisit la police, avec un sélecteur de graisse à côté. Il démarre sur la police de titre de la marque, qui est un paramètre distinct de la police de corps de la marque.
+- **Size** est un curseur et un champ, de 8 à 48 pixels.
+- **Color** définit la couleur du texte.
+- **Alignment** est gauche, centre ou droite.
+- **Advanced** contient trois commandes.
+  - **Letter Spacing**, de 0 à 10.
+  - **Line Height**, de 1 à 2.
+  - **Margin**, l'espace au-dessus et en dessous du titre.
+
+Il n'y a pas de commande de niveau sur le panneau. Pour changer le niveau d'un titre, cliquez dedans dans l'e-mail et appuyez sur **Cmd + Alt** et un chiffre sur Mac, ou **Ctrl + Alt** et un chiffre sous Windows. Les six niveaux fonctionnent, y compris les trois que le menu ne propose pas.
+
+Chaque niveau porte sa propre taille par défaut, et changer de niveau réinitialise **Size** dessus.
+
+| Niveau | Taille par défaut |
+|---|---|
+| Heading 1 | 32 px |
+| Heading 2 | 24 px |
+| Heading 3 | 19 px |
+| Heading 4 | 16 px |
+| Heading 5 | 13 px |
+| Heading 6 | 11 px |
+
+Tapez `{{` dans un titre pour y déposer une variable.
+
+<img src="/images/email-builder/blocks/03-heading-settings.png" alt="Le panneau des paramètres Heading montrant Font Family sur la police de titre de la marque, Size, Color, Alignment, et le groupe Advanced avec Letter Spacing, Line Height et Margin" width="384" />
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre l'éditeur, la barre d'outils, le thème et chaque type de bloc.
+- [Paragraph](/fr/reference/email-builder/blocks/paragraph) partage les mêmes commandes de texte et ajoute une couleur de lien.
+- [Sections](/fr/reference/email-builder/sections) est la bande dans laquelle se trouve un titre.
+- [Variables](/fr/reference/email-builder/variables) couvre le sélecteur, les valeurs de repli et l'apparence d'une valeur manquante.

@@ -1,0 +1,43 @@
+---
+title: "Sektionen"
+sidebarTitle: "Sektionen"
+description: "Sektionen im HireData-E-Mail-Builder: das Band, das die Blöcke enthält, die ein Empfänger liest, mit eigenem Hintergrund, Abständen, Breite und Rahmen."
+keywords: ["e-mail-sektion", "e-mail-hintergrund", "sektionsbreite", "sektions-innenabstand", "sektionsrahmen", "hintergrundbild"]
+---
+
+Eine Sektion ist ein Band quer über die E-Mail. Sie enthält die Blöcke, die ein Empfänger liest, und sie trägt den Hintergrund, den Innenabstand und den Rahmen dahinter. Jeder Block einer E-Mail sitzt in einer, eine Sektion ist also die Ebene, auf der Sie arbeiten, wann immer Sie nicht in einem Block sind.
+
+Sektionen sind das Einzige, was ein [Template](/de/reference/email-builder/template) enthält, und das **Template**-Panel ist der einzige Ort, an dem Sie eine hinzufügen. Öffnen Sie dort **Blocks** und drücken Sie **+** in einer beliebigen Zeile. Es öffnet sich kein Menü, denn eine Sektion ist das Einzige, was ein Template akzeptiert. Auch das eigene Menü keiner Sektion bietet eine Section an, Sektionen verschachteln also nie.
+
+Der Builder beschriftet eine Sektion überall, wo er eine benennt, mit **Sections**, im Plural — das sollten Sie wissen, bevor Sie nach einer Zeile suchen, die sagt, in welcher Sektion Sie sind. [Die Breadcrumb](/de/reference/email-builder/template#the-breadcrumb) behandelt das.
+
+## Wie sie gerendert wird
+
+Der E-Mail-Körper ist 600 Pixel breit. Eine Sektion füllt diese Breite von Rand zu Rand, und ihre Blöcke sitzen in einer Spalte innerhalb des Innenabstands, den Sie setzen.
+
+![Eine Sektion in einer gerenderten E-Mail: ein Band mit cremefarbenem Hintergrund mit einer Überschrift, einer zweiten Überschrift, einem Absatz und einem zentrierten Button, darüber und darunter die weiße Seite](/images/email-builder/blocks/01b-section-rendered.png)
+
+Eine Sektion mit mehreren Blöcken wird als Stapel von Zeilen gerendert, die sich einen Hintergrund teilen. Der Rahmen und die abgerundeten Ecken gehören zur Sektion und nicht zu einer Zeile, sodass der obere Rahmen und die oberen Ecken auf dem ersten Block landen, der untere Rahmen und die unteren Ecken auf dem letzten, und die Zeilen dazwischen gerade durchlaufen.
+
+## Einstellungen
+
+- **Background color** füllt das Band. Es beginnt mit der Oberflächenfarbe der Marke, die das Bedienelement benennt, statt sie als Hex-Code zu zeigen.
+- **Background image** nimmt über **Choose image** ein Bild aus der Medienbibliothek, und es liegt hinter dem ganzen Band. Dieselbe Auswahl bietet die Variablen an, die ein Bild tragen, sodass der Hintergrund der Marke folgen kann.
+- **Blocks** listet auf, was die Sektion enthält, in Reihenfolge. **+** öffnet das Menü der Blöcke, die Sie hinzufügen können, **−** löscht eine Zeile, und der Griff links zieht sie.
+- **Spacing** enthält drei Bedienelemente.
+  - **Margin** ist die Lücke außerhalb des Bandes: **None**, **Normal**, **Large** oder **Custom** für einen oberen und einen unteren Wert in Pixeln.
+  - **Padding** ist die Lücke darin, mit denselben vier Wahlmöglichkeiten und einem Feld pro Seite.
+  - **Width** legt fest, wie breit die Blöcke in der Sektion laufen: **Default**, **Large**, **Full** oder **Custom**, was einen Schieberegler von 640 bis 1240 Pixeln öffnet.
+- **Border** enthält drei Bedienelemente.
+  - **Border color** ist eine Farbauswahl.
+  - **Border width** ist **None**, **Normal**, **Large** oder **Custom** für einen Wert pro Seite.
+  - **Border radius** sind dieselben vier Wahlmöglichkeiten, für einen Wert pro Ecke.
+
+<img src="/images/email-builder/blocks/01-section-settings.png" alt="Das Sektions-Einstellungspanel mit Background color, Background image, der Blocks-Liste, der Spacing-Gruppe mit Margin, Padding und Width sowie der Border-Gruppe" width="384" />
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Template](/de/reference/email-builder/template) ist der einzige Ort, an den eine Sektion gehen kann.
+- [Two Columns](/de/reference/email-builder/blocks/columns) teilt eine Sektion in zwei.
+- [Variablen](/de/reference/email-builder/variables) behandelt die Bild-Token, die die **Background image**-Auswahl anbietet.

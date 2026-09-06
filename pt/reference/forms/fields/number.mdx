@@ -1,8 +1,11 @@
 ---
 title: "Number"
 sidebarTitle: "Number"
-description: "O campo numérico num formulário da HireData, com um mínimo, um máximo e um passo, e o conjunto completo de operadores de comparação na lógica."
-keywords: ["numérico", "anos de experiência", "quantidade"]
+description: "O campo numérico num formulário da HireData, com definições de mínimo, máximo e passo, e o conjunto completo de operadores de comparação na lógica condicional."
+keywords:
+  - "numérico"
+  - "anos de experiência"
+  - "quantidade"
 ---
 
 Number recebe um número simples: anos de experiência, horas por semana, quantos de alguma coisa. É um de apenas dois tipos que a lógica consegue comparar, o que faz dele o campo a escolher quando uma regra tem de pesar uma resposta em vez de a igualar.
@@ -28,7 +31,7 @@ Um número.
 ## Operadores de lógica
 
 | Operador | Corresponde quando |
-|---|---|
+| --- | --- |
 | has response | o inquirido deu alguma resposta |
 | is equal to | a resposta é exatamente o valor |
 | is not equal to | a resposta é qualquer outra coisa |
@@ -38,10 +41,6 @@ Um número.
 | is less than or equal to | a resposta é o valor ou inferior |
 
 ![O separador Logic com o seletor de operadores aberto numa condição de Number, a listar has response, is equal to, is not equal to e os quatro operadores de comparação](/images/forms-builder/fields/operators-number.png)
-
-<Warning>
-  Um campo Number obrigatório bloqueia a resposta 0. **Next** não faz nada e não aparece nenhuma mensagem. Até a correção ser lançada, defina um **Minimum Value** de 1 em qualquer campo Number obrigatório, para que o 0 seja recusado com uma mensagem que o inquirido consiga ler.
-</Warning>
 
 ## Avaliação
 

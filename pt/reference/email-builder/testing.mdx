@@ -1,0 +1,81 @@
+---
+title: "Testar"
+sidebarTitle: "Testar"
+description: "Verifique um email da HireData antes de sair: a pré-visualização e as suas três larguras, o painel Links, enviar um email de teste a si próprio e o que os testes não lhe dizem."
+keywords: ["pré-visualização de email", "email de teste", "enviar email de teste", "larguras de pré-visualização", "links do email", "checklist antes de enviar", "testar emails"]
+---
+
+O construtor dá-lhe duas formas de olhar para um email antes de qualquer outra pessoa: uma pré-visualização e um envio de teste para a sua própria caixa de entrada. Esta página cobre ambas, e termina com o que nenhuma delas prova.
+
+## A pré-visualização {#the-preview}
+
+O botão do olho na barra de ferramentas abre a pré-visualização. A sua tooltip avisa que guarda primeiro o email, por isso abrir uma pré-visualização regista o que quer que tenha alterado.
+
+A pré-visualização carrega o endereço público do próprio email em vez de o renderizar dentro do construtor, por isso o que vê é o email final e não o canvas.
+
+<img src="/images/email-builder/20-preview-rendered.png" alt="Um email inteiro tal como a pré-visualização o renderiza: o logótipo da marca, uma faixa de cabeçalho colorida, uma saudação, texto de corpo, três botões de resposta, uma assinatura e o rodapé com o endereço e a anulação de subscrição" width="420" />
+
+O nome do template está no canto superior esquerdo. Os controlos correm do meio do cabeçalho até à margem direita.
+
+<img src="/images/email-builder/15-preview-header.png" alt="Os controlos da pré-visualização: um botão de copiar, botões de telemóvel, tablet e desktop com desktop selecionado, um botão de atualizar, um seletor de idioma a ler English e um botão de fechar" width="640" />
+
+- **Copy Preview URL**, o primeiro botão, copia um link que pode enviar a um colega.
+- Os três botões a seguir alternam entre **telemóvel**, **tablet** e **desktop**.
+- O botão de atualizar recarrega o email.
+- O seletor de idioma aparece assim que o template tem uma [tradução](/pt/reference/email-builder/translations), e alterna a pré-visualização entre elas.
+
+### Links
+
+Um painel **Links** ao lado lista todos os links do email, por ordem, e um cartão **UTM Campaign** por baixo repete os [parâmetros de campanha](/pt/reference/email-builder/template#brand-theme-and-metadata) que a HireData acrescenta a todos eles. Passe o cursor sobre uma linha e esse link fica contornado na pré-visualização, com um popover a mostrar o endereço completo e os parâmetros que carrega.
+
+<img src="/images/email-builder/16-preview-links.png" alt="O painel Links com quatro linhas, o botão da linha sob o cursor contornado na pré-visualização ao lado, um popover a mostrar o URL completo e os seus valores de utm_source, utm_medium e utm_campaign, e um cartão UTM Campaign por baixo da lista" width="640" />
+
+Esta é a verificação mais rápida do construtor. Um link com o endereço errado, ou um botão a apontar para uma variável que se resolveu para nada, aparece aqui em segundos.
+
+### O que a pré-visualização preenche
+
+A pré-visualização resolve as suas variáveis contra a sua própria conta, porque você é a única pessoa que a HireData sabe que a está a ler. Assim, um valor que está vazio para si aparece aqui vazio, e um token que não é de todo uma variável aparece exatamente como o escreveu. Veja [O que um destinatário vê realmente](/pt/reference/email-builder/variables#what-a-recipient-actually-sees).
+
+Abra o link de **Copy Preview URL** algures onde não tem sessão iniciada e o mesmo email preenche esses campos com dados de exemplo inventados. Use esse link para mostrar a um colega o layout, não para verificar a redação de uma linha personalizada.
+
+## Enviar um email de teste {#sending-a-test-email}
+
+O botão do avião de papel abre **Test Email**. Guarda primeiro o email e depois envia-lho com valores plausíveis no lugar dos de um destinatário real.
+
+<img src="/images/email-builder/17-test-email.png" alt="A janela Test Email com caixas opcionais First name, Last name e Email, um seletor Language, um grupo Objects com seletores de registo Vacancy e Match, e um botão Send test email" width="525" />
+
+- **First name**, **Last name** e **Email** são todos opcionais. Deixe-os vazios e a HireData usa os seus. Preencha-os para enviar o teste para outro sítio, ou para ver como um nome mais comprido assenta no layout.
+- **Language** aparece assim que o template tem uma tradução, e escolhe qual enviar.
+- **Objects** aparece quando o email liga [registos](/pt/reference/email-builder/variables#bringing-in-a-records-fields), ou quando está associado a um [formulário](/pt/reference/email-builder/blocks/form) que os liga. Cada cartão aceita **Fields** inventados ou um **Record** real, e **Auto fill** escolhe um registo por si.
+
+**Send test email** mostra uma notificação **Test mail scheduled!** e fecha a janela. O email chega momentos depois.
+
+<Note>
+  Um objeto marcado com um asterisco vermelho precisa de um registo, diga o que disser a linha por baixo do grupo sobre o deixar vazio. Deixe um de fora e o envio falha com uma notificação **Failed to send test email** que nomeia o primeiro objeto em falta, pela chave e não pelo rótulo: "Required data reference [job] is missing."
+</Note>
+
+## Antes de enviar
+
+Seis coisas que vale a pena fazer por esta ordem.
+
+1. **Leia a linha de assunto.** É a primeira coisa que um destinatário vê, aceita variáveis como tudo o resto, e é a linha mais fácil de deixar a meio.
+2. **Verifique se há chavetas perdidas no canvas.** Uma variável simples que a HireData reconhece é um chip, por isso uma que ainda mostre `{{` e `}}` é ou um erro de escrita ou um token com um [modificador](/pt/variables/modifiers), que fica de propósito como texto simples. Leia cada uma e confirme que é do segundo tipo. Veja [Variáveis](/pt/reference/email-builder/variables).
+3. **Percorra o painel Links.** Todos os links, incluindo os que estão dentro de um bloco Form e o link de anulação de subscrição no rodapé.
+4. **Olhe para o email à largura de telemóvel.** As colunas empilham-se e os botões reorganizam-se, e uma linha que cabe num desktop pode partir mal.
+5. **Verifique cada idioma.** Passe o seletor de idioma da pré-visualização por todas as traduções que escreveu.
+6. **Envie a si próprio um email de teste e leia-o no seu cliente de email.** É o único passo que lhe mostra uma caixa de entrada real.
+
+## O que os testes não lhe dizem
+
+O construtor não tem pré-visualização de Gmail, nem de Outlook, nem de modo escuro. A HireData não modela nenhum cliente de email, por isso nada aqui prevê como um deles vai renderizar o seu email. Um envio de teste para o seu próprio endereço, aberto no cliente que os seus destinatários usam, é a única verificação que o faz.
+
+Os três tamanhos de pré-visualização redimensionam a janela da pré-visualização para aproximadamente um telemóvel, um tablet e a largura do seu ecrã. Mudam a largura e nada mais, por isso o que lhe mostram é como o seu email se reorganiza, não como um determinado dispositivo o renderiza. A vista estreita é mais estreita do que a maioria dos telemóveis, o que a torna um teste rigoroso: um layout que se aguenta ali aguenta-se num telemóvel real.
+
+O empilhamento em larguras estreitas é o comportamento padrão do MJML, a framework com que a HireData constrói o email. A HireData não define a largura a que acontece e não oferece controlo sobre ela. O que pode controlar é o que empilha: veja [Two Columns](/pt/reference/email-builder/blocks/columns#how-it-renders).
+
+## Relacionados
+
+- [Variáveis](/pt/reference/email-builder/variables) explica o que a pré-visualização lhe está a mostrar onde falta um valor.
+- [Traduções](/pt/reference/email-builder/translations) cobre o seletor de idioma na pré-visualização e na janela de teste.
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre a barra de ferramentas e como guardar.
+- [Two Columns](/pt/reference/email-builder/blocks/columns) é o bloco cujo comportamento mais muda entre as larguras de pré-visualização.

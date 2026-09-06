@@ -1,0 +1,49 @@
+---
+title: "Button"
+sidebarTitle: "Button"
+description: "O bloco Button no construtor de emails da HireData: o URL que abre, as predefinições de tamanho e de cantos, e como escrever o texto que ele mostra."
+keywords: ["botão de email", "chamada à ação", "URL do botão", "cantos arredondados", "largura do botão", "texto do link"]
+---
+
+Um bloco Button é uma chamada à ação que abre um URL. Adicione-o a partir do menu **Blocks** de uma secção ou de uma coluna.
+
+Um botão novo chega a ler "Click Me". Clique nele no email e escreva por cima.
+
+## Como é renderizado
+
+O botão sai como um link estilizado para parecer um botão, à largura e ao alinhamento que definir, numa fila própria. **Width: Full** estica-o ao longo da secção; numa coluna estica-o ao longo da coluna.
+
+![Um botão renderizado a ler Read the reference, centrado na sua própria fila à largura Auto com cantos arredondados normais](/images/email-builder/blocks/08b-button-rendered.png)
+
+## Definições
+
+- **URL** é o endereço que o botão abre. A caixa aceita uma variável, por isso um botão pode apontar para um link que muda por destinatário.
+- **Background color** e **Color** ficam lado a lado e estilizam o botão e o seu texto.
+- **Size** é **Small**, **Medium** ou **Large**. Move em conjunto o tamanho do texto e o padding, de texto de 12 píxeis numa caixa apertada a texto de 24 píxeis numa generosa.
+- **Rounded corners** é **None**, **Normal**, **Large** ou **Full**, que vai do quadrado à pílula.
+- **Width** é **Auto**, que ajusta o botão ao seu texto, ou **Full**, que o estica ao longo do que o contém.
+- **Alignment** é esquerda, centro ou direita, e não faz nada à largura **Full**.
+- **Text** contém **Font Family** com um seletor de peso, **Size**, **Letter Spacing** e **Line Height**.
+- **Spacing** contém dois controlos.
+  - **Margin**, o espaço acima e abaixo do botão.
+  - **Padding**, o espaço entre o texto e o rebordo do botão.
+- **Border** contém **Border color**, **Border width** e **Border radius**.
+
+<img src="/images/email-builder/blocks/08-button-settings.png" alt="O painel de definições do Button a mostrar a caixa URL, Background color e Color, Size em Medium, Rounded corners em Normal, Width em Auto, Alignment e os grupos Text, Spacing e Border" width="384" />
+
+**Size** e **Text** definem ambos o tamanho da fonte, e ganha o que tocar por último. Escolher um **Size** reescreve o tamanho em **Text**, por isso defina primeiro o tamanho e ajuste-o depois se quiser um valor que as três predefinições não oferecem.
+
+As palavras num botão são o texto do link, e são tudo o que um leitor de ecrã anuncia. "Ler a referência" ou "Reserve o seu horário" dizem a alguém o que acontece. "Clique aqui" e "Ler mais" não dizem nada, e um destinatário a saltar pelo email ouve uma lista de links idênticos. Diga o que está do outro lado.
+
+## Limites
+
+A HireData suporta endereços `http`, `https`, `mailto` e `tel`, e uma variável que se resolva num deles. A caixa **URL** não verifica o que escreve, por isso um esquema mal escrito chega ao destinatário como um link morto. Teste o email antes de o enviar.
+
+Um template de email enviado para a API da HireData com qualquer outro esquema é rejeitado com "Builder links and images must use a supported URL scheme or a HireData variable."
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- [Paragraph](/pt/reference/email-builder/blocks/paragraph) cobre os links dentro do texto de corpo, que aceitam os mesmos esquemas.
+- [Form](/pt/reference/email-builder/blocks/form) desenha os seus próprios botões e aponta-os para um formulário em vez de um URL.
+- [Variáveis](/pt/reference/email-builder/variables) cobre os tokens que a caixa **URL** aceita.

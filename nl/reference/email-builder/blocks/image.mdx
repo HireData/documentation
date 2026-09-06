@@ -1,0 +1,44 @@
+---
+title: "Image"
+sidebarTitle: "Image"
+description: "Het Image-block in de HireData-e-mailbuilder: een afbeelding kiezen uit de mediabibliotheek of een variabele, hem op maat zetten, en waar de alt-tekst vandaan komt."
+keywords: ["e-mailafbeelding", "mediabibliotheek", "alt-tekst", "afbeeldingsbreedte", "afbeeldingshoogte", "border radius", "afbeeldingsvariabele"]
+---
+
+Een Image-block zet een afbeelding in de e-mail. Voeg het toe vanuit het **Blocks**-menu van een sectie of een kolom.
+
+## Hoe het rendert
+
+De afbeelding gaat in de e-mail als een gewone afbeelding, op maat gezet door **Width** en **Height** en uitgelijnd door **Alignment**.
+
+![Een image-block op Full breedte in een gerenderde e-mail, dat de sectie van rand tot rand vult onder een regel lopende tekst](/images/email-builder/blocks/06c-image-rendered.png)
+
+In een kolom negeert het **Width** en neemt het in plaats daarvan de breedte van de kolom aan, dus een afbeelding in een kolom van 40 procent komt eruit op 40 procent van de sectie. Dat is wat een afbeelding naast een alinea laat uitlijnen.
+
+Het block stelt geen maximum aan de bestandsgrootte of de pixelafmetingen van wat je kiest. Een foto rechtstreeks van een telefoon gaat de deur uit op zijn volle gewicht, dus schaal hem omlaag voordat je hem uploadt.
+
+## Instellingen
+
+- **Image** opent de mediabibliotheek, met **Upload media** voor een nieuw bestand en twee tabbladen voor wat er al is. **Fields** toont de variabelen die een afbeelding dragen, zoals een merklogo of een avatar van de afzender. Kies er een en de afbeelding verandert met degene over wie de e-mail gaat.
+- **Width** is **Auto**, dat de afbeelding op zijn eigen grootte houdt, of **Full**, dat hem uitrekt om te vullen wat hem bevat.
+- **Alignment** is links, midden of rechts, en doet niets op **Full** breedte.
+- **Height** is **Auto**, **Full** of **Custom**, dat een slider opent van 10 tot 300 pixels.
+- **Border radius** rondt de hoeken af: **None**, **Normal**, **Large** of **Custom** voor een waarde per hoek.
+
+<img src="/images/email-builder/blocks/06-image-settings.png" alt="Het Image-instellingenpaneel met de gekozen afbeelding, Width op Auto, Alignment, Height op Auto en Border radius" width="384" />
+
+Alt-tekst staat niet op dit paneel. Die hoort bij de afbeelding, dus je stelt hem in in de mediabibliotheek. Open **Image**, klik op de afbeelding en vul **Alt text** in op de kaart die opent. Hij valt terug op de afbeeldingstitel wanneer je hem leeg laat, en daarom is een upload genaamd `image.png` het hernoemen waard.
+
+Een afbeelding van het tabblad **Fields** is de uitzondering. Beide vakken zijn daar alleen-lezen, dus een merklogo of een afzenderfoto draagt de titel van de variabele als alt-tekst en kan niets anders krijgen.
+
+<img src="/images/email-builder/blocks/06b-image-alt-text.png" alt="De mediabibliotheekkaart voor een field-gestuurde afbeelding, met een alleen-lezen Title met Brand: Banner, een leeg Alt text-vak, en een notitie dat hij terugvalt op de afbeeldingstitel als hij leeg blijft" width="464" />
+
+Schrijf alt-tekst die zegt waar de afbeelding voor dient, niet hoe hij eruitziet. Een ontvanger wiens client afbeeldingen blokkeert ziet die regel in plaats van de afbeelding, en geblokkeerde afbeeldingen zijn het normale geval in plaats van de uitzondering.
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de builder, de toolbar, het thema en elk blocktype.
+- [Afbeeldingen toevoegen aan je e-mails](/nl/apps/messaging/emails/adding-images-to-your-emails) loopt de mediabibliotheek door.
+- [Two Columns](/nl/reference/email-builder/blocks/columns) is waar een afbeelding zijn breedte van de kolom neemt.
+- [Variabelen](/nl/reference/email-builder/variables) behandelt de tokens achter het tabblad **Fields**.
+- [Signature](/nl/reference/email-builder/blocks/signature) heeft zijn eigen afbeelding, voor je op maat gezet en bijgesneden.

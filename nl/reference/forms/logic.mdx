@@ -2,7 +2,16 @@
 title: "Logic"
 sidebarTitle: "Logic"
 description: "Conditionele logica in een HireData-formulier: hoe een rule leest, welke operators elk veldtype biedt en wat je controleert wanneer een rule niet afgaat."
-keywords: ["conditionele logica", "vertakking", "skip logic", "jump", "add rule", "add condition", "all other cases go to", "always go to", "operators"]
+keywords:
+  - "conditionele logica"
+  - "vertakking"
+  - "skip logic"
+  - "jump"
+  - "add rule"
+  - "add condition"
+  - "all other cases go to"
+  - "always go to"
+  - "operators"
 ---
 
 Een formulier zonder logica loopt recht door de lijst. Iedereen beantwoordt elke vraag en iedereen landt op dezelfde ending. Op het tabblad **Logic** verander je dat. Elke rule die je schrijft, bepaalt waar één antwoord de respondent daarna naartoe stuurt.
@@ -43,7 +52,7 @@ Volgorde is wat mensen fout doen. Een brede rule boven een smalle wint altijd, d
 Het type van de vraag in de conditie bepaalt de operators. Elke veldpagina legt uit wat zijn operators matchen.
 
 | Veldtypen | Operators |
-|---|---|
+| --- | --- |
 | [Short Text en Long Text](/nl/reference/forms/fields/short-and-long-text), [Email](/nl/reference/forms/fields/email), [Phone Number](/nl/reference/forms/fields/phone-number), [Website](/nl/reference/forms/fields/website) | has response, is equal to, is not equal to, starts with, ends with, contains, does not contain |
 | [Multiple Choice en Dropdown](/nl/reference/forms/fields/multiple-choice-and-dropdown) | has response, is equal to, is not equal to, is one of, is not one of |
 | [Yes/No](/nl/reference/forms/fields/yes-no) | has response, is equal to, is not equal to |
@@ -97,11 +106,7 @@ Een vraag zonder rules kan nog steeds springen. Stel **Always go to** in en iede
 
 ## Verplichte vragen en logica
 
-Een verplichte vraag moet worden beantwoord voordat de respondent verder kan, wat betekent dat haar rules pas draaien zodra er een antwoord te testen is. Eén klasse antwoorden blijft momenteel in plaats daarvan steken.
-
-<Warning>
-  Een bug in het webformulier blokkeert de antwoorden No, een onaangeraakte toggle, 0 en een rating van 0 op een verplichte vraag. **Next** doet niets, er verschijnt geen bericht en de rules op die vraag gaan nooit af. Laat totdat de fix uitkomt Yes/No- en Net Promoter Score-vragen optioneel, en stel een **Minimum Value** van 1 in op een verplichte Number-vraag.
-</Warning>
+Een verplichte vraag moet worden beantwoord voordat de respondent verder kan, wat betekent dat haar rules pas draaien zodra er een antwoord te testen is.
 
 ## Wanneer een rule niet afgaat
 

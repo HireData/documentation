@@ -1,0 +1,111 @@
+---
+title: "Variabelen"
+sidebarTitle: "Variabelen"
+description: "Personaliseer een HireData-e-mail met variabelen: de picker, waar ze werken, een eigen variabele toevoegen, wat een ontvanger ziet als een waarde ontbreekt, en fallbacks."
+keywords: ["e-mailvariabelen", "variabele-picker", "merge tags", "personalisatie", "standaardwaarde", "fallback", "aangepaste variabele", "AI-variabele", "objects"]
+---
+
+Een variabele is een placeholder die HireData invult wanneer de e-mail de deur uit gaat. Schrijf `{{recipient.first_name}}` één keer en elke ontvanger leest zijn eigen naam.
+
+De e-mailbuilder toont een variabele als een chip met het label erop, niet de waarde. `{{recipient.first_name}}` staat op het canvas als **Recipient: First Name**, en de chip gedraagt zich als één object in plaats van als de tekens waar hij voor staat.
+
+## Een variabele invoegen
+
+Typ `{{` en onder de cursor opent een picker. Elke rij toont het label van de variabele, zijn `{{key}}` en het soort waarde dat hij bevat.
+
+Typ door om de lijst te verfijnen. Het zoeken is vergevingsgezind. Typ `frist` en **Recipient: First Name** komt nog steeds naar boven.
+
+![Het Subject-vak met een variabele-chip erin en een half getypt token aan het eind, en de picker eronder met Recipient: Last Name en Sender: Last Name met hun keys en types](/images/email-builder/10-variable-picker.png)
+
+Druk op Enter of klik op een rij en het token wordt een chip.
+
+## Waar variabelen werken
+
+Overal waar je in een e-mail kunt typen, en op verschillende plekken waar dat niet kan.
+
+- Het **Subject**-vak, de regel die een ontvanger in zijn inbox leest.
+- [Paragraph](/nl/reference/email-builder/blocks/paragraph)- en [heading](/nl/reference/email-builder/blocks/heading)-tekst.
+- Het adres van een link. Selecteer tekst, klik op de linkknop in het bubble-menu, en de popover biedt een dropdown met elke variabele die een URL bevat, inclusief `{{template::unsubscribe_url}}`.
+- Het **URL**-vak op een [Button](/nl/reference/email-builder/blocks/button) en op elke [Social](/nl/reference/email-builder/blocks/socials)-rij.
+- Een afbeelding. Het tabblad **Fields** van de mediabibliotheek toont de variabelen die een afbeelding dragen, voor zowel het [Image](/nl/reference/email-builder/blocks/image)-block als de [Signature](/nl/reference/email-builder/blocks/signature).
+- Een kleur. Kleurknoppen kiezen op naam uit de kleurvariabelen van het merk, en dat is wat "Theme: Palette Primary Color" betekent. Zie [Merk, thema en metadata](/nl/reference/email-builder/template#brand-theme-and-metadata).
+
+## De variabelenlijst
+
+De accolade-knop in de toolbar opent **Variables**, een drawer met alles wat deze e-mail kan gebruiken. Zoek op label of key. Waar HireData een waarde al kent, toont de kaart hem, zodat je `{{brand.name}}` van `{{account.name}}` kunt onderscheiden zonder te gokken.
+
+Variabelen die je zelf hebt toegevoegd staan bovenaan, elk gemarkeerd met een sterretje, en de `{{`-picker zet diezelfde vooraan. Klik op een om zijn instellingen opnieuw te openen.
+
+<img src="/images/email-builder/11-variable-list.png" alt="De Variables-drawer met een zoekvak en een plusknop, met drie met een sterretje gemarkeerde eigen variabelen van de template boven Template unsubscribe_url, Template Subject, Template Form URL en Brand Id, elk met key, type en waarde" width="350" />
+
+## Je eigen variabele toevoegen
+
+De **+** naast het zoekvak opent een **Variables**-dialoog: je **Fields** links, en rechts de types waaruit je kunt kiezen, in zes groepen. Ze lopen van **Text**, **Number** en **Yes / No** via **Email**, **Phone** en **Address** tot **Color**, **Font** en **JSON**. **Search types** verfijnt de lijst.
+
+<img src="/images/email-builder/18-variable-types.png" alt="De typekiezer in de Variables-dialoog, met een Search types-vak boven groepen genaamd Intelligent, Basics, Date and time, People and places, Web and media en Advanced" width="380" />
+
+Kies een type en ernaast openen vier instellingen.
+
+- **Name** is wat de chip op het canvas toont.
+- **Default value** is wat HireData invult wanneer niets anders een waarde levert. De knop past zich aan het type aan dat je koos.
+- **Reference as** is de key die je tussen de accolades typt. Hij vult zichzelf in op basis van de naam.
+- **What is it for?** is een optionele notitie voor wie de template hierna opent.
+
+**Save changes** bewaart ze. Een variabele die je toevoegt hoort alleen bij deze e-mail, dus sla de template op met **Save** voordat je weggaat.
+
+<img src="/images/email-builder/19-variable-settings.png" alt="De Variables-dialoog met een Fields-lijst met AI variable, Phone en ID, en de Phone-instellingen open op Name, Default value, Reference as en What is it for, boven Cancel en Save changes" width="620" />
+
+Een eigen variabele verdient zichzelf terug wanneer één waarde op meerdere plekken hoort. Zet je telefoonnummer in een `{{phone}}`-variabele en schrijf die in de handtekening, de footer en de body, en het nummer later wijzigen is één bewerking in plaats van drie.
+
+<Warning>
+  Een variabele verwijderen haalt hem niet uit de e-mail. Elke chip die hem gebruikte wordt weer platte `{{key}}`-tekst en blijft staan waar hij staat, dus de key gaat de deur uit met de accolades zichtbaar. Verwijder de variabele en zoek dan elke plek op waar je hem gebruikte.
+</Warning>
+
+<Note>
+  **AI variable** is het eerste type in de dialoog. In plaats van een waarde op te zoeken, berekent het er voor elke ontvanger een op basis van een instructie die jij schrijft. Zie [AI-variabelen](/nl/variables/ai-variables).
+</Note>
+
+## De velden van een record binnenhalen {#bringing-in-a-records-fields}
+
+De database-knop in de toolbar opent **Objects**, dat een recordtype aan de e-mail koppelt: een kandidaat, een vacature, een match. Koppel er een en elk veld op dat record komt in de variabelenlijst, geadresseerd via de key van het object, zoals in `{{candidate.first_name}}`.
+
+[Objects](/nl/reference/forms/objects) legt uit wat een object is en wat koppelen doet. Het is geschreven voor de formulierbuilder, die meer instellingen per object biedt, maar de records en hun keys zijn hetzelfde.
+
+## Wat een ontvanger daadwerkelijk ziet {#what-a-recipient-actually-sees}
+
+Er kunnen drie dingen met een token gebeuren, en maar één ervan is wat je bedoelde.
+
+- **De variabele resolvet.** HireData heeft een waarde en schrijft hem in.
+- **De variabele resolvet naar niets.** De ontvanger heeft geen telefoonnummer in het systeem, dus `{{recipient.phone_number}}` komt eruit als een lege plek. "Bel ons op ." is de klassieke manier waarop dit zich toont.
+- **De variabele bestaat niet.** Een key die HireData niet herkent laat hij precies staan zoals je hem typte. De ontvanger leest `{{recipient.favourite_biscuit}}`, accolades en al.
+
+De builder vertelt je op welke van de drie je afstevent. Een key die hij herkent wordt een chip. Een key die hij niet herkent blijft platte tekst, accolades zichtbaar, en bereikt zo de inbox.
+
+De ene uitzondering is een token met een [modifier](#giving-a-variable-a-fallback). Dat blijft platte tekst hoe goed de key ook is, omdat de picker alleen ooit een kale key invoegt. Accolades op het canvas betekenen dus een van twee dingen: een variabele die je fout hebt, of een modifier die werkt zoals bedoeld.
+
+<Warning>
+  Een token dat je van ergens anders plakt is de gebruikelijke bron van het derde geval. Plak het, en controleer dan of het een chip is geworden.
+</Warning>
+
+## Een variabele een fallback geven {#giving-a-variable-a-fallback}
+
+Voeg de `default`-modifier toe en HireData gebruikt jouw woorden in plaats van een gat te laten.
+
+```text
+Hi {{ recipient.first_name | default: "there" }},
+```
+
+Hij treedt in werking in beide bovenstaande faalgevallen: wanneer de waarde leeg is, en wanneer de key helemaal niet bestaat. De e-mail hierboven leest "Hi Sofia," voor Sofia en "Hi there," voor iedereen wiens voornaam ontbreekt.
+
+Een chip kan niet worden bewerkt. Hij is één object op het canvas in plaats van de tekens waar hij voor staat, dus er is nergens plek voor een modifier. Typ in plaats daarvan het hele token met de hand, accolades en al, en laat de picker om je heen openen en sluiten. Wat je typte blijft platte tekst in plaats van een chip te worden, en zo ziet een modifier eruit wanneer hij goed staat. Lees het terug in de preview.
+
+`default` is er een uit een lange lijst. Zie [Modifiers](/nl/variables/modifiers) voor de rest, en voor het aaneenschakelen van meerdere.
+
+## Gerelateerd
+
+- [Testen](/nl/reference/email-builder/testing) is waar je ontdekt waar je variabelen naar resolven.
+- [Variabelen](/nl/variables/introduction) behandelt de `{{ }}`-syntax in formulieren, berichten en automatiseringen naast e-mail.
+- [Modifiers](/nl/variables/modifiers) toont alles wat je met een waarde kunt doen op weg naar de e-mail.
+- [AI-variabelen](/nl/variables/ai-variables) berekenen een waarde per ontvanger in plaats van er een op te zoeken.
+- [Objects](/nl/reference/forms/objects) behandelt de records waarvan de velden variabelen worden.
+- [Vertalingen](/nl/reference/email-builder/translations) houdt je variabelen intact in elke taal.

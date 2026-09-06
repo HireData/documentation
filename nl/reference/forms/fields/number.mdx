@@ -1,8 +1,11 @@
 ---
 title: "Number"
 sidebarTitle: "Number"
-description: "Het getalveld in een HireData-formulier, met een minimum, een maximum en een stapgrootte, en de volledige set vergelijkingsoperators in logica."
-keywords: ["numeriek", "jaren ervaring", "aantal"]
+description: "Het getalveld in een HireData-formulier, met instellingen voor minimum, maximum en stapgrootte, en de volledige set vergelijkingsoperators in conditionele logica."
+keywords:
+  - "numeriek"
+  - "jaren ervaring"
+  - "aantal"
 ---
 
 Number neemt een kaal getal aan: jaren ervaring, uren per week, hoeveel van iets. Het is een van slechts twee typen die logica kan vergelijken, en daarmee het veld om te pakken wanneer een rule een antwoord moet wegen in plaats van matchen.
@@ -28,7 +31,7 @@ Een getal.
 ## Logica-operators
 
 | Operator | Komt overeen wanneer |
-|---|---|
+| --- | --- |
 | has response | de respondent überhaupt heeft geantwoord |
 | is equal to | het antwoord exact de waarde is |
 | is not equal to | het antwoord iets anders is |
@@ -38,10 +41,6 @@ Een getal.
 | is less than or equal to | het antwoord de waarde of lager is |
 
 ![Het tabblad Logic met de operatorkiezer open op een Number-conditie, met has response, is equal to, is not equal to en de vier vergelijkingsoperators](/images/forms-builder/fields/operators-number.png)
-
-<Warning>
-  Een verplicht Number-veld blokkeert het antwoord 0. **Next** doet niets en er verschijnt geen bericht. Stel totdat de fix is uitgerold een **Minimum Value** van 1 in op elk verplicht Number-veld, zodat 0 wordt geweigerd met een bericht dat de respondent kan lezen.
-</Warning>
 
 ## Evaluatie
 

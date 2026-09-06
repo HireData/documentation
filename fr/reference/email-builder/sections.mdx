@@ -1,0 +1,43 @@
+---
+title: "Sections"
+sidebarTitle: "Sections"
+description: "Les sections dans l'éditeur d'e-mails HireData : la bande qui contient les blocs qu'un destinataire lit, avec son propre fond, ses espacements, sa largeur et sa bordure."
+keywords: ["section d'e-mail", "fond d'e-mail", "largeur de section", "padding de section", "bordure de section", "image de fond"]
+---
+
+Une section est une bande en travers de l'e-mail. Elle contient les blocs qu'un destinataire lit, et elle porte le fond, le padding et la bordure derrière eux. Chaque bloc d'un e-mail se trouve dans une section, donc une section est le niveau auquel vous travaillez chaque fois que vous n'êtes pas à l'intérieur d'un bloc.
+
+Les sections sont la seule chose qu'un [Template](/fr/reference/email-builder/template) contient, et le panneau **Template** est le seul endroit où en ajouter une. Ouvrez-y **Blocks** et appuyez sur **+** sur n'importe quelle ligne. Aucun menu ne s'ouvre, parce qu'une section est la seule chose qu'un Template accepte. Aucun menu de section ne propose non plus de Section, donc les sections ne s'emboîtent jamais.
+
+L'éditeur étiquette une section **Sections**, au pluriel, partout où il en nomme une, ce qui vaut la peine d'être su avant de chercher une ligne qui dirait sur quelle section vous êtes. [Le fil d'Ariane](/fr/reference/email-builder/template#the-breadcrumb) couvre ce point.
+
+## Comment elle s'affiche
+
+Le corps de l'e-mail fait 600 pixels de large. Une section remplit cette largeur bord à bord, et ses blocs se placent en colonne à l'intérieur du padding que vous définissez.
+
+![Une section dans un e-mail rendu : une bande au fond crème contenant un titre, un deuxième titre, un paragraphe et un bouton centré, avec la page blanche visible au-dessus et en dessous](/images/email-builder/blocks/01b-section-rendered.png)
+
+Une section de plusieurs blocs s'affiche comme une pile de lignes qui partagent un même fond. La bordure et les coins arrondis appartiennent à la section plutôt qu'à une ligne, donc la bordure supérieure et les coins supérieurs tombent sur le premier bloc, la bordure inférieure et les coins inférieurs sur le dernier, et les lignes intermédiaires filent tout droit.
+
+## Paramètres
+
+- **Background color** remplit la bande. Il démarre sur la couleur de surface de la marque, que la commande nomme plutôt que de l'afficher en code hexadécimal.
+- **Background image** prend une image de la médiathèque via **Choose image**, et elle se place derrière toute la bande. Le même sélecteur propose les variables qui portent une image, donc le fond peut suivre la marque.
+- **Blocks** liste ce que la section contient, dans l'ordre. **+** ouvre le menu des blocs que vous pouvez ajouter, **−** supprime une ligne, et la poignée à gauche la fait glisser.
+- **Spacing** contient trois commandes.
+  - **Margin** est l'espace à l'extérieur de la bande : **None**, **Normal**, **Large** ou **Custom** pour une valeur haute et une valeur basse en pixels.
+  - **Padding** est l'espace à l'intérieur, avec les quatre mêmes choix et un champ par côté.
+  - **Width** définit la largeur sur laquelle courent les blocs à l'intérieur de la section : **Default**, **Large**, **Full** ou **Custom**, qui ouvre un curseur de 640 à 1240 pixels.
+- **Border** contient trois commandes.
+  - **Border color** est un sélecteur de couleur.
+  - **Border width** est **None**, **Normal**, **Large** ou **Custom** pour une valeur par côté.
+  - **Border radius** propose les quatre mêmes choix, pour une valeur par coin.
+
+<img src="/images/email-builder/blocks/01-section-settings.png" alt="Le panneau des paramètres Section montrant Background color, Background image, la liste Blocks, le groupe Spacing avec Margin, Padding et Width, et le groupe Border" width="384" />
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre l'éditeur, la barre d'outils, le thème et chaque type de bloc.
+- [Template](/fr/reference/email-builder/template) est le seul endroit où une section peut aller.
+- [Two Columns](/fr/reference/email-builder/blocks/columns) divise une section en deux.
+- [Variables](/fr/reference/email-builder/variables) couvre les jetons d'image que propose le sélecteur **Background image**.

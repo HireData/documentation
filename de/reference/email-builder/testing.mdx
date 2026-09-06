@@ -1,0 +1,81 @@
+---
+title: "Testen"
+sidebarTitle: "Testen"
+description: "Prüfen Sie eine HireData-E-Mail, bevor sie hinausgeht: die Vorschau und ihre drei Breiten, das Links-Panel, sich selbst eine Test-E-Mail senden und was Testen nicht verraten kann."
+keywords: ["e-mail-vorschau", "test-e-mail", "test-mail senden", "vorschau-breiten", "e-mail-links", "checkliste vor dem senden", "e-mail-testen"]
+---
+
+Der Builder gibt Ihnen zwei Möglichkeiten, eine E-Mail anzusehen, bevor es jemand anderes tut: eine Vorschau und einen Test-Versand an Ihren eigenen Posteingang. Diese Seite behandelt beide und endet mit dem, was keines von beiden beweist.
+
+## Die Vorschau {#the-preview}
+
+Die Augen-Schaltfläche in der Toolbar öffnet die Vorschau. Ihr Tooltip warnt Sie, dass sie die E-Mail zuerst speichert, sodass das Öffnen einer Vorschau alles übernimmt, was Sie geändert haben.
+
+Die Vorschau lädt die eigene öffentliche Adresse der E-Mail, statt sie im Builder zu rendern, sodass Sie die fertige E-Mail sehen und nicht die Arbeitsfläche.
+
+<img src="/images/email-builder/20-preview-rendered.png" alt="Eine ganze E-Mail, wie die Vorschau sie rendert: das Markenlogo, ein farbiges Kopfband, eine Begrüßung, Fließtext, drei Antwort-Schaltflächen, eine Signatur und der Footer mit Adresse und Abmeldelink" width="420" />
+
+Der Name der Vorlage sitzt oben links. Die Bedienelemente verlaufen von der Mitte der Kopfzeile bis zum rechten Rand.
+
+<img src="/images/email-builder/15-preview-header.png" alt="Die Vorschau-Bedienelemente: eine Kopieren-Schaltfläche, Mobil-, Tablet- und Desktop-Schaltflächen mit Desktop ausgewählt, eine Aktualisieren-Schaltfläche, eine Sprachauswahl mit English und eine Schließen-Schaltfläche" width="640" />
+
+- **Copy Preview URL**, die erste Schaltfläche, kopiert einen Link, den Sie an eine Kollegin oder einen Kollegen senden können.
+- Die drei Schaltflächen danach wechseln zwischen **Mobil**, **Tablet** und **Desktop**.
+- Die Aktualisieren-Schaltfläche lädt die E-Mail neu.
+- Die Sprachauswahl erscheint, sobald die Vorlage eine [Übersetzung](/de/reference/email-builder/translations) hat, und schaltet die Vorschau zwischen ihnen um.
+
+### Links
+
+Ein **Links**-Panel an der Seite listet jeden Link in der E-Mail auf, in Reihenfolge, und eine **UTM Campaign**-Karte darunter wiederholt die [Kampagnenparameter](/de/reference/email-builder/template#brand-theme-and-metadata), die HireData allen hinzufügt. Fahren Sie über eine Zeile, und dieser Link wird in der Vorschau umrandet, mit einem Popover, das die vollständige Adresse und ihre Parameter zeigt.
+
+<img src="/images/email-builder/16-preview-links.png" alt="Das Links-Panel mit vier Zeilen, die Schaltfläche der überfahrenen Zeile umrandet in der Vorschau daneben, ein Popover mit der vollständigen URL und ihren utm_source-, utm_medium- und utm_campaign-Werten und eine UTM-Campaign-Karte unter der Liste" width="640" />
+
+Das ist die schnellste Prüfung im Builder. Ein Link mit der falschen Adresse oder ein Button, der auf eine Variable zeigt, die zu nichts aufgelöst wurde, zeigt sich hier in Sekunden.
+
+### Was die Vorschau ausfüllt
+
+Die Vorschau löst Ihre Variablen gegen Ihr eigenes Konto auf, denn Sie sind die einzige Person, von der HireData weiß, dass sie sie liest. Ein Wert, der für Sie leer ist, erscheint hier also leer, und ein Token, das gar keine Variable ist, erscheint genau so, wie Sie es getippt haben. Siehe [Was ein Empfänger tatsächlich sieht](/de/reference/email-builder/variables#what-a-recipient-actually-sees).
+
+Öffnen Sie den **Copy Preview URL**-Link irgendwo, wo Sie nicht angemeldet sind, und dieselbe E-Mail füllt diese Felder stattdessen mit erfundenen Beispieldaten. Verwenden Sie diesen Link, um Kollegen das Layout zu zeigen, nicht um den Wortlaut einer personalisierten Zeile zu prüfen.
+
+## Eine Test-E-Mail senden {#sending-a-test-email}
+
+Die Papierflieger-Schaltfläche öffnet **Test Email**. Sie speichert die E-Mail zuerst und sendet sie dann an Sie, mit plausiblen Werten anstelle derer eines echten Empfängers.
+
+<img src="/images/email-builder/17-test-email.png" alt="Das Test-Email-Modal mit optionalen Feldern für First name, Last name und Email, einer Language-Auswahl, einer Objects-Gruppe mit Datensatzauswahlen für Vacancy und Match und einer Send-test-email-Schaltfläche" width="525" />
+
+- **First name**, **Last name** und **Email** sind alle optional. Lassen Sie sie leer, verwendet HireData Ihre eigenen. Füllen Sie sie aus, um den Test woanders hinzusenden oder um zu sehen, wie ein längerer Name im Layout sitzt.
+- **Language** erscheint, sobald die Vorlage eine Übersetzung hat, und wählt, welche gesendet wird.
+- **Objects** erscheint, wenn die E-Mail [Datensätze](/de/reference/email-builder/variables#bringing-in-a-records-fields) verknüpft oder wenn sie an ein [Formular](/de/reference/email-builder/blocks/form) gebunden ist, das das tut. Jede Karte akzeptiert entweder erfundene **Fields** oder einen echten **Record**, und **Auto fill** wählt einen Datensatz für Sie.
+
+**Send test email** löst eine **Test mail scheduled!**-Benachrichtigung aus und schließt das Modal. Die E-Mail kommt einen Moment später an.
+
+<Note>
+  Ein Objekt mit rotem Sternchen braucht einen Datensatz, egal was die Zeile unter der Gruppe über das Leerlassen sagt. Lassen Sie eines aus, schlägt der Versand mit einer **Failed to send test email**-Benachrichtigung fehl, die das erste fehlende Objekt benennt, nach Key statt nach Label: "Required data reference [job] is missing."
+</Note>
+
+## Bevor Sie senden
+
+Sechs Dinge, die es sich lohnt, in dieser Reihenfolge zu tun.
+
+1. **Lesen Sie die Betreffzeile.** Sie ist das Erste, was ein Empfänger sieht, sie akzeptiert Variablen wie alles andere, und sie ist die Zeile, die am leichtesten halb geschrieben bleibt.
+2. **Prüfen Sie die Arbeitsfläche auf verirrte Klammern.** Eine einfache Variable, die HireData erkennt, ist ein Chip; eine, die noch `{{` und `}}` zeigt, ist entweder ein Tippfehler oder ein Token mit einem [Modifier](/de/variables/modifiers), das absichtlich reiner Text bleibt. Lesen Sie jedes einzelne und stellen Sie sicher, dass es die zweite Art ist. Siehe [Variablen](/de/reference/email-builder/variables).
+3. **Gehen Sie das Links-Panel durch.** Jeden Link, einschließlich derer in einem Form-Block und des Abmeldelinks im Footer.
+4. **Sehen Sie sich die E-Mail in Mobilbreite an.** Spalten stapeln sich und Buttons fließen um, und eine Zeile, die auf dem Desktop passt, kann schlecht umbrechen.
+5. **Prüfen Sie jede Sprache.** Schalten Sie die Sprachauswahl der Vorschau durch jede Übersetzung, die Sie geschrieben haben.
+6. **Senden Sie sich eine Test-E-Mail und lesen Sie sie in Ihrem Mail-Client.** Es ist der einzige Schritt, der Ihnen einen tatsächlichen Posteingang zeigt.
+
+## Was Testen Ihnen nicht verrät
+
+Der Builder hat keine Gmail-Vorschau, keine Outlook-Vorschau und keine Dark-Mode-Vorschau. HireData modelliert keinen E-Mail-Client, nichts hier sagt also voraus, wie einer Ihre E-Mail rendern wird. Ein Test-Versand an Ihre eigene Adresse, geöffnet in dem Client, den Ihre Empfänger verwenden, ist die einzige Prüfung, die das tut.
+
+Die drei Vorschaugrößen ändern die Größe des Vorschaufensters auf ungefähr ein Telefon, ein Tablet und die Breite Ihres Bildschirms. Sie ändern die Breite und sonst nichts, sie zeigen Ihnen also, wie Ihre E-Mail umfließt, nicht, wie ein bestimmtes Gerät sie rendert. Die schmale Ansicht ist schmaler als die meisten Telefone, was sie zu einem strengen Test macht: Ein Layout, das dort zusammenhält, hält auf einem echten zusammen.
+
+Das Stapeln bei schmalen Breiten ist Standardverhalten von MJML, dem Framework, mit dem HireData die E-Mail baut. HireData legt die Breite, bei der es passiert, nicht fest und bietet keine Kontrolle darüber. Was Sie kontrollieren können, ist, was sich stapelt: siehe [Two Columns](/de/reference/email-builder/blocks/columns#how-it-renders).
+
+## Verwandte Themen
+
+- [Variablen](/de/reference/email-builder/variables) erklärt, was die Vorschau Ihnen zeigt, wo ein Wert fehlt.
+- [Übersetzungen](/de/reference/email-builder/translations) behandelt die Sprachauswahl in der Vorschau und im Test-Modal.
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt die Toolbar und das Speichern.
+- [Two Columns](/de/reference/email-builder/blocks/columns) ist der Block, dessen Verhalten sich zwischen den Vorschaubreiten am stärksten ändert.

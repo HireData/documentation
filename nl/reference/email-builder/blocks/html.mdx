@@ -1,0 +1,41 @@
+---
+title: "HTML"
+sidebarTitle: "HTML"
+description: "Het HTML-block in de HireData-e-mailbuilder: een code-editor voor eigen markup, de tekstgrootte die HireData eraan toevoegt, en de tekenlimiet."
+keywords: ["e-mail html", "raw html", "code-block", "eigen markup", "html-editor", "e-mail tekstgrootte"]
+---
+
+Een HTML-block zet markup die je zelf schrijft in de e-mail. Gebruik het voor het ding dat de andere blocks niet kunnen. Voeg het toe vanuit het **Blocks**-menu van een sectie of een kolom.
+
+## Hoe het rendert
+
+HireData zet je markup onaangeroerd in de e-mail, met één uitzondering die het moet maken.
+
+De e-mail is gebouwd met MJML, dat de tekstgrootte van alles wat het niet zelf heeft opgemaakt op nul zet. Tekst die in een HTML-block is geplakt zou onzichtbaar aankomen. Dus voor het verzenden loopt HireData door je markup en voegt `font-size: 16px` toe aan elk `body`-, `table`-, `p`-, `span`- of `a`-element dat er nog geen draagt, en wikkelt losse tekst in een `span` op dezelfde grootte.
+
+Stel zelf een tekstgrootte in en HireData laat hem met rust. Dat is de manier om een andere grootte dan 16 pixels uit een HTML-block te krijgen.
+
+![Een gerenderd HTML-block met zijn ene regel tekst in het standaard serif-lettertype van de browser, anders dan het merklettertype dat elk ander block eromheen gebruikt](/images/email-builder/blocks/09b-html-rendered.png)
+
+Plak een heel HTML-document en alleen wat binnen `<body>` staat overleeft. Plak iets wat de parser helemaal niet kan lezen en het gaat er precies zo doorheen als geschreven.
+
+Een HTML-block draagt geen [vertalingen](/nl/reference/email-builder/translations). Wat je erin schrijft gaat onveranderd de deur uit in elke taal waarin de e-mail wordt verstuurd.
+
+## Instellingen
+
+Er zijn geen instellingen. Het paneel is de editor, met regelnummers links. Typ of plak je markup en hij verschijnt in de e-mail terwijl je bezig bent.
+
+<img src="/images/email-builder/blocks/09-html-settings.png" alt="Het instellingenpaneel van het HTML-block, met een donkere code-editor met regelnummers en één alineatag erin" width="384" />
+
+Het block stylet niets voor je. Kleuren, lettertypes en spacing die de andere blocks van het merk overnemen, moet jij uitschrijven.
+
+## Beperkingen
+
+Een e-mailtemplate die naar de HireData-API wordt gestuurd wordt geweigerd als een HTML-block boven de 100.000 tekens uitkomt. De editor telt niets voor je, dus zo'n grote plak is het inkorten waard voordat het andermans probleem wordt.
+
+## Gerelateerd
+
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) behandelt de builder, de toolbar, het thema en elk blocktype.
+- [Sectie](/nl/reference/email-builder/sections) en [Two Columns](/nl/reference/email-builder/blocks/columns) accepteren beide een HTML-block.
+- [Paragraph](/nl/reference/email-builder/blocks/paragraph) is het block om eerst naar te grijpen, omdat het de lettertypes en kleuren van het merk overneemt zonder dat je het hoeft te zeggen.
+- [Vertalingen](/nl/reference/email-builder/translations) legt uit waarom een HTML-block het ene ding is dat je niet kunt vertalen.

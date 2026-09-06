@@ -1,0 +1,77 @@
+---
+title: "Übersetzungen"
+sidebarTitle: "Übersetzungen"
+description: "Senden Sie eine HireData-E-Mail in mehreren Sprachen: der Localization-Drawer, was der Builder zur Übersetzung anbietet, was er auslässt und welche Sprache ein Empfänger bekommt."
+keywords: ["e-mail-übersetzung", "lokalisierung", "manage languages", "auto translate", "standardsprache", "mehrsprachige e-mail"]
+---
+
+Eine E-Mail-Vorlage kann in mehreren Sprachen hinausgehen. Schreiben Sie sie einmal in einer Standardsprache, und fügen Sie dann eine Übersetzung für jede weitere Sprache hinzu, in der Sie senden. HireData wählt pro Empfänger die richtige.
+
+## Manage Languages
+
+Die Sprach-Schaltfläche am Ende der Toolbar öffnet **Localization**.
+
+<img src="/images/email-builder/12-localization-drawer.png" alt="Der Localization-Drawer mit Default language auf English, Auto Translate auf Disabled und einer Translations-Liste mit Dutch und einer New-Translation-Schaltfläche" width="425" />
+
+- **Default language** ist die Sprache, in der die E-Mail geschrieben ist. Sie ist, was ein Empfänger bekommt, wenn nichts Besseres verfügbar ist.
+- **Auto Translate** entscheidet, was passiert, wenn es für die Sprache eines Empfängers keine Übersetzung gibt. Siehe [Welche Sprache ein Empfänger bekommt](#which-language-a-recipient-gets).
+- **Translations** listet auf, was Sie bisher geschrieben haben, mit **New Translation** darunter.
+
+## Was der Builder zur Übersetzung anbietet
+
+Öffnen Sie eine Übersetzung, und Sie bekommen ein Feld pro übersetzbarem Inhalt, beschriftet mit dem Pfad zum Block, zu dem es gehört, etwa `Template > Sections > Signature > Paragraph: Content`. Über jedem Feld steht das Original, sodass Sie sehen, was Sie übersetzen.
+
+Der Builder bietet an:
+
+- Den **Subject**.
+- Den **Name** der Vorlage, der intern ist.
+- [Paragraph](/de/reference/email-builder/blocks/paragraph)- und [Heading](/de/reference/email-builder/blocks/heading)-Text.
+- Die Worte auf einem [Button](/de/reference/email-builder/blocks/button).
+- Die Absätze in einer [Signature](/de/reference/email-builder/blocks/signature).
+- Den Call-to-Action eines [Form](/de/reference/email-builder/blocks/form)-Blocks und seine drei Bewertungslabels.
+
+Vier Dinge erscheinen nie, planen Sie also um sie herum.
+
+- Ein [Image](/de/reference/email-builder/blocks/image) und sein Alt-Text.
+- Ein [HTML](/de/reference/email-builder/blocks/html)-Block. Was Sie hineinschreiben, geht in jeder Sprache unverändert hinaus.
+- Eine [Socials](/de/reference/email-builder/blocks/socials)-Zeile.
+- **Alles innerhalb eines [Two Columns](/de/reference/email-builder/blocks/columns)-Blocks.** Ein Absatz in einer Sektion wird angeboten; derselbe Absatz, in eine Spalte verschoben, nicht. Wenn eine Passage übersetzt werden muss, halten Sie sie aus den Spalten heraus.
+
+## Eine Übersetzung schreiben
+
+Klicken Sie auf **New Translation**, wählen Sie die **Language** und füllen Sie die Felder aus.
+
+**Create AI translation** füllt jedes Feld auf einmal. Es lässt Ihre Variablen-Chips, wo sie sind, und übersetzt die Worte darum herum, sodass `Hi {{recipient.first_name}},` als `Hoi {{recipient.first_name}},` zurückkommt, statt den Namen zu verlieren. Lesen Sie, was es geschrieben hat, bevor Sie es behalten, und bearbeiten Sie jedes Feld, mit dem Sie nicht einverstanden sind.
+
+<img src="/images/email-builder/13-translation-editor.png" alt="Eine niederländische Übersetzung geöffnet im Drawer, mit Rewrite translations with AI und einer Löschen-Schaltfläche oben, Zeilen für Subject und Name mit dem englischen Original über der niederländischen Übersetzung und Update und Cancel unten" width="400" />
+
+Die Schaltfläche am Fuß des Drawers speichert die Übersetzung für sich, ohne den Rest der Vorlage zu speichern. Sie lautet **Create** bei einer neuen Übersetzung und **Update** bei einer erneut geöffneten. **Cancel** schließt den Drawer ohne zu speichern.
+
+## Welche Sprache ein Empfänger bekommt {#which-language-a-recipient-gets}
+
+HireData sucht nach einer Übersetzung in der Sprache des Empfängers.
+
+- **Es findet eine.** Der Empfänger liest diese Übersetzung.
+- **Es findet keine, und Auto Translate ist auf Disabled.** Der Empfänger liest die Standardsprache. Nichts geht kaputt, und nichts warnt Sie.
+- **Es findet keine, und Auto Translate ist auf Enabled.** HireData schreibt die Übersetzung beim Senden mit AI und behält sie, sodass der nächste Empfänger in dieser Sprache denselben Wortlaut bekommt.
+
+Auto Translate ist bei einer neuen Vorlage auf **Disabled**. Schalten Sie es für eine E-Mail ein, die an ein Publikum geht, das Sie nicht kontrollieren, etwa einen Newsletter. Lassen Sie es aus, wenn der Wortlaut wichtig genug ist, dass Sie ihn zuerst lesen wollen.
+
+Die [Vorschau](/de/reference/email-builder/testing) hat eine Sprachauswahl, sobald eine Vorlage mindestens eine Übersetzung hat, und sie listet die Standardsprache neben den Übersetzungen auf. Sie ist der schnellste Weg, eine Übersetzung im Zusammenhang zu lesen.
+
+## Eine Übersetzung ändern oder löschen
+
+Klicken Sie auf eine Sprache in der **Translations**-Liste, um sie erneut zu öffnen. Die Sprache kann nicht geändert werden, und die AI-Schaltfläche lautet jetzt **Rewrite translations with AI**, was das bereits Vorhandene neu schreibt, statt die Lücken zu füllen.
+
+Die Papierkorb-Schaltfläche daneben löscht die Übersetzung. HireData fragt zuerst.
+
+<img src="/images/email-builder/14-delete-translation.png" alt="Eine Bestätigung mit Delete translation, This action cannot be undone, und den Schaltflächen Delete und Cancel" width="310" />
+
+Das Löschen einer Übersetzung rührt die E-Mail nicht an. Empfänger in dieser Sprache fallen auf die Standardsprache zurück, oder auf eine frische AI-Übersetzung, wenn Auto Translate eingeschaltet ist.
+
+## Verwandte Themen
+
+- [Testen](/de/reference/email-builder/testing) behandelt die Sprachauswahl der Vorschau und den Test-Versand.
+- [Variablen](/de/reference/email-builder/variables) erklärt die Chips, die die Übersetzung überstehen.
+- [Template](/de/reference/email-builder/template) behandelt die Einstellungen, die für die E-Mail in jeder Sprache gelten.
+- [Two Columns](/de/reference/email-builder/blocks/columns) ist der Block, dessen Inhalte nicht zur Übersetzung angeboten werden.

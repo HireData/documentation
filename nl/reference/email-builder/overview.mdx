@@ -1,0 +1,115 @@
+---
+title: "Overzicht van de e-mailbuilder"
+sidebarTitle: "Overzicht"
+description: "Een rondleiding door de HireData-e-mailbuilder: het canvas en het instellingenpaneel, hoe je een block toevoegt, elk blocktype, de toolbar, het thema en opslaan."
+keywords: ["e-mailbuilder", "e-mailtemplate", "e-mailblocks", "e-mailsecties", "e-mailthema", "e-mailmerk", "testmail versturen", "e-mailpreview", "niet-opgeslagen wijzigingen"]
+---
+
+Een e-mailtemplate is een bericht dat je één keer schrijft en vele keren verstuurt, in een automatisering of een nieuwsbrief. Open **Settings**, dan **Emails** onder **Templates**, en klik op **New Email**. Kies **Blank Email** of een van de kant-en-klare templates, en de nieuwe template opent in de builder.
+
+Deze pagina brengt de builder in kaart. Voor een walkthrough die één e-mail van blanco naar verzendklaar brengt, lees je [Een e-mailtemplate opzetten in HireData](/nl/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+## De builder in vogelvlucht
+
+De builder heeft drie delen.
+
+- Het **Subject**-vak bovenaan. Het is de regel die de ontvanger in zijn inbox ziet, en het accepteert variabelen.
+- De e-mail zelf aan de linkerkant. Klik op tekst erin en typ. Klik op een block om het te selecteren.
+- Het instellingenpaneel rechts, met de instellingen van wat je het laatst hebt geselecteerd.
+
+![De e-mailbuilder: het Subject-vak bovenaan, de e-mail links en het Template-instellingenpaneel rechts](/images/email-builder/01-builder-at-a-glance.png)
+
+<Tip>
+  Klik op de tekst van een block en je selecteert dat block, zodat het paneel zich vult met de instellingen van het block zelf. Om de **sectie** te selecteren die het bevat, klik je naast het block, links of rechts van de tekst. Secties hebben geen omlijning in het canvas, dus richt op de band achtergrondkleur die een sectie vult.
+</Tip>
+
+Een template bevat secties, en een sectie bevat de blocks die de ontvanger leest. [Template](/nl/reference/email-builder/template) legt uit hoe de drie niveaus nesten, hoe je ertussen beweegt, en waarom je er nooit een toevoegt en er geen kunt verwijderen.
+
+Een breadcrumb boven de instellingen benoemt alles wat het geselecteerde block bevat. Selecteer een regel van een handtekening en alle vier de niveaus verschijnen.
+
+<img src="/images/email-builder/02-breadcrumb.png" alt="De breadcrumb van het instellingenpaneel met Template, dan Sections, dan Signature, dan Paragraph, waarbij Paragraph grijs is als het huidige niveau" width="402" />
+
+## Een block toevoegen
+
+Elk instellingenpaneel dat andere blocks kan bevatten toont ze onder **Blocks**, genummerd, in de volgorde waarin ze in de e-mail staan. Elke rij heeft drie knoppen.
+
+- De **+** voegt een nieuw block toe onder die rij. Waar de container meer dan één soort block accepteert, opent hij een menu ermee.
+- De **−** verwijdert dat block.
+- Met de handle links versleep je het block omhoog en omlaag in de lijst.
+
+<img src="/images/email-builder/03-section-blocks-list.png" alt="Het instellingenpaneel van een sectie, met zijn Blocks-lijst met een genummerde rij per block en de knoppen voor toevoegen, verwijderen en verslepen" width="400" />
+
+Klik op de eigen rij van een block om het te selecteren en zijn instellingen te openen. Met [de breadcrumb](/nl/reference/email-builder/template#the-breadcrumb) loop je weer naar buiten. Klik op **Sections** voor de instellingen van de sectie die het block bevat, en op **Template** voor de instellingen van de e-mail als geheel. De e-mail links verandert niet. Alleen het paneel.
+
+## Een block kiezen {#choosing-a-block}
+
+Twee items in de lijst dekken meer dan één block. Een **Two Columns**-block komt met zijn twee kolommen er al in, en een **Socials**-block bevat één child per netwerk dat je koppelt.
+
+| Block | Waar je het kunt toevoegen | Wat het in de e-mail zet |
+|---|---|---|
+| [Sectie](/nl/reference/email-builder/sections) | Template | een band over de e-mail, met eigen achtergrond, padding en rand |
+| [Paragraph](/nl/reference/email-builder/blocks/paragraph) | Sectie of kolom | lopende tekst |
+| [Heading](/nl/reference/email-builder/blocks/heading) | Sectie of kolom | een kop, op het niveau dat jij kiest |
+| [Two Columns](/nl/reference/email-builder/blocks/columns) | Sectie | twee kolommen naast elkaar, elk met eigen blocks |
+| [Form](/nl/reference/email-builder/blocks/form) | Sectie | knoppen die een vraag uit een van je formulieren beantwoorden |
+| [Image](/nl/reference/email-builder/blocks/image) | Sectie of kolom | een afbeelding uit je mediabibliotheek, of een uit een variabele |
+| [Socials](/nl/reference/email-builder/blocks/socials) | Sectie | een rij social-iconen, één per link |
+| [Button](/nl/reference/email-builder/blocks/button) | Sectie of kolom | een call-to-action die een URL opent |
+| [HTML](/nl/reference/email-builder/blocks/html) | Sectie of kolom | markup die je zelf schrijft |
+| [Signature](/nl/reference/email-builder/blocks/signature) | Sectie | een afbeelding naast een blok afsluitende tekst |
+
+<img src="/images/email-builder/04-block-menu.png" alt="Het toevoegmenu op de Blocks-lijst van een sectie, met Paragraph, de heading-niveaus, Two Columns, Form, Image, Socials, Button, HTML en Signature" width="193" />
+
+Een kolom accepteert minder soorten blocks dan een sectie. Ze kan geen Two Columns, Form of Signature bevatten.
+
+## De toolbar
+
+De toolbar loopt langs de bovenkant van de builder, van **Save** tot de vier drawer-knoppen rechts.
+
+![De toolbar van de e-mailbuilder, met Save, de preview- en testknoppen, de brand-selector, de variabele- en code-toggles en de vier drawer-knoppen](/images/email-builder/05-builder-toolbar.png)
+
+**Save** slaat je wijzigingen op.
+
+Er volgen twee knoppen:
+
+- Het oog opent een [preview](/nl/reference/email-builder/testing#the-preview) van de afgewerkte e-mail, op mobiele, tablet- of desktopbreedte, met een taalkiezer en een **Copy Preview URL**-knop. De tooltip waarschuwt dat hij de e-mail eerst opslaat.
+- Het papieren vliegtuigje opent [Test Email](/nl/reference/email-builder/testing#sending-a-test-email). Het stuurt de e-mail naar jou met realistische waarden ingevuld.
+
+**Brand** kiest het merk waar de kleuren, lettertypes en het logo van de e-mail vandaan komen.
+
+Na de brand-selector volgen twee toggles:
+
+- **Show variable values** is een weergavetoggle voor het canvas. Om een e-mail met echte waarden erin te lezen, gebruik je de [preview](/nl/reference/email-builder/testing#the-preview).
+- **Show code editor** opent de gegenereerde markup. Hij verschijnt alleen voor accounts die templates rechtstreeks mogen bewerken.
+
+Vier knoppen aan het eind openen drawers over de e-mail heen:
+
+- **Show variable list** toont de variabelen die deze e-mail kan gebruiken, en voegt eigen variabelen toe. Zie [Variabelen](/nl/reference/email-builder/variables).
+- **Manage Template** publiceert de geopende e-mail naar de gedeelde templatebibliotheek. Hij verschijnt alleen voor accounts die die bibliotheek beheren.
+- **Show objects** koppelt records zoals een vacature of een match aan de e-mail. Hun velden worden dan [variabelen](/nl/reference/email-builder/variables#bringing-in-a-records-fields) die je erin kunt schrijven.
+- **Manage Languages** stelt de standaardtaal van de e-mail en zijn [vertalingen](/nl/reference/email-builder/translations) in.
+
+## Merk en thema
+
+Elke kleur en elk lettertype in een nieuwe e-mail begint als een waarde uit het merk dat je in **Brand** kiest, en het paneel benoemt de waarde in plaats van een hexcode te tonen, zoals "Theme: Palette Surface Color".
+
+Wissel van **Brand** en de hele e-mail wordt gerestyled, inclusief blocks die je al schreef. Vervang een van die waarden door een eigen kleur en die ene knop volgt het merk niet langer. Zie [Template](/nl/reference/email-builder/template#brand-theme-and-metadata) voor de instellingen die dit bepalen, en voor het verschil tussen van merk wisselen en een thema instellen.
+
+## Opslaan
+
+De e-mailbuilder slaat niet op terwijl je typt. **Save** slaat op. De preview-knop en **Send test email** slaan elk eerst op voordat ze draaien, dus elk van die twee legt vast wat je hebt gewijzigd. Zie [Testen](/nl/reference/email-builder/testing).
+
+Probeer je de builder te verlaten met niet-opgeslagen wijzigingen, dan verschijnt een waarschuwing. Die biedt aan ze op te slaan met **Save**, of ze te verwerpen met **Discard** en door te gaan.
+
+<img src="/images/email-builder/08-unsaved-changes.png" alt="De Unsaved Changes-waarschuwing, met de tekst You have unsaved changes, Save before leaving, en de knoppen Save en Discard" width="338" />
+
+Herlaad je de pagina of sluit je het tabblad in plaats daarvan, dan vraagt je browser om bevestiging voordat je ze kwijtraakt.
+
+## Gerelateerd
+
+- [Een e-mailtemplate opzetten in HireData](/nl/apps/messaging/emails/setting-up-an-email-template-in-hiredata) brengt één e-mail van blanco naar verzendklaar.
+- [Afbeeldingen toevoegen aan je e-mails](/nl/apps/messaging/emails/adding-images-to-your-emails) behandelt de mediabibliotheek.
+- [Variabelen](/nl/reference/email-builder/variables) behandelt de picker, de fallbacks en hoe een ontbrekende waarde eruitziet.
+- [Vertalingen](/nl/reference/email-builder/translations) behandelt het versturen van één e-mail in meerdere talen.
+- [Testen](/nl/reference/email-builder/testing) behandelt de preview, de testverzending en wat geen van beide bewijst.
+- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de formulieren waar een Form-block naar kan wijzen.

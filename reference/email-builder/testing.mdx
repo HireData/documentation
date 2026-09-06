@@ -1,0 +1,81 @@
+---
+title: "Testing"
+sidebarTitle: "Testing"
+description: "Check a HireData email before it goes out: the preview and its three widths, the Links panel, sending yourself a test email, and what testing cannot tell you."
+keywords: ["email preview", "test email", "send test mail", "preview widths", "email links", "pre-send checklist", "email testing"]
+---
+
+The builder gives you two ways to look at an email before anyone else does: a preview, and a test send to your own inbox. This page covers both, and ends with what neither of them proves.
+
+## The preview
+
+The eye button in the toolbar opens the preview. Its tooltip warns you that it saves the email first, so opening a preview commits whatever you have changed.
+
+The preview loads the email's own public address rather than rendering it inside the builder, so what you see is the finished email rather than the canvas.
+
+<img src="/images/email-builder/20-preview-rendered.png" alt="A whole email as the preview renders it: the brand logo, a coloured header band, a greeting, body text, three answer buttons, a signature, and the address and unsubscribe footer" width="420" />
+
+The template's name sits at the top left. The controls run from the middle of the header across to the right edge.
+
+<img src="/images/email-builder/15-preview-header.png" alt="The preview controls: a copy button, mobile, tablet and desktop buttons with desktop selected, a refresh button, a language picker reading English, and a close button" width="640" />
+
+- **Copy Preview URL**, the first button, copies a link you can send to a colleague.
+- The three buttons after it switch between **mobile**, **tablet**, and **desktop**.
+- The refresh button reloads the email.
+- The language picker appears once the template has a [translation](/reference/email-builder/translations), and switches the preview between them.
+
+### Links
+
+A **Links** panel down the side lists every link in the email, in order, and a **UTM Campaign** card under it repeats the [campaign parameters](/reference/email-builder/template#brand-theme-and-metadata) HireData adds to all of them. Hover a row and that link is outlined in the preview, with a popover showing the full address and the parameters on it.
+
+<img src="/images/email-builder/16-preview-links.png" alt="The Links panel with four rows, the hovered row's button outlined in the preview beside it, a popover showing the full URL and its utm_source, utm_medium, and utm_campaign values, and a UTM Campaign card below the list" width="640" />
+
+This is the quickest check in the builder. A link with the wrong address, or a button pointing at a variable that resolved to nothing, shows up here in seconds.
+
+### What the preview fills in
+
+The preview resolves your variables against your own account, because you are the only person HireData knows is reading it. So a value that is blank for you appears blank here, and a token that is not a variable at all appears exactly as you typed it. See [What a recipient actually sees](/reference/email-builder/variables#what-a-recipient-actually-sees).
+
+Open the **Copy Preview URL** link somewhere you are not signed in and the same email fills those fields with invented sample data instead. Use that link to show a colleague the layout, not to check the wording of a personalised line.
+
+## Sending a test email
+
+The paper-plane button opens **Test Email**. It saves the email first, then sends it to you with plausible values in place of a real recipient's.
+
+<img src="/images/email-builder/17-test-email.png" alt="The Test Email modal with optional First name, Last name and Email boxes, a Language selector, an Objects group holding Vacancy and Match record pickers, and a Send test email button" width="525" />
+
+- **First name**, **Last name**, and **Email** are all optional. Leave them and HireData uses your own. Fill them in to send the test somewhere else, or to see how a longer name sits in the layout.
+- **Language** appears once the template has a translation, and picks which one to send.
+- **Objects** appears when the email links [records](/reference/email-builder/variables#bringing-in-a-records-fields), or when it is bound to a [form](/reference/email-builder/blocks/form) that does. Each card takes either made-up **Fields** or a real **Record**, and **Auto fill** picks a record for you.
+
+**Send test email** raises a **Test mail scheduled!** notification and closes the modal. The email arrives a moment later.
+
+<Note>
+  An object marked with a red asterisk needs a record, whatever the line under the group says about leaving it empty. Leave one out and the send fails with a **Failed to send test email** notification naming the first object it is missing, by key rather than by label: "Required data reference [job] is missing."
+</Note>
+
+## Before you send
+
+Six things worth doing in this order.
+
+1. **Read the subject line.** It is the first thing a recipient sees, it takes variables like everything else, and it is the easiest line to leave half-written.
+2. **Check the canvas for stray braces.** A plain variable that HireData recognises is a chip, so one still showing `{{` and `}}` is either a typo or a token carrying a [modifier](/variables/modifiers), which stays plain text on purpose. Read each one and make sure it is the second kind. See [Variables](/reference/email-builder/variables).
+3. **Walk the Links panel.** Every link, including the ones inside a Form block and the unsubscribe link in the footer.
+4. **Look at the email at mobile width.** Columns stack and buttons reflow, and a line that fits on a desktop can break badly.
+5. **Check each language.** Switch the preview's language picker through every translation you have written.
+6. **Send yourself a test email and read it in your mail client.** It is the only step that shows you an actual inbox.
+
+## What testing does not tell you
+
+The builder has no Gmail preview, no Outlook preview, and no dark-mode preview. HireData does not model any email client, so nothing here predicts how one will render your email. A test send to your own address, opened in the client your recipients use, is the only check that does.
+
+The three preview sizes resize the preview window to roughly a phone, a tablet, and the width of your screen. They change the width and nothing else, so what they show you is how your email reflows, not how a given device renders it. The narrow view is narrower than most phones, which makes it a strict test: a layout that holds together there will hold together on a real one.
+
+Stacking at narrow widths is standard behaviour from MJML, the framework HireData builds the email with. HireData does not set the width at which it happens and offers no control over it. What you can control is what stacks: see [Two Columns](/reference/email-builder/blocks/columns#how-it-renders).
+
+## Related
+
+- [Variables](/reference/email-builder/variables) explains what the preview is showing you where a value is missing.
+- [Translations](/reference/email-builder/translations) covers the language picker in the preview and the test modal.
+- [Email builder overview](/reference/email-builder/overview) covers the toolbar and saving.
+- [Two Columns](/reference/email-builder/blocks/columns) is the block whose behaviour changes most between the preview widths.

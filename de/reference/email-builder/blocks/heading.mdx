@@ -1,0 +1,53 @@
+---
+title: "Heading"
+sidebarTitle: "Heading"
+description: "Der Heading-Block im HireData-E-Mail-Builder: die sechs Ebenen, die Standardgröße jeder Ebene und was eine Ebene in einer gesendeten E-Mail bedeutet und was nicht."
+keywords: ["e-mail-überschrift", "überschriftenebene", "h1", "e-mail-titel", "überschriftengröße", "e-mail-typografie"]
+---
+
+Ein Heading-Block ist eine Textzeile, die größer gesetzt ist als der Fließtext darum herum. Fügen Sie ihn aus dem **Blocks**-Menü einer Sektion oder einer Spalte hinzu, das **Heading 1**, **Heading 2** und **Heading 3** anbietet.
+
+## Wie er gerendert wird
+
+Eine Überschrift kommt aus dem E-Mail-Builder als gestylte Textzeile. Sie ist nicht in ein HTML-Überschriften-Tag eingefasst, die gewählte Ebene markiert die Zeile für einen Screenreader also nicht als Überschrift. Behandeln Sie die Ebene als Größenvoreinstellung und wählen Sie sie für die gewünschte Größe statt für die Gliederung, die sie andeutet.
+
+![Eine Überschrift der Ebene 1 mit 32 Pixeln über einer Überschrift der Ebene 2 mit 24 Pixeln, über Fließtext mit 16 Pixeln, in einer gerenderten E-Mail](/images/email-builder/blocks/03b-heading-rendered.png)
+
+Damit muss der Wortlaut die Struktur tragen. Schreiben Sie Überschriften, die sich für sich allein als Überschriften lesen, und halten Sie sie kurz genug zum Überfliegen.
+
+Die Breadcrumb zeigt **Heading** ohne Nummer, sie verrät Ihnen also nicht, auf welcher Ebene Sie sind. Das **Size**-Feld tut es.
+
+## Einstellungen
+
+- **Font Family** wählt die Schriftart, mit einer Gewichtsauswahl daneben. Sie beginnt mit der Überschriftenschrift der Marke, die eine eigene Einstellung getrennt von der Fließtextschrift der Marke ist.
+- **Size** ist ein Schieberegler und ein Feld, 8 bis 48 Pixel.
+- **Color** setzt die Textfarbe.
+- **Alignment** ist links, zentriert oder rechts.
+- **Advanced** enthält drei Bedienelemente.
+  - **Letter Spacing**, 0 bis 10.
+  - **Line Height**, 1 bis 2.
+  - **Margin**, die Lücke über und unter der Überschrift.
+
+Es gibt kein Ebenen-Bedienelement im Panel. Um die Ebene einer Überschrift zu ändern, klicken Sie in der E-Mail hinein und drücken Sie **Cmd + Alt** und eine Zahl auf dem Mac oder **Ctrl + Alt** und eine Zahl unter Windows. Alle sechs Ebenen funktionieren, einschließlich der drei, die das Menü nicht anbietet.
+
+Jede Ebene trägt ihre eigene Standardgröße, und ein Ebenenwechsel setzt **Size** darauf zurück.
+
+| Ebene | Standardgröße |
+|---|---|
+| Heading 1 | 32 px |
+| Heading 2 | 24 px |
+| Heading 3 | 19 px |
+| Heading 4 | 16 px |
+| Heading 5 | 13 px |
+| Heading 6 | 11 px |
+
+Tippen Sie `{{` in einer Überschrift, um eine Variable einzufügen.
+
+<img src="/images/email-builder/blocks/03-heading-settings.png" alt="Das Heading-Einstellungspanel mit Font Family auf der Überschriftenschrift der Marke, Size, Color, Alignment und der Advanced-Gruppe mit Letter Spacing, Line Height und Margin" width="384" />
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Paragraph](/de/reference/email-builder/blocks/paragraph) teilt dieselben Textbedienelemente und ergänzt eine Linkfarbe.
+- [Sektion](/de/reference/email-builder/sections) ist das Band, in dem eine Überschrift sitzt.
+- [Variablen](/de/reference/email-builder/variables) behandelt die Auswahl, die Fallbacks und wie ein fehlender Wert aussieht.

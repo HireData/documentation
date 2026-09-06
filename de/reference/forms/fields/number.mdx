@@ -1,8 +1,11 @@
 ---
 title: "Number"
 sidebarTitle: "Number"
-description: "Das Zahlenfeld in einem HireData-Formular, mit Minimum, Maximum und Schrittweite sowie dem vollen Satz an Vergleichsoperatoren in der Logik."
-keywords: ["numerisch", "jahre erfahrung", "anzahl"]
+description: "Das Zahlenfeld in einem HireData-Formular, mit Einstellungen für Minimum, Maximum und Schrittweite sowie dem vollen Satz an Vergleichsoperatoren in der bedingten Logik."
+keywords:
+  - "numerisch"
+  - "jahre erfahrung"
+  - "anzahl"
 ---
 
 Number nimmt eine einfache Zahl auf: Jahre an Erfahrung, Stunden pro Woche, die Anzahl von etwas. Es ist einer von nur zwei Typen, die die Logik vergleichen kann – damit ist es das Feld der Wahl, wenn eine Regel eine Antwort abwägen statt abgleichen muss.
@@ -28,7 +31,7 @@ Eine Zahl.
 ## Logik-Operatoren
 
 | Operator | Trifft zu, wenn |
-|---|---|
+| --- | --- |
 | has response | die befragte Person überhaupt geantwortet hat |
 | is equal to | die Antwort genau dem Wert entspricht |
 | is not equal to | die Antwort irgendetwas anderes ist |
@@ -38,10 +41,6 @@ Eine Zahl.
 | is less than or equal to | die Antwort dem Wert entspricht oder darunter liegt |
 
 ![Der Logic-Tab mit geöffneter Operator-Auswahl auf einer Number-Bedingung, mit has response, is equal to, is not equal to und den vier Vergleichsoperatoren](/images/forms-builder/fields/operators-number.png)
-
-<Warning>
-  Ein als Pflichtfrage gesetztes Number-Feld blockiert die Antwort 0. **Next** tut nichts und keine Meldung erscheint. Bis der Fix ausgeliefert ist, setzen Sie auf jedem verpflichtenden Number-Feld einen **Minimum Value** von 1, damit 0 mit einer Meldung abgelehnt wird, die die befragte Person lesen kann.
-</Warning>
 
 ## Evaluation
 

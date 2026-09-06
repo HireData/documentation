@@ -1,0 +1,77 @@
+---
+title: "Traductions"
+sidebarTitle: "Traductions"
+description: "Envoyez un même e-mail HireData en plusieurs langues : le panneau Localization, ce que l'éditeur propose à la traduction, ce qu'il laisse de côté, et quelle langue reçoit un destinataire."
+keywords: ["traduction d'e-mail", "localisation", "manage languages", "traduction automatique", "langue par défaut", "e-mail multilingue"]
+---
+
+Un même modèle d'e-mail peut partir en plusieurs langues. Rédigez-le une fois dans une langue par défaut, puis ajoutez une traduction pour chaque autre langue dans laquelle vous envoyez. HireData choisit la bonne pour chaque destinataire.
+
+## Manage Languages
+
+Le bouton de langue au bout de la barre d'outils ouvre **Localization**.
+
+<img src="/images/email-builder/12-localization-drawer.png" alt="Le panneau Localization montrant Default language réglé sur English, Auto Translate réglé sur Disabled, et une liste Translations contenant Dutch et un bouton New Translation" width="425" />
+
+- **Default language** est la langue dans laquelle l'e-mail est rédigé. C'est ce qu'un destinataire reçoit quand rien de mieux n'est disponible.
+- **Auto Translate** décide ce qui se passe quand la langue d'un destinataire n'a pas de traduction. Voir [Quelle langue reçoit un destinataire](#which-language-a-recipient-gets).
+- **Translations** liste ce que vous avez rédigé jusqu'ici, avec **New Translation** en dessous.
+
+## Ce que l'éditeur propose à la traduction
+
+Ouvrez une traduction et vous obtenez un champ par élément de contenu traduisible, étiqueté avec le chemin du bloc auquel il appartient, tel que `Template > Sections > Signature > Paragraph: Content`. Au-dessus de chaque champ se trouve l'original, pour voir ce que vous traduisez.
+
+L'éditeur propose :
+
+- Le **Subject**.
+- Le **Name** du modèle, qui est interne.
+- Le texte des [Paragraph](/fr/reference/email-builder/blocks/paragraph) et des [Heading](/fr/reference/email-builder/blocks/heading).
+- Les mots d'un [Button](/fr/reference/email-builder/blocks/button).
+- Les paragraphes à l'intérieur d'une [Signature](/fr/reference/email-builder/blocks/signature).
+- L'appel à l'action d'un bloc [Form](/fr/reference/email-builder/blocks/form) et ses trois libellés de notation.
+
+Quatre choses n'apparaissent jamais, alors prévoyez en conséquence.
+
+- Une [Image](/fr/reference/email-builder/blocks/image) et son texte alternatif.
+- Un bloc [HTML](/fr/reference/email-builder/blocks/html). Ce que vous y écrivez part inchangé dans toutes les langues.
+- Une ligne de [Socials](/fr/reference/email-builder/blocks/socials).
+- **Tout ce qui se trouve dans un bloc [Two Columns](/fr/reference/email-builder/blocks/columns).** Un paragraphe dans une section est proposé ; le même paragraphe déplacé dans une colonne ne l'est pas. Si un passage doit être traduit, gardez-le hors des colonnes.
+
+## Rédiger une traduction
+
+Cliquez sur **New Translation**, choisissez la **Language** et remplissez les champs.
+
+**Create AI translation** remplit tous les champs d'un coup. Il garde vos pastilles de variables à leur place et traduit les mots autour, donc `Hi {{recipient.first_name}},` revient comme `Hoi {{recipient.first_name}},` plutôt que de perdre le nom. Relisez ce qu'il a écrit avant de le garder, et modifiez tout champ avec lequel vous n'êtes pas d'accord.
+
+<img src="/images/email-builder/13-translation-editor.png" alt="Une traduction néerlandaise ouverte dans le panneau, avec Rewrite translations with AI et un bouton de suppression en haut, des lignes pour Subject et Name montrant l'original anglais au-dessus de la traduction néerlandaise, et Update et Cancel en bas" width="400" />
+
+Le bouton au pied du panneau enregistre la traduction seule, sans enregistrer le reste du modèle. Il affiche **Create** sur une nouvelle traduction et **Update** sur une traduction rouverte. **Cancel** ferme le panneau sans enregistrer.
+
+## Quelle langue reçoit un destinataire {#which-language-a-recipient-gets}
+
+HireData cherche une traduction dans la langue du destinataire.
+
+- **Il en trouve une.** Le destinataire lit cette traduction.
+- **Il n'en trouve pas et Auto Translate est sur Disabled.** Le destinataire lit la langue par défaut. Rien ne casse, et rien ne vous avertit.
+- **Il n'en trouve pas et Auto Translate est sur Enabled.** HireData rédige la traduction avec l'IA au moment de l'envoi et la conserve, donc le destinataire suivant dans cette langue reçoit la même formulation.
+
+Auto Translate est sur **Disabled** sur un nouveau modèle. Activez-le pour un e-mail destiné à une audience que vous ne contrôlez pas, comme une newsletter. Laissez-le désactivé quand la formulation compte assez pour que vous vouliez la relire d'abord.
+
+L'[aperçu](/fr/reference/email-builder/testing) a un sélecteur de langue dès qu'un modèle a au moins une traduction, et il liste la langue par défaut à côté des traductions. C'est le moyen le plus rapide de lire une traduction en contexte.
+
+## Modifier ou supprimer une traduction
+
+Cliquez sur une langue dans la liste **Translations** pour la rouvrir. La langue ne peut pas être changée, et le bouton IA affiche désormais **Rewrite translations with AI**, qui réécrit ce qui est déjà là plutôt que de combler les vides.
+
+Le bouton corbeille à côté supprime la traduction. HireData demande d'abord.
+
+<img src="/images/email-builder/14-delete-translation.png" alt="Une confirmation indiquant Delete translation, This action cannot be undone, avec les boutons Delete et Cancel" width="310" />
+
+Supprimer une traduction ne touche pas à l'e-mail. Les destinataires dans cette langue retombent sur la langue par défaut, ou sur une nouvelle traduction IA si Auto Translate est activé.
+
+## Voir aussi
+
+- [Tester](/fr/reference/email-builder/testing) couvre le sélecteur de langue de l'aperçu et l'envoi de test.
+- [Variables](/fr/reference/email-builder/variables) explique les pastilles qui survivent à la traduction.
+- [Template](/fr/reference/email-builder/template) couvre les paramètres qui s'appliquent à l'e-mail dans toutes les langues.
+- [Two Columns](/fr/reference/email-builder/blocks/columns) est le bloc dont le contenu n'est pas proposé à la traduction.

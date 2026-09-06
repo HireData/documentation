@@ -1,0 +1,50 @@
+---
+title: "Signature"
+sidebarTitle: "Signature"
+description: "Der Signature-Block im HireData-E-Mail-Builder: ein Bild neben einem Block mit Grußtext, was Sie daran ändern können und was festgelegt ist."
+keywords: ["e-mail-signatur", "grußformel", "absender-avatar", "signaturbild", "signaturzeilen"]
+---
+
+Ein Signature-Block ist ein Bild neben einem Block mit Grußtext. Er ist der übliche Abschluss einer E-Mail, mit Name, E-Mail-Adresse und Website des Absenders unter einem "Kind regards".
+
+Fügen Sie ihn aus dem **Blocks**-Menü einer Sektion hinzu. Eine Spalte kann keinen enthalten.
+
+## Wie er gerendert wird
+
+Die Signatur ist ein festes zweispaltiges Layout. Das Bild kommt in eine 125 Pixel breite Spalte links, zu einem Kreis von 100 mal 100 Pixeln zugeschnitten, und der Text füllt die Spalte daneben.
+
+![Ein kreisrundes Markenzeichen links, mit Kind regards, einer Absendernamen-Variablen, einer E-Mail-Variablen und einer Website-Variablen gestapelt in der Spalte daneben](/images/email-builder/blocks/10b-signature-rendered.png)
+
+Lassen Sie **Image** leer, verschwindet die Bildspalte. Der Text läuft dann über die volle Breite der Sektion, was das Layout für eine reine Text-Grußformel ist.
+
+Jede Zeile ist ein [Paragraph](/de/reference/email-builder/blocks/paragraph), jede trägt also ihre eigene Schrift, Größe, Farbe und Ausrichtung. Wählen Sie eine Zeile aus, und die Breadcrumb lautet `Template > Sections > Signature > Paragraph`.
+
+## Einstellungen
+
+- **Image** öffnet die Medienbibliothek. Wählen Sie ein hochgeladenes Bild oder eine Variable wie den Avatar des Absenders oder das Markenlogo, das sich dann mit der Person ändert, die die E-Mail sendet.
+- **Color** setzt die Textfarbe für die ganze Signatur.
+- **Background color** setzt die Farbe dahinter.
+- **Blocks** listet die Zeilen der Signatur auf, eine Zeile pro Absatz. Die Zeilen lassen sich zum Umordnen ziehen und sonst nichts. Es gibt kein **+** und kein **−**.
+- **Spacing** enthält **Margin**, den Raum über und unter dem Block. Es hat keinen Innenabstand und keine Breite.
+
+<img src="/images/email-builder/blocks/10-signature-settings.png" alt="Das Signature-Einstellungspanel mit dem Image mit einem Markenzeichen, Color, Background color, der Blocks-Liste mit fünf Absätzen mit nur Ziehgriffen und der Spacing-Gruppe mit Margin" width="384" />
+
+Sie fügen Zeilen in der E-Mail hinzu und entfernen sie dort, nicht im Panel. Klicken Sie ans Ende einer Zeile und drücken Sie **Enter** für eine neue, und löschen Sie eine Zeile so, wie Sie jeden anderen Text löschen würden.
+
+## Grenzen
+
+Das Layout ist das Eine, was Sie nicht anfassen können. Es gibt keine Einstellung für die Spaltenbreiten, für das Bild auf der rechten Seite, für ein eckiges statt rundes Bild oder für ein zweites Bild. Wenn Sie eine andere Form brauchen, bauen Sie sie stattdessen aus einem [Two Columns](/de/reference/email-builder/blocks/columns)-Block.
+
+Die **Blocks**-Liste enthält Absätze und sonst nichts. Eine Signatur kann keinen Button, kein Bild und keine Überschrift enthalten.
+
+<Note>
+  Ein Signaturbild, das auf den Avatar des Absenders gesetzt ist, wird pro Absender aufgelöst, sodass dieselbe Vorlage für jede Kollegin und jeden Kollegen, die sie verwenden, ein anderes Foto sendet. Richten Sie es stattdessen auf das Markenlogo, wenn die E-Mail kein Gesicht tragen soll.
+</Note>
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Paragraph](/de/reference/email-builder/blocks/paragraph) ist der Block, aus dem jede Signaturzeile besteht.
+- [Image](/de/reference/email-builder/blocks/image) ist der Block für ein Bild, das Sie selbst dimensionieren wollen.
+- [Two Columns](/de/reference/email-builder/blocks/columns) ist der Weg, eine Grußformel zu bauen, die der Signature-Block nicht kann.
+- [Variablen](/de/reference/email-builder/variables) behandelt die Absender- und Marken-Token, die eine Signatur üblicherweise trägt.

@@ -1,0 +1,46 @@
+---
+title: "Paragraph"
+sidebarTitle: "Paragraph"
+description: "O bloco Paragraph no construtor de emails da HireData: texto de corpo, as suas definições de fonte e cor, o menu de formatação e a cor de link que pode sobrepor."
+keywords: ["parágrafo de email", "texto de corpo", "fonte do email", "altura de linha", "espaçamento entre letras", "negrito itálico", "link de email"]
+---
+
+Um bloco Paragraph é texto de corpo. Edita-o clicando nas palavras no email e escrevendo, tal como faria num documento.
+
+Adicione-o a partir do menu **Blocks** de uma secção ou de uma coluna. Ambos o oferecem em primeiro lugar.
+
+## Como é renderizado
+
+O parágrafo torna-se um bloco de texto com a largura total do que o contém, quebrando a essa largura.
+
+Selecione palavras no email e aparece um pequeno menu por cima delas. Contém negrito, sublinhado, itálico, rasurado, uma cor de texto e um link. Os três pontos no fim contêm subscrito e sobrescrito.
+
+Um link que adicione a partir desse menu pode ser um endereço web, um endereço de email ou um número de telefone. A HireData aceita `http`, `https`, `mailto` e `tel`.
+
+![Um parágrafo renderizado a quebrar ao longo da largura da sua secção, com um link de anulação de subscrição na cor da marca e sublinhado, e três chips de variável no texto](/images/email-builder/blocks/02b-paragraph-rendered.png)
+
+## Definições
+
+- **Font Family** escolhe o tipo de letra, com um seletor de peso ao lado que vai de Ultra Light a Heavy. As fontes da própria marca ficam no topo da lista, acima das restantes.
+- **Size** é um slider e uma caixa, de 8 a 48 píxeis. Os parágrafos novos começam em 16.
+- **Color** define a cor do texto e começa na cor de texto de superfície da marca.
+- **Alignment** é esquerda, centro ou direita.
+- **Links** contém dois controlos apenas para os links deste parágrafo. Ambos oferecem **Inherit**, que devolve a decisão ao [template](/pt/reference/email-builder/template#settings), e é isso que um parágrafo novo usa.
+  - **Link color**.
+  - **Underlined**, **Inherit**, **Yes** ou **No**.
+- **Advanced** contém três controlos.
+  - **Letter Spacing**, de 0 a 10.
+  - **Line Height**, de 1 a 2.
+  - **Margin**, o espaço acima e abaixo do parágrafo.
+
+Escreva `{{` em qualquer sítio de um parágrafo para inserir uma variável.
+
+<img src="/images/email-builder/blocks/02-paragraph-settings.png" alt="O painel de definições do Paragraph a mostrar Font Family, Size, Color, Alignment, o grupo Links com Inherit selecionado e o grupo Advanced com Letter Spacing, Line Height e Margin" width="384" />
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- [Heading](/pt/reference/email-builder/blocks/heading) são os mesmos controlos de texto ao nível de um título.
+- [Template](/pt/reference/email-builder/template#settings) define a cor de link que um parágrafo herda.
+- [Variáveis](/pt/reference/email-builder/variables) cobre o seletor, os valores de recurso e o aspeto de um valor em falta.
+- [Button](/pt/reference/email-builder/blocks/button) é o bloco a usar quando o link é o objetivo.

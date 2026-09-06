@@ -1,0 +1,43 @@
+---
+title: "Sections"
+sidebarTitle: "Sections"
+description: "As secções no construtor de emails da HireData: a faixa que contém os blocos que um destinatário lê, com o seu próprio fundo, espaçamento, largura e borda."
+keywords: ["secção de email", "fundo do email", "largura da secção", "padding da secção", "borda da secção", "imagem de fundo"]
+---
+
+Uma secção é uma faixa ao longo do email. Contém os blocos que um destinatário lê, e carrega o fundo, o padding e a borda por trás deles. Todos os blocos de um email ficam numa, por isso a secção é o nível em que está a trabalhar sempre que não está dentro de um bloco.
+
+As secções são a única coisa que um [Template](/pt/reference/email-builder/template) contém, e o painel **Template** é o único sítio onde adiciona uma. Abra aí **Blocks** e prima **+** em qualquer linha. Não abre nenhum menu, porque uma secção é a única coisa que um Template aceita. O menu de nenhuma secção oferece uma Section, por isso as secções nunca se aninham.
+
+O construtor rotula uma secção como **Sections**, no plural, onde quer que nomeie uma, o que vale a pena saber antes de ir à procura de uma linha que diga em que secção está. [O breadcrumb](/pt/reference/email-builder/template#the-breadcrumb) cobre isso.
+
+## Como é renderizada
+
+O corpo do email tem 600 píxeis de largura. Uma secção preenche essa largura de ponta a ponta, e os seus blocos ficam numa coluna dentro do padding que definir.
+
+![Uma secção num email renderizado: uma faixa de fundo creme com um título, um segundo título, um parágrafo e um botão centrado, com a página branca visível acima e abaixo dela](/images/email-builder/blocks/01b-section-rendered.png)
+
+Uma secção com vários blocos renderiza-se como uma pilha de filas que partilham um único fundo. A borda e os cantos arredondados pertencem à secção e não a nenhuma fila, por isso a borda superior e os cantos superiores calham no primeiro bloco, a borda inferior e os cantos inferiores no último, e as filas do meio correm a direito.
+
+## Definições
+
+- **Background color** preenche a faixa. Começa na cor de superfície da marca, que o controlo nomeia em vez de mostrar como código hexadecimal.
+- **Background image** recebe uma imagem da Media Library através de **Choose image**, e fica atrás da faixa inteira. O mesmo seletor oferece as variáveis que carregam uma imagem, para que o fundo possa seguir a marca.
+- **Blocks** lista o que a secção contém, por ordem. **+** abre o menu de blocos que pode adicionar, **−** elimina uma linha, e a pega à esquerda arrasta-a.
+- **Spacing** contém três controlos.
+  - **Margin** é o espaço fora da faixa: **None**, **Normal**, **Large** ou **Custom**, para um valor superior e um inferior em píxeis.
+  - **Padding** é o espaço dentro dela, com as mesmas quatro escolhas e uma caixa por lado.
+  - **Width** define a largura a que correm os blocos dentro da secção: **Default**, **Large**, **Full** ou **Custom**, que abre um slider de 640 a 1240 píxeis.
+- **Border** contém três controlos.
+  - **Border color** é um seletor de cor.
+  - **Border width** é **None**, **Normal**, **Large** ou **Custom**, para um valor por lado.
+  - **Border radius** são as mesmas quatro escolhas, para um valor por canto.
+
+<img src="/images/email-builder/blocks/01-section-settings.png" alt="O painel de definições da Section a mostrar Background color, Background image, a lista Blocks, o grupo Spacing com Margin, Padding e Width, e o grupo Border" width="384" />
+
+## Relacionados
+
+- A [visão geral do Email builder](/pt/reference/email-builder/overview) cobre o construtor, a barra de ferramentas, o tema e todos os tipos de bloco.
+- [Template](/pt/reference/email-builder/template) é o único sítio onde uma secção pode ir.
+- [Two Columns](/pt/reference/email-builder/blocks/columns) divide uma secção em duas.
+- [Variáveis](/pt/reference/email-builder/variables) cobre os tokens de imagem que o seletor de **Background image** oferece.

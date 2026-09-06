@@ -9,24 +9,20 @@ _Elke afbeelding in een HireData-e-mail komt uit de **Media Library**: je logo, 
 
 ## Stap 1: Open de Media Library
 
-Open een e-mailtemplate via **Settings** \> **Emails** en klik vervolgens op een willekeurig afbeeldingsveld in de editor — bijvoorbeeld **Background image** \> **\[Choose image\]** in het rechterpaneel, of een afbeeldingsblock in de e-mailbody of handtekening.
+Open een e-mailtemplate via **Settings** \> **Emails** en klik vervolgens op een willekeurig afbeeldingsveld in de editor. Selecteer een sectie en het paneel toont **Background image** met een knop **Choose image**, en ook een afbeeldingsblock of een handtekeningfoto opent dezelfde library.
 
-<Frame caption="Replace with Screenshot 1: The Background image field with the [Choose image] button">
-  ![Veld Choose image in de e-maileditor](https://placehold.co/1000x300/eef2f6/64748b?text=Screenshot+1%0ABackground+image+-+Choose+image)
-</Frame>
+<img src="/images/media-library/01-choose-image.png" alt="Het Section settings-paneel met Background color boven een veld Background image met een knop Choose image" width="384" />
 
-De Media Library opent als pop-up met twee tabbladen:
+De Media Library opent als pop-up met twee tabbladen.
 
-- **Home** — de afbeeldingen die horen bij de e-mail waarin je werkt, zoals de avatar, banner en het logo van je merk, en de foto van de afzender. Deze blijven dynamisch: ze volgen het merk of de afzender die de automatisering gebruikt op het moment dat de e-mail wordt verstuurd.
-- **Fields** — de media die in je workspace zijn opgeslagen, inclusief alles wat je zelf uploadt. Gebruik de zoekbalk en de paginering onderaan om een afbeelding te vinden.
+- **Home** is de media die in je workspace is opgeslagen, inclusief alles wat jij of een collega uploadt. Het toont het aantal items, met **Show** en de paginanummers onderaan om door een lange library te bladeren.
+- **Fields** is de afbeeldingen die uit een variabele komen, zoals de avatar, banner en het logo van je merk, en de foto van de afzender. Deze blijven dynamisch: ze volgen het merk of de afzender die de automatisering gebruikt op het moment dat de e-mail wordt verstuurd.
 
-<Frame caption="Replace with Screenshot 2: The Media Library pop-up with the Home and Fields tabs">
-  ![Media Library-pop-up](https://placehold.co/1400x900/eef2f6/64748b?text=Screenshot+2%0AMedia+Library+-+Home+%26+Fields)
-</Frame>
+![De header van de Media Library-pop-up met de tabbladen Home en Fields, een zoekveld, een knop Upload media en een teller met 42 items](/images/media-library/02-media-library.png)
 
 ## Stap 2: Upload je afbeelding
 
-Klik op **\[Upload media\]** rechtsboven in de Media Library en selecteer het bestand van je apparaat. De afbeelding verschijnt direct in het raster en blijft beschikbaar voor elke andere template in je workspace, dus je uploadt elk logo of icoontje maar één keer.
+Klik op **Upload media** rechtsboven in de Media Library en selecteer het bestand van je apparaat. De afbeelding verschijnt direct in het raster en blijft beschikbaar voor elke andere template in je workspace, dus je uploadt elk logo of icoontje maar één keer.
 
 <Tip>
   **Welk bestand uploaden:**
@@ -41,14 +37,16 @@ Klik op **\[Upload media\]** rechtsboven in de Media Library en selecteer het be
 
 Klik op een afbeelding in het raster om rechts de details te openen.
 
-- **Title** — de naam waarmee jij en je collega's de afbeelding terugvinden.
+- **Title** — de naam waarmee jij en je collega's de afbeelding terugvinden. Een upload krijgt de naam van het bestand, dus `image.png` is het hernoemen waard.
 - **Alt text** — de tekst die wordt getoond wanneer de afbeelding niet kan laden, en de tekst die een schermlezer voorleest. Laat je dit leeg, dan valt HireData terug op de titel van de afbeelding.
 
 Onder **More info** vind je het **Id** en het **Mime type** van de afbeelding.
 
-<Frame caption="Replace with Screenshot 3: Image details with the Title and Alt text fields">
-  ![Detailpaneel van een afbeelding met de velden Title en Alt text](https://placehold.co/900x1100/eef2f6/64748b?text=Screenshot+3%0AImage+details+-+Title+%26+Alt+text)
-</Frame>
+<img src="/images/media-library/03-image-details.png" alt="De detailkaart van een geüploade afbeelding, met de share- en sluitknop naast de titel, de tabbladen Description en More info, een Title met image.png en een leeg Alt text-veld met de melding dat het terugvalt op de titel van de afbeelding" width="448" />
+
+<Warning>
+  Beide velden zijn alleen-lezen op het tabblad **Fields**. Een afbeelding die uit een variabele komt, neemt haar titel en alt-tekst over van de variabele, dus een afbeelding uit die bron kan geen eigen alt-tekst krijgen. Alleen een upload op het tabblad **Home** kan dat.
+</Warning>
 
 <Note>
   Veel ontvangers blokkeren afbeeldingen standaard, en sommige zakelijke mailclients laden ze helemaal nooit. Alt-tekst is wat zij in plaats daarvan zien, dus schrijf iets betekenisvols — "HireData-logo" in plaats van "image1".
@@ -56,7 +54,7 @@ Onder **More info** vind je het **Id** en het **Mime type** van de afbeelding.
 
 ## Stap 4: Gebruik de afbeelding in je e-mail
 
-Klik met de afbeelding geselecteerd op **\[Add media to field\]** onderaan het detailpaneel. De afbeelding wordt geplaatst in het veld van waaruit je de Media Library opende, en de pop-up sluit.
+Klik met de afbeelding geselecteerd op **Add media to field** onderaan het detailpaneel. De afbeelding wordt geplaatst in het veld van waaruit je de Media Library opende, en de pop-up sluit.
 
 Sla de template op en gebruik de preview of een test-e-mail om te controleren hoe de afbeelding wordt weergegeven voordat je de template in een automatisering gebruikt.
 
@@ -66,12 +64,10 @@ Sommige plekken vragen om een afbeeldings**link** in plaats van een bestand — 
 
 1. Open de afbeelding in de Media Library.
 2. Klik op het **share**-icoon rechtsboven in het detailpaneel.
-3. Er verschijnt een bevestiging **URL Copied**. De link staat nu op je klembord, en met **\[Open URL\]** controleer je hem in een nieuw tabblad.
+3. Er verschijnt een bevestiging **URL Copied**. De link staat nu op je klembord, en met **Open URL** controleer je hem in een nieuw tabblad.
 4. Plak de link overal waar om de afbeeldings-URL wordt gevraagd.
 
-<Frame caption="Replace with Screenshot 4: The share icon and the URL Copied confirmation">
-  ![Bevestiging URL copied](https://placehold.co/900x260/eef2f6/64748b?text=Screenshot+4%0AURL+Copied+-+Open+URL)
-</Frame>
+![De melding URL Copied met daarnaast een knop Open URL](/images/media-library/04-url-copied.png)
 
 <Warning>
   Deze URL is publiek: iedereen met de link kan de afbeelding openen. Upload alleen afbeeldingen die je op het open internet wilt hebben — geen kandidaatdocumenten, ID-scans of iets anders vertrouwelijks.
@@ -81,9 +77,9 @@ Sommige plekken vragen om een afbeeldings**link** in plaats van een bestand — 
 
 Je handtekening is onderdeel van de e-mailtemplate, dus handtekening-afbeeldingen werken hetzelfde als elke andere afbeelding:
 
-1. Upload de icoontjes die je wilt gebruiken (bijvoorbeeld LinkedIn, Instagram of een certificeringsbadge) via **\[Upload media\]**.
+1. Upload de icoontjes die je wilt gebruiken (bijvoorbeeld LinkedIn, Instagram of een certificeringsbadge) via **Upload media**.
 2. Klik op de handtekening-block in de e-maileditor en selecteer het afbeeldingselement dat je wilt vullen.
-3. Kies het icoontje uit de Media Library en klik op **\[Add media to field\]**, of plak de afbeeldings-URL als het element om een link vraagt.
+3. Kies het icoontje uit de Media Library en klik op **Add media to field**, of plak de afbeeldings-URL als het element om een link vraagt.
 
 <Tip>
   Beperk handtekening-icoontjes tot maximaal drie of vier, allemaal even groot, en geef elk een alt-tekst ("LinkedIn"). Een handtekening vol afbeeldingen ziet er voor spamfilters uit als een nieuwsbrief.
@@ -96,7 +92,7 @@ Je handtekening is onderdeel van de e-mailtemplate, dus handtekening-afbeeldinge
 ## Goed om te weten
 
 - De Media Library wordt gedeeld binnen je workspace: een afbeelding die één collega uploadt, is beschikbaar voor iedereen die templates bouwt.
-- Afbeeldingen die je toevoegt via het tabblad **Home** (merkavatar, banner, logo, afzenderfoto) blijven dynamisch. Wijzig het logo in **Settings** \> **Brands** en elke e-mail die dat merk gebruikt wordt automatisch bijgewerkt — je hoeft de templates niet aan te raken.
+- Afbeeldingen die je toevoegt via het tabblad **Fields** (merkavatar, banner, logo, afzenderfoto) blijven dynamisch. Wijzig het logo in **Settings** \> **Brands** en elke e-mail die dat merk gebruikt wordt automatisch bijgewerkt, zonder dat je de templates hoeft aan te raken.
 - Stuur jezelf altijd een test-e-mail voordat je een template live zet. De weergave van afbeeldingen verschilt tussen Outlook, Gmail en Apple Mail.
 
 ---
@@ -105,5 +101,6 @@ Je handtekening is onderdeel van de e-mailtemplate, dus handtekening-afbeeldinge
 
 - [Een e-mailtemplate opzetten in HireData](/nl/apps/messaging/emails/setting-up-an-email-template-in-hiredata)
 - [Brands](/nl/settings/brands)
+- [Image-block](/nl/reference/email-builder/blocks/image)
 - [Een e-mailnieuwsbrief versturen naar je doelgroep](/nl/apps/messaging/emails/sending-an-email-newsletter-to-your-audience)
 - [Hoe je een domein verifieert in HireData om e-mails te versturen](/nl/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails)

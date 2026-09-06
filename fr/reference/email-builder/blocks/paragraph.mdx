@@ -1,0 +1,46 @@
+---
+title: "Paragraph"
+sidebarTitle: "Paragraph"
+description: "Le bloc Paragraph dans l'éditeur d'e-mails HireData : le texte de corps, ses paramètres de police et de couleur, le menu de mise en forme, et la couleur de lien qu'il peut remplacer."
+keywords: ["paragraphe d'e-mail", "texte de corps", "police d'e-mail", "interlignage", "espacement des lettres", "gras italique", "lien d'e-mail"]
+---
+
+Un bloc Paragraph est du texte de corps. Vous le modifiez en cliquant sur les mots dans l'e-mail et en tapant, comme vous le feriez dans un document.
+
+Ajoutez-le depuis le menu **Blocks** d'une section ou d'une colonne. Les deux le proposent en premier.
+
+## Comment il s'affiche
+
+Le paragraphe devient un bloc de texte sur toute la largeur de ce qui le contient, avec retour à la ligne à cette largeur.
+
+Sélectionnez des mots dans l'e-mail et un petit menu apparaît au-dessus. Il contient le gras, le souligné, l'italique, le barré, une couleur de texte et un lien. Les trois points à la fin contiennent l'indice et l'exposant.
+
+Un lien ajouté depuis ce menu peut être une adresse web, une adresse e-mail ou un numéro de téléphone. HireData accepte `http`, `https`, `mailto` et `tel`.
+
+![Un paragraphe rendu s'étalant sur la largeur de sa section, avec un lien de désabonnement dans la couleur de la marque et souligné, et trois pastilles de variables dans le texte](/images/email-builder/blocks/02b-paragraph-rendered.png)
+
+## Paramètres
+
+- **Font Family** choisit la police, avec un sélecteur de graisse à côté allant d'Ultra Light à Heavy. Les polices propres à la marque figurent en haut de la liste, au-dessus des autres.
+- **Size** est un curseur et un champ, de 8 à 48 pixels. Les nouveaux paragraphes démarrent à 16.
+- **Color** définit la couleur du texte et démarre sur la couleur de texte de surface de la marque.
+- **Alignment** est gauche, centre ou droite.
+- **Links** contient deux commandes pour les liens de ce paragraphe uniquement. Les deux proposent **Inherit**, qui rend la décision au [template](/fr/reference/email-builder/template#settings), et c'est ce qu'un nouveau paragraphe utilise.
+  - **Link color**.
+  - **Underlined**, **Inherit**, **Yes** ou **No**.
+- **Advanced** contient trois commandes.
+  - **Letter Spacing**, de 0 à 10.
+  - **Line Height**, de 1 à 2.
+  - **Margin**, l'espace au-dessus et en dessous du paragraphe.
+
+Tapez `{{` n'importe où dans un paragraphe pour y déposer une variable.
+
+<img src="/images/email-builder/blocks/02-paragraph-settings.png" alt="Le panneau des paramètres Paragraph montrant Font Family, Size, Color, Alignment, le groupe Links avec Inherit sélectionné, et le groupe Advanced avec Letter Spacing, Line Height et Margin" width="384" />
+
+## Voir aussi
+
+- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) couvre l'éditeur, la barre d'outils, le thème et chaque type de bloc.
+- [Heading](/fr/reference/email-builder/blocks/heading) reprend les mêmes commandes de texte au niveau d'un titre.
+- [Template](/fr/reference/email-builder/template#settings) définit la couleur de lien dont un paragraphe hérite.
+- [Variables](/fr/reference/email-builder/variables) couvre le sélecteur, les valeurs de repli et l'apparence d'une valeur manquante.
+- [Button](/fr/reference/email-builder/blocks/button) est le bloc à utiliser quand le lien est l'essentiel.

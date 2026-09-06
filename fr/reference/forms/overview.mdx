@@ -1,8 +1,18 @@
 ---
 title: "Vue d'ensemble de l'éditeur de formulaires"
 sidebarTitle: "Vue d'ensemble"
-description: "Un tour de l'éditeur de formulaires HireData : ses trois onglets, les panneaux de la barre d'outils, chaque type de champ et les paramètres communs à tous les champs."
-keywords: ["éditeur de formulaires", "champs de formulaire", "types de champs", "thème de formulaire", "traductions de formulaire", "modèles de formulaire", "rendre un formulaire public", "always include", "champ masqué", "champ obligatoire"]
+description: "Un tour de l'éditeur de formulaires HireData : les onglets Content, Logic et Evaluation, les panneaux de la barre d'outils, chaque type de champ et les paramètres communs à tous les champs."
+keywords:
+  - "éditeur de formulaires"
+  - "champs de formulaire"
+  - "types de champs"
+  - "thème de formulaire"
+  - "traductions de formulaire"
+  - "modèles de formulaire"
+  - "rendre un formulaire public"
+  - "always include"
+  - "champ masqué"
+  - "champ obligatoire"
 ---
 
 Un formulaire est un ensemble de questions auxquelles quelqu'un répond sur le web ou dans une conversation WhatsApp. Ouvrez la page **Forms** depuis les **Settings** et cliquez sur **New Form**. Choisissez **Blank Form** ou l'un des [modèles](#templates), et le nouveau formulaire s'ouvre dans l'éditeur.
@@ -13,7 +23,7 @@ Cette page cartographie l'éditeur. Pour un guide qui mène un formulaire de la 
 
 L'éditeur se compose de trois parties.
 
-La colonne de gauche liste les champs du formulaire dans l'ordre où un répondant les rencontre. Au-dessus de la liste se trouvent les onglets **Content**, **Logic** et **Evaluation**, ainsi que le bouton **+** qui ouvre la palette **Add Content**.
+La colonne de gauche liste les champs du formulaire dans l'ordre où un répondant les rencontre. Au-dessus de la liste se trouvent les onglets **Content**, **Logic** et **Evaluation**, ainsi que le bouton **\+** qui ouvre la palette **Add Content**.
 
 La colonne de droite prévisualise le formulaire, avec ses propres onglets **Interactive Preview**, **Conversational Preview** et **Test & Evaluate**.
 
@@ -25,7 +35,7 @@ La barre en haut contient le nom du formulaire et la barre d'outils.
 
 L'onglet **Content** contient les champs et leurs paramètres. Cliquez sur un champ pour ouvrir sa carte, et faites-le glisser par la poignée à gauche pour changer l'ordre.
 
-Le bouton **+** ouvre la palette **Add Content**. Elle regroupe les entrées par catégorie et répète les plus utilisées sous **Recommended**. **Find a field type** permet de rechercher dans la liste.
+Le bouton **\+** ouvre la palette **Add Content**. Elle regroupe les entrées par catégorie et répète les plus utilisées sous **Recommended**. **Find a field type** permet de rechercher dans la liste.
 
 ![La palette Add Content avec sa liste Recommended et les groupes Text, Contact Info, Temporal, Choice, Numeric, Rating, Other et Ending](/images/forms-builder/01-add-content-palette.png)
 
@@ -78,7 +88,7 @@ La palette affiche plus d'entrées qu'il n'y a de types de champs. Short Text et
 Chaque ligne ci-dessous a sa propre page, couvrant les paramètres du type, ce qu'il stocke, les opérateurs que la logique lui propose et ce que les évaluateurs IA peuvent en faire.
 
 | Type de champ | Groupe | Stocke |
-|---|---|---|
+| --- | --- | --- |
 | [Short Text et Long Text](/fr/reference/forms/fields/short-and-long-text) | Text | du texte |
 | [Email](/fr/reference/forms/fields/email) | Contact Info | du texte |
 | [Phone Number](/fr/reference/forms/fields/phone-number) | Contact Info | du texte |
@@ -146,13 +156,7 @@ Activer **Hidden** efface **Required** et **Always include** et verrouille les d
 
 ### Ce qui compte comme une réponse {#required-answers}
 
-Une zone de texte vide, une zone de nombre vide, aucune option choisie et aucun fichier joint comptent tous comme une absence de réponse, et le formulaire web affiche un message sous la question, tel que « This field is required and cannot be empty. »
-
-Répondre No, laisser un toggle désactivé, saisir 0 et choisir 0 sur une échelle d'évaluation sont de vraies réponses et sont censées satisfaire un champ obligatoire.
-
-<Warning>
-  Un bug du formulaire web bloque ces réponses. Répondez No, laissez un toggle désactivé, saisissez 0 ou choisissez 0 sur une échelle d'évaluation, et le répondant reste bloqué sur une question obligatoire. **Next** ne fait rien, aucun message n'apparaît, et aucune règle sur ce champ ne se déclenche. En attendant le correctif, laissez les questions Yes/No et Net Promoter Score facultatives, et définissez une **Minimum Value** de 1 sur une question Number obligatoire.
-</Warning>
+Une zone de texte vide, une zone de nombre vide, aucune option choisie et aucun fichier joint comptent tous comme une absence de réponse. Le formulaire web affiche alors un message sous la question, tel que « This field is required and cannot be empty. »
 
 Dans un formulaire conversationnel, **Auto reply (on invalid answer)** est le message renvoyé lorsqu'un champ obligatoire ne reçoit aucune réponse exploitable.
 

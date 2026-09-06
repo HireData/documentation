@@ -1,8 +1,11 @@
 ---
 title: "Number"
 sidebarTitle: "Number"
-description: "Le champ nombre d'un formulaire HireData, avec un minimum, un maximum et un pas, et l'ensemble complet des opérateurs de comparaison dans la logique."
-keywords: ["numérique", "années d'expérience", "quantité"]
+description: "Le champ nombre d'un formulaire HireData, avec les paramètres de minimum, de maximum et de pas, et l'ensemble complet des opérateurs de comparaison dans la logique conditionnelle."
+keywords:
+  - "numérique"
+  - "années d'expérience"
+  - "quantité"
 ---
 
 Number prend un nombre simple : des années d'expérience, des heures par semaine, une quantité de quelque chose. C'est l'un des deux seuls types que la logique peut comparer, ce qui en fait le champ à privilégier quand une règle doit peser une réponse plutôt que la faire correspondre.
@@ -28,7 +31,7 @@ Un nombre.
 ## Opérateurs de logique
 
 | Opérateur | Correspond quand |
-|---|---|
+| --- | --- |
 | has response | le répondant a répondu, quelle que soit la réponse |
 | is equal to | la réponse est exactement la valeur |
 | is not equal to | la réponse est n'importe quoi d'autre |
@@ -38,10 +41,6 @@ Un nombre.
 | is less than or equal to | la réponse est la valeur ou en dessous |
 
 ![L'onglet Logic avec le sélecteur d'opérateur ouvert sur une condition Number, listant has response, is equal to, is not equal to et les quatre opérateurs de comparaison](/images/forms-builder/fields/operators-number.png)
-
-<Warning>
-  Un champ Number obligatoire bloque la réponse 0. **Next** ne fait rien et aucun message n'apparaît. En attendant le correctif, définissez une **Minimum Value** de 1 sur tout champ Number obligatoire, pour que 0 soit refusé avec un message que le répondant peut lire.
-</Warning>
 
 ## Évaluation
 

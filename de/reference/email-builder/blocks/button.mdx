@@ -1,0 +1,49 @@
+---
+title: "Button"
+sidebarTitle: "Button"
+description: "Der Button-Block im HireData-E-Mail-Builder: die URL, die er öffnet, die Größen- und Ecken-Voreinstellungen und wie Sie den Text darauf schreiben."
+keywords: ["e-mail-button", "call-to-action", "button-url", "abgerundete ecken", "button-breite", "linktext"]
+---
+
+Ein Button-Block ist ein Call-to-Action, der eine URL öffnet. Fügen Sie ihn aus dem **Blocks**-Menü einer Sektion oder einer Spalte hinzu.
+
+Ein neuer Button kommt mit "Click Me" an. Klicken Sie ihn in der E-Mail an und überschreiben Sie ihn.
+
+## Wie er gerendert wird
+
+Der Button kommt als Link heraus, der wie eine Schaltfläche gestylt ist, in der Breite und Ausrichtung, die Sie setzen, auf einer eigenen Zeile. **Width: Full** streckt ihn über die Sektion; in einer Spalte streckt er sich über die Spalte.
+
+![Ein gerenderter Button mit dem Text Read the reference, zentriert auf einer eigenen Zeile in Auto-Breite mit normal abgerundeten Ecken](/images/email-builder/blocks/08b-button-rendered.png)
+
+## Einstellungen
+
+- **URL** ist die Adresse, die der Button öffnet. Das Feld akzeptiert eine Variable, sodass ein Button auf einen Link zeigen kann, der sich pro Empfänger ändert.
+- **Background color** und **Color** sitzen nebeneinander und stylen den Button und seinen Text.
+- **Size** ist **Small**, **Medium** oder **Large**. Es bewegt Textgröße und Innenabstand zusammen, von 12-Pixel-Text in einem engen Kasten bis 24-Pixel-Text in einem großzügigen.
+- **Rounded corners** ist **None**, **Normal**, **Large** oder **Full**, was von eckig bis zur Pillenform reicht.
+- **Width** ist **Auto**, was den Button an seinen Text anpasst, oder **Full**, was ihn über das streckt, was ihn enthält.
+- **Alignment** ist links, zentriert oder rechts und bewirkt bei **Full**-Breite nichts.
+- **Text** enthält **Font Family** mit einer Gewichtsauswahl, **Size**, **Letter Spacing** und **Line Height**.
+- **Spacing** enthält zwei Bedienelemente.
+  - **Margin**, die Lücke über und unter dem Button.
+  - **Padding**, der Raum zwischen dem Text und dem Rand des Buttons.
+- **Border** enthält **Border color**, **Border width** und **Border radius**.
+
+<img src="/images/email-builder/blocks/08-button-settings.png" alt="Das Button-Einstellungspanel mit dem URL-Feld, Background color und Color, Size auf Medium, Rounded corners auf Normal, Width auf Auto, Alignment und den Gruppen Text, Spacing und Border" width="384" />
+
+**Size** und **Text** setzen beide die Schriftgröße, und was Sie zuletzt anfassen, gewinnt. Das Wählen einer **Size** überschreibt die Größe in **Text**, setzen Sie also zuerst die Größe und passen Sie sie danach an, wenn Sie einen Wert wollen, den die drei Voreinstellungen nicht anbieten.
+
+Die Worte auf einem Button sind der Linktext, und sie sind alles, was ein Screenreader vorliest. "Read the reference" oder "Book your slot" sagt jemandem, was passiert. "Click here" und "Read more" sagen nichts, und ein Empfänger, der durch die E-Mail springt, hört eine Liste identischer Links. Sagen Sie, was auf der anderen Seite liegt.
+
+## Grenzen
+
+HireData unterstützt `http`-, `https`-, `mailto`- und `tel`-Adressen sowie eine Variable, die zu einer davon aufgelöst wird. Das **URL**-Feld prüft nicht, was Sie tippen, ein vertipptes Schema erreicht den Empfänger also als toter Link. Testen Sie die E-Mail, bevor Sie sie senden.
+
+Eine E-Mail-Vorlage, die mit einem anderen Schema an die HireData-API gesendet wird, wird abgelehnt mit "Builder links and images must use a supported URL scheme or a HireData variable."
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Paragraph](/de/reference/email-builder/blocks/paragraph) behandelt Links im Fließtext, die dieselben Schemata akzeptieren.
+- [Form](/de/reference/email-builder/blocks/form) zeichnet seine eigenen Schaltflächen und richtet sie auf ein Formular statt auf eine URL.
+- [Variablen](/de/reference/email-builder/variables) behandelt die Token, die das **URL**-Feld akzeptiert.

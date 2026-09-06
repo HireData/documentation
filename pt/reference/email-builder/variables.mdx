@@ -1,0 +1,111 @@
+---
+title: "Variáveis"
+sidebarTitle: "Variáveis"
+description: "Personalize um email da HireData com variáveis: o seletor, onde funcionam, como adicionar uma sua, o que um destinatário vê quando falta um valor e os valores de recurso."
+keywords: ["variáveis de email", "seletor de variáveis", "merge tags", "personalização", "valor por defeito", "fallback", "variável personalizada", "variável de IA", "objetos"]
+---
+
+Uma variável é um placeholder que a HireData preenche quando o email sai. Escreva `{{recipient.first_name}}` uma vez e cada destinatário lê o seu próprio nome.
+
+O construtor de emails mostra uma variável como um chip com o seu rótulo, não com o seu valor. `{{recipient.first_name}}` lê-se **Recipient: First Name** no canvas, e o chip comporta-se como um único objeto e não como os carateres que representa.
+
+## Inserir uma variável
+
+Escreva `{{` e abre-se um seletor debaixo do cursor. Cada linha dá o rótulo da variável, a sua `{{key}}` e o tipo de valor que contém.
+
+Continue a escrever para estreitar a lista. A pesquisa é tolerante. Escreva `frist` e **Recipient: First Name** aparece na mesma.
+
+![A caixa Subject com um chip de variável e um token meio escrito no fim, e o seletor por baixo a listar Recipient: Last Name e Sender: Last Name com as suas chaves e tipos](/images/email-builder/10-variable-picker.png)
+
+Prima Enter ou clique numa linha e o token transforma-se num chip.
+
+## Onde as variáveis funcionam
+
+Em qualquer sítio onde possa escrever num email, e em vários onde não pode.
+
+- A caixa **Subject**, que é a linha que um destinatário lê na caixa de entrada.
+- O texto de um [Paragraph](/pt/reference/email-builder/blocks/paragraph) e de um [Heading](/pt/reference/email-builder/blocks/heading).
+- O endereço de um link. Selecione algum texto, clique no botão de link do menu flutuante, e o popover oferece um dropdown com todas as variáveis que contêm um URL, incluindo `{{template::unsubscribe_url}}`.
+- A caixa **URL** de um [Button](/pt/reference/email-builder/blocks/button) e de cada linha de um [Social](/pt/reference/email-builder/blocks/socials).
+- Uma imagem. O separador **Fields** da Media Library lista as variáveis que carregam uma imagem, tanto para o bloco [Image](/pt/reference/email-builder/blocks/image) como para a [Signature](/pt/reference/email-builder/blocks/signature).
+- Uma cor. Os controlos de cor escolhem pelas variáveis de cor da marca, pelo nome, que é o que "Theme: Palette Primary Color" significa. Veja [Marca, tema e metadados](/pt/reference/email-builder/template#brand-theme-and-metadata).
+
+## A lista de variáveis
+
+O botão de chavetas na barra de ferramentas abre **Variables**, um painel que lista tudo o que este email pode usar. Pesquise por rótulo ou por chave. Onde a HireData já conhece um valor, o cartão mostra-o, para que possa distinguir `{{brand.name}}` de `{{account.name}}` sem adivinhar.
+
+As variáveis que adicionou você mesmo ficam no topo, cada uma marcada com um brilho, e o seletor `{{` põe essas mesmas variáveis em primeiro lugar. Clique numa para reabrir as suas definições.
+
+<img src="/images/email-builder/11-variable-list.png" alt="O painel Variables com uma caixa de pesquisa e um botão de mais, a listar três variáveis próprias do template marcadas com um brilho acima de Template unsubscribe_url, Template Subject, Template Form URL e Brand Id, cada uma com a sua chave, o seu tipo e o seu valor" width="350" />
+
+## Adicionar a sua própria variável
+
+O **+** ao lado da caixa de pesquisa abre um diálogo **Variables**: os seus **Fields** ao longo da esquerda e, à direita, os tipos entre os quais pode escolher, em seis grupos. Vão de **Text**, **Number** e **Yes / No**, passando por **Email**, **Phone** e **Address**, até **Color**, **Font** e **JSON**. **Search types** estreita a lista.
+
+<img src="/images/email-builder/18-variable-types.png" alt="O seletor de tipos no diálogo Variables, com uma caixa Search types acima de grupos intitulados Intelligent, Basics, Date and time, People and places, Web and media e Advanced" width="380" />
+
+Escolha um tipo e abrem-se quatro definições ao lado.
+
+- **Name** é o que o chip mostra no canvas.
+- **Default value** é o que a HireData escreve quando nada mais fornece um valor. O controlo corresponde ao tipo que escolheu.
+- **Reference as** é a chave que escreve entre as chavetas. Preenche-se sozinha a partir do nome.
+- **What is it for?** é uma nota opcional para quem abrir o template a seguir.
+
+**Save changes** guarda-as. Uma variável que adicionar pertence apenas a este email, por isso faça **Save** ao template antes de sair.
+
+<img src="/images/email-builder/19-variable-settings.png" alt="O diálogo Variables com uma lista Fields contendo AI variable, Phone e ID, e as definições de Phone abertas em Name, Default value, Reference as e What is it for, acima de Cancel e Save changes" width="620" />
+
+Uma variável sua ganha o seu lugar quando um valor pertence a vários sítios. Ponha o seu número de telefone numa variável `{{phone}}` e escreva-a na assinatura, no rodapé e no corpo, e mudar o número depois passa a ser uma edição em vez de três.
+
+<Warning>
+  Eliminar uma variável não a limpa do email. Cada chip que a usava volta a ser texto simples `{{key}}` e fica onde está, por isso a chave sai com as chavetas à mostra. Elimine a variável e depois encontre cada sítio onde a usou.
+</Warning>
+
+<Note>
+  **AI variable** é o primeiro tipo do diálogo. Em vez de procurar um valor, calcula um para cada destinatário a partir de uma instrução que escreve. Veja [Variáveis de IA](/pt/variables/ai-variables).
+</Note>
+
+## Trazer os campos de um registo {#bringing-in-a-records-fields}
+
+O botão de base de dados na barra de ferramentas abre **Objects**, que liga um tipo de registo ao email: um candidato, uma vaga, um match. Ligue um e todos os campos desse registo entram na lista de variáveis, endereçados pela chave do objeto, como em `{{candidate.first_name}}`.
+
+[Objetos](/pt/reference/forms/objects) explica o que é um objeto e o que ligar um faz. Está escrito para o construtor de formulários, que oferece mais definições por objeto, mas os registos e as suas chaves são os mesmos.
+
+## O que um destinatário vê realmente {#what-a-recipient-actually-sees}
+
+Três coisas podem acontecer a um token, e só uma delas é o que queria.
+
+- **A variável resolve-se.** A HireData tem um valor e escreve-o.
+- **A variável resolve-se para nada.** O destinatário não tem número de telefone registado, por isso `{{recipient.phone_number}}` sai como um espaço vazio. "Call us on ." é a forma clássica de isto aparecer.
+- **A variável não existe.** A HireData deixa uma chave que não reconhece exatamente como a escreveu. O destinatário lê `{{recipient.favourite_biscuit}}`, chavetas incluídas.
+
+O construtor diz-lhe para qual dos três se dirige. Uma chave que ele reconhece torna-se um chip. Uma chave que não reconhece fica como texto simples, com as chavetas à mostra, e chega assim à caixa de entrada.
+
+A única exceção é um token com um [modificador](#giving-a-variable-a-fallback). Esse fica como texto simples por melhor que a chave seja, porque o seletor só insere chaves simples. Assim, chavetas no canvas significam uma de duas coisas: uma variável que escreveu mal, ou um modificador a funcionar como pretendido.
+
+<Warning>
+  Um token colado de outro sítio é a origem habitual do terceiro caso. Cole-o e verifique que se transformou num chip.
+</Warning>
+
+## Dar um valor de recurso a uma variável {#giving-a-variable-a-fallback}
+
+Adicione o modificador `default` e a HireData usa as suas palavras em vez de deixar um espaço em branco.
+
+```text
+Hi {{ recipient.first_name | default: "there" }},
+```
+
+Dispara em ambos os casos de falha acima: quando o valor está vazio e quando a chave não existe de todo. O email acima lê-se "Hi Sofia," para a Sofia e "Hi there," para todos aqueles a quem falta o primeiro nome.
+
+Um chip não pode ser editado. É um único objeto no canvas e não os carateres que representa, por isso não há onde pôr um modificador. Em vez disso, escreva o token inteiro à mão, chavetas incluídas, e deixe o seletor abrir-se e fechar-se à sua volta. O que escreveu fica como texto simples em vez de se tornar um chip, que é o aspeto de um modificador quando está certo. Releia-o na pré-visualização.
+
+`default` é um de uma longa lista. Veja [Modificadores](/pt/variables/modifiers) para os restantes, e para encadear vários.
+
+## Relacionados
+
+- [Testar](/pt/reference/email-builder/testing) é onde descobre em que se resolvem as suas variáveis.
+- [Variáveis](/pt/variables/introduction) cobre a sintaxe `{{ }}` em formulários, mensagens e automações, além do email.
+- [Modificadores](/pt/variables/modifiers) lista tudo o que pode fazer a um valor a caminho do email.
+- [Variáveis de IA](/pt/variables/ai-variables) calculam um valor por destinatário em vez de o procurarem.
+- [Objetos](/pt/reference/forms/objects) cobre os registos cujos campos se tornam variáveis.
+- [Traduções](/pt/reference/email-builder/translations) mantém as suas variáveis intactas em todos os idiomas.

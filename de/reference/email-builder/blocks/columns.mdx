@@ -1,0 +1,46 @@
+---
+title: "Two Columns"
+sidebarTitle: "Two Columns"
+description: "Der Two-Columns-Block im HireData-E-Mail-Builder: die fünf Layouts, der Zwischenraum, was jede Spalte enthalten kann und wie sich das Paar auf einem Telefon verhält."
+keywords: ["e-mail-spalten", "zwei spalten", "spaltenlayout", "e-mail-zwischenraum", "nebeneinander", "stapeln"]
+---
+
+Ein Two-Columns-Block stellt zwei Spalten nebeneinander in eine Sektion. Jede Spalte enthält ihre eigenen Blöcke, so bekommen Sie also ein Bild neben einem Absatz oder einen Absatz neben einem Button.
+
+Fügen Sie ihn aus dem **Blocks**-Menü einer Sektion hinzu. Er kommt mit beiden Spalten bereits darin an.
+
+## Wie er gerendert wird {#how-it-renders}
+
+Die zwei Spalten teilen die Breite der Sektion unter sich auf, abzüglich des Innenabstands und des Zwischenraums, im Verhältnis, das **Layout** festlegt.
+
+![Ein 50-50-Two-Columns-Block: ein Absatz und ein Logo links, ein Absatz und ein Button rechts, nebeneinander](/images/email-builder/blocks/04b-columns-rendered.png)
+
+Auf einem Bildschirm schmaler als 480 Pixel hören sie auf, Spalten zu sein. Die linke wird zuerst in voller Breite gerendert, die rechte darunter, und der Zwischenraum wird zu vertikalem Abstand. Setzen Sie das, was am ehesten gelesen werden soll, in die linke Spalte, denn auf einem Telefon ist das das Oberste.
+
+<img src="/images/email-builder/blocks/04c-columns-stacked.png" alt="Derselbe Block gerendert bei 400 Pixeln Breite, mit Absatz und Logo der linken Spalte gestapelt über Absatz und Button der rechten Spalte" width="386" />
+
+## Einstellungen
+
+- **Background color** füllt beide Spalten.
+- **Layout** legt die Aufteilung fest: **50-50**, **60-40**, **40-60**, **66-33** oder **33-66**. Die erste Zahl ist die linke Spalte.
+- **Gap** ist der Raum zwischen den beiden Spalten, ein Schieberegler und ein Feld von 0 bis 48 Pixeln.
+- **Column 1 Blocks** und **Column 2 Blocks** sind zwei getrennte Listen, eine pro Spalte, jede mit dem üblichen **+**, **−** und Ziehgriff.
+- **Margin** ist die Lücke über und unter dem Paar.
+- **Padding** ist die Lücke in jeder Spalte, um ihre Blöcke herum.
+
+<img src="/images/email-builder/blocks/04-columns-settings.png" alt="Das Two-Columns-Einstellungspanel mit Background color, den fünf Layout-Schaltflächen mit ausgewähltem 50-50, dem Gap-Schieberegler auf 24, den Blocklisten für Column 1 und Column 2, Margin und Padding" width="384" />
+
+## Grenzen
+
+Ein Two-Columns-Block enthält immer genau zwei Spalten. Nichts fügt eine dritte hinzu und nichts entfernt eine, die **Blocks**-Listen beider Spalten fügen nur Blöcke innerhalb dieser Spalte hinzu, und die Breadcrumb überspringt die Spaltenebene ganz. Drei Spalten nebeneinander sind kein Layout, das der E-Mail-Builder bauen kann.
+
+Eine Spalte akzeptiert weniger Arten von Blöcken als eine Sektion. Ihr Menü bietet Paragraph, Heading, Image, Socials, Button und HTML an. Es gibt kein Two Columns, kein Form und keine Signature, Spalten verschachteln also nie.
+
+Außerhalb des Builders wird die Regel beim Eingang durchgesetzt. Eine E-Mail-Vorlage, die an die HireData-API gesendet wird und einen Spaltenblock enthält, der nicht genau zwei Spaltenblöcke enthält, wird abgelehnt mit "A columns block must contain exactly two column blocks."
+
+## Verwandte Themen
+
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) behandelt den Builder, die Toolbar, das Theme und jeden Blocktyp.
+- [Sektion](/de/reference/email-builder/sections) ist der einzige Block, in den ein Two Columns gehen kann.
+- [Template](/de/reference/email-builder/template#how-an-email-nests) erklärt, wo die Spaltenebene sitzt und warum Sie sie nie sehen.
+- [Image](/de/reference/email-builder/blocks/image) verhält sich in einer Spalte anders, wo es die Breite der Spalte annimmt.
