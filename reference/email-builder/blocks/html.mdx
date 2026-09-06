@@ -11,7 +11,7 @@ An HTML block drops markup you write yourself into the email. Use it for the thi
 
 HireData drops your markup into the email untouched, with one exception it has to make.
 
-The email is built with MJML, which sets the font size of anything it did not lay out itself to zero. Text pasted into an HTML block would arrive invisible. So before sending, HireData walks your markup and adds `font-size: 16px` to any `body`, `table`, `p`, `span`, or `a` element that does not already carry one, and wraps loose text in a `span` at the same size.
+The email is built with MJML, which sets the font size of anything it did not lay out itself to zero. Text pasted into an HTML block would arrive invisible. So before sending, HireData walks your markup and adds `font-size: 16px` to any `body`, `table`, `p`, `span`, or `a` element that does not already carry one. It also wraps loose text in a `span` at the same size.
 
 Set a font size yourself and HireData leaves it alone. That is the way to get any size other than 16 pixels out of an HTML block.
 
