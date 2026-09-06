@@ -18,8 +18,6 @@ keywords:
 
 The drawer is headed **Filter** with tabs **Filters** and **Advanced**. Its footer holds **Cancel** and **Save Filters**.
 
-![The Filter drawer with two rows in the first set, Question 1: Answer is not empty and Question 2: Answer equals Yes, joined by an AND / OR toggle, then a second toggle and an empty second set](/images/automations/10-filter-drawer.png)
-
 ## Settings
 
 - **Field**. The **Select field** box. Type to search: "2: Answer" finds "Question 2: Answer". The list holds the event's fields and the outputs of earlier steps.
@@ -39,11 +37,13 @@ The drawer is headed **Filter** with tabs **Filters** and **Advanced**. Its foot
 
 Fields that hold a range or a set of values also offer **between**, **one of**, and **not one of**.
 
-<Note>
-  **On the canvas.** The card shows a **Filter** badge, the set number, and each row as field, operator, value.
+<img src="/images/automations/10-filter-drawer.png" alt="The Filter drawer with two rows in the first set, Question 1: Answer is not empty and Question 2: Answer equals Yes, joined by an AND / OR toggle, then a second toggle and an empty second set" width="384" />
 
-  ![A Filter card on the canvas reading 1, Question 1: Answer, is not empty](/images/automations/23-filter-card.png)
-</Note>
+### On the canvas
+
+The card shows a **Filter** badge, the set number, and each row as field, operator, value.
+
+![A Filter card on the canvas reading 1, Question 1: Answer, is not empty](/images/automations/23-filter-card.png)
 
 ## What it outputs
 
@@ -53,13 +53,13 @@ On the run page a passed Filter carries the line "Completed" with the time. The 
 
 ![A Filter card in a run reading Meeting: Activity Type one of 2 selected, with the line Completed: Last Friday at 7:42 PM below it](/images/automations/33-filter-passed-card.png)
 
-![A run timeline with Filter: Run Moved, then Filter: Completed showing set 1 as Valid with Expected Meeting: Activity Type with value 1e gesprek, To be one of 2 selected](/images/automations/34-filter-passed-timeline.png)
+<img src="/images/automations/34-filter-passed-timeline.png" alt="A run timeline with Filter: Run Moved, then Filter: Completed showing set 1 as Valid with Expected Meeting: Activity Type with value 1e gesprek, To be one of 2 selected" width="384" />
 
 ## What stops the run
 
 Conditions that do not pass. The timeline records "Filter: Cancelled" with the message "Filter not passed." followed by "Filter: Run Cancelled". Steps after the Filter show no status line, and in the runs list the run's **Step** column reads "Filter".
 
-![A run timeline with Run Scheduled, Run Started, Run Moved, then Filter: Cancelled with the message Filter not passed. and Filter: Run Cancelled](/images/automations/38-filter-cancelled-timeline.png)
+<img src="/images/automations/38-filter-cancelled-timeline.png" alt="A run timeline with Run Scheduled, Run Started, Run Moved, then Filter: Cancelled with the message Filter not passed. and Filter: Run Cancelled" width="384" />
 
 A Filter inside a Split stops only its own branch. See [Split](/reference/automations/steps/split).
 

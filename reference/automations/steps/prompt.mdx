@@ -16,30 +16,15 @@ keywords:
 
 **Prompt** asks an AI model to do something with the run's data and returns the answer as fields for later steps. The drawer is headed **Ask AI** and its footer holds **Preview**, **Cancel**, and **Save Task**. **Preview** runs the prompt against sample data before you save.
 
-The drawer opens on the question **What should the AI do?** with eight intents:
+The drawer opens on the question **What should the AI do?** with eight intents. **Custom** writes the prompt from scratch; the other seven frame the prompt for one kind of job.
 
-- **Custom** writes the prompt from scratch.
-- **Extract** pulls structured data out of text or documents.
-- **Summarize** condenses long content into key points.
-- **Classify** puts content into predefined groups.
-- **Write** generates or rewrites content in a chosen tone.
-- **Translate** converts text from one language to another.
-- **Analyze** examines content for insights, sentiment, or patterns.
-- **Evaluate** assesses content against defined criteria.
+<img src="/images/automations/39-prompt-intents.png" alt="The What should the AI do? panel listing Custom, Extract, Summarize, Classify, Write, Translate, Analyze, and Evaluate, each with a one-line description" width="384" />
 
 <Tip>
   An intent other than **Custom** fills in the output fields that intent usually needs, so you edit them rather than create them from nothing.
 </Tip>
 
-<Note>
-  **On the canvas.** The card shows a **Task** badge, "Ask AI" followed by the intent, the prompt text, a chip per output field, and the three Advanced values.
-
-  ![An Ask AI: Custom card on the canvas with the prompt text, a Greeting output chip, and the chips Fast, Precise, and Auto](/images/automations/27-prompt-card.png)
-</Note>
-
 ## Settings
-
-![The Ask AI drawer with Custom chosen, a prompt in the Input tab, an empty Hints box, one output field named Greeting, Language set to None, and the Advanced section open on Fast, Precise, and Auto](/images/automations/17-prompt-drawer.png)
 
 - **What should the AI do?** The intent, as a select once chosen.
 - **What will you provide to the AI?** Two tabs. **Input** holds the prompt box; type your instruction and insert variables into it. **Variables** lists fields to pass alongside the prompt without writing them into the text.
@@ -58,6 +43,14 @@ The drawer opens on the question **What should the AI do?** with eight intents:
 
 - **Choose Field Type**. A **Search types...** box and the types in groups. Basics: Text, Number, Yes / No, List, ID. Date & Time: Date, Time, Datetime. People & Places: Email, Phone, Address, Country, Language, Locale, Timezone. Web & Media: URL, Domain, IP Address, Image, File, Color, Font. Advanced: Whole number, Decimal.
 - **Configure your field**. **Name** is the label you see. **Reference as** is the variable name, default `text` for a Text field. **What is it for? (optional)** tells the model what to put in the field. **Save & New** saves and starts another; **Done** closes.
+
+<img src="/images/automations/17-prompt-drawer.png" alt="The Ask AI drawer with Custom chosen, a prompt in the Input tab, an empty Hints box, one output field named Greeting, Language set to None, and the Advanced section open on Fast, Precise, and Auto" width="384" />
+
+### On the canvas
+
+The card shows a **Task** badge, "Ask AI" followed by the intent, the prompt text, a chip per output field, and the three Advanced values.
+
+![An Ask AI: Custom card on the canvas with the prompt text, a Greeting output chip, and the chips Fast, Precise, and Auto](/images/automations/27-prompt-card.png)
 
 ## What it outputs
 

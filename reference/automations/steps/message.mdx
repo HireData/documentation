@@ -19,14 +19,6 @@ keywords:
   Message appears in the picker only when a connected app offers a task in this category. Two entries can share a name, as the two **Send Survey** tasks below do. The icon tells them apart.
 </Note>
 
-![The Message list showing HTTP Request, Post Webhook, Send Email, Send Message, and two Send Survey entries, each with its app icon](/images/automations/18-message-tasks.png)
-
-<Note>
-  **On the canvas.** A Message task shows a **Task** badge, the task name, and what it will send. Send Email renders the template and lists Subject, Recipient, Sender, and Form.
-
-  ![A Send Email card on the canvas with a rendered email preview and rows for Subject, Recipient, Sender, and Form](/images/automations/28-send-email-card.png)
-</Note>
-
 ## Settings
 
 Each task has its own drawer. The shared settings are the recipient, the sender or channel, and the content to send: a template, a form, or a request body. The footer ends in **Save Task**. Send Email is a wizard with a progress bar whose final step, **Preview your email**, shows the rendered email under **Summary** and every setting under **Settings**.
@@ -42,6 +34,12 @@ The tasks that fill the category in a workspace with HireData, Ratecard, and Wha
 | [HTTP Request](/reference/automation-tasks/http-request-task) | HireData | A request to any external API |
 | Post Webhook | HireData | The older form of HTTP Request. See [Existing Post Webhook tasks](/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
 
+### On the canvas
+
+A Message task shows a **Task** badge, the task name, and what it will send. Send Email renders the template and lists Subject, Recipient, Sender, and Form.
+
+![A Send Email card on the canvas with a rendered email preview and rows for Subject, Recipient, Sender, and Form](/images/automations/28-send-email-card.png)
+
 ## What it outputs
 
 What the channel reports back. A delivered email completes with the message "Email delivered." A survey outputs the answers once the person replies, which is how a Filter after a WhatsApp survey can branch on an answer. An HTTP Request outputs the response you described. The run step's **Fields** tab lists the values the task used, such as the subject, recipient, and sender of an email.
@@ -52,7 +50,7 @@ A survey holds the run while it waits for the reply: the step shows Waiting and 
 
 A send that the channel refuses. The task card turns red with the line "Cancelled" and the time, and the timeline records the task name with "Cancelled" and the message. In the runs list the **Step** column names the task, such as "HireData: Send Email".
 
-![A run timeline with Send Email: Cancelled, the message Invalid config., and Send Email: Run Cancelled](/images/automations/35-message-cancelled-timeline.png)
+<img src="/images/automations/35-message-cancelled-timeline.png" alt="A run timeline with Send Email: Cancelled, the message Invalid config., and Send Email: Run Cancelled" width="384" />
 
 The messages you are most likely to meet, each explained in [Run cancellation reasons](/knowledge-base/run-cancellation-reasons):
 

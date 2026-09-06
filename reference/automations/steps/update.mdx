@@ -25,12 +25,6 @@ keywords:
 
 The drawer is headed with the task name and the app's icon, and its footer holds **Cancel** and **Save Task**.
 
-<Note>
-  **On the canvas.** The card shows a **Task** badge, the task name with the app, the sentence that names the matching field, and the fields it will write.
-
-  ![An Update Candidate in Carerix card on the canvas: Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id, and then update these fields, with Available Date set to Now and Status set to Werkzoekend](/images/automations/36-update-card.png)
-</Note>
-
 The tasks that fill the category:
 
 | Task | App | What it changes |
@@ -40,11 +34,17 @@ The tasks that fill the category:
 | Update Field | Vincere | A field of a Vincere record |
 | Update Field | Salesforce | A field of a Salesforce record |
 
+### On the canvas
+
+The card shows a **Task** badge, the task name with the app, the sentence that names the matching field, and the fields it will write.
+
+![An Update Candidate in Carerix card on the canvas: Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id, and then update these fields, with Available Date set to Now and Status set to Werkzoekend](/images/automations/36-update-card.png)
+
 ## What it outputs
 
 The record as it is after the change. On the run page the task's drawer is headed with the app, the task, and the record id, such as "Carerix Update Match (ID: 7.18)", with badges counting **Field Updated** and **Run Moved** and a status badge. **Overview** lists the **Updated Object** with a link and each field's old and new value; a field that had no value reads "This field was empty before". **Fields** lists every value the task used, with its source icon and type.
 
-![The Fields tab of an Update Match run step listing Match: Id, Match: Stage, an evaluation score, a filtered stage value, and one unresolved variable shown as raw text](/images/automations/20-run-step-fields.png)
+<img src="/images/automations/20-run-step-fields.png" alt="The Fields tab of an Update Match run step listing Match: Id, Match: Stage, an evaluation score, a filtered stage value, and one unresolved variable shown as raw text" width="384" />
 
 An unresolved variable appears in the Fields tab as its raw text, such as `{{…evaluation.scoring.score}}`, which is how you spot a field that was written with a placeholder instead of a value.
 
