@@ -18,13 +18,13 @@ keywords:
   - "invalid sender email"
 ---
 
-**Send Email** sends an email built from one of your email templates to one address per run. It sits under **Message** in the **Next step** drawer, marked with the HireData icon. The drawer is headed **Send Email** and its footer holds **Cancel** and **Save Task**.
+**Send Email** sends an email built from one of your email templates to one address per run. It sits under **Message** in the **Next step** drawer, marked with the HireData icon.
 
 The drawer is a wizard of up to seven steps with a progress bar. Two steps appear only when they have something to ask. **Select a brand** appears when the workspace has brands. **Set up your form** appears when the template holds a form. When you reopen a saved task, the wizard opens on the first step that still needs input, which for a finished task is **Preview your email**.
 
 <Steps>
   <Step title="Select a template">
-    A search box and one card per email template, each with a live preview. Click a card to open the template in a preview dialog with its subject, the rendered email, **Edit Email**, a **Send test mail** button, a toggle that shows or hides variable values, and **Use template**. A card marked **preset** is a HireData template; using it creates a copy in your Emails. A template that carries a brand fills in the brand for you.
+    A search box and one card per email template, each with a live preview. Click a card to open the template in a preview dialog with its subject, the rendered email, **Edit Email**, a **Send test mail** button, a toggle that shows or hides variable values, and **Use template**. A template that carries a brand fills in the brand for you.
   </Step>
   <Step title="Select a brand">
     **Appears when** the workspace has at least one brand. A **Brands** search box and one card per brand with its colour strip. Click a card to see the template rendered in that brand, then **Use brand**.
@@ -72,7 +72,7 @@ The card shows a **Task** badge, "Send Email", the rendered email, and rows for 
 
 ## What it outputs
 
-The sent email and its delivery status. On the run page the task's card shows the email that went out; click it to read the message as the recipient saw it. The run step's **Fields** tab lists the values the task used, such as the subject, recipient, and sender.
+The sent email. On the run page the task's card shows the email that went out; click it to read the message as the recipient saw it, with **Edit Form** and **Edit Email** links to its sources. Clicking the card itself opens the run step, headed **Send Email** with a **Completed** badge. Its **Overview** lists **to** and **from** with a name and address each, the **subject**, and the value of every template variable. **Fields** lists every value the task read from the run.
 
 Later steps can read the email's status. A [Filter](/reference/automations/steps/filter) after a [Delay](/reference/automations/steps/delay) can branch on whether the email was opened.
 

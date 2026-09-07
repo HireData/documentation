@@ -19,7 +19,9 @@ A step is a node on the canvas. [Delay](/reference/automations/steps/delay), [Fi
 
 Which tasks you see depends on the apps connected to the workspace, not on your permissions. Recruitee, AFAS, and custom apps supply events only, so an automation can [start from Recruitee](/apps/recruitee/create-a-recruitee-automation-in-hiredata) but cannot write back to it.
 
-The label column shows each task as the picker lists it inside its category. The list drops the category's verb, so **Add Note** reads **Note** under **Add** and **Update Object** reads **Object** under **Update**. When one task fills a category, choosing the category opens that task's drawer at once. The drawer header carries the full name.
+<Note>
+  Not every task has a page of its own yet. Where none exists, the reference column points to the closest page: the category page, a tutorial that uses the task, or the app's overview.
+</Note>
 
 ## HireData
 
@@ -46,11 +48,11 @@ Always present.
 | Label | Category | Needs | Reference |
 | --- | --- | --- | --- |
 | Find | Find | A Carerix connection | [Find](/reference/automations/steps/find) |
-| Email | Add | A Carerix connection and a record to attach the email to | [Logging email messages on Carerix](/apps/carerix/logging-email-messages-on-carerix-with-hiredata) |
+| Add Email | Add | A Carerix connection and a record to attach the email to | [Logging email messages on Carerix](/apps/carerix/logging-email-messages-on-carerix-with-hiredata) |
 | Job Application | Add | A Carerix connection, a candidate, and a vacancy | [Create a Carerix automation](/apps/carerix/create-a-carerix-automation-in-hiredata) |
-| Note | Add | A Carerix connection and a record to attach the note to | [Add an activity or item in Carerix](/apps/carerix/add-an-activity-or-item-in-carerix-with-hiredata) |
-| Task | Add | A Carerix connection | [Schedule a task in Carerix](/apps/carerix/schedule-a-task-in-carerix-with-hiredata) |
-| Object | Update | A Carerix connection | [Update fields in Carerix](/apps/carerix/update-fields-in-carerix-with-hiredata) |
+| Add Note | Add | A Carerix connection and a record to attach the note to | [Add an activity or item in Carerix](/apps/carerix/add-an-activity-or-item-in-carerix-with-hiredata) |
+| Add Task | Add | A Carerix connection | [Schedule a task in Carerix](/apps/carerix/schedule-a-task-in-carerix-with-hiredata) |
+| Update Object | Update | A Carerix connection | [Update fields in Carerix](/apps/carerix/update-fields-in-carerix-with-hiredata) |
 
 ## OTYS
 
@@ -58,7 +60,7 @@ Always present.
 | --- | --- | --- | --- |
 | Task | Add | An OTYS connection | [Create an OTYS automation](/apps/otys/create-an-otys-automation-in-hiredata) |
 | Activity or Item | Add | An OTYS connection | [Create an OTYS automation](/apps/otys/create-an-otys-automation-in-hiredata) |
-| Object | Update | An OTYS connection | [Update](/reference/automations/steps/update) |
+| Update Object | Update | An OTYS connection | [Update](/reference/automations/steps/update) |
 
 ## Vincere
 
@@ -66,8 +68,8 @@ Always present.
 | --- | --- | --- | --- |
 | Task | Add | A Vincere connection | [Schedule a task in Vincere](/apps/vincere/schedule-a-task-in-vincere-with-hiredata) |
 | Activity or Item | Add | A Vincere connection | [Add an activity or item in Vincere](/apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata) |
-| Object | Update | A Vincere connection | [Update fields in Vincere](/apps/vincere/update-fields-in-vincere-with-hiredata) |
-| GDPR | Update | A Vincere connection | [Update](/reference/automations/steps/update) |
+| Update Object | Update | A Vincere connection | [Update fields in Vincere](/apps/vincere/update-fields-in-vincere-with-hiredata) |
+| Update GDPR | Update | A Vincere connection | [Update](/reference/automations/steps/update) |
 
 ## Salesforce
 
@@ -76,7 +78,7 @@ Always present.
 | Find | Find | A Salesforce connection | [Salesforce integration overview](/apps/salesforce/overview) |
 | Task | Add | A Salesforce connection | [Salesforce integration overview](/apps/salesforce/overview) |
 | Activity or Item | Add | A Salesforce connection | [Salesforce integration overview](/apps/salesforce/overview) |
-| Object | Update | A Salesforce connection | [Update](/reference/automations/steps/update) |
+| Update Object | Update | A Salesforce connection | [Update](/reference/automations/steps/update) |
 
 ## Ratecard
 
@@ -88,4 +90,4 @@ Always present.
 
 | Label | Category | Needs | Reference |
 | --- | --- | --- | --- |
-| Row | Add | A Google Sheets connection and a spreadsheet to write to | [Add](/reference/automations/steps/add) |
+| Add Row | Add | A Google Sheets connection and a spreadsheet to write to | [Add](/reference/automations/steps/add) |
