@@ -87,7 +87,6 @@
                     "pages": [
                       "apps/messaging/emails/setting-up-an-email-template-in-hiredata",
                       "apps/messaging/emails/sending-an-email-newsletter-to-your-audience",
-                      "apps/messaging/emails/adding-cc-and-bcc-to-an-email",
                       "apps/messaging/emails/adding-images-to-your-emails",
                       {
                         "group": "Domains & senders",
@@ -298,9 +297,11 @@
                   {
                     "group": "Tasks",
                     "pages": [
-                      "reference/automation-tasks/http-request-task"
+                      "reference/automation-tasks/http-request-task",
+                      "reference/automations/tasks/send-email"
                     ]
-                  }
+                  },
+                  "reference/automations/task-catalogue"
                 ]
               },
               {
@@ -1787,6 +1788,10 @@
     {
       "source": "/automations/http-request-task",
       "destination": "/reference/automation-tasks/http-request-task"
+    },
+    {
+      "source": "/apps/messaging/emails/adding-cc-and-bcc-to-an-email",
+      "destination": "/reference/automations/tasks/send-email"
     }
   ]
 }

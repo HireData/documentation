@@ -1,0 +1,91 @@
+---
+title: "Task catalogue"
+sidebarTitle: "Task catalogue"
+description: "Every task a HireData automation can run, per connected app: its label in the step picker, its category, what it needs, and where it is explained."
+keywords:
+  - "task catalogue"
+  - "automation tasks"
+  - "connected apps"
+  - "carerix tasks"
+  - "otys tasks"
+  - "vincere tasks"
+  - "salesforce tasks"
+  - "whatsapp tasks"
+  - "ratecard tasks"
+  - "google sheets tasks"
+---
+
+A step is a node on the canvas. [Delay](/reference/automations/steps/delay), [Filter](/reference/automations/steps/filter), [Loop](/reference/automations/steps/loop), and [Split](/reference/automations/steps/split) shape the run and touch nothing outside it. A task is a step that acts on an app: it sends, creates, finds, or changes something, and the run records it under **Tasks**. [Add](/reference/automations/steps/add), [Find](/reference/automations/steps/find), [Message](/reference/automations/steps/message), and [Update](/reference/automations/steps/update) are the categories that hold tasks, and [Prompt](/reference/automations/steps/prompt) is a task of its own.
+
+Which tasks you see depends on the apps connected to the workspace, not on your permissions. Recruitee, AFAS, and custom apps supply events only, so an automation can [start from Recruitee](/apps/recruitee/create-a-recruitee-automation-in-hiredata) but cannot write back to it.
+
+The label column shows each task as the picker lists it inside its category. The list drops the category's verb, so **Add Note** reads **Note** under **Add** and **Update Object** reads **Object** under **Update**. When one task fills a category, choosing the category opens that task's drawer at once. The drawer header carries the full name.
+
+## HireData
+
+Always present.
+
+| Label | Category | Needs | Reference |
+| --- | --- | --- | --- |
+| Send Email | Message | An email template. A sender on a verified domain | [Send Email](/reference/automations/tasks/send-email) |
+| HTTP Request | Add, Message | An endpoint that accepts the request | [HTTP Request](/reference/automation-tasks/http-request-task) |
+| Post Webhook | Add, Message | Nothing new. The older form of HTTP Request | [Existing Post Webhook tasks](/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+| Find Email | Find | A person's name and a company domain from the run | [Find](/reference/automations/steps/find) |
+| Search Domain | Find | A company name from the run | [Find](/reference/automations/steps/find) |
+| Ask AI | Prompt | Nothing beyond the run's data | [Prompt](/reference/automations/steps/prompt) |
+
+## WhatsApp
+
+| Label | Category | Needs | Reference |
+| --- | --- | --- | --- |
+| Send Message | Message | A connected WhatsApp number and an approved message template | [How WhatsApp templates work](/apps/messaging/whatsapp/how-whatsapp-templates-work) |
+| Send Survey | Message | A connected WhatsApp number and a form | [How to use forms in WhatsApp conversations](/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) |
+
+## Carerix
+
+| Label | Category | Needs | Reference |
+| --- | --- | --- | --- |
+| Find | Find | A Carerix connection | [Find](/reference/automations/steps/find) |
+| Email | Add | A Carerix connection and a record to attach the email to | [Logging email messages on Carerix](/apps/carerix/logging-email-messages-on-carerix-with-hiredata) |
+| Job Application | Add | A Carerix connection, a candidate, and a vacancy | [Create a Carerix automation](/apps/carerix/create-a-carerix-automation-in-hiredata) |
+| Note | Add | A Carerix connection and a record to attach the note to | [Add an activity or item in Carerix](/apps/carerix/add-an-activity-or-item-in-carerix-with-hiredata) |
+| Task | Add | A Carerix connection | [Schedule a task in Carerix](/apps/carerix/schedule-a-task-in-carerix-with-hiredata) |
+| Object | Update | A Carerix connection | [Update fields in Carerix](/apps/carerix/update-fields-in-carerix-with-hiredata) |
+
+## OTYS
+
+| Label | Category | Needs | Reference |
+| --- | --- | --- | --- |
+| Task | Add | An OTYS connection | [Create an OTYS automation](/apps/otys/create-an-otys-automation-in-hiredata) |
+| Activity or Item | Add | An OTYS connection | [Create an OTYS automation](/apps/otys/create-an-otys-automation-in-hiredata) |
+| Object | Update | An OTYS connection | [Update](/reference/automations/steps/update) |
+
+## Vincere
+
+| Label | Category | Needs | Reference |
+| --- | --- | --- | --- |
+| Task | Add | A Vincere connection | [Schedule a task in Vincere](/apps/vincere/schedule-a-task-in-vincere-with-hiredata) |
+| Activity or Item | Add | A Vincere connection | [Add an activity or item in Vincere](/apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata) |
+| Object | Update | A Vincere connection | [Update fields in Vincere](/apps/vincere/update-fields-in-vincere-with-hiredata) |
+| GDPR | Update | A Vincere connection | [Update](/reference/automations/steps/update) |
+
+## Salesforce
+
+| Label | Category | Needs | Reference |
+| --- | --- | --- | --- |
+| Find | Find | A Salesforce connection | [Salesforce integration overview](/apps/salesforce/overview) |
+| Task | Add | A Salesforce connection | [Salesforce integration overview](/apps/salesforce/overview) |
+| Activity or Item | Add | A Salesforce connection | [Salesforce integration overview](/apps/salesforce/overview) |
+| Object | Update | A Salesforce connection | [Update](/reference/automations/steps/update) |
+
+## Ratecard
+
+| Label | Category | Needs | Reference |
+| --- | --- | --- | --- |
+| Send Survey | Message | An active Ratecard connection and a survey | [Connect with Ratecard](/apps/ratecard/connect-with-ratecard) |
+
+## Google Sheets
+
+| Label | Category | Needs | Reference |
+| --- | --- | --- | --- |
+| Row | Add | A Google Sheets connection and a spreadsheet to write to | [Add](/reference/automations/steps/add) |
