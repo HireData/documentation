@@ -11,7 +11,7 @@ Un bloc HTML dépose dans l'e-mail du balisage que vous écrivez vous-même. Uti
 
 HireData dépose votre balisage dans l'e-mail sans y toucher, à une exception près qu'il est obligé de faire.
 
-L'e-mail est construit avec MJML, qui met à zéro la taille de police de tout ce qu'il n'a pas mis en page lui-même. Du texte collé dans un bloc HTML arriverait invisible. Alors avant l'envoi, HireData parcourt votre balisage et ajoute `font-size: 16px` à tout élément `body`, `table`, `p`, `span` ou `a` qui n'en porte pas déjà une, et enveloppe le texte libre dans un `span` à la même taille.
+L'e-mail est construit avec MJML, qui met à zéro la taille de police de tout ce qu'il n'a pas mis en page lui-même. Du texte collé dans un bloc HTML arriverait invisible. Alors avant l'envoi, HireData parcourt votre balisage et ajoute `font-size: 16px` à tout élément `body`, `table`, `p`, `span` ou `a` qui n'en porte pas déjà une. Il enveloppe aussi le texte libre dans un `span` à la même taille.
 
 Définissez vous-même une taille de police et HireData n'y touche pas. C'est la façon d'obtenir toute taille autre que 16 pixels d'un bloc HTML.
 

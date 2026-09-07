@@ -1,0 +1,61 @@
+---
+title: "Add"
+sidebarTitle: "Add"
+description: "La catégorie Add dans une automatisation HireData : les tâches qui créent un enregistrement dans une app connectée, comme une note Carerix ou une ligne Google Sheets."
+keywords:
+  - "étape add"
+  - "créer un enregistrement"
+  - "ajouter une note"
+  - "ajouter une tâche"
+  - "candidature"
+  - "ligne de feuille de calcul"
+  - "post webhook"
+---
+
+**Add** crée quelque chose de nouveau dans une app connectée. C'est une catégorie, pas une étape à part entière : la choisir ouvre une liste intitulée **Add** avec une entrée par tâche, et **Back** revient au sélecteur.
+
+<Info>
+  Add n'apparaît dans le sélecteur que lorsqu'une app connectée propose une tâche dans cette catégorie. Connectez une app qui crée des enregistrements et ses tâches rejoignent la liste.
+</Info>
+
+## Paramètres
+
+Chaque tâche a son propre panneau. Les paramètres sont les champs de l'enregistrement à créer, nommés comme l'app les nomme, plus la connexion par laquelle le créer quand l'app en a plusieurs.
+
+Les tâches qui remplissent la catégorie dans un espace de travail où Carerix, Google Sheets et HireData sont connectés :
+
+| Tâche | App | Ce qu'elle crée |
+| --- | --- | --- |
+| Email | Carerix | Un enregistrement d'e-mail sur un objet Carerix |
+| Job Application | Carerix | Une candidature liant un candidat à un poste |
+| Note | Carerix | Une note sur un objet Carerix |
+| Task | Carerix | Une tâche Carerix |
+| Row | Google Sheets | Une ligne dans une feuille de calcul |
+| [HTTP Request](/fr/reference/automation-tasks/http-request-task) | HireData | Une requête vers n'importe quelle API externe, qui peut créer un enregistrement dans un système auquel HireData ne se connecte pas |
+| Post Webhook | HireData | L'ancienne forme de HTTP Request. Construisez les nouvelles automatisations avec HTTP Request ; voir [Les tâches Post Webhook existantes](/fr/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+
+### Sur le canevas
+
+Une tâche Add affiche un badge **Task**, le nom de la tâche avec l'app, et les valeurs qu'elle écrira, groupées comme l'app les groupe.
+
+<img src="/images/automations/37-add-card.png" alt="Une carte Add Task to Carerix sur le canevas avec les groupes Characteristics, Content et Related Records, chaque champ rempli depuis une variable" width="380" />
+
+## Ce qu'elle produit
+
+L'enregistrement créé. L'onglet **Overview** de l'étape d'exécution lie vers l'enregistrement dans l'app par son id et répète les valeurs écrites, comme le statut, l'échéance et le contenu d'une tâche. Son onglet **Fields** liste les valeurs de l'exécution que la tâche a lues, chacune avec l'icône de l'étape qui l'a produite et un badge de type. Les étapes suivantes utilisent l'enregistrement créé sous le nom de la tâche. [Suivre une exécution](/fr/reference/automations/follow-a-run) montre une étape Add Task issue d'une exécution réelle.
+
+## Ce qui arrête l'exécution
+
+Une tâche qui ne peut pas créer son enregistrement arrête l'exécution. La page de l'exécution affiche la carte de la tâche en rouge avec la ligne « Cancelled » et l'heure, et la chronologie enregistre le nom de la tâche avec « Cancelled » et la raison renvoyée par l'app. Ouvrez la carte pour lire les champs que la tâche a utilisés.
+
+Une HTTP Request avec **Continue automation on failure** activé fait exception : elle s'affiche comme Failed et l'exécution continue.
+
+Les raisons sont expliquées dans [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons).
+
+## Voir aussi
+
+- [Vue d'ensemble des étapes d'automatisation](/fr/reference/automations/overview) compare Add aux autres catégories.
+- [Find](/fr/reference/automations/steps/find) recherche un enregistrement au lieu d'en créer un.
+- [Update](/fr/reference/automations/steps/update) modifie un enregistrement qui existe déjà.
+- [Tâche HTTP Request](/fr/reference/automation-tasks/http-request-task) documente la seule tâche Add que HireData fournit lui-même.
+- [Catalogue des tâches](/fr/reference/automations/task-catalogue) liste chaque tâche par app connectée.

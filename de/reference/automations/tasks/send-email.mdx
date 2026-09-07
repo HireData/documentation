@@ -1,0 +1,125 @@
+---
+title: "Send-Email-Aufgabe"
+sidebarTitle: "Send Email"
+description: "Die Send-Email-Aufgabe in einer HireData-Automatisierung: der siebenstufige Assistent, der Settings-Tab mit CC, BCC und UTM, was die Aufgabe ausgibt und was einen Versand stoppt."
+keywords:
+  - "Send-Email-Aufgabe"
+  - "Send-Email-Schritt"
+  - "E-Mail-Automatisierung"
+  - "select a template"
+  - "select a brand"
+  - "fester Empfänger"
+  - "fester Absender"
+  - "cc"
+  - "bcc"
+  - "Kopie"
+  - "UTM-Kampagne"
+  - "email delivered"
+  - "invalid sender email"
+---
+
+**Send Email** sendet eine E-Mail, die aus einer Ihrer E-Mail-Vorlagen gebaut wird, an eine Adresse pro Run. Sie sitzt unter **Message** im **Next step**-Drawer, markiert mit dem HireData-Symbol.
+
+Der Drawer ist ein Assistent mit bis zu sieben Schritten und einem Fortschrittsbalken. Zwei Schritte erscheinen nur, wenn sie etwas zu fragen haben. **Select a brand** erscheint, wenn der Workspace Brands hat. **Set up your form** erscheint, wenn die Vorlage ein Formular enthält. Wenn Sie eine gespeicherte Aufgabe erneut öffnen, öffnet sich der Assistent auf dem ersten Schritt, der noch Eingaben braucht, was bei einer fertigen Aufgabe **Preview your email** ist.
+
+<Steps>
+  <Step title="Select a template">
+    Ein Suchfeld und eine Karte pro E-Mail-Vorlage, jede mit einer Live-Vorschau. Ein Klick auf eine Karte öffnet die Vorlage in einem Vorschau-Dialog mit ihrem Betreff, der gerenderten E-Mail, **Edit Email**, einem **Send test mail**-Button, einem Umschalter, der Variablenwerte zeigt oder verbirgt, und **Use template**. Eine Vorlage mit einer Brand füllt die Brand für Sie aus.
+  </Step>
+  <Step title="Select a brand">
+    **Erscheint, wenn** der Workspace mindestens eine Brand hat. Ein **Brands**-Suchfeld und eine Karte pro Brand mit ihrem Farbstreifen. Klicken Sie auf eine Karte, um die Vorlage in dieser Brand gerendert zu sehen, dann **Use brand**.
+  </Step>
+  <Step title="Select a recipient">
+    Presets für die Personen, die das Event mitbringt, etwa **Response (Respondent)**. Die Wahl eines Presets bringt den Assistenten weiter. Schalten Sie **Use fixed recipient** ein, um jeden Run an dieselbe Adresse zu senden: Wählen Sie einen **User**, oder lassen Sie es auf None und tippen Sie einen **Name** und eine **Email**, dann **Continue**.
+  </Step>
+  <Step title="Select a sender">
+    Dieselbe Wahl für den Absender, mit **Use fixed sender**. In einer geplanten Automatisierung ist der Absender immer fest, und der Schalter wird nicht angezeigt.
+  </Step>
+  <Step title="Set up your template">
+    **Subject**, aus der Vorlage vorbefüllt und offen für Variablen, dann eine Eingabe pro [Variable](/de/reference/email-builder/variables), die die Vorlage definiert. Eine Datums-, E-Mail- oder Telefonvariable bietet die passenden Felder aus dem Run in einer Auswahl an; eine Textvariable nimmt getippten Text oder eine Variable. **Objects** erscheint, wenn die Vorlage oder ihr Formular aus einer Datenquelle liest. **Continue** geht weiter. Sie erreichen diesen Schritt nach der Wahl eines Empfänger- oder Absender-Presets. **Continue** nach einem festen Absender führt direkt zur Vorschau, und dieselben Felder warten unter **Settings** > **Template**.
+  </Step>
+  <Step title="Set up your form">
+    **Erscheint, wenn** die Vorlage ein Formular enthält. **Prefill Questions** listet die Fragen des Formulars, damit ein Run sie im Voraus beantworten kann. **Additional Fields** listet die benutzerdefinierten Felder des Formulars. Ein Formular ohne Fragen oder ohne benutzerdefinierte Felder sagt dies anstelle der Liste.
+  </Step>
+  <Step title="Preview your email">
+    Zwei Tabs. **Summary** zeigt die gerenderte E-Mail mit **Subject**, **Recipient**, **Sender** und **Form**; ein Klick auf die E-Mail öffnet den Vorschau-Dialog. **Settings** listet jede Einstellung der Aufgabe, unten beschrieben.
+  </Step>
+</Steps>
+
+<Tip>
+  Ab **Set up your template** sitzt ein **Skip**-Button neben dem Schritttitel. Er geht zum nächsten Schritt, ohne etwas zu ändern.
+</Tip>
+
+<img src="/images/automations/19-send-email-summary.png" alt="Schritt 7, Preview your email, im Summary-Tab: die gerenderte E-Mail über Zeilen für Subject, Recipient, Sender und Form" width="384" />
+
+## Einstellungen
+
+Der **Settings**-Tab des letzten Schritts enthält einen Abschnitt pro Einstellung. Öffnen Sie einen Abschnitt, um ihn zu ändern, ohne den Assistenten erneut zu durchlaufen.
+
+- **Template**. Der Betreff und die Variablen der Vorlage, wie in **Set up your template**.
+- **Form**. Die vorbefüllten Fragen und zusätzlichen Felder, wie in **Set up your form**.
+- **Recipient**. **Use fixed recipient** mit einer **User**-Auswahl, oder **Name** und **Email**, wenn kein User gewählt ist. Mit ausgeschaltetem Schalter benennt **Preset** die Person aus dem Event, und **Label** ist der Name, den die Karte für sie zeigt, gefolgt vom Feld-Mapping, das entscheidet, welche Felder der Person Name und Adresse liefern.
+- **Sender**. Dieselben Bedienelemente für den Absender. Die Adresse muss zu einer in HireData verifizierten Domain gehören. Wenn nicht, sendet HireData vom Standardabsender der Brand-Domain oder der Workspace-Domain, falls einer gesetzt ist, und stoppt den Run andernfalls mit "Invalid sender email."
+- **CC** und **BCC**. Klicken Sie auf **+**, um einen Kopie-Empfänger hinzuzufügen. Jeder Eintrag hat einen **Name** und eine **Address**. Beide nehmen ein Feld aus dem Run oder getippten Text: Tippen Sie ihn und wählen Sie die **Create**-Option, die unter dem Feld erscheint. Füllen Sie beide vor dem Speichern. **–** entfernt einen Eintrag. CC-Adressen sind für alle in der E-Mail sichtbar; BCC-Adressen nicht. Ein Testversand lässt CC und BCC weg.
+- **UTM Campaign**. **Campaign Name**, **Campaign Source**, **Campaign Medium**, **Campaign Term** und **Campaign Content**, angehängt an jeden Link in der E-Mail. Die Platzhalter zeigen die eigenen UTM-Werte der Vorlage. Lassen Sie ein Feld leer, um den Wert der Vorlage zu behalten.
+- **Objects**. Wird gezeigt, wenn die Vorlage oder ihr Formular aus einer Datenquelle liest. Wählt den Datensatz, auf den sich jedes Object in diesem Run bezieht, per **External ID**, per **Fields** oder durch Wahl eines **Record**. Ein mit einem Sternchen markiertes Object ist erforderlich: Lassen Sie es leer, stoppt jeder Run mit "Required data reference missing."
+
+### Auf der Arbeitsfläche
+
+Die Karte zeigt ein **Task**-Badge, "Send Email", die gerenderte E-Mail und Zeilen für **Subject**, **Recipient**, **Sender** und **Form**.
+
+<img src="/images/automations/28-send-email-card.png" alt="Eine Send-Email-Karte auf der Arbeitsfläche mit einer gerenderten E-Mail-Vorschau und Zeilen für Subject, Recipient, Sender und Form" width="380" />
+
+## Was sie ausgibt
+
+Die gesendete E-Mail. Auf der Run-Seite zeigt die Karte der Aufgabe die E-Mail, die hinausging; klicken Sie darauf, um die Nachricht zu lesen, wie der Empfänger sie sah, mit den Links **Edit Form** und **Edit Email** zu ihren Quellen. Ein Klick auf die Karte selbst öffnet den Run-Schritt, überschrieben mit **Send Email** und einem **Completed**-Badge. Sein **Overview** listet **To** und **From** mit je Name und Adresse, den **Subject** und den Wert jeder Vorlagenvariable. **Fields** listet jeden Wert, den die Aufgabe aus dem Run gelesen hat.
+
+<img src="/images/automations/40-send-email-run-drawer.png" alt="Der Send-Email-Run-Schritt-Drawer mit den Badges Run Finished und Completed, geöffnetem Overview-Tab und Karten für To, From und Subject" width="384" />
+
+Spätere Schritte können den Status der E-Mail lesen. Ein [Filter](/de/reference/automations/steps/filter) nach einem [Delay](/de/reference/automations/steps/delay) kann darauf verzweigen, ob die E-Mail geöffnet wurde.
+
+| Variable | Enthält |
+| --- | --- |
+| `email.status` | Den letzten Status: Sent, Delivered, Bounced, Opened oder Clicked |
+| `email.sent`, `email.delivered`, `email.opened`, `email.clicked`, `email.bounced` | Yes oder No für jedes Ereignis, das die E-Mail erreicht hat |
+
+Eine zugestellte E-Mail schließt den Schritt mit der Meldung "Email delivered." ab.
+
+<img src="/images/automations/41-send-email-delivered-timeline.png" alt="Eine Run-Timeline: Run Scheduled, Run Started, Run Moved, Send Email: Completed mit der Meldung Email delivered., Run Continued und Send Email: Run Finished" width="384" />
+
+### Zustellzahlen
+
+Die eigene Seite der Automatisierung, die sich aus der Automatisierungsliste öffnet, bevor Sie in den Bearbeitungsmodus klicken, ergänzt die Zahlen, die der Run-Seite fehlen. Sie brauchen ein paar Sekunden zum Laden und verschwinden, sobald Sie den Bearbeitungsmodus betreten.
+
+- **Stats** auf der Send-Email-Karte: **Sent**, **Delivered**, **Bounced**, **Opened** und **Clicked**, jeweils mit einer Zahl und einem Prozentsatz der Gesendeten.
+- **Unter der Karte** eine Zeile pro Ergebnis mit einem Link zu den dahinterliegenden Aufgaben, etwa "Sent: 1x email" und "Failed to send: 2x email".
+- **Mail Stats** im linken Panel: dieselben fünf Zahlen, aufsummiert über jeden Send-Email-Schritt in der Automatisierung. **Run Stats** darüber zählt Runs nach Zustand.
+
+<img src="/images/automations/42-send-email-card-stats.png" alt="Die Send-Email-Karte auf der Automatisierungsseite mit einem Stats-Block aus Sent 1, Delivered 1 (100.0%), Bounced 0, Opened 1 (100.0%), Clicked 0 und darunter den Zeilen Failed to send: 2x email und Sent: 1x email" width="384" />
+
+<img src="/images/automations/43-mail-stats.png" alt="Das Mail-Stats-Panel: Sent 1, Delivered 1 (100.0%), Bounced 0 (0.0%), Opened 1 (100.0%), Clicked 0 (0.0%)" width="240" />
+
+## Was den Run stoppt
+
+Ein Versand, den HireData verweigert. Die Aufgabenkarte wird rot mit der Zeile "Cancelled" und der Zeit, und die Timeline verzeichnet "Send Email: Cancelled" mit der Meldung. In der Runs-Liste zeigt die **Step**-Spalte "HireData: Send Email".
+
+<img src="/images/automations/35-message-cancelled-timeline.png" alt="Eine Run-Timeline mit Send Email: Cancelled, der Meldung Invalid config. und Send Email: Run Cancelled" width="384" />
+
+| Meldung | Bedeutung |
+| --- | --- |
+| `Invalid config.` | Die Aufgabe hat keinen Empfänger oder keinen Absender. Öffnen Sie sie und prüfen Sie **Recipient** und **Sender** unter **Settings** |
+| `Invalid sender email.` | Die Domain des Absenders ist nicht verifiziert, und kein Standardabsender konnte einspringen |
+| `Send Limits Exceeded` | Der Empfänger hat ein Account-Limit unter **Settings** > **Safety Limits** erreicht |
+| `Send Limits Per Automation Exceeded` | Der Empfänger hat ein in den **Settings** dieser Automatisierung gesetztes Limit erreicht |
+| `Email unsubscribed.` | Der Empfänger steht auf der Liste unter **Settings** > **Unsubscribes**. Eine Adresse, die als unbekannt gebounct ist, landet dort ebenfalls |
+| `Required data reference missing.` | Die Vorlage braucht ein Object unter **Settings** > **Objects**, und keines wurde gewählt. Der Schritt zeigt Failed statt Cancelled |
+
+Eine Empfängeradresse, die keine gültige E-Mail-Adresse ist, eine Adresse auf Ihrer Blockliste oder eine Adresse, die die E-Mail-Validierung als ungültig markiert hat, stoppt den Run ebenfalls, jeweils mit einer eigenen Meldung in der Timeline. Die Gründe werden in [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons) erklärt.
+
+## Verwandt
+
+- [Message](/de/reference/automations/steps/message) listet die anderen Aufgaben, die etwas senden.
+- [Der E-Mail-Builder im Überblick](/de/reference/email-builder/overview) dokumentiert den Builder, der die Vorlage erstellt, die diese Aufgabe sendet.
+- [Automation Safety Limits](/de/settings/automation-safety-limits) erklärt die beiden Sendelimit-Meldungen.
+- [Eine Domain in HireData verifizieren, um E-Mails zu senden](/de/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails) behebt "Invalid sender email."
+- [Aufgabenkatalog](/de/reference/automations/task-catalogue) listet jede Aufgabe pro verbundener App.

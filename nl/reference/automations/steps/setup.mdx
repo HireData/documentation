@@ -1,0 +1,65 @@
+---
+title: "Setup"
+sidebarTitle: "Setup"
+description: "De Start-node van een HireData-automatisering: de app, het object, de trigger, het formulier en de delay die bepalen welk event een run begint."
+keywords:
+  - "start-node"
+  - "setup-drawer"
+  - "trigger"
+  - "trigger-app"
+  - "trigger-object"
+  - "formuliertrigger"
+  - "response completed"
+  - "startdelay"
+---
+
+Elke automatisering begint met de **Start**-node. Erop klikken opent een drawer met de kop **Setup**, waar je het event benoemt dat een run begint. De drawer is hetzelfde of de automatisering nu vanuit een template of vanaf nul is gestart. Een event dat overeenkomt met de instellingen hier start één run; een event dat niet overeenkomt start niets.
+
+Voor een nieuwe automatisering loopt de drawer met je door de app, het object en de trigger, in die volgorde. Na de eerste keer opslaan toont deze een samenvatting met een **Edit**-link naast elke keuze, en opent de **Next step**-picker zodat je de eerste stap kunt toevoegen.
+
+## Instellingen
+
+- **App**. De gekoppelde app waarvan de events de automatisering starten. Het raster toont de apps in je workspace die triggers aanbieden, dus een gekoppelde app kan hier ontbreken wanneer deze alleen taken aanbiedt. **HireData** is altijd aanwezig.
+- **Connection**. Het account waarlangs het event binnenkomt. Wordt getoond voor apps die via een account koppelen, zoals Carerix, en weggelaten voor HireData.
+- **Object**. Waar het event over gaat. Voor HireData: **Conversation**, **Email**, **Person** of **Response**.
+- **Trigger**. De wijziging aan het object die een run start. Voor een Response: **Completed**, **Created**, **Created or Updated** of **Updated**. De keuzes staan onder de kop **When something happens**.
+- **Config**. Extra instellingen die de trigger nodig heeft. Voor een Response-trigger bevat deze **Form** met een **All**-switch. Met **All** aan start een reactie op elk formulier een run. Zet hem uit en er verschijnt een **Select a form**-vak. Kies een formulier wanneer je de vragen ervan als variabelen in latere stappen wilt gebruiken; met **All** aan worden de vragen niet aangeboden.
+- **Delay**. Aanwezig wanneer de start wacht op een datum op het record, zoals een geïnstalleerd template doet met "4 weeks after Candidate: Last Contact Date". De rij toont de offset, zoals **4 weeks after**, met een **Edit**-link. Dit is de startdelay. Het is geen [Delay-stap](/nl/reference/automations/steps/delay).
+- **Filter**. Condities waaraan het event moet voldoen voordat een run start, voor de triggers die ze aanbieden. Een HireData Response-trigger heeft er geen. De runpagina vermeldt het startfilter in het eventpaneel naast App, Object en Trigger. Het is geen [Filter-stap](/nl/reference/automations/steps/filter).
+
+<Warning>
+  De app kan niet meer worden gewijzigd zodra de automatisering bestaat. Maak een nieuwe automatisering om een automatisering naar een andere app te verplaatsen.
+</Warning>
+
+Opslaan schrijft de hele automatisering in één keer weg. Een nieuwe automatisering heet "Blank Automation" totdat je hem hernoemt, en de naam wordt pas bewaard nadat Setup één keer is opgeslagen.
+
+<img src="/images/automations/29-setup-drawer.png" alt="De Setup-drawer na het opslaan: App HireData, Object Response met een Edit-knop, Trigger Completed met een Edit-knop, en een Config-kaart met Form, een All-switch die uit staat, en het geselecteerde formulier" width="384" />
+
+### Op het canvas
+
+De Start-node draagt een **Start**-badge, het object en de trigger als titel, en de Config-rijen eronder, zoals het formulier waarnaar een Response-trigger luistert.
+
+<img src="/images/automations/22-setup-card.png" alt="De Start-node op het canvas: een Start-badge, de titel Response: Completed, en een Form-rij met Docs test: builder reference examples" width="378" />
+
+## Wat het oplevert
+
+Het event. De velden ervan zijn als variabelen beschikbaar voor elke stap die volgt: de velden van het object, en de antwoorden van het geselecteerde formulier wanneer de trigger een Response is.
+
+Op de runpagina draagt de Start-node de regel "Run Started" met de tijd. Erop klikken opent het eventpaneel, met de appnaam en "Event" als kop, met de tabbladen **Overview**, **Fields** en **Related**. Overview vermeldt **App**, **Connection**, **Object**, **Trigger** en **Filter**, en daarna de **Timeline** van de run.
+
+## Wat de run stopt
+
+Niets aan de Start-node stopt een run die is begonnen. Wat Setup bepaalt, is of een run überhaupt begint.
+
+- Een event dat niet overeenkomt met de app, het object, de trigger of het formulier start geen run.
+- Een event dat niet door het startfilter komt start geen run.
+- Een gepauzeerde automatisering start geen run. Het testen van een gepauzeerde automatisering geeft "No run started for automation." terug.
+
+Als een run die je verwachtte ontbreekt, doorloop dan [Waarom liep mijn automatisering niet?](/nl/knowledge-base/why-didnt-my-automation-run).
+
+## Gerelateerd
+
+- [Overzicht van automatiseringsstappen](/nl/reference/automations/overview) vermeldt elke stap die je na de Start-node kunt toevoegen.
+- [Filter](/nl/reference/automations/steps/filter) stopt een run die al is gestart.
+- [Delay](/nl/reference/automations/steps/delay) pauzeert een run tussen stappen.
+- [Hoe je een automatisering test](/nl/automations/how-to-test-an-automation) stuurt één record door de start zonder op een echt event te wachten.

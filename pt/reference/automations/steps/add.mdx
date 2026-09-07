@@ -1,0 +1,61 @@
+---
+title: "Add"
+sidebarTitle: "Add"
+description: "A categoria Add numa automação da HireData: tarefas que criam um registo numa app ligada, como uma nota no Carerix ou uma linha no Google Sheets."
+keywords:
+  - "passo add"
+  - "criar registo"
+  - "adicionar nota"
+  - "adicionar tarefa"
+  - "candidatura"
+  - "linha de folha de cálculo"
+  - "post webhook"
+---
+
+**Add** cria algo novo numa app ligada. É uma categoria, não um passo por si só: escolhê-la abre uma lista com o cabeçalho **Add**, com uma entrada por tarefa, e **Back** regressa ao seletor.
+
+<Info>
+  Add só aparece no seletor quando uma app ligada oferece uma tarefa nesta categoria. Ligue uma app que crie registos e as suas tarefas juntam-se à lista.
+</Info>
+
+## Definições
+
+Cada tarefa tem o seu próprio painel. As definições são os campos do registo a criar, com os nomes que a app lhes dá, mais a ligação através da qual o criar quando a app tem mais do que uma.
+
+As tarefas que preenchem a categoria num workspace com Carerix, Google Sheets e HireData ligados:
+
+| Tarefa | App | O que cria |
+| --- | --- | --- |
+| Email | Carerix | Um registo de email num objeto do Carerix |
+| Job Application | Carerix | Uma candidatura que liga um candidato a uma vaga |
+| Note | Carerix | Uma nota num objeto do Carerix |
+| Task | Carerix | Uma tarefa do Carerix |
+| Row | Google Sheets | Uma linha numa folha de cálculo |
+| [HTTP Request](/pt/reference/automation-tasks/http-request-task) | HireData | Um pedido a qualquer API externa, que pode criar um registo num sistema ao qual a HireData não se liga |
+| Post Webhook | HireData | A forma mais antiga do HTTP Request. Construa as automações novas com o HTTP Request; veja [Tarefas Post Webhook existentes](/pt/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+
+### No canvas
+
+Uma tarefa Add mostra um badge **Task**, o nome da tarefa com a app e os valores que vai escrever, agrupados como a app os agrupa.
+
+<img src="/images/automations/37-add-card.png" alt="Um cartão Add Task to Carerix no canvas com os grupos Characteristics, Content e Related Records, cada campo preenchido a partir de uma variável" width="380" />
+
+## O que produz
+
+O registo criado. O **Overview** do passo do run liga ao registo na app pelo seu id e repete os valores escritos, como o estado, a hora limite e o conteúdo de uma tarefa. O seu separador **Fields** lista os valores do run que a tarefa leu, cada um com o ícone do passo que o produziu e um badge de tipo. Os passos posteriores usam o registo criado sob o nome da tarefa. [Acompanhar um run](/pt/reference/automations/follow-a-run) mostra um passo Add Task de um run real.
+
+## O que para o run
+
+Uma tarefa que não consegue criar o seu registo para o run. A página do run mostra o cartão da tarefa a vermelho com a linha "Cancelled" e a hora, e a timeline regista o nome da tarefa com "Cancelled" e o motivo que a app devolveu. Abra o cartão para ler os campos que a tarefa usou.
+
+Um HTTP Request com **Continue automation on failure** ligado é a exceção: aparece como Failed e o run continua.
+
+Os motivos estão explicados em [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons).
+
+## Relacionados
+
+- A [visão geral dos passos de automação](/pt/reference/automations/overview) compara o Add com as outras categorias.
+- [Find](/pt/reference/automations/steps/find) procura um registo em vez de o criar.
+- [Update](/pt/reference/automations/steps/update) altera um registo que já existe.
+- A [tarefa HTTP Request](/pt/reference/automation-tasks/http-request-task) documenta a única tarefa Add que a própria HireData fornece.
+- O [catálogo de tarefas](/pt/reference/automations/task-catalogue) lista todas as tarefas por app ligada.

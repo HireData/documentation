@@ -1,0 +1,61 @@
+---
+title: "Add"
+sidebarTitle: "Add"
+description: "The Add category in a HireData automation: tasks that create a record in a connected app, such as a Carerix note or a Google Sheets row."
+keywords:
+  - "add step"
+  - "create record"
+  - "add note"
+  - "add task"
+  - "job application"
+  - "spreadsheet row"
+  - "post webhook"
+---
+
+**Add** creates something new in a connected app. It is a category, not a step of its own: choosing it opens a list headed **Add** with one entry per task, and **Back** returns to the picker.
+
+<Info>
+  Add appears in the picker only when a connected app offers a task in this category. Connect an app that creates records and its tasks join the list.
+</Info>
+
+## Settings
+
+Each task has its own drawer. The settings are the fields of the record being created, named as the app names them, plus the connection to create it through when the app has more than one.
+
+The tasks that fill the category in a workspace with Carerix, Google Sheets, and HireData connected:
+
+| Task | App | What it creates |
+| --- | --- | --- |
+| Email | Carerix | An email record on a Carerix object |
+| Job Application | Carerix | A job application linking a candidate to a vacancy |
+| Note | Carerix | A note on a Carerix object |
+| Task | Carerix | A Carerix task |
+| Row | Google Sheets | A row in a spreadsheet |
+| [HTTP Request](/reference/automation-tasks/http-request-task) | HireData | A request to any external API, which can create a record in a system HireData does not connect to |
+| Post Webhook | HireData | The older form of HTTP Request. Build new automations with HTTP Request; see [Existing Post Webhook tasks](/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+
+### On the canvas
+
+An Add task shows a **Task** badge, the task name with the app, and the values it will write, grouped as the app groups them.
+
+<img src="/images/automations/37-add-card.png" alt="An Add Task to Carerix card on the canvas with Characteristics, Content, and Related Records groups, each field filled from a variable" width="380" />
+
+## What it outputs
+
+The created record. The run step's **Overview** links to the record in the app by its id and repeats the values written, such as a task's status, due time, and content. Its **Fields** tab lists the run values the task read, each with the icon of the step that produced it and a type badge. Later steps use the created record under the task's name. [Follow a run](/reference/automations/follow-a-run) shows an Add Task step from a real run.
+
+## What stops the run
+
+A task that cannot create its record stops the run. The run page shows the task card in red with the line "Cancelled" and the time, and the timeline records the task name with "Cancelled" and the reason the app returned. Open the card to read the fields the task used.
+
+An HTTP Request with **Continue automation on failure** switched on is the exception: it shows as Failed and the run carries on.
+
+Reasons are explained in [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
+
+## Related
+
+- [Automation steps overview](/reference/automations/overview) compares Add with the other categories.
+- [Find](/reference/automations/steps/find) looks a record up instead of creating one.
+- [Update](/reference/automations/steps/update) changes a record that already exists.
+- [HTTP Request task](/reference/automation-tasks/http-request-task) documents the one Add task HireData itself provides.
+- [Task catalogue](/reference/automations/task-catalogue) lists every task per connected app.

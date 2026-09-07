@@ -1,0 +1,61 @@
+---
+title: "Add"
+sidebarTitle: "Add"
+description: "De Add-categorie in een HireData-automatisering: taken die een record aanmaken in een gekoppelde app, zoals een Carerix-notitie of een Google Sheets-rij."
+keywords:
+  - "add-stap"
+  - "record aanmaken"
+  - "notitie toevoegen"
+  - "taak toevoegen"
+  - "sollicitatie"
+  - "spreadsheetrij"
+  - "post webhook"
+---
+
+**Add** maakt iets nieuws aan in een gekoppelde app. Het is een categorie, geen stap op zichzelf: erop klikken opent een lijst met de kop **Add** met één entry per taak, en **Back** keert terug naar de picker.
+
+<Info>
+  Add verschijnt alleen in de picker wanneer een gekoppelde app een taak in deze categorie aanbiedt. Koppel een app die records aanmaakt en de taken ervan komen in de lijst.
+</Info>
+
+## Instellingen
+
+Elke taak heeft een eigen drawer. De instellingen zijn de velden van het record dat wordt aangemaakt, genoemd zoals de app ze noemt, plus de koppeling waarlangs het wordt aangemaakt wanneer de app er meer dan één heeft.
+
+De taken die de categorie vullen in een workspace met Carerix, Google Sheets en HireData gekoppeld:
+
+| Taak | App | Wat deze aanmaakt |
+| --- | --- | --- |
+| Email | Carerix | Een e-mailrecord op een Carerix-object |
+| Job Application | Carerix | Een sollicitatie die een kandidaat aan een vacature koppelt |
+| Note | Carerix | Een notitie op een Carerix-object |
+| Task | Carerix | Een Carerix-taak |
+| Row | Google Sheets | Een rij in een spreadsheet |
+| [HTTP Request](/nl/reference/automation-tasks/http-request-task) | HireData | Een request naar elke externe API, dat een record kan aanmaken in een systeem waar HireData niet mee koppelt |
+| Post Webhook | HireData | De oudere vorm van HTTP Request. Bouw nieuwe automatiseringen met HTTP Request; zie [Bestaande Post Webhook-taken](/nl/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+
+### Op het canvas
+
+Een Add-taak toont een **Task**-badge, de taaknaam met de app, en de waarden die deze gaat schrijven, gegroepeerd zoals de app ze groepeert.
+
+<img src="/images/automations/37-add-card.png" alt="Een Add Task to Carerix-kaart op het canvas met de groepen Characteristics, Content en Related Records, elk veld gevuld vanuit een variabele" width="380" />
+
+## Wat het oplevert
+
+Het aangemaakte record. Het **Overview** van de run step linkt naar het record in de app via het id ervan en herhaalt de geschreven waarden, zoals de status, de vervaltijd en de inhoud van een taak. Het **Fields**-tabblad ervan vermeldt de runwaarden die de taak las, elk met het icoon van de stap die de waarde produceerde en een typebadge. Latere stappen gebruiken het aangemaakte record onder de naam van de taak. [Een run volgen](/nl/reference/automations/follow-a-run) toont een Add Task-stap uit een echte run.
+
+## Wat de run stopt
+
+Een taak die zijn record niet kan aanmaken stopt de run. De runpagina toont de taakkaart in rood met de regel "Cancelled" en de tijd, en de timeline registreert de taaknaam met "Cancelled" en de reden die de app teruggaf. Open de kaart om de velden te lezen die de taak gebruikte.
+
+Een HTTP Request met **Continue automation on failure** aangezet is de uitzondering: die toont als Failed en de run gaat door.
+
+Redenen worden uitgelegd in [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons).
+
+## Gerelateerd
+
+- [Overzicht van automatiseringsstappen](/nl/reference/automations/overview) vergelijkt Add met de andere categorieën.
+- [Find](/nl/reference/automations/steps/find) zoekt een record op in plaats van er een aan te maken.
+- [Update](/nl/reference/automations/steps/update) wijzigt een record dat al bestaat.
+- [HTTP Request-taak](/nl/reference/automation-tasks/http-request-task) documenteert de ene Add-taak die HireData zelf levert.
+- [Taakcatalogus](/nl/reference/automations/task-catalogue) vermeldt elke taak per gekoppelde app.

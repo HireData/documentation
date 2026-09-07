@@ -11,7 +11,7 @@ Een HTML-block zet markup die je zelf schrijft in de e-mail. Gebruik het voor he
 
 HireData zet je markup onaangeroerd in de e-mail, met één uitzondering die het moet maken.
 
-De e-mail is gebouwd met MJML, dat de tekstgrootte van alles wat het niet zelf heeft opgemaakt op nul zet. Tekst die in een HTML-block is geplakt zou onzichtbaar aankomen. Dus voor het verzenden loopt HireData door je markup en voegt `font-size: 16px` toe aan elk `body`-, `table`-, `p`-, `span`- of `a`-element dat er nog geen draagt, en wikkelt losse tekst in een `span` op dezelfde grootte.
+De e-mail is gebouwd met MJML, dat de tekstgrootte van alles wat het niet zelf heeft opgemaakt op nul zet. Tekst die in een HTML-block is geplakt zou onzichtbaar aankomen. Dus voor het verzenden loopt HireData door je markup en voegt `font-size: 16px` toe aan elk `body`-, `table`-, `p`-, `span`- of `a`-element dat er nog geen draagt. Ook wikkelt het losse tekst in een `span` op dezelfde grootte.
 
 Stel zelf een tekstgrootte in en HireData laat hem met rust. Dat is de manier om een andere grootte dan 16 pixels uit een HTML-block te krijgen.
 

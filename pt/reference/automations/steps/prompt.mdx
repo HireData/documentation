@@ -1,0 +1,91 @@
+---
+title: "Prompt"
+sidebarTitle: "Prompt"
+description: "O passo Prompt numa automação da HireData, o painel Ask AI: intenções, inputs, campos de output, idioma, definições do modelo e o que devolve."
+keywords:
+  - "passo prompt"
+  - "ask ai"
+  - "tarefa de ia"
+  - "extrair"
+  - "resumir"
+  - "classificar"
+  - "campo de output"
+  - "reference as"
+  - "speed vs quality"
+---
+
+**Prompt** pede a um modelo de IA que faça algo com os dados do run e devolve a resposta como campos para os passos seguintes. O painel tem o cabeçalho **Ask AI**. **Preview**, no seu rodapé, corre o prompt contra dados de exemplo antes de gravar.
+
+O painel abre na pergunta **What should the AI do?** com oito intenções. **Custom** escreve o prompt do zero; as outras sete enquadram o prompt para um tipo de trabalho.
+
+<img src="/images/automations/39-prompt-intents.png" alt="O painel What should the AI do? a listar Custom, Extract, Summarize, Classify, Write, Translate, Analyze e Evaluate, cada uma com uma descrição de uma linha" width="384" />
+
+<Tip>
+  Escolher uma intenção diferente de **Custom** cria os campos de output que essa intenção normalmente devolve, por isso parte de campos que já existem.
+</Tip>
+
+## Definições
+
+- **What should the AI do?** A intenção, como um seletor depois de escolhida.
+- **What will you provide to the AI?** Dois separadores. **Input** contém a caixa do prompt; escreva a sua instrução e insira variáveis nela. **Variables** lista campos a passar a par do prompt sem os escrever no texto.
+- **Hints for the AI (optional)**. Contexto extra, tom ou restrições, mantidos à parte da instrução.
+- **What should the AI return?** Os campos de output. **Use an existing field** mapeia a resposta num campo que a automação já conhece. **Data source** devolve um valor de uma fonte de dados. **Create custom** define um campo novo. Um campo gravado mostra o seu nome e descrição com botões para o editar ou remover.
+- **Language**. O idioma da resposta, por defeito **None**, que segue o idioma do input.
+- **Advanced**. Recolhido por defeito.
+  - **Step name**. Substitui o nome automático apenas no cabeçalho do painel. O cartão no canvas e os nomes das variáveis mantêm o nome automático. Todos os painéis de tarefa oferecem a mesma renomeação quando passa o cursor sobre o nome no cabeçalho.
+  - **Speed vs quality**. **Fast** (rápido, custo mais baixo), **Balanced** ou **Quality** (melhores resultados, mais lento).
+  - **Creativity**. **Precise** (consistente, factual), **Balanced** ou **Creative** (mais variado).
+  - **Answer length**. **Short**, **Medium**, **Long** ou **Auto**.
+
+### Novo campo de output
+
+**Create custom** abre uma caixa de diálogo em dois passos.
+
+- **Choose Field Type**. Uma caixa **Search types...** e os tipos em grupos. Basics: Text, Number, Yes / No, List, ID. Date & Time: Date, Time, Datetime. People & Places: Email, Phone, Address, Country, Language, Locale, Timezone. Web & Media: URL, Domain, IP Address, Image, File, Color, Font. Advanced: Whole number, Decimal.
+- **Configure your field**. **Name** é a etiqueta que vê. **Reference as** é o nome da variável, por defeito `text` para um campo Text. **What is it for? (optional)** diz ao modelo o que pôr no campo. **Save & New** grava e começa outro; **Done** fecha.
+
+<img src="/images/automations/17-prompt-drawer.png" alt="O painel Ask AI com Custom escolhido, um prompt no separador Input, uma caixa Hints vazia, um campo de output chamado Greeting, Language definido como None e a secção Advanced aberta em Fast, Precise e Auto" width="384" />
+
+### No canvas
+
+O cartão mostra um badge **Task**, "Ask AI" seguido da intenção, o texto do prompt, um chip por campo de output e os três valores de Advanced.
+
+<img src="/images/automations/27-prompt-card.png" alt="Um cartão Ask AI: Custom no canvas com o texto do prompt, um chip de output Greeting e os chips Fast, Precise e Auto" width="380" />
+
+## O que produz
+
+Uma variável por campo de output, com o nome do seu valor **Reference as**, sob o nome da tarefa. A par delas, a tarefa regista se o modelo respondeu, o seu raciocínio e uma mensagem de erro quando não respondeu.
+
+| Variável | Contém |
+| --- | --- |
+| `output.<reference>` | O valor desse campo de output, como `output.greeting` |
+| `is_successful` | Se o modelo devolveu uma resposta que coube nos campos |
+| `reasoning` | O relato do modelo de como chegou à resposta |
+| `error_message` | Porque não conseguiu responder, vazio em caso de sucesso |
+
+O separador **Fields** do passo do run lista os valores passados e os valores devolvidos.
+
+## O que para o run
+
+Uma resposta que o modelo não conseguiu dar. O cartão da tarefa mostra Cancelled com o motivo na timeline, e os passos seguintes não mostram linha de estado. Prompts que correm mas devolvem um valor inesperado não param o run; verifique o output num [Filter](/pt/reference/automations/steps/filter) quando o passo seguinte depende dele.
+
+Veja [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons).
+
+## Padrões
+
+- **Classificar e depois Split.** Um prompt **Classify** com um output List e depois um [Split](/pt/reference/automations/steps/split) cujos ramos filtram pelo valor da lista.
+- **Extrair para um registo.** Um prompt **Extract** com um campo de output por valor e depois uma tarefa [Update](/pt/reference/automations/steps/update) que escreve os campos no registo.
+- **Uma frase, não um email inteiro.** Para uma linha personalizada dentro de um template de email, uma [variável de IA](/pt/variables/ai-variables) no template faz o trabalho sem um passo. Use o passo Prompt quando a resposta tem de ser guardada ou tem de orientar o run.
+
+## Erros comuns
+
+- **Um prompt sem variáveis.** Texto sozinho não dá ao modelo nada sobre este run. Insira os campos de que ele precisa na caixa **Input** ou adicione-os no separador **Variables**.
+- **Dois campos com o mesmo Reference as.** O segundo sobrescreve o primeiro. Dê a cada campo de output a sua própria referência.
+- **Esperar que uma renomeação mude o cartão.** **Step name**, e a renomeação a que chega ao passar o cursor sobre o nome de uma tarefa no cabeçalho do seu painel, mudam apenas o cabeçalho do painel.
+- **Deixar Language em None para um output de idioma fixo.** A resposta segue o idioma do input. Defina o idioma quando o registo ou o template espera um.
+
+## Relacionados
+
+- As [variáveis de IA](/pt/variables/ai-variables) geram um valor dentro de um email, formulário ou automação sem um passo Prompt.
+- [Filter](/pt/reference/automations/steps/filter) verifica um output antes de o passo seguinte depender dele.
+- [Update](/pt/reference/automations/steps/update) escreve campos de output num registo.

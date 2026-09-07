@@ -1,0 +1,91 @@
+---
+title: "Prompt"
+sidebarTitle: "Prompt"
+description: "Der Prompt-Schritt in einer HireData-Automatisierung, der Ask-AI-Drawer: Intents, Inputs, Output-Felder, Sprache, Modelleinstellungen und was er zurückgibt."
+keywords:
+  - "Prompt-Schritt"
+  - "ask ai"
+  - "KI-Aufgabe"
+  - "extrahieren"
+  - "zusammenfassen"
+  - "klassifizieren"
+  - "Output-Feld"
+  - "reference as"
+  - "speed vs quality"
+---
+
+**Prompt** bittet ein KI-Modell, etwas mit den Daten des Runs zu tun, und gibt die Antwort als Felder für spätere Schritte zurück. Der Drawer trägt die Überschrift **Ask AI**. **Preview** in seiner Fußzeile führt den Prompt vor dem Speichern gegen Beispieldaten aus.
+
+Der Drawer öffnet sich mit der Frage **What should the AI do?** und acht Intents. **Custom** schreibt den Prompt von Grund auf; die anderen sieben rahmen den Prompt für eine bestimmte Art von Aufgabe.
+
+<img src="/images/automations/39-prompt-intents.png" alt="Das Panel What should the AI do? mit Custom, Extract, Summarize, Classify, Write, Translate, Analyze und Evaluate, jeweils mit einer einzeiligen Beschreibung" width="384" />
+
+<Tip>
+  Die Wahl eines anderen Intents als **Custom** erstellt die Output-Felder, die dieser Intent üblicherweise zurückgibt, sodass Sie mit bereits vorhandenen Feldern starten.
+</Tip>
+
+## Einstellungen
+
+- **What should the AI do?** Der Intent, nach der Wahl als Auswahlfeld.
+- **What will you provide to the AI?** Zwei Tabs. **Input** enthält das Prompt-Feld; tippen Sie Ihre Anweisung und fügen Sie Variablen darin ein. **Variables** listet Felder, die neben dem Prompt übergeben werden, ohne sie in den Text zu schreiben.
+- **Hints for the AI (optional)**. Zusätzlicher Kontext, Ton oder Einschränkungen, getrennt von der Anweisung.
+- **What should the AI return?** Die Output-Felder. **Use an existing field** bildet die Antwort auf ein Feld ab, das die Automatisierung bereits kennt. **Data source** gibt einen Wert aus einer Datenquelle zurück. **Create custom** definiert ein neues Feld. Ein gespeichertes Feld zeigt seinen Namen und seine Beschreibung mit Buttons zum Bearbeiten oder Entfernen.
+- **Language**. Die Sprache der Antwort, Standard **None**, was der Sprache des Inputs entspricht.
+- **Advanced**. Standardmäßig eingeklappt.
+  - **Step name**. Ersetzt den automatischen Namen nur im Drawer-Header. Die Karte auf der Arbeitsfläche und die Variablennamen behalten den automatischen Namen. Jeder Aufgaben-Drawer bietet dieselbe Umbenennung, wenn Sie im Header über seinen Namen fahren.
+  - **Speed vs quality**. **Fast** (schnell, geringere Kosten), **Balanced** oder **Quality** (beste Ergebnisse, langsamer).
+  - **Creativity**. **Precise** (konsistent, faktisch), **Balanced** oder **Creative** (variantenreicher).
+  - **Answer length**. **Short**, **Medium**, **Long** oder **Auto**.
+
+### Neues Output-Feld
+
+**Create custom** öffnet einen zweistufigen Dialog.
+
+- **Choose Field Type**. Ein Feld **Search types...** und die Typen in Gruppen. Basics: Text, Number, Yes / No, List, ID. Date & Time: Date, Time, Datetime. People & Places: Email, Phone, Address, Country, Language, Locale, Timezone. Web & Media: URL, Domain, IP Address, Image, File, Color, Font. Advanced: Whole number, Decimal.
+- **Configure your field**. **Name** ist die Bezeichnung, die Sie sehen. **Reference as** ist der Variablenname, Standard `text` bei einem Text-Feld. **What is it for? (optional)** sagt dem Modell, was in das Feld gehört. **Save & New** speichert und beginnt ein weiteres; **Done** schließt.
+
+<img src="/images/automations/17-prompt-drawer.png" alt="Der Ask-AI-Drawer mit gewähltem Custom, einem Prompt im Input-Tab, einem leeren Hints-Feld, einem Output-Feld namens Greeting, Language auf None und dem geöffneten Advanced-Bereich mit Fast, Precise und Auto" width="384" />
+
+### Auf der Arbeitsfläche
+
+Die Karte zeigt ein **Task**-Badge, "Ask AI" gefolgt vom Intent, den Prompt-Text, einen Chip pro Output-Feld und die drei Advanced-Werte.
+
+<img src="/images/automations/27-prompt-card.png" alt="Eine Ask-AI:-Custom-Karte auf der Arbeitsfläche mit dem Prompt-Text, einem Greeting-Output-Chip und den Chips Fast, Precise und Auto" width="380" />
+
+## Was er ausgibt
+
+Eine Variable pro Output-Feld, benannt nach seinem **Reference as**-Wert, unter dem Namen der Aufgabe. Daneben verzeichnet die Aufgabe, ob das Modell geantwortet hat, seine Begründung und eine Fehlermeldung, wenn nicht.
+
+| Variable | Enthält |
+| --- | --- |
+| `output.<reference>` | Den Wert dieses Output-Feldes, etwa `output.greeting` |
+| `is_successful` | Ob das Modell eine Antwort geliefert hat, die zu den Feldern passt |
+| `reasoning` | Die Darstellung des Modells, wie es zur Antwort kam |
+| `error_message` | Warum es nicht antworten konnte, leer bei Erfolg |
+
+Der **Fields**-Tab des Run-Schritts listet die übergebenen und die zurückgegebenen Werte.
+
+## Was den Run stoppt
+
+Eine Antwort, die das Modell nicht geben konnte. Die Aufgabenkarte zeigt Cancelled mit dem Grund in der Timeline, und die Schritte danach zeigen keine Statuszeile. Prompts, die laufen, aber einen unerwarteten Wert zurückgeben, stoppen den Run nicht; prüfen Sie den Output in einem [Filter](/de/reference/automations/steps/filter), wenn der nächste Schritt davon abhängt.
+
+Siehe [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons).
+
+## Muster
+
+- **Klassifizieren, dann Split.** Ein **Classify**-Prompt mit einem List-Output, dann ein [Split](/de/reference/automations/steps/split), dessen Zweige auf den Listenwert filtern.
+- **In einen Datensatz extrahieren.** Ein **Extract**-Prompt mit einem Output-Feld pro Wert, dann eine [Update](/de/reference/automations/steps/update)-Aufgabe, die die Felder in den Datensatz schreibt.
+- **Ein Satz, nicht eine ganze E-Mail.** Für eine personalisierte Zeile in einer E-Mail-Vorlage erledigt eine [KI-Variable](/de/variables/ai-variables) in der Vorlage die Arbeit ohne Schritt. Verwenden Sie den Prompt-Schritt, wenn die Antwort gespeichert werden oder den Run steuern muss.
+
+## Häufige Fehler
+
+- **Ein Prompt ohne Variablen.** Text allein sagt dem Modell nichts über diesen Run. Fügen Sie die benötigten Felder in das **Input**-Feld ein oder ergänzen Sie sie im **Variables**-Tab.
+- **Zwei Felder mit demselben Reference as.** Das zweite überschreibt das erste. Geben Sie jedem Output-Feld eine eigene Referenz.
+- **Erwarten, dass eine Umbenennung die Karte ändert.** **Step name** und die Umbenennung, die Sie erreichen, wenn Sie im Drawer-Header über den Namen einer Aufgabe fahren, ändern nur den Drawer-Header.
+- **Language auf None lassen bei fester Ausgabesprache.** Die Antwort folgt der Sprache des Inputs. Setzen Sie die Sprache, wenn der Datensatz oder die Vorlage eine bestimmte erwartet.
+
+## Verwandt
+
+- [KI-Variablen](/de/variables/ai-variables) erzeugen einen Wert in einer E-Mail, einem Formular oder einer Automatisierung ohne Prompt-Schritt.
+- [Filter](/de/reference/automations/steps/filter) prüft einen Output, bevor der nächste Schritt sich darauf verlässt.
+- [Update](/de/reference/automations/steps/update) schreibt Output-Felder in einen Datensatz.

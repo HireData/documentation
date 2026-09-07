@@ -1,0 +1,62 @@
+---
+title: "Update"
+sidebarTitle: "Update"
+description: "Die Update-Kategorie in einer HireData-Automatisierung: Aufgaben, die einen Datensatz in einer verbundenen App ändern, etwa Carerix Update Object, und wie ein Run die Änderung zeigt."
+keywords:
+  - "Update-Schritt"
+  - "update object"
+  - "Feld aktualisieren"
+  - "Kandidat aktualisieren"
+  - "Datensatz ändern"
+  - "field updated"
+---
+
+**Update** ändert etwas, das in einer verbundenen App bereits existiert. Es ist eine Kategorie. Wenn mehr als eine verbundene App eine Update-Aufgabe anbietet, öffnet die Wahl eine Liste mit der Überschrift **Update**; wenn eine Aufgabe die Kategorie allein füllt, wie es Carerix' Aufgabe für sich tut, öffnet die Wahl direkt den Drawer dieser Aufgabe.
+
+<Info>
+  Update erscheint nur dann in der Auswahl, wenn eine verbundene App eine Aufgabe in dieser Kategorie anbietet.
+</Info>
+
+## Einstellungen
+
+- **Object**. Der zu ändernde Datensatztyp, in einem Suchfeld mit Liste. Für Carerix: Activity, Appointment, Campaign, Candidate, Company, Contact, Email, List, Match, Meeting, News Letter, Note, Placement, Publication, System, Talent Pool, Task, User, Vacancy.
+- **Matching-Feld**. Wie die Aufgabe den zu ändernden Datensatz findet. Die Karte auf der Arbeitsfläche gibt es wieder als "Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id".
+- **Felder**. Die zu schreibenden Felder und der Wert für jedes, ein fester Wert oder eine Variable aus dem Run. Die Karte listet sie unter **Fields**, etwa "Candidate: Available Date: Now".
+
+Der Drawer trägt als Überschrift den Aufgabennamen und das Symbol der App.
+
+Die Aufgaben, die die Kategorie füllen:
+
+| Aufgabe | App | Was sie ändert |
+| --- | --- | --- |
+| Update Object | Carerix | Jedes Feld des gewählten Carerix-Objects |
+| Update Field | OTYS | Ein Feld eines OTYS-Datensatzes |
+| Update Field | Vincere | Ein Feld eines Vincere-Datensatzes |
+| Update Field | Salesforce | Ein Feld eines Salesforce-Datensatzes |
+
+### Auf der Arbeitsfläche
+
+Die Karte zeigt ein **Task**-Badge, den Aufgabennamen mit der App, den Satz, der das Matching-Feld benennt, und die Felder, die sie schreiben wird.
+
+<img src="/images/automations/36-update-card.png" alt="Eine Update-Candidate-in-Carerix-Karte auf der Arbeitsfläche: Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id, and then update these fields, mit Available Date auf Now und Status auf Werkzoekend" width="380" />
+
+## Was er ausgibt
+
+Den Datensatz, wie er nach der Änderung ist. Auf der Run-Seite trägt der Drawer der Aufgabe als Überschrift die App, die Aufgabe und die Datensatz-ID, etwa "Carerix Update Match (ID: 7.18)", mit Badges, die **Field Updated** und **Run Moved** zählen, und einem Status-Badge. **Overview** listet das **Updated Object** mit einem Link sowie den alten und neuen Wert jedes Feldes; ein Feld ohne bisherigen Wert zeigt "This field was empty before". **Fields** listet jeden Wert, den die Aufgabe verwendet hat, mit Quellsymbol und Typ.
+
+<img src="/images/automations/20-run-step-fields.png" alt="Der Fields-Tab eines Update-Match-Run-Schritts mit Match: Id, Match: Stage, einem Bewertungsscore, einem gefilterten Stage-Wert und einer nicht aufgelösten Variable als Rohtext" width="384" />
+
+Eine nicht aufgelöste Variable erscheint im Fields-Tab als ihr Rohtext, etwa `{{…evaluation.scoring.score}}` – so erkennen Sie ein Feld, das mit einem Platzhalter statt einem Wert geschrieben wurde.
+
+## Was den Run stoppt
+
+Ein Update, das die App ablehnt, oder ein Datensatz, den das Matching-Feld nicht findet. Die Aufgabenkarte wird rot mit der Zeile "Cancelled" und der Zeit, und die Timeline verzeichnet den Aufgabennamen mit "Cancelled" und dem Grund, den die App zurückgegeben hat.
+
+Siehe [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons).
+
+## Verwandt
+
+- [Find](/de/reference/automations/steps/find) schlägt einen Datensatz nach, wenn er nicht im Event ist.
+- [Add](/de/reference/automations/steps/add) erstellt einen Datensatz, statt einen zu ändern.
+- [Prompt](/de/reference/automations/steps/prompt) erzeugt die Werte, die ein Update schreibt.
+- [Aufgabenkatalog](/de/reference/automations/task-catalogue) listet jede Aufgabe pro verbundener App.

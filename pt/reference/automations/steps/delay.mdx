@@ -1,0 +1,54 @@
+---
+title: "Delay"
+sidebarTitle: "Delay"
+description: "O passo Delay numa automação da HireData: predefinições, valores personalizados, saltar fins de semana e horas fixas, e o que o run mostra enquanto espera."
+keywords:
+  - "passo delay"
+  - "esperar"
+  - "pausa"
+  - "saltar fins de semana"
+  - "next monday"
+  - "set time"
+  - "run delayed"
+---
+
+**Delay** pausa o run por um tempo definido antes do passo seguinte.
+
+## Definições
+
+- **Preset**. Um seletor de esperas prontas a usar, por defeito **1 day**. Durações: **None**, **5 minutes**, **15 minutes**, **30 minutes**, **1 hour**, **8 hours**, **12 hours**, **1 day**, **3 days**, **5 days**, **1 week**. Dias da semana: de **Next Monday** a **Next Sunday**, que esperam até esse dia. **None** não adiciona espera.
+- **Skip Weekends**. Uma checkbox. Quando a espera terminaria num sábado ou domingo, o run continua antes na segunda-feira. Desativada para as predefinições de dia da semana, que já nomeiam um dia.
+- **Custom**. Um interruptor que substitui o seletor de predefinições por uma caixa numérica, por defeito 0, e um seletor de período com **minute**, **hour**, **day** ou **week**.
+- **Set time**. Um botão que aparece para as predefinições de dia da semana. Define a hora do dia, e o respetivo fuso horário, a que o run continua nesse dia da semana. As predefinições de duração não têm definição de hora; o run continua exatamente a duração depois de ter chegado ao passo.
+
+<Tip>
+  Sem **Set time**, uma predefinição de dia da semana continua à hora do dia a que o run chegou ao Delay. Um run que lá chegou às 16:20 de quinta-feira continua às 16:20 do dia escolhido.
+</Tip>
+
+<img src="/images/automations/12-delay-drawer.png" alt="O painel Delay com o seletor de predefinições a ler 5 minutes, uma checkbox Skip Weekends e um interruptor Custom" width="384" />
+
+### No canvas
+
+O cartão lê a espera por extenso.
+
+<img src="/images/automations/24-delay-card.png" alt="Um cartão Delay no canvas a ler Delay for 5 minutes" width="314" />
+
+## O que produz
+
+Nada. As variáveis disponíveis depois de um Delay são as mesmas de antes dele.
+
+Enquanto o run espera, a página do run mostra o passo como Waiting com a mensagem "Run Delayed", e a timeline regista "Run Scheduled" com a hora a que vai continuar. Quando a espera termina, a timeline regista "Run Moved" e o passo seguinte começa.
+
+<Tip>
+  Um run de teste não espera. Todos os Delays concluem de imediato com "Run Moved", por isso um teste mostra os passos mas não o timing.
+</Tip>
+
+## O que para o run
+
+Um Delay nunca para um run por si só. Um run que está à espera para quando a automação é posta em pausa ou eliminada, ou quando o passo é eliminado, antes de a espera terminar. O run aparece então como Cancelled e o seu motivo nomeia o que mudou. Veja [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons).
+
+## Relacionados
+
+- [Setup](/pt/reference/automations/steps/setup) contém o delay de início, que espera antes de o run começar em vez de entre passos.
+- Um [Filter](/pt/reference/automations/steps/filter) depois de um Delay verifica que o registo ainda qualifica quando a espera termina.
+- A [visão geral dos passos de automação](/pt/reference/automations/overview) lista todos os passos.

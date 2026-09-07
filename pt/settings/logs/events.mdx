@@ -7,7 +7,7 @@ _Quando liga o seu ATS, como Carerix, Salesforce, OTYS, etc., à HireData, ele c
 
 ## O que é um event
 
-Um event é um sinal enviado da sua app ligada para a HireData. Normalmente representa uma ação ou alteração específica, por exemplo, um novo candidato ser criado, uma vaga ser atualizada, uma colocação ser concluída, etc. Estes events são usados para acionar as automações que configurou na HireData, e cada event inclui **Event Data**, **External Records** e **Processes.**
+Um event é um sinal enviado da sua app ligada para a HireData. Normalmente representa uma ação ou alteração específica, por exemplo, um novo candidato ser criado, uma vaga ser atualizada, uma colocação ser concluída, etc. Estes events são usados para acionar as automações que configurou na HireData, e cada event inclui **Event Data**, **External Records** e **Runs.**
 
 _Exemplo de event:_
 
@@ -37,9 +37,9 @@ Isto irá abrir a vista de detalhe do event, que inclui:
 
 ![External records tab](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
 
-- **Processes** – a lista de automação(ões) acionada(s) por este event e os runs que criou. Também verá o estado de cada run (por exemplo, Completed, Delayed, Cancelled).
+- **Runs** – os runs criados por este event e a automação associada a cada um. Também verá o estado de cada run (por exemplo, Completed, Delayed, Cancelled).
 
-![Processes tab](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+![Automation runs created by an event](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
 
 ## Reproduzir events
 
@@ -108,11 +108,12 @@ A HireData reprocessa o(s) event(s) selecionado(s) e aciona as automações asso
 
 Se uma automação não correu como esperado, ou está a ver dados inesperados:
 
-- Vá ao separador **Processes** do event e verifique se algum run foi criado.
+- Vá ao separador **Runs** do event e verifique se algum run foi criado.
 - Clique no run para ver logs e verificar se algum passo falhou ou foi saltado.
 - Compare os **Event Data** com as condições na sua automação para garantir que correspondem.
+- Use a vista de código ou de dados JSON para verificar campos em falta, nomes de campos diferentes ou formatos de valores inesperados.
 
-Se nenhum processo foi acionado, o event provavelmente não cumpriu os critérios de nenhuma automação ativa.
+Se nenhum run foi criado, o event pode não ter cumprido os critérios de nenhuma automação ativa. Consulte [Porque é que a minha automação não correu?](/pt/knowledge-base/why-didnt-my-automation-run) para uma checklist completa.
 
 ### Ainda precisa de ajuda?
 

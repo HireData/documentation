@@ -1,0 +1,91 @@
+---
+title: "Prompt"
+sidebarTitle: "Prompt"
+description: "L'étape Prompt dans une automatisation HireData, le panneau Ask AI : intentions, entrées, champs de sortie, langue, réglages du modèle et ce qu'elle renvoie."
+keywords:
+  - "étape prompt"
+  - "ask ai"
+  - "tâche ia"
+  - "extraire"
+  - "résumer"
+  - "classifier"
+  - "champ de sortie"
+  - "reference as"
+  - "speed vs quality"
+---
+
+**Prompt** demande à un modèle d'IA de faire quelque chose avec les données de l'exécution et renvoie la réponse sous forme de champs pour les étapes suivantes. Le panneau est intitulé **Ask AI**. **Preview**, dans son pied, exécute le prompt sur des données d'exemple avant l'enregistrement.
+
+Le panneau s'ouvre sur la question **What should the AI do?** avec huit intentions. **Custom** écrit le prompt de zéro ; les sept autres cadrent le prompt pour un type de travail donné.
+
+<img src="/images/automations/39-prompt-intents.png" alt="Le panneau What should the AI do? listant Custom, Extract, Summarize, Classify, Write, Translate, Analyze et Evaluate, chacun avec une description d'une ligne" width="384" />
+
+<Tip>
+  Choisir une intention autre que **Custom** crée les champs de sortie que cette intention renvoie habituellement, si bien que vous partez de champs qui existent déjà.
+</Tip>
+
+## Paramètres
+
+- **What should the AI do?** L'intention, sous forme de liste une fois choisie.
+- **What will you provide to the AI?** Deux onglets. **Input** contient la zone de prompt ; tapez votre instruction et insérez-y des variables. **Variables** liste les champs à transmettre aux côtés du prompt sans les écrire dans le texte.
+- **Hints for the AI (optional)**. Du contexte, un ton ou des contraintes supplémentaires, séparés de l'instruction.
+- **What should the AI return?** Les champs de sortie. **Use an existing field** mappe la réponse sur un champ que l'automatisation connaît déjà. **Data source** renvoie une valeur d'une source de données. **Create custom** définit un nouveau champ. Un champ enregistré affiche son nom et sa description avec des boutons pour le modifier ou le supprimer.
+- **Language**. La langue de la réponse, par défaut **None**, qui suit la langue de l'entrée.
+- **Advanced**. Replié par défaut.
+  - **Step name**. Remplace le nom automatique dans l'en-tête du panneau uniquement. La carte du canevas et les noms de variables gardent le nom automatique. Chaque panneau de tâche propose le même renommage quand vous survolez son nom dans l'en-tête.
+  - **Speed vs quality**. **Fast** (rapide, coût moindre), **Balanced** ou **Quality** (meilleurs résultats, plus lent).
+  - **Creativity**. **Precise** (cohérent, factuel), **Balanced** ou **Creative** (plus varié).
+  - **Answer length**. **Short**, **Medium**, **Long** ou **Auto**.
+
+### Nouveau champ de sortie
+
+**Create custom** ouvre une boîte de dialogue en deux étapes.
+
+- **Choose Field Type**. Une zone **Search types...** et les types par groupes. Basics : Text, Number, Yes / No, List, ID. Date & Time : Date, Time, Datetime. People & Places : Email, Phone, Address, Country, Language, Locale, Timezone. Web & Media : URL, Domain, IP Address, Image, File, Color, Font. Advanced : Whole number, Decimal.
+- **Configure your field**. **Name** est le libellé que vous voyez. **Reference as** est le nom de la variable, par défaut `text` pour un champ Text. **What is it for? (optional)** dit au modèle quoi mettre dans le champ. **Save & New** enregistre et en commence un autre ; **Done** ferme.
+
+<img src="/images/automations/17-prompt-drawer.png" alt="Le panneau Ask AI avec Custom choisi, un prompt dans l'onglet Input, une zone Hints vide, un champ de sortie nommé Greeting, Language réglé sur None, et la section Advanced ouverte sur Fast, Precise et Auto" width="384" />
+
+### Sur le canevas
+
+La carte affiche un badge **Task**, « Ask AI » suivi de l'intention, le texte du prompt, une pastille par champ de sortie et les trois valeurs Advanced.
+
+<img src="/images/automations/27-prompt-card.png" alt="Une carte Ask AI: Custom sur le canevas avec le texte du prompt, une pastille de sortie Greeting et les pastilles Fast, Precise et Auto" width="380" />
+
+## Ce qu'elle produit
+
+Une variable par champ de sortie, nommée d'après sa valeur **Reference as**, sous le nom de la tâche. À leurs côtés, la tâche enregistre si le modèle a répondu, son raisonnement, et un message d'erreur quand il n'a pas répondu.
+
+| Variable | Contient |
+| --- | --- |
+| `output.<reference>` | La valeur de ce champ de sortie, telle que `output.greeting` |
+| `is_successful` | Si le modèle a renvoyé une réponse conforme aux champs |
+| `reasoning` | Le compte rendu du modèle sur la façon dont il est parvenu à la réponse |
+| `error_message` | Pourquoi il n'a pas pu répondre, vide en cas de succès |
+
+L'onglet **Fields** de l'étape d'exécution liste les valeurs transmises et les valeurs renvoyées.
+
+## Ce qui arrête l'exécution
+
+Une réponse que le modèle n'a pas pu donner. La carte de la tâche affiche Cancelled avec la raison dans la chronologie, et les étapes suivantes n'affichent aucune ligne de statut. Les prompts qui s'exécutent mais renvoient une valeur inattendue n'arrêtent pas l'exécution ; vérifiez la sortie dans un [Filter](/fr/reference/automations/steps/filter) quand l'étape suivante en dépend.
+
+Voir [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons).
+
+## Schémas d'utilisation
+
+- **Classifier, puis Split.** Un prompt **Classify** avec une sortie List, puis un [Split](/fr/reference/automations/steps/split) dont les branches filtrent sur la valeur de la liste.
+- **Extraire vers un enregistrement.** Un prompt **Extract** avec un champ de sortie par valeur, puis une tâche [Update](/fr/reference/automations/steps/update) qui écrit les champs dans l'enregistrement.
+- **Une phrase, pas tout un e-mail.** Pour une ligne personnalisée à l'intérieur d'un modèle d'e-mail, une [variable IA](/fr/variables/ai-variables) dans le modèle fait l'affaire sans étape. Utilisez l'étape Prompt quand la réponse doit être stockée ou doit orienter l'exécution.
+
+## Erreurs courantes
+
+- **Un prompt sans variables.** Du texte seul ne donne au modèle aucune information sur cette exécution. Insérez les champs nécessaires dans la zone **Input** ou ajoutez-les sur l'onglet **Variables**.
+- **Deux champs avec le même Reference as.** Le second écrase le premier. Donnez à chaque champ de sortie sa propre référence.
+- **S'attendre à ce qu'un renommage change la carte.** **Step name**, et le renommage accessible en survolant le nom d'une tâche dans l'en-tête de son panneau, ne changent que l'en-tête du panneau.
+- **Laisser Language sur None pour une sortie en langue fixe.** La réponse suit la langue de l'entrée. Définissez la langue quand l'enregistrement ou le modèle en attend une.
+
+## Voir aussi
+
+- [Variables IA](/fr/variables/ai-variables) génèrent une valeur dans un e-mail, un formulaire ou une automatisation sans étape Prompt.
+- [Filter](/fr/reference/automations/steps/filter) vérifie une sortie avant que l'étape suivante s'y fie.
+- [Update](/fr/reference/automations/steps/update) écrit des champs de sortie dans un enregistrement.

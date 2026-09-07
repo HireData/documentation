@@ -1,0 +1,69 @@
+---
+title: "Find"
+sidebarTitle: "Find"
+description: "La catégorie Find dans une automatisation HireData : les tâches qui recherchent un enregistrement, une adresse e-mail ou le domaine d'une entreprise et transmettent le résultat aux étapes suivantes."
+keywords:
+  - "étape find"
+  - "recherche"
+  - "trouver un enregistrement"
+  - "trouver un e-mail"
+  - "search domain"
+  - "data lookup"
+---
+
+**Find** recherche quelque chose qui existe déjà. C'est une catégorie : la choisir ouvre une liste intitulée **Find** avec une entrée par tâche, et **Back** revient au sélecteur.
+
+<Info>
+  Find n'apparaît dans le sélecteur que lorsqu'une app connectée propose une tâche dans cette catégorie.
+</Info>
+
+## Paramètres
+
+Chaque tâche a son propre panneau. Les paramètres communs sont quoi chercher et où : l'objet ou la source à parcourir, et les valeurs de champs qui identifient l'enregistrement.
+
+Les tâches qui remplissent la catégorie dans un espace de travail où Carerix et HireData sont connectés :
+
+| Tâche | App | Ce qu'elle trouve |
+| --- | --- | --- |
+| Find | Carerix | Un enregistrement Carerix de l'objet que vous choisissez, apparié sur les champs que vous définissez |
+| Find Email | HireData | Une adresse e-mail pour une personne, à partir de son nom et du domaine de l'entreprise |
+| Search Domain | HireData | Le domaine web d'une entreprise, à partir de son nom |
+
+### Sur le canevas
+
+La carte affiche un badge **Task**, le nom de la tâche avec la connexion en dessous, et un bloc **Filter** avec les champs sur lesquels la tâche apparie.
+
+![Une carte Find Candidate in Carerix sur le canevas avec la connexion hiredata et un bloc Filter indiquant Candidate: Id equals 6416](/images/automations/52-find-card.png)
+
+## Ce qu'elle produit
+
+L'enregistrement, l'adresse ou le domaine trouvé. Un Find Carerix s'ouvre sur une ligne **Match found** avec l'id et le nom de l'enregistrement, liant vers l'enregistrement dans Carerix, et un bloc **Record Data** qui liste chaque champ que porte l'enregistrement. Les étapes suivantes utilisent ces champs sous le nom de la tâche : une tâche Add peut donc rattacher le candidat renvoyé par un Find, et une tâche Message peut écrire à l'adresse renvoyée par Find Email. [Suivre une exécution](/fr/reference/automations/follow-a-run) montre une étape Find issue d'une exécution réelle.
+
+## Ce qui arrête l'exécution
+
+Un Find qui ne renvoie rien. La carte de la tâche devient rouge avec la ligne « Cancelled » et l'heure, et la chronologie enregistre le nom de la tâche avec « Cancelled » et la raison, comme « Search domain failure. » pour un Search Domain qui n'a trouvé aucun domaine. Les étapes suivantes n'affichent aucune ligne de statut. Ouvrez l'onglet **Fields** de la carte pour voir les valeurs avec lesquelles la tâche a cherché.
+
+<img src="/images/automations/31-find-cancelled-card.png" alt="Une carte de tâche Search Domain dans une exécution, en rouge, avec Company défini sur Respondent: Address Company et la ligne Cancelled: Today at 10:18 AM en dessous" width="380" />
+
+<img src="/images/automations/32-find-cancelled-timeline.png" alt="Une chronologie d'exécution avec Search Domain: Cancelled, le message Search domain failure., et Search Domain: Run Cancelled" width="384" />
+
+Les raisons sont expliquées dans [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons).
+
+## Schémas d'utilisation
+
+- **Find, puis Update.** Quand l'événement vient d'un formulaire et que l'enregistrement vit dans votre ATS, faites un Find de l'enregistrement sur un id ou un e-mail de la réponse, puis un [Update](/fr/reference/automations/steps/update) avec les réponses.
+- **Find Email avant Send Email.** Search Domain donne le domaine de l'entreprise, Find Email donne l'adresse de la personne sur ce domaine, et l'étape Message envoie à cette adresse.
+- **Loop plutôt que Find pour plusieurs résultats.** Find renvoie un seul enregistrement. Pour agir sur chaque enregistrement correspondant, utilisez un [Loop](/fr/reference/automations/steps/loop).
+
+## Erreurs courantes
+
+- **Apparier sur un champ qui n'est pas unique.** Un nom correspond à plus d'un candidat. Appariez sur un id ou une adresse e-mail.
+- **Chercher ce que l'événement porte déjà.** Un événement Carerix apporte son enregistrement avec lui, et la tâche Update trouve l'enregistrement elle-même sur le champ que vous nommez. N'ajoutez un Find que lorsque l'enregistrement n'est pas dans l'événement.
+- **Traiter l'absence de résultat comme un saut.** Un résultat vide annule l'exécution. Si certains événements n'ont rien à trouver, placez un [Filter](/fr/reference/automations/steps/filter) avant le Find pour que ces exécutions s'arrêtent avec une raison claire.
+
+## Voir aussi
+
+- [Add](/fr/reference/automations/steps/add) crée un enregistrement au lieu d'en trouver un.
+- [Update](/fr/reference/automations/steps/update) modifie l'enregistrement renvoyé par un Find.
+- [Loop](/fr/reference/automations/steps/loop) récupère chaque enregistrement correspondant et exécute des étapes pour chacun.
+- [Catalogue des tâches](/fr/reference/automations/task-catalogue) liste chaque tâche par app connectée.

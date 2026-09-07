@@ -1,0 +1,65 @@
+---
+title: "Setup"
+sidebarTitle: "Setup"
+description: "Der Start-Block einer HireData-Automatisierung: die App, das Object, der Trigger, das Formular und der Delay, die entscheiden, welches Event einen Run beginnt."
+keywords:
+  - "Start-Block"
+  - "Setup-Drawer"
+  - "Trigger"
+  - "Trigger-App"
+  - "Trigger-Object"
+  - "Formular-Trigger"
+  - "response completed"
+  - "Start-Delay"
+---
+
+Jede Automatisierung beginnt mit dem **Start**-Block. Ein Klick darauf öffnet einen Drawer mit der Überschrift **Setup**, in dem Sie das Event benennen, das einen Run beginnt. Der Drawer ist derselbe, egal ob die Automatisierung aus einer Vorlage oder bei null gestartet ist. Ein Event, das zu den Einstellungen hier passt, startet einen Run; ein Event, das nicht passt, startet nichts.
+
+Bei einer neuen Automatisierung führt Sie der Drawer der Reihe nach durch App, Object und Trigger. Nach dem ersten Speichern zeigt er eine Zusammenfassung mit einem **Edit**-Link neben jeder Auswahl, und die **Next step**-Auswahl öffnet sich, damit Sie den ersten Schritt hinzufügen können.
+
+## Einstellungen
+
+- **App**. Die verbundene App, deren Events die Automatisierung starten. Das Raster listet die Apps in Ihrem Workspace, die Trigger anbieten; eine verbundene App kann hier also fehlen, wenn sie nur Aufgaben anbietet. **HireData** ist immer vorhanden.
+- **Connection**. Der Account, über den das Event eintrifft. Wird bei Apps angezeigt, die über einen Account verbunden sind, etwa Carerix, und bei HireData weggelassen.
+- **Object**. Worum es im Event geht. Für HireData: **Conversation**, **Email**, **Person** oder **Response**.
+- **Trigger**. Die Änderung am Object, die einen Run startet. Für eine Response: **Completed**, **Created**, **Created or Updated** oder **Updated**. Die Auswahlmöglichkeiten stehen unter der Überschrift **When something happens**.
+- **Config**. Zusätzliche Einstellungen, die der Trigger braucht. Bei einem Response-Trigger enthält sie **Form** mit einem **All**-Schalter. Mit **All** an startet eine Antwort auf jedes Formular einen Run. Schalten Sie ihn aus, erscheint ein Feld **Select a form**. Wählen Sie ein Formular, wenn Sie dessen Fragen als Variablen in späteren Schritten nutzen möchten; mit **All** an werden die Fragen nicht angeboten.
+- **Delay**. Vorhanden, wenn der Start auf ein Datum im Datensatz wartet, wie es eine installierte Vorlage mit "4 weeks after Candidate: Last Contact Date" tut. Die Zeile zeigt den Versatz, etwa **4 weeks after**, mit einem **Edit**-Link. Das ist der Start-Delay. Er ist kein [Delay-Schritt](/de/reference/automations/steps/delay).
+- **Filter**. Bedingungen, die das Event erfüllen muss, bevor ein Run startet, bei den Triggern, die sie anbieten. Ein HireData-Response-Trigger hat keine. Die Run-Seite listet den Start-Filter im Event-Panel neben App, Object und Trigger. Er ist kein [Filter-Schritt](/de/reference/automations/steps/filter).
+
+<Warning>
+  Die App kann nicht mehr geändert werden, sobald die Automatisierung existiert. Um eine Automatisierung zu einer anderen App zu verlegen, erstellen Sie eine neue Automatisierung.
+</Warning>
+
+Speichern schreibt die gesamte Automatisierung auf einmal. Eine neue Automatisierung heißt "Blank Automation", bis Sie sie umbenennen, und der Name bleibt erst erhalten, nachdem Setup einmal gespeichert wurde.
+
+<img src="/images/automations/29-setup-drawer.png" alt="Der Setup-Drawer nach dem Speichern: App HireData, Object Response mit einem Edit-Button, Trigger Completed mit einem Edit-Button und eine Config-Karte mit Form, einem ausgeschalteten All-Schalter und dem ausgewählten Formular" width="384" />
+
+### Auf der Arbeitsfläche
+
+Der Start-Block trägt ein **Start**-Badge, das Object und den Trigger als Titel und darunter die Config-Zeilen, etwa das Formular, auf das ein Response-Trigger wartet.
+
+<img src="/images/automations/22-setup-card.png" alt="Der Start-Block auf der Arbeitsfläche: ein Start-Badge, der Titel Response: Completed und eine Form-Zeile mit Docs test: builder reference examples" width="378" />
+
+## Was er ausgibt
+
+Das Event. Seine Felder stehen jedem folgenden Schritt als Variablen zur Verfügung: die Felder des Objects und die Antworten des ausgewählten Formulars, wenn der Trigger eine Response ist.
+
+Auf der Run-Seite trägt der Start-Block die Zeile "Run Started" mit der Zeit. Ein Klick darauf öffnet das Event-Panel, überschrieben mit dem App-Namen und "Event", mit den Tabs **Overview**, **Fields** und **Related**. Overview listet **App**, **Connection**, **Object**, **Trigger** und **Filter**, dann die **Timeline** des Runs.
+
+## Was den Run stoppt
+
+Nichts am Start-Block stoppt einen Run, der begonnen hat. Was Setup entscheidet, ist, ob ein Run überhaupt beginnt.
+
+- Ein Event, das nicht zu App, Object, Trigger oder Formular passt, startet keinen Run.
+- Ein Event, das den Start-Filter nicht besteht, startet keinen Run.
+- Eine pausierte Automatisierung startet keinen Run. Das Testen einer pausierten Automatisierung liefert "No run started for automation."
+
+Wenn ein erwarteter Run fehlt, arbeiten Sie [Warum ist meine Automatisierung nicht gelaufen?](/de/knowledge-base/why-didnt-my-automation-run) durch.
+
+## Verwandt
+
+- [Automatisierungsschritte im Überblick](/de/reference/automations/overview) listet jeden Schritt, den Sie nach dem Start-Block hinzufügen können.
+- [Filter](/de/reference/automations/steps/filter) stoppt einen Run, der bereits gestartet ist.
+- [Delay](/de/reference/automations/steps/delay) pausiert einen Run zwischen Schritten.
+- [Eine Automatisierung testen](/de/automations/how-to-test-an-automation) schickt einen Datensatz durch den Start, ohne auf ein echtes Event zu warten.

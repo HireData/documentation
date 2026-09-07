@@ -7,7 +7,7 @@ _Lorsque vous connectez votre ATS, tel que Carerix, Salesforce, OTYS, etc., à H
 
 ## Qu'est-ce qu'un événement
 
-Un événement est un signal envoyé depuis votre app connectée vers HireData. Il représente généralement une action ou un changement spécifique, par exemple, la création d'un nouveau candidat, la mise à jour d'une offre, la finalisation d'un placement, etc. Ces événements sont utilisés pour déclencher les automatisations que vous avez mises en place dans HireData, et chaque événement comprend des **Event Data**, des **External Records** et des **Processes**.
+Un événement est un signal envoyé depuis votre app connectée vers HireData. Il représente généralement une action ou un changement spécifique, par exemple, la création d'un nouveau candidat, la mise à jour d'une offre, la finalisation d'un placement, etc. Ces événements sont utilisés pour déclencher les automatisations que vous avez mises en place dans HireData, et chaque événement comprend des **Event Data**, des **External Records** et des **Runs**.
 
 _Exemple d'événement :_
 
@@ -37,9 +37,9 @@ Cela ouvrira la vue détaillée de l'événement, qui comprend :
 
 ![Onglet External records](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
 
-- **Processes** — la liste des automatisations déclenchées par cet événement et les exécutions qu'il a créées. Vous verrez également le statut de chaque exécution (par ex. Completed, Delayed, Cancelled).
+- **Runs** — les exécutions créées par cet événement et l'automatisation associée à chacune. Vous verrez également le statut de chaque exécution (par ex. Completed, Delayed, Cancelled).
 
-![Onglet Processes](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+![Exécutions d'automatisation créées par un événement](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
 
 ## Rejouer des événements
 
@@ -108,11 +108,11 @@ HireData retraite le ou les événements sélectionnés et déclenche les automa
 
 Si une automatisation ne s'est pas exécutée comme prévu, ou si vous voyez des données inattendues :
 
-- Rendez-vous dans l'onglet **Processes** de l'événement et vérifiez si des exécutions ont été créées.
+- Rendez-vous dans l'onglet **Runs** de l'événement et vérifiez si des exécutions ont été créées.
 - Cliquez sur l'exécution pour consulter les journaux et voir si une étape a échoué ou a été ignorée.
 - Comparez les **Event Data** avec les conditions de votre automatisation pour vous assurer qu'elles correspondent.
 
-Si aucun processus n'a été déclenché, l'événement n'a probablement pas répondu aux critères des automatisations actives.
+Si aucune exécution n'a été créée, il se peut que l'événement n'ait pas répondu aux critères d'une automatisation active. Consultez [Pourquoi mon automatisation ne s'est-elle pas exécutée ?](/fr/knowledge-base/why-didnt-my-automation-run) pour une checklist complète.
 
 ### Besoin d'aide supplémentaire ?
 

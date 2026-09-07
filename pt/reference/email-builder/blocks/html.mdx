@@ -11,7 +11,7 @@ Um bloco HTML insere no email markup escrito por si. Use-o para aquilo que os ou
 
 A HireData insere o seu markup no email sem lhe tocar, com uma exceção que tem de fazer.
 
-O email é construído com MJML, que põe a zero o tamanho de fonte de tudo o que não foi ele próprio a dispor. O texto colado num bloco HTML chegaria invisível. Por isso, antes de enviar, a HireData percorre o seu markup e acrescenta `font-size: 16px` a qualquer elemento `body`, `table`, `p`, `span` ou `a` que ainda não carregue um, e envolve o texto solto num `span` com o mesmo tamanho.
+O email é construído com MJML, que põe a zero o tamanho de fonte de tudo o que não foi ele próprio a dispor. O texto colado num bloco HTML chegaria invisível. Por isso, antes de enviar, a HireData percorre o seu markup e acrescenta `font-size: 16px` a qualquer elemento `body`, `table`, `p`, `span` ou `a` que ainda não carregue um. Também envolve o texto solto num `span` com o mesmo tamanho.
 
 Defina você mesmo um tamanho de fonte e a HireData deixa-o em paz. É essa a forma de conseguir qualquer tamanho que não 16 píxeis num bloco HTML.
 

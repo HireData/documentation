@@ -1,0 +1,65 @@
+---
+title: "Setup"
+sidebarTitle: "Setup"
+description: "The Start node of a HireData automation: the app, object, trigger, form, and delay that decide which event begins a run."
+keywords:
+  - "start node"
+  - "setup drawer"
+  - "trigger"
+  - "trigger app"
+  - "trigger object"
+  - "form trigger"
+  - "response completed"
+  - "start delay"
+---
+
+Every automation begins with the **Start** node. Clicking it opens a drawer headed **Setup**, where you name the event that begins a run. The drawer is the same whether the automation started from a template or from scratch. An event that matches the settings here starts one run; an event that does not match starts nothing.
+
+For a new automation the drawer walks you through the app, the object, and the trigger in turn. After the first save it shows a summary with an **Edit** link beside each choice, and the **Next step** picker opens so you can add the first step.
+
+## Settings
+
+- **App**. The connected app whose events start the automation. The grid lists the apps in your workspace that offer triggers, so a connected app can be missing here when it only offers tasks. **HireData** is always present.
+- **Connection**. The account the event arrives through. Shown for apps that connect through an account, such as Carerix, and omitted for HireData.
+- **Object**. What the event is about. For HireData: **Conversation**, **Email**, **Person**, or **Response**.
+- **Trigger**. The change to the object that starts a run. For a Response: **Completed**, **Created**, **Created or Updated**, or **Updated**. The choices are listed under the heading **When something happens**.
+- **Config**. Extra settings the trigger needs. For a Response trigger it holds **Form** with an **All** switch. With **All** on, a response to any form starts a run. Switch it off and a **Select a form** box appears. Pick a form when you want to use its questions as variables in later steps; with **All** on, the questions are not offered.
+- **Delay**. Present when the start waits for a date on the record, as an installed template does with "4 weeks after Candidate: Last Contact Date". The row reads the offset, such as **4 weeks after**, with an **Edit** link. This is the start delay. It is not a [Delay step](/reference/automations/steps/delay).
+- **Filter**. Conditions the event must meet before a run starts, for the triggers that offer them. A HireData Response trigger has none. The run page lists the start filter in the event panel next to App, Object, and Trigger. It is not a [Filter step](/reference/automations/steps/filter).
+
+<Warning>
+  The app cannot be changed once the automation exists. To move an automation to another app, create a new automation.
+</Warning>
+
+Saving writes the whole automation at once. A new automation is called "Blank Automation" until you rename it, and the name is kept only after Setup has been saved once.
+
+<img src="/images/automations/29-setup-drawer.png" alt="The Setup drawer after saving: App HireData, Object Response with an Edit button, Trigger Completed with an Edit button, and a Config card with Form, an All switch that is off, and the selected form" width="384" />
+
+### On the canvas
+
+The Start node carries a **Start** badge, the object and trigger as its title, and the Config rows underneath, such as the form a Response trigger listens to.
+
+<img src="/images/automations/22-setup-card.png" alt="The Start node on the canvas: a Start badge, the title Response: Completed, and a Form row reading Docs test: builder reference examples" width="378" />
+
+## What it outputs
+
+The event. Its fields are available as variables to every step that follows: the object's fields, and the answers of the selected form when the trigger is a Response.
+
+On the run page the Start node carries the line "Run Started" with the time. Clicking it opens the event panel, headed with the app name and "Event", with tabs **Overview**, **Fields**, and **Related**. Overview lists **App**, **Connection**, **Object**, **Trigger**, and **Filter**, then the run's **Timeline**.
+
+## What stops the run
+
+Nothing at the Start node stops a run that has begun. What Setup decides is whether a run begins at all.
+
+- An event that does not match the app, object, trigger, or form starts no run.
+- An event that fails the start filter starts no run.
+- A paused automation starts no run. Testing a paused automation returns "No run started for automation."
+
+If a run you expected is missing, work through [Why didn't my automation run?](/knowledge-base/why-didnt-my-automation-run).
+
+## Related
+
+- [Automation steps overview](/reference/automations/overview) lists every step you can add after the Start node.
+- [Filter](/reference/automations/steps/filter) stops a run that has already started.
+- [Delay](/reference/automations/steps/delay) pauses a run between steps.
+- [How to test an automation](/automations/how-to-test-an-automation) sends one record through the start without waiting for a real event.

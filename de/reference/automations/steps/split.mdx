@@ -1,0 +1,67 @@
+---
+title: "Split"
+sidebarTitle: "Split"
+description: "Der Split-Schritt in einer HireData-Automatisierung: Zweige, die jeweils mit einem Filter beginnen, Sub-Runs pro Zweig und wie die Run-Seite sie zeichnet."
+keywords:
+  - "Split-Schritt"
+  - "Zweig"
+  - "Pfade"
+  - "Sub-Run"
+  - "create split"
+  - "no valid paths"
+---
+
+**Split** führt mehr als einen Pfad parallel aus. Jeder Pfad beginnt mit einem eigenen [Filter](/de/reference/automations/steps/filter), und der Run folgt jedem Pfad, dessen Filter besteht.
+
+Split hat keinen eigenen Drawer. Die Wahl in der **Next step**-Auswahl hebt den Eintrag hervor und zeigt **Create Split** in der Fußzeile. **Create Split** platziert einen Split mit zwei leeren Filter-Zweigen auf der Arbeitsfläche und öffnet sofort den Filter-Drawer des ersten Zweigs.
+
+<img src="/images/automations/14-split-create.png" alt="Die Next-step-Auswahl mit hervorgehobenem Split und einem Create-Split-Button in der Fußzeile" width="650" />
+
+## Einstellungen
+
+- **Zweig-Filter**. Jeder Zweig ist ein Filter-Schritt mit den Einstellungen, die ein [Filter](/de/reference/automations/steps/filter) hat. Der Filter eines Zweigs bricht nur diesen Zweig ab.
+- **Einen Pfad hinzufügen**. Das **+** am rechten Rand des Split-Kastens fügt einen dritten oder weiteren Zweig hinzu und öffnet dessen Filter-Drawer. **Cancel** in diesem Drawer entfernt den neuen Pfad.
+- **Schritte in einem Zweig**. Das **+** unter dem Filter jedes Zweigs fügt die eigenen Schritte des Zweigs hinzu.
+- **Schritte nach dem Split**. Das **+** unter dem Split-Kasten fügt den Schritt hinzu, der läuft, sobald jeder Zweig fertig ist.
+
+Die Vorschau der installierten Vorlage beschriftet einen Split mit "Split / 2 paths".
+
+### Auf der Arbeitsfläche
+
+Der Split ist ein Kasten mit einem **Split**-Badge. Die Zweig-Filter sitzen nebeneinander darin, jeder mit einem eigenen **+** darunter, und das eigene **+** des Kastens folgt darunter.
+
+<img src="/images/automations/25-split-card.png" alt="Ein Split-Kasten auf der Arbeitsfläche mit zwei Filter-Zweigen, Question 2: Answer is not empty und Question 2: Answer is empty" width="650" />
+
+## Was er ausgibt
+
+Nichts Eigenes. Jeder Zweig liest die Variablen, die vor dem Split existierten. Schritte nach dem Split sehen die Variablen wie vor ihm plus das, was die Zweige erzeugt haben.
+
+Jeder Zweig ist ein Sub-Run. Die Runs-Liste zeigt eine Zeile pro Sub-Run, sodass die Runs-Zahl die Events-Zahl übersteigt. Die Seite des Eltern-Runs fasst sie in einem Diagramm zusammen: Der Split-Kasten trägt eine eigene Statuszeile, jeder Zweig-Filter trägt "Completed" oder "Cancelled", und jede Aufgabe eines Zweigs trägt ihre eigene. Die Timeline verzeichnet "Waiting.", während die Zweige laufen, und "Split: Completed" mit "Sub runs completed.", wenn sie fertig sind.
+
+<img src="/images/automations/21-run-page-split.png" alt="Eine Run-Seite mit einem Split mit zwei Filter-Zweigen: der linke Zweig Completed und seine Update-Candidate-in-Carerix-Aufgabe Completed, der rechte Zweig Cancelled in Rot" width="650" />
+
+## Was den Run stoppt
+
+- Kein Zweig besteht. Der Split zeigt Cancelled mit der Meldung "No valid paths found.", und die Schritte danach laufen nie.
+- Kein Zweig hat einen Schritt nach seinem Filter. Der Split zeigt Failed mit derselben Meldung, bevor irgendein Zweig geprüft wird.
+- Ein Schritt innerhalb eines Zweigs stoppt. Er bricht nur den Sub-Run dieses Zweigs ab. Die anderen Zweige und die Schritte nach dem Split laufen weiter.
+
+Siehe [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons).
+
+## Muster
+
+- **Ein Zweig pro Antwort.** Nach einer WhatsApp-Umfrage ein Zweig pro Antwortwert, jeder endet in dem Update, das die Antwort verlangt. Die Reaktivierungsvorlage tut dies mit "Direct beschikbaar" und "Binnenkort beschikbaar".
+- **Ein Auffangzweig.** Geben Sie dem letzten Zweig einen Filter auf das Feld **is not empty**, damit jeder Run mit einer Antwort mindestens einen Pfad nimmt, und die spezifischen Zweige die erwarteten Werte behandeln.
+- **Gemeinsame Schritte nach dem Split.** Legen Sie einen Schritt, den jeder Pfad braucht, einmal unter den Split-Kasten statt in jeden Zweig.
+
+## Häufige Fehler
+
+- **Überlappende Bedingungen.** Zweige schließen sich nicht gegenseitig aus. Ein Datensatz, der zwei Filter besteht, durchläuft beide Zweige.
+- **Ein Zweig ohne Schritte.** Ein Filter ohne etwas danach ist kein gültiger Pfad, und der Split schlägt fehl.
+- **Erwarten, dass ein Zweig den Run stoppt.** Ein nicht bestehender Zweig-Filter bricht seinen eigenen Sub-Run ab. Der Run läuft mit den anderen Zweigen und den Schritten nach dem Split weiter. Für einen harten Stopp verwenden Sie einen [Filter](/de/reference/automations/steps/filter) vor dem Split.
+
+## Verwandt
+
+- [Filter](/de/reference/automations/steps/filter) dokumentiert die Operatoren, Zeilen und Sets, die jeder Zweig verwendet.
+- [Loop](/de/reference/automations/steps/loop) erstellt ebenfalls Sub-Runs, einen pro Datensatz statt einen pro Zweig.
+- [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons) erklärt, wo die Meldung eines abgebrochenen Zweigs erscheint.

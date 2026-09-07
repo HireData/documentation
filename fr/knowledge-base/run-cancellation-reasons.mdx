@@ -1,99 +1,62 @@
 ---
 title: "Raisons d'annulation des exécutions"
 sidebarTitle: "Annulations d'exécutions"
-description: "Découvrez pourquoi HireData annule des exécutions d'automatisation, où trouver le message d'annulation et comment résoudre les erreurs Invalid Sender Email et de limite d'envoi."
-keywords: ["exécution annulée", "run annulé", "raison d'annulation", "Send Limits Exceeded", "Send Limits Per Automation Exceeded", "Invalid Sender Email", "Invalid sender email", "DNS Verification Failed", "Please add your DNS records to your domain", "Verify DNS", "limite d'envoi dépassée", "adresse d'expéditeur invalide"]
+description: "Trouvez le message qui a arrêté une exécution d'automatisation et résolvez les annulations courantes liées aux filtres, aux boucles, aux e-mails et aux limites de messages."
+keywords: ["exécution annulée", "run annulé", "raison d'annulation", "Email unsubscribed", "Send limits exceeded", "Invalid sender email"]
 ---
 
-_Lorsque HireData annule une exécution, l'étape annulée enregistre un message expliquant pourquoi elle n'a pas pu continuer. Ce guide vous montre où trouver ce message, ce que signifient les raisons d'annulation les plus courantes et quels réglages vérifier avant de réessayer l'automatisation._
+Lorsque HireData annule une exécution, l'étape qui l'a arrêtée enregistre un message. Lisez ce message sur l'exécution avant de modifier l'automatisation.
 
 ## Trouver le message d'annulation
 
-Ouvrez d'abord l'exécution concernée afin de travailler à partir du message exact plutôt que de deviner ce qui a arrêté l'automatisation.
+1. Ouvrez **Runs** et sélectionnez l'exécution concernée.
+2. Sélectionnez l'étape annulée dans le diagramme ou la timeline de l'exécution.
+3. Lisez le message dans **Overview**.
+4. Ouvrez **Fields** pour vérifier les valeurs utilisées par l'étape.
 
-1. Sélectionnez **Runs** dans la navigation principale.
-2. Trouvez l'exécution concernée et sélectionnez sa ligne.
-3. Sélectionnez l'étape annulée dans la timeline.
-4. Ouvrez l'onglet **Overview** et lisez le message d'annulation.
+## Messages d'annulation
 
-Vous pouvez aussi utiliser l'onglet **Fields** pour examiner les valeurs utilisées par l'étape et **Related** pour ouvrir l'automatisation ou l'événement d'origine.
-
-## Raisons d'annulation courantes
-
-| Message | Ce qu'il signifie | Où vérifier |
+| Message | Ce qu'il signifie | Que vérifier |
 | --- | --- | --- |
-| `Invalid sender email.` | L'étape Send Email n'a pas pu utiliser l'adresse d'expéditeur configurée. | L'adresse d'expéditeur et son domaine |
-| `Send Limits Exceeded` | Le destinataire a atteint une limite d'e-mails ou de conversations au niveau du compte. | **Settings** \> **Safety Limits** |
-| `Send Limits Per Automation Exceeded` | Le destinataire a atteint une limite configurée pour cette automatisation. | Les **Settings** de l'automatisation |
+| `Filter not passed.` | Une condition du Filter a été évaluée comme fausse. | Les conditions du Filter et les champs de l'événement. |
+| `No valid paths found.` | Chaque branche d'un Split a échoué à son Filter. | Les Filters de chaque branche du Split. |
+| `Data lookup failed.` | Un Loop n'a pas pu récupérer les enregistrements dont il a besoin. | L'app connectée, l'objet sélectionné et le filtre du Loop. |
+| `Invalid recipient email.` | Le destinataire du Send Email n'est pas une adresse e-mail valide. | Le champ destinataire ou le destinataire fixe. |
+| `Email invalid.` | HireData a un résultat d'adresse invalide pour le destinataire. | L'adresse du destinataire. Utilisez une adresse valide avant de réessayer. |
+| `Email blocked.` | Le destinataire figure sur la liste de blocage d'e-mails de l'espace de travail. | La liste de blocage de l'espace de travail et l'adresse du destinataire. |
+| `Email unsubscribed.` | Le destinataire figure dans les désinscriptions d'e-mails de l'espace de travail. Cela peut inclure une adresse supprimée après un bounce. | **Settings** > **Unsubscribes** et l'adresse du destinataire. |
+| `Invalid sender email.` | L'étape Send Email n'a aucun expéditeur que HireData puisse utiliser. | L'expéditeur et son domaine vérifié. |
+| `Send limits exceeded.` | Le destinataire a atteint une limite de messages au niveau du compte. | **Settings** > **Safety Limits**. |
+| `Send limits per automation exceeded.` | Le destinataire a atteint une limite définie sur cette automatisation. | Les **Settings** de l'automatisation. |
+
+Le message exact peut aussi identifier une erreur de configuration. `Required data reference missing.` en est un exemple. Cela rend l'exécution **Failed**, et non **Cancelled**. Corrigez la valeur requise manquante dans la configuration de la tâche, puis démarrez un nouvel événement.
 
 ## Invalid sender email
 
-Vous pouvez voir `Invalid sender email.` lorsqu'une étape Send Email ne peut pas utiliser l'adresse d'expéditeur configurée. Une cause confirmée est l'envoi depuis un domaine qui n'a pas été vérifié dans HireData.
+HireData annule une véritable exécution Send Email lorsque son expéditeur n'est pas valide pour l'espace de travail. Pour un e-mail transactionnel, HireData peut se rabattre sur un utilisateur expéditeur par défaut valide ou sur un expéditeur par défaut du domaine de marque configuré ou du domaine de l'espace de travail.
 
-### Comment le résoudre
+1. Allez dans **Settings** > **Domains**.
+2. Ouvrez le domaine utilisé par l'expéditeur.
+3. Générez et ajoutez ses enregistrements DNS si nécessaire.
+4. Sélectionnez **Verify DNS** une fois les enregistrements disponibles.
+5. Vérifiez l'expéditeur de l'étape Send Email, puis démarrez un nouvel événement.
 
-1. Allez dans **Settings** \> **Domains**.
-2. Trouvez et ouvrez le domaine utilisé par l'adresse d'expéditeur.
-3. Si les enregistrements DNS n'ont pas été générés, sélectionnez **Generate DNS Records**.
-4. Ajoutez chaque enregistrement généré aux réglages DNS chez votre fournisseur de domaine. Copiez les noms et les valeurs exactement tels que HireData les affiche.
-5. Revenez au domaine dans HireData et sélectionnez **Verify DNS**.
-6. Une fois le domaine vérifié, ouvrez l'automatisation concernée et sélectionnez l'étape **Send Email**.
-7. Confirmez que le champ expéditeur contient l'adresse e-mail voulue et que son domaine correspond au domaine vérifié.
-8. Enregistrez toute correction, puis testez avec un nouvel événement ou rejouez prudemment l'événement d'origine.
-
-<Warning>
-  Si HireData affiche `DNS Verification Failed - Please add your DNS records to your domain.`, il ne trouve pas encore tous les enregistrements requis. Confirmez que chaque enregistrement généré a bien été sauvegardé chez votre fournisseur de domaine, vérifiez si le fournisseur n'attend que le sous-domaine dans le champ **Host/Name**, et laissez le temps aux changements DNS de se propager avant de sélectionner à nouveau **Verify DNS**.
-</Warning>
-
-Pour la configuration DNS complète, y compris les conseils de formatage propres à chaque fournisseur, consultez [Comment vérifier un domaine dans HireData pour envoyer des e-mails](/fr/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
-
-Si **Verify DNS** renvoie plutôt une erreur 404 ou aucune réponse, il se peut que l'app Email ne soit pas installée. Suivez [Pourquoi ne puis-je pas vérifier mes enregistrements DNS ?](/fr/knowledge-base/why-cant-i-verify-my-dns-records).
-
-Si le domaine est vérifié et que l'adresse d'expéditeur semble correcte, notez l'ID de l'exécution, le nom de l'automatisation et l'adresse d'expéditeur avant de contacter le support HireData.
+Si la vérification DNS échoue, confirmez que chaque enregistrement généré est présent chez votre fournisseur DNS. Certains fournisseurs n'attendent que le sous-domaine dans le champ **Host/Name**. Consultez [Comment vérifier un domaine dans HireData pour envoyer des e-mails](/fr/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
 
 ## Send limits exceeded
 
-Cette annulation signifie que le destinataire a atteint une limite de sécurité au niveau du compte. HireData arrête l'étape pour éviter que la même adresse e-mail ou le même numéro de téléphone ne reçoive plus de messages que votre compte ne l'autorise.
-
-### Comment le résoudre
-
-1. Allez dans **Settings** \> **Safety Limits**.
-2. Examinez les limites sous **Prevent Message Overload**.
-3. Vérifiez si le destinataire a atteint la limite d'e-mails ou de conversations concernée.
-4. N'ajustez la limite que si une fréquence plus élevée est appropriée pour votre stratégie de communication.
-
-Consultez [Limites de sécurité des automatisations](/fr/settings/automation-safety-limits) pour une explication complète des contrôles au niveau du compte.
+Les limites au niveau du compte empêchent la même adresse e-mail ou le même numéro de téléphone de recevoir plus de messages que l'espace de travail ne l'autorise. Examinez les limites sous **Prevent Message Overload** dans **Settings** > **Safety Limits**. N'augmentez une limite que lorsque la fréquence de contact prévue est appropriée.
 
 ## Send limits per automation exceeded
 
-Cette annulation signifie que le destinataire a atteint une limite d'e-mails ou de conversations configurée spécifiquement pour l'automatisation. D'autres automatisations peuvent avoir des limites différentes.
-
-### Comment le résoudre
-
-1. Ouvrez l'automatisation concernée.
-2. Ouvrez le menu à trois points et sélectionnez **Settings**.
-3. Examinez les limites d'e-mails et de conversations sous **Message limits**.
-4. Confirmez si le destinataire a déjà reçu le maximum de messages autorisés sur la période configurée.
-5. N'ajustez la limite que lorsque la fréquence de messages voulue par l'automatisation l'exige.
+Une automatisation peut aussi avoir ses propres limites d'e-mails et de conversations. Ouvrez l'automatisation, sélectionnez son menu à trois points, puis sélectionnez **Settings**. Examinez **Message limits** et les messages précédemment reçus par le destinataire pour cette automatisation.
 
 <Warning>
-  L'option **Ignore all safety limits** supprime pour cette automatisation à la fois les protections propres à l'automatisation et celles au niveau du compte. Ne l'utilisez qu'après avoir évalué le risque de messages en double ou excessifs.
+  **Ignore all safety limits** supprime pour cette automatisation les protections au niveau du compte et de l'automatisation. Vérifiez l'historique du destinataire avant de l'utiliser.
 </Warning>
 
-## Tester après une correction
+## Démarrer une nouvelle exécution après une correction
 
-Après avoir corrigé la configuration de l'expéditeur ou des limites, utilisez si possible un nouvel événement de test. Vous pouvez aussi rejouer l'événement d'origine, mais inspectez d'abord son exécution précédente pour voir quelles étapes se sont déjà terminées.
+Utilisez un nouvel événement après avoir modifié un expéditeur, un destinataire, un Filter ou une limite. Rejouer un ancien événement peut répéter des e-mails, messages, mises à jour et tâches déjà effectués.
 
-<Warning>
-  Rejouer un événement peut répéter les e-mails, messages, mises à jour d'enregistrements, tâches et autres actions de l'exécution précédente.
-</Warning>
-
-## Besoin d'aide supplémentaire ?
-
-Si le message d'annulation ne figure pas ici, ou si les vérifications suggérées ne résolvent pas le problème, contactez [support@hiredata.com](mailto:support@hiredata.com). Incluez :
-
-- Un lien ou l'ID de l'exécution
-- Le nom de l'automatisation
-- L'étape annulée
-- Le message d'annulation exact
-- Tout détail pertinent sur l'expéditeur ou le destinataire
+Si le message ne figure pas ici, incluez l'ID de l'exécution, le nom de l'automatisation, l'étape annulée et le message exact lorsque vous contactez [support@hiredata.com](mailto:support@hiredata.com).

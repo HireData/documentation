@@ -1,0 +1,70 @@
+---
+title: "Message"
+sidebarTitle: "Message"
+description: "La catégorie Message dans une automatisation HireData : envoyer un e-mail, un message ou une enquête WhatsApp, une enquête Ratecard ou une requête HTTP, et ce qui arrête un envoi."
+keywords:
+  - "étape message"
+  - "envoyer un e-mail"
+  - "envoyer un whatsapp"
+  - "envoyer une enquête"
+  - "send message"
+  - "requête http"
+  - "invalid sender email"
+  - "limites d'envoi"
+---
+
+**Message** envoie quelque chose vers l'extérieur. C'est une catégorie : la choisir ouvre une liste intitulée **Message** avec une entrée par tâche, chacune marquée de l'icône de son app, et **Back** revient au sélecteur.
+
+<Info>
+  Message n'apparaît dans le sélecteur que lorsqu'une app connectée propose une tâche dans cette catégorie. Deux entrées peuvent partager un nom, comme les deux tâches **Send Survey** ci-dessous. L'icône les distingue.
+</Info>
+
+## Paramètres
+
+Chaque tâche a son propre panneau. Les paramètres communs sont le destinataire, l'expéditeur ou le canal, et le contenu à envoyer : un modèle, un formulaire ou un corps de requête. Send Email est un assistant avec une barre de progression dont la dernière étape, **Preview your email**, montre l'e-mail rendu sous **Summary** et chaque paramètre sous **Settings**.
+
+Les tâches qui remplissent la catégorie dans un espace de travail où HireData, Ratecard et WhatsApp sont connectés :
+
+| Tâche | App | Ce qu'elle envoie |
+| --- | --- | --- |
+| [Send Email](/fr/reference/automations/tasks/send-email) | HireData | Un e-mail construit à partir d'un modèle d'e-mail, vers une adresse fixe ou une personne issue de l'événement |
+| Send Message | WhatsApp | Un message WhatsApp à partir d'un modèle de message |
+| Send Survey | WhatsApp | Un formulaire sous forme de conversation WhatsApp, une question à la fois |
+| Send Survey | Ratecard | Un formulaire sous forme d'enquête Ratecard |
+| [HTTP Request](/fr/reference/automation-tasks/http-request-task) | HireData | Une requête vers n'importe quelle API externe |
+| Post Webhook | HireData | L'ancienne forme de HTTP Request. Voir [Les tâches Post Webhook existantes](/fr/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+
+### Sur le canevas
+
+Une tâche Message affiche un badge **Task**, le nom de la tâche et ce qu'elle enverra. Send Email rend le modèle et liste Subject, Recipient, Sender et Form.
+
+<img src="/images/automations/28-send-email-card.png" alt="Une carte Send Email sur le canevas avec un aperçu d'e-mail rendu et des lignes pour Subject, Recipient, Sender et Form" width="380" />
+
+## Ce qu'elle produit
+
+Ce que le canal rapporte en retour. Un e-mail distribué se termine avec le message « Email delivered. » Une enquête produit les réponses une fois que la personne répond, ce qui permet à un Filter après une enquête WhatsApp de bifurquer selon une réponse. Une HTTP Request produit la réponse que vous avez décrite. L'onglet **Fields** de l'étape d'exécution liste les valeurs que la tâche a utilisées, comme l'objet, le destinataire et l'expéditeur d'un e-mail.
+
+Une enquête retient l'exécution pendant qu'elle attend la réponse : l'étape affiche Waiting et la chronologie enregistre « Message Sent » puis, quand la réponse arrive, « Message Received ».
+
+## Ce qui arrête l'exécution
+
+Un envoi que le canal refuse. La carte de la tâche devient rouge avec la ligne « Cancelled » et l'heure, et la chronologie enregistre le nom de la tâche avec « Cancelled » et le message. Dans la liste des exécutions, la colonne **Step** nomme la tâche, comme « HireData: Send Email ».
+
+<img src="/images/automations/35-message-cancelled-timeline.png" alt="Une chronologie d'exécution avec Send Email: Cancelled, le message Invalid config., et Send Email: Run Cancelled" width="384" />
+
+Les messages que vous rencontrerez le plus souvent, chacun expliqué dans [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons) :
+
+| Message | Signification |
+| --- | --- |
+| `Invalid sender email.` | Le domaine de l'expéditeur n'est pas vérifié dans HireData |
+| `Send Limits Exceeded` | Le destinataire a atteint une limite au niveau du compte sous **Settings** > **Safety Limits** |
+| `Send Limits Per Automation Exceeded` | Le destinataire a atteint une limite définie dans les **Settings** de cette automatisation |
+| `Invalid config.` | Il manque à la tâche un paramètre dont elle a besoin, comme un expéditeur. Ouvrez la tâche et vérifiez chaque étape de son assistant |
+
+## Voir aussi
+
+- [Limites de sécurité des automatisations](/fr/settings/automation-safety-limits) explique les limites derrière les deux messages de limite d'envoi.
+- [Tâche Send Email](/fr/reference/automations/tasks/send-email) documente l'assistant et l'onglet Settings, y compris CC et BCC.
+- [Catalogue des tâches](/fr/reference/automations/task-catalogue) liste chaque tâche par app connectée.
+- [Tâche HTTP Request](/fr/reference/automation-tasks/http-request-task) documente les paramètres de requête, d'authentification et de réponse.
+- [Add](/fr/reference/automations/steps/add) liste aussi HTTP Request, car une requête peut créer un enregistrement aussi bien qu'en envoyer un.

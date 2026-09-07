@@ -1,0 +1,67 @@
+---
+title: "Split"
+sidebarTitle: "Split"
+description: "De Split-stap in een HireData-automatisering: branches die elk met een Filter beginnen, sub-runs per branch, en hoe de runpagina ze tekent."
+keywords:
+  - "split-stap"
+  - "branch"
+  - "paden"
+  - "sub-run"
+  - "create split"
+  - "no valid paths"
+---
+
+**Split** draait meer dan één pad naast elkaar. Elk pad begint met een eigen [Filter](/nl/reference/automations/steps/filter), en de run volgt elk pad waarvan het Filter slaagt.
+
+Split heeft geen eigen drawer. Het kiezen in de **Next step**-picker markeert de entry en toont **Create Split** in de footer. **Create Split** plaatst een Split met twee lege Filter-branches op het canvas en opent direct de Filter-drawer van de eerste branch.
+
+<img src="/images/automations/14-split-create.png" alt="De Next step-picker met Split gemarkeerd en een Create Split-knop in de footer" width="650" />
+
+## Instellingen
+
+- **Branchfilter**. Elke branch is een Filter-stap met de instellingen die een [Filter](/nl/reference/automations/steps/filter) heeft. Het Filter van een branch annuleert alleen die branch.
+- **Een pad toevoegen**. De **+** aan de rechterrand van de Split-box voegt een derde of latere branch toe en opent de Filter-drawer ervan. **Cancel** in die drawer verwijdert het nieuwe pad.
+- **Stappen in een branch**. De **+** onder het Filter van elke branch voegt de eigen stappen van de branch toe.
+- **Stappen na de Split**. De **+** onder de Split-box voegt de stap toe die draait zodra elke branch klaar is.
+
+De preview van het geïnstalleerde template labelt een Split als "Split / 2 paths".
+
+### Op het canvas
+
+De Split is een box met een **Split**-badge. De branchfilters staan er naast elkaar in, elk met een eigen **+** eronder, en de eigen **+** van de box volgt daaronder.
+
+<img src="/images/automations/25-split-card.png" alt="Een Split-box op het canvas met twee Filter-branches, Question 2: Answer is not empty en Question 2: Answer is empty" width="650" />
+
+## Wat het oplevert
+
+Niets van zichzelf. Elke branch leest de variabelen die vóór de Split bestonden. Stappen na de Split zien de variabelen zoals ze ervoor waren, plus wat de branches produceerden.
+
+Elke branch is een sub-run. De runs-lijst toont een rij per sub-run, dus het aantal runs is hoger dan het aantal events. De pagina van de bovenliggende run vouwt ze samen in één diagram: de Split-box draagt een eigen statusregel, elk branchfilter draagt "Completed" of "Cancelled", en elke taak van een branch draagt zijn eigen regel. De timeline registreert "Waiting." terwijl de branches draaien en "Split: Completed" met "Sub runs completed." wanneer ze klaar zijn.
+
+<img src="/images/automations/21-run-page-split.png" alt="Een runpagina met een Split met twee Filter-branches: de linkerbranch Completed en de Update Candidate in Carerix-taak ervan Completed, de rechterbranch Cancelled in rood" width="650" />
+
+## Wat de run stopt
+
+- Geen enkele branch slaagt. De Split toont Cancelled met het bericht "No valid paths found." en de stappen erna draaien nooit.
+- Geen enkele branch heeft een stap na zijn Filter. De Split toont Failed met hetzelfde bericht voordat er een branch is gecontroleerd.
+- Een stap binnen een branch stopt. Die annuleert alleen de sub-run van die branch. De andere branches en de stappen na de Split gaan door.
+
+Zie [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons).
+
+## Patronen
+
+- **Eén branch per antwoord.** Na een WhatsApp-survey een branch per antwoordwaarde, elk eindigend in de Update waar het antwoord om vraagt. Het reactivatietemplate doet dit met "Direct beschikbaar" en "Binnenkort beschikbaar".
+- **Een vangnet-branch.** Geef de laatste branch een Filter op het veld **is not empty**, zodat elke run met een antwoord ten minste één pad neemt, en de specifieke branches de waarden afhandelen die je verwacht.
+- **Gedeelde stappen na de Split.** Zet een stap die elk pad nodig heeft één keer onder de Split-box, in plaats van in elke branch.
+
+## Veelgemaakte fouten
+
+- **Overlappende condities.** Branches zijn niet exclusief. Een record dat door twee Filters komt draait beide branches.
+- **Een branch zonder stappen.** Een Filter met niets erachter is geen geldig pad en de Split faalt.
+- **Verwachten dat een branch de run stopt.** Een niet-geslaagd branchfilter annuleert zijn eigen sub-run. De run gaat door met de andere branches en de stappen na de Split. Gebruik voor een harde stop een [Filter](/nl/reference/automations/steps/filter) vóór de Split.
+
+## Gerelateerd
+
+- [Filter](/nl/reference/automations/steps/filter) documenteert de operators, rijen en sets die elke branch gebruikt.
+- [Loop](/nl/reference/automations/steps/loop) maakt ook sub-runs, één per record in plaats van één per branch.
+- [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons) legt uit waar het bericht van een geannuleerde branch verschijnt.

@@ -1,0 +1,86 @@
+---
+title: "Filter"
+sidebarTitle: "Filter"
+description: "De Filter-stap in een HireData-automatisering: elke conditie-operator, hoe rijen en sets combineren, unique constraints, en wat een gestopte run toont."
+keywords:
+  - "filter-stap"
+  - "conditie"
+  - "operator"
+  - "equals"
+  - "is empty"
+  - "contains"
+  - "greater than"
+  - "unique constraint"
+  - "filter not passed"
+---
+
+**Filter** beslist of de run doorgaat. Wanneer de condities slagen, gaat de run naar de volgende stap; wanneer ze niet slagen, stopt de run hier.
+
+De drawer heeft de kop **Filter** met de tabbladen **Filters** en **Advanced**.
+
+## Instellingen
+
+- **Field**. Het **Select field**-vak. Typ om te zoeken: "2: Answer" vindt "Question 2: Answer". De lijst bevat de velden van het event en de outputs van eerdere stappen.
+- **Operator**. Het **Select**-vak naast het veld. Uitgeschakeld tot er een veld is gekozen. De aangeboden operators hangen af van het type van het veld, hieronder opgesomd.
+- **Value**. Een vak dat verschijnt voor operators die met iets vergelijken. **is empty** en **is not empty** hebben er geen.
+- **Add Filter**. Voegt een rij toe aan dezelfde set.
+- **Add New Set**. Begint een nieuwe set onder de eerste.
+- **AND / OR**. Een toggle die tussen twee rijen verschijnt, en nog een die tussen twee sets verschijnt. Standaard **AND**. Binnen een set bepaalt deze of elke rij of een willekeurige rij moet slagen. Tussen sets bepaalt deze of elke set of een willekeurige set moet slagen.
+- **Unique Constraints**. Op het tabblad **Advanced**. Kies velden, en het Filter slaagt slechts één keer voor elke combinatie van hun waarden. Met een identifier en een statusveld geselecteerd, slaagt een record voor een gegeven status één keer, hoeveel events het ook produceert met die status.
+
+### Operators
+
+| Veldtype | Operators |
+| --- | --- |
+| Tekst | equals, not equals, is empty, is not empty, contains, does not contain, starts with, ends with, does not start with, does not end with |
+| Getal | equals, not equals, is empty, is not empty, greater than, less than, greater than or equal, less than or equal |
+
+Velden die een bereik of een set waarden bevatten bieden ook **between**, **one of** en **not one of**.
+
+<img src="/images/automations/10-filter-drawer.png" alt="De Filter-drawer met twee rijen in de eerste set, Question 1: Answer is not empty en Question 2: Answer equals Yes, verbonden door een AND / OR-toggle, daarna een tweede toggle en een lege tweede set" width="384" />
+
+### Op het canvas
+
+De kaart toont een **Filter**-badge, het setnummer, en elke rij als veld, operator, waarde.
+
+<img src="/images/automations/23-filter-card.png" alt="Een Filter-kaart op het canvas met 1, Question 1: Answer, is not empty" width="365" />
+
+## Wat het oplevert
+
+Niets nieuws. De variabelen die na een Filter beschikbaar zijn, zijn dezelfde als ervoor.
+
+Op de runpagina draagt een geslaagd Filter de regel "Completed" met de tijd. De timeline registreert "Filter: Run Moved", daarna "Filter: Completed" met elke set gemarkeerd als **Valid** en de waarde die het verwachtte tegenover de waarde die het vond.
+
+<img src="/images/automations/33-filter-passed-card.png" alt="Een Filter-kaart in een run met Meeting: Activity Type one of 2 selected, met de regel Completed: Last Friday at 7:42 PM eronder" width="380" />
+
+<img src="/images/automations/34-filter-passed-timeline.png" alt="Een run timeline met Filter: Run Moved, daarna Filter: Completed met set 1 als Valid met Expected Meeting: Activity Type met waarde 1e gesprek, To be one of 2 selected" width="384" />
+
+## Wat de run stopt
+
+Condities die niet slagen. De timeline registreert "Filter: Cancelled" met het bericht "Filter not passed." gevolgd door "Filter: Run Cancelled". Stappen na het Filter tonen geen statusregel, en in de runs-lijst toont de **Step**-kolom van de run "Filter".
+
+<img src="/images/automations/38-filter-cancelled-timeline.png" alt="Een run timeline met Run Scheduled, Run Started, Run Moved, daarna Filter: Cancelled met het bericht Filter not passed. en Filter: Run Cancelled" width="384" />
+
+Een Filter binnen een Split stopt alleen zijn eigen branch. Zie [Split](/nl/reference/automations/steps/split).
+
+Andere redenen waarom een run kan stoppen staan in [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons).
+
+## Patronen
+
+- **Bewaak de start.** Een Filter als eerste stap stopt runs die de start zelf niet kan uitsluiten, zoals een reactie met een leeg antwoord op de vraag die ertoe doet.
+- **Controleer opnieuw na een wachttijd.** Een Delay en dan een Filter bevestigt dat het record nog steeds kwalificeert zodra het wachten voorbij is. Een kandidaat die intussen is geplaatst krijgt de follow-up nooit.
+- **Eén keer per status.** Een unique constraint op het id van het record en het statusveld ervan laat een statuswijziging één keer door, ook wanneer de app dezelfde update meer dan eens verstuurt.
+- **Kies Split voor twee uitkomsten.** Een Filter beëindigt de run bij een nee. Wanneer zowel ja als nee stappen nodig hebben, gebruik dan een [Split](/nl/reference/automations/steps/split) met een Filter-branch voor elk.
+
+## Veelgemaakte fouten
+
+- **Een rij opslaan zonder operator.** De drawer slaat hem op en het canvas toont de ruwe key `enums.conditions.undefined` op de plek van de operator. Open het Filter opnieuw en kies er een.
+- **Alleen op nummer zoeken.** "Question 2" matcht ook "Question 12". Typ ook een deel van de titel van de vraag.
+- **Een overgeslagen stap verwachten.** Een Filter dat niet slaagt annuleert de run, het springt niet naar de volgende stap.
+- **AND en OR mengen zonder sets.** Rijen in één set delen één toggle. Om "A en B" te combineren met "C", zet je A en B in één set, C in een andere, en zet je de toggle tussen de sets op **OR**.
+
+## Gerelateerd
+
+- [Split](/nl/reference/automations/steps/split) draait een Filter per branch in plaats van de run te stoppen.
+- [Setup](/nl/reference/automations/steps/setup) bevat het startfilter, dat bepaalt of een run überhaupt begint.
+- [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons) legt uit waar je het bericht leest dat een gestopte run achterlaat.

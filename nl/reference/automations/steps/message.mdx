@@ -1,0 +1,70 @@
+---
+title: "Message"
+sidebarTitle: "Message"
+description: "De Message-categorie in een HireData-automatisering: verstuur een e-mail, een WhatsApp-bericht of -survey, een Ratecard-survey of een HTTP-request, en wat een verzending stopt."
+keywords:
+  - "message-stap"
+  - "e-mail versturen"
+  - "whatsapp versturen"
+  - "survey versturen"
+  - "bericht versturen"
+  - "http request"
+  - "invalid sender email"
+  - "verzendlimieten"
+---
+
+**Message** verstuurt iets naar buiten. Het is een categorie: erop klikken opent een lijst met de kop **Message** met één entry per taak, elk gemarkeerd met het icoon van de app, en **Back** keert terug naar de picker.
+
+<Info>
+  Message verschijnt alleen in de picker wanneer een gekoppelde app een taak in deze categorie aanbiedt. Twee entries kunnen een naam delen, zoals de twee **Send Survey**-taken hieronder. Het icoon houdt ze uit elkaar.
+</Info>
+
+## Instellingen
+
+Elke taak heeft een eigen drawer. De gedeelde instellingen zijn de ontvanger, de afzender of het kanaal, en de inhoud om te versturen: een template, een formulier of een request body. Send Email is een wizard met een voortgangsbalk waarvan de laatste stap, **Preview your email**, de gerenderde e-mail toont onder **Summary** en elke instelling onder **Settings**.
+
+De taken die de categorie vullen in een workspace met HireData, Ratecard en WhatsApp gekoppeld:
+
+| Taak | App | Wat deze verstuurt |
+| --- | --- | --- |
+| [Send Email](/nl/reference/automations/tasks/send-email) | HireData | Een e-mail opgebouwd uit een e-mailtemplate, naar een vast adres of een persoon uit het event |
+| Send Message | WhatsApp | Een WhatsApp-bericht op basis van een message template |
+| Send Survey | WhatsApp | Een formulier als WhatsApp-gesprek, één vraag per keer |
+| Send Survey | Ratecard | Een formulier als Ratecard-survey |
+| [HTTP Request](/nl/reference/automation-tasks/http-request-task) | HireData | Een request naar elke externe API |
+| Post Webhook | HireData | De oudere vorm van HTTP Request. Zie [Bestaande Post Webhook-taken](/nl/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+
+### Op het canvas
+
+Een Message-taak toont een **Task**-badge, de taaknaam en wat deze gaat versturen. Send Email rendert de template en vermeldt Subject, Recipient, Sender en Form.
+
+<img src="/images/automations/28-send-email-card.png" alt="Een Send Email-kaart op het canvas met een gerenderde e-mailpreview en rijen voor Subject, Recipient, Sender en Form" width="380" />
+
+## Wat het oplevert
+
+Wat het kanaal terugmeldt. Een afgeleverde e-mail wordt voltooid met het bericht "Email delivered." Een survey levert de antwoorden op zodra de persoon reageert, en zo kan een Filter na een WhatsApp-survey vertakken op een antwoord. Een HTTP Request levert de response op die je hebt beschreven. Het **Fields**-tabblad van de run step vermeldt de waarden die de taak gebruikte, zoals het onderwerp, de ontvanger en de afzender van een e-mail.
+
+Een survey houdt de run vast terwijl deze op het antwoord wacht: de stap toont Waiting en de timeline registreert "Message Sent" en, wanneer het antwoord binnenkomt, "Message Received".
+
+## Wat de run stopt
+
+Een verzending die het kanaal weigert. De taakkaart kleurt rood met de regel "Cancelled" en de tijd, en de timeline registreert de taaknaam met "Cancelled" en het bericht. In de runs-lijst benoemt de **Step**-kolom de taak, zoals "HireData: Send Email".
+
+<img src="/images/automations/35-message-cancelled-timeline.png" alt="Een run timeline met Send Email: Cancelled, het bericht Invalid config., en Send Email: Run Cancelled" width="384" />
+
+De berichten die je het meest waarschijnlijk tegenkomt, elk uitgelegd in [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons):
+
+| Bericht | Betekenis |
+| --- | --- |
+| `Invalid sender email.` | Het domein van de afzender is niet geverifieerd in HireData |
+| `Send Limits Exceeded` | De ontvanger bereikte een limiet op accountniveau onder **Settings** > **Safety Limits** |
+| `Send Limits Per Automation Exceeded` | De ontvanger bereikte een limiet die in de **Settings** van deze automatisering is ingesteld |
+| `Invalid config.` | De taak mist een instelling die deze nodig heeft, zoals een afzender. Open de taak en controleer elke stap van de wizard |
+
+## Gerelateerd
+
+- [Automation Safety Limits](/nl/settings/automation-safety-limits) legt de limieten achter de twee verzendlimietberichten uit.
+- [Send Email-taak](/nl/reference/automations/tasks/send-email) documenteert de wizard en het Settings-tabblad, inclusief CC en BCC.
+- [Taakcatalogus](/nl/reference/automations/task-catalogue) vermeldt elke taak per gekoppelde app.
+- [HTTP Request-taak](/nl/reference/automation-tasks/http-request-task) documenteert de request-, authenticatie- en response-instellingen.
+- [Add](/nl/reference/automations/steps/add) vermeldt HTTP Request ook, omdat een request zowel een record kan aanmaken als iets kan versturen.

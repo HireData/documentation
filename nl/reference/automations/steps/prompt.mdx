@@ -1,0 +1,91 @@
+---
+title: "Prompt"
+sidebarTitle: "Prompt"
+description: "De Prompt-stap in een HireData-automatisering, de Ask AI-drawer: intents, inputs, outputvelden, taal, modelinstellingen en wat deze teruggeeft."
+keywords:
+  - "prompt-stap"
+  - "ask ai"
+  - "ai-taak"
+  - "extract"
+  - "samenvatten"
+  - "classificeren"
+  - "outputveld"
+  - "reference as"
+  - "speed vs quality"
+---
+
+**Prompt** vraagt een AI-model iets te doen met de data van de run en geeft het antwoord terug als velden voor latere stappen. De drawer heeft de kop **Ask AI**. **Preview** in de footer ervan draait de prompt tegen voorbeelddata voordat je opslaat.
+
+De drawer opent op de vraag **What should the AI do?** met acht intents. **Custom** schrijft de prompt vanaf nul; de andere zeven kaderen de prompt voor één soort klus.
+
+<img src="/images/automations/39-prompt-intents.png" alt="Het What should the AI do?-paneel met Custom, Extract, Summarize, Classify, Write, Translate, Analyze en Evaluate, elk met een beschrijving van één regel" width="384" />
+
+<Tip>
+  Een andere intent dan **Custom** kiezen maakt de outputvelden aan die die intent meestal teruggeeft, zodat je start met velden die al bestaan.
+</Tip>
+
+## Instellingen
+
+- **What should the AI do?** De intent, als een select zodra gekozen.
+- **What will you provide to the AI?** Twee tabbladen. **Input** bevat het promptvak; typ je instructie en voeg er variabelen in in. **Variables** vermeldt velden om naast de prompt mee te geven zonder ze in de tekst te schrijven.
+- **Hints for the AI (optional)**. Extra context, toon of beperkingen, gescheiden van de instructie.
+- **What should the AI return?** De outputvelden. **Use an existing field** koppelt het antwoord aan een veld dat de automatisering al kent. **Data source** geeft een waarde uit een databron terug. **Create custom** definieert een nieuw veld. Een opgeslagen veld toont zijn naam en beschrijving met knoppen om het te bewerken of te verwijderen.
+- **Language**. De taal van het antwoord, standaard **None**, wat de taal van de input volgt.
+- **Advanced**. Standaard ingeklapt.
+  - **Step name**. Vervangt alleen de automatische naam in de kop van de drawer. De canvaskaart en de variabelenamen behouden de automatische naam. Elke taak-drawer biedt dezelfde hernoeming wanneer je over de naam in de kop hovert.
+  - **Speed vs quality**. **Fast** (snel, lagere kosten), **Balanced** of **Quality** (beste resultaten, langzamer).
+  - **Creativity**. **Precise** (consistent, feitelijk), **Balanced** of **Creative** (gevarieerder).
+  - **Answer length**. **Short**, **Medium**, **Long** of **Auto**.
+
+### Nieuw outputveld
+
+**Create custom** opent een dialoogvenster met twee stappen.
+
+- **Choose Field Type**. Een **Search types...**-vak en de types in groepen. Basics: Text, Number, Yes / No, List, ID. Date & Time: Date, Time, Datetime. People & Places: Email, Phone, Address, Country, Language, Locale, Timezone. Web & Media: URL, Domain, IP Address, Image, File, Color, Font. Advanced: Whole number, Decimal.
+- **Configure your field**. **Name** is het label dat je ziet. **Reference as** is de variabelenaam, standaard `text` voor een Text-veld. **What is it for? (optional)** vertelt het model wat er in het veld moet. **Save & New** slaat op en begint een volgend veld; **Done** sluit af.
+
+<img src="/images/automations/17-prompt-drawer.png" alt="De Ask AI-drawer met Custom gekozen, een prompt in het Input-tabblad, een leeg Hints-vak, één outputveld genaamd Greeting, Language op None, en de Advanced-sectie open op Fast, Precise en Auto" width="384" />
+
+### Op het canvas
+
+De kaart toont een **Task**-badge, "Ask AI" gevolgd door de intent, de prompttekst, een chip per outputveld en de drie Advanced-waarden.
+
+<img src="/images/automations/27-prompt-card.png" alt="Een Ask AI: Custom-kaart op het canvas met de prompttekst, een Greeting-outputchip en de chips Fast, Precise en Auto" width="380" />
+
+## Wat het oplevert
+
+Eén variabele per outputveld, genoemd naar de **Reference as**-waarde ervan, onder de naam van de taak. Daarnaast registreert de taak of het model antwoordde, zijn redenering, en een foutmelding wanneer dat niet zo was.
+
+| Variabele | Bevat |
+| --- | --- |
+| `output.<reference>` | De waarde van dat outputveld, zoals `output.greeting` |
+| `is_successful` | Of het model een antwoord teruggaf dat in de velden paste |
+| `reasoning` | Het verslag van het model over hoe het tot het antwoord kwam |
+| `error_message` | Waarom het niet kon antwoorden, leeg bij succes |
+
+Het **Fields**-tabblad van de run step vermeldt de meegegeven waarden en de teruggegeven waarden.
+
+## Wat de run stopt
+
+Een antwoord dat het model niet kon geven. De taakkaart toont Cancelled met de reden in de timeline, en de stappen erna tonen geen statusregel. Prompts die draaien maar een onverwachte waarde teruggeven stoppen de run niet; controleer de output in een [Filter](/nl/reference/automations/steps/filter) wanneer de volgende stap ervan afhangt.
+
+Zie [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons).
+
+## Patronen
+
+- **Classificeren, dan Split.** Een **Classify**-prompt met een List-output, dan een [Split](/nl/reference/automations/steps/split) waarvan de branches filteren op de lijstwaarde.
+- **Extraheren naar een record.** Een **Extract**-prompt met één outputveld per waarde, dan een [Update](/nl/reference/automations/steps/update)-taak die de velden naar het record schrijft.
+- **Eén zin, geen hele e-mail.** Voor een gepersonaliseerde regel binnen een e-mailtemplate doet een [AI-variabele](/nl/variables/ai-variables) in de template het werk zonder stap. Gebruik de Prompt-stap wanneer het antwoord moet worden opgeslagen of de run moet sturen.
+
+## Veelgemaakte fouten
+
+- **Een prompt zonder variabelen.** Alleen tekst geeft het model niets over deze run. Voeg de velden die het nodig heeft in in het **Input**-vak of voeg ze toe op het **Variables**-tabblad.
+- **Twee velden met dezelfde Reference as.** Het tweede overschrijft het eerste. Geef elk outputveld een eigen reference.
+- **Verwachten dat een hernoeming de kaart verandert.** **Step name**, en de hernoeming die je bereikt door over de naam van een taak in de drawerkop te hoveren, veranderen alleen de drawerkop.
+- **Language op None laten voor een output in een vaste taal.** Het antwoord volgt de taal van de input. Stel de taal in wanneer het record of de template er een verwacht.
+
+## Gerelateerd
+
+- [AI-variabelen](/nl/variables/ai-variables) genereren een waarde binnen een e-mail, formulier of automatisering zonder Prompt-stap.
+- [Filter](/nl/reference/automations/steps/filter) controleert een output voordat de volgende stap erop vertrouwt.
+- [Update](/nl/reference/automations/steps/update) schrijft outputvelden naar een record.

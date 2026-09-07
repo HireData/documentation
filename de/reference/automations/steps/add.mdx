@@ -1,0 +1,61 @@
+---
+title: "Add"
+sidebarTitle: "Add"
+description: "Die Add-Kategorie in einer HireData-Automatisierung: Aufgaben, die einen Datensatz in einer verbundenen App erstellen, etwa eine Carerix-Notiz oder eine Google-Sheets-Zeile."
+keywords:
+  - "Add-Schritt"
+  - "Datensatz erstellen"
+  - "Notiz hinzufügen"
+  - "Aufgabe hinzufügen"
+  - "Bewerbung"
+  - "Spreadsheet-Zeile"
+  - "post webhook"
+---
+
+**Add** erstellt etwas Neues in einer verbundenen App. Es ist eine Kategorie, kein eigener Schritt: Die Auswahl öffnet eine Liste mit der Überschrift **Add** mit einem Eintrag pro Aufgabe, und **Back** führt zurück zur Auswahl.
+
+<Info>
+  Add erscheint nur dann in der Auswahl, wenn eine verbundene App eine Aufgabe in dieser Kategorie anbietet. Verbinden Sie eine App, die Datensätze erstellt, und ihre Aufgaben kommen zur Liste hinzu.
+</Info>
+
+## Einstellungen
+
+Jede Aufgabe hat ihren eigenen Drawer. Die Einstellungen sind die Felder des zu erstellenden Datensatzes, benannt wie die App sie benennt, plus die Verbindung, über die er erstellt wird, wenn die App mehr als eine hat.
+
+Die Aufgaben, die die Kategorie in einem Workspace mit verbundenem Carerix, Google Sheets und HireData füllen:
+
+| Aufgabe | App | Was sie erstellt |
+| --- | --- | --- |
+| Email | Carerix | Einen E-Mail-Datensatz an einem Carerix-Object |
+| Job Application | Carerix | Eine Bewerbung, die einen Kandidaten mit einer Vakanz verknüpft |
+| Note | Carerix | Eine Notiz an einem Carerix-Object |
+| Task | Carerix | Eine Carerix-Aufgabe |
+| Row | Google Sheets | Eine Zeile in einem Spreadsheet |
+| [HTTP Request](/de/reference/automation-tasks/http-request-task) | HireData | Einen Request an eine beliebige externe API, der einen Datensatz in einem System erstellen kann, mit dem HireData keine Verbindung hat |
+| Post Webhook | HireData | Die ältere Form von HTTP Request. Bauen Sie neue Automatisierungen mit HTTP Request; siehe [Bestehende Post-Webhook-Aufgaben](/de/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+
+### Auf der Arbeitsfläche
+
+Eine Add-Aufgabe zeigt ein **Task**-Badge, den Aufgabennamen mit der App und die Werte, die sie schreiben wird, gruppiert wie die App sie gruppiert.
+
+<img src="/images/automations/37-add-card.png" alt="Eine Add-Task-to-Carerix-Karte auf der Arbeitsfläche mit den Gruppen Characteristics, Content und Related Records, jedes Feld aus einer Variable gefüllt" width="380" />
+
+## Was er ausgibt
+
+Den erstellten Datensatz. Das **Overview** des Run-Schritts verlinkt über die ID auf den Datensatz in der App und wiederholt die geschriebenen Werte, etwa Status, Fälligkeit und Inhalt einer Aufgabe. Sein **Fields**-Tab listet die Run-Werte, die die Aufgabe gelesen hat, jeweils mit dem Symbol des Schritts, der ihn erzeugt hat, und einem Typ-Badge. Spätere Schritte verwenden den erstellten Datensatz unter dem Namen der Aufgabe. [Einen Run verfolgen](/de/reference/automations/follow-a-run) zeigt einen Add-Task-Schritt aus einem echten Run.
+
+## Was den Run stoppt
+
+Eine Aufgabe, die ihren Datensatz nicht erstellen kann, stoppt den Run. Die Run-Seite zeigt die Aufgabenkarte in Rot mit der Zeile "Cancelled" und der Zeit, und die Timeline verzeichnet den Aufgabennamen mit "Cancelled" und dem Grund, den die App zurückgegeben hat. Öffnen Sie die Karte, um die Felder zu lesen, die die Aufgabe verwendet hat.
+
+Ein HTTP Request mit eingeschaltetem **Continue automation on failure** ist die Ausnahme: Er zeigt sich als Failed, und der Run läuft weiter.
+
+Die Gründe werden in [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons) erklärt.
+
+## Verwandt
+
+- [Automatisierungsschritte im Überblick](/de/reference/automations/overview) vergleicht Add mit den anderen Kategorien.
+- [Find](/de/reference/automations/steps/find) schlägt einen Datensatz nach, statt einen zu erstellen.
+- [Update](/de/reference/automations/steps/update) ändert einen Datensatz, der bereits existiert.
+- [HTTP-Request-Aufgabe](/de/reference/automation-tasks/http-request-task) dokumentiert die eine Add-Aufgabe, die HireData selbst bereitstellt.
+- [Aufgabenkatalog](/de/reference/automations/task-catalogue) listet jede Aufgabe pro verbundener App.

@@ -1,0 +1,41 @@
+---
+title: "Vue d'ensemble des étapes d'automatisation"
+sidebarTitle: "Vue d'ensemble"
+description: "Chaque étape que vous pouvez ajouter à une automatisation HireData, son type, et ce qu'elle fait dans une exécution."
+keywords:
+  - "étapes d'automatisation"
+  - "sélecteur d'étapes"
+  - "next step"
+  - "nœud start"
+  - "add"
+  - "delay"
+  - "filter"
+  - "find"
+  - "loop"
+  - "message"
+  - "prompt"
+  - "ask ai"
+  - "split"
+  - "update"
+---
+
+Une automatisation est un nœud de départ suivi d'étapes. Un événement qui correspond au nœud de départ commence une exécution. L'exécution parcourt les étapes dans l'ordre, et une étape qui agit sur une app connectée laisse une tâche.
+
+Pour en démarrer une, cliquez sur **New Automation** dans la barre supérieure et choisissez un modèle, ou ouvrez l'onglet **All** et choisissez **Blank Automation** pour partir de zéro. Chaque automatisation s'ouvre dans l'éditeur, où le nœud **Start** et chaque **+** mènent aux panneaux que ces pages décrivent. Utilisez le tableau ci-dessous pour choisir une étape dans le panneau **Next step**.
+
+| Étape | Type | Ce qu'elle fait dans une exécution |
+| --- | --- | --- |
+| [Setup](/fr/reference/automations/steps/setup) (le nœud **Start**) | Départ | Nomme l'app, l'objet et le déclencheur dont l'événement commence une exécution |
+| [Add](/fr/reference/automations/steps/add) | Catégorie de tâches | Crée un enregistrement dans une app connectée, comme une note, une tâche ou une candidature dans votre ATS, ou une ligne Google Sheets |
+| [Delay](/fr/reference/automations/steps/delay) | Étape | Met l'exécution en pause pour un préréglage tel que 5 minutes ou 1 jour, ou jusqu'à un jour de la semaine choisi |
+| [Filter](/fr/reference/automations/steps/filter) | Étape | Continue quand ses conditions passent et annule l'exécution quand elles ne passent pas |
+| [Find](/fr/reference/automations/steps/find) | Catégorie de tâches | Recherche un enregistrement dans une app connectée, ou trouve une adresse e-mail ou le domaine d'une entreprise |
+| [Loop](/fr/reference/automations/steps/loop) | Étape | Récupère des enregistrements depuis une app connectée et exécute les étapes qu'elle contient une fois par enregistrement |
+| [Message](/fr/reference/automations/steps/message) | Catégorie de tâches | Envoie un e-mail, un message WhatsApp, une enquête ou une requête HTTP |
+| [Prompt](/fr/reference/automations/steps/prompt) | Tâche | Demande à un modèle d'IA de faire quelque chose et renvoie les champs de sortie que vous définissez |
+| [Split](/fr/reference/automations/steps/split) | Étape | Exécute ses branches en parallèle, chaque branche commençant par son propre Filter |
+| [Update](/fr/reference/automations/steps/update) | Catégorie de tâches | Modifie un enregistrement qui existe déjà dans une app connectée |
+
+<Info>
+  Add, Find, Message et Update n'apparaissent dans le sélecteur que lorsqu'une app connectée propose une tâche dans cette catégorie. Le [catalogue des tâches](/fr/reference/automations/task-catalogue) liste ces tâches par app.
+</Info>

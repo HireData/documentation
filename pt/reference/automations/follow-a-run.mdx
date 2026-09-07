@@ -1,0 +1,81 @@
+---
+title: "Acompanhar um run"
+sidebarTitle: "Acompanhar um run"
+description: "Leia um run real de uma automação da HireData, do evento Carerix que o iniciou até à tarefa que criou, ecrã a ecrã: evento, run, passo do run, tarefa, resultado."
+keywords:
+  - "acompanhar um run"
+  - "ler um run"
+  - "página do evento"
+  - "página do run"
+  - "passo do run"
+  - "record data"
+  - "separador fields"
+  - "run finished"
+  - "tarefa carerix"
+---
+
+A automação desta página escuta um candidato do Carerix cujo campo **Example text** muda para um valor definido, encontra esse candidato e adiciona uma tarefa no Carerix para o responsável pelo candidato. Uma alteração no Carerix produziu o evento, o run, os passos do run e a tarefa abaixo, e cada secção mostra onde essa fase está no ecrã e o que lhe diz.
+
+## Evento
+
+O evento é a alteração que o Carerix reportou. É o mesmo evento para todas as automações do workspace.
+
+![A página do evento Candidate: Updated, com o painel Event Information à esquerda e o separador Data a listar EntityId 6416, sete campos alterados, a hora e o tipo cremployee:updated](/images/automations/44-follow-run-event-data.png)
+
+O que ler. O cabeçalho nomeia o objeto e o trigger, **Candidate: Updated**. **Event Information** dá a app, o trigger e a data do evento. **References** nomeia o registo a que o evento diz respeito, e **Related People** lista a pessoa que a HireData lhe associou. O separador **Data** é o payload tal como o Carerix o enviou. `EntityId` é o id do registo e `ChangedFields` lista o que mudou, aqui `additionalinfo`, o grupo que contém o campo Example text. O separador **Changes** mostra o novo valor de cada campo alterado, e o separador **Runs** lista todos os runs que este evento iniciou.
+
+![O separador Runs do mesmo evento, a listar dois runs Finished: Docs: follow a Carerix run e Blank Automation](/images/automations/45-follow-run-event-runs.png)
+
+O que lhe diz. Um evento pode iniciar vários runs. Este evento iniciou dois, porque duas automações ativas no workspace escutam atualizações de candidatos do Carerix. O run que quer é o da automação que está a acompanhar.
+
+Encontre os eventos em **Settings** > **Events**. [Events: inspecionar payloads de apps ligadas](/pt/settings/logs/events) explica os filtros e a vista do pedido em bruto.
+
+## Run
+
+O run é o trabalho da automação para este evento. Clique na linha do run no separador **Runs** do evento para o abrir.
+
+![A página do run 27113015: o cartão Start, Find Candidate in Carerix com Completed por baixo, Add Task to Carerix, e o painel Event à direita com o separador Overview e a timeline](/images/automations/46-follow-run-run-page.png)
+
+O que ler. O canvas é a automação desenhada de cima para baixo, com uma linha de estado no conector abaixo de cada passo que o run alcançou. "Run Started: Today at 4:41 PM" fica sob o cartão Start, "Completed: Today at 4:41 PM" sob a tarefa Find e "Completed: Today at 4:42 PM" sob a Add Task quando faz scroll. Um passo sem linha nunca foi alcançado. O painel **Event** à direita abre por defeito. O seu **Overview** repete as definições do Start que deixaram passar este evento, **App**, **Connection**, **Object**, **Trigger** e **Filter**, e depois a **Timeline**.
+
+O que lhe diz. A timeline é o run por ordem. **Run Scheduled** e **Run Started** são o evento a chegar e o run a começar. Cada passo escreve depois duas entradas, primeiro o seu estado ("Find: Completed") e depois o que o run fez a seguir ("Find: Run Moved" para o passo seguinte, ou "Add Task: Run Finished" quando o último passo termina). Um run que parou cedo termina antes com uma entrada "Cancelled" e uma mensagem.
+
+A lista de runs mostra os mesmos runs com o seu estado e, para um run parado, o passo que o parou. [Setup](/pt/reference/automations/steps/setup) documenta o nó Start e o painel Event que ele abre na página do run.
+
+## Inputs e outputs de um passo
+
+Clique no nome de uma tarefa no canvas para abrir o seu passo do run. O passo Find mostra o que encontrou; o passo a seguir mostra o que recebeu.
+
+<img src="/images/automations/47-follow-run-find-drawer.png" alt="O passo do run Find, com o cabeçalho Find, os badges Run Moved: 2 e Completed, uma linha Match found para #6416 HireData tester e um bloco Record Data a listar os campos do candidato" width="384" />
+
+O que ler. O passo Find abre numa linha **Match found** com o id e o nome do registo. O ícone de seta abre o registo no Carerix. **Record Data** lista todos os campos do registo tal como a app os devolveu: ids, nomes, saudações, o resumo do CV, datas e mais. Faça scroll no bloco para os ver todos. O badge **Run Moved** corresponde à última entrada do passo na timeline, e **Completed** é o seu estado. Ao contrário dos passos Message e Update, este painel não tem separadores **Overview** e **Fields**.
+
+<img src="/images/automations/48-follow-run-add-task-fields.png" alt="O separador Fields do passo do run Add Task a listar três campos: Now com um valor de data e hora, Find Candidate: Id com 6416 e Find Candidate: Owner: Id com 1" width="384" />
+
+O que lhe diz. O separador **Fields** do passo Add Task lista os valores que ele leu do run, cada um com o ícone do passo que o produziu e um badge de tipo. **Find Candidate: Id** e **Find Candidate: Owner: Id** vieram do passo Find, que é toda a razão pela qual o Find está antes da Add Task. **Now** é o relógio do run. O seu valor neste separador é a hora a que abriu o painel, não a hora a que a tarefa correu, por isso leia antes as horas da própria tarefa no separador **Overview**.
+
+[Find](/pt/reference/automations/steps/find) documenta o passo e o que um resultado vazio faz ao run.
+
+## Tarefa
+
+O último passo criou uma tarefa no Carerix. O seu passo do run mostra o que a HireData escreveu, e o Carerix mostra o que chegou.
+
+<img src="/images/automations/49-follow-run-add-task-overview.png" alt="O separador Overview do passo do run Add Task: um link Taak (9077), Status To do, os timestamps When? e Expires At, e o Content com o assunto e o corpo" width="384" />
+
+O que ler. O **Overview** de um passo Add liga ao registo que criou, aqui **Taak (9077)**. O Carerix fornece essa etiqueta no idioma da sua conta, por isso este sandbox neerlandês diz Taak onde uma conta em inglês diz Task. **Status**, **When?** e **Expires At** são os valores que o Carerix guardou. **When?** é uma hora depois do run, o desvio definido no passo, e **Expires At** é a hora do run. Ambos são timestamps tal como o Carerix os reporta, por isso não têm de coincidir com o relógio da página do run. **Content** é o assunto e o corpo que o passo escreveu, e **Related Records** liga o candidato e o responsável que ele anexou.
+
+![A tarefa no Carerix, Task 9077 Docs: check availability for HireData tester, com Kind Task, Status TO DO, uma data e hora, uma data de expiração e o assunto e o corpo em Content](/images/automations/50-follow-run-carerix-task.png)
+
+O que lhe diz. Abra o link **Taak (9077)** e o Carerix mostra a mesma tarefa do seu lado. O estado é **TO DO**, a hora é uma hora depois do run, e o assunto e o corpo correspondem ao Content do passo. O Carerix regista a tarefa como modificada por "Automated" e não por um colega.
+
+[Add](/pt/reference/automations/steps/add) documenta o passo e onde aparecem os campos do registo criado.
+
+## Resultado
+
+A própria página da automação resume todos os runs até agora.
+
+![A página da automação em modo de leitura com Run Stats a mostrar Finished 1 e Total 1, o conector sob o Find a ler Looked up: 1x item e o conector sob a Add Task a ler Added: 1x task](/images/automations/51-follow-run-automation-stats.png)
+
+O que ler. **Run Stats**, à esquerda, conta os runs por estado. Os conectores entre os passos contam o que cada passo fez em todos os runs, "Looked up: 1x item" sob o Find e "Added: 1x task" sob a Add Task. Cada contagem é um link para a lista de runs filtrada para esse passo e estado.
+
+O que lhe diz. Finished significa que todos os passos foram concluídos e o run chegou à bandeira final. Um run que parasse cedo contaria aqui sob outro estado, mostraria "Cancelled" no passo que o parou na página do run e transportaria uma mensagem na timeline. [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons) lista essas mensagens e o que alterar antes de iniciar um novo run.

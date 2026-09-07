@@ -1,0 +1,41 @@
+---
+title: "Automatisierungsschritte im Überblick"
+sidebarTitle: "Überblick"
+description: "Jeder Schritt, den Sie einer HireData-Automatisierung hinzufügen können, welche Art von Schritt es ist und was er in einem Run tut."
+keywords:
+  - "Automatisierungsschritte"
+  - "Schrittauswahl"
+  - "next step"
+  - "Start-Block"
+  - "add"
+  - "delay"
+  - "filter"
+  - "find"
+  - "loop"
+  - "message"
+  - "prompt"
+  - "ask ai"
+  - "split"
+  - "update"
+---
+
+Eine Automatisierung ist ein Start-Block gefolgt von Schritten. Ein Event, das zum Start-Block passt, beginnt einen Run. Der Run arbeitet die Schritte der Reihe nach ab, und ein Schritt, der auf eine verbundene App wirkt, hinterlässt eine Aufgabe.
+
+Um eine zu starten, klicken Sie in der oberen Leiste auf **New Automation** und wählen eine Vorlage, oder öffnen Sie den Tab **All** und wählen **Blank Automation**, um bei null zu beginnen. Jede Automatisierung öffnet sich im Builder, wo der **Start**-Block und jedes **+** zu den Drawern führen, die diese Seiten beschreiben. Nutzen Sie die Tabelle unten, um einen Schritt aus dem **Next step**-Drawer auszuwählen.
+
+| Schritt | Art | Was er in einem Run tut |
+| --- | --- | --- |
+| [Setup](/de/reference/automations/steps/setup) (der **Start**-Block) | Start | Benennt die App, das Object und den Trigger, deren Event einen Run beginnt |
+| [Add](/de/reference/automations/steps/add) | Aufgabenkategorie | Erstellt einen Datensatz in einer verbundenen App, etwa eine Notiz, eine Aufgabe oder eine Bewerbung in Ihrem ATS oder eine Google-Sheets-Zeile |
+| [Delay](/de/reference/automations/steps/delay) | Schritt | Pausiert den Run für ein Preset wie 5 Minuten oder 1 Tag oder bis zu einem gewählten Wochentag |
+| [Filter](/de/reference/automations/steps/filter) | Schritt | Fährt fort, wenn seine Bedingungen erfüllt sind, und bricht den Run ab, wenn nicht |
+| [Find](/de/reference/automations/steps/find) | Aufgabenkategorie | Schlägt einen Datensatz in einer verbundenen App nach oder findet eine E-Mail-Adresse oder eine Unternehmensdomain |
+| [Loop](/de/reference/automations/steps/loop) | Schritt | Ruft Datensätze aus einer verbundenen App ab und führt die Schritte darin einmal pro Datensatz aus |
+| [Message](/de/reference/automations/steps/message) | Aufgabenkategorie | Sendet eine E-Mail, eine WhatsApp-Nachricht, eine Umfrage oder einen HTTP-Request |
+| [Prompt](/de/reference/automations/steps/prompt) | Aufgabe | Bittet ein KI-Modell, etwas zu tun, und gibt die von Ihnen definierten Output-Felder zurück |
+| [Split](/de/reference/automations/steps/split) | Schritt | Führt seine Zweige parallel aus, wobei jeder Zweig mit einem eigenen Filter beginnt |
+| [Update](/de/reference/automations/steps/update) | Aufgabenkategorie | Ändert einen Datensatz, der in einer verbundenen App bereits existiert |
+
+<Info>
+  Add, Find, Message und Update erscheinen nur dann in der Auswahl, wenn eine verbundene App eine Aufgabe in dieser Kategorie anbietet. Der [Aufgabenkatalog](/de/reference/automations/task-catalogue) listet diese Aufgaben pro App.
+</Info>

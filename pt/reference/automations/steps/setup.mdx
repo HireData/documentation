@@ -1,0 +1,65 @@
+---
+title: "Setup"
+sidebarTitle: "Setup"
+description: "O nó Start de uma automação da HireData: a app, o objeto, o trigger, o formulário e o delay que decidem que evento começa um run."
+keywords:
+  - "nó start"
+  - "painel setup"
+  - "trigger"
+  - "app do trigger"
+  - "objeto do trigger"
+  - "trigger de formulário"
+  - "response completed"
+  - "delay de início"
+---
+
+Toda a automação começa com o nó **Start**. Clicar nele abre um painel com o cabeçalho **Setup**, onde define o evento que começa um run. O painel é o mesmo quer a automação tenha começado a partir de um template quer do zero. Um evento que corresponde às definições daqui inicia um run; um evento que não corresponde não inicia nada.
+
+Numa automação nova, o painel guia-o pela app, pelo objeto e pelo trigger, um a um. Depois da primeira gravação, mostra um resumo com um link **Edit** ao lado de cada escolha, e o seletor **Next step** abre para poder adicionar o primeiro passo.
+
+## Definições
+
+- **App**. A app ligada cujos eventos iniciam a automação. A grelha lista as apps do seu workspace que oferecem triggers, por isso uma app ligada pode faltar aqui quando só oferece tarefas. **HireData** está sempre presente.
+- **Connection**. A conta através da qual o evento chega. Aparece para apps que se ligam através de uma conta, como o Carerix, e é omitida para a HireData.
+- **Object**. Sobre o que é o evento. Para a HireData: **Conversation**, **Email**, **Person** ou **Response**.
+- **Trigger**. A alteração ao objeto que inicia um run. Para uma Response: **Completed**, **Created**, **Created or Updated** ou **Updated**. As escolhas estão listadas sob o cabeçalho **When something happens**.
+- **Config**. Definições extra de que o trigger precisa. Para um trigger de Response contém **Form** com um interruptor **All**. Com **All** ligado, uma resposta a qualquer formulário inicia um run. Desligue-o e aparece uma caixa **Select a form**. Escolha um formulário quando quiser usar as suas perguntas como variáveis em passos posteriores; com **All** ligado, as perguntas não são oferecidas.
+- **Delay**. Presente quando o início espera por uma data no registo, como faz um template instalado com "4 weeks after Candidate: Last Contact Date". A linha lê o desvio, como **4 weeks after**, com um link **Edit**. Este é o delay de início. Não é um [passo Delay](/pt/reference/automations/steps/delay).
+- **Filter**. Condições que o evento tem de cumprir antes de um run começar, para os triggers que as oferecem. Um trigger de Response da HireData não tem nenhuma. A página do run lista o filtro de início no painel do evento ao lado de App, Object e Trigger. Não é um [passo Filter](/pt/reference/automations/steps/filter).
+
+<Warning>
+  A app não pode ser alterada depois de a automação existir. Para mover uma automação para outra app, crie uma automação nova.
+</Warning>
+
+Gravar escreve a automação inteira de uma vez. Uma automação nova chama-se "Blank Automation" até lhe mudar o nome, e o nome só é mantido depois de o Setup ter sido gravado uma vez.
+
+<img src="/images/automations/29-setup-drawer.png" alt="O painel Setup depois de gravar: App HireData, Object Response com um botão Edit, Trigger Completed com um botão Edit e um cartão Config com Form, um interruptor All desligado e o formulário selecionado" width="384" />
+
+### No canvas
+
+O nó Start tem um badge **Start**, o objeto e o trigger como título e as linhas de Config por baixo, como o formulário que um trigger de Response escuta.
+
+<img src="/images/automations/22-setup-card.png" alt="O nó Start no canvas: um badge Start, o título Response: Completed e uma linha Form a ler Docs test: builder reference examples" width="378" />
+
+## O que produz
+
+O evento. Os seus campos ficam disponíveis como variáveis para todos os passos seguintes: os campos do objeto e as respostas do formulário selecionado quando o trigger é uma Response.
+
+Na página do run, o nó Start tem a linha "Run Started" com a hora. Clicar nele abre o painel do evento, com o nome da app e "Event" no cabeçalho e os separadores **Overview**, **Fields** e **Related**. O Overview lista **App**, **Connection**, **Object**, **Trigger** e **Filter**, e depois a **Timeline** do run.
+
+## O que para o run
+
+Nada no nó Start para um run que já começou. O que o Setup decide é se um run começa sequer.
+
+- Um evento que não corresponde à app, ao objeto, ao trigger ou ao formulário não inicia nenhum run.
+- Um evento que não passa no filtro de início não inicia nenhum run.
+- Uma automação em pausa não inicia nenhum run. Testar uma automação em pausa devolve "No run started for automation."
+
+Se falta um run que esperava, percorra [Porque é que a minha automação não correu?](/pt/knowledge-base/why-didnt-my-automation-run).
+
+## Relacionados
+
+- A [visão geral dos passos de automação](/pt/reference/automations/overview) lista todos os passos que pode adicionar depois do nó Start.
+- [Filter](/pt/reference/automations/steps/filter) para um run que já começou.
+- [Delay](/pt/reference/automations/steps/delay) pausa um run entre passos.
+- [Como testar uma automação](/pt/automations/how-to-test-an-automation) envia um registo pelo início sem esperar por um evento real.

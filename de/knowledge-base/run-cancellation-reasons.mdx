@@ -1,99 +1,62 @@
 ---
 title: "Gründe für Run-Abbrüche"
 sidebarTitle: "Run-Abbrüche"
-description: "Erfahren Sie, warum HireData Automatisierungs-Runs abbricht, wo Sie die Abbruchmeldung finden und wie Sie Invalid-Sender-Email- und Sendelimit-Fehler beheben."
-keywords: ["Run abgebrochen", "Run storniert", "Abbruchgrund", "Send Limits Exceeded", "Send Limits Per Automation Exceeded", "Invalid Sender Email", "Invalid sender email", "DNS Verification Failed", "Please add your DNS records to your domain", "Verify DNS", "Sendelimit überschritten", "ungültige Absenderadresse"]
+description: "Finden Sie die Meldung, die einen Automatisierungs-Run gestoppt hat, und beheben Sie häufige Abbrüche durch Filter, Loops, E-Mails und Nachrichtenlimits."
+keywords: ["Run abgebrochen", "Run storniert", "Abbruchgrund", "Email unsubscribed", "Send limits exceeded", "Invalid sender email"]
 ---
 
-_Wenn HireData einen Run abbricht, hält der abgebrochene Schritt eine Meldung fest, die erklärt, warum er nicht fortgesetzt werden konnte. Dieser Leitfaden zeigt Ihnen, wo Sie diese Meldung finden, was die häufigsten Abbruchgründe bedeuten und welche Einstellungen Sie prüfen sollten, bevor Sie die Automatisierung erneut versuchen._
+Wenn HireData einen Run abbricht, hält der Schritt, der ihn gestoppt hat, eine Meldung fest. Lesen Sie diese Meldung am Run, bevor Sie die Automatisierung ändern.
 
 ## Die Abbruchmeldung finden
 
-Öffnen Sie zuerst den betroffenen Run, damit Sie mit der exakten Meldung arbeiten, statt zu raten, was die Automatisierung gestoppt hat.
+1. Öffnen Sie **Runs** und wählen Sie den betroffenen Run.
+2. Wählen Sie den abgebrochenen Schritt im Run-Diagramm oder in der Timeline.
+3. Lesen Sie die Meldung in **Overview**.
+4. Öffnen Sie **Fields**, um die vom Schritt verwendeten Werte zu prüfen.
 
-1. Wählen Sie **Runs** in der Hauptnavigation.
-2. Finden Sie den betreffenden Run und wählen Sie seine Zeile.
-3. Wählen Sie den abgebrochenen Schritt in der Timeline.
-4. Öffnen Sie den Tab **Overview** und lesen Sie die Abbruchmeldung.
+## Abbruchmeldungen
 
-Sie können außerdem den Tab **Fields** nutzen, um die vom Schritt verwendeten Werte zu prüfen, und **Related**, um die Automatisierung oder das ursprüngliche Event zu öffnen.
-
-## Häufige Abbruchgründe
-
-| Meldung | Was sie bedeutet | Wo Sie prüfen |
+| Meldung | Was sie bedeutet | Was Sie prüfen |
 | --- | --- | --- |
-| `Invalid sender email.` | Der Send-Email-Schritt konnte die konfigurierte Absenderadresse nicht verwenden. | Die Absenderadresse und ihre Domain |
-| `Send Limits Exceeded` | Der Empfänger hat ein E-Mail- oder Konversationslimit auf Account-Ebene erreicht. | **Settings** \> **Safety Limits** |
-| `Send Limits Per Automation Exceeded` | Der Empfänger hat ein für diese Automatisierung konfiguriertes Limit erreicht. | Die **Settings** der Automatisierung |
+| `Filter not passed.` | Eine Filter-Bedingung wurde als falsch ausgewertet. | Die Filter-Bedingungen und die Event-Felder. |
+| `No valid paths found.` | Jeder Zweig eines Split ist an seinem Filter gescheitert. | Die Filter in jedem Split-Zweig. |
+| `Data lookup failed.` | Ein Loop konnte die benötigten Datensätze nicht abrufen. | Die verbundene App, das ausgewählte Object und den Loop-Filter. |
+| `Invalid recipient email.` | Der Send-Email-Empfänger ist keine gültige E-Mail-Adresse. | Das Empfängerfeld oder den festen Empfänger. |
+| `Email invalid.` | HireData hat für den Empfänger ein Ergebnis „ungültige Adresse" vorliegen. | Die Empfängeradresse. Verwenden Sie eine gültige Adresse, bevor Sie es erneut versuchen. |
+| `Email blocked.` | Der Empfänger steht auf der E-Mail-Blockliste des Workspace. | Die Workspace-Blockliste und die Empfängeradresse. |
+| `Email unsubscribed.` | Der Empfänger ist in den E-Mail-Abmeldungen des Workspace aufgeführt. Das kann auch eine nach einem Bounce unterdrückte Adresse einschließen. | **Settings** > **Unsubscribes** und die Empfängeradresse. |
+| `Invalid sender email.` | Der Send-Email-Schritt hat keinen Absender, den HireData verwenden kann. | Den Absender und seine verifizierte Domain. |
+| `Send limits exceeded.` | Der Empfänger hat ein Nachrichtenlimit auf Account-Ebene erreicht. | **Settings** > **Safety Limits**. |
+| `Send limits per automation exceeded.` | Der Empfänger hat ein für diese Automatisierung gesetztes Limit erreicht. | Die **Settings** der Automatisierung. |
+
+Die exakte Meldung kann stattdessen auch einen Konfigurationsfehler benennen. `Required data reference missing.` ist ein Beispiel. Damit wird der Run **Failed**, nicht **Cancelled**. Beheben Sie den fehlenden Pflichtwert in der Aufgabenkonfiguration und starten Sie dann ein neues Event.
 
 ## Ungültige Absender-E-Mail
 
-Sie sehen möglicherweise `Invalid sender email.`, wenn ein Send-Email-Schritt die konfigurierte Absenderadresse nicht verwenden kann. Eine bestätigte Ursache ist das Senden von einer Domain, die in HireData nicht verifiziert wurde.
+HireData bricht einen echten Send-Email-Run ab, wenn sein Absender für den Workspace nicht gültig ist. Bei einer transaktionalen E-Mail kann HireData auf einen gültigen Standard-Absender-Benutzer oder Standard-Absender auf der konfigurierten Brand-Domain oder Workspace-Domain zurückgreifen.
 
-### So beheben Sie es
+1. Gehen Sie zu **Settings** > **Domains**.
+2. Öffnen Sie die vom Absender verwendete Domain.
+3. Generieren Sie bei Bedarf ihre DNS-Einträge und fügen Sie sie hinzu.
+4. Wählen Sie **Verify DNS**, sobald die Einträge verfügbar sind.
+5. Prüfen Sie den Absender des Send-Email-Schritts und starten Sie dann ein neues Event.
 
-1. Gehen Sie zu **Settings** \> **Domains**.
-2. Finden und öffnen Sie die Domain, die von der Absenderadresse verwendet wird.
-3. Wenn noch keine DNS-Einträge generiert wurden, wählen Sie **Generate DNS Records**.
-4. Fügen Sie jeden generierten Eintrag in den DNS-Einstellungen bei Ihrem Domain-Anbieter hinzu. Kopieren Sie die Namen und Werte exakt so, wie HireData sie anzeigt.
-5. Kehren Sie zur Domain in HireData zurück und wählen Sie **Verify DNS**.
-6. Sobald die Domain verifiziert ist, öffnen Sie die betroffene Automatisierung und wählen Sie den Schritt **Send Email**.
-7. Bestätigen Sie, dass das Absenderfeld die beabsichtigte E-Mail-Adresse enthält und dass ihre Domain der verifizierten Domain entspricht.
-8. Speichern Sie jede Korrektur und testen Sie dann mit einem neuen Event, oder spielen Sie das ursprüngliche Event vorsichtig erneut ab.
-
-<Warning>
-  Wenn HireData `DNS Verification Failed - Please add your DNS records to your domain.` anzeigt, kann es noch nicht alle erforderlichen Einträge finden. Bestätigen Sie, dass jeder generierte Eintrag bei Ihrem Domain-Anbieter gespeichert wurde, prüfen Sie, ob der Anbieter im Feld **Host/Name** nur die Subdomain erwartet, und geben Sie DNS-Änderungen Zeit zur Verbreitung, bevor Sie erneut **Verify DNS** wählen.
-</Warning>
-
-Für die vollständige DNS-Einrichtung, einschließlich anbieterspezifischer Formatierungstipps, siehe [Eine Domain in HireData verifizieren, um E-Mails zu senden](/de/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
-
-Wenn **Verify DNS** stattdessen einen 404-Fehler oder keine Antwort zurückgibt, ist möglicherweise die Email-App nicht installiert. Folgen Sie [Warum kann ich meine DNS-Einträge nicht verifizieren?](/de/knowledge-base/why-cant-i-verify-my-dns-records).
-
-Wenn die Domain verifiziert ist und die Absenderadresse korrekt erscheint, notieren Sie die Run-ID, den Namen der Automatisierung und die Absenderadresse, bevor Sie den HireData-Support kontaktieren.
+Wenn die DNS-Verifizierung fehlschlägt, bestätigen Sie, dass jeder generierte Eintrag bei Ihrem DNS-Anbieter vorhanden ist. Einige Anbieter erwarten im Feld **Host/Name** nur die Subdomain. Siehe [Eine Domain in HireData verifizieren, um E-Mails zu senden](/de/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
 
 ## Sendelimits überschritten
 
-Dieser Abbruch bedeutet, dass der Empfänger ein Sicherheitslimit auf Account-Ebene erreicht hat. HireData stoppt den Schritt, um zu verhindern, dass dieselbe E-Mail-Adresse oder Telefonnummer mehr Nachrichten erhält, als Ihr Account erlaubt.
-
-### So beheben Sie es
-
-1. Gehen Sie zu **Settings** \> **Safety Limits**.
-2. Prüfen Sie die Limits unter **Prevent Message Overload**.
-3. Prüfen Sie, ob der Empfänger das betreffende E-Mail- oder Konversationslimit erreicht hat.
-4. Passen Sie das Limit nur an, wenn eine höhere Frequenz für Ihre Outreach-Strategie angemessen ist.
-
-Siehe [Automation Safety Limits](/de/settings/automation-safety-limits) für eine vollständige Erklärung der Kontrollen auf Account-Ebene.
+Limits auf Account-Ebene verhindern, dass dieselbe E-Mail-Adresse oder Telefonnummer mehr Nachrichten erhält, als der Workspace erlaubt. Prüfen Sie die Limits unter **Prevent Message Overload** in **Settings** > **Safety Limits**. Erhöhen Sie ein Limit nur, wenn die geplante Kontaktfrequenz angemessen ist.
 
 ## Sendelimits pro Automatisierung überschritten
 
-Dieser Abbruch bedeutet, dass der Empfänger ein E-Mail- oder Konversationslimit erreicht hat, das speziell für die Automatisierung konfiguriert wurde. Andere Automatisierungen können andere Limits haben.
-
-### So beheben Sie es
-
-1. Öffnen Sie die betroffene Automatisierung.
-2. Öffnen Sie das Dreipunkt-Menü und wählen Sie **Settings**.
-3. Prüfen Sie die E-Mail- und Konversationslimits unter **Message limits**.
-4. Bestätigen Sie, ob der Empfänger innerhalb des konfigurierten Zeitraums bereits die maximal erlaubten Nachrichten erhalten hat.
-5. Passen Sie das Limit nur an, wenn die beabsichtigte Nachrichtenfrequenz der Automatisierung es erfordert.
+Eine Automatisierung kann außerdem eigene E-Mail- und Konversationslimits haben. Öffnen Sie die Automatisierung, wählen Sie ihr Dreipunkt-Menü und dann **Settings**. Prüfen Sie **Message limits** und die früheren Nachrichten des Empfängers für diese Automatisierung.
 
 <Warning>
-  Die Option **Ignore all safety limits** entfernt sowohl die automatisierungsspezifischen als auch die accountweiten Schutzmechanismen für diese Automatisierung. Verwenden Sie sie nur, nachdem Sie das Risiko doppelter oder übermäßiger Nachrichten geprüft haben.
+  **Ignore all safety limits** entfernt die Account- und Automatisierungs-Schutzmechanismen für diese Automatisierung. Prüfen Sie den Verlauf des Empfängers, bevor Sie die Option verwenden.
 </Warning>
 
-## Nach einer Korrektur testen
+## Nach einer Korrektur einen neuen Run starten
 
-Verwenden Sie nach der Korrektur der Absender- oder Limit-Konfiguration nach Möglichkeit ein neues Test-Event. Sie können auch das ursprüngliche Event erneut abspielen, aber prüfen Sie zuerst seinen früheren Run, um zu sehen, welche Schritte bereits abgeschlossen wurden.
+Verwenden Sie ein neues Event, nachdem Sie einen Absender, Empfänger, Filter oder ein Limit geändert haben. Das erneute Abspielen eines alten Events kann bereits abgeschlossene E-Mails, Nachrichten, Updates und Aufgaben wiederholen.
 
-<Warning>
-  Das erneute Abspielen eines Events kann E-Mails, Nachrichten, Datensatz-Updates, Aufgaben und andere Aktionen aus dem früheren Run wiederholen.
-</Warning>
-
-## Brauchen Sie noch Hilfe?
-
-Wenn die Abbruchmeldung hier nicht aufgeführt ist oder die vorgeschlagenen Prüfungen sie nicht beheben, kontaktieren Sie [support@hiredata.com](mailto:support@hiredata.com). Geben Sie an:
-
-- Einen Link oder die ID des Runs
-- Den Namen der Automatisierung
-- Den abgebrochenen Schritt
-- Die exakte Abbruchmeldung
-- Alle relevanten Absender- oder Empfängerdetails
+Wenn die Meldung hier nicht aufgeführt ist, geben Sie die Run-ID, den Namen der Automatisierung, den abgebrochenen Schritt und die exakte Meldung an, wenn Sie [support@hiredata.com](mailto:support@hiredata.com) kontaktieren.

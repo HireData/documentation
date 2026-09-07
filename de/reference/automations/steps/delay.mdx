@@ -1,0 +1,54 @@
+---
+title: "Delay"
+sidebarTitle: "Delay"
+description: "Der Delay-Schritt in einer HireData-Automatisierung: Presets, eigene Zeiträume, Wochenenden überspringen und feste Uhrzeiten, und was der Run zeigt, während er wartet."
+keywords:
+  - "Delay-Schritt"
+  - "warten"
+  - "pausieren"
+  - "Wochenenden überspringen"
+  - "next monday"
+  - "feste Uhrzeit"
+  - "run delayed"
+---
+
+**Delay** pausiert den Run für eine festgelegte Zeit vor dem nächsten Schritt.
+
+## Einstellungen
+
+- **Preset**. Eine Auswahl vorgefertigter Wartezeiten, Standard **1 day**. Zeiträume: **None**, **5 minutes**, **15 minutes**, **30 minutes**, **1 hour**, **8 hours**, **12 hours**, **1 day**, **3 days**, **5 days**, **1 week**. Wochentage: **Next Monday** bis **Next Sunday**, die bis zu diesem Tag warten. **None** fügt keine Wartezeit hinzu.
+- **Skip Weekends**. Eine Checkbox. Wenn die Wartezeit an einem Samstag oder Sonntag enden würde, fährt der Run stattdessen am Montag fort. Deaktiviert bei den Wochentags-Presets, die bereits einen Tag benennen.
+- **Custom**. Ein Schalter, der die Preset-Auswahl durch ein Zahlenfeld ersetzt, Standard 0, mit einer Zeitraum-Auswahl aus **minute**, **hour**, **day** oder **week**.
+- **Set time**. Ein Button, der bei den Wochentags-Presets erscheint. Er legt die Uhrzeit fest, zu der der Run an diesem Wochentag fortfährt, samt Zeitzone. Zeitraum-Presets haben keine Zeiteinstellung; der Run fährt genau die Dauer nach Erreichen des Schritts fort.
+
+<Tip>
+  Ohne **Set time** fährt ein Wochentags-Preset zu der Uhrzeit fort, zu der der Run den Delay erreicht hat. Ein Run, der ihn am Donnerstag um 16:20 erreichte, fährt am gewählten Tag um 16:20 fort.
+</Tip>
+
+<img src="/images/automations/12-delay-drawer.png" alt="Der Delay-Drawer mit der Preset-Auswahl auf 5 minutes, einer Skip-Weekends-Checkbox und einem Custom-Schalter" width="384" />
+
+### Auf der Arbeitsfläche
+
+Die Karte zeigt die Wartezeit in Worten.
+
+<img src="/images/automations/24-delay-card.png" alt="Eine Delay-Karte auf der Arbeitsfläche mit Delay for 5 minutes" width="314" />
+
+## Was er ausgibt
+
+Nichts. Die nach einem Delay verfügbaren Variablen sind dieselben wie davor.
+
+Während der Run wartet, zeigt die Run-Seite den Schritt als Waiting mit der Meldung "Run Delayed", und die Timeline verzeichnet "Run Scheduled" mit der Zeit, zu der er fortfahren wird. Wenn die Wartezeit endet, verzeichnet die Timeline "Run Moved", und der nächste Schritt startet.
+
+<Tip>
+  Ein Test-Run wartet nicht. Jeder Delay schließt sofort mit "Run Moved" ab, ein Test zeigt also die Schritte, aber nicht das Timing.
+</Tip>
+
+## Was den Run stoppt
+
+Ein Delay stoppt einen Run nie von selbst. Ein wartender Run stoppt, wenn die Automatisierung pausiert oder gelöscht wird oder wenn der Schritt gelöscht wird, bevor die Wartezeit endet. Der Run zeigt sich dann als Cancelled, und sein Grund benennt, was sich geändert hat. Siehe [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons).
+
+## Verwandt
+
+- [Setup](/de/reference/automations/steps/setup) enthält den Start-Delay, der vor Beginn des Runs wartet statt zwischen Schritten.
+- [Filter](/de/reference/automations/steps/filter) nach einem Delay prüft, ob der Datensatz nach Ablauf der Wartezeit noch qualifiziert ist.
+- [Automatisierungsschritte im Überblick](/de/reference/automations/overview) listet jeden Schritt.

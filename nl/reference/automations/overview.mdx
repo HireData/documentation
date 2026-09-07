@@ -1,0 +1,41 @@
+---
+title: "Overzicht van automatiseringsstappen"
+sidebarTitle: "Overzicht"
+description: "Elke stap die je aan een HireData-automatisering kunt toevoegen, wat voor soort stap het is en wat deze doet in een run."
+keywords:
+  - "automatiseringsstappen"
+  - "step picker"
+  - "next step"
+  - "start-node"
+  - "add"
+  - "delay"
+  - "filter"
+  - "find"
+  - "loop"
+  - "message"
+  - "prompt"
+  - "ask ai"
+  - "split"
+  - "update"
+---
+
+Een automatisering is een start-node gevolgd door stappen. Een event dat overeenkomt met de start-node begint een run. De run werkt de stappen in volgorde af, en een stap die iets doet in een gekoppelde app laat een taak achter.
+
+Om er een te starten klik je op **New Automation** in de bovenbalk en kies je een template, of open je het tabblad **All** en kies je **Blank Automation** om vanaf nul te beginnen. Elke automatisering opent in de builder, waar de **Start**-node en elke **+** naar de drawers leiden die deze pagina's beschrijven. Gebruik de tabel hieronder om een stap te kiezen uit de **Next step**-drawer.
+
+| Stap | Soort | Wat deze doet in een run |
+| --- | --- | --- |
+| [Setup](/nl/reference/automations/steps/setup) (de **Start**-node) | Start | Benoemt de app, het object en de trigger waarvan het event een run begint |
+| [Add](/nl/reference/automations/steps/add) | Taakcategorie | Maakt een record aan in een gekoppelde app, zoals een notitie, taak of sollicitatie in je ATS, of een Google Sheets-rij |
+| [Delay](/nl/reference/automations/steps/delay) | Stap | Pauzeert de run voor een preset zoals 5 minuten of 1 dag, of tot een gekozen weekdag |
+| [Filter](/nl/reference/automations/steps/filter) | Stap | Gaat verder wanneer de condities slagen en annuleert de run wanneer dat niet zo is |
+| [Find](/nl/reference/automations/steps/find) | Taakcategorie | Zoekt een record op in een gekoppelde app, of vindt een e-mailadres of een bedrijfsdomein |
+| [Loop](/nl/reference/automations/steps/loop) | Stap | Haalt records op uit een gekoppelde app en draait de stappen erin één keer per record |
+| [Message](/nl/reference/automations/steps/message) | Taakcategorie | Verstuurt een e-mail, een WhatsApp-bericht, een survey of een HTTP-request |
+| [Prompt](/nl/reference/automations/steps/prompt) | Taak | Vraagt een AI-model iets te doen en retourneert de outputvelden die jij definieert |
+| [Split](/nl/reference/automations/steps/split) | Stap | Draait zijn branches naast elkaar, waarbij elke branch begint met een eigen Filter |
+| [Update](/nl/reference/automations/steps/update) | Taakcategorie | Wijzigt een record dat al bestaat in een gekoppelde app |
+
+<Info>
+  Add, Find, Message en Update verschijnen alleen in de picker wanneer een gekoppelde app een taak in die categorie aanbiedt. De [taakcatalogus](/nl/reference/automations/task-catalogue) vermeldt die taken per app.
+</Info>

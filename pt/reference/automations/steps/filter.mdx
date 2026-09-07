@@ -1,0 +1,86 @@
+---
+title: "Filter"
+sidebarTitle: "Filter"
+description: "O passo Filter numa automação da HireData: todos os operadores de condição, como as linhas e os conjuntos se combinam, unique constraints e o que mostra um run parado."
+keywords:
+  - "passo filter"
+  - "condição"
+  - "operador"
+  - "equals"
+  - "is empty"
+  - "contains"
+  - "greater than"
+  - "unique constraint"
+  - "filter not passed"
+---
+
+**Filter** decide se o run continua. Quando as condições passam, o run avança para o passo seguinte; quando não passam, o run para aqui.
+
+O painel tem o cabeçalho **Filter** com os separadores **Filters** e **Advanced**.
+
+## Definições
+
+- **Field**. A caixa **Select field**. Escreva para pesquisar: "2: Answer" encontra "Question 2: Answer". A lista contém os campos do evento e os outputs de passos anteriores.
+- **Operator**. A caixa **Select** ao lado do campo. Desativada até um campo ser escolhido. Os operadores oferecidos dependem do tipo do campo, listados abaixo.
+- **Value**. Uma caixa que aparece para os operadores que comparam com algo. **is empty** e **is not empty** não têm nenhuma.
+- **Add Filter**. Adiciona uma linha ao mesmo conjunto.
+- **Add New Set**. Começa um novo conjunto abaixo do primeiro.
+- **AND / OR**. Um alternador que aparece entre duas linhas, e outro que aparece entre dois conjuntos. Por defeito **AND**. Dentro de um conjunto decide se todas as linhas ou alguma linha têm de passar. Entre conjuntos decide se todos os conjuntos ou algum conjunto têm de passar.
+- **Unique Constraints**. No separador **Advanced**. Escolha campos, e o Filter passa só uma vez para cada combinação dos seus valores. Com um identificador e um campo de estado selecionados, um registo passa uma vez para um dado estado, por muitos eventos que produza com esse estado.
+
+### Operadores
+
+| Tipo de campo | Operadores |
+| --- | --- |
+| Texto | equals, not equals, is empty, is not empty, contains, does not contain, starts with, ends with, does not start with, does not end with |
+| Número | equals, not equals, is empty, is not empty, greater than, less than, greater than or equal, less than or equal |
+
+Os campos que contêm um intervalo ou um conjunto de valores também oferecem **between**, **one of** e **not one of**.
+
+<img src="/images/automations/10-filter-drawer.png" alt="O painel Filter com duas linhas no primeiro conjunto, Question 1: Answer is not empty e Question 2: Answer equals Yes, unidas por um alternador AND / OR, depois um segundo alternador e um segundo conjunto vazio" width="384" />
+
+### No canvas
+
+O cartão mostra um badge **Filter**, o número do conjunto e cada linha como campo, operador, valor.
+
+<img src="/images/automations/23-filter-card.png" alt="Um cartão Filter no canvas a ler 1, Question 1: Answer, is not empty" width="365" />
+
+## O que produz
+
+Nada de novo. As variáveis disponíveis depois de um Filter são as mesmas de antes dele.
+
+Na página do run, um Filter que passou tem a linha "Completed" com a hora. A timeline regista "Filter: Run Moved" e depois "Filter: Completed", com cada conjunto marcado como **Valid** e o valor que esperava face ao valor que encontrou.
+
+<img src="/images/automations/33-filter-passed-card.png" alt="Um cartão Filter num run a ler Meeting: Activity Type one of 2 selected, com a linha Completed: Last Friday at 7:42 PM por baixo" width="380" />
+
+<img src="/images/automations/34-filter-passed-timeline.png" alt="Uma timeline de run com Filter: Run Moved e depois Filter: Completed a mostrar o conjunto 1 como Valid, com Expected Meeting: Activity Type com o valor 1e gesprek, To be one of 2 selected" width="384" />
+
+## O que para o run
+
+Condições que não passam. A timeline regista "Filter: Cancelled" com a mensagem "Filter not passed." seguida de "Filter: Run Cancelled". Os passos depois do Filter não mostram linha de estado, e na lista de runs a coluna **Step** do run lê "Filter".
+
+<img src="/images/automations/38-filter-cancelled-timeline.png" alt="Uma timeline de run com Run Scheduled, Run Started, Run Moved e depois Filter: Cancelled com a mensagem Filter not passed. e Filter: Run Cancelled" width="384" />
+
+Um Filter dentro de um Split para apenas o seu próprio ramo. Veja [Split](/pt/reference/automations/steps/split).
+
+Os outros motivos pelos quais um run pode parar estão listados em [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons).
+
+## Padrões
+
+- **Guardar o início.** Um Filter como primeiro passo para os runs que o início não consegue excluir sozinho, como uma resposta com uma resposta vazia à pergunta que importa.
+- **Verificar de novo depois de uma espera.** Um Delay e depois um Filter confirma que o registo ainda qualifica quando a espera termina. Um candidato colocado entretanto nunca recebe o follow-up.
+- **Disparar uma vez por estado.** Uma unique constraint no id do registo e no seu campo de estado deixa passar uma mudança de estado uma vez, mesmo quando a app envia a mesma atualização mais do que uma vez.
+- **Escolher Split para dois desfechos.** Um Filter termina o run num não. Quando tanto o sim como o não precisam de passos, use um [Split](/pt/reference/automations/steps/split) com um ramo Filter para cada um.
+
+## Erros comuns
+
+- **Gravar uma linha sem operador.** O painel grava-a e o canvas mostra a chave em bruto `enums.conditions.undefined` no lugar do operador. Abra o Filter de novo e escolha um.
+- **Pesquisar só pelo número.** "Question 2" também corresponde a "Question 12". Escreva também parte do título da pergunta.
+- **Esperar um passo saltado.** Um Filter que não passa cancela o run, não salta para o passo seguinte.
+- **Misturar AND e OR sem conjuntos.** As linhas de um conjunto partilham um alternador. Para combinar "A e B" com "C", ponha A e B num conjunto, C noutro, e defina o alternador entre os conjuntos como **OR**.
+
+## Relacionados
+
+- [Split](/pt/reference/automations/steps/split) corre um Filter por ramo em vez de parar o run.
+- [Setup](/pt/reference/automations/steps/setup) contém o filtro de início, que decide se um run começa sequer.
+- [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons) explica onde ler a mensagem que um run parado deixa.

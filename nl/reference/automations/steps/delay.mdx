@@ -1,0 +1,54 @@
+---
+title: "Delay"
+sidebarTitle: "Delay"
+description: "De Delay-stap in een HireData-automatisering: presets, aangepaste duur, weekenden overslaan en vaste tijden, en wat de run toont tijdens het wachten."
+keywords:
+  - "delay-stap"
+  - "wachten"
+  - "pauze"
+  - "weekenden overslaan"
+  - "next monday"
+  - "vaste tijd"
+  - "run delayed"
+---
+
+**Delay** pauzeert de run voor een ingestelde tijd vóór de volgende stap.
+
+## Instellingen
+
+- **Preset**. Een select met kant-en-klare wachttijden, standaard **1 day**. Duur: **None**, **5 minutes**, **15 minutes**, **30 minutes**, **1 hour**, **8 hours**, **12 hours**, **1 day**, **3 days**, **5 days**, **1 week**. Weekdagen: **Next Monday** tot en met **Next Sunday**, die wachten tot die dag. **None** voegt geen wachttijd toe.
+- **Skip Weekends**. Een checkbox. Wanneer de wachttijd op een zaterdag of zondag zou eindigen, gaat de run in plaats daarvan op de maandag verder. Uitgeschakeld voor de weekdag-presets, die al een dag benoemen.
+- **Custom**. Een switch die de preset-select vervangt door een getalvak, standaard 0, en een periode-select met **minute**, **hour**, **day** of **week**.
+- **Set time**. Een knop die verschijnt bij de weekdag-presets. Deze stelt het tijdstip in, en de tijdzone ervan, waarop de run op die weekdag verdergaat. Duur-presets hebben geen tijdinstelling; de run gaat exact de duur nadat deze de stap bereikte verder.
+
+<Tip>
+  Zonder **Set time** gaat een weekdag-preset verder op het tijdstip waarop de run de Delay bereikte. Een run die hem op donderdag om 16:20 bereikte, gaat op de gekozen dag om 16:20 verder.
+</Tip>
+
+<img src="/images/automations/12-delay-drawer.png" alt="De Delay-drawer met de preset-select op 5 minutes, een Skip Weekends-checkbox en een Custom-switch" width="384" />
+
+### Op het canvas
+
+De kaart toont de wachttijd in woorden.
+
+<img src="/images/automations/24-delay-card.png" alt="Een Delay-kaart op het canvas met Delay for 5 minutes" width="314" />
+
+## Wat het oplevert
+
+Niets. De variabelen die na een Delay beschikbaar zijn, zijn dezelfde als ervoor.
+
+Terwijl de run wacht, toont de runpagina de stap als Waiting met het bericht "Run Delayed", en registreert de timeline "Run Scheduled" met de tijd waarop de run verdergaat. Wanneer de wachttijd eindigt, registreert de timeline "Run Moved" en start de volgende stap.
+
+<Tip>
+  Een testrun wacht niet. Elke Delay wordt direct voltooid met "Run Moved", dus een test toont de stappen maar niet de timing.
+</Tip>
+
+## Wat de run stopt
+
+Een Delay stopt een run nooit uit zichzelf. Een run die wacht stopt wanneer de automatisering wordt gepauzeerd of verwijderd, of wanneer de stap wordt verwijderd, voordat de wachttijd voorbij is. De run toont dan als Cancelled en de reden benoemt wat er veranderde. Zie [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons).
+
+## Gerelateerd
+
+- [Setup](/nl/reference/automations/steps/setup) bevat de startdelay, die wacht voordat de run begint in plaats van tussen stappen.
+- [Filter](/nl/reference/automations/steps/filter) na een Delay controleert of het record nog steeds kwalificeert zodra het wachten voorbij is.
+- [Overzicht van automatiseringsstappen](/nl/reference/automations/overview) vermeldt elke stap.

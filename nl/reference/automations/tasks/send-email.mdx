@@ -1,0 +1,125 @@
+---
+title: "Send Email-taak"
+sidebarTitle: "Send Email"
+description: "De Send Email-taak in een HireData-automatisering: de wizard met zeven stappen, het Settings-tabblad met CC, BCC en UTM, wat de taak oplevert en wat een verzending stopt."
+keywords:
+  - "send email-taak"
+  - "send email-stap"
+  - "e-mailautomatisering"
+  - "select a template"
+  - "select a brand"
+  - "vaste ontvanger"
+  - "vaste afzender"
+  - "cc"
+  - "bcc"
+  - "carbon copy"
+  - "utm-campagne"
+  - "email delivered"
+  - "invalid sender email"
+---
+
+**Send Email** verstuurt een e-mail, opgebouwd uit een van je e-mailtemplates, naar één adres per run. De taak staat onder **Message** in de **Next step**-drawer, gemarkeerd met het HireData-icoon.
+
+De drawer is een wizard van maximaal zeven stappen met een voortgangsbalk. Twee stappen verschijnen alleen wanneer ze iets te vragen hebben. **Select a brand** verschijnt wanneer de workspace brands heeft. **Set up your form** verschijnt wanneer de template een formulier bevat. Wanneer je een opgeslagen taak heropent, opent de wizard op de eerste stap die nog input nodig heeft, wat voor een afgeronde taak **Preview your email** is.
+
+<Steps>
+  <Step title="Select a template">
+    Een zoekvak en één kaart per e-mailtemplate, elk met een live preview. Klik op een kaart om de template te openen in een previewdialoog met het onderwerp, de gerenderde e-mail, **Edit Email**, een **Send test mail**-knop, een toggle die variabelewaarden toont of verbergt, en **Use template**. Een template die een brand draagt vult de brand voor je in.
+  </Step>
+  <Step title="Select a brand">
+    **Verschijnt wanneer** de workspace ten minste één brand heeft. Een **Brands**-zoekvak en één kaart per brand met de kleurstrook ervan. Klik op een kaart om de template gerenderd in die brand te zien, en dan **Use brand**.
+  </Step>
+  <Step title="Select a recipient">
+    Presets voor de personen die het event meebrengt, zoals **Response (Respondent)**. Er een kiezen laat de wizard doorgaan. Zet **Use fixed recipient** aan om elke run naar hetzelfde adres te sturen: kies een **User**, of laat het op None staan en typ een **Name** en **Email**, en dan **Continue**.
+  </Step>
+  <Step title="Select a sender">
+    Dezelfde keuze voor de afzender, met **Use fixed sender**. In een ingeplande automatisering is de afzender altijd vast en wordt de switch niet getoond.
+  </Step>
+  <Step title="Set up your template">
+    **Subject**, vooraf ingevuld vanuit de template en open voor variabelen, en daarna één invoerveld per [variabele](/nl/reference/email-builder/variables) die de template definieert. Een datum-, e-mail- of telefoonvariabele biedt de passende velden uit de run in een select; een tekstvariabele neemt getypte tekst of een variabele. **Objects** verschijnt wanneer de template of het formulier ervan uit een databron leest. **Continue** gaat verder. Je bereikt deze stap na het kiezen van een ontvanger- of afzenderpreset. **Continue** na een vaste afzender gaat rechtstreeks naar de preview, en dezelfde velden wachten onder **Settings** > **Template**.
+  </Step>
+  <Step title="Set up your form">
+    **Verschijnt wanneer** de template een formulier bevat. **Prefill Questions** vermeldt de vragen van het formulier zodat een run ze vooraf kan beantwoorden. **Additional Fields** vermeldt de custom fields van het formulier. Een formulier zonder vragen of zonder custom fields zegt dat op de plek van de lijst.
+  </Step>
+  <Step title="Preview your email">
+    Twee tabbladen. **Summary** toont de gerenderde e-mail met **Subject**, **Recipient**, **Sender** en **Form**; klik op de e-mail om de previewdialoog te openen. **Settings** vermeldt elke instelling van de taak, hieronder beschreven.
+  </Step>
+</Steps>
+
+<Tip>
+  Vanaf **Set up your template** staat er een **Skip**-knop naast de titel van de stap. Deze gaat naar de volgende stap zonder iets te veranderen.
+</Tip>
+
+<img src="/images/automations/19-send-email-summary.png" alt="Stap 7, Preview your email, op het Summary-tabblad: de gerenderde e-mail boven rijen voor Subject, Recipient, Sender en Form" width="384" />
+
+## Instellingen
+
+Het **Settings**-tabblad van de laatste stap bevat één sectie per instelling. Open een sectie om deze te wijzigen zonder de wizard opnieuw te doorlopen.
+
+- **Template**. Het onderwerp en de variabelen van de template, zoals in **Set up your template**.
+- **Form**. De vooraf ingevulde vragen en additional fields, zoals in **Set up your form**.
+- **Recipient**. **Use fixed recipient** met een **User**-select, of **Name** en **Email** wanneer er geen user is gekozen. Met de switch uit benoemt **Preset** de persoon uit het event en is **Label** de naam die de kaart voor die persoon toont, gevolgd door de veldmapping die bepaalt welke velden van de persoon de naam en het adres leveren.
+- **Sender**. Dezelfde controls voor de afzender. Het adres moet bij een in HireData geverifieerd domein horen. Wanneer dat niet zo is, verstuurt HireData vanaf de standaardafzender van het domein van de brand of het workspacedomein als die is ingesteld, en stopt anders de run met "Invalid sender email."
+- **CC** en **BCC**. Klik op **+** om een kopie-ontvanger toe te voegen. Elke entry heeft een **Name** en een **Address**. Beide nemen een veld uit de run of getypte tekst: typ die en kies de **Create**-optie die onder het vak verschijnt. Vul beide in voordat je opslaat. **–** verwijdert een entry. CC-adressen zijn zichtbaar voor iedereen op de e-mail; BCC-adressen niet. Een testverzending laat CC en BCC weg.
+- **UTM Campaign**. **Campaign Name**, **Campaign Source**, **Campaign Medium**, **Campaign Term** en **Campaign Content**, toegevoegd aan elke link in de e-mail. De placeholders tonen de eigen UTM-waarden van de template. Laat een veld leeg om de waarde van de template te behouden.
+- **Objects**. Getoond wanneer de template of het formulier ervan uit een databron leest. Kiest het record waarnaar elk object in deze run verwijst, via **External ID**, via **Fields**, of door een **Record** te kiezen. Een object met een sterretje is verplicht: laat het leeg en elke run stopt met "Required data reference missing."
+
+### Op het canvas
+
+De kaart toont een **Task**-badge, "Send Email", de gerenderde e-mail en rijen voor **Subject**, **Recipient**, **Sender** en **Form**.
+
+<img src="/images/automations/28-send-email-card.png" alt="Een Send Email-kaart op het canvas met een gerenderde e-mailpreview en rijen voor Subject, Recipient, Sender en Form" width="380" />
+
+## Wat het oplevert
+
+De verzonden e-mail. Op de runpagina toont de kaart van de taak de e-mail die uitging; klik erop om het bericht te lezen zoals de ontvanger het zag, met **Edit Form**- en **Edit Email**-links naar de bronnen ervan. Op de kaart zelf klikken opent de run step, met de kop **Send Email** en een **Completed**-badge. Het **Overview** ervan vermeldt **To** en **From** met elk een naam en adres, het **Subject**, en de waarde van elke templatevariabele. **Fields** vermeldt elke waarde die de taak uit de run las.
+
+<img src="/images/automations/40-send-email-run-drawer.png" alt="De Send Email run step-drawer met de badges Run Finished en Completed, het Overview-tabblad open, en kaarten voor To, From en Subject" width="384" />
+
+Latere stappen kunnen de status van de e-mail lezen. Een [Filter](/nl/reference/automations/steps/filter) na een [Delay](/nl/reference/automations/steps/delay) kan vertakken op of de e-mail is geopend.
+
+| Variabele | Bevat |
+| --- | --- |
+| `email.status` | De laatste status: Sent, Delivered, Bounced, Opened of Clicked |
+| `email.sent`, `email.delivered`, `email.opened`, `email.clicked`, `email.bounced` | Yes of No voor elk event dat de e-mail heeft bereikt |
+
+Een afgeleverde e-mail voltooit de stap met het bericht "Email delivered."
+
+<img src="/images/automations/41-send-email-delivered-timeline.png" alt="Een run timeline: Run Scheduled, Run Started, Run Moved, Send Email: Completed met het bericht Email delivered., Run Continued, en Send Email: Run Finished" width="384" />
+
+### Afleverstatistieken
+
+De eigen pagina van de automatisering, die opent vanuit de Automations-lijst voordat je de bewerkmodus in klikt, voegt de cijfers toe die de runpagina mist. Ze laden in een paar seconden en verdwijnen zodra je de bewerkmodus opent.
+
+- **Stats** op de Send Email-kaart: **Sent**, **Delivered**, **Bounced**, **Opened** en **Clicked**, elk met een aantal en een percentage van verzonden.
+- **Onder de kaart**, één regel per uitkomst met een link naar de taken erachter, zoals "Sent: 1x email" en "Failed to send: 2x email".
+- **Mail Stats** in het linkerpaneel: dezelfde vijf cijfers, opgeteld over elke Send Email-stap in de automatisering. **Run Stats** erboven telt runs per status.
+
+<img src="/images/automations/42-send-email-card-stats.png" alt="De Send Email-kaart op de automatiseringspagina met een Stats-blok met Sent 1, Delivered 1 (100.0%), Bounced 0, Opened 1 (100.0%), Clicked 0, en daaronder de regels Failed to send: 2x email en Sent: 1x email" width="384" />
+
+<img src="/images/automations/43-mail-stats.png" alt="Het Mail Stats-paneel: Sent 1, Delivered 1 (100.0%), Bounced 0 (0.0%), Opened 1 (100.0%), Clicked 0 (0.0%)" width="240" />
+
+## Wat de run stopt
+
+Een verzending die HireData weigert. De taakkaart kleurt rood met de regel "Cancelled" en de tijd, en de timeline registreert "Send Email: Cancelled" met het bericht. In de runs-lijst toont de **Step**-kolom "HireData: Send Email".
+
+<img src="/images/automations/35-message-cancelled-timeline.png" alt="Een run timeline met Send Email: Cancelled, het bericht Invalid config., en Send Email: Run Cancelled" width="384" />
+
+| Bericht | Betekenis |
+| --- | --- |
+| `Invalid config.` | De taak heeft geen ontvanger of geen afzender. Open hem en controleer **Recipient** en **Sender** onder **Settings** |
+| `Invalid sender email.` | Het domein van de afzender is niet geverifieerd en er kon geen standaardafzender invallen |
+| `Send Limits Exceeded` | De ontvanger bereikte een limiet op accountniveau onder **Settings** > **Safety Limits** |
+| `Send Limits Per Automation Exceeded` | De ontvanger bereikte een limiet die in de **Settings** van deze automatisering is ingesteld |
+| `Email unsubscribed.` | De ontvanger staat op de lijst onder **Settings** > **Unsubscribes**. Een adres dat als onbekend bouncede belandt daar ook |
+| `Required data reference missing.` | De template heeft een object nodig onder **Settings** > **Objects** en er is er geen gekozen. De stap toont Failed in plaats van Cancelled |
+
+Een ontvangeradres dat geen geldig e-mailadres is, een adres op je blocklist, of een adres dat e-mailvalidatie als ongeldig markeerde stopt de run ook, elk met een eigen bericht in de timeline. Redenen worden uitgelegd in [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons).
+
+## Gerelateerd
+
+- [Message](/nl/reference/automations/steps/message) vermeldt de andere taken die iets versturen.
+- [Overzicht van de e-mailbuilder](/nl/reference/email-builder/overview) documenteert de builder die de template maakt die deze taak verstuurt.
+- [Automation Safety Limits](/nl/settings/automation-safety-limits) legt de twee verzendlimietberichten uit.
+- [Een domein in HireData verifiëren voor e-mails](/nl/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails) lost "Invalid sender email." op.
+- [Taakcatalogus](/nl/reference/automations/task-catalogue) vermeldt elke taak per gekoppelde app.

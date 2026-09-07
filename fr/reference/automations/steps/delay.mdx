@@ -1,0 +1,54 @@
+---
+title: "Delay"
+sidebarTitle: "Delay"
+description: "L'étape Delay dans une automatisation HireData : préréglages, durées personnalisées, saut des week-ends et heures fixes, et ce que l'exécution affiche pendant l'attente."
+keywords:
+  - "étape delay"
+  - "attendre"
+  - "pause"
+  - "sauter les week-ends"
+  - "next monday"
+  - "heure fixe"
+  - "run delayed"
+---
+
+**Delay** met l'exécution en pause pendant une durée définie avant l'étape suivante.
+
+## Paramètres
+
+- **Preset**. Une liste d'attentes prêtes à l'emploi, par défaut **1 day**. Durées : **None**, **5 minutes**, **15 minutes**, **30 minutes**, **1 hour**, **8 hours**, **12 hours**, **1 day**, **3 days**, **5 days**, **1 week**. Jours de la semaine : **Next Monday** jusqu'à **Next Sunday**, qui attendent jusqu'à ce jour-là. **None** n'ajoute aucune attente.
+- **Skip Weekends**. Une case à cocher. Quand l'attente se terminerait un samedi ou un dimanche, l'exécution continue le lundi à la place. Désactivée pour les préréglages de jour de la semaine, qui nomment déjà un jour.
+- **Custom**. Un interrupteur qui remplace la liste de préréglages par une zone numérique, par défaut 0, et une liste de périodes : **minute**, **hour**, **day** ou **week**.
+- **Set time**. Un bouton qui apparaît pour les préréglages de jour de la semaine. Il définit l'heure de la journée, et son fuseau horaire, à laquelle l'exécution continue ce jour-là. Les préréglages de durée n'ont pas de réglage d'heure ; l'exécution continue exactement la durée après avoir atteint l'étape.
+
+<Tip>
+  Sans **Set time**, un préréglage de jour de la semaine continue à l'heure à laquelle l'exécution a atteint le Delay. Une exécution qui l'a atteint à 16 h 20 un jeudi continue à 16 h 20 le jour choisi.
+</Tip>
+
+<img src="/images/automations/12-delay-drawer.png" alt="Le panneau Delay avec la liste de préréglages sur 5 minutes, une case à cocher Skip Weekends et un interrupteur Custom" width="384" />
+
+### Sur le canevas
+
+La carte énonce l'attente en toutes lettres.
+
+<img src="/images/automations/24-delay-card.png" alt="Une carte Delay sur le canevas indiquant Delay for 5 minutes" width="314" />
+
+## Ce qu'elle produit
+
+Rien. Les variables disponibles après un Delay sont les mêmes qu'avant.
+
+Pendant que l'exécution attend, la page de l'exécution affiche l'étape comme Waiting avec le message « Run Delayed », et la chronologie enregistre « Run Scheduled » avec l'heure à laquelle elle continuera. Quand l'attente se termine, la chronologie enregistre « Run Moved » et l'étape suivante démarre.
+
+<Tip>
+  Une exécution de test n'attend pas. Chaque Delay se termine immédiatement avec « Run Moved » : un test montre donc les étapes mais pas le minutage.
+</Tip>
+
+## Ce qui arrête l'exécution
+
+Un Delay n'arrête jamais une exécution par lui-même. Une exécution en attente s'arrête quand l'automatisation est mise en pause ou supprimée, ou quand l'étape est supprimée, avant la fin de l'attente. L'exécution s'affiche alors comme Cancelled et sa raison nomme ce qui a changé. Voir [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons).
+
+## Voir aussi
+
+- [Setup](/fr/reference/automations/steps/setup) contient le délai de démarrage, qui attend avant que l'exécution commence plutôt qu'entre les étapes.
+- [Filter](/fr/reference/automations/steps/filter) après un Delay vérifie que l'enregistrement est toujours qualifié une fois l'attente terminée.
+- [Vue d'ensemble des étapes d'automatisation](/fr/reference/automations/overview) liste chaque étape.

@@ -1,0 +1,125 @@
+---
+title: "Tarefa Send Email"
+sidebarTitle: "Send Email"
+description: "A tarefa Send Email numa automação da HireData: o assistente de sete passos, o separador Settings com CC, BCC e UTM, o que a tarefa produz e o que para um envio."
+keywords:
+  - "tarefa send email"
+  - "passo send email"
+  - "automação de email"
+  - "select a template"
+  - "select a brand"
+  - "destinatário fixo"
+  - "remetente fixo"
+  - "cc"
+  - "bcc"
+  - "com cópia"
+  - "campanha utm"
+  - "email delivered"
+  - "invalid sender email"
+---
+
+**Send Email** envia um email construído a partir de um dos seus templates de email para um endereço por run. Fica sob **Message** no painel **Next step**, marcada com o ícone da HireData.
+
+O painel é um assistente com até sete passos e uma barra de progresso. Dois passos só aparecem quando têm algo a perguntar. **Select a brand** aparece quando o workspace tem marcas. **Set up your form** aparece quando o template contém um formulário. Quando reabre uma tarefa gravada, o assistente abre no primeiro passo que ainda precisa de input, que para uma tarefa terminada é **Preview your email**.
+
+<Steps>
+  <Step title="Select a template">
+    Uma caixa de pesquisa e um cartão por template de email, cada um com uma pré-visualização ao vivo. Clique num cartão para abrir o template numa caixa de diálogo de pré-visualização com o seu assunto, o email renderizado, **Edit Email**, um botão **Send test mail**, um interruptor que mostra ou esconde os valores das variáveis e **Use template**. Um template que transporta uma marca preenche a marca por si.
+  </Step>
+  <Step title="Select a brand">
+    **Aparece quando** o workspace tem pelo menos uma marca. Uma caixa de pesquisa **Brands** e um cartão por marca com a sua faixa de cor. Clique num cartão para ver o template renderizado nessa marca e depois **Use brand**.
+  </Step>
+  <Step title="Select a recipient">
+    Predefinições para as pessoas que o evento transporta, como **Response (Respondent)**. Escolher uma avança o assistente. Ligue **Use fixed recipient** para enviar todos os runs para o mesmo endereço: escolha um **User**, ou deixe em None e escreva um **Name** e um **Email**, e depois **Continue**.
+  </Step>
+  <Step title="Select a sender">
+    A mesma escolha para o remetente, com **Use fixed sender**. Numa automação agendada, o remetente é sempre fixo e o interruptor não é mostrado.
+  </Step>
+  <Step title="Set up your template">
+    **Subject**, pré-preenchido a partir do template e aberto a variáveis, e depois um input por [variável](/pt/reference/email-builder/variables) que o template define. Uma variável de data, email ou telefone oferece os campos correspondentes do run num seletor; uma variável de texto aceita texto escrito ou uma variável. **Objects** aparece quando o template ou o seu formulário lê de uma fonte de dados. **Continue** avança. Chega a este passo depois de escolher uma predefinição de destinatário ou remetente. **Continue** depois de um remetente fixo vai diretamente para a pré-visualização, e os mesmos campos esperam em **Settings** > **Template**.
+  </Step>
+  <Step title="Set up your form">
+    **Aparece quando** o template contém um formulário. **Prefill Questions** lista as perguntas do formulário para que um run as possa responder antecipadamente. **Additional Fields** lista os campos personalizados do formulário. Um formulário sem perguntas ou sem campos personalizados di-lo no lugar da lista.
+  </Step>
+  <Step title="Preview your email">
+    Dois separadores. **Summary** mostra o email renderizado com **Subject**, **Recipient**, **Sender** e **Form**; clique no email para abrir a caixa de diálogo de pré-visualização. **Settings** lista todas as definições da tarefa, descritas abaixo.
+  </Step>
+</Steps>
+
+<Tip>
+  A partir de **Set up your template**, um botão **Skip** fica ao lado do título do passo. Avança para o passo seguinte sem alterar nada.
+</Tip>
+
+<img src="/images/automations/19-send-email-summary.png" alt="O passo 7, Preview your email, no separador Summary: o email renderizado acima de linhas para Subject, Recipient, Sender e Form" width="384" />
+
+## Definições
+
+O separador **Settings** do último passo contém uma secção por definição. Abra uma secção para a alterar sem percorrer o assistente de novo.
+
+- **Template**. O assunto e as variáveis do template, como em **Set up your template**.
+- **Form**. As perguntas pré-preenchidas e os campos adicionais, como em **Set up your form**.
+- **Recipient**. **Use fixed recipient** com um seletor **User**, ou **Name** e **Email** quando nenhum utilizador é escolhido. Com o interruptor desligado, **Preset** nomeia a pessoa do evento e **Label** é o nome que o cartão mostra para ela, seguido do mapeamento de campos que decide quais os campos da pessoa que fornecem o nome e o endereço.
+- **Sender**. Os mesmos controlos para o remetente. O endereço tem de pertencer a um domínio verificado na HireData. Quando não pertence, a HireData envia a partir do remetente por defeito do domínio da marca ou do domínio do workspace se um estiver definido, e para o run com "Invalid sender email." se não estiver.
+- **CC** e **BCC**. Clique em **+** para adicionar um destinatário em cópia. Cada entrada tem um **Name** e um **Address**. Ambos aceitam um campo do run ou texto escrito: escreva-o e escolha a opção **Create** que aparece sob a caixa. Preencha ambos antes de gravar. **–** remove uma entrada. Os endereços em CC são visíveis para todos no email; os endereços em BCC não. Um envio de teste descarta CC e BCC.
+- **UTM Campaign**. **Campaign Name**, **Campaign Source**, **Campaign Medium**, **Campaign Term** e **Campaign Content**, adicionados a todos os links do email. Os placeholders mostram os valores UTM do próprio template. Deixe um campo vazio para manter o valor do template.
+- **Objects**. Mostrado quando o template ou o seu formulário lê de uma fonte de dados. Escolhe o registo a que cada objeto se refere neste run, por **External ID**, por **Fields** ou escolhendo um **Record**. Um objeto marcado com um asterisco é obrigatório: deixe-o vazio e todos os runs param com "Required data reference missing."
+
+### No canvas
+
+O cartão mostra um badge **Task**, "Send Email", o email renderizado e linhas para **Subject**, **Recipient**, **Sender** e **Form**.
+
+<img src="/images/automations/28-send-email-card.png" alt="Um cartão Send Email no canvas com uma pré-visualização do email renderizado e linhas para Subject, Recipient, Sender e Form" width="380" />
+
+## O que produz
+
+O email enviado. Na página do run, o cartão da tarefa mostra o email que saiu; clique nele para ler a mensagem tal como o destinatário a viu, com links **Edit Form** e **Edit Email** para as suas fontes. Clicar no próprio cartão abre o passo do run, com o cabeçalho **Send Email** e um badge **Completed**. O seu **Overview** lista **To** e **From**, cada um com um nome e um endereço, o **Subject** e o valor de cada variável do template. **Fields** lista todos os valores que a tarefa leu do run.
+
+<img src="/images/automations/40-send-email-run-drawer.png" alt="O painel do passo do run Send Email com os badges Run Finished e Completed, o separador Overview aberto e cartões para To, From e Subject" width="384" />
+
+Os passos posteriores podem ler o estado do email. Um [Filter](/pt/reference/automations/steps/filter) depois de um [Delay](/pt/reference/automations/steps/delay) pode ramificar consoante o email foi aberto ou não.
+
+| Variável | Contém |
+| --- | --- |
+| `email.status` | O estado mais recente: Sent, Delivered, Bounced, Opened ou Clicked |
+| `email.sent`, `email.delivered`, `email.opened`, `email.clicked`, `email.bounced` | Yes ou No para cada evento que o email alcançou |
+
+Um email entregue conclui o passo com a mensagem "Email delivered."
+
+<img src="/images/automations/41-send-email-delivered-timeline.png" alt="Uma timeline de run: Run Scheduled, Run Started, Run Moved, Send Email: Completed com a mensagem Email delivered., Run Continued e Send Email: Run Finished" width="384" />
+
+### Números de entrega
+
+A própria página da automação, a que abre a partir da lista de Automations antes de entrar no modo de edição, acrescenta os números que faltam à página do run. Demoram alguns segundos a carregar e desaparecem assim que entra no modo de edição.
+
+- **Stats** no cartão Send Email: **Sent**, **Delivered**, **Bounced**, **Opened** e **Clicked**, cada um com uma contagem e uma percentagem dos enviados.
+- **Sob o cartão**, uma linha por desfecho com um link para as tarefas por trás dele, como "Sent: 1x email" e "Failed to send: 2x email".
+- **Mail Stats** no painel esquerdo: os mesmos cinco números somados em todos os passos Send Email da automação. **Run Stats**, acima, conta os runs por estado.
+
+<img src="/images/automations/42-send-email-card-stats.png" alt="O cartão Send Email na página da automação com um bloco Stats de Sent 1, Delivered 1 (100.0%), Bounced 0, Opened 1 (100.0%), Clicked 0, e as linhas Failed to send: 2x email e Sent: 1x email por baixo" width="384" />
+
+<img src="/images/automations/43-mail-stats.png" alt="O painel Mail Stats: Sent 1, Delivered 1 (100.0%), Bounced 0 (0.0%), Opened 1 (100.0%), Clicked 0 (0.0%)" width="240" />
+
+## O que para o run
+
+Um envio que a HireData recusa. O cartão da tarefa fica vermelho com a linha "Cancelled" e a hora, e a timeline regista "Send Email: Cancelled" com a mensagem. Na lista de runs, a coluna **Step** lê "HireData: Send Email".
+
+<img src="/images/automations/35-message-cancelled-timeline.png" alt="Uma timeline de run com Send Email: Cancelled, a mensagem Invalid config. e Send Email: Run Cancelled" width="384" />
+
+| Mensagem | Significado |
+| --- | --- |
+| `Invalid config.` | A tarefa não tem destinatário ou não tem remetente. Abra-a e verifique **Recipient** e **Sender** em **Settings** |
+| `Invalid sender email.` | O domínio do remetente não está verificado e nenhum remetente por defeito pôde substituí-lo |
+| `Send Limits Exceeded` | O destinatário atingiu um limite ao nível da conta em **Settings** > **Safety Limits** |
+| `Send Limits Per Automation Exceeded` | O destinatário atingiu um limite definido nas **Settings** desta automação |
+| `Email unsubscribed.` | O destinatário está na lista em **Settings** > **Unsubscribes**. Um endereço que fez bounce como desconhecido também aterra lá |
+| `Required data reference missing.` | O template precisa de um objeto em **Settings** > **Objects** e nenhum foi escolhido. O passo mostra Failed em vez de Cancelled |
+
+Um endereço de destinatário que não é um endereço de email válido, um endereço na sua blocklist ou um endereço que a validação de email marcou como inválido também param o run, cada um com a sua própria mensagem na timeline. Os motivos estão explicados em [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons).
+
+## Relacionados
+
+- [Message](/pt/reference/automations/steps/message) lista as outras tarefas que enviam algo.
+- A [visão geral do construtor de emails](/pt/reference/email-builder/overview) documenta o construtor que faz o template que esta tarefa envia.
+- [Limites de segurança de automações](/pt/settings/automation-safety-limits) explica as duas mensagens de limite de envio.
+- [Como verificar um domínio na HireData para enviar emails](/pt/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails) corrige "Invalid sender email."
+- O [catálogo de tarefas](/pt/reference/automations/task-catalogue) lista todas as tarefas por app ligada.

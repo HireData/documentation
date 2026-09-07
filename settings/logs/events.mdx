@@ -8,7 +8,7 @@ When you connect your ATS (such as Carerix, Salesforce, or OTYS) to HireData, it
 
 ## What is an event
 
-An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. These events are used to trigger the automations you've set up in HireData, and every event includes **Event Data**, **External Records and Processes.**
+An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. These events are used to trigger the automations you've set up in HireData, and every event includes **Event Data**, **External Records and Runs.**
 
 _Event example:_
 
@@ -40,9 +40,9 @@ To inspect the raw request body, open the event data and use the available code 
 
 ![External records tab](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
 
-- **Processes** – the list of automation(s) triggered by this event and the runs it created. You'll also see each run's status (e.g. Completed, Delayed, Cancelled).
+- **Runs** – the runs created by this event and the automation associated with each one. You'll also see each run's status (e.g. Completed, Delayed, Cancelled).
 
-![Processes tab](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+![Automation runs created by an event](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
 
 ## Replaying events
 
@@ -111,12 +111,12 @@ HireData reprocesses the selected event(s) and triggers the associated automatio
 
 If an automation didn't run as expected, or you're seeing unexpected data:
 
-- Go to the **Processes** tab of the event and check if any runs were created.
+- Go to the **Runs** tab of the event and check if any runs were created.
 - Click into the run to view logs and see if a step failed or was skipped.
 - Compare the **Event Data** with the conditions in your automation to ensure it matches.
 - Use the code or JSON data view to check for missing fields, different field names, or unexpected value formats.
 
-If no process was triggered, the event may not have met the criteria of an active automation. See [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run) for a complete checklist.
+If no run was created, the event may not have met the criteria of an active automation. See [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run) for a complete checklist.
 
 ### Still need help?
 

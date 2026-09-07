@@ -1,0 +1,73 @@
+---
+title: "Loop"
+sidebarTitle: "Loop"
+description: "Der Loop-Schritt in einer HireData-Automatisierung: welche Datensätze er abruft, der Filter, Stop on first success, die Output-Variable und wie Iterationen laufen."
+keywords:
+  - "Loop-Schritt"
+  - "wiederholen"
+  - "for each"
+  - "Datensätze iterieren"
+  - "Output-Variable"
+  - "stop on first success"
+  - "Sub-Run"
+---
+
+**Loop** wiederholt die Schritte in seinem Inneren einmal pro Datensatz. Der Drawer trägt die Überschrift **Loop** und öffnet sich mit einer Option, **Custom**, beschrieben als "Loops through a selection of records." Die Auswahl führt zur Object-Liste, dann zum Filter-Panel.
+
+Nach dem Speichern öffnet sich die **Next step**-Auswahl für den ersten Schritt innerhalb des Loops.
+
+## Einstellungen
+
+- **Select an object**. Der abzurufende Datensatztyp, mit einem **Search**-Feld. Jeder Eintrag nennt darunter seine Verbindung. Mit verbundenem Carerix enthält die Liste Candidates, Companies, Contacts, Emails, Lists, Matches, Meetings, Notes, Offices, Placements, Publications, Talent Pools, Tasks, Users und Vacancies. HireDatas eigene Objects werden nicht angeboten.
+- **Filter**. Welche Datensätze abgerufen werden, in denselben Zeilen und Sets wie bei einem [Filter-Schritt](/de/reference/automations/steps/filter). Die Felder sind die Felder des Objects, jeweils mit dem Symbol der Verbindung als Präfix. Lassen Sie ihn leer, ruft der Loop jeden Datensatz des Objects ab.
+- **Stop on first success**. **No** oder **Yes**, Standard **No**. Mit **Yes** endet der Loop nach der ersten Iteration, die abschließt, sodass die Schritte darin für höchstens einen Datensatz laufen.
+- **Output Variable**. Ein Name für den aktuellen Datensatz, Platzhalter `myLoopItem`. Der Hilfetext lautet "This variable will be used instead of the step's id for clarity when filled in", und sein Beispiel aktualisiert sich beim Tippen, sodass `candidate` zu `candidate.index` führt. Lassen Sie ihn leer, werden die Variablen stattdessen nach der ID des Schritts benannt.
+
+<img src="/images/automations/15-loop-drawer.png" alt="Der Loop-Drawer mit einem Filter mit Id equals 6416, Stop on first success auf No und Output Variable mit candidate samt Hilfetext" width="384" />
+
+### Auf der Arbeitsfläche
+
+Der Loop zeichnet einen Kasten mit einem **Loop**-Badge. Darin sitzt die Datensatz-Karte mit einer Zeile wie "Retrieve Candidates from Carerix", dem Verbindungsnamen und dem Filter, gefolgt von den eigenen Schritten des Loops und einem **+**, um weitere hinzuzufügen.
+
+<img src="/images/automations/26-loop-card.png" alt="Ein Loop-Kasten auf der Arbeitsfläche mit einem Loop-Badge und einer Karte mit Retrieve Candidates from Carerix, hiredata, Filter 1 Id equals 6416" width="380" />
+
+## Was er ausgibt
+
+Für jede Iteration, unter der Output-Variable:
+
+| Variable | Enthält |
+| --- | --- |
+| `candidate.index` | Die Iterationsnummer, gezählt ab 0 |
+| `candidate.item.<field>` | Ein Feld des aktuellen Datensatzes, etwa `candidate.item.email` |
+
+Schritte innerhalb des Loops lesen diese neben den Feldern des Events. Schritte nach dem Loop nicht: Sie sehen die Variablen, die vor dem Loop existierten.
+
+Jede Iteration ist ein Sub-Run. Die Runs-Liste zeigt eine Zeile pro Sub-Run, sodass die Runs-Zahl einer Automatisierung mit einem Loop ihre Events-Zahl übersteigt. Die Seite des Eltern-Runs fasst die Iterationen in einem Diagramm zusammen, und ihre Timeline verzeichnet "Waiting.", während sie laufen.
+
+## Was den Run stoppt
+
+- Ein Loop ohne Schritt darin. Die Timeline verzeichnet "Loop: Failed" mit der Meldung "Step not found.", und der Run endet dort. Der Loop-Kasten selbst trägt keine Statuszeile.
+- Datensätze, die nicht abgerufen werden können. Der Loop zeigt Cancelled mit der Meldung "Data lookup failed." Prüfen Sie die Verbindung und die Filterfelder.
+- Ein Schritt innerhalb des Loops, der stoppt. Er stoppt nur den Sub-Run dieser Iteration; die anderen Iterationen und die Schritte nach dem Loop laufen weiter.
+
+<img src="/images/automations/30-loop-failed-timeline.png" alt="Eine Run-Timeline mit Run Scheduled, Run Started, dann Loop: Failed mit der Meldung Step not found." width="384" />
+
+Siehe [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons).
+
+## Muster
+
+- **Den Filter eingrenzen.** Filtern Sie auf den gemeinten Datensatz, etwa die Kandidaten-ID aus dem Event, statt jeden Kandidaten abzurufen und innerhalb des Loops zu filtern.
+- **Nur der erste Treffer.** Setzen Sie **Stop on first success** auf **Yes** und legen Sie einen [Filter](/de/reference/automations/steps/filter) als ersten Schritt hinein. Der Loop endet beim ersten Datensatz, der besteht.
+- **Die Variable benennen.** Eine Output-Variable wie `vacancy` liest sich in einem Prompt oder einer E-Mail-Vorlage besser als eine Schritt-ID und überlebt, wenn der Schritt neu gebaut wird.
+
+## Häufige Fehler
+
+- **Kein Filter.** Der Loop ruft jeden Datensatz des Objects ab und führt die inneren Schritte für jeden aus. Fügen Sie vor dem Aktivieren einen Filter hinzu.
+- **Loop-Variablen nach dem Loop lesen.** Sie existieren nur darin. Schreiben Sie, was Sie brauchen, mit einer [Update](/de/reference/automations/steps/update)-Aufgabe innerhalb des Loops in einen Datensatz.
+- **Erwarten, über Text oder einen Bereich zu loopen.** Der Drawer bietet nur Datensätze aus einer verbundenen App an. Um über die Zeilen eines Textfeldes oder eine feste Anzahl zu wiederholen, teilen Sie die Arbeit anders auf, etwa mit einem [Prompt](/de/reference/automations/steps/prompt) mit einem List-Output.
+
+## Verwandt
+
+- [Find](/de/reference/automations/steps/find) ruft einen Datensatz ab statt vieler.
+- [Split](/de/reference/automations/steps/split) erstellt ebenfalls Sub-Runs, einen pro Zweig statt einen pro Datensatz.
+- [Filter](/de/reference/automations/steps/filter) dokumentiert die Zeilen, Sets und Operatoren, die der Filter des Loops teilt.

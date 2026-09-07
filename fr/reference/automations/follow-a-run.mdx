@@ -1,0 +1,81 @@
+---
+title: "Suivre une exécution"
+sidebarTitle: "Suivre une exécution"
+description: "Lisez une vraie exécution d'automatisation HireData, de l'événement Carerix qui l'a démarrée jusqu'à la tâche qu'elle a créée, écran par écran : événement, exécution, étape d'exécution, tâche, résultat."
+keywords:
+  - "suivre une exécution"
+  - "lire une exécution"
+  - "page d'événement"
+  - "page d'exécution"
+  - "étape d'exécution"
+  - "record data"
+  - "onglet fields"
+  - "run finished"
+  - "tâche carerix"
+---
+
+L'automatisation de cette page écoute un candidat Carerix dont le champ **Example text** passe à une valeur définie, trouve ce candidat et ajoute dans Carerix une tâche pour le responsable du candidat. Un seul changement dans Carerix a produit l'événement, l'exécution, les étapes d'exécution et la tâche ci-dessous, et chaque section montre où cette étape se trouve à l'écran et ce qu'elle vous apprend.
+
+## Événement
+
+L'événement est le changement que Carerix a signalé. C'est le même événement pour toutes les automatisations de l'espace de travail.
+
+![La page d'événement pour Candidate: Updated, avec le panneau Event Information à gauche et l'onglet Data listant EntityId 6416, sept champs modifiés, l'heure et le type cremployee:updated](/images/automations/44-follow-run-event-data.png)
+
+Ce qu'il faut lire. Le titre nomme l'objet et le déclencheur, **Candidate: Updated**. **Event Information** donne l'app, le déclencheur et la date de l'événement. **References** nomme l'enregistrement concerné par l'événement, et **Related People** liste la personne que HireData lui a associée. L'onglet **Data** est le payload tel que Carerix l'a envoyé. `EntityId` est l'id de l'enregistrement et `ChangedFields` liste ce qui a changé, ici `additionalinfo`, le groupe qui contient le champ Example text. L'onglet **Changes** montre la nouvelle valeur de chaque champ modifié, et l'onglet **Runs** liste toutes les exécutions que cet événement a démarrées.
+
+![L'onglet Runs du même événement, listant deux exécutions Finished : Docs: follow a Carerix run et Blank Automation](/images/automations/45-follow-run-event-runs.png)
+
+Ce que cela vous apprend. Un même événement peut démarrer plusieurs exécutions. Celui-ci en a démarré deux, car deux automatisations actives de l'espace de travail écoutent les mises à jour de candidats Carerix. L'exécution qui vous intéresse est celle de l'automatisation que vous suivez.
+
+Retrouvez les événements sous **Settings** > **Events**. [Événements : inspecter les payloads des apps connectées](/fr/settings/logs/events) explique les filtres et la vue de la requête brute.
+
+## Exécution
+
+L'exécution est le travail de l'automatisation pour ce seul événement. Cliquez sur la ligne de l'exécution dans l'onglet **Runs** de l'événement pour l'ouvrir.
+
+![La page de l'exécution 27113015 : la carte Start, Find Candidate in Carerix avec Completed en dessous, Add Task to Carerix, et le panneau Event à droite avec l'onglet Overview et la chronologie](/images/automations/46-follow-run-run-page.png)
+
+Ce qu'il faut lire. Le canevas est l'automatisation dessinée de haut en bas, avec une ligne de statut sur le connecteur sous chaque étape que l'exécution a atteinte. « Run Started: Today at 4:41 PM » se trouve sous la carte Start, « Completed: Today at 4:41 PM » sous la tâche Find, et « Completed: Today at 4:42 PM » sous Add Task une fois que vous faites défiler. Une étape sans ligne n'a jamais été atteinte. Le panneau **Event** à droite s'ouvre par défaut. Son onglet **Overview** répète les paramètres du Start qui ont laissé passer cet événement, **App**, **Connection**, **Object**, **Trigger** et **Filter**, puis la **Timeline**.
+
+Ce que cela vous apprend. La chronologie est l'exécution dans l'ordre. **Run Scheduled** et **Run Started** sont l'arrivée de l'événement et le début de l'exécution. Chaque étape écrit ensuite deux entrées, d'abord son statut (« Find: Completed »), puis ce que l'exécution a fait ensuite (« Find: Run Moved » vers l'étape suivante, ou « Add Task: Run Finished » quand la dernière étape est terminée). Une exécution arrêtée en cours de route se termine à la place par une entrée « Cancelled » et un message.
+
+La liste des exécutions montre les mêmes exécutions avec leur état et, pour une exécution arrêtée, l'étape qui l'a arrêtée. [Setup](/fr/reference/automations/steps/setup) documente le nœud Start et le panneau Event qu'il ouvre sur la page de l'exécution.
+
+## Entrées et sorties d'une étape
+
+Cliquez sur le nom d'une tâche sur le canevas pour ouvrir son étape d'exécution. L'étape Find montre ce qu'elle a trouvé ; l'étape qui la suit montre ce qu'elle a reçu.
+
+<img src="/images/automations/47-follow-run-find-drawer.png" alt="L'étape d'exécution Find, intitulée Find avec les badges Run Moved: 2 et Completed, une ligne Match found pour #6416 HireData tester, et un bloc Record Data listant les champs du candidat" width="384" />
+
+Ce qu'il faut lire. L'étape Find s'ouvre sur une ligne **Match found** avec l'id et le nom de l'enregistrement. L'icône de flèche ouvre l'enregistrement dans Carerix. **Record Data** liste chaque champ de l'enregistrement tel que l'app l'a renvoyé, ids, noms, civilités, le résumé du CV, des dates, et plus encore. Faites défiler le bloc pour tout voir. Le badge **Run Moved** correspond à la dernière entrée de chronologie de l'étape, et **Completed** est son statut. Contrairement aux étapes Message et Update, ce panneau n'a pas d'onglets **Overview** et **Fields**.
+
+<img src="/images/automations/48-follow-run-add-task-fields.png" alt="L'onglet Fields de l'étape d'exécution Add Task listant trois champs : Now avec une valeur datetime, Find Candidate: Id avec 6416, et Find Candidate: Owner: Id avec 1" width="384" />
+
+Ce que cela vous apprend. L'onglet **Fields** de l'étape Add Task liste les valeurs qu'elle a lues dans l'exécution, chacune avec l'icône de l'étape qui l'a produite et un badge de type. **Find Candidate: Id** et **Find Candidate: Owner: Id** viennent de l'étape Find, ce qui est toute la raison pour laquelle le Find se trouve avant l'Add Task. **Now** est l'horloge de l'exécution. Sa valeur sur cet onglet est l'heure à laquelle vous avez ouvert le panneau, pas celle où la tâche s'est exécutée : lisez plutôt les heures propres à la tâche sur l'onglet **Overview**.
+
+[Find](/fr/reference/automations/steps/find) documente l'étape et ce qu'un résultat vide fait à l'exécution.
+
+## Tâche
+
+La dernière étape a créé une tâche dans Carerix. Son étape d'exécution montre ce que HireData a écrit, et Carerix montre ce qui est arrivé.
+
+<img src="/images/automations/49-follow-run-add-task-overview.png" alt="L'onglet Overview de l'étape d'exécution Add Task : un lien Taak (9077), Status To do, les horodatages When? et Expires At, et le Content avec l'objet et le corps" width="384" />
+
+Ce qu'il faut lire. L'onglet **Overview** d'une étape Add lie vers l'enregistrement qu'elle a créé, ici **Taak (9077)**. Carerix fournit ce libellé dans la langue de son compte : ce bac à sable néerlandais dit donc Taak là où un compte anglais dit Task. **Status**, **When?** et **Expires At** sont les valeurs que Carerix a stockées. **When?** est une heure après l'exécution, le décalage défini sur l'étape, et **Expires At** est l'heure de l'exécution. Les deux sont des horodatages tels que Carerix les rapporte, ils ne correspondent donc pas forcément à l'horloge de la page de l'exécution. **Content** est l'objet et le corps que l'étape a écrits, et **Related Records** lie le candidat et le responsable qu'elle a rattachés.
+
+![La tâche dans Carerix, Task 9077 Docs: check availability pour HireData tester, avec Kind Task, Status TO DO, une date et une heure, une date d'expiration, et l'objet et le corps sous Content](/images/automations/50-follow-run-carerix-task.png)
+
+Ce que cela vous apprend. Ouvrez le lien **Taak (9077)** et Carerix montre la même tâche de son côté. Le statut est **TO DO**, l'heure est une heure après l'exécution, et l'objet et le corps correspondent au Content de l'étape. Carerix enregistre la tâche comme modifiée par « Automated » plutôt que par un collègue.
+
+[Add](/fr/reference/automations/steps/add) documente l'étape et l'endroit où apparaissent les champs de l'enregistrement créé.
+
+## Résultat
+
+La page propre à l'automatisation résume toutes les exécutions jusqu'ici.
+
+![La page de l'automatisation en lecture seule avec Run Stats affichant Finished 1 et Total 1, le connecteur sous Find indiquant Looked up: 1x item, et le connecteur sous Add Task indiquant Added: 1x task](/images/automations/51-follow-run-automation-stats.png)
+
+Ce qu'il faut lire. **Run Stats** à gauche compte les exécutions par état. Les connecteurs entre les étapes comptent ce que chaque étape a fait sur l'ensemble des exécutions, « Looked up: 1x item » sous le Find et « Added: 1x task » sous l'Add Task. Chaque compteur est un lien vers la liste des exécutions filtrée sur cette étape et ce statut.
+
+Ce que cela vous apprend. Finished signifie que chaque étape s'est terminée et que l'exécution a atteint le drapeau de fin. Une exécution arrêtée en cours de route compterait ici dans un autre état, afficherait « Cancelled » sur l'étape qui l'a arrêtée sur la page de l'exécution, et porterait un message dans la chronologie. [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons) liste ces messages et ce qu'il faut changer avant de démarrer une nouvelle exécution.

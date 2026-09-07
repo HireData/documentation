@@ -7,7 +7,7 @@ _Wanneer je je ATS koppelt, zoals Carerix, Salesforce, OTYS, enz., aan HireData,
 
 ## Wat is een event
 
-Een event is een signaal dat vanuit je gekoppelde app naar HireData wordt gestuurd. Het vertegenwoordigt meestal een specifieke actie of wijziging, bijvoorbeeld een nieuwe kandidaat die wordt aangemaakt, een vacature die wordt bijgewerkt, een placement die is voltooid, enz. Deze events worden gebruikt om de automatiseringen te triggeren die je in HireData hebt opgezet, en elk event bevat **Event Data**, **External Records** en **Processes**.
+Een event is een signaal dat vanuit je gekoppelde app naar HireData wordt gestuurd. Het vertegenwoordigt meestal een specifieke actie of wijziging, bijvoorbeeld een nieuwe kandidaat die wordt aangemaakt, een vacature die wordt bijgewerkt, een placement die is voltooid, enz. Deze events worden gebruikt om de automatiseringen te triggeren die je in HireData hebt opgezet, en elk event bevat **Event Data**, **External Records** en **Runs**.
 
 _Voorbeeldevent:_
 
@@ -37,9 +37,9 @@ Dit opent de detailweergave van het event, die het volgende bevat:
 
 ![External records-tabblad](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
 
-- **Processes** – de lijst met automatisering(en) die door dit event zijn getriggerd en de runs die zijn aangemaakt. Je ziet ook de status van elke run (bijv. Completed, Delayed, Cancelled).
+- **Runs** – de runs die door dit event zijn aangemaakt en de automatisering die bij elke run hoort. Je ziet ook de status van elke run (bijv. Completed, Delayed, Cancelled).
 
-![Processes-tabblad](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+![Automatiseringsruns aangemaakt door een event](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
 
 ## Events opnieuw afspelen
 
@@ -108,11 +108,12 @@ HireData verwerkt de geselecteerde event(s) opnieuw en triggert de bijbehorende 
 
 Als een automatisering niet draaide zoals verwacht, of je onverwachte data ziet:
 
-- Ga naar het tabblad **Processes** van het event en controleer of er runs zijn aangemaakt.
+- Ga naar het tabblad **Runs** van het event en controleer of er runs zijn aangemaakt.
 - Klik in de run om logs te bekijken en zie of een stap is mislukt of overgeslagen.
 - Vergelijk de **Event Data** met de voorwaarden in je automatisering om ervoor te zorgen dat het overeenkomt.
+- Gebruik de code- of JSON-dataweergave om te controleren op ontbrekende velden, andere veldnamen of onverwachte waardeformaten.
 
-Als er geen proces is getriggerd, voldeed het event waarschijnlijk niet aan de criteria van enige actieve automatiseringen.
+Als er geen run is aangemaakt, voldeed het event mogelijk niet aan de criteria van een actieve automatisering. Zie [Waarom liep mijn automatisering niet?](/nl/knowledge-base/why-didnt-my-automation-run) voor een complete checklist.
 
 ### Toch nog hulp nodig?
 

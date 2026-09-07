@@ -1,0 +1,65 @@
+---
+title: "Setup"
+sidebarTitle: "Setup"
+description: "Le nœud Start d'une automatisation HireData : l'app, l'objet, le déclencheur, le formulaire et le délai qui décident quel événement commence une exécution."
+keywords:
+  - "nœud start"
+  - "panneau setup"
+  - "déclencheur"
+  - "app de déclenchement"
+  - "objet de déclenchement"
+  - "déclencheur de formulaire"
+  - "response completed"
+  - "délai de démarrage"
+---
+
+Chaque automatisation commence par le nœud **Start**. Cliquer dessus ouvre un panneau intitulé **Setup**, où vous nommez l'événement qui commence une exécution. Le panneau est le même que l'automatisation soit partie d'un modèle ou de zéro. Un événement qui correspond aux paramètres définis ici démarre une exécution ; un événement qui ne correspond pas ne démarre rien.
+
+Pour une nouvelle automatisation, le panneau vous guide tour à tour à travers l'app, l'objet et le déclencheur. Après le premier enregistrement, il affiche un résumé avec un lien **Edit** à côté de chaque choix, et le sélecteur **Next step** s'ouvre pour que vous puissiez ajouter la première étape.
+
+## Paramètres
+
+- **App**. L'app connectée dont les événements démarrent l'automatisation. La grille liste les apps de votre espace de travail qui proposent des déclencheurs : une app connectée peut donc manquer ici quand elle ne propose que des tâches. **HireData** est toujours présent.
+- **Connection**. Le compte par lequel l'événement arrive. Affiché pour les apps qui se connectent via un compte, comme Carerix, et omis pour HireData.
+- **Object**. Ce sur quoi porte l'événement. Pour HireData : **Conversation**, **Email**, **Person** ou **Response**.
+- **Trigger**. Le changement de l'objet qui démarre une exécution. Pour une Response : **Completed**, **Created**, **Created or Updated** ou **Updated**. Les choix sont listés sous le titre **When something happens**.
+- **Config**. Les paramètres supplémentaires dont le déclencheur a besoin. Pour un déclencheur Response, il contient **Form** avec un interrupteur **All**. Avec **All** activé, une réponse à n'importe quel formulaire démarre une exécution. Désactivez-le et une zone **Select a form** apparaît. Choisissez un formulaire quand vous voulez utiliser ses questions comme variables dans les étapes suivantes ; avec **All** activé, les questions ne sont pas proposées.
+- **Delay**. Présent quand le départ attend une date sur l'enregistrement, comme le fait un modèle installé avec « 4 weeks after Candidate: Last Contact Date ». La ligne indique le décalage, tel que **4 weeks after**, avec un lien **Edit**. C'est le délai de démarrage. Ce n'est pas une [étape Delay](/fr/reference/automations/steps/delay).
+- **Filter**. Les conditions que l'événement doit remplir avant qu'une exécution démarre, pour les déclencheurs qui en proposent. Un déclencheur Response de HireData n'en a pas. La page de l'exécution liste le filtre de départ dans le panneau de l'événement, à côté d'App, Object et Trigger. Ce n'est pas une [étape Filter](/fr/reference/automations/steps/filter).
+
+<Warning>
+  L'app ne peut plus être changée une fois l'automatisation créée. Pour déplacer une automatisation vers une autre app, créez une nouvelle automatisation.
+</Warning>
+
+L'enregistrement écrit toute l'automatisation d'un coup. Une nouvelle automatisation s'appelle « Blank Automation » jusqu'à ce que vous la renommiez, et le nom n'est conservé qu'après que Setup a été enregistré une première fois.
+
+<img src="/images/automations/29-setup-drawer.png" alt="Le panneau Setup après enregistrement : App HireData, Object Response avec un bouton Edit, Trigger Completed avec un bouton Edit, et une carte Config avec Form, un interrupteur All désactivé et le formulaire sélectionné" width="384" />
+
+### Sur le canevas
+
+Le nœud Start porte un badge **Start**, l'objet et le déclencheur en titre, et les lignes de Config en dessous, comme le formulaire qu'un déclencheur Response écoute.
+
+<img src="/images/automations/22-setup-card.png" alt="Le nœud Start sur le canevas : un badge Start, le titre Response: Completed, et une ligne Form indiquant Docs test: builder reference examples" width="378" />
+
+## Ce qu'il produit
+
+L'événement. Ses champs sont disponibles comme variables pour chaque étape qui suit : les champs de l'objet, et les réponses du formulaire sélectionné quand le déclencheur est une Response.
+
+Sur la page de l'exécution, le nœud Start porte la ligne « Run Started » avec l'heure. Cliquer dessus ouvre le panneau de l'événement, intitulé avec le nom de l'app et « Event », avec les onglets **Overview**, **Fields** et **Related**. Overview liste **App**, **Connection**, **Object**, **Trigger** et **Filter**, puis la **Timeline** de l'exécution.
+
+## Ce qui arrête l'exécution
+
+Rien au niveau du nœud Start n'arrête une exécution déjà commencée. Ce que Setup décide, c'est si une exécution commence tout court.
+
+- Un événement qui ne correspond pas à l'app, à l'objet, au déclencheur ou au formulaire ne démarre aucune exécution.
+- Un événement qui échoue au filtre de départ ne démarre aucune exécution.
+- Une automatisation en pause ne démarre aucune exécution. Tester une automatisation en pause renvoie « No run started for automation. »
+
+Si une exécution que vous attendiez manque, suivez [Pourquoi mon automatisation ne s'est-elle pas exécutée ?](/fr/knowledge-base/why-didnt-my-automation-run).
+
+## Voir aussi
+
+- [Vue d'ensemble des étapes d'automatisation](/fr/reference/automations/overview) liste chaque étape que vous pouvez ajouter après le nœud Start.
+- [Filter](/fr/reference/automations/steps/filter) arrête une exécution déjà commencée.
+- [Delay](/fr/reference/automations/steps/delay) met une exécution en pause entre deux étapes.
+- [Comment tester une automatisation](/fr/automations/how-to-test-an-automation) envoie un enregistrement à travers le départ sans attendre un événement réel.

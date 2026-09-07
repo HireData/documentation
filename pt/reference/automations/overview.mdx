@@ -1,0 +1,41 @@
+---
+title: "Visão geral dos passos de automação"
+sidebarTitle: "Visão geral"
+description: "Todos os passos que pode adicionar a uma automação da HireData, que tipo de passo é e o que faz num run."
+keywords:
+  - "passos de automação"
+  - "seletor de passos"
+  - "next step"
+  - "nó start"
+  - "add"
+  - "delay"
+  - "filter"
+  - "find"
+  - "loop"
+  - "message"
+  - "prompt"
+  - "ask ai"
+  - "split"
+  - "update"
+---
+
+Uma automação é um nó de início seguido de passos. Um evento que corresponde ao nó de início começa um run. O run percorre os passos por ordem, e um passo que atua sobre uma app ligada deixa uma tarefa.
+
+Para começar uma, clique em **New Automation** na barra superior e escolha um template, ou abra o separador **All** e escolha **Blank Automation** para partir do zero. Cada automação abre no construtor, onde o nó **Start** e cada **+** levam aos painéis que estas páginas descrevem. Use a tabela abaixo para escolher um passo no painel **Next step**.
+
+| Passo | Tipo | O que faz num run |
+| --- | --- | --- |
+| [Setup](/pt/reference/automations/steps/setup) (o nó **Start**) | Início | Define a app, o objeto e o trigger cujo evento começa um run |
+| [Add](/pt/reference/automations/steps/add) | Categoria de tarefas | Cria um registo numa app ligada, como uma nota, uma tarefa ou uma candidatura no seu ATS, ou uma linha no Google Sheets |
+| [Delay](/pt/reference/automations/steps/delay) | Passo | Pausa o run por um valor predefinido, como 5 minutos ou 1 dia, ou até um dia da semana escolhido |
+| [Filter](/pt/reference/automations/steps/filter) | Passo | Continua quando as suas condições passam e cancela o run quando não passam |
+| [Find](/pt/reference/automations/steps/find) | Categoria de tarefas | Procura um registo numa app ligada, ou encontra um endereço de email ou o domínio de uma empresa |
+| [Loop](/pt/reference/automations/steps/loop) | Passo | Obtém registos de uma app ligada e corre os passos dentro dele uma vez por registo |
+| [Message](/pt/reference/automations/steps/message) | Categoria de tarefas | Envia um email, uma mensagem de WhatsApp, um inquérito ou um pedido HTTP |
+| [Prompt](/pt/reference/automations/steps/prompt) | Tarefa | Pede a um modelo de IA que faça algo e devolve os campos de output que definir |
+| [Split](/pt/reference/automations/steps/split) | Passo | Corre os seus ramos lado a lado, cada ramo a começar com o seu próprio Filter |
+| [Update](/pt/reference/automations/steps/update) | Categoria de tarefas | Altera um registo que já existe numa app ligada |
+
+<Info>
+  Add, Find, Message e Update só aparecem no seletor quando uma app ligada oferece uma tarefa nessa categoria. O [catálogo de tarefas](/pt/reference/automations/task-catalogue) lista essas tarefas por app.
+</Info>
