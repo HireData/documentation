@@ -1,0 +1,144 @@
+---
+title: "Ask for feedback in one click"
+sidebarTitle: "One-click feedback email"
+description: "Build a feedback email whose rating question renders as one button per score, so a candidate answers from their inbox instead of opening a form first."
+keywords: ["feedback email", "candidate experience survey", "NPS email", "rating buttons", "form block", "one click feedback", "placement survey"]
+---
+
+_Most feedback requests ask twice. The email asks you to give feedback, the form asks the actual question, and half the people you asked never get as far as the question. A Form block collapses that into one step. The rating sits in the email as a row of buttons, and the click that answers it is the same click that opens the form._
+
+## What you will build
+
+1. A short feedback form whose first question is the rating
+2. An email that turns that question into one button per score
+3. A test send that proves the buttons carry the answer
+4. Somewhere for the answers to land, tied to the right record
+
+One form, one email, and no automation logic. What takes the thought is the question, because it is the one a recipient answers in their inbox and cannot take back.
+
+## Before you start
+
+Decide who you are asking and when. A placement survey a week after a start date, an interview experience email the same afternoon, a re-engagement check on a candidate who went quiet. The timing changes the wording more than it changes the build.
+
+Then decide the one question. Only the form's leading question becomes buttons, so everything else you want to know goes behind it, answered on the form itself by the people who care enough to keep going.
+
+## Build the form
+
+### 1. Put the rating first
+
+Open **Forms**, click **New Form**, pick **Blank Form**, and add a [Net Promoter Score](/reference/forms/fields/net-promoter-score-and-opinion-scale) question as the first field: "How likely are you to recommend us to a friend?" It comes fixed at 0 to 10 with **NOT LIKELY AT ALL** and **EXTREMELY LIKELY** under the ends, and those two labels are what stop a bare row of numbers being ambiguous.
+
+Leave it **Optional**. A required rating field blocks the answer 0, and 0 is the answer you most want to hear about.
+
+Then add the questions that only matter once you have the score. Two is usually enough.
+
+| Question | Field type | Why it is there |
+|---|---|---|
+| How likely are you to recommend us to a friend? | [NPS](/reference/forms/fields/net-promoter-score-and-opinion-scale) | The leading question. This is the row of buttons in the email. |
+| What is the main reason for your score? | [Long Text](/reference/forms/fields/short-and-long-text) | The answer that tells you what to change. |
+| May we quote you? | [Yes/No](/reference/forms/fields/yes-no) | Asked last, because it only makes sense after they have said something. |
+
+Finish with an [ending screen](/reference/forms/fields/ending-screen). A recipient who clicked a number from their inbox and lands on a blank page assumes the click failed.
+
+<Tip>
+  Prefer a 1 to 5 **Opinion Scale** if most of your recipients read email on a phone. Eleven buttons stack into eleven rows on a narrow screen, five stack into five, and an Opinion Scale lets you write all three end labels yourself.
+</Tip>
+
+### 2. Link the record the feedback is about
+
+Open the **Objects** drawer and link the object the response belongs to, usually **Match** or **Vacancy**. Two things follow from it. Every field on that record becomes a variable you can write into the question, so you can ask about the role by name. And the response arrives on that record's **Responses** tab, rather than in a pile of responses you have to match up by hand.
+
+Whichever object you put at the top is the form's main object. See [Objects](/reference/forms/objects).
+
+### 3. Publish it
+
+Click **Publish**. Each button in the email carries a link tokenised per recipient, which opens the form whatever its status, so a draft would technically work. Publish anyway. A draft is the form a colleague tidies away, and a published form is also the one you can send through any other channel.
+
+Leave **Make form public** off unless you are posting the link somewhere. The token in the emailed link is what lets the recipient in, so the form does not need to be open to anyone who finds its address.
+
+## Build the email
+
+### 4. Create the email and pick the brand
+
+Open **Emails** from **Settings**, click **New Email**, and choose **Blank Email** or one of the supplied templates. Set **Brand** in the top right first. It restyles the whole email, including the button colours, so choosing it early saves you checking the contrast twice. See [Setting up an email template](/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+### 5. Write the shortest ask you can stand behind
+
+A [heading](/reference/email-builder/blocks/heading) and one [paragraph](/reference/email-builder/blocks/paragraph) above the buttons. Say who is asking, what the score is for, and how long the rest takes. "One question, and a box for anything else you want to tell us" is a promise the form can keep.
+
+Do not explain the scale in the paragraph. The end labels under the buttons do that.
+
+### 6. Add the Form block
+
+Click the **+** in the section's **Blocks** list and choose **Form**, then set the two selects at the top of its panel.
+
+- **Form** is the feedback form you just published.
+- **Leading Question** is the NPS question. Hidden fields and ending screens are left out of the list.
+
+Both belong to the email rather than to the block, so one email asks one question. A second Form block arrives pointing at the same question, which is worth knowing before you try to put two ratings in one send.
+
+Eleven buttons appear in the canvas, 0 to 10, with the end labels underneath in capitals.
+
+![Eleven buttons numbered 0 to 10 under the question "How likely are you to recommend us to a friend?", with NOT LIKELY AT ALL and EXTREMELY LIKELY beneath the ends](/images/email-builder/blocks/05b-form-rendered.png)
+
+Each button carries the form's link with that score attached, and HireData records the score as it forwards the recipient to the form. So a recipient who clicks 4 and then closes the tab has still told you 4. Everything after the rating is a bonus. See [Form](/reference/email-builder/blocks/form).
+
+### 7. Style the buttons so they read as a scale
+
+Leave **Show Question** on. The question sits above the row, and an email that shows numbers without the question they answer gets ignored.
+
+- **Size: Medium** and **Rounded corners: Full** turn the numbers into a row of circles, which reads as a rating rather than as eleven links.
+- **Background color** and **Color** are the button fill and the number. Keep the contrast strong. Many recipients read email in dark mode, and a pale fill with white numerals disappears.
+- **Width: Auto** lets the eleven buttons share the row. **Full** makes each one the width of the email, which stacks them whatever the screen.
+- **Alignment: centre** for a scale.
+
+### 8. Check it at phone width before you send
+
+Each button is its own column, so below 480 pixels the row stops fitting and the buttons stack one per line. Eleven buttons become eleven rows. Open the preview and narrow the window until it happens, then decide whether you can live with it or want the five-point scale instead.
+
+## Test it
+
+### 9. Send yourself the real thing
+
+Open **Test Email**, leave the name and address empty to send it to yourself, and click **Send test email**. Then click a number in the email that arrives.
+
+You should land on the form with the rating already filled in. If it is sitting there blank, the **Leading Question** is not the field you think it is.
+
+A click from a test email records nothing, which is what you want while you are still editing. The score only lands on a response for a real send.
+
+<Note>
+  If the form links a required object, the test send needs a record for it. Pick one under **Objects** in the modal, or use **Auto fill**. Leave it empty and the send fails with a **Failed to send test email** notification naming the object by its key. See [Testing](/reference/email-builder/testing).
+</Note>
+
+### 10. Add the other languages, if you have them
+
+The Form block renders in the language of the form it points at, not the language of the email, so a Dutch form puts Dutch buttons in an English template. The rating labels and the fallback call to action are translatable per language from the email's own **Manage Languages** drawer. See [Translations](/reference/email-builder/translations).
+
+## Send it and read the answers
+
+Plug the finished template into a **Send Email** task and choose the audience the same way you would for any other send. See [Automations](/automations/automations).
+
+The responses arrive on the **Responses** tab of the record the form was linked to, and on the form itself. See [Configuring a form per record](/content/configuring-a-form-per-record).
+
+An automation can act on the answer as soon as it arrives. Before you write the condition, open **Test & Evaluate** on the form and read **Automation variables**, which lists each value with the exact variable to copy beside it. See [Test & Evaluate](/reference/forms/testing/test-and-evaluate).
+
+Start with one branch. A low score creates a task for whoever owns the relationship, and everything else does nothing. Anything more elaborate can wait until you have seen thirty real responses.
+
+## Review and improve
+
+- **Are people clicking a number and stopping?** That is a working email and a form that asks too much. Cut a question.
+- **Is every score an 8, 9, or 10?** Check who you are asking. A survey that only goes to placements you are pleased with measures your sending list.
+- **Is nobody clicking at all?** Look at the buttons in a dark-mode client and on a phone before you rewrite the copy.
+- **Does the free-text answer say anything you did not know?** If not, the question is too general. "What is the main reason for your score?" beats "Any other comments?"
+
+## Need more help?
+
+If the buttons render as a single **Give Feedback** button, the leading question is a type that has no buttons of its own. Only rating and choice questions get one button per value. Everything else falls back to one call to action, which you can click in the canvas to reword.
+
+If a choice question is missing options, you have hit the five-option cap. A Form block renders the first five and gives no warning about the rest. See [Limits](/reference/email-builder/blocks/form#limits).
+
+If you still need help, contact [support@hiredata.com](mailto:support@hiredata.com) and include:
+
+- The email template name and the form name
+- The leading question and what rendered instead
+- Whether it was a test send or a real one
