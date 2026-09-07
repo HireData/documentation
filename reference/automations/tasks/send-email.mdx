@@ -62,7 +62,7 @@ The **Settings** tab of the last step holds one section per setting. Open a sect
 - **Sender**. The same controls for the sender. The address must belong to a domain verified in HireData. When it does not, HireData sends from the default sender of the brand's domain or the workspace domain if one is set, and stops the run with "Invalid sender email." if not.
 - **CC** and **BCC**. Click **+** to add a copy recipient. Each entry has a **Name** and an **Address**. Both take a field from the run or typed text: type it and choose the **Create** option that appears under the box. Fill both before saving. **–** removes an entry. CC addresses are visible to everyone on the email; BCC addresses are not. A test send drops CC and BCC.
 - **UTM Campaign**. **Campaign Name**, **Campaign Source**, **Campaign Medium**, **Campaign Term**, and **Campaign Content**, added to every link in the email. The placeholders show the template's own UTM values. Leave a field empty to keep the template's value.
-- **Objects**. Shown when the template or its form reads from a data source. Picks the record each object refers to in this run.
+- **Objects**. Shown when the template or its form reads from a data source. Picks the record each object refers to in this run, by **External ID**, by **Fields**, or by choosing a **Record**. An object marked with an asterisk is required: leave it empty and every run stops with "Required data reference missing."
 
 ### On the canvas
 
@@ -72,7 +72,9 @@ The card shows a **Task** badge, "Send Email", the rendered email, and rows for 
 
 ## What it outputs
 
-The sent email. On the run page the task's card shows the email that went out; click it to read the message as the recipient saw it, with **Edit Form** and **Edit Email** links to its sources. Clicking the card itself opens the run step, headed **Send Email** with a **Completed** badge. Its **Overview** lists **to** and **from** with a name and address each, the **subject**, and the value of every template variable. **Fields** lists every value the task read from the run.
+The sent email. On the run page the task's card shows the email that went out; click it to read the message as the recipient saw it, with **Edit Form** and **Edit Email** links to its sources. Clicking the card itself opens the run step, headed **Send Email** with a **Completed** badge. Its **Overview** lists **To** and **From** with a name and address each, the **Subject**, and the value of every template variable. **Fields** lists every value the task read from the run.
+
+<img src="/images/automations/40-send-email-run-drawer.png" alt="The Send Email run step drawer with Run Finished and Completed badges, the Overview tab open, and cards for To, From, and Subject" width="384" />
 
 Later steps can read the email's status. A [Filter](/reference/automations/steps/filter) after a [Delay](/reference/automations/steps/delay) can branch on whether the email was opened.
 
@@ -82,6 +84,8 @@ Later steps can read the email's status. A [Filter](/reference/automations/steps
 | `email.sent`, `email.delivered`, `email.opened`, `email.clicked`, `email.bounced` | Yes or No for each event the email has reached |
 
 A delivered email completes the step with the message "Email delivered."
+
+<img src="/images/automations/41-send-email-delivered-timeline.png" alt="A run timeline: Run Scheduled, Run Started, Run Moved, Send Email: Completed with the message Email delivered., Run Continued, and Send Email: Run Finished" width="384" />
 
 ## What stops the run
 
@@ -95,8 +99,10 @@ A send that HireData refuses. The task card turns red with the line "Cancelled" 
 | `Invalid sender email.` | The sender's domain is not verified and no default sender could stand in |
 | `Send Limits Exceeded` | The recipient reached an account-level limit under **Settings** > **Safety Limits** |
 | `Send Limits Per Automation Exceeded` | The recipient reached a limit set in this automation's **Settings** |
+| `Email unsubscribed.` | The recipient is on the list under **Settings** > **Unsubscribes**. An address that bounced as unknown lands there too |
+| `Required data reference missing.` | The template needs an object under **Settings** > **Objects** and none was chosen. The step shows Failed rather than Cancelled |
 
-A recipient address that is not a valid email address, an address on your blocklist, an address that unsubscribed, or an address that email validation marked invalid also stops the run, each with its own message in the timeline. Reasons are explained in [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
+A recipient address that is not a valid email address, an address on your blocklist, or an address that email validation marked invalid also stops the run, each with its own message in the timeline. Reasons are explained in [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
 
 ## Related
 
