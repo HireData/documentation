@@ -87,7 +87,6 @@
                     "pages": [
                       "apps/messaging/emails/setting-up-an-email-template-in-hiredata",
                       "apps/messaging/emails/sending-an-email-newsletter-to-your-audience",
-                      "apps/messaging/emails/adding-cc-and-bcc-to-an-email",
                       "apps/messaging/emails/adding-images-to-your-emails",
                       {
                         "group": "Domains & senders",
@@ -277,10 +276,34 @@
             "tab": "Reference",
             "groups": [
               {
-                "group": "Automation tasks",
+                "group": "Automations",
                 "icon": "bolt",
                 "pages": [
-                  "reference/automation-tasks/http-request-task"
+                  "reference/automations/overview",
+                  {
+                    "group": "Steps",
+                    "pages": [
+                      "reference/automations/steps/setup",
+                      "reference/automations/steps/add",
+                      "reference/automations/steps/delay",
+                      "reference/automations/steps/filter",
+                      "reference/automations/steps/find",
+                      "reference/automations/steps/loop",
+                      "reference/automations/steps/message",
+                      "reference/automations/steps/prompt",
+                      "reference/automations/steps/split",
+                      "reference/automations/steps/update"
+                    ]
+                  },
+                  "reference/automations/task-catalogue",
+                  {
+                    "group": "Tasks",
+                    "pages": [
+                      "reference/automation-tasks/http-request-task",
+                      "reference/automations/tasks/send-email"
+                    ]
+                  },
+                  "reference/automations/follow-a-run"
                 ]
               },
               {
@@ -1793,6 +1816,10 @@
     {
       "source": "/automations/http-request-task",
       "destination": "/reference/automation-tasks/http-request-task"
+    },
+    {
+      "source": "/apps/messaging/emails/adding-cc-and-bcc-to-an-email",
+      "destination": "/reference/automations/tasks/send-email"
     }
   ]
 }

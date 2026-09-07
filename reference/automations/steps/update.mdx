@@ -1,0 +1,62 @@
+---
+title: "Update"
+sidebarTitle: "Update"
+description: "The Update category in a HireData automation: tasks that change a record in a connected app, such as Carerix Update Object, and how a run shows the change."
+keywords:
+  - "update step"
+  - "update object"
+  - "update field"
+  - "update candidate"
+  - "change record"
+  - "field updated"
+---
+
+**Update** changes something that already exists in a connected app. It is a category. When more than one connected app offers an Update task, choosing it opens a list headed **Update**; when one task fills the category, as Carerix's does on its own, choosing it opens that task's drawer directly.
+
+<Info>
+  Update appears in the picker only when a connected app offers a task in this category.
+</Info>
+
+## Settings
+
+- **Object**. The record type to change, in a search box and list. For Carerix: Activity, Appointment, Campaign, Candidate, Company, Contact, Email, List, Match, Meeting, News Letter, Note, Placement, Publication, System, Talent Pool, Task, User, Vacancy.
+- **Matching field**. How the task finds the record to change. The canvas card reads it back as "Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id".
+- **Fields**. The fields to write and the value for each, a fixed value or a variable from the run. The card lists them under **Fields**, such as "Candidate: Available Date: Now".
+
+The drawer is headed with the task name and the app's icon.
+
+The tasks that fill the category:
+
+| Task | App | What it changes |
+| --- | --- | --- |
+| Update Object | Carerix | Any field of the chosen Carerix object |
+| Update Field | OTYS | A field of an OTYS record |
+| Update Field | Vincere | A field of a Vincere record |
+| Update Field | Salesforce | A field of a Salesforce record |
+
+### On the canvas
+
+The card shows a **Task** badge, the task name with the app, the sentence that names the matching field, and the fields it will write.
+
+<img src="/images/automations/36-update-card.png" alt="An Update Candidate in Carerix card on the canvas: Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id, and then update these fields, with Available Date set to Now and Status set to Werkzoekend" width="380" />
+
+## What it outputs
+
+The record as it is after the change. On the run page the task's drawer is headed with the app, the task, and the record id, such as "Carerix Update Match (ID: 7.18)", with badges counting **Field Updated** and **Run Moved** and a status badge. **Overview** lists the **Updated Object** with a link and each field's old and new value; a field that had no value reads "This field was empty before". **Fields** lists every value the task used, with its source icon and type.
+
+<img src="/images/automations/20-run-step-fields.png" alt="The Fields tab of an Update Match run step listing Match: Id, Match: Stage, an evaluation score, a filtered stage value, and one unresolved variable shown as raw text" width="384" />
+
+An unresolved variable appears in the Fields tab as its raw text, such as `{{…evaluation.scoring.score}}`, which is how you spot a field that was written with a placeholder instead of a value.
+
+## What stops the run
+
+An update the app rejects, or a record the matching field does not find. The task card turns red with the line "Cancelled" and the time, and the timeline records the task name with "Cancelled" and the reason the app returned.
+
+See [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
+
+## Related
+
+- [Find](/reference/automations/steps/find) looks a record up when it is not in the event.
+- [Add](/reference/automations/steps/add) creates a record instead of changing one.
+- [Prompt](/reference/automations/steps/prompt) produces the values an Update writes.
+- [Task catalogue](/reference/automations/task-catalogue) lists every task per connected app.

@@ -1,0 +1,41 @@
+---
+title: "Automation steps overview"
+sidebarTitle: "Overview"
+description: "Every step you can add to a HireData automation, what kind of step it is, and what it does in a run."
+keywords:
+  - "automation steps"
+  - "step picker"
+  - "next step"
+  - "start node"
+  - "add"
+  - "delay"
+  - "filter"
+  - "find"
+  - "loop"
+  - "message"
+  - "prompt"
+  - "ask ai"
+  - "split"
+  - "update"
+---
+
+An automation is a start node followed by steps. An event that matches the start node begins a run. The run works through the steps in order, and a step that acts on a connected app leaves a task.
+
+To start one, click **New Automation** in the top bar and pick a template, or open the **All** tab and choose **Blank Automation** to start from scratch. Every automation opens in the builder, where the **Start** node and each **+** lead to the drawers these pages describe. Use the table below to pick a step from the **Next step** drawer.
+
+| Step | Kind | What it does in a run |
+| --- | --- | --- |
+| [Setup](/reference/automations/steps/setup) (the **Start** node) | Start | Names the app, object, and trigger whose event begins a run |
+| [Add](/reference/automations/steps/add) | Task category | Creates a record in a connected app, such as a note, task, or job application in your ATS, or a Google Sheets row |
+| [Delay](/reference/automations/steps/delay) | Step | Pauses the run for a preset such as 5 minutes or 1 day, or until a chosen weekday |
+| [Filter](/reference/automations/steps/filter) | Step | Continues when its conditions pass and cancels the run when they do not |
+| [Find](/reference/automations/steps/find) | Task category | Looks up a record in a connected app, or finds an email address or a company domain |
+| [Loop](/reference/automations/steps/loop) | Step | Retrieves records from a connected app and runs the steps inside it once per record |
+| [Message](/reference/automations/steps/message) | Task category | Sends an email, a WhatsApp message, a survey, or an HTTP request |
+| [Prompt](/reference/automations/steps/prompt) | Task | Asks an AI model to do something and returns the output fields you define |
+| [Split](/reference/automations/steps/split) | Step | Runs its branches side by side, each branch starting with its own Filter |
+| [Update](/reference/automations/steps/update) | Task category | Changes a record that already exists in a connected app |
+
+<Info>
+  Add, Find, Message, and Update appear in the picker only when a connected app offers a task in that category. The [task catalogue](/reference/automations/task-catalogue) lists those tasks per app.
+</Info>
