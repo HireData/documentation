@@ -29,9 +29,15 @@ The tasks that fill the category in a workspace with Carerix and HireData connec
 | Find Email | HireData | An email address for a person, from their name and company domain |
 | Search Domain | HireData | The web domain of a company, from its name |
 
+### On the canvas
+
+The card shows a **Task** badge, the task name with the connection under it, and a **Filter** block with the fields the task matches on.
+
+![A Find Candidate in Carerix card on the canvas with the connection hiredata and a Filter block reading Candidate: Id equals 6416](/images/automations/52-find-card.png)
+
 ## What it outputs
 
-The record, address, or domain found. Its fields are listed under the run step's **Fields** tab and are available to later steps under the task's name, so a Message task can address the email Find Email returned.
+The record, address, or domain found. A Carerix Find opens on a **Match found** line with the record's id and name, linking to the record in Carerix, and a **Record Data** block that lists every field the record carries. Later steps use those fields under the task's name, so an Add task can attach the candidate a Find returned, and a Message task can address the email Find Email returned. [Follow a run](/reference/automations/follow-a-run) shows a Find step from a real run.
 
 ## What stops the run
 
