@@ -87,6 +87,18 @@ A delivered email completes the step with the message "Email delivered."
 
 <img src="/images/automations/41-send-email-delivered-timeline.png" alt="A run timeline: Run Scheduled, Run Started, Run Moved, Send Email: Completed with the message Email delivered., Run Continued, and Send Email: Run Finished" width="384" />
 
+### Delivery figures
+
+The automation's own page, the one that opens from the Automations list before you click into edit mode, adds the figures the run page lacks. They take a few seconds to load and disappear as soon as you enter edit mode.
+
+- **Stats** on the Send Email card: **Sent**, **Delivered**, **Bounced**, **Opened**, and **Clicked**, each with a count and a percentage of sent.
+- **Under the card**, one line per outcome with a link to the tasks behind it, such as "Sent: 1x email" and "Failed to send: 2x email".
+- **Mail Stats** in the left panel: the same five figures added up across every Send Email step in the automation. **Run Stats** above it counts runs by state.
+
+![The Send Email card on the automation page with a Stats block of Sent 1, Delivered 1 (100.0%), Bounced 0, Opened 1 (100.0%), Clicked 0, and the lines Failed to send: 2x email and Sent: 1x email beneath it](/images/automations/42-send-email-card-stats.png)
+
+<img src="/images/automations/43-mail-stats.png" alt="The Mail Stats panel: Sent 1, Delivered 1 (100.0%), Bounced 0 (0.0%), Opened 1 (100.0%), Clicked 0 (0.0%)" width="240" />
+
 ## What stops the run
 
 A send that HireData refuses. The task card turns red with the line "Cancelled" and the time, and the timeline records "Send Email: Cancelled" with the message. In the runs list the **Step** column reads "HireData: Send Email".
