@@ -13,12 +13,10 @@ Use it whenever you change an evaluator. A rule that looks right on the card is 
 
 The tab lists every question except the endings, as a compact input. Badges after the question label say what the evaluators will do with it: **Must** or **Nice** from [Criteria](/reference/forms/evaluation/criteria), and one badge per skill the question feeds.
 
-![Three questions in Test & Evaluate, one badged Must and Availability, one badged Nice](/images/forms-builder/testing/06-test-answers.png)
-
+<img src="/images/forms-builder/testing/06-test-answers.png" alt="Three questions in Test & Evaluate, one badged Must and Availability, one badged Nice" width="560" />
 Type the answers yourself, or let the AI write them. **Autofill with AI** fills every question in one go, and the chevron beside it picks the kind of respondent to imitate.
 
-![The Autofill with AI button with its menu open, listing Random answers, Ideal candidate, Borderline candidate, Unqualified candidate, and Partially completed](/images/forms-builder/testing/05-test-scenarios.png)
-
+<img src="/images/forms-builder/testing/05-test-scenarios.png" alt="The Autofill with AI button with its menu open, listing Random answers, Ideal candidate, Borderline candidate, Unqualified candidate, and Partially completed" width="230" />
 - **Random answers** is plausible but uninformed. Good for a first look.
 - **Ideal candidate** answers the way someone who meets every criterion would.
 - **Borderline candidate** aims at the middle, which is where a scoring mistake shows.
@@ -37,14 +35,12 @@ The evaluation runs on its own as soon as there is an answer, and again a moment
 
 The results appear under the answers, starting with one panel per evaluator you switched on. Each panel shows the headline result, and clicking one opens its detail underneath.
 
-![The results of an ideal-candidate run: Meets criteria, 100% High, Availability at 66.67%, the per-question criteria detail, the summary, and the generated fields](/images/forms-builder/testing/07-test-results.png)
-
+<img src="/images/forms-builder/testing/07-test-results.png" alt="The results of an ideal-candidate run: Meets criteria, 100% High, Availability at 66.67%, the per-question criteria detail, the summary, and the generated fields" width="650" />
 **Criteria** groups the questions under **Must-have** and **Nice-to-have**, with a tick or a cross, the answer, and the expected answer where you wrote one. A question judged by AI carries an AI chip and the model's one-line reasoning, which is the fastest way to see whether your note landed.
 
 **Scoring** shows the percentage, the points tally, and what each question earned out of its own maximum.
 
-![The Scoring panel: a 100% bar, Points 30 out of 30, and 10 and 20 points from the two scored questions](/images/forms-builder/testing/07b-test-results-scoring.png)
-
+<img src="/images/forms-builder/testing/07b-test-results-scoring.png" alt="The Scoring panel: a 100% bar, Points 30 out of 30, and 10 and 20 points from the two scored questions" width="650" />
 **Skills** shows a bar per skill. **Summary** and **Generated fields** sit below the panels, so they stay in view whichever detail you have open.
 
 A grey **No result yet** is what the panels show before you enter an answer. If one stays grey after a run, that evaluator had nothing to work with. The usual cause is a question switched on with no rules written, which leaves the evaluator with no question to judge.
@@ -53,8 +49,7 @@ A grey **No result yet** is what the panels show before you enter an answer. If 
 
 **Automation variables** at the bottom lists every value this response makes available to an automation, with the variable to copy and the result from the run in front of you.
 
-![The Automation variables list, showing the criteria, score, score range, primary skill, and summary variables with their values](/images/forms-builder/testing/08-automation-variables.png)
-
+<img src="/images/forms-builder/testing/08-automation-variables.png" alt="The Automation variables list, showing the criteria, score, score range, primary skill, and summary variables with their values" width="650" />
 This is the list to build an automation against. Reading `passed` next to `{{form_response.evaluation.screening}}` tells you the exact value to compare, which guessing does not. See [Variables](/variables/introduction).
 
 ## What it does not do
