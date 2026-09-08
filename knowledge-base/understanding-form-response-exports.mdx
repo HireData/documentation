@@ -1,0 +1,98 @@
+---
+title: "Understand respondent identities in form exports"
+sidebarTitle: "Form export identities"
+description: "Read respondent IDs, identity sources, additional matches, and consistency checks in HireData form exports before importing responses into your CRM."
+keywords: ["form export", "respondent_external_id", "respondent_origin", "Salesforce", "Google Sheets", "duplicate responses"]
+---
+
+Use the form export with verified identity sources to understand which respondent and source record belong to each response. Each row carries at most one external identity, with separate columns showing additional matches and differences between sources.
+
+<Note>
+This guide applies to the export variant containing `respondent_origin`. It is available through the HireData team. The regular and raw exports can have a different structure.
+</Note>
+
+## Identify the response and the respondent
+
+These three columns serve different purposes:
+
+| Column | How to use it |
+| --- | --- |
+| `form_response_id` | The unique response ID. Use it as the key when importing responses so you can recognise the same response in a later import. |
+| `respondent_external_id` | The selected identity's ID in its external source. Read it together with the integration, record type, and connection before using it as a CRM link. |
+| `respondent_source_match_external_ids` | All synced record IDs matching the person's contact details. Use this list to investigate additional matches, not to link the response to every listed record. |
+
+Use column names rather than spreadsheet letters, which can differ between files.
+
+Two rows with the same email address can be different responses. Compare `form_response_id`, the form, delivery details, and timestamps before deciding whether a response is a duplicate.
+
+## Understand the selected identity source
+
+`respondent_origin` names the source used for the external identity. HireData selects the first available origin in this order:
+
+| Value | Source |
+| --- | --- |
+| `external_record` | The record the automation ran on, such as a Salesforce contact or a Google Sheet row. |
+| `person_source` | The linked person's own synced record, verified by a matching email address or phone number. |
+| `address_lookup` | An identity found by looking up the address the message was delivered to. |
+| `none` | No identity could be established with enough certainty. The external identity columns remain empty. |
+
+All `respondent_external_*` values come from this one origin. HireData does not combine a name from one source with an email address from another. If the selected source did not provide a name or phone number, that external field stays empty.
+
+The columns `respondent_name`, `respondent_email`, and `respondent_phone_number` describe the linked person in HireData. They are separate from the selected external identity and can differ from it.
+
+## Choose the correct CRM ID
+
+Check these columns together:
+
+- `respondent_external_app`: the integration, such as `salesforce` or `google`.
+- `respondent_external_type`: the record type, such as Contact.
+- `respondent_external_connection`: the connected account.
+- `respondent_external_id`: the record ID in that source.
+
+A Salesforce Contact ID can identify a contact in the corresponding Salesforce connection. A Google Sheet row ID is not a Salesforce Contact ID.
+
+If the automation started from a sheet, the `external_data_…` columns contain the original sheet values. If you supplied a Salesforce ID in that sheet, use the corresponding column after confirming which CRM record and connection it refers to. It does not automatically turn the sheet's own row ID into a Salesforce ID.
+
+For example, if `respondent_origin` is `external_record` and `respondent_external_app` is `google`, interpret `respondent_external_id` as the sheet's source ID. Locate the separately supplied CRM ID in the original sheet data.
+
+## Interpret additional matches
+
+`respondent_source_match_count` shows how many synced records matched the person's contact details:
+
+- `1`: one matching record.
+- `2` or more: multiple matching records to investigate.
+- `0`: no matching records.
+- Empty: there was nothing to match against.
+
+`respondent_source_match_external_ids` lists those records. Multiple matches can reflect duplicates or separate contacts sharing an email address or phone number. They do not prove that all the records represent the same person.
+
+For example, two contacts can share a company phone number. Finding both IDs makes that overlap visible; it is not an instruction to merge them or attach the response to both.
+
+## Read the consistency checks
+
+| Column | What it compares |
+| --- | --- |
+| `email_consistent` | The HireData person's email, the external identity's email, and the delivery address. |
+| `phone_number_consistent` | The corresponding phone numbers. Formatting differences such as `06…` and `+316…` do not count as mismatches. |
+| `external_id_consistent` | The automation's source record and the person's synced record within the same external system. |
+
+For each check, `1` means the compared values agree, `0` means they differ, and an empty value means there is not enough comparable information.
+
+A `0` makes a difference visible. It does not by itself establish which value is correct. Check the selected source, the `receiver_*` delivery details, and the original record when investigating.
+
+## Import historical responses
+
+Incomplete responses are included with an empty `completed_at`. Question columns contain the answers, including hidden fields. Choice questions also have a `…_label` column for the option label.
+
+This export explains the origin of respondent data. It does not automatically correct historical answers or merge duplicate source records.
+
+Before importing:
+
+1. Use `form_response_id` to recognise each response and avoid importing it twice.
+2. Confirm the source and CRM ID used to link each response.
+3. Keep cases with unresolved identity differences separate for investigation.
+4. After importing, check that the responses and answer values are attached to the intended CRM records.
+
+If you need help with a particular row, share its `form_response_id`, the form name, and the difference you found with the HireData team.
+
+[Lees dit artikel in het Nederlands](/nl/knowledge-base/understanding-form-response-exports).
