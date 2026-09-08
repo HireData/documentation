@@ -41,17 +41,13 @@ Arguments can be:
 
 ## How the popover shows modifiers
 
-A variable with modifiers still reads as its display name in the editor. The badge adds a wand icon, and a count once you chain two or more. Hover the badge and the popover shows the whole pipeline.
+In the editor a variable with modifiers keeps its display name and adds a wand icon. Hover the badge and the popover walks through the pipeline: the input value, one card per modifier in plain language, and the output. `lowercase` reads **Lowercase**, `truncate_chars` reads **Limit characters**, and arguments appear under the modifier's name.
 
 <img src="/images/forms-builder/37-variable-popover.png" alt="The Description box of a form question with four badges, and a popover open above it headed Name with cards reading Input NPS required question, Lowercase, Capitalise words, Use a fallback Your form, and Output Nps Required Question" width="573" />
 
-- **Input** is the value the field holds right now, with its type icon.
-- **One card per modifier**, in order, named in plain language. `lowercase` reads **Lowercase**, `capitalise` reads **Capitalise words**, `truncate_chars` reads **Limit characters**, and `default` reads **Use a fallback**. Arguments appear under the name in code, so `default: "there"` shows `"there"` on its own line.
-- **Output** is the value after every step, with the icon of the type the chain produces.
+Some modifiers cannot be previewed. Their card stays in the pipeline with a note, and the output is left out. The modifier still runs when the content is sent.
 
-The preview runs the supported modifiers on the current value. A modifier the preview cannot run keeps its card and its arguments and shows an info icon with the note **This modifier cannot be previewed.** Later cards show **This preview depends on a value or earlier step that cannot be evaluated.** The modifier still runs when the content is sent.
-
-The popover applies the modifiers for you to read. It does not change the expression. To edit it, place the cursor after the badge and press Backspace. See [Editing a badge](/variables/introduction#editing-a-badge).
+The popover is read-only. To change the expression, see [Editing a badge](/variables/introduction#editing-a-badge).
 
 ## Fallback
 
@@ -59,21 +55,19 @@ The popover applies the modifiers for you to read. It does not change the expres
 | ---------------- | ------------------------------------------------ | ------------------------------------------ |
 | `default: value` | Shows `value` when the field is empty or missing | `{{ name \| default: "there" }}` → `there` |
 
-In the popover the fallback gets a card of its own reading **Use a fallback** with the fallback text under it. When the field is empty, the **Input** card reads **No value provided** and the **Output** card shows the fallback. A record's **Forms** tab shows this for the record you have open, so you can check which vacancies would fall back.
+In the popover the fallback appears as its own step, **Use a fallback**, with the fallback text under it. When the field is empty, the input reads **No value provided** and the output shows the fallback.
 
 ## Literals
 
-A quoted text, a number, or `true` or `false` can stand in place of a field. The braces still make it a badge, and modifiers apply to it in the same way:
+A quoted text, a number, or `true` or `false` can stand in place of a field. It becomes a badge like any variable, and modifiers apply to it in the same way:
 
 ```text
 {{ "text" | uppercase }} → TEXT
 ```
 
-The badge shows the literal on a tinted background with the icon of its type: a text icon for `"text"`, a number icon for `42`, a checkbox icon for `true`. Its popover reads **Input** `text`, **Uppercase**, **Output** `TEXT`.
+The badge is tinted to set it apart from a field, and carries the icon of the literal's type.
 
 <img src="/images/email-builder/22-literal-popover.png" alt="A tinted badge reading text with a text-type icon and a wand icon, and its popover with Input text, Uppercase, and Output TEXT" width="616" />
-
-A literal without modifiers, such as `{{ 42 }}`, sends the value as written and its popover shows it under **Value**. Spaces inside the braces are optional.
 
 ## Text
 

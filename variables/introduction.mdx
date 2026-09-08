@@ -26,45 +26,31 @@ The spaces inside the braces are optional:
 
 ## How a variable looks in the editor
 
-Every editor that accepts variables shows each one as a badge. The badge reads the object and field display names, such as **Recipient: First Name**. You read the label rather than the key. The badge behaves as one object on the canvas.
+Every editor that accepts variables shows each one as a badge with the field's display name, such as **Recipient: First Name**. The badge is one object on the canvas, not the characters it stands for.
 
 <img src="/images/email-builder/21-variable-popover.png" alt="An email paragraph with four badges, Recipient: First Name, Recipient: First Name with a wand icon and a 3, a tinted text badge, and an orange documentation_missing_key badge, and a popover open under the second badge with Input Callum, Lowercase, Capitalise words, Use a fallback there, and Output Callum" width="616" />
 
-The badge changes with what you wrote:
-
-- **A plain variable** shows the display name.
-- **A variable with modifiers** adds a wand icon. Two or more modifiers add a count, so `{{ recipient.first_name | lowercase | capitalise | default: "there" }}` reads **Recipient: First Name** with a wand and a **3**.
-- **A literal** such as `{{ "text" | uppercase }}` shows the quoted text on a tinted badge with a type icon. See [Literals](/variables/modifiers#literals).
-- **An unresolved variable** shows the key on an orange warning badge with a triangle icon.
-
-The same badges appear in the form builder, on a record's **Forms** tab, in the email builder, and in automation field inputs.
+- A variable with modifiers adds a wand icon, and a count once there are two or more.
+- A [literal](/variables/modifiers#literals) such as `{{ "text" | uppercase }}` gets a tinted badge.
+- A key HireData does not recognise gets an orange warning badge.
 
 ### The popover
 
-Hover a badge and a popover opens. From top to bottom it holds:
+Hover a badge to see what it holds: the field's description and options when it has them, its current value, and each modifier in plain language with the result at the end. The popover also copies the expression and links to this page.
 
-- The field's display name with its type icon.
-- A copy button. Its tooltip shows the stored expression, and clicking it copies the expression with its braces. The label reads **Copy variable expression** and changes to **Copied!**.
-- A book icon that opens this page in a new tab. Its label reads **Variable documentation (opens in a new tab)**.
-- The field's description, when the field has one.
-- An **Options** list, when the field has options, folded closed.
-- A **Value** card with the field's current value. A variable with modifiers shows an **Input** card instead, one card per modifier in plain language, and an **Output** card with the result. See [How the popover shows modifiers](/variables/modifiers#how-the-popover-shows-modifiers).
-
-The value depends on where you are. The email builder and the form builder show the sample value HireData holds for the field. A record's **Forms** tab shows that record's value. An automation step shows the field's default value, because no run has happened yet.
+The value depends on where you are. The form builder and the email builder show HireData's sample value for the field. A record's **Forms** tab shows that record's value. An automation step shows the field's default value, because no run has happened yet.
 
 ### When a variable is not found
 
-A key HireData does not recognise becomes an orange badge. Its popover repeats the key and ends with a line reading **Variable is not found**. The expression stays in your content unchanged, so fix the key or remove the badge.
+A key HireData does not recognise becomes an orange badge, and its popover reads **Variable is not found**. The expression stays in your content unchanged, so fix the key or remove the badge. A variable you delete from a template's **Variables** list turns into this badge everywhere you used it.
 
 <img src="/images/email-builder/23-variable-not-found.png" alt="An orange badge reading documentation_missing_key with a triangle icon, and its popover repeating the key above a line reading Variable is not found" width="616" />
 
-A variable you delete from a template's own **Variables** list turns into this badge everywhere you used it.
-
 ### Editing a badge
 
-Place the cursor after a badge and press Backspace. The badge turns back into text starting with `{{` and the full expression, so a badge with three modifiers gives you all three back. Edit the text, then type the closing `}}` and the badge returns. The same works for a form reference written as `@key@`.
+Place the cursor after a badge and press Backspace. The badge turns back into text, `{{` and the full expression, modifiers included. Edit it, type the closing `}}`, and the badge returns. The same works for a form reference written as `@key@`.
 
-Typing works too. Type `{{`, pick a field from the list, or write the whole expression by hand with modifiers and all. HireData turns it into a badge as soon as you type the closing braces.
+You can also type an expression from scratch, modifiers and all. It becomes a badge as soon as you type the closing braces.
 
 ## Where you can use variables
 
@@ -101,7 +87,7 @@ You can chain several modifiers, and each one acts on the result of the previous
 {{ candidate.last_name | lowercase | capitalise }}
 ```
 
-In the editor a modifier does not change how the badge reads. It adds a wand icon, and the popover lists each step. See the full list on the [Modifiers](/variables/modifiers) page.
+See the full list on the [Modifiers](/variables/modifiers) page.
 
 ## Generating a value instead of looking one up
 

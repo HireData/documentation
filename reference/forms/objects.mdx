@@ -19,7 +19,7 @@ The panel lists the objects already linked to this form, then **Available object
 
 ## What linking an object gives you
 
-Every field on the linked record becomes a variable. You can write it into any text setting the form has, including the question, the description, a placeholder, and an option label, so a question can open with the job title rather than "this role". In the builder the variable shows as a badge reading the object's label and the field's name, such as **Vacancy: Job Title**. Hover it to see the value and any modifiers.
+Every field on the linked record becomes a variable. You can write it into any text setting the form has, including the question, the description, a placeholder, and an option label, so a question can open with the job title rather than "this role". In the builder the variable shows as a badge such as **Vacancy: Job Title**.
 
 The variable list in the toolbar shows them all. Each one is named after the object's label and addressed by its key.
 
@@ -36,7 +36,7 @@ Click a linked object to open it.
 - **Label** names the object in the variable list, which is where "Vacancy: Job Title" comes from. Change it whenever you like.
 - **Key** is the first part of the variable itself, as in `{{job.jobTitle}}`. HireData sets the key when you link the object and locks it afterwards, so pick the object you want rather than planning to rename it later.
 - **Required** decides what happens when nothing supplies a record. See [What Required does](#required).
-- **Remove** unlinks the object. Its variables stop resolving. Every badge that used one turns orange and its popover reads **Variable is not found**, so check every question that used one.
+- **Remove** unlinks the object. Its variables stop resolving and every badge that used one turns orange, so check every question that used one.
 - The up and down arrows move the object through the list. Which object sits at the top changes what the form can do, so read [The first object decides the configuration](#first-object) before you use them.
 
 ## The first object decides the configuration {#first-object}

@@ -7,7 +7,7 @@ keywords: ["email variables", "variable picker", "merge tags", "personalisation"
 
 A variable is a placeholder HireData fills in when the email goes out. Write `{{recipient.first_name}}` once and every recipient reads their own name.
 
-The email builder shows a variable as a badge carrying its label, not its value. `{{recipient.first_name}}` reads **Recipient: First Name** on the canvas, and the badge behaves as one object rather than as the characters it stands for. Hover it and a popover shows the value it holds. See [What a badge tells you](#what-a-badge-tells-you).
+The email builder shows a variable as a badge carrying its label, not its value. `{{recipient.first_name}}` reads **Recipient: First Name** on the canvas, and the badge behaves as one object rather than as the characters it stands for. Hover it to see the value it holds.
 
 ## Inserting a variable
 
@@ -17,7 +17,7 @@ Keep typing to narrow the list. The search is forgiving. Type `frist` and **Reci
 
 ![The Subject box with a variable badge in it and a part-typed token at the end, and the picker below listing Recipient: Last Name and Sender: Last Name with their keys and types](/images/email-builder/10-variable-picker.png)
 
-Press Enter or click a row and the token turns into a badge. Typing the whole expression by hand works too, modifiers included. The badge appears as soon as you type the closing `}}`.
+Press Enter or click a row and the token turns into a badge. You can also type the whole expression by hand, modifiers included. It becomes a badge as soon as you type the closing `}}`.
 
 ## Where variables work
 
@@ -58,7 +58,7 @@ Pick a type and four settings open beside it.
 A variable of your own earns its keep when one value belongs in several places. Put your phone number in a `{{phone}}` variable and write that into the signature, the footer, and the body, and changing the number afterwards is one edit rather than three.
 
 <Warning>
-  Deleting a variable does not clear it out of the email. Every badge that used it turns orange and its popover reads **Variable is not found**, and the key goes out with its braces showing. Delete the variable, then find each orange badge and remove or replace it.
+  Deleting a variable does not clear it out of the email. Every badge that used it turns orange, and the key goes out with its braces showing. Delete the variable, then find each orange badge and remove or replace it.
 </Warning>
 
 <Note>
@@ -73,13 +73,9 @@ The database button in the toolbar opens **Objects**, which links a record type 
 
 ## What a badge tells you
 
-Hover any badge and a popover opens. It names the field, shows its type icon, and lists its current value under **Value**. The copy button copies the stored `{{ }}` expression, and the book icon opens the [Variables](/variables/introduction) documentation.
+Hover any badge and a popover shows the field's current value. A badge with [modifiers](/variables/modifiers#how-the-popover-shows-modifiers) carries a wand icon, and its popover walks through each step to the result.
 
 <img src="/images/email-builder/21-variable-popover.png" alt="An email paragraph with four badges, Recipient: First Name, Recipient: First Name with a wand icon and a 3, a tinted text badge, and an orange documentation_missing_key badge, and a popover open under the second badge with Input Callum, Lowercase, Capitalise words, Use a fallback there, and Output Callum" width="616" />
-
-A badge with modifiers carries a wand icon, and a count once there are two or more. Its popover lists **Input**, one card per modifier in plain language, and **Output**. See [How the popover shows modifiers](/variables/modifiers#how-the-popover-shows-modifiers).
-
-A quoted text or a number between the braces, such as `{{ "text" | uppercase }}`, is a literal. It gets a tinted badge with a type icon, and modifiers apply to it in the same way. See [Literals](/variables/modifiers#literals).
 
 ## What a recipient actually sees
 
@@ -89,7 +85,7 @@ Three things can happen to a variable, and only one of them is what you meant.
 - **The variable resolves to nothing.** The recipient has no phone number on file, so `{{recipient.phone_number}}` comes out as an empty space. "Call us on ." is the classic way this shows up.
 - **There is no such variable.** HireData leaves a key it does not recognise exactly as you typed it. The recipient reads `{{recipient.favourite_biscuit}}`, braces and all.
 
-The builder tells you which of the three you are heading for. A key it recognises becomes a plain badge. Its popover shows the value HireData holds, and no value when the field is empty. A key it does not recognise becomes an orange badge with a triangle icon, and the popover ends with **Variable is not found**.
+The builder tells you which of the three you are heading for. A key it recognises becomes a plain badge, and hovering it shows the value or the lack of one. A key it does not recognise becomes an orange badge reading **Variable is not found**.
 
 <img src="/images/email-builder/23-variable-not-found.png" alt="An orange badge reading documentation_missing_key with a triangle icon, and its popover repeating the key above a line reading Variable is not found" width="616" />
 
@@ -107,9 +103,9 @@ Hi {{ recipient.first_name | default: "there" }},
 
 It fires in both of the failure cases above: when the value is blank, and when the key does not exist at all. The email above reads "Hi Sofia," for Sofia and "Hi there," for everyone whose first name is missing.
 
-The badge still reads **Recipient: First Name**, with a wand icon for the modifier. Its popover shows the fallback on a card of its own reading **Use a fallback** with `"there"` under it. When the value is blank, the **Input** card reads **No value provided** and the **Output** card shows `there`.
+The badge still reads **Recipient: First Name**, with a wand icon for the modifier. Hover it to see the fallback and, when the value is blank, the result.
 
-To add a modifier to a badge that is already on the canvas, place the cursor after it and press Backspace. The badge turns back into `{{` and the expression as text. Add the modifier, type the closing `}}`, and the badge returns. Or type the whole expression by hand, braces and all.
+To add a modifier to a badge that is already on the canvas, place the cursor after it and press Backspace. The badge turns back into text. Add the modifier, type the closing `}}`, and the badge returns.
 
 `default` is one of a long list. See [Modifiers](/variables/modifiers) for the rest, and for chaining several together.
 
