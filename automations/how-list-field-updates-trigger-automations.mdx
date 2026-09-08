@@ -45,6 +45,37 @@ Adding another condition that checks whether the same group is present does not 
 
 This matters for actions intended to happen only once, such as a first-workday message or card. Before activating that workflow, decide whether it should run whenever the list changes and matches, once per placement, or only when a particular group is added.
 
+## Prevent repeat actions when someone should only continue once
+
+If the workflow should happen only once per person, add a **Filter** before the send or other action. On its **Advanced** tab, set a **Unique Constraint** using the person's stable identifier.
+
+The first qualifying run can pass this Filter. Later runs with the same identifier stop there, before reaching the action. The automation can still start again; the constraint prevents those runs from continuing past the Filter.
+
+Choose the identifier to match the intended outcome:
+
+| Intended outcome | Unique constraint |
+| --- | --- |
+| Once per person, across their placements | The person's stable identifier |
+| Once per placement, so a person can qualify again for a new placement | The placement's stable identifier |
+
+For a strict once-per-person rule, use the person's identifier alone. Adding the groups list to the unique constraint would create a different combination whenever the list changes, allowing another run to pass.
+
+Use this only when repeat actions are unwanted. A once-per-person constraint would also block a legitimate repeat for that same person on a future placement. See [Filter: unique constraints](/reference/automations/steps/filter).
+
+### Use send limits for a time-based cap
+
+For email or WhatsApp workflows, you can also set the automation's **Email Limit** or **Conversation Limit** to **1** within the selected period. Keep **Ignore all safety limits** switched off.
+
+These limits apply to the same email address or phone number within that period. They are useful for limiting repeat outreach, but they are not a permanent once-per-person rule. Another send may be allowed after the period expires.
+
+Email and conversation limits cover their respective messaging channels. Do not rely on them to protect a physical-card or other external action. For those workflows, place the unique-constraint Filter before the action when the action should happen only once.
+
+See [Automation safety limits](/settings/automation-safety-limits) for the settings.
+
+<Note>
+  Both approaches limit repeats. Neither proves that the selected group was newly added, nor prevents the first action from happening at the wrong moment. Keep the intended trigger and conditions in place.
+</Note>
+
 ## Review your automation
 
 1. Open the automation's **Start** node and check the saved trigger and filter. Make sure they express the field and values you intend to monitor.
