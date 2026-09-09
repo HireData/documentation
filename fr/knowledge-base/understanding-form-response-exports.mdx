@@ -1,0 +1,98 @@
+---
+title: "Comprendre les identités des répondants dans les exports de formulaires"
+sidebarTitle: "Identités dans les exports de formulaires"
+description: "Lisez les ID de répondants, les sources d'identité, les correspondances supplémentaires et les contrôles de cohérence dans les exports de formulaires HireData avant d'importer les réponses dans votre CRM."
+keywords: ["export de formulaire", "respondent_external_id", "respondent_origin", "Salesforce", "Google Sheets", "réponses en double"]
+---
+
+Utilisez l'export de formulaire avec sources d'identité vérifiées pour comprendre quel répondant et quel enregistrement source correspondent à chaque réponse. Chaque ligne contient au maximum une identité externe, avec des colonnes séparées indiquant les correspondances supplémentaires et les différences entre les sources.
+
+<Note>
+Ce guide s'applique à la variante d'export contenant `respondent_origin`. Elle est disponible via l'équipe HireData. Les exports standard et bruts peuvent avoir une structure différente.
+</Note>
+
+## Identifier la réponse et le répondant
+
+Ces trois colonnes ont des objectifs différents :
+
+| Colonne | Comment l'utiliser |
+| --- | --- |
+| `form_response_id` | L'ID unique de la réponse. Utilisez-le comme clé lors de l'import des réponses afin de reconnaître la même réponse lors d'un import ultérieur. |
+| `respondent_external_id` | L'ID de l'identité sélectionnée dans sa source externe. Lisez-le avec l'intégration, le type d'enregistrement et la connexion avant de l'utiliser comme lien CRM. |
+| `respondent_source_match_external_ids` | Tous les ID d'enregistrements synchronisés correspondant aux coordonnées de la personne. Utilisez cette liste pour examiner les correspondances supplémentaires, pas pour lier la réponse à chaque enregistrement mentionné. |
+
+Utilisez les noms de colonnes plutôt que les lettres du tableur, qui peuvent différer d'un fichier à l'autre.
+
+Deux lignes avec la même adresse e-mail peuvent être des réponses différentes. Comparez `form_response_id`, le formulaire, les détails de livraison et les horodatages avant de déterminer si une réponse est un doublon.
+
+## Comprendre la source d'identité sélectionnée
+
+`respondent_origin` indique la source utilisée pour l'identité externe. HireData sélectionne la première origine disponible dans cet ordre :
+
+| Valeur | Source |
+| --- | --- |
+| `external_record` | L'enregistrement sur lequel l'automatisation s'est exécutée, par exemple un contact Salesforce ou une ligne Google Sheet. |
+| `person_source` | L'enregistrement synchronisé propre à la personne liée, vérifié par une adresse e-mail ou un numéro de téléphone correspondant. |
+| `address_lookup` | Une identité trouvée en recherchant l'adresse à laquelle le message a été livré. |
+| `none` | Aucune identité n'a pu être établie avec suffisamment de certitude. Les colonnes d'identité externe restent vides. |
+
+Toutes les valeurs `respondent_external_*` proviennent de cette seule origine. HireData ne combine pas un nom d'une source avec une adresse e-mail d'une autre. Si la source sélectionnée n'a pas fourni de nom ou de numéro de téléphone, ce champ externe reste vide.
+
+Les colonnes `respondent_name`, `respondent_email` et `respondent_phone_number` décrivent la personne liée dans HireData. Elles sont distinctes de l'identité externe sélectionnée et peuvent en différer.
+
+## Choisir le bon ID CRM
+
+Vérifiez ces colonnes ensemble :
+
+- `respondent_external_app` : l'intégration, par exemple `salesforce` ou `google`.
+- `respondent_external_type` : le type d'enregistrement, par exemple Contact.
+- `respondent_external_connection` : le compte connecté.
+- `respondent_external_id` : l'ID de l'enregistrement dans cette source.
+
+Un ID de contact Salesforce peut identifier un contact dans la connexion Salesforce correspondante. Un ID de ligne Google Sheet n'est pas un ID de contact Salesforce.
+
+Si l'automatisation est partie d'une feuille, les colonnes `external_data_…` contiennent les valeurs d'origine de la feuille. Si vous avez fourni un ID Salesforce dans cette feuille, utilisez la colonne correspondante après avoir confirmé à quel enregistrement CRM et à quelle connexion il fait référence. Cela ne transforme pas automatiquement l'ID de ligne propre à la feuille en ID Salesforce.
+
+Par exemple, si `respondent_origin` est `external_record` et `respondent_external_app` est `google`, interprétez `respondent_external_id` comme l'ID source de la feuille. Recherchez l'ID CRM fourni séparément dans les données d'origine de la feuille.
+
+## Interpréter les correspondances supplémentaires
+
+`respondent_source_match_count` indique combien d'enregistrements synchronisés correspondent aux coordonnées de la personne :
+
+- `1` : un enregistrement correspondant.
+- `2` ou plus : plusieurs enregistrements correspondants à examiner.
+- `0` : aucun enregistrement correspondant.
+- Vide : il n'y avait rien à comparer.
+
+`respondent_source_match_external_ids` liste ces enregistrements. Plusieurs correspondances peuvent refléter des doublons ou des contacts distincts partageant une adresse e-mail ou un numéro de téléphone. Elles ne prouvent pas que tous les enregistrements représentent la même personne.
+
+Par exemple, deux contacts peuvent partager un numéro de téléphone d'entreprise. Trouver les deux ID rend ce chevauchement visible ; ce n'est pas une instruction de les fusionner ni d'attacher la réponse aux deux.
+
+## Lire les contrôles de cohérence
+
+| Colonne | Ce qui est comparé |
+| --- | --- |
+| `email_consistent` | L'adresse e-mail de la personne HireData, l'adresse e-mail de l'identité externe et l'adresse de livraison. |
+| `phone_number_consistent` | Les numéros de téléphone correspondants. Les différences de format telles que `06…` et `+316…` ne comptent pas comme des écarts. |
+| `external_id_consistent` | L'enregistrement source de l'automatisation et l'enregistrement synchronisé de la personne au sein du même système externe. |
+
+Pour chaque contrôle, `1` signifie que les valeurs comparées concordent, `0` signifie qu'elles diffèrent, et une valeur vide signifie qu'il n'y a pas assez d'informations comparables.
+
+Un `0` rend une différence visible. Il n'établit pas à lui seul quelle valeur est correcte. Vérifiez la source sélectionnée, les détails de livraison `receiver_*` et l'enregistrement d'origine lors de votre analyse.
+
+## Importer des réponses historiques
+
+Les réponses incomplètes sont incluses avec un champ `completed_at` vide. Les colonnes de questions contiennent les réponses, y compris les champs masqués. Les questions à choix ont également une colonne `…_label` pour le libellé de l'option.
+
+Cet export explique l'origine des données des répondants. Il ne corrige pas automatiquement les réponses historiques et ne fusionne pas les enregistrements sources en double.
+
+Avant l'import :
+
+1. Utilisez `form_response_id` pour reconnaître chaque réponse et éviter de l'importer deux fois.
+2. Confirmez la source et l'ID CRM utilisés pour lier chaque réponse.
+3. Gardez les cas présentant des différences d'identité non résolues à part pour analyse.
+4. Après l'import, vérifiez que les réponses et les valeurs de réponse sont rattachées aux enregistrements CRM prévus.
+
+Si vous avez besoin d'aide pour une ligne particulière, partagez son `form_response_id`, le nom du formulaire et la différence constatée avec l'équipe HireData.
+
+[Read this article in English](/knowledge-base/understanding-form-response-exports).

@@ -1,5 +1,13 @@
 # Mintlify Starter Kit
 
+## Git worktrees
+
+Lerd provisions worktrees created by Git, IDEs, and coding tools. Each worktree
+gets a branch-specific help domain and an available dev-server port. Use
+`lerd worktree wait --timeout 10m` before running commands immediately after
+creation. Lerd stops the preview and removes its routing when Git removes the
+worktree. This repository has no mutable local service state to isolate.
+
 Use the starter kit to get your docs deployed and ready to customize.
 
 Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with

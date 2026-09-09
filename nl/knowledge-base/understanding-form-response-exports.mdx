@@ -1,0 +1,98 @@
+---
+title: "Respondentgegevens en ID’s in formulierexports begrijpen"
+sidebarTitle: "ID’s in formulierexports"
+description: "Lees respondent-ID’s, identiteitsbronnen, aanvullende matches en controlekolommen in HireData-formulierexports voordat je responsen in je CRM importeert."
+keywords: ["formulierexport", "respondent_external_id", "respondent_origin", "Salesforce", "Google Sheets", "dubbele responsen"]
+---
+
+Met de formulierexport met geverifieerde identiteitsbronnen zie je welke respondent en welk bronrecord bij een respons horen. Elke rij bevat maximaal één externe identiteit. Aanvullende matches en verschillen tussen bronnen staan in aparte kolommen.
+
+<Note>
+Deze uitleg geldt voor de exportvariant met de kolom `respondent_origin`. Deze is beschikbaar via het HireData-team. De reguliere en ruwe exports kunnen anders zijn opgebouwd.
+</Note>
+
+## Herken de respons en de respondent
+
+Deze drie kolommen hebben elk een ander doel:
+
+| Kolom | Hoe gebruik je deze? |
+| --- | --- |
+| `form_response_id` | Het unieke respons-ID. Gebruik dit als sleutel bij het importeren, zodat je dezelfde respons bij een volgende import herkent. |
+| `respondent_external_id` | Het ID van de geselecteerde identiteit in de externe bron. Lees dit samen met de integratie, het recordtype en de verbinding voordat je het als CRM-koppeling gebruikt. |
+| `respondent_source_match_external_ids` | Alle gesynchroniseerde record-ID’s die overeenkomen met de contactgegevens van de persoon. Gebruik deze lijst om aanvullende matches te onderzoeken, niet om de respons aan elk genoemd record te koppelen. |
+
+Gebruik kolomnamen in plaats van kolomletters. De letters kunnen per bestand verschillen.
+
+Twee rijen met hetzelfde e-mailadres kunnen verschillende responsen zijn. Vergelijk `form_response_id`, het formulier, de bezorggegevens en de tijdstippen voordat je vaststelt of een respons dubbel is.
+
+## Begrijp de geselecteerde identiteitsbron
+
+`respondent_origin` geeft aan welke bron voor de externe identiteit is gebruikt. HireData kiest de eerste beschikbare bron in deze volgorde:
+
+| Waarde | Bron |
+| --- | --- |
+| `external_record` | Het record waarop de automatisering draaide, bijvoorbeeld een Salesforce-contact of een Google Sheet-rij. |
+| `person_source` | Een eigen gesynchroniseerd bronrecord van de gekoppelde persoon, geverifieerd via een overeenkomend e-mailadres of telefoonnummer. |
+| `address_lookup` | Een identiteit gevonden via het adres waarnaar het bericht is verstuurd. |
+| `none` | Er kon geen identiteit met voldoende zekerheid worden vastgesteld. De externe identiteitskolommen blijven leeg. |
+
+Alle waarden in `respondent_external_*` komen uit deze ene bron. HireData combineert geen naam uit de ene bron met een e-mailadres uit een andere. Heeft de geselecteerde bron geen naam of telefoonnummer aangeleverd? Dan blijft dat externe veld leeg.
+
+De kolommen `respondent_name`, `respondent_email` en `respondent_phone_number` beschrijven de gekoppelde persoon in HireData. Ze staan los van de geselecteerde externe identiteit en kunnen daarvan afwijken.
+
+## Kies het juiste CRM-ID
+
+Lees deze kolommen samen:
+
+- `respondent_external_app`: de integratie, bijvoorbeeld `salesforce` of `google`.
+- `respondent_external_type`: het recordtype, bijvoorbeeld Contact.
+- `respondent_external_connection`: het gekoppelde account.
+- `respondent_external_id`: het record-ID in die bron.
+
+Een Salesforce Contact-ID kan een contact in de bijbehorende Salesforce-verbinding identificeren. Een Google Sheet-rij-ID is geen Salesforce Contact-ID.
+
+Als de automatisering vanuit een sheet is gestart, bevatten de kolommen `external_data_…` de oorspronkelijke sheetwaarden. Heb je daarin een Salesforce-ID meegegeven? Gebruik dan de bijbehorende kolom nadat je hebt gecontroleerd naar welk CRM-record en welke verbinding dit ID verwijst. Het eigen rij-ID van de sheet wordt daardoor niet automatisch een Salesforce-ID.
+
+Bijvoorbeeld: als `respondent_origin` de waarde `external_record` heeft en `respondent_external_app` de waarde `google`, lees je `respondent_external_id` als het bron-ID van de sheet. Zoek het afzonderlijk meegegeven CRM-ID op in de oorspronkelijke sheetgegevens.
+
+## Lees de aanvullende matches
+
+`respondent_source_match_count` toont hoeveel gesynchroniseerde records overeenkomen met de contactgegevens van de persoon:
+
+- `1`: één overeenkomend record.
+- `2` of meer: meerdere overeenkomende records om te onderzoeken.
+- `0`: geen overeenkomende records.
+- Leeg: er waren geen gegevens om tegen te matchen.
+
+`respondent_source_match_external_ids` bevat de ID’s van die records. Meerdere matches kunnen wijzen op dubbele records of op verschillende contactpersonen die een e-mailadres of telefoonnummer delen. Ze bewijzen niet dat alle records dezelfde persoon voorstellen.
+
+Twee contactpersonen kunnen bijvoorbeeld hetzelfde bedrijfstelefoonnummer hebben. Beide ID’s tonen maakt die overlap zichtbaar. Het is geen instructie om de records samen te voegen of de respons aan beide te koppelen.
+
+## Begrijp de controlekolommen
+
+| Kolom | Wat wordt vergeleken? |
+| --- | --- |
+| `email_consistent` | Het e-mailadres van de HireData-persoon, het e-mailadres van de externe identiteit en het bezorgadres. |
+| `phone_number_consistent` | De bijbehorende telefoonnummers. Notatieverschillen zoals `06…` en `+316…` tellen niet als afwijking. |
+| `external_id_consistent` | Het bronrecord van de automatisering en het gesynchroniseerde record van de persoon binnen hetzelfde externe systeem. |
+
+Bij elke controle betekent `1` dat de vergeleken waarden overeenkomen. `0` betekent dat ze verschillen. Een lege waarde betekent dat er onvoldoende vergelijkbare informatie is.
+
+Een `0` maakt een verschil zichtbaar. Het stelt op zichzelf niet vast welke waarde juist is. Bekijk bij onderzoek de geselecteerde bron, de bezorggegevens in `receiver_*` en het oorspronkelijke record.
+
+## Importeer historische responsen
+
+Onvolledige responsen worden meegenomen met een lege `completed_at`. De vraagkolommen bevatten de antwoorden, inclusief verborgen velden. Keuzevragen hebben ook een kolom `…_label` met het optielabel.
+
+Deze export maakt de herkomst van respondentgegevens inzichtelijk. Hij corrigeert niet automatisch historische antwoorden en voegt geen dubbele bronrecords samen.
+
+Vóór het importeren:
+
+1. Gebruik `form_response_id` om elke respons te herkennen en dubbele imports te voorkomen.
+2. Controleer de bron en het CRM-ID waarmee je elke respons koppelt.
+3. Houd gevallen met onopgeloste identiteitsverschillen apart voor onderzoek.
+4. Controleer na de import of de responsen en antwoordwaarden bij de bedoelde CRM-records staan.
+
+Heb je hulp nodig bij een specifieke rij? Deel dan het `form_response_id`, de formuliernaam en het gevonden verschil met het HireData-team.
+
+[Read this article in English](/knowledge-base/understanding-form-response-exports).
