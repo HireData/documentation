@@ -13,12 +13,10 @@ Nutzen Sie ihn immer, wenn Sie einen Evaluator ändern. Eine Regel, die auf der 
 
 Der Tab listet jede Frage außer den Endings als kompaktes Eingabefeld auf. Badges hinter der Fragebeschriftung sagen, was die Evaluatoren damit tun werden: **Must** oder **Nice** aus [Criteria](/de/reference/forms/evaluation/criteria) und ein Badge pro Skill, den die Frage speist.
 
-![Drei Fragen in Test & Evaluate, eine mit den Badges Must und Availability, eine mit dem Badge Nice](/images/forms-builder/testing/06-test-answers.png)
-
+<img src="/images/forms-builder/testing/06-test-answers.png" alt="Drei Fragen in Test & Evaluate, eine mit den Badges Must und Availability, eine mit dem Badge Nice" width="560" />
 Tippen Sie die Antworten selbst ein oder lassen Sie die KI sie schreiben. **Autofill with AI** füllt jede Frage in einem Zug, und der Chevron daneben wählt die Art der befragten Person, die imitiert werden soll.
 
-![Die Autofill-with-AI-Schaltfläche mit geöffnetem Menü, mit Random answers, Ideal candidate, Borderline candidate, Unqualified candidate und Partially completed](/images/forms-builder/testing/05-test-scenarios.png)
-
+<img src="/images/forms-builder/testing/05-test-scenarios.png" alt="Die Autofill-with-AI-Schaltfläche mit geöffnetem Menü, mit Random answers, Ideal candidate, Borderline candidate, Unqualified candidate und Partially completed" width="230" />
 - **Random answers** ist plausibel, aber uninformiert. Gut für einen ersten Blick.
 - **Ideal candidate** antwortet so, wie es jemand täte, der jedes Kriterium erfüllt.
 - **Borderline candidate** zielt auf die Mitte, wo sich ein Scoring-Fehler zeigt.
@@ -37,14 +35,12 @@ Die Evaluation läuft von selbst, sobald eine Antwort vorhanden ist, und noch ei
 
 Die Ergebnisse erscheinen unter den Antworten, beginnend mit einem Panel pro eingeschaltetem Evaluator. Jedes Panel zeigt das Hauptergebnis, und ein Klick darauf öffnet darunter die Details.
 
-![Die Ergebnisse eines Idealkandidaten-Laufs: Meets criteria, 100 % High, Availability bei 66,67 %, die Criteria-Details pro Frage, die Zusammenfassung und die Generated fields](/images/forms-builder/testing/07-test-results.png)
-
+<img src="/images/forms-builder/testing/07-test-results.png" alt="Die Ergebnisse eines Idealkandidaten-Laufs: Meets criteria, 100 % High, Availability bei 66,67 %, die Criteria-Details pro Frage, die Zusammenfassung und die Generated fields" width="650" />
 **Criteria** gruppiert die Fragen unter **Must-have** und **Nice-to-have**, mit einem Haken oder Kreuz, der Antwort und der erwarteten Antwort, wo Sie eine geschrieben haben. Eine von der KI beurteilte Frage trägt einen KI-Chip und die einzeilige Begründung des Modells – der schnellste Weg zu sehen, ob Ihre Notiz angekommen ist.
 
 **Scoring** zeigt den Prozentwert, die Punktebilanz und was jede Frage aus ihrem eigenen Maximum verdient hat.
 
-![Das Scoring-Panel: ein 100-%-Balken, Points 30 von 30 und 10 und 20 Punkte aus den beiden bewerteten Fragen](/images/forms-builder/testing/07b-test-results-scoring.png)
-
+<img src="/images/forms-builder/testing/07b-test-results-scoring.png" alt="Das Scoring-Panel: ein 100-%-Balken, Points 30 von 30 und 10 und 20 Punkte aus den beiden bewerteten Fragen" width="650" />
 **Skills** zeigt einen Balken pro Skill. **Summary** und **Generated fields** stehen unter den Panels, sodass sie im Blick bleiben, welches Detail Sie auch geöffnet haben.
 
 Ein graues **No result yet** zeigen die Panels, bevor Sie eine Antwort eingeben. Bleibt eines nach einem Lauf grau, hatte dieser Evaluator nichts zu tun. Die übliche Ursache ist eine eingeschaltete Frage ohne geschriebene Regeln, die dem Evaluator keine Frage zum Beurteilen lässt.
@@ -53,8 +49,7 @@ Ein graues **No result yet** zeigen die Panels, bevor Sie eine Antwort eingeben.
 
 **Automation variables** unten listet jeden Wert auf, den diese Antwort einer Automatisierung zur Verfügung stellt, mit der Variable zum Kopieren und dem Ergebnis aus dem Lauf direkt vor Ihnen.
 
-![Die Automation-variables-Liste mit den Variablen für Kriterien, Score, Score-Bereich, primären Skill und Zusammenfassung samt ihren Werten](/images/forms-builder/testing/08-automation-variables.png)
-
+<img src="/images/forms-builder/testing/08-automation-variables.png" alt="Die Automation-variables-Liste mit den Variablen für Kriterien, Score, Score-Bereich, primären Skill und Zusammenfassung samt ihren Werten" width="650" />
 Das ist die Liste, gegen die Sie eine Automatisierung bauen. `passed` neben `{{form_response.evaluation.screening}}` zu lesen sagt Ihnen den exakten Wert zum Vergleichen, was Raten nicht tut. Siehe [Variablen](/de/variables/introduction).
 
 ## Was es nicht tut

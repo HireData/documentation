@@ -24,14 +24,12 @@ The **Logic** tab sits above the field list, between **Content** and **Evaluatio
 
 Endings sit below the **Endings** divider and get neither. Nothing follows an ending, so a rule on one would have nowhere to point.
 
-![The Logic tab listing four questions, each with an Add Rule button and an Always go to target, then the Endings divider and an ending with neither](/images/forms-builder/32-logic-tab.png)
-
+<img src="/images/forms-builder/32-logic-tab.png" alt="The Logic tab listing four questions, each with an Add Rule button and an Always go to target, then the Endings divider and an ending with neither" width="520" />
 ## Anatomy of a rule
 
 A rule reads `if <question> <operator> <value> then go to <field>`.
 
-![A logic rule on a Net Promoter Score question: if the score is less than or equal to 7, go to the follow-up question, with All other cases go to the ending](/images/forms-builder/04-logic-rule-and-fallback.png)
-
+<img src="/images/forms-builder/04-logic-rule-and-fallback.png" alt="A logic rule on a Net Promoter Score question: if the score is less than or equal to 7, go to the follow-up question, with All other cases go to the ending" width="484" />
 - **if** starts the condition. The question picker offers this question and the ones above it, never a later one and never an ending, so a rule cannot read an answer nobody has given yet.
 - The operator list comes from the question's type. See [Operators by field type](#operators).
 - The value box holds whatever the operator compares against. **has response** compares nothing, so no box appears beside it.
@@ -68,42 +66,36 @@ The fifth row is the one that catches people out. Date, Time, Datetime, and File
 
 The everyday case. One option leads somewhere the others do not.
 
-![A rule on a Multiple Choice question: if the answer is Yes, by email, go to the email question, with All other cases go to the ending](/images/forms-builder/15-logic-choice-branch.png)
-
+<img src="/images/forms-builder/15-logic-choice-branch.png" alt="A rule on a Multiple Choice question: if the answer is Yes, by email, go to the email question, with All other cases go to the ending" width="484" />
 Multiple Choice and Dropdown are the only types that offer **is one of**, and its value box takes several options at once. Three answers that all lead to the same follow-up are one rule, not three.
 
 ### Branch on a Yes/No
 
 Same shape, two answers. The value box offers Yes and No.
 
-![A rule on a Yes/No question: if the answer is Yes, go to the region question, with All other cases go to the experience question](/images/forms-builder/17-logic-yes-no.png)
-
+<img src="/images/forms-builder/17-logic-yes-no.png" alt="A rule on a Yes/No question: if the answer is Yes, go to the region question, with All other cases go to the experience question" width="499" />
 ### Ask a follow-up only when the last question was answered
 
 **has response** is the operator for optional questions. It matches whatever the answer was, so long as there is one.
 
-![A rule on a File Upload question: if it has response, go to the ending, with All other cases go to the redirect](/images/forms-builder/20-logic-file-has-response.png)
-
+<img src="/images/forms-builder/20-logic-file-has-response.png" alt="A rule on a File Upload question: if it has response, go to the ending, with All other cases go to the redirect" width="484" />
 ### Require two answers at once
 
 **Add Condition** puts both conditions in one rule, and both have to match.
 
-![A rule with two conditions: the satisfaction rating is 4 or more and the driving licence answer is Yes, then go to the ending](/images/forms-builder/19-logic-two-conditions.png)
-
+<img src="/images/forms-builder/19-logic-two-conditions.png" alt="A rule with two conditions: the satisfaction rating is 4 or more and the driving licence answer is Yes, then go to the ending" width="499" />
 A question the respondent never reached has no answer, so a condition reading it cannot match and the whole rule stays quiet.
 
 ### Send different respondents to different endings
 
 Point the rule at one ending and the footer target at another.
 
-![A rule on a Dropdown question sending North to the thank-you ending, with All other cases go to a redirect ending](/images/forms-builder/18-logic-two-endings.png)
-
+<img src="/images/forms-builder/18-logic-two-endings.png" alt="A rule on a Dropdown question sending North to the thank-you ending, with All other cases go to a redirect ending" width="484" />
 ### Skip a block of questions
 
 A question with no rules can still jump. Set **Always go to** and everyone who answers it lands on the same later question, whatever they said.
 
-![A question with no rules, showing Always go to pointing at a question further down the form](/images/forms-builder/16-logic-always-go-to.png)
-
+<img src="/images/forms-builder/16-logic-always-go-to.png" alt="A question with no rules, showing Always go to pointing at a question further down the form" width="484" />
 ## Required questions and logic
 
 A required question has to be answered before the respondent can move on, which means its rules only run once there is an answer to test.
@@ -123,6 +115,6 @@ Work down this list when a rule does nothing, or sends people somewhere you did 
 
 ## Related
 
-- [Form builder overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
+- [Form Builder: Overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
 - [Objects](/reference/forms/objects) and [Data sources](/reference/forms/data-sources) cover the records and lists a form can draw on.
 - [Creating a form in HireData](/content/creating-a-form-in-hiredata) walks one form from blank to published.

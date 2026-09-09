@@ -13,8 +13,7 @@ Criteria responde a uma pergunta sobre uma resposta: esta pessoa cumpre o que a 
 
 Ative **Criteria** para o formulário no [separador Evaluation](/pt/reference/forms/evaluation/overview#enable-order) e depois clique em **Criteria** para o abrir. Todas as perguntas do formulário aparecem por baixo, cada uma com o seu interruptor. Uma pergunta só é verificada depois de a ativar aqui.
 
-![O bloco Criteria aberto, a listar as perguntas do formulário com um interruptor cada e uma pergunta ativada](/images/forms-builder/evaluation/01-criteria-field-list.png)
-
+<img src="/images/forms-builder/evaluation/01-criteria-field-list.png" alt="O bloco Criteria aberto, a listar as perguntas do formulário com um interruptor cada e uma pergunta ativada" width="504" />
 ## Definições por pergunta
 
 Ative uma pergunta e as definições dela abrem-se.
@@ -24,8 +23,7 @@ Ative uma pergunta e as definições dela abrem-se.
 - **What answer(s) do you expect?**, no lado das regras, com as condições que a resposta tem de satisfazer.
 - A caixa de nota, com a etiqueta **What should AI look for?**. Orienta a IA e é ignorada pelas regras. Veja [uma nota por pergunta](/pt/reference/forms/evaluation/overview#one-note-per-question).
 
-![Uma pergunta Yes/No no bloco Criteria, definida como Must-have e Use answer rules, à espera da resposta Yes](/images/forms-builder/evaluation/02-criteria-rules.png)
-
+<img src="/images/forms-builder/evaluation/02-criteria-rules.png" alt="Uma pergunta Yes/No no bloco Criteria, definida como Must-have e Use answer rules, à espera da resposta Yes" width="488" />
 ### Respostas esperadas
 
 Uma condição lê-se `<pergunta> <operador> <valor>`. A pergunta é fixa: uma regra nesta pergunta só pode testar a resposta desta pergunta. Escolha o operador e depois o valor.
@@ -54,8 +52,7 @@ Uma pergunta File Upload oferece um segundo seletor acima do operador, para a pa
 
 Mude para **Evaluate with AI** e as condições desaparecem. O modelo recebe a pergunta, a resposta e a sua nota, e decide se a resposta cumpre o requisito. Devolve também uma frase de fundamentação, que o [Test & Evaluate](/pt/reference/forms/testing/test-and-evaluate) mostra por baixo da resposta.
 
-![Uma pergunta de texto longo no bloco Criteria, definida como Nice-to-have e Evaluate with AI, com uma nota a dizer à IA o que procurar](/images/forms-builder/evaluation/03-criteria-ai.png)
-
+<img src="/images/forms-builder/evaluation/03-criteria-ai.png" alt="Uma pergunta de texto longo no bloco Criteria, definida como Nice-to-have e Evaluate with AI, com uma nota a dizer à IA o que procurar" width="488" />
 Use a IA para texto livre e ficheiros, onde a formulação varia e nenhuma regra serve. Mantenha as regras para respostas com um conjunto fixo de valores. Uma pergunta Yes/No ou de escolha não precisa de interpretação, e uma regra é mais rápida, mais barata e repetível.
 
 Uma pergunta [File Upload](/pt/reference/forms/fields/file-upload) definida como IA envia o anexo ao modelo. Ficheiros JPEG, PNG, GIF, WebP e PDF são lidos, até cinco ficheiros e 10 MB por resposta. Tudo o resto é julgado apenas pelo nome do ficheiro.

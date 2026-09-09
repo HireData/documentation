@@ -60,7 +60,7 @@ L'onglet **Settings** de la dernière étape contient une section par paramètre
 - **Form**. Les questions préremplies et les champs supplémentaires, comme dans **Set up your form**.
 - **Recipient**. **Use fixed recipient** avec une liste **User**, ou **Name** et **Email** quand aucun utilisateur n'est choisi. Interrupteur désactivé, **Preset** nomme la personne issue de l'événement et **Label** est le nom que la carte affiche pour elle, suivi du mappage de champs qui décide quels champs de la personne fournissent le nom et l'adresse.
 - **Sender**. Les mêmes contrôles pour l'expéditeur. L'adresse doit appartenir à un domaine vérifié dans HireData. Quand ce n'est pas le cas, HireData envoie depuis l'expéditeur par défaut du domaine de la marque ou du domaine de l'espace de travail si l'un est défini, et arrête l'exécution avec « Invalid sender email. » sinon.
-- **CC** et **BCC**. Cliquez sur **+** pour ajouter un destinataire en copie. Chaque entrée a un **Name** et une **Address**. Les deux acceptent un champ de l'exécution ou du texte tapé : tapez-le et choisissez l'option **Create** qui apparaît sous la zone. Remplissez les deux avant d'enregistrer. **–** supprime une entrée. Les adresses en CC sont visibles de tous sur l'e-mail ; les adresses en BCC ne le sont pas. Un envoi de test ignore CC et BCC.
+- **CC** et **BCC**. Cliquez sur **+** pour ajouter un destinataire en copie. Chaque entrée a un **Name** et une **Address**. Les deux acceptent un champ de l'exécution ou du texte tapé : tapez-le et sélectionnez l'option **Create** qui apparaît sous la zone. Remplissez les deux avant d'enregistrer. **–** supprime une entrée. Les adresses en CC sont visibles de tous sur l'e-mail ; les adresses en BCC ne le sont pas. Un envoi de test ignore CC et BCC.
 - **UTM Campaign**. **Campaign Name**, **Campaign Source**, **Campaign Medium**, **Campaign Term** et **Campaign Content**, ajoutés à chaque lien de l'e-mail. Les placeholders montrent les valeurs UTM propres au modèle. Laissez un champ vide pour conserver la valeur du modèle.
 - **Objects**. Affiché quand le modèle ou son formulaire lit depuis une source de données. Choisit l'enregistrement auquel chaque objet fait référence dans cette exécution, par **External ID**, par **Fields**, ou en choisissant un **Record**. Un objet marqué d'un astérisque est obligatoire : laissez-le vide et chaque exécution s'arrête avec « Required data reference missing. »
 
@@ -119,7 +119,7 @@ Une adresse de destinataire qui n'est pas une adresse e-mail valide, une adresse
 ## Voir aussi
 
 - [Message](/fr/reference/automations/steps/message) liste les autres tâches qui envoient quelque chose.
-- [Vue d'ensemble de l'éditeur d'e-mails](/fr/reference/email-builder/overview) documente l'éditeur qui crée le modèle que cette tâche envoie.
+- [Email Builder : vue d'ensemble](/fr/reference/email-builder/overview) documente l'éditeur qui crée le modèle que cette tâche envoie.
 - [Limites de sécurité des automatisations](/fr/settings/automation-safety-limits) explique les deux messages de limite d'envoi.
 - [Comment vérifier un domaine dans HireData pour envoyer des e-mails](/fr/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails) corrige « Invalid sender email. »
 - [Catalogue des tâches](/fr/reference/automations/task-catalogue) liste chaque tâche par app connectée.

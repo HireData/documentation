@@ -7,7 +7,7 @@ _Wanneer je je ATS koppelt, zoals Carerix, Salesforce, OTYS, enz., aan HireData,
 
 ## Wat is een event
 
-Een event is een signaal dat vanuit je gekoppelde app naar HireData wordt gestuurd. Het vertegenwoordigt meestal een specifieke actie of wijziging, bijvoorbeeld een nieuwe kandidaat die wordt aangemaakt, een vacature die wordt bijgewerkt, een placement die is voltooid, enz. Deze events worden gebruikt om de automatiseringen te triggeren die je in HireData hebt opgezet, en elk event bevat **Event Data**, **External Records** en **Runs**.
+Een event is een signaal dat vanuit je gekoppelde app naar HireData wordt gestuurd. Het vertegenwoordigt meestal een specifieke actie of wijziging, bijvoorbeeld een nieuwe kandidaat die wordt aangemaakt, een vacature die wordt bijgewerkt, een placement die is voltooid, enz. HireData gebruikt deze events om de automatiseringen te triggeren die je hebt opgezet, en elk event bevat **Event Data**, **External Records** en **Runs**.
 
 _Voorbeeldevent:_
 
@@ -51,7 +51,7 @@ Als een event niet een automatisering triggert zoals verwacht, of een run misluk
 
 ### Wat gebeurt er wanneer een event opnieuw wordt afgespeeld?
 
-HireData verwerkt de geselecteerde event(s) opnieuw en triggert de bijbehorende automatiseringen. De betrokken taken worden uitgevoerd alsof het event zojuist heeft plaatsgevonden.
+HireData verwerkt de geselecteerde event(s) opnieuw en triggert de bijbehorende automatiseringen. HireData voert de betrokken taken uit alsof het event zojuist heeft plaatsgevonden.
 
 - **Event-gebaseerde automatiseringen** – Voor automatiseringen die worden getriggerd door een specifiek event (bijvoorbeeld een kandidaat die een bepaalde stage bereikt), zal het opnieuw afspelen de automatisering onmiddellijk opnieuw triggeren op basis van de eventdata. Als er eerder een run was aangemaakt, wordt deze opnieuw afgespeeld en verschijnt er een "Replay"-label.
 

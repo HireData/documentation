@@ -24,14 +24,12 @@ L'onglet **Logic** se trouve au-dessus de la liste des champs, entre **Content**
 
 Les fins se trouvent sous le séparateur **Endings** et ne reçoivent ni l'un ni l'autre. Rien ne suit une fin, une règle sur l'une d'elles n'aurait donc nulle part où pointer.
 
-![L'onglet Logic listant quatre questions, chacune avec un bouton Add Rule et une cible Always go to, puis le séparateur Endings et une fin sans aucun des deux](/images/forms-builder/32-logic-tab.png)
-
+<img src="/images/forms-builder/32-logic-tab.png" alt="L'onglet Logic listant quatre questions, chacune avec un bouton Add Rule et une cible Always go to, puis le séparateur Endings et une fin sans aucun des deux" width="520" />
 ## Anatomie d'une règle
 
 Une règle se lit `if <question> <operator> <value> then go to <field>`.
 
-![Une règle de logique sur une question Net Promoter Score : si la note est inférieure ou égale à 7, aller à la question de suivi, avec All other cases go to vers la fin](/images/forms-builder/04-logic-rule-and-fallback.png)
-
+<img src="/images/forms-builder/04-logic-rule-and-fallback.png" alt="Une règle de logique sur une question Net Promoter Score : si la note est inférieure ou égale à 7, aller à la question de suivi, avec All other cases go to vers la fin" width="484" />
 - **if** démarre la condition. Le sélecteur de question propose cette question et celles au-dessus d'elle, jamais une question plus loin ni une fin, une règle ne peut donc pas lire une réponse que personne n'a encore donnée.
 - La liste d'opérateurs vient du type de la question. Voir [Opérateurs par type de champ](#operators).
 - La case de valeur contient ce que l'opérateur compare. **has response** ne compare rien, aucune case n'apparaît donc à côté de lui.
@@ -68,42 +66,36 @@ La cinquième ligne est celle qui piège les gens. Les questions Date, Time, Dat
 
 Le cas de tous les jours. Une option mène quelque part où les autres ne mènent pas.
 
-![Une règle sur une question Multiple Choice : si la réponse est Yes, by email, aller à la question e-mail, avec All other cases go to vers la fin](/images/forms-builder/15-logic-choice-branch.png)
-
+<img src="/images/forms-builder/15-logic-choice-branch.png" alt="Une règle sur une question Multiple Choice : si la réponse est Yes, by email, aller à la question e-mail, avec All other cases go to vers la fin" width="484" />
 Multiple Choice et Dropdown sont les seuls types qui proposent **is one of**, et sa case de valeur accepte plusieurs options à la fois. Trois réponses qui mènent toutes à la même question de suivi font une seule règle, pas trois.
 
 ### Brancher sur un Yes/No
 
 Même forme, deux réponses. La case de valeur propose Yes et No.
 
-![Une règle sur une question Yes/No : si la réponse est Yes, aller à la question de région, avec All other cases go to vers la question d'expérience](/images/forms-builder/17-logic-yes-no.png)
-
+<img src="/images/forms-builder/17-logic-yes-no.png" alt="Une règle sur une question Yes/No : si la réponse est Yes, aller à la question de région, avec All other cases go to vers la question d'expérience" width="499" />
 ### Poser une question de suivi seulement quand la question précédente a reçu une réponse
 
 **has response** est l'opérateur des questions facultatives. Il correspond quelle que soit la réponse, du moment qu'il y en a une.
 
-![Une règle sur une question File Upload : si elle a une réponse, aller à la fin, avec All other cases go to vers la redirection](/images/forms-builder/20-logic-file-has-response.png)
-
+<img src="/images/forms-builder/20-logic-file-has-response.png" alt="Une règle sur une question File Upload : si elle a une réponse, aller à la fin, avec All other cases go to vers la redirection" width="484" />
 ### Exiger deux réponses à la fois
 
 **Add Condition** place les deux conditions dans une seule règle, et les deux doivent correspondre.
 
-![Une règle avec deux conditions : la note de satisfaction est de 4 ou plus et la réponse au permis de conduire est Yes, alors aller à la fin](/images/forms-builder/19-logic-two-conditions.png)
-
+<img src="/images/forms-builder/19-logic-two-conditions.png" alt="Une règle avec deux conditions : la note de satisfaction est de 4 ou plus et la réponse au permis de conduire est Yes, alors aller à la fin" width="499" />
 Une question que le répondant n'a jamais atteinte n'a pas de réponse, une condition qui la lit ne peut donc pas correspondre et toute la règle reste silencieuse.
 
 ### Envoyer des répondants différents vers des fins différentes
 
 Pointez la règle vers une fin et la cible du pied de carte vers une autre.
 
-![Une règle sur une question Dropdown envoyant North vers la fin de remerciement, avec All other cases go to vers une fin de redirection](/images/forms-builder/18-logic-two-endings.png)
-
+<img src="/images/forms-builder/18-logic-two-endings.png" alt="Une règle sur une question Dropdown envoyant North vers la fin de remerciement, avec All other cases go to vers une fin de redirection" width="484" />
 ### Sauter un bloc de questions
 
 Une question sans règles peut quand même sauter. Réglez **Always go to** et tous ceux qui y répondent atterrissent sur la même question plus loin, quoi qu'ils aient dit.
 
-![Une question sans règles, montrant Always go to pointant vers une question plus bas dans le formulaire](/images/forms-builder/16-logic-always-go-to.png)
-
+<img src="/images/forms-builder/16-logic-always-go-to.png" alt="Une question sans règles, montrant Always go to pointant vers une question plus bas dans le formulaire" width="484" />
 ## Questions obligatoires et logique
 
 Une question obligatoire doit recevoir une réponse avant que le répondant puisse avancer, ce qui signifie que ses règles ne s'exécutent qu'une fois qu'il y a une réponse à tester.
@@ -123,6 +115,6 @@ Parcourez cette liste quand une règle ne fait rien, ou envoie les gens là où 
 
 ## Voir aussi
 
-- [Vue d'ensemble de l'éditeur de formulaires](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
+- [Form Builder : vue d'ensemble](/fr/reference/forms/overview) couvre l'éditeur, les paramètres partagés et chaque type de champ.
 - [Objets](/fr/reference/forms/objects) et [Sources de données](/fr/reference/forms/data-sources) couvrent les enregistrements et les listes qu'un formulaire peut exploiter.
 - [Créer un formulaire dans HireData](/fr/content/creating-a-form-in-hiredata) mène un formulaire de la page vierge à la publication.

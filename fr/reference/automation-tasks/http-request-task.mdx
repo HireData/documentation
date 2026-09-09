@@ -7,7 +7,7 @@ keywords: ["requête http", "appeler une api externe", "requête api depuis une 
 
 _Appelez une API externe directement depuis une automatisation : importez une spécification ou construisez la requête à la main, authentifiez-la, décrivez ce qui revient et utilisez ces valeurs dans les tâches suivantes._
 
-Une automatisation peut appeler une API externe par elle-même. La tâche **HTTP Request** envoie une requête à l'adresse de votre choix, avec l'authentification attendue par cet endpoint, et met la réponse à disposition des tâches suivantes une fois que vous avez décrit ce qu'elle contient. Vous n'avez pas besoin d'un développeur, ni de quoi que ce soit d'intermédiaire entre les deux.
+Une automatisation peut appeler une API externe par elle-même. La tâche **HTTP Request** envoie une requête à l'adresse de votre choix, avec l'authentification attendue par cet endpoint. Elle met la réponse à disposition des tâches suivantes une fois que vous avez décrit ce qu'elle contient. Vous n'avez pas besoin d'un développeur, ni de quoi que ce soit d'intermédiaire entre les deux.
 
 Si quelqu'un vous a déjà remis une spécification d'API ou une commande cURL, inutile de la retaper. HireData peut la lire et remplir la requête pour vous, et c'est par là que cette page commence.
 
@@ -53,7 +53,7 @@ Le moyen le plus rapide de remplir une requête est de laisser HireData la lire 
     Collez le document directement dans la zone. Le chemin est libellé « OpenAPI, Swagger, Postman, cURL or markdown », donc tout document dans l'un de ces formats fonctionne.
   </Tab>
   <Tab title="Téléverser un fichier">
-    Choisissez le document sur votre ordinateur, pour les cas où ce qu'on vous a envoyé n'est pas un texte que vous pouvez copier. Le chemin est libellé « A specification or collection file ».
+    Sélectionnez le document sur votre ordinateur, pour les cas où ce qu'on vous a envoyé n'est pas un texte que vous pouvez copier. Le chemin est libellé « A specification or collection file ».
   </Tab>
   <Tab title="Depuis une URL">
     Donnez à HireData l'adresse à laquelle la spécification est publiée et il récupère le document pour vous. Le chemin est libellé « Fetch a specification by URL ».
@@ -97,7 +97,7 @@ La section **Response** reste vide ensuite. Une commande cURL ne décrit que la 
 
 ### Documents contenant plusieurs opérations
 
-Une spécification décrit généralement une API entière plutôt qu'un seul endpoint. Lorsque le document que vous importez contient plusieurs opérations, HireData vous montre la liste des endpoints qu'il contient et vous demande lequel cette tâche doit appeler : remettre une spécification complète n'est donc pas une erreur.
+Une spécification décrit généralement une API entière plutôt qu'un seul endpoint. Lorsque le document que vous importez contient plusieurs opérations, HireData vous montre la liste des endpoints qu'il contient et vous demande lequel cette tâche doit appeler. Remettre une spécification complète n'est donc pas une erreur.
 
 Cela dépend du document, pas de la façon dont vous l'avez fourni. La même liste d'endpoints apparaît que vous ayez collé la spécification ou que vous l'ayez récupérée via **From URL**.
 
@@ -185,7 +185,7 @@ Les champs peuvent aller dans l'URL, les paramètres, les en-têtes et le corps.
 
 ## Authentification
 
-L'onglet **Auth** est un contrôle segmenté à cinq options : `None`, `API key`, `Bearer token`, `Basic auth` et `OAuth2`. Choisissez celle que le propriétaire de l'endpoint vous a indiquée et ses champs apparaissent.
+L'onglet **Auth** est un contrôle segmenté à cinq options : `None`, `API key`, `Bearer token`, `Basic auth` et `OAuth2`. Sélectionnez celle que le propriétaire de l'endpoint vous a indiquée et ses champs apparaissent.
 
 | Type | Champs |
 | --- | --- |

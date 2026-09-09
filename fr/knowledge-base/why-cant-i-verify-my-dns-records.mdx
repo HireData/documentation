@@ -8,7 +8,7 @@ _Vous essayez de vérifier votre domaine dans HireData, mais cliquer sur **Verif
 
 ## Pourquoi cela se produit
 
-Les enregistrements DNS de votre domaine sont créés par le service e-mail qui se trouve derrière l'application Email. Tant que l'application Email n'est pas installée, aucun service e-mail n'est encore relié à votre compte — HireData ne peut donc ni générer ni vérifier les enregistrements DNS, et le bouton **Verify DNS** sur la page **Domains** renvoie une erreur 404 ou aucune réponse.
+Le service e-mail qui se trouve derrière l'application Email crée les enregistrements DNS de votre domaine. Tant que l'application Email n'est pas installée, aucun service e-mail n'est encore relié à votre compte, et HireData ne peut donc ni générer ni vérifier les enregistrements DNS. Le bouton **Verify DNS** sur la page **Domains** renvoie alors une erreur 404 ou aucune réponse.
 
 Installer d'abord l'application Email résout ce problème.
 
@@ -33,7 +33,7 @@ Si vous avez choisi le service e-mail de HireData, sélectionnez la **région** 
 
 ## Étape 4 : Générez et ajoutez vos enregistrements DNS
 
-Maintenant que l'application Email est installée, retournez sur la page [**Domains**](https://app.hiredata.com/settings/account/domains) dans vos paramètres. Les enregistrements DNS pour votre domaine peuvent désormais être générés.
+Maintenant que l'application Email est installée, retournez sur la page [**Domains**](https://app.hiredata.com/settings/account/domains) dans vos paramètres. Vous pouvez désormais générer les enregistrements DNS pour votre domaine.
 
 Ajoutez ces enregistrements chez votre fournisseur de domaine (par ex. GoDaddy, Cloudflare, Namecheap). Si quelqu'un d'autre gère votre domaine, utilisez le bouton **Send To Coworker** pour envoyer les enregistrements directement à la bonne personne par e-mail.
 
@@ -44,7 +44,7 @@ Pour un guide complet de cette partie du processus, consultez [Vérifier un doma
 Une fois les enregistrements DNS ajoutés, cliquez sur le bouton **Verify DNS** de la page **Domains**. L'erreur 404 devrait désormais avoir disparu, et votre domaine sera vérifié dès que les enregistrements se seront propagés.
 
 <Warning>
-  Les modifications DNS peuvent prendre un certain temps à se propager — de quelques minutes jusqu'à 24–48 heures, selon votre fournisseur. Si la vérification n'aboutit pas tout de suite, patientez un peu et réessayez.
+  Les modifications DNS peuvent prendre de quelques minutes jusqu'à 24–48 heures pour se propager, selon votre fournisseur. Si la vérification n'aboutit pas tout de suite, patientez un peu et réessayez.
 </Warning>
 
 Vous rencontrez encore des problèmes après avoir installé l'application Email et ajouté les enregistrements DNS ? Contactez-nous à l'adresse [support@hiredata.com](mailto:support@hiredata.com) — nous sommes là pour vous aider.

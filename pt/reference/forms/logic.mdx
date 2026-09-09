@@ -24,14 +24,12 @@ O separador **Logic** fica por cima da lista de campos, entre **Content** e **Ev
 
 Os fins ficam por baixo do divisor **Endings** e não recebem nem um nem outro. Nada se segue a um fim, por isso uma regra num fim não teria para onde apontar.
 
-![O separador Logic a listar quatro perguntas, cada uma com um botão Add Rule e um alvo Always go to, depois o divisor Endings e um fim sem nenhum dos dois](/images/forms-builder/32-logic-tab.png)
-
+<img src="/images/forms-builder/32-logic-tab.png" alt="O separador Logic a listar quatro perguntas, cada uma com um botão Add Rule e um alvo Always go to, depois o divisor Endings e um fim sem nenhum dos dois" width="520" />
 ## Anatomia de uma regra
 
 Uma regra lê-se `if <question> <operator> <value> then go to <field>`.
 
-![Uma regra de lógica numa pergunta Net Promoter Score: se a pontuação for menor ou igual a 7, ir para a pergunta de seguimento, com All other cases go to a apontar para o fim](/images/forms-builder/04-logic-rule-and-fallback.png)
-
+<img src="/images/forms-builder/04-logic-rule-and-fallback.png" alt="Uma regra de lógica numa pergunta Net Promoter Score: se a pontuação for menor ou igual a 7, ir para a pergunta de seguimento, com All other cases go to a apontar para o fim" width="484" />
 - **if** inicia a condição. O seletor de perguntas oferece esta pergunta e as que estão acima dela, nunca uma posterior e nunca um fim, para que uma regra não possa ler uma resposta que ainda ninguém deu.
 - A lista de operadores vem do tipo da pergunta. Veja [Operadores por tipo de campo](#operators).
 - A caixa de valor contém aquilo com que o operador compara. **has response** não compara nada, por isso nenhuma caixa aparece ao seu lado.
@@ -68,42 +66,36 @@ A quinta linha é a que apanha as pessoas desprevenidas. As perguntas Date, Time
 
 O caso do dia a dia. Uma opção leva a um sítio onde as outras não levam.
 
-![Uma regra numa pergunta Multiple Choice: se a resposta for Yes, by email, ir para a pergunta do email, com All other cases go to a apontar para o fim](/images/forms-builder/15-logic-choice-branch.png)
-
+<img src="/images/forms-builder/15-logic-choice-branch.png" alt="Uma regra numa pergunta Multiple Choice: se a resposta for Yes, by email, ir para a pergunta do email, com All other cases go to a apontar para o fim" width="484" />
 Multiple Choice e Dropdown são os únicos tipos que oferecem **is one of**, e a sua caixa de valor aceita várias opções de uma vez. Três respostas que levam todas ao mesmo seguimento são uma regra, não três.
 
 ### Ramificar num Yes/No
 
 A mesma forma, duas respostas. A caixa de valor oferece Yes e No.
 
-![Uma regra numa pergunta Yes/No: se a resposta for Yes, ir para a pergunta da região, com All other cases go to a apontar para a pergunta da experiência](/images/forms-builder/17-logic-yes-no.png)
-
+<img src="/images/forms-builder/17-logic-yes-no.png" alt="Uma regra numa pergunta Yes/No: se a resposta for Yes, ir para a pergunta da região, com All other cases go to a apontar para a pergunta da experiência" width="499" />
 ### Fazer um seguimento apenas quando a última pergunta foi respondida
 
 **has response** é o operador para perguntas opcionais. Corresponde seja qual for a resposta, desde que exista uma.
 
-![Uma regra numa pergunta File Upload: se tem resposta, ir para o fim, com All other cases go to a apontar para o redirecionamento](/images/forms-builder/20-logic-file-has-response.png)
-
+<img src="/images/forms-builder/20-logic-file-has-response.png" alt="Uma regra numa pergunta File Upload: se tem resposta, ir para o fim, com All other cases go to a apontar para o redirecionamento" width="484" />
 ### Exigir duas respostas ao mesmo tempo
 
 **Add Condition** coloca ambas as condições numa regra, e ambas têm de corresponder.
 
-![Uma regra com duas condições: a classificação de satisfação é 4 ou mais e a resposta sobre a carta de condução é Yes, então ir para o fim](/images/forms-builder/19-logic-two-conditions.png)
-
+<img src="/images/forms-builder/19-logic-two-conditions.png" alt="Uma regra com duas condições: a classificação de satisfação é 4 ou mais e a resposta sobre a carta de condução é Yes, então ir para o fim" width="499" />
 Uma pergunta a que o inquirido nunca chegou não tem resposta, por isso uma condição que a leia não pode corresponder e a regra inteira fica em silêncio.
 
 ### Enviar inquiridos diferentes para fins diferentes
 
 Aponte a regra para um fim e o alvo de rodapé para outro.
 
-![Uma regra numa pergunta Dropdown a enviar North para o fim de agradecimento, com All other cases go to a apontar para um fim de redirecionamento](/images/forms-builder/18-logic-two-endings.png)
-
+<img src="/images/forms-builder/18-logic-two-endings.png" alt="Uma regra numa pergunta Dropdown a enviar North para o fim de agradecimento, com All other cases go to a apontar para um fim de redirecionamento" width="484" />
 ### Saltar um bloco de perguntas
 
 Uma pergunta sem regras ainda pode saltar. Defina **Always go to** e todos os que lhe respondem chegam à mesma pergunta mais abaixo, digam o que disserem.
 
-![Uma pergunta sem regras, a mostrar Always go to a apontar para uma pergunta mais abaixo no formulário](/images/forms-builder/16-logic-always-go-to.png)
-
+<img src="/images/forms-builder/16-logic-always-go-to.png" alt="Uma pergunta sem regras, a mostrar Always go to a apontar para uma pergunta mais abaixo no formulário" width="484" />
 ## Perguntas obrigatórias e lógica
 
 Uma pergunta obrigatória tem de ser respondida antes de o inquirido poder avançar, o que significa que as suas regras só correm quando há uma resposta para testar.
@@ -123,6 +115,6 @@ A [Interactive Preview](/pt/reference/forms/testing/previews) no painel da direi
 
 ## Relacionados
 
-- A [visão geral do construtor de formulários](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Form Builder: Visão geral](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
 - [Objetos](/pt/reference/forms/objects) e [Fontes de dados](/pt/reference/forms/data-sources) cobrem os registos e as listas de que um formulário se pode servir.
 - [Criar um formulário na HireData](/pt/content/creating-a-form-in-hiredata) leva um formulário do zero à publicação.

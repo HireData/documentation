@@ -13,12 +13,10 @@ Use-o sempre que alterar um avaliador. Uma regra que parece certa no cartão est
 
 O separador lista todas as perguntas exceto os fins, como um input compacto. Selos depois da etiqueta da pergunta dizem o que os avaliadores vão fazer com ela: **Must** ou **Nice** de [Criteria](/pt/reference/forms/evaluation/criteria), e um selo por skill que a pergunta alimenta.
 
-![Três perguntas em Test & Evaluate, uma com os selos Must e Availability, outra com o selo Nice](/images/forms-builder/testing/06-test-answers.png)
-
+<img src="/images/forms-builder/testing/06-test-answers.png" alt="Três perguntas em Test & Evaluate, uma com os selos Must e Availability, outra com o selo Nice" width="560" />
 Escreva as respostas você mesmo, ou deixe a IA escrevê-las. **Autofill with AI** preenche todas as perguntas de uma vez, e o chevron ao lado escolhe o tipo de inquirido a imitar.
 
-![O botão Autofill with AI com o menu aberto, a listar Random answers, Ideal candidate, Borderline candidate, Unqualified candidate e Partially completed](/images/forms-builder/testing/05-test-scenarios.png)
-
+<img src="/images/forms-builder/testing/05-test-scenarios.png" alt="O botão Autofill with AI com o menu aberto, a listar Random answers, Ideal candidate, Borderline candidate, Unqualified candidate e Partially completed" width="230" />
 - **Random answers** é plausível mas desinformado. Bom para um primeiro olhar.
 - **Ideal candidate** responde como alguém que cumpre todos os critérios responderia.
 - **Borderline candidate** aponta ao meio, que é onde um erro de pontuação aparece.
@@ -37,14 +35,12 @@ A avaliação corre sozinha assim que existe uma resposta, e outra vez pouco dep
 
 Os resultados aparecem por baixo das respostas, começando por um painel por avaliador que ativou. Cada painel mostra o resultado principal, e clicar num abre o detalhe por baixo.
 
-![Os resultados de uma execução de candidato ideal: Meets criteria, 100% High, Availability a 66,67%, o detalhe dos criteria por pergunta, o resumo e os generated fields](/images/forms-builder/testing/07-test-results.png)
-
+<img src="/images/forms-builder/testing/07-test-results.png" alt="Os resultados de uma execução de candidato ideal: Meets criteria, 100% High, Availability a 66,67%, o detalhe dos criteria por pergunta, o resumo e os generated fields" width="650" />
 **Criteria** agrupa as perguntas em **Must-have** e **Nice-to-have**, com um visto ou uma cruz, a resposta e a resposta esperada onde escreveu uma. Uma pergunta julgada por IA tem um chip de IA e a fundamentação de uma linha do modelo, que é a forma mais rápida de ver se a sua nota resultou.
 
 **Scoring** mostra a percentagem, a contagem de pontos e o que cada pergunta ganhou do seu próprio máximo.
 
-![O painel Scoring: uma barra de 100%, Points 30 em 30, e 10 e 20 pontos das duas perguntas pontuadas](/images/forms-builder/testing/07b-test-results-scoring.png)
-
+<img src="/images/forms-builder/testing/07b-test-results-scoring.png" alt="O painel Scoring: uma barra de 100%, Points 30 em 30, e 10 e 20 pontos das duas perguntas pontuadas" width="650" />
 **Skills** mostra uma barra por skill. **Summary** e **Generated fields** ficam por baixo dos painéis, para que permaneçam à vista seja qual for o detalhe que tem aberto.
 
 Um **No result yet** cinzento é o que os painéis mostram antes de introduzir uma resposta. Se um continuar cinzento depois de uma execução, esse avaliador não teve nada com que trabalhar. A causa habitual é uma pergunta ativada sem regras escritas, o que deixa o avaliador sem pergunta para julgar.
@@ -53,8 +49,7 @@ Um **No result yet** cinzento é o que os painéis mostram antes de introduzir u
 
 **Automation variables**, em baixo, lista todos os valores que esta resposta disponibiliza a uma automação, com a variável a copiar e o resultado da execução à sua frente.
 
-![A lista Automation variables, a mostrar as variáveis de criteria, pontuação, intervalo de pontuação, skill principal e resumo com os seus valores](/images/forms-builder/testing/08-automation-variables.png)
-
+<img src="/images/forms-builder/testing/08-automation-variables.png" alt="A lista Automation variables, a mostrar as variáveis de criteria, pontuação, intervalo de pontuação, skill principal e resumo com os seus valores" width="650" />
 Esta é a lista contra a qual construir uma automação. Ler `passed` ao lado de `{{form_response.evaluation.screening}}` diz-lhe o valor exato a comparar, o que adivinhar não faz. Veja [Variáveis](/pt/variables/introduction).
 
 ## O que não faz

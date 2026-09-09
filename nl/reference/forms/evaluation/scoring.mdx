@@ -13,8 +13,7 @@ Criteria vertelt je wie afvalt. Scoring vertelt je wie je als eerste belt.
 
 Zet **Scoring** aan voor het formulier en het begint met drie bereiken: **Low** op 0, **Medium** op 50 en **High** op 80. Klik op **Scoring** om ze te openen.
 
-![Het Scoring-blok geopend, met de scorebereiken Low, Medium en High en hun minimumscores](/images/forms-builder/evaluation/04-scoring-ranges.png)
-
+<img src="/images/forms-builder/evaluation/04-scoring-ranges.png" alt="Het Scoring-blok geopend, met de scorebereiken Low, Medium en High en hun minimumscores" width="504" />
 Elk bereik heeft een **Label** en een **Minimum score (%)**. Een respons belandt in het hoogste bereik waarvan hij het minimum haalt, dus 82% is High en 79% is Medium. **Add range** voegt er een toe, en de prullenbak verwijdert er een. Geef elk bereik een label en een ander minimum tussen 0 en 100.
 
 Houd één bereik op 0. Een score onder elk minimum krijgt een percentage en geen label, wat leest als een ontbrekend resultaat in plaats van een laag resultaat.
@@ -28,8 +27,7 @@ Klik op **Scoring**, zet een vraag aan en de instellingen openen.
 - **When should points be awarded?**, aan de rules-kant, met een of meer rules.
 - Het notitievak, met het label **How should AI award points?**.
 
-![Een getalvraag in het Scoring-blok, 20 punten waard, met een rule die 20 punten toekent voor vijf jaar of meer en een tweede die 10 toekent voor drie of meer](/images/forms-builder/evaluation/05-scoring-rules.png)
-
+<img src="/images/forms-builder/evaluation/05-scoring-rules.png" alt="Een getalvraag in het Scoring-blok, 20 punten waard, met een rule die 20 punten toekent voor vijf jaar of meer en een tweede die 10 toekent voor drie of meer" width="488" />
 ### Rules
 
 Een rule is een set condities plus **How many points should be awarded?**. Een conditie leest als `<vraag> <operator> <waarde>` en kan alleen het antwoord op deze vraag testen. **Add condition** voegt een tweede toe en een **All**- en **Any**-switch erboven, en **Add rule** voegt er een rule onder toe.
@@ -54,8 +52,7 @@ Alleen de vragen die je aanzette en configureerde doen mee. HireData telt de pun
 
 Een formulier met een vraag van 10 punten en een vraag van 20 punten wordt gescoord uit 30. Verdien 10 en 20 en de respons scoort 100%.
 
-![De Scoring-resultaten in Test & Evaluate: een balk van 100%, Points 30 van 30, en de punten die elke vraag verdiende](/images/forms-builder/testing/07b-test-results-scoring.png)
-
+<img src="/images/forms-builder/testing/07b-test-results-scoring.png" alt="De Scoring-resultaten in Test & Evaluate: een balk van 100%, Points 30 van 30, en de punten die elke vraag verdiende" width="650" />
 Een onbeantwoorde vraag scoort nul en telt zijn maximum toch mee, dus een half afgemaakte respons scoort laag in plaats van goed op wat hij wél beantwoordde. Dat is meestal wat je wilt. Wanneer dat niet zo is, zet je de gescoorde vragen vroeg in het formulier, vóór elke [logic](/nl/reference/forms/logic)-jump die eroverheen zou kunnen stappen.
 
 Automatiseringen lezen het resultaat als `{{form_response.evaluation.scoring.score}}` voor het percentage en `{{form_response.evaluation.scoring.band.label}}` voor het bereiklabel.

@@ -7,7 +7,7 @@ _Lorsque vous connectez votre ATS, tel que Carerix, Salesforce, OTYS, etc., à H
 
 ## Qu'est-ce qu'un événement
 
-Un événement est un signal envoyé depuis votre app connectée vers HireData. Il représente généralement une action ou un changement spécifique, par exemple, la création d'un nouveau candidat, la mise à jour d'une offre, la finalisation d'un placement, etc. Ces événements sont utilisés pour déclencher les automatisations que vous avez mises en place dans HireData, et chaque événement comprend des **Event Data**, des **External Records** et des **Runs**.
+Un événement est un signal envoyé depuis votre app connectée vers HireData. Il représente généralement une action ou un changement spécifique, par exemple, la création d'un nouveau candidat, la mise à jour d'une offre, la finalisation d'un placement, etc. HireData utilise ces événements pour déclencher les automatisations que vous avez mises en place, et chaque événement comprend des **Event Data**, des **External Records** et des **Runs**.
 
 _Exemple d'événement :_
 
@@ -51,7 +51,7 @@ Si un événement ne déclenche pas une automatisation comme prévu, ou si une e
 
 ### Que se passe-t-il lorsqu'un événement est rejoué ?
 
-HireData retraite le ou les événements sélectionnés et déclenche les automatisations associées. Les tâches affectées seront exécutées comme si l'événement venait de se produire.
+HireData retraite le ou les événements sélectionnés et déclenche les automatisations associées. HireData exécute les tâches affectées comme si l'événement venait de se produire.
 
 - **Automatisations basées sur événements** — Pour les automatisations déclenchées par un événement spécifique (par exemple, un candidat atteignant une certaine étape), le replay redéclenchera l'automatisation immédiatement en fonction des données de l'événement. S'il existait précédemment une exécution créée, elle sera rejouée et une étiquette « Replay » apparaîtra.
 
@@ -116,7 +116,7 @@ Si aucune exécution n'a été créée, il se peut que l'événement n'ait pas r
 
 ### Besoin d'aide supplémentaire ?
 
-Si vous n'êtes pas sûr de pourquoi un événement n'a pas déclenché votre automatisation ou souhaitez de l'aide pour interpréter les données de l'événement, n'hésitez pas à contacter notre équipe à [support@hiredata.com](mailto:support@hiredata.com). Si vous le faites, veuillez inclure :
+Si vous n'êtes pas sûr de pourquoi un événement n'a pas déclenché votre automatisation ou souhaitez de l'aide pour interpréter les données de l'événement, n'hésitez pas à contacter notre équipe à [support@hiredata.com](mailto:support@hiredata.com). Si vous le faites, incluez :
 
 - Un lien ou l'ID de l'événement ;
 - Un lien ou le nom de l'automatisation que vous vous attendiez à voir se déclencher ;

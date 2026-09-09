@@ -13,9 +13,9 @@ Quando um perfil é sincronizado a partir do Carerix, a HireData verifica se exi
 - `pasfoto`
 - `emaillogo`
 
-O sistema avalia também o rótulo do anexo. A correspondência não é sensível a maiúsculas/minúsculas, pelo que qualquer variação (por exemplo, `PasFoto`, `PASfoto`, `EmailLogo`) é suportada.
+A HireData avalia também o rótulo do anexo. A correspondência não é sensível a maiúsculas/minúsculas, pelo que qualquer variação (por exemplo, `PasFoto`, `PASfoto`, `EmailLogo`) é suportada.
 
-Se existirem vários anexos válidos, a HireData avalia-os por uma ordem de prioridade fixa. Dentro dessa ordem, o anexo mais recentemente modificado é considerado primeiro.
+Se existirem vários anexos válidos, a HireData avalia-os por uma ordem de prioridade fixa. Dentro dessa ordem, a HireData considera primeiro o anexo mais recentemente modificado.
 
 ## Prioridade de escolha do avatar de utilizador
 
@@ -23,12 +23,12 @@ A HireData determina o avatar utilizando a seguinte prioridade:
 
 ### 1. Logótipo de email com o rótulo "emailpasfoto"
 
-A primeira prioridade é dada a um anexo em que:
+A HireData dá a primeira prioridade a um anexo em que:
 
 - O valor de tipo é `emaillogo`
 - O rótulo é `emailpasfoto`
 
-Se esse anexo existir e contiver conteúdo utilizável, é utilizado como avatar.
+Se esse anexo existir e contiver conteúdo utilizável, a HireData utiliza-o como avatar.
 
 ### 2. Fotografia de perfil com o rótulo "pasfoto"
 
@@ -37,7 +37,7 @@ Se nenhuma correspondência for encontrada no passo 1, a HireData procura:
 - Valor de tipo `pasfoto`
 - Rótulo `pasfoto`
 
-Se encontrada e válida, esta imagem é utilizada.
+Se encontrada e válida, a HireData utiliza esta imagem.
 
 ### 3. Qualquer anexo com tipo "pasfoto"
 
@@ -57,11 +57,11 @@ O rótulo não precisa de corresponder.
 
 ## Quando é apresentada uma fotografia ou logótipo?
 
-Uma imagem é apresentada como avatar quando é **encontrado um anexo correspondente** com base na prioridade acima e uma imagem válida está disponível para ser utilizada como avatar do utilizador.
+A HireData apresenta uma imagem como avatar quando encontra um **anexo correspondente** com base na prioridade acima e está disponível uma imagem válida para utilizar como avatar do utilizador.
 
 ## Quando são apresentadas as iniciais?
 
-As iniciais são apresentadas quando:
+A HireData apresenta as iniciais quando:
 
 - Não existe nenhum anexo com tipo `pasfoto` e/ou `emaillogo`
 - Existe um anexo correspondente mas não contém conteúdo utilizável

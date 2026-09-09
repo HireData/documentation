@@ -1,5 +1,5 @@
 ---
-title: "Der Formular-Builder im Überblick"
+title: "Formular-Builder: Überblick"
 sidebarTitle: "Überblick"
 description: "Ein Rundgang durch den HireData-Formular-Builder: die Tabs Content, Logic und Evaluation, die Panels der Toolbar, jeder Feldtyp und die Einstellungen, die alle Felder teilen."
 keywords:
@@ -29,16 +29,14 @@ Die rechte Spalte zeigt die Vorschau des Formulars, mit eigenen Tabs **Interacti
 
 Die Leiste oben enthält den Formularnamen und die Toolbar.
 
-![Der Formular-Builder: oben der Formularname und die Toolbar, links die Tabs Content, Logic und Evaluation mit der Feldliste und rechts die Interactive Preview](/images/forms-builder/31-builder-at-a-glance.png)
-
+<img src="/images/forms-builder/31-builder-at-a-glance.png" alt="Der Formular-Builder: oben der Formularname und die Toolbar, links die Tabs Content, Logic und Evaluation mit der Feldliste und rechts die Interactive Preview" width="650" />
 ### Content-Tab
 
 Der **Content**-Tab enthält die Felder und ihre Einstellungen. Klicken Sie auf ein Feld, um seine Karte zu öffnen, und ziehen Sie es am Griff links, um die Reihenfolge zu ändern.
 
 Die **\+**-Schaltfläche öffnet die **Add Content**-Palette. Sie gruppiert die Einträge nach Kategorie und wiederholt die meistgenutzten unter **Recommended**. **Find a field type** durchsucht die Liste.
 
-![Die Add-Content-Palette mit ihrer Recommended-Liste und den Gruppen Text, Contact Info, Temporal, Choice, Numeric, Rating, Other und Ending](/images/forms-builder/01-add-content-palette.png)
-
+<img src="/images/forms-builder/01-add-content-palette.png" alt="Die Add-Content-Palette mit ihrer Recommended-Liste und den Gruppen Text, Contact Info, Temporal, Choice, Numeric, Rating, Other und Ending" width="650" />
 ### Logic-Tab {#logic-tab}
 
 Der **Logic**-Tab entscheidet, wohin eine befragte Person als Nächstes geht. Jede Frage bekommt eine **Add Rule**-Schaltfläche und ein Ziel in der Fußzeile, und eine Regel liest sich `if <field> <operator> <value> then go to <target>`.
@@ -63,8 +61,7 @@ Siehe [Vorschauen](/de/reference/forms/testing/previews) und [Test & Evaluate](/
 
 Die Toolbar verläuft oben rechts im Builder, von **Save** bis zum Drei-Punkte-Menü.
 
-![Die Toolbar des Formular-Builders mit Save, der Vorschau-Schaltfläche, Publish, der Brand-Auswahl, den fünf Panel-Schaltflächen und dem Mehr-Menü](/images/forms-builder/25-builder-toolbar.png)
-
+<img src="/images/forms-builder/25-builder-toolbar.png" alt="Die Toolbar des Formular-Builders mit Save, der Vorschau-Schaltfläche, Publish, der Brand-Auswahl, den fünf Panel-Schaltflächen und dem Mehr-Menü" width="650" />
 **Save** speichert Ihre Änderungen. Die Augen-Schaltfläche daneben speichert das Formular und öffnet es in einem [Vorschaufenster](/de/reference/forms/testing/previews#the-preview-window) über dem Builder.
 
 **Publish** macht das Formular für Befragte verfügbar. Sobald das Formular veröffentlicht ist, steht dort **Withdraw**.
@@ -132,14 +129,12 @@ Texteinstellungen wie **Question**, **Description** und die Platzhalter akzeptie
 
 Redirect URL hat nichts davon. Es ist ein einzelnes Feld für die Adresse.
 
-![Eine Dropdown-Feldkarte mit Question, Description, Image, Placeholder, Conversational Button Text, den Optionen mit Add Data Source, den drei Evaluator-Schaltern und einer Fußzeile mit Dropdown, Single Answer und Optional](/images/forms-builder/02-question-card-common-settings.png)
-
+<img src="/images/forms-builder/02-question-card-common-settings.png" alt="Eine Dropdown-Feldkarte mit Question, Description, Image, Placeholder, Conversational Button Text, den Optionen mit Add Data Source, den drei Evaluator-Schaltern und einer Fußzeile mit Dropdown, Single Answer und Optional" width="540" />
 ## Anzeige und Anforderungen {#display-and-requirements}
 
 Die Schaltfläche unten rechts auf einer Feldkarte öffnet **Display & requirements**. Ihre Beschriftung nennt den aktuellen Zustand des Feldes: **Optional**, **Required**, **Hidden** oder **Always included**.
 
-![Das Display-&-requirements-Popup auf einer Feldkarte mit den Schaltern Hidden, Required und Always include](/images/forms-builder/22-display-and-requirements.png)
-
+<img src="/images/forms-builder/22-display-and-requirements.png" alt="Das Display-&-requirements-Popup auf einer Feldkarte mit den Schaltern Hidden, Required und Always include" width="550" />
 **Hidden**, „Hide this field from respondents."
 
 Ein verborgenes Feld wird übersprungen, während die befragte Person durch das Formular geht, und Logikregeln können nicht zu ihm springen. Seine gespeicherte Antwort bleibt für Automatisierungen verfügbar – so tragen Sie einen Wert wie eine Referenz oder eine ID durch ein Formular, ohne danach zu fragen.
@@ -170,8 +165,7 @@ In einem konversationellen Formular ist **Auto reply (on invalid answer)** die N
 
 Das **Settings**-Panel steuert, wie das Formular aussieht und wer es erreichen kann.
 
-![Das Settings-Panel mit Make form public, Logo, Alignment, Font Family, Text Color, Scale, den eingeklappten Bereichen Input und Background, Button Text und Border radius](/images/forms-builder/26-settings-drawer.png)
-
+<img src="/images/forms-builder/26-settings-drawer.png" alt="Das Settings-Panel mit Make form public, Logo, Alignment, Font Family, Text Color, Scale, den eingeklappten Bereichen Input und Background, Button Text und Border radius" width="420" />
 Das Panel öffnet mit **Make form public**, „Public forms can be anonymously answered by anyone with the form's URL." Lassen Sie es aus, öffnet sich das Formular nur für eine befragte Person, der Sie es geschickt haben. Es folgen die Theme-Einstellungen:
 
 - **Logo**, das Bild oben im Formular. Es startet als Ihr Markenlogo, und das Kreuz neben der Beschriftung entfernt es.
@@ -192,8 +186,7 @@ Jede Farbe startet als Wert der gewählten Marke, angezeigt als Name wie „Them
 
 Klicken Sie auf **New Translation**, um eine hinzuzufügen. Wählen Sie die **Language** und übersetzen Sie dann entweder von Hand, oder klicken Sie auf **Create AI translation**, das das ganze Formular für Sie ausfüllt.
 
-![Das New-Translation-Panel mit ausgewähltem Niederländisch, der Schaltfläche Create AI translation, der Settings-Gruppe und dem ersten Feld aufgeklappt zu Question, Description, Min Label und Max Label](/images/forms-builder/27-translation-editor.png)
-
+<img src="/images/forms-builder/27-translation-editor.png" alt="Das New-Translation-Panel mit ausgewähltem Niederländisch, der Schaltfläche Create AI translation, der Settings-Gruppe und dem ersten Feld aufgeklappt zu Question, Description, Min Label und Max Label" width="480" />
 Eine Übersetzung deckt drei Gruppen ab:
 
 - **Settings**, der Formular-**Name**, der **Button text**, die **Powered by**-Zeile sowie **Upload title** und **Upload description** eines Datei-Uploads.
@@ -210,6 +203,5 @@ Klicken Sie auf **New Form**, und eine Galerie öffnet sich mit **Blank Form** a
 
 Eine Vorlage zu wählen kopiert ihre Felder in ein neues Formular, und alles in der Kopie können Sie ändern.
 
-![Der New-Form-Dialog mit den Tag-Filtern Candidate und Contact, der Blank-Form-Karte und den Recruitment-Formularvorlagen](/images/forms-builder/28-new-form-templates.png)
-
+<img src="/images/forms-builder/28-new-form-templates.png" alt="Der New-Form-Dialog mit den Tag-Filtern Candidate und Contact, der Blank-Form-Karte und den Recruitment-Formularvorlagen" width="650" />
 Wenn Ihr Konto die geteilte Vorlagenbibliothek pflegt, macht die Schaltfläche **Manage Template** in der Toolbar das geöffnete Formular zur Vorlage. **Configure Template** fragt nach einem **Title**, einer **Description** und **Tags**, bietet an, alle drei mit AI zu schreiben, und stellt die Vorlage in die Galerie, sobald Sie auf **Enable** klicken. **Feature Template** hebt sie an die Spitze.

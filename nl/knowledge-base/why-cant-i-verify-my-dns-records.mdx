@@ -8,7 +8,7 @@ _Je probeert je domein in HireData te verifiëren, maar bij het klikken op **Ver
 
 ## Waarom dit gebeurt
 
-DNS-records voor je domein worden aangemaakt door de e-maildienst achter de Email app. Zolang de Email app niet is geïnstalleerd, is er nog geen e-maildienst gekoppeld aan je account — HireData kan dan geen DNS-records genereren of verifiëren, en de knop **Verify DNS** op de pagina **Domains** geeft een 404-fout of geen respons.
+De e-maildienst achter de Email app maakt de DNS-records voor je domein aan. Zolang de Email app niet is geïnstalleerd, is er nog geen e-maildienst gekoppeld aan je account, dus HireData kan geen DNS-records genereren of verifiëren. De knop **Verify DNS** op de pagina **Domains** geeft dan een 404-fout of geen respons.
 
 Door eerst de Email app te installeren, wordt dit opgelost.
 
@@ -33,7 +33,7 @@ Als je hebt gekozen voor de e-maildienst van HireData, selecteer dan de **regio*
 
 ## Stap 4: Genereer en voeg je DNS-records toe
 
-Nu de Email app is geïnstalleerd, ga je terug naar de pagina [**Domains**](https://app.hiredata.com/settings/account/domains) in je settings. De DNS-records voor je domein kunnen nu worden gegenereerd.
+Nu de Email app is geïnstalleerd, ga je terug naar de pagina [**Domains**](https://app.hiredata.com/settings/account/domains) in je settings. Je kunt nu de DNS-records voor je domein genereren.
 
 Voeg deze records toe bij je domeinprovider (bijv. GoDaddy, Cloudflare, Namecheap). Als iemand anders je domein beheert, gebruik dan de knop **Send To Coworker** om de records rechtstreeks naar de juiste persoon te e-mailen.
 
@@ -44,7 +44,7 @@ Voor een volledige uitleg van dit onderdeel, zie [Een domein in HireData verifi�
 Zodra de DNS-records zijn toegevoegd, klik je op de knop **Verify DNS** op de pagina **Domains**. De 404-fout zou nu weg moeten zijn en je domein wordt geverifieerd zodra de records zijn gepropageerd.
 
 <Warning>
-  DNS-wijzigingen kunnen enige tijd in beslag nemen om door te dringen — van enkele minuten tot 24–48 uur, afhankelijk van je provider. Als de verificatie niet meteen slaagt, wacht dan even en probeer het opnieuw.
+  DNS-wijzigingen kunnen van enkele minuten tot 24–48 uur nodig hebben om door te dringen, afhankelijk van je provider. Als de verificatie niet meteen slaagt, wacht dan even en probeer het opnieuw.
 </Warning>
 
 Loop je nog steeds tegen problemen aan nadat je de Email app hebt geïnstalleerd en de DNS-records hebt toegevoegd? Neem contact met ons op via [support@hiredata.com](mailto:support@hiredata.com) — we helpen je graag verder.

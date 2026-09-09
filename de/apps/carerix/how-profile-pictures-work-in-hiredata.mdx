@@ -13,9 +13,9 @@ Wenn ein Profil aus Carerix synchronisiert wird, prüft HireData, ob es Anhänge
 - `pasfoto`
 - `emaillogo`
 
-Das System bewertet außerdem das Anhangs-Label. Der Abgleich erfolgt ohne Berücksichtigung der Groß- und Kleinschreibung, sodass jede Schreibvariante (zum Beispiel `PasFoto`, `PASfoto`, `EmailLogo`) unterstützt wird.
+HireData bewertet außerdem das Anhangs-Label. Der Abgleich erfolgt ohne Berücksichtigung der Groß- und Kleinschreibung, sodass jede Schreibvariante (zum Beispiel `PasFoto`, `PASfoto`, `EmailLogo`) unterstützt wird.
 
-Wenn mehrere gültige Anhänge vorhanden sind, wertet HireData sie in einer festen Prioritätsreihenfolge aus. Innerhalb dieser Reihenfolge wird der zuletzt geänderte Anhang zuerst berücksichtigt.
+Wenn mehrere gültige Anhänge vorhanden sind, wertet HireData sie in einer festen Prioritätsreihenfolge aus. Innerhalb dieser Reihenfolge berücksichtigt HireData den zuletzt geänderten Anhang zuerst.
 
 ## Prioritätsreihenfolge für die Auswahl des Benutzer-Avatars
 
@@ -28,7 +28,7 @@ Erste Priorität hat ein Anhang, bei dem:
 - Der Typwert `emaillogo` ist
 - Das Label `emailpasfoto` ist
 
-Wenn ein solcher Anhang existiert und verwendbaren Inhalt enthält, wird er als Avatar verwendet.
+Wenn ein solcher Anhang existiert und verwendbaren Inhalt enthält, verwendet HireData ihn als Avatar.
 
 ### 2. Profilfoto mit Label „pasfoto"
 
@@ -37,7 +37,7 @@ Wenn in Schritt 1 keine Übereinstimmung gefunden wird, prüft HireData:
 - Typwert `pasfoto`
 - Label `pasfoto`
 
-Wenn gefunden und gültig, wird dieses Bild verwendet.
+Wenn gefunden und gültig, verwendet HireData dieses Bild.
 
 ### 3. Jeder Anhang mit Typ „pasfoto"
 
@@ -57,11 +57,11 @@ Das Label muss nicht übereinstimmen.
 
 ## Wann wird ein Foto oder Logo angezeigt?
 
-Ein Bild wird als Avatar angezeigt, wenn anhand der oben genannten Priorität **ein passender Anhang gefunden wird** und ein gültiges Bild als Avatar des Benutzers verwendet werden kann.
+HireData zeigt ein Bild als Avatar an, wenn es anhand der oben genannten Priorität **einen passenden Anhang** findet und ein gültiges Bild als Avatar des Benutzers verwendet werden kann.
 
 ## Wann werden Initialen angezeigt?
 
-Initialen werden angezeigt, wenn:
+HireData zeigt Initialen an, wenn:
 
 - Kein Anhang mit dem Typ `pasfoto` und/oder `emaillogo` vorhanden ist
 - Ein passender Anhang vorhanden ist, aber keinen verwendbaren Inhalt enthält

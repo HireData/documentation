@@ -81,7 +81,7 @@ Une configuration courante : réglez les outils en lecture seule sur **Always al
 
 ### Étape 4 : l'utiliser dans une conversation
 
-Dans une conversation, cliquez sur le bouton **\+**, choisissez **Connectors** et assurez-vous que **HireData** est activé. Ensuite, il suffit de demander — par exemple : _« Crée un modèle d'e-mail NPS pour candidats aux couleurs de notre marque et envoie-moi un test. »_
+Dans une conversation, cliquez sur le bouton **\+**, sélectionnez **Connectors** et assurez-vous que **HireData** est activé. Ensuite, il suffit de demander. Par exemple : _« Crée un modèle d'e-mail NPS pour candidats aux couleurs de notre marque et envoie-moi un test. »_
 
 ## Se connecter depuis ChatGPT
 
@@ -98,7 +98,7 @@ Les connexions MCP personnalisées sont disponibles sur les formules payantes de
    - **Name** : `HireData`
    - **Type** : **Streamable HTTP**
    - **URL** : `https://api.hiredata.com/mcp`
-4. Laissez les champs de jeton et d'en-tête vides — HireData utilise la connexion OAuth — puis cliquez sur **\[Save\]**.
+4. Laissez les champs de jeton et d'en-tête vides (HireData utilise la connexion OAuth), puis cliquez sur **\[Save\]**.
 
 ![Le formulaire MCP personnalisé de ChatGPT rempli pour HireData](/images/mcp/chatgpt-custom-mcp-form.png)
 
@@ -123,9 +123,9 @@ La prise en charge de MCP par Google évoluant rapidement, consultez la document
 
 Microsoft propose actuellement les connexions MCP personnalisées via Copilot Studio — l'application Copilot grand public ne les prend pas encore en charge :
 
-1. Dans **Microsoft Copilot Studio**, ouvrez la page **Tools** de votre agent et choisissez **Add a tool** \> **New tool** \> **Model Context Protocol**.
+1. Dans **Microsoft Copilot Studio**, ouvrez la page **Tools** de votre agent et sélectionnez **Add a tool** \> **New tool** \> **Model Context Protocol**.
 2. Saisissez un nom et une description (l'agent utilise la description pour décider quand appeler HireData), ainsi que l'URL du serveur : `https://api.hiredata.com/mcp`
-3. Choisissez l'authentification **OAuth 2.0** avec **Dynamic discovery**, créez la connexion et ajoutez l'outil à l'agent.
+3. Sélectionnez l'authentification **OAuth 2.0** avec **Dynamic discovery**, créez la connexion et ajoutez l'outil à l'agent.
 4. Publiez l'agent ; les utilisateurs se connectent à HireData avec leur propre compte lors de la première utilisation, avec la même sélection de workspaces et les mêmes permissions que sur les autres assistants.
 
 Les agents ainsi créés peuvent être mis à disposition dans Microsoft 365 Copilot. Copilot Studio nécessite une licence appropriée, et les connexions MCP sont soumises aux politiques de données Power Platform de votre organisation — consultez la documentation de Microsoft pour connaître la disponibilité actuelle.

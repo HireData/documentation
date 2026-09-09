@@ -13,8 +13,7 @@ Het is de evaluator om te pakken wanneer sommige antwoorden diskwalificerend zij
 
 Zet **Criteria** aan voor het formulier op het [tabblad Evaluation](/nl/reference/forms/evaluation/overview#enable-order) en klik daarna op **Criteria** om het te openen. Elke vraag in het formulier verschijnt eronder met een eigen schakelaar. Een vraag wordt pas getoetst zodra je hem hier aanzet.
 
-![Het Criteria-blok geopend, met de vragen van het formulier elk met een schakelaar en één vraag aangezet](/images/forms-builder/evaluation/01-criteria-field-list.png)
-
+<img src="/images/forms-builder/evaluation/01-criteria-field-list.png" alt="Het Criteria-blok geopend, met de vragen van het formulier elk met een schakelaar en één vraag aangezet" width="504" />
 ## Instellingen per vraag
 
 Zet een vraag aan en de instellingen openen.
@@ -24,8 +23,7 @@ Zet een vraag aan en de instellingen openen.
 - **What answer(s) do you expect?**, aan de rules-kant, met de condities waaraan het antwoord moet voldoen.
 - Het notitievak, met het label **What should AI look for?**. Het stuurt de AI en wordt door rules genegeerd. Zie [één notitie per vraag](/nl/reference/forms/evaluation/overview#one-note-per-question).
 
-![Een Yes/No-vraag in het Criteria-blok, ingesteld op Must-have en Use answer rules, met Yes als verwacht antwoord](/images/forms-builder/evaluation/02-criteria-rules.png)
-
+<img src="/images/forms-builder/evaluation/02-criteria-rules.png" alt="Een Yes/No-vraag in het Criteria-blok, ingesteld op Must-have en Use answer rules, met Yes als verwacht antwoord" width="488" />
 ### Verwachte antwoorden
 
 Een conditie leest als `<vraag> <operator> <waarde>`. De vraag staat vast: een rule op deze vraag kan alleen het antwoord op deze vraag testen. Kies de operator en daarna de waarde.
@@ -54,8 +52,7 @@ Een File Upload-vraag biedt een tweede kiezer boven de operator, voor welk deel 
 
 Schakel naar **Evaluate with AI** en de condities verdwijnen. Het model krijgt de vraag, het antwoord en jouw notitie, en beslist of het antwoord aan de vereiste voldoet. Het geeft ook een zin redenering terug, die [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate) onder het antwoord toont.
 
-![Een long text-vraag in het Criteria-blok, ingesteld op Nice-to-have en Evaluate with AI, met een notitie die de AI vertelt waar op te letten](/images/forms-builder/evaluation/03-criteria-ai.png)
-
+<img src="/images/forms-builder/evaluation/03-criteria-ai.png" alt="Een long text-vraag in het Criteria-blok, ingesteld op Nice-to-have en Evaluate with AI, met een notitie die de AI vertelt waar op te letten" width="488" />
 Gebruik AI voor vrije tekst en bestanden, waar de bewoordingen variëren en geen rule past. Houd rules voor antwoorden met een vaste set waarden. Een Yes/No- of keuzevraag heeft geen interpretatie nodig, en een rule is sneller, goedkoper en herhaalbaar.
 
 Een [File Upload](/nl/reference/forms/fields/file-upload)-vraag die op AI staat, stuurt de bijlage naar het model. JPEG-, PNG-, GIF-, WebP- en PDF-bestanden worden gelezen, tot vijf bestanden en 10 MB per respons. Al het andere wordt alleen op de bestandsnaam beoordeeld.

@@ -24,14 +24,12 @@ Der **Logic**-Tab sitzt über der Feldliste, zwischen **Content** und **Evaluati
 
 Endings sitzen unter dem **Endings**-Trenner und bekommen weder das eine noch das andere. Auf ein Ending folgt nichts, eine Regel darauf hätte also kein Ziel.
 
-![Der Logic-Tab mit vier Fragen, jede mit einer Add-Rule-Schaltfläche und einem Always-go-to-Ziel, darunter der Endings-Trenner und ein Ending ohne beides](/images/forms-builder/32-logic-tab.png)
-
+<img src="/images/forms-builder/32-logic-tab.png" alt="Der Logic-Tab mit vier Fragen, jede mit einer Add-Rule-Schaltfläche und einem Always-go-to-Ziel, darunter der Endings-Trenner und ein Ending ohne beides" width="520" />
 ## Anatomie einer Regel
 
 Eine Regel liest sich `if <question> <operator> <value> then go to <field>`.
 
-![Eine Logikregel auf einer Net-Promoter-Score-Frage: ist der Score kleiner oder gleich 7, gehe zur Folgefrage, mit All other cases go to zum Ending](/images/forms-builder/04-logic-rule-and-fallback.png)
-
+<img src="/images/forms-builder/04-logic-rule-and-fallback.png" alt="Eine Logikregel auf einer Net-Promoter-Score-Frage: ist der Score kleiner oder gleich 7, gehe zur Folgefrage, mit All other cases go to zum Ending" width="484" />
 - **if** beginnt die Bedingung. Die Fragenauswahl bietet diese Frage und die darüber an, nie eine spätere und nie ein Ending – eine Regel kann also keine Antwort lesen, die noch niemand gegeben hat.
 - Die Operatorliste ergibt sich aus dem Typ der Frage. Siehe [Operatoren nach Feldtyp](#operators).
 - Das Wertefeld enthält, womit der Operator vergleicht. **has response** vergleicht nichts, also erscheint daneben kein Feld.
@@ -68,42 +66,36 @@ Die fünfte Zeile ist die, die viele überrascht. Date-, Time-, Datetime- und Fi
 
 Der Alltagsfall. Eine Option führt woandershin als die übrigen.
 
-![Eine Regel auf einer Multiple-Choice-Frage: lautet die Antwort Yes, by email, gehe zur E-Mail-Frage, mit All other cases go to zum Ending](/images/forms-builder/15-logic-choice-branch.png)
-
+<img src="/images/forms-builder/15-logic-choice-branch.png" alt="Eine Regel auf einer Multiple-Choice-Frage: lautet die Antwort Yes, by email, gehe zur E-Mail-Frage, mit All other cases go to zum Ending" width="484" />
 Multiple Choice und Dropdown sind die einzigen Typen, die **is one of** anbieten, und sein Wertefeld nimmt mehrere Optionen auf einmal auf. Drei Antworten, die alle zur selben Folgefrage führen, sind eine Regel, nicht drei.
 
 ### Auf ein Yes/No verzweigen
 
 Dieselbe Form, zwei Antworten. Das Wertefeld bietet Yes und No an.
 
-![Eine Regel auf einer Yes/No-Frage: lautet die Antwort Yes, gehe zur Regionsfrage, mit All other cases go to zur Erfahrungsfrage](/images/forms-builder/17-logic-yes-no.png)
-
+<img src="/images/forms-builder/17-logic-yes-no.png" alt="Eine Regel auf einer Yes/No-Frage: lautet die Antwort Yes, gehe zur Regionsfrage, mit All other cases go to zur Erfahrungsfrage" width="499" />
 ### Eine Folgefrage nur stellen, wenn die letzte Frage beantwortet wurde
 
 **has response** ist der Operator für optionale Fragen. Er trifft zu, was auch immer die Antwort war, solange es eine gibt.
 
-![Eine Regel auf einer File-Upload-Frage: hat sie eine Antwort, gehe zum Ending, mit All other cases go to zum Redirect](/images/forms-builder/20-logic-file-has-response.png)
-
+<img src="/images/forms-builder/20-logic-file-has-response.png" alt="Eine Regel auf einer File-Upload-Frage: hat sie eine Antwort, gehe zum Ending, mit All other cases go to zum Redirect" width="484" />
 ### Zwei Antworten auf einmal verlangen
 
 **Add Condition** setzt beide Bedingungen in eine Regel, und beide müssen zutreffen.
 
-![Eine Regel mit zwei Bedingungen: die Zufriedenheitsbewertung ist 4 oder mehr und die Führerschein-Antwort ist Yes, dann gehe zum Ending](/images/forms-builder/19-logic-two-conditions.png)
-
+<img src="/images/forms-builder/19-logic-two-conditions.png" alt="Eine Regel mit zwei Bedingungen: die Zufriedenheitsbewertung ist 4 oder mehr und die Führerschein-Antwort ist Yes, dann gehe zum Ending" width="499" />
 Eine Frage, die die befragte Person nie erreicht hat, hat keine Antwort – eine Bedingung, die sie liest, kann also nicht zutreffen, und die ganze Regel bleibt stumm.
 
 ### Verschiedene Befragte zu verschiedenen Endings schicken
 
 Richten Sie die Regel auf ein Ending und das Ziel in der Fußzeile auf ein anderes.
 
-![Eine Regel auf einer Dropdown-Frage, die North zum Danke-Ending schickt, mit All other cases go to zu einem Redirect-Ending](/images/forms-builder/18-logic-two-endings.png)
-
+<img src="/images/forms-builder/18-logic-two-endings.png" alt="Eine Regel auf einer Dropdown-Frage, die North zum Danke-Ending schickt, mit All other cases go to zu einem Redirect-Ending" width="484" />
 ### Einen Block von Fragen überspringen
 
 Eine Frage ohne Regeln kann trotzdem springen. Setzen Sie **Always go to**, und alle, die sie beantworten, landen auf derselben späteren Frage, egal was sie gesagt haben.
 
-![Eine Frage ohne Regeln, deren Always go to auf eine Frage weiter unten im Formular zeigt](/images/forms-builder/16-logic-always-go-to.png)
-
+<img src="/images/forms-builder/16-logic-always-go-to.png" alt="Eine Frage ohne Regeln, deren Always go to auf eine Frage weiter unten im Formular zeigt" width="484" />
 ## Pflichtfragen und Logik
 
 Eine Pflichtfrage muss beantwortet werden, bevor die befragte Person weitergehen kann – ihre Regeln laufen also erst, wenn es eine Antwort zu prüfen gibt.
@@ -123,6 +115,6 @@ Die [Interactive Preview](/de/reference/forms/testing/previews) im rechten Panel
 
 ## Verwandte Themen
 
-- [Der Formular-Builder im Überblick](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
+- [Formular-Builder: Überblick](/de/reference/forms/overview) behandelt den Builder, die gemeinsamen Einstellungen und jeden Feldtyp.
 - [Objekte](/de/reference/forms/objects) und [Datenquellen](/de/reference/forms/data-sources) behandeln die Datensätze und Listen, aus denen ein Formular schöpfen kann.
 - [Ein Formular in HireData erstellen](/de/content/creating-a-form-in-hiredata) begleitet ein Formular von leer bis veröffentlicht.

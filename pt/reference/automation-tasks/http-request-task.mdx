@@ -7,7 +7,7 @@ keywords: ["pedido http", "chamar uma api externa", "pedido de api a partir de u
 
 _Chame uma API externa diretamente a partir de uma automação: importe uma especificação ou construa o pedido manualmente, autentique-o, descreva o que volta e utilize esses valores em tarefas posteriores._
 
-Uma automação pode chamar uma API externa por si própria. A tarefa **HTTP Request** envia um pedido para um endereço à sua escolha, com a autenticação que esse endpoint espera, e disponibiliza a resposta às tarefas seguintes assim que descrever o que ela contém. Não precisa de um developer, e não precisa de nada a servir de intermediário.
+Uma automação pode chamar uma API externa por si própria. A tarefa **HTTP Request** envia um pedido para um endereço à sua escolha, com a autenticação que esse endpoint espera. Disponibiliza a resposta às tarefas seguintes assim que descrever o que ela contém. Não precisa de um developer, e não precisa de nada a servir de intermediário.
 
 Se alguém já lhe entregou uma especificação de API ou um comando cURL, não tem de o reescrever. A HireData consegue lê-lo e preencher o pedido por si, e é por aí que esta página começa.
 
@@ -53,7 +53,7 @@ A forma mais rápida de preencher um pedido é deixar a HireData lê-lo a partir
     Cole o documento diretamente na caixa. O caminho está etiquetado como "OpenAPI, Swagger, Postman, cURL or markdown", por isso qualquer coisa num desses formatos funciona.
   </Tab>
   <Tab title="Upload file">
-    Escolha o documento a partir do seu computador, para quando o que lhe enviaram não é texto que possa copiar. O caminho está etiquetado como "A specification or collection file".
+    Selecione o documento a partir do seu computador, para quando o que lhe enviaram não é texto que possa copiar. O caminho está etiquetado como "A specification or collection file".
   </Tab>
   <Tab title="From URL">
     Dê à HireData o endereço em que a especificação está publicada e ela obtém o documento por si. O caminho está etiquetado como "Fetch a specification by URL".
@@ -97,7 +97,7 @@ A secção **Response** fica vazia depois disso. Um comando cURL descreve apenas
 
 ### Documentos com mais do que uma operação
 
-Uma especificação normalmente descreve uma API inteira em vez de um único endpoint. Quando o documento que importa contém mais do que uma operação, a HireData mostra-lhe uma lista dos endpoints que ele contém e pergunta qual deles esta tarefa deve chamar, por isso entregar uma especificação completa não é um erro.
+Uma especificação normalmente descreve uma API inteira em vez de um único endpoint. Quando o documento que importa contém mais do que uma operação, a HireData mostra-lhe uma lista dos endpoints que ele contém e pergunta qual deles esta tarefa deve chamar. Por isso, entregar uma especificação completa não é um erro.
 
 Isto depende do documento, não de como o trouxe. A mesma lista de endpoints aparece quer tenha colado a especificação, quer a tenha obtido via **From URL**.
 
@@ -185,7 +185,7 @@ Os campos podem ir para o URL, para os parâmetros, para os headers e para o cor
 
 ## Autenticação
 
-O separador **Auth** é um controlo segmentado com cinco opções: `None`, `API key`, `Bearer token`, `Basic auth` e `OAuth2`. Escolha a que o dono do endpoint lhe disse para usar e os respetivos campos aparecem.
+O separador **Auth** é um controlo segmentado com cinco opções: `None`, `API key`, `Bearer token`, `Basic auth` e `OAuth2`. Selecione a que o dono do endpoint lhe disse para usar e os respetivos campos aparecem.
 
 | Tipo | Campos |
 | --- | --- |

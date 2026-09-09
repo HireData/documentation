@@ -13,8 +13,7 @@ Es ist der Evaluator der Wahl, wenn manche Antworten disqualifizierend sind. Wer
 
 Schalten Sie **Criteria** für das Formular im [Evaluation-Tab](/de/reference/forms/evaluation/overview#enable-order) ein und klicken Sie dann auf **Criteria**, um es zu öffnen. Jede Frage des Formulars erscheint darunter mit einem eigenen Schalter. Eine Frage wird erst geprüft, wenn Sie sie hier einschalten.
 
-![Der geöffnete Criteria-Block, der die Fragen des Formulars mit je einem Schalter auflistet, eine Frage eingeschaltet](/images/forms-builder/evaluation/01-criteria-field-list.png)
-
+<img src="/images/forms-builder/evaluation/01-criteria-field-list.png" alt="Der geöffnete Criteria-Block, der die Fragen des Formulars mit je einem Schalter auflistet, eine Frage eingeschaltet" width="504" />
 ## Einstellungen pro Frage
 
 Schalten Sie eine Frage ein, und ihre Einstellungen öffnen sich.
@@ -24,8 +23,7 @@ Schalten Sie eine Frage ein, und ihre Einstellungen öffnen sich.
 - **What answer(s) do you expect?**, auf der Regelseite, enthält die Bedingungen, die die Antwort erfüllen muss.
 - Das Notizfeld mit der Beschriftung **What should AI look for?**. Es steuert die KI und wird von Regeln ignoriert. Siehe [eine Notiz pro Frage](/de/reference/forms/evaluation/overview#one-note-per-question).
 
-![Eine Yes/No-Frage im Criteria-Block, gesetzt auf Must-have und Use answer rules, mit der erwarteten Antwort Yes](/images/forms-builder/evaluation/02-criteria-rules.png)
-
+<img src="/images/forms-builder/evaluation/02-criteria-rules.png" alt="Eine Yes/No-Frage im Criteria-Block, gesetzt auf Must-have und Use answer rules, mit der erwarteten Antwort Yes" width="488" />
 ### Erwartete Antworten
 
 Eine Bedingung liest sich als `<question> <operator> <value>`. Die Frage ist fest: Eine Regel auf dieser Frage kann nur die Antwort dieser Frage prüfen. Wählen Sie den Operator, dann den Wert.
@@ -54,8 +52,7 @@ Eine File-Upload-Frage bietet über dem Operator eine zweite Auswahl, welcher Te
 
 Wechseln Sie zu **Evaluate with AI**, und die Bedingungen verschwinden. Das Modell erhält die Frage, die Antwort und Ihre Notiz und entscheidet, ob die Antwort die Anforderung erfüllt. Es gibt außerdem einen Begründungssatz zurück, den [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate) unter der Antwort zeigt.
 
-![Eine Long-Text-Frage im Criteria-Block, gesetzt auf Nice-to-have und Evaluate with AI, mit einer Notiz, die der KI sagt, worauf sie achten soll](/images/forms-builder/evaluation/03-criteria-ai.png)
-
+<img src="/images/forms-builder/evaluation/03-criteria-ai.png" alt="Eine Long-Text-Frage im Criteria-Block, gesetzt auf Nice-to-have und Evaluate with AI, mit einer Notiz, die der KI sagt, worauf sie achten soll" width="488" />
 Verwenden Sie KI für Freitext und Dateien, wo der Wortlaut variiert und keine Regel passt. Behalten Sie Regeln für Antworten mit einem festen Wertesatz. Eine Yes/No- oder Auswahlfrage braucht keine Interpretation, und eine Regel ist schneller, günstiger und wiederholbar.
 
 Eine auf KI gestellte [File Upload](/de/reference/forms/fields/file-upload)-Frage sendet den Anhang an das Modell. JPEG-, PNG-, GIF-, WebP- und PDF-Dateien werden gelesen, bis zu fünf Dateien und 10 MB pro Antwort. Alles andere wird allein nach seinem Dateinamen beurteilt.

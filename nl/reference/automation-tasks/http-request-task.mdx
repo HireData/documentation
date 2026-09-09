@@ -7,7 +7,7 @@ keywords: ["http request", "externe api aanroepen", "api-request vanuit automati
 
 _Roep een externe API rechtstreeks vanuit een automatisering aan: importeer een specificatie of bouw het request handmatig op, authenticeer het, beschrijf wat er terugkomt en gebruik die waarden in latere taken._
 
-Een automatisering kan zelf een externe API aanroepen. De **HTTP Request**-taak verstuurt een request naar een adres dat jij kiest, met de authenticatie die dat endpoint verwacht, en maakt de response beschikbaar voor de taken die volgen zodra je beschrijft wat deze bevat. Je hebt geen developer nodig, en er hoeft niets tussenin te zitten.
+Een automatisering kan zelf een externe API aanroepen. De **HTTP Request**-taak verstuurt een request naar een adres dat jij kiest, met de authenticatie die dat endpoint verwacht. De taak maakt de response beschikbaar voor de taken die volgen zodra je beschrijft wat deze bevat. Je hebt geen developer nodig, en er hoeft niets tussenin te zitten.
 
 Als iemand je al een API-specificatie of een cURL-commando heeft gegeven, hoef je die niet over te typen. HireData kan deze lezen en het request voor je invullen, en daar begint deze pagina mee.
 
@@ -53,7 +53,7 @@ De snelste manier om een request in te vullen is HireData het te laten lezen uit
     Plak het document rechtstreeks in het vak. De route is gelabeld "OpenAPI, Swagger, Postman, cURL or markdown", dus alles in een van die formaten werkt.
   </Tab>
   <Tab title="Upload file">
-    Kies het document van je computer, voor wanneer wat je hebt ontvangen geen tekst is die je kunt kopiëren. De route is gelabeld "A specification or collection file".
+    Selecteer het document van je computer, voor wanneer wat je hebt ontvangen geen tekst is die je kunt kopiëren. De route is gelabeld "A specification or collection file".
   </Tab>
   <Tab title="From URL">
     Geef HireData het adres waarop de specificatie is gepubliceerd en het document wordt voor je opgehaald. De route is gelabeld "Fetch a specification by URL".
@@ -97,7 +97,7 @@ De sectie **Response** blijft daarna leeg. Een cURL-commando beschrijft alleen h
 
 ### Documenten met meer dan één operatie
 
-Een specificatie beschrijft meestal een hele API in plaats van een enkel endpoint. Wanneer het document dat je importeert meer dan één operatie bevat, toont HireData je een lijst met de endpoints erin en vraagt welke deze taak moet aanroepen, dus een complete specificatie aanleveren is geen fout.
+Een specificatie beschrijft meestal een hele API in plaats van een enkel endpoint. Wanneer het document dat je importeert meer dan één operatie bevat, toont HireData je een lijst met de endpoints erin en vraagt welke deze taak moet aanroepen. Een complete specificatie aanleveren is dus geen fout.
 
 Dit hangt af van het document, niet van hoe je het hebt aangeleverd. Dezelfde lijst met endpoints verschijnt of je de specificatie nu hebt geplakt of via **From URL** hebt opgehaald.
 
@@ -185,7 +185,7 @@ Velden kunnen in de URL, de parameters, de headers en de body. Elk deel van het 
 
 ## Authenticatie
 
-Het tabblad **Auth** is een segmented control met vijf opties: `None`, `API key`, `Bearer token`, `Basic auth` en `OAuth2`. Kies degene die de eigenaar van het endpoint je heeft opgegeven en de bijbehorende velden verschijnen.
+Het tabblad **Auth** is een segmented control met vijf opties: `None`, `API key`, `Bearer token`, `Basic auth` en `OAuth2`. Selecteer degene die de eigenaar van het endpoint je heeft opgegeven en de bijbehorende velden verschijnen.
 
 | Type | Velden |
 | --- | --- |

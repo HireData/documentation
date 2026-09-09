@@ -13,8 +13,7 @@ Criteria sagt Ihnen, wer raus ist. Scoring sagt Ihnen, wen Sie zuerst anrufen.
 
 Schalten Sie **Scoring** für das Formular ein, und es startet mit drei Bereichen: **Low** bei 0, **Medium** bei 50 und **High** bei 80. Klicken Sie auf **Scoring**, um sie zu öffnen.
 
-![Der geöffnete Scoring-Block mit den Score-Bereichen Low, Medium und High und ihren Mindest-Scores](/images/forms-builder/evaluation/04-scoring-ranges.png)
-
+<img src="/images/forms-builder/evaluation/04-scoring-ranges.png" alt="Der geöffnete Scoring-Block mit den Score-Bereichen Low, Medium und High und ihren Mindest-Scores" width="504" />
 Jeder Bereich hat ein **Label** und einen **Minimum score (%)**. Eine Antwort landet im höchsten Bereich, dessen Minimum sie erreicht: 82 % ist also High und 79 % ist Medium. **Add range** ergänzt einen weiteren, und der Papierkorb entfernt einen. Geben Sie jedem Bereich ein Label und ein anderes Minimum zwischen 0 und 100.
 
 Behalten Sie einen Bereich bei 0. Ein Score unter jedem Minimum bekommt einen Prozentwert und kein Label, was wie ein fehlendes Ergebnis aussieht statt wie ein niedriges.
@@ -28,8 +27,7 @@ Klicken Sie auf **Scoring**, schalten Sie eine Frage ein, und ihre Einstellungen
 - **When should points be awarded?**, auf der Regelseite, enthält eine oder mehrere Regeln.
 - Das Notizfeld mit der Beschriftung **How should AI award points?**.
 
-![Eine Zahlenfrage im Scoring-Block, 20 Punkte wert, mit einer Regel, die 20 Punkte für fünf Jahre oder mehr vergibt, und einer zweiten, die 10 für drei oder mehr vergibt](/images/forms-builder/evaluation/05-scoring-rules.png)
-
+<img src="/images/forms-builder/evaluation/05-scoring-rules.png" alt="Eine Zahlenfrage im Scoring-Block, 20 Punkte wert, mit einer Regel, die 20 Punkte für fünf Jahre oder mehr vergibt, und einer zweiten, die 10 für drei oder mehr vergibt" width="488" />
 ### Regeln
 
 Eine Regel ist ein Satz von Bedingungen plus **How many points should be awarded?**. Eine Bedingung liest sich als `<question> <operator> <value>` und kann nur die Antwort dieser Frage prüfen. **Add condition** ergänzt eine zweite und darüber einen **All**- und **Any**-Umschalter, und **Add rule** ergänzt darunter eine weitere Regel.
@@ -54,8 +52,7 @@ Nur die Fragen, die Sie eingeschaltet und konfiguriert haben, nehmen teil. HireD
 
 Ein Formular mit einer 10-Punkte-Frage und einer 20-Punkte-Frage wird aus 30 bewertet. Verdienen Sie 10 und 20, erreicht die Antwort 100 %.
 
-![Die Scoring-Ergebnisse in Test & Evaluate: ein 100-%-Balken, Points 30 von 30 und die Punkte, die jede Frage verdient hat](/images/forms-builder/testing/07b-test-results-scoring.png)
-
+<img src="/images/forms-builder/testing/07b-test-results-scoring.png" alt="Die Scoring-Ergebnisse in Test & Evaluate: ein 100-%-Balken, Points 30 von 30 und die Punkte, die jede Frage verdient hat" width="650" />
 Eine unbeantwortete Frage bekommt null Punkte und zählt trotzdem ihr Maximum, sodass eine halb ausgefüllte Antwort niedrig abschneidet, statt bei dem gut abzuschneiden, was sie beantwortet hat. Das ist meist genau das, was Sie wollen. Wenn nicht, setzen Sie die bewerteten Fragen früh in das Formular, vor jeden [Logik](/de/reference/forms/logic)-Sprung, der sie überspringen könnte.
 
 Automatisierungen lesen das Ergebnis als `{{form_response.evaluation.scoring.score}}` für den Prozentwert und `{{form_response.evaluation.scoring.band.label}}` für das Bereichs-Label.

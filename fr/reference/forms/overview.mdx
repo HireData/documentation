@@ -1,5 +1,5 @@
 ---
-title: "Vue d'ensemble de l'éditeur de formulaires"
+title: "Form Builder : vue d'ensemble"
 sidebarTitle: "Vue d'ensemble"
 description: "Un tour de l'éditeur de formulaires HireData : les onglets Content, Logic et Evaluation, les panneaux de la barre d'outils, chaque type de champ et les paramètres communs à tous les champs."
 keywords:
@@ -29,16 +29,14 @@ La colonne de droite prévisualise le formulaire, avec ses propres onglets **Int
 
 La barre en haut contient le nom du formulaire et la barre d'outils.
 
-![L'éditeur de formulaires : le nom du formulaire et la barre d'outils en haut, les onglets Content, Logic et Evaluation avec la liste des champs à gauche, et l'Interactive Preview à droite](/images/forms-builder/31-builder-at-a-glance.png)
-
+<img src="/images/forms-builder/31-builder-at-a-glance.png" alt="L'éditeur de formulaires : le nom du formulaire et la barre d'outils en haut, les onglets Content, Logic et Evaluation avec la liste des champs à gauche, et l'Interactive Preview à droite" width="650" />
 ### Onglet Content
 
 L'onglet **Content** contient les champs et leurs paramètres. Cliquez sur un champ pour ouvrir sa carte, et faites-le glisser par la poignée à gauche pour changer l'ordre.
 
 Le bouton **\+** ouvre la palette **Add Content**. Elle regroupe les entrées par catégorie et répète les plus utilisées sous **Recommended**. **Find a field type** permet de rechercher dans la liste.
 
-![La palette Add Content avec sa liste Recommended et les groupes Text, Contact Info, Temporal, Choice, Numeric, Rating, Other et Ending](/images/forms-builder/01-add-content-palette.png)
-
+<img src="/images/forms-builder/01-add-content-palette.png" alt="La palette Add Content avec sa liste Recommended et les groupes Text, Contact Info, Temporal, Choice, Numeric, Rating, Other et Ending" width="650" />
 ### Onglet Logic {#logic-tab}
 
 L'onglet **Logic** décide où un répondant va ensuite. Chaque question reçoit un bouton **Add Rule** et une cible en pied de carte, et une règle se lit `if <field> <operator> <value> then go to <target>`.
@@ -63,8 +61,7 @@ Voir [Aperçus](/fr/reference/forms/testing/previews) et [Test & Evaluate](/fr/r
 
 La barre d'outils s'étend en haut à droite de l'éditeur, de **Save** au menu à trois points.
 
-![La barre d'outils de l'éditeur de formulaires, montrant Save, le bouton d'aperçu, Publish, le sélecteur de marque, les cinq boutons de panneaux et le menu supplémentaire](/images/forms-builder/25-builder-toolbar.png)
-
+<img src="/images/forms-builder/25-builder-toolbar.png" alt="La barre d'outils de l'éditeur de formulaires, montrant Save, le bouton d'aperçu, Publish, le sélecteur de marque, les cinq boutons de panneaux et le menu supplémentaire" width="650" />
 **Save** enregistre vos modifications. Le bouton œil à côté enregistre le formulaire et l'ouvre dans une [fenêtre d'aperçu](/fr/reference/forms/testing/previews#the-preview-window) par-dessus l'éditeur.
 
 **Publish** rend le formulaire disponible pour les répondants. Il affiche **Withdraw** une fois le formulaire publié.
@@ -132,14 +129,12 @@ Les paramètres de texte tels que **Question**, **Description** et les placehold
 
 Redirect URL n'a rien de tout cela. C'est un champ unique pour l'adresse.
 
-![Une carte de champ Dropdown montrant Question, Description, Image, Placeholder, Conversational Button Text, les options avec Add Data Source, les trois interrupteurs d'évaluateurs et un pied de carte indiquant Dropdown, Single Answer et Optional](/images/forms-builder/02-question-card-common-settings.png)
-
+<img src="/images/forms-builder/02-question-card-common-settings.png" alt="Une carte de champ Dropdown montrant Question, Description, Image, Placeholder, Conversational Button Text, les options avec Add Data Source, les trois interrupteurs d'évaluateurs et un pied de carte indiquant Dropdown, Single Answer et Optional" width="540" />
 ## Affichage et exigences {#display-and-requirements}
 
 Le bouton en bas à droite d'une carte de champ ouvre **Display & requirements**. Son libellé vous indique l'état actuel du champ : **Optional**, **Required**, **Hidden** ou **Always included**.
 
-![La fenêtre Display & requirements sur une carte de champ, avec les interrupteurs Hidden, Required et Always include](/images/forms-builder/22-display-and-requirements.png)
-
+<img src="/images/forms-builder/22-display-and-requirements.png" alt="La fenêtre Display & requirements sur une carte de champ, avec les interrupteurs Hidden, Required et Always include" width="550" />
 **Hidden**, « Hide this field from respondents. »
 
 Un champ masqué est sauté lorsque le répondant avance dans le formulaire, et les règles de logique ne peuvent pas y renvoyer. Sa réponse stockée reste disponible pour les automatisations, c'est ainsi que vous faites transiter une valeur telle qu'une référence ou un identifiant à travers un formulaire sans la demander.
@@ -170,8 +165,7 @@ Dans un formulaire conversationnel, **Auto reply (on invalid answer)** est le me
 
 Le panneau **Settings** contrôle l'apparence du formulaire et qui peut y accéder.
 
-![Le panneau Settings avec Make form public, Logo, Alignment, Font Family, Text Color, Scale, les sections Input et Background repliées, Button Text et Border radius](/images/forms-builder/26-settings-drawer.png)
-
+<img src="/images/forms-builder/26-settings-drawer.png" alt="Le panneau Settings avec Make form public, Logo, Alignment, Font Family, Text Color, Scale, les sections Input et Background repliées, Button Text et Border radius" width="420" />
 Le panneau s'ouvre sur **Make form public**, « Public forms can be anonymously answered by anyone with the form's URL. » Laissez-le désactivé et le formulaire ne s'ouvre que pour un répondant à qui vous l'avez envoyé. Les paramètres de thème suivent :
 
 - **Logo**, l'image en haut du formulaire. Elle démarre avec le logo de votre marque, et la croix à côté du libellé la supprime.
@@ -192,8 +186,7 @@ Chaque couleur démarre avec une valeur de la marque sélectionnée, affichée s
 
 Cliquez sur **New Translation** pour en ajouter une. Choisissez la **Language**, puis traduisez à la main ou cliquez sur **Create AI translation**, qui remplit tout le formulaire pour vous.
 
-![Le panneau New Translation avec le néerlandais sélectionné, le bouton Create AI translation, le groupe Settings et le premier champ développé sur Question, Description, Min Label et Max Label](/images/forms-builder/27-translation-editor.png)
-
+<img src="/images/forms-builder/27-translation-editor.png" alt="Le panneau New Translation avec le néerlandais sélectionné, le bouton Create AI translation, le groupe Settings et le premier champ développé sur Question, Description, Min Label et Max Label" width="480" />
 Une traduction couvre trois groupes :
 
 - **Settings**, le **Name** du formulaire, le **Button text**, la ligne **Powered by**, ainsi que le **Upload title** et la **Upload description** d'un téléversement de fichier.
@@ -210,6 +203,5 @@ Cliquez sur **New Form** et une galerie s'ouvre avec **Blank Form** comme premi�
 
 Choisir un modèle copie ses champs dans un nouveau formulaire, et tout dans la copie vous appartient et peut être modifié.
 
-![La boîte de dialogue New Form montrant les filtres de tags Candidate et Contact, la carte Blank Form et les modèles de formulaires de recrutement](/images/forms-builder/28-new-form-templates.png)
-
+<img src="/images/forms-builder/28-new-form-templates.png" alt="La boîte de dialogue New Form montrant les filtres de tags Candidate et Contact, la carte Blank Form et les modèles de formulaires de recrutement" width="650" />
 Si votre compte maintient la bibliothèque de modèles partagée, le bouton **Manage Template** de la barre d'outils transforme le formulaire ouvert en modèle. **Configure Template** demande un **Title**, une **Description** et des **Tags**, propose d'écrire les trois avec l'IA, et place le modèle dans la galerie lorsque vous cliquez sur **Enable**. **Feature Template** le met en avant en haut.

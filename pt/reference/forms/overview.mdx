@@ -1,5 +1,5 @@
 ---
-title: "Visão geral do construtor de formulários"
+title: "Form Builder: Visão geral"
 sidebarTitle: "Visão geral"
 description: "Um tour pelo construtor de formulários da HireData: os separadores Content, Logic e Evaluation, os painéis da barra de ferramentas, todos os tipos de campo e as definições que todos os campos partilham."
 keywords:
@@ -29,16 +29,14 @@ A coluna da direita pré-visualiza o formulário, com os seus próprios separado
 
 A barra ao longo do topo contém o nome do formulário e a barra de ferramentas.
 
-![O construtor de formulários: o nome do formulário e a barra de ferramentas no topo, os separadores Content, Logic e Evaluation com a lista de campos à esquerda, e a Interactive Preview à direita](/images/forms-builder/31-builder-at-a-glance.png)
-
+<img src="/images/forms-builder/31-builder-at-a-glance.png" alt="O construtor de formulários: o nome do formulário e a barra de ferramentas no topo, os separadores Content, Logic e Evaluation com a lista de campos à esquerda, e a Interactive Preview à direita" width="650" />
 ### Separador Content
 
 O separador **Content** contém os campos e as suas definições. Clique num campo para abrir o seu cartão e arraste-o pela pega à esquerda para alterar a ordem.
 
 O botão **\+** abre a paleta **Add Content**. Esta agrupa as entradas por categoria e repete as mais usadas em **Recommended**. **Find a field type** pesquisa a lista.
 
-![A paleta Add Content com a sua lista Recommended e os grupos Text, Contact Info, Temporal, Choice, Numeric, Rating, Other e Ending](/images/forms-builder/01-add-content-palette.png)
-
+<img src="/images/forms-builder/01-add-content-palette.png" alt="A paleta Add Content com a sua lista Recommended e os grupos Text, Contact Info, Temporal, Choice, Numeric, Rating, Other e Ending" width="650" />
 ### Separador Logic {#logic-tab}
 
 O separador **Logic** decide para onde um inquirido vai a seguir. Cada pergunta recebe um botão **Add Rule** e um alvo de rodapé, e uma regra lê-se `if <field> <operator> <value> then go to <target>`.
@@ -63,8 +61,7 @@ Veja [Pré-visualizações](/pt/reference/forms/testing/previews) e [Test & Eval
 
 A barra de ferramentas percorre o canto superior direito do construtor, de **Save** até ao menu de três pontos.
 
-![A barra de ferramentas do construtor de formulários, a mostrar Save, o botão de pré-visualização, Publish, o seletor de marca, os cinco botões de painel e o menu de mais opções](/images/forms-builder/25-builder-toolbar.png)
-
+<img src="/images/forms-builder/25-builder-toolbar.png" alt="A barra de ferramentas do construtor de formulários, a mostrar Save, o botão de pré-visualização, Publish, o seletor de marca, os cinco botões de painel e o menu de mais opções" width="650" />
 **Save** guarda as suas alterações. O botão do olho ao lado guarda o formulário e abre-o numa [janela de pré-visualização](/pt/reference/forms/testing/previews#the-preview-window) sobre o construtor.
 
 **Publish** torna o formulário disponível para os inquiridos. Passa a ler **Withdraw** assim que o formulário está publicado.
@@ -132,14 +129,12 @@ As definições de texto como **Question**, **Description** e os placeholders ac
 
 Redirect URL não tem nada disto. É um campo único para o endereço.
 
-![Um cartão de campo Dropdown a mostrar Question, Description, Image, Placeholder, Conversational Button Text, as opções com Add Data Source, os três interruptores de avaliador e um rodapé a ler Dropdown, Single Answer e Optional](/images/forms-builder/02-question-card-common-settings.png)
-
+<img src="/images/forms-builder/02-question-card-common-settings.png" alt="Um cartão de campo Dropdown a mostrar Question, Description, Image, Placeholder, Conversational Button Text, as opções com Add Data Source, os três interruptores de avaliador e um rodapé a ler Dropdown, Single Answer e Optional" width="540" />
 ## Apresentação e requisitos {#display-and-requirements}
 
 O botão no canto inferior direito de um cartão de campo abre **Display & requirements**. A sua etiqueta indica o estado atual do campo: **Optional**, **Required**, **Hidden** ou **Always included**.
 
-![O popup Display & requirements num cartão de campo, com os interruptores Hidden, Required e Always include](/images/forms-builder/22-display-and-requirements.png)
-
+<img src="/images/forms-builder/22-display-and-requirements.png" alt="O popup Display & requirements num cartão de campo, com os interruptores Hidden, Required e Always include" width="550" />
 **Hidden**, "Hide this field from respondents."
 
 Um campo oculto é saltado à medida que o inquirido avança pelo formulário, e as regras de lógica não podem saltar para ele. A resposta que armazena continua disponível para as automações, e é assim que transporta um valor como uma referência ou um ID através de um formulário sem o pedir.
@@ -170,8 +165,7 @@ Num formulário conversacional, **Auto reply (on invalid answer)** é a mensagem
 
 O painel **Settings** controla o aspeto do formulário e quem lhe pode aceder.
 
-![O painel Settings com Make form public, Logo, Alignment, Font Family, Text Color, Scale, as secções Input e Background recolhidas, Button Text e Border radius](/images/forms-builder/26-settings-drawer.png)
-
+<img src="/images/forms-builder/26-settings-drawer.png" alt="O painel Settings com Make form public, Logo, Alignment, Font Family, Text Color, Scale, as secções Input e Background recolhidas, Button Text e Border radius" width="420" />
 O painel abre com **Make form public**, "Public forms can be anonymously answered by anyone with the form's URL." Deixe-o desligado e o formulário só abre para um inquirido a quem o enviou. Seguem-se as definições de tema:
 
 - **Logo**, a imagem no topo do formulário. Começa como o logótipo da sua marca, e a cruz ao lado da etiqueta remove-o.
@@ -192,8 +186,7 @@ Cada cor começa como um valor da marca selecionada, mostrado como um nome do g�
 
 Clique em **New Translation** para adicionar uma. Escolha o **Language** e depois traduza à mão ou clique em **Create AI translation**, que preenche o formulário inteiro por si.
 
-![O painel New Translation com neerlandês selecionado, o botão Create AI translation, o grupo Settings e o primeiro campo expandido para Question, Description, Min Label e Max Label](/images/forms-builder/27-translation-editor.png)
-
+<img src="/images/forms-builder/27-translation-editor.png" alt="O painel New Translation com neerlandês selecionado, o botão Create AI translation, o grupo Settings e o primeiro campo expandido para Question, Description, Min Label e Max Label" width="480" />
 Uma tradução cobre três grupos:
 
 - **Settings**, o **Name** do formulário, o **Button text**, a linha **Powered by** e o **Upload title** e a **Upload description** de um upload de ficheiros.
@@ -210,6 +203,5 @@ Clique em **New Form** e abre-se uma galeria com **Blank Form** como primeiro ca
 
 Escolher um template copia os seus campos para um novo formulário, e tudo na cópia é seu para alterar.
 
-![A janela New Form a mostrar os filtros de tag Candidate e Contact, o cartão Blank Form e os templates de formulários de recrutamento](/images/forms-builder/28-new-form-templates.png)
-
+<img src="/images/forms-builder/28-new-form-templates.png" alt="A janela New Form a mostrar os filtros de tag Candidate e Contact, o cartão Blank Form e os templates de formulários de recrutamento" width="650" />
 Se a sua conta mantém a biblioteca partilhada de templates, o botão **Manage Template** na barra de ferramentas transforma o formulário aberto num template. **Configure Template** pede um **Title**, uma **Description** e **Tags**, oferece-se para escrever os três com IA e coloca o template na galeria quando clica em **Enable**. **Feature Template** promove-o ao topo.

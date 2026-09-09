@@ -13,9 +13,9 @@ Lorsqu'un profil est synchronisé depuis Carerix, HireData vérifie s'il existe 
 - `pasfoto`
 - `emaillogo`
 
-Le système évalue également le libellé de la pièce jointe. La correspondance est insensible à la casse, donc toute variation de casse (par exemple, `PasFoto`, `PASfoto`, `EmailLogo`) est prise en charge.
+HireData évalue également le libellé de la pièce jointe. La correspondance est insensible à la casse, donc toute variation de casse (par exemple, `PasFoto`, `PASfoto`, `EmailLogo`) est prise en charge.
 
-Si plusieurs pièces jointes valides existent, HireData les évalue selon un ordre de priorité fixe. Dans cet ordre, la pièce jointe la plus récemment modifiée est considérée en premier.
+Si plusieurs pièces jointes valides existent, HireData les évalue selon un ordre de priorité fixe. Dans cet ordre, HireData considère en premier la pièce jointe la plus récemment modifiée.
 
 ## Priorité de sélection de l'avatar utilisateur
 
@@ -23,12 +23,12 @@ HireData détermine l'avatar en utilisant la priorité suivante :
 
 ### 1. Logo e-mail avec le libellé « emailpasfoto »
 
-La première priorité est donnée à une pièce jointe où :
+HireData donne la première priorité à une pièce jointe où :
 
 - La valeur du type est `emaillogo`
 - Le libellé est `emailpasfoto`
 
-Si une telle pièce jointe existe et contient un contenu exploitable, elle est utilisée comme avatar.
+Si une telle pièce jointe existe et contient un contenu exploitable, HireData l'utilise comme avatar.
 
 ### 2. Photo de profil avec le libellé « pasfoto »
 
@@ -37,7 +37,7 @@ Si aucune correspondance n'est trouvée à l'étape 1, HireData recherche :
 - Valeur de type `pasfoto`
 - Libellé `pasfoto`
 
-Si elle est trouvée et valide, cette image est utilisée.
+Si elle est trouvée et valide, HireData utilise cette image.
 
 ### 3. Toute pièce jointe de type « pasfoto »
 
@@ -57,11 +57,11 @@ Le libellé n'a pas besoin de correspondre.
 
 ## Quand une photo ou un logo est-il affiché ?
 
-Une image est affichée comme avatar lorsqu'une **pièce jointe correspondante est trouvée** selon la priorité ci-dessus, et qu'une image valide est disponible pour être utilisée comme avatar de l'utilisateur.
+HireData affiche une image comme avatar lorsqu'il trouve une **pièce jointe correspondante** selon la priorité ci-dessus et qu'une image valide est disponible pour être utilisée comme avatar de l'utilisateur.
 
 ## Quand les initiales sont-elles affichées ?
 
-Les initiales sont affichées lorsque :
+HireData affiche les initiales lorsque :
 
 - Aucune pièce jointe de type `pasfoto` et/ou `emaillogo` n'existe
 - Une pièce jointe correspondante existe mais ne contient pas de contenu exploitable

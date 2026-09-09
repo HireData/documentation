@@ -13,12 +13,10 @@ Gebruik het telkens wanneer je een evaluator wijzigt. Een rule die er op de kaar
 
 Het tabblad toont elke vraag behalve de endings, als een compacte invoer. Badges achter het vraaglabel zeggen wat de evaluatoren ermee gaan doen: **Must** of **Nice** van [Criteria](/nl/reference/forms/evaluation/criteria), en één badge per skill die de vraag voedt.
 
-![Drie vragen in Test & Evaluate, één met de badges Must en Availability, één met de badge Nice](/images/forms-builder/testing/06-test-answers.png)
-
+<img src="/images/forms-builder/testing/06-test-answers.png" alt="Drie vragen in Test & Evaluate, één met de badges Must en Availability, één met de badge Nice" width="560" />
 Typ de antwoorden zelf, of laat de AI ze schrijven. **Autofill with AI** vult elke vraag in één keer, en de chevron ernaast kiest het soort respondent om na te bootsen.
 
-![De Autofill with AI-knop met het menu open, met Random answers, Ideal candidate, Borderline candidate, Unqualified candidate en Partially completed](/images/forms-builder/testing/05-test-scenarios.png)
-
+<img src="/images/forms-builder/testing/05-test-scenarios.png" alt="De Autofill with AI-knop met het menu open, met Random answers, Ideal candidate, Borderline candidate, Unqualified candidate en Partially completed" width="230" />
 - **Random answers** is plausibel maar ongeïnformeerd. Goed voor een eerste blik.
 - **Ideal candidate** antwoordt zoals iemand die aan elk criterium voldoet.
 - **Borderline candidate** mikt op het midden, en daar wordt een scoringsfout zichtbaar.
@@ -37,14 +35,12 @@ De evaluatie draait vanzelf zodra er een antwoord is, en opnieuw even nadat je e
 
 De resultaten verschijnen onder de antwoorden, te beginnen met één paneel per evaluator die je aanzette. Elk paneel toont het hoofdresultaat, en op een paneel klikken opent het detail eronder.
 
-![De resultaten van een run met een ideale kandidaat: Meets criteria, 100% High, Availability op 66,67%, het criteria-detail per vraag, de samenvatting en de generated fields](/images/forms-builder/testing/07-test-results.png)
-
+<img src="/images/forms-builder/testing/07-test-results.png" alt="De resultaten van een run met een ideale kandidaat: Meets criteria, 100% High, Availability op 66,67%, het criteria-detail per vraag, de samenvatting en de generated fields" width="650" />
 **Criteria** groepeert de vragen onder **Must-have** en **Nice-to-have**, met een vinkje of een kruisje, het antwoord en het verwachte antwoord waar je er een schreef. Een door AI beoordeelde vraag draagt een AI-chip en de redenering van één regel van het model, en dat is de snelste manier om te zien of jouw notitie aankwam.
 
 **Scoring** toont het percentage, de puntentelling en wat elke vraag verdiende van zijn eigen maximum.
 
-![Het Scoring-paneel: een balk van 100%, Points 30 van 30, en 10 en 20 punten van de twee gescoorde vragen](/images/forms-builder/testing/07b-test-results-scoring.png)
-
+<img src="/images/forms-builder/testing/07b-test-results-scoring.png" alt="Het Scoring-paneel: een balk van 100%, Points 30 van 30, en 10 en 20 punten van de twee gescoorde vragen" width="650" />
 **Skills** toont een balk per skill. **Summary** en **Generated fields** staan onder de panelen, zodat ze in beeld blijven welk detail je ook open hebt.
 
 Een grijs **No result yet** is wat de panelen tonen voordat je een antwoord invoert. Blijft er een grijs na een run, dan had die evaluator niets om mee te werken. De gebruikelijke oorzaak is een vraag die aan staat zonder geschreven rules, waardoor de evaluator geen vraag heeft om te beoordelen.
@@ -53,8 +49,7 @@ Een grijs **No result yet** is wat de panelen tonen voordat je een antwoord invo
 
 **Automation variables** onderaan somt elke waarde op die deze respons beschikbaar maakt voor een automatisering, met de variabele om te kopiëren en het resultaat uit de run voor je neus.
 
-![De lijst Automation variables, met de variabelen voor criteria, score, scorebereik, primaire skill en samenvatting met hun waarden](/images/forms-builder/testing/08-automation-variables.png)
-
+<img src="/images/forms-builder/testing/08-automation-variables.png" alt="De lijst Automation variables, met de variabelen voor criteria, score, scorebereik, primaire skill en samenvatting met hun waarden" width="650" />
 Dit is de lijst om een automatisering tegenaan te bouwen. `passed` lezen naast `{{form_response.evaluation.screening}}` vertelt je de exacte waarde om mee te vergelijken, en gokken doet dat niet. Zie [Variabelen](/nl/variables/introduction).
 
 ## Wat het niet doet

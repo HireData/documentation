@@ -13,9 +13,9 @@ Wanneer een profiel wordt gesynchroniseerd vanuit Carerix, controleert HireData 
 - `pasfoto`
 - `emaillogo`
 
-Het systeem beoordeelt ook het label van de bijlage. Matching is niet-hoofdlettergevoelig, dus elke variatie in hoofdlettergebruik (bijvoorbeeld `PasFoto`, `PASfoto`, `EmailLogo`) wordt ondersteund.
+HireData beoordeelt ook het label van de bijlage. Matching is niet-hoofdlettergevoelig, dus elke variatie in hoofdlettergebruik (bijvoorbeeld `PasFoto`, `PASfoto`, `EmailLogo`) wordt ondersteund.
 
-Als er meerdere geldige bijlagen bestaan, evalueert HireData ze in een vaste prioriteitsvolgorde. Binnen die volgorde wordt de meest recent gewijzigde bijlage als eerste beschouwd.
+Als er meerdere geldige bijlagen bestaan, evalueert HireData ze in een vaste prioriteitsvolgorde. Binnen die volgorde beschouwt HireData de meest recent gewijzigde bijlage als eerste.
 
 ## Prioriteit bij selectie van gebruikersavatar
 
@@ -23,12 +23,12 @@ HireData bepaalt de avatar op basis van de volgende prioriteit:
 
 ### 1. Email logo met label "emailpasfoto"
 
-De eerste prioriteit gaat naar een bijlage waarbij:
+HireData geeft de eerste prioriteit aan een bijlage waarbij:
 
 - Type-waarde is `emaillogo`
 - Label is `emailpasfoto`
 
-Als een dergelijke bijlage bestaat en bruikbare inhoud bevat, wordt deze als avatar gebruikt.
+Als een dergelijke bijlage bestaat en bruikbare inhoud bevat, gebruikt HireData deze als avatar.
 
 ### 2. Profielfoto met label "pasfoto"
 
@@ -37,7 +37,7 @@ Als er in stap 1 geen match wordt gevonden, controleert HireData op:
 - Type-waarde `pasfoto`
 - Label `pasfoto`
 
-Indien gevonden en geldig, wordt deze afbeelding gebruikt.
+Indien gevonden en geldig, gebruikt HireData deze afbeelding.
 
 ### 3. Elke bijlage met type "pasfoto"
 
@@ -57,11 +57,11 @@ Het label hoeft niet overeen te komen.
 
 ## Wanneer wordt een foto of logo weergegeven?
 
-Een afbeelding wordt als avatar weergegeven wanneer een **overeenkomende bijlage wordt gevonden** op basis van bovenstaande prioriteit, en er een geldige afbeelding beschikbaar is om als avatar van de gebruiker te gebruiken.
+HireData geeft een afbeelding als avatar weer wanneer het een **overeenkomende bijlage** vindt op basis van bovenstaande prioriteit en er een geldige afbeelding beschikbaar is om als avatar van de gebruiker te gebruiken.
 
 ## Wanneer worden initialen weergegeven?
 
-Initialen worden getoond wanneer:
+HireData toont initialen wanneer:
 
 - Er geen bijlage met type `pasfoto` en/of `emaillogo` bestaat
 - Er een overeenkomende bijlage bestaat maar geen bruikbare inhoud bevat

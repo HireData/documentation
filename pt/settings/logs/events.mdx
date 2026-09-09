@@ -7,7 +7,7 @@ _Quando liga o seu ATS, como Carerix, Salesforce, OTYS, etc., à HireData, ele c
 
 ## O que é um event
 
-Um event é um sinal enviado da sua app ligada para a HireData. Normalmente representa uma ação ou alteração específica, por exemplo, um novo candidato ser criado, uma vaga ser atualizada, uma colocação ser concluída, etc. Estes events são usados para acionar as automações que configurou na HireData, e cada event inclui **Event Data**, **External Records** e **Runs.**
+Um event é um sinal enviado da sua app ligada para a HireData. Normalmente representa uma ação ou alteração específica, por exemplo, um novo candidato ser criado, uma vaga ser atualizada, uma colocação ser concluída, etc. A HireData usa estes events para acionar as automações que configurou, e cada event inclui **Event Data**, **External Records** e **Runs.**
 
 _Exemplo de event:_
 
@@ -51,7 +51,7 @@ Se um event não acionar uma automação como esperado, ou um run falhar antes d
 
 ### O que acontece quando um event é reproduzido?
 
-A HireData reprocessa o(s) event(s) selecionado(s) e aciona as automações associadas. As tarefas afetadas serão executadas como se o event tivesse acabado de ocorrer.
+A HireData reprocessa o(s) event(s) selecionado(s) e aciona as automações associadas. A HireData executa as tarefas afetadas como se o event tivesse acabado de ocorrer.
 
 - **Automações baseadas em events** – Para automações que são acionadas por um event específico (por exemplo, um candidato a atingir uma determinada fase), o replay irá reacionar a automação imediatamente com base nos dados do event. Se houve anteriormente um run criado, este será reproduzido e aparecerá uma etiqueta "Replay".
 

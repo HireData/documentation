@@ -24,14 +24,12 @@ Het tabblad **Logic** zit boven de veldenlijst, tussen **Content** en **Evaluati
 
 Endings staan onder de scheiding **Endings** en krijgen geen van beide. Er volgt niets na een ending, dus een rule erop zou nergens naartoe kunnen wijzen.
 
-![Het Logic-tabblad met vier vragen, elk met een Add Rule-knop en een Always go to-target, dan de Endings-scheiding en een ending zonder beide](/images/forms-builder/32-logic-tab.png)
-
+<img src="/images/forms-builder/32-logic-tab.png" alt="Het Logic-tabblad met vier vragen, elk met een Add Rule-knop en een Always go to-target, dan de Endings-scheiding en een ending zonder beide" width="520" />
 ## Anatomie van een rule
 
 Een rule leest als `if <question> <operator> <value> then go to <field>`.
 
-![Een logic rule op een Net Promoter Score-vraag: als de score kleiner dan of gelijk aan 7 is, ga naar de vervolgvraag, met All other cases go to naar de ending](/images/forms-builder/04-logic-rule-and-fallback.png)
-
+<img src="/images/forms-builder/04-logic-rule-and-fallback.png" alt="Een logic rule op een Net Promoter Score-vraag: als de score kleiner dan of gelijk aan 7 is, ga naar de vervolgvraag, met All other cases go to naar de ending" width="484" />
 - **if** start de conditie. De vraagkiezer biedt deze vraag en de vragen erboven, nooit een latere en nooit een ending, zodat een rule geen antwoord kan lezen dat nog niemand heeft gegeven.
 - De operatorlijst komt van het type van de vraag. Zie [Operators per veldtype](#operators).
 - Het waardevak bevat waar de operator mee vergelijkt. **has response** vergelijkt niets, dus daar verschijnt geen vak naast.
@@ -68,42 +66,36 @@ De vijfde rij is degene die mensen verrast. Date-, Time-, Datetime- en File Uplo
 
 Het alledaagse geval. Eén optie leidt ergens heen waar de andere niet heen leiden.
 
-![Een rule op een Multiple Choice-vraag: als het antwoord Yes, by email is, ga naar de e-mailvraag, met All other cases go to naar de ending](/images/forms-builder/15-logic-choice-branch.png)
-
+<img src="/images/forms-builder/15-logic-choice-branch.png" alt="Een rule op een Multiple Choice-vraag: als het antwoord Yes, by email is, ga naar de e-mailvraag, met All other cases go to naar de ending" width="484" />
 Multiple Choice en Dropdown zijn de enige typen die **is one of** bieden, en het waardevak ervan neemt meerdere opties tegelijk. Drie antwoorden die allemaal naar dezelfde vervolgvraag leiden zijn één rule, niet drie.
 
 ### Vertakken op een Yes/No
 
 Dezelfde vorm, twee antwoorden. Het waardevak biedt Yes en No.
 
-![Een rule op een Yes/No-vraag: als het antwoord Yes is, ga naar de regiovraag, met All other cases go to naar de ervaringsvraag](/images/forms-builder/17-logic-yes-no.png)
-
+<img src="/images/forms-builder/17-logic-yes-no.png" alt="Een rule op een Yes/No-vraag: als het antwoord Yes is, ga naar de regiovraag, met All other cases go to naar de ervaringsvraag" width="499" />
 ### Een vervolgvraag alleen stellen wanneer de vorige vraag is beantwoord
 
 **has response** is de operator voor optionele vragen. Hij matcht wat het antwoord ook was, zolang er maar een is.
 
-![Een rule op een File Upload-vraag: als hij has response heeft, ga naar de ending, met All other cases go to naar de redirect](/images/forms-builder/20-logic-file-has-response.png)
-
+<img src="/images/forms-builder/20-logic-file-has-response.png" alt="Een rule op een File Upload-vraag: als hij has response heeft, ga naar de ending, met All other cases go to naar de redirect" width="484" />
 ### Twee antwoorden tegelijk vereisen
 
 **Add Condition** zet beide condities in één rule, en beide moeten matchen.
 
-![Een rule met twee condities: de tevredenheidsrating is 4 of hoger en het rijbewijsantwoord is Yes, ga dan naar de ending](/images/forms-builder/19-logic-two-conditions.png)
-
+<img src="/images/forms-builder/19-logic-two-conditions.png" alt="Een rule met twee condities: de tevredenheidsrating is 4 of hoger en het rijbewijsantwoord is Yes, ga dan naar de ending" width="499" />
 Een vraag die de respondent nooit heeft bereikt heeft geen antwoord, dus een conditie die haar leest kan niet matchen en de hele rule blijft stil.
 
 ### Verschillende respondenten naar verschillende endings sturen
 
 Wijs met de rule naar de ene ending en met het footer-target naar de andere.
 
-![Een rule op een Dropdown-vraag die North naar de bedank-ending stuurt, met All other cases go to naar een redirect-ending](/images/forms-builder/18-logic-two-endings.png)
-
+<img src="/images/forms-builder/18-logic-two-endings.png" alt="Een rule op een Dropdown-vraag die North naar de bedank-ending stuurt, met All other cases go to naar een redirect-ending" width="484" />
 ### Een blok vragen overslaan
 
 Een vraag zonder rules kan nog steeds springen. Stel **Always go to** in en iedereen die haar beantwoordt landt op dezelfde latere vraag, wat ze ook zeiden.
 
-![Een vraag zonder rules, met Always go to wijzend naar een vraag verderop in het formulier](/images/forms-builder/16-logic-always-go-to.png)
-
+<img src="/images/forms-builder/16-logic-always-go-to.png" alt="Een vraag zonder rules, met Always go to wijzend naar een vraag verderop in het formulier" width="484" />
 ## Verplichte vragen en logica
 
 Een verplichte vraag moet worden beantwoord voordat de respondent verder kan, wat betekent dat haar rules pas draaien zodra er een antwoord te testen is.
@@ -123,6 +115,6 @@ Werk deze lijst af wanneer een rule niets doet, of mensen ergens heen stuurt waa
 
 ## Gerelateerd
 
-- [Overzicht van de formulierbuilder](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
+- [Form Builder: Overzicht](/nl/reference/forms/overview) behandelt de builder, de gedeelde instellingen en elk veldtype.
 - [Objects](/nl/reference/forms/objects) en [Data sources](/nl/reference/forms/data-sources) behandelen de records en lijsten waar een formulier uit kan putten.
 - [Een formulier maken in HireData](/nl/content/creating-a-form-in-hiredata) brengt één formulier van blanco naar gepubliceerd.

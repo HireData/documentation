@@ -13,8 +13,7 @@ C'est l'évaluateur à privilégier quand certaines réponses sont éliminatoire
 
 Activez **Criteria** pour le formulaire dans l'[onglet Evaluation](/fr/reference/forms/evaluation/overview#enable-order), puis cliquez sur **Criteria** pour l'ouvrir. Chaque question du formulaire apparaît en dessous avec son propre interrupteur. Une question n'est vérifiée que lorsque vous l'activez ici.
 
-![Le bloc Criteria ouvert, listant les questions du formulaire avec un interrupteur chacune et une question activée](/images/forms-builder/evaluation/01-criteria-field-list.png)
-
+<img src="/images/forms-builder/evaluation/01-criteria-field-list.png" alt="Le bloc Criteria ouvert, listant les questions du formulaire avec un interrupteur chacune et une question activée" width="504" />
 ## Paramètres par question
 
 Activez une question et ses paramètres s'ouvrent.
@@ -24,8 +23,7 @@ Activez une question et ses paramètres s'ouvrent.
 - **What answer(s) do you expect?**, côté règles, contenant les conditions que la réponse doit satisfaire.
 - La zone de note, libellée **What should AI look for?**. Elle guide l'IA et est ignorée par les règles. Voir [une note par question](/fr/reference/forms/evaluation/overview#one-note-per-question).
 
-![Une question Yes/No dans le bloc Criteria, réglée sur Must-have et Use answer rules, attendant la réponse Yes](/images/forms-builder/evaluation/02-criteria-rules.png)
-
+<img src="/images/forms-builder/evaluation/02-criteria-rules.png" alt="Une question Yes/No dans le bloc Criteria, réglée sur Must-have et Use answer rules, attendant la réponse Yes" width="488" />
 ### Réponses attendues
 
 Une condition se lit `<question> <opérateur> <valeur>`. La question est fixe : une règle sur cette question ne peut tester que la réponse de cette question. Choisissez l'opérateur, puis la valeur.
@@ -54,8 +52,7 @@ Une question File Upload propose un second sélecteur au-dessus de l'opérateur,
 
 Passez sur **Evaluate with AI** et les conditions disparaissent. Le modèle reçoit la question, la réponse et votre note, et décide si la réponse satisfait l'exigence. Il renvoie aussi une phrase de raisonnement, que [Test & Evaluate](/fr/reference/forms/testing/test-and-evaluate) affiche sous la réponse.
 
-![Une question de texte long dans le bloc Criteria, réglée sur Nice-to-have et Evaluate with AI, avec une note disant à l'IA quoi chercher](/images/forms-builder/evaluation/03-criteria-ai.png)
-
+<img src="/images/forms-builder/evaluation/03-criteria-ai.png" alt="Une question de texte long dans le bloc Criteria, réglée sur Nice-to-have et Evaluate with AI, avec une note disant à l'IA quoi chercher" width="488" />
 Utilisez l'IA pour le texte libre et les fichiers, où la formulation varie et où aucune règle ne convient. Gardez les règles pour les réponses à ensemble fixe de valeurs. Une question Yes/No ou à choix ne demande aucune interprétation, et une règle est plus rapide, moins chère et répétable.
 
 Une question [File Upload](/fr/reference/forms/fields/file-upload) réglée sur l'IA envoie la pièce jointe au modèle. Les fichiers JPEG, PNG, GIF, WebP et PDF sont lus, jusqu'à cinq fichiers et 10 Mo par réponse. Tout le reste est jugé sur son seul nom de fichier.
