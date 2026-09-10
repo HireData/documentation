@@ -1,0 +1,84 @@
+---
+title: "How mapped values update Carerix fields"
+sidebarTitle: "Mapped and empty values"
+description: "Understand how Carerix updates handle missing form answers, null AI outputs, explicit clearing, and dropdown fields."
+---
+
+Use **Update Field(s)** to write form answers, AI outputs, or other automation data into Carerix. The task appears as **Update Match in Carerix**, **Update Candidate in Carerix**, or another name depending on the object you select.
+
+The result depends on the destination field and the value available when the task runs.
+
+## How mapping works
+
+First, choose how HireData should find the Carerix record, such as matching its ID. Then select the fields to update and assign a value to each field.
+
+A mapped value is resolved when the automation runs. For example, a mapping can use a candidate's answer to a question or a stage returned by an AI evaluation.
+
+For setup instructions, see [Update fields in Carerix](/apps/carerix/update-fields-in-carerix-with-hiredata).
+
+## What happens when a value is missing?
+
+For ordinary text and number fields, additional-information custom fields, and **Match: Stage**, a mapped value that resolves to null or an empty string is skipped. The existing Carerix value stays unchanged.
+
+This can happen when:
+
+- A form question was not asked.
+- A candidate did not answer a question.
+- An AI output deliberately returns null.
+
+A missing value in one of these mappings does not itself fail the task. Other populated fields can still be updated.
+
+### Example: an unanswered NPS question
+
+You map an experience-rating question to the custom field **Match: NPS Rating**.
+
+If the candidate answers, HireData sends the answer to Carerix. If the answer resolves to null, HireData omits that custom-field update. Any existing rating remains unchanged.
+
+### Example: preserving the current match stage
+
+You map an AI output named **Match: Stage (Filtered)** to **Match: Stage**.
+
+Your evaluation returns a stage when there is enough information to choose one. For an incomplete conversation, it returns null.
+
+When the output is null, HireData skips the stage update. The match stays in its current stage, while other populated mappings can still update.
+
+## Missing values and the Empty option
+
+A missing mapped value and explicitly selecting **Empty** represent different intentions:
+
+| Configuration | Intention |
+| --- | --- |
+| A mapped answer or AI output returns null | No new value is available. |
+| You select **Empty** | Request removal of the existing value. |
+
+Use **Empty** only when you intend to clear a field that supports clearing. Leaving a source unanswered is not a reliable way to request a clear.
+
+Clearing support depends on the Carerix field. Do not assume that every field, including **Match: Stage**, can be cleared.
+
+## Exception: some Carerix dropdown fields
+
+<Warning>
+Some Carerix dropdown fields use a different relation type internally, called `CRDataNode`. For these fields, the current integration converts a missing mapped value into a request to clear the selection.
+</Warning>
+
+**Match: Stage does not use this relation type.** Additional-information custom fields also follow the custom-field behavior described above.
+
+Because dropdown labels vary between Carerix environments, the label alone does not tell you which behavior applies. If you need to preserve a dropdown's current value when an answer is missing, ask support to confirm its field type before enabling the mapping.
+
+## Text combined with mapped values
+
+HireData checks the resolved value as a whole.
+
+For example, a field containing:
+
+**Summary:** [mapped summary]
+
+still contains the text "Summary:" when the mapped summary is missing. The resulting value is not empty and can overwrite the existing Carerix text.
+
+Use a single mapped value when you want the entire field update to be skipped if that value is missing.
+
+## Does a completed task mean every field changed?
+
+No. A task can complete while skipping missing values. It can also send a value that is already present in Carerix.
+
+Check the relevant field and run details when confirming an update. A Carerix error needs separate investigation; unanswered questions alone do not establish its cause.
