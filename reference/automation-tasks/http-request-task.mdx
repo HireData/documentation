@@ -7,7 +7,7 @@ keywords: ["http request", "call an external api", "api request from automation"
 
 _Call an external API straight from an automation: import a specification or build the request by hand, authenticate it, describe what comes back, and use those values in later tasks._
 
-An automation can call an external API by itself. The **HTTP Request** task sends a request to an address you choose, with the authentication that endpoint expects, and makes the response available to the tasks that follow once you describe what it contains. You don't need a developer, and you don't need anything sitting in between.
+An automation can call an external API by itself. The **HTTP Request** task sends a request to an address you choose, with the authentication that endpoint expects. It makes the response available to the tasks that follow once you describe what it contains. You don't need a developer, and you don't need anything sitting in between.
 
 If someone already handed you an API specification or a cURL command, you don't have to retype it. HireData can read it and fill the request in for you, which is where this page starts.
 
@@ -53,7 +53,7 @@ The fastest way to fill in a request is to let HireData read it from a document 
     Paste the document straight into the box. The route is labelled "OpenAPI, Swagger, Postman, cURL or markdown", so anything in one of those formats works.
   </Tab>
   <Tab title="Upload file">
-    Choose the document from your computer, for when what you were sent isn't text you can copy. The route is labelled "A specification or collection file".
+    Select the document from your computer, for when what you were sent isn't text you can copy. The route is labelled "A specification or collection file".
   </Tab>
   <Tab title="From URL">
     Give HireData the address the specification is published at and it retrieves the document for you. The route is labelled "Fetch a specification by URL".
@@ -97,7 +97,7 @@ The **Response** section stays empty afterwards. A cURL command describes only t
 
 ### Documents with more than one operation
 
-A specification usually describes a whole API rather than a single endpoint. When the document you import contains more than one operation, HireData shows you a list of the endpoints in it and asks which one this task should call, so handing over a complete specification is not a mistake.
+A specification usually describes a whole API rather than a single endpoint. When the document you import contains more than one operation, HireData shows you a list of the endpoints in it and asks which one this task should call. So handing over a complete specification is not a mistake.
 
 This depends on the document, not on how you brought it in. The same list of endpoints appears whether you pasted the specification or fetched it **From URL**.
 
@@ -185,7 +185,7 @@ Fields can go into the URL, the parameters, the headers, and the body. Any part 
 
 ## Authentication
 
-The **Auth** tab is a segmented control with five options: `None`, `API key`, `Bearer token`, `Basic auth`, and `OAuth2`. Choose the one the endpoint's owner told you to use and its fields appear.
+The **Auth** tab is a segmented control with five options: `None`, `API key`, `Bearer token`, `Basic auth`, and `OAuth2`. Select the one the endpoint's owner told you to use and its fields appear.
 
 | Type | Fields |
 | --- | --- |

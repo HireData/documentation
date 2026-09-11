@@ -13,9 +13,9 @@ When a profile is synced from Carerix, HireData checks whether there are attachm
 - `pasfoto`
 - `emaillogo`
 
-The system also evaluates the attachment label. Matching is case-insensitive, so any casing variation (for example, `PasFoto`, `PASfoto`, `EmailLogo`) is supported.
+HireData also evaluates the attachment label. Matching is case-insensitive, so any casing variation (for example, `PasFoto`, `PASfoto`, `EmailLogo`) is supported.
 
-If multiple valid attachments exist, HireData evaluates them in a fixed priority order. Within that order, the most recently modified attachment is considered first.
+If multiple valid attachments exist, HireData evaluates them in a fixed priority order. Within that order, HireData considers the most recently modified attachment first.
 
 ## User avatar selection priority
 
@@ -23,12 +23,12 @@ HireData determines the avatar using the following priority:
 
 ### 1. Email logo with label "emailpasfoto"
 
-First priority is given to an attachment where:
+HireData gives first priority to an attachment where:
 
 - Type value is `emaillogo`
 - Label is `emailpasfoto`
 
-If such an attachment exists and contains usable content, it is used as the avatar.
+If such an attachment exists and contains usable content, HireData uses it as the avatar.
 
 ### 2. Profile photo with label "pasfoto"
 
@@ -37,7 +37,7 @@ If no match is found in step 1, HireData checks for:
 - Type value `pasfoto`
 - Label `pasfoto`
 
-If found and valid, this image is used.
+If found and valid, HireData uses this image.
 
 ### 3. Any attachment with type "pasfoto"
 
@@ -57,11 +57,11 @@ The label does not need to match.
 
 ## When is a photo or logo displayed?
 
-An image is displayed as the avatar when a **matching attachment is found** based on the priority above, and a valid image is available to be used as the user's avatar.
+HireData displays an image as the avatar when it finds a **matching attachment** based on the priority above and a valid image is available to use as the user's avatar.
 
 ## When are initials displayed?
 
-Initials are shown when:
+HireData shows initials when:
 
 - No attachment with type `pasfoto` and/or `emaillogo` exists
 - A matching attachment exists but does not contain usable content

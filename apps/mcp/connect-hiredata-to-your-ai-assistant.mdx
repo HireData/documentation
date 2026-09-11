@@ -81,7 +81,7 @@ A common setup: set read-only tools to **Always allow** so Claude can look thing
 
 ### Step 4: Use it in a chat
 
-In a conversation, click the **\+** button, choose **Connectors**, and make sure **HireData** is enabled. Then just ask — for example: _"Create a candidate NPS email template in our brand style and send me a test."_
+In a conversation, click the **\+** button, select **Connectors**, and make sure **HireData** is enabled. Then just ask. For example: _"Create a candidate NPS email template in our brand style and send me a test."_
 
 ## Connect from ChatGPT
 
@@ -98,7 +98,7 @@ Custom MCP connections are available on ChatGPT paid plans (Plus, Pro, Business,
    - **Name**: `HireData`
    - **Type**: **Streamable HTTP**
    - **URL**: `https://api.hiredata.com/mcp`
-4. Leave the token and header fields empty — HireData uses OAuth sign-in — and click **\[Save\]**.
+4. Leave the token and header fields empty (HireData uses OAuth sign-in) and click **\[Save\]**.
 
 ![ChatGPT's custom MCP form filled in for HireData](/images/mcp/chatgpt-custom-mcp-form.png)
 
@@ -123,9 +123,9 @@ Since Google's MCP support is evolving quickly, check Google's documentation for
 
 The consumer Copilot app does not support custom MCP connections yet. Microsoft currently offers them through Copilot Studio:
 
-1. In **Microsoft Copilot Studio**, open your agent's **Tools** page and choose **Add a tool** \> **New tool** \> **Model Context Protocol**.
+1. In **Microsoft Copilot Studio**, open your agent's **Tools** page and select **Add a tool** \> **New tool** \> **Model Context Protocol**.
 2. Enter a name and description (the agent uses the description to decide when to call HireData), and the server URL: `https://api.hiredata.com/mcp`
-3. Choose **OAuth 2.0** authentication with **Dynamic discovery**, create the connection, and add the tool to the agent.
+3. Select **OAuth 2.0** authentication with **Dynamic discovery**, create the connection, and add the tool to the agent.
 4. Publish the agent; users sign in to HireData with their own account on first use, with the same workspace selection and permissions as other assistants.
 
 Agents built this way can be made available in Microsoft 365 Copilot. Copilot Studio requires appropriate licensing, and MCP connections are subject to your organisation's Power Platform data policies. Check Microsoft's documentation for current availability.

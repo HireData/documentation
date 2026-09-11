@@ -8,7 +8,7 @@ When you connect your ATS (such as Carerix, Salesforce, or OTYS) to HireData, it
 
 ## What is an event
 
-An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. These events are used to trigger the automations you've set up in HireData, and every event includes **Event Data**, **External Records and Runs.**
+An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. HireData uses these events to trigger the automations you've set up, and every event includes **Event Data**, **External Records and Runs.**
 
 _Event example:_
 
@@ -54,7 +54,7 @@ If an event doesn't trigger an automation as expected, or a run fails before com
 
 ### What happens when an event is replayed?
 
-HireData reprocesses the selected event(s) and triggers the associated automations. The affected tasks will be executed as if the event had just occurred.
+HireData reprocesses the selected event(s) and triggers the associated automations. HireData executes the affected tasks as if the event had just occurred.
 
 - **Event-based automations** – For automations that are triggered by a specific event (for example, a candidate reaching a certain stage), the replay will re-trigger the automation immediately based on the event data. If there was previously a created run, it will be replayed and a "Replay" label will show up.
 
@@ -120,7 +120,7 @@ If no run was created, the event may not have met the criteria of an active auto
 
 ### Still need help?
 
-If you're unsure why an event didn't trigger your automation or want help interpreting the event data, feel free to contact our team at [support@hiredata.com](mailto:support@hiredata.com). If you do, please include:
+If you're unsure why an event didn't trigger your automation or want help interpreting the event data, feel free to contact our team at [support@hiredata.com](mailto:support@hiredata.com). If you do, include:
 
 - A link or the ID of the event;
 - A link or the name of the automation you expected to be triggered;

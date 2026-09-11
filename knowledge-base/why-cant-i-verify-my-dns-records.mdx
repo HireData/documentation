@@ -8,7 +8,7 @@ _You're trying to verify your domain in HireData, but clicking **Verify DNS** re
 
 ## Why this happens
 
-DNS records for your domain are created by the email service behind the Email app. As long as the Email app is not installed, there is no email service connected to your account yet, so HireData cannot generate or verify DNS records, and the **Verify DNS** button on the **Domains** page will return a 404 error or no response.
+The email service behind the Email app creates the DNS records for your domain. As long as the Email app is not installed, there is no email service connected to your account yet, so HireData cannot generate or verify DNS records. The **Verify DNS** button on the **Domains** page then returns a 404 error or no response.
 
 Installing the Email app first resolves this.
 
@@ -33,7 +33,7 @@ If you chose HireData's email service, select the **region** where your email da
 
 ## Step 4: Generate and add your DNS records
 
-Now that the Email app is installed, return to the [**Domains**](https://app.hiredata.com/settings/account/domains) page in your settings. The DNS records for your domain can now be generated.
+Now that the Email app is installed, return to the [**Domains**](https://app.hiredata.com/settings/account/domains) page in your settings. You can now generate the DNS records for your domain.
 
 Add these records to your domain provider (e.g., GoDaddy, Cloudflare, Namecheap). If someone else manages your domain, use the **Send To Coworker** button to email the records directly to the right person.
 
@@ -44,7 +44,7 @@ For a full walkthrough of this part of the process, see [How to Verify a Domain 
 Once the DNS records have been added, click the **Verify DNS** button on the **Domains** page. The 404 error should now be gone, and your domain will be verified as soon as the records have propagated.
 
 <Warning>
-  DNS changes can take some time to propagate — from a few minutes up to 24–48 hours, depending on your provider. If verification doesn't succeed right away, allow some time and try again.
+  DNS changes can take from a few minutes up to 24–48 hours to propagate, depending on your provider. If verification doesn't succeed right away, allow some time and try again.
 </Warning>
 
 Still running into issues after installing the Email app and adding the DNS records? Reach out to us at [support@hiredata.com](mailto:support@hiredata.com). We're happy to help.

@@ -13,8 +13,7 @@ It is the evaluator to reach for when some answers are disqualifying. A candidat
 
 Switch **Criteria** on for the form in the [Evaluation tab](/reference/forms/evaluation/overview#enable-order), then click **Criteria** to open it. Every question in the form appears underneath with a switch of its own. A question is only checked once you switch it on here.
 
-![The Criteria block open, listing the form's questions with a switch each and one question switched on](/images/forms-builder/evaluation/01-criteria-field-list.png)
-
+<img src="/images/forms-builder/evaluation/01-criteria-field-list.png" alt="The Criteria block open, listing the form's questions with a switch each and one question switched on" width="504" />
 ## Settings per question
 
 Switch a question on and its settings open.
@@ -24,8 +23,7 @@ Switch a question on and its settings open.
 - **What answer(s) do you expect?**, on the rules side, holding the conditions the answer has to satisfy.
 - The note box, labelled **What should AI look for?**. It steers the AI and is ignored by rules. See [one note per question](/reference/forms/evaluation/overview#one-note-per-question).
 
-![A Yes/No question in the Criteria block, set to Must-have and Use answer rules, expecting the answer Yes](/images/forms-builder/evaluation/02-criteria-rules.png)
-
+<img src="/images/forms-builder/evaluation/02-criteria-rules.png" alt="A Yes/No question in the Criteria block, set to Must-have and Use answer rules, expecting the answer Yes" width="488" />
 ### Expected answers
 
 A condition reads `<question> <operator> <value>`. The question is fixed: a rule on this question can only test this question's answer. Pick the operator, then the value.
@@ -54,8 +52,7 @@ A File Upload question offers a second picker above the operator, for which part
 
 Switch to **Evaluate with AI** and the conditions disappear. The model gets the question, the answer, and your note, and decides whether the answer meets the requirement. It also returns a sentence of reasoning, which [Test & Evaluate](/reference/forms/testing/test-and-evaluate) shows under the answer.
 
-![A long text question in the Criteria block, set to Nice-to-have and Evaluate with AI, with a note telling the AI what to look for](/images/forms-builder/evaluation/03-criteria-ai.png)
-
+<img src="/images/forms-builder/evaluation/03-criteria-ai.png" alt="A long text question in the Criteria block, set to Nice-to-have and Evaluate with AI, with a note telling the AI what to look for" width="488" />
 Use AI for free text and files, where the wording varies and no rule fits. Keep rules for answers with a fixed set of values. A Yes/No or a choice question needs no interpretation, and a rule is faster, cheaper, and repeatable.
 
 A [File Upload](/reference/forms/fields/file-upload) question set to AI sends the attachment to the model. JPEG, PNG, GIF, WebP, and PDF files are read, up to five files and 10 MB per response. Anything else is judged on its file name alone.
