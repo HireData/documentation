@@ -17,7 +17,7 @@ The panel lists the objects already linked to this form, then **Available object
 <img src="/images/forms-builder/23-objects-panel-linked.png" alt="The Objects panel with Vacancy expanded to its Label, Key, Required, and Remove controls, Match below it, and the Available objects list underneath" width="460" />
 ## What linking an object gives you
 
-Every field on the linked record becomes a variable. You can write it into any text setting the form has, including the question, the description, a placeholder, and an option label, so a question can open with the job title rather than "this role".
+Every field on the linked record becomes a variable. You can write it into any text setting the form has, including the question, the description, a placeholder, and an option label, so a question can open with the job title rather than "this role". In the builder the variable shows as a badge such as **Vacancy: Job Title**.
 
 The variable list in the toolbar shows them all. Each one is named after the object's label and addressed by its key.
 
@@ -33,7 +33,7 @@ Click a linked object to open it.
 - **Label** names the object in the variable list, which is where "Vacancy: Job Title" comes from. Change it whenever you like.
 - **Key** is the first part of the variable itself, as in `{{job.jobTitle}}`. HireData sets the key when you link the object and locks it afterwards, so pick the object you want rather than planning to rename it later.
 - **Required** decides what happens when nothing supplies a record. See [What Required does](#required).
-- **Remove** unlinks the object. Its variables stop resolving, so check every question that used one.
+- **Remove** unlinks the object. Its variables stop resolving and every badge that used one turns orange, so check every question that used one.
 - The up and down arrows move the object through the list. Which object sits at the top changes what the form can do, so read [The first object decides the configuration](#first-object) before you use them.
 
 ## The first object decides the configuration {#first-object}
@@ -46,7 +46,7 @@ Reordering the list therefore changes more than the panel. Read [Configuring a f
 
 **Required** matters when an automation sends the form. If the run has no record for a required object, the task fails and nothing goes out, which is better than sending a form whose questions have gaps where the job title should be.
 
-The form's own page is more forgiving. Open a public form with nothing supplying the record and it still loads. Every variable from that object resolves to nothing.
+The form's own page is more forgiving. Open a public form with nothing supplying the record and it still loads. Every variable from that object resolves to nothing, unless it carries a `default` modifier. See [Fallback](/variables/modifiers#fallback).
 
 Turn **Required** off for an object that only adds context, such as a match the form can do without.
 

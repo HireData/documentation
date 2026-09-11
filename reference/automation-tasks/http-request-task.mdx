@@ -177,7 +177,7 @@ There are two ways to insert one:
 - The **field picker** beside a **Value**, which lists what's available
 - Typing `{{` in the input itself. The picker opens as soon as you type it, and what you type between the braces searches the list, which is quicker when you already know roughly what the field is called
 
-Either way the field is stored as a `{{field_key}}` token, which is what you'll see if you look at a value you've already filled in.
+Either way the field is stored as a `{{field_key}}` expression and shown as a badge with the field's name, such as **Form: Id**. Hover it for the field's default value and any [modifiers](/variables/modifiers). A key the automation no longer offers turns the badge orange.
 
 Fields can go into the URL, the parameters, the headers, and the body. Any part of the request can change from run to run.
 
@@ -287,7 +287,7 @@ The inputs start from what the task is already configured to send. Anything you 
 Two kinds of input come up blank:
 
 - A parameter with no configured value. Path parameters are usually in this group, since they come from `{placeholder}` segments in the URL rather than from a row you typed a value into.
-- A value bound to an automation field, unless that field happens to have a default value. The token is resolved against that default, and most fields carrying run data don't have one.
+- A value bound to an automation field, unless that field happens to have a default value. The badge is resolved against that default, and most fields carrying run data don't have one.
 
 Type a literal into whatever's blank. The binding itself is unaffected. It still applies when the automation runs.
 
