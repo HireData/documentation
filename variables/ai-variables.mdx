@@ -107,7 +107,7 @@ The instruction alone is rarely enough. The model needs the record. There are tw
 
 ### Inline in the prompt
 
-Type `{{` anywhere in the **Input** box and a picker appears, listing every variable available to this template with its key and its type. Keep typing to filter, then select one to insert it:
+Type `{{` anywhere in the **Input** box and a picker appears, listing every variable available to this template with its key and its type. Keep typing to filter, then select one to insert it. It appears as a badge with the field's name, and hovering it shows the value.
 
 <Frame>
   ![Ai Variable Prompt Variable Picker 1](/images/ai-variable-prompt-variable-picker-1.png "Ai Variable Prompt Variable Picker 1")
@@ -119,7 +119,7 @@ So a birthday wish that greets the recipient by name reads:
 Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
 ```
 
-Each token is replaced with that recipient's value before the instruction reaches the model, so for Sofia the model is asked for a wish _for Sofia_ rather than for `{{recipient.first_name}}`.
+Each badge is replaced with that recipient's value before the instruction reaches the model, so for Sofia the model is asked for a wish _for Sofia_ rather than for `{{recipient.first_name}}`. An orange badge is a key HireData does not recognise. It reaches the model as the raw key, so fix it before you save.
 
 ### The Variables tab
 

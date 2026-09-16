@@ -24,6 +24,36 @@ The spaces inside the braces are optional:
 
 - `{{candidate.first_name}}` and `{{ candidate.first_name }}` behave the same.
 
+## How a variable looks in the editor
+
+Every editor that accepts variables shows each one as a badge with the field's display name, such as **Recipient: First Name**. The badge is one object on the canvas, not the characters it stands for.
+
+<img src="/images/email-builder/24-variable-badges.png" alt="Four badges in an email paragraph: Recipient: First Name, Recipient: First Name with a wand icon and a 3, a tinted 'text' badge with a wand icon, and an orange documentation_missing_key badge with a warning icon" width="608" />
+
+- A variable with modifiers adds a wand icon, and a count once there are two or more.
+- A [literal](/variables/modifiers#literals) such as `{{ "text" | uppercase }}` gets a tinted badge.
+- A key HireData does not recognise gets an orange warning badge.
+
+### The popover
+
+<img src="/images/email-builder/21-variable-popover.png" alt="An email paragraph with four badges, Recipient: First Name, Recipient: First Name with a wand icon and a 3, a tinted text badge, and an orange documentation_missing_key badge, and a popover open under the second badge with Input Callum, Lowercase, Capitalise words, Use a fallback there, and Output Callum" width="616" />
+
+Hover a badge to see what it holds: the field's description and options when it has them, its current value, and each modifier in plain language with the result at the end. The popover also copies the expression and links to this page.
+
+The value depends on where you are. The form builder and the email builder show HireData's sample value for the field. A record's **Forms** tab shows that record's value. An automation step shows the field's default value, because no run has happened yet.
+
+### When a variable is not found
+
+A key HireData does not recognise becomes an orange badge, and its popover reads **Variable is not found**. The expression stays in your content unchanged, so fix the key or remove the badge. A variable you delete from a template's **Variables** list turns into this badge everywhere you used it.
+
+<img src="/images/email-builder/23-variable-not-found.png" alt="An orange badge reading documentation_missing_key with a triangle icon, and its popover repeating the key above a line reading Variable is not found" width="616" />
+
+### Editing a badge
+
+Place the cursor after a badge and press Backspace. The badge turns back into text, `{{` and the full expression, modifiers included. Edit it, type the closing `}}`, and the badge returns. The same works for a form reference written as `@key@`.
+
+You can also type an expression from scratch, modifiers and all. It becomes a badge as soon as you type the closing braces.
+
 ## Where you can use variables
 
 You can use variables anywhere you write content that gets sent or stored:
