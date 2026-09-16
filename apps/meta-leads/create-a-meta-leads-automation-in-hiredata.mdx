@@ -1,0 +1,87 @@
+---
+title: "Create a Meta Leads automation in HireData"
+sidebarTitle: "Create an automation"
+description: "Use a new Meta lead to find a vacancy and create a Carerix job application, with field mapping, testing, and troubleshooting."
+---
+
+Turn a new Meta lead into a job application in Carerix:
+
+**Meta lead received → find the vacancy → add the job application**
+
+This guide uses the Carerix flow. A **candidate** is the person; a **match** connects that candidate to a specific vacancy. Creating the match is part of this workflow.
+
+## Before you start
+
+- [Connect Meta Leads](/apps/meta-leads/connect-with-meta-leads) and confirm that the Page and form are available.
+- Connect Carerix to HireData.
+- Collect first and last names separately and include an email address in the lead form.
+- Add a form parameter containing the vacancy identifier used in your Carerix lookup.
+- Decide which match stage, match source, and candidate owner to use. Make sure those values exist in Carerix.
+
+You can start from the [Meta Lead Created to Job Application template](https://api.hiredata.com/templates/meta-lead-created-to-job-application/use) or configure the steps below.
+
+## 1. Configure the trigger
+
+Create a new automation and select **Meta Leads** as the starting app.
+
+Set the object to **Lead** and the event to **Created**. Choose the connection, Facebook Page, and form for the campaign.
+
+Start with a specific form so you can check its fields and mappings before extending the setup to other campaigns.
+
+## 2. Find the vacancy
+
+Add a **Find** step for **Vacancy** in Carerix. Match the vacancy identifier against the parameter received from the Meta form.
+
+Use the value from the lead rather than a fixed vacancy if the workflow handles campaigns for different jobs. Check that the lookup returns the intended vacancy before continuing.
+
+## 3. Add the job application
+
+Add the Carerix **Job Application** action. Configure the vacancy and candidate lookup, then map the incoming values:
+
+| Setting | Value to use |
+| --- | --- |
+| Vacancy | The vacancy identified by the form parameter. |
+| Candidate lookup | The email address received from the lead. |
+| Match stage | Your chosen entry stage for Meta applications. |
+| Match source | Your configured source for Meta campaigns. |
+| Candidate first and last name | The separate name fields from the lead. |
+| Candidate email and mobile number | The corresponding lead fields. |
+| Candidate owner | The recruiter responsible for the candidate. |
+
+Choose the fields available in your selected form. Custom questions differ between forms; do not assume a mapping for one form covers another.
+
+<Note>
+This Carerix flow creates a match for a vacancy. It is not a candidate-only import. Keep candidate details separate from application-specific fields such as match stage and source.
+</Note>
+
+## 4. Test the complete flow
+
+Use a controlled lead with contact details you own. Follow [How to test an automation](/automations/how-to-test-an-automation) and check the run details.
+
+Verify that:
+
+- The lead belongs to the configured Page and form.
+- The vacancy lookup returns the correct job.
+- The candidate lookup uses the expected email address.
+- The job application links the correct candidate and vacancy.
+- The name, email, mobile number, owner, match stage, and source are correct.
+
+Review the result in Carerix as well as in HireData. A successful trigger does not mean every destination field is correct.
+
+## 5. Activate and monitor
+
+Activate the automation after the test produces the expected result. Check the first live submissions and their Carerix matches to confirm that the campaign uses the same fields as your test.
+
+## Troubleshooting
+
+| Problem | What to check |
+| --- | --- |
+| No run appears | The selected Page/form and the Meta connection's access to lead data. |
+| The vacancy cannot be found | The form parameter's value and the identifier used by the lookup. |
+| Candidate fields are empty | The submitted answers and the mapped fields, especially separate first and last names. |
+| The job application fails | The vacancy lookup, required fields, and configured Carerix stage, source, and owner. |
+| A different candidate is linked | The submitted email and the candidate lookup configuration. Correct the lookup before rerunning. |
+
+## Next step
+
+Use [WhatsApp follow-up](/apps/meta-leads/enriching-meta-leads-via-whatsapp) to collect missing information after the lead has been linked to the right candidate and vacancy.
