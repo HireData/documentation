@@ -1,0 +1,96 @@
+---
+title: "Enrich Meta Leads with a WhatsApp follow-up"
+sidebarTitle: "Follow up on WhatsApp"
+description: "Follow up on a Meta lead with a WhatsApp conversation, collect missing candidate details, and map the answers back to your ATS."
+---
+
+Keep your Meta lead form short, then use a WhatsApp conversation to collect the information a recruiter needs next.
+
+For example, a warehouse campaign might collect contact details first and ask about availability and preferred location during the follow-up.
+
+**Meta lead → Carerix job application → WhatsApp conversation → update candidate fields**
+
+## Before you start
+
+You need:
+
+- A working [Meta Leads automation](/apps/meta-leads/create-a-meta-leads-automation-in-hiredata).
+- A [WhatsApp connection](/apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up) with the sending number available in HireData.
+- An approved message template, synced to HireData.
+- A form containing the questions you want to ask.
+- A clear mapping from the answers to the candidate fields you want to update.
+
+## 1. Establish the candidate and application
+
+Complete the Meta-to-Carerix flow first. It finds the vacancy and adds the job application, linking the candidate to that vacancy.
+
+Use this candidate and application context for the follow-up. If you configure a separate automation triggered by a Carerix match, filter it to the source and stage used for these Meta applications.
+
+<Note>
+A candidate may have several applications. Use the relevant match for vacancy context and the candidate's identifier for updates to their profile.
+</Note>
+
+## 2. Prepare a short form
+
+Create a form with only the information still needed. For example:
+
+- When are you available to start?
+- Which work location do you prefer?
+- Do you hold the licence required for this role?
+
+Choose questions relevant to the vacancy. See [How to use forms in WhatsApp conversations](/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) for form setup and answer mapping.
+
+## 3. Configure the conversation
+
+Configure the **Start a Conversation** task:
+
+| Setting | What to choose |
+| --- | --- |
+| Sending number | Your connected WhatsApp Business number. |
+| Recipient | The candidate associated with the Meta application. |
+| Message template | An approved, synced template explaining who you are and which application the message concerns. |
+| Form | The short follow-up form. |
+| Briefing | The purpose of the conversation, the questions to collect, and when to refer the candidate to a recruiter. |
+| Knowledge | Relevant context such as the candidate's name, vacancy, location, and recruiter. |
+
+Keep the introduction specific to the person's enquiry. For example: “Thanks for your interest in the warehouse role in Utrecht. We're contacting you from Example Recruitment to ask a few follow-up questions.”
+
+Use your actual business and role details in the approved template. See [How WhatsApp templates work](/apps/messaging/whatsapp/how-whatsapp-templates-work) for approval and syncing.
+
+## 4. Map the answers back
+
+Add **Update field(s)** after the conversation. Select the candidate object and use the candidate's ID to target the correct record.
+
+Map each answer to the intended field—for example, the availability answer to the candidate's availability date. Check that dates, choices, and text answers fit the destination field types.
+
+Do not treat a profile update as a change to every application the person has. If you need to update a match, target that specific match separately.
+
+## 5. Apply WhatsApp messaging requirements
+
+Under the [WhatsApp Business Messaging Policy](https://business.whatsapp.com/policy), recipients must have supplied their mobile number and opted in to subsequent messages from your business. A lead submission alone is not blanket permission for unrelated outreach.
+
+Start the business-initiated follow-up with an approved template. Free-form replies are allowed within 24 hours of the user's last WhatsApp message; outside that window, use approved templates. Submitting a Meta lead form does not itself open that WhatsApp window.
+
+Respect opt-outs and provide a clear way to reach a person. Keep follow-ups relevant and avoid repeated messages when the candidate does not respond.
+
+## 6. Test the candidate journey
+
+Use contact details you own and [test the automation](/automations/how-to-test-an-automation). Testing with a user can send real messages.
+
+Check the complete journey:
+
+1. Submit the Meta form.
+2. Confirm that the intended candidate and vacancy are linked in Carerix.
+3. Verify the sender, recipient, template, and vacancy details in the WhatsApp message.
+4. Answer the form questions.
+5. Check that the answers reach the correct candidate fields.
+6. Test an incomplete response and confirm that useful existing values are not unintentionally replaced.
+
+Activate the follow-up after these checks pass.
+
+## Troubleshooting
+
+- **Template missing:** Check its approval status and sync the WhatsApp account in HireData.
+- **Wrong recipient or vacancy:** Review the candidate ID and match context used by the conversation task.
+- **Answers are not saved:** Check the update task's object, identifier, and field mappings.
+- **Multiple follow-ups:** Review overlapping triggers and filters, especially if separate automations listen for both match creation and updates.

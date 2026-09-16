@@ -1,0 +1,69 @@
+---
+title: "Connect with Meta Leads"
+sidebarTitle: "Connect Meta Leads"
+description: "Connect Meta lead forms to HireData, prepare your form fields, and check that the right Facebook Page and forms are available."
+---
+
+Connect Meta Leads to HireData to start an automation when someone submits a lead form from a Facebook or Instagram campaign. After connecting, choose which Page and form the automation should listen to.
+
+## Before you start
+
+You need:
+
+- Access to manage connections in HireData.
+- A personal Facebook account linked to the business that manages the relevant Page.
+- Access to that Page and its lead data.
+- A lead form to use for setup and testing.
+
+If you manage several businesses or Pages, check which one owns the form before connecting.
+
+## Connect your account
+
+1. Open **Settings → Configuration → Apps** in HireData or Carerix RMA.
+2. Select **Meta Leads**, then **New connection**.
+3. Sign in with the personal Facebook account linked to the relevant business.
+4. Follow Meta's connection flow and grant access to the business assets needed for your Page and leads.
+5. Complete the flow and return to HireData.
+
+## Prepare your lead form
+
+Include the fields your destination workflow needs. For the Carerix job application flow:
+
+| Form value | How it is used |
+| --- | --- |
+| First name and last name, collected separately | Populate the candidate's name fields. |
+| Email address | Look up the candidate in Carerix. |
+| Phone number | Populate the candidate's mobile number and support a later follow-up. |
+| Vacancy identifier in a form parameter | Find the vacancy the candidate should be matched to. |
+
+Use the vacancy identifier expected by your Carerix lookup. Check it against an existing vacancy before testing.
+
+<Note>
+The documented Carerix integration creates a job application, called a **match** in Carerix. Plan the vacancy, match stage, and match source as part of your setup.
+</Note>
+
+## Check your Page and form
+
+Create an automation with **Meta Leads** as the starting app and **Lead → Created** as the trigger. Select your connection, Facebook Page, and form.
+
+If the Page or form is missing, check that it belongs to the business you connected and that the Facebook account has access to its leads. If you recently changed permissions, reconnect and check the selection again.
+
+## Verify the connection
+
+Continue with [Create a Meta Leads automation](/apps/meta-leads/create-a-meta-leads-automation-in-hiredata) to configure the destination tasks and submit a controlled test lead.
+
+Check that the received data contains the expected names, email address, phone number, and vacancy parameter. A connected account alone does not verify that the full automation works.
+
+## Troubleshooting
+
+### A form field or parameter is missing
+
+Confirm that it exists on the selected form and contains a value in your test submission. Refresh the form selection and allow time for recent changes to become available.
+
+### Leads from one form arrive, but others do not
+
+Compare the Page and form that produced each lead with the trigger's configuration. Test every form you intend to use; forms with different questions may need different mappings.
+
+### You still cannot receive a test lead
+
+Contact HireData support with the Page and form identifiers, the submission time and time zone, and any connection or run error. These details help support trace the event.
