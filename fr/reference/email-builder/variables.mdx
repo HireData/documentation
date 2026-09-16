@@ -1,13 +1,13 @@
 ---
 title: "Variables"
 sidebarTitle: "Variables"
-description: "Personnalisez un e-mail HireData avec des variables : le sélecteur, où elles fonctionnent, en ajouter une à vous, ce qu'un destinataire voit quand une valeur manque, et les valeurs de repli."
+description: "Personnalisez un e-mail HireData avec des variables : le sélecteur, où elles fonctionnent dans un e-mail, ajouter les vôtres, lier des enregistrements, et ce qu'un destinataire voit quand une valeur manque."
 keywords: ["variables d'e-mail", "sélecteur de variables", "balises de fusion", "personnalisation", "valeur par défaut", "valeur de repli", "variable personnalisée", "variable IA", "objets"]
 ---
 
 Une variable est un espace réservé que HireData remplit au moment où l'e-mail part. Écrivez `{{recipient.first_name}}` une fois et chaque destinataire lit son propre nom.
 
-L'éditeur d'e-mails affiche une variable sous forme de pastille portant son libellé, pas sa valeur. `{{recipient.first_name}}` s'affiche **Recipient: First Name** dans le canevas, et la pastille se comporte comme un objet unique plutôt que comme les caractères qu'elle remplace.
+L'éditeur d'e-mails affiche une variable sous forme de badge portant son libellé, pas sa valeur. `{{recipient.first_name}}` s'affiche **Recipient: First Name** dans le canevas, et le badge se comporte comme un objet unique plutôt que comme les caractères qu'il remplace. Survolez-le pour voir la valeur qu'il contient. Voir [Variables](/fr/variables/introduction) pour le badge, son popover et la façon de le modifier.
 
 ## Insérer une variable
 
@@ -15,9 +15,9 @@ Tapez `{{` et un sélecteur s'ouvre sous le curseur. Chaque ligne donne le libel
 
 Continuez à taper pour affiner la liste. La recherche est indulgente. Tapez `frist` et **Recipient: First Name** apparaît quand même.
 
-![Le champ Subject avec une pastille de variable et un jeton partiellement tapé à la fin, et le sélecteur en dessous listant Recipient: Last Name et Sender: Last Name avec leurs clés et leurs types](/images/email-builder/10-variable-picker.png)
+![Le champ Subject avec un badge de variable et un jeton partiellement tapé à la fin, et le sélecteur en dessous listant Recipient: Last Name et Sender: Last Name avec leurs clés et leurs types](/images/email-builder/10-variable-picker.png)
 
-Appuyez sur Entrée ou cliquez sur une ligne et le jeton se transforme en pastille.
+Appuyez sur Entrée ou cliquez sur une ligne et le jeton se transforme en badge. Vous pouvez aussi taper l'expression entière à la main, modificateurs compris. Elle devient un badge dès que vous tapez les `}}` de fermeture.
 
 ## Où les variables fonctionnent
 
@@ -46,7 +46,7 @@ Le **+** à côté du champ de recherche ouvre un dialogue **Variables** : vos *
 
 Choisissez un type et quatre paramètres s'ouvrent à côté.
 
-- **Name** est ce que la pastille affiche dans le canevas.
+- **Name** est ce que le badge affiche dans le canevas.
 - **Default value** est ce que HireData écrit quand rien d'autre ne fournit de valeur. La commande correspond au type que vous avez choisi.
 - **Reference as** est la clé que vous tapez entre les accolades. Elle se remplit d'elle-même à partir du nom.
 - **What is it for?** est une note facultative pour la personne qui ouvrira le modèle après vous.
@@ -58,7 +58,7 @@ Choisissez un type et quatre paramètres s'ouvrent à côté.
 Une variable à vous prouve son utilité quand une même valeur a sa place à plusieurs endroits. Mettez votre numéro de téléphone dans une variable `{{phone}}` et écrivez-la dans la signature, le pied de page et le corps, et changer le numéro ensuite est une seule modification au lieu de trois.
 
 <Warning>
-  Supprimer une variable ne la retire pas de l'e-mail. Chaque pastille qui l'utilisait redevient du texte brut `{{key}}` et reste où elle est, donc la clé part avec ses accolades visibles. Supprimez la variable, puis retrouvez chaque endroit où vous l'avez utilisée.
+  Supprimer une variable ne la retire pas de l'e-mail. Chaque badge qui l'utilisait devient orange, et la clé part avec ses accolades visibles. Supprimez la variable, puis retrouvez chaque badge orange et retirez-le ou remplacez-le.
 </Warning>
 
 <Note>
@@ -71,40 +71,24 @@ Le bouton en forme de base de données dans la barre d'outils ouvre **Objects**,
 
 [Objets](/fr/reference/forms/objects) explique ce qu'est un objet et ce que le lier fait. La page est écrite pour l'éditeur de formulaires, qui propose plus de paramètres par objet, mais les enregistrements et leurs clés sont les mêmes.
 
-## Ce que voit réellement un destinataire {#what-a-recipient-actually-sees}
+## Valeurs manquantes {#missing-values}
 
-Trois choses peuvent arriver à un jeton, et une seule est celle que vous vouliez.
+Trois choses peuvent arriver à une variable au moment où l'e-mail part, et une seule est celle que vous vouliez.
 
 - **La variable se résout.** HireData a une valeur et l'écrit.
 - **La variable se résout en rien.** Le destinataire n'a pas de numéro de téléphone enregistré, donc `{{recipient.phone_number}}` sort comme un espace vide. « Appelez-nous au . » est la façon classique dont cela se manifeste.
 - **La variable n'existe pas.** HireData laisse une clé qu'il ne reconnaît pas exactement telle que vous l'avez tapée. Le destinataire lit `{{recipient.favourite_biscuit}}`, accolades comprises.
 
-L'éditeur vous dit vers lequel des trois vous vous dirigez. Une clé qu'il reconnaît devient une pastille. Une clé qu'il ne reconnaît pas reste en texte brut, accolades visibles, et atteint la boîte de réception ainsi.
-
-La seule exception est un jeton portant un [modificateur](#giving-a-variable-a-fallback). Celui-là reste en texte brut même quand la clé est bonne, parce que le sélecteur n'insère jamais qu'une clé nue. Des accolades dans le canevas signifient donc l'une de deux choses : une variable que vous avez mal écrite, ou un modificateur qui fonctionne comme prévu.
+L'éditeur vous dit vers lequel des trois vous vous dirigez. Survolez un badge pour voir la valeur qu'il contient, et guettez un badge orange, qui est une clé que HireData ne reconnaît pas. Ajoutez un modificateur `default` pour couvrir les deuxième et troisième cas avec vos propres mots. [Variables](/fr/variables/introduction) explique le badge et son popover, et [Modificateurs](/fr/variables/modifiers#valeur-de-repli) explique la valeur de repli.
 
 <Warning>
-  Un jeton collé depuis ailleurs est la source habituelle du troisième cas. Collez-le, puis vérifiez qu'il s'est transformé en pastille.
+  Un jeton collé depuis ailleurs est la source habituelle du troisième cas. Collez-le, puis vérifiez que le badge n'est pas orange.
 </Warning>
-
-## Donner une valeur de repli à une variable {#giving-a-variable-a-fallback}
-
-Ajoutez le modificateur `default` et HireData utilise vos mots au lieu de laisser un vide.
-
-```text
-Hi {{ recipient.first_name | default: "there" }},
-```
-
-Il se déclenche dans les deux cas d'échec ci-dessus : quand la valeur est vide, et quand la clé n'existe pas du tout. L'e-mail ci-dessus se lit « Hi Sofia, » pour Sofia et « Hi there, » pour toute personne dont le prénom manque.
-
-Vous ne pouvez pas modifier une pastille. C'est un objet unique dans le canevas plutôt que les caractères qu'elle remplace, donc il n'y a nulle part où placer un modificateur. Tapez plutôt le jeton entier à la main, accolades comprises, et laissez le sélecteur s'ouvrir et se refermer autour de vous. Ce que vous avez tapé reste en texte brut au lieu de devenir une pastille, et c'est à ça que ressemble un modificateur correct. Relisez-le dans l'aperçu.
-
-`default` fait partie d'une longue liste. Voir [Modificateurs](/fr/variables/modifiers) pour le reste, et pour en enchaîner plusieurs.
 
 ## Voir aussi
 
 - [Tester](/fr/reference/email-builder/testing) est l'endroit où découvrir en quoi vos variables se résolvent.
-- [Variables](/fr/variables/introduction) couvre la syntaxe `{{ }}` dans les formulaires, les messages et les automatisations comme dans l'e-mail.
+- [Variables](/fr/variables/introduction) couvre la syntaxe `{{ }}`, le badge et son popover dans les formulaires, les messages et les automatisations comme dans l'e-mail.
 - [Modificateurs](/fr/variables/modifiers) liste tout ce que vous pouvez faire à une valeur en route vers l'e-mail.
 - [Variables IA](/fr/variables/ai-variables) calculent une valeur par destinataire au lieu d'en chercher une.
 - [Objets](/fr/reference/forms/objects) couvre les enregistrements dont les champs deviennent des variables.

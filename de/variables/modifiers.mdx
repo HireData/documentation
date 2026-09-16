@@ -39,11 +39,37 @@ Argumente können sein:
   Klammern angezeigt.
 </Tip>
 
+## Wie das Popover Modifiers zeigt
+
+Im Editor behält eine Variable mit Modifiers ihren Anzeigenamen und ergänzt ein Zauberstab-Symbol. Fahren Sie mit der Maus über das Badge, und das Popover führt durch die Pipeline: den Eingabewert, eine Karte pro Modifier in einfacher Sprache und die Ausgabe. `lowercase` erscheint als **Lowercase**, `truncate_chars` als **Limit characters**, und Argumente stehen unter dem Namen des Modifiers.
+
+<img src="/images/forms-builder/37-variable-popover.png" alt="Das Description-Feld einer Formularfrage mit vier Badges und einem darüber geöffneten Popover mit der Überschrift Name und Karten mit Input NPS required question, Lowercase, Capitalise words, Use a fallback Your form und Output Nps Required Question" width="573" />
+
+<Note>
+  Manche Modifiers lassen sich nicht in der Vorschau anzeigen. Ihre Karte bleibt mit einem Hinweis in der Pipeline, und die Ausgabe entfällt. Der Modifier läuft trotzdem, wenn der Inhalt gesendet wird.
+</Note>
+
+Das Popover ist schreibgeschützt. Wie Sie den Ausdruck ändern, steht in [Ein Badge bearbeiten](/de/variables/introduction#editing-a-badge).
+
 ## Fallback
 
 | Modifier         | Was er macht                                     | Beispiel                                   |
 | ---------------- | ------------------------------------------------ | ------------------------------------------ |
 | `default: value` | Zeigt `value`, wenn das Feld leer oder nicht vorhanden ist | `{{ name \| default: "there" }}` → `there` |
+
+Im Popover erscheint der Fallback als eigener Schritt, **Use a fallback**, mit dem Fallback-Text darunter. Wenn das Feld leer ist, zeigt der Input **No value provided**, und der Output zeigt den Fallback.
+
+## Literale {#literals}
+
+Ein Text in Anführungszeichen, eine Zahl oder `true` oder `false` kann an der Stelle eines Feldes stehen. Es wird wie jede Variable zu einem Badge, und Modifiers wirken darauf auf dieselbe Weise:
+
+```text
+{{ "text" | uppercase }} → TEXT
+```
+
+Das Badge ist getönt, um es von einem Feld abzuheben, und trägt das Symbol des Literaltyps.
+
+<img src="/images/email-builder/22-literal-popover.png" alt="Ein getöntes Badge mit der Aufschrift text, einem Texttyp-Symbol und einem Zauberstab-Symbol, und sein Popover mit Input text, Uppercase und Output TEXT" width="616" />
 
 ## Text
 

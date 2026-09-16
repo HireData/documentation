@@ -30,7 +30,7 @@ Elke collectie heeft een **Forms**-tabblad en een **Responses**-tabblad.
 
 Open het tabblad **Records**, klik op een record en open dan zijn tabblad **Forms**. Elk formulier dat aan de collectie van dit record is gekoppeld, krijgt een eigen tabblad.
 
-![Het Forms-tabblad van een vacaturerecord, met elke vraag met een Off- en On-control en één vraag uitgeschakeld](/images/record-forms/02-record-forms-configuration.png)
+![Het Forms-tabblad van een vacaturerecord, met een tabblad per gekoppeld formulier en een tabel met vragen met de kolommen Available en Criteria, waarbij de eerste vraag twee variabelebadges draagt](/images/record-forms/02-record-forms-configuration.png)
 
 De kolom **Question** toont de vragen die voor dit record kunnen worden geconfigureerd. De kolom **Available** bepaalt of elke vraag wordt getoond. Zet een vraag op **Off** en deze vacature slaat hem over. Zet hem op **On** en hij komt terug.
 
@@ -40,6 +40,14 @@ Twee dingen blijven zoals ze zijn:
 
 - Vragen waarbij **Always include** in de formulierbuilder aan staat. Het formulier serveert ze wat het record ook zegt. Zie [Weergave en vereisten](/nl/reference/forms/overview#display-and-requirements).
 - Ending screens en redirects. Het zijn geen vragen, dus ze bereiken de lijst nooit.
+
+### Variabelen in de vragenlijst
+
+Een vraag die een variabele gebruikt, toont die als een badge zoals **Vacancy: Job Title**. Beweeg over de badge om de waarde te zien die dit record levert en, bij een variabele met een fallback, wat de respondenten te lezen krijgen.
+
+<img src="/images/record-forms/05-record-forms-variable-popover.png" alt="Het Forms-tabblad van een vacaturerecord met een popover open onder de badge Vacancy: Job Title, met Input General Vacancy, Use a fallback position you applied for en Output General Vacancy" width="942" />
+
+Wanneer het record geen waarde voor het veld heeft, toont de popover **No value provided** en laat het de fallback als resultaat zien. Zonder fallback gaat de vraag uit met een gat, dus gebruik dit tabblad om een vacature te controleren voordat je haar formulier verstuurt. Zie [Variabelen](/nl/variables/introduction).
 
 ### Snelkoppelingen
 

@@ -34,7 +34,7 @@ Das ist die schnellste Prüfung im Builder. Ein Link mit der falschen Adresse od
 
 ### Was die Vorschau ausfüllt
 
-Die Vorschau löst Ihre Variablen gegen Ihr eigenes Konto auf, denn Sie sind die einzige Person, von der HireData weiß, dass sie sie liest. Ein Wert, der für Sie leer ist, erscheint hier also leer, und ein Token, das gar keine Variable ist, erscheint genau so, wie Sie es getippt haben. Siehe [Was ein Empfänger tatsächlich sieht](/de/reference/email-builder/variables#what-a-recipient-actually-sees).
+Die Vorschau löst Ihre Variablen gegen Ihr eigenes Konto auf, denn Sie sind die einzige Person, von der HireData weiß, dass sie sie liest. Ein Wert, der für Sie leer ist, erscheint hier also leer, und ein Token, das gar keine Variable ist, erscheint genau so, wie Sie es getippt haben. Siehe [Fehlende Werte](/de/reference/email-builder/variables#missing-values).
 
 Öffnen Sie den **Copy Preview URL**-Link irgendwo, wo Sie nicht angemeldet sind, und dieselbe E-Mail füllt diese Felder stattdessen mit erfundenen Beispieldaten. Verwenden Sie diesen Link, um Kollegen das Layout zu zeigen, nicht um den Wortlaut einer personalisierten Zeile zu prüfen.
 
@@ -59,7 +59,7 @@ Die Papierflieger-Schaltfläche öffnet **Test Email**. Sie speichert die E-Mail
 Sechs Dinge, die es sich lohnt, in dieser Reihenfolge zu tun.
 
 1. **Lesen Sie die Betreffzeile.** Sie ist das Erste, was ein Empfänger sieht, sie akzeptiert Variablen wie alles andere, und sie ist die Zeile, die am leichtesten halb geschrieben bleibt.
-2. **Prüfen Sie die Arbeitsfläche auf verirrte Klammern.** Eine einfache Variable, die HireData erkennt, ist ein Chip; eine, die noch `{{` und `}}` zeigt, ist entweder ein Tippfehler oder ein Token mit einem [Modifier](/de/variables/modifiers), das absichtlich reiner Text bleibt. Lesen Sie jedes einzelne und stellen Sie sicher, dass es die zweite Art ist. Siehe [Variablen](/de/reference/email-builder/variables).
+2. **Prüfen Sie die Arbeitsfläche auf orange Badges.** Ein oranges Badge ist ein Key, den HireData nicht erkennt, und er erreicht den Posteingang mit sichtbaren Klammern. Beheben oder entfernen Sie jedes einzelne. Siehe [Variablen](/de/reference/email-builder/variables).
 3. **Gehen Sie das Links-Panel durch.** Jeden Link, einschließlich derer in einem Form-Block und des Abmeldelinks im Footer.
 4. **Sehen Sie sich die E-Mail in Mobilbreite an.** Spalten stapeln sich und Buttons fließen um, und eine Zeile, die auf dem Desktop passt, kann schlecht umbrechen.
 5. **Prüfen Sie jede Sprache.** Schalten Sie die Sprachauswahl der Vorschau durch jede Übersetzung, die Sie geschrieben haben.

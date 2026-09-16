@@ -30,7 +30,7 @@ Each collection has a **Forms** tab and a **Responses** tab.
 
 Open the **Records** tab, click a record, then open its **Forms** tab. Each form linked to this record's collection gets a tab of its own.
 
-![The Forms tab of a vacancy record, listing every question with an Off and On control and one question switched off](/images/record-forms/02-record-forms-configuration.png)
+![The Forms tab of a vacancy record, with a tab per linked form and a table of questions with Available and Criteria columns, the first question carrying two variable badges](/images/record-forms/02-record-forms-configuration.png)
 
 The **Question** column lists the questions that can be configured for this record. The **Available** column decides whether each one is shown. Set a question to **Off** and this vacancy skips it. Set it to **On** and it comes back.
 
@@ -40,6 +40,14 @@ Two things stay as they are:
 
 - Questions with **Always include** turned on in the form builder. The form serves them whatever the record says. See [Display and requirements](/reference/forms/overview#display-and-requirements).
 - Ending screens and redirects. They are not questions, so they never reach the list.
+
+### Variables in the question list
+
+A question that uses a variable shows it as a badge such as **Vacancy: Job Title**. Hover the badge to see the value this record supplies and, for a variable with a fallback, what its respondents will read.
+
+<img src="/images/record-forms/05-record-forms-variable-popover.png" alt="The Forms tab of a vacancy record with a popover open under the Vacancy: Job Title badge, showing Input General Vacancy, Use a fallback position you applied for, and Output General Vacancy" width="942" />
+
+When the record has no value for the field, the popover reads **No value provided** and shows the fallback as the result. Without a fallback the question goes out with a gap, so use this tab to check a vacancy before you send its form. See [Variables](/variables/introduction).
 
 ### Shortcuts
 

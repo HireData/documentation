@@ -177,7 +177,7 @@ Es gibt zwei Wege, eines einzufügen:
 - Die **Feldauswahl** neben einem **Value**, die auflistet, was verfügbar ist
 - `{{` direkt im Eingabefeld tippen. Die Auswahl öffnet sich, sobald Sie es tippen, und was Sie zwischen den Klammern tippen, durchsucht die Liste – schneller, wenn Sie ungefähr wissen, wie das Feld heißt
 
-In beiden Fällen wird das Feld als `{{field_key}}`-Token gespeichert – das sehen Sie, wenn Sie einen bereits ausgefüllten Wert betrachten.
+In beiden Fällen wird das Feld als `{{field_key}}`-Ausdruck gespeichert und als Badge mit dem Namen des Feldes angezeigt, etwa **Form: Id**. Fahren Sie mit der Maus darüber, um den Standardwert des Feldes und etwaige [Modifiers](/de/variables/modifiers) zu sehen. Ein Key, den die Automatisierung nicht mehr anbietet, färbt das Badge orange.
 
 Felder können in die URL, die Parameter, die Headers und den Body. Jeder Teil des Requests kann sich von Run zu Run ändern.
 
@@ -287,7 +287,7 @@ Die Eingabefelder starten mit dem, was die Aufgabe bereits konfiguriert ist zu s
 Zwei Arten von Eingabefeldern bleiben leer:
 
 - Ein Parameter ohne konfigurierten Wert. Pfadparameter gehören meist in diese Gruppe, da sie aus `{placeholder}`-Segmenten in der URL stammen und nicht aus einer Zeile, in die Sie einen Wert getippt haben.
-- Ein Wert, der an ein Automatisierungsfeld gebunden ist – es sei denn, dieses Feld hat zufällig einen Standardwert. Der Token wird gegen diesen Standard aufgelöst, und die meisten Felder mit Run-Daten haben keinen.
+- Ein Wert, der an ein Automatisierungsfeld gebunden ist – es sei denn, dieses Feld hat zufällig einen Standardwert. Das Badge wird gegen diesen Standard aufgelöst, und die meisten Felder mit Run-Daten haben keinen.
 
 Tippen Sie ein Literal in alles, was leer ist. Die Bindung selbst bleibt unberührt – sie gilt weiterhin, wenn die Automatisierung läuft.
 

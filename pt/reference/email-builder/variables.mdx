@@ -1,13 +1,13 @@
 ---
 title: "Variáveis"
 sidebarTitle: "Variáveis"
-description: "Personalize um email da HireData com variáveis: o seletor, onde funcionam, como adicionar uma sua, o que um destinatário vê quando falta um valor e os valores de recurso."
+description: "Personalize um email da HireData com variáveis: o seletor, onde funcionam num email, como adicionar uma sua, como ligar registos e o que um destinatário vê quando falta um valor."
 keywords: ["variáveis de email", "seletor de variáveis", "merge tags", "personalização", "valor por defeito", "fallback", "variável personalizada", "variável de IA", "objetos"]
 ---
 
 Uma variável é um placeholder que a HireData preenche quando o email sai. Escreva `{{recipient.first_name}}` uma vez e cada destinatário lê o seu próprio nome.
 
-O construtor de emails mostra uma variável como um chip com o seu rótulo, não com o seu valor. `{{recipient.first_name}}` lê-se **Recipient: First Name** no canvas, e o chip comporta-se como um único objeto e não como os carateres que representa.
+O construtor de emails mostra uma variável como um badge com o seu rótulo, não com o seu valor. `{{recipient.first_name}}` lê-se **Recipient: First Name** no canvas, e o badge comporta-se como um único objeto e não como os carateres que representa. Passe o cursor sobre ele para ver o valor que contém. Veja [Variáveis](/pt/variables/introduction) para o badge, o seu popover e como o editar.
 
 ## Inserir uma variável
 
@@ -15,9 +15,9 @@ Escreva `{{` e abre-se um seletor debaixo do cursor. Cada linha dá o rótulo da
 
 Continue a escrever para estreitar a lista. A pesquisa é tolerante. Escreva `frist` e **Recipient: First Name** aparece na mesma.
 
-![A caixa Subject com um chip de variável e um token meio escrito no fim, e o seletor por baixo a listar Recipient: Last Name e Sender: Last Name com as suas chaves e tipos](/images/email-builder/10-variable-picker.png)
+![A caixa Subject com um badge de variável e um token meio escrito no fim, e o seletor por baixo a listar Recipient: Last Name e Sender: Last Name com as suas chaves e tipos](/images/email-builder/10-variable-picker.png)
 
-Prima Enter ou clique numa linha e o token transforma-se num chip.
+Prima Enter ou clique numa linha e o token transforma-se num badge. Também pode escrever a expressão inteira à mão, modificadores incluídos. Torna-se um badge assim que escreve o `}}` de fecho.
 
 ## Onde as variáveis funcionam
 
@@ -46,7 +46,7 @@ O **+** ao lado da caixa de pesquisa abre um diálogo **Variables**: os seus **F
 
 Escolha um tipo e abrem-se quatro definições ao lado.
 
-- **Name** é o que o chip mostra no canvas.
+- **Name** é o que o badge mostra no canvas.
 - **Default value** é o que a HireData escreve quando nada mais fornece um valor. O controlo corresponde ao tipo que escolheu.
 - **Reference as** é a chave que escreve entre as chavetas. Preenche-se sozinha a partir do nome.
 - **What is it for?** é uma nota opcional para quem abrir o template a seguir.
@@ -58,7 +58,7 @@ Escolha um tipo e abrem-se quatro definições ao lado.
 Uma variável sua ganha o seu lugar quando um valor pertence a vários sítios. Ponha o seu número de telefone numa variável `{{phone}}` e escreva-a na assinatura, no rodapé e no corpo, e mudar o número depois passa a ser uma edição em vez de três.
 
 <Warning>
-  Eliminar uma variável não a limpa do email. Cada chip que a usava volta a ser texto simples `{{key}}` e fica onde está, por isso a chave sai com as chavetas à mostra. Elimine a variável e depois encontre cada sítio onde a usou.
+  Eliminar uma variável não a limpa do email. Cada badge que a usava fica laranja, e a chave sai com as chavetas à mostra. Elimine a variável e depois encontre cada badge laranja e remova-o ou substitua-o.
 </Warning>
 
 <Note>
@@ -71,40 +71,24 @@ O botão de base de dados na barra de ferramentas abre **Objects**, que liga um 
 
 [Objetos](/pt/reference/forms/objects) explica o que é um objeto e o que ligar um faz. Está escrito para o construtor de formulários, que oferece mais definições por objeto, mas os registos e as suas chaves são os mesmos.
 
-## O que um destinatário vê realmente {#what-a-recipient-actually-sees}
+## Valores em falta {#missing-values}
 
-Três coisas podem acontecer a um token, e só uma delas é o que queria.
+Três coisas podem acontecer a uma variável quando o email sai, e só uma delas é o que queria.
 
 - **A variável resolve-se.** A HireData tem um valor e escreve-o.
 - **A variável resolve-se para nada.** O destinatário não tem número de telefone registado, por isso `{{recipient.phone_number}}` sai como um espaço vazio. "Call us on ." é a forma clássica de isto aparecer.
 - **A variável não existe.** A HireData deixa uma chave que não reconhece exatamente como a escreveu. O destinatário lê `{{recipient.favourite_biscuit}}`, chavetas incluídas.
 
-O construtor diz-lhe para qual dos três se dirige. Uma chave que ele reconhece torna-se um chip. Uma chave que não reconhece fica como texto simples, com as chavetas à mostra, e chega assim à caixa de entrada.
-
-A única exceção é um token com um [modificador](#giving-a-variable-a-fallback). Esse fica como texto simples por melhor que a chave seja, porque o seletor só insere chaves simples. Assim, chavetas no canvas significam uma de duas coisas: uma variável que escreveu mal, ou um modificador a funcionar como pretendido.
+O construtor diz-lhe para qual dos três se dirige. Passe o cursor sobre um badge para ver o valor que contém, e esteja atento a um badge laranja, que é uma chave que a HireData não reconhece. Adicione um modificador `default` para cobrir o segundo e o terceiro casos com palavras suas. [Variáveis](/pt/variables/introduction) explica o badge e o seu popover, e [Modificadores](/pt/variables/modifiers#fallback) explica o valor de recurso.
 
 <Warning>
-  Um token colado de outro sítio é a origem habitual do terceiro caso. Cole-o e verifique que se transformou num chip.
+  Um token colado de outro sítio é a origem habitual do terceiro caso. Cole-o e verifique que o badge não está laranja.
 </Warning>
-
-## Dar um valor de recurso a uma variável {#giving-a-variable-a-fallback}
-
-Adicione o modificador `default` e a HireData usa as suas palavras em vez de deixar um espaço em branco.
-
-```text
-Hi {{ recipient.first_name | default: "there" }},
-```
-
-Dispara em ambos os casos de falha acima: quando o valor está vazio e quando a chave não existe de todo. O email acima lê-se "Hi Sofia," para a Sofia e "Hi there," para todos aqueles a quem falta o primeiro nome.
-
-Não pode editar um chip. É um único objeto no canvas e não os carateres que representa, por isso não há onde pôr um modificador. Em vez disso, escreva o token inteiro à mão, chavetas incluídas, e deixe o seletor abrir-se e fechar-se à sua volta. O que escreveu fica como texto simples em vez de se tornar um chip, que é o aspeto de um modificador quando está certo. Releia-o na pré-visualização.
-
-`default` é um de uma longa lista. Veja [Modificadores](/pt/variables/modifiers) para os restantes, e para encadear vários.
 
 ## Relacionados
 
 - [Testar](/pt/reference/email-builder/testing) é onde descobre em que se resolvem as suas variáveis.
-- [Variáveis](/pt/variables/introduction) cobre a sintaxe `{{ }}` em formulários, mensagens e automações, além do email.
+- [Variáveis](/pt/variables/introduction) cobre a sintaxe `{{ }}`, o badge e o seu popover em formulários, mensagens e automações, além do email.
 - [Modificadores](/pt/variables/modifiers) lista tudo o que pode fazer a um valor a caminho do email.
 - [Variáveis de IA](/pt/variables/ai-variables) calculam um valor por destinatário em vez de o procurarem.
 - [Objetos](/pt/reference/forms/objects) cobre os registos cujos campos se tornam variáveis.

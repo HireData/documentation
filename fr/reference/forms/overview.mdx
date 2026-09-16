@@ -1,5 +1,5 @@
 ---
-title: "Form Builder : vue d'ensemble"
+title: "Tour de l'éditeur de formulaires : onglets, types de champs et paramètres communs"
 sidebarTitle: "Vue d'ensemble"
 description: "Un tour de l'éditeur de formulaires HireData : les onglets Content, Logic et Evaluation, les panneaux de la barre d'outils, chaque type de champ et les paramètres communs à tous les champs."
 keywords:
@@ -125,7 +125,9 @@ Deux autres paramètres apparaissent sur la plupart des types de champs, mais pa
 - **Auto reply (on answer)** est envoyé dès que le répondant répond à la question. Yes/No le remplace par une réponse par choix, et Multiple Choice et Dropdown le déplacent sur chaque option.
 - **Auto reply (on invalid answer)** apparaît dès que **Required** est activé. L'éditeur le décrit comme le message envoyé lorsqu'une question obligatoire reçoit une réponse incorrecte.
 
-Les paramètres de texte tels que **Question**, **Description** et les placeholders acceptent des variables ; une question peut donc s'adresser au répondant par son nom ou mentionner le poste. Certaines variables ne deviennent disponibles qu'après avoir lié leur objet au formulaire, voir [Objets et sources de données](#objects-and-data-sources). Pour la syntaxe, consultez [Variables](/fr/variables/introduction).
+Les paramètres de texte tels que **Question**, **Description** et les placeholders acceptent des variables ; une question peut donc s'adresser au répondant par son nom ou mentionner le poste. Chaque variable s'affiche comme un badge portant le nom d'affichage du champ. Survolez-le pour voir la valeur et les éventuels modificateurs, et guettez un badge orange, qui signifie que le formulaire ne connaît pas la clé. Certaines variables ne deviennent disponibles qu'après avoir lié leur objet au formulaire, voir [Objets et sources de données](#objects-and-data-sources). Pour la syntaxe, consultez [Variables](/fr/variables/introduction).
+
+<img src="/images/forms-builder/37-variable-popover.png" alt="Le champ Description d'une question de formulaire avec quatre badges, et un popover ouvert au-dessus, intitulé Name, avec des cartes indiquant Input NPS required question, Lowercase, Capitalise words, Use a fallback Your form et Output Nps Required Question" width="573" />
 
 Redirect URL n'a rien de tout cela. C'est un champ unique pour l'adresse.
 

@@ -30,7 +30,7 @@ Chaque collection a un onglet **Forms** et un onglet **Responses**.
 
 Ouvrez l'onglet **Records**, cliquez sur un enregistrement, puis ouvrez son onglet **Forms**. Chaque formulaire lié à la collection de cet enregistrement reçoit son propre onglet.
 
-![L'onglet Forms d'un enregistrement de poste, listant chaque question avec un contrôle Off et On et une question désactivée](/images/record-forms/02-record-forms-configuration.png)
+![L'onglet Forms d'un enregistrement de poste, avec un onglet par formulaire lié et un tableau de questions avec les colonnes Available et Criteria, la première question portant deux badges de variable](/images/record-forms/02-record-forms-configuration.png)
 
 La colonne **Question** liste les questions qui peuvent être configurées pour cet enregistrement. La colonne **Available** décide si chacune est affichée. Réglez une question sur **Off** et ce poste la saute. Réglez-la sur **On** et elle revient.
 
@@ -40,6 +40,14 @@ Deux choses restent telles quelles :
 
 - Les questions avec **Always include** activé dans l'éditeur de formulaires. Le formulaire les sert quoi que dise l'enregistrement. Voir [Affichage et exigences](/fr/reference/forms/overview#display-and-requirements).
 - Les écrans de fin et les redirections. Ce ne sont pas des questions, elles n'atteignent donc jamais la liste.
+
+### Les variables dans la liste des questions
+
+Une question qui utilise une variable l'affiche sous forme de badge, tel que **Vacancy: Job Title**. Survolez le badge pour voir la valeur que cet enregistrement fournit et, pour une variable avec un repli, ce que ses répondants liront.
+
+<img src="/images/record-forms/05-record-forms-variable-popover.png" alt="L'onglet Forms d'un enregistrement de poste avec un popover ouvert sous le badge Vacancy: Job Title, montrant Input General Vacancy, Use a fallback position you applied for et Output General Vacancy" width="942" />
+
+Quand l'enregistrement n'a pas de valeur pour le champ, le popover affiche **No value provided** et montre le repli comme résultat. Sans repli, la question part avec un vide, alors utilisez cet onglet pour vérifier un poste avant d'envoyer son formulaire. Voir [Variables](/fr/variables/introduction).
 
 ### Raccourcis
 

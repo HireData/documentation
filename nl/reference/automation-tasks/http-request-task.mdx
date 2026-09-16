@@ -177,7 +177,7 @@ Er zijn twee manieren om er een in te voegen:
 - De **field picker** naast een **Value**, die toont wat er beschikbaar is
 - `{{` typen in het invoerveld zelf. De picker opent zodra je het typt, en wat je tussen de accolades typt doorzoekt de lijst — sneller wanneer je al ongeveer weet hoe het veld heet
 
-In beide gevallen wordt het veld opgeslagen als een `{{field_key}}`-token, wat je ziet als je kijkt naar een waarde die je al hebt ingevuld.
+In beide gevallen wordt het veld opgeslagen als een `{{field_key}}`-expressie en getoond als een badge met de naam van het veld, zoals **Form: Id**. Beweeg erover voor de default-waarde van het veld en eventuele [modifiers](/nl/variables/modifiers). Een key die de automatisering niet meer aanbiedt, maakt de badge oranje.
 
 Velden kunnen in de URL, de parameters, de headers en de body. Elk deel van het request kan van run tot run veranderen.
 
@@ -287,7 +287,7 @@ De invoervelden beginnen met wat de taak al is geconfigureerd om te versturen. A
 Twee soorten invoer komen leeg op:
 
 - Een parameter zonder geconfigureerde waarde. Path-parameters zitten meestal in deze groep, omdat ze uit `{placeholder}`-segmenten in de URL komen in plaats van uit een rij waarin je een waarde hebt getypt.
-- Een waarde die aan een automatiseringsveld is gekoppeld, tenzij dat veld toevallig een default-waarde heeft. Het token wordt opgelost tegen die default, en de meeste velden met run-data hebben er geen.
+- Een waarde die aan een automatiseringsveld is gekoppeld, tenzij dat veld toevallig een default-waarde heeft. De badge wordt opgelost tegen die default, en de meeste velden met run-data hebben er geen.
 
 Typ een letterlijke waarde in wat leeg is. De koppeling zelf blijft onaangetast — die geldt nog steeds wanneer de automatisering draait.
 

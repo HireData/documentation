@@ -17,7 +17,7 @@ Das Panel listet die bereits mit diesem Formular verknüpften Objekte, darunter 
 <img src="/images/forms-builder/23-objects-panel-linked.png" alt="Das Objects-Panel mit aufgeklapptem Vacancy und seinen Steuerelementen Label, Key, Required und Remove, darunter Match und die Liste Available objects" width="460" />
 ## Was Ihnen das Verknüpfen eines Objekts bringt
 
-Jedes Feld des verknüpften Datensatzes wird zu einer Variablen. Sie können sie in jede Texteinstellung des Formulars schreiben, einschließlich der Frage, der Beschreibung, eines Platzhalters und einer Optionsbeschriftung – eine Frage kann also mit dem Jobtitel beginnen statt mit „diese Rolle".
+Jedes Feld des verknüpften Datensatzes wird zu einer Variablen. Sie können sie in jede Texteinstellung des Formulars schreiben, einschließlich der Frage, der Beschreibung, eines Platzhalters und einer Optionsbeschriftung – eine Frage kann also mit dem Jobtitel beginnen statt mit „diese Rolle". Im Builder erscheint die Variable als Badge wie **Vacancy: Job Title**.
 
 Die Variablenliste in der Toolbar zeigt sie alle. Jede ist nach dem Label des Objekts benannt und über dessen Key adressiert.
 
@@ -33,7 +33,7 @@ Klicken Sie auf ein verknüpftes Objekt, um es zu öffnen.
 - **Label** benennt das Objekt in der Variablenliste – daher kommt „Vacancy: Job Title". Ändern Sie es, wann immer Sie möchten.
 - **Key** ist der erste Teil der Variablen selbst, wie in `{{job.jobTitle}}`. HireData setzt den Key beim Verknüpfen des Objekts und sperrt ihn danach – wählen Sie also gleich das gewünschte Objekt, statt eine spätere Umbenennung einzuplanen.
 - **Required** entscheidet, was passiert, wenn nichts einen Datensatz liefert. Siehe [Was Required bewirkt](#required).
-- **Remove** löst die Verknüpfung des Objekts. Seine Variablen werden nicht mehr aufgelöst, prüfen Sie also jede Frage, die eine verwendet hat.
+- **Remove** löst die Verknüpfung des Objekts. Seine Variablen werden nicht mehr aufgelöst und jedes Badge, das eine verwendet hat, wird orange, prüfen Sie also jede Frage, die eine verwendet hat.
 - Die Pfeile nach oben und unten bewegen das Objekt durch die Liste. Welches Objekt oben steht, ändert, was das Formular kann – lesen Sie also [Das erste Objekt entscheidet über die Konfiguration](#first-object), bevor Sie sie verwenden.
 
 ## Das erste Objekt entscheidet über die Konfiguration {#first-object}
@@ -46,7 +46,7 @@ Die Liste umzusortieren ändert also mehr als nur das Panel. Lesen Sie [Ein Form
 
 **Required** zählt, wenn eine Automatisierung das Formular versendet. Hat der Run keinen Datensatz für ein erforderliches Objekt, schlägt der Task fehl und nichts geht raus – besser, als ein Formular zu versenden, dessen Fragen Lücken haben, wo der Jobtitel stehen sollte.
 
-Die eigene Seite des Formulars ist nachsichtiger. Öffnen Sie ein öffentliches Formular, ohne dass etwas den Datensatz liefert, lädt es trotzdem. Jede Variable aus diesem Objekt löst sich zu nichts auf.
+Die eigene Seite des Formulars ist nachsichtiger. Öffnen Sie ein öffentliches Formular, ohne dass etwas den Datensatz liefert, lädt es trotzdem. Jede Variable aus diesem Objekt löst sich zu nichts auf, es sei denn, sie trägt einen `default`-Modifier. Siehe [Fallback](/de/variables/modifiers#fallback).
 
 Schalten Sie **Required** für ein Objekt aus, das nur Kontext beisteuert, etwa einen Match, ohne den das Formular auskommt.
 

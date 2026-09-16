@@ -107,7 +107,7 @@ A instrução por si só raramente chega — o modelo precisa do registo. Há du
 
 ### Inline no prompt
 
-Escreva `{{` em qualquer sítio na caixa **Input** e aparece um seletor, a listar todas as variáveis disponíveis para este template com a sua chave e o seu tipo. Continue a escrever para filtrar, e depois selecione uma para a inserir:
+Escreva `{{` em qualquer sítio na caixa **Input** e aparece um seletor, a listar todas as variáveis disponíveis para este template com a sua chave e o seu tipo. Continue a escrever para filtrar, e depois selecione uma para a inserir. Aparece como um badge com o nome do campo, e passar o cursor sobre ele mostra o valor.
 
 <Frame>
   ![Seletor de variáveis no prompt da variável de IA 1](/images/ai-variable-prompt-variable-picker-1.png "Seletor de variáveis no prompt da variável de IA 1")
@@ -119,7 +119,7 @@ Assim, uma mensagem de aniversário que cumprimenta o destinatário pelo nome l�
 Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
 ```
 
-Cada token é substituído pelo valor desse destinatário antes de a instrução chegar ao modelo, por isso para a Sofia o modelo é convidado a escrever uma mensagem _para a Sofia_ e não para `{{recipient.first_name}}`.
+Cada badge é substituído pelo valor desse destinatário antes de a instrução chegar ao modelo, por isso para a Sofia o modelo é convidado a escrever uma mensagem _para a Sofia_ e não para `{{recipient.first_name}}`. Um badge laranja é uma chave que a HireData não reconhece. Chega ao modelo como a chave em bruto, por isso corrija-o antes de guardar.
 
 ### O separador Variables
 

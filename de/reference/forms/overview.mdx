@@ -1,5 +1,5 @@
 ---
-title: "Formular-Builder: Überblick"
+title: "Rundgang durch den Formular-Builder: Tabs, Feldtypen und gemeinsame Einstellungen"
 sidebarTitle: "Überblick"
 description: "Ein Rundgang durch den HireData-Formular-Builder: die Tabs Content, Logic und Evaluation, die Panels der Toolbar, jeder Feldtyp und die Einstellungen, die alle Felder teilen."
 keywords:
@@ -125,7 +125,9 @@ Zwei weitere Einstellungen erscheinen bei den meisten, aber nicht allen Feldtype
 - **Auto reply (on answer)** wird gesendet, sobald die befragte Person die Frage beantwortet. Yes/No ersetzt sie durch eine Antwort pro Antwortmöglichkeit, und Multiple Choice und Dropdown verlagern sie auf die einzelnen Optionen.
 - **Auto reply (on invalid answer)** erscheint, sobald **Required** eingeschaltet ist. Der Builder beschreibt sie als die Nachricht, die gesendet wird, wenn eine Pflichtfrage falsch beantwortet wird.
 
-Texteinstellungen wie **Question**, **Description** und die Platzhalter akzeptieren Variablen, sodass eine Frage die befragte Person mit Namen ansprechen oder die Vakanz erwähnen kann. Manche Variablen werden erst verfügbar, nachdem Sie ihr Objekt mit dem Formular verknüpft haben, siehe [Objekte und Datenquellen](#objects-and-data-sources). Zur Syntax siehe [Variablen](/de/variables/introduction).
+Texteinstellungen wie **Question**, **Description** und die Platzhalter akzeptieren Variablen, sodass eine Frage die befragte Person mit Namen ansprechen oder die Vakanz erwähnen kann. Jede Variable erscheint als Badge mit dem Anzeigenamen des Feldes. Fahren Sie mit der Maus darüber, um den Wert und etwaige Modifiers zu sehen, und achten Sie auf ein oranges Badge, das bedeutet, dass das Formular den Key nicht kennt. Manche Variablen werden erst verfügbar, nachdem Sie ihr Objekt mit dem Formular verknüpft haben, siehe [Objekte und Datenquellen](#objects-and-data-sources). Zur Syntax siehe [Variablen](/de/variables/introduction).
+
+<img src="/images/forms-builder/37-variable-popover.png" alt="Das Description-Feld einer Formularfrage mit vier Badges und einem darüber geöffneten Popover mit der Überschrift Name und Karten mit Input NPS required question, Lowercase, Capitalise words, Use a fallback Your form und Output Nps Required Question" width="573" />
 
 Redirect URL hat nichts davon. Es ist ein einzelnes Feld für die Adresse.
 

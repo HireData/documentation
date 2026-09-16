@@ -177,7 +177,7 @@ Il y a deux façons d'en insérer un :
 - Le **sélecteur de champs** à côté d'une **Value**, qui liste ce qui est disponible
 - Taper `{{` directement dans le champ de saisie. Le sélecteur s'ouvre dès que vous le tapez, et ce que vous tapez entre les accolades filtre la liste — plus rapide quand vous savez déjà à peu près comment le champ s'appelle
 
-Dans les deux cas, le champ est stocké sous forme de token `{{field_key}}`, ce que vous verrez si vous regardez une valeur déjà renseignée.
+Dans les deux cas, le champ est stocké sous forme d'expression `{{field_key}}` et affiché comme un badge portant le nom du champ, tel que **Form: Id**. Survolez-le pour voir la valeur par défaut du champ et ses éventuels [modificateurs](/fr/variables/modifiers). Une clé que l'automatisation ne propose plus rend le badge orange.
 
 Les champs peuvent aller dans l'URL, les paramètres, les en-têtes et le corps. N'importe quelle partie de la requête peut changer d'une exécution à l'autre.
 
@@ -287,7 +287,7 @@ Les champs de saisie partent de ce que la tâche est déjà configurée pour env
 Deux types de champs arrivent vides :
 
 - Un paramètre sans valeur configurée. Les paramètres de chemin sont généralement dans ce groupe, puisqu'ils viennent des segments `{placeholder}` de l'URL plutôt que d'une ligne dans laquelle vous avez saisi une valeur.
-- Une valeur liée à un champ de l'automatisation, sauf si ce champ a justement une valeur par défaut. Le token est résolu avec cette valeur par défaut, et la plupart des champs portant des données d'exécution n'en ont pas.
+- Une valeur liée à un champ de l'automatisation, sauf si ce champ a justement une valeur par défaut. Le badge est résolu avec cette valeur par défaut, et la plupart des champs portant des données d'exécution n'en ont pas.
 
 Saisissez un littéral dans ce qui est vide. La liaison elle-même n'est pas affectée — elle s'applique toujours quand l'automatisation s'exécute.
 

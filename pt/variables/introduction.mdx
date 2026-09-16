@@ -24,6 +24,36 @@ Os espaços dentro das chavetas são opcionais:
 
 - `{{candidate.first_name}}` e `{{ candidate.first_name }}` comportam-se da mesma forma.
 
+## Como uma variável aparece no editor
+
+Todos os editores que aceitam variáveis mostram cada uma como um badge com o nome de apresentação do campo, como **Recipient: First Name**. O badge é um único objeto no canvas, não os carateres que representa.
+
+<img src="/images/email-builder/24-variable-badges.png" alt="Quatro badges num parágrafo de email: Recipient: First Name, Recipient: First Name com um ícone de varinha e um 3, um badge 'text' com cor e um ícone de varinha, e um badge laranja documentation_missing_key com um ícone de aviso" width="608" />
+
+- Uma variável com modificadores acrescenta um ícone de varinha, e um número quando há dois ou mais.
+- Um [literal](/pt/variables/modifiers#literals) como `{{ "text" | uppercase }}` recebe um badge com cor.
+- Uma chave que a HireData não reconhece recebe um badge laranja de aviso.
+
+### O popover
+
+<img src="/images/email-builder/21-variable-popover.png" alt="Um parágrafo de email com quatro badges, Recipient: First Name, Recipient: First Name com um ícone de varinha e um 3, um badge text com cor e um badge laranja documentation_missing_key, e um popover aberto sob o segundo badge com Input Callum, Lowercase, Capitalise words, Use a fallback there e Output Callum" width="616" />
+
+Passe o cursor sobre um badge para ver o que contém: a descrição e as opções do campo quando as tem, o seu valor atual e cada modificador em linguagem simples, com o resultado no fim. O popover também copia a expressão e liga a esta página.
+
+O valor depende de onde está. O construtor de formulários e o construtor de emails mostram o valor de exemplo da HireData para o campo. O separador **Forms** de um registo mostra o valor desse registo. Um passo de automação mostra o valor por defeito do campo, porque ainda não aconteceu nenhum run.
+
+### Quando uma variável não é encontrada
+
+Uma chave que a HireData não reconhece torna-se um badge laranja, e o seu popover lê **Variable is not found**. A expressão fica no seu conteúdo sem alterações, por isso corrija a chave ou remova o badge. Uma variável que elimine da lista **Variables** de um template torna-se este badge em todos os sítios onde a usou.
+
+<img src="/images/email-builder/23-variable-not-found.png" alt="Um badge laranja a ler documentation_missing_key com um ícone de triângulo, e o seu popover a repetir a chave por cima de uma linha a ler Variable is not found" width="616" />
+
+### Editar um badge {#editing-a-badge}
+
+Coloque o cursor a seguir a um badge e prima Backspace. O badge volta a ser texto, `{{` e a expressão completa, modificadores incluídos. Edite-a, escreva o `}}` de fecho e o badge regressa. O mesmo funciona para uma referência de formulário escrita como `@key@`.
+
+Também pode escrever uma expressão de raiz, modificadores e tudo. Torna-se um badge assim que escreve as chavetas de fecho.
+
 ## Onde pode utilizar variáveis
 
 Pode utilizar variáveis em qualquer sítio onde escreva conteúdo que seja enviado ou armazenado:

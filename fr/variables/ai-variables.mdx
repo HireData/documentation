@@ -107,7 +107,7 @@ L'instruction seule suffit rarement — le modèle a besoin de l'enregistrement.
 
 ### Directement dans le prompt
 
-Tapez `{{` n'importe où dans la zone **Input** et un sélecteur apparaît, listant chaque variable disponible pour ce modèle avec sa clé et son type. Continuez à taper pour filtrer, puis sélectionnez-en une pour l'insérer :
+Tapez `{{` n'importe où dans la zone **Input** et un sélecteur apparaît, listant chaque variable disponible pour ce modèle avec sa clé et son type. Continuez à taper pour filtrer, puis sélectionnez-en une pour l'insérer. Elle apparaît comme un badge portant le nom du champ, et le survoler montre la valeur.
 
 <Frame>
   ![Sélecteur de variables dans le prompt d'une variable IA 1](/images/ai-variable-prompt-variable-picker-1.png "Ai Variable Prompt Variable Picker 1")
@@ -119,7 +119,7 @@ Ainsi, un vœu d'anniversaire qui salue le destinataire par son nom se lit :
 Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
 ```
 
-Chaque token est remplacé par la valeur du destinataire avant que l'instruction n'atteigne le modèle : pour Sofia, on demande donc au modèle un vœu _pour Sofia_ plutôt que pour `{{recipient.first_name}}`.
+Chaque badge est remplacé par la valeur du destinataire avant que l'instruction n'atteigne le modèle : pour Sofia, on demande donc au modèle un vœu _pour Sofia_ plutôt que pour `{{recipient.first_name}}`. Un badge orange est une clé que HireData ne reconnaît pas. Elle atteint le modèle sous forme de clé brute, corrigez-la donc avant d'enregistrer.
 
 ### L'onglet Variables
 

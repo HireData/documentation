@@ -30,7 +30,7 @@ Cada coleção tem um separador **Forms** e um separador **Responses**.
 
 Abra o separador **Records**, clique num registo e abra depois o seu separador **Forms**. Cada formulário ligado à coleção deste registo recebe um separador próprio.
 
-![O separador Forms de um registo de vaga, a listar todas as perguntas com um controlo Off e On e uma pergunta desativada](/images/record-forms/02-record-forms-configuration.png)
+![O separador Forms de um registo de vaga, com um separador por formulário ligado e uma tabela de perguntas com colunas Available e Criteria, tendo a primeira pergunta dois badges de variável](/images/record-forms/02-record-forms-configuration.png)
 
 A coluna **Question** lista as perguntas que podem ser configuradas para este registo. A coluna **Available** decide se cada uma é mostrada. Defina uma pergunta como **Off** e esta vaga salta-a. Defina-a como **On** e ela volta.
 
@@ -40,6 +40,14 @@ Duas coisas ficam como estão:
 
 - As perguntas com **Always include** ativado no construtor de formulários. O formulário serve-as independentemente do que o registo diga. Veja [Apresentação e requisitos](/pt/reference/forms/overview#display-and-requirements).
 - Os ecrãs de fim e os redirecionamentos. Não são perguntas, por isso nunca chegam à lista.
+
+### Variáveis na lista de perguntas
+
+Uma pergunta que usa uma variável mostra-a como um badge, como **Vacancy: Job Title**. Passe o cursor sobre o badge para ver o valor que este registo fornece e, para uma variável com um valor de recurso, o que os seus inquiridos vão ler.
+
+<img src="/images/record-forms/05-record-forms-variable-popover.png" alt="O separador Forms de um registo de vaga com um popover aberto sob o badge Vacancy: Job Title, a mostrar Input General Vacancy, Use a fallback position you applied for e Output General Vacancy" width="942" />
+
+Quando o registo não tem valor para o campo, o popover lê **No value provided** e mostra o valor de recurso como resultado. Sem um valor de recurso, a pergunta sai com um espaço em branco, por isso use este separador para verificar uma vaga antes de enviar o seu formulário. Veja [Variáveis](/pt/variables/introduction).
 
 ### Atalhos
 

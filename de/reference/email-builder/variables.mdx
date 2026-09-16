@@ -1,13 +1,13 @@
 ---
 title: "Variablen"
 sidebarTitle: "Variablen"
-description: "Personalisieren Sie eine HireData-E-Mail mit Variablen: die Auswahl, wo sie funktionieren, eine eigene hinzufügen, was ein Empfänger bei fehlendem Wert sieht, und Fallbacks."
+description: "Personalisieren Sie eine HireData-E-Mail mit Variablen: die Auswahl, wo sie in einer E-Mail funktionieren, eigene hinzufügen, Datensätze verknüpfen und was ein Empfänger bei fehlendem Wert sieht."
 keywords: ["e-mail-variablen", "variablenauswahl", "merge-tags", "personalisierung", "standardwert", "fallback", "eigene variable", "ai-variable", "objekte"]
 ---
 
 Eine Variable ist ein Platzhalter, den HireData ausfüllt, wenn die E-Mail hinausgeht. Schreiben Sie `{{recipient.first_name}}` einmal, und jeder Empfänger liest seinen eigenen Namen.
 
-Der E-Mail-Builder zeigt eine Variable als Chip mit ihrem Label, nicht mit ihrem Wert. `{{recipient.first_name}}` steht auf der Arbeitsfläche als **Recipient: First Name**, und der Chip verhält sich als ein Objekt und nicht als die Zeichen, für die er steht.
+Der E-Mail-Builder zeigt eine Variable als Badge mit ihrem Label, nicht mit ihrem Wert. `{{recipient.first_name}}` steht auf der Arbeitsfläche als **Recipient: First Name**, und das Badge verhält sich als ein Objekt und nicht als die Zeichen, für die es steht. Fahren Sie mit der Maus darüber, um den Wert zu sehen, den es enthält. Siehe [Variablen](/de/variables/introduction) für das Badge, sein Popover und wie Sie es bearbeiten.
 
 ## Eine Variable einfügen
 
@@ -15,9 +15,9 @@ Tippen Sie `{{`, und eine Auswahl öffnet sich unter dem Cursor. Jede Zeile zeig
 
 Tippen Sie weiter, um die Liste einzugrenzen. Die Suche ist nachsichtig. Tippen Sie `frist`, und **Recipient: First Name** erscheint trotzdem.
 
-![Das Subject-Feld mit einem Variablen-Chip darin und einem halb getippten Token am Ende, darunter die Auswahl mit Recipient: Last Name und Sender: Last Name samt ihren Keys und Typen](/images/email-builder/10-variable-picker.png)
+![Das Subject-Feld mit einem Variablen-Badge darin und einem halb getippten Token am Ende, darunter die Auswahl mit Recipient: Last Name und Sender: Last Name samt ihren Keys und Typen](/images/email-builder/10-variable-picker.png)
 
-Drücken Sie Enter oder klicken Sie eine Zeile, und das Token wird zu einem Chip.
+Drücken Sie Enter oder klicken Sie eine Zeile, und das Token wird zu einem Badge. Sie können den ganzen Ausdruck auch von Hand tippen, Modifiers eingeschlossen. Er wird zu einem Badge, sobald Sie das schließende `}}` tippen.
 
 ## Wo Variablen funktionieren
 
@@ -46,7 +46,7 @@ Das **+** neben dem Suchfeld öffnet einen **Variables**-Dialog: links Ihre **Fi
 
 Wählen Sie einen Typ, und daneben öffnen sich vier Einstellungen.
 
-- **Name** ist, was der Chip auf der Arbeitsfläche zeigt.
+- **Name** ist, was das Badge auf der Arbeitsfläche zeigt.
 - **Default value** ist, was HireData einträgt, wenn nichts anderes einen Wert liefert. Das Bedienelement entspricht dem gewählten Typ.
 - **Reference as** ist der Key, den Sie zwischen die Klammern tippen. Er füllt sich aus dem Namen selbst aus.
 - **What is it for?** ist eine optionale Notiz für die Person, die die Vorlage als Nächstes öffnet.
@@ -58,7 +58,7 @@ Wählen Sie einen Typ, und daneben öffnen sich vier Einstellungen.
 Eine eigene Variable lohnt sich, wenn ein Wert an mehrere Stellen gehört. Legen Sie Ihre Telefonnummer in eine `{{phone}}`-Variable und schreiben Sie diese in die Signatur, den Footer und den Text, und die Nummer später zu ändern ist eine Bearbeitung statt drei.
 
 <Warning>
-  Das Löschen einer Variablen entfernt sie nicht aus der E-Mail. Jeder Chip, der sie verwendet hat, wird wieder zu reinem `{{key}}`-Text und bleibt, wo er ist, sodass der Key mit sichtbaren Klammern hinausgeht. Löschen Sie die Variable, und suchen Sie dann jede Stelle, an der Sie sie verwendet haben.
+  Das Löschen einer Variablen entfernt sie nicht aus der E-Mail. Jedes Badge, das sie verwendet hat, wird orange, und der Key geht mit sichtbaren Klammern hinaus. Löschen Sie die Variable, und suchen Sie dann jedes orange Badge, um es zu entfernen oder zu ersetzen.
 </Warning>
 
 <Note>
@@ -71,40 +71,24 @@ Die Datenbank-Schaltfläche in der Toolbar öffnet **Objects**, das einen Datens
 
 [Objekte](/de/reference/forms/objects) erklärt, was ein Objekt ist und was das Verknüpfen bewirkt. Die Seite ist für den Formular-Builder geschrieben, der mehr Einstellungen pro Objekt anbietet, aber die Datensätze und ihre Keys sind dieselben.
 
-## Was ein Empfänger tatsächlich sieht {#what-a-recipient-actually-sees}
+## Fehlende Werte {#missing-values}
 
-Drei Dinge können mit einem Token passieren, und nur eines davon ist das, was Sie gemeint haben.
+Drei Dinge können mit einer Variablen passieren, wenn die E-Mail hinausgeht, und nur eines davon ist das, was Sie gemeint haben.
 
 - **Die Variable wird aufgelöst.** HireData hat einen Wert und trägt ihn ein.
 - **Die Variable wird zu nichts aufgelöst.** Der Empfänger hat keine Telefonnummer hinterlegt, also kommt `{{recipient.phone_number}}` als Leerstelle heraus. "Rufen Sie uns an unter ." ist die klassische Erscheinungsform.
 - **Es gibt keine solche Variable.** Einen Key, den HireData nicht erkennt, lässt es genau so stehen, wie Sie ihn getippt haben. Der Empfänger liest `{{recipient.favourite_biscuit}}`, mitsamt Klammern.
 
-Der Builder sagt Ihnen, auf welchen der drei Fälle Sie zusteuern. Ein Key, den er erkennt, wird zu einem Chip. Einer, den er nicht erkennt, bleibt reiner Text mit sichtbaren Klammern und erreicht den Posteingang so.
-
-Die eine Ausnahme ist ein Token mit einem [Modifier](#giving-a-variable-a-fallback). Der bleibt reiner Text, egal wie gut der Key ist, denn die Auswahl fügt immer nur einen nackten Key ein. Klammern auf der Arbeitsfläche bedeuten also eines von zwei Dingen: eine Variable, die Sie falsch geschrieben haben, oder einen Modifier, der wie beabsichtigt funktioniert.
+Der Builder sagt Ihnen, auf welchen der drei Fälle Sie zusteuern. Fahren Sie mit der Maus über ein Badge, um den Wert zu sehen, den es enthält, und achten Sie auf ein oranges Badge, das ein Key ist, den HireData nicht erkennt. Fügen Sie einen `default`-Modifier hinzu, um den zweiten und dritten Fall mit eigenen Worten abzudecken. [Variablen](/de/variables/introduction) erklärt das Badge und sein Popover, und [Modifier](/de/variables/modifiers#fallback) erklärt den Fallback.
 
 <Warning>
-  Ein Token, das Sie von woanders einfügen, ist die übliche Quelle des dritten Falls. Fügen Sie es ein, und prüfen Sie dann, dass es zu einem Chip geworden ist.
+  Ein Token, das Sie von woanders einfügen, ist die übliche Quelle des dritten Falls. Fügen Sie es ein, und prüfen Sie dann, dass das Badge nicht orange ist.
 </Warning>
-
-## Einer Variablen einen Fallback geben {#giving-a-variable-a-fallback}
-
-Fügen Sie den `default`-Modifier hinzu, und HireData verwendet Ihre Worte, statt eine Lücke zu lassen.
-
-```text
-Hi {{ recipient.first_name | default: "there" }},
-```
-
-Er greift in beiden oben genannten Fehlerfällen: wenn der Wert leer ist und wenn der Key gar nicht existiert. Die E-Mail oben lautet "Hi Sofia," für Sofia und "Hi there," für alle, deren Vorname fehlt.
-
-Sie können einen Chip nicht bearbeiten. Er ist ein Objekt auf der Arbeitsfläche und nicht die Zeichen, für die er steht, es gibt also keine Stelle für einen Modifier. Tippen Sie das ganze Token stattdessen von Hand, mitsamt Klammern, und lassen Sie die Auswahl sich um Sie herum öffnen und schließen. Was Sie getippt haben, bleibt reiner Text, statt ein Chip zu werden — so sieht ein Modifier aus, wenn er richtig ist. Lesen Sie ihn in der Vorschau nach.
-
-`default` ist einer aus einer langen Liste. Siehe [Modifier](/de/variables/modifiers) für den Rest und für das Verketten mehrerer.
 
 ## Verwandte Themen
 
 - [Testen](/de/reference/email-builder/testing) ist der Ort, an dem Sie herausfinden, wozu Ihre Variablen aufgelöst werden.
-- [Variablen](/de/variables/introduction) behandelt die `{{ }}`-Syntax in Formularen, Nachrichten und Automatisierungen genauso wie in E-Mails.
+- [Variablen](/de/variables/introduction) behandelt die `{{ }}`-Syntax, das Badge und sein Popover in Formularen, Nachrichten und Automatisierungen genauso wie in E-Mails.
 - [Modifier](/de/variables/modifiers) listet alles auf, was Sie mit einem Wert auf seinem Weg in die E-Mail tun können.
 - [AI-Variablen](/de/variables/ai-variables) ermitteln einen Wert pro Empfänger, statt einen nachzuschlagen.
 - [Objekte](/de/reference/forms/objects) behandelt die Datensätze, deren Felder zu Variablen werden.

@@ -17,7 +17,7 @@ Het paneel toont de objecten die al aan dit formulier zijn gekoppeld, en daarna 
 <img src="/images/forms-builder/23-objects-panel-linked.png" alt="Het Objects-paneel met Vacancy uitgeklapt naar zijn Label-, Key-, Required- en Remove-controls, Match eronder, en de Available objects-lijst daaronder" width="460" />
 ## Wat het koppelen van een object je oplevert
 
-Elk veld op het gekoppelde record wordt een variabele. Je kunt hem in elke tekstinstelling van het formulier schrijven, waaronder de vraag, de beschrijving, een placeholder en een optielabel, zodat een vraag kan openen met de functietitel in plaats van met "deze rol".
+Elk veld op het gekoppelde record wordt een variabele. Je kunt hem in elke tekstinstelling van het formulier schrijven, waaronder de vraag, de beschrijving, een placeholder en een optielabel, zodat een vraag kan openen met de functietitel in plaats van met "deze rol". In de builder verschijnt de variabele als een badge zoals **Vacancy: Job Title**.
 
 De variabelelijst in de toolbar toont ze allemaal. Elke variabele is genoemd naar het label van het object en wordt aangesproken via zijn key.
 
@@ -33,7 +33,7 @@ Klik op een gekoppeld object om het te openen.
 - **Label** benoemt het object in de variabelelijst, en daar komt "Vacancy: Job Title" vandaan. Wijzig het wanneer je wilt.
 - **Key** is het eerste deel van de variabele zelf, zoals in `{{job.jobTitle}}`. HireData stelt de key in wanneer je het object koppelt en vergrendelt hem daarna, dus kies het object dat je wilt in plaats van te plannen het later te hernoemen.
 - **Required** bepaalt wat er gebeurt wanneer niets een record levert. Zie [Wat Required doet](#required).
-- **Remove** ontkoppelt het object. Zijn variabelen worden dan niet meer ingevuld, dus controleer elke vraag die er een gebruikte.
+- **Remove** ontkoppelt het object. Zijn variabelen worden dan niet meer ingevuld en elke badge die er een gebruikte wordt oranje, dus controleer elke vraag die er een gebruikte.
 - De pijlen omhoog en omlaag verplaatsen het object door de lijst. Welk object bovenaan staat verandert wat het formulier kan, dus lees [Het eerste object bepaalt de configuratie](#first-object) voordat je ze gebruikt.
 
 ## Het eerste object bepaalt de configuratie {#first-object}
@@ -46,7 +46,7 @@ De lijst herordenen verandert dus meer dan het paneel. Lees [Een formulier per r
 
 **Required** doet ertoe wanneer een automatisering het formulier verstuurt. Heeft de run geen record voor een verplicht object, dan faalt de taak en gaat er niets uit, wat beter is dan een formulier versturen waarvan de vragen gaten hebben waar de functietitel had moeten staan.
 
-De eigen pagina van het formulier is vergevingsgezinder. Open een openbaar formulier terwijl niets het record levert en het laadt nog steeds. Elke variabele van dat object wordt dan tot niets ingevuld.
+De eigen pagina van het formulier is vergevingsgezinder. Open een openbaar formulier terwijl niets het record levert en het laadt nog steeds. Elke variabele van dat object wordt dan tot niets ingevuld, tenzij hij een `default`-modifier draagt. Zie [Fallback](/nl/variables/modifiers#fallback).
 
 Zet **Required** uit voor een object dat alleen context toevoegt, zoals een match waar het formulier zonder kan.
 

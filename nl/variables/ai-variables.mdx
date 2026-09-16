@@ -107,7 +107,7 @@ De instructie alleen is zelden genoeg — het model heeft het record nodig. Er z
 
 ### Inline in de prompt
 
-Typ `{{` waar dan ook in het **Input**-vak en er verschijnt een picker die elke variabele toont die voor deze template beschikbaar is, met key en type. Blijf typen om te filteren, en selecteer er dan een om hem in te voegen:
+Typ `{{` waar dan ook in het **Input**-vak en er verschijnt een picker die elke variabele toont die voor deze template beschikbaar is, met key en type. Blijf typen om te filteren, en selecteer er dan een om hem in te voegen. Hij verschijnt als een badge met de naam van het veld, en erover bewegen toont de waarde.
 
 <Frame>
   ![Ai Variable Prompt Variable Picker 1](/images/ai-variable-prompt-variable-picker-1.png "Ai Variable Prompt Variable Picker 1")
@@ -119,7 +119,7 @@ Een verjaardagswens die de ontvanger bij naam begroet leest dus als:
 Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
 ```
 
-Elk token wordt vervangen door de waarde van die ontvanger voordat de instructie het model bereikt, dus voor Sofia wordt het model om een wens _voor Sofia_ gevraagd in plaats van voor `{{recipient.first_name}}`.
+Elke badge wordt vervangen door de waarde van die ontvanger voordat de instructie het model bereikt, dus voor Sofia wordt het model om een wens _voor Sofia_ gevraagd in plaats van voor `{{recipient.first_name}}`. Een oranje badge is een key die HireData niet herkent. Die bereikt het model als de kale key, dus herstel hem voordat je opslaat.
 
 ### Het Variables-tabblad
 

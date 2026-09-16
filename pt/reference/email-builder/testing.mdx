@@ -34,7 +34,7 @@ Esta é a verificação mais rápida do construtor. Um link com o endereço erra
 
 ### O que a pré-visualização preenche
 
-A pré-visualização resolve as suas variáveis contra a sua própria conta, porque você é a única pessoa que a HireData sabe que a está a ler. Assim, um valor que está vazio para si aparece aqui vazio, e um token que não é de todo uma variável aparece exatamente como o escreveu. Veja [O que um destinatário vê realmente](/pt/reference/email-builder/variables#what-a-recipient-actually-sees).
+A pré-visualização resolve as suas variáveis contra a sua própria conta, porque você é a única pessoa que a HireData sabe que a está a ler. Assim, um valor que está vazio para si aparece aqui vazio, e um token que não é de todo uma variável aparece exatamente como o escreveu. Veja [Valores em falta](/pt/reference/email-builder/variables#missing-values).
 
 Abra o link de **Copy Preview URL** algures onde não tem sessão iniciada e o mesmo email preenche esses campos com dados de exemplo inventados. Use esse link para mostrar a um colega o layout, não para verificar a redação de uma linha personalizada.
 
@@ -59,7 +59,7 @@ O botão do avião de papel abre **Test Email**. Guarda primeiro o email e depoi
 Seis coisas que vale a pena fazer por esta ordem.
 
 1. **Leia a linha de assunto.** É a primeira coisa que um destinatário vê, aceita variáveis como tudo o resto, e é a linha mais fácil de deixar a meio.
-2. **Verifique se há chavetas perdidas no canvas.** Uma variável simples que a HireData reconhece é um chip, por isso uma que ainda mostre `{{` e `}}` é ou um erro de escrita ou um token com um [modificador](/pt/variables/modifiers), que fica de propósito como texto simples. Leia cada uma e confirme que é do segundo tipo. Veja [Variáveis](/pt/reference/email-builder/variables).
+2. **Verifique se há badges laranja no canvas.** Um badge laranja é uma chave que a HireData não reconhece, e chega à caixa de entrada com as chavetas à mostra. Corrija ou remova cada um. Veja [Variáveis](/pt/reference/email-builder/variables).
 3. **Percorra o painel Links.** Todos os links, incluindo os que estão dentro de um bloco Form e o link de anulação de subscrição no rodapé.
 4. **Olhe para o email à largura de telemóvel.** As colunas empilham-se e os botões reorganizam-se, e uma linha que cabe num desktop pode partir mal.
 5. **Verifique cada idioma.** Passe o seletor de idioma da pré-visualização por todas as traduções que escreveu.

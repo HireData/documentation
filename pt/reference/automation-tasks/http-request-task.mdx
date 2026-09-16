@@ -177,7 +177,7 @@ Há duas formas de inserir um:
 - O **seletor de campos** ao lado de um **Value**, que lista o que está disponível
 - Escrever `{{` no próprio input. O seletor abre assim que o escreve, e o que escrever entre as chavetas pesquisa na lista — mais rápido quando já sabe aproximadamente como o campo se chama
 
-De qualquer das formas, o campo é guardado como um token `{{field_key}}`, que é o que verá se olhar para um valor que já preencheu.
+De qualquer das formas, o campo é guardado como uma expressão `{{field_key}}` e mostrado como um badge com o nome do campo, como **Form: Id**. Passe o cursor sobre ele para ver o valor por defeito do campo e quaisquer [modificadores](/pt/variables/modifiers). Uma chave que a automação já não oferece torna o badge laranja.
 
 Os campos podem ir para o URL, para os parâmetros, para os headers e para o corpo. Qualquer parte do pedido pode mudar de run para run.
 
@@ -287,7 +287,7 @@ Os inputs partem daquilo que a tarefa já está configurada para enviar. Tudo o 
 Dois tipos de input aparecem em branco:
 
 - Um parâmetro sem valor configurado. Os parâmetros de path estão normalmente neste grupo, uma vez que vêm de segmentos `{placeholder}` no URL e não de uma linha em que escreveu um valor.
-- Um valor ligado a um campo da automação, a menos que esse campo tenha por acaso um valor por defeito. O token é resolvido contra esse valor por defeito, e a maioria dos campos que transportam dados do run não tem um.
+- Um valor ligado a um campo da automação, a menos que esse campo tenha por acaso um valor por defeito. O badge é resolvido contra esse valor por defeito, e a maioria dos campos que transportam dados do run não tem um.
 
 Escreva um literal no que estiver em branco. A ligação em si não é afetada — continua a aplicar-se quando a automação corre.
 

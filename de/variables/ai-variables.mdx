@@ -107,7 +107,7 @@ Die Anweisung allein reicht selten – das Modell braucht den Datensatz. Es gibt
 
 ### Direkt im Prompt
 
-Tippen Sie irgendwo im **Input**-Feld `{{`, und eine Auswahl erscheint, die jede für diese Vorlage verfügbare Variable mit Key und Typ auflistet. Tippen Sie weiter, um zu filtern, und wählen Sie eine aus, um sie einzufügen:
+Tippen Sie irgendwo im **Input**-Feld `{{`, und eine Auswahl erscheint, die jede für diese Vorlage verfügbare Variable mit Key und Typ auflistet. Tippen Sie weiter, um zu filtern, und wählen Sie eine aus, um sie einzufügen. Sie erscheint als Badge mit dem Namen des Feldes, und wenn Sie mit der Maus darüberfahren, sehen Sie den Wert.
 
 <Frame>
   ![Variablenauswahl im Prompt einer KI-Variable 1](/images/ai-variable-prompt-variable-picker-1.png "Variablenauswahl im Prompt einer KI-Variable 1")
@@ -119,7 +119,7 @@ Ein Geburtstagsgruß, der den Empfänger mit Namen anspricht, liest sich also so
 Write a friendly, single-sentence birthday wish, maximum 20 words, for {{recipient.first_name}}. Vary the wording so it does not sound templated. No emoji. Do not open with "Happy birthday". If the name is missing, write a general wish with no name.
 ```
 
-Jeder Token wird durch den Wert dieses Empfängers ersetzt, bevor die Anweisung das Modell erreicht – für Sofia wird das Modell also um einen Wunsch _für Sofia_ gebeten und nicht für `{{recipient.first_name}}`.
+Jedes Badge wird durch den Wert dieses Empfängers ersetzt, bevor die Anweisung das Modell erreicht – für Sofia wird das Modell also um einen Wunsch _für Sofia_ gebeten und nicht für `{{recipient.first_name}}`. Ein oranges Badge ist ein Key, den HireData nicht erkennt. Er erreicht das Modell als roher Key, beheben Sie ihn also vor dem Speichern.
 
 ### Der Variables-Tab
 

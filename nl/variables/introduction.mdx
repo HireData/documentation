@@ -24,6 +24,36 @@ De spaties binnen de accolades zijn optioneel:
 
 - `{{candidate.first_name}}` en `{{ candidate.first_name }}` gedragen zich hetzelfde.
 
+## Hoe een variabele er in de editor uitziet
+
+Elke editor die variabelen accepteert, toont elke variabele als een badge met de weergavenaam van het veld, zoals **Recipient: First Name**. De badge is één object op het canvas, niet de tekens waar hij voor staat.
+
+<img src="/images/email-builder/24-variable-badges.png" alt="Vier badges in een e-mailalinea: Recipient: First Name, Recipient: First Name met een toverstaf-icoon en een 3, een getinte 'text'-badge met een toverstaf-icoon, en een oranje documentation_missing_key-badge met een waarschuwingsicoon" width="608" />
+
+- Een variabele met modifiers krijgt een toverstaf-icoon erbij, en een teller zodra er twee of meer zijn.
+- Een [literal](/nl/variables/modifiers#literals) zoals `{{ "text" | uppercase }}` krijgt een getinte badge.
+- Een key die HireData niet herkent krijgt een oranje waarschuwingsbadge.
+
+### De popover
+
+<img src="/images/email-builder/21-variable-popover.png" alt="Een e-mailalinea met vier badges, Recipient: First Name, Recipient: First Name met een toverstaf-icoon en een 3, een getinte text-badge en een oranje documentation_missing_key-badge, en een popover open onder de tweede badge met Input Callum, Lowercase, Capitalise words, Use a fallback there en Output Callum" width="616" />
+
+Beweeg over een badge om te zien wat hij bevat: de beschrijving en opties van het veld wanneer het die heeft, zijn huidige waarde, en elke modifier in gewone taal met het resultaat aan het eind. De popover kopieert ook de expressie en linkt naar deze pagina.
+
+De waarde hangt af van waar je bent. De formulierbuilder en de e-mailbuilder tonen HireData's voorbeeldwaarde voor het veld. Het **Forms**-tabblad van een record toont de waarde van dat record. Een automatiseringsstap toont de default-waarde van het veld, omdat er nog geen run heeft plaatsgevonden.
+
+### Wanneer een variabele niet wordt gevonden
+
+Een key die HireData niet herkent wordt een oranje badge, en zijn popover toont **Variable is not found**. De expressie blijft ongewijzigd in je content staan, dus herstel de key of verwijder de badge. Een variabele die je uit de **Variables**-lijst van een template verwijdert, verandert overal waar je hem gebruikte in deze badge.
+
+<img src="/images/email-builder/23-variable-not-found.png" alt="Een oranje badge met documentation_missing_key en een driehoeksicoon, en zijn popover die de key herhaalt boven een regel met Variable is not found" width="616" />
+
+### Een badge bewerken {#editing-a-badge}
+
+Zet de cursor achter een badge en druk op Backspace. De badge wordt weer tekst, `{{` en de volledige expressie, modifiers en al. Bewerk hem, typ de sluitende `}}`, en de badge keert terug. Hetzelfde werkt voor een formulierreferentie geschreven als `@key@`.
+
+Je kunt een expressie ook vanaf nul typen, modifiers en al. Hij wordt een badge zodra je de sluitende accolades typt.
+
 ## Waar je variabelen kunt gebruiken
 
 Je kunt variabelen overal gebruiken waar je content schrijft die wordt verzonden of opgeslagen:

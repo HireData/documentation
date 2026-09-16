@@ -34,7 +34,7 @@ C'est la vérification la plus rapide de l'éditeur. Un lien à la mauvaise adre
 
 ### Ce que l'aperçu remplit
 
-L'aperçu résout vos variables contre votre propre compte, parce que vous êtes la seule personne dont HireData sait qu'elle le lit. Une valeur vide pour vous apparaît donc vide ici, et un jeton qui n'est pas du tout une variable apparaît exactement tel que vous l'avez tapé. Voir [Ce que voit réellement un destinataire](/fr/reference/email-builder/variables#what-a-recipient-actually-sees).
+L'aperçu résout vos variables contre votre propre compte, parce que vous êtes la seule personne dont HireData sait qu'elle le lit. Une valeur vide pour vous apparaît donc vide ici, et un jeton qui n'est pas du tout une variable apparaît exactement tel que vous l'avez tapé. Voir [Valeurs manquantes](/fr/reference/email-builder/variables#missing-values).
 
 Ouvrez le lien **Copy Preview URL** là où vous n'êtes pas connecté et le même e-mail remplit ces champs avec des données d'exemple inventées. Utilisez ce lien pour montrer la mise en page à un collègue, pas pour vérifier la formulation d'une ligne personnalisée.
 
@@ -59,7 +59,7 @@ Le bouton avion en papier ouvre **Test Email**. Il enregistre d'abord l'e-mail, 
 Six choses qui valent la peine d'être faites dans cet ordre.
 
 1. **Relisez l'objet.** C'est la première chose qu'un destinataire voit, il accepte les variables comme tout le reste, et c'est la ligne la plus facile à laisser à moitié écrite.
-2. **Cherchez les accolades orphelines dans le canevas.** Une variable simple que HireData reconnaît est une pastille, donc une qui affiche encore `{{` et `}}` est soit une faute de frappe, soit un jeton portant un [modificateur](/fr/variables/modifiers), qui reste volontairement en texte brut. Lisez chacune et assurez-vous que c'est le second cas. Voir [Variables](/fr/reference/email-builder/variables).
+2. **Cherchez les badges orange dans le canevas.** Un badge orange est une clé que HireData ne reconnaît pas, et elle atteint la boîte de réception avec ses accolades visibles. Corrigez ou supprimez chacun. Voir [Variables](/fr/reference/email-builder/variables).
 3. **Parcourez le panneau Links.** Chaque lien, y compris ceux à l'intérieur d'un bloc Form et le lien de désabonnement dans le pied de page.
 4. **Regardez l'e-mail en largeur mobile.** Les colonnes s'empilent et les boutons se réorganisent, et une ligne qui tient sur un ordinateur peut mal se couper.
 5. **Vérifiez chaque langue.** Passez le sélecteur de langue de l'aperçu par chaque traduction que vous avez rédigée.

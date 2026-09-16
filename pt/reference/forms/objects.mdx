@@ -17,7 +17,7 @@ O painel lista os objetos já ligados a este formulário e depois **Available ob
 <img src="/images/forms-builder/23-objects-panel-linked.png" alt="O painel Objects com Vacancy expandido para os seus controlos Label, Key, Required e Remove, Match por baixo dele, e a lista Available objects mais abaixo" width="460" />
 ## O que ligar um objeto lhe dá
 
-Todos os campos do registo ligado tornam-se variáveis. Pode escrevê-las em qualquer definição de texto do formulário, incluindo a pergunta, a descrição, um placeholder e a etiqueta de uma opção, para que uma pergunta possa abrir com o título da vaga em vez de "esta função".
+Todos os campos do registo ligado tornam-se variáveis. Pode escrevê-las em qualquer definição de texto do formulário, incluindo a pergunta, a descrição, um placeholder e a etiqueta de uma opção, para que uma pergunta possa abrir com o título da vaga em vez de "esta função". No construtor, a variável aparece como um badge, como **Vacancy: Job Title**.
 
 A lista de variáveis na barra de ferramentas mostra-as todas. Cada uma tem o nome da etiqueta do objeto e é endereçada pela sua chave.
 
@@ -33,7 +33,7 @@ Clique num objeto ligado para o abrir.
 - **Label** dá o nome ao objeto na lista de variáveis, que é de onde vem "Vacancy: Job Title". Altere-a quando quiser.
 - **Key** é a primeira parte da própria variável, como em `{{job.jobTitle}}`. A HireData define a chave quando liga o objeto e bloqueia-a depois, por isso escolha o objeto que quer em vez de planear renomeá-lo mais tarde.
 - **Required** decide o que acontece quando nada fornece um registo. Veja [O que Required faz](#required).
-- **Remove** desliga o objeto. As suas variáveis deixam de resolver, por isso verifique todas as perguntas que usaram uma.
+- **Remove** desliga o objeto. As suas variáveis deixam de resolver e cada badge que usava uma fica laranja, por isso verifique todas as perguntas que usaram uma.
 - As setas para cima e para baixo movem o objeto pela lista. O objeto que fica no topo altera o que o formulário pode fazer, por isso leia [O primeiro objeto decide a configuração](#first-object) antes de as usar.
 
 ## O primeiro objeto decide a configuração {#first-object}
@@ -46,7 +46,7 @@ Reordenar a lista muda, portanto, mais do que o painel. Leia [Configurar um form
 
 **Required** importa quando uma automação envia o formulário. Se a run não tiver registo para um objeto obrigatório, a tarefa falha e nada é enviado, o que é melhor do que enviar um formulário cujas perguntas têm lacunas onde o título da vaga devia estar.
 
-A página do próprio formulário é mais tolerante. Abra um formulário público sem nada a fornecer o registo e ele carrega na mesma. Todas as variáveis desse objeto resolvem para nada.
+A página do próprio formulário é mais tolerante. Abra um formulário público sem nada a fornecer o registo e ele carrega na mesma. Todas as variáveis desse objeto resolvem para nada, a menos que tenham um modificador `default`. Veja [Fallback](/pt/variables/modifiers#fallback).
 
 Desligue **Required** num objeto que apenas acrescenta contexto, como um match sem o qual o formulário funciona.
 

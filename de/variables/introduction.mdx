@@ -24,6 +24,36 @@ Die Leerzeichen innerhalb der Klammern sind optional:
 
 - `{{candidate.first_name}}` und `{{ candidate.first_name }}` verhalten sich gleich.
 
+## Wie eine Variable im Editor aussieht
+
+Jeder Editor, der Variablen akzeptiert, zeigt jede einzelne als Badge mit dem Anzeigenamen des Feldes, etwa **Recipient: First Name**. Das Badge ist ein Objekt auf der Arbeitsfläche, nicht die Zeichen, für die es steht.
+
+<img src="/images/email-builder/24-variable-badges.png" alt="Vier Badges in einem E-Mail-Absatz: Recipient: First Name, Recipient: First Name mit einem Zauberstab-Symbol und einer 3, ein getöntes 'text'-Badge mit einem Zauberstab-Symbol und ein oranges documentation_missing_key-Badge mit einem Warnsymbol" width="608" />
+
+- Eine Variable mit Modifiers ergänzt ein Zauberstab-Symbol, und eine Zahl, sobald es zwei oder mehr sind.
+- Ein [Literal](/de/variables/modifiers#literals) wie `{{ "text" | uppercase }}` bekommt ein getöntes Badge.
+- Ein Key, den HireData nicht erkennt, bekommt ein oranges Warn-Badge.
+
+### Das Popover
+
+<img src="/images/email-builder/21-variable-popover.png" alt="Ein E-Mail-Absatz mit vier Badges, Recipient: First Name, Recipient: First Name mit einem Zauberstab-Symbol und einer 3, ein getöntes text-Badge und ein oranges documentation_missing_key-Badge, und ein unter dem zweiten Badge geöffnetes Popover mit Input Callum, Lowercase, Capitalise words, Use a fallback there und Output Callum" width="616" />
+
+Fahren Sie mit der Maus über ein Badge, um zu sehen, was es enthält: die Beschreibung und die Optionen des Feldes, wenn es welche hat, seinen aktuellen Wert und jeden Modifier in einfacher Sprache mit dem Ergebnis am Ende. Das Popover kopiert außerdem den Ausdruck und verlinkt auf diese Seite.
+
+Der Wert hängt davon ab, wo Sie sind. Der Formular-Builder und der E-Mail-Builder zeigen HireDatas Beispielwert für das Feld. Der **Forms**-Tab eines Datensatzes zeigt den Wert dieses Datensatzes. Ein Automatisierungsschritt zeigt den Standardwert des Feldes, denn es hat noch kein Run stattgefunden.
+
+### Wenn eine Variable nicht gefunden wird
+
+Ein Key, den HireData nicht erkennt, wird zu einem orangen Badge, und sein Popover zeigt **Variable is not found**. Der Ausdruck bleibt unverändert in Ihrem Inhalt, beheben Sie also den Key oder entfernen Sie das Badge. Eine Variable, die Sie aus der **Variables**-Liste einer Vorlage löschen, wird überall dort, wo Sie sie verwendet haben, zu diesem Badge.
+
+<img src="/images/email-builder/23-variable-not-found.png" alt="Ein oranges Badge mit der Aufschrift documentation_missing_key und einem Dreieck-Symbol, und sein Popover, das den Key über einer Zeile mit Variable is not found wiederholt" width="616" />
+
+### Ein Badge bearbeiten {#editing-a-badge}
+
+Setzen Sie den Cursor hinter ein Badge und drücken Sie Backspace. Das Badge wird wieder zu Text, `{{` und der vollständige Ausdruck, Modifiers eingeschlossen. Bearbeiten Sie ihn, tippen Sie das schließende `}}`, und das Badge kehrt zurück. Dasselbe funktioniert für eine Formularreferenz, die als `@key@` geschrieben ist.
+
+Sie können einen Ausdruck auch von Grund auf tippen, mitsamt Modifiers. Er wird zu einem Badge, sobald Sie die schließenden Klammern tippen.
+
 ## Wo Sie Variablen verwenden können
 
 Sie können Variablen überall dort einsetzen, wo Sie Inhalte schreiben, die gesendet oder gespeichert werden:

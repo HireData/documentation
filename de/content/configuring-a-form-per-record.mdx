@@ -30,7 +30,7 @@ Jede Collection hat einen **Forms**-Tab und einen **Responses**-Tab.
 
 Öffnen Sie den Tab **Records**, klicken Sie auf einen Datensatz und öffnen Sie dann dessen **Forms**-Tab. Jedes Formular, das mit der Collection dieses Datensatzes verknüpft ist, bekommt einen eigenen Tab.
 
-![Der Forms-Tab eines Vakanz-Datensatzes, der jede Frage mit einem Off- und On-Steuerelement auflistet, mit einer ausgeschalteten Frage](/images/record-forms/02-record-forms-configuration.png)
+![Der Forms-Tab eines Vakanz-Datensatzes, mit einem Tab pro verknüpftem Formular und einer Tabelle der Fragen mit den Spalten Available und Criteria, wobei die erste Frage zwei Variablen-Badges trägt](/images/record-forms/02-record-forms-configuration.png)
 
 Die Spalte **Question** listet die Fragen auf, die für diesen Datensatz konfiguriert werden können. Die Spalte **Available** entscheidet, ob die jeweilige Frage angezeigt wird. Setzen Sie eine Frage auf **Off**, und diese Vakanz überspringt sie. Setzen Sie sie auf **On**, und sie kommt zurück.
 
@@ -40,6 +40,14 @@ Zwei Dinge bleiben, wie sie sind:
 
 - Fragen, bei denen im Formular-Builder **Always include** eingeschaltet ist. Das Formular stellt sie, egal was der Datensatz sagt. Siehe [Anzeige und Anforderungen](/de/reference/forms/overview#display-and-requirements).
 - Ending Screens und Redirects. Sie sind keine Fragen, also erreichen sie die Liste nie.
+
+### Variablen in der Fragenliste
+
+Eine Frage, die eine Variable verwendet, zeigt sie als Badge wie **Vacancy: Job Title**. Fahren Sie mit der Maus über das Badge, um den Wert zu sehen, den dieser Datensatz liefert, und bei einer Variable mit Fallback, was die befragten Personen lesen werden.
+
+<img src="/images/record-forms/05-record-forms-variable-popover.png" alt="Der Forms-Tab eines Vakanz-Datensatzes mit einem geöffneten Popover unter dem Badge Vacancy: Job Title, mit Input General Vacancy, Use a fallback position you applied for und Output General Vacancy" width="942" />
+
+Wenn der Datensatz keinen Wert für das Feld hat, zeigt das Popover **No value provided** und den Fallback als Ergebnis. Ohne Fallback geht die Frage mit einer Lücke hinaus, prüfen Sie eine Vakanz also über diesen Tab, bevor Sie ihr Formular senden. Siehe [Variablen](/de/variables/introduction).
 
 ### Abkürzungen
 
