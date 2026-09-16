@@ -1,0 +1,73 @@
+---
+title: "Loop"
+sidebarTitle: "Loop"
+description: "De Loop-stap in een HireData-automatisering: welke records deze ophaalt, het filter, stop on first success, de output variable en hoe iteraties draaien."
+keywords:
+  - "loop-stap"
+  - "herhalen"
+  - "for each"
+  - "records itereren"
+  - "output variable"
+  - "stop on first success"
+  - "sub-run"
+---
+
+**Loop** herhaalt de stappen erin één keer per record. De drawer heeft de kop **Loop** en opent met één optie, **Custom**, beschreven als "Loops through a selection of records." Deze kiezen leidt naar de objectlijst, en daarna naar het filterpaneel.
+
+Na het opslaan opent de **Next step**-picker voor de eerste stap binnen de loop.
+
+## Instellingen
+
+- **Select an object**. Het recordtype om op te halen, met een **Search**-vak. Elke entry benoemt eronder zijn koppeling. Met Carerix gekoppeld bevat de lijst Candidates, Companies, Contacts, Emails, Lists, Matches, Meetings, Notes, Offices, Placements, Publications, Talent Pools, Tasks, Users en Vacancies. De eigen objecten van HireData worden niet aangeboden.
+- **Filter**. Welke records er worden opgehaald, in dezelfde rijen en sets als een [Filter-stap](/nl/reference/automations/steps/filter). De velden zijn de velden van het object, elk voorafgegaan door het icoon van de koppeling. Laat het leeg en de loop haalt elk record van het object op.
+- **Stop on first success**. **No** of **Yes**, standaard **No**. Met **Yes** eindigt de loop na de eerste iteratie die wordt voltooid, dus de stappen erin draaien voor hoogstens één record.
+- **Output Variable**. Een naam voor het huidige record, placeholder `myLoopItem`. De helptekst luidt "This variable will be used instead of the step's id for clarity when filled in" en het voorbeeld erin wordt bijgewerkt terwijl je typt, dus `candidate` geeft `candidate.index`. Laat het leeg en de variabelen worden genoemd naar het id van de stap.
+
+<img src="/images/automations/15-loop-drawer.png" alt="De Loop-drawer met een filter met Id equals 6416, Stop on first success op No, en Output Variable met candidate en de helptekst ervan" width="384" />
+
+### Op het canvas
+
+De Loop tekent een box met een **Loop**-badge. Daarbinnen staat de recordkaart, met een regel zoals "Retrieve Candidates from Carerix", de naam van de koppeling en het filter, gevolgd door de eigen stappen van de loop en een **+** om er meer toe te voegen.
+
+<img src="/images/automations/26-loop-card.png" alt="Een Loop-box op het canvas met een Loop-badge en een kaart met Retrieve Candidates from Carerix, hiredata, Filter 1 Id equals 6416" width="380" />
+
+## Wat het oplevert
+
+Voor elke iteratie, onder de output variable:
+
+| Variabele | Bevat |
+| --- | --- |
+| `candidate.index` | Het iteratienummer, geteld vanaf 0 |
+| `candidate.item.<field>` | Een veld van het huidige record, zoals `candidate.item.email` |
+
+Stappen binnen de loop lezen deze naast de velden van het event. Stappen na de loop niet: die zien de variabelen die vóór de loop bestonden.
+
+Elke iteratie is een sub-run. De runs-lijst toont een rij per sub-run, dus het aantal runs van een automatisering met een Loop is hoger dan het aantal events. De pagina van de bovenliggende run vouwt de iteraties samen in één diagram en de timeline ervan registreert "Waiting." terwijl ze draaien.
+
+## Wat de run stopt
+
+- Een loop zonder stap erin. De timeline registreert "Loop: Failed" met het bericht "Step not found." en de run eindigt daar. De Loop-box zelf draagt geen statusregel.
+- Records die niet kunnen worden opgehaald. De Loop toont Cancelled met het bericht "Data lookup failed." Controleer de koppeling en de filtervelden.
+- Een stap binnen de loop die stopt. Die stopt alleen de sub-run van die iteratie; de andere iteraties en de stappen na de loop gaan door.
+
+<img src="/images/automations/30-loop-failed-timeline.png" alt="Een run timeline met Run Scheduled, Run Started, daarna Loop: Failed met het bericht Step not found." width="384" />
+
+Zie [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons).
+
+## Patronen
+
+- **Maak het filter smal.** Filter op het record dat je bedoelt, zoals het id van de kandidaat uit het event, in plaats van elke kandidaat op te halen en binnen de loop te filteren.
+- **Alleen de eerste match.** Zet **Stop on first success** op **Yes** en zet een [Filter](/nl/reference/automations/steps/filter) als eerste stap erin. De loop eindigt bij het eerste record dat slaagt.
+- **Geef de variabele een naam.** Een output variable zoals `vacancy` leest beter dan een stap-id in een prompt of een e-mailtemplate, en blijft behouden wanneer de stap opnieuw wordt gebouwd.
+
+## Veelgemaakte fouten
+
+- **Geen filter.** De loop haalt elk record van het object op en draait de binnenste stappen voor elk. Voeg een filter toe voordat je activeert.
+- **Loopvariabelen lezen na de loop.** Ze bestaan alleen daarbinnen. Schrijf wat je nodig hebt naar een record met een [Update](/nl/reference/automations/steps/update)-taak binnen de loop.
+- **Verwachten te loopen over tekst of een bereik.** De drawer biedt alleen records uit een gekoppelde app. Om te herhalen over de regels van een tekstveld of een vast aantal, verdeel je het werk anders, zoals met een [Prompt](/nl/reference/automations/steps/prompt) met een List-output.
+
+## Gerelateerd
+
+- [Find](/nl/reference/automations/steps/find) haalt één record op in plaats van meerdere.
+- [Split](/nl/reference/automations/steps/split) maakt ook sub-runs, één per branch in plaats van één per record.
+- [Filter](/nl/reference/automations/steps/filter) documenteert de rijen, sets en operators die het filter van de loop deelt.

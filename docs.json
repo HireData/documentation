@@ -438,11 +438,11 @@
                 ]
               },
               {
-                "group": "Berichten",
+                "group": "Installatie",
                 "icon": "comments",
                 "pages": [
                   {
-                    "group": "WhatsApp",
+                    "group": "Installatie",
                     "pages": [
                       {
                         "group": "Installatie",
@@ -478,6 +478,7 @@
                     "pages": [
                       "nl/apps/messaging/emails/setting-up-an-email-template-in-hiredata",
                       "nl/apps/messaging/emails/sending-an-email-newsletter-to-your-audience",
+                      "nl/apps/messaging/emails/adding-images-to-your-emails",
                       {
                         "group": "Domeinen & afzenders",
                         "pages": [
@@ -493,7 +494,8 @@
                 "group": "Inhoud",
                 "icon": "file-lines",
                 "pages": [
-                  "nl/content/creating-a-form-in-hiredata"
+                  "nl/content/creating-a-form-in-hiredata",
+                  "nl/content/configuring-a-form-per-record"
                 ]
               },
               {
@@ -528,12 +530,16 @@
                 "group": "AI-assistenten",
                 "pages": [
                   "nl/apps/mcp/install-hiredata-plugin",
+                  "nl/apps/mcp/install-hiredata-skills-with-a-prompt",
                   "nl/apps/mcp/hiredata-skills",
+                  "nl/apps/mcp/keep-hiredata-skills-up-to-date",
+                  "nl/apps/mcp/create-your-own-skill",
+                  "nl/apps/mcp/write-better-hiredata-issue-reports-with-ai",
                   "nl/apps/mcp/connect-hiredata-to-your-ai-assistant"
                 ]
               },
               {
-                "group": "ATS",
+                "group": "Carerix",
                 "pages": [
                   {
                     "group": "Carerix",
@@ -541,7 +547,9 @@
                     "pages": [
                       "nl/apps/carerix/overview",
                       "nl/apps/carerix/connect-with-carerix",
+                      "nl/apps/carerix/allow-carerix-cookies-in-your-browser",
                       "nl/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations",
+                      "nl/apps/carerix/carerix-webhook-fields",
                       "nl/apps/carerix/combined-fields-explained",
                       "nl/apps/carerix/manually-sync-carerix-with-hiredata",
                       "nl/apps/carerix/how-profile-pictures-work-in-hiredata",
@@ -604,7 +612,7 @@
                 ]
               },
               {
-                "group": "Overig",
+                "group": "Ratecard",
                 "pages": [
                   {
                     "group": "Ratecard",
@@ -625,6 +633,7 @@
                 "group": "Probleemoplossing",
                 "icon": "wrench",
                 "pages": [
+                  "nl/knowledge-base/run-cancellation-reasons",
                   "nl/knowledge-base/why-didnt-my-automation-run",
                   "nl/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata",
                   "nl/apps/messaging/whatsapp/whatsapp-error-codes-explained",
@@ -639,7 +648,11 @@
                 "group": "Kookboek",
                 "icon": "book",
                 "pages": [
-                  "nl/knowledge-base/cookbook/introduction"
+                  "nl/knowledge-base/cookbook/introduction",
+                  "nl/knowledge-base/cookbook/incomplete-candidate-profiles",
+                  "nl/knowledge-base/cookbook/post-an-outcome-to-your-own-system",
+                  "nl/knowledge-base/cookbook/pre-screening-form",
+                  "nl/knowledge-base/cookbook/one-click-feedback-email"
                 ]
               },
               {
@@ -655,11 +668,116 @@
             "tab": "Referentie",
             "groups": [
               {
+                "group": "Automatiseringen",
+                "icon": "bolt",
+                "pages": [
+                  "nl/reference/automations/overview",
+                  {
+                    "group": "Stappen",
+                    "pages": [
+                      "nl/reference/automations/steps/setup",
+                      "nl/reference/automations/steps/add",
+                      "nl/reference/automations/steps/delay",
+                      "nl/reference/automations/steps/filter",
+                      "nl/reference/automations/steps/find",
+                      "nl/reference/automations/steps/loop",
+                      "nl/reference/automations/steps/message",
+                      "nl/reference/automations/steps/prompt",
+                      "nl/reference/automations/steps/split",
+                      "nl/reference/automations/steps/update"
+                    ]
+                  },
+                  "nl/reference/automations/task-catalogue",
+                  {
+                    "group": "Taken",
+                    "pages": [
+                      "nl/reference/automation-tasks/http-request-task",
+                      "nl/reference/automations/tasks/send-email"
+                    ]
+                  },
+                  "nl/reference/automations/follow-a-run"
+                ]
+              },
+              {
+                "group": "Formulieren",
+                "icon": "list-check",
+                "pages": [
+                  "nl/reference/forms/overview",
+                  "nl/reference/forms/logic",
+                  "nl/reference/forms/objects",
+                  "nl/reference/forms/data-sources",
+                  {
+                    "group": "Formuliervelden",
+                    "pages": [
+                      "nl/reference/forms/fields/short-and-long-text",
+                      "nl/reference/forms/fields/email",
+                      "nl/reference/forms/fields/phone-number",
+                      "nl/reference/forms/fields/website",
+                      "nl/reference/forms/fields/date",
+                      "nl/reference/forms/fields/time",
+                      "nl/reference/forms/fields/datetime",
+                      "nl/reference/forms/fields/yes-no",
+                      "nl/reference/forms/fields/multiple-choice-and-dropdown",
+                      "nl/reference/forms/fields/number",
+                      "nl/reference/forms/fields/currency",
+                      "nl/reference/forms/fields/net-promoter-score-and-opinion-scale",
+                      "nl/reference/forms/fields/file-upload",
+                      "nl/reference/forms/fields/ending-screen",
+                      "nl/reference/forms/fields/redirect-url"
+                    ]
+                  },
+                  {
+                    "group": "Evaluatie",
+                    "pages": [
+                      "nl/reference/forms/evaluation/overview",
+                      "nl/reference/forms/evaluation/criteria",
+                      "nl/reference/forms/evaluation/scoring",
+                      "nl/reference/forms/evaluation/skills",
+                      "nl/reference/forms/evaluation/generated-fields"
+                    ]
+                  },
+                  {
+                    "group": "Testen",
+                    "pages": [
+                      "nl/reference/forms/testing/previews",
+                      "nl/reference/forms/testing/test-and-evaluate"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "E-mails",
+                "icon": "envelope",
+                "pages": [
+                  "nl/reference/email-builder/overview",
+                  "nl/reference/email-builder/template",
+                  "nl/reference/email-builder/sections",
+                  {
+                    "group": "Blokken",
+                    "pages": [
+                      "nl/reference/email-builder/blocks/paragraph",
+                      "nl/reference/email-builder/blocks/heading",
+                      "nl/reference/email-builder/blocks/columns",
+                      "nl/reference/email-builder/blocks/form",
+                      "nl/reference/email-builder/blocks/image",
+                      "nl/reference/email-builder/blocks/socials",
+                      "nl/reference/email-builder/blocks/button",
+                      "nl/reference/email-builder/blocks/html",
+                      "nl/reference/email-builder/blocks/signature"
+                    ]
+                  },
+                  "nl/reference/email-builder/variables",
+                  "nl/reference/email-builder/translations",
+                  "nl/reference/email-builder/testing"
+                ]
+              },
+              {
                 "group": "Variabelen",
                 "icon": "brackets-curly",
                 "pages": [
                   "nl/variables/introduction",
-                  "nl/variables/modifiers"
+                  "nl/variables/modifiers",
+                  "nl/variables/ai-variables"
                 ]
               }
             ]
@@ -703,11 +821,11 @@
                 ]
               },
               {
-                "group": "Mensagens",
+                "group": "Configuração",
                 "icon": "comments",
                 "pages": [
                   {
-                    "group": "WhatsApp",
+                    "group": "Configuração",
                     "pages": [
                       {
                         "group": "Configuração",
@@ -743,6 +861,7 @@
                     "pages": [
                       "pt/apps/messaging/emails/setting-up-an-email-template-in-hiredata",
                       "pt/apps/messaging/emails/sending-an-email-newsletter-to-your-audience",
+                      "pt/apps/messaging/emails/adding-images-to-your-emails",
                       {
                         "group": "Domínios e remetentes",
                         "pages": [
@@ -758,7 +877,8 @@
                 "group": "Conteúdo",
                 "icon": "file-lines",
                 "pages": [
-                  "pt/content/creating-a-form-in-hiredata"
+                  "pt/content/creating-a-form-in-hiredata",
+                  "pt/content/configuring-a-form-per-record"
                 ]
               },
               {
@@ -793,12 +913,16 @@
                 "group": "Assistentes de IA",
                 "pages": [
                   "pt/apps/mcp/install-hiredata-plugin",
+                  "pt/apps/mcp/install-hiredata-skills-with-a-prompt",
                   "pt/apps/mcp/hiredata-skills",
+                  "pt/apps/mcp/keep-hiredata-skills-up-to-date",
+                  "pt/apps/mcp/create-your-own-skill",
+                  "pt/apps/mcp/write-better-hiredata-issue-reports-with-ai",
                   "pt/apps/mcp/connect-hiredata-to-your-ai-assistant"
                 ]
               },
               {
-                "group": "ATS",
+                "group": "Carerix",
                 "pages": [
                   {
                     "group": "Carerix",
@@ -806,7 +930,9 @@
                     "pages": [
                       "pt/apps/carerix/overview",
                       "pt/apps/carerix/connect-with-carerix",
+                      "pt/apps/carerix/allow-carerix-cookies-in-your-browser",
                       "pt/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations",
+                      "pt/apps/carerix/carerix-webhook-fields",
                       "pt/apps/carerix/combined-fields-explained",
                       "pt/apps/carerix/manually-sync-carerix-with-hiredata",
                       "pt/apps/carerix/how-profile-pictures-work-in-hiredata",
@@ -869,7 +995,7 @@
                 ]
               },
               {
-                "group": "Outro",
+                "group": "Ratecard",
                 "pages": [
                   {
                     "group": "Ratecard",
@@ -890,20 +1016,26 @@
                 "group": "Resolução de problemas",
                 "icon": "wrench",
                 "pages": [
+                  "pt/knowledge-base/run-cancellation-reasons",
                   "pt/knowledge-base/why-didnt-my-automation-run",
                   "pt/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata",
                   "pt/apps/messaging/whatsapp/whatsapp-error-codes-explained",
                   "pt/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
                   "pt/apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
                   "pt/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api",
-                  "pt/knowledge-base/why-cant-i-verify-my-dns-records"
+                  "pt/knowledge-base/why-cant-i-verify-my-dns-records",
+                  "pt/knowledge-base/understanding-form-response-exports"
                 ]
               },
               {
                 "group": "Livro de receitas",
                 "icon": "book",
                 "pages": [
-                  "pt/knowledge-base/cookbook/introduction"
+                  "pt/knowledge-base/cookbook/introduction",
+                  "pt/knowledge-base/cookbook/incomplete-candidate-profiles",
+                  "pt/knowledge-base/cookbook/post-an-outcome-to-your-own-system",
+                  "pt/knowledge-base/cookbook/pre-screening-form",
+                  "pt/knowledge-base/cookbook/one-click-feedback-email"
                 ]
               },
               {
@@ -919,11 +1051,116 @@
             "tab": "Referência",
             "groups": [
               {
+                "group": "Automatizações",
+                "icon": "bolt",
+                "pages": [
+                  "pt/reference/automations/overview",
+                  {
+                    "group": "Passos",
+                    "pages": [
+                      "pt/reference/automations/steps/setup",
+                      "pt/reference/automations/steps/add",
+                      "pt/reference/automations/steps/delay",
+                      "pt/reference/automations/steps/filter",
+                      "pt/reference/automations/steps/find",
+                      "pt/reference/automations/steps/loop",
+                      "pt/reference/automations/steps/message",
+                      "pt/reference/automations/steps/prompt",
+                      "pt/reference/automations/steps/split",
+                      "pt/reference/automations/steps/update"
+                    ]
+                  },
+                  "pt/reference/automations/task-catalogue",
+                  {
+                    "group": "Tarefas",
+                    "pages": [
+                      "pt/reference/automation-tasks/http-request-task",
+                      "pt/reference/automations/tasks/send-email"
+                    ]
+                  },
+                  "pt/reference/automations/follow-a-run"
+                ]
+              },
+              {
+                "group": "Formulários",
+                "icon": "list-check",
+                "pages": [
+                  "pt/reference/forms/overview",
+                  "pt/reference/forms/logic",
+                  "pt/reference/forms/objects",
+                  "pt/reference/forms/data-sources",
+                  {
+                    "group": "Campos de formulário",
+                    "pages": [
+                      "pt/reference/forms/fields/short-and-long-text",
+                      "pt/reference/forms/fields/email",
+                      "pt/reference/forms/fields/phone-number",
+                      "pt/reference/forms/fields/website",
+                      "pt/reference/forms/fields/date",
+                      "pt/reference/forms/fields/time",
+                      "pt/reference/forms/fields/datetime",
+                      "pt/reference/forms/fields/yes-no",
+                      "pt/reference/forms/fields/multiple-choice-and-dropdown",
+                      "pt/reference/forms/fields/number",
+                      "pt/reference/forms/fields/currency",
+                      "pt/reference/forms/fields/net-promoter-score-and-opinion-scale",
+                      "pt/reference/forms/fields/file-upload",
+                      "pt/reference/forms/fields/ending-screen",
+                      "pt/reference/forms/fields/redirect-url"
+                    ]
+                  },
+                  {
+                    "group": "Avaliação",
+                    "pages": [
+                      "pt/reference/forms/evaluation/overview",
+                      "pt/reference/forms/evaluation/criteria",
+                      "pt/reference/forms/evaluation/scoring",
+                      "pt/reference/forms/evaluation/skills",
+                      "pt/reference/forms/evaluation/generated-fields"
+                    ]
+                  },
+                  {
+                    "group": "Testes",
+                    "pages": [
+                      "pt/reference/forms/testing/previews",
+                      "pt/reference/forms/testing/test-and-evaluate"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Emails",
+                "icon": "envelope",
+                "pages": [
+                  "pt/reference/email-builder/overview",
+                  "pt/reference/email-builder/template",
+                  "pt/reference/email-builder/sections",
+                  {
+                    "group": "Blocos",
+                    "pages": [
+                      "pt/reference/email-builder/blocks/paragraph",
+                      "pt/reference/email-builder/blocks/heading",
+                      "pt/reference/email-builder/blocks/columns",
+                      "pt/reference/email-builder/blocks/form",
+                      "pt/reference/email-builder/blocks/image",
+                      "pt/reference/email-builder/blocks/socials",
+                      "pt/reference/email-builder/blocks/button",
+                      "pt/reference/email-builder/blocks/html",
+                      "pt/reference/email-builder/blocks/signature"
+                    ]
+                  },
+                  "pt/reference/email-builder/variables",
+                  "pt/reference/email-builder/translations",
+                  "pt/reference/email-builder/testing"
+                ]
+              },
+              {
                 "group": "Variáveis",
                 "icon": "brackets-curly",
                 "pages": [
                   "pt/variables/introduction",
-                  "pt/variables/modifiers"
+                  "pt/variables/modifiers",
+                  "pt/variables/ai-variables"
                 ]
               }
             ]
@@ -967,11 +1204,11 @@
                 ]
               },
               {
-                "group": "Nachrichten",
+                "group": "Einrichtung",
                 "icon": "comments",
                 "pages": [
                   {
-                    "group": "WhatsApp",
+                    "group": "Einrichtung",
                     "pages": [
                       {
                         "group": "Einrichtung",
@@ -1007,6 +1244,7 @@
                     "pages": [
                       "de/apps/messaging/emails/setting-up-an-email-template-in-hiredata",
                       "de/apps/messaging/emails/sending-an-email-newsletter-to-your-audience",
+                      "de/apps/messaging/emails/adding-images-to-your-emails",
                       {
                         "group": "Domains & Absender",
                         "pages": [
@@ -1022,7 +1260,8 @@
                 "group": "Inhalt",
                 "icon": "file-lines",
                 "pages": [
-                  "de/content/creating-a-form-in-hiredata"
+                  "de/content/creating-a-form-in-hiredata",
+                  "de/content/configuring-a-form-per-record"
                 ]
               },
               {
@@ -1061,11 +1300,12 @@
                   "de/apps/mcp/hiredata-skills",
                   "de/apps/mcp/keep-hiredata-skills-up-to-date",
                   "de/apps/mcp/create-your-own-skill",
+                  "de/apps/mcp/write-better-hiredata-issue-reports-with-ai",
                   "de/apps/mcp/connect-hiredata-to-your-ai-assistant"
                 ]
               },
               {
-                "group": "ATS",
+                "group": "Carerix",
                 "pages": [
                   {
                     "group": "Carerix",
@@ -1073,7 +1313,9 @@
                     "pages": [
                       "de/apps/carerix/overview",
                       "de/apps/carerix/connect-with-carerix",
+                      "de/apps/carerix/allow-carerix-cookies-in-your-browser",
                       "de/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations",
+                      "de/apps/carerix/carerix-webhook-fields",
                       "de/apps/carerix/combined-fields-explained",
                       "de/apps/carerix/manually-sync-carerix-with-hiredata",
                       "de/apps/carerix/how-profile-pictures-work-in-hiredata",
@@ -1136,7 +1378,7 @@
                 ]
               },
               {
-                "group": "Sonstiges",
+                "group": "Ratecard",
                 "pages": [
                   {
                     "group": "Ratecard",
@@ -1157,20 +1399,26 @@
                 "group": "Fehlerbehebung",
                 "icon": "wrench",
                 "pages": [
+                  "de/knowledge-base/run-cancellation-reasons",
                   "de/knowledge-base/why-didnt-my-automation-run",
                   "de/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata",
                   "de/apps/messaging/whatsapp/whatsapp-error-codes-explained",
                   "de/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
                   "de/apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
                   "de/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api",
-                  "de/knowledge-base/why-cant-i-verify-my-dns-records"
+                  "de/knowledge-base/why-cant-i-verify-my-dns-records",
+                  "de/knowledge-base/understanding-form-response-exports"
                 ]
               },
               {
                 "group": "Rezeptbuch",
                 "icon": "book",
                 "pages": [
-                  "de/knowledge-base/cookbook/introduction"
+                  "de/knowledge-base/cookbook/introduction",
+                  "de/knowledge-base/cookbook/incomplete-candidate-profiles",
+                  "de/knowledge-base/cookbook/post-an-outcome-to-your-own-system",
+                  "de/knowledge-base/cookbook/pre-screening-form",
+                  "de/knowledge-base/cookbook/one-click-feedback-email"
                 ]
               },
               {
@@ -1186,11 +1434,116 @@
             "tab": "Referenz",
             "groups": [
               {
+                "group": "Automatisierungen",
+                "icon": "bolt",
+                "pages": [
+                  "de/reference/automations/overview",
+                  {
+                    "group": "Schritte",
+                    "pages": [
+                      "de/reference/automations/steps/setup",
+                      "de/reference/automations/steps/add",
+                      "de/reference/automations/steps/delay",
+                      "de/reference/automations/steps/filter",
+                      "de/reference/automations/steps/find",
+                      "de/reference/automations/steps/loop",
+                      "de/reference/automations/steps/message",
+                      "de/reference/automations/steps/prompt",
+                      "de/reference/automations/steps/split",
+                      "de/reference/automations/steps/update"
+                    ]
+                  },
+                  "de/reference/automations/task-catalogue",
+                  {
+                    "group": "Aufgaben",
+                    "pages": [
+                      "de/reference/automation-tasks/http-request-task",
+                      "de/reference/automations/tasks/send-email"
+                    ]
+                  },
+                  "de/reference/automations/follow-a-run"
+                ]
+              },
+              {
+                "group": "Formulare",
+                "icon": "list-check",
+                "pages": [
+                  "de/reference/forms/overview",
+                  "de/reference/forms/logic",
+                  "de/reference/forms/objects",
+                  "de/reference/forms/data-sources",
+                  {
+                    "group": "Formularfelder",
+                    "pages": [
+                      "de/reference/forms/fields/short-and-long-text",
+                      "de/reference/forms/fields/email",
+                      "de/reference/forms/fields/phone-number",
+                      "de/reference/forms/fields/website",
+                      "de/reference/forms/fields/date",
+                      "de/reference/forms/fields/time",
+                      "de/reference/forms/fields/datetime",
+                      "de/reference/forms/fields/yes-no",
+                      "de/reference/forms/fields/multiple-choice-and-dropdown",
+                      "de/reference/forms/fields/number",
+                      "de/reference/forms/fields/currency",
+                      "de/reference/forms/fields/net-promoter-score-and-opinion-scale",
+                      "de/reference/forms/fields/file-upload",
+                      "de/reference/forms/fields/ending-screen",
+                      "de/reference/forms/fields/redirect-url"
+                    ]
+                  },
+                  {
+                    "group": "Evaluation",
+                    "pages": [
+                      "de/reference/forms/evaluation/overview",
+                      "de/reference/forms/evaluation/criteria",
+                      "de/reference/forms/evaluation/scoring",
+                      "de/reference/forms/evaluation/skills",
+                      "de/reference/forms/evaluation/generated-fields"
+                    ]
+                  },
+                  {
+                    "group": "Testen",
+                    "pages": [
+                      "de/reference/forms/testing/previews",
+                      "de/reference/forms/testing/test-and-evaluate"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "E-Mails",
+                "icon": "envelope",
+                "pages": [
+                  "de/reference/email-builder/overview",
+                  "de/reference/email-builder/template",
+                  "de/reference/email-builder/sections",
+                  {
+                    "group": "Blöcke",
+                    "pages": [
+                      "de/reference/email-builder/blocks/paragraph",
+                      "de/reference/email-builder/blocks/heading",
+                      "de/reference/email-builder/blocks/columns",
+                      "de/reference/email-builder/blocks/form",
+                      "de/reference/email-builder/blocks/image",
+                      "de/reference/email-builder/blocks/socials",
+                      "de/reference/email-builder/blocks/button",
+                      "de/reference/email-builder/blocks/html",
+                      "de/reference/email-builder/blocks/signature"
+                    ]
+                  },
+                  "de/reference/email-builder/variables",
+                  "de/reference/email-builder/translations",
+                  "de/reference/email-builder/testing"
+                ]
+              },
+              {
                 "group": "Variablen",
                 "icon": "brackets-curly",
                 "pages": [
                   "de/variables/introduction",
-                  "de/variables/modifiers"
+                  "de/variables/modifiers",
+                  "de/variables/ai-variables"
                 ]
               }
             ]
@@ -1234,11 +1587,11 @@
                 ]
               },
               {
-                "group": "Messagerie",
+                "group": "Configuration",
                 "icon": "comments",
                 "pages": [
                   {
-                    "group": "WhatsApp",
+                    "group": "Configuration",
                     "pages": [
                       {
                         "group": "Configuration",
@@ -1274,6 +1627,7 @@
                     "pages": [
                       "fr/apps/messaging/emails/setting-up-an-email-template-in-hiredata",
                       "fr/apps/messaging/emails/sending-an-email-newsletter-to-your-audience",
+                      "fr/apps/messaging/emails/adding-images-to-your-emails",
                       {
                         "group": "Domaines & expéditeurs",
                         "pages": [
@@ -1289,7 +1643,8 @@
                 "group": "Contenu",
                 "icon": "file-lines",
                 "pages": [
-                  "fr/content/creating-a-form-in-hiredata"
+                  "fr/content/creating-a-form-in-hiredata",
+                  "fr/content/configuring-a-form-per-record"
                 ]
               },
               {
@@ -1328,11 +1683,12 @@
                   "fr/apps/mcp/hiredata-skills",
                   "fr/apps/mcp/keep-hiredata-skills-up-to-date",
                   "fr/apps/mcp/create-your-own-skill",
+                  "fr/apps/mcp/write-better-hiredata-issue-reports-with-ai",
                   "fr/apps/mcp/connect-hiredata-to-your-ai-assistant"
                 ]
               },
               {
-                "group": "ATS",
+                "group": "Carerix",
                 "pages": [
                   {
                     "group": "Carerix",
@@ -1340,7 +1696,9 @@
                     "pages": [
                       "fr/apps/carerix/overview",
                       "fr/apps/carerix/connect-with-carerix",
+                      "fr/apps/carerix/allow-carerix-cookies-in-your-browser",
                       "fr/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations",
+                      "fr/apps/carerix/carerix-webhook-fields",
                       "fr/apps/carerix/combined-fields-explained",
                       "fr/apps/carerix/manually-sync-carerix-with-hiredata",
                       "fr/apps/carerix/how-profile-pictures-work-in-hiredata",
@@ -1403,7 +1761,7 @@
                 ]
               },
               {
-                "group": "Autre",
+                "group": "Ratecard",
                 "pages": [
                   {
                     "group": "Ratecard",
@@ -1424,20 +1782,26 @@
                 "group": "Dépannage",
                 "icon": "wrench",
                 "pages": [
+                  "fr/knowledge-base/run-cancellation-reasons",
                   "fr/knowledge-base/why-didnt-my-automation-run",
                   "fr/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata",
                   "fr/apps/messaging/whatsapp/whatsapp-error-codes-explained",
                   "fr/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
                   "fr/apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
                   "fr/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api",
-                  "fr/knowledge-base/why-cant-i-verify-my-dns-records"
+                  "fr/knowledge-base/why-cant-i-verify-my-dns-records",
+                  "fr/knowledge-base/understanding-form-response-exports"
                 ]
               },
               {
                 "group": "Livre de recettes",
                 "icon": "book",
                 "pages": [
-                  "fr/knowledge-base/cookbook/introduction"
+                  "fr/knowledge-base/cookbook/introduction",
+                  "fr/knowledge-base/cookbook/incomplete-candidate-profiles",
+                  "fr/knowledge-base/cookbook/post-an-outcome-to-your-own-system",
+                  "fr/knowledge-base/cookbook/pre-screening-form",
+                  "fr/knowledge-base/cookbook/one-click-feedback-email"
                 ]
               },
               {
@@ -1453,11 +1817,116 @@
             "tab": "Référence",
             "groups": [
               {
+                "group": "Automatisations",
+                "icon": "bolt",
+                "pages": [
+                  "fr/reference/automations/overview",
+                  {
+                    "group": "Étapes",
+                    "pages": [
+                      "fr/reference/automations/steps/setup",
+                      "fr/reference/automations/steps/add",
+                      "fr/reference/automations/steps/delay",
+                      "fr/reference/automations/steps/filter",
+                      "fr/reference/automations/steps/find",
+                      "fr/reference/automations/steps/loop",
+                      "fr/reference/automations/steps/message",
+                      "fr/reference/automations/steps/prompt",
+                      "fr/reference/automations/steps/split",
+                      "fr/reference/automations/steps/update"
+                    ]
+                  },
+                  "fr/reference/automations/task-catalogue",
+                  {
+                    "group": "Tâches",
+                    "pages": [
+                      "fr/reference/automation-tasks/http-request-task",
+                      "fr/reference/automations/tasks/send-email"
+                    ]
+                  },
+                  "fr/reference/automations/follow-a-run"
+                ]
+              },
+              {
+                "group": "Formulaires",
+                "icon": "list-check",
+                "pages": [
+                  "fr/reference/forms/overview",
+                  "fr/reference/forms/logic",
+                  "fr/reference/forms/objects",
+                  "fr/reference/forms/data-sources",
+                  {
+                    "group": "Champs de formulaire",
+                    "pages": [
+                      "fr/reference/forms/fields/short-and-long-text",
+                      "fr/reference/forms/fields/email",
+                      "fr/reference/forms/fields/phone-number",
+                      "fr/reference/forms/fields/website",
+                      "fr/reference/forms/fields/date",
+                      "fr/reference/forms/fields/time",
+                      "fr/reference/forms/fields/datetime",
+                      "fr/reference/forms/fields/yes-no",
+                      "fr/reference/forms/fields/multiple-choice-and-dropdown",
+                      "fr/reference/forms/fields/number",
+                      "fr/reference/forms/fields/currency",
+                      "fr/reference/forms/fields/net-promoter-score-and-opinion-scale",
+                      "fr/reference/forms/fields/file-upload",
+                      "fr/reference/forms/fields/ending-screen",
+                      "fr/reference/forms/fields/redirect-url"
+                    ]
+                  },
+                  {
+                    "group": "Évaluation",
+                    "pages": [
+                      "fr/reference/forms/evaluation/overview",
+                      "fr/reference/forms/evaluation/criteria",
+                      "fr/reference/forms/evaluation/scoring",
+                      "fr/reference/forms/evaluation/skills",
+                      "fr/reference/forms/evaluation/generated-fields"
+                    ]
+                  },
+                  {
+                    "group": "Tests",
+                    "pages": [
+                      "fr/reference/forms/testing/previews",
+                      "fr/reference/forms/testing/test-and-evaluate"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "E-mails",
+                "icon": "envelope",
+                "pages": [
+                  "fr/reference/email-builder/overview",
+                  "fr/reference/email-builder/template",
+                  "fr/reference/email-builder/sections",
+                  {
+                    "group": "Blocs",
+                    "pages": [
+                      "fr/reference/email-builder/blocks/paragraph",
+                      "fr/reference/email-builder/blocks/heading",
+                      "fr/reference/email-builder/blocks/columns",
+                      "fr/reference/email-builder/blocks/form",
+                      "fr/reference/email-builder/blocks/image",
+                      "fr/reference/email-builder/blocks/socials",
+                      "fr/reference/email-builder/blocks/button",
+                      "fr/reference/email-builder/blocks/html",
+                      "fr/reference/email-builder/blocks/signature"
+                    ]
+                  },
+                  "fr/reference/email-builder/variables",
+                  "fr/reference/email-builder/translations",
+                  "fr/reference/email-builder/testing"
+                ]
+              },
+              {
                 "group": "Variables",
                 "icon": "brackets-curly",
                 "pages": [
                   "fr/variables/introduction",
-                  "fr/variables/modifiers"
+                  "fr/variables/modifiers",
+                  "fr/variables/ai-variables"
                 ]
               }
             ]
@@ -1530,6 +1999,22 @@
     {
       "source": "/reference/forms/question-types",
       "destination": "/reference/forms/overview"
+    },
+    {
+      "source": "/nl/reference/forms/question-types",
+      "destination": "/nl/reference/forms/overview"
+    },
+    {
+      "source": "/pt/reference/forms/question-types",
+      "destination": "/pt/reference/forms/overview"
+    },
+    {
+      "source": "/de/reference/forms/question-types",
+      "destination": "/de/reference/forms/overview"
+    },
+    {
+      "source": "/fr/reference/forms/question-types",
+      "destination": "/fr/reference/forms/overview"
     },
     {
       "source": "/en/articles/727305-combined-fields-explained-how-hiredata-picks-a-value",
@@ -1830,6 +2315,22 @@
     {
       "source": "/apps/messaging/emails/adding-cc-and-bcc-to-an-email",
       "destination": "/reference/automations/tasks/send-email"
+    },
+    {
+      "source": "/nl/apps/messaging/emails/adding-cc-and-bcc-to-an-email",
+      "destination": "/nl/reference/automations/tasks/send-email"
+    },
+    {
+      "source": "/pt/apps/messaging/emails/adding-cc-and-bcc-to-an-email",
+      "destination": "/pt/reference/automations/tasks/send-email"
+    },
+    {
+      "source": "/de/apps/messaging/emails/adding-cc-and-bcc-to-an-email",
+      "destination": "/de/reference/automations/tasks/send-email"
+    },
+    {
+      "source": "/fr/apps/messaging/emails/adding-cc-and-bcc-to-an-email",
+      "destination": "/fr/reference/automations/tasks/send-email"
     }
   ]
 }

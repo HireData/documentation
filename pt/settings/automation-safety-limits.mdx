@@ -1,10 +1,15 @@
 ---
 title: "Limites de segurança de automação"
 sidebarTitle: "Limites de segurança"
-description: "Defina limites de segurança na HireData para evitar enviar demasiadas mensagens aos seus contactos e manter uma comunicação equilibrada e profissional."
+description: "Configure limites de segurança de automação na HireData para limitar quantas mensagens um contacto recebe, evitar envios descontrolados e manter a sua comunicação de recrutamento no bom caminho."
+keywords: ["limites de envio excedidos", "limites de envio por automação excedidos", "run cancelado", "limites de segurança", "limite de email", "limite de conversas", "ignorar limites de segurança", "safety limits", "como resolver"]
 ---
 
-_Os limites de segurança na HireData garantem que as suas automações não sobrecarregam os seus contactos, prevenindo o envio excessivo de mensagens. Esta funcionalidade ajuda a manter um processo de comunicação equilibrado e profissional, minimizando erros. Continue a ler o nosso guia para uma explicação abrangente dos diferentes limites de segurança e aprenda a usá-los._
+Os limites de segurança na HireData impedem que as suas automações sobrecarreguem os contactos com mensagens excessivas. Ajudam-no a manter um processo de comunicação equilibrado e profissional, minimizando erros. Continue a ler para uma explicação de cada limite de segurança e de como os usar.
+
+<Note>
+  Chegou aqui a partir de um cancelamento **Send Limits Exceeded** ou **Send Limits Per Automation Exceeded**? Consulte [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons) para a solução.
+</Note>
 
 ## Explicação dos limites de segurança
 
@@ -21,7 +26,7 @@ _Os limites de segurança na HireData garantem que as suas automações não sob
 #### 1.2. Limites de envio de conversas
 
 - **Definição**: Limita o número de conversas iniciadas por número de telefone.
-- **Objetivo**: Controlar a frequência de contacto para evitar mensagens excessivas e potencial fadiga do contacto.
+- **Objetivo**: Controla a frequência de contacto para evitar mensagens excessivas e potencial fadiga do contacto.
 - **Totalmente personalizável**
 
 ![](/images/intercom/83073739-Screenshot-2025-12-08-at-15_26_39.png)
@@ -60,7 +65,7 @@ _Os limites de segurança na HireData garantem que as suas automações não sob
 - **Objetivo**: Evita que conversas paradas se mantenham abertas quando os destinatários deixam de responder a meio de uma conversa.
 - **Totalmente personalizável**
 
-![Ghosted converesations](/images/intercom/72969805-image.png)
+![Ghosted conversations](/images/intercom/72969805-image.png)
 
 ### Evitar reinícios acidentais
 
@@ -76,6 +81,8 @@ _Os limites de segurança na HireData garantem que as suas automações não sob
 
 <Steps>
   <Step title="Navegar até à secção Safety Limits na HireData">
+    Vá a **Settings** \> **Safety Limits**.
+
     ![The Safety Limits section](/images/intercom/75459538-2025-11-19_19h08_53.png)
   </Step>
   <Step title="Ajustar os limites de acordo com a sua estratégia de contacto">
@@ -105,7 +112,7 @@ Dentro do painel de definições de cada automação, encontrará dois tipos de 
   <Step title="Navegue até à automação para a qual pretende definir um Safety Limit">
     ![Navigating to and selecting an automation](/images/intercom/75469444-2025-11-19_19h38_31.png)
   </Step>
-  <Step title="Clique nos três pontos verticais no canto superior direito do ecrã e depois escolha Settings">
+  <Step title="Clique nos três pontos verticais no canto superior direito do ecrã e depois selecione Settings">
     ![Navigating to Settings in the automation](/images/intercom/75463663-2025-11-19_19h34_44.png)
   </Step>
   <Step title="Defina o Safety Limit que melhor se adequa à sua automação e clique em Save">
@@ -113,14 +120,14 @@ Dentro do painel de definições de cada automação, encontrará dois tipos de 
   </Step>
 </Steps>
 
-### E se quiser sem limites?
+### E se não quiser limites?
 
-No fundo do painel Safety Limits, encontrará uma opção chamada **Ignore Safety Limits**. Quando ativada, a automação **contorna todos os limites de segurança**, tanto os limites específicos da automação configurados acima como os limites de segurança ao nível da conta.
+No fundo do painel Safety Limits, encontrará uma opção chamada **Ignore all safety limits**. Quando ativada, a automação **contorna todos os limites de segurança**, tanto os limites específicos da automação configurados acima como os limites de segurança ao nível da conta.
 
 ![Ignore Safety Limits option](/images/intercom/146972102-Screenshot-2026-05-29-at-10_53_07.png)
 
 <Warning>
-  Esta opção só deverá ser utilizada quando estiver totalmente confiante de que:
+  Utilize esta opção apenas quando estiver totalmente confiante de que:
 
   - A automação não pode ser acionada em excesso
   - Os destinatários esperam múltiplas mensagens

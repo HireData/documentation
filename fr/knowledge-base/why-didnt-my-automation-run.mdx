@@ -1,20 +1,100 @@
 ---
 title: "Pourquoi mon automatisation ne s'est-elle pas exécutée ?"
 sidebarTitle: "L'automatisation ne s'est pas exécutée"
-description: "Une check-list de diagnostic pour les automatisations qui ne se sont pas déclenchées : de l'événement aux filtres en passant par les journaux d'exécution"
+description: "Diagnostiquez pourquoi une automatisation HireData ne s'est pas exécutée grâce à cette check-list de dépannage : réception des événements, filtres, conditions et lecture des journaux d'exécution."
+keywords: ["l'automatisation ne s'est pas exécutée", "l'automatisation n'a pas démarré", "déclencheur ne fonctionne pas", "événement non traité", "automation gestopt", "automatisering werkt niet"]
 ---
 
+_Lorsqu'une automatisation ne s'exécute pas comme prévu, l'historique des événements et des exécutions peut montrer exactement où le processus s'est arrêté. Ce guide vous accompagne à travers les vérifications dans l'ordre, de la confirmation que HireData a reçu l'événement jusqu'à l'inspection d'une étape individuelle de l'automatisation et au test sûr de votre correction._
+
+## Identifiez d'abord où le processus s'est arrêté
+
+Avant de modifier l'automatisation, vérifiez jusqu'où l'événement a progressé. Cela vous aide à vous concentrer sur les paramètres pertinents.
+
+| Ce que vous constatez | Ce que cela indique généralement | Commencez par |
+| --- | --- | --- |
+| Aucun événement correspondant | HireData n'a peut-être pas reçu le changement depuis l'app source. | La connexion de l'app et l'enregistrement source |
+| Un événement existe, mais aucune exécution n'a été créée | L'automatisation est peut-être inactive ou sa configuration Start ne correspondait pas. | Le statut de l'automatisation, le déclencheur et les conditions |
+| Une exécution existe, mais une étape s'est arrêtée ou a été annulée | L'automatisation a démarré, mais une étape individuelle n'a pas pu continuer. | La chronologie de l'exécution et les détails de l'étape |
+
+## 1. Confirmez que HireData a reçu l'événement
+
+Chaque automatisation basée sur des événements démarre avec des informations reçues d'une app connectée. Si l'événement attendu n'est pas dans HireData, l'automatisation n'a rien à traiter.
+
+1. Sélectionnez **Events** dans la navigation principale.
+2. Recherchez le candidat, le contact ou l'événement qui devait démarrer l'automatisation.
+3. Ouvrez l'événement.
+4. Vérifiez l'onglet **Data** pour confirmer que les champs et les valeurs attendus sont présents.
+5. Utilisez la vue code (`</>`) lorsque vous devez inspecter le JSON brut ou confirmer un nom de champ exact.
+
+Si vous ne trouvez pas l'événement, vérifiez si le changement a bien été enregistré dans l'app source et si sa connexion HireData fonctionne. Pour les problèmes de connexion Carerix, consultez [Pourquoi Carerix ne se synchronise pas avec HireData](/fr/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata).
+
+Pour plus d'informations sur la vue détaillée d'un événement, consultez [Événements](/fr/settings/logs/events).
+
+## 2. Vérifiez si l'automatisation est active
+
+Une automatisation inactive ne crée pas de nouvelles exécutions lorsque des événements correspondants arrivent.
+
+Ouvrez l'automatisation et regardez l'action dans le coin supérieur droit :
+
+- **Pause** signifie que l'automatisation est actuellement active.
+- **Activate** signifie que l'automatisation est actuellement inactive. Sélectionnez **Activate** lorsque vous êtes prêt à ce que de nouveaux événements y entrent.
+
 <Note>
-  Cet article est un espace réservé. Le contenu ci-dessous décrit ce qu'il couvrira.
+  Activer une automatisation ne traite pas automatiquement les événements arrivés pendant qu'elle était inactive. Après avoir vérifié le reste de la configuration, vous pouvez rejouer prudemment un événement antérieur.
 </Note>
 
-{/* TODO(docs-reorg): symptom-first diagnosis flow:
-   1. Did the event arrive? (Events page)
-   2. Is the automation active?
-   3. Did the event pass the start filters?
-   4. Was a run created and what is its status? (Runs, safety limits, delays)
-   5. Replaying the event once fixed
-   Cross-link: /settings/logs/events (replay section), /settings/logs/runs,
-   /settings/automation-safety-limits, /automations/how-to-test-an-automation */}
+## 3. Comparez l'événement avec la configuration Start
 
-Pendant que cette page est en cours d'écriture, consultez [Événements](/fr/settings/logs/events) pour savoir comment inspecter et rejouer les événements.
+Si l'événement existe mais qu'aucune exécution n'a été créée, comparez l'événement avec le bloc **Start** de l'automatisation. L'app, le déclencheur et les conditions doivent correspondre à l'événement entrant.
+
+Vérifiez :
+
+- Une app ou un objet différent de celui qui a produit l'événement
+- Un déclencheur différent, comme **Created** au lieu de **Updated**
+- Un champ obligatoire absent de l'événement
+- Une valeur de champ qui ne satisfait pas l'une des conditions du Start
+- Un champ dont le nom, le type ou le format a changé dans l'app source
+
+Utilisez l'onglet **Data** de l'événement pendant que vous passez en revue le bloc Start, afin de comparer les valeurs réelles plutôt que les valeurs actuelles de l'enregistrement source.
+
+Si vous modifiez la configuration Start, enregistrez l'automatisation avant de la tester à nouveau.
+
+## 4. Inspectez l'exécution et ses étapes
+
+Si une exécution existe, l'automatisation a bien démarré. La chronologie de l'exécution montre comment l'événement a progressé dans l'automatisation et où il s'est arrêté.
+
+1. Sélectionnez **Runs** dans la navigation principale.
+2. Trouvez l'exécution concernée et sélectionnez sa ligne.
+3. Sélectionnez l'étape qui s'est arrêtée, a échoué ou a été annulée.
+4. Passez en revue les onglets **Overview**, **Fields** et **Related** de l'étape.
+
+L'onglet **Overview** peut contenir le résultat ou le message d'annulation. **Fields** montre les valeurs utilisées ou produites par l'étape, tandis que **Related** relie l'exécution à son automatisation et à son événement.
+
+Pour des explications sur les messages d'annulation courants, consultez [Motifs d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons). Pour plus d'informations sur la lecture d'une exécution, consultez [Exécutions](/fr/settings/logs/runs).
+
+## 5. Testez la correction
+
+Une fois la cause trouvée et corrigée, testez à nouveau l'automatisation.
+
+Un nouvel événement est l'option la plus sûre, car il crée une nouvelle exécution sans répéter les actions de la précédente. Si créer un nouvel événement n'est pas pratique, vous pouvez rejouer l'événement d'origine :
+
+1. Revenez à l'événement.
+2. Ouvrez son onglet **Runs** et passez en revue ce qui a déjà été accompli.
+3. Sélectionnez **Replay**.
+4. Ouvrez la nouvelle exécution et confirmez qu'elle suit le chemin attendu.
+
+<Warning>
+  Rejouer peut répéter des e-mails, des messages, des mises à jour d'enregistrements, des tâches et d'autres actions accomplies pendant l'exécution précédente. Passez en revue toutes les exécutions liées avant de confirmer un replay.
+</Warning>
+
+## Besoin d'aide supplémentaire ?
+
+Si l'automatisation ne s'exécute toujours pas comme prévu, contactez [support@hiredata.com](mailto:support@hiredata.com). Incluez :
+
+- Un lien ou l'ID de l'événement
+- Le nom de l'automatisation
+- L'ID de l'exécution, si une a été créée
+- Le résultat que vous attendiez
+- L'étape ou la condition où le processus semble s'arrêter
+- Le message d'annulation ou d'erreur exact, s'il en apparaît un

@@ -1,0 +1,81 @@
+---
+title: "Einen Run verfolgen"
+sidebarTitle: "Einen Run verfolgen"
+description: "Lesen Sie einen echten HireData-Automatisierungs-Run vom Carerix-Event, das ihn gestartet hat, bis zur erstellten Aufgabe, Bildschirm für Bildschirm: Event, Run, Run-Schritt, Aufgabe, Ergebnis."
+keywords:
+  - "einen Run verfolgen"
+  - "einen Run lesen"
+  - "Event-Seite"
+  - "Run-Seite"
+  - "Run-Schritt"
+  - "record data"
+  - "Fields-Tab"
+  - "run finished"
+  - "Carerix-Aufgabe"
+---
+
+Die Automatisierung auf dieser Seite wartet auf einen Carerix-Kandidaten, dessen Feld **Example text** sich auf einen festgelegten Wert ändert, findet diesen Kandidaten und legt in Carerix eine Aufgabe für den Betreuer des Kandidaten an. Eine Änderung in Carerix erzeugte das Event, den Run, die Run-Schritte und die Aufgabe unten, und jeder Abschnitt zeigt, wo diese Stufe auf dem Bildschirm liegt und was sie Ihnen sagt.
+
+## Event
+
+Das Event ist die Änderung, die Carerix gemeldet hat. Es ist dasselbe Event für jede Automatisierung im Workspace.
+
+![Die Event-Seite für Candidate: Updated, mit dem Panel Event Information links und dem Data-Tab, der EntityId 6416, sieben geänderte Felder, die Zeit und den Typ cremployee:updated auflistet](/images/automations/44-follow-run-event-data.png)
+
+Was Sie lesen sollten. Die Überschrift benennt das Object und den Trigger, **Candidate: Updated**. **Event Information** nennt die App, den Trigger und das Event-Datum. **References** benennt den Datensatz, um den es im Event geht, und **Related People** listet die Person, die HireData ihm zugeordnet hat. Der **Data**-Tab ist der Payload, wie Carerix ihn gesendet hat. `EntityId` ist die Datensatz-ID, und `ChangedFields` listet, was sich geändert hat, hier `additionalinfo`, die Gruppe, die das Feld Example text enthält. Der **Changes**-Tab zeigt den neuen Wert jedes geänderten Feldes, und der **Runs**-Tab listet jeden Run, den dieses Event gestartet hat.
+
+![Der Runs-Tab desselben Events, mit zwei Runs im Zustand Finished: Docs: follow a Carerix run und Blank Automation](/images/automations/45-follow-run-event-runs.png)
+
+Was es Ihnen sagt. Ein Event kann mehrere Runs starten. Dieses Event startete zwei, weil zwei aktive Automatisierungen im Workspace auf Carerix-Kandidaten-Updates warten. Der Run, den Sie suchen, ist der auf der Automatisierung, die Sie verfolgen.
+
+Events finden Sie unter **Settings** > **Events**. [Events: Payloads verbundener Apps einsehen](/de/settings/logs/events) erklärt die Filter und die Roh-Request-Ansicht.
+
+## Run
+
+Der Run ist die Arbeit der Automatisierung für dieses eine Event. Klicken Sie im **Runs**-Tab des Events auf die Zeile des Runs, um ihn zu öffnen.
+
+![Die Run-Seite für Run 27113015: die Start-Karte, Find Candidate in Carerix mit Completed darunter, Add Task to Carerix und das Event-Panel rechts mit dem Overview-Tab und der Timeline](/images/automations/46-follow-run-run-page.png)
+
+Was Sie lesen sollten. Die Arbeitsfläche ist die Automatisierung, von oben nach unten gezeichnet, mit einer Statuszeile auf dem Verbinder unter jedem Schritt, den der Run erreicht hat. "Run Started: Today at 4:41 PM" steht unter der Start-Karte, "Completed: Today at 4:41 PM" unter der Find-Aufgabe und "Completed: Today at 4:42 PM" unter Add Task, sobald Sie scrollen. Ein Schritt ohne Zeile wurde nie erreicht. Das **Event**-Panel rechts öffnet sich standardmäßig. Sein **Overview** wiederholt die Start-Einstellungen, die dieses Event durchgelassen haben, **App**, **Connection**, **Object**, **Trigger** und **Filter**, dann die **Timeline**.
+
+Was es Ihnen sagt. Die Timeline ist der Run in seiner Reihenfolge. **Run Scheduled** und **Run Started** sind das Eintreffen des Events und der Beginn des Runs. Jeder Schritt schreibt dann zwei Einträge, zuerst seinen Status ("Find: Completed") und dann, was der Run als Nächstes getan hat ("Find: Run Moved" zum folgenden Schritt oder "Add Task: Run Finished", wenn der letzte Schritt fertig ist). Ein Run, der vorzeitig gestoppt hat, endet stattdessen mit einem "Cancelled"-Eintrag und einer Meldung.
+
+Die Runs-Liste zeigt dieselben Runs mit ihrem Zustand und, bei einem gestoppten Run, den Schritt, der ihn gestoppt hat. [Setup](/de/reference/automations/steps/setup) dokumentiert den Start-Block und das Event-Panel, das er auf der Run-Seite öffnet.
+
+## Inputs und Outputs eines Schritts
+
+Klicken Sie auf der Arbeitsfläche auf den Namen einer Aufgabe, um ihren Run-Schritt zu öffnen. Der Find-Schritt zeigt, was er gefunden hat; der Schritt danach zeigt, was er erhalten hat.
+
+<img src="/images/automations/47-follow-run-find-drawer.png" alt="Der Find-Run-Schritt mit der Überschrift Find, den Badges Run Moved: 2 und Completed, einer Match-found-Zeile für #6416 HireData tester und einem Record-Data-Block mit den Feldern des Kandidaten" width="384" />
+
+Was Sie lesen sollten. Der Find-Schritt öffnet sich mit einer **Match found**-Zeile mit ID und Name des Datensatzes. Das Pfeilsymbol öffnet den Datensatz in Carerix. **Record Data** listet jedes Feld des Datensatzes, wie die App es zurückgegeben hat, IDs, Namen, Anreden, die CV-Zusammenfassung, Datumswerte und mehr. Scrollen Sie den Block, um alle zu sehen. Das **Run Moved**-Badge entspricht dem letzten Timeline-Eintrag des Schritts, und **Completed** ist sein Status. Anders als die Message- und Update-Schritte hat dieser Drawer keine Tabs **Overview** und **Fields**.
+
+<img src="/images/automations/48-follow-run-add-task-fields.png" alt="Der Fields-Tab des Add-Task-Run-Schritts mit drei Feldern: Now mit einem Datetime-Wert, Find Candidate: Id mit 6416 und Find Candidate: Owner: Id mit 1" width="384" />
+
+Was es Ihnen sagt. Der **Fields**-Tab des Add-Task-Schritts listet die Werte, die er aus dem Run gelesen hat, jeweils mit dem Symbol des Schritts, der ihn erzeugt hat, und einem Typ-Badge. **Find Candidate: Id** und **Find Candidate: Owner: Id** stammen aus dem Find-Schritt, was der ganze Grund ist, warum der Find vor dem Add Task sitzt. **Now** ist die Uhr des Runs. Sein Wert auf diesem Tab ist die Zeit, zu der Sie den Drawer geöffnet haben, nicht die Zeit, zu der die Aufgabe lief; lesen Sie die eigenen Zeiten der Aufgabe daher im **Overview**-Tab.
+
+[Find](/de/reference/automations/steps/find) dokumentiert den Schritt und was ein leeres Ergebnis mit dem Run macht.
+
+## Aufgabe
+
+Der letzte Schritt hat eine Aufgabe in Carerix erstellt. Sein Run-Schritt zeigt, was HireData geschrieben hat, und Carerix zeigt, was angekommen ist.
+
+<img src="/images/automations/49-follow-run-add-task-overview.png" alt="Der Overview-Tab des Add-Task-Run-Schritts: ein Link Taak (9077), Status To do, Zeitstempel für When? und Expires At sowie der Content mit Betreff und Text" width="384" />
+
+Was Sie lesen sollten. Das **Overview** eines Add-Schritts verlinkt auf den erstellten Datensatz, hier **Taak (9077)**. Carerix liefert dieses Label in der Sprache seines Accounts, weshalb diese niederländische Sandbox Taak sagt, wo ein englischer Account Task sagt. **Status**, **When?** und **Expires At** sind die Werte, die Carerix gespeichert hat. **When?** liegt eine Stunde nach dem Run, der auf dem Schritt eingestellte Versatz, und **Expires At** ist die Run-Zeit. Beide sind Zeitstempel, wie Carerix sie meldet, sie müssen also nicht zur Uhr auf der Run-Seite passen. **Content** ist der Betreff und der Text, den der Schritt geschrieben hat, und **Related Records** verlinkt den Kandidaten und den Betreuer, die er angehängt hat.
+
+![Die Aufgabe in Carerix, Task 9077 Docs: check availability für HireData tester, mit Kind Task, Status TO DO, einem Datum und einer Uhrzeit, einem Ablaufdatum sowie Betreff und Text unter Content](/images/automations/50-follow-run-carerix-task.png)
+
+Was es Ihnen sagt. Öffnen Sie den Link **Taak (9077)**, und Carerix zeigt dieselbe Aufgabe von seiner Seite. Der Status ist **TO DO**, die Zeit liegt eine Stunde nach dem Run, und Betreff und Text entsprechen dem Content des Schritts. Carerix verzeichnet die Aufgabe als geändert von "Automated" statt von einem Kollegen.
+
+[Add](/de/reference/automations/steps/add) dokumentiert den Schritt und wo die Felder des erstellten Datensatzes erscheinen.
+
+## Ergebnis
+
+Die eigene Seite der Automatisierung fasst jeden bisherigen Run zusammen.
+
+![Die schreibgeschützte Automatisierungsseite mit Run Stats mit Finished 1 und Total 1, dem Verbinder unter Find mit Looked up: 1x item und dem Verbinder unter Add Task mit Added: 1x task](/images/automations/51-follow-run-automation-stats.png)
+
+Was Sie lesen sollten. **Run Stats** links zählt Runs nach Zustand. Die Verbinder zwischen den Schritten zählen, was jeder Schritt über alle Runs hinweg getan hat, "Looked up: 1x item" unter dem Find und "Added: 1x task" unter dem Add Task. Jede Zahl ist ein Link zur Runs-Liste, gefiltert auf diesen Schritt und Status.
+
+Was es Ihnen sagt. Finished bedeutet, dass jeder Schritt abgeschlossen wurde und der Run die Endflagge erreicht hat. Ein vorzeitig gestoppter Run würde hier unter einem anderen Zustand zählen, auf der Run-Seite "Cancelled" auf dem Schritt zeigen, der ihn gestoppt hat, und eine Meldung in der Timeline tragen. [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons) listet diese Meldungen und was Sie ändern sollten, bevor Sie einen neuen Run starten.

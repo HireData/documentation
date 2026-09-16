@@ -39,11 +39,37 @@ Os argumentos podem ser:
   parênteses nas tabelas abaixo.
 </Tip>
 
+## Como o popover mostra os modificadores
+
+No editor, uma variável com modificadores mantém o seu nome de apresentação e acrescenta um ícone de varinha. Passe o cursor sobre o badge e o popover percorre o pipeline: o valor de entrada, um cartão por modificador em linguagem simples e o resultado. `lowercase` lê-se **Lowercase**, `truncate_chars` lê-se **Limit characters**, e os argumentos aparecem sob o nome do modificador.
+
+<img src="/images/forms-builder/37-variable-popover.png" alt="A caixa Description de uma pergunta de formulário com quatro badges, e um popover aberto por cima intitulado Name com cartões a ler Input NPS required question, Lowercase, Capitalise words, Use a fallback Your form e Output Nps Required Question" width="573" />
+
+<Note>
+  Alguns modificadores não podem ser pré-visualizados. O seu cartão fica no pipeline com uma nota, e o resultado é omitido. O modificador corre na mesma quando o conteúdo é enviado.
+</Note>
+
+O popover é apenas de leitura. Para alterar a expressão, veja [Editar um badge](/pt/variables/introduction#editing-a-badge).
+
 ## Fallback
 
 | Modificador       | O que faz                                          | Exemplo                                    |
 | ---------------- | ------------------------------------------------ | ------------------------------------------ |
 | `default: value` | Mostra `value` quando o campo está vazio ou em falta | `{{ name \| default: "there" }}` → `there` |
+
+No popover, o valor de recurso aparece como um passo próprio, **Use a fallback**, com o texto de recurso por baixo. Quando o campo está vazio, a entrada lê **No value provided** e o resultado mostra o valor de recurso.
+
+## Literais {#literals}
+
+Um texto entre aspas, um número, ou `true` ou `false` podem estar no lugar de um campo. Torna-se um badge como qualquer variável, e os modificadores aplicam-se-lhe da mesma forma:
+
+```text
+{{ "text" | uppercase }} → TEXT
+```
+
+O badge tem uma cor que o distingue de um campo, e carrega o ícone do tipo do literal.
+
+<img src="/images/email-builder/22-literal-popover.png" alt="Um badge com cor a ler text com um ícone de tipo texto e um ícone de varinha, e o seu popover com Input text, Uppercase e Output TEXT" width="616" />
 
 ## Texto
 

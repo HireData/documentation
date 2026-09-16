@@ -1,0 +1,98 @@
+---
+sidebarTitle: "Champs webhook"
+description: "Découvrez quels champs et clés Carerix sont disponibles dans HireData, où inspecter une connexion ou le payload d'un événement, et comment dépanner des données manquantes."
+keywords: ["champs webhook Carerix", "payload Carerix", "champs candidat", "clés de champs Carerix", "données d'événement"]
+title: "Champs webhook Carerix"
+---
+
+_Lorsque Carerix envoie un événement à HireData, l'événement contient les champs activés pour l'objet concerné dans votre connexion Carerix. Ce guide explique quels champs candidat sont généralement disponibles, où trouver leurs clés, et comment confirmer exactement ce que HireData a reçu pour un enregistrement spécifique._
+
+## Comment les champs Carerix arrivent dans HireData
+
+Chaque connexion Carerix possède son propre ensemble de champs activés. Cela signifie que les champs disponibles dans un compte HireData peuvent différer de ceux d'un autre compte, même lorsque les deux utilisent le même objet Carerix.
+
+L'**Object Definition** de la connexion détermine quels champs sont disponibles pour les nouveaux événements et automatisations. L'onglet **Data** d'un événement réel montre ensuite les valeurs que HireData a reçues pour un enregistrement spécifique.
+
+<Note>
+  Utilisez le tableau de champs ci-dessous comme guide des champs Candidate courants. Les paramètres de votre connexion et l'onglet **Data** de l'événement sont la source de vérité pour les champs disponibles dans votre compte.
+</Note>
+
+## Les champs Candidate en un coup d'œil
+
+L'objet Candidate standard comprend généralement les champs suivants :
+
+| Champ | Clé | Usage typique |
+| --- | --- | --- |
+| Id | `{{_id}}` | Identifier l'enregistrement Carerix |
+| First Name | `{{firstName}}` | Personnaliser les messages et les mises à jour |
+| Last Name | `{{lastName}}` | Personnaliser les messages et les mises à jour |
+| Email Address | `{{emailAddress}}` | Utiliser le champ e-mail principal |
+| Business Email Address | `{{businessEmailAddress}}` | Utiliser le champ e-mail professionnel |
+| Private Email Address | `{{privateEmailAddress}}` | Utiliser le champ e-mail privé |
+| Primary Email Address | `{{primaryEmailAddress}}` | Utiliser le champ e-mail primaire de Carerix |
+| Any Email Address | `{{anyEmailAddress}}` | Sélectionner un e-mail selon l'ordre de repli de HireData |
+
+Lorsqu'une automatisation a seulement besoin d'une adresse e-mail utilisable, **Any Email Address** peut être plus fiable que la sélection d'un champ e-mail spécifique. Consultez [Champs combinés : comment HireData choisit une valeur](/fr/apps/carerix/combined-fields-explained) pour l'ordre de repli complet.
+
+## Confirmer les champs de votre connexion
+
+Vérifiez la connexion Carerix lorsque vous devez savoir si un champ est activé ou quelle clé HireData utilise pour celui-ci.
+
+1. Rendez-vous dans **Settings** \> **Apps**.
+2. Ouvrez **Carerix**.
+3. Ouvrez le menu à trois points de la connexion concernée et sélectionnez **Edit**.
+4. Sélectionnez un objet, tel que **Candidate**, **Contact**, **Meeting** ou **User**.
+5. Passez en revue le tableau **Object Definition**.
+
+Le tableau affiche le **Label**, le **Type** et la **Key** de chaque champ. Seuls les champs activés sont disponibles pour les nouveaux événements de cet objet.
+
+Si le champ dont vous avez besoin est désactivé, consultez [Activer les champs et relations Carerix dans HireData](/fr/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) avant de modifier la connexion.
+
+## Inspecter le payload exact de l'événement
+
+Utilisez un événement réel lorsque vous devez confirmer quels champs et quelles valeurs HireData a reçus pour un enregistrement individuel.
+
+1. Sélectionnez **Events** dans la navigation principale.
+2. Trouvez et ouvrez l'événement Carerix concerné.
+3. Sélectionnez l'onglet **Data**.
+4. Utilisez la vue tableau ou arborescence disponible pour explorer les champs.
+5. Sélectionnez la vue code (`</>`) lorsque vous devez inspecter le JSON brut ou confirmer une clé et une valeur exactes.
+
+L'onglet **Runs** de l'événement montre quelles automatisations l'ont traité. C'est utile lorsque le payload contient le champ attendu mais qu'une automatisation ne s'est pas comportée comme prévu.
+
+Pour une explication plus complète de la vue détaillée d'un événement, consultez [Événements](/fr/settings/logs/events).
+
+## Choisir le déclencheur Carerix approprié
+
+Lorsque vous configurez un bloc **Start** Carerix, le sélecteur de déclencheur peut inclure :
+
+- **Created**
+- **Created or Updated**
+- **Updated**
+- **Schedule**
+- **Manual**
+
+Choisissez le déclencheur qui correspond au moment où l'automatisation doit démarrer. Par exemple, utilisez **Created or Updated** lorsque la même automatisation doit gérer à la fois les nouveaux enregistrements et les modifications ultérieures.
+
+**Deleted** n'est actuellement pas proposé dans le sélecteur de déclencheur.
+
+## Dépanner un champ manquant
+
+Si un champ existe dans Carerix mais n'apparaît pas dans HireData :
+
+1. Confirmez que vous vérifiez le bon objet Carerix.
+2. Ouvrez l'**Object Definition** de la connexion et confirmez que le champ est activé.
+3. Si le champ a été récemment créé ou modifié dans Carerix, lancez une [synchronisation manuelle](/fr/apps/carerix/manually-sync-carerix-with-hiredata).
+4. Créez ou mettez à jour un enregistrement de test pour générer un nouvel événement.
+5. Inspectez l'onglet **Data** et la vue code du nouvel événement.
+
+Activer un champ ne l'ajoute pas aux événements que HireData a reçus auparavant. Utilisez un événement nouvellement généré lorsque vous testez une modification de connexion.
+
+## Besoin d'aide supplémentaire ?
+
+Si le champ est activé mais reste absent des nouveaux événements, contactez [support@hiredata.com](mailto:support@hiredata.com). Incluez :
+
+- La connexion Carerix et le nom de l'objet
+- Le label et la clé du champ
+- Un lien ou l'ID d'un événement récent
+- Le résultat que vous attendiez

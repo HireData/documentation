@@ -1,0 +1,69 @@
+---
+title: "Find"
+sidebarTitle: "Find"
+description: "Die Find-Kategorie in einer HireData-Automatisierung: Aufgaben, die einen Datensatz, eine E-Mail-Adresse oder eine Unternehmensdomain nachschlagen und das Ergebnis an spätere Schritte übergeben."
+keywords:
+  - "Find-Schritt"
+  - "Lookup"
+  - "Datensatz finden"
+  - "E-Mail finden"
+  - "Domain suchen"
+  - "data lookup"
+---
+
+**Find** sucht nach etwas, das bereits existiert. Es ist eine Kategorie: Die Auswahl öffnet eine Liste mit der Überschrift **Find** mit einem Eintrag pro Aufgabe, und **Back** führt zurück zur Auswahl.
+
+<Info>
+  Find erscheint nur dann in der Auswahl, wenn eine verbundene App eine Aufgabe in dieser Kategorie anbietet.
+</Info>
+
+## Einstellungen
+
+Jede Aufgabe hat ihren eigenen Drawer. Die gemeinsamen Einstellungen sind, wonach gesucht wird und wo: das Object oder die Quelle, die durchsucht wird, und die Feldwerte, die den Datensatz identifizieren.
+
+Die Aufgaben, die die Kategorie in einem Workspace mit verbundenem Carerix und HireData füllen:
+
+| Aufgabe | App | Was sie findet |
+| --- | --- | --- |
+| Find | Carerix | Einen Carerix-Datensatz des von Ihnen gewählten Objects, abgeglichen über die von Ihnen gesetzten Felder |
+| Find Email | HireData | Eine E-Mail-Adresse für eine Person, aus ihrem Namen und der Unternehmensdomain |
+| Search Domain | HireData | Die Webdomain eines Unternehmens, aus seinem Namen |
+
+### Auf der Arbeitsfläche
+
+Die Karte zeigt ein **Task**-Badge, den Aufgabennamen mit der Verbindung darunter und einen **Filter**-Block mit den Feldern, über die die Aufgabe abgleicht.
+
+![Eine Find-Candidate-in-Carerix-Karte auf der Arbeitsfläche mit der Verbindung hiredata und einem Filter-Block mit Candidate: Id equals 6416](/images/automations/52-find-card.png)
+
+## Was er ausgibt
+
+Den gefundenen Datensatz, die gefundene Adresse oder Domain. Ein Carerix-Find öffnet sich mit einer **Match found**-Zeile mit ID und Name des Datensatzes, die auf den Datensatz in Carerix verlinkt, und einem **Record Data**-Block, der jedes Feld des Datensatzes listet. Spätere Schritte verwenden diese Felder unter dem Namen der Aufgabe, sodass eine Add-Aufgabe den von einem Find zurückgegebenen Kandidaten anhängen und eine Message-Aufgabe die von Find Email zurückgegebene Adresse adressieren kann. [Einen Run verfolgen](/de/reference/automations/follow-a-run) zeigt einen Find-Schritt aus einem echten Run.
+
+## Was den Run stoppt
+
+Ein Find, der nichts zurückgibt. Die Aufgabenkarte wird rot mit der Zeile "Cancelled" und der Zeit, und die Timeline verzeichnet den Aufgabennamen mit "Cancelled" und dem Grund, etwa "Search domain failure." bei einem Search Domain, das keine Domain gefunden hat. Schritte danach zeigen keine Statuszeile. Öffnen Sie den **Fields**-Tab der Karte, um die Werte zu sehen, mit denen die Aufgabe gesucht hat.
+
+<img src="/images/automations/31-find-cancelled-card.png" alt="Eine Search-Domain-Aufgabenkarte in einem Run, rot, mit Company auf Respondent: Address Company gesetzt und der Zeile Cancelled: Today at 10:18 AM darunter" width="380" />
+
+<img src="/images/automations/32-find-cancelled-timeline.png" alt="Eine Run-Timeline mit Search Domain: Cancelled, der Meldung Search domain failure. und Search Domain: Run Cancelled" width="384" />
+
+Die Gründe werden in [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons) erklärt.
+
+## Muster
+
+- **Find, dann Update.** Wenn das Event aus einem Formular stammt und der Datensatz in Ihrem ATS lebt, finden Sie den Datensatz über eine ID oder E-Mail aus der Response und [aktualisieren](/de/reference/automations/steps/update) ihn dann mit den Antworten.
+- **Find Email vor Send Email.** Search Domain liefert die Domain des Unternehmens, Find Email liefert die Adresse der Person dort, und der Message-Schritt sendet an diese Adresse.
+- **Loop statt Find für viele.** Find gibt einen Datensatz zurück. Um auf jeden passenden Datensatz zu wirken, verwenden Sie einen [Loop](/de/reference/automations/steps/loop).
+
+## Häufige Fehler
+
+- **Abgleich über ein Feld, das nicht eindeutig ist.** Ein Name passt auf mehr als einen Kandidaten. Gleichen Sie über eine ID oder eine E-Mail-Adresse ab.
+- **Finden, was das Event bereits mitbringt.** Ein Carerix-Event bringt seinen Datensatz mit, und die Update-Aufgabe findet den Datensatz selbst über das Feld, das Sie benennen. Fügen Sie einen Find nur hinzu, wenn der Datensatz nicht im Event ist.
+- **Kein Ergebnis als Überspringen behandeln.** Ein leeres Ergebnis bricht den Run ab. Wenn manche Events nichts zu finden haben, setzen Sie einen [Filter](/de/reference/automations/steps/filter) vor den Find, damit diese Runs mit einem klaren Grund stoppen.
+
+## Verwandt
+
+- [Add](/de/reference/automations/steps/add) erstellt einen Datensatz, statt einen zu finden.
+- [Update](/de/reference/automations/steps/update) ändert den Datensatz, den ein Find zurückgegeben hat.
+- [Loop](/de/reference/automations/steps/loop) ruft jeden passenden Datensatz ab und führt Schritte für jeden aus.
+- [Aufgabenkatalog](/de/reference/automations/task-catalogue) listet jede Aufgabe pro verbundener App.

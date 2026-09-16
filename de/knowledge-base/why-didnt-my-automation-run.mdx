@@ -1,20 +1,100 @@
 ---
 title: "Warum ist meine Automatisierung nicht gelaufen?"
 sidebarTitle: "Automatisierung nicht gelaufen"
-description: "Eine Diagnose-Checkliste für Automatisierungen, die nicht ausgelöst wurden: vom Event über Filter bis zu Run-Logs und häufigen Fehlerquellen."
+description: "Diagnostizieren Sie mit dieser Troubleshooting-Checkliste, warum eine HireData-Automatisierung nicht gelaufen ist – von Event-Zustellung über Filter und Bedingungen bis zum Lesen der Run-Logs."
+keywords: ["Automatisierung nicht gelaufen", "Automatisierung nicht gestartet", "Trigger funktioniert nicht", "Event nicht verarbeitet", "Automatisierung gestoppt", "Automatisierung funktioniert nicht"]
 ---
 
+_Wenn eine Automatisierung nicht wie erwartet läuft, können der Event- und Run-Verlauf genau zeigen, wo der Prozess gestoppt hat. Diese Anleitung führt Sie der Reihe nach durch die Prüfschritte: von der Bestätigung, dass HireData das Event erhalten hat, über die Untersuchung eines einzelnen Automatisierungsschritts bis zum sicheren Testen Ihrer Korrektur._
+
+## Ermitteln Sie zuerst, wo der Prozess gestoppt hat
+
+Bevor Sie die Automatisierung ändern, prüfen Sie, wie weit das Event gekommen ist. So können Sie sich auf die relevanten Einstellungen konzentrieren.
+
+| Was Sie vorfinden | Was es üblicherweise bedeutet | Beginnen Sie mit |
+| --- | --- | --- |
+| Kein passendes Event | HireData hat die Änderung aus der Quell-App möglicherweise nicht erhalten. | Der App-Verbindung und dem Quelldatensatz |
+| Ein Event existiert, aber es wurde kein Run erstellt | Die Automatisierung ist möglicherweise inaktiv, oder ihre Start-Konfiguration hat nicht gepasst. | Dem Automatisierungsstatus, dem Trigger und den Bedingungen |
+| Ein Run existiert, aber ein Schritt hat gestoppt oder wurde abgebrochen | Die Automatisierung ist gestartet, aber ein einzelner Schritt konnte nicht fortfahren. | Der Run-Timeline und den Schrittdetails |
+
+## 1. Bestätigen Sie, dass HireData das Event erhalten hat
+
+Jede eventbasierte Automatisierung beginnt mit Informationen aus einer verbundenen App. Wenn das erwartete Event nicht in HireData ist, hat die Automatisierung nichts zu verarbeiten.
+
+1. Wählen Sie **Events** in der Hauptnavigation.
+2. Suchen Sie nach dem Kandidaten, dem Kontakt oder dem Event, das die Automatisierung starten sollte.
+3. Öffnen Sie das Event.
+4. Prüfen Sie im **Data**-Tab, ob die erwarteten Felder und Werte vorhanden sind.
+5. Verwenden Sie die Code-Ansicht (`</>`), wenn Sie das rohe JSON einsehen oder einen exakten Feldnamen bestätigen müssen.
+
+Wenn Sie das Event nicht finden können, prüfen Sie, ob die Änderung in der Quell-App gespeichert wurde und ob deren HireData-Verbindung funktioniert. Bei Carerix-Verbindungsproblemen siehe [Warum synchronisiert sich mein Carerix nicht mit HireData?](/de/apps/carerix/why-is-my-carerix-not-syncing-with-hiredata)
+
+Weitere Informationen zur Event-Detailansicht finden Sie unter [Events](/de/settings/logs/events).
+
+## 2. Prüfen Sie, ob die Automatisierung aktiv ist
+
+Eine inaktive Automatisierung erstellt keine neuen Runs, wenn passende Events eintreffen.
+
+Öffnen Sie die Automatisierung und sehen Sie sich die Aktion oben rechts an:
+
+- **Pause** bedeutet, dass die Automatisierung derzeit aktiv ist.
+- **Activate** bedeutet, dass die Automatisierung derzeit inaktiv ist. Wählen Sie **Activate**, wenn neue Events in sie einlaufen sollen.
+
 <Note>
-  Dieser Artikel ist ein Platzhalter. Der Inhalt unten skizziert, was er abdecken wird.
+  Das Aktivieren einer Automatisierung verarbeitet nicht automatisch Events, die eingetroffen sind, während sie inaktiv war. Nachdem Sie den Rest der Konfiguration geprüft haben, können Sie ein früheres Event vorsichtig erneut abspielen.
 </Note>
 
-{/* TODO(docs-reorg): symptom-first diagnosis flow:
-   1. Did the event arrive? (Events page)
-   2. Is the automation active?
-   3. Did the event pass the start filters?
-   4. Was a run created and what is its status? (Runs, safety limits, delays)
-   5. Replaying the event once fixed
-   Cross-link: /settings/logs/events (replay section), /settings/logs/runs,
-   /settings/automation-safety-limits, /automations/how-to-test-an-automation */}
+## 3. Vergleichen Sie das Event mit der Start-Konfiguration
 
-Während diese Seite entsteht, siehe [Events](/de/settings/logs/events), um zu erfahren, wie Sie Events prüfen und erneut abspielen.
+Wenn das Event existiert, aber kein Run erstellt wurde, vergleichen Sie das Event mit dem **Start**-Block der Automatisierung. App, Trigger und Bedingungen müssen zum eingehenden Event passen.
+
+Achten Sie auf:
+
+- Eine andere App oder ein anderes Object als das, das das Event erzeugt hat
+- Einen anderen Trigger, etwa **Created** statt **Updated**
+- Ein Pflichtfeld, das im Event fehlt
+- Einen Feldwert, der eine der Start-Bedingungen nicht erfüllt
+- Ein Feld, dessen Name, Typ oder Format sich in der Quell-App geändert hat
+
+Verwenden Sie den **Data**-Tab des Events, während Sie den Start-Block durchgehen, damit Sie die tatsächlichen Werte vergleichen und nicht die aktuellen Werte des Quelldatensatzes.
+
+Wenn Sie die Start-Konfiguration ändern, speichern Sie die Automatisierung, bevor Sie sie erneut testen.
+
+## 4. Untersuchen Sie den Run und seine Schritte
+
+Wenn ein Run existiert, ist die Automatisierung gestartet. Die Run-Timeline zeigt, wie sich das Event durch die Automatisierung bewegt hat und wo es gestoppt hat.
+
+1. Wählen Sie **Runs** in der Hauptnavigation.
+2. Suchen Sie den relevanten Run und wählen Sie seine Zeile aus.
+3. Wählen Sie den Schritt, der gestoppt hat, fehlgeschlagen ist oder abgebrochen wurde.
+4. Sehen Sie sich die Tabs **Overview**, **Fields** und **Related** des Schritts an.
+
+Der **Overview**-Tab kann das Ergebnis oder die Abbruchmeldung enthalten. **Fields** zeigt die vom Schritt verwendeten oder erzeugten Werte, während **Related** den Run mit seiner Automatisierung und seinem Event verknüpft.
+
+Erläuterungen zu häufigen Abbruchmeldungen finden Sie unter [Run Cancellation Reasons](/de/knowledge-base/run-cancellation-reasons). Weitere Informationen zum Lesen eines Runs finden Sie unter [Runs](/de/settings/logs/runs).
+
+## 5. Testen Sie die Korrektur
+
+Sobald Sie die Ursache gefunden und behoben haben, testen Sie die Automatisierung erneut.
+
+Ein neues Event ist die sicherste Option, weil es einen frischen Run erstellt, ohne Aktionen aus dem früheren Run zu wiederholen. Wenn das Erstellen eines neuen Events nicht praktikabel ist, können Sie das ursprüngliche Event erneut abspielen:
+
+1. Kehren Sie zum Event zurück.
+2. Öffnen Sie dessen **Runs**-Tab und prüfen Sie, was bereits abgeschlossen wurde.
+3. Wählen Sie **Replay**.
+4. Öffnen Sie den neuen Run und bestätigen Sie, dass er dem erwarteten Pfad folgt.
+
+<Warning>
+  Replay kann E-Mails, Nachrichten, Datensatz-Updates, Aufgaben und andere Aktionen wiederholen, die während des früheren Runs abgeschlossen wurden. Prüfen Sie alle zugehörigen Runs, bevor Sie ein Replay bestätigen.
+</Warning>
+
+## Benötigen Sie weitere Hilfe?
+
+Wenn die Automatisierung weiterhin nicht wie erwartet läuft, kontaktieren Sie [support@hiredata.com](mailto:support@hiredata.com). Geben Sie Folgendes an:
+
+- Einen Link oder die ID des Events
+- Den Namen der Automatisierung
+- Die Run-ID, falls ein Run erstellt wurde
+- Das erwartete Ergebnis
+- Den Schritt oder die Bedingung, an der der Prozess offenbar stoppt
+- Die exakte Abbruch- oder Fehlermeldung, falls eine angezeigt wird

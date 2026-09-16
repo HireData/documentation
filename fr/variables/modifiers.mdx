@@ -39,11 +39,37 @@ Les arguments peuvent être :
   indiqués entre parenthèses dans les tableaux ci-dessous.
 </Tip>
 
+## Comment le popover affiche les modificateurs
+
+Dans l'éditeur, une variable avec des modificateurs garde son nom d'affichage et ajoute une icône de baguette. Survolez le badge et le popover déroule le pipeline : la valeur d'entrée, une carte par modificateur en langage clair, et la sortie. `lowercase` s'affiche **Lowercase**, `truncate_chars` s'affiche **Limit characters**, et les arguments apparaissent sous le nom du modificateur.
+
+<img src="/images/forms-builder/37-variable-popover.png" alt="Le champ Description d'une question de formulaire avec quatre badges, et un popover ouvert au-dessus, intitulé Name, avec des cartes indiquant Input NPS required question, Lowercase, Capitalise words, Use a fallback Your form et Output Nps Required Question" width="573" />
+
+<Note>
+  Certains modificateurs ne peuvent pas être prévisualisés. Leur carte reste dans le pipeline avec une note, et la sortie est omise. Le modificateur s'exécute quand même à l'envoi du contenu.
+</Note>
+
+Le popover est en lecture seule. Pour changer l'expression, voir [Modifier un badge](/fr/variables/introduction#editing-a-badge).
+
 ## Valeur de repli
 
 | Modificateur     | Description                                          | Exemple                                    |
 | ---------------- | ---------------------------------------------------- | ------------------------------------------ |
 | `default: value` | Affiche `value` quand le champ est vide ou manquant  | `{{ name \| default: "there" }}` → `there` |
+
+Dans le popover, la valeur de repli apparaît comme une étape à part, **Use a fallback**, avec le texte de repli en dessous. Quand le champ est vide, l'entrée indique **No value provided** et la sortie montre la valeur de repli.
+
+## Littéraux {#literals}
+
+Un texte entre guillemets, un nombre, ou `true` ou `false` peut prendre la place d'un champ. Il devient un badge comme n'importe quelle variable, et les modificateurs s'y appliquent de la même manière :
+
+```text
+{{ "text" | uppercase }} → TEXT
+```
+
+Le badge est teinté pour le distinguer d'un champ, et porte l'icône du type du littéral.
+
+<img src="/images/email-builder/22-literal-popover.png" alt="Un badge teinté affichant text avec une icône de type texte et une icône de baguette, et son popover avec Input text, Uppercase et Output TEXT" width="616" />
 
 ## Texte
 

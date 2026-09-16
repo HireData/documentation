@@ -1,0 +1,144 @@
+---
+title: "Mit einem Klick um Feedback bitten"
+sidebarTitle: "Ein-Klick-Feedback-E-Mail"
+description: "Bauen Sie eine Feedback-E-Mail, deren Bewertungsfrage als eine Schaltfläche pro Punktzahl gerendert wird, damit ein Kandidat aus dem Posteingang antwortet, statt zuerst ein Formular zu öffnen."
+keywords: ["feedback-e-mail", "candidate-experience-umfrage", "nps-e-mail", "bewertungsschaltflächen", "form-block", "ein-klick-feedback", "placement-umfrage"]
+---
+
+_Die meisten Feedback-Anfragen fragen zweimal. Die E-Mail bittet um Feedback, das Formular stellt die eigentliche Frage, und die Hälfte der Angefragten kommt nie bis zur Frage. Ein Form-Block verdichtet das auf einen Schritt. Die Bewertung sitzt als Reihe von Schaltflächen in der E-Mail, und der Klick, der sie beantwortet, ist derselbe Klick, der das Formular öffnet._
+
+## Was Sie bauen werden
+
+1. Ein kurzes Feedback-Formular, dessen erste Frage die Bewertung ist
+2. Eine E-Mail, die aus dieser Frage eine Schaltfläche pro Punktzahl macht
+3. Einen Test-Versand, der beweist, dass die Schaltflächen die Antwort tragen
+4. Einen Ort, an dem die Antworten landen, verknüpft mit dem richtigen Datensatz
+
+Ein Formular, eine E-Mail und keine Automatisierungslogik. Was Nachdenken erfordert, ist die Frage, denn sie ist die, die ein Empfänger in seinem Posteingang beantwortet und nicht zurücknehmen kann.
+
+## Bevor Sie beginnen
+
+Entscheiden Sie, wen Sie wann fragen. Eine Placement-Umfrage eine Woche nach dem Startdatum, eine Interview-Erfahrungs-E-Mail am selben Nachmittag, ein Reaktivierungs-Check bei einem Kandidaten, der still geworden ist. Der Zeitpunkt ändert den Wortlaut mehr, als er den Aufbau ändert.
+
+Entscheiden Sie dann die eine Frage. Nur die Leading Question des Formulars wird zu Schaltflächen, alles andere, was Sie wissen wollen, kommt also dahinter, beantwortet im Formular selbst von den Leuten, denen es wichtig genug ist weiterzumachen.
+
+## Das Formular bauen
+
+### 1. Setzen Sie die Bewertung an den Anfang
+
+Öffnen Sie **Forms**, klicken Sie auf **New Form**, wählen Sie **Blank Form** und fügen Sie eine [Net Promoter Score](/de/reference/forms/fields/net-promoter-score-and-opinion-scale)-Frage als erstes Feld hinzu: "How likely are you to recommend us to a friend?" Sie ist fest auf 0 bis 10 gesetzt, mit **NOT LIKELY AT ALL** und **EXTREMELY LIKELY** unter den Enden, und diese zwei Labels sind es, die eine nackte Zahlenreihe eindeutig machen.
+
+Lassen Sie sie auf **Optional**. Ein Pflicht-Bewertungsfeld blockiert die Antwort 0, und 0 ist die Antwort, von der Sie am dringendsten hören wollen.
+
+Fügen Sie dann die Fragen hinzu, die erst zählen, wenn Sie die Punktzahl haben. Zwei reichen meist.
+
+| Frage | Feldtyp | Warum sie da ist |
+|---|---|---|
+| How likely are you to recommend us to a friend? | [NPS](/de/reference/forms/fields/net-promoter-score-and-opinion-scale) | Die Leading Question. Das ist die Reihe von Schaltflächen in der E-Mail. |
+| What is the main reason for your score? | [Long Text](/de/reference/forms/fields/short-and-long-text) | Die Antwort, die Ihnen sagt, was Sie ändern sollten. |
+| May we quote you? | [Yes/No](/de/reference/forms/fields/yes-no) | Zuletzt gefragt, weil sie erst Sinn ergibt, nachdem jemand etwas gesagt hat. |
+
+Schließen Sie mit einem [Endbildschirm](/de/reference/forms/fields/ending-screen) ab. Ein Empfänger, der aus seinem Posteingang eine Zahl angeklickt hat und auf einer leeren Seite landet, nimmt an, der Klick sei fehlgeschlagen.
+
+<Tip>
+  Bevorzugen Sie eine **Opinion Scale** von 1 bis 5, wenn die meisten Ihrer Empfänger E-Mails auf dem Telefon lesen. Elf Schaltflächen stapeln sich auf einem schmalen Bildschirm zu elf Zeilen, fünf zu fünf, und bei einer Opinion Scale schreiben Sie alle drei Endlabels selbst.
+</Tip>
+
+### 2. Verknüpfen Sie den Datensatz, um den es beim Feedback geht
+
+Öffnen Sie den **Objects**-Drawer und verknüpfen Sie das Objekt, zu dem die Antwort gehört, meist **Match** oder **Vacancy**. Zwei Dinge folgen daraus. Jedes Feld dieses Datensatzes wird zu einer Variablen, die Sie in die Frage schreiben können, sodass Sie nach der Rolle beim Namen fragen können. Und die Antwort kommt im **Responses**-Tab dieses Datensatzes an, statt in einem Stapel von Antworten, die Sie von Hand zuordnen müssen.
+
+Welches Objekt Sie auch an den Anfang stellen, es ist das Hauptobjekt des Formulars. Siehe [Objekte](/de/reference/forms/objects).
+
+### 3. Veröffentlichen Sie es
+
+Klicken Sie auf **Publish**. Jede Schaltfläche in der E-Mail trägt einen pro Empfänger tokenisierten Link, der das Formular unabhängig von seinem Status öffnet, ein Entwurf würde also technisch funktionieren. Veröffentlichen Sie trotzdem. Ein Entwurf ist das Formular, das ein Kollege wegräumt, und ein veröffentlichtes Formular ist auch das, das Sie über jeden anderen Kanal senden können.
+
+Lassen Sie **Make form public** aus, es sei denn, Sie posten den Link irgendwo. Das Token im per E-Mail versendeten Link ist es, was den Empfänger hineinlässt, das Formular muss also nicht für jeden offen sein, der seine Adresse findet.
+
+## Die E-Mail bauen
+
+### 4. Erstellen Sie die E-Mail und wählen Sie die Marke
+
+Öffnen Sie **Emails** aus den **Settings**, klicken Sie auf **New Email** und wählen Sie **Blank Email** oder eine der mitgelieferten Vorlagen. Setzen Sie zuerst **Brand** oben rechts. Es stylt die ganze E-Mail neu, einschließlich der Schaltflächenfarben, eine frühe Wahl erspart Ihnen also die doppelte Kontrastprüfung. Siehe [Eine E-Mail-Vorlage einrichten](/de/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+### 5. Schreiben Sie die kürzeste Bitte, hinter der Sie stehen können
+
+Eine [Überschrift](/de/reference/email-builder/blocks/heading) und ein [Absatz](/de/reference/email-builder/blocks/paragraph) über den Schaltflächen. Sagen Sie, wer fragt, wofür die Punktzahl ist und wie lange der Rest dauert. "Eine Frage und ein Feld für alles, was Sie uns sonst sagen möchten" ist ein Versprechen, das das Formular halten kann.
+
+Erklären Sie die Skala nicht im Absatz. Das tun die Endlabels unter den Schaltflächen.
+
+### 6. Fügen Sie den Form-Block hinzu
+
+Klicken Sie auf das **+** in der **Blocks**-Liste der Sektion und wählen Sie **Form**, und setzen Sie dann die zwei Auswahlen oben in seinem Panel.
+
+- **Form** ist das Feedback-Formular, das Sie gerade veröffentlicht haben.
+- **Leading Question** ist die NPS-Frage. Verborgene Felder und Endbildschirme werden in der Liste ausgelassen.
+
+Beide gehören zur E-Mail und nicht zum Block, eine E-Mail stellt also eine Frage. Ein zweiter Form-Block kommt auf dieselbe Frage zeigend an, was Sie wissen sollten, bevor Sie versuchen, zwei Bewertungen in einen Versand zu packen.
+
+Elf Schaltflächen erscheinen auf der Arbeitsfläche, 0 bis 10, mit den Endlabels darunter in Großbuchstaben.
+
+![Elf Schaltflächen nummeriert von 0 bis 10 unter der Frage "How likely are you to recommend us to a friend?", mit NOT LIKELY AT ALL und EXTREMELY LIKELY unter den Enden](/images/email-builder/blocks/05b-form-rendered.png)
+
+Jede Schaltfläche trägt den Link des Formulars mit dieser Punktzahl angehängt, und HireData zeichnet die Punktzahl auf, während es den Empfänger zum Formular weiterleitet. Ein Empfänger, der 4 anklickt und dann den Tab schließt, hat Ihnen also trotzdem 4 gesagt. Alles nach der Bewertung ist ein Bonus. Siehe [Form](/de/reference/email-builder/blocks/form).
+
+### 7. Stylen Sie die Schaltflächen so, dass sie sich als Skala lesen
+
+Lassen Sie **Show Question** eingeschaltet. Die Frage sitzt über der Reihe, und eine E-Mail, die Zahlen ohne die Frage zeigt, die sie beantworten, wird ignoriert.
+
+- **Size: Medium** und **Rounded corners: Full** machen aus den Zahlen eine Reihe von Kreisen, die sich als Bewertung liest statt als elf Links.
+- **Background color** und **Color** sind die Schaltflächenfüllung und die Zahl. Halten Sie den Kontrast stark. Viele Empfänger lesen E-Mails im Dark Mode, und eine blasse Füllung mit weißen Ziffern verschwindet.
+- **Width: Auto** lässt die elf Schaltflächen sich die Zeile teilen. **Full** macht jede so breit wie die E-Mail, was sie auf jedem Bildschirm stapelt.
+- **Alignment: zentriert** für eine Skala.
+
+### 8. Prüfen Sie sie in Telefonbreite, bevor Sie senden
+
+Jede Schaltfläche ist ihre eigene Spalte, unter 480 Pixeln passt die Reihe also nicht mehr, und die Schaltflächen stapeln sich eine pro Zeile. Elf Schaltflächen werden zu elf Zeilen. Öffnen Sie die Vorschau und verengen Sie das Fenster, bis es passiert, und entscheiden Sie dann, ob Sie damit leben können oder die Fünf-Punkte-Skala wollen.
+
+## Testen Sie sie
+
+### 9. Senden Sie sich das echte Ding
+
+Öffnen Sie **Test Email**, lassen Sie Name und Adresse leer, um sie an sich selbst zu senden, und klicken Sie auf **Send test email**. Klicken Sie dann eine Zahl in der ankommenden E-Mail an.
+
+Sie sollten auf dem Formular landen, mit der Bewertung bereits ausgefüllt. Wenn sie leer dasteht, ist die **Leading Question** nicht das Feld, für das Sie sie halten.
+
+Ein Klick aus einer Test-E-Mail zeichnet nichts auf, was genau das ist, was Sie wollen, solange Sie noch bearbeiten. Die Punktzahl landet nur bei einem echten Versand in einer Antwort.
+
+<Note>
+  Wenn das Formular ein erforderliches Objekt verknüpft, braucht der Test-Versand einen Datensatz dafür. Wählen Sie einen unter **Objects** im Modal oder verwenden Sie **Auto fill**. Lassen Sie es leer, schlägt der Versand mit einer **Failed to send test email**-Benachrichtigung fehl, die das Objekt nach seinem Key benennt. Siehe [Testen](/de/reference/email-builder/testing).
+</Note>
+
+### 10. Fügen Sie die anderen Sprachen hinzu, wenn Sie welche haben
+
+Der Form-Block wird in der Sprache des Formulars gerendert, auf das er zeigt, nicht in der Sprache der E-Mail, ein niederländisches Formular setzt also niederländische Schaltflächen in eine englische Vorlage. Die Bewertungslabels und der Fallback-Call-to-Action sind pro Sprache übersetzbar, im eigenen **Manage Languages**-Drawer der E-Mail. Siehe [Übersetzungen](/de/reference/email-builder/translations).
+
+## Senden Sie sie und lesen Sie die Antworten
+
+Stecken Sie die fertige Vorlage in einen **Send Email**-Task und wählen Sie das Publikum genauso, wie Sie es für jeden anderen Versand tun würden. Siehe [Automatisierungen](/automations/automations).
+
+Die Antworten kommen im **Responses**-Tab des Datensatzes an, mit dem das Formular verknüpft war, und im Formular selbst. Siehe [Ein Formular pro Datensatz konfigurieren](/de/content/configuring-a-form-per-record).
+
+Eine Automatisierung kann auf die Antwort reagieren, sobald sie ankommt. Bevor Sie die Bedingung schreiben, öffnen Sie **Test & Evaluate** im Formular und lesen Sie **Automation variables**, das jeden Wert mit der exakten Variablen zum Kopieren daneben auflistet. Siehe [Test & Evaluate](/de/reference/forms/testing/test-and-evaluate).
+
+Beginnen Sie mit einem Zweig. Eine niedrige Punktzahl erstellt einen Task für die Person, der die Beziehung gehört, und alles andere tut nichts. Alles Aufwendigere kann warten, bis Sie dreißig echte Antworten gesehen haben.
+
+## Prüfen und verbessern
+
+- **Klicken Leute eine Zahl an und hören dann auf?** Das ist eine funktionierende E-Mail und ein Formular, das zu viel fragt. Streichen Sie eine Frage.
+- **Ist jede Punktzahl eine 8, 9 oder 10?** Prüfen Sie, wen Sie fragen. Eine Umfrage, die nur an Placements geht, mit denen Sie zufrieden sind, misst Ihre Versandliste.
+- **Klickt niemand?** Sehen Sie sich die Schaltflächen in einem Dark-Mode-Client und auf einem Telefon an, bevor Sie den Text umschreiben.
+- **Sagt die Freitextantwort etwas, das Sie nicht wussten?** Wenn nicht, ist die Frage zu allgemein. "What is the main reason for your score?" schlägt "Any other comments?"
+
+## Brauchen Sie mehr Hilfe?
+
+Wenn die Schaltflächen als einzelne **Give Feedback**-Schaltfläche gerendert werden, ist die Leading Question ein Typ, der keine eigenen Schaltflächen hat. Nur Bewertungs- und Auswahlfragen bekommen eine Schaltfläche pro Wert. Alles andere fällt auf einen Call-to-Action zurück, den Sie auf der Arbeitsfläche anklicken und umformulieren können.
+
+Wenn einer Auswahlfrage Optionen fehlen, haben Sie die Fünf-Optionen-Grenze erreicht. Ein Form-Block rendert die ersten fünf und warnt nicht vor dem Rest. Siehe [Grenzen](/de/reference/email-builder/blocks/form#limits).
+
+Wenn Sie weiterhin Hilfe brauchen, wenden Sie sich an [support@hiredata.com](mailto:support@hiredata.com) und geben Sie an:
+
+- Den Namen der E-Mail-Vorlage und den Formularnamen
+- Die Leading Question und was stattdessen gerendert wurde
+- Ob es ein Test-Versand oder ein echter war

@@ -1,0 +1,86 @@
+---
+title: "Filter"
+sidebarTitle: "Filter"
+description: "Der Filter-Schritt in einer HireData-Automatisierung: jeder Bedingungsoperator, wie sich Zeilen und Sets kombinieren, Unique Constraints und was ein gestoppter Run zeigt."
+keywords:
+  - "Filter-Schritt"
+  - "Bedingung"
+  - "Operator"
+  - "equals"
+  - "is empty"
+  - "contains"
+  - "greater than"
+  - "unique constraint"
+  - "filter not passed"
+---
+
+**Filter** entscheidet, ob der Run weiterläuft. Wenn die Bedingungen erfüllt sind, geht der Run zum nächsten Schritt; wenn nicht, stoppt der Run hier.
+
+Der Drawer trägt die Überschrift **Filter** mit den Tabs **Filters** und **Advanced**.
+
+## Einstellungen
+
+- **Feld**. Das Feld **Select field**. Tippen Sie, um zu suchen: "2: Answer" findet "Question 2: Answer". Die Liste enthält die Felder des Events und die Outputs früherer Schritte.
+- **Operator**. Das **Select**-Feld neben dem Feld. Deaktiviert, bis ein Feld gewählt ist. Welche Operatoren angeboten werden, hängt vom Typ des Feldes ab, siehe Liste unten.
+- **Wert**. Ein Feld, das bei Operatoren erscheint, die gegen etwas vergleichen. **is empty** und **is not empty** haben keines.
+- **Add Filter**. Fügt demselben Set eine Zeile hinzu.
+- **Add New Set**. Beginnt ein neues Set unter dem ersten.
+- **AND / OR**. Ein Umschalter, der zwischen zwei Zeilen erscheint, und ein weiterer, der zwischen zwei Sets erscheint. Standard **AND**. Innerhalb eines Sets entscheidet er, ob jede Zeile oder irgendeine Zeile bestehen muss. Zwischen Sets entscheidet er, ob jedes Set oder irgendein Set bestehen muss.
+- **Unique Constraints**. Im **Advanced**-Tab. Wählen Sie Felder, und der Filter lässt jede Kombination ihrer Werte nur einmal durch. Mit einem Identifier und einem Statusfeld ausgewählt, besteht ein Datensatz für einen bestimmten Status einmal, egal wie viele Events er mit diesem Status erzeugt.
+
+### Operatoren
+
+| Feldtyp | Operatoren |
+| --- | --- |
+| Text | equals, not equals, is empty, is not empty, contains, does not contain, starts with, ends with, does not start with, does not end with |
+| Zahl | equals, not equals, is empty, is not empty, greater than, less than, greater than or equal, less than or equal |
+
+Felder, die einen Bereich oder eine Wertemenge halten, bieten außerdem **between**, **one of** und **not one of** an.
+
+<img src="/images/automations/10-filter-drawer.png" alt="Der Filter-Drawer mit zwei Zeilen im ersten Set, Question 1: Answer is not empty und Question 2: Answer equals Yes, verbunden durch einen AND-/OR-Umschalter, dann ein zweiter Umschalter und ein leeres zweites Set" width="384" />
+
+### Auf der Arbeitsfläche
+
+Die Karte zeigt ein **Filter**-Badge, die Set-Nummer und jede Zeile als Feld, Operator, Wert.
+
+<img src="/images/automations/23-filter-card.png" alt="Eine Filter-Karte auf der Arbeitsfläche mit 1, Question 1: Answer, is not empty" width="365" />
+
+## Was er ausgibt
+
+Nichts Neues. Die nach einem Filter verfügbaren Variablen sind dieselben wie davor.
+
+Auf der Run-Seite trägt ein bestandener Filter die Zeile "Completed" mit der Zeit. Die Timeline verzeichnet "Filter: Run Moved", dann "Filter: Completed" mit jedem Set als **Valid** markiert und dem erwarteten Wert gegenüber dem gefundenen Wert.
+
+<img src="/images/automations/33-filter-passed-card.png" alt="Eine Filter-Karte in einem Run mit Meeting: Activity Type one of 2 selected und der Zeile Completed: Last Friday at 7:42 PM darunter" width="380" />
+
+<img src="/images/automations/34-filter-passed-timeline.png" alt="Eine Run-Timeline mit Filter: Run Moved, dann Filter: Completed, die Set 1 als Valid zeigt, mit Expected Meeting: Activity Type mit dem Wert 1e gesprek, To be one of 2 selected" width="384" />
+
+## Was den Run stoppt
+
+Bedingungen, die nicht bestehen. Die Timeline verzeichnet "Filter: Cancelled" mit der Meldung "Filter not passed.", gefolgt von "Filter: Run Cancelled". Schritte nach dem Filter zeigen keine Statuszeile, und in der Runs-Liste zeigt die **Step**-Spalte des Runs "Filter".
+
+<img src="/images/automations/38-filter-cancelled-timeline.png" alt="Eine Run-Timeline mit Run Scheduled, Run Started, Run Moved, dann Filter: Cancelled mit der Meldung Filter not passed. und Filter: Run Cancelled" width="384" />
+
+Ein Filter innerhalb eines Splits stoppt nur seinen eigenen Zweig. Siehe [Split](/de/reference/automations/steps/split).
+
+Weitere Gründe, aus denen ein Run stoppen kann, listet [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons).
+
+## Muster
+
+- **Den Start absichern.** Ein Filter als erster Schritt stoppt Runs, die der Start allein nicht ausschließen kann, etwa eine Response mit einer leeren Antwort auf die entscheidende Frage.
+- **Nach dem Warten erneut prüfen.** Ein Delay und dann ein Filter bestätigen, dass der Datensatz nach Ablauf der Wartezeit noch qualifiziert ist. Ein zwischenzeitlich platzierter Kandidat bekommt das Follow-up nie.
+- **Einmal pro Status auslösen.** Ein Unique Constraint auf der ID des Datensatzes und seinem Statusfeld lässt eine Statusänderung einmal durch, auch wenn die App dasselbe Update mehrmals sendet.
+- **Für zwei Ergebnisse Split wählen.** Ein Filter beendet den Run bei einem Nein. Wenn sowohl Ja als auch Nein Schritte brauchen, verwenden Sie einen [Split](/de/reference/automations/steps/split) mit einem Filter-Zweig für jedes.
+
+## Häufige Fehler
+
+- **Eine Zeile ohne Operator speichern.** Der Drawer speichert sie, und die Arbeitsfläche zeigt anstelle des Operators den rohen Schlüssel `enums.conditions.undefined`. Öffnen Sie den Filter erneut und wählen Sie einen.
+- **Nur nach der Nummer suchen.** "Question 2" findet auch "Question 12". Tippen Sie zusätzlich einen Teil des Fragetitels.
+- **Einen übersprungenen Schritt erwarten.** Ein Filter, der nicht besteht, bricht den Run ab; er springt nicht zum nächsten Schritt.
+- **AND und OR ohne Sets mischen.** Zeilen in einem Set teilen sich einen Umschalter. Um "A und B" mit "C" zu kombinieren, legen Sie A und B in ein Set, C in ein anderes und stellen den Umschalter zwischen den Sets auf **OR**.
+
+## Verwandt
+
+- [Split](/de/reference/automations/steps/split) führt einen Filter pro Zweig aus, statt den Run zu stoppen.
+- [Setup](/de/reference/automations/steps/setup) enthält den Start-Filter, der entscheidet, ob ein Run überhaupt beginnt.
+- [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons) erklärt, wo die Meldung eines gestoppten Runs zu lesen ist.

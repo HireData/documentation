@@ -1,0 +1,104 @@
+---
+title: "Permitir cookies da Carerix no seu browser"
+sidebarTitle: "Permitir cookies da Carerix"
+description: "Corrija ecrãs de início de sessão, loops ou painéis em branco do SSO do Carerix Marketplace permitindo os cookies entre sites de que as integrações incorporadas, como a HireData, precisam."
+keywords: ["ecrã de início de sessão da carerix na hiredata", "sso do carerix marketplace", "permitir cookies da carerix", "whitelist carerix.net", "cookies de terceiros", "cookies entre sites", "browser comet", "chrome", "safari"]
+---
+
+Se vir um ecrã de início de sessão da Carerix dentro do RMA da HireData quando já tem sessão iniciada na Carerix, o seu browser está provavelmente a bloquear os cookies entre sites de que o SSO do Carerix Marketplace precisa.
+
+<Warning>
+  Não inicie sessão novamente no ecrã de início de sessão incorporado. Em vez disso, permita os cookies da Carerix no seu browser.
+</Warning>
+
+## Como reconhecer este problema
+
+Cookies entre sites bloqueados podem fazer com que o RMA da HireData ou outra integração do Carerix Marketplace:
+
+- Mostre um ecrã de início de sessão da Carerix mesmo que já tenha sessão iniciada
+- Volte ao ecrã de início de sessão imediatamente depois de iniciar sessão
+- Permaneça branco ou cinzento em vez de carregar
+- Mostre uma mensagem de ligação recusada ou de sessão expirada
+
+## Porque é que isto acontece
+
+O Carerix Marketplace carrega a HireData dentro de um iframe entre sites. O iframe inicia um login OpenID Connect com o Identity Server da Carerix. O SSO da Carerix utiliza depois a sua sessão Carerix existente para o autenticar sem voltar a pedir as suas credenciais.
+
+Se o seu browser impedir que esse cookie de sessão seja utilizado dentro do iframe, o Identity Server não consegue reconhecer a sua sessão existente. A app incorporada pode então apresentar um ecrã de início de sessão ou entrar num loop de login.
+
+Esta é uma limitação conhecida dos controlos de privacidade dos browsers e do SSO do Marketplace da Carerix baseado em iframes. Não é um defeito da implementação OpenID Connect da HireData. A Carerix descreve o fluxo esperado na sua [documentação de autenticação e SSO do Marketplace](https://help.carerix.com/en/articles/14034043-carerix-marketplace-framework-authentication-sso-flow).
+
+## Comet e Google Chrome
+
+O Comet é baseado no Chromium, por isso pode usar a mesma exceção de cookies do Google Chrome.
+
+<Steps>
+  <Step title="Abra as definições de cookies de terceiros">
+    Abra as **Settings** do seu browser e vá a **Privacy and security** \> **Third-party cookies**.
+  </Step>
+  <Step title="Adicione a Carerix aos sites permitidos">
+    Em **Sites allowed to use third-party cookies**, clique em **Add**.
+
+    Introduza o seguinte endereço exatamente como está e clique em **Add**:
+
+    ```text
+    [*.]carerix.net
+    ```
+
+    O prefixo `[*.]` inclui o seu ambiente Carerix e todos os outros subdomínios de `carerix.net`.
+
+    A Carerix também recomenda permitir o domínio do seu Identity Server. Adicione-o como uma entrada separada:
+
+    ```text
+    [*.]carerix.io
+    ```
+  </Step>
+  <Step title="Guarde e recarregue a Carerix">
+    Volte à Carerix e recarregue a página. Abra novamente o RMA da HireData. Deve agora abrir sem mostrar o ecrã de início de sessão da Carerix.
+  </Step>
+</Steps>
+
+### Permitir cookies a partir da barra de endereço
+
+Se o seu browser mostrar um ícone de cookies de terceiros bloqueados na barra de endereço, também pode clicar nesse ícone e ativar **Third-party cookies** para o site atual. Recarregue a página depois disso.
+
+Adicionar `[*.]carerix.net` em **Settings** é a opção mais fiável, porque cobre todos os ambientes Carerix nesse domínio.
+
+## Safari no macOS
+
+O Safari não suporta uma exceção específica por website para este tipo de proteção contra rastreio entre sites. Tem de alterar a definição para o browser inteiro.
+
+<Steps>
+  <Step title="Abra as definições de privacidade do Safari">
+    No menu Safari, clique em **Settings** e abra **Privacy**.
+  </Step>
+  <Step title="Permita cookies entre sites">
+    Desative **Prevent cross-site tracking**. Certifique-se de que **Block all cookies** também está desativado.
+  </Step>
+  <Step title="Recarregue a Carerix">
+    Feche as **Settings**, volte à Carerix e recarregue a página. Abra novamente o RMA da HireData.
+  </Step>
+</Steps>
+
+Se o RMA da HireData carregar depois desta alteração, a proteção contra rastreio entre sites do Safari era a causa.
+
+<Warning>
+  Desativar **Prevent cross-site tracking** afeta todos os websites no Safari. Se preferir uma exceção específica por site, use o Comet ou o Chrome e permita apenas os domínios Carerix listados acima.
+</Warning>
+
+Não teste isto numa janela Incógnita ou Privada. Estes modos bloqueiam frequentemente os cookies de terceiros por predefinição.
+
+## Se não conseguir alterar a definição
+
+A sua organização pode gerir as definições do seu browser. Se a opção estiver indisponível ou bloqueada, peça ao seu administrador de TI que permita cookies de terceiros para `[*.]carerix.net` e `[*.]carerix.io`.
+
+<Note>
+  No Comet ou no Chrome, estas exceções permitem que a Carerix o mantenha com sessão iniciada dentro do iframe da HireData. Não ativam cookies de terceiros para todos os websites.
+</Note>
+
+## Recursos da Carerix
+
+- [Fluxo de autenticação e SSO do Marketplace](https://help.carerix.com/en/articles/14034043-carerix-marketplace-framework-authentication-sso-flow)
+- [Permitir cookies de terceiros](https://help.carerix.com/en/articles/9857670-allow-third-party-cookies)
+- [Sintomas de cookies entre sites e limitações do Safari](https://help.carerix.com/nl/articles/14706388-cross-site-cookies)
+- [Resolver problemas de integrações bloqueadas por definições de cookies de terceiros](https://help.carerix.com/en/articles/13375528-troubleshooting-dashboards-or-integrations-not-loading-chrome-version-144-third-party-cookies)

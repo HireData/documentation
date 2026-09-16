@@ -1,0 +1,93 @@
+---
+title: "Catalogue des tâches"
+sidebarTitle: "Catalogue des tâches"
+description: "Chaque tâche qu'une automatisation HireData peut exécuter, par app connectée : son libellé dans le sélecteur d'étapes, sa catégorie, ce dont elle a besoin et où elle est expliquée."
+keywords:
+  - "catalogue des tâches"
+  - "tâches d'automatisation"
+  - "apps connectées"
+  - "tâches carerix"
+  - "tâches otys"
+  - "tâches vincere"
+  - "tâches salesforce"
+  - "tâches whatsapp"
+  - "tâches ratecard"
+  - "tâches google sheets"
+---
+
+Une étape est un nœud sur le canevas. [Delay](/fr/reference/automations/steps/delay), [Filter](/fr/reference/automations/steps/filter), [Loop](/fr/reference/automations/steps/loop) et [Split](/fr/reference/automations/steps/split) façonnent l'exécution et ne touchent à rien en dehors d'elle. Une tâche est une étape qui agit sur une app : elle envoie, crée, trouve ou modifie quelque chose, et l'exécution l'enregistre sous **Tasks**. [Add](/fr/reference/automations/steps/add), [Find](/fr/reference/automations/steps/find), [Message](/fr/reference/automations/steps/message) et [Update](/fr/reference/automations/steps/update) sont les catégories qui regroupent les tâches, et [Prompt](/fr/reference/automations/steps/prompt) est une tâche à part entière.
+
+Les tâches que vous voyez dépendent des apps connectées à l'espace de travail, pas de vos permissions. Recruitee, AFAS et les apps personnalisées ne fournissent que des événements : une automatisation peut donc [démarrer depuis Recruitee](/fr/apps/recruitee/create-a-recruitee-automation-in-hiredata) mais ne peut pas y écrire en retour.
+
+<Note>
+  Toutes les tâches n'ont pas encore leur propre page. Quand il n'y en a pas, la colonne référence pointe vers la page la plus proche : la page de la catégorie, un tutoriel qui utilise la tâche, ou la vue d'ensemble de l'app.
+</Note>
+
+## HireData
+
+Toujours présent.
+
+| Libellé | Catégorie | Nécessite | Référence |
+| --- | --- | --- | --- |
+| Send Email | Message | Un modèle d'e-mail. Un expéditeur sur un domaine vérifié | [Send Email](/fr/reference/automations/tasks/send-email) |
+| HTTP Request | Add, Message | Un endpoint qui accepte la requête | [HTTP Request](/fr/reference/automation-tasks/http-request-task) |
+| Post Webhook | Add, Message | Rien de nouveau. L'ancienne forme de HTTP Request | [Les tâches Post Webhook existantes](/fr/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+| Find Email | Find | Le nom d'une personne et un domaine d'entreprise issus de l'exécution | [Find](/fr/reference/automations/steps/find) |
+| Search Domain | Find | Un nom d'entreprise issu de l'exécution | [Find](/fr/reference/automations/steps/find) |
+| Ask AI | Prompt | Rien au-delà des données de l'exécution | [Prompt](/fr/reference/automations/steps/prompt) |
+
+## WhatsApp
+
+| Libellé | Catégorie | Nécessite | Référence |
+| --- | --- | --- | --- |
+| Send Message | Message | Un numéro WhatsApp connecté et un modèle de message approuvé | [Comment fonctionnent les modèles WhatsApp](/fr/apps/messaging/whatsapp/how-whatsapp-templates-work) |
+| Send Survey | Message | Un numéro WhatsApp connecté et un formulaire | [Comment utiliser les formulaires dans les conversations WhatsApp](/fr/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) |
+
+## Carerix
+
+| Libellé | Catégorie | Nécessite | Référence |
+| --- | --- | --- | --- |
+| Find | Find | Une connexion Carerix | [Find](/fr/reference/automations/steps/find) |
+| Add Email | Add | Une connexion Carerix et un enregistrement auquel rattacher l'e-mail | [Consigner des e-mails dans Carerix](/fr/apps/carerix/logging-email-messages-on-carerix-with-hiredata) |
+| Job Application | Add | Une connexion Carerix, un candidat et un poste | [Créer une automatisation Carerix](/fr/apps/carerix/create-a-carerix-automation-in-hiredata) |
+| Add Note | Add | Une connexion Carerix et un enregistrement auquel rattacher la note | [Ajouter une activité ou un élément dans Carerix](/fr/apps/carerix/add-an-activity-or-item-in-carerix-with-hiredata) |
+| Add Task | Add | Une connexion Carerix | [Planifier une tâche dans Carerix](/fr/apps/carerix/schedule-a-task-in-carerix-with-hiredata) |
+| Update Object | Update | Une connexion Carerix | [Mettre à jour des champs dans Carerix](/fr/apps/carerix/update-fields-in-carerix-with-hiredata) |
+
+## OTYS
+
+| Libellé | Catégorie | Nécessite | Référence |
+| --- | --- | --- | --- |
+| Task | Add | Une connexion OTYS | [Créer une automatisation OTYS](/fr/apps/otys/create-an-otys-automation-in-hiredata) |
+| Activity or Item | Add | Une connexion OTYS | [Créer une automatisation OTYS](/fr/apps/otys/create-an-otys-automation-in-hiredata) |
+| Update Object | Update | Une connexion OTYS | [Update](/fr/reference/automations/steps/update) |
+
+## Vincere
+
+| Libellé | Catégorie | Nécessite | Référence |
+| --- | --- | --- | --- |
+| Task | Add | Une connexion Vincere | [Planifier une tâche dans Vincere](/fr/apps/vincere/schedule-a-task-in-vincere-with-hiredata) |
+| Activity or Item | Add | Une connexion Vincere | [Ajouter une activité ou un élément dans Vincere](/fr/apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata) |
+| Update Object | Update | Une connexion Vincere | [Mettre à jour des champs dans Vincere](/fr/apps/vincere/update-fields-in-vincere-with-hiredata) |
+| Update GDPR | Update | Une connexion Vincere | [Update](/fr/reference/automations/steps/update) |
+
+## Salesforce
+
+| Libellé | Catégorie | Nécessite | Référence |
+| --- | --- | --- | --- |
+| Find | Find | Une connexion Salesforce | [Vue d'ensemble de l'intégration Salesforce](/fr/apps/salesforce/overview) |
+| Task | Add | Une connexion Salesforce | [Vue d'ensemble de l'intégration Salesforce](/fr/apps/salesforce/overview) |
+| Activity or Item | Add | Une connexion Salesforce | [Vue d'ensemble de l'intégration Salesforce](/fr/apps/salesforce/overview) |
+| Update Object | Update | Une connexion Salesforce | [Update](/fr/reference/automations/steps/update) |
+
+## Ratecard
+
+| Libellé | Catégorie | Nécessite | Référence |
+| --- | --- | --- | --- |
+| Send Survey | Message | Une connexion Ratecard active et une enquête | [Se connecter à Ratecard](/fr/apps/ratecard/connect-with-ratecard) |
+
+## Google Sheets
+
+| Libellé | Catégorie | Nécessite | Référence |
+| --- | --- | --- | --- |
+| Add Row | Add | Une connexion Google Sheets et une feuille de calcul où écrire | [Add](/fr/reference/automations/steps/add) |

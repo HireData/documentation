@@ -1,0 +1,104 @@
+---
+title: "Carerix-cookies toestaan in je browser"
+sidebarTitle: "Carerix-cookies toestaan"
+description: "Los Carerix Marketplace SSO-inlogschermen, loops of lege panelen op door de cross-site cookies toe te staan die embedded integraties zoals HireData nodig hebben."
+keywords: ["carerix-inlogscherm in hiredata", "carerix marketplace sso", "carerix-cookies toestaan", "carerix.net whitelisten", "third-party cookies", "cross-site cookies", "comet browser", "chrome", "safari"]
+---
+
+Zie je een Carerix-inlogscherm binnen de HireData RMA terwijl je al bent ingelogd bij Carerix, dan blokkeert je browser waarschijnlijk de cross-site cookies die Carerix Marketplace SSO nodig heeft.
+
+<Warning>
+  Log niet opnieuw in binnen het embedded inlogscherm. Sta in plaats daarvan Carerix-cookies toe in je browser.
+</Warning>
+
+## Hoe je dit probleem herkent
+
+Geblokkeerde cross-site cookies kunnen ervoor zorgen dat de HireData RMA of een andere Carerix Marketplace-integratie:
+
+- Een Carerix-inlogscherm toont terwijl je al bent ingelogd
+- Direct nadat je inlogt terugkeert naar het inlogscherm
+- Wit of grijs blijft in plaats van te laden
+- Een melding toont dat de verbinding is geweigerd of de sessie is verlopen
+
+## Waarom dit gebeurt
+
+Carerix Marketplace laadt HireData in een cross-site iframe. Het iframe start een OpenID Connect-login bij de Carerix Identity Server. Carerix SSO gebruikt vervolgens je bestaande Carerix-sessie om je te authenticeren zonder opnieuw om je inloggegevens te vragen.
+
+Als je browser verhindert dat die sessiecookie binnen het iframe wordt gebruikt, kan de Identity Server je bestaande sessie niet herkennen. De embedded app kan dan een inlogscherm tonen of in een inloglus terechtkomen.
+
+Dit is een bekende beperking van de privacycontroles van browsers en Carerix's iframe-gebaseerde Marketplace SSO. Het is geen defect in HireData's OpenID Connect-implementatie. Carerix beschrijft de verwachte flow in zijn [Marketplace-authenticatie- en SSO-documentatie](https://help.carerix.com/en/articles/14034043-carerix-marketplace-framework-authentication-sso-flow).
+
+## Comet en Google Chrome
+
+Comet is gebaseerd op Chromium, dus je kunt dezelfde cookie-uitzondering gebruiken als in Google Chrome.
+
+<Steps>
+  <Step title="Open de third-party cookie-instellingen">
+    Open de **Settings** van je browser en ga dan naar **Privacy and security** \> **Third-party cookies**.
+  </Step>
+  <Step title="Voeg Carerix toe aan de toegestane sites">
+    Klik onder **Sites allowed to use third-party cookies** op **Add**.
+
+    Voer exact het volgende adres in en klik op **Add**:
+
+    ```text
+    [*.]carerix.net
+    ```
+
+    De prefix `[*.]` dekt je Carerix-omgeving en alle andere `carerix.net`-subdomeinen.
+
+    Carerix raadt ook aan zijn Identity Server-domein toe te staan. Voeg dit toe als een aparte entry:
+
+    ```text
+    [*.]carerix.io
+    ```
+  </Step>
+  <Step title="Opslaan en Carerix herladen">
+    Keer terug naar Carerix en herlaad de pagina. Open de HireData RMA opnieuw. Deze zou nu moeten openen zonder het Carerix-inlogscherm te tonen.
+  </Step>
+</Steps>
+
+### Cookies toestaan via de adresbalk
+
+Toont je browser een icoon voor geblokkeerde third-party cookies in de adresbalk, dan kun je ook op dat icoon klikken en **Third-party cookies** aanzetten voor de huidige site. Herlaad de pagina daarna.
+
+`[*.]carerix.net` toevoegen via **Settings** is de betrouwbaardere optie, omdat die elke Carerix-omgeving op dat domein dekt.
+
+## Safari op macOS
+
+Safari ondersteunt geen website-specifieke uitzondering voor dit type bescherming tegen cross-site tracking. Je moet de instelling voor de hele browser wijzigen.
+
+<Steps>
+  <Step title="Open de privacy-instellingen van Safari">
+    Klik in het Safari-menu op **Settings** en open dan **Privacy**.
+  </Step>
+  <Step title="Sta cross-site cookies toe">
+    Zet **Prevent cross-site tracking** uit. Zorg dat **Block all cookies** ook uit staat.
+  </Step>
+  <Step title="Herlaad Carerix">
+    Sluit **Settings**, keer terug naar Carerix en herlaad de pagina. Open de HireData RMA opnieuw.
+  </Step>
+</Steps>
+
+Laadt de HireData RMA na deze wijziging, dan was Safari's bescherming tegen cross-site tracking de oorzaak.
+
+<Warning>
+  **Prevent cross-site tracking** uitzetten geldt voor elke website in Safari. Geef je de voorkeur aan een site-specifieke uitzondering, gebruik dan Comet of Chrome en sta alleen de hierboven genoemde Carerix-domeinen toe.
+</Warning>
+
+Test dit niet in een incognito- of privévenster. Deze modi blokkeren third-party cookies vaak standaard.
+
+## Als je de instelling niet kunt wijzigen
+
+Je organisatie beheert mogelijk je browserinstellingen. Is de optie niet beschikbaar of vergrendeld, vraag dan je IT-beheerder om third-party cookies toe te staan voor `[*.]carerix.net` en `[*.]carerix.io`.
+
+<Note>
+  In Comet of Chrome zorgen deze uitzonderingen ervoor dat Carerix je ingelogd kan houden binnen het HireData-iframe. Ze schakelen geen third-party cookies in voor elke website.
+</Note>
+
+## Carerix-bronnen
+
+- [Marketplace-authenticatie en SSO-flow](https://help.carerix.com/en/articles/14034043-carerix-marketplace-framework-authentication-sso-flow)
+- [Third-party cookies toestaan](https://help.carerix.com/en/articles/9857670-allow-third-party-cookies)
+- [Symptomen van cross-site cookies en Safari-beperkingen](https://help.carerix.com/nl/articles/14706388-cross-site-cookies)
+- [Problemen oplossen met integraties die worden geblokkeerd door third-party-cookie-instellingen](https://help.carerix.com/en/articles/13375528-troubleshooting-dashboards-or-integrations-not-loading-chrome-version-144-third-party-cookies)

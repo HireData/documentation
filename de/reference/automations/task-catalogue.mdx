@@ -1,0 +1,93 @@
+---
+title: "Aufgabenkatalog"
+sidebarTitle: "Aufgabenkatalog"
+description: "Jede Aufgabe, die eine HireData-Automatisierung ausführen kann, pro verbundener App: ihre Bezeichnung in der Schrittauswahl, ihre Kategorie, was sie braucht und wo sie erklärt wird."
+keywords:
+  - "Aufgabenkatalog"
+  - "Automatisierungsaufgaben"
+  - "verbundene Apps"
+  - "Carerix-Aufgaben"
+  - "OTYS-Aufgaben"
+  - "Vincere-Aufgaben"
+  - "Salesforce-Aufgaben"
+  - "WhatsApp-Aufgaben"
+  - "Ratecard-Aufgaben"
+  - "Google-Sheets-Aufgaben"
+---
+
+Ein Schritt ist ein Block auf der Arbeitsfläche. [Delay](/de/reference/automations/steps/delay), [Filter](/de/reference/automations/steps/filter), [Loop](/de/reference/automations/steps/loop) und [Split](/de/reference/automations/steps/split) formen den Run und berühren nichts außerhalb davon. Eine Aufgabe ist ein Schritt, der auf eine App wirkt: Sie sendet, erstellt, findet oder ändert etwas, und der Run verzeichnet sie unter **Tasks**. [Add](/de/reference/automations/steps/add), [Find](/de/reference/automations/steps/find), [Message](/de/reference/automations/steps/message) und [Update](/de/reference/automations/steps/update) sind die Kategorien, die Aufgaben enthalten, und [Prompt](/de/reference/automations/steps/prompt) ist selbst eine Aufgabe.
+
+Welche Aufgaben Sie sehen, hängt von den mit dem Workspace verbundenen Apps ab, nicht von Ihren Berechtigungen. Recruitee, AFAS und Custom Apps liefern nur Events, sodass eine Automatisierung zwar [von Recruitee aus starten](/de/apps/recruitee/create-a-recruitee-automation-in-hiredata) kann, aber nicht dorthin zurückschreiben kann.
+
+<Note>
+  Noch hat nicht jede Aufgabe eine eigene Seite. Wo keine existiert, verweist die Referenzspalte auf die nächstliegende Seite: die Kategorieseite, ein Tutorial, das die Aufgabe verwendet, oder die Übersicht der App.
+</Note>
+
+## HireData
+
+Immer vorhanden.
+
+| Bezeichnung | Kategorie | Braucht | Referenz |
+| --- | --- | --- | --- |
+| Send Email | Message | Eine E-Mail-Vorlage. Einen Absender auf einer verifizierten Domain | [Send Email](/de/reference/automations/tasks/send-email) |
+| HTTP Request | Add, Message | Einen Endpunkt, der den Request akzeptiert | [HTTP Request](/de/reference/automation-tasks/http-request-task) |
+| Post Webhook | Add, Message | Nichts Neues. Die ältere Form von HTTP Request | [Bestehende Post-Webhook-Aufgaben](/de/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+| Find Email | Find | Den Namen einer Person und eine Unternehmensdomain aus dem Run | [Find](/de/reference/automations/steps/find) |
+| Search Domain | Find | Einen Unternehmensnamen aus dem Run | [Find](/de/reference/automations/steps/find) |
+| Ask AI | Prompt | Nichts über die Daten des Runs hinaus | [Prompt](/de/reference/automations/steps/prompt) |
+
+## WhatsApp
+
+| Bezeichnung | Kategorie | Braucht | Referenz |
+| --- | --- | --- | --- |
+| Send Message | Message | Eine verbundene WhatsApp-Nummer und eine genehmigte Nachrichtenvorlage | [So funktionieren WhatsApp-Vorlagen](/de/apps/messaging/whatsapp/how-whatsapp-templates-work) |
+| Send Survey | Message | Eine verbundene WhatsApp-Nummer und ein Formular | [Formulare in WhatsApp-Konversationen verwenden](/de/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) |
+
+## Carerix
+
+| Bezeichnung | Kategorie | Braucht | Referenz |
+| --- | --- | --- | --- |
+| Find | Find | Eine Carerix-Verbindung | [Find](/de/reference/automations/steps/find) |
+| Add Email | Add | Eine Carerix-Verbindung und einen Datensatz, an den die E-Mail angehängt wird | [E-Mail-Nachrichten in Carerix protokollieren](/de/apps/carerix/logging-email-messages-on-carerix-with-hiredata) |
+| Job Application | Add | Eine Carerix-Verbindung, einen Kandidaten und eine Vakanz | [Eine Carerix-Automatisierung erstellen](/de/apps/carerix/create-a-carerix-automation-in-hiredata) |
+| Add Note | Add | Eine Carerix-Verbindung und einen Datensatz, an den die Notiz angehängt wird | [Aktivität oder Element in Carerix hinzufügen](/de/apps/carerix/add-an-activity-or-item-in-carerix-with-hiredata) |
+| Add Task | Add | Eine Carerix-Verbindung | [Eine Aufgabe in Carerix planen](/de/apps/carerix/schedule-a-task-in-carerix-with-hiredata) |
+| Update Object | Update | Eine Carerix-Verbindung | [Felder in Carerix aktualisieren](/de/apps/carerix/update-fields-in-carerix-with-hiredata) |
+
+## OTYS
+
+| Bezeichnung | Kategorie | Braucht | Referenz |
+| --- | --- | --- | --- |
+| Task | Add | Eine OTYS-Verbindung | [Eine OTYS-Automatisierung erstellen](/de/apps/otys/create-an-otys-automation-in-hiredata) |
+| Activity or Item | Add | Eine OTYS-Verbindung | [Eine OTYS-Automatisierung erstellen](/de/apps/otys/create-an-otys-automation-in-hiredata) |
+| Update Object | Update | Eine OTYS-Verbindung | [Update](/de/reference/automations/steps/update) |
+
+## Vincere
+
+| Bezeichnung | Kategorie | Braucht | Referenz |
+| --- | --- | --- | --- |
+| Task | Add | Eine Vincere-Verbindung | [Eine Aufgabe in Vincere planen](/de/apps/vincere/schedule-a-task-in-vincere-with-hiredata) |
+| Activity or Item | Add | Eine Vincere-Verbindung | [Aktivität oder Element in Vincere hinzufügen](/de/apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata) |
+| Update Object | Update | Eine Vincere-Verbindung | [Felder in Vincere aktualisieren](/de/apps/vincere/update-fields-in-vincere-with-hiredata) |
+| Update GDPR | Update | Eine Vincere-Verbindung | [Update](/de/reference/automations/steps/update) |
+
+## Salesforce
+
+| Bezeichnung | Kategorie | Braucht | Referenz |
+| --- | --- | --- | --- |
+| Find | Find | Eine Salesforce-Verbindung | [Übersicht zur Salesforce-Integration](/de/apps/salesforce/overview) |
+| Task | Add | Eine Salesforce-Verbindung | [Übersicht zur Salesforce-Integration](/de/apps/salesforce/overview) |
+| Activity or Item | Add | Eine Salesforce-Verbindung | [Übersicht zur Salesforce-Integration](/de/apps/salesforce/overview) |
+| Update Object | Update | Eine Salesforce-Verbindung | [Update](/de/reference/automations/steps/update) |
+
+## Ratecard
+
+| Bezeichnung | Kategorie | Braucht | Referenz |
+| --- | --- | --- | --- |
+| Send Survey | Message | Eine aktive Ratecard-Verbindung und eine Umfrage | [Verbindung mit Ratecard herstellen](/de/apps/ratecard/connect-with-ratecard) |
+
+## Google Sheets
+
+| Bezeichnung | Kategorie | Braucht | Referenz |
+| --- | --- | --- | --- |
+| Add Row | Add | Eine Google-Sheets-Verbindung und ein Spreadsheet, in das geschrieben wird | [Add](/de/reference/automations/steps/add) |

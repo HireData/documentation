@@ -1,0 +1,62 @@
+---
+title: "Redenen voor run-annuleringen"
+sidebarTitle: "Run-annuleringen"
+description: "Vind het bericht dat een automatiseringsrun stopte en los veelvoorkomende annuleringen op rond filters, loops, e-mail en berichtlimieten."
+keywords: ["run geannuleerd", "run cancelled", "annuleringsreden", "Email unsubscribed", "Send limits exceeded", "Invalid sender email"]
+---
+
+Wanneer HireData een run annuleert, legt de stap die hem stopte een bericht vast. Lees dat bericht op de run voordat je de automatisering wijzigt.
+
+## Vind het annuleringsbericht
+
+1. Open **Runs** en selecteer de betreffende run.
+2. Selecteer de geannuleerde stap in het run-diagram of de timeline.
+3. Lees het bericht in **Overview**.
+4. Open **Fields** om de waarden te controleren die de stap gebruikte.
+
+## Annuleringsberichten
+
+| Bericht | Wat het betekent | Wat je controleert |
+| --- | --- | --- |
+| `Filter not passed.` | Een Filter-voorwaarde evalueerde als onwaar. | De Filter-voorwaarden en de eventvelden. |
+| `No valid paths found.` | Elke branch van een Split kwam niet door zijn Filter. | De Filters in elke Split-branch. |
+| `Data lookup failed.` | Een Loop kon de benodigde records niet ophalen. | De gekoppelde app, het geselecteerde object en het Loop-filter. |
+| `Invalid recipient email.` | De ontvanger van de Send Email is geen geldig e-mailadres. | Het ontvangerveld of de vaste ontvanger. |
+| `Email invalid.` | HireData heeft voor de ontvanger een resultaat "ongeldig adres" geregistreerd. | Het ontvangeradres. Gebruik een geldig adres voordat je het opnieuw probeert. |
+| `Email blocked.` | De ontvanger staat op de e-mailblocklist van de workspace. | De blocklist van de workspace en het ontvangeradres. |
+| `Email unsubscribed.` | De ontvanger staat in de e-mailuitschrijvingen van de workspace. Dit kan ook een adres zijn dat na een bounce is onderdrukt. | **Settings** > **Unsubscribes** en het ontvangeradres. |
+| `Invalid sender email.` | De Send Email-stap heeft geen afzender die HireData kan gebruiken. | De afzender en het geverifieerde domein ervan. |
+| `Send limits exceeded.` | De ontvanger bereikte een berichtlimiet op accountniveau. | **Settings** > **Safety Limits**. |
+| `Send limits per automation exceeded.` | De ontvanger bereikte een limiet die op deze automatisering is ingesteld. | De **Settings** van de automatisering. |
+
+Het exacte bericht kan in plaats daarvan een configuratiefout aanwijzen. `Required data reference missing.` is daar een voorbeeld van. Dat maakt de run **Failed**, niet **Cancelled**. Herstel de ontbrekende vereiste waarde in de taakconfiguratie en start daarna een nieuw event.
+
+## Invalid sender email
+
+HireData annuleert een echte Send Email-run wanneer de afzender ervan niet geldig is voor de workspace. Bij een transactionele e-mail kan HireData terugvallen op een geldige standaard afzendergebruiker of standaardafzender op het geconfigureerde branddomein of workspace-domein.
+
+1. Ga naar **Settings** > **Domains**.
+2. Open het domein dat door de afzender wordt gebruikt.
+3. Genereer en voeg indien nodig de DNS-records ervan toe.
+4. Selecteer **Verify DNS** zodra de records beschikbaar zijn.
+5. Controleer de afzender van de Send Email-stap en start daarna een nieuw event.
+
+Als de DNS-verificatie mislukt, bevestig dan dat elk gegenereerd record aanwezig is bij je DNS-provider. Sommige providers verwachten alleen het subdomein in het veld **Host/Name**. Zie [Hoe je een domein verifieert in HireData om e-mails te verzenden](/nl/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+## Send limits exceeded
+
+Limieten op accountniveau voorkomen dat hetzelfde e-mailadres of telefoonnummer meer berichten ontvangt dan de workspace toestaat. Bekijk de limieten onder **Prevent Message Overload** in **Settings** > **Safety Limits**. Verhoog een limiet alleen wanneer de geplande contactfrequentie passend is.
+
+## Send limits per automation exceeded
+
+Een automatisering kan ook eigen e-mail- en gesprekslimieten hebben. Open de automatisering, selecteer het menu met drie puntjes en selecteer daarna **Settings**. Bekijk **Message limits** en de eerdere berichten van de ontvanger voor die automatisering.
+
+<Warning>
+  **Ignore all safety limits** verwijdert de account- en automatiseringsbeschermingen voor deze automatisering. Controleer de historie van de ontvanger voordat je het gebruikt.
+</Warning>
+
+## Start een nieuwe run na een correctie
+
+Gebruik een nieuw event nadat je een afzender, ontvanger, Filter of limiet hebt gewijzigd. Een oud event replayen kan voltooide e-mails, berichten, updates en taken herhalen.
+
+Als het bericht hier niet wordt genoemd, voeg dan het run-ID, de naam van de automatisering, de geannuleerde stap en het exacte bericht toe wanneer je contact opneemt met [support@hiredata.com](mailto:support@hiredata.com).

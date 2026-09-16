@@ -39,11 +39,37 @@ Argumenten kunnen zijn:
   haakjes in de onderstaande tabellen.
 </Tip>
 
+## Hoe de popover modifiers toont
+
+In de editor behoudt een variabele met modifiers zijn weergavenaam en krijgt hij een toverstaf-icoon erbij. Beweeg over de badge en de popover loopt de pipeline door: de inputwaarde, één kaart per modifier in gewone taal, en de output. `lowercase` toont **Lowercase**, `truncate_chars` toont **Limit characters**, en argumenten verschijnen onder de naam van de modifier.
+
+<img src="/images/forms-builder/37-variable-popover.png" alt="Het Description-vak van een formuliervraag met vier badges, en een popover erboven open met de kop Name en kaarten met Input NPS required question, Lowercase, Capitalise words, Use a fallback Your form en Output Nps Required Question" width="573" />
+
+<Note>
+  Sommige modifiers kunnen niet worden gepreviewd. Hun kaart blijft met een notitie in de pipeline staan, en de output wordt weggelaten. De modifier draait nog steeds wanneer de content wordt verzonden.
+</Note>
+
+De popover is alleen-lezen. Om de expressie te wijzigen, zie [Een badge bewerken](/nl/variables/introduction#editing-a-badge).
+
 ## Fallback
 
 | Modifier         | Wat het doet                                     | Voorbeeld                                  |
 | ---------------- | ------------------------------------------------ | ------------------------------------------ |
 | `default: value` | Toont `value` wanneer het veld leeg of afwezig is | `{{ name \| default: "there" }}` → `there` |
+
+In de popover verschijnt de fallback als een eigen stap, **Use a fallback**, met de fallbacktekst eronder. Wanneer het veld leeg is, toont de input **No value provided** en toont de output de fallback.
+
+## Literals
+
+Een tekst tussen aanhalingstekens, een getal of `true` of `false` kan de plaats van een veld innemen. Het wordt een badge zoals elke variabele, en modifiers werken er op dezelfde manier op:
+
+```text
+{{ "text" | uppercase }} → TEXT
+```
+
+De badge is getint om hem van een veld te onderscheiden, en draagt het icoon van het type van de literal.
+
+<img src="/images/email-builder/22-literal-popover.png" alt="Een getinte badge met text, een teksttype-icoon en een toverstaf-icoon, en zijn popover met Input text, Uppercase en Output TEXT" width="616" />
 
 ## Tekst
 

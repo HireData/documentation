@@ -1,0 +1,93 @@
+---
+title: "Taakcatalogus"
+sidebarTitle: "Taakcatalogus"
+description: "Elke taak die een HireData-automatisering kan draaien, per gekoppelde app: het label in de step picker, de categorie, wat de taak nodig heeft en waar deze wordt uitgelegd."
+keywords:
+  - "taakcatalogus"
+  - "automatiseringstaken"
+  - "gekoppelde apps"
+  - "carerix-taken"
+  - "otys-taken"
+  - "vincere-taken"
+  - "salesforce-taken"
+  - "whatsapp-taken"
+  - "ratecard-taken"
+  - "google sheets-taken"
+---
+
+Een stap is een node op het canvas. [Delay](/nl/reference/automations/steps/delay), [Filter](/nl/reference/automations/steps/filter), [Loop](/nl/reference/automations/steps/loop) en [Split](/nl/reference/automations/steps/split) geven de run vorm en raken niets daarbuiten. Een taak is een stap die iets doet in een app: deze verstuurt, maakt, vindt of wijzigt iets, en de run legt dat vast onder **Tasks**. [Add](/nl/reference/automations/steps/add), [Find](/nl/reference/automations/steps/find), [Message](/nl/reference/automations/steps/message) en [Update](/nl/reference/automations/steps/update) zijn de categorieën die taken bevatten, en [Prompt](/nl/reference/automations/steps/prompt) is zelf een taak.
+
+Welke taken je ziet hangt af van de apps die aan de workspace zijn gekoppeld, niet van je permissies. Recruitee, AFAS en custom apps leveren alleen events, dus een automatisering kan [starten vanuit Recruitee](/nl/apps/recruitee/create-a-recruitee-automation-in-hiredata) maar er niet naar terugschrijven.
+
+<Note>
+  Niet elke taak heeft al een eigen pagina. Waar die ontbreekt, wijst de referentiekolom naar de dichtstbijzijnde pagina: de categoriepagina, een tutorial die de taak gebruikt, of het overzicht van de app.
+</Note>
+
+## HireData
+
+Altijd aanwezig.
+
+| Label | Categorie | Nodig | Referentie |
+| --- | --- | --- | --- |
+| Send Email | Message | Een e-mailtemplate. Een afzender op een geverifieerd domein | [Send Email](/nl/reference/automations/tasks/send-email) |
+| HTTP Request | Add, Message | Een endpoint dat het request accepteert | [HTTP Request](/nl/reference/automation-tasks/http-request-task) |
+| Post Webhook | Add, Message | Niets nieuws. De oudere vorm van HTTP Request | [Bestaande Post Webhook-taken](/nl/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+| Find Email | Find | De naam van een persoon en een bedrijfsdomein uit de run | [Find](/nl/reference/automations/steps/find) |
+| Search Domain | Find | Een bedrijfsnaam uit de run | [Find](/nl/reference/automations/steps/find) |
+| Ask AI | Prompt | Niets buiten de data van de run | [Prompt](/nl/reference/automations/steps/prompt) |
+
+## WhatsApp
+
+| Label | Categorie | Nodig | Referentie |
+| --- | --- | --- | --- |
+| Send Message | Message | Een gekoppeld WhatsApp-nummer en een goedgekeurde message template | [Hoe WhatsApp-templates werken](/nl/apps/messaging/whatsapp/how-whatsapp-templates-work) |
+| Send Survey | Message | Een gekoppeld WhatsApp-nummer en een formulier | [Formulieren gebruiken in WhatsApp-gesprekken](/nl/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) |
+
+## Carerix
+
+| Label | Categorie | Nodig | Referentie |
+| --- | --- | --- | --- |
+| Find | Find | Een Carerix-koppeling | [Find](/nl/reference/automations/steps/find) |
+| Add Email | Add | Een Carerix-koppeling en een record om de e-mail aan te koppelen | [E-mailberichten loggen in Carerix](/nl/apps/carerix/logging-email-messages-on-carerix-with-hiredata) |
+| Job Application | Add | Een Carerix-koppeling, een kandidaat en een vacature | [Een Carerix-automatisering maken](/nl/apps/carerix/create-a-carerix-automation-in-hiredata) |
+| Add Note | Add | Een Carerix-koppeling en een record om de notitie aan te koppelen | [Een activiteit of item toevoegen in Carerix](/nl/apps/carerix/add-an-activity-or-item-in-carerix-with-hiredata) |
+| Add Task | Add | Een Carerix-koppeling | [Een taak inplannen in Carerix](/nl/apps/carerix/schedule-a-task-in-carerix-with-hiredata) |
+| Update Object | Update | Een Carerix-koppeling | [Velden bijwerken in Carerix](/nl/apps/carerix/update-fields-in-carerix-with-hiredata) |
+
+## OTYS
+
+| Label | Categorie | Nodig | Referentie |
+| --- | --- | --- | --- |
+| Task | Add | Een OTYS-koppeling | [Een OTYS-automatisering maken](/nl/apps/otys/create-an-otys-automation-in-hiredata) |
+| Activity or Item | Add | Een OTYS-koppeling | [Een OTYS-automatisering maken](/nl/apps/otys/create-an-otys-automation-in-hiredata) |
+| Update Object | Update | Een OTYS-koppeling | [Update](/nl/reference/automations/steps/update) |
+
+## Vincere
+
+| Label | Categorie | Nodig | Referentie |
+| --- | --- | --- | --- |
+| Task | Add | Een Vincere-koppeling | [Een taak inplannen in Vincere](/nl/apps/vincere/schedule-a-task-in-vincere-with-hiredata) |
+| Activity or Item | Add | Een Vincere-koppeling | [Een activiteit of item toevoegen in Vincere](/nl/apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata) |
+| Update Object | Update | Een Vincere-koppeling | [Velden bijwerken in Vincere](/nl/apps/vincere/update-fields-in-vincere-with-hiredata) |
+| Update GDPR | Update | Een Vincere-koppeling | [Update](/nl/reference/automations/steps/update) |
+
+## Salesforce
+
+| Label | Categorie | Nodig | Referentie |
+| --- | --- | --- | --- |
+| Find | Find | Een Salesforce-koppeling | [Overzicht Salesforce-integratie](/nl/apps/salesforce/overview) |
+| Task | Add | Een Salesforce-koppeling | [Overzicht Salesforce-integratie](/nl/apps/salesforce/overview) |
+| Activity or Item | Add | Een Salesforce-koppeling | [Overzicht Salesforce-integratie](/nl/apps/salesforce/overview) |
+| Update Object | Update | Een Salesforce-koppeling | [Update](/nl/reference/automations/steps/update) |
+
+## Ratecard
+
+| Label | Categorie | Nodig | Referentie |
+| --- | --- | --- | --- |
+| Send Survey | Message | Een actieve Ratecard-koppeling en een survey | [Verbinden met Ratecard](/nl/apps/ratecard/connect-with-ratecard) |
+
+## Google Sheets
+
+| Label | Categorie | Nodig | Referentie |
+| --- | --- | --- | --- |
+| Add Row | Add | Een Google Sheets-koppeling en een spreadsheet om naar te schrijven | [Add](/nl/reference/automations/steps/add) |

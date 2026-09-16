@@ -1,0 +1,122 @@
+---
+title: "Vind incomplete kandidaatprofielen"
+sidebarTitle: "Incomplete profielen"
+description: "Bouw een datakwaliteit-automatisering die kandidaatprofielen met ontbrekende informatie vindt, en vervolgens een taak aanmaakt of een aanvulworkflow start."
+keywords: ["incompleet kandidaatprofiel", "ontbrekende kandidaatgegevens", "datakwaliteit automatisering", "incomplete candidate profile", "missing candidate data"]
+---
+
+_Incomplete kandidaatprofielen kunnen het lastiger maken om mensen te bereiken, ze te matchen met passende rollen, of recruitmentdata betrouwbaar te houden. Dit recept laat je zien hoe je records identificeert waarin belangrijke informatie ontbreekt en ze naar een praktische aanvulworkflow leidt._
+
+## Wat je gaat bouwen
+
+De automatisering gebruikt vier onderdelen:
+
+1. Een kandidaat-event uit je gekoppelde ATS
+2. Startcondities die definiëren welke informatie verplicht is
+3. Een actie voor een recruiter, intern team of kandidaat
+4. Een veilige test die bevestigt dat de juiste profielen de workflow ingaan
+
+Begin met één belangrijk ontbrekend veld. Zodra de eerste versie werkt zoals verwacht, kun je de automatisering uitbreiden naar andere delen van het kandidaatprofiel.
+
+## Check eerst de template-galerij
+
+Voordat je de automatisering vanaf nul bouwt, open je de template-galerij vanuit het HireData Dashboard. Selecteer **All** en zoek of filter op een template die past bij je datakwaliteit-workflow.
+
+Afhankelijk van wat je wilt bereiken, kunnen nuttige startpunten zijn:
+
+- **Email Bounce: Schedule Task**
+- **Job Application**
+- **Phone Number Standardizer \+31 - Candidates - Cleanup**
+- **Pre-Intake / Screening**
+
+Open een template en bekijk de trigger, condities en acties voordat je hem aan je account toevoegt. Daarna kun je hem aanpassen aan de velden en het proces van je team.
+
+## Bepaal wat een profiel incompleet maakt
+
+Spreek af welke informatie je team nodig heeft voordat je de condities bouwt. Veelvoorkomende voorbeelden zijn:
+
+- E-mailadres
+- Telefoonnummer
+- Voor- of achternaam
+- Toestemming of beschikbaarheid
+- Voorkeursrol of -locatie
+- Andere informatie die nodig is voor plaatsing of communicatie
+
+Focus op velden die tot een duidelijke vervolgactie leiden. Een ontbrekend optioneel veld heeft niet altijd een eigen automatisering nodig.
+
+## De automatisering bouwen
+
+### 1. Kies de kandidaat-trigger
+
+Open het **Start**-blok en selecteer je ATS. Kies de candidate-created- of candidate-updated-trigger die het beste past bij het moment waarop je wilt dat HireData het profiel controleert.
+
+Bijvoorbeeld:
+
+- Gebruik een created-trigger wanneer profielen gecontroleerd moeten worden zodra ze het ATS binnenkomen.
+- Gebruik een updated-trigger wanneer de controle ook moet draaien nadat recruiters of integraties het record wijzigen.
+- Gebruik een gecombineerde created-or-updated-trigger wanneer beide situaties dezelfde workflow in moeten gaan.
+
+De beschikbare triggernamen kunnen per integratie verschillen.
+
+### 2. Voeg de ontbrekende-data-condities toe
+
+Voeg startcondities toe voor het veld dat je wilt controleren. Configureer de conditie zo dat alleen profielen zonder de verplichte waarde doorgaan de automatisering in.
+
+Begin met één veld met veel impact, zoals een e-mailadres of telefoonnummer. Dat houdt de eerste test overzichtelijk. Voeg andere velden toe nadat je hebt bevestigd dat de automatisering de juiste profielen selecteert.
+
+<Tip>
+  Als een veld niet in de variabelen-picker verschijnt, controleer dan of het is ingeschakeld in je ATS-koppeling. Carerix-gebruikers kunnen [Carerix-velden en -relaties inschakelen](/nl/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) volgen.
+</Tip>
+
+### 3. Voeg de aanvulactie toe
+
+Kies wat er moet gebeuren nadat HireData een incompleet profiel heeft gevonden. Afhankelijk van je proces kan de automatisering:
+
+- Een taak aanmaken voor een recruiter
+- Een intern kanaal of e-mailadres notificeren
+- De kandidaat vragen om de ontbrekende informatie aan te leveren
+- Het profiel bijwerken nadat de informatie is verzameld
+
+Maak de actie specifiek genoeg zodat de ontvanger weet welk profiel en welk veld aandacht nodig hebben.
+
+Als het bronsysteem vaak kort na het aanmaken van een record nog velden toevoegt, plaats dan een korte vertraging vóór de controle. Stem de vertraging af op de timing van je daadwerkelijke import- of verrijkingsproces.
+
+### 4. Test met een incompleet profiel
+
+Gebruik een testrecord waarin het veld ontbreekt waarop je conditie is gericht.
+
+1. Activeer de automatisering wanneer deze klaar is om te testen.
+2. Maak de testkandidaat aan of werk deze bij in je ATS.
+3. Selecteer **Events** in HireData en open het nieuwe event.
+4. Controleer het tabblad **Data** van het event om te bevestigen dat het veld leeg is of ontbreekt.
+5. Selecteer **Runs** en bevestig dat de verwachte acties zijn voltooid.
+
+Herhaal de test met een compleet profiel. Dat zou de ontbrekende-data-workflow niet in moeten gaan.
+
+<Warning>
+  Houd de safety limits van je account en automatisering ingeschakeld tijdens het testen van workflows die berichten naar kandidaten kunnen versturen.
+</Warning>
+
+## Bekijk en verbeter de workflow
+
+Nadat de automatisering een klein aantal records heeft verwerkt, bekijk je de runs en het vervolgwerk dat de automatisering aanmaakt.
+
+Controleer of:
+
+- De geselecteerde profielen echt aandacht nodig hebben
+- De toegewezen persoon genoeg informatie heeft om het record aan te vullen
+- De workflow op het juiste moment in je recruitmentproces draait
+- Een vertraging of extra conditie onnodige acties zou verminderen
+
+Voeg geleidelijk meer verplichte velden toe, zodat duidelijk blijft waarom elke kandidaat de workflow is ingegaan.
+
+## Meer hulp nodig?
+
+Als de automatisering niet de verwachte profielen vindt, vergelijk dan het tabblad **Data** van het event met de startcondities. Zie [Waarom liep mijn automatisering niet?](/nl/knowledge-base/why-didnt-my-automation-run) voor een complete troubleshooting-checklist.
+
+Als je nog steeds hulp nodig hebt, neem dan contact op met [support@hiredata.com](mailto:support@hiredata.com) en voeg toe:
+
+- De naam van de automatisering
+- Een link of het ID van een test-event
+- Het veld waarvan je verwachtte dat het gecontroleerd zou worden
+- Het resultaat dat je verwachtte

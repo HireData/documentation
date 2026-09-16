@@ -1,0 +1,104 @@
+---
+title: "Autoriser les cookies Carerix dans votre navigateur"
+sidebarTitle: "Autoriser les cookies Carerix"
+description: "Corrigez les écrans de connexion, les boucles ou les panneaux vides du SSO Carerix Marketplace en autorisant les cookies intersites requis par les intégrations embarquées telles que HireData."
+keywords: ["écran de connexion carerix dans hiredata", "sso carerix marketplace", "autoriser les cookies carerix", "mettre carerix.net en liste blanche", "cookies tiers", "cookies intersites", "navigateur comet", "chrome", "safari"]
+---
+
+Si vous voyez un écran de connexion Carerix à l'intérieur de la RMA HireData alors que vous êtes déjà connecté à Carerix, votre navigateur bloque probablement les cookies intersites dont le SSO de Carerix Marketplace a besoin.
+
+<Warning>
+  Ne vous reconnectez pas dans l'écran de connexion embarqué. Autorisez plutôt les cookies Carerix dans votre navigateur.
+</Warning>
+
+## Comment reconnaître ce problème
+
+Des cookies intersites bloqués peuvent amener la RMA HireData ou une autre intégration Carerix Marketplace à :
+
+- Afficher un écran de connexion Carerix alors que vous êtes déjà connecté
+- Revenir à l'écran de connexion immédiatement après votre connexion
+- Rester blanche ou grise au lieu de se charger
+- Afficher un message de connexion refusée ou de session expirée
+
+## Pourquoi cela se produit
+
+Carerix Marketplace charge HireData dans une iframe intersite. L'iframe démarre une connexion OpenID Connect auprès du serveur d'identité Carerix. Le SSO Carerix utilise ensuite votre session Carerix existante pour vous authentifier sans redemander vos identifiants.
+
+Si votre navigateur empêche l'utilisation de ce cookie de session à l'intérieur de l'iframe, le serveur d'identité ne peut pas reconnaître votre session existante. L'app embarquée peut alors afficher un écran de connexion ou entrer dans une boucle de connexion.
+
+Il s'agit d'une limitation connue des protections de confidentialité des navigateurs et du SSO Marketplace de Carerix basé sur des iframes. Ce n'est pas un défaut de l'implémentation OpenID Connect de HireData. Carerix décrit le flux attendu dans sa [documentation sur l'authentification et le SSO du Marketplace](https://help.carerix.com/en/articles/14034043-carerix-marketplace-framework-authentication-sso-flow).
+
+## Comet et Google Chrome
+
+Comet est basé sur Chromium, vous pouvez donc utiliser la même exception de cookies que dans Google Chrome.
+
+<Steps>
+  <Step title="Ouvrez les paramètres des cookies tiers">
+    Ouvrez les **Settings** de votre navigateur, puis allez dans **Privacy and security** \> **Third-party cookies**.
+  </Step>
+  <Step title="Ajoutez Carerix aux sites autorisés">
+    Sous **Sites allowed to use third-party cookies**, cliquez sur **Add**.
+
+    Saisissez exactement l'adresse suivante et cliquez sur **Add** :
+
+    ```text
+    [*.]carerix.net
+    ```
+
+    Le préfixe `[*.]` inclut votre environnement Carerix et tous les autres sous-domaines de `carerix.net`.
+
+    Carerix recommande également d'autoriser le domaine de son serveur d'identité. Ajoutez-le comme entrée distincte :
+
+    ```text
+    [*.]carerix.io
+    ```
+  </Step>
+  <Step title="Enregistrez et rechargez Carerix">
+    Retournez dans Carerix et rechargez la page. Ouvrez à nouveau la RMA HireData. Elle devrait maintenant s'ouvrir sans afficher l'écran de connexion Carerix.
+  </Step>
+</Steps>
+
+### Autoriser les cookies depuis la barre d'adresse
+
+Si votre navigateur affiche une icône de cookies tiers bloqués dans la barre d'adresse, vous pouvez aussi cliquer sur cette icône et activer **Third-party cookies** pour le site actuel. Rechargez ensuite la page.
+
+Ajouter `[*.]carerix.net` dans les **Settings** est l'option la plus fiable, car elle couvre tous les environnements Carerix sur ce domaine.
+
+## Safari sur macOS
+
+Safari ne prend pas en charge d'exception par site pour ce type de protection contre le suivi intersite. Vous devez modifier le paramètre pour l'ensemble du navigateur.
+
+<Steps>
+  <Step title="Ouvrez les paramètres de confidentialité de Safari">
+    Dans le menu Safari, cliquez sur **Settings**, puis ouvrez **Privacy**.
+  </Step>
+  <Step title="Autorisez les cookies intersites">
+    Désactivez **Prevent cross-site tracking**. Assurez-vous que **Block all cookies** est également désactivé.
+  </Step>
+  <Step title="Rechargez Carerix">
+    Fermez les **Settings**, retournez dans Carerix et rechargez la page. Ouvrez à nouveau la RMA HireData.
+  </Step>
+</Steps>
+
+Si la RMA HireData se charge après cette modification, la protection contre le suivi intersite de Safari était la cause.
+
+<Warning>
+  Désactiver **Prevent cross-site tracking** affecte tous les sites web dans Safari. Si vous préférez une exception par site, utilisez Comet ou Chrome et n'autorisez que les domaines Carerix listés ci-dessus.
+</Warning>
+
+Ne testez pas ceci dans une fenêtre de navigation privée (Incognito ou Private). Ces modes bloquent souvent les cookies tiers par défaut.
+
+## Si vous ne pouvez pas modifier le paramètre
+
+Votre organisation gère peut-être les paramètres de votre navigateur. Si l'option est indisponible ou verrouillée, demandez à votre administrateur informatique d'autoriser les cookies tiers pour `[*.]carerix.net` et `[*.]carerix.io`.
+
+<Note>
+  Dans Comet ou Chrome, ces exceptions permettent à Carerix de vous garder connecté à l'intérieur de l'iframe HireData. Elles n'activent pas les cookies tiers pour tous les sites web.
+</Note>
+
+## Ressources Carerix
+
+- [Flux d'authentification et de SSO du Marketplace](https://help.carerix.com/en/articles/14034043-carerix-marketplace-framework-authentication-sso-flow)
+- [Autoriser les cookies tiers](https://help.carerix.com/en/articles/9857670-allow-third-party-cookies)
+- [Symptômes liés aux cookies intersites et limitations de Safari](https://help.carerix.com/nl/articles/14706388-cross-site-cookies)
+- [Dépanner les intégrations bloquées par les paramètres de cookies tiers](https://help.carerix.com/en/articles/13375528-troubleshooting-dashboards-or-integrations-not-loading-chrome-version-144-third-party-cookies)

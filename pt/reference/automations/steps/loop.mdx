@@ -1,0 +1,73 @@
+---
+title: "Loop"
+sidebarTitle: "Loop"
+description: "O passo Loop numa automação da HireData: que registos obtém, o filtro, stop on first success, a variável de output e como correm as iterações."
+keywords:
+  - "passo loop"
+  - "repetir"
+  - "for each"
+  - "iterar registos"
+  - "variável de output"
+  - "stop on first success"
+  - "sub-run"
+---
+
+**Loop** repete os passos dentro dele uma vez por registo. O painel tem o cabeçalho **Loop** e abre com uma opção, **Custom**, descrita como "Loops through a selection of records." Escolhê-la leva à lista de objetos e depois ao painel do filtro.
+
+Depois de gravar, o seletor **Next step** abre para o primeiro passo dentro do loop.
+
+## Definições
+
+- **Select an object**. O tipo de registo a obter, com uma caixa **Search**. Cada entrada nomeia a sua ligação por baixo. Com o Carerix ligado, a lista contém Candidates, Companies, Contacts, Emails, Lists, Matches, Meetings, Notes, Offices, Placements, Publications, Talent Pools, Tasks, Users e Vacancies. Os objetos da própria HireData não são oferecidos.
+- **Filter**. Que registos obter, nas mesmas linhas e conjuntos de um [passo Filter](/pt/reference/automations/steps/filter). Os campos são os campos do objeto, cada um com o ícone da ligação como prefixo. Deixe-o vazio e o loop obtém todos os registos do objeto.
+- **Stop on first success**. **No** ou **Yes**, por defeito **No**. Com **Yes**, o loop termina depois da primeira iteração que conclui, por isso os passos internos correm no máximo para um registo.
+- **Output Variable**. Um nome para o registo atual, placeholder `myLoopItem`. O texto de ajuda lê "This variable will be used instead of the step's id for clarity when filled in" e o seu exemplo atualiza-se à medida que escreve, por isso `candidate` dá `candidate.index`. Deixe-o vazio e as variáveis são nomeadas pelo id do passo.
+
+<img src="/images/automations/15-loop-drawer.png" alt="O painel Loop com um filtro a ler Id equals 6416, Stop on first success definido como No e Output Variable a ler candidate com o seu texto de ajuda" width="384" />
+
+### No canvas
+
+O Loop desenha uma caixa com um badge **Loop**. Dentro dela fica o cartão do registo, com uma linha como "Retrieve Candidates from Carerix", o nome da ligação e o filtro, seguidos dos passos do próprio loop e de um **+** para adicionar mais.
+
+<img src="/images/automations/26-loop-card.png" alt="Uma caixa Loop no canvas com um badge Loop e um cartão a ler Retrieve Candidates from Carerix, hiredata, Filter 1 Id equals 6416" width="380" />
+
+## O que produz
+
+Para cada iteração, sob a variável de output:
+
+| Variável | Contém |
+| --- | --- |
+| `candidate.index` | O número da iteração, a contar de 0 |
+| `candidate.item.<field>` | Um campo do registo atual, como `candidate.item.email` |
+
+Os passos dentro do loop leem estas variáveis a par dos campos do evento. Os passos depois do loop não: veem as variáveis que existiam antes do loop.
+
+Cada iteração é um sub-run. A lista de runs mostra uma linha por sub-run, por isso a contagem de runs de uma automação com um Loop excede a contagem de eventos. A página do run pai dobra as iterações num único diagrama e a sua timeline regista "Waiting." enquanto elas correm.
+
+## O que para o run
+
+- Um loop sem nenhum passo dentro dele. A timeline regista "Loop: Failed" com a mensagem "Step not found." e o run termina ali. A própria caixa do Loop não tem linha de estado.
+- Registos que não podem ser obtidos. O Loop mostra Cancelled com a mensagem "Data lookup failed." Verifique a ligação e os campos do filtro.
+- Um passo dentro do loop que para. Para apenas o sub-run dessa iteração; as outras iterações e os passos depois do loop continuam.
+
+<img src="/images/automations/30-loop-failed-timeline.png" alt="Uma timeline de run com Run Scheduled, Run Started e depois Loop: Failed com a mensagem Step not found." width="384" />
+
+Veja [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons).
+
+## Padrões
+
+- **Estreitar o filtro.** Filtre pelo registo que pretende, como o id do candidato vindo do evento, em vez de obter todos os candidatos e filtrar dentro do loop.
+- **Só a primeira correspondência.** Defina **Stop on first success** como **Yes** e ponha um [Filter](/pt/reference/automations/steps/filter) como primeiro passo interno. O loop termina no primeiro registo que passa.
+- **Dar nome à variável.** Uma variável de output como `vacancy` lê-se melhor do que um id de passo num prompt ou num template de email, e sobrevive quando o passo é reconstruído.
+
+## Erros comuns
+
+- **Sem filtro.** O loop obtém todos os registos do objeto e corre os passos internos para cada um. Adicione um filtro antes de ativar.
+- **Ler variáveis do loop depois do loop.** Elas só existem dentro dele. Escreva o que precisa num registo com uma tarefa [Update](/pt/reference/automations/steps/update) dentro do loop.
+- **Esperar iterar sobre texto ou um intervalo.** O painel só oferece registos de uma app ligada. Para repetir sobre as linhas de um campo de texto ou uma contagem fixa, divida o trabalho de outra forma, como um [Prompt](/pt/reference/automations/steps/prompt) com um output List.
+
+## Relacionados
+
+- [Find](/pt/reference/automations/steps/find) obtém um registo em vez de muitos.
+- [Split](/pt/reference/automations/steps/split) também cria sub-runs, um por ramo em vez de um por registo.
+- [Filter](/pt/reference/automations/steps/filter) documenta as linhas, os conjuntos e os operadores que o filtro do loop partilha.

@@ -1,0 +1,70 @@
+---
+title: "Message"
+sidebarTitle: "Message"
+description: "Die Message-Kategorie in einer HireData-Automatisierung: eine E-Mail, eine WhatsApp-Nachricht oder -Umfrage, eine Ratecard-Umfrage oder einen HTTP-Request senden, und was einen Versand stoppt."
+keywords:
+  - "Message-Schritt"
+  - "E-Mail senden"
+  - "WhatsApp senden"
+  - "Umfrage senden"
+  - "Nachricht senden"
+  - "http request"
+  - "invalid sender email"
+  - "Sendelimits"
+---
+
+**Message** sendet etwas nach draußen. Es ist eine Kategorie: Die Auswahl öffnet eine Liste mit der Überschrift **Message** mit einem Eintrag pro Aufgabe, jeder mit dem Symbol seiner App markiert, und **Back** führt zurück zur Auswahl.
+
+<Info>
+  Message erscheint nur dann in der Auswahl, wenn eine verbundene App eine Aufgabe in dieser Kategorie anbietet. Zwei Einträge können denselben Namen tragen, wie die beiden **Send Survey**-Aufgaben unten. Das Symbol unterscheidet sie.
+</Info>
+
+## Einstellungen
+
+Jede Aufgabe hat ihren eigenen Drawer. Die gemeinsamen Einstellungen sind der Empfänger, der Absender oder Kanal und der zu sendende Inhalt: eine Vorlage, ein Formular oder ein Request-Body. Send Email ist ein Assistent mit Fortschrittsbalken, dessen letzter Schritt, **Preview your email**, die gerenderte E-Mail unter **Summary** und jede Einstellung unter **Settings** zeigt.
+
+Die Aufgaben, die die Kategorie in einem Workspace mit verbundenem HireData, Ratecard und WhatsApp füllen:
+
+| Aufgabe | App | Was sie sendet |
+| --- | --- | --- |
+| [Send Email](/de/reference/automations/tasks/send-email) | HireData | Eine E-Mail aus einer E-Mail-Vorlage, an eine feste Adresse oder eine Person aus dem Event |
+| Send Message | WhatsApp | Eine WhatsApp-Nachricht aus einer Nachrichtenvorlage |
+| Send Survey | WhatsApp | Ein Formular als WhatsApp-Konversation, eine Frage nach der anderen |
+| Send Survey | Ratecard | Ein Formular als Ratecard-Umfrage |
+| [HTTP Request](/de/reference/automation-tasks/http-request-task) | HireData | Einen Request an eine beliebige externe API |
+| Post Webhook | HireData | Die ältere Form von HTTP Request. Siehe [Bestehende Post-Webhook-Aufgaben](/de/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+
+### Auf der Arbeitsfläche
+
+Eine Message-Aufgabe zeigt ein **Task**-Badge, den Aufgabennamen und was sie senden wird. Send Email rendert die Vorlage und listet Subject, Recipient, Sender und Form.
+
+<img src="/images/automations/28-send-email-card.png" alt="Eine Send-Email-Karte auf der Arbeitsfläche mit einer gerenderten E-Mail-Vorschau und Zeilen für Subject, Recipient, Sender und Form" width="380" />
+
+## Was er ausgibt
+
+Was der Kanal zurückmeldet. Eine zugestellte E-Mail schließt mit der Meldung "Email delivered." ab. Eine Umfrage gibt die Antworten aus, sobald die Person antwortet, weshalb ein Filter nach einer WhatsApp-Umfrage auf eine Antwort verzweigen kann. Ein HTTP Request gibt die Response aus, die Sie beschrieben haben. Der **Fields**-Tab des Run-Schritts listet die Werte, die die Aufgabe verwendet hat, etwa Betreff, Empfänger und Absender einer E-Mail.
+
+Eine Umfrage hält den Run an, während sie auf die Antwort wartet: Der Schritt zeigt Waiting, und die Timeline verzeichnet "Message Sent" und, wenn die Antwort eintrifft, "Message Received".
+
+## Was den Run stoppt
+
+Ein Versand, den der Kanal verweigert. Die Aufgabenkarte wird rot mit der Zeile "Cancelled" und der Zeit, und die Timeline verzeichnet den Aufgabennamen mit "Cancelled" und der Meldung. In der Runs-Liste benennt die **Step**-Spalte die Aufgabe, etwa "HireData: Send Email".
+
+<img src="/images/automations/35-message-cancelled-timeline.png" alt="Eine Run-Timeline mit Send Email: Cancelled, der Meldung Invalid config. und Send Email: Run Cancelled" width="384" />
+
+Die Meldungen, denen Sie am ehesten begegnen, jeweils erklärt in [Gründe für Run-Abbrüche](/de/knowledge-base/run-cancellation-reasons):
+
+| Meldung | Bedeutung |
+| --- | --- |
+| `Invalid sender email.` | Die Domain des Absenders ist in HireData nicht verifiziert |
+| `Send Limits Exceeded` | Der Empfänger hat ein Account-Limit unter **Settings** > **Safety Limits** erreicht |
+| `Send Limits Per Automation Exceeded` | Der Empfänger hat ein in den **Settings** dieser Automatisierung gesetztes Limit erreicht |
+| `Invalid config.` | Der Aufgabe fehlt eine benötigte Einstellung, etwa ein Absender. Öffnen Sie die Aufgabe und prüfen Sie jeden Schritt ihres Assistenten |
+
+## Verwandt
+
+- [Automation Safety Limits](/de/settings/automation-safety-limits) erklärt die Limits hinter den beiden Sendelimit-Meldungen.
+- [Send-Email-Aufgabe](/de/reference/automations/tasks/send-email) dokumentiert den Assistenten und den Settings-Tab, einschließlich CC und BCC.
+- [Aufgabenkatalog](/de/reference/automations/task-catalogue) listet jede Aufgabe pro verbundener App.
+- [HTTP-Request-Aufgabe](/de/reference/automation-tasks/http-request-task) dokumentiert die Request-, Authentifizierungs- und Response-Einstellungen.
+- [Add](/de/reference/automations/steps/add) listet HTTP Request ebenfalls, weil ein Request sowohl einen Datensatz erstellen als auch etwas senden kann.

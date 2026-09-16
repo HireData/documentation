@@ -32,7 +32,7 @@ De request-methode vertelt HireData welk type verzoek verwacht wordt:
 | `POST` (standaard) | Uit de request body, als JSON of form data |
 | `GET` | Uit de query parameters van het adres |
 
-Verzoeken met een andere methode dan is geconfigureerd worden geweigerd.
+HireData weigert verzoeken met een andere methode dan is geconfigureerd.
 
 ## Beschrijf de velden die je ontvangt
 
@@ -94,7 +94,7 @@ Als iemand anders de tool beheert die de data gaat versturen, dan geven de **Req
 
 ### Testverzoeken versturen
 
-Elk verzoek kan als test worden gemarkeerd door een header toe te voegen:
+Je kunt elk verzoek als test markeren door een header toe te voegen:
 
 ```
 X-HireData-Test: true
