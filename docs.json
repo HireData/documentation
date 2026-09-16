@@ -87,6 +87,7 @@
                     "pages": [
                       "apps/messaging/emails/setting-up-an-email-template-in-hiredata",
                       "apps/messaging/emails/sending-an-email-newsletter-to-your-audience",
+                      "apps/messaging/emails/adding-images-to-your-emails",
                       {
                         "group": "Domains & senders",
                         "pages": [
@@ -102,7 +103,8 @@
                 "group": "Content",
                 "icon": "file-lines",
                 "pages": [
-                  "content/creating-a-form-in-hiredata"
+                  "content/creating-a-form-in-hiredata",
+                  "content/configuring-a-form-per-record"
                 ]
               },
               {
@@ -134,6 +136,18 @@
                 ]
               },
               {
+                "group": "AI Assistants",
+                "pages": [
+                  "apps/mcp/install-hiredata-plugin",
+                  "apps/mcp/install-hiredata-skills-with-a-prompt",
+                  "apps/mcp/hiredata-skills",
+                  "apps/mcp/keep-hiredata-skills-up-to-date",
+                  "apps/mcp/create-your-own-skill",
+                  "apps/mcp/write-better-hiredata-issue-reports-with-ai",
+                  "apps/mcp/connect-hiredata-to-your-ai-assistant"
+                ]
+              },
+              {
                 "group": "ATS",
                 "pages": [
                   {
@@ -142,7 +156,9 @@
                     "pages": [
                       "apps/carerix/overview",
                       "apps/carerix/connect-with-carerix",
+                      "apps/carerix/allow-carerix-cookies-in-your-browser",
                       "apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations",
+                      "apps/carerix/carerix-webhook-fields",
                       "apps/carerix/combined-fields-explained",
                       "apps/carerix/manually-sync-carerix-with-hiredata",
                       "apps/carerix/how-profile-pictures-work-in-hiredata",
@@ -226,19 +242,26 @@
                 "group": "Troubleshooting",
                 "icon": "wrench",
                 "pages": [
+                  "knowledge-base/run-cancellation-reasons",
                   "knowledge-base/why-didnt-my-automation-run",
                   "apps/carerix/why-is-my-carerix-not-syncing-with-hiredata",
                   "apps/messaging/whatsapp/whatsapp-error-codes-explained",
                   "apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
                   "apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
-                  "apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api"
+                  "apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api",
+                  "knowledge-base/why-cant-i-verify-my-dns-records",
+                  "knowledge-base/understanding-form-response-exports"
                 ]
               },
               {
                 "group": "Cookbook",
                 "icon": "book",
                 "pages": [
-                  "knowledge-base/cookbook/introduction"
+                  "knowledge-base/cookbook/introduction",
+                  "knowledge-base/cookbook/incomplete-candidate-profiles",
+                  "knowledge-base/cookbook/post-an-outcome-to-your-own-system",
+                  "knowledge-base/cookbook/pre-screening-form",
+                  "knowledge-base/cookbook/one-click-feedback-email"
                 ]
               },
               {
@@ -254,11 +277,116 @@
             "tab": "Reference",
             "groups": [
               {
+                "group": "Automations",
+                "icon": "bolt",
+                "pages": [
+                  "reference/automations/overview",
+                  {
+                    "group": "Steps",
+                    "pages": [
+                      "reference/automations/steps/setup",
+                      "reference/automations/steps/add",
+                      "reference/automations/steps/delay",
+                      "reference/automations/steps/filter",
+                      "reference/automations/steps/find",
+                      "reference/automations/steps/loop",
+                      "reference/automations/steps/message",
+                      "reference/automations/steps/prompt",
+                      "reference/automations/steps/split",
+                      "reference/automations/steps/update"
+                    ]
+                  },
+                  "reference/automations/task-catalogue",
+                  {
+                    "group": "Tasks",
+                    "pages": [
+                      "reference/automation-tasks/http-request-task",
+                      "reference/automations/tasks/send-email"
+                    ]
+                  },
+                  "reference/automations/follow-a-run"
+                ]
+              },
+              {
+                "group": "Forms",
+                "icon": "list-check",
+                "pages": [
+                  "reference/forms/overview",
+                  "reference/forms/logic",
+                  "reference/forms/objects",
+                  "reference/forms/data-sources",
+                  {
+                    "group": "Form fields",
+                    "pages": [
+                      "reference/forms/fields/short-and-long-text",
+                      "reference/forms/fields/email",
+                      "reference/forms/fields/phone-number",
+                      "reference/forms/fields/website",
+                      "reference/forms/fields/date",
+                      "reference/forms/fields/time",
+                      "reference/forms/fields/datetime",
+                      "reference/forms/fields/yes-no",
+                      "reference/forms/fields/multiple-choice-and-dropdown",
+                      "reference/forms/fields/number",
+                      "reference/forms/fields/currency",
+                      "reference/forms/fields/net-promoter-score-and-opinion-scale",
+                      "reference/forms/fields/file-upload",
+                      "reference/forms/fields/ending-screen",
+                      "reference/forms/fields/redirect-url"
+                    ]
+                  },
+                  {
+                    "group": "Evaluation",
+                    "pages": [
+                      "reference/forms/evaluation/overview",
+                      "reference/forms/evaluation/criteria",
+                      "reference/forms/evaluation/scoring",
+                      "reference/forms/evaluation/skills",
+                      "reference/forms/evaluation/generated-fields"
+                    ]
+                  },
+                  {
+                    "group": "Testing",
+                    "pages": [
+                      "reference/forms/testing/previews",
+                      "reference/forms/testing/test-and-evaluate"
+                    ]
+                  }
+                ]
+              },
+              {
+                "group": "Emails",
+                "icon": "envelope",
+                "pages": [
+                  "reference/email-builder/overview",
+                  "reference/email-builder/template",
+                  "reference/email-builder/sections",
+                  {
+                    "group": "Blocks",
+                    "pages": [
+                      "reference/email-builder/blocks/paragraph",
+                      "reference/email-builder/blocks/heading",
+                      "reference/email-builder/blocks/columns",
+                      "reference/email-builder/blocks/form",
+                      "reference/email-builder/blocks/image",
+                      "reference/email-builder/blocks/socials",
+                      "reference/email-builder/blocks/button",
+                      "reference/email-builder/blocks/html",
+                      "reference/email-builder/blocks/signature"
+                    ]
+                  },
+                  "reference/email-builder/variables",
+                  "reference/email-builder/translations",
+                  "reference/email-builder/testing"
+                ]
+              },
+              {
                 "group": "Variables",
                 "icon": "brackets-curly",
                 "pages": [
                   "variables/introduction",
-                  "variables/modifiers"
+                  "variables/modifiers",
+                  "variables/ai-variables"
                 ]
               }
             ]
@@ -389,6 +517,14 @@
                 ]
               },
               {
+                "group": "AI-assistenten",
+                "pages": [
+                  "nl/apps/mcp/install-hiredata-plugin",
+                  "nl/apps/mcp/hiredata-skills",
+                  "nl/apps/mcp/connect-hiredata-to-your-ai-assistant"
+                ]
+              },
+              {
                 "group": "ATS",
                 "pages": [
                   {
@@ -486,7 +622,9 @@
                   "nl/apps/messaging/whatsapp/whatsapp-error-codes-explained",
                   "nl/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
                   "nl/apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
-                  "nl/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api"
+                  "nl/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api",
+                  "nl/knowledge-base/why-cant-i-verify-my-dns-records",
+                  "nl/knowledge-base/understanding-form-response-exports"
                 ]
               },
               {
@@ -644,6 +782,14 @@
                 ]
               },
               {
+                "group": "Assistentes de IA",
+                "pages": [
+                  "pt/apps/mcp/install-hiredata-plugin",
+                  "pt/apps/mcp/hiredata-skills",
+                  "pt/apps/mcp/connect-hiredata-to-your-ai-assistant"
+                ]
+              },
+              {
                 "group": "ATS",
                 "pages": [
                   {
@@ -741,7 +887,8 @@
                   "pt/apps/messaging/whatsapp/whatsapp-error-codes-explained",
                   "pt/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
                   "pt/apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
-                  "pt/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api"
+                  "pt/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api",
+                  "pt/knowledge-base/why-cant-i-verify-my-dns-records"
                 ]
               },
               {
@@ -899,6 +1046,17 @@
                 ]
               },
               {
+                "group": "KI-Assistenten",
+                "pages": [
+                  "de/apps/mcp/install-hiredata-plugin",
+                  "de/apps/mcp/install-hiredata-skills-with-a-prompt",
+                  "de/apps/mcp/hiredata-skills",
+                  "de/apps/mcp/keep-hiredata-skills-up-to-date",
+                  "de/apps/mcp/create-your-own-skill",
+                  "de/apps/mcp/connect-hiredata-to-your-ai-assistant"
+                ]
+              },
+              {
                 "group": "ATS",
                 "pages": [
                   {
@@ -996,7 +1154,8 @@
                   "de/apps/messaging/whatsapp/whatsapp-error-codes-explained",
                   "de/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
                   "de/apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
-                  "de/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api"
+                  "de/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api",
+                  "de/knowledge-base/why-cant-i-verify-my-dns-records"
                 ]
               },
               {
@@ -1154,6 +1313,17 @@
                 ]
               },
               {
+                "group": "Assistants IA",
+                "pages": [
+                  "fr/apps/mcp/install-hiredata-plugin",
+                  "fr/apps/mcp/install-hiredata-skills-with-a-prompt",
+                  "fr/apps/mcp/hiredata-skills",
+                  "fr/apps/mcp/keep-hiredata-skills-up-to-date",
+                  "fr/apps/mcp/create-your-own-skill",
+                  "fr/apps/mcp/connect-hiredata-to-your-ai-assistant"
+                ]
+              },
+              {
                 "group": "ATS",
                 "pages": [
                   {
@@ -1251,7 +1421,8 @@
                   "fr/apps/messaging/whatsapp/whatsapp-error-codes-explained",
                   "fr/apps/messaging/whatsapp/how-to-resolve-whatsapp-business-account-permission-issues",
                   "fr/apps/messaging/whatsapp/how-to-prevent-your-whatsapp-account-from-being-flagged-as-spam",
-                  "fr/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api"
+                  "fr/apps/messaging/whatsapp/can-a-user-manually-use-their-whatsapp-business-number-after-connecting-it-via-api",
+                  "fr/knowledge-base/why-cant-i-verify-my-dns-records"
                 ]
               },
               {
@@ -1346,9 +1517,12 @@
   "icons": {
     "library": "fontawesome"
   },
-  "integrations": {
-  },
+  "integrations": {},
   "redirects": [
+    {
+      "source": "/reference/forms/question-types",
+      "destination": "/reference/forms/overview"
+    },
     {
       "source": "/en/articles/727305-combined-fields-explained-how-hiredata-picks-a-value",
       "destination": "/apps/carerix/combined-fields-explained"
@@ -1640,6 +1814,14 @@
     {
       "source": "/en",
       "destination": "/"
+    },
+    {
+      "source": "/automations/http-request-task",
+      "destination": "/reference/automation-tasks/http-request-task"
+    },
+    {
+      "source": "/apps/messaging/emails/adding-cc-and-bcc-to-an-email",
+      "destination": "/reference/automations/tasks/send-email"
     }
   ]
 }

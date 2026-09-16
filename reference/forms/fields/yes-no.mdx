@@ -1,0 +1,54 @@
+---
+title: "Yes/No"
+sidebarTitle: "Yes/No"
+description: "The yes or no field in a HireData form, drawn as a checkbox or a toggle, with a separate WhatsApp auto reply for the Yes and the No answer."
+keywords:
+  - "binary"
+  - "checkbox"
+  - "toggle"
+  - "boolean"
+  - "true false"
+---
+
+Yes/No asks a question with two answers. **Checkbox** draws a box the respondent ticks. **Toggle** draws a switch they slide. The two behave the same and store the same value, so pick whichever suits the question.
+
+It sits in the **Choice** group of the **Add Content** palette. The button at the bottom left of the card switches between the two.
+
+## Settings
+
+The card carries the [settings every field shares](/reference/forms/overview#settings-every-field-shares), with one difference. Instead of the single **Auto reply (on answer)** most types have, Yes/No gives each answer its own WhatsApp message.
+
+- **Auto reply (Yes)**, sent when the answer is Yes.
+- **Auto reply (No)**, sent when the answer is No.
+
+There is nothing else to set. You cannot relabel the two answers. If you need wording of your own, such as "Full licence" against "Provisional", use [Multiple Choice](/reference/forms/fields/multiple-choice-and-dropdown) with two options.
+
+<img src="/images/forms-builder/fields/08-yes-no.png" alt="A Yes/No field card showing Question, Description, Image, Auto reply (Yes), Auto reply (No), the three evaluator switches with Criteria and Skills on, and a footer reading Checkbox and Optional" width="650" />
+The same field switched to Toggle:
+
+<img src="/images/forms-builder/fields/08b-yes-no-toggle.png" alt="The same field with a footer reading Toggle, beside a preview showing a slide switch instead of a tick box" width="650" />
+## What it stores
+
+Yes or No.
+
+## Logic operators
+
+| Operator | Matches when |
+| --- | --- |
+| has response | the respondent answered at all |
+| is equal to | the answer matches the one in the rule |
+| is not equal to | the answer is the other one |
+
+<img src="/images/forms-builder/fields/operators-yes-no.png" alt="The Logic tab with the operator picker open on a Yes/No condition, listing has response, is equal to, and is not equal to, with the value box beside it reading Yes" width="507" />
+## Evaluation
+
+Switch **Criteria**, **Scoring**, or **Skills** on for the form in the [Evaluation tab](/reference/forms/evaluation/overview) and each one gets a switch on this card.
+
+Yes/No is the cleanest field to hang a **Criteria** must-have on, because the answer is one of two known values and needs no interpretation. "Do you have a driving licence?" is either met or not.
+
+## Related
+
+- [Form Builder: Overview](/reference/forms/overview) covers the builder, the shared settings, and every field type.
+- [Logic](/reference/forms/logic) covers the operators, the branching patterns, and what to check when a rule does not fire.
+- [Multiple Choice and Dropdown](/reference/forms/fields/multiple-choice-and-dropdown) handles two answers in your own words, or more than two.
+- [Display and requirements](/reference/forms/overview#display-and-requirements) explains what counts as an answer.

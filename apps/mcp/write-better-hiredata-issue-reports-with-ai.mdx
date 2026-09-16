@@ -1,0 +1,147 @@
+---
+title: "Write better HireData Linear issues with AI"
+sidebarTitle: "Write Linear issues with AI"
+description: "Use the HireData Linear Issues skill to turn evidence, requests, prototypes, and technical notes into clear, actionable Linear issues."
+keywords: ["HireData Linear issue", "Linear issue", "AI bug report", "report a bug", "feature request", "HireData skills", "MCP"]
+related: ["/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-plugin", "/apps/mcp/connect-hiredata-to-your-ai-assistant"]
+---
+
+Use the **HireData Linear Issues** skill to turn a bug, customer request, prototype, recording, meeting note, or technical prompt into an issue that is complete for its current maturity.
+
+The skill contains HireData's issue-writing method, templates, refinement guidance, and a maintained snapshot of the relevant workflow rules. It supports both HireData team members and approved partners. Access to live Linear issues and Notion pages still depends on the permissions of the connected account.
+
+<Note>
+  Installing the skill does not grant access to HireData's Linear workspace, Notion pages, customer data, or projects. It uses only the sources you are already authorized to access.
+</Note>
+
+## Who can use it
+
+| Audience | What the skill does |
+| --- | --- |
+| HireData team | Drafts, refines, relates, and—when explicitly requested—creates or updates issues using the live HireData Linear workspace and internal Notion SOPs. |
+| Approved partners | Uses the HireData project and Notion pages shared with the partner, plus the bundled guidance. This is useful for joint projects such as an RMA backlog. |
+| Users without live workspace access | Produces a complete report for the agreed HireData support or partner channel and marks live metadata, duplicates, and relations as unverified. |
+
+HireData can share selected Notion pages with a partner when closer collaboration is useful. The same skill then follows those shared sources without exposing unrelated internal pages.
+
+## Before you begin
+
+[Install or update the HireData plugin](/apps/mcp/install-hiredata-plugin) and start a new conversation so your assistant loads the latest skill.
+
+Prepare as much of the following evidence as you have:
+
+- The affected user, account, workflow, or object
+- The relevant environment and page URL
+- Exact reproduction steps for a bug
+- What happened and what you expected
+- Frequency, impact, and any workaround
+- Screenshots, recordings, timestamps, runs, events, or logs
+- The original request or conversation
+
+You do not need every item before starting. The skill identifies material gaps without inventing answers.
+
+## Draft before changing Linear
+
+Start with:
+
+```text
+Use $hiredata-create-linear-issues to turn the evidence below into a
+HireData Linear issue. Draft only. Use the HireData and partner sources
+I can access, and mark anything that still needs live verification.
+
+[Paste your notes and links here]
+```
+
+In Claude Code, the installed skill may appear as `/hiredata:hiredata-create-linear-issues`.
+
+The draft includes:
+
+1. A proposed title
+2. The correct route: intake, product specification, implementation, or delivery
+3. An honest readiness level
+4. A structured description with evidence and source links
+5. Missing information and open decisions
+6. Duplicate, dependency, and related-work recommendations when they can be verified
+7. Proposed metadata only when an approved source supports it
+
+## Example prompts
+
+### Report a bug
+
+```text
+Turn these reproduction steps, screenshots, and automation URL into an
+intake-ready HireData bug issue. Search for duplicates if I have access,
+but do not create anything yet.
+```
+
+### Refine a feature
+
+```text
+Refine this prototype and customer feedback into a product specification.
+Treat the prototype as evidence, not as the product contract. Separate
+reusable HireData behaviour from customer-specific configuration.
+```
+
+### Prepare work for engineering
+
+```text
+Review this issue and its sources. Tell me whether it is ready for
+refinement, estimation, or implementation. Do not invent technical
+decisions. Draft the changes and summarize what you changed.
+```
+
+### Work as an approved partner
+
+```text
+Use the issue-writing skill and the HireData Notion pages shared with our
+project to improve this report. Follow the shared workflow, leave
+inaccessible internal metadata unverified, and do not update the live
+issue until I approve the draft.
+```
+
+### Apply an approved update
+
+```text
+Update HD-1234 with the agreed draft now. Preserve metadata I did not ask
+you to change, then reopen the issue and verify the result.
+```
+
+## How the skill treats complex work
+
+For broad or prototype-led features, the skill:
+
+- keeps the issue understandable without opening the prototype;
+- separates predetermined behaviour from model-judged behaviour;
+- states whether capabilities coexist, are mutually exclusive, or run in order;
+- covers or explicitly defers configuration, execution, storage, presentation, reporting, automation, failure handling, regression, and rollout;
+- separates reusable product behaviour from customer-specific wiring;
+- keeps product specifications and engineering implementation issues distinct when appropriate.
+
+## Review and responsibility
+
+AI-assisted does not mean automatically approved. As the reporter, you remain responsible for facts, evidence, and customer context. HireData's normal Triage, refinement, estimation, and planning process still applies.
+
+Before submitting or approving a live change, check that the issue:
+
+- describes the observable problem or outcome;
+- distinguishes facts, decisions, assumptions, and open questions;
+- links the original evidence;
+- does not invent urgency, ownership, estimates, implementation details, or acceptance criteria;
+- uses only sources and actions available within your existing permissions.
+
+## Privacy and security
+
+- Share only the customer and candidate data needed to understand or reproduce the issue.
+- Never include credentials, access tokens, secrets, or unrelated personal data.
+- Do not paste security vulnerabilities into a public GitHub issue. Contact HireData privately through your normal support channel.
+- A public skill source does not make private Notion pages or Linear issues public. Their existing permissions continue to apply.
+
+## Troubleshooting
+
+- **The skill is missing:** update the HireData plugin and start a new conversation.
+- **The assistant cannot open a Notion page:** ask HireData whether that page should be shared with your account, or continue using the bundled snapshot and mark the result unverified.
+- **The assistant wants to change Linear immediately:** say "Draft only" unless you intend and are authorized to make the live change.
+- **A workflow rule looks stale:** ask the assistant to check the canonical shared Notion page before applying metadata.
+- **The assistant cannot search Linear:** it can still produce a complete report; duplicate and relationship checks remain unverified.
+
+The skill source is available at [github.com/HireData/skills](https://github.com/HireData/skills/tree/main/plugins/hiredata/skills/hiredata-create-linear-issues).

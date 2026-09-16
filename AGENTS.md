@@ -1,5 +1,13 @@
 # Documentation project instructions
 
+## Agent guidance
+
+- Treat `AGENTS.md` as the canonical agent contract; keep `CLAUDE.md` as a relative symlink.
+- Keep repository-owned skills in `.agents/skills/`; add relative compatibility links only for clients that need them.
+- When manifests or configuration expose a fact, omit it from agent guidance unless it prevents a known mistake.
+- When an observed failure, missing decision, or direct correction warrants guidance, add or replace the narrowest applicable rule.
+- When a skill change alters behavior, add or update a realistic behavioral eval.
+
 ## About this project
 
 - This is a documentation site built on [Mintlify](https://mintlify.com)

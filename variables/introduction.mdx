@@ -1,7 +1,7 @@
 ---
 title: "Variables"
 sidebarTitle: "Introduction"
-description: "Personalize emails, messages, forms, and automations."
+description: "Use HireData variables to personalise emails, WhatsApp messages, forms, and automations with candidate data pulled straight from your connected apps."
 ---
 
 With variables you can drop live data, like a candidate's name, a job title, or a salary, straight into your emails, WhatsApp messages, forms, and automations.
@@ -10,19 +10,49 @@ With variables you can drop live data, like a candidate's name, a job title, or 
 
 A variable is a field key wrapped in double curly braces:
 
-```
+```text
 Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
 ```
 
 When this is sent to a candidate named Sofia applying for a Backend Engineer role, it becomes:
 
-```
+```text
 Hi Sofia, thanks for applying to Backend Engineer!
 ```
 
 The spaces inside the braces are optional:
 
 - `{{candidate.first_name}}` and `{{ candidate.first_name }}` behave the same.
+
+## How a variable looks in the editor
+
+Every editor that accepts variables shows each one as a badge with the field's display name, such as **Recipient: First Name**. The badge is one object on the canvas, not the characters it stands for.
+
+<img src="/images/email-builder/24-variable-badges.png" alt="Four badges in an email paragraph: Recipient: First Name, Recipient: First Name with a wand icon and a 3, a tinted 'text' badge with a wand icon, and an orange documentation_missing_key badge with a warning icon" width="608" />
+
+- A variable with modifiers adds a wand icon, and a count once there are two or more.
+- A [literal](/variables/modifiers#literals) such as `{{ "text" | uppercase }}` gets a tinted badge.
+- A key HireData does not recognise gets an orange warning badge.
+
+### The popover
+
+<img src="/images/email-builder/21-variable-popover.png" alt="An email paragraph with four badges, Recipient: First Name, Recipient: First Name with a wand icon and a 3, a tinted text badge, and an orange documentation_missing_key badge, and a popover open under the second badge with Input Callum, Lowercase, Capitalise words, Use a fallback there, and Output Callum" width="616" />
+
+Hover a badge to see what it holds: the field's description and options when it has them, its current value, and each modifier in plain language with the result at the end. The popover also copies the expression and links to this page.
+
+The value depends on where you are. The form builder and the email builder show HireData's sample value for the field. A record's **Forms** tab shows that record's value. An automation step shows the field's default value, because no run has happened yet.
+
+### When a variable is not found
+
+A key HireData does not recognise becomes an orange badge, and its popover reads **Variable is not found**. The expression stays in your content unchanged, so fix the key or remove the badge. A variable you delete from a template's **Variables** list turns into this badge everywhere you used it.
+
+<img src="/images/email-builder/23-variable-not-found.png" alt="An orange badge reading documentation_missing_key with a triangle icon, and its popover repeating the key above a line reading Variable is not found" width="616" />
+
+### Editing a badge
+
+Place the cursor after a badge and press Backspace. The badge turns back into text, `{{` and the full expression, modifiers included. Edit it, type the closing `}}`, and the badge returns. The same works for a form reference written as `@key@`.
+
+You can also type an expression from scratch, modifiers and all. It becomes a badge as soon as you type the closing braces.
 
 ## Where you can use variables
 
@@ -37,7 +67,7 @@ You can use variables anywhere you write content that gets sent or stored:
 
 If a field is empty for a particular record, the variable is replaced with nothing. To show a default instead, use the [`default`](/variables/modifiers#fallback) modifier:
 
-```
+```text
 Hi {{ candidate.first_name | default: "there" }}!
 ```
 
@@ -47,7 +77,7 @@ If the candidate has no first name, this sends "Hi there!".
 
 Variables can do more than insert raw data. A **modifier** changes how the value appears. It can uppercase text, format a date, round a number, and much more. You add a modifier with a pipe (`|`):
 
-```
+```text
 {{ candidate.first_name | uppercase }}        → SOFIA
 {{ job.salary | format_currency: "EUR" }}      → €65,000.00
 {{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
@@ -55,8 +85,14 @@ Variables can do more than insert raw data. A **modifier** changes how the value
 
 You can chain several modifiers, and each one acts on the result of the previous:
 
-```
+```text
 {{ candidate.last_name | lowercase | capitalise }}
 ```
 
 See the full list on the [Modifiers](/variables/modifiers) page.
+
+## Generating a value instead of looking one up
+
+Every variable above **reads** a value that already exists. When the value has to be worked out fresh for each recipient — a personal opener, a non-generic birthday line — use an [AI variable](/variables/ai-variables) instead.
+
+Never let one invent a fact. Dates, salaries, and contract terms belong in a normal variable.

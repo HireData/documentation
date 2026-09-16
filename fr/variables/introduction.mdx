@@ -1,7 +1,7 @@
 ---
 title: "Variables"
 sidebarTitle: "Introduction"
-description: "Personnalisez les e-mails, les messages, les formulaires et les automatisations."
+description: "Personnalisez les e-mails, messages, formulaires et automatisations HireData en utilisant des variables dynamiques puisées dans vos données candidats."
 ---
 
 Avec les variables, vous pouvez insérer des données en direct, comme le nom d'un candidat, un intitulé de poste ou un salaire, directement dans vos e-mails, messages WhatsApp, formulaires et automatisations.
@@ -35,7 +35,7 @@ Vous pouvez utiliser des variables partout où vous rédigez du contenu envoyé 
 
 ## Fournir une valeur de repli
 
-Si un champ est vide pour un enregistrement donné, la variable est remplacée par rien. Pour afficher une valeur par défaut à la place, utilisez le modificateur [`default`](/fr/variables/modifiers#fallback) :
+Si un champ est vide pour un enregistrement donné, la variable est remplacée par rien. Pour afficher une valeur par défaut à la place, utilisez le modificateur [`default`](/fr/variables/modifiers#valeur-de-repli) :
 
 ```
 Hi {{ candidate.first_name | default: "there" }}!

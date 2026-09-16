@@ -1,0 +1,62 @@
+---
+title: "Run cancellation reasons"
+sidebarTitle: "Run cancellations"
+description: "Find the message that stopped an automation run and resolve common filter, loop, email, and message-limit cancellations."
+keywords: ["run cancelled", "run canceled", "cancellation reason", "Email unsubscribed", "Send limits exceeded", "Invalid sender email"]
+---
+
+When HireData cancels a run, the step that stopped it records a message. Read that message on the run before changing the automation.
+
+## Find the cancellation message
+
+1. Open **Runs** and select the affected run.
+2. Select the cancelled step in the run diagram or timeline.
+3. Read the message in **Overview**.
+4. Open **Fields** to check the values the step used.
+
+## Cancellation messages
+
+| Message | What it means | What to check |
+| --- | --- | --- |
+| `Filter not passed.` | A Filter condition evaluated as false. | The Filter conditions and the event fields. |
+| `No valid paths found.` | Every branch of a Split failed its Filter. | The Filters in each Split branch. |
+| `Data lookup failed.` | A Loop could not retrieve the records it needs. | The connected app, selected object, and Loop filter. |
+| `Invalid recipient email.` | The Send Email recipient is not a valid email address. | The recipient field or fixed recipient. |
+| `Email invalid.` | HireData has an invalid-address result for the recipient. | The recipient address. Use a valid address before trying again. |
+| `Email blocked.` | The recipient is on the workspace email blocklist. | The workspace blocklist and the recipient address. |
+| `Email unsubscribed.` | The recipient is listed in the workspace's email unsubscribes. This can include an address suppressed after a bounce. | **Settings** > **Unsubscribes** and the recipient address. |
+| `Invalid sender email.` | The Send Email step has no sender that HireData can use. | The sender and its verified domain. |
+| `Send limits exceeded.` | The recipient reached an account-level message limit. | **Settings** > **Safety Limits**. |
+| `Send limits per automation exceeded.` | The recipient reached a limit set on this automation. | The automation's **Settings**. |
+
+The exact message can identify a configuration error instead. `Required data reference missing.` is one example. That makes the run **Failed**, not **Cancelled**. Fix the missing required value in the task configuration, then start a new event.
+
+## Invalid sender email
+
+HireData cancels a real Send Email run when its sender is not valid for the workspace. For a transactional email, HireData can fall back to a valid default sender user or default sender on the configured brand domain or workspace domain.
+
+1. Go to **Settings** > **Domains**.
+2. Open the domain used by the sender.
+3. Generate and add its DNS records if needed.
+4. Select **Verify DNS** after the records are available.
+5. Check the Send Email step's sender, then start a new event.
+
+If DNS verification fails, confirm that every generated record is present at your DNS provider. Some providers expect only the subdomain in the **Host/Name** field. See [How to Verify a Domain in HireData to Send Emails](/settings/domains/how-to-verify-a-domain-in-hiredata-to-send-emails).
+
+## Send limits exceeded
+
+Account-level limits prevent the same email address or phone number from receiving more messages than the workspace allows. Review the limits under **Prevent Message Overload** in **Settings** > **Safety Limits**. Only increase a limit when the planned contact frequency is appropriate.
+
+## Send limits per automation exceeded
+
+An automation can also have its own email and conversation limits. Open the automation, select its three-dot menu, then select **Settings**. Review **Message limits** and the recipient's earlier messages for that automation.
+
+<Warning>
+  **Ignore all safety limits** removes the account and automation protections for this automation. Check the recipient's history before you use it.
+</Warning>
+
+## Start a new run after a correction
+
+Use a new event after changing a sender, recipient, Filter, or limit. Replaying an old event can repeat completed emails, messages, updates, and tasks.
+
+If the message is not listed here, include the run ID, automation name, cancelled step, and exact message when you contact [support@hiredata.com](mailto:support@hiredata.com).

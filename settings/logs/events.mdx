@@ -1,13 +1,14 @@
 ---
-title: "Events"
-description: "Understanding how HireData events work"
+title: "Events: inspect payloads from connected apps"
+description: "Learn how events work in HireData: how connected apps send them, where to find the event log, and how to inspect payloads to debug your automations."
+keywords: ["request body", "raw request body", "webhook payload", "inspect payload", "see what the app sent", "event data", "replay event", "webhook inspection", "verzoeklichaam", "ruwe request body", "payload bekijken", "event opnieuw afspelen", "webhook inspecteren"]
 ---
 
-_When you connect your ATS, such as Carerix, Salesforce, OTYS, etc., to HireData, it will start sending events, which are notifications that something has happened in your system. Events trigger your automations, making them crucial to how HireData works in the background. In this article, we'll explain how events work, where to find them, and how to analyse them if something doesn't go as expected._
+When you connect your ATS (such as Carerix, Salesforce, or OTYS) to HireData, it starts sending events. Events are notifications that something has happened in your system. They trigger your automations, making them crucial to how HireData works in the background. This article explains how events work, where to find them, and how to analyse them when something doesn't go as expected.
 
 ## What is an event
 
-An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. These events are used to trigger the automations you've set up in HireData, and every event includes **Event Data**, **External Records **and** Processes.**
+An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. HireData uses these events to trigger the automations you've set up, and every event includes **Event Data**, **External Records and Runs.**
 
 _Event example:_
 
@@ -23,7 +24,7 @@ _Use the filters for a more organised view, for example, if you want to see the 
 
 ![Setting up filters](/images/intercom/48024595-Screenshot-2025-05-05-at-10_49_56.png)
 
-To explore an individual event, click the [Details] button next to the event for a short overview or open the dropdown menu and click [View].
+To explore an individual event, click the \[Details\] button next to the event for a short overview or open the dropdown menu and click \[View\].
 
 ![Event drop-down menu](/images/intercom/48023846-Screenshot-2025-05-05-at-10_50_57.png)
 
@@ -33,13 +34,15 @@ This will open the event detail view, which includes:
 
 ![Event Data tab](/images/intercom/48023945-Screenshot-2025-05-05-at-10_51_18.png)
 
+To inspect the raw request body, open the event data and use the available code or JSON view. This helps you confirm exact field names and values received from the source app.
+
 - **External Records** – additional fields from the source app, even if they aren't used in the automation.
 
 ![External records tab](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
 
-- **Processes** – the list of automation(s) triggered by this event and the runs it created. You'll also see each run's status (e.g. Completed, Delayed, Cancelled).
+- **Runs** – the runs created by this event and the automation associated with each one. You'll also see each run's status (e.g. Completed, Delayed, Cancelled).
 
-![Processes tab](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+![Automation runs created by an event](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
 
 ## Replaying events
 
@@ -51,7 +54,7 @@ If an event doesn't trigger an automation as expected, or a run fails before com
 
 ### What happens when an event is replayed?
 
-HireData reprocesses the selected event(s) and triggers the associated automations. The affected tasks will be executed as if the event had just occurred.
+HireData reprocesses the selected event(s) and triggers the associated automations. HireData executes the affected tasks as if the event had just occurred.
 
 - **Event-based automations** – For automations that are triggered by a specific event (for example, a candidate reaching a certain stage), the replay will re-trigger the automation immediately based on the event data. If there was previously a created run, it will be replayed and a "Replay" label will show up.
 
@@ -108,17 +111,17 @@ HireData reprocesses the selected event(s) and triggers the associated automatio
 
 If an automation didn't run as expected, or you're seeing unexpected data:
 
-- Go to the **Processes** tab of the event and check if any runs were created.
+- Go to the **Runs** tab of the event and check if any runs were created.
 - Click into the run to view logs and see if a step failed or was skipped.
 - Compare the **Event Data** with the conditions in your automation to ensure it matches.
+- Use the code or JSON data view to check for missing fields, different field names, or unexpected value formats.
 
-If no process was triggered, the event likely didn't meet the criteria of any active automations.
+If no run was created, the event may not have met the criteria of an active automation. See [Why Didn't My Automation Run?](/knowledge-base/why-didnt-my-automation-run) for a complete checklist.
 
 ### Still need help?
 
-If you're unsure why an event didn't trigger your automation or want help interpreting the event data, feel free to contact our team at [support@hiredata.com](mailto:support@hiredata.com). If you do, please include:
+If you're unsure why an event didn't trigger your automation or want help interpreting the event data, feel free to contact our team at [support@hiredata.com](mailto:support@hiredata.com). If you do, include:
 
 - A link or the ID of the event;
 - A link or the name of the automation you expected to be triggered;
 - Any relevant steps or context that might help us investigate throughout.
-
