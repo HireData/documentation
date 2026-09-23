@@ -1,0 +1,102 @@
+---
+title: "Use prefilled questions to pass data between automations"
+sidebarTitle: "Prefilled questions"
+description: "Store context such as a match ID in a hidden form question, then use it in an automation that processes the response."
+tag: "DRAFT"
+---
+
+Prefilled questions let you carry context from one automation into a form response. For example, you can store a match ID in a hidden question when you send a survey. A response automation can then use that ID to find and update the same match in your ATS.
+
+## Before you start
+
+You need:
+
+- A form that you can edit
+- An automation that sends the form by email or WhatsApp
+- A value from the sending automation's trigger that you want to keep with the response
+- A second automation that starts when a response for the form is created or updated
+
+The example below passes a Carerix match ID into an NPS form. After the recipient submits the form, a second automation uses the stored ID to update the corresponding match.
+
+<Note>
+  The field you want to prefill must be available as a variable in the sending automation. The available variables depend on its trigger and connected app.
+</Note>
+
+## Add a hidden question to the form
+
+<Steps>
+  <Step title="Open the form">
+    Open **Settings** and select **Forms**, then open the form you want to send.
+  </Step>
+  <Step title="Add a question for the value">
+    Add a question and give it a label that identifies the value you will store. In this example, the question is named **Match:ID**.
+  </Step>
+  <Step title="Hide the question">
+    Turn on **Hidden**. The recipient will not see or answer this question, but HireData can store a prefilled value in its answer.
+  </Step>
+  <Step title="Save the form">
+    Click **Save**.
+  </Step>
+</Steps>
+
+## Prefill the question when you send the form
+
+Add the form to an email or WhatsApp task in the automation that starts with the record you want to identify.
+
+<Steps>
+  <Step title="Open the sending task">
+    Open the email or WhatsApp task that sends the form. Select the form if the task does not already use it.
+  </Step>
+  <Step title="Open the form settings">
+    In the task settings, expand **Form** and select **Prefill Questions**.
+  </Step>
+  <Step title="Map the source value">
+    Find the hidden question. Select the variable from the trigger that contains the value you want to pass.
+
+    In the demonstrated example, the **Match:ID** question receives the match ID from a **Match: Stage Updated** trigger.
+  </Step>
+  <Step title="Save and activate the automation">
+    Save the task, then activate the automation when the rest of the workflow is ready.
+  </Step>
+</Steps>
+
+When the automation sends the form, HireData stores the selected value as the answer to the hidden question.
+
+## Use the prefilled value in a response automation
+
+Create a second automation that starts when HireData receives a response for the form.
+
+<Steps>
+  <Step title="Select the response trigger">
+    Add **Response: Created or Updated** as the trigger and select the form that contains the hidden question.
+  </Step>
+  <Step title="Add the follow-up task">
+    Add the task that should use the stored value. For example, add **Update Match in Carerix** to update the match connected to the response.
+  </Step>
+  <Step title="Find the record with the hidden answer">
+    In the task's matching fields, select the record ID field. Set its value to the answer variable for the hidden question.
+
+    The demonstrated form stores the match ID in question 2, so the update task uses **Question 2: Answer** to find the match.
+  </Step>
+  <Step title="Configure the update">
+    Select the fields and values that the task should update, then save and activate the automation.
+  </Step>
+</Steps>
+
+## Verify the result
+
+Test the complete workflow with a record you can safely update:
+
+1. Trigger the automation that sends the form.
+2. Submit a response.
+3. Confirm that the response automation finds and updates the intended record.
+4. Open **Data** and select **Responses**.
+5. Open the submitted response and confirm that the hidden question contains the prefilled value.
+
+<Check>
+  In the demonstrated example, the submitted NPS response contains the match ID and the related match moves to the configured stage.
+</Check>
+
+## Watch the walkthrough
+
+<iframe src="https://supercut.ai/embed/hiredata/c1NnwQ5c0UzuXEejeqvO9y?embed=full" title="Use prefilled questions in HireData" allow="clipboard-write; encrypted-media; picture-in-picture" allowFullScreen className="w-full aspect-video rounded-xl" />
