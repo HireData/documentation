@@ -1,0 +1,63 @@
+---
+title: "How list-field updates trigger automations"
+sidebarTitle: "List-field updates"
+description: "Understand why changes to a multi-select field can start an automation when a matching value was already selected, using placement groups as an example."
+keywords:
+  - "multi-select fields"
+  - "placement groups"
+  - "groups updated"
+  - "one of"
+  - "unexpected automation runs"
+  - "list field changes"
+---
+
+A field that allows several selected values is called a **multi-select field** or **list field**. Carerix placement groups are one example.
+
+When an automation watches updates to a list field, HireData detects a change to the **whole list**. A condition such as **one of** then checks the values in the list after the update. It does not check whether the matching value was the one just added.
+
+## Example: placement groups
+
+Suppose your automation uses **Placement: Groups Updated** with a **one of** condition for a group called **First workday**.
+
+The automation can qualify whenever the groups change and **First workday** is in the resulting list.
+
+| Groups before | Groups after | Does this match the trigger and condition? |
+| --- | --- | --- |
+| Onboarding | Onboarding, First workday | Yes. The list changed and First workday is now present. |
+| Onboarding, First workday | Onboarding, First workday, Follow-up | Yes. Adding Follow-up changed the list, and First workday is still present. |
+| Onboarding, First workday | First workday | Yes. Removing Onboarding changed the list, and First workday is still present. |
+| Onboarding, First workday | Onboarding | No. First workday is no longer present. |
+| Onboarding | Onboarding, Follow-up | No. First workday is not present. |
+
+These examples assume the event reaches an active automation and all other start conditions are met.
+
+<Note>
+  **“The groups changed and First workday is present”** is different from **“First workday was added.”** The current list-field change detection checks the first of these.
+</Note>
+
+An update to an unrelated placement field, with no change to the groups, does not satisfy this group-update requirement.
+
+## Why an automation may start again
+
+If the matching group stays selected, a later addition or removal elsewhere in the list can qualify again. The selected group does not need to be newly added.
+
+Adding another condition that checks whether the same group is present does not solve this: it still checks the resulting list.
+
+This matters for actions intended to happen only once, such as a first-workday message or card. Before activating that workflow, decide whether it should run whenever the list changes and matches, once per placement, or only when a particular group is added.
+
+## Review your automation
+
+1. Open the automation's **Start** node and check the saved trigger and filter. Make sure they express the field and values you intend to monitor.
+2. For an unexpected run, inspect the event and the list values involved. A matching group being present does not show that it was newly added. See [Follow a run](/reference/automations/follow-a-run).
+3. If the action should happen only once, review the [Filter step's unique constraints](/reference/automations/steps/filter) before the action. Choose the record that defines “once” for your workflow: once per placement is different from once per person. A unique constraint limits repeats; it does not detect which group was added.
+4. If you specifically need “start only when this group is added,” contact HireData support to review the setup before activating it. The group-update condition described here does not provide that distinction.
+
+<Warning>
+  Pause the automation before changing its start configuration. Saving changes to an active automation can immediately change which events qualify. Check the saved trigger and filter before reactivating it.
+</Warning>
+
+## Related
+
+- [Setup: triggers and start filters](/reference/automations/steps/setup)
+- [Filter: conditions and unique constraints](/reference/automations/steps/filter)
+- [Follow a run](/reference/automations/follow-a-run)
