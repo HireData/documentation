@@ -4,131 +4,178 @@ sidebarTitle: "Notions de base de l'Inbox"
 description: "Lisez, filtrez et attribuez les conversations dans la boîte de réception WhatsApp, comprenez les indicateurs de conversation colorés et travaillez dans la fenêtre de conversation de 24 heures."
 ---
 
-_La boîte de réception WhatsApp dans HireData vous donne une vue d'ensemble claire de toutes vos conversations avec les candidats, leur statut et qui les gère. Cet article explique comment la boîte de réception est organisée, ce que signifient les indicateurs colorés et comment gérer les conversations et collaborer avec votre équipe._
+_La boîte de réception WhatsApp affiche toutes les conversations avec les personnes de votre base de données et qui les gère._<br />_Cet article explique comment lire, filtrer et attribuer les conversations de votre boîte de réception._<br />_Les personnes sont désignées comme contact(s) (WhatsApp) dans cet article._ 
 
 ## Disposition de la boîte de réception
 
-Lorsque vous ouvrez la **Inbox**, vous verrez deux vues principales :
+Lorsque vous ouvrez l'**Inbox**, vous verrez trois vues au-dessus de la liste des conversations :
 
-- **My Chats** — Affiche les conversations que vous possédez personnellement ou que vous gérez actuellement.
-- **All Chats** — Affiche toutes les conversations WhatsApp de votre organisation, selon vos permissions.
+- **For you** – Les personnes dont la dernière conversation vous est attribuée.
+- **Unassigned** – Les personnes dont la dernière conversation n'a pas encore de responsable.
+- **All** – Toutes les conversations WhatsApp de votre organisation auxquelles vous avez accès.
 
-Vous verrez également une liste de candidats qui n'ont pas encore été contactés, ce qui vous permet de démarrer de nouvelles conversations en utilisant des modèles.
+La boîte de réception mémorise la dernière vue et les derniers filtres que vous avez utilisés.
 
-![La vue All Chats dans la boîte de réception WhatsApp](/images/intercom/147003916-Screenshot-2026-05-29-at-12_07_37.png)
+![La vue All dans la boîte de réception WhatsApp](/images/inbox/inbox-overview.png)
+
+## Filtrer les conversations
+
+Cliquez sur l'icône de filtre à côté de **Inbox** pour affiner la liste avec les options suivantes :
+
+- **Assignee** – Filtrez les conversations attribuées aux membres de votre équipe.
+  - Disponible uniquement dans la vue **All**.
+- **Type** – Filtrez entre les conversations manuelles et les conversations automatisées.
+- **Status** – Conversations ouvertes ou conversations fermées.
+  - **No chat yet** affiche les personnes auxquelles vous n'avez pas encore envoyé de message.
+- **Reply** – Filtrez les conversations qui nécessitent une réponse, ou celles auxquelles vous pouvez encore répondre.
+  - **Needs reply** affiche les conversations où le contact attend votre réponse.
+  - **Reply window open** affiche les conversations dont la fenêtre de 24 heures est ouverte.
+- **Number** – Filtrez les conversations par numéro(s) WhatsApp Business spécifique(s).
+- **Automation** – Filtrez les conversations par automatisation.
+- **Contact owner** – Filtrez les personnes dont la fiche appartient à des membres spécifiques de l'équipe.
+- **Last activity** – Filtrez les conversations par activité à une date ou dans une période donnée.
+- **Chat started** – Filtrez les conversations commencées à une date ou dans une période donnée.
+
+Les filtres s'appliquent à la dernière conversation de chaque contact.
+
+Cliquez sur **Clear** sous le champ de recherche pour supprimer tous les filtres.
+
+![Le filtre Status dans la boîte de réception](/images/inbox/inbox-filters.png)
 
 ## Indicateurs de conversation
 
-Chaque conversation dans la boîte de réception comporte un point coloré sur l'avatar du destinataire qui vous indique le statut actuel de ce chat.
+Chaque conversation comporte un point coloré sur l'avatar du contact qui indique son statut.
+
+- La capture d'écran sous [Disposition de la boîte de réception](#disposition-de-la-boîte-de-réception) montre chaque couleur.
 
 ### Vert : chat actif
 
-La conversation est active et gérée par le propriétaire de la conversation.
+La conversation est active et gérée par son responsable.
 
-- Si vous voyez **« Managed by you »**, vous êtes le propriétaire de la conversation.
-- Si quelqu'un d'autre possède le chat, son nom et son avatar apparaîtront.
-
-_Un chat en cours géré par vous :_
-
-![Point vert indiquant que vous êtes le propriétaire de la conversation](/images/intercom/74429867-1__Green_-_Chat_managed_by_you__conversation_owner.webp)
-
-_Un chat en cours géré par une autre personne :_
-
-![Point vert indiquant que quelqu'un d'autre est le propriétaire de la conversation](/images/intercom/74430152-2__Green_-_Chat_not_managed_by_you.webp)
+- **"Ongoing chat - managed by you"** signifie que vous êtes le responsable.
+- Si quelqu'un d'autre est le responsable, son nom apparaît à la place.
 
 ### Gris : session ouverte, pas de chat actif
 
-La fenêtre de messagerie de 24 heures est ouverte, mais aucune conversation n'est actuellement active. Tout utilisateur peut envoyer un message pendant cette période.
+La fenêtre de 24 heures est ouverte, mais aucune conversation n'est active.
 
-![Point gris indiquant que la fenêtre de message est ouverte mais qu'il n'y a pas de conversation active](/images/intercom/74430623-3__Grey.webp)
+Tout utilisateur peut envoyer un message pendant cette période.
 
 ### Rouge : session fermée
 
-La fenêtre de messagerie de 24 heures a expiré. Vous ne pouvez recontacter le candidat qu'en utilisant un modèle WhatsApp approuvé, ou en attendant qu'il réponde en premier.
+La fenêtre de messagerie de 24 heures a expiré.
 
-![Point rouge indiquant que la session est fermée](/images/intercom/74430680-4__Red.webp)
+Utilisez un modèle WhatsApp approuvé, ou attendez que le contact réponde en premier.
 
 ### Turquoise : message entrant non lu
 
-Un point turquoise apparaît sur le côté droit d'une conversation manuelle lorsque le dernier message du candidat n'a pas encore reçu de réponse et est arrivé dans les dernières 24 heures.
+Un point turquoise à droite d'une conversation manuelle signifie que le contact attend votre réponse.
 
-Cet indicateur est visible à la fois dans **My Chats** et **All Chats**, afin que rien ne passe entre les mailles. Il disparaît une fois que vous répondez ou lorsque 24 heures se sont écoulées depuis la réception du message.
+Il apparaît lorsque son dernier message est sans réponse et date de moins de 24 heures.
 
-_Session ouverte (point gris à gauche) avec un message entrant (point turquoise à droite) dans les dernières 24 heures :_
+Il disparaît une fois que vous répondez, ou après 24 heures.
 
-![Point turquoise à droite d'une conversation indiquant un message entrant non lu](/images/intercom/147008415-new-inbound-message-2.png)
+Vous le voyez dans chaque vue, afin que rien ne passe entre les mailles.
 
 ## La fenêtre de conversation de 24 heures
 
-Chaque conversation WhatsApp a une **fenêtre de 24 heures** qui commence lorsqu'un candidat envoie ou répond à un message. Chaque nouveau message entrant réinitialise cette période de 24 heures, vous permettant de continuer à envoyer librement des messages jusqu'à l'expiration de la fenêtre.
+Chaque conversation WhatsApp a une **fenêtre de 24 heures** qui commence lorsqu'un contact envoie un message.
+
+Chaque nouveau message du contact relance les 24 heures.
 
 Pendant cette fenêtre :
 
 - Vous pouvez échanger librement des messages.
-- Le système suit automatiquement quelles conversations sont ouvertes.
+- HireData suit quelles conversations sont ouvertes.
 
-Lorsque la fenêtre expire, vous ne pourrez recontacter le candidat qu'en utilisant un modèle WhatsApp approuvé.
+Une fois la fenêtre expirée, vous ne pouvez envoyer un message au contact qu'avec un modèle.
 
 <Note>
-  Seul le **propriétaire du candidat** ou le **propriétaire de la conversation** peut envoyer des messages sortants. Si une personne n'a pas de propriétaire assigné, n'importe qui peut lui envoyer un message.
+  Seul le **propriétaire du contact** ou le **responsable** de la conversation peut envoyer des messages.
+
+  Si un contact n'a pas de propriétaire, n'importe qui peut lui envoyer un message.
 </Note>
 
 ## Envoi de messages
 
-Vous pouvez envoyer des messages aux candidats directement depuis la boîte de réception WhatsApp, soit manuellement, soit via des automatisations. Ce que vous pouvez envoyer dépend du statut de la conversation indiqué par le point coloré à côté du chat :
+Vous pouvez envoyer des messages aux contacts depuis la boîte de réception, manuellement ou via des automatisations.
 
-- **Vert (chat actif) :** vous pouvez librement envoyer et recevoir des messages pendant une conversation en cours gérée par le propriétaire du chat.
-- **Gris (session ouverte, pas de chat actif) :** la fenêtre de 24 heures est ouverte, mais il n'y a pas de conversation en cours. Tout utilisateur peut envoyer un message pour poursuivre le chat avant la fermeture de la fenêtre.
-- **Rouge (session fermée) :** la fenêtre de messagerie de 24 heures a expiré. Vous devrez utiliser un modèle WhatsApp approuvé pour redémarrer la conversation ou attendre que le candidat réponde.
+Ce que vous pouvez envoyer dépend du point coloré à côté de la conversation :
+
+- **Vert (chat actif)** – Le responsable peut librement envoyer et recevoir des messages.
+- **Gris (session ouverte)** – Tout utilisateur peut envoyer un message jusqu'à la fermeture de la fenêtre.
+- **Rouge (session fermée)** – Utilisez un modèle approuvé, ou attendez une réponse.
 
 ## Utilisation des modèles de messages WhatsApp
 
-Les modèles de messages sont des messages WhatsApp pré-approuvés requis pour démarrer ou rouvrir un chat en dehors de la fenêtre de 24 heures. Ils peuvent inclure des espaces réservés qui récupèrent automatiquement les données du candidat ou du poste.
+Les modèles de messages sont des messages WhatsApp pré-approuvés.
 
-Pour activer ou créer un modèle WhatsApp pour l'envoi manuel :
+Vous en avez besoin pour démarrer une conversation, ou pour la rouvrir après la fenêtre de 24 heures.
+
+Les modèles peuvent inclure des espaces réservés qui récupèrent les données du contact ou du poste.
+
+Pour activer ou créer un modèle pour l'envoi manuel :
 
 1. Rendez-vous dans **Settings → WhatsApp → Message Templates**.
-2. Choisissez un modèle approuvé existant ou créez-en un nouveau.
+2. Sélectionnez un modèle approuvé, ou créez-en un nouveau.
 3. Liez-le au formulaire ou au workflow approprié.
-4. Le modèle apparaîtra alors dans la boîte de réception lors de l'envoi manuel de messages à un candidat.
+4. Le modèle apparaît désormais dans la boîte de réception lorsque vous envoyez un message à un contact.
 
-Vous pouvez en apprendre davantage dans nos guides détaillés : [Comment fonctionnent les modèles WhatsApp](/fr/apps/messaging/whatsapp/how-whatsapp-templates-work) et [Comment modifier les modèles de messages WhatsApp](/fr/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates).
+En savoir plus dans ces guides :
+
+- [Comment fonctionnent les modèles WhatsApp](/fr/apps/messaging/whatsapp/how-whatsapp-templates-work)
+- [Comment modifier les modèles de messages WhatsApp](/fr/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates)
 
 ## Démarrer et gérer les conversations
 
-Si un candidat a un numéro WhatsApp lié :
+Si un contact a un numéro WhatsApp lié :
 
 1. Rendez-vous sur son profil.
 2. Ouvrez l'onglet **Inbox**.
 3. Cliquez sur **Send Message**.
-4. Si la fenêtre de conversation est ouverte, vous pouvez envoyer un message directement.
+4. Si la fenêtre est ouverte, envoyez directement votre message.
 5. Si elle est fermée, sélectionnez un modèle WhatsApp pour la rouvrir.
 
-Les conversations ouvertes (point vert) apparaissent dans :
+Les conversations ouvertes (point vert) apparaissent dans **All**, et dans **For you** lorsqu'elles vous appartiennent.
 
-- **Inbox :** affiche toutes les conversations accessibles.
-- **My Chats :** affiche les conversations que vous gérez actuellement et qui restent ouvertes.
+## Attribuer les conversations
 
-## Propriété du chat et permissions
+Chaque conversation peut avoir un responsable : le membre de l'équipe qui la gère.
 
-Une conversation apparaît dans **My Chats** lorsque :
+Le responsable apparaît dans l'en-tête de la conversation.
 
-- Vous êtes le propriétaire du candidat ou de la conversation, ou
-- Vous avez récemment interagi avec le candidat (envoyé ou reçu un message).
+Pour attribuer ou réattribuer une conversation :
 
-Si vous n'êtes pas le propriétaire de la conversation, vous ne pourrez pas fermer ou modifier la conversation, et elle vous sera visible dans la section **All Chats**.
+1. Ouvrez la conversation.
+2. Cliquez sur le bouton du responsable dans l'en-tête de la conversation.
+3. Sélectionnez un membre de l'équipe, ou **Assign to me**.
+4. Saisissez du texte dans le champ de recherche pour trouver rapidement un nom.
+
+![Choix d'un responsable pour une conversation](/images/inbox/inbox-assignee.png)
+
+- **Les administrateurs et les propriétaires** peuvent attribuer une conversation à n'importe qui, ou la reprendre.
+- Ils peuvent également utiliser **Unassign** sur une conversation.
+- **Les utilisateurs** peuvent s'attribuer une conversation non attribuée.
+- Les utilisateurs peuvent également retirer l'attribution de leurs propres conversations.
+- Lorsque vous répondez à une conversation sans responsable, elle vous est attribuée.
+- Vous pouvez aussi attribuer des conversations fermées.
+
+Chaque modification apparaît dans l'historique de la conversation, afin que votre équipe voie qui l'a attribuée.
 
 ## Fermer les conversations
 
-Fermer un chat :
+Le responsable peut fermer une conversation. N'importe qui peut fermer une conversation sans responsable.
 
-- Marque le chat comme fermé dans la boîte de réception (il n'est pas supprimé).
-- Le retire de votre vue **My Chats**.
-- Arrête l'envoi de messages supplémentaires par les automatisations, sauf s'il est rouvert.
+Fermer une conversation :
+
+- Marque la conversation comme fermée dans la boîte de réception. Elle n'est pas supprimée.
+- Conserve son responsable, elle reste donc dans **For you**.
+  - Filtrez **Status** sur **Open** pour masquer les conversations fermées.
+- Arrête l'envoi de messages supplémentaires par les automatisations, sauf si la conversation est rouverte.
 
 ## Réactions aux messages
 
-Les candidats peuvent réagir à vos messages WhatsApp avec des réactions emoji. Ces réactions sont visibles directement dans la boîte de réception, vous donnant un aperçu rapide de la façon dont un message a été reçu. Cliquez sur une réaction pour voir un aperçu complet de qui a réagi et comment.
+Les réactions WhatsApp apparaissent dans la boîte de réception. Cliquez sur une réaction pour voir qui a réagi et comment.
 
 ![Une réaction affichée sur un message WhatsApp](/images/intercom/147021802-message-reaction.png)
 
@@ -136,31 +183,35 @@ Les candidats peuvent réagir à vos messages WhatsApp avec des réactions emoji
 
 ## Commentaires et collaboration interne
 
-Vous pouvez ajouter des commentaires internes à n'importe quelle conversation directement depuis la boîte de réception en utilisant **Comments**. C'est particulièrement utile pour partager des notes ou collaborer avec votre équipe sans affecter la conversation.
+Ajoutez des notes internes à n'importe quelle conversation depuis la boîte de réception avec **Comments**.
+
+Utilisez-les pour partager des notes avec votre équipe sans affecter la conversation.
 
 - Les commentaires sont visibles par tous les utilisateurs.
-- Les commentaires ne sont pas visibles par le candidat car ils sont à usage interne uniquement.
+- Les contacts ne peuvent pas voir les commentaires. Ils sont à usage interne uniquement.
 
 ![Ajout d'un commentaire à une conversation](/images/intercom/147019709-Screenshot-2026-05-29-at-12_39_00.png)
 
 ## Automatisations et étiquettes de message
 
-Les messages marqués **« Sent by automation »** ont été déclenchés automatiquement par des workflows ou des règles, par exemple, des rappels ou des relances lorsqu'un candidat atteint une certaine étape ou ne répond pas.
+Les messages marqués **"Sent by automation"** ont été envoyés par un workflow ou une règle.
 
-Cette étiquette aide à distinguer les messages automatisés de ceux envoyés manuellement par les utilisateurs.
+Par exemple, un rappel, ou une relance lorsqu'un contact ne répond pas.
+
+Cette étiquette permet de distinguer les messages automatisés des messages envoyés par les utilisateurs.
 
 ## Aperçu des coûts et de la facturation
 
-- Les messages entrants (c'est-à-dire lorsqu'un candidat envoie un message en premier) sont **gratuits** pour les réponses dans une fenêtre de 24 heures.
-- Les messages sortants (lorsque vous initiez une conversation) nécessitent l'utilisation d'un **modèle WhatsApp approuvé**, qui entraîne des frais.
-- Les coûts des modèles sont facturés par Meta Platforms (propriétaire de la plateforme WhatsApp) et varient en fonction du type de message et de la région d'envoi.
-- En plus des frais de Meta, l'utilisation de WhatsApp via HireData déduit également des crédits de votre plan HireData pour chaque message ou tâche automatisée.
-- Vous pouvez surveiller les coûts via l'interface de facturation de Meta pour plus de transparence.
+- Répondre dans les 24 heures suivant le message d'un contact est **gratuit**.
+- Démarrer une conversation nécessite un **modèle WhatsApp approuvé**, qui entraîne des frais.
+- Meta facture les coûts des modèles, qui varient selon le type de message et le pays.
+- HireData déduit également des crédits pour chaque message ou tâche automatisée.
+- Vous pouvez suivre ces coûts dans l'interface de facturation de Meta.
 
-Pour une explication détaillée de la façon dont les coûts des messages WhatsApp et les modèles sont facturés, consultez [Comment fonctionne la structure des coûts de messagerie WhatsApp](/fr/apps/messaging/whatsapp/how-does-the-whatsapp-messaging-cost-structure-work).
+Consultez [comment fonctionnent les coûts de messagerie WhatsApp](/fr/apps/messaging/whatsapp/how-does-the-whatsapp-messaging-cost-structure-work) pour une explication détaillée.
 
 <Tip>
-  - **Utilisez All Chats** pour avoir une vue complète de ce que votre équipe gère, particulièrement utile pour les managers ou responsables d'équipe.
-  - **Le point turquoise est votre signal de priorité.** Si une conversation a un point turquoise sur le côté droit, un candidat attend une réponse.
-  - **Les commentaires sont privés.** Les candidats ne verront jamais ce que vous y écrivez, alors utilisez-les librement pour des notes internes.
+  - **Utilisez All** pour voir tout ce que votre équipe gère.
+  - **Le point turquoise est votre signal de priorité.** Un contact attend.
+  - **Les commentaires sont privés.** Les contacts ne les voient jamais.
 </Tip>
