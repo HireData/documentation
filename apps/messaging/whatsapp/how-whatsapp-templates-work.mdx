@@ -18,7 +18,7 @@ _Our WhatsApp automation templates streamline candidate communication using AI a
 
 ### How the trigger works
 
-All of the WhatsApp templates use the same logic but can differentiate in the set trigger and the content of the conversation (e.g. the questions asked, the collected information, and the tone of voice). This article focuses on the Job Alert automation via Carerix.
+All of the WhatsApp templates use the same logic but can differ in the set trigger and the content of the conversation (e.g. the questions asked, the collected information, and the tone of voice). This article focuses on the Job Alert automation via Carerix.
 
 In this automation, the trigger is based on a **stage update** within the Carerix system. Here's how it functions:
 
@@ -35,7 +35,7 @@ Once the trigger is set, the next step is to configure the task that defines how
 
 1. **Phone Number Selection**
 
-- Select the phone number that will be used to send the WhatsApp messages. This is typically a verified business number associated with your WhatsApp Business that should already be verified and visible in the WhatsApp connection in HireData.
+- Select the phone number that will be used to send the WhatsApp messages. This is typically the business number associated with your WhatsApp Business account. It should already be verified and visible in the WhatsApp connection in HireData.
 
 2. **Message Template**
 
@@ -80,14 +80,14 @@ Here's how this process works:
 
 3. **Identifier**
 
-- To ensure the update is applied to the correct candidate, the system matches the **Candidate: ID** from the conversation with the **Candidate: ID** in the database. This unique identifier ensures that the data is updated only for the relevant candidate.
+- To ensure the update is applied to the correct candidate, HireData matches the **Candidate: ID** from the conversation with the **Candidate: ID** in the database. This unique identifier ensures that the data is updated only for the relevant candidate.
 
 4. **Fields Updated**
 
 - The automation updates one or more fields based on the responses received from the candidate. Common fields include:
   - **Candidate: Available Date** → Updates the candidate's availability for new job opportunities.
   - **Candidate: Notes** → Stores any additional information the candidate provided, such as preferences or special requests.
-  - **Other Fields** → Additional fields can be added as needed, such as preferred job type, location preference, or salary expectations.
+  - **Other Fields** → You can add additional fields as needed, such as preferred job type, location preference, or salary expectations.
 
 ## WhatsApp templates in WhatsApp
 
@@ -159,7 +159,9 @@ _Add your first button, e.g. Sim:_
 
 ![Adding a button](/images/intercom/47454584-buttons2.png)
 
-💡 Tip: For templates in multiple languages, make sure you’re using the same variable name/number for consistency.
+<Tip>
+  For templates in multiple languages, make sure you’re using the same variable name/number for consistency.
+</Tip>
 
 _Preview your button:_
 
@@ -228,7 +230,7 @@ _A sync will be scheduled after this notification:_
 
 ![Sync schedule notification](/images/intercom/47448659-Screenshot-2025-03-28-at-08_43_20.png)
 
-_After a while, you’ll see the sync will start:_
+_After a while, the sync starts:_
 
 ![Sync progress notification](/images/intercom/47448690-Screenshot-2025-03-28-at-08_43_42.png)
 
