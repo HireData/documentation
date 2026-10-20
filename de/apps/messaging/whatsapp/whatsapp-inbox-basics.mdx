@@ -4,163 +4,214 @@ sidebarTitle: "Inbox-Grundlagen"
 description: "Lesen, filtern und weisen Sie Chats in der WhatsApp-Inbox zu, verstehen Sie die farbigen Gesprächsindikatoren und arbeiten Sie innerhalb des 24-Stunden-Gesprächsfensters."
 ---
 
-_Die WhatsApp-Inbox in HireData gibt Ihnen einen klaren Überblick über alle Kandidaten-Konversationen, deren Status und wer sie verwaltet. Dieser Artikel erklärt, wie die Inbox organisiert ist, was die farbigen Indikatoren bedeuten und wie Sie Konversationen verwalten und mit Ihrem Team zusammenarbeiten._
+_Die WhatsApp-Inbox zeigt alle Chats mit Personen in Ihrer Datenbank und wer sie bearbeitet._<br />_Dieser Artikel erklärt, wie Sie die Chats in Ihrer Inbox lesen, filtern und zuweisen._<br />_Personen werden in diesem Artikel als (WhatsApp-)Kontakt(e) bezeichnet._ 
 
 ## Inbox-Layout
 
-Wenn Sie die **Inbox** öffnen, sehen Sie zwei Hauptansichten:
+Wenn Sie die **Inbox** öffnen, sehen Sie drei Ansichten über der Chatliste:
 
-- **My Chats** – Zeigt Konversationen, die Ihnen persönlich gehören oder die Sie aktuell bearbeiten.
-- **All Chats** – Zeigt alle WhatsApp-Konversationen Ihrer Organisation an, basierend auf Ihren Berechtigungen.
+- **For you** – Personen, deren letzter Chat Ihnen zugewiesen ist.
+- **Unassigned** – Personen, deren letzter Chat noch keine zuständige Person hat.
+- **All** – Alle WhatsApp-Chats Ihrer Organisation, auf die Sie Zugriff haben.
 
-Sie sehen außerdem eine Liste von Kandidaten, die noch nicht angeschrieben wurden, sodass Sie neue Konversationen mit Vorlagen starten können.
+Die Inbox merkt sich die zuletzt verwendete Ansicht und Filter.
 
-![The All Chats view in the WhatsApp inbox](/images/intercom/147003916-Screenshot-2026-05-29-at-12_07_37.png)
+![Die Ansicht All in der WhatsApp-Inbox](/images/inbox/inbox-overview.png)
+
+## Chats filtern
+
+Klicken Sie auf das Filtersymbol neben **Inbox**, um die Liste mit den folgenden Optionen einzugrenzen:
+
+- **Assignee** – Filtern Sie nach Chats, die Mitgliedern Ihres Teams zugewiesen sind.
+  - Nur in der Ansicht **All** verfügbar.
+- **Type** – Filtern Sie zwischen manuellen und automatisierten Chats.
+- **Status** – Offene oder geschlossene Chats.
+  - **No chat yet** zeigt Personen, denen Sie noch nicht geschrieben haben.
+- **Reply** – Filtern Sie nach Chats, die eine Antwort benötigen, oder Chats, auf die Sie noch antworten können.
+  - **Needs reply** zeigt Chats, in denen der Kontakt auf Sie wartet.
+  - **Reply window open** zeigt Chats, bei denen das 24-Stunden-Fenster offen ist.
+- **Number** – Filtern Sie Chats nach (einer) bestimmten WhatsApp-Business-Nummer(n).
+- **Automation** – Filtern Sie Chats nach Automatisierung.
+- **Contact owner** – Filtern Sie nach Personen, deren Datensatz bestimmten Teammitgliedern gehört.
+- **Last activity** – Filtern Sie Chats nach Aktivität an einem Datum oder innerhalb eines Zeitraums.
+- **Chat started** – Filtern Sie Chats, die an einem Datum oder innerhalb eines Zeitraums begonnen haben.
+
+Filter gelten für den jeweils letzten Chat pro Kontakt.
+
+Klicken Sie unter dem Suchfeld auf **Clear**, um alle Filter zu entfernen.
+
+![Der Status-Filter in der Inbox](/images/inbox/inbox-filters.png)
 
 ## Konversationsindikatoren
 
-Jede Konversation in der Inbox hat einen farbigen Punkt auf dem Avatar des Empfängers, der Ihnen den aktuellen Status des Chats zeigt.
+Jeder Chat hat einen farbigen Punkt auf dem Avatar des Kontakts, der seinen Status anzeigt.
+
+- Der Screenshot unter [Inbox-Layout](#inbox-layout) zeigt jede Farbe.
 
 ### Grün: aktiver Chat
 
-Die Konversation ist aktiv und wird vom Conversation Owner verwaltet.
+Der Chat ist aktiv und wird von der zuständigen Person bearbeitet.
 
-- Wenn Sie **„Managed by you"** sehen, sind Sie der Conversation Owner.
-- Wenn jemand anderes den Chat besitzt, erscheinen dessen Name und Avatar.
-
-_Ein laufender Chat, der von Ihnen verwaltet wird:_
-
-![Green dot indicating that you are the conversation owner](/images/intercom/74429867-1__Green_-_Chat_managed_by_you__conversation_owner.webp)
-
-_Ein laufender Chat, der von einer anderen Person verwaltet wird:_
-
-![Green dot showing that someone else is the conversation owner](/images/intercom/74430152-2__Green_-_Chat_not_managed_by_you.webp)
+- **"Ongoing chat - managed by you"** bedeutet, dass Sie die zuständige Person sind.
+- Wenn jemand anderes zuständig ist, wird stattdessen dessen Name angezeigt.
 
 ### Grau: Session offen, kein aktiver Chat
 
-Das 24-Stunden-Messaging-Fenster ist offen, aber es ist derzeit keine Konversation aktiv. Jeder Benutzer kann während dieses Zeitraums eine Nachricht senden.
+Das 24-Stunden-Fenster ist offen, aber kein Chat ist aktiv.
 
-![Grey dot showing that the message window is open but there is no active conversation](/images/intercom/74430623-3__Grey.webp)
+Jeder Benutzer kann während dieses Zeitraums eine Nachricht senden.
 
 ### Rot: Session geschlossen
 
-Das 24-Stunden-Messaging-Fenster ist abgelaufen. Sie können den Kandidaten nur noch mit einer genehmigten WhatsApp-Vorlage erreichen oder darauf warten, dass er zuerst antwortet.
+Das 24-Stunden-Messaging-Fenster ist abgelaufen.
 
-![Red dot indicating the session is closed](/images/intercom/74430680-4__Red.webp)
+Verwenden Sie eine genehmigte WhatsApp-Vorlage oder warten Sie, bis der Kontakt zuerst antwortet.
 
 ### Türkis: ungelesene eingehende Nachricht
 
-Ein türkiser Punkt erscheint auf der rechten Seite einer manuellen Konversation, wenn die letzte Nachricht des Kandidaten noch nicht beantwortet wurde und innerhalb der letzten 24 Stunden eingegangen ist.
+Ein türkiser Punkt rechts neben einem manuellen Chat bedeutet, dass der Kontakt auf Sie wartet.
 
-Dieser Indikator ist sowohl in **My Chats** als auch in **All Chats** sichtbar, sodass nichts durchrutscht. Er verschwindet, sobald Sie antworten oder wenn 24 Stunden seit dem Empfang der Nachricht vergangen sind.
+Er erscheint, wenn dessen letzte Nachricht unbeantwortet und weniger als 24 Stunden alt ist.
 
-_Offene Session (linker grauer Punkt) mit einer eingehenden Nachricht (rechter türkiser Punkt) in den letzten 24 Stunden:_
+Er verschwindet, sobald Sie antworten, oder nach 24 Stunden.
 
-![Teal dot on the right of a conversation indicating an unread inbound message](/images/intercom/147008415-new-inbound-message-2.png)
+Sie sehen ihn in jeder Ansicht, sodass nichts durchrutscht.
 
 ## Das 24-Stunden-Konversationsfenster
 
-Jede WhatsApp-Konversation hat ein **24-Stunden-Fenster**, das beginnt, wenn ein Kandidat eine Nachricht sendet oder auf eine antwortet. Jede neue eingehende Nachricht setzt diesen 24-Stunden-Zeitraum zurück und ermöglicht es Ihnen, weiter frei zu messagen, bis das Fenster abläuft.
+Jeder WhatsApp-Chat hat ein **24-Stunden-Fenster**, das beginnt, wenn ein Kontakt eine Nachricht sendet.
+
+Jede neue Nachricht des Kontakts startet die 24 Stunden neu.
 
 Während dieses Fensters:
 
 - Können Sie frei Nachrichten austauschen.
-- Verfolgt das System automatisch, welche Konversationen offen sind.
+- Verfolgt HireData, welche Chats offen sind.
 
-Wenn das Fenster abläuft, können Sie dem Kandidaten nur noch mit einer genehmigten WhatsApp-Vorlage schreiben.
+Nach Ablauf des Fensters können Sie dem Kontakt nur noch mit einer Vorlage schreiben.
 
 <Note>
-  Nur der **Candidate Owner** oder der **Conversation Owner** kann ausgehende Nachrichten senden. Wenn eine Person keinen zugewiesenen Owner hat, kann jeder ihr schreiben.
+  Nur der **Contact Owner** oder die **zuständige Person** des Chats kann Nachrichten senden.
+
+  Wenn ein Kontakt keinen Owner hat, kann jeder ihm schreiben.
 </Note>
 
 ## Nachrichten senden
 
-Sie können Kandidaten direkt aus der WhatsApp-Inbox Nachrichten senden, entweder manuell oder über Automatisierungen. Was Sie senden können, hängt vom Konversationsstatus ab, der durch den farbigen Punkt neben dem Chat angezeigt wird:
+Sie können Kontakten aus der Inbox Nachrichten senden, manuell oder über Automatisierungen.
 
-- **Grün (aktiver Chat):** Sie können in einer laufenden Konversation, die vom Chat-Owner verwaltet wird, frei Nachrichten senden und empfangen.
-- **Grau (Session offen, kein aktiver Chat):** Das 24-Stunden-Fenster ist offen, aber es gibt keine laufende Konversation. Jeder Benutzer kann eine Nachricht senden, um den Chat vor Ablauf des Fensters fortzusetzen.
-- **Rot (Session geschlossen):** Das 24-Stunden-Messaging-Fenster ist abgelaufen. Sie müssen eine genehmigte WhatsApp-Vorlage verwenden, um die Konversation neu zu starten, oder auf die Antwort des Kandidaten warten.
+Was Sie senden können, hängt vom farbigen Punkt neben dem Chat ab:
+
+- **Grün (aktiver Chat)** – Die zuständige Person kann frei Nachrichten senden und empfangen.
+- **Grau (Session offen)** – Jeder Benutzer kann eine Nachricht senden, bis das Fenster schließt.
+- **Rot (Session geschlossen)** – Verwenden Sie eine genehmigte Vorlage oder warten Sie auf eine Antwort.
 
 ## WhatsApp-Nachrichtenvorlagen verwenden
 
-Nachrichtenvorlagen sind vorab genehmigte WhatsApp-Nachrichten, die erforderlich sind, um einen Chat außerhalb des 24-Stunden-Fensters zu starten oder wieder zu öffnen. Sie können Platzhalter enthalten, die automatisch Kandidaten- oder Jobdaten ziehen.
+Nachrichtenvorlagen sind vorab genehmigte WhatsApp-Nachrichten.
 
-Um eine WhatsApp-Vorlage für den manuellen Versand zu aktivieren oder zu erstellen:
+Sie benötigen eine, um einen Chat zu starten oder ihn nach dem 24-Stunden-Fenster wieder zu öffnen.
+
+Vorlagen können Platzhalter enthalten, die Kontakt- oder Jobdaten einfügen.
+
+Um eine Vorlage für den manuellen Versand zu aktivieren oder zu erstellen:
 
 1. Gehen Sie zu **Settings → WhatsApp → Message Templates**.
-2. Wählen Sie eine bestehende genehmigte Vorlage oder erstellen Sie eine neue.
+2. Wählen Sie eine genehmigte Vorlage oder erstellen Sie eine neue.
 3. Verknüpfen Sie sie mit dem passenden Formular oder Workflow.
-4. Die Vorlage erscheint dann in der Inbox, wenn Sie einem Kandidaten manuell schreiben.
+4. Die Vorlage erscheint nun in der Inbox, wenn Sie einem Kontakt schreiben.
 
-Mehr erfahren Sie in unseren detaillierten Anleitungen: [So funktionieren WhatsApp-Vorlagen](/de/apps/messaging/whatsapp/how-whatsapp-templates-work) und [WhatsApp-Nachrichtenvorlagen bearbeiten](/de/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates).
+Mehr erfahren Sie in diesen Anleitungen:
+
+- [So funktionieren WhatsApp-Vorlagen](/de/apps/messaging/whatsapp/how-whatsapp-templates-work)
+- [WhatsApp-Nachrichtenvorlagen bearbeiten](/de/apps/messaging/whatsapp/how-to-edit-whatsapp-message-templates)
 
 ## Konversationen starten und verwalten
 
-Wenn ein Kandidat eine verknüpfte WhatsApp-Nummer hat:
+Wenn ein Kontakt eine verknüpfte WhatsApp-Nummer hat:
 
 1. Gehen Sie zu seinem Profil.
 2. Öffnen Sie den Tab **Inbox**.
 3. Klicken Sie auf **Send Message**.
-4. Wenn das Konversationsfenster offen ist, können Sie direkt eine Nachricht senden.
+4. Wenn das Fenster offen ist, senden Sie Ihre Nachricht direkt.
 5. Wenn es geschlossen ist, wählen Sie eine WhatsApp-Vorlage, um es wieder zu öffnen.
 
-Offene Konversationen (grüner Punkt) erscheinen in:
+Offene Chats (grüner Punkt) erscheinen in **All** und in **For you**, wenn sie Ihnen gehören.
 
-- **Inbox:** Zeigt alle zugänglichen Konversationen.
-- **My Chats:** Zeigt Konversationen, die Sie aktuell verwalten und die offen bleiben.
+## Chats zuweisen
 
-## Chat-Ownership und Berechtigungen
+Jeder Chat kann eine zuständige Person haben: das Teammitglied, das ihn bearbeitet.
 
-Eine Konversation erscheint in **My Chats**, wenn:
+Die zuständige Person wird im Chat-Header angezeigt.
 
-- Sie der Owner des Kandidaten oder der Konversation sind, oder
-- Sie kürzlich mit dem Kandidaten interagiert haben (eine Nachricht gesendet oder empfangen).
+Um einen Chat zuzuweisen oder neu zuzuweisen:
 
-Wenn Sie nicht der Conversation Owner sind, können Sie die Konversation nicht schließen oder ändern, und sie wird für Sie im Bereich **All Chats** sichtbar sein.
+1. Öffnen Sie den Chat.
+2. Klicken Sie im Chat-Header auf die Schaltfläche für die zuständige Person.
+3. Wählen Sie ein Teammitglied oder **Assign to me**.
+4. Tippen Sie in das Suchfeld, um einen Namen schnell zu finden.
+
+![Auswahl einer zuständigen Person für einen Chat](/images/inbox/inbox-assignee.png)
+
+- **Admins und Owner** können einen Chat jeder Person zuweisen oder ihn übernehmen.
+- Sie können einen Chat auch per **Unassign** freigeben.
+- **Benutzer** können sich einen nicht zugewiesenen Chat selbst zuweisen.
+- Benutzer können auch die Zuweisung ihrer eigenen Chats aufheben.
+- Wenn Sie auf einen Chat ohne zuständige Person antworten, wird er Ihnen zugewiesen.
+- Sie können auch geschlossene Chats zuweisen.
+
+Jede Änderung erscheint im Chatverlauf, sodass Ihr Team sieht, wer ihn zugewiesen hat.
 
 ## Konversationen schließen
 
+Die zuständige Person kann einen Chat schließen. Einen Chat ohne zuständige Person kann jeder schließen.
+
 Einen Chat schließen:
 
-- Markiert den Chat in der Inbox als geschlossen (er wird nicht gelöscht).
-- Entfernt ihn aus Ihrer **My Chats**-Ansicht.
-- Verhindert, dass Automatisierungen weitere Nachrichten senden, es sei denn, er wird wieder geöffnet.
+- Markiert den Chat in der Inbox als geschlossen. Er wird nicht gelöscht.
+- Behält die zuständige Person bei, sodass er in **For you** bleibt.
+  - Filtern Sie **Status** auf **Open**, um geschlossene Chats auszublenden.
+- Verhindert, dass Automatisierungen weitere Nachrichten senden, es sei denn, der Chat wird wieder geöffnet.
 
 ## Nachrichten-Reaktionen
 
-Kandidaten können auf Ihre WhatsApp-Nachrichten mit Emoji-Reaktionen reagieren. Diese Reaktionen sind direkt in der Inbox sichtbar und geben Ihnen einen schnellen Eindruck davon, wie eine Nachricht angekommen ist. Klicken Sie auf eine Reaktion, um eine vollständige Übersicht zu sehen, wer wie reagiert hat.
+WhatsApp-Reaktionen erscheinen in der Inbox. Klicken Sie auf eine Reaktion, um zu sehen, wer wie reagiert hat.
 
-![A message reaction shown on a WhatsApp message](/images/intercom/147021802-message-reaction.png)
+![Eine Nachrichten-Reaktion auf einer WhatsApp-Nachricht](/images/intercom/147021802-message-reaction.png)
 
-![Expanded view of message reactions](/images/intercom/147021834-message-reactions-overview.png)
+![Erweiterte Ansicht der Nachrichten-Reaktionen](/images/intercom/147021834-message-reactions-overview.png)
 
 ## Kommentare und interne Zusammenarbeit
 
-Sie können jeder Konversation direkt aus der Inbox interne Kommentare hinzufügen, indem Sie **Comments** verwenden. Das ist besonders nützlich, um Notizen zu teilen oder mit Ihrem Team zusammenzuarbeiten, ohne die Konversation zu beeinflussen.
+Fügen Sie jedem Chat aus der Inbox mit **Comments** interne Notizen hinzu.
+
+Nutzen Sie sie, um Notizen mit Ihrem Team zu teilen, ohne den Chat zu beeinflussen.
 
 - Kommentare sind für alle Benutzer sichtbar.
-- Kommentare sind für den Kandidaten nicht sichtbar, da sie ausschließlich zum internen Gebrauch bestimmt sind.
+- Kontakte können Kommentare nicht sehen. Sie sind ausschließlich für den internen Gebrauch bestimmt.
 
-![Adding a comment to a conversation](/images/intercom/147019709-Screenshot-2026-05-29-at-12_39_00.png)
+![Einen Kommentar zu einer Konversation hinzufügen](/images/intercom/147019709-Screenshot-2026-05-29-at-12_39_00.png)
 
 ## Automatisierungen und Nachrichten-Labels
 
-Nachrichten mit dem Label **„Sent by automation"** wurden automatisch durch Workflows oder Regeln ausgelöst, z. B. Erinnerungen oder Follow-ups, wenn ein Kandidat eine bestimmte Stage erreicht oder nicht antwortet.
+Nachrichten mit der Markierung **"Sent by automation"** wurden von einem Workflow oder einer Regel gesendet.
 
-Dieses Label hilft, automatisierte Nachrichten von manuell gesendeten Nachrichten zu unterscheiden.
+Zum Beispiel eine Erinnerung oder ein Follow-up, wenn ein Kontakt nicht antwortet.
+
+Das Label unterscheidet automatisierte Nachrichten von Nachrichten, die von Benutzern gesendet wurden.
 
 ## Übersicht zu Kosten und Abrechnung
 
-- Eingehende Nachrichten (d. h. wenn ein Kandidat zuerst eine Nachricht sendet) sind **kostenlos** für Antworten innerhalb eines 24-Stunden-Fensters.
-- Ausgehende Nachrichten (wenn Sie eine Konversation initiieren) erfordern die Verwendung einer **genehmigten WhatsApp-Vorlage**, wofür Gebühren anfallen.
-- Vorlagenkosten werden von Meta Platforms (dem Plattforminhaber von WhatsApp) abgerechnet und variieren je nach Nachrichtentyp und Zielregion.
-- Zusätzlich zu Metas Gebühren zieht die Nutzung von WhatsApp über HireData für jede Nachricht oder automatisierte Aufgabe auch Credits aus Ihrem HireData-Plan ab.
-- Sie können die Kosten über Metas Abrechnungs-Interface zur Transparenz überwachen.
+- Antworten innerhalb von 24 Stunden nach der Nachricht eines Kontakts sind **kostenlos**.
+- Für das Starten eines Chats ist eine **genehmigte WhatsApp-Vorlage** erforderlich, wofür eine Gebühr anfällt.
+- Meta rechnet die Vorlagenkosten ab, die je nach Nachrichtentyp und Land variieren.
+- HireData zieht zusätzlich Credits für jede Nachricht oder automatisierte Aufgabe ab.
+- Sie können diese Kosten in Metas Abrechnungs-Interface verfolgen.
 
-Eine detaillierte Aufschlüsselung, wie WhatsApp-Nachrichtenkosten und -Vorlagen abgerechnet werden, finden Sie unter [Wie funktioniert die Kostenstruktur des WhatsApp-Messagings](/de/apps/messaging/whatsapp/how-does-the-whatsapp-messaging-cost-structure-work).
+Eine vollständige Aufschlüsselung finden Sie unter [Wie die Kosten für WhatsApp-Messaging funktionieren](/de/apps/messaging/whatsapp/how-does-the-whatsapp-messaging-cost-structure-work).
 
 <Tip>
-  - **Nutzen Sie All Chats**, um ein vollständiges Bild dessen zu erhalten, was Ihr Team gerade bearbeitet – besonders nützlich für Manager oder Team Leads.
-  - **Der türkise Punkt ist Ihr Prioritätssignal.** Wenn eine Konversation auf der rechten Seite einen türkisen Punkt hat, wartet ein Kandidat auf eine Antwort.
-  - **Kommentare sind privat.** Kandidaten sehen nie, was Sie dort schreiben, nutzen Sie sie also frei für interne Notizen.
+  - **Nutzen Sie All**, um alles zu sehen, was Ihr Team bearbeitet.
+  - **Der türkise Punkt ist Ihr Prioritätssignal.** Ein Kontakt wartet.
+  - **Kommentare sind privat.** Kontakte sehen sie nie.
 </Tip>
