@@ -6,7 +6,7 @@ keywords: ["créer une skill", "enregistrer une skill", "skill personnalisée Cl
 related: ["/fr/apps/mcp/hiredata-skills", "/fr/apps/mcp/install-hiredata-plugin", "/fr/apps/mcp/keep-hiredata-skills-up-to-date"]
 ---
 
-[Les skills HireData](/fr/apps/mcp/hiredata-skills) couvrent le travail que HireData connaît le mieux. Les choses que _vous_ faites de la même manière à chaque fois — le ton de voix de votre agence, la façon dont vous reconstruisez la signature d'e-mail d'un client, la check-list que vous passez en revue avant la mise en production d'un workspace — sont celles qui méritent d'être écrites. Une skill, c'est la façon de le faire une fois plutôt que de l'expliquer dans chaque conversation.
+[Les skills HireData](/fr/apps/mcp/hiredata-skills) couvrent le travail que HireData connaît le mieux. Les choses que _vous_ faites de la même manière à chaque fois sont celles qui méritent d'être écrites. Pensez au ton de voix de votre agence, à la façon dont vous reconstruisez la signature d'e-mail d'un client ou à la check-list que vous passez en revue avant la mise en production d'un workspace. Une skill, c'est la façon de le faire une fois plutôt que de l'expliquer dans chaque conversation.
 
 Une skill est un dossier contenant un fichier `SKILL.md` : du texte simple, aucun code nécessaire. Vous n'avez plus jamais à la mentionner ensuite. Votre assistant consulte la description de chaque skill que vous avez installée, et lit les instructions complètes dès que votre demande correspond à l'une d'elles.
 
@@ -16,9 +16,9 @@ Les bons candidats partagent trois caractéristiques :
 
 - **Vous le faites de manière répétée.** Une fois par mois suffit ; une fois dans votre vie, non.
 - **La méthode est stable.** Vous donneriez aujourd'hui les mêmes instructions à un nouveau collègue que l'an dernier.
-- **Il existe une bonne réponse.** Une charte, un ordre d'étapes imposé, un format qui doit correspondre — autant de choses qu'un assistant devine mal si vous ne les lui dites pas.
+- **Il existe une bonne réponse.** Une charte, un ordre d'étapes imposé, un format qui doit correspondre. Ce sont autant de choses qu'un assistant devine mal si vous ne les lui dites pas.
 
-S'il s'agit d'un cas unique, demandez-le simplement. Une skill que vous ne déclenchez jamais n'est que de l'encombrement.
+S'il s'agit d'un cas unique, demandez-le directement. Une skill que vous ne déclenchez jamais n'est que de l'encombrement.
 
 ## Avant de commencer
 
@@ -32,7 +32,7 @@ C'est la voie la plus simple, et elle fonctionne dans n'importe quelle conversat
 
 <Steps>
   <Step title="Faire la tâche une fois, correctement">
-    Travaillez-la avec votre assistant jusqu'à ce que le résultat soit vraiment celui que vous voulez. Corrigez-le au fur et à mesure — _« non, les icônes vont toujours sous le numéro de téléphone »_ — parce que ce sont ces corrections qui ont de la valeur.
+    Travaillez-la avec votre assistant jusqu'à ce que le résultat soit vraiment celui que vous voulez. Corrigez-le au fur et à mesure, par exemple _« non, les icônes vont toujours sous le numéro de téléphone »_. Ce sont ces corrections qui ont de la valeur.
   </Step>
   <Step title="Demander la skill">
     Dans la même conversation, collez :
@@ -69,7 +69,7 @@ Reconstruire la signature d'e-mail ATS d'un client sous forme de modèle d'e-mai
 Faites une signature avec votre assistant. Dites-lui quelles parties sont fixes et lesquelles proviennent de [variables](/fr/variables/introduction), où va le logo, ce qui se passe quand un numéro de téléphone manque, et quelles icônes vos clients utilisent. Lancez ensuite le prompt ci-dessus. La signature suivante démarre à partir de votre méthode plutôt que de zéro.
 
 <Note>
-  Les icônes et les logos d'un modèle d'e-mail doivent être hébergés quelque part où vos destinataires peuvent les atteindre. Traitez ce point dans la skill — d'où viennent les images, et que faire quand un client n'en a pas fourni — pour que la skill ne bute pas dessus à chaque fois.
+  Les icônes et les logos d'un modèle d'e-mail doivent être hébergés quelque part où vos destinataires peuvent les atteindre. Traitez ce point dans la skill : d'où viennent les images, et que faire quand un client n'en a pas fourni. Ainsi, la skill ne bute pas dessus à chaque fois.
 </Note>
 
 ## S'enregistrer en train de faire la tâche
@@ -85,7 +85,7 @@ Avant de commencer : votre vidéo et votre audio ne sont pas conservés, seuleme
     Cliquez sur **\+** dans le composeur et sélectionnez **Record a skill**, ou allez dans **Customize** \> **Skills**, cliquez sur **Add**, et sélectionnez **Record your screen**.
   </Step>
   <Step title="Faire la tâche, en commentant">
-    Travaillez à votre rythme habituel, jusqu'à une dizaine de minutes, et dites ce que vous faites et pourquoi — _« je vérifie toujours la marque en premier, parce que c'est elle qui détermine l'expéditeur »_. C'est le raisonnement qui rend la skill utile ; les clics seuls ne suffisent pas.
+    Travaillez à votre rythme habituel, jusqu'à une dizaine de minutes, et dites ce que vous faites et pourquoi, par exemple _« je vérifie toujours la marque en premier, parce que c'est elle qui détermine l'expéditeur »_. C'est le raisonnement qui rend la skill utile ; les clics seuls ne suffisent pas.
   </Step>
   <Step title="Relire ce que Claude propose">
     Claude analyse l'enregistrement et propose une nouvelle skill, ou une mise à jour d'une skill existante. Lisez-la avant d'enregistrer : un enregistrement capte des détails propres au seul cas que vous avez montré. Supprimez tout ce qui ne sera pas vrai la prochaine fois.
@@ -127,9 +127,9 @@ description: Rebuild a client's ATS email signature as a HireData email template
 
 Trois règles comptent :
 
-- **`name`** — lettres minuscules, chiffres et traits d'union uniquement, jusqu'à 64 caractères, et il ne peut pas contenir les mots _claude_ ou _anthropic_.
-- **`description`** — la seule partie que votre assistant lit avant de décider si la skill s'applique. Dites **ce qu'elle fait et quand l'utiliser**, avec les mots que vos collègues emploient réellement, et restez sous 200 caractères.
-- **`references/`** — mettez ici tout ce qui est long : listes de champs, exemples, cas limites. Faites-y référence depuis `SKILL.md`. Votre assistant n'ouvre ces fichiers que lorsqu'il en a besoin, ce qui garde la skill rapide.
+- **`name`** : lettres minuscules, chiffres et traits d'union uniquement, jusqu'à 64 caractères, et il ne peut pas contenir les mots _claude_ ou _anthropic_.
+- **`description`** : la seule partie que votre assistant lit avant de décider si la skill s'applique. Dites **ce qu'elle fait et quand l'utiliser**, avec les mots que vos collègues emploient réellement, et restez sous 200 caractères.
+- **`references/`** : mettez ici tout ce qui est long : listes de champs, exemples, cas limites. Faites-y référence depuis `SKILL.md`. Votre assistant n'ouvre ces fichiers que lorsqu'il en a besoin, ce qui garde la skill rapide.
 
 Compressez le dossier `my-skill` lui-même, de sorte que l'ouverture du zip montre exactement le dossier ci-dessus et non un autre dossier enveloppant. Téléversez-la ensuite comme à l'étape 3 de [Transformer une conversation en skill](#transformer-une-conversation-en-skill).
 

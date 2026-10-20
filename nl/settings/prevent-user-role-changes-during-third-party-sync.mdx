@@ -4,7 +4,7 @@ sidebarTitle: "Gebruikersrollen beschermen"
 description: "Gebruik de instelling Enable Third-Party Sync om de rol van een gebruiker in HireData te beschermen tegen overschrijven tijdens ATS-syncs"
 ---
 
-_Wanneer HireData synchroniseert met je ATS kan het automatisch gebruikersrollen bijwerken, waardoor soms aangepaste toegang die je handmatig hebt opgezet wordt overschreven. Dit artikel legt uit hoe je de instelling **Enable Third-Party Sync** gebruikt om de rol van een gebruiker in HireData te beschermen tegen wijzigingen tijdens sync, en wanneer je dit zou willen doen._
+_Wanneer HireData synchroniseert met je ATS kan het automatisch gebruikersrollen bijwerken, waardoor soms aangepaste toegang die je handmatig hebt opgezet wordt overschreven. Dit artikel legt uit hoe je de instelling **Enable Third-Party Sync** gebruikt om de rol van een gebruiker in HireData te beschermen tegen wijzigingen tijdens sync. Het legt ook uit wanneer je dit zou willen doen._
 
 ## Wat doet deze instelling?
 
@@ -12,11 +12,11 @@ Standaard synchroniseert HireData gebruikersrollen vanuit je ATS (bijv. Carerix)
 
 Het **uit**zetten van de instelling **Enable Third-Party Sync** voor een specifieke gebruiker vertelt HireData: _"Raak de rol van deze gebruiker niet aan tijdens sync."_ Hun HireData-rol blijft precies zoals je hem hebt ingesteld, ongeacht wat je app zegt.
 
-- Dit is vooral **handig voor niet-admin ATS-gebruikers die admin-toegang in HireData nodig hebben**. Iemand in Sales met een rol "Marketer" in je app kan bijvoorbeeld admin-toegang in HireData krijgen, en met sync uitgeschakeld wordt die toegang niet overschreven.
-- Dit geldt ook **voor gebruikers met Additional Roles** in Carerix. Als een gebruiker meerdere rollen heeft over verschillende labels binnen één Carerix-omgeving, en een van die aanvullende rollen geen admin is, kan HireData ze tijdens sync ten onrechte terugzetten naar een reguliere gebruiker. Deze instelling uitzetten voorkomt dat dit gebeurt.
+- Dit is vooral **handig voor niet-admin ATS-gebruikers die admin-toegang in HireData nodig hebben**. Iemand in Sales met een rol "Marketer" in je app kan bijvoorbeeld admin-toegang in HireData krijgen. Met sync uitgeschakeld wordt die toegang niet overschreven.
+- Dit geldt ook **voor gebruikers met Additional Roles** in Carerix. Een gebruiker kan meerdere rollen hebben over verschillende labels binnen één Carerix-omgeving. Als een van die aanvullende rollen geen admin is, kan HireData ze tijdens sync ten onrechte terugzetten naar een reguliere gebruiker. Deze instelling uitzetten voorkomt dat dit gebeurt.
 
 <Note>
-  Voor Carerix-gebruikers: als de instelling is uitgezet voor een gebruiker die Admin is in HireData, maar een andere rol heeft in Carerix (bijv. User, Marketer, Sales), kunnen ze de RMA-menu-items binnen Carerix niet openen, omdat ze specifiek admin-rechten in Carerix nodig hebben.
+  Voor Carerix-gebruikers: als de instelling is uitgezet voor een gebruiker die Admin is in HireData, maar een andere rol heeft in Carerix (bijv. User, Marketer, Sales), kunnen ze de RMA-menu-items binnen Carerix niet openen. Voor die items zijn specifiek admin-rechten in Carerix nodig.
 </Note>
 
 ![De Enable Third-Party Sync-toggle in de Access Control-instellingen van een gebruiker](/images/intercom/146220971-Screenshot-2026-05-27-at-13_51_33.png)

@@ -147,7 +147,7 @@ Die laatste zin is het belangrijkst. Zeg wat er moet gebeuren wanneer de data on
 
 ## Beperkingen
 
-**Hij wordt één keer per verzending bepaald, en daarna herhaald.** De waarde wordt gegenereerd de eerste keer dat er naar de variabele wordt verwezen en hergebruikt voor elke andere vermelding in hetzelfde bericht — dus twee keer `{{ celebration }}` in één e-mail geeft je twee keer dezelfde zin, geen twee pogingen. Hij wordt opnieuw bepaald wanneer zijn inputs veranderen, en dat is wat hem per ontvanger maakt. Een variabele zonder gekoppelde inputs heeft niets om op te variëren.
+**Hij wordt één keer per verzending bepaald, en daarna herhaald.** De waarde wordt gegenereerd de eerste keer dat er naar de variabele wordt verwezen en hergebruikt voor elke andere vermelding in hetzelfde bericht. Twee keer `{{ celebration }}` in één e-mail geeft je twee keer dezelfde zin, geen twee pogingen. Hij wordt opnieuw bepaald wanneer zijn inputs veranderen, en dat is wat hem per ontvanger maakt. Een variabele zonder gekoppelde inputs heeft niets om op te variëren.
 
 **Een opgeslagen default is geen vangnet.** Voor een AI-variabele is de default-waarde het slot waarin de gegenereerde waarde wordt geschreven, geen fallback die je kunt instellen. Als het model niets retourneert, resolvet de variabele naar niets. Om te garanderen dat er iets op de pagina belandt, gebruik je de [`default`](/nl/variables/modifiers#fallback)-modifier op de plek waar je ernaar verwijst:
 

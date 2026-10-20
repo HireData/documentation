@@ -147,7 +147,7 @@ Essa última frase é a que mais importa. Diga o que fazer quando os dados falta
 
 ## Limitações
 
-**Resolve-se uma vez por envio, e depois repete-se.** O valor é gerado na primeira vez que a variável é referenciada e reutilizado em todas as outras menções na mesma mensagem — por isso `{{ celebration }}` duas vezes num email dá-lhe a mesma frase duas vezes, não duas tentativas. É calculado de novo quando os seus inputs mudam, que é o que o torna por destinatário. Uma variável sem inputs anexados não tem nada sobre o qual variar.
+**Resolve-se uma vez por envio, e depois repete-se.** O valor é gerado na primeira vez que a variável é referenciada e reutilizado em todas as outras menções na mesma mensagem. Usar `{{ celebration }}` duas vezes num email dá-lhe a mesma frase duas vezes, não duas tentativas. É calculado de novo quando os seus inputs mudam, que é o que o torna por destinatário. Uma variável sem inputs anexados não tem nada sobre o qual variar.
 
 **Um valor por defeito armazenado não é uma rede de segurança.** Para uma variável de IA, o valor por defeito é o espaço em que o valor gerado é escrito, não um fallback que possa definir. Se o modelo não devolver nada, a variável resolve-se em nada. Para garantir que algo chega à página, use o modificador [`default`](/pt/variables/modifiers#fallback) onde a referencia:
 
