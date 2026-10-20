@@ -19,7 +19,7 @@ Eén automatisering met vier onderdelen:
 Elk tabblad, veld en default wordt behandeld in de referentie van de [HTTP Request-taak](/nl/reference/automation-tasks/http-request-task). Deze pagina loopt er één pad doorheen, van begin tot eind.
 
 <Note>
-  Dit recept verstuurt data **uit** HireData. Als je eigenlijk de andere richting nodig hebt — een andere tool die data **naar binnen** stuurt om een automatisering te starten — dan is dat een custom app-trigger. Zie [Custom Apps](/nl/apps/custom-apps/introduction) en [Een trigger instellen](/nl/apps/custom-apps/set-up-a-trigger).
+  Dit recept verstuurt data **uit** HireData. Als je de andere richting nodig hebt, waarbij een andere tool data **naar binnen** stuurt om een automatisering te starten, gebruik dan een custom app-trigger. Zie [Custom Apps](/nl/apps/custom-apps/introduction) en [Een trigger instellen](/nl/apps/custom-apps/set-up-a-trigger).
 </Note>
 
 ## Wat je opvraagt voordat je begint
@@ -29,7 +29,7 @@ Wie het endpoint beheert heeft dit allemaal. Het vooraf opvragen bespaart een ro
 - De **URL** om aan te roepen, en de **method** die deze verwacht
 - De **body** die het verwacht, idealiter als een voorbeeld-JSON-payload in plaats van een beschrijving
 - Hoe het **authenticeert**. Dit recept gebruikt een bearer token dat voor deze integratie is uitgegeven, niet iemands persoonlijke token
-- Wat het **retourneert** — zowel wanneer een call wordt geaccepteerd als wanneer die wordt geweigerd
+- Wat het **retourneert**, zowel wanneer een call wordt geaccepteerd als wanneer die wordt geweigerd
 - Of er een **test- of sandboxadres** is. De test in stap 7 verstuurt een echt request, dus je wilt een veilige plek om op te richten
 
 <Tip>
@@ -42,13 +42,13 @@ Wie het endpoint beheert heeft dit allemaal. Het vooraf opvragen bespaart een ro
 
 Open het **Start**-blok. Kies **HireData** als app, dan **Conversation** als object en **Ended** als trigger. De automatisering draait nu één keer telkens wanneer een gesprek eindigt.
 
-Elke trigger werkt hier — een ingevuld formulier, een kandidaat die is bijgewerkt in je ATS. Het verandert alleen welke velden je in stap 4 beschikbaar hebt om te versturen; de rest van het recept is hetzelfde.
+Elke trigger werkt hier, zoals een ingevuld formulier of een kandidaat die is bijgewerkt in je ATS. De trigger verandert alleen welke velden je in stap 4 beschikbaar hebt om te versturen. De rest van het recept is hetzelfde.
 
 {/* screenshot: cookbook-start-block.png — the Start block set to HireData / Conversation / Ended */}
 
 ### 2. Voeg de HTTP Request-taak toe
 
-Voeg een taak toe en kies **HTTP Request**. Deze staat onder zowel **Add** als **Message**, en beide routes openen dezelfde taak — zie [waar je de taak vindt](/nl/reference/automation-tasks/http-request-task#waar-je-de-taak-vindt).
+Voeg een taak toe en selecteer **HTTP Request**. Deze staat onder zowel **Add** als **Message**, en beide routes openen dezelfde taak. Zie [waar je de taak vindt](/nl/reference/automation-tasks/http-request-task#waar-je-de-taak-vindt).
 
 Als je een specificatie of een cURL-commando hebt gekregen toen je om de details van het endpoint vroeg, klik dan nu op **Import** in de footer van de drawer en laat HireData het request invullen. De twee routes vullen verschillende dingen in, dus check [wat een import invult](/nl/reference/automation-tasks/http-request-task#wat-een-import-invult) en loop daarna stap 3 tot en met 6 na tegen wat er is ingevuld. Vul het anders handmatig in zoals hieronder.
 
@@ -77,7 +77,7 @@ Punten in een property-naam nesten hem, dus een body als deze heeft zes properti
 | `contact.phone_number` | Het telefoonnummer van de **Sender** |
 | `outcome` | Een waarde uit een eerdere taak, of een vaste string |
 
-Een gesprek groepeert de mensen erin onder **Sender**, **Receiver** en **Owner**, dus kies uit de kant waar de kandidaat zit: de sender wanneer die het gesprek begon, de receiver wanneer jouw automatisering dat deed. Aan de kant van de sender volgt welk contactgegeven is ingevuld het kanaal — een telefoonnummer op WhatsApp, een e-mailadres op e-mail.
+Een gesprek groepeert de mensen erin onder **Sender**, **Receiver** en **Owner**, dus kies uit de kant waar de kandidaat zit: de sender wanneer die het gesprek begon, de receiver wanneer jouw automatisering dat deed. Aan de kant van de sender volgt welk contactgegeven is ingevuld het kanaal: een telefoonnummer op WhatsApp, een e-mailadres op e-mail.
 
 Meer in het algemeen hangt af van de trigger die je in stap 1 koos welke velden je kunt kiezen, inclusief waarden die eerdere taken in dezelfde automatisering hebben geproduceerd. Wat bij je endpoint aankomt is gewone JSON:
 
@@ -114,7 +114,7 @@ Als het endpoint in plaats daarvan een key in een specifieke header of query par
 
 Twee dingen om te doen voordat de response bruikbaar is, en het is makkelijker in deze volgorde.
 
-Begin op het tabblad **Advanced** en schrijf een **Description** — "Post conversation outcome" voor deze taak. Die vormt overal elders de titel van de taak, en is de eerste helft van de naam van elk veld dat deze taak produceert, dus die nu vastleggen bespaart je later het opnieuw doorlezen van een picker vol hernoemde velden.
+Begin op het tabblad **Advanced** en schrijf een **Description**. Gebruik voor deze taak "Post conversation outcome". Die vormt overal elders de titel van de taak. Het is ook de eerste helft van de naam van elk veld dat deze taak produceert, dus die nu vastleggen bespaart je later het opnieuw doorlezen van een picker vol hernoemde velden.
 
 Beschrijf vervolgens, in de sectie **Response** onder de tabbladen, de body die je endpoint retourneert. Stel dat het een geslaagde call beantwoordt met dit:
 
@@ -130,9 +130,9 @@ Klik onder **Success response (2xx)** twee keer op **Add property**: één voor 
 - `Post conversation outcome: id`
 - `Post conversation outcome: status`
 
-Ze komen bovenop de drie velden die elke HTTP Request-taak sowieso produceert — de statuscode, de response body als tekst, en of de call is geslaagd. `id` beschrijven is wat een latere taak bespaart die uit die tekst te moeten opgraven.
+Ze komen bovenop de drie velden die elke HTTP Request-taak sowieso produceert: de statuscode, de response body als tekst, en of de call is geslaagd. `id` beschrijven is wat een latere taak bespaart die uit die tekst te moeten opgraven.
 
-Beschrijf onder **Error response (non-2xx)** wat het endpoint retourneert wanneer het een call weigert — meestal een bericht dat je in een log wilt hebben. Die tree is alleen de moeite van het invullen waard als je de run instelt om door te gaan na een failure — zie [Bepaal wat er gebeurt als de call mislukt](#bepaal-wat-er-gebeurt-als-de-call-mislukt) hieronder.
+Beschrijf onder **Error response (non-2xx)** wat het endpoint retourneert wanneer het een call weigert. Dit is meestal een bericht dat je in een log wilt hebben. Die tree is alleen de moeite van het invullen waard als je de run instelt om door te gaan na een failure. Zie [Bepaal wat er gebeurt als de call mislukt](#bepaal-wat-er-gebeurt-als-de-call-mislukt) hieronder.
 
 Een waarde die je hier niet beschrijft is een waarde die geen enkele latere taak op naam kan kiezen. Zie [de response beschrijven](/nl/reference/automation-tasks/http-request-task#de-response-beschrijven).
 
@@ -152,7 +152,7 @@ Alles wat je in stap 4 op een vaste waarde hebt gezet is al ingevuld. De propert
 
 {/* screenshot: cookbook-test-dialog.png — the Test dialog before Send, every input still empty */}
 
-Klik op **Send**. Je krijgt een statuswoord terug, de HTTP-code en hoelang de call duurde, plus de volledige response body — en een **Outputs**-sectie met de waarden die HireData eruit heeft gehaald met de tree die je in stap 6 hebt gebouwd.
+Klik op **Send**. Je krijgt een statuswoord terug, de HTTP-code en hoelang de call duurde, plus de volledige response body. Je krijgt ook een **Outputs**-sectie met de waarden die HireData eruit heeft gehaald met de tree die je in stap 6 hebt gebouwd.
 
 Lees die tegen elkaar. Een property die je hebt beschreven maar die ontbreekt in wat terugkomt, zie je hier, en dit is het goedkoopste moment om daarachter te komen.
 

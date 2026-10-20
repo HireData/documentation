@@ -19,7 +19,7 @@ Eine Automatisierung mit vier Teilen:
 Jeder Tab, jedes Feld und jeder Standardwert ist in der Referenz zur [HTTP-Request-Aufgabe](/de/reference/automation-tasks/http-request-task) beschrieben. Diese Seite geht einen Weg hindurch, von Anfang bis Ende.
 
 <Note>
-  Dieses Rezept sendet Daten aus HireData **heraus**. Wenn Sie eigentlich die andere Richtung brauchen – ein anderes Tool sendet Daten **hinein**, um eine Automatisierung zu starten –, ist das stattdessen ein Custom-App-Trigger. Siehe [Custom Apps](/de/apps/custom-apps/introduction) und [Einen Trigger einrichten](/de/apps/custom-apps/set-up-a-trigger).
+  Dieses Rezept sendet Daten aus HireData **heraus**. Wenn Sie die andere Richtung brauchen, bei der ein anderes Tool Daten **hinein** sendet, um eine Automatisierung zu starten, verwenden Sie stattdessen einen Custom-App-Trigger. Siehe [Custom Apps](/de/apps/custom-apps/introduction) und [Einen Trigger einrichten](/de/apps/custom-apps/set-up-a-trigger).
 </Note>
 
 ## Was Sie vorab erfragen sollten
@@ -29,7 +29,7 @@ Wer den Endpunkt besitzt, hat all das. Es vorab zu bekommen erspart eine Runde R
 - Die **URL**, die aufgerufen werden soll, und die **Methode**, die sie erwartet
 - Den **Body**, den sie erwartet, idealerweise als Beispiel-JSON-Payload statt als Beschreibung
 - Wie sie **authentifiziert**. Dieses Rezept verwendet einen für diese Integration ausgestellten Bearer-Token, keinen persönlichen
-- Was sie **zurückgibt** – sowohl wenn ein Aufruf akzeptiert als auch wenn er abgelehnt wird
+- Was sie **zurückgibt**, sowohl wenn ein Aufruf akzeptiert als auch wenn er abgelehnt wird
 - Ob es eine **Test- oder Sandbox-Adresse** gibt. Der Test in Schritt 7 sendet einen echten Request, Sie wollen also ein sicheres Ziel dafür
 
 <Tip>
@@ -42,13 +42,13 @@ Wer den Endpunkt besitzt, hat all das. Es vorab zu bekommen erspart eine Runde R
 
 Öffnen Sie den **Start**-Block. Wählen Sie **HireData** als App, dann **Conversation** als Objekt und **Ended** als Trigger. Die Automatisierung läuft jetzt einmal, jedes Mal wenn eine Konversation endet.
 
-Jeder Trigger funktioniert hier – eine abgeschlossene Formularantwort, ein aktualisierter Kandidat in Ihrem ATS. Er ändert nur, welche Felder Ihnen in Schritt 4 zum Senden zur Verfügung stehen; der Rest des Rezepts bleibt gleich.
+Jeder Trigger funktioniert hier, etwa eine abgeschlossene Formularantwort oder ein aktualisierter Kandidat in Ihrem ATS. Der Trigger ändert nur, welche Felder Ihnen in Schritt 4 zum Senden zur Verfügung stehen. Der Rest des Rezepts bleibt gleich.
 
 {/* screenshot: cookbook-start-block.png — the Start block set to HireData / Conversation / Ended */}
 
 ### 2. Die HTTP-Request-Aufgabe hinzufügen
 
-Fügen Sie eine Aufgabe hinzu und wählen Sie **HTTP Request**. Sie ist sowohl unter **Add** als auch unter **Message** einsortiert, und beide Wege öffnen dieselbe Aufgabe – siehe [wo Sie die Aufgabe finden](/de/reference/automation-tasks/http-request-task#wo-sie-die-aufgabe-finden).
+Fügen Sie eine Aufgabe hinzu und wählen Sie **HTTP Request** aus. Sie ist sowohl unter **Add** als auch unter **Message** einsortiert, und beide Wege öffnen dieselbe Aufgabe. Siehe [wo Sie die Aufgabe finden](/de/reference/automation-tasks/http-request-task#wo-sie-die-aufgabe-finden).
 
 Wenn Sie beim Erfragen der Endpunkt-Details eine Spezifikation oder einen cURL-Befehl erhalten haben, klicken Sie jetzt auf **Import** in der Fußzeile des Drawers und lassen Sie HireData den Request ausfüllen. Die beiden Wege füllen unterschiedliche Dinge aus – prüfen Sie also [was ein Import ausfüllt](/de/reference/automation-tasks/http-request-task#was-ein-import-ausfüllt) und gehen Sie dann die Schritte 3 bis 6 gegen das durch, was er geschrieben hat. Andernfalls füllen Sie ihn wie unten von Hand aus.
 
@@ -77,7 +77,7 @@ Punkte in einem Eigenschaftsnamen verschachteln ihn, ein Body wie dieser braucht
 | `contact.phone_number` | Die **Sender**-Telefonnummer |
 | `outcome` | Ein Wert aus einer früheren Aufgabe oder ein fester String |
 
-Eine Konversation gruppiert die beteiligten Personen unter **Sender**, **Receiver** und **Owner** – wählen Sie also von der Seite, auf der der Kandidat steht: der Sender, wenn er die Konversation gestartet hat, der Receiver, wenn Ihre Automatisierung es war. Auf der Sender-Seite richtet sich, welches Kontaktdetail ausgefüllt ist, nach dem Kanal – eine Telefonnummer bei WhatsApp, eine E-Mail-Adresse bei E-Mail.
+Eine Konversation gruppiert die beteiligten Personen unter **Sender**, **Receiver** und **Owner**, wählen Sie also von der Seite, auf der der Kandidat steht: der Sender, wenn er die Konversation gestartet hat, der Receiver, wenn Ihre Automatisierung es war. Auf der Sender-Seite richtet sich, welches Kontaktdetail ausgefüllt ist, nach dem Kanal: eine Telefonnummer bei WhatsApp, eine E-Mail-Adresse bei E-Mail.
 
 Allgemeiner gilt: Welche Felder Sie wählen können, hängt vom Trigger ab, den Sie in Schritt 1 gewählt haben, und schließt Werte ein, die frühere Aufgaben derselben Automatisierung erzeugt haben. Was bei Ihrem Endpunkt ankommt, ist gewöhnliches JSON:
 
@@ -114,7 +114,7 @@ Wenn der Endpunkt stattdessen einen Key in einem benannten Header oder Query-Par
 
 Zwei Dinge sind zu tun, bevor die Response nutzbar ist – und es ist in dieser Reihenfolge einfacher.
 
-Beginnen Sie im Tab **Advanced** und schreiben Sie eine **Description** – „Post conversation outcome" für diese Aufgabe. Sie betitelt die Aufgabe überall sonst und ist die erste Hälfte des Namens jedes Feldes, das diese Aufgabe erzeugt – sie jetzt festzulegen erspart Ihnen später das Durchlesen einer Auswahl voller umbenannter Felder.
+Beginnen Sie im Tab **Advanced** und schreiben Sie eine **Description**. Verwenden Sie für diese Aufgabe „Post conversation outcome". Sie betitelt die Aufgabe überall sonst. Außerdem ist sie die erste Hälfte des Namens jedes Feldes, das diese Aufgabe erzeugt, sie jetzt festzulegen erspart Ihnen später das Durchlesen einer Auswahl voller umbenannter Felder.
 
 Beschreiben Sie dann im Bereich **Response** unterhalb der Tabs den Body, den Ihr Endpunkt zurückgibt. Angenommen, er beantwortet einen erfolgreichen Aufruf damit:
 
@@ -130,9 +130,9 @@ Klicken Sie unter **Success response (2xx)** zweimal auf **Add property**: eine 
 - `Post conversation outcome: id`
 - `Post conversation outcome: status`
 
-Sie kommen zusätzlich zu den drei Feldern, die jede HTTP-Request-Aufgabe ohnehin erzeugt – dem Statuscode, dem Response-Body als Text und ob der Aufruf erfolgreich war. `id` zu beschreiben erspart einer späteren Aufgabe, ihn aus diesem Text herauszugraben.
+Sie kommen zusätzlich zu den drei Feldern, die jede HTTP-Request-Aufgabe ohnehin erzeugt: dem Statuscode, dem Response-Body als Text und ob der Aufruf erfolgreich war. `id` zu beschreiben erspart einer späteren Aufgabe, ihn aus diesem Text herauszugraben.
 
-Beschreiben Sie unter **Error response (non-2xx)**, was der Endpunkt zurückgibt, wenn er einen Aufruf ablehnt – meist eine Meldung, die Sie in einem Log haben wollen. Dieser Baum lohnt sich nur, wenn Sie den Run so einstellen, dass er über einen Fehlschlag hinaus weiterläuft – siehe [Festlegen, was passiert, wenn der Aufruf fehlschlägt](#festlegen-was-passiert-wenn-der-aufruf-fehlschlägt) unten.
+Beschreiben Sie unter **Error response (non-2xx)**, was der Endpunkt zurückgibt, wenn er einen Aufruf ablehnt. Das ist meist eine Meldung, die Sie in einem Log haben wollen. Dieser Baum lohnt sich nur, wenn Sie den Run so einstellen, dass er über einen Fehlschlag hinaus weiterläuft. Siehe [Festlegen, was passiert, wenn der Aufruf fehlschlägt](#festlegen-was-passiert-wenn-der-aufruf-fehlschlägt) unten.
 
 Ein Wert, den Sie hier nicht beschreiben, ist ein Wert, den keine spätere Aufgabe namentlich herausgreifen kann. Siehe [die Response beschreiben](/de/reference/automation-tasks/http-request-task#die-response-beschreiben).
 
@@ -152,7 +152,7 @@ Alles, was Sie in Schritt 4 auf einen festen Wert gesetzt haben, ist bereits aus
 
 {/* screenshot: cookbook-test-dialog.png — the Test dialog before Send, every input still empty */}
 
-Klicken Sie auf **Send**. Sie erhalten ein Statuswort, den HTTP-Code und die Dauer des Aufrufs zurück, dazu den vollständigen Response-Body – und einen Bereich **Outputs**, der die Werte auflistet, die HireData mit dem in Schritt 6 gebauten Baum herausgezogen hat.
+Klicken Sie auf **Send**. Sie erhalten ein Statuswort, den HTTP-Code und die Dauer des Aufrufs zurück, dazu den vollständigen Response-Body. Außerdem erhalten Sie einen Bereich **Outputs**, der die Werte auflistet, die HireData mit dem in Schritt 6 gebauten Baum herausgezogen hat.
 
 Lesen Sie beides gegeneinander. Eine Eigenschaft, die Sie beschrieben haben, die aber fehlt, zeigt sich hier – und das ist der günstigste Moment, das herauszufinden.
 

@@ -6,17 +6,17 @@ keywords: ["instalar HireData skills", "prompt de skills HireData", "carregar sk
 related: ["/apps/mcp/install-hiredata-plugin", "/apps/mcp/hiredata-skills", "/apps/mcp/keep-hiredata-skills-up-to-date"]
 ---
 
-Uma skill da HireData é um conjunto de instruções escritas que ensina o seu assistente de IA a forma como a HireData faz um trabalho — escrever um template de email, diagnosticar uma automação, planear uma ativação. Há duas formas de levar [as skills da HireData](/pt/apps/mcp/hiredata-skills) até ao seu assistente. Esta página cobre a manual: você cola um prompt, o seu assistente obtém as instruções e entrega-lhe um ficheiro, e você carrega esse ficheiro você mesmo. Cerca de dois minutos por skill.
+Uma skill da HireData é um conjunto de instruções escritas que ensina o seu assistente de IA a forma como a HireData faz um trabalho, como escrever um template de email, diagnosticar uma automação ou planear uma ativação. Há duas formas de levar [as skills da HireData](/pt/apps/mcp/hiredata-skills) até ao seu assistente. Esta página cobre a manual: você cola um prompt, o seu assistente obtém as instruções e entrega-lhe um ficheiro, e você carrega esse ficheiro você mesmo. Cerca de dois minutos por skill.
 
 Se puder [instalar o plugin](/pt/apps/mcp/install-hiredata-plugin), faça antes isso — é um único passo, inclui a ligação da HireData e atualiza-se a partir de um botão.
 
-| Rota | O que acontece | Escolha-a quando |
+| Rota | O que acontece | Selecione-a quando |
 | --- | --- | --- |
 | [Instalar o plugin](/pt/apps/mcp/install-hiredata-plugin) | O seu assistente recebe todas as skills da HireData **e** a ligação MCP da HireData num único passo, e mais tarde ambas se atualizam a partir de um botão | O seu assistente suporta plugins e a sua organização permite-os. **Comece aqui.** |
 | Instalar com um prompt (esta página) | O seu assistente obtém os ficheiros das skills; você guarda as que quiser. Nada se atualiza sozinho | O seu assistente não tem suporte para plugins, a sua organização bloqueia o marketplace, ou só quer uma ou duas skills |
 
 <Note>
-  Uma skill ensina ao seu assistente a forma como a HireData faz um trabalho. Não permite ao seu assistente ver ou alterar nada nos seus workspaces. Para isso também precisa da [ligação MCP da HireData](/pt/apps/mcp/connect-hiredata-to-your-ai-assistant) — o elo entre o seu assistente e a sua conta HireData. Configure ambas e terá o que o plugin oferece.
+  Uma skill ensina ao seu assistente a forma como a HireData faz um trabalho. Não permite ao seu assistente ver ou alterar nada nos seus workspaces. Para isso também precisa da [ligação MCP da HireData](/pt/apps/mcp/connect-hiredata-to-your-ai-assistant), o elo entre o seu assistente e a sua conta HireData. Configure ambas e terá o que o plugin oferece.
 </Note>
 
 ## Instalar skills no Claude
@@ -29,14 +29,14 @@ Comece com uma. Depois de o fazer uma vez, as restantes funcionam exatamente da 
   <Step title="Deixe o Claude criar ficheiros">
     No Claude na web, clique no seu nome no canto inferior esquerdo e vá a **Settings** \> **Capabilities**. Na app de desktop do Claude, a mesma página está em **Customize**.
 
-    Ative a execução de código e a criação de ficheiros. O Claude usa isto para construir o ficheiro que está prestes a descarregar; se estiver desativada, o Claude dir-lhe-á que não consegue criar ficheiros.
+    Ative a execução de código e a criação de ficheiros. O Claude usa isto para construir o ficheiro que está prestes a descarregar; se estiver desativada, o Claude diz-lhe que não consegue criar ficheiros.
 
     Não há interruptor aí, ou ele não fica ligado? Provavelmente está num plano Team ou Enterprise, onde um Owner o controla em **Organization settings** \> **Skills** — tanto **Code execution and file creation** como **Skills** têm de estar ativos. Peça-lhe para ativar, ou para [instalar o plugin](/pt/apps/mcp/install-hiredata-plugin#claude-team-e-enterprise) para toda a gente, o que dá menos trabalho a ambos.
   </Step>
   <Step title="Peça ao Claude para construir o ficheiro da skill">
     Comece uma conversa **nova** e cole o prompt abaixo. Ainda não instala nada — pede ao Claude para construir um ficheiro, que carrega no passo seguinte.
 
-    Este prompt constrói a skill **Criar templates de email**. Para construir outra, substitua `hiredata-create-email-templates` por outro nome de pasta da [lista de skills mais abaixo nesta página](#os-nomes-das-pastas-das-skills). Aparece duas vezes — uma na primeira linha e outra no endereço web — por isso altere ambas.
+    Este prompt constrói a skill **Criar templates de email**. Para construir outra, substitua `hiredata-create-email-templates` por outro nome de pasta da [lista de skills mais abaixo nesta página](#os-nomes-das-pastas-das-skills). Aparece duas vezes, uma na primeira linha e outra no endereço web, por isso altere ambas.
 
     ```text
     Please package the HireData "hiredata-create-email-templates" skill for me.
@@ -50,12 +50,12 @@ Comece com uma. Depois de o fazer uma vez, as restantes funcionam exatamente da 
     O Claude responde com um ficheiro zip. Descarregue-o — fica na sua pasta de Transferências.
   </Step>
   <Step title="Guarde-o como uma skill">
-    No Claude, vá a **Customize** \> **Skills**, clique em **\[Add\]**, selecione a opção de carregar um ficheiro de skill e escolha o zip que acabou de descarregar.
+    No Claude, vá a **Customize** \> **Skills**, clique em **Add**, selecione a opção de carregar um ficheiro de skill e escolha o zip que acabou de descarregar.
 
     A skill aparece agora na sua lista, ativada.
   </Step>
   <Step title="Verifique que funciona">
-    Comece outra conversa **nova** — as skills só são carregadas quando uma conversa começa — e peça algo para que a skill serve, por exemplo: _"Desenha um email de confirmação de candidatura para candidatos. Mostra-me uma pré-visualização e não envies nada."_
+    As skills só são carregadas quando uma conversa começa, por isso comece outra conversa **nova**. Peça algo para que a skill serve, por exemplo: _"Desenha um email de confirmação de candidatura para candidatos. Mostra-me uma pré-visualização e não envies nada."_
 
     O Claude menciona a skill quando começa a trabalhar. Se não o fizer, consulte [Resolução de problemas](#resolução-de-problemas).
   </Step>
@@ -78,10 +78,10 @@ Then give me one zip per skill, each with that skill's folder at the root of
 the zip, so I can upload them one by one.
 ```
 
-Carregue cada zip através de **Customize** \> **Skills** \> **\[Add\]**.
+Carregue cada zip através de **Customize** \> **Skills** \> **Add**.
 
 <Note>
-  **Usa o modo Cowork do Claude?** Peça ficheiros `.skill` em vez de zips — _"envia-mos como ficheiros .skill"_ — e o Claude entrega ficheiros que pode guardar na sua conta diretamente a partir da sessão.
+  **Usa o modo Cowork do Claude?** Peça ficheiros `.skill` em vez de zips (_"envia-mos como ficheiros .skill"_), e o Claude entrega ficheiros que pode guardar na sua conta diretamente a partir da sessão.
 </Note>
 
 ## Instalar uma skill no ChatGPT
@@ -138,8 +138,8 @@ A HireData vai adicionando skills ao longo do tempo, por isso consulte [o reposi
 
 ## Resolução de problemas
 
-- **O seu assistente diz que não consegue aceder aos ficheiros.** Precisa de permissão para obter páginas web — pesquisa e obtenção de páginas em **Settings** \> **Capabilities**. Se a sua organização a desativou, a rota do plugin é a sua única opção; peça ao seu administrador de IA para permitir antes o marketplace da HireData.
-- **O carregamento é rejeitado.** Abra o zip e verifique que tem este aspeto — a pasta da skill primeiro, com o `SKILL.md` lá dentro:
+- **O seu assistente diz que não consegue aceder aos ficheiros.** Precisa de permissão para obter páginas web. Ative a pesquisa e obtenção de páginas em **Settings** \> **Capabilities**. Se a sua organização a desativou, a rota do plugin é a sua única opção; peça ao seu administrador de IA para permitir antes o marketplace da HireData.
+- **O carregamento é rejeitado.** Abra o zip e verifique que tem este aspeto, com a pasta da skill primeiro e o `SKILL.md` lá dentro:
   ```text
   hiredata-create-email-templates/
   ├── SKILL.md

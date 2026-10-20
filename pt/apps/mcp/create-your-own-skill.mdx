@@ -54,10 +54,10 @@ Esta é a rota mais fácil e funciona em qualquer conversa do Claude. Já fez a 
     ```
   </Step>
   <Step title="Guarde-a">
-    No Claude, vá a **Customize** \> **Skills**, clique em **\[Add\]**, selecione a opção de carregar um ficheiro de skill e escolha o zip. No ChatGPT, vá a [chatgpt.com/skills](https://chatgpt.com/skills), clique em **Create** e depois em **Upload from your computer**.
+    No Claude, vá a **Customize** \> **Skills**, clique em **Add**, selecione a opção de carregar um ficheiro de skill e escolha o zip. No ChatGPT, vá a [chatgpt.com/skills](https://chatgpt.com/skills), clique em **Create** e depois em **Upload from your computer**.
   </Step>
   <Step title="Teste-a numa nova conversa">
-    As skills só são carregadas quando uma conversa começa, por isso abra uma nova e peça como pediria normalmente — sem nomear a skill. Se o seu assistente não a for buscar, consulte [quando uma skill não é acionada](#quando-uma-skill-não-é-acionada).
+    As skills só são carregadas quando uma conversa começa, por isso abra uma nova e peça como pediria normalmente, sem nomear a skill. Se o seu assistente não a for buscar, consulte [quando uma skill não é acionada](#quando-uma-skill-não-é-acionada).
   </Step>
 </Steps>
 
@@ -75,13 +75,13 @@ Faça uma assinatura com o seu assistente. Diga-lhe que partes são fixas e quai
 
 Pode gravar-se a fazer a tarefa em vez de a descrever. Útil quando o trabalho atravessa vários ecrãs e é mais fácil de mostrar do que de escrever.
 
-Precisa das três coisas: um Mac, um plano Pro, Max ou Team, e o modo Cowork do Claude. Se **Record a skill** não aparecer no menu **\[\+\]**, não o tem — use antes a Rota 1.
+Precisa das três coisas: um Mac, um plano Pro, Max ou Team, e o modo Cowork do Claude. Se **Record a skill** não aparecer no menu **\+**, não o tem. Use antes a Rota 1.
 
 Antes de começar: o seu vídeo e áudio não são guardados, apenas capturas de ecrã da sessão, armazenadas na tarefa do Cowork. Trate-a como uma partilha de ecrã e feche tudo o que não mostraria a um colega.
 
 <Steps>
   <Step title="Inicie a gravação">
-    Clique em **\[\+\]** no compositor e selecione **Record a skill**, ou vá a **Customize** \> **Skills**, clique em **\[Add\]** e selecione **Record your screen**.
+    Clique em **\+** no compositor e selecione **Record a skill**, ou vá a **Customize** \> **Skills**, clique em **Add** e selecione **Record your screen**.
   </Step>
   <Step title="Faça a tarefa e narre">
     Trabalhe ao seu ritmo normal, até cerca de dez minutos, e diga o que está a fazer e porquê — _"verifico sempre a marca primeiro, porque é isso que decide o remetente"_. O raciocínio é o que torna a skill valiosa; os cliques sozinhos não.
@@ -104,7 +104,7 @@ my-skill/
     └── examples.md
 ```
 
-O `SKILL.md` é um ficheiro de texto simples. Escreva-o num editor de texto — não no Word — e guarde-o como `SKILL.md`, sem `.txt` nem `.docx` no fim. Começa com dois campos obrigatórios entre duas linhas de três hífenes, seguidos de texto normal:
+O `SKILL.md` é um ficheiro de texto simples. Escreva-o num editor de texto (não no Word) e guarde-o como `SKILL.md`, sem `.txt` nem `.docx` no fim. Começa com dois campos obrigatórios entre duas linhas de três hífenes, seguidos de texto normal:
 
 ```markdown
 ---
@@ -150,7 +150,7 @@ Nove em cada dez vezes o problema está na descrição, não nas instruções.
 
 Uma skill que carrega você mesmo é pessoal — cada colega carrega a sua própria cópia, a menos que um Owner a disponibilize para toda a organização. Para a entregar a alguém, envie o zip.
 
-Nos planos Team e Enterprise, um Owner pode disponibilizar uma skill para todos: **Organization settings** \> **Skills** \> **\[\+ Add\]**, carregue o zip e ela aparece em **Customize** \> **Skills** de cada membro. Os Owners também podem desativar por completo as skills criadas por utilizadores — por isso, se não conseguir carregar uma, é essa a razão.
+Nos planos Team e Enterprise, um Owner pode disponibilizar uma skill para todos: **Organization settings** \> **Skills** \> **\+ Add**, carregue o zip e ela aparece em **Customize** \> **Skills** de cada membro. Os Owners também podem desativar por completo as skills criadas por utilizadores, por isso, se não conseguir carregar uma, é essa a razão.
 
 <Warning>
   Uma skill dá ao seu assistente instruções que ele vai seguir. Instale apenas skills de pessoas em quem confia, leia-a de ponta a ponta antes de a ativar e nunca coloque passwords, chaves de API ou dados de clientes dentro de uma — use antes a [ligação MCP da HireData](/pt/apps/mcp/connect-hiredata-to-your-ai-assistant) para dados ao vivo.
@@ -162,7 +162,13 @@ Se a sua skill puder ajudar outros utilizadores da HireData, a HireData publica-
 
 A rota fácil: envie-a para [support@hiredata.com](mailto:support@hiredata.com) com uma linha sobre o que faz e a quem ajuda, e a HireData trata do resto.
 
-Está à vontade com o GitHub? Abra antes um pull request em [github.com/HireData/skills](https://github.com/HireData/skills). Em resumo: adicione a sua pasta em `plugins/hiredata/skills/` com um nome em minúsculas, hifenizado e de preferência começado por um verbo, um `SKILL.md` e uma pasta `references/` com um único nível de profundidade; adicione casos de avaliação a `evals/regression-cases.json` — um uso normal, um caso com dados em falta ou ambíguos, um caso de segurança ou de combinação inválida, mais um resultado de baseline e um candidato pontuados segundo `evals/RUBRIC.md`; e execute `python3 scripts/validate_repo.py` antes de abrir o PR. O [CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) tem os requisitos completos e a checklist de revisão.
+Está à vontade com o GitHub? Abra antes um pull request em [github.com/HireData/skills](https://github.com/HireData/skills). Em resumo:
+
+1. Adicione a sua pasta em `plugins/hiredata/skills/` com um nome em minúsculas, hifenizado e de preferência começado por um verbo, um `SKILL.md` e uma pasta `references/` com um único nível de profundidade.
+2. Adicione casos de avaliação a `evals/regression-cases.json`: um uso normal, um caso com dados em falta ou ambíguos e um caso de segurança ou de combinação inválida. Inclua um resultado de baseline e um candidato pontuados segundo `evals/RUBRIC.md`.
+3. Execute `python3 scripts/validate_repo.py` antes de abrir o PR.
+
+O [CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) tem os requisitos completos e a checklist de revisão.
 
 <CardGroup cols={2}>
   <Card title="Veja como as skills da HireData são escritas" icon="github" href="https://github.com/HireData/skills">

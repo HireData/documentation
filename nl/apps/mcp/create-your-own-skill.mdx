@@ -54,10 +54,10 @@ Dit is de makkelijkste route, en hij werkt in elk Claude-gesprek. Je hebt de taa
     ```
   </Step>
   <Step title="Sla hem op">
-    Ga in Claude naar **Customize** \> **Skills**, klik op **\[Add\]**, kies de optie om een skill-bestand te uploaden en selecteer de zip. In ChatGPT ga je naar [chatgpt.com/skills](https://chatgpt.com/skills), klik je op **Create** en vervolgens op **Upload from your computer**.
+    Ga in Claude naar **Customize** \> **Skills**, klik op **Add**, kies de optie om een skill-bestand te uploaden en selecteer de zip. In ChatGPT ga je naar [chatgpt.com/skills](https://chatgpt.com/skills), klik je op **Create** en vervolgens op **Upload from your computer**.
   </Step>
   <Step title="Test hem in een nieuw gesprek">
-    Skills worden alleen geladen wanneer een gesprek start, dus open een nieuw gesprek en vraag zoals je normaal zou vragen — niet door de skill bij naam te noemen. Als je assistent er niet naar grijpt, zie [wanneer een skill niet triggert](#wanneer-een-skill-niet-triggert).
+    Skills worden alleen geladen wanneer een gesprek start, dus open een nieuw gesprek en vraag zoals je normaal zou vragen, niet door de skill bij naam te noemen. Als je assistent er niet naar grijpt, zie [wanneer een skill niet triggert](#wanneer-een-skill-niet-triggert).
   </Step>
 </Steps>
 
@@ -75,13 +75,13 @@ Doe één handtekening samen met je assistent. Vertel welke delen vast zijn en w
 
 Je kunt jezelf opnemen terwijl je de taak doet, in plaats van hem te beschrijven. Handig wanneer het werk meerdere schermen beslaat en makkelijker te laten zien is dan op te schrijven.
 
-Je hebt alle drie nodig: een Mac, een Pro-, Max- of Team-abonnement, en Claude's Cowork-modus. Als **Record a skill** niet in het **\[\+\]**-menu verschijnt, heb je het niet — gebruik dan Route 1.
+Je hebt alle drie nodig: een Mac, een Pro-, Max- of Team-abonnement, en Claude's Cowork-modus. Als **Record a skill** niet in het **\+**-menu verschijnt, heb je het niet. Gebruik dan Route 1.
 
 Voordat je begint: je video en audio worden niet bewaard, alleen screenshots uit de sessie, opgeslagen in de Cowork-taak. Behandel het als een schermdeling en sluit alles wat je niet aan een collega zou laten zien.
 
 <Steps>
   <Step title="Start de opname">
-    Klik op **\[\+\]** in de composer en kies **Record a skill**, of ga naar **Customize** \> **Skills**, klik op **\[Add\]** en kies **Record your screen**.
+    Klik op **\+** in de composer en kies **Record a skill**, of ga naar **Customize** \> **Skills**, klik op **Add** en kies **Record your screen**.
   </Step>
   <Step title="Doe de taak, en vertel erbij">
     Werk in je normale tempo, tot ongeveer tien minuten, en zeg wat je doet en waarom — _"ik controleer altijd eerst het merk, want dat bepaalt de afzender"_. De redenering is wat de skill de moeite waard maakt; de kliks alleen niet.
@@ -104,7 +104,7 @@ my-skill/
     └── examples.md
 ```
 
-`SKILL.md` is een plat tekstbestand. Schrijf het in een teksteditor — niet in Word — en sla het op als `SKILL.md`, zonder `.txt` of `.docx` erachter. Het begint met twee verplichte velden tussen twee regels van drie streepjes, gevolgd door gewone tekst:
+`SKILL.md` is een plat tekstbestand. Schrijf het in een teksteditor (niet in Word) en sla het op als `SKILL.md`, zonder `.txt` of `.docx` erachter. Het begint met twee verplichte velden tussen twee regels van drie streepjes, gevolgd door gewone tekst:
 
 ```markdown
 ---
@@ -150,7 +150,7 @@ In negen van de tien gevallen zit het probleem in de beschrijving, niet in de in
 
 Een skill die je zelf uploadt is persoonlijk — elke collega uploadt zijn eigen kopie, tenzij een Owner hem voor de hele organisatie beschikbaar stelt. Om er een over te dragen, stuur je de zip.
 
-Op Team- en Enterprise-abonnementen kan een Owner een skill voor iedereen beschikbaar stellen: **Organization settings** \> **Skills** \> **\[\+ Add\]**, upload de zip, en hij verschijnt bij elk lid onder **Customize** \> **Skills**. Owners kunnen door gebruikers gemaakte skills ook volledig uitschakelen — dus als jij er geen kunt uploaden, is dat de reden.
+Op Team- en Enterprise-abonnementen kan een Owner een skill voor iedereen beschikbaar stellen: **Organization settings** \> **Skills** \> **\+ Add**, upload de zip, en hij verschijnt bij elk lid onder **Customize** \> **Skills**. Owners kunnen door gebruikers gemaakte skills ook volledig uitschakelen, dus als jij er geen kunt uploaden, is dat de reden.
 
 <Warning>
   Een skill geeft je assistent instructies die hij zal opvolgen. Installeer alleen skills van mensen die je vertrouwt, lees een skill door voordat je hem inschakelt, en zet er nooit wachtwoorden, API-keys of klantgegevens in — gebruik voor live data de [HireData MCP-verbinding](/nl/apps/mcp/connect-hiredata-to-your-ai-assistant).
@@ -162,7 +162,13 @@ Als jouw skill andere HireData-gebruikers zou helpen, publiceert HireData hem. D
 
 De makkelijke route: stuur hem naar [support@hiredata.com](mailto:support@hiredata.com) met een regel over wat hij doet en wie hij helpt, en HireData pakt het vanaf daar op.
 
-Vertrouwd met GitHub? Open dan een pull request op [github.com/HireData/skills](https://github.com/HireData/skills). In het kort: voeg je map toe onder `plugins/hiredata/skills/` met een naam in kleine letters, met koppeltekens en bij voorkeur beginnend met een werkwoord, een `SKILL.md` en een `references/`-map van één niveau diep; voeg eval-cases toe aan `evals/regression-cases.json` — een normaal gebruiksgeval, een geval met ontbrekende of dubbelzinnige data, een safety- of ongeldige-combinatie-geval, plus een baseline- en kandidaatresultaat beoordeeld tegen `evals/RUBRIC.md`; en voer `python3 scripts/validate_repo.py` uit voordat je de PR opent. [CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) bevat alle vereisten en de reviewchecklist.
+Vertrouwd met GitHub? Open dan een pull request op [github.com/HireData/skills](https://github.com/HireData/skills). In het kort:
+
+1. Voeg je map toe onder `plugins/hiredata/skills/` met een naam in kleine letters, met koppeltekens en bij voorkeur beginnend met een werkwoord, een `SKILL.md` en een `references/`-map van één niveau diep.
+2. Voeg eval-cases toe aan `evals/regression-cases.json`: een normaal gebruiksgeval, een geval met ontbrekende of dubbelzinnige data en een safety- of ongeldige-combinatie-geval. Voeg een baseline- en kandidaatresultaat toe, beoordeeld tegen `evals/RUBRIC.md`.
+3. Voer `python3 scripts/validate_repo.py` uit voordat je de PR opent.
+
+[CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) bevat alle vereisten en de reviewchecklist.
 
 <CardGroup cols={2}>
   <Card title="Zie hoe HireData's skills zijn geschreven" icon="github" href="https://github.com/HireData/skills">

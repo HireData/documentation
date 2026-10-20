@@ -19,7 +19,7 @@ Rien n'est installé à l'intérieur de HireData, et rien ne change dans vos wor
 
 ## Ce que le plugin apporte
 
-Le plugin inclut toutes les skills que HireData publie — dix aujourd'hui. Consultez [Les skills HireData pour votre assistant IA](/fr/apps/mcp/hiredata-skills) pour découvrir ce que fait chacune d'elles et des exemples de prompts :
+Le plugin inclut toutes les skills que HireData publie (dix aujourd'hui). Consultez [Les skills HireData pour votre assistant IA](/fr/apps/mcp/hiredata-skills) pour découvrir ce que fait chacune d'elles et des exemples de prompts :
 
 - [**Planifier une activation**](/fr/apps/mcp/hiredata-skills#planifier-une-activation) — relier les problèmes des clients à des workflows HireData à fort impact et à des résultats mesurables.
 - [**Créer des triggers**](/fr/apps/mcp/hiredata-skills#créer-des-triggers) — choisir le bon événement, le bon timing, les bons filtres et les bonnes relations avant de créer un trigger.
@@ -57,21 +57,21 @@ Les commandes `codex plugin` et `/plugin` ci-dessous sont des commandes CLI. Ell
 
 <Steps>
   <Step title="Ajouter la marketplace HireData">
-    Ouvrez **Settings** \> **Plugins**, cliquez sur **\[Add\]**, puis sélectionnez **Add a marketplace**.
+    Ouvrez **Settings** \> **Plugins**, cliquez sur **Add**, puis sélectionnez **Add a marketplace**.
 
     ![L'option Add a marketplace dans les paramètres Plugins de ChatGPT](/images/chatgpt-plugins-add-marketplace.png)
 
-    Dans **Add plugin marketplace**, saisissez `HireData/skills` dans le champ **Source** et cliquez sur **\[Add marketplace\]**. Laissez **Git ref** et **Sparse paths** vides — leur texte grisé est une indication d'espace réservé, pas une valeur à définir. Cela ajoute le dépôt public GitHub de HireData en tant que marketplace ; vous n'avez pas besoin de le cloner.
+    Dans **Add plugin marketplace**, saisissez `HireData/skills` dans le champ **Source** et cliquez sur **Add marketplace**. Laissez **Git ref** et **Sparse paths** vides. Leur texte grisé est une indication d'espace réservé, pas une valeur à définir. Cela ajoute le dépôt public GitHub de HireData en tant que marketplace ; vous n'avez pas besoin de le cloner.
 
     ![HireData/skills saisi dans le champ Source de la boîte de dialogue Add plugin marketplace de ChatGPT](/images/chatgpt-add-marketplace-source.png)
   </Step>
   <Step title="Installer HireData">
-    **HireData** apparaît désormais sous la marketplace **HireData Skills**. Cliquez sur **\[Install\]**.
+    **HireData** apparaît désormais sous la marketplace **HireData Skills**. Cliquez sur **Install**.
 
     ![Le plugin HireData avec son bouton Install sous la marketplace HireData Skills dans ChatGPT](/images/chatgpt-plugin-hiredata-install.png)
   </Step>
   <Step title="Connecter votre compte HireData">
-    Effectuez la procédure de connexion lorsque cela vous est demandé. Sélectionnez le ou les workspaces que l'assistant peut utiliser, examinez les permissions demandées et cliquez sur **\[Authorize\]**.
+    Effectuez la procédure de connexion lorsque cela vous est demandé. Sélectionnez le ou les workspaces que l'assistant peut utiliser, examinez les permissions demandées et cliquez sur **Authorize**.
 
     L'assistant ne reçoit que l'accès aux workspaces que vous sélectionnez et fonctionne avec vos permissions HireData existantes. Consultez [comment fonctionnent l'accès et la sécurité HireData](/apps/mcp/connect-hiredata-to-your-ai-assistant#how-access-and-security-work).
   </Step>
@@ -132,7 +132,7 @@ L'installation du plugin configure également la connexion MCP HireData, aucune 
 
 <Steps>
   <Step title="Ajouter la marketplace HireData">
-    Ouvrez **Settings** \> **Plugins**, cliquez sur **\[Add\]**, puis sélectionnez **Add marketplace**. Sur une formule Claude individuelle, Claude vous demande d'abord d'où ajouter. Sélectionnez **Add from a repository** plutôt que **Browse Anthropic sources**.
+    Ouvrez **Settings** \> **Plugins**, cliquez sur **Add**, puis sélectionnez **Add marketplace**. Sur une formule Claude individuelle, Claude vous demande d'abord d'où ajouter. Sélectionnez **Add from a repository** plutôt que **Browse Anthropic sources**.
 
     ![L'option Add marketplace dans les paramètres Plugins de Claude](/images/claude-plugins-add-marketplace.png)
 
@@ -143,12 +143,12 @@ L'installation du plugin configure également la connexion MCP HireData, aucune 
     ![HireData/skills saisi dans le champ URL de la boîte de dialogue Add marketplace de Claude](/images/claude-add-marketplace-url.png)
   </Step>
   <Step title="Installer HireData">
-    **HireData** apparaît sous la marketplace **skills** dans l'onglet **Personal**. Cliquez sur le **\[\+\]** sur sa carte, ou ouvrez la carte et cliquez sur **\[Install\]**.
+    **HireData** apparaît sous la marketplace **skills** dans l'onglet **Personal**. Cliquez sur le **\+** sur sa carte, ou ouvrez la carte et cliquez sur **Install**.
 
     ![La carte du plugin HireData avec son bouton plus sous la marketplace skills dans Claude](/images/claude-plugin-hiredata-install.png)
   </Step>
   <Step title="Connecter votre compte HireData">
-    Connectez-vous à HireData lorsque cela vous est demandé à la première utilisation. Sélectionnez le ou les workspaces que Claude peut utiliser, examinez les permissions demandées et cliquez sur **\[Authorize\]**.
+    Connectez-vous à HireData lorsque cela vous est demandé à la première utilisation. Sélectionnez le ou les workspaces que Claude peut utiliser, examinez les permissions demandées et cliquez sur **Authorize**.
 
     Claude ne reçoit que l'accès aux workspaces que vous sélectionnez et fonctionne avec vos permissions HireData existantes. Consultez [comment fonctionnent l'accès et la sécurité HireData](/apps/mcp/connect-hiredata-to-your-ai-assistant#how-access-and-security-work).
   </Step>
@@ -200,7 +200,7 @@ Si votre assistant vous demande de vous connecter à HireData à ce moment-là, 
 
 ## Installer les skills avec un prompt
 
-Impossible d'installer le plugin — parce que votre assistant ne prend pas en charge les plugins, ou parce que votre organisation bloque la marketplace ? Les skills sont des fichiers simples et publics : votre assistant peut donc les récupérer et les empaqueter pour vous, et vous les enregistrez vous-même.
+Impossible d'installer le plugin parce que votre assistant ne prend pas en charge les plugins, ou parce que votre organisation bloque la marketplace ? Les skills sont des fichiers simples et publics : votre assistant peut donc les récupérer et les empaqueter pour vous, et vous les enregistrez vous-même.
 
 [Installer les skills HireData avec un prompt](/fr/apps/mcp/install-hiredata-skills-with-a-prompt) contient le prompt à copier-coller pour Claude, ChatGPT et tout autre assistant, ainsi que la liste complète des noms de dossiers de skills. Associez-le à la [connexion MCP HireData](/fr/apps/mcp/connect-hiredata-to-your-ai-assistant) pour obtenir le même comportement que le plugin complet.
 
