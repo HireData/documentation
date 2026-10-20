@@ -34,7 +34,7 @@ Sobald ausgelöst, initiiert die Automatisierung eine **WhatsApp-Konversation** 
 Sobald der Trigger festgelegt ist, besteht der nächste Schritt darin, die Aufgabe zu konfigurieren, die definiert, wie die WhatsApp-Nachricht gesendet wird. Hier eine Aufschlüsselung jeder Konfigurationsoption:
 
 1. **Phone Number Selection**
-  - Wählen Sie die Telefonnummer, die zum Senden der WhatsApp-Nachrichten verwendet wird. Dies ist typischerweise eine verifizierte Geschäftsnummer, die mit Ihrem WhatsApp Business verknüpft ist und bereits verifiziert und in der WhatsApp-Verbindung in HireData sichtbar sein sollte.
+  - Wählen Sie die Telefonnummer, die zum Senden der WhatsApp-Nachrichten verwendet wird. Dies ist typischerweise die Geschäftsnummer, die mit Ihrem WhatsApp-Business-Konto verknüpft ist. Sie sollte bereits verifiziert und in der WhatsApp-Verbindung in HireData sichtbar sein.
 2. **Message Template**
   - Wählen Sie eine vorab genehmigte WhatsApp-Nachrichtenvorlage, um reibungslose und richtlinienkonforme Kommunikation zu gewährleisten. Die Vorlage definiert die Struktur der ersten Nachricht und kann Platzhalter für dynamische Inhalte enthalten (wie Kandidatennamen, Berufsbezeichnungen usw.).
 ![Message template selection](/images/intercom/41580379-Screenshot-2025-03-17-at-09_19_22.png)
@@ -70,12 +70,12 @@ So funktioniert dieser Prozess:
 2. **Object Selection**
   - Das aktualisierte Object ist der **Candidate**-Datensatz. So wird sichergestellt, dass alle gesammelten Informationen im richtigen Kandidatenprofil gespeichert werden.
 3. **Identifier**
-  - Um sicherzustellen, dass die Aktualisierung auf den richtigen Kandidaten angewendet wird, matcht das System die **Candidate: ID** aus der Konversation mit der **Candidate: ID** in der Datenbank. Dieser eindeutige Identifier stellt sicher, dass die Daten nur für den relevanten Kandidaten aktualisiert werden.
+  - Um sicherzustellen, dass die Aktualisierung auf den richtigen Kandidaten angewendet wird, matcht HireData die **Candidate: ID** aus der Konversation mit der **Candidate: ID** in der Datenbank. Dieser eindeutige Identifier stellt sicher, dass die Daten nur für den relevanten Kandidaten aktualisiert werden.
 4. **Fields Updated**
   - Die Automatisierung aktualisiert ein oder mehrere Felder basierend auf den vom Kandidaten erhaltenen Antworten. Übliche Felder sind:
     - **Candidate: Available Date** → Aktualisiert die Verfügbarkeit des Kandidaten für neue Jobmöglichkeiten.
     - **Candidate: Notes** → Speichert zusätzliche Informationen, die der Kandidat bereitgestellt hat, wie Vorlieben oder besondere Wünsche.
-    - **Andere Felder** → Weitere Felder können nach Bedarf hinzugefügt werden, z. B. bevorzugter Jobtyp, Ortspräferenz oder Gehaltsvorstellungen.
+    - **Andere Felder** → Sie können nach Bedarf weitere Felder hinzufügen, z. B. bevorzugter Jobtyp, Ortspräferenz oder Gehaltsvorstellungen.
 
 ## WhatsApp-Vorlagen in WhatsApp
 
@@ -147,7 +147,9 @@ _Fügen Sie Ihren ersten Button hinzu, z. B. Sim:_
 
 ![Adding a button](/images/intercom/47454584-buttons2.png)
 
-💡 Tipp: Für Vorlagen in mehreren Sprachen achten Sie darauf, denselben Variablennamen bzw. dieselbe Nummer für Konsistenz zu verwenden.
+<Tip>
+  Für Vorlagen in mehreren Sprachen achten Sie darauf, denselben Variablennamen bzw. dieselbe Nummer für Konsistenz zu verwenden.
+</Tip>
 
 _Vorschau Ihres Buttons:_
 
@@ -216,7 +218,7 @@ _Nach dieser Benachrichtigung wird eine Synchronisation geplant:_
 
 ![Sync schedule notification](/images/intercom/47448659-Screenshot-2025-03-28-at-08_43_20.png)
 
-_Nach einer Weile sehen Sie, dass die Synchronisation startet:_
+_Nach einer Weile startet die Synchronisation:_
 
 ![Sync progress notification](/images/intercom/47448690-Screenshot-2025-03-28-at-08_43_42.png)
 
