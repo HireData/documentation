@@ -34,7 +34,7 @@ Zodra dit wordt getriggerd, start de automatisering een **WhatsApp-gesprek** en 
 Zodra de trigger is ingesteld, is de volgende stap de taak configureren die bepaalt hoe het WhatsApp-bericht wordt verstuurd. Hier is een overzicht van elke configuratie-optie:
 
 1. **Phone Number Selection**
-  - Kies het telefoonnummer dat wordt gebruikt om de WhatsApp-berichten te versturen. Dit is meestal een geverifieerd bedrijfsnummer dat is gekoppeld aan je WhatsApp Business, dat al geverifieerd en zichtbaar zou moeten zijn in de WhatsApp-verbinding in HireData.
+  - Kies het telefoonnummer dat wordt gebruikt om de WhatsApp-berichten te versturen. Dit is meestal het bedrijfsnummer dat is gekoppeld aan je WhatsApp Business-account. Het zou al geverifieerd en zichtbaar moeten zijn in de WhatsApp-verbinding in HireData.
 2. **Message Template**
   - Selecteer een vooraf goedgekeurde WhatsApp-berichttemplate om vlotte en beleidsconforme communicatie te waarborgen. De template definieert de structuur van het eerste bericht, dat placeholders voor dynamische content kan bevatten (zoals kandidaatnamen, functietitels, enz.).
 ![Selectie van berichttemplate](/images/intercom/41580379-Screenshot-2025-03-17-at-09_19_22.png)
@@ -70,12 +70,12 @@ Zo werkt dit proces:
 2. **Objectselectie**
   - Het object dat wordt bijgewerkt is het **Candidate**-record. Dit zorgt ervoor dat alle verzamelde informatie wordt opgeslagen in het juiste kandidaatprofiel.
 3. **Identifier**
-  - Om ervoor te zorgen dat de update wordt toegepast op de juiste kandidaat, matcht het systeem de **Candidate: ID** uit het gesprek met de **Candidate: ID** in de database. Deze unieke identifier zorgt ervoor dat de data alleen wordt bijgewerkt voor de relevante kandidaat.
+  - Om ervoor te zorgen dat de update wordt toegepast op de juiste kandidaat, matcht HireData de **Candidate: ID** uit het gesprek met de **Candidate: ID** in de database. Deze unieke identifier zorgt ervoor dat de data alleen wordt bijgewerkt voor de relevante kandidaat.
 4. **Fields Updated**
   - De automatisering werkt een of meer velden bij op basis van de ontvangen reacties van de kandidaat. Veelvoorkomende velden zijn:
     - **Candidate: Available Date** → Werkt de beschikbaarheid van de kandidaat voor nieuwe vacatures bij.
     - **Candidate: Notes** → Slaat aanvullende informatie op die de kandidaat verstrekt, zoals voorkeuren of speciale verzoeken.
-    - **Other Fields** → Er kunnen aanvullende velden worden toegevoegd naar behoefte, zoals voorkeur voor jobtype, locatievoorkeur of salarisverwachting.
+    - **Other Fields** → Je kunt naar behoefte aanvullende velden toevoegen, zoals voorkeur voor jobtype, locatievoorkeur of salarisverwachting.
 
 ## WhatsApp-templates in WhatsApp
 
@@ -147,7 +147,9 @@ _Voeg je eerste knop toe, bijv. Sim:_
 
 ![Een knop toevoegen](/images/intercom/47454584-buttons2.png)
 
-💡 Tip: Voor templates in meerdere talen, zorg dat je dezelfde variabelenaam/-nummer gebruikt voor consistentie.
+<Tip>
+  Voor templates in meerdere talen, zorg dat je dezelfde variabelenaam/-nummer gebruikt voor consistentie.
+</Tip>
 
 _Preview je knop:_
 
@@ -216,7 +218,7 @@ _Een sync wordt ingepland na deze melding:_
 
 ![Melding sync ingepland](/images/intercom/47448659-Screenshot-2025-03-28-at-08_43_20.png)
 
-_Na een tijdje zie je dat de sync start:_
+_Na een tijdje start de sync:_
 
 ![Melding syncvoortgang](/images/intercom/47448690-Screenshot-2025-03-28-at-08_43_42.png)
 

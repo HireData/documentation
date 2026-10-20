@@ -18,7 +18,7 @@ _Os nossos templates de automação de WhatsApp simplificam a comunicação com 
 
 ### Como funciona o trigger
 
-Todos os templates de WhatsApp utilizam a mesma lógica, mas podem diferenciar-se no trigger definido e no conteúdo da conversa (por exemplo, as perguntas feitas, a informação recolhida e o tom de voz). Este artigo foca-se na automação Job Alert via Carerix.
+Todos os templates de WhatsApp utilizam a mesma lógica, mas podem diferir no trigger definido e no conteúdo da conversa (por exemplo, as perguntas feitas, a informação recolhida e o tom de voz). Este artigo foca-se na automação Job Alert via Carerix.
 
 Nesta automação, o trigger baseia-se numa **atualização de stage** no sistema Carerix. Aqui está como funciona:
 
@@ -34,7 +34,7 @@ Uma vez acionada, a automação inicia uma **conversa de WhatsApp**, enviando um
 Uma vez definido o trigger, o próximo passo é configurar a tarefa que define como a mensagem de WhatsApp será enviada. Aqui está uma explicação de cada opção de configuração:
 
 1. **Seleção de número de telefone**
-  - Selecione o número de telefone que será usado para enviar as mensagens de WhatsApp. Este é normalmente um número empresarial verificado associado ao seu WhatsApp Business que já deverá estar verificado e visível na ligação WhatsApp na HireData.
+  - Selecione o número de telefone que será usado para enviar as mensagens de WhatsApp. Este é normalmente o número empresarial associado à sua conta WhatsApp Business. Já deverá estar verificado e visível na ligação WhatsApp na HireData.
 2. **Template de mensagem**
   - Selecione um template de mensagem WhatsApp pré-aprovado para garantir uma comunicação fluida e em conformidade. O template define a estrutura da primeira mensagem, que pode incluir placeholders para conteúdo dinâmico (como nomes de candidatos, cargos, etc.).
 ![Message template selection](/images/intercom/41580379-Screenshot-2025-03-17-at-09_19_22.png)
@@ -70,12 +70,12 @@ Eis como funciona este processo:
 2. **Seleção de objeto**
   - O objeto atualizado é o registo **Candidate**. Isto garante que toda a informação recolhida é guardada no perfil de candidato correto.
 3. **Identificador**
-  - Para garantir que a atualização é aplicada ao candidato correto, o sistema faz corresponder o **Candidate: ID** da conversa com o **Candidate: ID** na base de dados. Este identificador único garante que os dados são atualizados apenas para o candidato relevante.
+  - Para garantir que a atualização é aplicada ao candidato correto, a HireData faz corresponder o **Candidate: ID** da conversa com o **Candidate: ID** na base de dados. Este identificador único garante que os dados são atualizados apenas para o candidato relevante.
 4. **Campos atualizados**
   - A automação atualiza um ou mais campos com base nas respostas recebidas do candidato. Campos comuns incluem:
     - **Candidate: Available Date** → Atualiza a disponibilidade do candidato para novas oportunidades.
     - **Candidate: Notes** → Guarda qualquer informação adicional fornecida pelo candidato, como preferências ou pedidos especiais.
-    - **Outros campos** → Podem ser adicionados campos adicionais conforme necessário, como tipo de trabalho preferido, preferência de localização ou expectativas salariais.
+    - **Outros campos** → Pode adicionar campos adicionais conforme necessário, como tipo de trabalho preferido, preferência de localização ou expectativas salariais.
 
 ## Templates de WhatsApp no WhatsApp
 
@@ -147,7 +147,9 @@ _Adicione o seu primeiro botão, por exemplo Sim:_
 
 ![Adding a button](/images/intercom/47454584-buttons2.png)
 
-💡 Dica: Para templates em várias línguas, certifique-se de que está a utilizar o mesmo nome/número de variável para manter consistência.
+<Tip>
+  Para templates em várias línguas, certifique-se de que está a utilizar o mesmo nome/número de variável para manter consistência.
+</Tip>
 
 _Pré-visualize o seu botão:_
 
@@ -216,7 +218,7 @@ _Será agendada uma sincronização após esta notificação:_
 
 ![Sync schedule notification](/images/intercom/47448659-Screenshot-2025-03-28-at-08_43_20.png)
 
-_Após algum tempo, verá que a sincronização começará:_
+_Após algum tempo, a sincronização começa:_
 
 ![Sync progress notification](/images/intercom/47448690-Screenshot-2025-03-28-at-08_43_42.png)
 
