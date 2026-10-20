@@ -4,7 +4,7 @@ sidebarTitle: "Protect user roles"
 description: "Use the Enable Third-Party Sync setting to protect HireData user roles from being overwritten when your ATS syncs, so admins keep the right permissions."
 ---
 
-_When HireData syncs with your ATS, it can automatically update user roles, which sometimes overwrites custom access you've set up manually. This article explains how to use the **Enable Third-Party Sync** setting to protect a user's role in HireData from being changed during sync, and when you'd want to do this._
+_When HireData syncs with your ATS, it can automatically update user roles, which sometimes overwrites custom access you've set up manually. This article explains how to use the **Enable Third-Party Sync** setting to protect a user's role in HireData from changes during sync. It also explains when you'd want to do this._
 
 ## What does this setting do?
 
@@ -12,11 +12,11 @@ By default, HireData syncs user roles from your ATS (e.g. Carerix) every night o
 
 Turning **off** the **Enable Third-Party Sync** setting for a specific user tells HireData: _"Don't touch this user's role during sync."_ Their HireData role stays exactly as you've set it, regardless of what your app says.
 
-- This is especially **useful for non-admin ATS users who need admin access in HireData**. For example, someone in Sales with a "Marketer" role in your app can be given admin access in HireData, and with sync disabled, that access won't be overwritten.
-- This also **applies to users with Additional Roles** in Carerix. If a user has multiple roles across different labels within one Carerix environment, and one of those additional roles is not an admin, HireData may incorrectly reset them to a regular user during sync. Turning off this setting prevents that from happening.
+- This is especially **useful for non-admin ATS users who need admin access in HireData**. For example, someone in Sales with a "Marketer" role in your app can have admin access in HireData. With sync disabled, that access won't be overwritten.
+- This also **applies to users with Additional Roles** in Carerix. A user can have multiple roles across different labels within one Carerix environment. If one of those additional roles is not an admin, HireData may incorrectly reset them to a regular user during sync. Turning off this setting prevents that from happening.
 
 <Note>
-  For Carerix users: if the setting is turned off for a user who is an Admin in HireData, but has a different role in Carerix (e.g. User, Marketer, Sales), they won't be able to access the RMA menu items within Carerix, as they need to have admin permissions in Carerix specifically.
+  For Carerix users: if the setting is turned off for a user who is an Admin in HireData, but has a different role in Carerix (e.g. User, Marketer, Sales), they won't be able to access the RMA menu items within Carerix. Those items require admin permissions in Carerix specifically.
 </Note>
 
 ![The Enable Third-Party Sync toggle in a user's Access Control settings](/images/intercom/146220971-Screenshot-2026-05-27-at-13_51_33.png)
