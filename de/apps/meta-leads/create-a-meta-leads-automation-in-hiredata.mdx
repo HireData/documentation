@@ -1,0 +1,87 @@
+---
+title: "Eine Meta-Leads-Automatisierung in HireData erstellen"
+sidebarTitle: "Automatisierung erstellen"
+description: "Nutzen Sie einen neuen Meta-Lead, um eine Vakanz zu finden und eine Carerix-Bewerbung zu erstellen – mit Feld-Mapping, Tests und Fehlerbehebung."
+---
+
+Machen Sie aus einem neuen Meta-Lead eine Bewerbung in Carerix:
+
+**Meta-Lead empfangen → Vakanz finden → Bewerbung hinzufügen**
+
+Diese Anleitung verwendet den Carerix-Ablauf. Ein **Kandidat** ist die Person; ein **Match** verbindet diesen Kandidaten mit einer bestimmten Vakanz. Das Erstellen des Matches ist Teil dieses Workflows.
+
+## Bevor Sie beginnen
+
+- [Verbinden Sie Meta Leads](/de/apps/meta-leads/connect-with-meta-leads) und stellen Sie sicher, dass die Seite und das Formular verfügbar sind.
+- Verbinden Sie Carerix mit HireData.
+- Erfassen Sie Vor- und Nachnamen getrennt und nehmen Sie eine E-Mail-Adresse in das Lead-Formular auf.
+- Fügen Sie einen Formularparameter hinzu, der die in Ihrer Carerix-Suche verwendete Vakanz-Kennung enthält.
+- Legen Sie fest, welche Match-Phase, Match-Quelle und welchen Kandidaten-Owner Sie verwenden. Stellen Sie sicher, dass diese Werte in Carerix existieren.
+
+Sie können mit der [Vorlage Meta Lead Created to Job Application](https://api.hiredata.com/templates/meta-lead-created-to-job-application/use) beginnen oder die folgenden Schritte selbst konfigurieren.
+
+## 1. Den Trigger konfigurieren
+
+Erstellen Sie eine neue Automatisierung und wählen Sie **Meta Leads** als Start-App.
+
+Setzen Sie das Objekt auf **Lead** und das Ereignis auf **Created**. Wählen Sie die Verbindung, die Facebook-Seite und das Formular für die Kampagne aus.
+
+Beginnen Sie mit einem bestimmten Formular, damit Sie dessen Felder und Mappings prüfen können, bevor Sie die Einrichtung auf andere Kampagnen ausweiten.
+
+## 2. Die Vakanz finden
+
+Fügen Sie einen **Find**-Schritt für **Vacancy** in Carerix hinzu. Gleichen Sie die Vakanz-Kennung mit dem Parameter ab, der aus dem Meta-Formular empfangen wird.
+
+Verwenden Sie den Wert aus dem Lead statt einer festen Vakanz, wenn der Workflow Kampagnen für verschiedene Jobs verarbeitet. Prüfen Sie, ob die Suche die vorgesehene Vakanz liefert, bevor Sie fortfahren.
+
+## 3. Die Bewerbung hinzufügen
+
+Fügen Sie die Carerix-Aktion **Job Application** hinzu. Konfigurieren Sie die Vakanz- und Kandidatensuche und mappen Sie dann die eingehenden Werte:
+
+| Einstellung | Zu verwendender Wert |
+| --- | --- |
+| Vakanz | Die über den Formularparameter ermittelte Vakanz. |
+| Kandidatensuche | Die aus dem Lead empfangene E-Mail-Adresse. |
+| Match-Phase | Die von Ihnen gewählte Einstiegsphase für Meta-Bewerbungen. |
+| Match-Quelle | Die von Ihnen konfigurierte Quelle für Meta-Kampagnen. |
+| Vor- und Nachname des Kandidaten | Die getrennten Namensfelder aus dem Lead. |
+| E-Mail und Mobilnummer des Kandidaten | Die entsprechenden Lead-Felder. |
+| Kandidaten-Owner | Der für den Kandidaten zuständige Recruiter. |
+
+Wählen Sie die Felder, die in Ihrem ausgewählten Formular verfügbar sind. Benutzerdefinierte Fragen unterscheiden sich zwischen Formularen; gehen Sie nicht davon aus, dass ein Mapping für ein Formular auch ein anderes abdeckt.
+
+<Note>
+Dieser Carerix-Ablauf erstellt einen Match für eine Vakanz. Es handelt sich nicht um einen reinen Kandidatenimport. Halten Sie Kandidatendetails getrennt von bewerbungsspezifischen Feldern wie Match-Phase und Quelle.
+</Note>
+
+## 4. Den gesamten Ablauf testen
+
+Verwenden Sie einen kontrollierten Lead mit Kontaktdaten, die Ihnen gehören. Folgen Sie [Eine Automatisierung testen](/de/automations/how-to-test-an-automation) und prüfen Sie die Ausführungsdetails.
+
+Überprüfen Sie, dass:
+
+- Der Lead zur konfigurierten Seite und zum konfigurierten Formular gehört.
+- Die Vakanzsuche den richtigen Job liefert.
+- Die Kandidatensuche die erwartete E-Mail-Adresse verwendet.
+- Die Bewerbung den richtigen Kandidaten mit der richtigen Vakanz verknüpft.
+- Name, E-Mail, Mobilnummer, Owner, Match-Phase und Quelle korrekt sind.
+
+Prüfen Sie das Ergebnis sowohl in Carerix als auch in HireData. Ein erfolgreicher Trigger bedeutet nicht, dass jedes Zielfeld korrekt ist.
+
+## 5. Aktivieren und überwachen
+
+Aktivieren Sie die Automatisierung, nachdem der Test das erwartete Ergebnis geliefert hat. Prüfen Sie die ersten Live-Einreichungen und die zugehörigen Carerix-Matches, um sicherzustellen, dass die Kampagne dieselben Felder wie Ihr Test verwendet.
+
+## Fehlerbehebung
+
+| Problem | Was zu prüfen ist |
+| --- | --- |
+| Es erscheint keine Ausführung | Die ausgewählte Seite bzw. das ausgewählte Formular und der Zugriff der Meta-Verbindung auf Lead-Daten. |
+| Die Vakanz wird nicht gefunden | Der Wert des Formularparameters und die von der Suche verwendete Kennung. |
+| Kandidatenfelder sind leer | Die eingereichten Antworten und die gemappten Felder, insbesondere getrennte Vor- und Nachnamen. |
+| Die Bewerbung schlägt fehl | Die Vakanzsuche, Pflichtfelder sowie die konfigurierte Carerix-Phase, -Quelle und der Owner. |
+| Ein anderer Kandidat wird verknüpft | Die eingereichte E-Mail-Adresse und die Konfiguration der Kandidatensuche. Korrigieren Sie die Suche, bevor Sie erneut ausführen. |
+
+## Nächster Schritt
+
+Nutzen Sie die [WhatsApp-Nachverfolgung](/de/apps/meta-leads/enriching-meta-leads-via-whatsapp), um fehlende Informationen zu erfassen, nachdem der Lead mit dem richtigen Kandidaten und der richtigen Vakanz verknüpft wurde.

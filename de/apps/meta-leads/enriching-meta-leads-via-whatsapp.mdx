@@ -1,0 +1,96 @@
+---
+title: "Meta Leads mit einer WhatsApp-Nachverfolgung anreichern"
+sidebarTitle: "Per WhatsApp nachfassen"
+description: "Fassen Sie bei einem Meta-Lead mit einer WhatsApp-Konversation nach, erfassen Sie fehlende Kandidatendetails und mappen Sie die Antworten zurück in Ihr ATS."
+---
+
+Halten Sie Ihr Meta-Lead-Formular kurz und nutzen Sie dann eine WhatsApp-Konversation, um die Informationen zu erfassen, die ein Recruiter als Nächstes benötigt.
+
+Eine Lager-Kampagne könnte beispielsweise zunächst Kontaktdaten erfassen und in der Nachverfolgung nach Verfügbarkeit und bevorzugtem Standort fragen.
+
+**Meta-Lead → Carerix-Bewerbung → WhatsApp-Konversation → Kandidatenfelder aktualisieren**
+
+## Bevor Sie beginnen
+
+Sie benötigen:
+
+- Eine funktionierende [Meta-Leads-Automatisierung](/de/apps/meta-leads/create-a-meta-leads-automation-in-hiredata).
+- Eine [WhatsApp-Verbindung](/de/apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up), bei der die Absendernummer in HireData verfügbar ist.
+- Eine genehmigte Nachrichtenvorlage, die mit HireData synchronisiert ist.
+- Ein Formular mit den Fragen, die Sie stellen möchten.
+- Ein klares Mapping der Antworten auf die Kandidatenfelder, die Sie aktualisieren möchten.
+
+## 1. Kandidat und Bewerbung festlegen
+
+Schließen Sie zuerst den Ablauf von Meta zu Carerix ab. Er findet die Vakanz und fügt die Bewerbung hinzu, wodurch der Kandidat mit dieser Vakanz verknüpft wird.
+
+Verwenden Sie diesen Kandidaten- und Bewerbungskontext für die Nachverfolgung. Wenn Sie eine separate Automatisierung konfigurieren, die durch einen Carerix-Match ausgelöst wird, filtern Sie sie auf die Quelle und Phase, die für diese Meta-Bewerbungen verwendet werden.
+
+<Note>
+Ein Kandidat kann mehrere Bewerbungen haben. Verwenden Sie den relevanten Match für den Vakanzkontext und die Kennung des Kandidaten für Aktualisierungen seines Profils.
+</Note>
+
+## 2. Ein kurzes Formular vorbereiten
+
+Erstellen Sie ein Formular, das nur die noch benötigten Informationen abfragt. Zum Beispiel:
+
+- Ab wann sind Sie verfügbar?
+- Welchen Arbeitsort bevorzugen Sie?
+- Besitzen Sie den für diese Stelle erforderlichen Führerschein?
+
+Wählen Sie Fragen, die für die Vakanz relevant sind. Unter [Formulare in WhatsApp-Konversationen verwenden](/de/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) finden Sie Informationen zur Einrichtung von Formularen und zum Mapping von Antworten.
+
+## 3. Die Konversation konfigurieren
+
+Konfigurieren Sie die Aufgabe **Start a Conversation**:
+
+| Einstellung | Was Sie wählen |
+| --- | --- |
+| Absendernummer | Ihre verbundene WhatsApp-Business-Nummer. |
+| Empfänger | Der Kandidat, der mit der Meta-Bewerbung verknüpft ist. |
+| Nachrichtenvorlage | Eine genehmigte, synchronisierte Vorlage, die erklärt, wer Sie sind und um welche Bewerbung es in der Nachricht geht. |
+| Formular | Das kurze Nachverfolgungsformular. |
+| Briefing | Der Zweck der Konversation, die zu erfassenden Fragen und wann der Kandidat an einen Recruiter verwiesen werden soll. |
+| Knowledge | Relevanter Kontext wie Name des Kandidaten, Vakanz, Standort und Recruiter. |
+
+Gestalten Sie die Einleitung spezifisch für die Anfrage der Person. Zum Beispiel: „Vielen Dank für Ihr Interesse an der Stelle im Lager in Utrecht. Wir melden uns von Example Recruitment, um Ihnen ein paar Nachfragen zu stellen.“
+
+Verwenden Sie in der genehmigten Vorlage Ihre tatsächlichen Unternehmens- und Stellendetails. Unter [Wie WhatsApp-Vorlagen funktionieren](/de/apps/messaging/whatsapp/how-whatsapp-templates-work) finden Sie Informationen zu Genehmigung und Synchronisierung.
+
+## 4. Die Antworten zurückmappen
+
+Fügen Sie nach der Konversation **Update field(s)** hinzu. Wählen Sie das Kandidatenobjekt aus und verwenden Sie die ID des Kandidaten, um den richtigen Datensatz anzusprechen.
+
+Mappen Sie jede Antwort auf das vorgesehene Feld – zum Beispiel die Antwort zur Verfügbarkeit auf das Verfügbarkeitsdatum des Kandidaten. Prüfen Sie, ob Datums-, Auswahl- und Textantworten zu den Typen der Zielfelder passen.
+
+Behandeln Sie eine Profilaktualisierung nicht als Änderung an jeder Bewerbung der Person. Wenn Sie einen Match aktualisieren müssen, sprechen Sie diesen bestimmten Match separat an.
+
+## 5. Anforderungen für WhatsApp-Messaging einhalten
+
+Gemäß der [WhatsApp Business Messaging Policy](https://business.whatsapp.com/policy) müssen Empfänger ihre Mobilnummer angegeben und dem Erhalt weiterer Nachrichten Ihres Unternehmens zugestimmt haben. Eine Lead-Einreichung allein ist keine pauschale Erlaubnis für Kontaktaufnahmen ohne Bezug.
+
+Beginnen Sie die vom Unternehmen initiierte Nachverfolgung mit einer genehmigten Vorlage. Freitext-Antworten sind innerhalb von 24 Stunden nach der letzten WhatsApp-Nachricht des Nutzers erlaubt; außerhalb dieses Zeitfensters verwenden Sie genehmigte Vorlagen. Das Absenden eines Meta-Lead-Formulars öffnet dieses WhatsApp-Zeitfenster nicht.
+
+Respektieren Sie Abmeldungen und bieten Sie eine klare Möglichkeit, eine Person zu erreichen. Halten Sie Nachverfolgungen relevant und vermeiden Sie wiederholte Nachrichten, wenn der Kandidat nicht antwortet.
+
+## 6. Die Candidate Journey testen
+
+Verwenden Sie Kontaktdaten, die Ihnen gehören, und [testen Sie die Automatisierung](/de/automations/how-to-test-an-automation). Beim Testen mit einem Nutzer können echte Nachrichten versendet werden.
+
+Prüfen Sie die gesamte Journey:
+
+1. Senden Sie das Meta-Formular ab.
+2. Bestätigen Sie, dass der vorgesehene Kandidat und die Vakanz in Carerix verknüpft sind.
+3. Überprüfen Sie Absender, Empfänger, Vorlage und Vakanzdetails in der WhatsApp-Nachricht.
+4. Beantworten Sie die Formularfragen.
+5. Prüfen Sie, ob die Antworten in den richtigen Kandidatenfeldern ankommen.
+6. Testen Sie eine unvollständige Antwort und bestätigen Sie, dass nützliche bestehende Werte nicht unbeabsichtigt ersetzt werden.
+
+Aktivieren Sie die Nachverfolgung, nachdem diese Prüfungen erfolgreich waren.
+
+## Fehlerbehebung
+
+- **Vorlage fehlt:** Prüfen Sie ihren Genehmigungsstatus und synchronisieren Sie das WhatsApp-Konto in HireData.
+- **Falscher Empfänger oder falsche Vakanz:** Überprüfen Sie die Kandidaten-ID und den Match-Kontext, die von der Konversationsaufgabe verwendet werden.
+- **Antworten werden nicht gespeichert:** Prüfen Sie Objekt, Kennung und Feld-Mappings der Aktualisierungsaufgabe.
+- **Mehrere Nachverfolgungen:** Überprüfen Sie sich überschneidende Trigger und Filter, insbesondere wenn separate Automatisierungen sowohl auf das Erstellen als auch auf das Aktualisieren von Matches reagieren.

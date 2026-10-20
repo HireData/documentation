@@ -1,0 +1,69 @@
+---
+title: "Ligar ao Meta Leads"
+sidebarTitle: "Ligar o Meta Leads"
+description: "Ligue os formulários de leads da Meta à HireData, prepare os campos do formulário e verifique se a Página do Facebook e os formulários certos estão disponíveis."
+---
+
+Ligue o Meta Leads à HireData para iniciar uma automação quando alguém submete um formulário de leads de uma campanha no Facebook ou no Instagram. Depois de ligar, escolha a Página e o formulário que a automação deve monitorizar.
+
+## Antes de começar
+
+Irá precisar de:
+
+- Acesso para gerir ligações na HireData.
+- Uma conta pessoal do Facebook associada à empresa que gere a Página em questão.
+- Acesso a essa Página e aos respetivos dados de leads.
+- Um formulário de leads para utilizar na configuração e nos testes.
+
+Se gere várias empresas ou Páginas, verifique qual delas é proprietária do formulário antes de ligar.
+
+## Ligar a sua conta
+
+1. Abra **Settings → Configuration → Apps** na HireData ou no Carerix RMA.
+2. Selecione **Meta Leads** e, em seguida, **New connection**.
+3. Inicie sessão com a conta pessoal do Facebook associada à empresa em questão.
+4. Siga o fluxo de ligação da Meta e conceda acesso aos ativos empresariais necessários para a sua Página e os seus leads.
+5. Conclua o fluxo e regresse à HireData.
+
+## Preparar o seu formulário de leads
+
+Inclua os campos de que o seu fluxo de destino necessita. Para o fluxo de candidatura do Carerix:
+
+| Valor do formulário | Como é utilizado |
+| --- | --- |
+| Nome próprio e apelido, recolhidos em separado | Preenchem os campos de nome do candidato. |
+| Endereço de email | Procurar o candidato no Carerix. |
+| Número de telefone | Preenche o número de telemóvel do candidato e permite um seguimento posterior. |
+| Identificador da vaga num parâmetro do formulário | Encontrar a vaga à qual o candidato deve ser associado. |
+
+Utilize o identificador de vaga esperado pela sua pesquisa no Carerix. Confirme-o com uma vaga existente antes de testar.
+
+<Note>
+A integração documentada com o Carerix cria uma candidatura, designada **match** no Carerix. Planeie a vaga, o match stage e o match source como parte da sua configuração.
+</Note>
+
+## Verificar a sua Página e o seu formulário
+
+Crie uma automação com **Meta Leads** como app inicial e **Lead → Created** como trigger. Selecione a sua ligação, a Página do Facebook e o formulário.
+
+Se a Página ou o formulário não aparecerem, verifique se pertencem à empresa que ligou e se a conta do Facebook tem acesso aos respetivos leads. Se alterou permissões recentemente, volte a ligar e verifique novamente a seleção.
+
+## Verificar a ligação
+
+Continue com [Criar uma automação Meta Leads](/pt/apps/meta-leads/create-a-meta-leads-automation-in-hiredata) para configurar as tarefas de destino e submeter um lead de teste controlado.
+
+Verifique se os dados recebidos contêm os nomes, o endereço de email, o número de telefone e o parâmetro da vaga esperados. Uma conta ligada, por si só, não confirma que a automação completa funciona.
+
+## Resolução de problemas
+
+### Falta um campo ou parâmetro do formulário
+
+Confirme que existe no formulário selecionado e que contém um valor na sua submissão de teste. Atualize a seleção do formulário e aguarde algum tempo até que as alterações recentes fiquem disponíveis.
+
+### Chegam leads de um formulário, mas não de outros
+
+Compare a Página e o formulário que originaram cada lead com a configuração do trigger. Teste todos os formulários que pretende utilizar; formulários com perguntas diferentes podem necessitar de mapeamentos diferentes.
+
+### Continua sem conseguir receber um lead de teste
+
+Contacte o suporte da HireData com os identificadores da Página e do formulário, a hora e o fuso horário da submissão e quaisquer erros de ligação ou de execução. Estes detalhes ajudam o suporte a rastrear o evento.

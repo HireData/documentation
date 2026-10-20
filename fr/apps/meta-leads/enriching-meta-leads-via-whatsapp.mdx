@@ -1,0 +1,96 @@
+---
+title: "Enrichir les leads Meta grâce à un suivi WhatsApp"
+sidebarTitle: "Suivi sur WhatsApp"
+description: "Assurez le suivi d'un lead Meta grâce à une conversation WhatsApp, collectez les informations manquantes du candidat et mappez les réponses vers votre ATS."
+---
+
+Gardez votre formulaire de leads Meta court, puis utilisez une conversation WhatsApp pour collecter les informations dont un recruteur a besoin ensuite.
+
+Par exemple, une campagne pour un poste en entrepôt peut d'abord collecter les coordonnées, puis poser des questions sur la disponibilité et le lieu de travail préféré lors du suivi.
+
+**Lead Meta → candidature Carerix → conversation WhatsApp → mise à jour des champs du candidat**
+
+## Avant de commencer
+
+Vous aurez besoin :
+
+- D'une [automatisation Meta Leads](/fr/apps/meta-leads/create-a-meta-leads-automation-in-hiredata) fonctionnelle.
+- D'une [connexion WhatsApp](/fr/apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up) avec le numéro d'envoi disponible dans HireData.
+- D'un modèle de message approuvé et synchronisé avec HireData.
+- D'un formulaire contenant les questions que vous souhaitez poser.
+- D'un mapping clair entre les réponses et les champs du candidat que vous souhaitez mettre à jour.
+
+## 1. Établir le candidat et la candidature
+
+Commencez par mettre en place le flux Meta vers Carerix. Il trouve le poste et ajoute la candidature, en reliant le candidat à ce poste.
+
+Utilisez ce contexte de candidat et de candidature pour le suivi. Si vous configurez une automatisation distincte déclenchée par un match Carerix, filtrez-la sur la source et l'étape utilisées pour ces candidatures Meta.
+
+<Note>
+Un candidat peut avoir plusieurs candidatures. Utilisez le match concerné pour le contexte du poste et l'identifiant du candidat pour les mises à jour de son profil.
+</Note>
+
+## 2. Préparer un formulaire court
+
+Créez un formulaire ne contenant que les informations encore nécessaires. Par exemple :
+
+- Quand êtes-vous disponible pour commencer ?
+- Quel lieu de travail préférez-vous ?
+- Êtes-vous titulaire du permis requis pour ce poste ?
+
+Choisissez des questions pertinentes pour le poste. Consultez [Utiliser les formulaires dans les conversations WhatsApp](/fr/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) pour la configuration des formulaires et le mapping des réponses.
+
+## 3. Configurer la conversation
+
+Configurez la tâche **Start a Conversation** :
+
+| Paramètre | Que choisir |
+| --- | --- |
+| Numéro d'envoi | Votre numéro WhatsApp Business connecté. |
+| Destinataire | Le candidat associé à la candidature Meta. |
+| Modèle de message | Un modèle approuvé et synchronisé qui explique qui vous êtes et à quelle candidature le message se rapporte. |
+| Formulaire | Le formulaire de suivi court. |
+| Briefing | L'objectif de la conversation, les questions à poser et le moment où orienter le candidat vers un recruteur. |
+| Connaissances | Le contexte pertinent, comme le nom du candidat, le poste, le lieu et le recruteur. |
+
+Adaptez l'introduction à la demande de la personne. Par exemple : « Merci pour votre intérêt pour le poste en entrepôt à Utrecht. Nous vous contactons de la part d'Example Recruitment pour vous poser quelques questions complémentaires. »
+
+Utilisez les informations réelles de votre entreprise et du poste dans le modèle approuvé. Consultez [Comment fonctionnent les modèles WhatsApp](/fr/apps/messaging/whatsapp/how-whatsapp-templates-work) pour l'approbation et la synchronisation.
+
+## 4. Mapper les réponses
+
+Ajoutez **Update field(s)** après la conversation. Sélectionnez l'objet candidat et utilisez l'ID du candidat pour cibler le bon enregistrement.
+
+Mappez chaque réponse vers le champ prévu, par exemple la réponse sur la disponibilité vers la date de disponibilité du candidat. Vérifiez que les dates, les choix et les réponses textuelles correspondent aux types des champs de destination.
+
+Ne considérez pas une mise à jour de profil comme une modification de toutes les candidatures de la personne. Si vous devez mettre à jour un match, ciblez ce match précis séparément.
+
+## 5. Respecter les exigences de messagerie WhatsApp
+
+Conformément à la [WhatsApp Business Messaging Policy](https://business.whatsapp.com/policy), les destinataires doivent avoir fourni leur numéro de mobile et accepté de recevoir des messages ultérieurs de votre entreprise. La seule soumission d'un lead ne constitue pas une autorisation générale pour des sollicitations sans rapport.
+
+Démarrez le suivi à l'initiative de l'entreprise avec un modèle approuvé. Les réponses libres sont autorisées dans les 24 heures suivant le dernier message WhatsApp de l'utilisateur ; en dehors de cette fenêtre, utilisez des modèles approuvés. La soumission d'un formulaire de leads Meta n'ouvre pas à elle seule cette fenêtre WhatsApp.
+
+Respectez les désinscriptions et offrez un moyen clair de joindre une personne. Gardez des suivis pertinents et évitez les messages répétés lorsque le candidat ne répond pas.
+
+## 6. Tester le parcours candidat
+
+Utilisez des coordonnées qui vous appartiennent et [testez l'automatisation](/fr/automations/how-to-test-an-automation). Un test avec un utilisateur peut envoyer de vrais messages.
+
+Vérifiez l'ensemble du parcours :
+
+1. Soumettez le formulaire Meta.
+2. Confirmez que le candidat et le poste prévus sont reliés dans Carerix.
+3. Vérifiez l'expéditeur, le destinataire, le modèle et les informations du poste dans le message WhatsApp.
+4. Répondez aux questions du formulaire.
+5. Vérifiez que les réponses arrivent dans les bons champs du candidat.
+6. Testez une réponse incomplète et confirmez que les valeurs existantes utiles ne sont pas remplacées par inadvertance.
+
+Activez le suivi une fois ces vérifications réussies.
+
+## Dépannage
+
+- **Modèle manquant :** vérifiez son statut d'approbation et synchronisez le compte WhatsApp dans HireData.
+- **Mauvais destinataire ou mauvais poste :** examinez l'ID du candidat et le contexte du match utilisés par la tâche de conversation.
+- **Les réponses ne sont pas enregistrées :** vérifiez l'objet, l'identifiant et les mappings de champs de la tâche de mise à jour.
+- **Suivis multiples :** examinez les déclencheurs et filtres qui se chevauchent, en particulier si des automatisations distinctes écoutent à la fois la création et la mise à jour des matchs.

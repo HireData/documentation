@@ -1,0 +1,87 @@
+---
+title: "Criar uma automação Meta Leads na HireData"
+sidebarTitle: "Criar uma automação"
+description: "Utilize um novo lead da Meta para encontrar uma vaga e criar uma candidatura no Carerix, com mapeamento de campos, testes e resolução de problemas."
+---
+
+Transforme um novo lead da Meta numa candidatura no Carerix:
+
+**Lead da Meta recebido → encontrar a vaga → adicionar a candidatura**
+
+Este guia utiliza o fluxo do Carerix. Um **candidato** é a pessoa; um **match** associa esse candidato a uma vaga específica. A criação do match faz parte deste fluxo.
+
+## Antes de começar
+
+- [Ligue o Meta Leads](/pt/apps/meta-leads/connect-with-meta-leads) e confirme que a Página e o formulário estão disponíveis.
+- Ligue o Carerix à HireData.
+- Recolha o nome próprio e o apelido em separado e inclua um endereço de email no formulário de leads.
+- Adicione um parâmetro ao formulário que contenha o identificador da vaga utilizado na sua pesquisa no Carerix.
+- Decida que match stage, match source e responsável pelo candidato pretende utilizar. Certifique-se de que esses valores existem no Carerix.
+
+Pode começar a partir do [template Meta Lead Created to Job Application](https://api.hiredata.com/templates/meta-lead-created-to-job-application/use) ou configurar os passos abaixo.
+
+## 1. Configurar o trigger
+
+Crie uma nova automação e selecione **Meta Leads** como app inicial.
+
+Defina o objeto como **Lead** e o evento como **Created**. Escolha a ligação, a Página do Facebook e o formulário da campanha.
+
+Comece com um formulário específico para poder verificar os respetivos campos e mapeamentos antes de alargar a configuração a outras campanhas.
+
+## 2. Encontrar a vaga
+
+Adicione um passo **Find** para **Vacancy** no Carerix. Faça corresponder o identificador da vaga ao parâmetro recebido do formulário da Meta.
+
+Utilize o valor do lead em vez de uma vaga fixa se o fluxo tratar campanhas para diferentes vagas. Verifique se a pesquisa devolve a vaga pretendida antes de continuar.
+
+## 3. Adicionar a candidatura
+
+Adicione a ação **Job Application** do Carerix. Configure a pesquisa da vaga e do candidato e, em seguida, mapeie os valores recebidos:
+
+| Definição | Valor a utilizar |
+| --- | --- |
+| Vaga | A vaga identificada pelo parâmetro do formulário. |
+| Pesquisa do candidato | O endereço de email recebido do lead. |
+| Match stage | A fase de entrada que escolheu para as candidaturas da Meta. |
+| Match source | A origem que configurou para as campanhas da Meta. |
+| Nome próprio e apelido do candidato | Os campos de nome separados do lead. |
+| Email e número de telemóvel do candidato | Os campos correspondentes do lead. |
+| Responsável pelo candidato | O recrutador responsável pelo candidato. |
+
+Escolha os campos disponíveis no formulário selecionado. As perguntas personalizadas diferem entre formulários; não assuma que o mapeamento de um formulário serve para outro.
+
+<Note>
+Este fluxo do Carerix cria um match para uma vaga. Não se trata de uma importação apenas de candidatos. Mantenha os dados do candidato separados dos campos específicos da candidatura, como o match stage e o match source.
+</Note>
+
+## 4. Testar o fluxo completo
+
+Utilize um lead controlado com dados de contacto que lhe pertençam. Siga [Como testar uma automação](/pt/automations/how-to-test-an-automation) e verifique os detalhes da execução.
+
+Verifique se:
+
+- O lead pertence à Página e ao formulário configurados.
+- A pesquisa da vaga devolve a vaga correta.
+- A pesquisa do candidato utiliza o endereço de email esperado.
+- A candidatura associa o candidato e a vaga corretos.
+- O nome, o email, o número de telemóvel, o responsável, o match stage e o match source estão corretos.
+
+Reveja o resultado no Carerix e também na HireData. Um trigger bem-sucedido não significa que todos os campos de destino estejam corretos.
+
+## 5. Ativar e monitorizar
+
+Ative a automação depois de o teste produzir o resultado esperado. Verifique as primeiras submissões reais e os respetivos matches no Carerix para confirmar que a campanha utiliza os mesmos campos que o seu teste.
+
+## Resolução de problemas
+
+| Problema | O que verificar |
+| --- | --- |
+| Não aparece nenhuma execução | A Página/formulário selecionados e o acesso da ligação Meta aos dados de leads. |
+| Não é possível encontrar a vaga | O valor do parâmetro do formulário e o identificador utilizado pela pesquisa. |
+| Os campos do candidato estão vazios | As respostas submetidas e os campos mapeados, em especial o nome próprio e o apelido separados. |
+| A candidatura falha | A pesquisa da vaga, os campos obrigatórios e o stage, o source e o responsável configurados no Carerix. |
+| É associado um candidato diferente | O email submetido e a configuração da pesquisa do candidato. Corrija a pesquisa antes de voltar a executar. |
+
+## Próximo passo
+
+Utilize o [seguimento via WhatsApp](/pt/apps/meta-leads/enriching-meta-leads-via-whatsapp) para recolher a informação em falta depois de o lead ter sido associado ao candidato e à vaga corretos.

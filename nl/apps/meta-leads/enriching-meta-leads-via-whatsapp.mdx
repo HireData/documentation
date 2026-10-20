@@ -1,0 +1,96 @@
+---
+title: "Meta Leads verrijken met een WhatsApp-opvolging"
+sidebarTitle: "Opvolgen via WhatsApp"
+description: "Volg een Meta-lead op met een WhatsApp-gesprek, verzamel ontbrekende kandidaatgegevens en map de antwoorden terug naar je ATS."
+---
+
+Houd je Meta-leadformulier kort en gebruik daarna een WhatsApp-gesprek om de informatie te verzamelen die een recruiter vervolgens nodig heeft.
+
+Een campagne voor magazijnmedewerkers kan bijvoorbeeld eerst contactgegevens verzamelen en tijdens de opvolging vragen naar beschikbaarheid en voorkeurslocatie.
+
+**Meta-lead → Carerix-sollicitatie → WhatsApp-gesprek → kandidaatvelden bijwerken**
+
+## Voordat je begint
+
+Je hebt nodig:
+
+- Een werkende [Meta Leads-automatisering](/nl/apps/meta-leads/create-a-meta-leads-automation-in-hiredata).
+- Een [WhatsApp-verbinding](/nl/apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up) waarbij het verzendnummer beschikbaar is in HireData.
+- Een goedgekeurde berichttemplate, gesynchroniseerd met HireData.
+- Een formulier met de vragen die je wilt stellen.
+- Een duidelijke mapping van de antwoorden naar de kandidaatvelden die je wilt bijwerken.
+
+## 1. Kandidaat en sollicitatie vastleggen
+
+Rond eerst de flow van Meta naar Carerix af. Die vindt de vacature en voegt de sollicitatie toe, waarmee de kandidaat aan die vacature wordt gekoppeld.
+
+Gebruik deze kandidaat- en sollicitatiecontext voor de opvolging. Configureer je een aparte automatisering die wordt getriggerd door een Carerix-match, filter deze dan op de bron en stage die voor deze Meta-sollicitaties worden gebruikt.
+
+<Note>
+Een kandidaat kan meerdere sollicitaties hebben. Gebruik de relevante match voor de vacaturecontext en de identifier van de kandidaat voor updates aan het profiel.
+</Note>
+
+## 2. Een kort formulier voorbereiden
+
+Maak een formulier met alleen de informatie die nog nodig is. Bijvoorbeeld:
+
+- Wanneer kun je beginnen?
+- Welke werklocatie heeft je voorkeur?
+- Heb je het rijbewijs dat voor deze functie vereist is?
+
+Kies vragen die relevant zijn voor de vacature. Zie [Formulieren gebruiken in WhatsApp-gesprekken](/nl/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) voor het opzetten van formulieren en het mappen van antwoorden.
+
+## 3. Het gesprek configureren
+
+Configureer de taak **Start a Conversation**:
+
+| Instelling | Wat je kiest |
+| --- | --- |
+| Verzendnummer | Je verbonden WhatsApp Business-nummer. |
+| Ontvanger | De kandidaat die bij de Meta-sollicitatie hoort. |
+| Berichttemplate | Een goedgekeurde, gesynchroniseerde template waarin je uitlegt wie je bent en over welke sollicitatie het bericht gaat. |
+| Formulier | Het korte opvolgformulier. |
+| Briefing | Het doel van het gesprek, de vragen die verzameld moeten worden en wanneer de kandidaat naar een recruiter moet worden doorverwezen. |
+| Kennis | Relevante context zoals de naam van de kandidaat, de vacature, de locatie en de recruiter. |
+
+Stem de introductie af op de aanvraag van de persoon. Bijvoorbeeld: “Bedankt voor je interesse in de functie in het magazijn in Utrecht. We nemen contact met je op namens Example Recruitment om je nog een paar vragen te stellen.”
+
+Gebruik je echte bedrijfs- en functiegegevens in de goedgekeurde template. Zie [Hoe WhatsApp-templates werken](/nl/apps/messaging/whatsapp/how-whatsapp-templates-work) voor goedkeuring en synchronisatie.
+
+## 4. De antwoorden terugmappen
+
+Voeg na het gesprek **Update field(s)** toe. Selecteer het kandidaatobject en gebruik de ID van de kandidaat om het juiste record te targeten.
+
+Map elk antwoord naar het bedoelde veld, bijvoorbeeld het antwoord over beschikbaarheid naar de beschikbaarheidsdatum van de kandidaat. Controleer of datums, keuzes en tekstantwoorden passen bij de veldtypes in de doelapp.
+
+Behandel een profielupdate niet als een wijziging van elke sollicitatie die de persoon heeft. Moet je een match bijwerken, target die specifieke match dan apart.
+
+## 5. WhatsApp-berichtenvereisten toepassen
+
+Volgens het [WhatsApp Business Messaging Policy](https://business.whatsapp.com/policy) moeten ontvangers hun mobiele nummer zelf hebben verstrekt en toestemming (opt-in) hebben gegeven voor vervolgberichten van je bedrijf. Een leadinzending alleen is geen algemene toestemming voor niet-gerelateerde benaderingen.
+
+Start de door het bedrijf geïnitieerde opvolging met een goedgekeurde template. Vrije antwoorden zijn toegestaan binnen 24 uur na het laatste WhatsApp-bericht van de gebruiker; buiten dat venster gebruik je goedgekeurde templates. Het versturen van een Meta-leadformulier opent dat WhatsApp-venster niet.
+
+Respecteer opt-outs en bied een duidelijke manier om een persoon te bereiken. Houd opvolging relevant en vermijd herhaalde berichten als de kandidaat niet reageert.
+
+## 6. De kandidaatreis testen
+
+Gebruik contactgegevens die van jou zijn en [test de automatisering](/nl/automations/how-to-test-an-automation). Testen met een gebruiker kan echte berichten versturen.
+
+Controleer de volledige reis:
+
+1. Verstuur het Meta-formulier.
+2. Bevestig dat de bedoelde kandidaat en vacature in Carerix aan elkaar gekoppeld zijn.
+3. Controleer de afzender, de ontvanger, de template en de vacaturegegevens in het WhatsApp-bericht.
+4. Beantwoord de vragen in het formulier.
+5. Controleer of de antwoorden in de juiste kandidaatvelden terechtkomen.
+6. Test een onvolledig antwoord en bevestig dat nuttige bestaande waarden niet onbedoeld worden overschreven.
+
+Activeer de opvolging zodra deze controles slagen.
+
+## Probleemoplossing
+
+- **Template ontbreekt:** Controleer de goedkeuringsstatus en synchroniseer het WhatsApp-account in HireData.
+- **Verkeerde ontvanger of vacature:** Controleer de kandidaat-ID en de matchcontext die de gesprekstaak gebruikt.
+- **Antwoorden worden niet opgeslagen:** Controleer het object, de identifier en de veldmappings van de updatetaak.
+- **Meerdere opvolgberichten:** Controleer overlappende triggers en filters, vooral als aparte automatiseringen luisteren naar zowel het aanmaken als het bijwerken van matches.

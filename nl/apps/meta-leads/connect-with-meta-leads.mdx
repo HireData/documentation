@@ -1,0 +1,69 @@
+---
+title: "Verbinden met Meta Leads"
+sidebarTitle: "Meta Leads verbinden"
+description: "Verbind Meta-leadformulieren met HireData, bereid je formuliervelden voor en controleer of de juiste Facebook-pagina en formulieren beschikbaar zijn."
+---
+
+Verbind Meta Leads met HireData om een automatisering te starten wanneer iemand een leadformulier verstuurt vanuit een Facebook- of Instagram-campagne. Kies na het verbinden naar welke pagina en welk formulier de automatisering moet luisteren.
+
+## Voordat je begint
+
+Je hebt nodig:
+
+- Toegang om verbindingen te beheren in HireData.
+- Een persoonlijk Facebook-account dat gekoppeld is aan het bedrijf dat de betreffende pagina beheert.
+- Toegang tot die pagina en de bijbehorende leaddata.
+- Een leadformulier om te gebruiken voor de setup en het testen.
+
+Beheer je meerdere bedrijven of pagina's? Controleer dan vóór het verbinden welke eigenaar is van het formulier.
+
+## Je account verbinden
+
+1. Open **Settings → Configuration → Apps** in HireData of Carerix RMA.
+2. Selecteer **Meta Leads** en daarna **New connection**.
+3. Log in met het persoonlijke Facebook-account dat gekoppeld is aan het betreffende bedrijf.
+4. Volg de verbindingsflow van Meta en geef toegang tot de bedrijfsassets die nodig zijn voor je pagina en leads.
+5. Rond de flow af en keer terug naar HireData.
+
+## Je leadformulier voorbereiden
+
+Neem de velden op die je doelworkflow nodig heeft. Voor de Carerix-sollicitatieflow:
+
+| Formulierwaarde | Hoe deze wordt gebruikt |
+| --- | --- |
+| Voornaam en achternaam, apart verzameld | Vullen de naamvelden van de kandidaat. |
+| E-mailadres | Zoekt de kandidaat op in Carerix. |
+| Telefoonnummer | Vult het mobiele nummer van de kandidaat en maakt latere opvolging mogelijk. |
+| Vacature-identifier in een formulierparameter | Vindt de vacature waaraan de kandidaat gekoppeld moet worden. |
+
+Gebruik de vacature-identifier die je Carerix-lookup verwacht. Controleer deze aan de hand van een bestaande vacature voordat je gaat testen.
+
+<Note>
+De gedocumenteerde Carerix-integratie maakt een sollicitatie aan, in Carerix een **match** genoemd. Plan de vacature, de match-stage en de match-bron als onderdeel van je setup.
+</Note>
+
+## Je pagina en formulier controleren
+
+Maak een automatisering met **Meta Leads** als start-app en **Lead → Created** als trigger. Selecteer je verbinding, Facebook-pagina en formulier.
+
+Ontbreekt de pagina of het formulier? Controleer dan of deze hoort bij het bedrijf dat je hebt verbonden en of het Facebook-account toegang heeft tot de leads. Heb je onlangs permissies gewijzigd, verbind dan opnieuw en controleer de selectie nogmaals.
+
+## De verbinding verifiëren
+
+Ga verder met [Een Meta Leads-automatisering maken](/nl/apps/meta-leads/create-a-meta-leads-automation-in-hiredata) om de taken in de doelapp te configureren en een gecontroleerde testlead te versturen.
+
+Controleer of de ontvangen data de verwachte namen, het e-mailadres, het telefoonnummer en de vacatureparameter bevat. Alleen een verbonden account bewijst niet dat de volledige automatisering werkt.
+
+## Probleemoplossing
+
+### Een formulierveld of parameter ontbreekt
+
+Controleer of het veld bestaat op het geselecteerde formulier en een waarde bevat in je testinzending. Vernieuw de formulierselectie en geef recente wijzigingen even de tijd om beschikbaar te worden.
+
+### Leads van het ene formulier komen binnen, maar van andere niet
+
+Vergelijk de pagina en het formulier waar elke lead vandaan komt met de configuratie van de trigger. Test elk formulier dat je wilt gebruiken; formulieren met andere vragen hebben mogelijk andere mappings nodig.
+
+### Je ontvangt nog steeds geen testlead
+
+Neem contact op met HireData-support en vermeld de identifiers van de pagina en het formulier, het tijdstip en de tijdzone van de inzending, en eventuele verbindings- of runfouten. Met deze gegevens kan support de gebeurtenis traceren.
