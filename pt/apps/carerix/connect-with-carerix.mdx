@@ -22,25 +22,25 @@ _1.1 Inicie sessão na sua aplicação Carerix_
 
 ![Carerix login screen](/images/intercom/91440451-image.png)
 
-_1.2 Abra o [Marketplace]_
+_1.2 Abra o **Marketplace**_
 
 ![Marketplace](/images/intercom/91440970-image.png)
 
-_1.3 Em [New/Uninstalled], localize o Carerix RMA (powered by HireData)_
+_1.3 Em **New/Uninstalled**, localize o Carerix RMA (powered by HireData)_
 
 ![Installing Carerix RMA ](/images/intercom/91441229-image.png)
 
-_1.4 Clique em [Install]_
+_1.4 Clique em **Install**_
 
 ![Install the app](/images/intercom/91441445-image.png)
 
-_1.5 Após a instalação, a app aparecerá em [Installed]_
+_1.5 Após a instalação, a app aparecerá em **Installed**_
 
 ![Carerix RMA installed](/images/intercom/91442363-image.png)
 
 ### Passo 2: Ativar o Carerix RMA
 
-_2.1 Aceda ao separador [Installed] no [Marketplace]_
+_2.1 Aceda ao separador **Installed** no **Marketplace**_
 
 ![Installed Apps tab in Carerix](/images/intercom/91451765-2026-01-19_00h35_52.png)
 
@@ -57,9 +57,9 @@ _2.3 Preencha as suas definições, incluindo:_
 
 ![Credit bundle](/images/intercom/91451831-2026-01-19_00h38_49.png)
 
-_2.4 Clique em [Activate]* para ativar a app_
+_2.4 Clique em **Activate**\* para ativar a app_
 
-_*Nesta captura de ecrã, o botão [Deactivate] está visível porque a app já se encontra ativa._
+_\*Nesta captura de ecrã, o botão **Deactivate** está visível porque a app já se encontra ativa._
 
 ![Activate or Deactivate app button](/images/intercom/91445512-image.png)
 
@@ -71,7 +71,7 @@ Deverá ver um visto verde junto às apps Carerix RMA e Webhooks se ambas foram 
 
 ![Installed apps](/images/intercom/92607917-Screenshot-2026-01-22-at-11_48_40.png)
 
-Consulte o nosso tutorial em vídeo para um guia passo a passo completo sobre como configurar a ligação:
+Veja o tutorial em vídeo para um guia passo a passo completo sobre como configurar a ligação:
 
 <iframe src="https://www.loom.com/embed/cfa61664f5f14ea6ba22269bb6f10746" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>
 
@@ -97,7 +97,7 @@ Primeiro, precisa de ativar webhooks no seu ambiente Carerix. Para isso, [envie 
 
 #### Passo 2.2 Configurar um Confidential Client
 
-Em segundo lugar, aceda ao seu ambiente Carerix, navegue até [Maintenance] &gt; [Identity Management] &gt; [Clients], e clique em [New] &gt; [Confidential]. Depois, preencha os seguintes valores:
+Em segundo lugar, aceda ao seu ambiente Carerix e navegue até **Maintenance** > **Identity Management** > **Clients**. Clique em **New** > **Confidential**. Depois, preencha os seguintes valores:
 
 - Name: `HireData`
 - Code: `urn:hiredata/hiredata`
@@ -105,14 +105,14 @@ Em segundo lugar, aceda ao seu ambiente Carerix, navegue até [Maintenance] &gt;
   - `urn:cx/cx5Wrapper:data:manage`
   - `urn:cx/webhooks:data:manage`
 - Permissions:
-  - Clique em [Add] e pesquise por `Webhooks`
+  - Clique em **Add** e pesquise por `Webhooks`
   - Configure as permissões da seguinte forma:
     - create: `on`
     - delete: `owner`
     - read: `all`
     - update: `owner`
 
-Por último, clique em [Save]. Não se esqueça de guardar o seu Client ID e Client Secret, especialmente este último, uma vez que o Carerix só lhe apresenta estes valores uma vez por motivos de segurança. Se não os guardar, terá de refazer este passo.
+Por último, clique em **Save**. Guarde o seu Client ID e Client Secret, especialmente este último. O Carerix só lhe apresenta estes valores uma vez por motivos de segurança. Se não os guardar, terá de refazer este passo.
 
 _2.2.1: Criar um Confidential Client dentro do Carerix_
 
@@ -128,9 +128,9 @@ _2.2.3: Copie o seu Client ID e Client Secret_
 
 ### Passo 3: Criar uma nova ligação
 
-Clique em [+ New Connection] e introduza os detalhes necessários do Carerix: o seu tenant (nome de cliente ou subdomínio), Client ID, Client Secret e API Key. Se ainda não tem um Client ID, Client Secret e/ou API Key, entre em contacto com o seu account manager na Carerix ou [contacte a equipa de suporte do Carerix](mailto:support@carerix.com).
+Clique em **+ New Connection** e introduza os detalhes necessários do Carerix: o seu tenant (nome de cliente ou subdomínio), Client ID, Client Secret e API Key. Se ainda não tem um Client ID, Client Secret e/ou API Key, entre em contacto com o seu account manager na Carerix ou [contacte a equipa de suporte do Carerix](mailto:support@carerix.com).
 
-_3.1: Clique em [+ New Connection] e comece a ligar o seu Carerix_
+_3.1: Clique em **+ New Connection** e comece a ligar o seu Carerix_
 
 ![Adding New Connection](/images/intercom/ed724d0abea6.png)
 
@@ -140,12 +140,12 @@ _3.2: Forneça o seu tenant (sem maiúsculas), client ID e client secret para co
 
 ### Passo 4: Carerix ligado
 
-Depois de clicar em [Connect], concluiu a configuração da ligação entre o Carerix e a HireData. Quando é a primeira vez que configura esta ligação, a HireData poderá necessitar de alguns minutos para sincronizar dados da sua base de dados Carerix. Depois disso, está pronto para [configurar a sua primeira automação Carerix na HireData](/pt/apps/carerix/create-a-carerix-automation-in-hiredata).
+Depois de clicar em **Connect**, concluiu a configuração da ligação entre o Carerix e a HireData. Quando é a primeira vez que configura esta ligação, a HireData poderá necessitar de alguns minutos para sincronizar dados da sua base de dados Carerix. Depois disso, está pronto para [configurar a sua primeira automação Carerix na HireData](/pt/apps/carerix/create-a-carerix-automation-in-hiredata).
 
-Consulte o nosso tutorial em vídeo para um guia passo a passo completo sobre como configurar a ligação:
+Veja o tutorial em vídeo para um guia passo a passo completo sobre como configurar a ligação:
 
 <iframe src="https://www.loom.com/embed/4e7d571a48fc4622a59fd679f15472a3" title="Loom video" allowFullScreen className="w-full aspect-video rounded-xl"></iframe>
 
 ## Próximo passo: Criar uma automação Carerix na HireData
 
-Agora que configurou a ligação com o Carerix, vamos [criar a sua primeira automação Carerix](/pt/apps/carerix/create-a-carerix-automation-in-hiredata) na HireData.
+Agora que configurou a ligação com o Carerix, [crie a sua primeira automação Carerix](/pt/apps/carerix/create-a-carerix-automation-in-hiredata) na HireData.

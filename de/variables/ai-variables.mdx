@@ -147,7 +147,7 @@ Der letzte Satz ist der wichtigste. Sagen Sie, was zu tun ist, wenn die Daten fe
 
 ## Einschränkungen
 
-**Sie wird einmal pro Versand aufgelöst und dann wiederholt.** Der Wert wird beim ersten Referenzieren der Variable generiert und für jede weitere Erwähnung in derselben Nachricht wiederverwendet – `{{ celebration }}` zweimal in einer E-Mail ergibt also zweimal denselben Satz, nicht zwei Versuche. Sie wird neu erarbeitet, wenn sich ihre Inputs ändern – genau das macht sie empfängerspezifisch. Eine Variable ohne angehängte Inputs hat nichts, worauf sie variieren könnte.
+**Sie wird einmal pro Versand aufgelöst und dann wiederholt.** Der Wert wird beim ersten Referenzieren der Variable generiert und für jede weitere Erwähnung in derselben Nachricht wiederverwendet. Wenn Sie `{{ celebration }}` zweimal in einer E-Mail verwenden, erhalten Sie zweimal denselben Satz, nicht zwei Versuche. Sie wird neu erarbeitet, wenn sich ihre Inputs ändern, und genau das macht sie empfängerspezifisch. Eine Variable ohne angehängte Inputs hat nichts, worauf sie variieren könnte.
 
 **Ein gespeicherter Standardwert ist kein Sicherheitsnetz.** Bei einer KI-Variable ist der Standardwert der Platz, in den der generierte Wert geschrieben wird, kein Fallback, den Sie setzen können. Gibt das Modell nichts zurück, wird die Variable zu nichts aufgelöst. Um zu garantieren, dass etwas auf der Seite landet, verwenden Sie den Modifier [`default`](/de/variables/modifiers#fallback) dort, wo Sie sie referenzieren:
 

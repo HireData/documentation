@@ -6,7 +6,7 @@ keywords: ["Skill erstellen", "Skill aufnehmen", "eigener Skill Claude", "SKILL.
 related: ["/de/apps/mcp/hiredata-skills", "/de/apps/mcp/install-hiredata-plugin", "/de/apps/mcp/keep-hiredata-skills-up-to-date"]
 ---
 
-[Die Skills von HireData](/de/apps/mcp/hiredata-skills) decken die Arbeit ab, die HireData am besten kennt. Die Dinge, die _Sie_ jedes Mal gleich tun – die Tonalität Ihrer Agentur, wie Sie die E-Mail-Signatur einer Kundin umbauen, die Checkliste, die Sie durchgehen, bevor ein Workspace live geht – sind die, die es wert sind, aufgeschrieben zu werden. Ein Skill ist der Weg, das einmal zu tun, statt es in jeder Konversation neu zu erklären.
+[Die Skills von HireData](/de/apps/mcp/hiredata-skills) decken die Arbeit ab, die HireData am besten kennt. Die Dinge, die _Sie_ jedes Mal gleich tun, sind die, die es wert sind, aufgeschrieben zu werden. Denken Sie an die Tonalität Ihrer Agentur, daran, wie Sie die E-Mail-Signatur einer Kundin umbauen, oder an die Checkliste, die Sie durchgehen, bevor ein Workspace live geht. Ein Skill ist der Weg, das einmal zu tun, statt es in jeder Konversation neu zu erklären.
 
 Ein Skill ist ein Ordner mit einer Datei `SKILL.md` darin: reiner Text, kein Code erforderlich. Sie müssen ihn danach nie wieder erwähnen. Ihr Assistent prüft die Beschreibung jedes installierten Skills und liest die vollständigen Anweisungen, sobald Ihre Anfrage zu einem davon passt.
 
@@ -16,9 +16,9 @@ Gute Kandidaten haben drei Eigenschaften gemeinsam:
 
 - **Sie tun es wiederholt.** Einmal im Monat genügt; einmal überhaupt nicht.
 - **Die Methode ist stabil.** Sie würden einer neuen Kollegin heute dieselben Anweisungen geben wie letztes Jahr.
-- **Es gibt eine richtige Antwort.** Hausstil, eine vorgeschriebene Reihenfolge von Schritten, ein Format, das passen muss – Dinge, die ein Assistent falsch rät, solange Sie sie ihm nicht sagen.
+- **Es gibt eine richtige Antwort.** Hausstil, eine vorgeschriebene Reihenfolge von Schritten, ein Format, das passen muss. Das sind Dinge, die ein Assistent falsch rät, solange Sie sie ihm nicht sagen.
 
-Wenn es einmalig ist, fragen Sie einfach danach. Ein Skill, den Sie nie auslösen, ist Ballast.
+Wenn es einmalig ist, fragen Sie direkt danach. Ein Skill, den Sie nie auslösen, ist Ballast.
 
 ## Bevor Sie beginnen
 
@@ -32,7 +32,7 @@ Das ist der einfachste Weg, und er funktioniert in jeder Claude-Konversation. Si
 
 <Steps>
   <Step title="Die Aufgabe einmal richtig erledigen">
-    Arbeiten Sie sie mit Ihrem Assistenten durch, bis das Ergebnis wirklich Ihren Vorstellungen entspricht. Korrigieren Sie unterwegs – _„nein, die Icons gehören immer unter die Telefonnummer"_ – denn genau diese Korrekturen sind der wertvolle Teil.
+    Arbeiten Sie sie mit Ihrem Assistenten durch, bis das Ergebnis wirklich Ihren Vorstellungen entspricht. Korrigieren Sie unterwegs, zum Beispiel _„nein, die Icons gehören immer unter die Telefonnummer"_. Genau diese Korrekturen sind der wertvolle Teil.
   </Step>
   <Step title="Nach dem Skill fragen">
     Fügen Sie in derselben Konversation dies ein:
@@ -68,7 +68,7 @@ Die ATS-E-Mail-Signatur einer Kundin als HireData-E-Mail-Vorlage nachzubauen ist
 Bauen Sie eine Signatur gemeinsam mit Ihrem Assistenten. Sagen Sie ihm, welche Teile fest sind und welche aus [Variablen](/de/variables/introduction) kommen, wo das Logo hingehört, was passiert, wenn eine Telefonnummer fehlt, und welche Icons Ihre Kundinnen und Kunden verwenden. Führen Sie dann den Prompt oben aus. Die nächste Signatur beginnt bei Ihrer Methode statt bei null.
 
 <Note>
-  Icons und Logos in einer E-Mail-Vorlage müssen irgendwo gehostet sein, wo Ihre Empfänger sie erreichen können. Behandeln Sie das im Skill – woher die Bilder kommen und was zu tun ist, wenn eine Kundin keine geliefert hat – damit der Skill nicht jedes Mal daran hängen bleibt.
+  Icons und Logos in einer E-Mail-Vorlage müssen irgendwo gehostet sein, wo Ihre Empfänger sie erreichen können. Behandeln Sie das im Skill: woher die Bilder kommen und was zu tun ist, wenn eine Kundin keine geliefert hat. So bleibt der Skill nicht jedes Mal daran hängen.
 </Note>
 
 ## Weg 2: sich selbst dabei aufnehmen
@@ -84,7 +84,7 @@ Bevor Sie beginnen: Ihr Video und Ihr Ton werden nicht aufbewahrt, nur Screensho
     Klicken Sie im Eingabefeld auf **\+** und wählen Sie **Record a skill**, oder gehen Sie zu **Customize** \> **Skills**, klicken Sie auf **Add** und wählen Sie **Record your screen**.
   </Step>
   <Step title="Die Aufgabe erledigen und dabei erzählen">
-    Arbeiten Sie in Ihrem normalen Tempo, bis zu etwa zehn Minuten, und sagen Sie, was Sie tun und warum – _„ich prüfe immer zuerst die Marke, weil das den Absender bestimmt"_. Die Begründung macht den Skill wertvoll; die Klicks allein tun das nicht.
+    Arbeiten Sie in Ihrem normalen Tempo, bis zu etwa zehn Minuten, und sagen Sie, was Sie tun und warum, zum Beispiel _„ich prüfe immer zuerst die Marke, weil das den Absender bestimmt"_. Die Begründung macht den Skill wertvoll; die Klicks allein tun das nicht.
   </Step>
   <Step title="Prüfen, was Claude vorschlägt">
     Claude wertet die Aufnahme aus und schlägt einen neuen Skill vor oder eine Aktualisierung eines vorhandenen. Lesen Sie ihn, bevor Sie speichern: Eine Aufnahme greift Details aus genau dem einen Fall auf, den Sie vorgeführt haben. Löschen Sie alles, was beim nächsten Mal nicht mehr stimmt.
@@ -126,9 +126,9 @@ description: Rebuild a client's ATS email signature as a HireData email template
 
 Drei Regeln sind wichtig:
 
-- **`name`** – nur Kleinbuchstaben, Ziffern und Bindestriche, bis zu 64 Zeichen, und er darf die Wörter _claude_ oder _anthropic_ nicht enthalten.
-- **`description`** – der einzige Teil, den Ihr Assistent liest, bevor er entscheidet, ob der Skill passt. Sagen Sie, **was er tut und wann er zu verwenden ist**, in den Worten, die Ihre Kolleginnen und Kollegen tatsächlich benutzen, und bleiben Sie unter 200 Zeichen.
-- **`references/`** – hier gehört alles Lange hin: Feldlisten, Beispiele, Sonderfälle. Verlinken Sie darauf aus `SKILL.md`. Ihr Assistent öffnet diese Dateien nur, wenn er sie braucht, was den Skill schnell hält.
+- **`name`**: nur Kleinbuchstaben, Ziffern und Bindestriche, bis zu 64 Zeichen, und er darf die Wörter _claude_ oder _anthropic_ nicht enthalten.
+- **`description`**: der einzige Teil, den Ihr Assistent liest, bevor er entscheidet, ob der Skill passt. Sagen Sie, **was er tut und wann er zu verwenden ist**, in den Worten, die Ihre Kolleginnen und Kollegen tatsächlich benutzen, und bleiben Sie unter 200 Zeichen.
+- **`references/`**: hier gehört alles Lange hin: Feldlisten, Beispiele, Sonderfälle. Verlinken Sie darauf aus `SKILL.md`. Ihr Assistent öffnet diese Dateien nur, wenn er sie braucht, was den Skill schnell hält.
 
 Zippen Sie den Ordner `my-skill` selbst, sodass beim Öffnen des ZIP genau der obige Ordner erscheint und nicht ein weiterer Ordner darum herum. Laden Sie ihn dann hoch wie in [Weg 1](#weg-1-eine-konversation-in-einen-skill-verwandeln), Schritt 3.
 

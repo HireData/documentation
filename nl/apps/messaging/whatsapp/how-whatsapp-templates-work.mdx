@@ -4,7 +4,7 @@ sidebarTitle: "Hoe templates werken"
 description: "Ontdek hoe WhatsApp-templates werken in HireData, inclusief categorieën, goedkeuring door Meta en variabelen, en wanneer je ze nodig hebt om kandidaten te berichten."
 ---
 
-_Onze WhatsApp-automatiseringstemplates stroomlijnen kandidaatcommunicatie met AI en conversational recruiting-technieken. Deze kant-en-klare templates helpen recruiters efficiënt met kandidaten in contact te komen via WhatsApp, met tijdige reacties en gepersonaliseerde interacties. Lees verder om te leren hoe je ze effectief inzet voor je bedrijf, en hoe je WhatsApp-templates aanmaakt in de WhatsApp manager._
+_De WhatsApp-automatiseringstemplates van HireData stroomlijnen kandidaatcommunicatie met AI en conversational recruiting-technieken. Deze kant-en-klare templates helpen recruiters efficiënt met kandidaten in contact te komen via WhatsApp, met tijdige reacties en gepersonaliseerde interacties. Lees verder om te leren hoe je ze effectief inzet voor je bedrijf, en hoe je WhatsApp-templates aanmaakt in de WhatsApp manager._
 
 ## WhatsApp-templates in HireData
 
@@ -23,13 +23,13 @@ Alle WhatsApp-templates gebruiken dezelfde logica, maar kunnen verschillen in de
 In deze automatisering is de trigger gebaseerd op een **stage-update** binnen het Carerix-systeem. Zo werkt het:
 
 1. **Trigger Object** – De automatisering luistert wanneer een **Match** wordt **aangemaakt of bijgewerkt.**
-2. **Filter Condition** – De automatisering gaat alleen door als de **[Match: Stage]** is ingesteld op **"Placed on shortlist"**, zodat alleen shortlisted kandidaten het job alert-bericht ontvangen.
+2. **Filter Condition** – De automatisering gaat alleen door als de **Match: Stage** is ingesteld op **"Placed on shortlist"**, zodat alleen shortlisted kandidaten het job alert-bericht ontvangen.
 
 ![Trigger-setup](/images/intercom/41580122-Screenshot-2025-03-17-at-08_23_53.png)
 
 Zodra dit wordt getriggerd, start de automatisering een **WhatsApp-gesprek** en stuurt een gepersonaliseerde job alert naar de kandidaten om ze te informeren over de nieuwe kans.
 
-### De taak [Start Conversation] configureren
+### De taak Start Conversation configureren
 
 Zodra de trigger is ingesteld, is de volgende stap de taak configureren die bepaalt hoe het WhatsApp-bericht wordt verstuurd. Hier is een overzicht van elke configuratie-optie:
 
@@ -58,7 +58,7 @@ Dit zijn enkele standaard dynamische placeholders die het bericht personaliseren
 - **Company Name** → Verwijst naar het inhurende bedrijf of merk.
 ![Kennisvelden](/images/intercom/41580572-Screenshot-2025-03-17-at-08_36_33.png)
 
-### De taak [Update Fields] configureren
+### De taak Update Fields configureren
 
 Nadat het WhatsApp-gesprek informatie van de kandidaat heeft verzameld, kan de automatisering **automatisch specifieke velden bijwerken** in het systeem. Dit zorgt ervoor dat het profiel van de kandidaat up-to-date blijft zonder handmatige data-invoer.
 
@@ -81,15 +81,15 @@ Zo werkt dit proces:
 
 ### Een WhatsApp-template maken
 
-_Ga naar je WhatsApp Template Manager door op [Manage Templates] te klikken:_
+_Ga naar je WhatsApp Template Manager door op **Manage Templates** te klikken:_
 
 ![Doorverwijzingsknop Manage Templates](/images/intercom/47451468-Screenshot-2025-03-28-at-05_32_22.png)
 
-_Klik op [Create Template]:_
+_Klik op **Create Template**:_
 
 ![Knop Een template aanmaken](/images/intercom/47455505-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Selecteer het templatetype, bijv. door [Marketing] te selecteren en dan [Custom]:_
+_Selecteer het templatetype, bijv. door **Marketing** te selecteren en dan **Custom**:_
 
 ![Templatetype selecteren](/images/intercom/47451710-Screenshot-2025-03-28-at-05_18_36.png)
 
@@ -111,7 +111,7 @@ _Gebruik de naam als identifier voor je WhatsApp-template (erna):_
 
 ### 2. Voeg variabelen toe aan je WhatsApp-template
 
-_Je kunt dynamische velden invoegen door op [+ Add variable] te klikken in de editor:_
+_Je kunt dynamische velden invoegen door op **+ Add variable** te klikken in de editor:_
 
 ![Variabelen toevoegen in de WhatsApp-template](/images/intercom/47452641-var.png)
 
@@ -131,7 +131,7 @@ _Een voorbeeld van een numbered variabele:_
 
 ![Een numbered variabele toevoegen](/images/intercom/47454337-var4.png)
 
-Je kunt kiezen tussen **Name** en **Number** als variabeletypes. Hoewel numbered variabelen zijn toegestaan, raden we het gebruik van **named variables** aan voor betere duidelijkheid en hergebruik.
+Je kunt kiezen tussen **Name** en **Number** als variabeletypes. Hoewel numbered variabelen zijn toegestaan, raadt HireData het gebruik van **named variables** aan voor betere duidelijkheid en hergebruik.
 
 ### 3. Voeg knoppen toe aan je WhatsApp-template
 
@@ -139,7 +139,7 @@ Knoppen helpen gebruikers direct te interageren met je bericht.
 
 ![Een knop toevoegen](/images/intercom/47454516-buttons.png)
 
-_Kies het knoptype, bijv. [Custom]:_
+_Kies het knoptype, bijv. **Custom**:_
 
 ![Een knoptype kiezen](/images/intercom/47454544-buttons1.png)
 
@@ -165,7 +165,7 @@ _Preview de WhatsApp-template met knoppen:_
 
 ### 4. Verstuur je WhatsApp-template
 
-_Zodra alles klaar is, klik je op [Submit] om de template ter goedkeuring in te dienen en wacht je op de review van de template:_
+_Zodra alles klaar is, klik je op **Submit** om de template ter goedkeuring in te dienen en wacht je op de review van de template:_
 
 ![Een template ter review indienen](/images/intercom/47454980-submit.png)
 
@@ -179,8 +179,8 @@ _Hoera! Je WhatsApp-template is geverifieerd_
 
 Het indienen van een template start twee stappen, in deze volgorde:
 
-1. **Categorievalidatie** — gebeurt direct. Meta controleert de categorie die je hebt gekozen (Marketing, Utility of Authentication) tegen de inhoud van de template. Als Meta het er niet mee eens is, wordt de template direct afgewezen wegens een onjuiste categorie, nog voordat er een contentreview plaatsvindt. Zie [WhatsApp-templatecategorieën in HireData](/nl/apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata).
-2. **Templatereview** — dit is de status **In review** (Pending). Meta toetst de inhoud aan zijn richtlijnen en keurt de template daarna goed of af.
+1. **Categorievalidatie** gebeurt direct. Meta controleert de categorie die je hebt gekozen (Marketing, Utility of Authentication) tegen de inhoud van de template. Als Meta het er niet mee eens is, wordt de template direct afgewezen wegens een onjuiste categorie, nog voordat er een contentreview plaatsvindt. Zie [WhatsApp-templatecategorieën in HireData](/nl/apps/messaging/whatsapp/whatsapp-template-categories-in-hiredata).
+2. **Templatereview** is de status **In review** (Pending). Meta toetst de inhoud aan zijn richtlijnen en keurt de template daarna goed of af.
 
 De meeste templates doorlopen de review binnen een paar minuten. Reken op maximaal **24 uur** voordat je een template met de status **In review** als vastgelopen beschouwt.
 
@@ -210,7 +210,7 @@ Meta laat je de uitkomst weten per e-mail en met een melding in WhatsApp Manager
 
 ### WhatsApp-templates synchroniseren met HireData
 
-_Om je nieuw gemaakte template beschikbaar te maken in HireData, klik je op [Sync Account] in het dropdown-menu van je WhatsApp-account in HireData:_
+_Om je nieuw gemaakte template beschikbaar te maken in HireData, klik je op **Sync Account** in het dropdown-menu van je WhatsApp-account in HireData:_
 
 ![Knop Sync Account](/images/intercom/47448587-Screenshot-2025-03-28-at-05_55_39.png)
 
@@ -232,7 +232,7 @@ _Je kunt nu je nieuwe WhatsApp-template selecteren in de WhatsApp-taken die je i
 
 ### Een WhatsApp-template bewerken
 
-_Ga naar je WhatsApp Template Manager door op [Manage Templates] te klikken:_
+_Ga naar je WhatsApp Template Manager door op **Manage Templates** te klikken:_
 
 ![Knop Manage Templates in het dropdown-menu](/images/intercom/47450181-Screenshot-2025-03-28-at-05_32_22.png)
 
@@ -240,7 +240,7 @@ _Klik op een van je bestaande templates:_
 
 ![Templatelijst in WhatsApp Manager](/images/intercom/47450224-Screenshot-2025-03-28-at-05_14_28.png)
 
-_Klik op [Edit Template] om naar de editor te gaan:_
+_Klik op **Edit Template** om naar de editor te gaan:_
 
 ![Knop Edit Template in WhatsApp Manager](/images/intercom/47450335-Screenshot-2025-03-28-at-05_14_41.png)
 
@@ -262,7 +262,7 @@ _Je bijgewerkte WhatsApp-template ter review indienen (meestal vrijwel direct ge
 
 ### Een WhatsApp-template verwijderen
 
-_Klik rechtsboven in de editor op [Delete template]:_
+_Klik rechtsboven in de editor op **Delete template**:_
 
 ![Een WhatsApp-template verwijderen](/images/intercom/47450936-Screenshot-2025-03-28-at-05_17_45.png)
 

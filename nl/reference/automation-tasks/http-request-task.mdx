@@ -140,7 +140,7 @@ Het tabblad **Body** opent met één keuze, `Form` of `Raw`: of de body wordt ve
 
 **`Form`** biedt twee encodings, `Multipart form` en `Form URL encoded`, en een tabel met naam- en waarderijen. Een endpoint dat een formulier accepteert documenteert er meestal een van de twee en weigert de andere, dus controleer welke voordat je kiest.
 
-**`Raw`** biedt vier formaten — `JSON`, `XML`, `Text` en `GraphQL` — voor een endpoint dat XML of een GraphQL-query documenteert in plaats van JSON. Het voegt een derde control toe, `Builder` of `Code`: of je de body opbouwt uit getypeerde properties of hem zelf uitschrijft. Gebruik wat jou het beste past. Zolang er nog niets in staat, toont het tabblad "No body properties yet" en wijst het op beide: "Add typed properties to build the request body, or switch to the raw editor."
+**`Raw`** biedt vier formaten (`JSON`, `XML`, `Text` en `GraphQL`) voor een endpoint dat XML of een GraphQL-query documenteert in plaats van JSON. Het voegt een derde control toe, `Builder` of `Code`: of je de body opbouwt uit getypeerde properties of hem zelf uitschrijft. Gebruik wat jou het beste past. Zolang er nog niets in staat, toont het tabblad "No body properties yet" en wijst het op beide: "Add typed properties to build the request body, or switch to the raw editor."
 
 Er zijn twee manieren om te nesten, en de snelle zit in de naam: "Use dots in property names to nest objects, e.g. candidate.email."
 
@@ -154,7 +154,7 @@ Een property met de naam `candidate.email` verstuurt het adres daarom binnen een
 }
 ```
 
-De andere manier is structureel. Geef een property het type **Collection** — "A repeating list of objects, e.g. line items or attendees" — of maak er een object van, en het wordt een groepsrij met een **Add child property**-knop erop. Bouw de vorm op die manier uit wanneer het endpoint een array van dingen wil in plaats van er één, wat je met namen met punten niet kunt uitdrukken. Elke property heeft ook **Edit property** en **Remove**.
+De andere manier is structureel. Geef een property het type **Collection** ("A repeating list of objects, e.g. line items or attendees") of maak er een object van, en het wordt een groepsrij met een **Add child property**-knop erop. Bouw de vorm op die manier uit wanneer het endpoint een array van dingen wil in plaats van er één, wat je met namen met punten niet kunt uitdrukken. Elke property heeft ook **Edit property** en **Remove**.
 
 Een `GET`-request verstuurt geen body. Selecteer `GET` en het hele tabblad wordt één regel: "This request method does not send a body."
 
@@ -334,7 +334,7 @@ Het tabblad **Advanced** eindigt met twee switches. Ze beantwoorden aparte vrage
 
 **Fail on error responses** staat standaard aan: "Treat 4xx and 5xx responses as a failed task."
 
-Zet hem uit wanneer een non-2xx een normaal antwoord van dit endpoint is in plaats van een probleem — een `404` van een lookup die simpelweg niets vond, bijvoorbeeld. De taak wordt dan voltooid, en wat je met de code doet bepaal jij in een latere taak.
+Zet hem uit wanneer een non-2xx een normaal antwoord van dit endpoint is in plaats van een probleem, zoals een `404` van een lookup die niets vond. De taak wordt dan voltooid, en wat je met de code doet bepaal jij in een latere taak.
 
 **Continue automation on failure** staat standaard uit: "The run continues with the next step even if this request fails."
 
@@ -348,7 +348,7 @@ Samen bepalen ze het lot van die verwachte `404`. Zet de eerste switch uit en he
 
 Open een run en een voltooide HTTP Request toont:
 
-- Zijn **Description** als titel, de method en host eronder — `GET api.example.com` — en het path daaronder
+- Zijn **Description** als titel, de method en host eronder (`GET api.example.com`) en het path daaronder
 - **What will you provide?** en **What will you get back?**: het request dat je hebt geconfigureerd en de response die je hebt beschreven
 - Een rij chips voor de instellingen die de call vormden. Het auth-type, de timeout en de retries staan er altijd — `Bearer token`, `30s`, `No retries`. De rest verschijnt pas zodra je ze hebt aangezet: een backoff wanneer retries boven `0` staan, `Ignores error statuses` wanneer **Fail on error responses** uit staat, en `Continues on failure` wanneer **Continue automation on failure** aan staat
 
@@ -368,11 +368,11 @@ Als de bestemming duidelijk publiek is en je dit toch ziet, meld het dan in plaa
 
 **Post Webhook** is de andere taak om data uit HireData te versturen, en het is de taak die door de HTTP Request-taak wordt vervangen. Automatiseringen die hem al gebruiken blijven precies zo werken als nu, en er hoeft niets handmatig aan te worden veranderd.
 
-Een eenmalige migratie zal die stappen omzetten in HTTP Request-taken. Die draait één keer, aan onze kant, en is niet iets dat je start of waarop je je moet voorbereiden. Bouw alles wat nieuw is als een HTTP Request-taak; laat wat je al hebt met rust.
+Een eenmalige migratie zal die stappen omzetten in HTTP Request-taken. Die draait één keer, aan de kant van HireData, en is niet iets dat je start of waarop je je moet voorbereiden. Bouw alles wat nieuw is als een HTTP Request-taak; laat wat je al hebt met rust.
 
 ## Meer hulp nodig?
 
-Als een request zich niet gedraagt zoals verwacht, neem dan contact op met ons team via [support@hiredata.com](mailto:support@hiredata.com) en voeg toe:
+Als een request zich niet gedraagt zoals verwacht, neem dan contact op met het HireData-team via [support@hiredata.com](mailto:support@hiredata.com) en voeg toe:
 
 - Een link naar de automatisering
 - De method en URL van de taak, met eventuele credentials verwijderd

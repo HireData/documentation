@@ -140,7 +140,7 @@ L'onglet **Body** s'ouvre sur un choix, `Form` ou `Raw` : le corps part-il sous 
 
 **`Form`** propose deux encodages, `Multipart form` et `Form URL encoded`, et un tableau de lignes nom-valeur. Un endpoint qui accepte un formulaire documente généralement l'un des deux et rejette l'autre, vérifiez donc lequel avant de choisir.
 
-**`Raw`** propose quatre formats — `JSON`, `XML`, `Text` et `GraphQL` — pour un endpoint qui documente du XML ou une requête GraphQL plutôt que du JSON. Il ajoute un troisième contrôle, `Builder` ou `Code` : soit vous construisez le corps à partir de propriétés typées, soit vous l'écrivez vous-même. Utilisez celui qui vous convient. Tant qu'il est vide, l'onglet affiche « No body properties yet » et pointe vers les deux options : « Add typed properties to build the request body, or switch to the raw editor. »
+**`Raw`** propose quatre formats (`JSON`, `XML`, `Text` et `GraphQL`) pour un endpoint qui documente du XML ou une requête GraphQL plutôt que du JSON. Il ajoute un troisième contrôle, `Builder` ou `Code` : soit vous construisez le corps à partir de propriétés typées, soit vous l'écrivez vous-même. Utilisez celui qui vous convient. Tant qu'il est vide, l'onglet affiche « No body properties yet » et pointe vers les deux options : « Add typed properties to build the request body, or switch to the raw editor. »
 
 Il y a deux façons d'imbriquer, et la plus rapide est dans le nom : « Use dots in property names to nest objects, e.g. candidate.email. »
 
@@ -154,7 +154,7 @@ Une propriété nommée `candidate.email` envoie donc l'adresse à l'intérieur 
 }
 ```
 
-L'autre façon est structurelle. Donnez à une propriété le type **Collection** — « A repeating list of objects, e.g. line items or attendees » — ou faites-en un objet, et elle devient une ligne de groupe dotée d'un bouton **Add child property**. Construisez la structure de cette façon quand l'endpoint attend un tableau d'éléments plutôt qu'un seul, ce que les noms à points ne peuvent pas exprimer. Chaque propriété dispose aussi de **Edit property** et **Remove**.
+L'autre façon est structurelle. Donnez à une propriété le type **Collection** (« A repeating list of objects, e.g. line items or attendees ») ou faites-en un objet, et elle devient une ligne de groupe dotée d'un bouton **Add child property**. Construisez la structure de cette façon quand l'endpoint attend un tableau d'éléments plutôt qu'un seul, ce que les noms à points ne peuvent pas exprimer. Chaque propriété dispose aussi de **Edit property** et **Remove**.
 
 Une requête `GET` n'envoie pas de corps. Sélectionnez `GET` et l'onglet entier se réduit à une seule ligne : « This request method does not send a body. »
 
@@ -334,7 +334,7 @@ L'onglet **Advanced** se termine par deux interrupteurs. Ils répondent à des q
 
 **Fail on error responses** est activé par défaut : « Treat 4xx and 5xx responses as a failed task. »
 
-Désactivez-le quand une réponse non-2xx est une réponse normale de cet endpoint plutôt qu'un problème — un `404` d'une recherche qui n'a simplement rien trouvé, par exemple. La tâche se termine alors, et ce qu'il faut faire de ce code vous appartient dans une tâche ultérieure.
+Désactivez-le quand une réponse non-2xx est une réponse normale de cet endpoint plutôt qu'un problème, par exemple un `404` d'une recherche qui n'a rien trouvé. La tâche se termine alors, et ce qu'il faut faire de ce code vous appartient dans une tâche ultérieure.
 
 **Continue automation on failure** est désactivé par défaut : « The run continues with the next step even if this request fails. »
 
@@ -368,11 +368,11 @@ Si la destination est manifestement publique et que vous voyez toujours ce messa
 
 **Post Webhook** est l'autre tâche pour envoyer des données hors de HireData, et c'est elle que la tâche HTTP Request remplace. Les automatisations qui l'utilisent déjà continuent de fonctionner exactement comme aujourd'hui, et rien n'y est à modifier à la main.
 
-Une migration ponctuelle convertira ces étapes en tâches HTTP Request. Elle s'exécute une seule fois, de notre côté, et ce n'est pas quelque chose que vous déclenchez ou préparez. Construisez toute nouveauté comme une tâche HTTP Request ; laissez l'existant tel quel.
+Une migration ponctuelle convertira ces étapes en tâches HTTP Request. Elle s'exécute une seule fois, du côté de HireData, et ce n'est pas quelque chose que vous déclenchez ou préparez. Construisez toute nouveauté comme une tâche HTTP Request ; laissez l'existant tel quel.
 
 ## Besoin d'aide supplémentaire ? {#besoin-daide-supplémentaire}
 
-Si une requête ne se comporte pas comme prévu, contactez notre équipe à [support@hiredata.com](mailto:support@hiredata.com) en incluant :
+Si une requête ne se comporte pas comme prévu, contactez l'équipe HireData à [support@hiredata.com](mailto:support@hiredata.com) en incluant :
 
 - Un lien vers l'automatisation
 - La méthode et l'URL de la tâche, avec les identifiants retirés

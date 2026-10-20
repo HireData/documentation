@@ -7,7 +7,7 @@ _Quando liga o seu ATS, como Carerix, Salesforce, OTYS, etc., à HireData, ele c
 
 ## O que é um event
 
-Um event é um sinal enviado da sua app ligada para a HireData. Normalmente representa uma ação ou alteração específica, por exemplo, um novo candidato ser criado, uma vaga ser atualizada, uma colocação ser concluída, etc. A HireData usa estes events para acionar as automações que configurou, e cada event inclui **Event Data**, **External Records** e **Runs**.
+Um event é um sinal enviado da sua app ligada para a HireData. Normalmente representa uma ação ou alteração específica, por exemplo, um novo candidato ser criado, uma vaga ser atualizada, uma colocação ser concluída, etc. A HireData usa estes events para acionar as automações que configurou. Cada event inclui **Event Data**, **External Records** e **Runs**.
 
 _Exemplo de event:_
 
@@ -43,10 +43,10 @@ Isto abre a vista de detalhe do event, que inclui:
 
 ## Reproduzir events
 
-Se um event não acionar uma automação como esperado, ou um run falhar antes de concluir as suas tarefas, pode reproduzir events individuais ou múltiplos para voltar a acionar automações e voltar a colocar tudo em ordem.
+Se um event não acionar uma automação como esperado, ou um run falhar antes de concluir as suas tarefas, pode reproduzi-lo. Reproduzir um ou mais events volta a acionar as automações e coloca tudo de novo em ordem.
 
 <Warning>
-  Quando reproduz um event, este pode acionar runs em várias automações de uma só vez. Antes de reproduzir, verifique sempre que automações e runs serão afetados, especialmente se algum incluir o envio de um email ou uma mensagem. Reproduzir esses sem verificar primeiro pode resultar em mensagens duplicadas a serem enviadas a candidatos ou contactos.
+  Quando reproduz um event, este pode acionar runs em várias automações de uma só vez. Antes de reproduzir, verifique sempre que automações e runs serão afetados, especialmente se algum incluir o envio de um email ou uma mensagem. Reproduzir esses sem verificar primeiro pode enviar mensagens duplicadas a candidatos ou contactos.
 </Warning>
 
 ### O que acontece quando um event é reproduzido?
@@ -117,8 +117,8 @@ Se nenhum run foi criado, o event pode não ter cumprido os critérios de nenhum
 
 ### Ainda precisa de ajuda?
 
-Se não tem a certeza de por que motivo um event não acionou a sua automação ou quer ajuda a interpretar os dados do event, contacte a nossa equipa em [support@hiredata.com](mailto:support@hiredata.com). Se o fizer, inclua:
+Se não tem a certeza de por que motivo um event não acionou a sua automação ou quer ajuda a interpretar os dados do event, contacte a equipa da HireData em [support@hiredata.com](mailto:support@hiredata.com). Se o fizer, inclua:
 
 - Um link ou o ID do event;
 - Um link ou o nome da automação que esperava que fosse acionada;
-- Quaisquer passos ou contexto relevante que nos possa ajudar a investigar mais a fundo.
+- Quaisquer passos ou contexto relevante que possa ajudar a equipa a investigar mais a fundo.
