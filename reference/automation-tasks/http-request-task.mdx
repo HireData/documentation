@@ -140,7 +140,7 @@ The **Body** tab opens with one choice, `Form` or `Raw`: whether the body goes o
 
 **`Form`** offers two encodings, `Multipart form` and `Form URL encoded`, and a table of name and value rows. An endpoint that takes a form usually documents one of the two and rejects the other, so check which before you pick.
 
-**`Raw`** offers four formats — `JSON`, `XML`, `Text`, and `GraphQL` — for an endpoint that documents XML or a GraphQL query rather than JSON. It adds a third control, `Builder` or `Code`: whether you build the body from typed properties or write it out yourself. Use whichever suits you. With nothing in it yet, the tab reads "No body properties yet" and points at both: "Add typed properties to build the request body, or switch to the raw editor."
+**`Raw`** offers four formats (`JSON`, `XML`, `Text`, and `GraphQL`) for an endpoint that documents XML or a GraphQL query rather than JSON. It adds a third control, `Builder` or `Code`: whether you build the body from typed properties or write it out yourself. Use whichever suits you. With nothing in it yet, the tab reads "No body properties yet" and points at both: "Add typed properties to build the request body, or switch to the raw editor."
 
 There are two ways to nest, and the quick one is in the name: "Use dots in property names to nest objects, e.g. candidate.email."
 
@@ -154,7 +154,7 @@ A property named `candidate.email` therefore sends the address inside a `candida
 }
 ```
 
-The other way is structural. Give a property the type **Collection** — "A repeating list of objects, e.g. line items or attendees" — or make it an object, and it becomes a group row with an **Add child property** button on it. Build the shape out that way when the endpoint wants an array of things rather than one, which dotted names can't express. Every property also has **Edit property** and **Remove**.
+The other way is structural. Give a property the type **Collection** ("A repeating list of objects, e.g. line items or attendees") or make it an object, and it becomes a group row with an **Add child property** button on it. Build the shape out that way when the endpoint wants an array of things rather than one, which dotted names can't express. Every property also has **Edit property** and **Remove**.
 
 A `GET` request doesn't send a body. Select `GET` and the whole tab becomes one line: "This request method does not send a body."
 
@@ -334,7 +334,7 @@ The **Advanced** tab ends with two switches. They answer separate questions, and
 
 **Fail on error responses** is on by default: "Treat 4xx and 5xx responses as a failed task."
 
-Turn it off when a non-2xx is a normal answer from this endpoint rather than a problem, such as a `404` from a lookup that simply found nothing. The task then completes, and what to do about the code is yours to decide in a later task.
+Turn it off when a non-2xx is a normal answer from this endpoint rather than a problem, such as a `404` from a lookup that found nothing. The task then completes, and what to do about the code is yours to decide in a later task.
 
 **Continue automation on failure** is off by default: "The run continues with the next step even if this request fails."
 
@@ -348,7 +348,7 @@ Between them they decide the fate of that expected `404`. Turn the first switch 
 
 Open a run and a completed HTTP Request shows:
 
-- Its **Description** as the title, the method and host beneath it — `GET api.example.com` — and the path below that
+- Its **Description** as the title, the method and host beneath it (`GET api.example.com`), and the path below that
 - **What will you provide?** and **What will you get back?**: the request you configured and the response you described
 - A row of chips for the settings that shaped the call. The auth type, the timeout, and the retries are always there: `Bearer token`, `30s`, `No retries`. The rest appear only once you've turned them on: a backoff when retries are above `0`, `Ignores error statuses` when **Fail on error responses** is off, and `Continues on failure` when **Continue automation on failure** is on
 
@@ -368,11 +368,11 @@ If the destination is plainly public and you still see this, report it rather th
 
 **Post Webhook** is the other task for sending data out of HireData, and it's what the HTTP Request task replaces. Automations that already use it keep working exactly as they do now, and nothing about them needs changing by hand.
 
-A one-off migration will convert those steps into HTTP Request tasks. It runs once, on our side, and it isn't something you trigger or prepare for. Build anything new as an HTTP Request task; leave what you already have alone.
+A one-off migration will convert those steps into HTTP Request tasks. It runs once, on HireData's side, and it isn't something you trigger or prepare for. Build anything new as an HTTP Request task; leave what you already have alone.
 
 ## Need more help?
 
-If a request isn't behaving as expected, contact our team at [support@hiredata.com](mailto:support@hiredata.com) and include:
+If a request isn't behaving as expected, contact the HireData team at [support@hiredata.com](mailto:support@hiredata.com) and include:
 
 - A link to the automation
 - The task's method and URL, with any credentials removed

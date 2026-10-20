@@ -6,7 +6,7 @@ keywords: ["create a skill", "record a skill", "custom skill Claude", "SKILL.md"
 related: ["/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-plugin", "/apps/mcp/keep-hiredata-skills-up-to-date"]
 ---
 
-[HireData's skills](/apps/mcp/hiredata-skills) cover the work HireData knows best. The things _you_ do the same way every time — your agency's tone of voice, how you rebuild a client's email signature, the checklist you run before a workspace goes live — are the ones worth writing down. A skill is how you do that once instead of explaining it in every conversation.
+[HireData's skills](/apps/mcp/hiredata-skills) cover the work HireData knows best. The things _you_ do the same way every time are the ones worth writing down. Think of your agency's tone of voice, how you rebuild a client's email signature, or the checklist you run before a workspace goes live. A skill is how you do that once instead of explaining it in every conversation.
 
 A skill is a folder with a `SKILL.md` file in it: plain text, no code required. You never have to mention it afterwards. Your assistant checks the description of every skill you have installed, and reads the full instructions whenever your request matches one.
 
@@ -16,9 +16,9 @@ Good candidates share three traits:
 
 - **You do it repeatedly.** Once a month is enough; once ever is not.
 - **The method is stable.** You would give a new colleague the same instructions today as last year.
-- **There is a right answer.** House style, a required order of steps, a format that has to match — things an assistant guesses wrong unless you tell it.
+- **There is a right answer.** House style, a required order of steps, a format that has to match. These are things an assistant guesses wrong unless you tell it.
 
-If it's a one-off, just ask for it. A skill you never trigger is clutter.
+If it's a one-off, ask for it directly. A skill you never trigger is clutter.
 
 ## Before you begin
 
@@ -32,7 +32,7 @@ This is the easiest route, and it works in any Claude conversation. You have alr
 
 <Steps>
   <Step title="Do the task once, properly">
-    Work through it with your assistant until the result is what you actually want. Correct it as you go — _"no, the icons always go under the phone number"_ — because those corrections are the valuable part.
+    Work through it with your assistant until the result is what you actually want. Correct it as you go, for example _"no, the icons always go under the phone number"_. Those corrections are the valuable part.
   </Step>
   <Step title="Ask for the skill">
     In the same conversation, paste:
@@ -68,7 +68,7 @@ Rebuilding a client's ATS email signature as a HireData email template is a perf
 Do one signature with your assistant. Tell it which parts are fixed and which come from [variables](/variables/introduction), where the logo goes, what happens when a phone number is missing, and which icons your clients use. Then run the prompt above. The next signature starts from your method instead of from scratch.
 
 <Note>
-  Icons and logos in an email template have to be hosted somewhere your recipients can reach. Cover that in the skill — where the images come from, and what to do when a client hasn't supplied them — so the skill doesn't stall on it every time.
+  Icons and logos in an email template have to be hosted somewhere your recipients can reach. Cover that in the skill: where the images come from, and what to do when a client hasn't supplied them. That way the skill doesn't stall on it every time.
 </Note>
 
 ## Route 2: record yourself doing it
@@ -84,7 +84,7 @@ Before you start: your video and audio aren't kept, only screenshots from the se
     Click **\+** in the composer and select **Record a skill**, or go to **Customize** \> **Skills**, click **Add**, and select **Record your screen**.
   </Step>
   <Step title="Do the task, and narrate">
-    Work at your normal pace, up to about ten minutes, and say what you're doing and why — _"I always check the brand first, because that decides the sender"_. The reasoning is what makes the skill worth having; the clicks alone aren't.
+    Work at your normal pace, up to about ten minutes, and say what you're doing and why, for example _"I always check the brand first, because that decides the sender"_. The reasoning is what makes the skill worth having; the clicks alone aren't.
   </Step>
   <Step title="Review what Claude proposes">
     Claude reviews the recording and proposes a new skill, or an update to one you already have. Read it before saving: a recording picks up details from the one case you demonstrated. Delete anything that won't be true next time.
@@ -126,9 +126,9 @@ description: Rebuild a client's ATS email signature as a HireData email template
 
 Three rules matter:
 
-- **`name`** — lowercase letters, numbers, and hyphens only, up to 64 characters, and it can't contain the words _claude_ or _anthropic_.
-- **`description`** — the only part your assistant reads before deciding whether the skill applies. Say **what it does and when to use it**, in the words your colleagues actually use, and keep it under 200 characters.
-- **`references/`** — put anything long here: field lists, examples, edge cases. Link to it from `SKILL.md`. Your assistant only opens those files when it needs them, which keeps the skill quick.
+- **`name`**: lowercase letters, numbers, and hyphens only, up to 64 characters, and it can't contain the words _claude_ or _anthropic_.
+- **`description`**: the only part your assistant reads before deciding whether the skill applies. Say **what it does and when to use it**, in the words your colleagues actually use, and keep it under 200 characters.
+- **`references/`**: put anything long here: field lists, examples, edge cases. Link to it from `SKILL.md`. Your assistant only opens those files when it needs them, which keeps the skill quick.
 
 Zip the `my-skill` folder itself, so that opening the zip shows exactly the folder above and not another folder wrapped around it. Then upload it as in [Route 1](#route-1-turn-a-conversation-into-a-skill), step 3.
 
