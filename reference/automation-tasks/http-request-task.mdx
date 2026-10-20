@@ -89,7 +89,7 @@ Fill in your own key or token on the **Auth** tab afterwards, and treat the impo
 
 A cURL command imports too, and it's often all a vendor's documentation gives you. It sets the method, the URL, the body, and the headers.
 
-It also sets the credential, where the command carries one. An `Authorization: Bearer …` header becomes a **Bearer token** with the token filled in, and the header itself is dropped so it isn't sent twice. `-u user:password` — and a base64 `Authorization: Basic …` — becomes **Basic auth** with the username and password filled in.
+It also sets the credential, where the command carries one. An `Authorization: Bearer …` header becomes a **Bearer token** with the token filled in, and the header itself is dropped so it isn't sent twice. `-u user:password`, or a base64 `Authorization: Basic …` header, becomes **Basic auth** with the username and password filled in.
 
 So treat a cURL command you were sent as a credential, not just a snippet. If it came out of someone else's terminal, it may carry their key: check the **Auth** tab after importing and replace anything you shouldn't be holding.
 
@@ -118,7 +118,7 @@ The **Params** tab has two sections, **Query** and **Path**. They look alike and
 - **Value**: what to send, with a field picker beside it
 - **Remove**: deletes the row outright
 
-The URL bar and the **Query** rows are two views of the same thing. Paste a URL with a query string on the end and it splits into rows; add or edit a row and the query string in the URL bar updates to match. So you can work in whichever of the two you were given — a full URL from a vendor's documentation, or a table of parameters — without transcribing it into the other.
+The URL bar and the **Query** rows are two views of the same thing. Paste a URL with a query string on the end and it splits into rows. Add or edit a row and the query string in the URL bar updates to match. So you can work in whichever of the two you were given, a full URL from a vendor's documentation or a table of parameters, without transcribing it into the other.
 
 You don't name **Path** rows yourself. They come from the URL. Until the URL contains one, the section reads "Path parameters appear when the URL contains `{placeholder}` segments."
 

@@ -8,7 +8,7 @@ When you connect your ATS (such as Carerix, Salesforce, or OTYS) to HireData, it
 
 ## What is an event
 
-An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. HireData uses these events to trigger the automations you've set up, and every event includes **Event Data**, **External Records and Runs.**
+An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. HireData uses these events to trigger the automations you've set up, and every event includes **Event Data**, **External Records**, and **Runs**.
 
 _Event example:_
 
@@ -24,11 +24,11 @@ _Use the filters for a more organised view, for example, if you want to see the 
 
 ![Setting up filters](/images/intercom/48024595-Screenshot-2025-05-05-at-10_49_56.png)
 
-To explore an individual event, click the \[Details\] button next to the event for a short overview or open the dropdown menu and click \[View\].
+To explore an individual event, click the **Details** button next to the event for a short overview or open the dropdown menu and click **View**.
 
 ![Event drop-down menu](/images/intercom/48023846-Screenshot-2025-05-05-at-10_50_57.png)
 
-This will open the event detail view, which includes:
+This opens the event detail view, which includes:
 
 - **Event Data** – a summarised view of the data received from your app.
 
@@ -56,11 +56,11 @@ If an event doesn't trigger an automation as expected, or a run fails before com
 
 HireData reprocesses the selected event(s) and triggers the associated automations. HireData executes the affected tasks as if the event had just occurred.
 
-- **Event-based automations** – For automations that are triggered by a specific event (for example, a candidate reaching a certain stage), the replay will re-trigger the automation immediately based on the event data. If there was previously a created run, it will be replayed and a "Replay" label will show up.
+- **Event-based automations** – For automations that are triggered by a specific event (for example, a candidate reaching a certain stage), the replay re-triggers the automation immediately based on the event data. If there was previously a created run, HireData replays it and a **Replay** label appears.
 
 ![An event labeled as Replayed](/images/intercom/146643359-Screenshot-2026-05-28-at-13_08_04.png)
 
-- **Scheduled (one-time) automations** – For automations that run on a fixed date or schedule, replaying the event will not change or reschedule the automation's planned run date. The replay only re-evaluates whether the event matches the automation's conditions.
+- **Scheduled (one-time) automations** – For automations that run on a fixed date or schedule, replaying the event doesn't change or reschedule the automation's planned run date. The replay only re-evaluates whether the event matches the automation's conditions.
 
 ### How to replay events
 
@@ -85,7 +85,7 @@ HireData reprocesses the selected event(s) and triggers the associated automatio
 
     ![Replaying an individual event](/images/intercom/146645337-Screenshot-2026-05-28-at-13_06_43.png)
 
-    To replay **multiple events at once**, check the box next to each event you want to replay on the **Events** page or an automation's **Events** tab. Once one or more events are selected, a **Replay** button will appear at the top of the page. Click it to proceed.
+    To replay **multiple events at once**, check the box next to each event you want to replay on the **Events** page or an automation's **Events** tab. Once one or more events are selected, a **Replay** button appears at the top of the page. Click it to proceed.
 
     ![Replaying events in bulk](/images/intercom/146646000-Screenshot-2026-05-28-at-13_06_24.png)
   </Step>
@@ -101,7 +101,7 @@ HireData reprocesses the selected event(s) and triggers the associated automatio
 </Steps>
 
 <Tip>
-  - **Always review the affected automations before confirming a replay.** One event can match multiple automations, and replaying it will trigger all of them.
+  - **Always review the affected automations before confirming a replay.** One event can match multiple automations, and replaying it triggers all of them.
   - **Be extra cautious with automations that send emails or messages.** Replaying an event tied to those automations may send duplicate communications to candidates or contacts.
   - **Use the automation-specific Events tab if you only want to replay within a single automation.** This gives you a more focused view and reduces the risk of unintentionally triggering unrelated automations.
   - **Bulk replay is useful when multiple events failed at the same time**, for example, after a temporary sync issue. Instead of replaying one by one, you can select all affected events and replay them together.

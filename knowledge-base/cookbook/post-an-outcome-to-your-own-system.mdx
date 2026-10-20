@@ -19,7 +19,7 @@ One automation with four parts:
 Every tab, field, and default is covered in the [HTTP Request task](/reference/automation-tasks/http-request-task) reference. This page walks one path through it, start to finish.
 
 <Note>
-  This recipe sends data **out** of HireData. If what you actually need is the other direction — another tool sending data **in** to start an automation — that's a custom app trigger instead. See [Custom Apps](/apps/custom-apps/introduction) and [Set up a trigger](/apps/custom-apps/set-up-a-trigger).
+  This recipe sends data **out** of HireData. If you need the other direction, where another tool sends data **in** to start an automation, use a custom app trigger instead. See [Custom Apps](/apps/custom-apps/introduction) and [Set up a trigger](/apps/custom-apps/set-up-a-trigger).
 </Note>
 
 ## What to ask for before you start
@@ -29,7 +29,7 @@ Whoever owns the endpoint has all of this. Getting it up front saves a round of 
 - The **URL** to call, and the **method** it expects
 - The **body** it expects, ideally as a sample JSON payload rather than a description
 - How it **authenticates**. This recipe uses a bearer token issued for this integration, not anyone's personal one
-- What it **returns** — both when a call is accepted and when it's rejected
+- What it **returns**, both when a call is accepted and when it's rejected
 - Whether there's a **test or sandbox address**. The test in step 7 sends a real request, so you want somewhere safe to aim it
 
 <Tip>
@@ -42,13 +42,13 @@ Whoever owns the endpoint has all of this. Getting it up front saves a round of 
 
 Open the **Start** block. Select **HireData** as the app, then **Conversation** as the object and **Ended** as the trigger. The automation now runs once each time a conversation finishes.
 
-Any trigger works here — a completed form response, a candidate updated in your ATS. It only changes which fields you have available to send in step 4; the rest of the recipe is the same.
+Any trigger works here, such as a completed form response or a candidate updated in your ATS. The trigger only changes which fields you have available to send in step 4. The rest of the recipe is the same.
 
 {/* screenshot: cookbook-start-block.png — the Start block set to HireData / Conversation / Ended */}
 
 ### 2. Add the HTTP Request task
 
-Add a task and pick **HTTP Request**. It's filed under both **Add** and **Message**, and both routes open the same task. See [where to find the task](/reference/automation-tasks/http-request-task#where-to-find-the-task).
+Add a task and select **HTTP Request**. It's filed under both **Add** and **Message**, and both routes open the same task. See [where to find the task](/reference/automation-tasks/http-request-task#where-to-find-the-task).
 
 If you were given a specification or a cURL command when you asked for the endpoint's details, click **Import** in the drawer's footer now and let HireData fill the request in. The two routes fill in different things, so check [what an import fills in](/reference/automation-tasks/http-request-task#what-an-import-fills-in), then read back through steps 3 to 6 against what it wrote. Otherwise, fill it in by hand as below.
 
@@ -77,7 +77,7 @@ Dots in a property name nest it, so a body like this needs six properties:
 | `contact.phone_number` | The **Sender** phone number |
 | `outcome` | A value from an earlier task, or a fixed string |
 
-A conversation groups the people in it under **Sender**, **Receiver**, and **Owner**, so pick from whichever side the candidate is on: the sender when they started the conversation, the receiver when your automation did. On the sender's side, which contact detail is filled in follows the channel — a phone number on WhatsApp, an email address on email.
+A conversation groups the people in it under **Sender**, **Receiver**, and **Owner**, so pick from whichever side the candidate is on: the sender when they started the conversation, the receiver when your automation did. On the sender's side, which contact detail is filled in follows the channel: a phone number on WhatsApp, an email address on email.
 
 More generally, which fields you can pick depends on the trigger you chose in step 1, and includes values that earlier tasks in the same automation produced. What arrives at your endpoint is ordinary JSON:
 
@@ -114,7 +114,7 @@ If the endpoint wants a key in a named header or a query parameter instead, or t
 
 Two things to do before the response is usable, and it's easier in this order.
 
-Start on the **Advanced** tab and write a **Description** — "Post conversation outcome" for this task. It titles the task everywhere else, and it's the first half of the name of every field this task produces, so settling it now saves re-reading a picker full of renamed fields later.
+Start on the **Advanced** tab and write a **Description**. For this task, use "Post conversation outcome". It titles the task everywhere else. It's also the first half of the name of every field this task produces, so settling it now saves re-reading a picker full of renamed fields later.
 
 Then, in the **Response** section beneath the tabs, describe the body your endpoint returns. Say it answers a successful call with this:
 
@@ -130,9 +130,9 @@ Under **Success response (2xx)**, click **Add property** twice: one for `id`, la
 - `Post conversation outcome: id`
 - `Post conversation outcome: status`
 
-They arrive on top of the three fields every HTTP Request task produces anyway — the status code, the response body as text, and whether the call succeeded. Describing `id` is what saves a later task from digging it out of that text.
+They arrive on top of the three fields every HTTP Request task produces anyway: the status code, the response body as text, and whether the call succeeded. Describing `id` is what saves a later task from digging it out of that text.
 
-Under **Error response (non-2xx)**, describe what the endpoint returns when it rejects a call — usually a message you'd want in a log. That tree is only worth filling in if you set the run to continue past a failure. See [Decide what happens when the call fails](#decide-what-happens-when-the-call-fails) below.
+Under **Error response (non-2xx)**, describe what the endpoint returns when it rejects a call. This is usually a message you'd want in a log. That tree is only worth filling in if you set the run to continue past a failure. See [Decide what happens when the call fails](#decide-what-happens-when-the-call-fails) below.
 
 A value you don't describe here is a value no later task can pick out by name. See [describe the response](/reference/automation-tasks/http-request-task#describe-the-response).
 
@@ -152,7 +152,7 @@ Anything you set to a fixed value in step 4 is already filled in. The properties
 
 {/* screenshot: cookbook-test-dialog.png — the Test dialog before Send, every input still empty */}
 
-Click **Send**. You get back a status word, the HTTP code, and how long the call took, plus the full response body — and an **Outputs** section listing the values HireData pulled out using the tree you built in step 6.
+Click **Send**. You get back a status word, the HTTP code, and how long the call took, plus the full response body. You also get an **Outputs** section listing the values HireData pulled out using the tree you built in step 6.
 
 Read those against each other. A property you described that comes back missing shows up here, and this is the cheapest moment to find that out.
 
