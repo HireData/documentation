@@ -26,7 +26,7 @@ Beslis dan de ene vraag. Alleen de leidende vraag van het formulier wordt knoppe
 
 ### 1. Zet de rating vooraan
 
-Open **Forms**, klik op **New Form**, kies **Blank Form** en voeg een [Net Promoter Score](/nl/reference/forms/fields/net-promoter-score-and-opinion-scale)-vraag toe als eerste veld: "How likely are you to recommend us to a friend?" Hij staat vast op 0 tot 10 met **NOT LIKELY AT ALL** en **EXTREMELY LIKELY** onder de uiteinden, en die twee labels zijn wat voorkomt dat een kale rij cijfers dubbelzinnig is.
+Open **Forms**, klik op **New Form**, selecteer **Blank Form** en voeg een [Net Promoter Score](/nl/reference/forms/fields/net-promoter-score-and-opinion-scale)-vraag toe als eerste veld: "How likely are you to recommend us to a friend?" Hij staat vast op 0 tot 10 met **NOT LIKELY AT ALL** en **EXTREMELY LIKELY** onder de uiteinden, en die twee labels zijn wat voorkomt dat een kale rij cijfers dubbelzinnig is.
 
 Laat hem **Optional**. Een verplicht ratingveld blokkeert het antwoord 0, en 0 is het antwoord waar je het meest over wilt horen.
 
@@ -60,7 +60,7 @@ Laat **Make form public** uit tenzij je de link ergens plaatst. Het token in de 
 
 ### 4. Maak de e-mail en kies het merk
 
-Open **Emails** vanuit **Settings**, klik op **New Email** en kies **Blank Email** of een van de meegeleverde templates. Stel eerst **Brand** rechtsboven in. Het restylet de hele e-mail, inclusief de knopkleuren, dus vroeg kiezen bespaart je het contrast twee keer controleren. Zie [Een e-mailtemplate opzetten](/nl/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+Open **Emails** vanuit **Settings**, klik op **New Email** en kies **Blank Email** of een van de meegeleverde templates. Stel eerst **Brand** rechtsboven in. Het restylet de hele e-mail, inclusief de knopkleuren, dus vroeg instellen bespaart je het contrast twee keer controleren. Zie [Een e-mailtemplate opzetten](/nl/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
 
 ### 5. Schrijf de kortste vraag waar je achter kunt staan
 
@@ -107,7 +107,7 @@ Je hoort op het formulier te landen met de rating al ingevuld. Staat hij daar le
 Een klik vanuit een testmail registreert niets, en dat is wat je wilt zolang je nog aan het bewerken bent. De score landt alleen op een response bij een echte verzending.
 
 <Note>
-  Als het formulier een verplicht object koppelt, heeft de testverzending er een record voor nodig. Kies er een onder **Objects** in de modal, of gebruik **Auto fill**. Laat je hem leeg, dan mislukt de verzending met een **Failed to send test email**-melding die het object op zijn key benoemt. Zie [Testen](/nl/reference/email-builder/testing).
+  Als het formulier een verplicht object koppelt, heeft de testverzending er een record voor nodig. Selecteer er een onder **Objects** in de modal, of gebruik **Auto fill**. Laat je hem leeg, dan mislukt de verzending met een **Failed to send test email**-melding die het object op zijn key benoemt. Zie [Testen](/nl/reference/email-builder/testing).
 </Note>
 
 ### 10. Voeg de andere talen toe, als je die hebt
@@ -116,7 +116,7 @@ Het Form-block rendert in de taal van het formulier waar het naar wijst, niet de
 
 ## Verstuur hem en lees de antwoorden
 
-Plug de afgewerkte template in een **Send Email**-taak en kies het publiek zoals je dat voor elke andere verzending zou doen. Zie [Automatiseringen](/nl/automations/automations).
+Plug de afgewerkte template in een **Send Email**-taak en selecteer het publiek zoals je dat voor elke andere verzending zou doen. Zie [Automatiseringen](/nl/automations/automations).
 
 De responses komen aan op het **Responses**-tabblad van het record waar het formulier aan was gekoppeld, en op het formulier zelf. Zie [Een formulier per record configureren](/nl/content/configuring-a-form-per-record).
 
@@ -135,7 +135,7 @@ Begin met één vertakking. Een lage score maakt een taak aan voor wie de relati
 
 Als de knoppen als één enkele **Give Feedback**-knop renderen, is de leidende vraag een type dat geen eigen knoppen heeft. Alleen rating- en keuzevragen krijgen één knop per waarde. Al het andere valt terug op één call-to-action, die je in het canvas kunt aanklikken om te herformuleren.
 
-Als een keuzevraag opties mist, heb je de grens van vijf opties geraakt. Een Form-block rendert de eerste vijf en waarschuwt niet over de rest. Zie [Beperkingen](/nl/reference/email-builder/blocks/form#limits).
+Als een keuzevraag opties mist, heb je de grens van vijf opties bereikt. Een Form-block rendert de eerste vijf en waarschuwt niet over de rest. Zie [Beperkingen](/nl/reference/email-builder/blocks/form#limits).
 
 Kom je er nog niet uit, neem dan contact op met [support@hiredata.com](mailto:support@hiredata.com) en vermeld:
 

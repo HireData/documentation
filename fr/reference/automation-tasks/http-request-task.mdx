@@ -89,7 +89,7 @@ Renseignez ensuite votre propre clé ou token sur l'onglet **Auth**, et considé
 
 Une commande cURL s'importe aussi, et c'est souvent tout ce que fournit la documentation d'un fournisseur. Elle définit la méthode, l'URL, le corps et les en-têtes.
 
-Elle définit aussi l'identifiant, quand la commande en contient un. Un en-tête `Authorization: Bearer …` devient un **Bearer token** avec le token renseigné, et l'en-tête lui-même est supprimé pour ne pas être envoyé deux fois. `-u user:password` — et un `Authorization: Basic …` en base64 — devient une **Basic auth** avec le nom d'utilisateur et le mot de passe renseignés.
+Elle définit aussi l'identifiant, quand la commande en contient un. Un en-tête `Authorization: Bearer …` devient un **Bearer token** avec le token renseigné, et l'en-tête lui-même est supprimé pour ne pas être envoyé deux fois. `-u user:password`, ou un en-tête `Authorization: Basic …` en base64, devient une **Basic auth** avec le nom d'utilisateur et le mot de passe renseignés.
 
 Considérez donc une commande cURL qu'on vous a envoyée comme un identifiant, pas seulement comme un extrait de code. Si elle sort du terminal de quelqu'un d'autre, elle contient peut-être sa clé : vérifiez l'onglet **Auth** après l'import et remplacez tout ce que vous ne devriez pas détenir.
 
@@ -118,7 +118,7 @@ Les lignes **Query** sont à remplir par vous. Chaque ligne comporte :
 - **Value** : ce qu'il faut envoyer, avec un sélecteur de champs à côté
 - **Remove** : supprime la ligne définitivement
 
-La barre d'URL et les lignes **Query** sont deux vues de la même chose. Collez une URL avec une chaîne de requête à la fin et elle se découpe en lignes ; ajoutez ou modifiez une ligne et la chaîne de requête dans la barre d'URL se met à jour en conséquence. Vous pouvez donc travailler dans celle des deux qu'on vous a donnée — une URL complète tirée de la documentation d'un fournisseur, ou un tableau de paramètres — sans la retranscrire dans l'autre.
+La barre d'URL et les lignes **Query** sont deux vues de la même chose. Collez une URL avec une chaîne de requête à la fin et elle se découpe en lignes. Ajoutez ou modifiez une ligne et la chaîne de requête dans la barre d'URL se met à jour en conséquence. Vous pouvez donc travailler dans celle des deux qu'on vous a donnée, une URL complète tirée de la documentation d'un fournisseur ou un tableau de paramètres, sans la retranscrire dans l'autre.
 
 Vous ne nommez pas les lignes **Path** vous-même. Elles viennent de l'URL. Tant que l'URL n'en contient pas, la section affiche « Path parameters appear when the URL contains `{placeholder}` segments. »
 

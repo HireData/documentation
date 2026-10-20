@@ -55,11 +55,11 @@ Op Team- en Enterprise-abonnementen voegt een organisatie-eigenaar de connector 
 
 ### Stap 2: Log in en autoriseer
 
-1. Klik op **\[Connect\]**. Je browser opent het toestemmingsscherm van HireData: _"Connect Claude to HireData MCP"_.
+1. Klik op **Connect**. Je browser opent het toestemmingsscherm van HireData: _"Connect Claude to HireData MCP"_.
 2. Controleer of je met het juiste HireData-account bent ingelogd.
 3. Selecteer onder **Workspace access** de workspace(s) waartoe je toegang wilt verlenen.
 4. Bekijk onder **What Claude can access** de rechten. Standaard zijn alle voor jou beschikbare rechten geselecteerd — klik op het tandwielicoon om ze te beperken.
-5. Vink **"I recognise and trust the above URL"** aan om de terugverwijzing naar Claude te bevestigen, en klik op **\[Authorize\]**.
+5. Vink **"I recognise and trust the above URL"** aan om de terugverwijzing naar Claude te bevestigen, en klik op **Authorize**.
 
 ![Het toestemmingsscherm van HireData met workspace-toegang en rechten](/images/mcp/hiredata-consent-screen.png)
 
@@ -90,7 +90,7 @@ Custom MCP-verbindingen zijn beschikbaar op betaalde ChatGPT-abonnementen (Plus,
 ### Stap 1: Voeg de HireData MCP-server toe
 
 1. Open ChatGPT (desktop-app) en ga naar **Settings** \> **Plugins** (onder _Integrations_).
-2. Open het tabblad **MCPs** en klik op **\[\+ Add server\]**.
+2. Open het tabblad **MCPs** en klik op **\+ Add server**.
 
 ![Het MCPs-tabblad in de Plugins-instellingen van ChatGPT](/images/mcp/chatgpt-mcps-add-server.png)
 
@@ -98,7 +98,7 @@ Custom MCP-verbindingen zijn beschikbaar op betaalde ChatGPT-abonnementen (Plus,
    - **Name**: `HireData`
    - **Type**: **Streamable HTTP**
    - **URL**: `https://api.hiredata.com/mcp`
-4. Laat de token- en headervelden leeg (HireData gebruikt OAuth-inlog) en klik op **\[Save\]**.
+4. Laat de token- en headervelden leeg (HireData gebruikt OAuth-inlog) en klik op **Save**.
 
 ![Het custom MCP-formulier van ChatGPT ingevuld voor HireData](/images/mcp/chatgpt-custom-mcp-form.png)
 
@@ -108,13 +108,13 @@ Custom MCP-verbindingen zijn beschikbaar op betaalde ChatGPT-abonnementen (Plus,
 
 ### Stap 2: Log in bij HireData
 
-De eerste keer dat ChatGPT de server gebruikt, word je naar het inlog- en toestemmingsscherm van HireData geleid. Log in, selecteer de workspace(s) waartoe je toegang wilt verlenen, bekijk de rechten, bevestig de redirect-URL en autoriseer. Zet daarna de HireData-server aan en zijn tools zijn beschikbaar in je chats.
+De eerste keer dat ChatGPT de server gebruikt, brengt het je naar het inlog- en toestemmingsscherm van HireData. Log in, selecteer de workspace(s) waartoe je toegang wilt verlenen, bekijk de rechten, bevestig de redirect-URL en autoriseer. Zet daarna de HireData-server aan en zijn tools zijn beschikbaar in je chats.
 
 ## Verbinden vanuit Gemini
 
 Google biedt custom MCP-verbindingen momenteel op twee plekken aan — de reguliere Gemini-chatapp ondersteunt ze nog niet:
 
-- **Gemini Spark** (Google AI Ultra): open **Connected Apps** in de instellingen van Spark, voeg een custom app toe en vul de MCP-server-URL in: `https://api.hiredata.com/mcp`. De eerste keer dat je hem gebruikt, wordt je gevraagd om in te loggen bij HireData.
+- **Gemini Spark** (Google AI Ultra): open **Connected Apps** in de instellingen van Spark, voeg een custom app toe en vul de MCP-server-URL in: `https://api.hiredata.com/mcp`. HireData vraagt je om in te loggen de eerste keer dat je hem gebruikt.
 - **Gemini Enterprise**: een beheerder voegt HireData toe als custom MCP-serververbinding in de Gemini Enterprise-adminconsole met dezelfde URL. Daarna loggen gebruikers in met hun eigen HireData-account.
 
 Omdat Google's MCP-ondersteuning snel evolueert, raadpleeg je Google's documentatie voor de meest actuele beschikbaarheid op jouw abonnement.
@@ -134,14 +134,14 @@ Agents die zo zijn gebouwd, kunnen beschikbaar worden gemaakt in Microsoft 365 C
 
 - **Jouw rechten, niets meer.** De assistent werkt met dezelfde rechten die jij in HireData hebt, en alleen in de workspaces die je bij het inloggen hebt geselecteerd. Elk verzoek wordt aan de HireData-kant opnieuw gecontroleerd.
 - **Audit trail.** Elke actie die je assistent uitvoert, wordt vastgelegd in het activiteitenlogboek, gekoppeld aan de workspace waarin het is uitgevoerd.
-- **Nieuwe mogelijkheden vereisen jouw goedkeuring.** Wanneer HireData nieuwe MCP-mogelijkheden toevoegt, wordt je bestaande verbinding niet automatisch uitgebreid — er wordt eerst gevraagd om opnieuw te autoriseren. Geen verrassingen.
+- **Nieuwe mogelijkheden vereisen jouw goedkeuring.** Wanneer HireData nieuwe MCP-mogelijkheden toevoegt, wordt je bestaande verbinding niet automatisch uitgebreid. HireData vraagt je eerst om opnieuw te autoriseren. Geen verrassingen.
 - **Veilige wijzigingen.** Updates zijn partieel (alles wat je assistent niet noemt blijft ongewijzigd), je assistent kan nieuwer werk niet stilzwijgend overschrijven, en destructieve of externe acties vereisen expliciete bevestiging.
 - **Altijd los te koppelen.** Verwijder de connector in de instellingen van je assistent, of trek de autorisatie in vanuit je HireData-instellingen.
 
 ## Problemen oplossen
 
 - **403-fout tijdens autorisatie** (_"The provided auth token for the request is different from the session auth token"_): sluit het autorisatietabblad en klik in je assistent opnieuw op **Connect** om de flow opnieuw te starten. Dit kan gebeuren wanneer een oudere HireData-inlogsessie nog open staat in je browser.
-- **Tools verschijnen niet in de chat**: controleer of de connector is ingeschakeld voor dat gesprek (in Claude via het menu **\+** \> Connectors; in ChatGPT via de servertoggle in Settings \> Plugins \> MCPs).
+- **Tools verschijnen niet in de chat**: controleer of de connector is ingeschakeld voor dat gesprek (in Claude via het menu **\+** \> **Connectors**; in ChatGPT via de servertoggle in **Settings** \> **Plugins** \> **MCPs**).
 
 ## Probeer het uit
 

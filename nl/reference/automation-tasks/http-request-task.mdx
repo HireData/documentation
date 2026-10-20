@@ -89,7 +89,7 @@ Vul daarna zelf je key of token in op het tabblad **Auth**, en beschouw de impor
 
 Een cURL-commando kan ook worden geïmporteerd, en vaak is dat alles wat de documentatie van een vendor je geeft. Het stelt de method, de URL, de body en de headers in.
 
-Het stelt ook de credential in, wanneer het commando er een bevat. Een `Authorization: Bearer …`-header wordt een **Bearer token** met het token ingevuld, en de header zelf wordt weggelaten zodat deze niet twee keer wordt verzonden. `-u user:password` — en een base64 `Authorization: Basic …` — wordt **Basic auth** met de gebruikersnaam en het wachtwoord ingevuld.
+Het stelt ook de credential in, wanneer het commando er een bevat. Een `Authorization: Bearer …`-header wordt een **Bearer token** met het token ingevuld, en de header zelf wordt weggelaten zodat deze niet twee keer wordt verzonden. `-u user:password`, of een base64 `Authorization: Basic …`-header, wordt **Basic auth** met de gebruikersnaam en het wachtwoord ingevuld.
 
 Behandel een cURL-commando dat je hebt ontvangen dus als een credential, niet alleen als een snippet. Als het uit iemand anders z'n terminal komt, kan het diens key bevatten: controleer het tabblad **Auth** na het importeren en vervang alles wat je niet zou moeten hebben.
 
@@ -118,7 +118,7 @@ Het tabblad **Params** heeft twee secties, **Query** en **Path**. Ze zien er het
 - **Value**: wat er wordt verzonden, met een field picker ernaast
 - **Remove**: verwijdert de rij helemaal
 
-De URL-balk en de **Query**-rijen zijn twee weergaven van hetzelfde. Plak een URL met een query string aan het einde en die wordt opgesplitst in rijen; voeg een rij toe of bewerk er een en de query string in de URL-balk wordt bijgewerkt. Je kunt dus werken in welke van de twee je ook hebt gekregen — een volledige URL uit de documentatie van een vendor, of een tabel met parameters — zonder die naar de andere over te typen.
+De URL-balk en de **Query**-rijen zijn twee weergaven van hetzelfde. Plak een URL met een query string aan het einde en die wordt opgesplitst in rijen. Voeg een rij toe of bewerk er een en de query string in de URL-balk wordt bijgewerkt. Je kunt dus werken in welke van de twee je ook hebt gekregen, een volledige URL uit de documentatie van een vendor of een tabel met parameters, zonder die naar de andere over te typen.
 
 **Path**-rijen benoem je niet zelf. Die komen uit de URL. Totdat de URL er een bevat, staat er in de sectie "Path parameters appear when the URL contains `{placeholder}` segments."
 

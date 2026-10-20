@@ -25,7 +25,7 @@ Depois de ligado, o seu assistente de IA pode trabalhar diretamente com os seus 
 - **Statistics** — pedir números de utilização e desempenho, como uso de créditos em qualquer período, desempenho de emails e mensagens e execuções de automações.
 - **Knowledge base** — pesquisar e ler os artigos de ajuda da HireData diretamente a partir do seu assistente.
 
-O seu assistente nunca pode fazer mais do que você: durante o início de sessão verá exatamente quais as permissões que se aplicam (até 14, dependendo da sua função) e, dentro de cada workspace, aplica-se o seu próprio nível de acesso. Algumas ferramentas podem, por isso, não estar disponíveis para si.
+O seu assistente nunca pode fazer mais do que você: durante o início de sessão vê exatamente quais as permissões que se aplicam (até 14, dependendo da sua função) e, dentro de cada workspace, aplica-se o seu próprio nível de acesso. Algumas ferramentas podem, por isso, não estar disponíveis para si.
 
 ## Antes de começar
 
@@ -55,11 +55,11 @@ Nos planos Team e Enterprise, um proprietário da organização adiciona primeir
 
 ### Passo 2: Iniciar sessão e autorizar
 
-1. Clique em **\[Connect\]**. O seu browser abre o ecrã de consentimento da HireData: _"Connect Claude to HireData MCP"_.
+1. Clique em **Connect**. O seu browser abre o ecrã de consentimento da HireData: _"Connect Claude to HireData MCP"_.
 2. Verifique se tem sessão iniciada com a conta HireData correta.
 3. Em **Workspace access**, selecione o(s) workspace(s) a que quer dar acesso.
 4. Em **What Claude can access**, reveja as permissões. Por predefinição, todas as permissões disponíveis para si estão selecionadas — clique no ícone de engrenagem para as restringir.
-5. Marque **"I recognise and trust the above URL"** para confirmar o redirecionamento de volta para o Claude e clique em **\[Authorize\]**.
+5. Marque **"I recognise and trust the above URL"** para confirmar o redirecionamento de volta para o Claude e clique em **Authorize**.
 
 ![O ecrã de consentimento da HireData com o acesso aos workspaces e as permissões](/images/mcp/hiredata-consent-screen.png)
 
@@ -90,7 +90,7 @@ As ligações MCP personalizadas estão disponíveis nos planos pagos do ChatGPT
 ### Passo 1: Adicionar o servidor MCP da HireData
 
 1. Abra o ChatGPT (app de desktop) e vá a **Settings** \> **Plugins** (em _Integrations_).
-2. Abra o separador **MCPs** e clique em **\[\+ Add server\]**.
+2. Abra o separador **MCPs** e clique em **\+ Add server**.
 
 ![O separador MCPs nas definições de Plugins do ChatGPT](/images/mcp/chatgpt-mcps-add-server.png)
 
@@ -98,7 +98,7 @@ As ligações MCP personalizadas estão disponíveis nos planos pagos do ChatGPT
    - **Name**: `HireData`
    - **Type**: **Streamable HTTP**
    - **URL**: `https://api.hiredata.com/mcp`
-4. Deixe os campos de token e header vazios (a HireData usa início de sessão OAuth) e clique em **\[Save\]**.
+4. Deixe os campos de token e header vazios (a HireData usa início de sessão OAuth) e clique em **Save**.
 
 ![O formulário de MCP personalizado do ChatGPT preenchido para a HireData](/images/mcp/chatgpt-custom-mcp-form.png)
 
@@ -108,13 +108,13 @@ As ligações MCP personalizadas estão disponíveis nos planos pagos do ChatGPT
 
 ### Passo 2: Iniciar sessão na HireData
 
-Da primeira vez que o ChatGPT usar o servidor será encaminhado para o ecrã de início de sessão e consentimento da HireData. Inicie sessão, selecione o(s) workspace(s) a que quer dar acesso, reveja as permissões, confirme o URL de redirecionamento e autorize. Depois disso, ative o servidor HireData e as suas ferramentas ficam disponíveis nas suas conversas.
+Da primeira vez que o ChatGPT usar o servidor, encaminha-o para o ecrã de início de sessão e consentimento da HireData. Inicie sessão, selecione o(s) workspace(s) a que quer dar acesso, reveja as permissões, confirme o URL de redirecionamento e autorize. Depois disso, ative o servidor HireData e as suas ferramentas ficam disponíveis nas suas conversas.
 
 ## Ligar a partir do Gemini
 
 A Google oferece atualmente ligações MCP personalizadas em dois locais — a app de conversa normal do Gemini ainda não as suporta:
 
-- **Gemini Spark** (Google AI Ultra): abra **Connected Apps** nas definições do Spark, adicione uma app personalizada e introduza o URL do servidor MCP `https://api.hiredata.com/mcp`. Ser-lhe-á pedido que inicie sessão na HireData da primeira vez que a usar.
+- **Gemini Spark** (Google AI Ultra): abra **Connected Apps** nas definições do Spark, adicione uma app personalizada e introduza o URL do servidor MCP `https://api.hiredata.com/mcp`. A HireData pede-lhe que inicie sessão da primeira vez que a usar.
 - **Gemini Enterprise**: um administrador adiciona a HireData como uma ligação de servidor MCP personalizada na consola de administração do Gemini Enterprise usando o mesmo URL. Depois disso, os utilizadores iniciam sessão com a sua própria conta HireData.
 
 Como o suporte de MCP da Google está a evoluir rapidamente, consulte a documentação da Google para saber a disponibilidade mais recente no seu plano.
@@ -134,14 +134,14 @@ Os agentes criados desta forma podem ser disponibilizados no Microsoft 365 Copil
 
 - **As suas permissões, nada mais.** O assistente trabalha com os mesmos direitos que você tem na HireData e apenas nos workspaces que selecionou durante o início de sessão. Cada pedido é reverificado do lado da HireData.
 - **Registo de auditoria.** Cada ação realizada pelo seu assistente é registada no log de atividade, associada ao workspace em que foi executada.
-- **Novas capacidades exigem a sua aprovação.** Quando a HireData adiciona novas capacidades MCP, a sua ligação existente não é alargada automaticamente — ser-lhe-á pedido para autorizar novamente antes. Sem surpresas.
+- **Novas capacidades exigem a sua aprovação.** Quando a HireData adiciona novas capacidades MCP, a sua ligação existente não é alargada automaticamente. A HireData pede-lhe primeiro que autorize novamente. Sem surpresas.
 - **Alterações seguras.** As atualizações são parciais (tudo o que o seu assistente não mencionar mantém-se inalterado), o seu assistente não pode sobrescrever silenciosamente trabalho mais recente e as ações destrutivas ou com impacto externo exigem confirmação explícita.
 - **Desligar a qualquer momento.** Remova o conector nas definições do seu assistente ou revogue a autorização a partir das suas definições da HireData.
 
 ## Resolução de problemas
 
 - **Erro 403 durante a autorização** (_"The provided auth token for the request is different from the session auth token"_): feche o separador de autorização e clique em **Connect** no seu assistente novamente para reiniciar o fluxo. Isto pode acontecer quando uma sessão HireData mais antiga ainda está aberta no seu browser.
-- **As ferramentas não aparecem na conversa**: verifique se o conector está ativo para essa conversa (no Claude através do menu **\+** \> Connectors; no ChatGPT através do toggle do servidor em Settings \> Plugins \> MCPs).
+- **As ferramentas não aparecem na conversa**: verifique se o conector está ativo para essa conversa (no Claude através do menu **\+** \> **Connectors**; no ChatGPT através do toggle do servidor em **Settings** \> **Plugins** \> **MCPs**).
 
 ## Experimente
 

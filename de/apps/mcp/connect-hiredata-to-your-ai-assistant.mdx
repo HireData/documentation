@@ -55,11 +55,11 @@ In Team- und Enterprise-Plänen fügt zunächst ein Organisationsinhaber den Con
 
 ### Schritt 2: Anmelden und autorisieren
 
-1. Klicken Sie auf **\[Connect\]**. Ihr Browser öffnet den Zustimmungsbildschirm von HireData: _„Connect Claude to HireData MCP"_.
+1. Klicken Sie auf **Connect**. Ihr Browser öffnet den Zustimmungsbildschirm von HireData: _„Connect Claude to HireData MCP"_.
 2. Prüfen Sie, ob Sie mit dem richtigen HireData-Konto angemeldet sind.
 3. Wählen Sie unter **Workspace access** die Workspaces aus, auf die Sie Zugriff gewähren möchten.
 4. Überprüfen Sie unter **What Claude can access** die Berechtigungen. Standardmäßig sind alle Ihnen verfügbaren Berechtigungen ausgewählt – klicken Sie auf das Zahnradsymbol, um sie einzuschränken.
-5. Aktivieren Sie **„I recognise and trust the above URL"**, um die Weiterleitung zurück zu Claude zu bestätigen, und klicken Sie auf **\[Authorize\]**.
+5. Aktivieren Sie **„I recognise and trust the above URL"**, um die Weiterleitung zurück zu Claude zu bestätigen, und klicken Sie auf **Authorize**.
 
 ![Der Zustimmungsbildschirm von HireData mit Workspace-Zugriff und Berechtigungen](/images/mcp/hiredata-consent-screen.png)
 
@@ -90,7 +90,7 @@ Benutzerdefinierte MCP-Verbindungen sind in den kostenpflichtigen ChatGPT-Pläne
 ### Schritt 1: Den HireData MCP-Server hinzufügen
 
 1. Öffnen Sie ChatGPT (Desktop-App) und gehen Sie zu **Settings** \> **Plugins** (unter _Integrations_).
-2. Öffnen Sie den Tab **MCPs** und klicken Sie auf **\[\+ Add server\]**.
+2. Öffnen Sie den Tab **MCPs** und klicken Sie auf **\+ Add server**.
 
 ![Der MCPs-Tab in den Plugins-Einstellungen von ChatGPT](/images/mcp/chatgpt-mcps-add-server.png)
 
@@ -98,7 +98,7 @@ Benutzerdefinierte MCP-Verbindungen sind in den kostenpflichtigen ChatGPT-Pläne
    - **Name**: `HireData`
    - **Type**: **Streamable HTTP**
    - **URL**: `https://api.hiredata.com/mcp`
-4. Lassen Sie die Felder für Token und Header leer (HireData verwendet OAuth-Anmeldung) und klicken Sie auf **\[Save\]**.
+4. Lassen Sie die Felder für Token und Header leer (HireData verwendet OAuth-Anmeldung) und klicken Sie auf **Save**.
 
 ![Das benutzerdefinierte MCP-Formular von ChatGPT ausgefüllt für HireData](/images/mcp/chatgpt-custom-mcp-form.png)
 
@@ -108,13 +108,13 @@ Benutzerdefinierte MCP-Verbindungen sind in den kostenpflichtigen ChatGPT-Pläne
 
 ### Schritt 2: Bei HireData anmelden
 
-Beim ersten Mal, wenn ChatGPT den Server nutzt, werden Sie zum Anmelde- und Zustimmungsbildschirm von HireData geleitet. Melden Sie sich an, wählen Sie die Workspaces aus, auf die Sie Zugriff gewähren möchten, prüfen Sie die Berechtigungen, bestätigen Sie die Weiterleitungs-URL und autorisieren Sie. Danach aktivieren Sie den HireData-Server und seine Tools stehen in Ihren Chats zur Verfügung.
+Wenn ChatGPT den Server zum ersten Mal nutzt, leitet es Sie zum Anmelde- und Zustimmungsbildschirm von HireData weiter. Melden Sie sich an, wählen Sie die Workspaces aus, auf die Sie Zugriff gewähren möchten, prüfen Sie die Berechtigungen, bestätigen Sie die Weiterleitungs-URL und autorisieren Sie. Danach aktivieren Sie den HireData-Server und seine Tools stehen in Ihren Chats zur Verfügung.
 
 ## Verbindung über Gemini
 
 Google bietet benutzerdefinierte MCP-Verbindungen derzeit an zwei Stellen an – die reguläre Gemini-Chat-App unterstützt sie noch nicht:
 
-- **Gemini Spark** (Google AI Ultra): Öffnen Sie **Connected Apps** in den Einstellungen von Spark, fügen Sie eine benutzerdefinierte App hinzu und geben Sie die MCP-Server-URL `https://api.hiredata.com/mcp` ein. Bei der ersten Nutzung werden Sie aufgefordert, sich bei HireData anzumelden.
+- **Gemini Spark** (Google AI Ultra): Öffnen Sie **Connected Apps** in den Einstellungen von Spark, fügen Sie eine benutzerdefinierte App hinzu und geben Sie die MCP-Server-URL `https://api.hiredata.com/mcp` ein. HireData fordert Sie bei der ersten Nutzung auf, sich anzumelden.
 - **Gemini Enterprise**: Ein Administrator fügt HireData in der Gemini Enterprise-Admin-Konsole als benutzerdefinierte MCP-Serververbindung mit derselben URL hinzu. Danach melden sich die Nutzer mit ihrem eigenen HireData-Konto an.
 
 Da sich Googles MCP-Unterstützung schnell weiterentwickelt, prüfen Sie in Googles Dokumentation die aktuelle Verfügbarkeit für Ihren Plan.
@@ -134,14 +134,14 @@ So erstellte Agents können in Microsoft 365 Copilot verfügbar gemacht werden. 
 
 - **Ihre Berechtigungen, nicht mehr.** Der Assistent arbeitet mit denselben Rechten, die Sie in HireData haben, und nur in den Workspaces, die Sie bei der Anmeldung ausgewählt haben. Jede Anfrage wird auf HireData-Seite erneut überprüft.
 - **Audit-Trail.** Jede Aktion, die Ihr Assistent ausführt, wird im Aktivitätsprotokoll festgehalten, verknüpft mit dem Workspace, in dem sie ausgeführt wurde.
-- **Neue Funktionen brauchen Ihre Zustimmung.** Wenn HireData neue MCP-Funktionen hinzufügt, erweitert sich Ihre bestehende Verbindung nicht automatisch – Sie werden zuerst um eine erneute Autorisierung gebeten. Keine Überraschungen.
+- **Neue Funktionen brauchen Ihre Zustimmung.** Wenn HireData neue MCP-Funktionen hinzufügt, erweitert sich Ihre bestehende Verbindung nicht automatisch. HireData bittet Sie zuerst um eine erneute Autorisierung. Keine Überraschungen.
 - **Sichere Änderungen.** Aktualisierungen sind partiell (alles, was Ihr Assistent nicht erwähnt, bleibt unverändert), Ihr Assistent kann neuere Arbeit nicht stillschweigend überschreiben, und destruktive oder nach außen gerichtete Aktionen erfordern eine ausdrückliche Bestätigung.
 - **Jederzeit trennen.** Entfernen Sie den Connector in den Einstellungen Ihres Assistenten oder widerrufen Sie die Freigabe in Ihren HireData-Einstellungen.
 
 ## Fehlerbehebung
 
 - **403-Fehler während der Autorisierung** (_„The provided auth token for the request is different from the session auth token"_): Schließen Sie den Autorisierungs-Tab und klicken Sie in Ihrem Assistenten erneut auf **Connect**, um den Vorgang neu zu starten. Dies kann passieren, wenn eine ältere HireData-Anmeldesitzung noch in Ihrem Browser geöffnet ist.
-- **Tools erscheinen nicht im Chat**: Prüfen Sie, ob der Connector für diese Konversation aktiviert ist (in Claude über das **\+**-Menü \> Connectors; in ChatGPT über den Server-Schalter in Settings \> Plugins \> MCPs).
+- **Tools erscheinen nicht im Chat**: Prüfen Sie, ob der Connector für diese Konversation aktiviert ist (in Claude über das **\+**-Menü \> **Connectors**; in ChatGPT über den Server-Schalter in **Settings** \> **Plugins** \> **MCPs**).
 
 ## Probieren Sie es aus
 

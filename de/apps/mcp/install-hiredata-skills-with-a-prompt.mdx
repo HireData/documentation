@@ -6,7 +6,7 @@ keywords: ["HireData Skills installieren", "HireData Skills Prompt", "Skill in C
 related: ["/de/apps/mcp/install-hiredata-plugin", "/de/apps/mcp/hiredata-skills", "/de/apps/mcp/keep-hiredata-skills-up-to-date"]
 ---
 
-Ein HireData-Skill ist eine Sammlung schriftlicher Anweisungen, die Ihrem KI-Assistenten beibringt, wie HireData eine bestimmte Aufgabe erledigt – eine E-Mail-Vorlage schreiben, eine Automatisierung diagnostizieren, eine Aktivierung planen. Es gibt zwei Wege, die [Skills von HireData](/de/apps/mcp/hiredata-skills) in Ihren Assistenten zu bekommen. Diese Seite beschreibt den manuellen Weg: Sie fügen einen Prompt ein, Ihr Assistent ruft die Anweisungen ab und übergibt Ihnen eine Datei, und Sie laden diese Datei selbst hoch. Etwa zwei Minuten pro Skill.
+Ein HireData-Skill ist eine Sammlung schriftlicher Anweisungen, die Ihrem KI-Assistenten beibringt, wie HireData eine bestimmte Aufgabe erledigt, etwa eine E-Mail-Vorlage schreiben, eine Automatisierung diagnostizieren oder eine Aktivierung planen. Es gibt zwei Wege, die [Skills von HireData](/de/apps/mcp/hiredata-skills) in Ihren Assistenten zu bekommen. Diese Seite beschreibt den manuellen Weg: Sie fügen einen Prompt ein, Ihr Assistent ruft die Anweisungen ab und übergibt Ihnen eine Datei, und Sie laden diese Datei selbst hoch. Etwa zwei Minuten pro Skill.
 
 Wenn Sie [das Plugin installieren](/de/apps/mcp/install-hiredata-plugin) können, tun Sie lieber das – es ist ein einziger Schritt, es enthält die HireData-Verbindung, und es aktualisiert sich über eine einzige Schaltfläche.
 
@@ -16,7 +16,7 @@ Wenn Sie [das Plugin installieren](/de/apps/mcp/install-hiredata-plugin) können
 | Mit einem Prompt installieren (diese Seite) | Ihr Assistent ruft die Skill-Dateien ab; Sie speichern die, die Sie möchten. Nichts aktualisiert sich von selbst | Ihr Assistent unterstützt keine Plugins, Ihre Organisation blockiert den Marketplace, oder Sie möchten nur ein oder zwei Skills |
 
 <Note>
-  Ein Skill bringt Ihrem Assistenten bei, wie HireData eine Aufgabe erledigt. Er erlaubt Ihrem Assistenten nicht, etwas in Ihren Workspaces zu sehen oder zu ändern. Dafür benötigen Sie zusätzlich die [HireData-MCP-Verbindung](/de/apps/mcp/connect-hiredata-to-your-ai-assistant) – die Verbindung zwischen Ihrem Assistenten und Ihrem HireData-Konto. Richten Sie beides ein, und Sie haben das, was Ihnen das Plugin gibt.
+  Ein Skill bringt Ihrem Assistenten bei, wie HireData eine Aufgabe erledigt. Er erlaubt Ihrem Assistenten nicht, etwas in Ihren Workspaces zu sehen oder zu ändern. Dafür benötigen Sie zusätzlich die [HireData-MCP-Verbindung](/de/apps/mcp/connect-hiredata-to-your-ai-assistant), die Verbindung zwischen Ihrem Assistenten und Ihrem HireData-Konto. Richten Sie beides ein, und Sie haben das, was Ihnen das Plugin gibt.
 </Note>
 
 ## Skills in Claude installieren
@@ -36,7 +36,7 @@ Beginnen Sie mit einem. Wenn Sie es einmal gemacht haben, funktionieren alle wei
   <Step title="Claude bitten, die Skill-Datei zu bauen">
     Starten Sie eine **neue** Konversation und fügen Sie den folgenden Prompt ein. Er installiert noch nichts – er bittet Claude, eine Datei zu bauen, die Sie im nächsten Schritt hochladen.
 
-    Dieser Prompt baut den Skill **E-Mail-Vorlagen erstellen**. Um einen anderen zu bauen, ersetzen Sie `hiredata-create-email-templates` durch einen anderen Ordnernamen aus [der Skill-Liste weiter unten auf dieser Seite](#die-ordnernamen-der-skills). Er kommt zweimal vor – einmal in der ersten Zeile, einmal in der Webadresse – ändern Sie also beide.
+    Dieser Prompt baut den Skill **E-Mail-Vorlagen erstellen**. Um einen anderen zu bauen, ersetzen Sie `hiredata-create-email-templates` durch einen anderen Ordnernamen aus [der Skill-Liste weiter unten auf dieser Seite](#die-ordnernamen-der-skills). Er kommt zweimal vor, einmal in der ersten Zeile und einmal in der Webadresse, ändern Sie also beide.
 
     ```text
     Bitte verpacke den HireData-Skill "hiredata-create-email-templates" für mich.
@@ -50,12 +50,12 @@ Beginnen Sie mit einem. Wenn Sie es einmal gemacht haben, funktionieren alle wei
     Claude antwortet mit einer ZIP-Datei. Laden Sie sie herunter – sie landet in Ihrem Downloads-Ordner.
   </Step>
   <Step title="Als Skill speichern">
-    Gehen Sie in Claude zu **Customize** \> **Skills**, klicken Sie auf **\[Add\]**, wählen Sie die Option zum Hochladen einer Skill-Datei und wählen Sie das eben heruntergeladene ZIP aus.
+    Gehen Sie in Claude zu **Customize** \> **Skills**, klicken Sie auf **Add**, wählen Sie die Option zum Hochladen einer Skill-Datei und wählen Sie das eben heruntergeladene ZIP aus.
 
     Der Skill erscheint jetzt aktiviert in Ihrer Liste.
   </Step>
   <Step title="Prüfen, ob es funktioniert">
-    Starten Sie eine weitere **neue** Konversation – Skills werden nur beim Start einer Konversation geladen – und fragen Sie etwas, wofür der Skill gedacht ist, zum Beispiel: _„Entwirf eine Bewerbungs-Bestätigungs-E-Mail für Kandidaten. Zeige mir eine Vorschau und sende nichts."_
+    Skills werden nur beim Start einer Konversation geladen, starten Sie also eine weitere **neue** Konversation. Fragen Sie etwas, wofür der Skill gedacht ist, zum Beispiel: _„Entwirf eine Bewerbungs-Bestätigungs-E-Mail für Kandidaten. Zeige mir eine Vorschau und sende nichts."_
 
     Claude nennt den Skill, sobald es zu arbeiten beginnt. Falls nicht, siehe [Fehlerbehebung](#fehlerbehebung).
   </Step>
@@ -78,10 +78,10 @@ Gib mir dann ein ZIP pro Skill, jeweils mit dem Ordner dieses Skills im
 Wurzelverzeichnis des ZIP, damit ich sie einzeln hochladen kann.
 ```
 
-Laden Sie jedes ZIP über **Customize** \> **Skills** \> **\[Add\]** hoch.
+Laden Sie jedes ZIP über **Customize** \> **Skills** \> **Add** hoch.
 
 <Note>
-  **Nutzen Sie den Cowork-Modus von Claude?** Fragen Sie nach `.skill`-Dateien statt nach ZIPs – _„schicke sie mir als .skill-Dateien"_ – und Claude liefert Dateien, die Sie direkt aus der Sitzung heraus in Ihrem Konto speichern können.
+  **Nutzen Sie den Cowork-Modus von Claude?** Fragen Sie nach `.skill`-Dateien statt nach ZIPs (_„schicke sie mir als .skill-Dateien"_), und Claude liefert Dateien, die Sie direkt aus der Sitzung heraus in Ihrem Konto speichern können.
 </Note>
 
 ## Einen Skill in ChatGPT installieren
@@ -138,8 +138,8 @@ HireData ergänzt die Skills mit der Zeit – prüfen Sie also [das Repository](
 
 ## Fehlerbehebung
 
-- **Ihr Assistent sagt, er erreiche die Dateien nicht.** Er benötigt die Berechtigung, Webseiten abzurufen – Websuche und Abruf unter **Settings** \> **Capabilities**. Wenn Ihre Organisation das deaktiviert hat, bleibt Ihnen nur der Weg über das Plugin; bitten Sie Ihre KI-Administration, stattdessen den HireData-Marketplace freizugeben.
-- **Der Upload wird abgelehnt.** Öffnen Sie das ZIP und prüfen Sie, ob es so aussieht – der Skill-Ordner zuerst, `SKILL.md` darin:
+- **Ihr Assistent sagt, er erreiche die Dateien nicht.** Er benötigt die Berechtigung, Webseiten abzurufen. Aktivieren Sie Websuche und Abruf unter **Settings** \> **Capabilities**. Wenn Ihre Organisation das deaktiviert hat, bleibt Ihnen nur der Weg über das Plugin; bitten Sie Ihre KI-Administration, stattdessen den HireData-Marketplace freizugeben.
+- **Der Upload wird abgelehnt.** Öffnen Sie das ZIP und prüfen Sie, ob es so aussieht, mit dem Skill-Ordner zuerst und `SKILL.md` darin:
   ```text
   hiredata-create-email-templates/
   ├── SKILL.md

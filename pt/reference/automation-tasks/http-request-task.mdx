@@ -89,7 +89,7 @@ Preencha depois a sua própria chave ou token no separador **Auth**, e trate a i
 
 Um comando cURL também se importa, e muitas vezes é tudo o que a documentação de um fornecedor lhe dá. Define o método, o URL, o corpo e os headers.
 
-Também define a credencial, quando o comando transporta uma. Um header `Authorization: Bearer …` torna-se um **Bearer token** com o token preenchido, e o próprio header é descartado para não ser enviado duas vezes. `-u user:password` — e um `Authorization: Basic …` em base64 — torna-se **Basic auth** com o nome de utilizador e a palavra-passe preenchidos.
+Também define a credencial, quando o comando transporta uma. Um header `Authorization: Bearer …` torna-se um **Bearer token** com o token preenchido, e o próprio header é descartado para não ser enviado duas vezes. `-u user:password`, ou um header `Authorization: Basic …` em base64, torna-se **Basic auth** com o nome de utilizador e a palavra-passe preenchidos.
 
 Por isso, trate um comando cURL que lhe enviaram como uma credencial, não apenas como um snippet. Se saiu do terminal de outra pessoa, pode transportar a chave dela: verifique o separador **Auth** depois de importar e substitua qualquer coisa que não devia estar na sua posse.
 
@@ -118,7 +118,7 @@ As linhas de **Query** são suas para preencher. Cada linha tem:
 - **Value**: o que enviar, com um seletor de campos ao lado
 - **Remove**: apaga a linha por completo
 
-A barra de URL e as linhas de **Query** são duas vistas da mesma coisa. Cole um URL com uma query string no fim e ele divide-se em linhas; adicione ou edite uma linha e a query string na barra de URL atualiza-se para corresponder. Assim pode trabalhar em qualquer uma das duas formas que lhe deram — um URL completo da documentação de um fornecedor, ou uma tabela de parâmetros — sem transcrever de uma para a outra.
+A barra de URL e as linhas de **Query** são duas vistas da mesma coisa. Cole um URL com uma query string no fim e ele divide-se em linhas. Adicione ou edite uma linha e a query string na barra de URL atualiza-se para corresponder. Assim pode trabalhar em qualquer uma das duas formas que lhe deram, um URL completo da documentação de um fornecedor ou uma tabela de parâmetros, sem transcrever de uma para a outra.
 
 As linhas de **Path** não são nomeadas por si. Vêm do URL. Até o URL conter um, a secção mostra "Path parameters appear when the URL contains `{placeholder}` segments."
 

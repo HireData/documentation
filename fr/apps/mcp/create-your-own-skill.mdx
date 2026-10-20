@@ -55,10 +55,10 @@ C'est la voie la plus simple, et elle fonctionne dans n'importe quelle conversat
     ```
   </Step>
   <Step title="L'enregistrer">
-    Dans Claude, allez dans **Customize** \> **Skills**, cliquez sur **\[Add\]**, choisissez l'option de téléversement d'un fichier de skill, et sélectionnez le zip. Dans ChatGPT, allez sur [chatgpt.com/skills](https://chatgpt.com/skills), cliquez sur **Create**, puis sur **Upload from your computer**.
+    Dans Claude, allez dans **Customize** \> **Skills**, cliquez sur **Add**, choisissez l'option de téléversement d'un fichier de skill, et sélectionnez le zip. Dans ChatGPT, allez sur [chatgpt.com/skills](https://chatgpt.com/skills), cliquez sur **Create**, puis sur **Upload from your computer**.
   </Step>
   <Step title="La tester dans une nouvelle conversation">
-    Les skills ne se chargent qu'au démarrage d'une conversation : ouvrez-en une nouvelle et formulez votre demande comme vous le feriez normalement — sans nommer la skill. Si votre assistant ne s'en saisit pas, consultez [quand une skill ne se déclenche pas](#quand-une-skill-ne-se-déclenche-pas).
+    Les skills ne se chargent qu'au démarrage d'une conversation : ouvrez-en une nouvelle et formulez votre demande comme vous le feriez normalement, sans nommer la skill. Si votre assistant ne s'en saisit pas, consultez [quand une skill ne se déclenche pas](#quand-une-skill-ne-se-déclenche-pas).
   </Step>
 </Steps>
 
@@ -76,13 +76,13 @@ Faites une signature avec votre assistant. Dites-lui quelles parties sont fixes 
 
 Vous pouvez vous enregistrer en train de réaliser la tâche plutôt que de la décrire. C'est utile quand le travail s'étend sur plusieurs écrans et qu'il est plus simple à montrer qu'à écrire.
 
-Il vous faut les trois : un Mac, une formule Pro, Max ou Team, et le mode Cowork de Claude. Si **Record a skill** n'apparaît pas dans le menu **\[\+\]**, c'est que vous ne l'avez pas — utilisez plutôt [Transformer une conversation en skill](#transformer-une-conversation-en-skill).
+Il vous faut les trois : un Mac, une formule Pro, Max ou Team, et le mode Cowork de Claude. Si **Record a skill** n'apparaît pas dans le menu **\+**, c'est que vous ne l'avez pas. Utilisez plutôt [Transformer une conversation en skill](#transformer-une-conversation-en-skill).
 
 Avant de commencer : votre vidéo et votre audio ne sont pas conservés, seulement des captures d'écran de la session, stockées dans la tâche Cowork. Traitez cela comme un partage d'écran et fermez tout ce que vous ne montreriez pas à un collègue.
 
 <Steps>
   <Step title="Démarrer l'enregistrement">
-    Cliquez sur **\[\+\]** dans le composeur et sélectionnez **Record a skill**, ou allez dans **Customize** \> **Skills**, cliquez sur **\[Add\]**, et sélectionnez **Record your screen**.
+    Cliquez sur **\+** dans le composeur et sélectionnez **Record a skill**, ou allez dans **Customize** \> **Skills**, cliquez sur **Add**, et sélectionnez **Record your screen**.
   </Step>
   <Step title="Faire la tâche, en commentant">
     Travaillez à votre rythme habituel, jusqu'à une dizaine de minutes, et dites ce que vous faites et pourquoi — _« je vérifie toujours la marque en premier, parce que c'est elle qui détermine l'expéditeur »_. C'est le raisonnement qui rend la skill utile ; les clics seuls ne suffisent pas.
@@ -105,7 +105,7 @@ my-skill/
     └── examples.md
 ```
 
-`SKILL.md` est un fichier texte simple. Écrivez-le dans un éditeur de texte — pas dans Word — et enregistrez-le sous le nom `SKILL.md`, sans `.txt` ni `.docx` à la fin. Il commence par deux champs obligatoires entre deux lignes de trois tirets, puis du texte ordinaire :
+`SKILL.md` est un fichier texte simple. Écrivez-le dans un éditeur de texte (pas dans Word) et enregistrez-le sous le nom `SKILL.md`, sans `.txt` ni `.docx` à la fin. Il commence par deux champs obligatoires entre deux lignes de trois tirets, puis du texte ordinaire :
 
 ```markdown
 ---
@@ -151,7 +151,7 @@ Neuf fois sur dix, le problème vient de la description, pas des instructions.
 
 Une skill que vous téléversez vous-même est personnelle — chaque collègue téléverse sa propre copie, sauf si un propriétaire la met à disposition de toute l'organisation. Pour la transmettre, envoyez le zip.
 
-Sur les formules Team et Enterprise, un propriétaire peut mettre une skill à disposition de tout le monde : **Organization settings** \> **Skills** \> **\[\+ Add\]**, téléversez le zip, et elle apparaît dans les **Customize** \> **Skills** de chaque membre. Les propriétaires peuvent aussi désactiver entièrement les skills créées par les utilisateurs — si vous ne pouvez pas en téléverser une, c'est la raison.
+Sur les formules Team et Enterprise, un propriétaire peut mettre une skill à disposition de tout le monde : **Organization settings** \> **Skills** \> **\+ Add**, téléversez le zip, et elle apparaît dans les **Customize** \> **Skills** de chaque membre. Les propriétaires peuvent aussi désactiver entièrement les skills créées par les utilisateurs : si vous ne pouvez pas en téléverser une, c'est la raison.
 
 <Warning>
   Une skill donne à votre assistant des instructions qu'il va suivre. N'installez que des skills provenant de personnes de confiance, lisez-en une entièrement avant de l'activer, et ne mettez jamais de mots de passe, de clés d'API ni de données clients à l'intérieur — utilisez plutôt la [connexion MCP HireData](/fr/apps/mcp/connect-hiredata-to-your-ai-assistant) pour les données en direct.
@@ -163,7 +163,13 @@ Si votre skill peut aider d'autres utilisateurs de HireData, HireData la publier
 
 La voie facile : envoyez-la à [support@hiredata.com](mailto:support@hiredata.com) avec une ligne sur ce qu'elle fait et à qui elle sert, et HireData s'occupe du reste.
 
-À l'aise avec GitHub ? Ouvrez plutôt une pull request sur [github.com/HireData/skills](https://github.com/HireData/skills). En bref : ajoutez votre dossier sous `plugins/hiredata/skills/` avec un nom en minuscules, avec des traits d'union, de préférence commençant par un verbe, un `SKILL.md`, et un dossier `references/` d'un seul niveau ; ajoutez des cas d'évaluation à `evals/regression-cases.json` — un usage normal, un cas avec des données manquantes ou ambiguës, un cas de sécurité ou de combinaison invalide, plus un résultat de référence et un résultat candidat notés selon `evals/RUBRIC.md` ; et exécutez `python3 scripts/validate_repo.py` avant d'ouvrir la PR. [CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) contient les exigences complètes et la check-list de revue.
+À l'aise avec GitHub ? Ouvrez plutôt une pull request sur [github.com/HireData/skills](https://github.com/HireData/skills). En bref :
+
+1. Ajoutez votre dossier sous `plugins/hiredata/skills/` avec un nom en minuscules, avec des traits d'union, de préférence commençant par un verbe, un `SKILL.md`, et un dossier `references/` d'un seul niveau.
+2. Ajoutez des cas d'évaluation à `evals/regression-cases.json` : un usage normal, un cas avec des données manquantes ou ambiguës, et un cas de sécurité ou de combinaison invalide. Incluez un résultat de référence et un résultat candidat notés selon `evals/RUBRIC.md`.
+3. Exécutez `python3 scripts/validate_repo.py` avant d'ouvrir la PR.
+
+[CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) contient les exigences complètes et la check-list de revue.
 
 <CardGroup cols={2}>
   <Card title="Voir comment sont écrites les skills HireData" icon="github" href="https://github.com/HireData/skills">

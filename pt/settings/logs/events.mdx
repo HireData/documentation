@@ -7,7 +7,7 @@ _Quando liga o seu ATS, como Carerix, Salesforce, OTYS, etc., à HireData, ele c
 
 ## O que é um event
 
-Um event é um sinal enviado da sua app ligada para a HireData. Normalmente representa uma ação ou alteração específica, por exemplo, um novo candidato ser criado, uma vaga ser atualizada, uma colocação ser concluída, etc. A HireData usa estes events para acionar as automações que configurou, e cada event inclui **Event Data**, **External Records** e **Runs.**
+Um event é um sinal enviado da sua app ligada para a HireData. Normalmente representa uma ação ou alteração específica, por exemplo, um novo candidato ser criado, uma vaga ser atualizada, uma colocação ser concluída, etc. A HireData usa estes events para acionar as automações que configurou, e cada event inclui **Event Data**, **External Records** e **Runs**.
 
 _Exemplo de event:_
 
@@ -23,11 +23,11 @@ _Utilize os filtros para uma vista mais organizada, por exemplo, se quer ver os 
 
 ![Setting up filters](/images/intercom/48024595-Screenshot-2025-05-05-at-10_49_56.png)
 
-Para explorar um event individual, clique no botão [Details] junto ao event para uma visão geral curta, ou abra o menu suspenso e clique em [View].
+Para explorar um event individual, clique no botão **Details** junto ao event para uma visão geral curta, ou abra o menu suspenso e clique em **View**.
 
 ![Event drop-down menu](/images/intercom/48023846-Screenshot-2025-05-05-at-10_50_57.png)
 
-Isto irá abrir a vista de detalhe do event, que inclui:
+Isto abre a vista de detalhe do event, que inclui:
 
 - **Event Data** – uma vista resumida dos dados recebidos da sua app.
 
@@ -53,11 +53,11 @@ Se um event não acionar uma automação como esperado, ou um run falhar antes d
 
 A HireData reprocessa o(s) event(s) selecionado(s) e aciona as automações associadas. A HireData executa as tarefas afetadas como se o event tivesse acabado de ocorrer.
 
-- **Automações baseadas em events** – Para automações que são acionadas por um event específico (por exemplo, um candidato a atingir uma determinada fase), o replay irá reacionar a automação imediatamente com base nos dados do event. Se houve anteriormente um run criado, este será reproduzido e aparecerá uma etiqueta "Replay".
+- **Automações baseadas em events** – Para automações que são acionadas por um event específico (por exemplo, um candidato a atingir uma determinada fase), o replay reaciona a automação imediatamente com base nos dados do event. Se houve anteriormente um run criado, a HireData reprodu-lo e aparece uma etiqueta **Replay**.
 
 ![An event labeled as Replayed](/images/intercom/146643359-Screenshot-2026-05-28-at-13_08_04.png)
 
-- **Automações agendadas (únicas)** – Para automações que correm numa data ou agendamento fixos, reproduzir o event não irá alterar ou reagendar a data de execução planeada da automação. O replay apenas reavalia se o event corresponde às condições da automação.
+- **Automações agendadas (únicas)** – Para automações que correm numa data ou agendamento fixos, reproduzir o event não altera nem reagenda a data de execução planeada da automação. O replay apenas reavalia se o event corresponde às condições da automação.
 
 ### Como reproduzir events
 
@@ -82,7 +82,7 @@ A HireData reprocessa o(s) event(s) selecionado(s) e aciona as automações asso
 
     ![Replaying an individual event](/images/intercom/146645337-Screenshot-2026-05-28-at-13_06_43.png)
 
-    Para reproduzir **vários events de uma vez**, marque a caixa junto a cada event que quer reproduzir na página **Events** ou no separador **Events** de uma automação. Uma vez selecionados um ou mais events, aparecerá um botão **Replay** no topo da página. Clique nele para continuar.
+    Para reproduzir **vários events de uma vez**, marque a caixa junto a cada event que quer reproduzir na página **Events** ou no separador **Events** de uma automação. Uma vez selecionados um ou mais events, aparece um botão **Replay** no topo da página. Clique nele para continuar.
 
     ![Replaying events in bulk](/images/intercom/146646000-Screenshot-2026-05-28-at-13_06_24.png)
   </Step>
@@ -98,7 +98,7 @@ A HireData reprocessa o(s) event(s) selecionado(s) e aciona as automações asso
 </Steps>
 
 <Tip>
-  - **Reveja sempre as automações afetadas antes de confirmar um replay.** Um event pode corresponder a várias automações, e reproduzi-lo irá acionar todas elas.
+  - **Reveja sempre as automações afetadas antes de confirmar um replay.** Um event pode corresponder a várias automações, e reproduzi-lo aciona todas elas.
   - **Tenha extra cuidado com automações que enviam emails ou mensagens.** Reproduzir um event ligado a essas automações pode enviar comunicações duplicadas a candidatos ou contactos.
   - **Use o separador Events específico da automação se quer reproduzir apenas dentro de uma única automação.** Isto dá-lhe uma vista mais focada e reduz o risco de acionar involuntariamente automações não relacionadas.
   - **O bulk replay é útil quando vários events falharam ao mesmo tempo**, por exemplo, após um problema temporário de sincronização. Em vez de reproduzir um a um, pode selecionar todos os events afetados e reproduzi-los juntos.

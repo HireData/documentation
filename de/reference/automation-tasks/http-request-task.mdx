@@ -89,7 +89,7 @@ Tragen Sie anschließend Ihren eigenen Key oder Token im Tab **Auth** ein, und b
 
 Auch ein cURL-Befehl lässt sich importieren, und oft ist er alles, was die Dokumentation eines Anbieters hergibt. Er setzt die Methode, die URL, den Body und die Headers.
 
-Er setzt auch das Zugangsdatum, wenn der Befehl eines enthält. Ein `Authorization: Bearer …`-Header wird zu einem **Bearer token** mit ausgefülltem Token, und der Header selbst wird entfernt, damit er nicht doppelt gesendet wird. `-u user:password` – und ein base64-kodiertes `Authorization: Basic …` – wird zu **Basic auth** mit ausgefülltem Benutzernamen und Passwort.
+Er setzt auch das Zugangsdatum, wenn der Befehl eines enthält. Ein `Authorization: Bearer …`-Header wird zu einem **Bearer token** mit ausgefülltem Token, und der Header selbst wird entfernt, damit er nicht doppelt gesendet wird. `-u user:password` oder ein base64-kodierter `Authorization: Basic …`-Header wird zu **Basic auth** mit ausgefülltem Benutzernamen und Passwort.
 
 Behandeln Sie einen cURL-Befehl, den Sie erhalten haben, also als Zugangsdatum, nicht nur als Snippet. Wenn er aus dem Terminal einer anderen Person stammt, kann er deren Key enthalten: Prüfen Sie nach dem Import den Tab **Auth** und ersetzen Sie alles, was Sie nicht besitzen sollten.
 
@@ -118,7 +118,7 @@ Der Tab **Params** hat zwei Bereiche, **Query** und **Path**. Sie sehen gleich a
 - **Value**: was gesendet wird, mit einer Feldauswahl daneben
 - **Remove**: löscht die Zeile endgültig
 
-Die URL-Leiste und die **Query**-Zeilen sind zwei Ansichten derselben Sache. Fügen Sie eine URL mit Query-String am Ende ein, und sie wird in Zeilen aufgeteilt; fügen Sie eine Zeile hinzu oder bearbeiten Sie sie, und der Query-String in der URL-Leiste passt sich entsprechend an. Sie können also in derjenigen der beiden Ansichten arbeiten, die Ihnen vorliegt – eine vollständige URL aus der Dokumentation eines Anbieters oder eine Tabelle von Parametern –, ohne sie in die andere zu übertragen.
+Die URL-Leiste und die **Query**-Zeilen sind zwei Ansichten derselben Sache. Fügen Sie eine URL mit Query-String am Ende ein, und sie wird in Zeilen aufgeteilt. Fügen Sie eine Zeile hinzu oder bearbeiten Sie sie, und der Query-String in der URL-Leiste passt sich entsprechend an. Sie können also in derjenigen der beiden Ansichten arbeiten, die Ihnen vorliegt, eine vollständige URL aus der Dokumentation eines Anbieters oder eine Tabelle von Parametern, ohne sie in die andere zu übertragen.
 
 **Path**-Zeilen benennen Sie nicht selbst. Sie kommen aus der URL. Solange die URL keinen enthält, steht im Bereich „Path parameters appear when the URL contains `{placeholder}` segments."
 
