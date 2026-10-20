@@ -1,0 +1,67 @@
+---
+title: "Split"
+sidebarTitle: "Split"
+description: "L'étape Split dans une automatisation HireData : des branches qui commencent chacune par un Filter, des sous-exécutions par branche, et comment la page d'exécution les dessine."
+keywords:
+  - "étape split"
+  - "branche"
+  - "chemins"
+  - "sous-exécution"
+  - "create split"
+  - "no valid paths"
+---
+
+**Split** exécute plusieurs chemins en parallèle. Chaque chemin commence par son propre [Filter](/fr/reference/automations/steps/filter), et l'exécution suit chaque chemin dont le Filter passe.
+
+Split n'a pas de panneau propre. Le choisir dans le sélecteur **Next step** met l'entrée en surbrillance et affiche **Create Split** dans le pied. **Create Split** place un Split avec deux branches Filter vides sur le canevas et ouvre aussitôt le panneau Filter de la première branche.
+
+<img src="/images/automations/14-split-create.png" alt="Le sélecteur Next step avec Split en surbrillance et un bouton Create Split dans le pied" width="650" />
+
+## Paramètres
+
+- **Filter de branche**. Chaque branche est une étape Filter avec les paramètres d'un [Filter](/fr/reference/automations/steps/filter). Le Filter d'une branche n'annule que cette branche.
+- **Ajouter un chemin**. Le **+** au bord droit de la boîte Split ajoute une troisième branche ou plus et ouvre son panneau Filter. **Cancel** dans ce panneau supprime le nouveau chemin.
+- **Étapes dans une branche**. Le **+** sous le Filter de chaque branche ajoute les propres étapes de la branche.
+- **Étapes après le Split**. Le **+** sous la boîte Split ajoute l'étape qui s'exécute une fois que toutes les branches sont terminées.
+
+L'aperçu d'un modèle installé libelle un Split « Split / 2 paths ».
+
+### Sur le canevas
+
+Le Split est une boîte avec un badge **Split**. Les Filters de branche sont côte à côte à l'intérieur, chacun avec son propre **+** en dessous, et le **+** de la boîte elle-même suit en dessous.
+
+<img src="/images/automations/25-split-card.png" alt="Une boîte Split sur le canevas avec deux branches Filter, Question 2: Answer is not empty et Question 2: Answer is empty" width="650" />
+
+## Ce qu'elle produit
+
+Rien en propre. Chaque branche lit les variables qui existaient avant le Split. Les étapes après le Split voient les variables telles qu'elles étaient avant, plus ce que les branches ont produit.
+
+Chaque branche est une sous-exécution. La liste des exécutions affiche une ligne par sous-exécution, si bien que le nombre d'exécutions dépasse le nombre d'événements. La page de l'exécution parente les replie dans un seul diagramme : la boîte Split porte sa propre ligne de statut, chaque Filter de branche porte « Completed » ou « Cancelled », et chaque tâche de branche porte la sienne. La chronologie enregistre « Waiting. » pendant que les branches s'exécutent et « Split: Completed » avec « Sub runs completed. » quand elles se terminent.
+
+<img src="/images/automations/21-run-page-split.png" alt="Une page d'exécution montrant un Split avec deux branches Filter : la branche de gauche Completed et sa tâche Update Candidate in Carerix Completed, la branche de droite Cancelled en rouge" width="650" />
+
+## Ce qui arrête l'exécution
+
+- Aucune branche ne passe. Le Split affiche Cancelled avec le message « No valid paths found. » et les étapes suivantes ne s'exécutent jamais.
+- Aucune branche n'a d'étape après son Filter. Le Split affiche Failed avec le même message avant même qu'une branche soit vérifiée.
+- Une étape à l'intérieur d'une branche s'arrête. Elle n'annule que la sous-exécution de cette branche. Les autres branches et les étapes après le Split continuent.
+
+Voir [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons).
+
+## Schémas d'utilisation
+
+- **Une branche par réponse.** Après une enquête WhatsApp, une branche par valeur de réponse, chacune se terminant par l'Update que la réponse appelle. Le modèle de réactivation fait cela avec « Direct beschikbaar » et « Binnenkort beschikbaar ».
+- **Une branche fourre-tout.** Donnez à la dernière branche un Filter sur le champ **is not empty** pour que chaque exécution avec une réponse emprunte au moins un chemin, les branches spécifiques traitant les valeurs que vous attendez.
+- **Des étapes communes après le Split.** Placez une étape dont chaque chemin a besoin une seule fois sous la boîte Split, plutôt que dans chaque branche.
+
+## Erreurs courantes
+
+- **Des conditions qui se chevauchent.** Les branches ne sont pas exclusives. Un enregistrement qui passe deux Filters exécute les deux branches.
+- **Une branche sans étapes.** Un Filter sans rien après lui n'est pas un chemin valide et le Split échoue.
+- **S'attendre à ce qu'une branche arrête l'exécution.** Un Filter de branche qui échoue annule sa propre sous-exécution. L'exécution continue avec les autres branches et les étapes après le Split. Pour un arrêt net, utilisez un [Filter](/fr/reference/automations/steps/filter) avant le Split.
+
+## Voir aussi
+
+- [Filter](/fr/reference/automations/steps/filter) documente les opérateurs, lignes et ensembles que chaque branche utilise.
+- [Loop](/fr/reference/automations/steps/loop) crée aussi des sous-exécutions, une par enregistrement plutôt qu'une par branche.
+- [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons) explique où apparaît le message d'une branche annulée.

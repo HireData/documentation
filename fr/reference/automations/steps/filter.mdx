@@ -1,0 +1,86 @@
+---
+title: "Filter"
+sidebarTitle: "Filter"
+description: "L'étape Filter dans une automatisation HireData : chaque opérateur de condition, comment les lignes et les ensembles se combinent, les contraintes d'unicité, et ce qu'affiche une exécution arrêtée."
+keywords:
+  - "étape filter"
+  - "condition"
+  - "opérateur"
+  - "equals"
+  - "is empty"
+  - "contains"
+  - "greater than"
+  - "contrainte d'unicité"
+  - "filter not passed"
+---
+
+**Filter** décide si l'exécution continue. Quand les conditions passent, l'exécution passe à l'étape suivante ; quand elles ne passent pas, l'exécution s'arrête ici.
+
+Le panneau est intitulé **Filter** avec les onglets **Filters** et **Advanced**.
+
+## Paramètres
+
+- **Field**. La zone **Select field**. Tapez pour rechercher : « 2: Answer » trouve « Question 2: Answer ». La liste contient les champs de l'événement et les sorties des étapes précédentes.
+- **Operator**. La zone **Select** à côté du champ. Désactivée tant qu'aucun champ n'est choisi. Les opérateurs proposés dépendent du type du champ, listés ci-dessous.
+- **Value**. Une zone qui apparaît pour les opérateurs qui comparent à quelque chose. **is empty** et **is not empty** n'en ont pas.
+- **Add Filter**. Ajoute une ligne au même ensemble.
+- **Add New Set**. Commence un nouvel ensemble sous le premier.
+- **AND / OR**. Une bascule qui apparaît entre deux lignes, et une autre qui apparaît entre deux ensembles. Par défaut **AND**. Au sein d'un ensemble, elle décide si chaque ligne ou n'importe quelle ligne doit passer. Entre les ensembles, elle décide si chaque ensemble ou n'importe quel ensemble doit passer.
+- **Unique Constraints**. Sur l'onglet **Advanced**. Choisissez des champs, et le Filter ne passe qu'une seule fois pour chaque combinaison de leurs valeurs. Avec un identifiant et un champ de statut sélectionnés, un enregistrement passe une seule fois pour un statut donné, quel que soit le nombre d'événements qu'il produit avec ce statut.
+
+### Opérateurs
+
+| Type de champ | Opérateurs |
+| --- | --- |
+| Texte | equals, not equals, is empty, is not empty, contains, does not contain, starts with, ends with, does not start with, does not end with |
+| Nombre | equals, not equals, is empty, is not empty, greater than, less than, greater than or equal, less than or equal |
+
+Les champs qui contiennent une plage ou un ensemble de valeurs proposent aussi **between**, **one of** et **not one of**.
+
+<img src="/images/automations/10-filter-drawer.png" alt="Le panneau Filter avec deux lignes dans le premier ensemble, Question 1: Answer is not empty et Question 2: Answer equals Yes, reliées par une bascule AND / OR, puis une seconde bascule et un second ensemble vide" width="384" />
+
+### Sur le canevas
+
+La carte affiche un badge **Filter**, le numéro de l'ensemble, et chaque ligne sous la forme champ, opérateur, valeur.
+
+<img src="/images/automations/23-filter-card.png" alt="Une carte Filter sur le canevas indiquant 1, Question 1: Answer, is not empty" width="365" />
+
+## Ce qu'elle produit
+
+Rien de nouveau. Les variables disponibles après un Filter sont les mêmes qu'avant.
+
+Sur la page de l'exécution, un Filter passé porte la ligne « Completed » avec l'heure. La chronologie enregistre « Filter: Run Moved », puis « Filter: Completed » avec chaque ensemble marqué **Valid** et la valeur attendue face à la valeur trouvée.
+
+<img src="/images/automations/33-filter-passed-card.png" alt="Une carte Filter dans une exécution indiquant Meeting: Activity Type one of 2 selected, avec la ligne Completed: Last Friday at 7:42 PM en dessous" width="380" />
+
+<img src="/images/automations/34-filter-passed-timeline.png" alt="Une chronologie d'exécution avec Filter: Run Moved, puis Filter: Completed montrant l'ensemble 1 comme Valid avec Expected Meeting: Activity Type avec la valeur 1e gesprek, To be one of 2 selected" width="384" />
+
+## Ce qui arrête l'exécution
+
+Des conditions qui ne passent pas. La chronologie enregistre « Filter: Cancelled » avec le message « Filter not passed. » suivi de « Filter: Run Cancelled ». Les étapes après le Filter n'affichent aucune ligne de statut, et dans la liste des exécutions, la colonne **Step** de l'exécution indique « Filter ».
+
+<img src="/images/automations/38-filter-cancelled-timeline.png" alt="Une chronologie d'exécution avec Run Scheduled, Run Started, Run Moved, puis Filter: Cancelled avec le message Filter not passed. et Filter: Run Cancelled" width="384" />
+
+Un Filter à l'intérieur d'un Split n'arrête que sa propre branche. Voir [Split](/fr/reference/automations/steps/split).
+
+Les autres raisons pour lesquelles une exécution peut s'arrêter sont listées dans [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons).
+
+## Schémas d'utilisation
+
+- **Protéger le départ.** Un Filter en première étape arrête les exécutions que le départ ne peut pas exclure lui-même, comme une réponse avec une réponse vide à la question qui compte.
+- **Revérifier après une attente.** Un Delay puis un Filter confirme que l'enregistrement est toujours qualifié une fois l'attente terminée. Un candidat placé entre-temps ne reçoit jamais la relance.
+- **Se déclencher une fois par statut.** Une contrainte d'unicité sur l'id de l'enregistrement et son champ de statut laisse passer un changement de statut une seule fois, même quand l'app envoie la même mise à jour plusieurs fois.
+- **Choisir Split pour deux issues.** Un Filter termine l'exécution en cas de non. Quand le oui et le non ont tous deux besoin d'étapes, utilisez un [Split](/fr/reference/automations/steps/split) avec une branche Filter pour chacun.
+
+## Erreurs courantes
+
+- **Enregistrer une ligne sans opérateur.** Le panneau l'enregistre et le canevas affiche la clé brute `enums.conditions.undefined` à la place de l'opérateur. Rouvrez le Filter et choisissez-en un.
+- **Rechercher par numéro seul.** « Question 2 » correspond aussi à « Question 12 ». Tapez aussi une partie du titre de la question.
+- **S'attendre à une étape sautée.** Un Filter qui ne passe pas annule l'exécution, il ne saute pas à l'étape suivante.
+- **Mélanger AND et OR sans ensembles.** Les lignes d'un ensemble partagent une seule bascule. Pour combiner « A et B » avec « C », placez A et B dans un ensemble, C dans un autre, et réglez la bascule entre les ensembles sur **OR**.
+
+## Voir aussi
+
+- [Split](/fr/reference/automations/steps/split) exécute un Filter par branche au lieu d'arrêter l'exécution.
+- [Setup](/fr/reference/automations/steps/setup) contient le filtre de départ, qui décide si une exécution commence tout court.
+- [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons) explique où lire le message laissé par une exécution arrêtée.

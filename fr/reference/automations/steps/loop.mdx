@@ -1,0 +1,73 @@
+---
+title: "Loop"
+sidebarTitle: "Loop"
+description: "L'étape Loop dans une automatisation HireData : quels enregistrements elle récupère, le filtre, l'arrêt au premier succès, la variable de sortie et comment les itérations s'exécutent."
+keywords:
+  - "étape loop"
+  - "répéter"
+  - "pour chaque"
+  - "itérer sur des enregistrements"
+  - "variable de sortie"
+  - "stop on first success"
+  - "sous-exécution"
+---
+
+**Loop** répète les étapes qu'il contient une fois par enregistrement. Le panneau est intitulé **Loop** et s'ouvre avec une seule option, **Custom**, décrite comme « Loops through a selection of records. » La choisir mène à la liste des objets, puis au panneau de filtre.
+
+Après l'enregistrement, le sélecteur **Next step** s'ouvre pour la première étape à l'intérieur de la boucle.
+
+## Paramètres
+
+- **Select an object**. Le type d'enregistrement à récupérer, avec une zone **Search**. Chaque entrée nomme sa connexion en dessous. Avec Carerix connecté, la liste contient Candidates, Companies, Contacts, Emails, Lists, Matches, Meetings, Notes, Offices, Placements, Publications, Talent Pools, Tasks, Users et Vacancies. Les objets propres à HireData ne sont pas proposés.
+- **Filter**. Quels enregistrements récupérer, avec les mêmes lignes et ensembles qu'une [étape Filter](/fr/reference/automations/steps/filter). Les champs sont ceux de l'objet, chacun préfixé de l'icône de la connexion. Laissez-le vide et la boucle récupère chaque enregistrement de l'objet.
+- **Stop on first success**. **No** ou **Yes**, par défaut **No**. Avec **Yes**, la boucle se termine après la première itération qui aboutit, si bien que les étapes internes s'exécutent pour un enregistrement au plus.
+- **Output Variable**. Un nom pour l'enregistrement courant, placeholder `myLoopItem`. Le texte d'aide indique « This variable will be used instead of the step's id for clarity when filled in » et son exemple se met à jour à mesure que vous tapez : `candidate` donne ainsi `candidate.index`. Laissez-le vide et les variables sont nommées d'après l'id de l'étape.
+
+<img src="/images/automations/15-loop-drawer.png" alt="Le panneau Loop avec un filtre indiquant Id equals 6416, Stop on first success réglé sur No, et Output Variable indiquant candidate avec son texte d'aide" width="384" />
+
+### Sur le canevas
+
+Le Loop dessine une boîte avec un badge **Loop**. À l'intérieur se trouve la carte de l'enregistrement, avec une ligne telle que « Retrieve Candidates from Carerix », le nom de la connexion et le filtre, suivis des propres étapes de la boucle et d'un **+** pour en ajouter d'autres.
+
+<img src="/images/automations/26-loop-card.png" alt="Une boîte Loop sur le canevas avec un badge Loop et une carte indiquant Retrieve Candidates from Carerix, hiredata, Filter 1 Id equals 6416" width="380" />
+
+## Ce qu'elle produit
+
+Pour chaque itération, sous la variable de sortie :
+
+| Variable | Contient |
+| --- | --- |
+| `candidate.index` | Le numéro de l'itération, à partir de 0 |
+| `candidate.item.<field>` | Un champ de l'enregistrement courant, tel que `candidate.item.email` |
+
+Les étapes à l'intérieur de la boucle les lisent aux côtés des champs de l'événement. Les étapes après la boucle non : elles voient les variables qui existaient avant la boucle.
+
+Chaque itération est une sous-exécution. La liste des exécutions affiche une ligne par sous-exécution, si bien que le nombre d'exécutions d'une automatisation avec un Loop dépasse son nombre d'événements. La page de l'exécution parente replie les itérations dans un seul diagramme et sa chronologie enregistre « Waiting. » pendant qu'elles s'exécutent.
+
+## Ce qui arrête l'exécution
+
+- Une boucle sans étape à l'intérieur. La chronologie enregistre « Loop: Failed » avec le message « Step not found. » et l'exécution s'arrête là. La boîte Loop elle-même ne porte aucune ligne de statut.
+- Des enregistrements impossibles à récupérer. Le Loop affiche Cancelled avec le message « Data lookup failed. » Vérifiez la connexion et les champs du filtre.
+- Une étape à l'intérieur de la boucle qui s'arrête. Elle n'arrête que la sous-exécution de cette itération ; les autres itérations et les étapes après la boucle continuent.
+
+<img src="/images/automations/30-loop-failed-timeline.png" alt="Une chronologie d'exécution avec Run Scheduled, Run Started, puis Loop: Failed avec le message Step not found." width="384" />
+
+Voir [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons).
+
+## Schémas d'utilisation
+
+- **Resserrer le filtre.** Filtrez sur l'enregistrement visé, comme l'id du candidat issu de l'événement, plutôt que de récupérer chaque candidat et de filtrer à l'intérieur de la boucle.
+- **Première correspondance seulement.** Réglez **Stop on first success** sur **Yes** et placez un [Filter](/fr/reference/automations/steps/filter) en première étape interne. La boucle se termine au premier enregistrement qui passe.
+- **Nommer la variable.** Une variable de sortie telle que `vacancy` se lit mieux qu'un id d'étape dans un prompt ou un modèle d'e-mail, et elle survit à la reconstruction de l'étape.
+
+## Erreurs courantes
+
+- **Aucun filtre.** La boucle récupère chaque enregistrement de l'objet et exécute les étapes internes pour chacun. Ajoutez un filtre avant d'activer.
+- **Lire les variables de boucle après la boucle.** Elles n'existent qu'à l'intérieur. Écrivez ce dont vous avez besoin dans un enregistrement avec une tâche [Update](/fr/reference/automations/steps/update) à l'intérieur de la boucle.
+- **S'attendre à boucler sur du texte ou une plage.** Le panneau ne propose que des enregistrements d'une app connectée. Pour répéter sur les lignes d'un champ texte ou un nombre fixe, découpez le travail autrement, par exemple avec un [Prompt](/fr/reference/automations/steps/prompt) à sortie List.
+
+## Voir aussi
+
+- [Find](/fr/reference/automations/steps/find) récupère un seul enregistrement au lieu de plusieurs.
+- [Split](/fr/reference/automations/steps/split) crée aussi des sous-exécutions, une par branche plutôt qu'une par enregistrement.
+- [Filter](/fr/reference/automations/steps/filter) documente les lignes, ensembles et opérateurs que le filtre de la boucle partage.

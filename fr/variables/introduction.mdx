@@ -1,7 +1,7 @@
 ---
 title: "Variables"
 sidebarTitle: "Introduction"
-description: "Personnalisez les e-mails, messages, formulaires et automatisations HireData en utilisant des variables dynamiques puisées dans vos données candidats."
+description: "Utilisez les variables HireData pour personnaliser e-mails, messages WhatsApp, formulaires et automatisations avec les données candidats issues directement de vos apps connectées."
 ---
 
 Avec les variables, vous pouvez insérer des données en direct, comme le nom d'un candidat, un intitulé de poste ou un salaire, directement dans vos e-mails, messages WhatsApp, formulaires et automatisations.
@@ -10,19 +10,49 @@ Avec les variables, vous pouvez insérer des données en direct, comme le nom d'
 
 Une variable est une clé de champ entourée d'accolades doubles :
 
-```
+```text
 Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
 ```
 
 Lorsqu'il est envoyé à une candidate nommée Sofia postulant pour un rôle de Backend Engineer, cela devient :
 
-```
+```text
 Hi Sofia, thanks for applying to Backend Engineer!
 ```
 
 Les espaces à l'intérieur des accolades sont facultatifs :
 
 - `{{candidate.first_name}}` et `{{ candidate.first_name }}` se comportent de la même manière.
+
+## À quoi ressemble une variable dans l'éditeur
+
+Chaque éditeur qui accepte des variables affiche chacune comme un badge portant le nom d'affichage du champ, tel que **Recipient: First Name**. Le badge est un objet unique dans le canevas, pas les caractères qu'il remplace.
+
+<img src="/images/email-builder/24-variable-badges.png" alt="Quatre badges dans un paragraphe d'e-mail : Recipient: First Name, Recipient: First Name avec une icône de baguette et un 3, un badge teinté 'text' avec une icône de baguette, et un badge orange documentation_missing_key avec une icône d'avertissement" width="608" />
+
+- Une variable avec des modificateurs ajoute une icône de baguette, et un compteur dès qu'il y en a deux ou plus.
+- Un [littéral](/fr/variables/modifiers#literals) tel que `{{ "text" | uppercase }}` reçoit un badge teinté.
+- Une clé que HireData ne reconnaît pas reçoit un badge orange d'avertissement.
+
+### Le popover
+
+<img src="/images/email-builder/21-variable-popover.png" alt="Un paragraphe d'e-mail avec quatre badges, Recipient: First Name, Recipient: First Name avec une icône de baguette et un 3, un badge teinté text et un badge orange documentation_missing_key, et un popover ouvert sous le deuxième badge avec Input Callum, Lowercase, Capitalise words, Use a fallback there et Output Callum" width="616" />
+
+Survolez un badge pour voir ce qu'il contient : la description et les options du champ quand il en a, sa valeur actuelle, et chaque modificateur en langage clair avec le résultat à la fin. Le popover copie aussi l'expression et renvoie vers cette page.
+
+La valeur dépend de l'endroit où vous êtes. L'éditeur de formulaires et l'éditeur d'e-mails montrent la valeur d'exemple de HireData pour le champ. L'onglet **Forms** d'un enregistrement montre la valeur de cet enregistrement. Une étape d'automatisation montre la valeur par défaut du champ, parce qu'aucune exécution n'a encore eu lieu.
+
+### Quand une variable est introuvable
+
+Une clé que HireData ne reconnaît pas devient un badge orange, et son popover affiche **Variable is not found**. L'expression reste inchangée dans votre contenu, alors corrigez la clé ou supprimez le badge. Une variable que vous supprimez de la liste **Variables** d'un modèle se transforme en ce badge partout où vous l'avez utilisée.
+
+<img src="/images/email-builder/23-variable-not-found.png" alt="Un badge orange affichant documentation_missing_key avec une icône de triangle, et son popover répétant la clé au-dessus d'une ligne indiquant Variable is not found" width="616" />
+
+### Modifier un badge {#editing-a-badge}
+
+Placez le curseur après un badge et appuyez sur Retour arrière. Le badge redevient du texte, `{{` et l'expression complète, modificateurs compris. Modifiez-la, tapez les `}}` de fermeture, et le badge revient. Cela fonctionne aussi pour une référence de formulaire écrite `@key@`.
+
+Vous pouvez aussi taper une expression de zéro, modificateurs compris. Elle devient un badge dès que vous tapez les accolades de fermeture.
 
 ## Où utiliser les variables
 
@@ -37,7 +67,7 @@ Vous pouvez utiliser des variables partout où vous rédigez du contenu envoyé 
 
 Si un champ est vide pour un enregistrement donné, la variable est remplacée par rien. Pour afficher une valeur par défaut à la place, utilisez le modificateur [`default`](/fr/variables/modifiers#valeur-de-repli) :
 
-```
+```text
 Hi {{ candidate.first_name | default: "there" }}!
 ```
 
@@ -47,7 +77,7 @@ Si le candidat n'a pas de prénom, cela envoie « Hi there! ».
 
 Les variables peuvent faire plus que simplement insérer des données brutes. Un **modificateur** change la façon dont la valeur apparaît. Il peut mettre le texte en majuscules, formater une date, arrondir un nombre, et bien plus encore. Vous ajoutez un modificateur avec un tube (`|`) :
 
-```
+```text
 {{ candidate.first_name | uppercase }}        → SOFIA
 {{ job.salary | format_currency: "EUR" }}      → €65,000.00
 {{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
@@ -55,8 +85,14 @@ Les variables peuvent faire plus que simplement insérer des données brutes. Un
 
 Vous pouvez enchaîner plusieurs modificateurs, et chacun agit sur le résultat du précédent :
 
-```
+```text
 {{ candidate.last_name | lowercase | capitalise }}
 ```
 
 Consultez la liste complète sur la page [Modificateurs](/fr/variables/modifiers).
+
+## Générer une valeur au lieu de la rechercher
+
+Chaque variable ci-dessus **lit** une valeur qui existe déjà. Lorsque la valeur doit être produite spécialement pour chaque destinataire — une accroche personnelle, une formule d'anniversaire non générique — utilisez plutôt une [variable IA](/fr/variables/ai-variables).
+
+Ne la laissez jamais inventer un fait. Les dates, les salaires et les conditions contractuelles relèvent d'une variable normale.

@@ -1,0 +1,81 @@
+---
+title: "Een run volgen"
+sidebarTitle: "Een run volgen"
+description: "Lees één echte HireData-automatiseringsrun van het Carerix-event dat hem startte tot de taak die hij aanmaakte, scherm voor scherm: event, run, run step, taak, uitkomst."
+keywords:
+  - "een run volgen"
+  - "een run lezen"
+  - "eventpagina"
+  - "runpagina"
+  - "run step"
+  - "record data"
+  - "fields-tabblad"
+  - "run finished"
+  - "carerix-taak"
+---
+
+De automatisering op deze pagina luistert naar een Carerix-kandidaat van wie het veld **Example text** verandert naar een ingestelde waarde, vindt die kandidaat en voegt in Carerix een taak toe voor de owner van de kandidaat. Eén wijziging in Carerix leverde het event, de run, de run steps en de taak hieronder op, en elke sectie laat zien waar die fase op het scherm staat en wat deze je vertelt.
+
+## Event
+
+Het event is de wijziging die Carerix rapporteerde. Het is hetzelfde event voor elke automatisering in de workspace.
+
+![De eventpagina voor Candidate: Updated, met het Event Information-paneel links en het Data-tabblad met EntityId 6416, zeven gewijzigde velden, de tijd en het type cremployee:updated](/images/automations/44-follow-run-event-data.png)
+
+Wat je leest. De kop benoemt het object en de trigger, **Candidate: Updated**. **Event Information** geeft de app, de trigger en de eventdatum. **References** benoemt het record waar het event over gaat, en **Related People** vermeldt de persoon die HireData eraan koppelde. Het tabblad **Data** is de payload zoals Carerix die verstuurde. `EntityId` is het record-id en `ChangedFields` vermeldt wat er veranderde, hier `additionalinfo`, de groep die het Example text-veld bevat. Het tabblad **Changes** toont de nieuwe waarde van elk gewijzigd veld, en het tabblad **Runs** vermeldt elke run die dit event startte.
+
+![Het Runs-tabblad van hetzelfde event, met twee Finished runs: Docs: follow a Carerix run en Blank Automation](/images/automations/45-follow-run-event-runs.png)
+
+Wat het je vertelt. Eén event kan meerdere runs starten. Dit event startte er twee, omdat twee actieve automatiseringen in de workspace luisteren naar Carerix-kandidaatupdates. De run die je zoekt is die van de automatisering die je volgt.
+
+Je vindt events onder **Settings** > **Events**. [Events: payloads van gekoppelde apps inspecteren](/nl/settings/logs/events) legt de filters en de ruwe requestweergave uit.
+
+## Run
+
+De run is het werk van de automatisering voor dit ene event. Klik op de rij van de run op het **Runs**-tabblad van het event om hem te openen.
+
+![De runpagina voor run 27113015: de Start-kaart, Find Candidate in Carerix met Completed eronder, Add Task to Carerix, en het Event-paneel rechts met het Overview-tabblad en de timeline](/images/automations/46-follow-run-run-page.png)
+
+Wat je leest. Het canvas is de automatisering, van boven naar beneden getekend, met een statusregel op de connector onder elke stap die de run bereikte. "Run Started: Today at 4:41 PM" staat onder de Start-kaart, "Completed: Today at 4:41 PM" onder de Find-taak, en "Completed: Today at 4:42 PM" onder Add Task zodra je scrolt. Een stap zonder regel is nooit bereikt. Het **Event**-paneel rechts opent standaard. Zijn **Overview** herhaalt de Start-instellingen die dit event doorlieten, **App**, **Connection**, **Object**, **Trigger** en **Filter**, en daarna de **Timeline**.
+
+Wat het je vertelt. De timeline is de run op volgorde. **Run Scheduled** en **Run Started** zijn het binnenkomen van het event en het begin van de run. Elke stap schrijft daarna twee entries, eerst zijn status ("Find: Completed") en dan wat de run vervolgens deed ("Find: Run Moved" naar de volgende stap, of "Add Task: Run Finished" wanneer de laatste stap klaar is). Een run die vroegtijdig stopte eindigt in plaats daarvan met een "Cancelled"-entry en een bericht.
+
+De Runs-lijst toont dezelfde runs met hun status en, voor een gestopte run, de stap die hem stopte. [Setup](/nl/reference/automations/steps/setup) documenteert de Start-node en het Event-paneel waarop die op de runpagina opent.
+
+## Stapinputs en -outputs
+
+Klik op de naam van een taak op het canvas om de run step ervan te openen. De Find-stap toont wat deze vond; de stap erna toont wat deze ontving.
+
+<img src="/images/automations/47-follow-run-find-drawer.png" alt="De Find run step, met de kop Find en de badges Run Moved: 2 en Completed, een Match found-regel voor #6416 HireData tester, en een Record Data-blok met de velden van de kandidaat" width="384" />
+
+Wat je leest. De Find-stap opent op een **Match found**-regel met het id en de naam van het record. Het pijl-icoon opent het record in Carerix. **Record Data** vermeldt elk veld van het record zoals de app het retourneerde: ids, namen, aanhef, de cv-samenvatting, datums en meer. Scrol door het blok om ze allemaal te zien. De **Run Moved**-badge komt overeen met de laatste timeline-entry van de stap, en **Completed** is de status ervan. Anders dan de Message- en Update-stappen heeft deze drawer geen **Overview**- en **Fields**-tabbladen.
+
+<img src="/images/automations/48-follow-run-add-task-fields.png" alt="Het Fields-tabblad van de Add Task run step met drie velden: Now met een datetime-waarde, Find Candidate: Id met 6416, en Find Candidate: Owner: Id met 1" width="384" />
+
+Wat het je vertelt. Het **Fields**-tabblad van de Add Task-stap vermeldt de waarden die deze uit de run las, elk met het icoon van de stap die de waarde produceerde en een typebadge. **Find Candidate: Id** en **Find Candidate: Owner: Id** kwamen uit de Find-stap, en dat is precies waarom de Find vóór de Add Task staat. **Now** is de klok van de run. De waarde ervan op dit tabblad is het moment waarop je de drawer opende, niet het moment waarop de taak draaide, dus lees in plaats daarvan de eigen tijden van de taak op het **Overview**-tabblad.
+
+[Find](/nl/reference/automations/steps/find) documenteert de stap en wat een leeg resultaat met de run doet.
+
+## Taak
+
+De laatste stap maakte een taak aan in Carerix. De run step ervan toont wat HireData schreef, en Carerix toont wat er aankwam.
+
+<img src="/images/automations/49-follow-run-add-task-overview.png" alt="Het Overview-tabblad van de Add Task run step: een Taak (9077)-link, Status To do, When?- en Expires At-tijdstempels, en de Content met het onderwerp en de tekst" width="384" />
+
+Wat je leest. Het **Overview** van een Add-stap linkt naar het record dat de stap aanmaakte, hier **Taak (9077)**. Carerix levert dat label in de taal van zijn account, dus deze Nederlandse sandbox zegt Taak waar een Engels account Task zegt. **Status**, **When?** en **Expires At** zijn de waarden die Carerix opsloeg. **When?** is één uur na de run, de offset die op de stap is ingesteld, en **Expires At** is de tijd van de run. Beide zijn tijdstempels zoals Carerix ze rapporteert, dus ze hoeven niet overeen te komen met de klok op de runpagina. **Content** is het onderwerp en de tekst die de stap schreef, en **Related Records** linkt de kandidaat en de owner die de stap koppelde.
+
+![De taak in Carerix, Task 9077 Docs: check availability for HireData tester, met Kind Task, Status TO DO, een datum en tijd, een vervaldatum, en het onderwerp en de tekst onder Content](/images/automations/50-follow-run-carerix-task.png)
+
+Wat het je vertelt. Open de **Taak (9077)**-link en Carerix toont dezelfde taak vanaf zijn kant. De status is **TO DO**, de tijd is één uur na de run, en het onderwerp en de tekst komen overeen met de Content van de stap. Carerix registreert de taak als gewijzigd door "Automated" in plaats van door een collega.
+
+[Add](/nl/reference/automations/steps/add) documenteert de stap en waar de velden van het aangemaakte record verschijnen.
+
+## Uitkomst
+
+De eigen pagina van de automatisering vat elke run tot nu toe samen.
+
+![De alleen-lezen automatiseringspagina met Run Stats met Finished 1 en Total 1, de connector onder Find met Looked up: 1x item, en de connector onder Add Task met Added: 1x task](/images/automations/51-follow-run-automation-stats.png)
+
+Wat je leest. **Run Stats** links telt runs per status. De connectors tussen de stappen tellen wat elke stap over alle runs heen deed, "Looked up: 1x item" onder de Find en "Added: 1x task" onder de Add Task. Elke telling is een link naar de Runs-lijst, gefilterd op die stap en status.
+
+Wat het je vertelt. Finished betekent dat elke stap is voltooid en de run de eindvlag bereikte. Een run die vroegtijdig stopte zou hier onder een andere status tellen, "Cancelled" tonen op de stap die hem stopte op de runpagina, en een bericht in de timeline dragen. [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons) vermeldt die berichten en wat je verandert voordat je een nieuwe run start.

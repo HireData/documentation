@@ -32,7 +32,7 @@ Die Anfragemethode teilt HireData mit, welche Art von Anfrage zu erwarten ist:
 | `POST` (Standard) | Aus dem Request Body, als JSON oder Formulardaten |
 | `GET` | Aus den Query-Parametern der Adresse |
 
-Anfragen mit einer anderen Methode als der konfigurierten werden abgelehnt.
+HireData lehnt Anfragen mit einer anderen Methode als der konfigurierten ab.
 
 ## Die zu empfangenden Felder beschreiben
 
@@ -95,7 +95,7 @@ Wenn jemand anderes das Tool verwaltet, das die Daten senden wird, geben ihm die
 
 ### Testanfragen senden
 
-Jede Anfrage kann als Test markiert werden, indem ein Header hinzugefügt wird:
+Sie können jede Anfrage als Test markieren, indem Sie einen Header hinzufügen:
 
 ```
 X-HireData-Test: true

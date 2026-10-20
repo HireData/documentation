@@ -1,0 +1,67 @@
+---
+title: "Split"
+sidebarTitle: "Split"
+description: "O passo Split numa automação da HireData: ramos que começam cada um com um Filter, sub-runs por ramo e como a página do run os desenha."
+keywords:
+  - "passo split"
+  - "ramo"
+  - "caminhos"
+  - "sub-run"
+  - "create split"
+  - "no valid paths"
+---
+
+**Split** corre mais do que um caminho lado a lado. Cada caminho começa com o seu próprio [Filter](/pt/reference/automations/steps/filter), e o run segue todos os caminhos cujo Filter passa.
+
+O Split não tem painel próprio. Escolhê-lo no seletor **Next step** realça a entrada e mostra **Create Split** no rodapé. **Create Split** coloca um Split com dois ramos Filter vazios no canvas e abre logo o painel do Filter do primeiro ramo.
+
+<img src="/images/automations/14-split-create.png" alt="O seletor Next step com Split realçado e um botão Create Split no rodapé" width="650" />
+
+## Definições
+
+- **Filter do ramo**. Cada ramo é um passo Filter com as definições que um [Filter](/pt/reference/automations/steps/filter) tem. O Filter de um ramo cancela apenas esse ramo.
+- **Adicionar um caminho**. O **+** na borda direita da caixa do Split adiciona um terceiro ramo ou seguintes e abre o painel do seu Filter. **Cancel** nesse painel remove o novo caminho.
+- **Passos num ramo**. O **+** abaixo do Filter de cada ramo adiciona os passos próprios do ramo.
+- **Passos depois do Split**. O **+** abaixo da caixa do Split adiciona o passo que corre quando todos os ramos tiverem terminado.
+
+A pré-visualização de um template instalado etiqueta um Split como "Split / 2 paths".
+
+### No canvas
+
+O Split é uma caixa com um badge **Split**. Os Filters dos ramos ficam lado a lado dentro dela, cada um com o seu próprio **+** por baixo, e o **+** da própria caixa segue por baixo.
+
+<img src="/images/automations/25-split-card.png" alt="Uma caixa Split no canvas com dois ramos Filter, Question 2: Answer is not empty e Question 2: Answer is empty" width="650" />
+
+## O que produz
+
+Nada de seu. Cada ramo lê as variáveis que existiam antes do Split. Os passos depois do Split veem as variáveis tal como estavam antes dele mais o que os ramos produziram.
+
+Cada ramo é um sub-run. A lista de runs mostra uma linha por sub-run, por isso a contagem de runs excede a contagem de eventos. A página do run pai dobra-os num único diagrama: a caixa do Split tem a sua própria linha de estado, cada Filter de ramo tem "Completed" ou "Cancelled", e cada tarefa de um ramo tem a sua. A timeline regista "Waiting." enquanto os ramos correm e "Split: Completed" com "Sub runs completed." quando terminam.
+
+<img src="/images/automations/21-run-page-split.png" alt="Uma página de run a mostrar um Split com dois ramos Filter: o ramo esquerdo Completed e a sua tarefa Update Candidate in Carerix Completed, o ramo direito Cancelled a vermelho" width="650" />
+
+## O que para o run
+
+- Nenhum ramo passa. O Split mostra Cancelled com a mensagem "No valid paths found." e os passos seguintes nunca correm.
+- Nenhum ramo tem um passo depois do seu Filter. O Split mostra Failed com a mesma mensagem antes de qualquer ramo ser verificado.
+- Um passo dentro de um ramo para. Cancela apenas o sub-run desse ramo. Os outros ramos e os passos depois do Split continuam.
+
+Veja [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons).
+
+## Padrões
+
+- **Um ramo por resposta.** Depois de um inquérito de WhatsApp, um ramo por valor de resposta, cada um a terminar no Update que a resposta pede. O template de reativação faz isto com "Direct beschikbaar" e "Binnenkort beschikbaar".
+- **Um ramo catch-all.** Dê ao último ramo um Filter com o campo **is not empty**, para que todos os runs com uma resposta sigam pelo menos um caminho, e os ramos específicos tratem dos valores que espera.
+- **Passos comuns depois do Split.** Ponha um passo de que todos os caminhos precisam abaixo da caixa do Split uma única vez, em vez de em cada ramo.
+
+## Erros comuns
+
+- **Condições sobrepostas.** Os ramos não são exclusivos. Um registo que passa em dois Filters corre os dois ramos.
+- **Um ramo sem passos.** Um Filter sem nada a seguir não é um caminho válido e o Split falha.
+- **Esperar que um ramo pare o run.** Um Filter de ramo que falha cancela o seu próprio sub-run. O run continua com os outros ramos e os passos depois do Split. Para uma paragem definitiva, use um [Filter](/pt/reference/automations/steps/filter) antes do Split.
+
+## Relacionados
+
+- [Filter](/pt/reference/automations/steps/filter) documenta os operadores, as linhas e os conjuntos que cada ramo usa.
+- [Loop](/pt/reference/automations/steps/loop) também cria sub-runs, um por registo em vez de um por ramo.
+- [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons) explica onde aparece a mensagem de um ramo cancelado.

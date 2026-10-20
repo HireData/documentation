@@ -1,0 +1,144 @@
+---
+title: "Vraag om feedback in één klik"
+sidebarTitle: "Feedbackmail in één klik"
+description: "Bouw een feedbackmail waarvan de ratingvraag als één knop per score rendert, zodat een kandidaat vanuit zijn inbox antwoordt in plaats van eerst een formulier te openen."
+keywords: ["feedbackmail", "candidate experience survey", "NPS-e-mail", "ratingknoppen", "form-block", "feedback in één klik", "plaatsingssurvey"]
+---
+
+_De meeste feedbackverzoeken vragen twee keer. De e-mail vraagt je om feedback te geven, het formulier stelt de eigenlijke vraag, en de helft van de mensen die je vroeg komt nooit tot aan de vraag. Een Form-block vouwt dat samen tot één stap. De rating staat in de e-mail als een rij knoppen, en de klik die hem beantwoordt is dezelfde klik die het formulier opent._
+
+## Wat je gaat bouwen
+
+1. Een kort feedbackformulier waarvan de eerste vraag de rating is
+2. Een e-mail die die vraag verandert in één knop per score
+3. Een testverzending die bewijst dat de knoppen het antwoord meedragen
+4. Een plek waar de antwoorden landen, gekoppeld aan het juiste record
+
+Eén formulier, één e-mail, en geen automatiseringslogica. Wat het denkwerk kost is de vraag, want het is de vraag die een ontvanger in zijn inbox beantwoordt en niet kan terugnemen.
+
+## Voordat je begint
+
+Beslis wie je vraagt en wanneer. Een plaatsingssurvey een week na een startdatum, een e-mail over de interviewervaring dezelfde middag, een heractiveringscheck bij een kandidaat die stil is gevallen. De timing verandert de formulering meer dan de bouw.
+
+Beslis dan de ene vraag. Alleen de leidende vraag van het formulier wordt knoppen, dus al het andere dat je wilt weten komt erachter, beantwoord op het formulier zelf door de mensen die genoeg geven om door te gaan.
+
+## Bouw het formulier
+
+### 1. Zet de rating vooraan
+
+Open **Forms**, klik op **New Form**, kies **Blank Form** en voeg een [Net Promoter Score](/nl/reference/forms/fields/net-promoter-score-and-opinion-scale)-vraag toe als eerste veld: "How likely are you to recommend us to a friend?" Hij staat vast op 0 tot 10 met **NOT LIKELY AT ALL** en **EXTREMELY LIKELY** onder de uiteinden, en die twee labels zijn wat voorkomt dat een kale rij cijfers dubbelzinnig is.
+
+Laat hem **Optional**. Een verplicht ratingveld blokkeert het antwoord 0, en 0 is het antwoord waar je het meest over wilt horen.
+
+Voeg dan de vragen toe die er pas toe doen als je de score hebt. Twee is meestal genoeg.
+
+| Vraag | Veldtype | Waarom hij er staat |
+|---|---|---|
+| How likely are you to recommend us to a friend? | [NPS](/nl/reference/forms/fields/net-promoter-score-and-opinion-scale) | De leidende vraag. Dit is de rij knoppen in de e-mail. |
+| What is the main reason for your score? | [Long Text](/nl/reference/forms/fields/short-and-long-text) | Het antwoord dat je vertelt wat je moet veranderen. |
+| May we quote you? | [Yes/No](/nl/reference/forms/fields/yes-no) | Als laatste gesteld, want hij is pas zinvol nadat ze iets hebben gezegd. |
+
+Sluit af met een [ending screen](/nl/reference/forms/fields/ending-screen). Een ontvanger die vanuit zijn inbox op een cijfer klikte en op een lege pagina landt, gaat ervan uit dat de klik mislukte.
+
+<Tip>
+  Kies liever een **Opinion Scale** van 1 tot 5 als de meeste van je ontvangers e-mail op een telefoon lezen. Elf knoppen stapelen tot elf rijen op een smal scherm, vijf stapelen tot vijf, en bij een Opinion Scale schrijf je alle drie de eindlabels zelf.
+</Tip>
+
+### 2. Koppel het record waar de feedback over gaat
+
+Open de **Objects**-drawer en koppel het object waar de response bij hoort, meestal **Match** of **Vacancy**. Daar volgen twee dingen uit. Elk veld op dat record wordt een variabele die je in de vraag kunt schrijven, zodat je bij naam naar de functie kunt vragen. En de response komt aan op het **Responses**-tabblad van dat record, in plaats van in een stapel responses die je met de hand moet matchen.
+
+Welk object je bovenaan zet is het hoofdobject van het formulier. Zie [Objects](/nl/reference/forms/objects).
+
+### 3. Publiceer het
+
+Klik op **Publish**. Elke knop in de e-mail draagt een link die per ontvanger is getokeniseerd, die het formulier opent ongeacht zijn status, dus een concept zou technisch werken. Publiceer toch. Een concept is het formulier dat een collega opruimt, en een gepubliceerd formulier is ook het formulier dat je via elk ander kanaal kunt versturen.
+
+Laat **Make form public** uit tenzij je de link ergens plaatst. Het token in de gemailde link is wat de ontvanger binnenlaat, dus het formulier hoeft niet open te staan voor iedereen die zijn adres vindt.
+
+## Bouw de e-mail
+
+### 4. Maak de e-mail en kies het merk
+
+Open **Emails** vanuit **Settings**, klik op **New Email** en kies **Blank Email** of een van de meegeleverde templates. Stel eerst **Brand** rechtsboven in. Het restylet de hele e-mail, inclusief de knopkleuren, dus vroeg kiezen bespaart je het contrast twee keer controleren. Zie [Een e-mailtemplate opzetten](/nl/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+
+### 5. Schrijf de kortste vraag waar je achter kunt staan
+
+Een [heading](/nl/reference/email-builder/blocks/heading) en één [paragraph](/nl/reference/email-builder/blocks/paragraph) boven de knoppen. Zeg wie er vraagt, waar de score voor is en hoe lang de rest duurt. "Eén vraag, en een vak voor alles wat je ons verder wilt vertellen" is een belofte die het formulier kan waarmaken.
+
+Leg de schaal niet uit in de alinea. De eindlabels onder de knoppen doen dat.
+
+### 6. Voeg het Form-block toe
+
+Klik op de **+** in de **Blocks**-lijst van de sectie en kies **Form**, en stel dan de twee selects boven aan zijn paneel in.
+
+- **Form** is het feedbackformulier dat je zojuist publiceerde.
+- **Leading Question** is de NPS-vraag. Verborgen velden en ending screens staan niet in de lijst.
+
+Beide horen bij de e-mail in plaats van bij het block, dus één e-mail stelt één vraag. Een tweede Form-block komt al wijzend naar dezelfde vraag, wat het weten waard is voordat je twee ratings in één verzending probeert te stoppen.
+
+Er verschijnen elf knoppen in het canvas, 0 tot 10, met de eindlabels eronder in kapitalen.
+
+![Elf knoppen genummerd 0 tot 10 onder de vraag "How likely are you to recommend us to a friend?", met NOT LIKELY AT ALL en EXTREMELY LIKELY onder de uiteinden](/images/email-builder/blocks/05b-form-rendered.png)
+
+Elke knop draagt de link van het formulier met die score eraan vast, en HireData registreert de score terwijl het de ontvanger doorstuurt naar het formulier. Dus een ontvanger die op 4 klikt en dan het tabblad sluit, heeft je nog steeds 4 verteld. Alles na de rating is een bonus. Zie [Form](/nl/reference/email-builder/blocks/form).
+
+### 7. Style de knoppen zodat ze als schaal lezen
+
+Laat **Show Question** aan. De vraag staat boven de rij, en een e-mail die cijfers toont zonder de vraag die ze beantwoorden wordt genegeerd.
+
+- **Size: Medium** en **Rounded corners: Full** veranderen de cijfers in een rij cirkels, die als een rating leest in plaats van als elf links.
+- **Background color** en **Color** zijn de knopvulling en het cijfer. Houd het contrast sterk. Veel ontvangers lezen e-mail in dark mode, en een bleke vulling met witte cijfers verdwijnt.
+- **Width: Auto** laat de elf knoppen de rij delen. **Full** maakt elke knop zo breed als de e-mail, wat ze op elk scherm stapelt.
+- **Alignment: midden** voor een schaal.
+
+### 8. Controleer hem op telefoonbreedte voordat je verstuurt
+
+Elke knop is zijn eigen kolom, dus onder 480 pixels past de rij niet meer en stapelen de knoppen zich één per regel. Elf knoppen worden elf rijen. Open de preview en versmal het venster tot het gebeurt, en beslis dan of je ermee kunt leven of toch de vijfpuntsschaal wilt.
+
+## Test het
+
+### 9. Stuur jezelf het echte werk
+
+Open **Test Email**, laat de naam en het adres leeg om hem naar jezelf te sturen, en klik op **Send test email**. Klik dan op een cijfer in de e-mail die aankomt.
+
+Je hoort op het formulier te landen met de rating al ingevuld. Staat hij daar leeg, dan is de **Leading Question** niet het veld dat je denkt dat het is.
+
+Een klik vanuit een testmail registreert niets, en dat is wat je wilt zolang je nog aan het bewerken bent. De score landt alleen op een response bij een echte verzending.
+
+<Note>
+  Als het formulier een verplicht object koppelt, heeft de testverzending er een record voor nodig. Kies er een onder **Objects** in de modal, of gebruik **Auto fill**. Laat je hem leeg, dan mislukt de verzending met een **Failed to send test email**-melding die het object op zijn key benoemt. Zie [Testen](/nl/reference/email-builder/testing).
+</Note>
+
+### 10. Voeg de andere talen toe, als je die hebt
+
+Het Form-block rendert in de taal van het formulier waar het naar wijst, niet de taal van de e-mail, dus een Nederlands formulier zet Nederlandse knoppen in een Engelse template. De ratinglabels en de fallback-call-to-action zijn per taal te vertalen vanuit de eigen **Manage Languages**-drawer van de e-mail. Zie [Vertalingen](/nl/reference/email-builder/translations).
+
+## Verstuur hem en lees de antwoorden
+
+Plug de afgewerkte template in een **Send Email**-taak en kies het publiek zoals je dat voor elke andere verzending zou doen. Zie [Automatiseringen](/nl/automations/automations).
+
+De responses komen aan op het **Responses**-tabblad van het record waar het formulier aan was gekoppeld, en op het formulier zelf. Zie [Een formulier per record configureren](/nl/content/configuring-a-form-per-record).
+
+Een automatisering kan op het antwoord handelen zodra het binnenkomt. Voordat je de conditie schrijft, open je **Test & Evaluate** op het formulier en lees je **Automation variables**, dat elke waarde toont met de exacte variabele om te kopiëren ernaast. Zie [Test & Evaluate](/nl/reference/forms/testing/test-and-evaluate).
+
+Begin met één vertakking. Een lage score maakt een taak aan voor wie de relatie beheert, en al het andere doet niets. Alles wat uitgebreider is kan wachten tot je dertig echte responses hebt gezien.
+
+## Evalueer en verbeter
+
+- **Klikken mensen op een cijfer en stoppen ze dan?** Dat is een werkende e-mail en een formulier dat te veel vraagt. Schrap een vraag.
+- **Is elke score een 8, 9 of 10?** Controleer wie je vraagt. Een survey die alleen naar plaatsingen gaat waar je blij mee bent, meet je verzendlijst.
+- **Klikt er helemaal niemand?** Bekijk de knoppen in een dark-mode-client en op een telefoon voordat je de tekst herschrijft.
+- **Zegt het open antwoord iets wat je nog niet wist?** Zo niet, dan is de vraag te algemeen. "What is the main reason for your score?" verslaat "Any other comments?"
+
+## Meer hulp nodig?
+
+Als de knoppen als één enkele **Give Feedback**-knop renderen, is de leidende vraag een type dat geen eigen knoppen heeft. Alleen rating- en keuzevragen krijgen één knop per waarde. Al het andere valt terug op één call-to-action, die je in het canvas kunt aanklikken om te herformuleren.
+
+Als een keuzevraag opties mist, heb je de grens van vijf opties geraakt. Een Form-block rendert de eerste vijf en waarschuwt niet over de rest. Zie [Beperkingen](/nl/reference/email-builder/blocks/form#limits).
+
+Kom je er nog niet uit, neem dan contact op met [support@hiredata.com](mailto:support@hiredata.com) en vermeld:
+
+- De naam van de e-mailtemplate en de naam van het formulier
+- De leidende vraag en wat er in plaats daarvan renderde
+- Of het een testverzending was of een echte

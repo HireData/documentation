@@ -1,0 +1,62 @@
+---
+title: "Update"
+sidebarTitle: "Update"
+description: "La catégorie Update dans une automatisation HireData : les tâches qui modifient un enregistrement dans une app connectée, comme Update Object de Carerix, et comment une exécution montre le changement."
+keywords:
+  - "étape update"
+  - "update object"
+  - "update field"
+  - "mettre à jour un candidat"
+  - "modifier un enregistrement"
+  - "field updated"
+---
+
+**Update** modifie quelque chose qui existe déjà dans une app connectée. C'est une catégorie. Quand plusieurs apps connectées proposent une tâche Update, la choisir ouvre une liste intitulée **Update** ; quand une seule tâche remplit la catégorie, comme celle de Carerix à elle seule, la choisir ouvre directement le panneau de cette tâche.
+
+<Info>
+  Update n'apparaît dans le sélecteur que lorsqu'une app connectée propose une tâche dans cette catégorie.
+</Info>
+
+## Paramètres
+
+- **Object**. Le type d'enregistrement à modifier, dans une zone de recherche et une liste. Pour Carerix : Activity, Appointment, Campaign, Candidate, Company, Contact, Email, List, Match, Meeting, News Letter, Note, Placement, Publication, System, Talent Pool, Task, User, Vacancy.
+- **Champ d'appariement**. Comment la tâche trouve l'enregistrement à modifier. La carte du canevas le restitue comme « Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id ».
+- **Fields**. Les champs à écrire et la valeur de chacun, une valeur fixe ou une variable de l'exécution. La carte les liste sous **Fields**, comme « Candidate: Available Date: Now ».
+
+Le panneau est intitulé avec le nom de la tâche et l'icône de l'app.
+
+Les tâches qui remplissent la catégorie :
+
+| Tâche | App | Ce qu'elle modifie |
+| --- | --- | --- |
+| Update Object | Carerix | N'importe quel champ de l'objet Carerix choisi |
+| Update Field | OTYS | Un champ d'un enregistrement OTYS |
+| Update Field | Vincere | Un champ d'un enregistrement Vincere |
+| Update Field | Salesforce | Un champ d'un enregistrement Salesforce |
+
+### Sur le canevas
+
+La carte affiche un badge **Task**, le nom de la tâche avec l'app, la phrase qui nomme le champ d'appariement, et les champs qu'elle écrira.
+
+<img src="/images/automations/36-update-card.png" alt="Une carte Update Candidate in Carerix sur le canevas : Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id, and then update these fields, avec Available Date défini sur Now et Status défini sur Werkzoekend" width="380" />
+
+## Ce qu'elle produit
+
+L'enregistrement tel qu'il est après le changement. Sur la page de l'exécution, le panneau de la tâche est intitulé avec l'app, la tâche et l'id de l'enregistrement, comme « Carerix Update Match (ID: 7.18) », avec des badges comptant **Field Updated** et **Run Moved** et un badge de statut. **Overview** liste l'**Updated Object** avec un lien et l'ancienne et la nouvelle valeur de chaque champ ; un champ qui n'avait pas de valeur indique « This field was empty before ». **Fields** liste chaque valeur que la tâche a utilisée, avec son icône de source et son type.
+
+<img src="/images/automations/20-run-step-fields.png" alt="L'onglet Fields d'une étape d'exécution Update Match listant Match: Id, Match: Stage, un score d'évaluation, une valeur de stage filtrée, et une variable non résolue affichée en texte brut" width="384" />
+
+Une variable non résolue apparaît dans l'onglet Fields sous forme de texte brut, comme `{{…evaluation.scoring.score}}`, ce qui permet de repérer un champ écrit avec un placeholder au lieu d'une valeur.
+
+## Ce qui arrête l'exécution
+
+Une mise à jour que l'app rejette, ou un enregistrement que le champ d'appariement ne trouve pas. La carte de la tâche devient rouge avec la ligne « Cancelled » et l'heure, et la chronologie enregistre le nom de la tâche avec « Cancelled » et la raison renvoyée par l'app.
+
+Voir [Raisons d'annulation des exécutions](/fr/knowledge-base/run-cancellation-reasons).
+
+## Voir aussi
+
+- [Find](/fr/reference/automations/steps/find) recherche un enregistrement quand il n'est pas dans l'événement.
+- [Add](/fr/reference/automations/steps/add) crée un enregistrement au lieu d'en modifier un.
+- [Prompt](/fr/reference/automations/steps/prompt) produit les valeurs qu'un Update écrit.
+- [Catalogue des tâches](/fr/reference/automations/task-catalogue) liste chaque tâche par app connectée.

@@ -1,0 +1,62 @@
+---
+title: "Update"
+sidebarTitle: "Update"
+description: "De Update-categorie in een HireData-automatisering: taken die een record in een gekoppelde app wijzigen, zoals Carerix Update Object, en hoe een run de wijziging toont."
+keywords:
+  - "update-stap"
+  - "update object"
+  - "veld bijwerken"
+  - "kandidaat bijwerken"
+  - "record wijzigen"
+  - "field updated"
+---
+
+**Update** wijzigt iets dat al bestaat in een gekoppelde app. Het is een categorie. Wanneer meer dan één gekoppelde app een Update-taak aanbiedt, opent het kiezen ervan een lijst met de kop **Update**; wanneer één taak de categorie vult, zoals die van Carerix in z'n eentje doet, opent het kiezen direct de drawer van die taak.
+
+<Info>
+  Update verschijnt alleen in de picker wanneer een gekoppelde app een taak in deze categorie aanbiedt.
+</Info>
+
+## Instellingen
+
+- **Object**. Het recordtype om te wijzigen, in een zoekvak en lijst. Voor Carerix: Activity, Appointment, Campaign, Candidate, Company, Contact, Email, List, Match, Meeting, News Letter, Note, Placement, Publication, System, Talent Pool, Task, User, Vacancy.
+- **Matching field**. Hoe de taak het record vindt dat gewijzigd moet worden. De canvaskaart leest het terug als "Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id".
+- **Fields**. De velden om te schrijven en de waarde voor elk, een vaste waarde of een variabele uit de run. De kaart vermeldt ze onder **Fields**, zoals "Candidate: Available Date: Now".
+
+De drawer heeft de taaknaam en het icoon van de app als kop.
+
+De taken die de categorie vullen:
+
+| Taak | App | Wat deze wijzigt |
+| --- | --- | --- |
+| Update Object | Carerix | Elk veld van het gekozen Carerix-object |
+| Update Field | OTYS | Een veld van een OTYS-record |
+| Update Field | Vincere | Een veld van een Vincere-record |
+| Update Field | Salesforce | Een veld van een Salesforce-record |
+
+### Op het canvas
+
+De kaart toont een **Task**-badge, de taaknaam met de app, de zin die het matching field benoemt, en de velden die de taak gaat schrijven.
+
+<img src="/images/automations/36-update-card.png" alt="Een Update Candidate in Carerix-kaart op het canvas: Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id, and then update these fields, met Available Date ingesteld op Now en Status op Werkzoekend" width="380" />
+
+## Wat het oplevert
+
+Het record zoals het na de wijziging is. Op de runpagina heeft de drawer van de taak de app, de taak en het record-id als kop, zoals "Carerix Update Match (ID: 7.18)", met badges die **Field Updated** en **Run Moved** tellen en een statusbadge. **Overview** vermeldt het **Updated Object** met een link en de oude en nieuwe waarde van elk veld; een veld dat geen waarde had toont "This field was empty before". **Fields** vermeldt elke waarde die de taak gebruikte, met het bronicoon en het type.
+
+<img src="/images/automations/20-run-step-fields.png" alt="Het Fields-tabblad van een Update Match run step met Match: Id, Match: Stage, een evaluatiescore, een gefilterde stagewaarde, en één niet-opgeloste variabele als ruwe tekst" width="384" />
+
+Een niet-opgeloste variabele verschijnt in het Fields-tabblad als zijn ruwe tekst, zoals `{{…evaluation.scoring.score}}`, en zo herken je een veld dat met een placeholder in plaats van een waarde is geschreven.
+
+## Wat de run stopt
+
+Een update die de app weigert, of een record dat het matching field niet vindt. De taakkaart kleurt rood met de regel "Cancelled" en de tijd, en de timeline registreert de taaknaam met "Cancelled" en de reden die de app teruggaf.
+
+Zie [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons).
+
+## Gerelateerd
+
+- [Find](/nl/reference/automations/steps/find) zoekt een record op wanneer het niet in het event zit.
+- [Add](/nl/reference/automations/steps/add) maakt een record aan in plaats van er een te wijzigen.
+- [Prompt](/nl/reference/automations/steps/prompt) produceert de waarden die een Update schrijft.
+- [Taakcatalogus](/nl/reference/automations/task-catalogue) vermeldt elke taak per gekoppelde app.

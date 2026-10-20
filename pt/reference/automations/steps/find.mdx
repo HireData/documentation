@@ -1,0 +1,69 @@
+---
+title: "Find"
+sidebarTitle: "Find"
+description: "A categoria Find numa automação da HireData: tarefas que procuram um registo, um endereço de email ou o domínio de uma empresa e entregam o resultado aos passos seguintes."
+keywords:
+  - "passo find"
+  - "lookup"
+  - "encontrar registo"
+  - "encontrar email"
+  - "search domain"
+  - "data lookup"
+---
+
+**Find** procura algo que já existe. É uma categoria: escolhê-la abre uma lista com o cabeçalho **Find**, com uma entrada por tarefa, e **Back** regressa ao seletor.
+
+<Info>
+  Find só aparece no seletor quando uma app ligada oferece uma tarefa nesta categoria.
+</Info>
+
+## Definições
+
+Cada tarefa tem o seu próprio painel. As definições partilhadas são o que procurar e onde: o objeto ou a fonte a pesquisar, e os valores de campo que identificam o registo.
+
+As tarefas que preenchem a categoria num workspace com Carerix e HireData ligados:
+
+| Tarefa | App | O que encontra |
+| --- | --- | --- |
+| Find | Carerix | Um registo do Carerix do objeto que escolher, correspondido nos campos que definir |
+| Find Email | HireData | Um endereço de email de uma pessoa, a partir do nome e do domínio da empresa |
+| Search Domain | HireData | O domínio web de uma empresa, a partir do nome |
+
+### No canvas
+
+O cartão mostra um badge **Task**, o nome da tarefa com a ligação por baixo e um bloco **Filter** com os campos em que a tarefa faz a correspondência.
+
+![Um cartão Find Candidate in Carerix no canvas com a ligação hiredata e um bloco Filter a ler Candidate: Id equals 6416](/images/automations/52-find-card.png)
+
+## O que produz
+
+O registo, endereço ou domínio encontrado. Um Find do Carerix abre numa linha **Match found** com o id e o nome do registo, que liga ao registo no Carerix, e um bloco **Record Data** que lista todos os campos que o registo transporta. Os passos posteriores usam esses campos sob o nome da tarefa, por isso uma tarefa Add pode anexar o candidato que um Find devolveu, e uma tarefa Message pode enviar para o endereço que o Find Email devolveu. [Acompanhar um run](/pt/reference/automations/follow-a-run) mostra um passo Find de um run real.
+
+## O que para o run
+
+Um Find que não devolve nada. O cartão da tarefa fica vermelho com a linha "Cancelled" e a hora, e a timeline regista o nome da tarefa com "Cancelled" e o motivo, como "Search domain failure." para um Search Domain que não encontrou domínio nenhum. Os passos seguintes não mostram linha de estado. Abra o separador **Fields** do cartão para ver os valores com que a tarefa pesquisou.
+
+<img src="/images/automations/31-find-cancelled-card.png" alt="Um cartão de tarefa Search Domain num run, vermelho, com Company definida como Respondent: Address Company e a linha Cancelled: Today at 10:18 AM por baixo" width="380" />
+
+<img src="/images/automations/32-find-cancelled-timeline.png" alt="Uma timeline de run com Search Domain: Cancelled, a mensagem Search domain failure. e Search Domain: Run Cancelled" width="384" />
+
+Os motivos estão explicados em [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons).
+
+## Padrões
+
+- **Find e depois Update.** Quando o evento vem de um formulário e o registo vive no seu ATS, faça Find do registo por um id ou email da resposta e depois um [Update](/pt/reference/automations/steps/update) com as respostas.
+- **Find Email antes de Send Email.** O Search Domain dá o domínio da empresa, o Find Email dá o endereço da pessoa nesse domínio, e o passo Message envia para esse endereço.
+- **Loop em vez de Find para muitos.** O Find devolve um registo. Para atuar sobre todos os registos correspondentes, use um [Loop](/pt/reference/automations/steps/loop).
+
+## Erros comuns
+
+- **Corresponder num campo que não é único.** Um nome corresponde a mais do que um candidato. Faça a correspondência num id ou num endereço de email.
+- **Procurar o que o evento já transporta.** Um evento do Carerix traz o seu registo consigo, e a tarefa Update encontra ela própria o registo pelo campo que indicar. Adicione um Find só quando o registo não está no evento.
+- **Tratar a ausência de resultado como um salto.** Um resultado vazio cancela o run. Se alguns eventos não têm nada para encontrar, ponha um [Filter](/pt/reference/automations/steps/filter) antes do Find para que esses runs parem com um motivo claro.
+
+## Relacionados
+
+- [Add](/pt/reference/automations/steps/add) cria um registo em vez de o encontrar.
+- [Update](/pt/reference/automations/steps/update) altera o registo que um Find devolveu.
+- [Loop](/pt/reference/automations/steps/loop) obtém todos os registos correspondentes e corre passos para cada um.
+- O [catálogo de tarefas](/pt/reference/automations/task-catalogue) lista todas as tarefas por app ligada.

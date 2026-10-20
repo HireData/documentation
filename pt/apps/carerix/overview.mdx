@@ -1,16 +1,64 @@
 ---
 title: "Visão geral da integração com Carerix"
 sidebarTitle: "Visão geral"
-description: "Descubra o que a integração da HireData com o Carerix sincroniza, quais as automações que suporta e como começar a ligar o seu ATS em poucos passos."
+description: "Descubra o que a integração da HireData com o Carerix sincroniza, que automações de recrutamento suporta e como começar a ligar a sua conta Carerix."
 ---
 
-<Note>
-  Este artigo é um marcador de posição. O conteúdo abaixo descreve aquilo que irá abranger.
-</Note>
+Ligue o Carerix à HireData para transformar alterações na sua base de dados de recrutamento em workflows automatizados de comunicação, seguimento e gestão de dados. A HireData escuta os eventos do Carerix, aplica as suas condições e executa as tarefas que configurar.
 
-{/* TODO(docs-reorg): what syncs (candidates, users, contacts, matches, vacancies...),
-   sync frequency, supported tasks matrix, links into Connect / fields / task guides. */}
+## O que a integração disponibiliza
+
+A ligação ao Carerix disponibiliza dados de recrutamento às suas automações na HireData, incluindo informação frequentemente usada de candidatos, utilizadores, contactos, matches e vagas. É você quem escolhe que campos e relações ficam disponíveis, para que cada automação possa usar os registos de que precisa.
+
+Um evento do Carerix pode iniciar uma automação quando um registo é criado ou atualizado. Os filtros podem depois restringir o público por stage, estado, responsável ou outro campo disponível.
+
+## O que pode automatizar
+
+Os workflows comuns do Carerix incluem:
+
+- Enviar emails, mensagens de WhatsApp ou surveys personalizados depois de uma mudança de match stage
+- Agendar tarefas de recruiter e follow-ups no Carerix
+- Adicionar atividades ou outros itens a registos do Carerix
+- Atualizar campos do Carerix quando um workflow chega a um resultado específico
+- Registar mensagens de email e conversas de WhatsApp no Carerix
+- Adicionar delays e condições para que a comunicação aconteça no momento certo
+
+Os registos e as variáveis disponíveis dependem dos objetos, campos e relações ativados na sua ligação.
+
+## Formulários dentro do Carerix
+
+Os recruiters não precisam de sair do Carerix para trabalhar com os formulários da HireData. O Carerix RMA adiciona dois separadores:
+
+- **Forms** numa vaga, onde ativa ou desativa perguntas individuais para essa vaga. É a mesma configuração do separador **Forms** de um registo de vaga na HireData, descrita em [Configurar um formulário por registo](/pt/content/configuring-a-form-per-record).
+- **Forms & responses** num match, onde vê o que o candidato respondeu. Abra os detalhes completos para ler todas as respostas e siga as ligações para o candidato ou para a vaga a que a resposta pertence.
+
+Isto mantém um único formulário a funcionar em todas as vagas, enquanto cada cliente, e cada função, recebe as perguntas de que precisa.
+
+## Como os dados se mantêm atualizados
+
+A HireData executa uma sincronização inicial quando liga o Carerix e agenda ressincronizações diárias para os dados da ligação, como utilizadores, objetos, campos e estados. Execute uma [sincronização manual](/pt/apps/carerix/manually-sync-carerix-with-hiredata) quando precisar imediatamente de uma alteração recente do Carerix.
+
+Se um campo ou um registo relacionado estiver em falta no construtor de automações, reveja [Campos e relações do Carerix](/pt/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations) antes de sincronizar novamente.
+
+## Começar
+
+<Steps>
+  <Step title="Ligar o Carerix">
+    Instale e ative o Carerix RMA a partir do Marketplace. Se gerir vários tenants, siga o método de ligação avançado em [Ligar ao Carerix](/pt/apps/carerix/connect-with-carerix).
+  </Step>
+  <Step title="Escolher os dados disponíveis">
+    Ative apenas os objetos, campos e relações de que os seus workflows precisam. Isto mantém as variáveis relevantes e torna as automações mais fáceis de configurar.
+  </Step>
+  <Step title="Construir e testar uma automação">
+    Escolha um evento do Carerix, adicione condições e tarefas e depois [teste a automação](/pt/automations/how-to-test-an-automation) antes de a ativar.
+  </Step>
+</Steps>
+
+## Guias do Carerix
 
 - [Ligar ao Carerix](/pt/apps/carerix/connect-with-carerix)
+- [Permitir cookies do Carerix no seu browser](/pt/apps/carerix/allow-carerix-cookies-in-your-browser)
 - [Ativar campos e relações](/pt/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations)
 - [Criar uma automação Carerix](/pt/apps/carerix/create-a-carerix-automation-in-hiredata)
+- [Agendar uma tarefa no Carerix](/pt/apps/carerix/schedule-a-task-in-carerix-with-hiredata)
+- [Atualizar campos no Carerix](/pt/apps/carerix/update-fields-in-carerix-with-hiredata)

@@ -7,7 +7,7 @@ _Wenn Sie Ihr ATS, z. B. Carerix, Salesforce, OTYS usw., mit HireData verbinden,
 
 ## Was ist ein Event
 
-Ein Event ist ein Signal, das von Ihrer verbundenen App an HireData gesendet wird. Es steht in der Regel für eine bestimmte Aktion oder Änderung – zum Beispiel das Erstellen eines neuen Kandidaten, das Aktualisieren einer Vakanz, den Abschluss eines Placements usw. Diese Events werden verwendet, um die in HireData eingerichteten Automatisierungen auszulösen, und jedes Event enthält **Event Data**, **External Records** und **Processes**.
+Ein Event ist ein Signal, das von Ihrer verbundenen App an HireData gesendet wird. Es steht in der Regel für eine bestimmte Aktion oder Änderung – zum Beispiel das Erstellen eines neuen Kandidaten, das Aktualisieren einer Vakanz, den Abschluss eines Placements usw. HireData verwendet diese Events, um die von Ihnen eingerichteten Automatisierungen auszulösen, und jedes Event enthält **Event Data**, **External Records** und **Runs**.
 
 _Event-Beispiel:_
 
@@ -37,9 +37,9 @@ Dies öffnet die Detailansicht des Events, die Folgendes enthält:
 
 ![External records tab](/images/intercom/48024008-Screenshot-2025-05-05-at-10_51_53.png)
 
-- **Processes** – die Liste der von diesem Event ausgelösten Automatisierung(en) und der dabei erzeugten Runs. Sie sehen außerdem den Status jedes Runs (z. B. Completed, Delayed, Cancelled).
+- **Runs** – die von diesem Event erstellten Runs und die zu jedem gehörende Automatisierung. Sie sehen außerdem den Status jedes Runs (z. B. Completed, Delayed, Cancelled).
 
-![Processes tab](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
+![Automation runs created by an event](/images/intercom/48024037-Screenshot-2025-05-05-at-10_52_01.png)
 
 ## Events erneut abspielen
 
@@ -51,7 +51,7 @@ Wenn ein Event eine Automatisierung nicht wie erwartet auslöst oder ein Run vor
 
 ### Was passiert, wenn ein Event erneut abgespielt wird?
 
-HireData verarbeitet das/die ausgewählte(n) Event(s) erneut und löst die zugehörigen Automatisierungen aus. Die betroffenen Aufgaben werden ausgeführt, als wäre das Event gerade eingetreten.
+HireData verarbeitet das/die ausgewählte(n) Event(s) erneut und löst die zugehörigen Automatisierungen aus. HireData führt die betroffenen Aufgaben aus, als wäre das Event gerade eingetreten.
 
 - **Event-basierte Automatisierungen** – Für Automatisierungen, die durch ein bestimmtes Event ausgelöst werden (zum Beispiel, wenn ein Kandidat eine bestimmte Stage erreicht), löst der Replay die Automatisierung sofort basierend auf den Event-Daten neu aus. Falls zuvor ein Run erstellt wurde, wird er erneut abgespielt und mit einem „Replay"-Label versehen.
 
@@ -108,15 +108,15 @@ HireData verarbeitet das/die ausgewählte(n) Event(s) erneut und löst die zugeh
 
 Wenn eine Automatisierung nicht wie erwartet lief oder Sie unerwartete Daten sehen:
 
-- Gehen Sie zum Tab **Processes** des Events und prüfen Sie, ob Runs erstellt wurden.
+- Gehen Sie zum Tab **Runs** des Events und prüfen Sie, ob Runs erstellt wurden.
 - Klicken Sie in den Run, um Logs anzuzeigen und zu sehen, ob ein Schritt fehlgeschlagen oder übersprungen wurde.
 - Vergleichen Sie die **Event Data** mit den Bedingungen in Ihrer Automatisierung, um sicherzustellen, dass sie übereinstimmen.
 
-Wenn kein Prozess ausgelöst wurde, hat das Event wahrscheinlich die Kriterien keiner aktiven Automatisierung erfüllt.
+Wenn kein Run erstellt wurde, hat das Event möglicherweise die Kriterien keiner aktiven Automatisierung erfüllt. Eine vollständige Checkliste finden Sie unter [Warum ist meine Automatisierung nicht gelaufen?](/de/knowledge-base/why-didnt-my-automation-run)
 
 ### Brauchen Sie noch Hilfe?
 
-Wenn Sie sich unsicher sind, warum ein Event Ihre Automatisierung nicht ausgelöst hat, oder Hilfe bei der Interpretation der Event-Daten benötigen, kontaktieren Sie gerne unser Team unter [support@hiredata.com](mailto:support@hiredata.com). Bitte geben Sie dabei an:
+Wenn Sie sich unsicher sind, warum ein Event Ihre Automatisierung nicht ausgelöst hat, oder Hilfe bei der Interpretation der Event-Daten benötigen, kontaktieren Sie gerne unser Team unter [support@hiredata.com](mailto:support@hiredata.com). Geben Sie dabei an:
 
 - Einen Link oder die ID des Events;
 - Einen Link oder den Namen der Automatisierung, die Sie ausgelöst erwartet haben;

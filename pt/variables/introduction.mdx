@@ -1,7 +1,7 @@
 ---
 title: "Variáveis"
 sidebarTitle: "Introdução"
-description: "Utilize variáveis na HireData para inserir dados dinâmicos, como nome do candidato, cargo ou salário, em emails, mensagens, formulários e automações."
+description: "Utilize variáveis na HireData para personalizar emails, mensagens de WhatsApp, formulários e automações com dados de candidatos vindos diretamente das suas apps ligadas."
 ---
 
 Com variáveis, pode inserir dados dinâmicos, como o nome de um candidato, um cargo ou um salário, diretamente nos seus emails, mensagens de WhatsApp, formulários e automações.
@@ -10,19 +10,49 @@ Com variáveis, pode inserir dados dinâmicos, como o nome de um candidato, um c
 
 Uma variável é uma chave de campo envolvida por chavetas duplas:
 
-```
+```text
 Hi {{ candidate.first_name }}, thanks for applying to {{ job.title }}!
 ```
 
 Quando isto é enviado a uma candidata chamada Sofia a candidatar-se a uma vaga de Backend Engineer, torna-se:
 
-```
+```text
 Hi Sofia, thanks for applying to Backend Engineer!
 ```
 
 Os espaços dentro das chavetas são opcionais:
 
 - `{{candidate.first_name}}` e `{{ candidate.first_name }}` comportam-se da mesma forma.
+
+## Como uma variável aparece no editor
+
+Todos os editores que aceitam variáveis mostram cada uma como um badge com o nome de apresentação do campo, como **Recipient: First Name**. O badge é um único objeto no canvas, não os carateres que representa.
+
+<img src="/images/email-builder/24-variable-badges.png" alt="Quatro badges num parágrafo de email: Recipient: First Name, Recipient: First Name com um ícone de varinha e um 3, um badge 'text' com cor e um ícone de varinha, e um badge laranja documentation_missing_key com um ícone de aviso" width="608" />
+
+- Uma variável com modificadores acrescenta um ícone de varinha, e um número quando há dois ou mais.
+- Um [literal](/pt/variables/modifiers#literals) como `{{ "text" | uppercase }}` recebe um badge com cor.
+- Uma chave que a HireData não reconhece recebe um badge laranja de aviso.
+
+### O popover
+
+<img src="/images/email-builder/21-variable-popover.png" alt="Um parágrafo de email com quatro badges, Recipient: First Name, Recipient: First Name com um ícone de varinha e um 3, um badge text com cor e um badge laranja documentation_missing_key, e um popover aberto sob o segundo badge com Input Callum, Lowercase, Capitalise words, Use a fallback there e Output Callum" width="616" />
+
+Passe o cursor sobre um badge para ver o que contém: a descrição e as opções do campo quando as tem, o seu valor atual e cada modificador em linguagem simples, com o resultado no fim. O popover também copia a expressão e liga a esta página.
+
+O valor depende de onde está. O construtor de formulários e o construtor de emails mostram o valor de exemplo da HireData para o campo. O separador **Forms** de um registo mostra o valor desse registo. Um passo de automação mostra o valor por defeito do campo, porque ainda não aconteceu nenhum run.
+
+### Quando uma variável não é encontrada
+
+Uma chave que a HireData não reconhece torna-se um badge laranja, e o seu popover lê **Variable is not found**. A expressão fica no seu conteúdo sem alterações, por isso corrija a chave ou remova o badge. Uma variável que elimine da lista **Variables** de um template torna-se este badge em todos os sítios onde a usou.
+
+<img src="/images/email-builder/23-variable-not-found.png" alt="Um badge laranja a ler documentation_missing_key com um ícone de triângulo, e o seu popover a repetir a chave por cima de uma linha a ler Variable is not found" width="616" />
+
+### Editar um badge {#editing-a-badge}
+
+Coloque o cursor a seguir a um badge e prima Backspace. O badge volta a ser texto, `{{` e a expressão completa, modificadores incluídos. Edite-a, escreva o `}}` de fecho e o badge regressa. O mesmo funciona para uma referência de formulário escrita como `@key@`.
+
+Também pode escrever uma expressão de raiz, modificadores e tudo. Torna-se um badge assim que escreve as chavetas de fecho.
 
 ## Onde pode utilizar variáveis
 
@@ -37,7 +67,7 @@ Pode utilizar variáveis em qualquer sítio onde escreva conteúdo que seja envi
 
 Se um campo estiver vazio para um dado registo, a variável é substituída por nada. Para mostrar um valor por defeito, utilize o modificador [`default`](/pt/variables/modifiers#fallback):
 
-```
+```text
 Hi {{ candidate.first_name | default: "there" }}!
 ```
 
@@ -47,7 +77,7 @@ Se o candidato não tem primeiro nome, isto envia "Hi there!".
 
 As variáveis podem fazer mais do que inserir dados brutos. Um **modificador** altera a forma como o valor aparece. Pode colocar texto em maiúsculas, formatar uma data, arredondar um número e muito mais. Adiciona-se um modificador com um pipe (`|`):
 
-```
+```text
 {{ candidate.first_name | uppercase }}        → SOFIA
 {{ job.salary | format_currency: "EUR" }}      → €65,000.00
 {{ application.created_at | format_date: "d M Y" }}  → 14 Mar 2026
@@ -55,8 +85,14 @@ As variáveis podem fazer mais do que inserir dados brutos. Um **modificador** a
 
 Pode encadear vários modificadores, e cada um atua sobre o resultado do anterior:
 
-```
+```text
 {{ candidate.last_name | lowercase | capitalise }}
 ```
 
 Veja a lista completa na página [Modificadores](/pt/variables/modifiers).
+
+## Gerar um valor em vez de o consultar
+
+Todas as variáveis acima **leem** um valor que já existe. Quando o valor tem de ser gerado de novo para cada destinatário — uma abertura pessoal, uma frase de aniversário não genérica — utilize antes uma [variável de IA](/pt/variables/ai-variables).
+
+Nunca deixe uma inventar um facto. Datas, salários e termos de contrato pertencem a uma variável normal.

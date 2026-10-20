@@ -32,7 +32,7 @@ O método do pedido indica à HireData que tipo de pedido deve esperar:
 | `POST` (por defeito) | A partir do corpo do pedido, como JSON ou form data |
 | `GET` | A partir dos query parameters do endereço |
 
-Os pedidos com um método diferente do configurado são rejeitados.
+A HireData rejeita pedidos com um método diferente do configurado.
 
 ## Descrever os campos que irá receber
 
@@ -95,7 +95,7 @@ Se outra pessoa gere a ferramenta que irá enviar os dados, os **Request Example
 
 ### Enviar pedidos de teste
 
-Qualquer pedido pode ser marcado como teste adicionando um header:
+Pode marcar qualquer pedido como teste adicionando um header:
 
 ```
 X-HireData-Test: true

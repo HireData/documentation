@@ -1,0 +1,69 @@
+---
+title: "Find"
+sidebarTitle: "Find"
+description: "De Find-categorie in een HireData-automatisering: taken die een record, een e-mailadres of een bedrijfsdomein opzoeken en het resultaat aan latere stappen doorgeven."
+keywords:
+  - "find-stap"
+  - "lookup"
+  - "record vinden"
+  - "e-mailadres vinden"
+  - "search domain"
+  - "data lookup"
+---
+
+**Find** zoekt naar iets dat al bestaat. Het is een categorie: erop klikken opent een lijst met de kop **Find** met één entry per taak, en **Back** keert terug naar de picker.
+
+<Info>
+  Find verschijnt alleen in de picker wanneer een gekoppelde app een taak in deze categorie aanbiedt.
+</Info>
+
+## Instellingen
+
+Elke taak heeft een eigen drawer. De gedeelde instellingen zijn wat er gezocht wordt en waar: het object of de bron om in te zoeken, en de veldwaarden die het record identificeren.
+
+De taken die de categorie vullen in een workspace met Carerix en HireData gekoppeld:
+
+| Taak | App | Wat deze vindt |
+| --- | --- | --- |
+| Find | Carerix | Een Carerix-record van het object dat je kiest, gematcht op de velden die je instelt |
+| Find Email | HireData | Een e-mailadres voor een persoon, op basis van naam en bedrijfsdomein |
+| Search Domain | HireData | Het webdomein van een bedrijf, op basis van de naam |
+
+### Op het canvas
+
+De kaart toont een **Task**-badge, de taaknaam met de koppeling eronder, en een **Filter**-blok met de velden waarop de taak matcht.
+
+![Een Find Candidate in Carerix-kaart op het canvas met de koppeling hiredata en een Filter-blok met Candidate: Id equals 6416](/images/automations/52-find-card.png)
+
+## Wat het oplevert
+
+Het gevonden record, adres of domein. Een Carerix-Find opent op een **Match found**-regel met het id en de naam van het record, met een link naar het record in Carerix, en een **Record Data**-blok dat elk veld van het record vermeldt. Latere stappen gebruiken die velden onder de naam van de taak, dus een Add-taak kan de kandidaat koppelen die een Find teruggaf, en een Message-taak kan mailen naar het adres dat Find Email teruggaf. [Een run volgen](/nl/reference/automations/follow-a-run) toont een Find-stap uit een echte run.
+
+## Wat de run stopt
+
+Een Find die niets teruggeeft. De taakkaart kleurt rood met de regel "Cancelled" en de tijd, en de timeline registreert de taaknaam met "Cancelled" en de reden, zoals "Search domain failure." voor een Search Domain die geen domein vond. Stappen erna tonen geen statusregel. Open het **Fields**-tabblad van de kaart om de waarden te zien waarmee de taak zocht.
+
+<img src="/images/automations/31-find-cancelled-card.png" alt="Een Search Domain-taakkaart in een run, rood, met Company ingesteld op Respondent: Address Company en de regel Cancelled: Today at 10:18 AM eronder" width="380" />
+
+<img src="/images/automations/32-find-cancelled-timeline.png" alt="Een run timeline met Search Domain: Cancelled, het bericht Search domain failure., en Search Domain: Run Cancelled" width="384" />
+
+Redenen worden uitgelegd in [Redenen voor run-annuleringen](/nl/knowledge-base/run-cancellation-reasons).
+
+## Patronen
+
+- **Find, dan Update.** Wanneer het event uit een formulier komt en het record in je ATS staat, Find je het record op een id of e-mailadres uit de reactie, en [Update](/nl/reference/automations/steps/update) je het daarna met de antwoorden.
+- **Find Email vóór Send Email.** Search Domain geeft het domein van het bedrijf, Find Email geeft het adres van de persoon daarop, en de Message-stap verstuurt naar dat adres.
+- **Loop in plaats van Find voor meerdere.** Find geeft één record terug. Om iets te doen met elk record dat matcht, gebruik je een [Loop](/nl/reference/automations/steps/loop).
+
+## Veelgemaakte fouten
+
+- **Matchen op een veld dat niet uniek is.** Een naam matcht meer dan één kandidaat. Match op een id of een e-mailadres.
+- **Vinden wat het event al meebrengt.** Een Carerix-event brengt zijn record mee, en de Update-taak vindt het record zelf op het veld dat je benoemt. Voeg alleen een Find toe wanneer het record niet in het event zit.
+- **Geen resultaat behandelen als een skip.** Een leeg resultaat annuleert de run. Als sommige events niets te vinden hebben, zet dan een [Filter](/nl/reference/automations/steps/filter) vóór de Find, zodat die runs met een duidelijke reden stoppen.
+
+## Gerelateerd
+
+- [Add](/nl/reference/automations/steps/add) maakt een record aan in plaats van er een te vinden.
+- [Update](/nl/reference/automations/steps/update) wijzigt het record dat een Find teruggaf.
+- [Loop](/nl/reference/automations/steps/loop) haalt elk matchend record op en draait stappen voor elk.
+- [Taakcatalogus](/nl/reference/automations/task-catalogue) vermeldt elke taak per gekoppelde app.

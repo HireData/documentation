@@ -1,0 +1,40 @@
+---
+title: "Redirect URL"
+sidebarTitle: "Redirect URL"
+description: "O fim Redirect URL num formulário da HireData. Envia o inquirido diretamente para um endereço que definir, como uma página de agendamento, em vez de mostrar um ecrã."
+keywords: ["encaminhar inquirido", "enviar para website", "sair do formulário"]
+---
+
+Redirect URL é um fim sem ecrã. O inquirido chega a ele e o navegador envia-o para o endereço que definiu. A pré-visualização do construtor di-lo claramente: "This field redirects the user automatically and won't have a display."
+
+Use-o para encaminhar alguém para uma página de marcações, um portal de emprego ou o seu próprio site quando o formulário termina.
+
+Tal como o outro fim, vive no grupo **Endings** no fundo da lista de campos do separador **Content**. Fica no grupo **Ending** da paleta **Add Content**, e o botão no canto inferior esquerdo do cartão alterna-o para um [Ending Screen](/pt/reference/forms/fields/ending-screen).
+
+## Definições
+
+Uma, e é o campo inteiro.
+
+- **Redirect URL**, até 255 caracteres, o endereço para onde enviar o inquirido.
+
+Não há título, descrição, imagem nem botão, porque o inquirido nunca vê o campo. Se quer que ele leia alguma coisa antes de partir, use antes um [Ending Screen](/pt/reference/forms/fields/ending-screen) com **Button** e **Redirect timer** ativados.
+
+<img src="/images/forms-builder/fields/15-redirect-url.png" alt="Um cartão de Redirect URL com uma única caixa Redirect URL e um rodapé com Redirect URL, ao lado de uma pré-visualização a dizer que o campo redireciona o utilizador automaticamente e não terá apresentação" width="650" />
+## O que armazena
+
+Nada.
+
+## Operadores de lógica
+
+Nenhum. Um fim não tem botão **Add Rule** no separador **Logic**. Aponte uma regra numa pergunta para este fim para enviar alguém para aqui.
+
+<img src="/images/forms-builder/fields/operators-endings.png" alt="O separador Logic a mostrar uma linha de fim sem botão Add Rule, ao lado de uma linha de pergunta que tem um" width="507" />
+## Avaliação
+
+Um Redirect URL não tem interruptores de avaliadores.
+
+## Relacionados
+
+- [Form Builder: Visão geral](/pt/reference/forms/overview) cobre o construtor, as definições partilhadas e todos os tipos de campo.
+- [Ending Screen](/pt/reference/forms/fields/ending-screen) é o outro fim, com um ecrã e um botão opcional.
+- [Lógica](/pt/reference/forms/logic) explica como enviar inquiridos diferentes para fins diferentes.

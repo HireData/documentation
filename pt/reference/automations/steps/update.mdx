@@ -1,0 +1,62 @@
+---
+title: "Update"
+sidebarTitle: "Update"
+description: "A categoria Update numa automação da HireData: tarefas que alteram um registo numa app ligada, como o Update Object do Carerix, e como um run mostra a alteração."
+keywords:
+  - "passo update"
+  - "update object"
+  - "update field"
+  - "atualizar candidato"
+  - "alterar registo"
+  - "field updated"
+---
+
+**Update** altera algo que já existe numa app ligada. É uma categoria. Quando mais do que uma app ligada oferece uma tarefa Update, escolhê-la abre uma lista com o cabeçalho **Update**; quando uma única tarefa preenche a categoria, como a do Carerix faz sozinha, escolhê-la abre diretamente o painel dessa tarefa.
+
+<Info>
+  Update só aparece no seletor quando uma app ligada oferece uma tarefa nesta categoria.
+</Info>
+
+## Definições
+
+- **Object**. O tipo de registo a alterar, numa caixa de pesquisa e lista. Para o Carerix: Activity, Appointment, Campaign, Candidate, Company, Contact, Email, List, Match, Meeting, News Letter, Note, Placement, Publication, System, Talent Pool, Task, User, Vacancy.
+- **Campo de correspondência**. Como a tarefa encontra o registo a alterar. O cartão no canvas lê-o como "Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id".
+- **Fields**. Os campos a escrever e o valor de cada um, um valor fixo ou uma variável do run. O cartão lista-os em **Fields**, como "Candidate: Available Date: Now".
+
+O painel tem no cabeçalho o nome da tarefa e o ícone da app.
+
+As tarefas que preenchem a categoria:
+
+| Tarefa | App | O que altera |
+| --- | --- | --- |
+| Update Object | Carerix | Qualquer campo do objeto do Carerix escolhido |
+| Update Field | OTYS | Um campo de um registo do OTYS |
+| Update Field | Vincere | Um campo de um registo do Vincere |
+| Update Field | Salesforce | Um campo de um registo do Salesforce |
+
+### No canvas
+
+O cartão mostra um badge **Task**, o nome da tarefa com a app, a frase que nomeia o campo de correspondência e os campos que vai escrever.
+
+<img src="/images/automations/36-update-card.png" alt="Um cartão Update Candidate in Carerix no canvas: Find a candidate by matching their Candidate: Id in Carerix with Candidate: Id, and then update these fields, com Available Date definida como Now e Status definido como Werkzoekend" width="380" />
+
+## O que produz
+
+O registo tal como fica depois da alteração. Na página do run, o painel da tarefa tem no cabeçalho a app, a tarefa e o id do registo, como "Carerix Update Match (ID: 7.18)", com badges a contar **Field Updated** e **Run Moved** e um badge de estado. O **Overview** lista o **Updated Object** com um link e o valor antigo e novo de cada campo; um campo que não tinha valor lê "This field was empty before". **Fields** lista todos os valores que a tarefa usou, com o seu ícone de origem e tipo.
+
+<img src="/images/automations/20-run-step-fields.png" alt="O separador Fields de um passo do run Update Match a listar Match: Id, Match: Stage, uma pontuação de avaliação, um valor de fase filtrado e uma variável não resolvida mostrada como texto em bruto" width="384" />
+
+Uma variável não resolvida aparece no separador Fields como o seu texto em bruto, como `{{…evaluation.scoring.score}}`, que é como se deteta um campo escrito com um placeholder em vez de um valor.
+
+## O que para o run
+
+Uma atualização que a app rejeita, ou um registo que o campo de correspondência não encontra. O cartão da tarefa fica vermelho com a linha "Cancelled" e a hora, e a timeline regista o nome da tarefa com "Cancelled" e o motivo que a app devolveu.
+
+Veja [Motivos de cancelamento de runs](/pt/knowledge-base/run-cancellation-reasons).
+
+## Relacionados
+
+- [Find](/pt/reference/automations/steps/find) procura um registo quando ele não está no evento.
+- [Add](/pt/reference/automations/steps/add) cria um registo em vez de o alterar.
+- [Prompt](/pt/reference/automations/steps/prompt) produz os valores que um Update escreve.
+- O [catálogo de tarefas](/pt/reference/automations/task-catalogue) lista todas as tarefas por app ligada.

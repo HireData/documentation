@@ -1,0 +1,93 @@
+---
+title: "Catálogo de tarefas"
+sidebarTitle: "Catálogo de tarefas"
+description: "Todas as tarefas que uma automação da HireData pode correr, por app ligada: a sua etiqueta no seletor de passos, a categoria, o que precisa e onde está explicada."
+keywords:
+  - "catálogo de tarefas"
+  - "tarefas de automação"
+  - "apps ligadas"
+  - "tarefas carerix"
+  - "tarefas otys"
+  - "tarefas vincere"
+  - "tarefas salesforce"
+  - "tarefas whatsapp"
+  - "tarefas ratecard"
+  - "tarefas google sheets"
+---
+
+Um passo é um nó no canvas. [Delay](/pt/reference/automations/steps/delay), [Filter](/pt/reference/automations/steps/filter), [Loop](/pt/reference/automations/steps/loop) e [Split](/pt/reference/automations/steps/split) moldam o run e não tocam em nada fora dele. Uma tarefa é um passo que atua sobre uma app: envia, cria, encontra ou altera algo, e o run regista-a em **Tasks**. [Add](/pt/reference/automations/steps/add), [Find](/pt/reference/automations/steps/find), [Message](/pt/reference/automations/steps/message) e [Update](/pt/reference/automations/steps/update) são as categorias que contêm tarefas, e [Prompt](/pt/reference/automations/steps/prompt) é uma tarefa por si só.
+
+As tarefas que vê dependem das apps ligadas ao workspace, não das suas permissões. A Recruitee, a AFAS e as apps personalizadas fornecem apenas eventos, por isso uma automação pode [começar a partir da Recruitee](/pt/apps/recruitee/create-a-recruitee-automation-in-hiredata) mas não pode escrever de volta nela.
+
+<Note>
+  Nem todas as tarefas têm ainda uma página própria. Onde não existe nenhuma, a coluna de referência aponta para a página mais próxima: a página da categoria, um tutorial que usa a tarefa ou a visão geral da app.
+</Note>
+
+## HireData
+
+Sempre presente.
+
+| Etiqueta | Categoria | Precisa de | Referência |
+| --- | --- | --- | --- |
+| Send Email | Message | Um template de email. Um remetente num domínio verificado | [Send Email](/pt/reference/automations/tasks/send-email) |
+| HTTP Request | Add, Message | Um endpoint que aceite o pedido | [HTTP Request](/pt/reference/automation-tasks/http-request-task) |
+| Post Webhook | Add, Message | Nada de novo. A forma mais antiga do HTTP Request | [Tarefas Post Webhook existentes](/pt/reference/automation-tasks/http-request-task#existing-post-webhook-tasks) |
+| Find Email | Find | O nome de uma pessoa e o domínio de uma empresa vindos do run | [Find](/pt/reference/automations/steps/find) |
+| Search Domain | Find | O nome de uma empresa vindo do run | [Find](/pt/reference/automations/steps/find) |
+| Ask AI | Prompt | Nada além dos dados do run | [Prompt](/pt/reference/automations/steps/prompt) |
+
+## WhatsApp
+
+| Etiqueta | Categoria | Precisa de | Referência |
+| --- | --- | --- | --- |
+| Send Message | Message | Um número de WhatsApp ligado e um template de mensagem aprovado | [Como funcionam os templates de WhatsApp](/pt/apps/messaging/whatsapp/how-whatsapp-templates-work) |
+| Send Survey | Message | Um número de WhatsApp ligado e um formulário | [Como usar formulários em conversas de WhatsApp](/pt/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) |
+
+## Carerix
+
+| Etiqueta | Categoria | Precisa de | Referência |
+| --- | --- | --- | --- |
+| Find | Find | Uma ligação Carerix | [Find](/pt/reference/automations/steps/find) |
+| Add Email | Add | Uma ligação Carerix e um registo ao qual anexar o email | [Registar mensagens de email no Carerix](/pt/apps/carerix/logging-email-messages-on-carerix-with-hiredata) |
+| Job Application | Add | Uma ligação Carerix, um candidato e uma vaga | [Criar uma automação Carerix](/pt/apps/carerix/create-a-carerix-automation-in-hiredata) |
+| Add Note | Add | Uma ligação Carerix e um registo ao qual anexar a nota | [Adicionar uma atividade ou item no Carerix](/pt/apps/carerix/add-an-activity-or-item-in-carerix-with-hiredata) |
+| Add Task | Add | Uma ligação Carerix | [Agendar uma tarefa no Carerix](/pt/apps/carerix/schedule-a-task-in-carerix-with-hiredata) |
+| Update Object | Update | Uma ligação Carerix | [Atualizar campos no Carerix](/pt/apps/carerix/update-fields-in-carerix-with-hiredata) |
+
+## OTYS
+
+| Etiqueta | Categoria | Precisa de | Referência |
+| --- | --- | --- | --- |
+| Task | Add | Uma ligação OTYS | [Criar uma automação OTYS](/pt/apps/otys/create-an-otys-automation-in-hiredata) |
+| Activity or Item | Add | Uma ligação OTYS | [Criar uma automação OTYS](/pt/apps/otys/create-an-otys-automation-in-hiredata) |
+| Update Object | Update | Uma ligação OTYS | [Update](/pt/reference/automations/steps/update) |
+
+## Vincere
+
+| Etiqueta | Categoria | Precisa de | Referência |
+| --- | --- | --- | --- |
+| Task | Add | Uma ligação Vincere | [Agendar uma tarefa no Vincere](/pt/apps/vincere/schedule-a-task-in-vincere-with-hiredata) |
+| Activity or Item | Add | Uma ligação Vincere | [Adicionar uma atividade ou item no Vincere](/pt/apps/vincere/add-an-activity-or-item-in-vincere-with-hiredata) |
+| Update Object | Update | Uma ligação Vincere | [Atualizar campos no Vincere](/pt/apps/vincere/update-fields-in-vincere-with-hiredata) |
+| Update GDPR | Update | Uma ligação Vincere | [Update](/pt/reference/automations/steps/update) |
+
+## Salesforce
+
+| Etiqueta | Categoria | Precisa de | Referência |
+| --- | --- | --- | --- |
+| Find | Find | Uma ligação Salesforce | [Visão geral da integração Salesforce](/pt/apps/salesforce/overview) |
+| Task | Add | Uma ligação Salesforce | [Visão geral da integração Salesforce](/pt/apps/salesforce/overview) |
+| Activity or Item | Add | Uma ligação Salesforce | [Visão geral da integração Salesforce](/pt/apps/salesforce/overview) |
+| Update Object | Update | Uma ligação Salesforce | [Update](/pt/reference/automations/steps/update) |
+
+## Ratecard
+
+| Etiqueta | Categoria | Precisa de | Referência |
+| --- | --- | --- | --- |
+| Send Survey | Message | Uma ligação Ratecard ativa e um inquérito | [Ligar com o Ratecard](/pt/apps/ratecard/connect-with-ratecard) |
+
+## Google Sheets
+
+| Etiqueta | Categoria | Precisa de | Referência |
+| --- | --- | --- | --- |
+| Add Row | Add | Uma ligação Google Sheets e uma folha de cálculo onde escrever | [Add](/pt/reference/automations/steps/add) |
