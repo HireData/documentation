@@ -26,7 +26,7 @@ Then decide the one question. Only the form's leading question becomes buttons, 
 
 ### 1. Put the rating first
 
-Open **Forms**, click **New Form**, pick **Blank Form**, and add a [Net Promoter Score](/reference/forms/fields/net-promoter-score-and-opinion-scale) question as the first field: "How likely are you to recommend us to a friend?" It comes fixed at 0 to 10 with **NOT LIKELY AT ALL** and **EXTREMELY LIKELY** under the ends, and those two labels are what stop a bare row of numbers being ambiguous.
+Open **Forms**, click **New Form**, select **Blank Form**, and add a [Net Promoter Score](/reference/forms/fields/net-promoter-score-and-opinion-scale) question as the first field: "How likely are you to recommend us to a friend?" It comes fixed at 0 to 10 with **NOT LIKELY AT ALL** and **EXTREMELY LIKELY** under the ends, and those two labels are what stop a bare row of numbers being ambiguous.
 
 Leave it **Optional**. A required rating field blocks the answer 0, and 0 is the answer you most want to hear about.
 
@@ -60,7 +60,7 @@ Leave **Make form public** off unless you are posting the link somewhere. The to
 
 ### 4. Create the email and pick the brand
 
-Open **Emails** from **Settings**, click **New Email**, and select **Blank Email** or one of the supplied templates. Set **Brand** in the top right first. It restyles the whole email, including the button colours, so choosing it early saves you checking the contrast twice. See [Setting up an email template](/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
+Open **Emails** from **Settings**, click **New Email**, and select **Blank Email** or one of the supplied templates. Set **Brand** in the top right first. It restyles the whole email, including the button colours, so setting it early saves you checking the contrast twice. See [Setting up an email template](/apps/messaging/emails/setting-up-an-email-template-in-hiredata).
 
 ### 5. Write the shortest ask you can stand behind
 
@@ -107,7 +107,7 @@ You should land on the form with the rating already filled in. If it is sitting 
 A click from a test email records nothing, which is what you want while you are still editing. The score only lands on a response for a real send.
 
 <Note>
-  If the form links a required object, the test send needs a record for it. Pick one under **Objects** in the modal, or use **Auto fill**. Leave it empty and the send fails with a **Failed to send test email** notification naming the object by its key. See [Testing](/reference/email-builder/testing).
+  If the form links a required object, the test send needs a record for it. Select one under **Objects** in the modal, or use **Auto fill**. Leave it empty and the send fails with a **Failed to send test email** notification naming the object by its key. See [Testing](/reference/email-builder/testing).
 </Note>
 
 ### 10. Add the other languages, if you have them
@@ -116,7 +116,7 @@ The Form block renders in the language of the form it points at, not the languag
 
 ## Send it and read the answers
 
-Plug the finished template into a **Send Email** task and choose the audience the same way you would for any other send. See [Automations](/automations/automations).
+Plug the finished template into a **Send Email** task and select the audience the same way you would for any other send. See [Automations](/automations/automations).
 
 The responses arrive on the **Responses** tab of the record the form was linked to, and on the form itself. See [Configuring a form per record](/content/configuring-a-form-per-record).
 
@@ -135,7 +135,7 @@ Start with one branch. A low score creates a task for whoever owns the relations
 
 If the buttons render as a single **Give Feedback** button, the leading question is a type that has no buttons of its own. Only rating and choice questions get one button per value. Everything else falls back to one call to action, which you can click in the canvas to reword.
 
-If a choice question is missing options, you have hit the five-option cap. A Form block renders the first five and gives no warning about the rest. See [Limits](/reference/email-builder/blocks/form#limits).
+If a choice question is missing options, you have reached the five-option cap. A Form block renders the first five and gives no warning about the rest. See [Limits](/reference/email-builder/blocks/form#limits).
 
 If you still need help, contact [support@hiredata.com](mailto:support@hiredata.com) and include:
 

@@ -54,10 +54,10 @@ This is the easiest route, and it works in any Claude conversation. You have alr
     ```
   </Step>
   <Step title="Save it">
-    In Claude, go to **Customize** \> **Skills**, click **\[Add\]**, select the option to upload a skill file, and pick the zip. In ChatGPT, go to [chatgpt.com/skills](https://chatgpt.com/skills), click **Create**, then **Upload from your computer**.
+    In Claude, go to **Customize** \> **Skills**, click **Add**, select the option to upload a skill file, and pick the zip. In ChatGPT, go to [chatgpt.com/skills](https://chatgpt.com/skills), click **Create**, then **Upload from your computer**.
   </Step>
   <Step title="Test it in a new conversation">
-    Skills only load when a conversation starts, so open a new one and ask the way you normally would — not by naming the skill. If your assistant doesn't reach for it, see [when a skill does not trigger](#when-a-skill-does-not-trigger).
+    Skills only load when a conversation starts, so open a new one and ask the way you normally would, not by naming the skill. If your assistant doesn't reach for it, see [when a skill does not trigger](#when-a-skill-does-not-trigger).
   </Step>
 </Steps>
 
@@ -75,13 +75,13 @@ Do one signature with your assistant. Tell it which parts are fixed and which co
 
 You can record yourself doing the task instead of describing it. Useful when the work spans several screens and is easier to show than to write down.
 
-You need all three: a Mac, a Pro, Max, or Team plan, and Claude's Cowork mode. If **Record a skill** doesn't appear in the **\[\+\]** menu, you don't have it. Use Route 1 instead.
+You need all three: a Mac, a Pro, Max, or Team plan, and Claude's Cowork mode. If **Record a skill** doesn't appear in the **\+** menu, you don't have it. Use Route 1 instead.
 
 Before you start: your video and audio aren't kept, only screenshots from the session, stored in the Cowork task. Treat it like a screen share and close anything you wouldn't show a colleague.
 
 <Steps>
   <Step title="Start the recording">
-    Click **\[\+\]** in the composer and select **Record a skill**, or go to **Customize** \> **Skills**, click **\[Add\]**, and select **Record your screen**.
+    Click **\+** in the composer and select **Record a skill**, or go to **Customize** \> **Skills**, click **Add**, and select **Record your screen**.
   </Step>
   <Step title="Do the task, and narrate">
     Work at your normal pace, up to about ten minutes, and say what you're doing and why — _"I always check the brand first, because that decides the sender"_. The reasoning is what makes the skill worth having; the clicks alone aren't.
@@ -104,7 +104,7 @@ my-skill/
     └── examples.md
 ```
 
-`SKILL.md` is a plain text file. Write it in a text editor — not Word — and save it as `SKILL.md`, with no `.txt` or `.docx` on the end. It starts with two required fields between two lines of three dashes, then ordinary text:
+`SKILL.md` is a plain text file. Write it in a text editor (not Word) and save it as `SKILL.md`, with no `.txt` or `.docx` on the end. It starts with two required fields between two lines of three dashes, then ordinary text:
 
 ```markdown
 ---
@@ -150,7 +150,7 @@ Nine times out of ten the problem is the description, not the instructions.
 
 A skill you upload yourself is personal. Each colleague uploads their own copy, unless an Owner provisions it for the whole organisation. To hand one over, send the zip.
 
-On Team and Enterprise plans an Owner can provision a skill for everyone: **Organization settings** \> **Skills** \> **\[\+ Add\]**, upload the zip, and it appears in every member's **Customize** \> **Skills**. Owners can also switch off user-created skills entirely, so if you can't upload one, that is why.
+On Team and Enterprise plans an Owner can provision a skill for everyone: **Organization settings** \> **Skills** \> **\+ Add**, upload the zip, and it appears in every member's **Customize** \> **Skills**. Owners can also switch off user-created skills entirely, so if you can't upload one, that is why.
 
 <Warning>
   A skill gives your assistant instructions it will follow. Only install skills from people you trust, read one through before enabling it, and never put passwords, API keys, or customer data inside one. Use the [HireData MCP connection](/apps/mcp/connect-hiredata-to-your-ai-assistant) for live data instead.
@@ -162,7 +162,13 @@ If your skill would help other HireData users, HireData will publish it. The ski
 
 The easy route: send it to [support@hiredata.com](mailto:support@hiredata.com) with a line about what it does and who it helps, and HireData will take it from there.
 
-Comfortable with GitHub? Open a pull request on [github.com/HireData/skills](https://github.com/HireData/skills) instead. In short: add your folder under `plugins/hiredata/skills/` with a lowercase, hyphenated, preferably verb-led name, a `SKILL.md`, and a one-level-deep `references/` folder; add eval cases to `evals/regression-cases.json` — a normal use, a case with missing or ambiguous data, a safety or invalid-combination case, plus a baseline and candidate result scored against `evals/RUBRIC.md`; and run `python3 scripts/validate_repo.py` before you open the PR. [CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) has the full requirements and the review checklist.
+Comfortable with GitHub? Open a pull request on [github.com/HireData/skills](https://github.com/HireData/skills) instead. In short:
+
+1. Add your folder under `plugins/hiredata/skills/` with a lowercase, hyphenated, preferably verb-led name, a `SKILL.md`, and a one-level-deep `references/` folder.
+2. Add eval cases to `evals/regression-cases.json`: a normal use, a case with missing or ambiguous data, and a safety or invalid-combination case. Include a baseline and candidate result scored against `evals/RUBRIC.md`.
+3. Run `python3 scripts/validate_repo.py` before you open the PR.
+
+[CONTRIBUTING.md](https://github.com/HireData/skills/blob/main/CONTRIBUTING.md) has the full requirements and the review checklist.
 
 <CardGroup cols={2}>
   <Card title="See how HireData's skills are written" icon="github" href="https://github.com/HireData/skills">

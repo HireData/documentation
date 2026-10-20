@@ -75,7 +75,7 @@ Try:
 
 ## Diagnose automations
 
-Explains what actually happened to a workflow before anything is changed. Most reports of a "broken" automation turn out to be one of several different situations with different fixes: a trigger that never produced an event, runs that stopped at a filter, a step that errored, a message that was sent but never delivered, runs that started and never finished, or an automation running at a volume nobody intended. The skill separates them using your events, runs, steps, and message data, then states what happened, the evidence for it, how many records it affected, whether it is still happening, and what remains unexplained. It also reports what the volume actually cost. Repairs come with their trade-off, and nothing is changed, paused, activated, or replayed without your approval of that exact change.
+Explains what actually happened to a workflow before anything is changed. Most reports of a "broken" automation turn out to be one of several different situations with different fixes: a trigger that never produced an event, runs that stopped at a filter, a step that errored, a message that was sent but never delivered, runs that started and never finished, or an automation running at a volume nobody intended. The skill separates them using your events, runs, steps, and message data. It then states what happened, the evidence for it, how many records it affected, whether it is still happening, and what remains unexplained. It also reports what the volume actually cost. Repairs come with their trade-off, and nothing is changed, paused, activated, or replayed without your approval of that exact change.
 
 Try:
 
@@ -85,7 +85,7 @@ Try:
 
 ## Diagnose email performance
 
-Separates "the mail didn't arrive" from "the mail arrived and nobody cared". Those feel identical when you look at a falling open rate, and they have nothing in common. The skill first checks delivery, bounce, complaint, and unsubscribe rates against healthy thresholds, so you know whether the sending itself is at fault. It then strips machine opens — Apple Mail Privacy Protection inflates every headline open rate — and compares human-only engagement per provider and per month, using click-to-open to tell a content problem apart from an inbox placement one. It also catches comparisons that aren't comparisons, such as one-to-one mail measured against a bulk campaign, or a previous system that counted opens differently. Advice comes back in order of expected impact, with what HireData will do separated from what you need to do.
+Separates "the mail didn't arrive" from "the mail arrived and nobody cared". Those feel identical when you look at a falling open rate, and they have nothing in common. The skill first checks delivery, bounce, complaint, and unsubscribe rates against healthy thresholds, so you know whether the sending itself is at fault. It then strips machine opens, because Apple Mail Privacy Protection inflates every headline open rate. It compares human-only engagement per provider and per month, using click-to-open to tell a content problem apart from an inbox placement one. It also catches comparisons that aren't comparisons, such as one-to-one mail measured against a bulk campaign, or a previous system that counted opens differently. Advice comes back in order of expected impact, with what HireData will do separated from what you need to do.
 
 Try:
 
@@ -95,7 +95,7 @@ Try:
 
 ## Report automation ROI
 
-Answers "what has this actually given us?" without inventing anything. The skill first establishes the true reporting period from when your automations were created and when they actually ran, rather than accepting a window someone picked. It separates automations that communicate with candidates and contacts — which can be credited with placements — from data-only automations, which are credited with time saved. Every figure comes from measured workspace data, never a model, and where attribution covers less of the period than the automations were live, the skill says so and explains why. You get the customer-facing readout plus an internal note listing the numbers it rejected and the arithmetic that failed.
+Answers "what has this actually given us?" without inventing anything. The skill first establishes the true reporting period from when your automations were created and when they actually ran, rather than accepting a window someone picked. It separates automations that communicate with candidates and contacts from data-only automations. Communicating automations can be credited with placements, and data-only automations are credited with time saved. Every figure comes from measured workspace data, never a model, and where attribution covers less of the period than the automations were live, the skill says so and explains why. You get the customer-facing readout plus an internal note listing the numbers it rejected and the arithmetic that failed.
 
 Try:
 
@@ -118,7 +118,7 @@ Try:
 
 ## Apply staffing lifecycle knowledge
 
-Background knowledge rather than a task you ask for directly. It gives your assistant staffing and ATS domain judgment: who the actors are (candidate, contact, company, recruiter) and who owns each record; how candidates, jobs, matches, publications, talent pools, and placements relate; which stage a match is in and the event that legitimately moves it forward; and what a candidate-driven or job-driven market means for timing, audience, and cadence. Mostly it prevents expensive misreadings — "close the candidate" after an assignment ends means ending the placement, not the person, and a rejected match cannot trigger onboarding. The other skills work without it; it makes them read your request correctly. It supplies reasoning, never workspace facts: stage names, fields, and values are always confirmed against your live workspace.
+Background knowledge rather than a task you ask for directly. It gives your assistant staffing and ATS domain judgment: who the actors are (candidate, contact, company, recruiter) and who owns each record; how candidates, jobs, matches, publications, talent pools, and placements relate; which stage a match is in and the event that legitimately moves it forward; and what a candidate-driven or job-driven market means for timing, audience, and cadence. Mostly it prevents expensive misreadings. For example, "close the candidate" after an assignment ends means ending the placement, not the person, and a rejected match cannot trigger onboarding. The other skills work without it; it makes them read your request correctly. It supplies reasoning, never workspace facts: stage names, fields, and values are always confirmed against your live workspace.
 
 Try:
 
