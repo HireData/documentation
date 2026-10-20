@@ -18,7 +18,7 @@ _Nos modèles d'automatisation WhatsApp fluidifient la communication avec les ca
 
 ### Comment fonctionne le déclencheur
 
-Tous les modèles WhatsApp utilisent la même logique, mais peuvent se différencier dans le déclencheur défini et le contenu de la conversation (par ex. les questions posées, les informations collectées et le ton de la voix). Cet article se concentre sur l'automatisation Job Alert via Carerix.
+Tous les modèles WhatsApp utilisent la même logique, mais peuvent différer par le déclencheur défini et le contenu de la conversation (par ex. les questions posées, les informations collectées et le ton de la voix). Cet article se concentre sur l'automatisation Job Alert via Carerix.
 
 Dans cette automatisation, le déclencheur est basé sur une **mise à jour d'étape** dans le système Carerix. Voici comment cela fonctionne :
 
@@ -34,7 +34,7 @@ Une fois déclenchée, l'automatisation initie une **conversation WhatsApp**, en
 Une fois le déclencheur défini, l'étape suivante consiste à configurer la tâche qui définit comment le message WhatsApp sera envoyé. Voici un aperçu de chaque option de configuration :
 
 1. **Sélection du numéro de téléphone**
-  - Sélectionnez le numéro de téléphone qui sera utilisé pour envoyer les messages WhatsApp. C'est généralement un numéro professionnel vérifié associé à votre WhatsApp Business qui devrait déjà être vérifié et visible dans la connexion WhatsApp dans HireData.
+  - Sélectionnez le numéro de téléphone qui sera utilisé pour envoyer les messages WhatsApp. C'est généralement le numéro professionnel associé à votre compte WhatsApp Business. Il devrait déjà être vérifié et visible dans la connexion WhatsApp dans HireData.
 2. **Modèle de message**
   - Sélectionnez un modèle de message WhatsApp pré-approuvé pour garantir une communication fluide et conforme. Le modèle définit la structure du premier message, qui peut inclure des espaces réservés pour du contenu dynamique (comme les noms des candidats, les intitulés de poste, etc.).
 ![Sélection du modèle de message](/images/intercom/41580379-Screenshot-2025-03-17-at-09_19_22.png)
@@ -70,12 +70,12 @@ Voici comment ce processus fonctionne :
 2. **Sélection de l'objet**
   - L'objet mis à jour est l'enregistrement **Candidate**. Cela garantit que toutes les informations collectées sont stockées dans le bon profil de candidat.
 3. **Identifiant**
-  - Pour s'assurer que la mise à jour est appliquée au bon candidat, le système fait correspondre le **Candidate: ID** de la conversation avec le **Candidate: ID** de la base de données. Cet identifiant unique garantit que les données sont mises à jour uniquement pour le candidat pertinent.
+  - Pour s'assurer que la mise à jour est appliquée au bon candidat, HireData fait correspondre le **Candidate: ID** de la conversation avec le **Candidate: ID** de la base de données. Cet identifiant unique garantit que les données sont mises à jour uniquement pour le candidat pertinent.
 4. **Champs mis à jour**
   - L'automatisation met à jour un ou plusieurs champs en fonction des réponses reçues du candidat. Les champs courants incluent :
     - **Candidate: Available Date** → Met à jour la disponibilité du candidat pour de nouvelles opportunités d'emploi.
     - **Candidate: Notes** → Stocke toute information supplémentaire fournie par le candidat, comme des préférences ou des demandes particulières.
-    - **Autres champs** → D'autres champs peuvent être ajoutés selon les besoins, tels que le type de poste préféré, la préférence de localisation ou les attentes salariales.
+    - **Autres champs** → Vous pouvez ajouter d'autres champs selon les besoins, tels que le type de poste préféré, la préférence de localisation ou les attentes salariales.
 
 ## Modèles WhatsApp dans WhatsApp
 
@@ -147,7 +147,9 @@ _Ajoutez votre premier bouton, par ex. Sim :_
 
 ![Ajout d'un bouton](/images/intercom/47454584-buttons2.png)
 
-💡 Astuce : pour les modèles en plusieurs langues, assurez-vous d'utiliser le même nom/numéro de variable pour la cohérence.
+<Tip>
+  Pour les modèles en plusieurs langues, assurez-vous d'utiliser le même nom/numéro de variable pour la cohérence.
+</Tip>
 
 _Prévisualisez votre bouton :_
 
@@ -216,7 +218,7 @@ _Une synchronisation sera planifiée après cette notification :_
 
 ![Notification de planification de synchronisation](/images/intercom/47448659-Screenshot-2025-03-28-at-08_43_20.png)
 
-_Après un moment, vous verrez la synchronisation démarrer :_
+_Après un moment, la synchronisation démarre :_
 
 ![Notification de progression de synchronisation](/images/intercom/47448690-Screenshot-2025-03-28-at-08_43_42.png)
 
