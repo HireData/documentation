@@ -147,7 +147,7 @@ That last sentence matters most. Say what to do when the data is missing, or the
 
 ## Limitations
 
-**It resolves once per send, then repeats.** The value is generated the first time the variable is referenced and reused for every other mention in the same message, so `{{ celebration }}` twice in one email gives you the same sentence twice, not two attempts. It is worked out again when its inputs change, which is what makes it per-recipient. A variable with no inputs attached has nothing to vary on.
+**It resolves once per send, then repeats.** The value is generated the first time the variable is referenced and reused for every other mention in the same message. Using `{{ celebration }}` twice in one email gives you the same sentence twice, not two attempts. It is worked out again when its inputs change, which is what makes it per-recipient. A variable with no inputs attached has nothing to vary on.
 
 **A stored default is not a safety net.** For an AI variable, the default value is the slot the generated value is written into, not a fallback you can set. If the model returns nothing, the variable resolves to nothing. To guarantee something lands on the page, use the [`default`](/variables/modifiers#fallback) modifier where you reference it:
 

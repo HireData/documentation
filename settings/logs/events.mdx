@@ -8,7 +8,7 @@ When you connect your ATS (such as Carerix, Salesforce, or OTYS) to HireData, it
 
 ## What is an event
 
-An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. HireData uses these events to trigger the automations you've set up, and every event includes **Event Data**, **External Records**, and **Runs**.
+An event is a signal sent from your connected app to HireData. It usually represents a specific action or change, for example, a new candidate being created, a vacancy being updated, a placement being completed, etc. HireData uses these events to trigger the automations you've set up. Every event includes **Event Data**, **External Records**, and **Runs**.
 
 _Event example:_
 
@@ -46,10 +46,10 @@ To inspect the raw request body, open the event data and use the available code 
 
 ## Replaying events
 
-If an event doesn't trigger an automation as expected, or a run fails before completing its tasks, you can replay individual or multiple events to re-trigger automations and get things back on track.
+If an event doesn't trigger an automation as expected, or a run fails before completing its tasks, you can replay it. Replaying one or more events re-triggers the automations and gets things back on track.
 
 <Warning>
-  When you replay an event, it can trigger runs across multiple automations at once. Before replaying, always check which automations and runs will be affected, especially if any of them include sending an email or a message. Replaying those without checking first could result in duplicate messages being sent to candidates or contacts.
+  When you replay an event, it can trigger runs across multiple automations at once. Before replaying, always check which automations and runs will be affected, especially if any of them include sending an email or a message. Replaying those without checking first could send duplicate messages to candidates or contacts.
 </Warning>
 
 ### What happens when an event is replayed?
@@ -120,8 +120,8 @@ If no run was created, the event may not have met the criteria of an active auto
 
 ### Still need help?
 
-If you're unsure why an event didn't trigger your automation or want help interpreting the event data, feel free to contact our team at [support@hiredata.com](mailto:support@hiredata.com). If you do, include:
+If you're unsure why an event didn't trigger your automation or want help interpreting the event data, contact the HireData team at [support@hiredata.com](mailto:support@hiredata.com). If you do, include:
 
 - A link or the ID of the event;
 - A link or the name of the automation you expected to be triggered;
-- Any relevant steps or context that might help us investigate further.
+- Any relevant steps or context that might help the team investigate further.
