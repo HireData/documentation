@@ -1,0 +1,96 @@
+---
+title: "Enriquecer leads do Meta Leads com um seguimento via WhatsApp"
+sidebarTitle: "Seguimento via WhatsApp"
+description: "Dê seguimento a um lead da Meta com uma conversa de WhatsApp, recolha os dados do candidato em falta e mapeie as respostas de volta para o seu ATS."
+---
+
+Mantenha o seu formulário de leads da Meta curto e utilize depois uma conversa de WhatsApp para recolher a informação de que um recrutador precisa a seguir.
+
+Por exemplo, uma campanha para um armazém pode recolher primeiro os dados de contacto e perguntar pela disponibilidade e pela localização preferida durante o seguimento.
+
+**Lead da Meta → candidatura no Carerix → conversa de WhatsApp → atualizar campos do candidato**
+
+## Antes de começar
+
+Irá precisar de:
+
+- Uma [automação Meta Leads](/pt/apps/meta-leads/create-a-meta-leads-automation-in-hiredata) a funcionar.
+- Uma [ligação WhatsApp](/pt/apps/messaging/whatsapp/connect-with-whatsapp-embedded-sign-up) com o número de envio disponível na HireData.
+- Um template de mensagem aprovado e sincronizado com a HireData.
+- Um formulário com as perguntas que pretende fazer.
+- Um mapeamento claro das respostas para os campos do candidato que pretende atualizar.
+
+## 1. Estabelecer o candidato e a candidatura
+
+Conclua primeiro o fluxo Meta-para-Carerix. Este encontra a vaga e adiciona a candidatura, associando o candidato a essa vaga.
+
+Utilize este contexto de candidato e candidatura para o seguimento. Se configurar uma automação separada acionada por um match do Carerix, filtre-a pelo source e pelo stage utilizados para estas candidaturas da Meta.
+
+<Note>
+Um candidato pode ter várias candidaturas. Utilize o match relevante para o contexto da vaga e o identificador do candidato para atualizações ao respetivo perfil.
+</Note>
+
+## 2. Preparar um formulário curto
+
+Crie um formulário apenas com a informação que ainda falta. Por exemplo:
+
+- Quando está disponível para começar?
+- Que local de trabalho prefere?
+- Tem a carta de condução exigida para esta função?
+
+Escolha perguntas relevantes para a vaga. Consulte [Como usar formulários em conversas de WhatsApp](/pt/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations) para a configuração do formulário e o mapeamento das respostas.
+
+## 3. Configurar a conversa
+
+Configure a tarefa **Start a Conversation**:
+
+| Definição | O que escolher |
+| --- | --- |
+| Número de envio | O seu número WhatsApp Business ligado. |
+| Destinatário | O candidato associado à candidatura da Meta. |
+| Template de mensagem | Um template aprovado e sincronizado que explique quem é e a que candidatura se refere a mensagem. |
+| Formulário | O formulário de seguimento curto. |
+| Briefing | O objetivo da conversa, as perguntas a recolher e quando encaminhar o candidato para um recrutador. |
+| Conhecimento | Contexto relevante, como o nome do candidato, a vaga, a localização e o recrutador. |
+
+Mantenha a introdução específica ao pedido da pessoa. Por exemplo: “Obrigado pelo seu interesse na função de armazém em Utrecht. Contactamo-lo da Example Recruitment para lhe fazer algumas perguntas de seguimento.”
+
+Utilize os dados reais da sua empresa e da função no template aprovado. Consulte [Como funcionam os templates de WhatsApp](/pt/apps/messaging/whatsapp/how-whatsapp-templates-work) para a aprovação e a sincronização.
+
+## 4. Mapear as respostas de volta
+
+Adicione **Update field(s)** após a conversa. Selecione o objeto do candidato e utilize o ID do candidato para direcionar a atualização para o registo correto.
+
+Mapeie cada resposta para o campo pretendido — por exemplo, a resposta sobre disponibilidade para a data de disponibilidade do candidato. Verifique se as datas, as opções e as respostas de texto se adequam aos tipos dos campos de destino.
+
+Não trate uma atualização do perfil como uma alteração a todas as candidaturas da pessoa. Se precisar de atualizar um match, direcione a atualização para esse match específico em separado.
+
+## 5. Aplicar os requisitos de mensagens do WhatsApp
+
+Ao abrigo da [WhatsApp Business Messaging Policy](https://business.whatsapp.com/policy), os destinatários têm de ter fornecido o seu número de telemóvel e consentido em receber mensagens subsequentes da sua empresa. A submissão de um lead, por si só, não constitui uma autorização geral para contactos não relacionados.
+
+Inicie o seguimento por iniciativa da empresa com um template aprovado. As respostas livres são permitidas nas 24 horas seguintes à última mensagem de WhatsApp do utilizador; fora dessa janela, utilize templates aprovados. A submissão de um formulário de leads da Meta não abre, por si só, essa janela do WhatsApp.
+
+Respeite os pedidos de cancelamento e disponibilize uma forma clara de contactar uma pessoa. Mantenha os seguimentos relevantes e evite mensagens repetidas quando o candidato não responde.
+
+## 6. Testar o percurso do candidato
+
+Utilize dados de contacto que lhe pertençam e [teste a automação](/pt/automations/how-to-test-an-automation). Os testes com um utilizador podem enviar mensagens reais.
+
+Verifique o percurso completo:
+
+1. Submeta o formulário da Meta.
+2. Confirme que o candidato e a vaga pretendidos estão associados no Carerix.
+3. Verifique o remetente, o destinatário, o template e os dados da vaga na mensagem de WhatsApp.
+4. Responda às perguntas do formulário.
+5. Verifique se as respostas chegam aos campos corretos do candidato.
+6. Teste uma resposta incompleta e confirme que valores existentes úteis não são substituídos involuntariamente.
+
+Ative o seguimento depois de estas verificações serem bem-sucedidas.
+
+## Resolução de problemas
+
+- **Template em falta:** Verifique o estado de aprovação e sincronize a conta WhatsApp na HireData.
+- **Destinatário ou vaga errados:** Reveja o ID do candidato e o contexto do match utilizados pela tarefa de conversa.
+- **As respostas não são guardadas:** Verifique o objeto, o identificador e os mapeamentos de campos da tarefa de atualização.
+- **Vários seguimentos:** Reveja triggers e filtros sobrepostos, em especial se automações separadas estiverem atentas tanto à criação como às atualizações de matches.

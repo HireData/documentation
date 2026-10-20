@@ -1,0 +1,87 @@
+---
+title: "Créer une automatisation Meta Leads dans HireData"
+sidebarTitle: "Créer une automatisation"
+description: "Utilisez un nouveau lead Meta pour trouver un poste et créer une candidature Carerix, avec mapping des champs, tests et dépannage."
+---
+
+Transformez un nouveau lead Meta en candidature dans Carerix :
+
+**Lead Meta reçu → trouver le poste → ajouter la candidature**
+
+Ce guide utilise le flux Carerix. Un **candidat** est la personne ; un **match** relie ce candidat à un poste spécifique. La création du match fait partie de ce workflow.
+
+## Avant de commencer
+
+- [Connectez Meta Leads](/fr/apps/meta-leads/connect-with-meta-leads) et vérifiez que la Page et le formulaire sont disponibles.
+- Connectez Carerix à HireData.
+- Collectez le prénom et le nom séparément et incluez une adresse e-mail dans le formulaire de leads.
+- Ajoutez un paramètre de formulaire contenant l'identifiant de poste utilisé dans votre recherche Carerix.
+- Choisissez l'étape du match, la source du match et le propriétaire du candidat à utiliser. Assurez-vous que ces valeurs existent dans Carerix.
+
+Vous pouvez partir du [modèle Meta Lead Created to Job Application](https://api.hiredata.com/templates/meta-lead-created-to-job-application/use) ou configurer les étapes ci-dessous.
+
+## 1. Configurer le déclencheur
+
+Créez une nouvelle automatisation et sélectionnez **Meta Leads** comme app de départ.
+
+Définissez l'objet sur **Lead** et l'événement sur **Created**. Choisissez la connexion, la Page Facebook et le formulaire de la campagne.
+
+Commencez par un formulaire précis afin de pouvoir vérifier ses champs et ses mappings avant d'étendre la configuration à d'autres campagnes.
+
+## 2. Trouver le poste
+
+Ajoutez une étape **Find** pour **Vacancy** dans Carerix. Faites correspondre l'identifiant du poste avec le paramètre reçu du formulaire Meta.
+
+Utilisez la valeur provenant du lead plutôt qu'un poste fixe si le workflow gère des campagnes pour différents postes. Vérifiez que la recherche renvoie le poste voulu avant de continuer.
+
+## 3. Ajouter la candidature
+
+Ajoutez l'action Carerix **Job Application**. Configurez la recherche du poste et du candidat, puis mappez les valeurs entrantes :
+
+| Paramètre | Valeur à utiliser |
+| --- | --- |
+| Vacancy | Le poste identifié par le paramètre du formulaire. |
+| Recherche du candidat | L'adresse e-mail reçue avec le lead. |
+| Étape du match | L'étape d'entrée choisie pour les candidatures Meta. |
+| Source du match | La source configurée pour les campagnes Meta. |
+| Prénom et nom du candidat | Les champs de nom distincts du lead. |
+| E-mail et numéro de mobile du candidat | Les champs correspondants du lead. |
+| Propriétaire du candidat | Le recruteur responsable du candidat. |
+
+Choisissez les champs disponibles dans le formulaire sélectionné. Les questions personnalisées diffèrent d'un formulaire à l'autre ; ne supposez pas qu'un mapping conçu pour un formulaire convient à un autre.
+
+<Note>
+Ce flux Carerix crée un match pour un poste. Il ne s'agit pas d'un simple import de candidats. Séparez les informations du candidat des champs propres à la candidature, comme l'étape et la source du match.
+</Note>
+
+## 4. Tester le flux complet
+
+Utilisez un lead contrôlé avec des coordonnées qui vous appartiennent. Suivez [Comment tester une automatisation](/fr/automations/how-to-test-an-automation) et vérifiez les détails de l'exécution.
+
+Vérifiez que :
+
+- Le lead appartient à la Page et au formulaire configurés.
+- La recherche du poste renvoie le bon poste.
+- La recherche du candidat utilise l'adresse e-mail attendue.
+- La candidature relie le bon candidat au bon poste.
+- Le nom, l'e-mail, le numéro de mobile, le propriétaire, l'étape du match et la source sont corrects.
+
+Contrôlez le résultat dans Carerix ainsi que dans HireData. Un déclencheur réussi ne signifie pas que tous les champs de destination sont corrects.
+
+## 5. Activer et surveiller
+
+Activez l'automatisation une fois que le test produit le résultat attendu. Vérifiez les premières soumissions réelles et les matchs Carerix correspondants pour confirmer que la campagne utilise les mêmes champs que votre test.
+
+## Dépannage
+
+| Problème | Points à vérifier |
+| --- | --- |
+| Aucune exécution n'apparaît | La Page et le formulaire sélectionnés, ainsi que l'accès de la connexion Meta aux données de leads. |
+| Le poste est introuvable | La valeur du paramètre du formulaire et l'identifiant utilisé par la recherche. |
+| Les champs du candidat sont vides | Les réponses soumises et les champs mappés, en particulier les prénom et nom distincts. |
+| La candidature échoue | La recherche du poste, les champs obligatoires ainsi que l'étape, la source et le propriétaire configurés dans Carerix. |
+| Un autre candidat est associé | L'e-mail soumis et la configuration de la recherche du candidat. Corrigez la recherche avant de relancer. |
+
+## Étape suivante
+
+Utilisez le [suivi WhatsApp](/fr/apps/meta-leads/enriching-meta-leads-via-whatsapp) pour collecter les informations manquantes une fois le lead associé au bon candidat et au bon poste.

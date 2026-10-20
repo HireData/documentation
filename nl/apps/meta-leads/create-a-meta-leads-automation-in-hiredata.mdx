@@ -1,0 +1,87 @@
+---
+title: "Een Meta Leads-automatisering maken in HireData"
+sidebarTitle: "Een automatisering maken"
+description: "Gebruik een nieuwe Meta-lead om een vacature te vinden en een Carerix-sollicitatie aan te maken, inclusief veldmapping, testen en probleemoplossing."
+---
+
+Zet een nieuwe Meta-lead om in een sollicitatie in Carerix:
+
+**Meta-lead ontvangen → vacature vinden → sollicitatie toevoegen**
+
+Deze gids gebruikt de Carerix-flow. Een **kandidaat** is de persoon; een **match** koppelt die kandidaat aan een specifieke vacature. Het aanmaken van de match is onderdeel van deze workflow.
+
+## Voordat je begint
+
+- [Verbind Meta Leads](/nl/apps/meta-leads/connect-with-meta-leads) en controleer of de pagina en het formulier beschikbaar zijn.
+- Verbind Carerix met HireData.
+- Verzamel voor- en achternaam apart en neem een e-mailadres op in het leadformulier.
+- Voeg een formulierparameter toe met de vacature-identifier die je Carerix-lookup gebruikt.
+- Bepaal welke match-stage, match-bron en kandidaateigenaar je wilt gebruiken. Zorg dat die waarden bestaan in Carerix.
+
+Je kunt starten vanuit de [Meta Lead Created to Job Application-template](https://api.hiredata.com/templates/meta-lead-created-to-job-application/use) of de onderstaande stappen zelf configureren.
+
+## 1. De trigger configureren
+
+Maak een nieuwe automatisering en selecteer **Meta Leads** als start-app.
+
+Stel het object in op **Lead** en het event op **Created**. Kies de verbinding, Facebook-pagina en het formulier voor de campagne.
+
+Begin met één specifiek formulier, zodat je de velden en mappings kunt controleren voordat je de setup uitbreidt naar andere campagnes.
+
+## 2. De vacature vinden
+
+Voeg een **Find**-stap toe voor **Vacancy** in Carerix. Match de vacature-identifier met de parameter die je van het Meta-formulier ontvangt.
+
+Gebruik de waarde uit de lead in plaats van een vaste vacature als de workflow campagnes voor verschillende functies afhandelt. Controleer of de lookup de bedoelde vacature teruggeeft voordat je verdergaat.
+
+## 3. De sollicitatie toevoegen
+
+Voeg de Carerix-actie **Job Application** toe. Configureer de lookup van vacature en kandidaat en map daarna de binnenkomende waarden:
+
+| Instelling | Te gebruiken waarde |
+| --- | --- |
+| Vacature | De vacature die door de formulierparameter is geïdentificeerd. |
+| Kandidaat-lookup | Het e-mailadres uit de lead. |
+| Match-stage | De gekozen instapstage voor Meta-sollicitaties. |
+| Match-bron | De bron die je hebt ingesteld voor Meta-campagnes. |
+| Voor- en achternaam kandidaat | De aparte naamvelden uit de lead. |
+| E-mailadres en mobiel nummer kandidaat | De bijbehorende leadvelden. |
+| Kandidaateigenaar | De recruiter die verantwoordelijk is voor de kandidaat. |
+
+Kies de velden die beschikbaar zijn in het geselecteerde formulier. Aangepaste vragen verschillen per formulier; ga er niet van uit dat de mapping voor het ene formulier ook voor een ander geldt.
+
+<Note>
+Deze Carerix-flow maakt een match aan voor een vacature. Het is geen import van alleen kandidaten. Houd kandidaatgegevens gescheiden van sollicitatiespecifieke velden zoals match-stage en bron.
+</Note>
+
+## 4. De volledige flow testen
+
+Gebruik een gecontroleerde lead met contactgegevens die van jou zijn. Volg [Een automatisering testen](/nl/automations/how-to-test-an-automation) en controleer de rundetails.
+
+Controleer of:
+
+- De lead hoort bij de geconfigureerde pagina en het formulier.
+- De vacature-lookup de juiste functie teruggeeft.
+- De kandidaat-lookup het verwachte e-mailadres gebruikt.
+- De sollicitatie de juiste kandidaat en vacature koppelt.
+- De naam, het e-mailadres, het mobiele nummer, de eigenaar, de match-stage en de bron kloppen.
+
+Bekijk het resultaat zowel in Carerix als in HireData. Een geslaagde trigger betekent niet dat elk veld in de doelapp correct is.
+
+## 5. Activeren en monitoren
+
+Activeer de automatisering zodra de test het verwachte resultaat oplevert. Controleer de eerste live inzendingen en de bijbehorende Carerix-matches om te bevestigen dat de campagne dezelfde velden gebruikt als je test.
+
+## Probleemoplossing
+
+| Probleem | Wat je controleert |
+| --- | --- |
+| Er verschijnt geen run | De geselecteerde pagina/het geselecteerde formulier en de toegang van de Meta-verbinding tot leaddata. |
+| De vacature wordt niet gevonden | De waarde van de formulierparameter en de identifier die de lookup gebruikt. |
+| Kandidaatvelden zijn leeg | De ingediende antwoorden en de gemapte velden, vooral de aparte voor- en achternaam. |
+| De sollicitatie mislukt | De vacature-lookup, verplichte velden en de ingestelde Carerix-stage, -bron en -eigenaar. |
+| Er wordt een andere kandidaat gekoppeld | Het ingediende e-mailadres en de configuratie van de kandidaat-lookup. Corrigeer de lookup voordat je opnieuw uitvoert. |
+
+## Volgende stap
+
+Gebruik [WhatsApp-opvolging](/nl/apps/meta-leads/enriching-meta-leads-via-whatsapp) om ontbrekende informatie te verzamelen nadat de lead aan de juiste kandidaat en vacature is gekoppeld.

@@ -1,0 +1,69 @@
+---
+title: "Verbindung mit Meta Leads herstellen"
+sidebarTitle: "Meta Leads verbinden"
+description: "Verbinden Sie Meta-Lead-Formulare mit HireData, bereiten Sie Ihre Formularfelder vor und prüfen Sie, ob die richtige Facebook-Seite und die richtigen Formulare verfügbar sind."
+---
+
+Verbinden Sie Meta Leads mit HireData, um eine Automatisierung zu starten, sobald jemand ein Lead-Formular aus einer Facebook- oder Instagram-Kampagne absendet. Wählen Sie nach dem Verbinden aus, auf welche Seite und welches Formular die Automatisierung reagieren soll.
+
+## Bevor Sie beginnen
+
+Sie benötigen:
+
+- Zugriff zur Verwaltung von Verbindungen in HireData.
+- Ein persönliches Facebook-Konto, das mit dem Business verknüpft ist, das die betreffende Seite verwaltet.
+- Zugriff auf diese Seite und ihre Lead-Daten.
+- Ein Lead-Formular für Einrichtung und Tests.
+
+Wenn Sie mehrere Businesses oder Seiten verwalten, prüfen Sie vor dem Verbinden, wem das Formular gehört.
+
+## Ihr Konto verbinden
+
+1. Öffnen Sie **Settings → Configuration → Apps** in HireData oder Carerix RMA.
+2. Wählen Sie **Meta Leads** und dann **New connection**.
+3. Melden Sie sich mit dem persönlichen Facebook-Konto an, das mit dem betreffenden Business verknüpft ist.
+4. Folgen Sie dem Verbindungsablauf von Meta und gewähren Sie Zugriff auf die Business-Assets, die für Ihre Seite und Ihre Leads benötigt werden.
+5. Schließen Sie den Ablauf ab und kehren Sie zu HireData zurück.
+
+## Ihr Lead-Formular vorbereiten
+
+Nehmen Sie die Felder auf, die Ihr Ziel-Workflow benötigt. Für den Carerix-Bewerbungsablauf:
+
+| Formularwert | Verwendung |
+| --- | --- |
+| Vor- und Nachname, getrennt erfasst | Befüllen die Namensfelder des Kandidaten. |
+| E-Mail-Adresse | Sucht den Kandidaten in Carerix. |
+| Telefonnummer | Befüllt die Mobilnummer des Kandidaten und ermöglicht eine spätere Nachverfolgung. |
+| Vakanz-Kennung in einem Formularparameter | Findet die Vakanz, mit der der Kandidat gematcht werden soll. |
+
+Verwenden Sie die Vakanz-Kennung, die Ihre Carerix-Suche erwartet. Gleichen Sie sie vor dem Testen mit einer bestehenden Vakanz ab.
+
+<Note>
+Die dokumentierte Carerix-Integration erstellt eine Bewerbung, in Carerix **Match** genannt. Planen Sie Vakanz, Match-Phase und Match-Quelle als Teil Ihrer Einrichtung ein.
+</Note>
+
+## Ihre Seite und Ihr Formular prüfen
+
+Erstellen Sie eine Automatisierung mit **Meta Leads** als Start-App und **Lead → Created** als Trigger. Wählen Sie Ihre Verbindung, Ihre Facebook-Seite und Ihr Formular aus.
+
+Wenn die Seite oder das Formular fehlt, prüfen Sie, ob sie zu dem verbundenen Business gehören und ob das Facebook-Konto Zugriff auf deren Leads hat. Wenn Sie kürzlich Berechtigungen geändert haben, verbinden Sie sich erneut und prüfen Sie die Auswahl noch einmal.
+
+## Die Verbindung überprüfen
+
+Fahren Sie mit [Eine Meta-Leads-Automatisierung erstellen](/de/apps/meta-leads/create-a-meta-leads-automation-in-hiredata) fort, um die Zielaufgaben zu konfigurieren und einen kontrollierten Test-Lead abzusenden.
+
+Prüfen Sie, ob die empfangenen Daten die erwarteten Namen, die E-Mail-Adresse, die Telefonnummer und den Vakanz-Parameter enthalten. Ein verbundenes Konto allein bestätigt nicht, dass die gesamte Automatisierung funktioniert.
+
+## Fehlerbehebung
+
+### Ein Formularfeld oder Parameter fehlt
+
+Stellen Sie sicher, dass es im ausgewählten Formular vorhanden ist und in Ihrer Testeinreichung einen Wert enthält. Aktualisieren Sie die Formularauswahl und geben Sie kürzlichen Änderungen etwas Zeit, bis sie verfügbar sind.
+
+### Leads aus einem Formular kommen an, aus anderen jedoch nicht
+
+Vergleichen Sie die Seite und das Formular, aus denen jeder Lead stammt, mit der Konfiguration des Triggers. Testen Sie jedes Formular, das Sie verwenden möchten; Formulare mit unterschiedlichen Fragen benötigen möglicherweise unterschiedliche Mappings.
+
+### Sie erhalten weiterhin keinen Test-Lead
+
+Wenden Sie sich an den HireData-Support und geben Sie die Kennungen der Seite und des Formulars, Zeitpunkt und Zeitzone der Einreichung sowie etwaige Verbindungs- oder Ausführungsfehler an. Diese Angaben helfen dem Support, das Ereignis nachzuverfolgen.

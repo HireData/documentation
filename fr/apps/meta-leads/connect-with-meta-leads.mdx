@@ -1,0 +1,69 @@
+---
+title: "Se connecter à Meta Leads"
+sidebarTitle: "Connecter Meta Leads"
+description: "Connectez les formulaires de génération de leads Meta à HireData, préparez les champs de vos formulaires et vérifiez que la bonne Page Facebook et les bons formulaires sont disponibles."
+---
+
+Connectez Meta Leads à HireData pour lancer une automatisation lorsqu'une personne soumet un formulaire de leads depuis une campagne Facebook ou Instagram. Après la connexion, choisissez la Page et le formulaire que l'automatisation doit écouter.
+
+## Avant de commencer
+
+Vous aurez besoin :
+
+- D'un accès permettant de gérer les connexions dans HireData.
+- D'un compte Facebook personnel lié à l'entreprise qui gère la Page concernée.
+- D'un accès à cette Page et à ses données de leads.
+- D'un formulaire de leads à utiliser pour la configuration et les tests.
+
+Si vous gérez plusieurs entreprises ou Pages, vérifiez laquelle possède le formulaire avant de vous connecter.
+
+## Connecter votre compte
+
+1. Ouvrez **Settings → Configuration → Apps** dans HireData ou Carerix RMA.
+2. Sélectionnez **Meta Leads**, puis **New connection**.
+3. Connectez-vous avec le compte Facebook personnel lié à l'entreprise concernée.
+4. Suivez le processus de connexion de Meta et accordez l'accès aux ressources de l'entreprise nécessaires pour votre Page et vos leads.
+5. Terminez le processus et revenez dans HireData.
+
+## Préparer votre formulaire de leads
+
+Incluez les champs dont votre workflow de destination a besoin. Pour le flux de candidature Carerix :
+
+| Valeur du formulaire | Utilisation |
+| --- | --- |
+| Prénom et nom, collectés séparément | Renseignent les champs de nom du candidat. |
+| Adresse e-mail | Permet de rechercher le candidat dans Carerix. |
+| Numéro de téléphone | Renseigne le numéro de mobile du candidat et permet un suivi ultérieur. |
+| Identifiant du poste dans un paramètre du formulaire | Permet de trouver le poste auquel le candidat doit être associé. |
+
+Utilisez l'identifiant de poste attendu par votre recherche Carerix. Vérifiez-le avec un poste existant avant de tester.
+
+<Note>
+L'intégration Carerix documentée crée une candidature, appelée **match** dans Carerix. Prévoyez le poste, l'étape du match et la source du match dans le cadre de votre configuration.
+</Note>
+
+## Vérifier votre Page et votre formulaire
+
+Créez une automatisation avec **Meta Leads** comme app de départ et **Lead → Created** comme déclencheur. Sélectionnez votre connexion, votre Page Facebook et votre formulaire.
+
+Si la Page ou le formulaire n'apparaît pas, vérifiez qu'il appartient à l'entreprise que vous avez connectée et que le compte Facebook a accès à ses leads. Si vous avez récemment modifié des autorisations, reconnectez-vous et vérifiez à nouveau la sélection.
+
+## Vérifier la connexion
+
+Poursuivez avec [Créer une automatisation Meta Leads](/fr/apps/meta-leads/create-a-meta-leads-automation-in-hiredata) pour configurer les tâches de destination et soumettre un lead de test contrôlé.
+
+Vérifiez que les données reçues contiennent les noms, l'adresse e-mail, le numéro de téléphone et le paramètre de poste attendus. Un compte connecté ne suffit pas à vérifier que l'automatisation complète fonctionne.
+
+## Dépannage
+
+### Un champ ou un paramètre du formulaire est manquant
+
+Vérifiez qu'il existe dans le formulaire sélectionné et qu'il contient une valeur dans votre soumission de test. Actualisez la sélection du formulaire et laissez le temps aux modifications récentes de devenir disponibles.
+
+### Les leads d'un formulaire arrivent, mais pas ceux des autres
+
+Comparez la Page et le formulaire à l'origine de chaque lead avec la configuration du déclencheur. Testez chaque formulaire que vous comptez utiliser ; les formulaires comportant des questions différentes peuvent nécessiter des mappings différents.
+
+### Vous ne parvenez toujours pas à recevoir un lead de test
+
+Contactez le support HireData en indiquant les identifiants de la Page et du formulaire, l'heure et le fuseau horaire de la soumission, ainsi que toute erreur de connexion ou d'exécution. Ces informations aident le support à retracer l'événement.
