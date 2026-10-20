@@ -6,7 +6,7 @@ keywords: ["criar uma skill", "gravar uma skill", "skill personalizada Claude", 
 related: ["/apps/mcp/hiredata-skills", "/apps/mcp/install-hiredata-plugin", "/apps/mcp/keep-hiredata-skills-up-to-date"]
 ---
 
-[As skills da HireData](/pt/apps/mcp/hiredata-skills) cobrem o trabalho que a HireData conhece melhor. As coisas que _você_ faz sempre da mesma forma — o tom de voz da sua agência, a forma como reconstrói a assinatura de email de um cliente, a checklist que percorre antes de um workspace entrar em produção — são as que vale a pena registar. Uma skill é a forma de o fazer uma vez em vez de o explicar em cada conversa.
+[As skills da HireData](/pt/apps/mcp/hiredata-skills) cobrem o trabalho que a HireData conhece melhor. As coisas que _você_ faz sempre da mesma forma são as que vale a pena registar. Pense no tom de voz da sua agência, na forma como reconstrói a assinatura de email de um cliente ou na checklist que percorre antes de um workspace entrar em produção. Uma skill é a forma de o fazer uma vez em vez de o explicar em cada conversa.
 
 Uma skill é uma pasta com um ficheiro `SKILL.md` lá dentro: texto simples, sem necessidade de código. Nunca mais precisa de a mencionar. O seu assistente verifica a descrição de cada skill que tem instalada e lê as instruções completas sempre que o seu pedido corresponde a uma delas.
 
@@ -18,7 +18,7 @@ Os bons candidatos partilham três características:
 - **O método é estável.** Daria a um novo colega as mesmas instruções hoje e há um ano.
 - **Há uma resposta certa.** O estilo da casa, uma ordem obrigatória de passos, um formato que tem de corresponder — coisas que um assistente adivinha mal a menos que lhas diga.
 
-Se for algo pontual, peça-o simplesmente. Uma skill que nunca é acionada é entulho.
+Se for algo pontual, peça-o diretamente. Uma skill que nunca é acionada é entulho.
 
 ## Antes de começar
 
@@ -32,7 +32,7 @@ Esta é a rota mais fácil e funciona em qualquer conversa do Claude. Já fez a 
 
 <Steps>
   <Step title="Faça a tarefa uma vez, como deve ser">
-    Trabalhe nela com o seu assistente até o resultado ser aquilo que realmente quer. Corrija-o à medida que avança — _"não, os ícones ficam sempre por baixo do número de telefone"_ — porque essas correções são a parte valiosa.
+    Trabalhe nela com o seu assistente até o resultado ser aquilo que realmente quer. Corrija-o à medida que avança, por exemplo _"não, os ícones ficam sempre por baixo do número de telefone"_. Essas correções são a parte valiosa.
   </Step>
   <Step title="Peça a skill">
     Na mesma conversa, cole:
@@ -68,7 +68,7 @@ Reconstruir a assinatura de email do ATS de um cliente como template de email da
 Faça uma assinatura com o seu assistente. Diga-lhe que partes são fixas e quais vêm de [variáveis](/pt/variables/introduction), onde fica o logótipo, o que acontece quando falta um número de telefone e que ícones os seus clientes usam. Depois execute o prompt acima. A próxima assinatura começa a partir do seu método em vez de começar do zero.
 
 <Note>
-  Os ícones e logótipos num template de email têm de estar alojados num local acessível aos seus destinatários. Cubra isso na skill — de onde vêm as imagens e o que fazer quando um cliente não as forneceu — para que a skill não fique presa nesse ponto de cada vez.
+  Os ícones e logótipos num template de email têm de estar alojados num local acessível aos seus destinatários. Cubra isso na skill: de onde vêm as imagens e o que fazer quando um cliente não as forneceu. Assim, a skill não fica presa nesse ponto de cada vez.
 </Note>
 
 ## Rota 2: grave-se a fazê-lo
@@ -84,7 +84,7 @@ Antes de começar: o seu vídeo e áudio não são guardados, apenas capturas de
     Clique em **\+** no compositor e selecione **Record a skill**, ou vá a **Customize** \> **Skills**, clique em **Add** e selecione **Record your screen**.
   </Step>
   <Step title="Faça a tarefa e narre">
-    Trabalhe ao seu ritmo normal, até cerca de dez minutos, e diga o que está a fazer e porquê — _"verifico sempre a marca primeiro, porque é isso que decide o remetente"_. O raciocínio é o que torna a skill valiosa; os cliques sozinhos não.
+    Trabalhe ao seu ritmo normal, até cerca de dez minutos, e diga o que está a fazer e porquê, por exemplo _"verifico sempre a marca primeiro, porque é isso que decide o remetente"_. O raciocínio é o que torna a skill valiosa; os cliques sozinhos não.
   </Step>
   <Step title="Reveja o que o Claude propõe">
     O Claude analisa a gravação e propõe uma nova skill, ou uma atualização de uma que já tem. Leia-a antes de guardar: uma gravação apanha detalhes do caso único que demonstrou. Apague tudo o que não será verdade da próxima vez.

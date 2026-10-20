@@ -7,7 +7,7 @@ _Lorsque vous connectez votre ATS, tel que Carerix, Salesforce, OTYS, etc., à H
 
 ## Qu'est-ce qu'un événement
 
-Un événement est un signal envoyé depuis votre app connectée vers HireData. Il représente généralement une action ou un changement spécifique, par exemple, la création d'un nouveau candidat, la mise à jour d'une offre, la finalisation d'un placement, etc. HireData utilise ces événements pour déclencher les automatisations que vous avez mises en place, et chaque événement comprend des **Event Data**, des **External Records** et des **Runs**.
+Un événement est un signal envoyé depuis votre app connectée vers HireData. Il représente généralement une action ou un changement spécifique, par exemple, la création d'un nouveau candidat, la mise à jour d'une offre, la finalisation d'un placement, etc. HireData utilise ces événements pour déclencher les automatisations que vous avez mises en place. Chaque événement comprend des **Event Data**, des **External Records** et des **Runs**.
 
 _Exemple d'événement :_
 
@@ -43,10 +43,10 @@ Cela ouvre la vue détaillée de l'événement, qui comprend :
 
 ## Rejouer des événements
 
-Si un événement ne déclenche pas une automatisation comme prévu, ou si une exécution échoue avant de terminer ses tâches, vous pouvez rejouer des événements individuels ou multiples pour redéclencher les automatisations et remettre les choses sur les rails.
+Si un événement ne déclenche pas une automatisation comme prévu, ou si une exécution échoue avant de terminer ses tâches, vous pouvez le rejouer. Rejouer un ou plusieurs événements redéclenche les automatisations et remet les choses sur les rails.
 
 <Warning>
-  Lorsque vous rejouez un événement, cela peut déclencher des exécutions dans plusieurs automatisations à la fois. Avant de rejouer, vérifiez toujours quelles automatisations et exécutions seront affectées, en particulier si l'une d'elles inclut l'envoi d'un e-mail ou d'un message. Rejouer ceux-ci sans vérifier au préalable pourrait entraîner l'envoi de messages en double aux candidats ou contacts.
+  Lorsque vous rejouez un événement, cela peut déclencher des exécutions dans plusieurs automatisations à la fois. Avant de rejouer, vérifiez toujours quelles automatisations et exécutions seront affectées, en particulier si l'une d'elles inclut l'envoi d'un e-mail ou d'un message. Rejouer ceux-ci sans vérifier au préalable pourrait envoyer des messages en double aux candidats ou contacts.
 </Warning>
 
 ### Que se passe-t-il lorsqu'un événement est rejoué ?
@@ -116,7 +116,7 @@ Si aucune exécution n'a été créée, il se peut que l'événement n'ait pas r
 
 ### Besoin d'aide supplémentaire ?
 
-Si vous n'êtes pas sûr de pourquoi un événement n'a pas déclenché votre automatisation ou souhaitez de l'aide pour interpréter les données de l'événement, n'hésitez pas à contacter notre équipe à [support@hiredata.com](mailto:support@hiredata.com). Si vous le faites, incluez :
+Si vous n'êtes pas sûr de pourquoi un événement n'a pas déclenché votre automatisation ou souhaitez de l'aide pour interpréter les données de l'événement, contactez l'équipe HireData à [support@hiredata.com](mailto:support@hiredata.com). Si vous le faites, incluez :
 
 - Un lien ou l'ID de l'événement ;
 - Un lien ou le nom de l'automatisation que vous vous attendiez à voir se déclencher ;

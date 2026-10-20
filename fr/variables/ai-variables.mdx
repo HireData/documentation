@@ -147,7 +147,7 @@ C'est la dernière phrase qui compte le plus. Dites quoi faire quand la donnée 
 
 ## Limitations
 
-**Elle se résout une fois par envoi, puis se répète.** La valeur est générée la première fois que la variable est référencée et réutilisée pour toutes les autres mentions dans le même message — `{{ celebration }}` deux fois dans un e-mail donne donc deux fois la même phrase, pas deux tentatives. Elle est recalculée quand ses entrées changent, ce qui la rend propre à chaque destinataire. Une variable sans entrées attachées n'a rien sur quoi varier.
+**Elle se résout une fois par envoi, puis se répète.** La valeur est générée la première fois que la variable est référencée et réutilisée pour toutes les autres mentions dans le même message. Utiliser `{{ celebration }}` deux fois dans un e-mail donne deux fois la même phrase, pas deux tentatives. Elle est recalculée quand ses entrées changent, ce qui la rend propre à chaque destinataire. Une variable sans entrées attachées n'a rien sur quoi varier.
 
 **Une valeur par défaut stockée n'est pas un filet de sécurité.** Pour une variable IA, la valeur par défaut est l'emplacement dans lequel la valeur générée est écrite, pas une valeur de repli que vous pouvez définir. Si le modèle ne renvoie rien, la variable se résout en rien. Pour garantir que quelque chose apparaisse sur la page, utilisez le modificateur [`default`](/fr/variables/modifiers#valeur-de-repli) là où vous la référencez :
 

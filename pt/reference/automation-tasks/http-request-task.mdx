@@ -140,7 +140,7 @@ O separador **Body** abre com uma escolha, `Form` ou `Raw`: se o corpo sai como 
 
 **`Form`** oferece duas codificações, `Multipart form` e `Form URL encoded`, e uma tabela de linhas de nome e valor. Um endpoint que recebe um formulário normalmente documenta uma das duas e rejeita a outra, por isso verifique qual antes de escolher.
 
-**`Raw`** oferece quatro formatos — `JSON`, `XML`, `Text` e `GraphQL` — para um endpoint que documenta XML ou uma query GraphQL em vez de JSON. Acrescenta um terceiro controlo, `Builder` ou `Code`: se constrói o corpo a partir de propriedades tipadas ou o escreve você mesmo. Use o que lhe convier. Ainda sem nada dentro, o separador mostra "No body properties yet" e aponta para ambos: "Add typed properties to build the request body, or switch to the raw editor."
+**`Raw`** oferece quatro formatos (`JSON`, `XML`, `Text` e `GraphQL`) para um endpoint que documenta XML ou uma query GraphQL em vez de JSON. Acrescenta um terceiro controlo, `Builder` ou `Code`: se constrói o corpo a partir de propriedades tipadas ou o escreve você mesmo. Use o que lhe convier. Ainda sem nada dentro, o separador mostra "No body properties yet" e aponta para ambos: "Add typed properties to build the request body, or switch to the raw editor."
 
 Há duas formas de aninhar, e a rápida está no nome: "Use dots in property names to nest objects, e.g. candidate.email."
 
@@ -154,7 +154,7 @@ Uma propriedade chamada `candidate.email` envia, portanto, o endereço dentro de
 }
 ```
 
-A outra forma é estrutural. Dê a uma propriedade o tipo **Collection** — "A repeating list of objects, e.g. line items or attendees" — ou torne-a um objeto, e ela torna-se uma linha de grupo com um botão **Add child property**. Construa a forma dessa maneira quando o endpoint quer um array de coisas em vez de uma só, algo que os nomes com pontos não conseguem exprimir. Cada propriedade também tem **Edit property** e **Remove**.
+A outra forma é estrutural. Dê a uma propriedade o tipo **Collection** ("A repeating list of objects, e.g. line items or attendees") ou torne-a um objeto, e ela torna-se uma linha de grupo com um botão **Add child property**. Construa a forma dessa maneira quando o endpoint quer um array de coisas em vez de uma só, algo que os nomes com pontos não conseguem exprimir. Cada propriedade também tem **Edit property** e **Remove**.
 
 Um pedido `GET` não envia corpo. Selecione `GET` e o separador inteiro torna-se uma linha: "This request method does not send a body."
 
@@ -334,7 +334,7 @@ O separador **Advanced** termina com dois interruptores. Respondem a perguntas s
 
 **Fail on error responses** está ligado por predefinição: "Treat 4xx and 5xx responses as a failed task."
 
-Desligue-o quando um non-2xx é uma resposta normal deste endpoint e não um problema — um `404` de uma pesquisa que simplesmente não encontrou nada, por exemplo. A tarefa então conclui-se, e o que fazer com o código fica ao seu critério numa tarefa posterior.
+Desligue-o quando um non-2xx é uma resposta normal deste endpoint e não um problema, como um `404` de uma pesquisa que não encontrou nada. A tarefa então conclui-se, e o que fazer com o código fica ao seu critério numa tarefa posterior.
 
 **Continue automation on failure** está desligado por predefinição: "The run continues with the next step even if this request fails."
 
@@ -348,7 +348,7 @@ Entre os dois, decidem o destino daquele `404` esperado. Desligue o primeiro int
 
 Abra um run e um HTTP Request concluído mostra:
 
-- A sua **Description** como título, o método e o host por baixo — `GET api.example.com` — e o path abaixo disso
+- A sua **Description** como título, o método e o host por baixo (`GET api.example.com`) e o path abaixo disso
 - **What will you provide?** e **What will you get back?**: o pedido que configurou e a resposta que descreveu
 - Uma fila de chips para as definições que moldaram a chamada. O tipo de autenticação, o timeout e os retries estão sempre lá — `Bearer token`, `30s`, `No retries`. Os restantes só aparecem depois de os ligar: um backoff quando os retries estão acima de `0`, `Ignores error statuses` quando **Fail on error responses** está desligado, e `Continues on failure` quando **Continue automation on failure** está ligado
 
@@ -368,11 +368,11 @@ Se o destino for claramente público e ainda assim vir isto, reporte em vez de c
 
 **Post Webhook** é a outra tarefa para enviar dados para fora da HireData, e é aquela que a tarefa HTTP Request substitui. As automações que já a utilizam continuam a funcionar exatamente como agora, e nada nelas precisa de ser alterado manualmente.
 
-Uma migração única converterá esses passos em tarefas HTTP Request. Corre uma vez, do nosso lado, e não é algo que acione ou para o qual se prepare. Construa tudo o que for novo como tarefa HTTP Request; deixe o que já tem em paz.
+Uma migração única converterá esses passos em tarefas HTTP Request. Corre uma vez, do lado da HireData, e não é algo que acione ou para o qual se prepare. Construa tudo o que for novo como tarefa HTTP Request; deixe o que já tem em paz.
 
 ## Ainda precisa de ajuda?
 
-Se um pedido não se está a comportar como esperado, contacte a nossa equipa em [support@hiredata.com](mailto:support@hiredata.com) e inclua:
+Se um pedido não se está a comportar como esperado, contacte a equipa da HireData em [support@hiredata.com](mailto:support@hiredata.com) e inclua:
 
 - Um link para a automação
 - O método e o URL da tarefa, com quaisquer credenciais removidas

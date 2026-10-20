@@ -7,7 +7,7 @@ _Wanneer je je ATS koppelt, zoals Carerix, Salesforce, OTYS, enz., aan HireData,
 
 ## Wat is een event
 
-Een event is een signaal dat vanuit je gekoppelde app naar HireData wordt gestuurd. Het vertegenwoordigt meestal een specifieke actie of wijziging, bijvoorbeeld een nieuwe kandidaat die wordt aangemaakt, een vacature die wordt bijgewerkt, een placement die is voltooid, enz. HireData gebruikt deze events om de automatiseringen te triggeren die je hebt opgezet, en elk event bevat **Event Data**, **External Records** en **Runs**.
+Een event is een signaal dat vanuit je gekoppelde app naar HireData wordt gestuurd. Het vertegenwoordigt meestal een specifieke actie of wijziging, bijvoorbeeld een nieuwe kandidaat die wordt aangemaakt, een vacature die wordt bijgewerkt, een placement die is voltooid, enz. HireData gebruikt deze events om de automatiseringen te triggeren die je hebt opgezet. Elk event bevat **Event Data**, **External Records** en **Runs**.
 
 _Voorbeeldevent:_
 
@@ -43,10 +43,10 @@ Dit opent de detailweergave van het event, die het volgende bevat:
 
 ## Events opnieuw afspelen
 
-Als een event niet een automatisering triggert zoals verwacht, of een run mislukt voordat de taken zijn voltooid, kun je individuele of meerdere events opnieuw afspelen om automatiseringen opnieuw te triggeren en dingen weer op de rails te krijgen.
+Als een event niet een automatisering triggert zoals verwacht, of een run mislukt voordat de taken zijn voltooid, kun je het event opnieuw afspelen. Door een of meer events opnieuw af te spelen, worden de automatiseringen opnieuw getriggerd en krijg je alles weer op de rails.
 
 <Warning>
-  Wanneer je een event opnieuw afspeelt, kan het runs triggeren over meerdere automatiseringen tegelijk. Controleer voor het opnieuw afspelen altijd welke automatiseringen en runs worden beïnvloed, vooral als een van deze het versturen van een e-mail of bericht omvat. Ze opnieuw afspelen zonder eerst te controleren kan resulteren in duplicaatberichten die naar kandidaten of contacten worden verzonden.
+  Wanneer je een event opnieuw afspeelt, kan het runs triggeren over meerdere automatiseringen tegelijk. Controleer voor het opnieuw afspelen altijd welke automatiseringen en runs worden beïnvloed, vooral als een van deze het versturen van een e-mail of bericht omvat. Ze opnieuw afspelen zonder eerst te controleren kan ertoe leiden dat er dubbele berichten naar kandidaten of contacten worden verzonden.
 </Warning>
 
 ### Wat gebeurt er wanneer een event opnieuw wordt afgespeeld?
@@ -117,8 +117,8 @@ Als er geen run is aangemaakt, voldeed het event mogelijk niet aan de criteria v
 
 ### Toch nog hulp nodig?
 
-Als je niet zeker weet waarom een event je automatisering niet heeft getriggerd of hulp wilt bij het interpreteren van de eventdata, neem dan gerust contact op met ons team via [support@hiredata.com](mailto:support@hiredata.com). Voeg als je dat doet toe:
+Als je niet zeker weet waarom een event je automatisering niet heeft getriggerd of hulp wilt bij het interpreteren van de eventdata, neem dan contact op met het HireData-team via [support@hiredata.com](mailto:support@hiredata.com). Voeg als je dat doet toe:
 
 - Een link of het ID van het event;
 - Een link of de naam van de automatisering die je verwachtte te triggeren;
-- Alle relevante stappen of context die ons kunnen helpen verder te onderzoeken.
+- Alle relevante stappen of context die het team kunnen helpen verder te onderzoeken.

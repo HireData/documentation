@@ -4,7 +4,7 @@ sidebarTitle: "Protéger les rôles utilisateur"
 description: "Utilisez le paramètre Enable Third-Party Sync pour empêcher que le rôle d'un utilisateur HireData soit écrasé lors des synchronisations avec votre ATS."
 ---
 
-_Lorsque HireData se synchronise avec votre ATS, il peut mettre à jour automatiquement les rôles utilisateur, ce qui écrase parfois les accès personnalisés que vous avez configurés manuellement. Cet article explique comment utiliser le paramètre **Enable Third-Party Sync** pour empêcher le rôle d'un utilisateur dans HireData d'être modifié lors de la synchronisation, et quand vous voudriez faire cela._
+_Lorsque HireData se synchronise avec votre ATS, il peut mettre à jour automatiquement les rôles utilisateur, ce qui écrase parfois les accès personnalisés que vous avez configurés manuellement. Cet article explique comment utiliser le paramètre **Enable Third-Party Sync** pour empêcher le rôle d'un utilisateur dans HireData d'être modifié lors de la synchronisation. Il explique aussi quand vous voudriez faire cela._
 
 ## À quoi sert ce paramètre ?
 
@@ -16,7 +16,7 @@ Désactiver le paramètre **Enable Third-Party Sync** pour un utilisateur spéci
 - Cela **s'applique également aux utilisateurs ayant des rôles supplémentaires** dans Carerix. Si un utilisateur a plusieurs rôles sous différents labels au sein d'un même environnement Carerix, et que l'un de ces rôles supplémentaires n'est pas admin, HireData peut incorrectement le remettre à un utilisateur ordinaire lors de la synchronisation. Désactiver ce paramètre empêche cela.
 
 <Note>
-  Pour les utilisateurs Carerix : si le paramètre est désactivé pour un utilisateur qui est Admin dans HireData, mais qui a un rôle différent dans Carerix (par ex. User, Marketer, Sales), il ne pourra pas accéder aux éléments de menu RMA dans Carerix, car il doit avoir des permissions admin spécifiquement dans Carerix.
+  Pour les utilisateurs Carerix : si le paramètre est désactivé pour un utilisateur qui est Admin dans HireData, mais qui a un rôle différent dans Carerix (par ex. User, Marketer, Sales), il ne pourra pas accéder aux éléments de menu RMA dans Carerix. Ces éléments nécessitent des permissions admin spécifiquement dans Carerix.
 </Note>
 
 ![L'interrupteur Enable Third-Party Sync dans les paramètres d'Access Control d'un utilisateur](/images/intercom/146220971-Screenshot-2026-05-27-at-13_51_33.png)

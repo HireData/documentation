@@ -140,7 +140,7 @@ Der Tab **Body** beginnt mit einer Wahl, `Form` oder `Raw`: ob der Body als Form
 
 **`Form`** bietet zwei Kodierungen, `Multipart form` und `Form URL encoded`, und eine Tabelle mit Namens- und Wertzeilen. Ein Endpunkt, der ein Formular annimmt, dokumentiert in der Regel eine der beiden und lehnt die andere ab – prüfen Sie also vor der Wahl, welche es ist.
 
-**`Raw`** bietet vier Formate – `JSON`, `XML`, `Text` und `GraphQL` – für einen Endpunkt, der XML oder eine GraphQL-Query statt JSON dokumentiert. Es kommt ein drittes Bedienelement hinzu, `Builder` oder `Code`: ob Sie den Body aus typisierten Eigenschaften bauen oder ihn selbst ausschreiben. Nutzen Sie, was Ihnen liegt. Solange noch nichts darin steht, zeigt der Tab „No body properties yet" und verweist auf beides: „Add typed properties to build the request body, or switch to the raw editor."
+**`Raw`** bietet vier Formate (`JSON`, `XML`, `Text` und `GraphQL`) für einen Endpunkt, der XML oder eine GraphQL-Query statt JSON dokumentiert. Es kommt ein drittes Bedienelement hinzu, `Builder` oder `Code`: ob Sie den Body aus typisierten Eigenschaften bauen oder ihn selbst ausschreiben. Nutzen Sie, was Ihnen liegt. Solange noch nichts darin steht, zeigt der Tab „No body properties yet" und verweist auf beides: „Add typed properties to build the request body, or switch to the raw editor."
 
 Es gibt zwei Arten zu verschachteln, und die schnelle steckt im Namen: „Use dots in property names to nest objects, e.g. candidate.email."
 
@@ -154,7 +154,7 @@ Eine Eigenschaft namens `candidate.email` sendet die Adresse daher innerhalb ein
 }
 ```
 
-Der andere Weg ist strukturell. Geben Sie einer Eigenschaft den Typ **Collection** – „A repeating list of objects, e.g. line items or attendees" – oder machen Sie sie zu einem Objekt, und sie wird zu einer Gruppenzeile mit einer Schaltfläche **Add child property**. Bauen Sie die Form auf diese Weise aus, wenn der Endpunkt ein Array von Dingen statt eines einzelnen erwartet – das können Namen mit Punkten nicht ausdrücken. Jede Eigenschaft hat außerdem **Edit property** und **Remove**.
+Der andere Weg ist strukturell. Geben Sie einer Eigenschaft den Typ **Collection** („A repeating list of objects, e.g. line items or attendees") oder machen Sie sie zu einem Objekt, und sie wird zu einer Gruppenzeile mit einer Schaltfläche **Add child property**. Bauen Sie die Form auf diese Weise aus, wenn der Endpunkt ein Array von Dingen statt eines einzelnen erwartet, was Namen mit Punkten nicht ausdrücken können. Jede Eigenschaft hat außerdem **Edit property** und **Remove**.
 
 Ein `GET`-Request sendet keinen Body. Wählen Sie `GET`, und der ganze Tab wird zu einer Zeile: „This request method does not send a body."
 
@@ -334,7 +334,7 @@ Der Tab **Advanced** endet mit zwei Schaltern. Sie beantworten getrennte Fragen,
 
 **Fail on error responses** ist standardmäßig an: „Treat 4xx and 5xx responses as a failed task."
 
-Schalten Sie ihn aus, wenn eine Non-2xx-Antwort für diesen Endpunkt eine normale Antwort ist statt eines Problems – etwa ein `404` von einem Lookup, der schlicht nichts gefunden hat. Die Aufgabe wird dann abgeschlossen, und was mit dem Code geschehen soll, entscheiden Sie in einer späteren Aufgabe.
+Schalten Sie ihn aus, wenn eine Non-2xx-Antwort für diesen Endpunkt eine normale Antwort ist statt eines Problems, etwa ein `404` von einem Lookup, der nichts gefunden hat. Die Aufgabe wird dann abgeschlossen, und was mit dem Code geschehen soll, entscheiden Sie in einer späteren Aufgabe.
 
 **Continue automation on failure** ist standardmäßig aus: „The run continues with the next step even if this request fails."
 
@@ -348,7 +348,7 @@ Zusammen entscheiden sie über das Schicksal des erwarteten `404`. Schalten Sie 
 
 Öffnen Sie einen Run, und ein abgeschlossener HTTP Request zeigt:
 
-- Seine **Description** als Titel, darunter die Methode und den Host – `GET api.example.com` – und darunter den Pfad
+- Seine **Description** als Titel, darunter die Methode und den Host (`GET api.example.com`) und darunter den Pfad
 - **What will you provide?** und **What will you get back?**: den Request, den Sie konfiguriert haben, und die Response, die Sie beschrieben haben
 - Eine Reihe von Chips für die Einstellungen, die den Aufruf geprägt haben. Der Auth-Typ, der Timeout und die Retries sind immer da – `Bearer token`, `30s`, `No retries`. Der Rest erscheint erst, wenn Sie ihn eingeschaltet haben: ein Backoff, wenn Retries über `0` liegen, `Ignores error statuses`, wenn **Fail on error responses** aus ist, und `Continues on failure`, wenn **Continue automation on failure** an ist
 
@@ -368,11 +368,11 @@ Wenn das Ziel eindeutig öffentlich ist und Sie das trotzdem sehen, melden Sie e
 
 **Post Webhook** ist die andere Aufgabe zum Senden von Daten aus HireData heraus, und sie ist es, die durch die HTTP-Request-Aufgabe ersetzt wird. Automatisierungen, die sie bereits nutzen, funktionieren exakt weiter wie bisher, und nichts daran muss von Hand geändert werden.
 
-Eine einmalige Migration wird diese Schritte in HTTP-Request-Aufgaben umwandeln. Sie läuft einmal, auf unserer Seite, und ist nichts, was Sie auslösen oder vorbereiten müssen. Bauen Sie alles Neue als HTTP-Request-Aufgabe; lassen Sie das, was Sie bereits haben, unverändert.
+Eine einmalige Migration wird diese Schritte in HTTP-Request-Aufgaben umwandeln. Sie läuft einmal, auf der Seite von HireData, und ist nichts, was Sie auslösen oder vorbereiten müssen. Bauen Sie alles Neue als HTTP-Request-Aufgabe; lassen Sie das, was Sie bereits haben, unverändert.
 
 ## Brauchen Sie noch Hilfe?
 
-Wenn sich ein Request nicht wie erwartet verhält, kontaktieren Sie unser Team unter [support@hiredata.com](mailto:support@hiredata.com) und geben Sie an:
+Wenn sich ein Request nicht wie erwartet verhält, kontaktieren Sie das HireData-Team unter [support@hiredata.com](mailto:support@hiredata.com) und geben Sie an:
 
 - Einen Link zur Automatisierung
 - Die Methode und URL der Aufgabe, mit entfernten Zugangsdaten
