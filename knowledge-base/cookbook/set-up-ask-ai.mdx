@@ -1,0 +1,120 @@
+---
+title: "Set up and troubleshoot Ask AI in an automation"
+sidebarTitle: "Ask AI"
+description: "Add an Ask AI step to an automation, test its answer with Preview, use the result in later steps, and fix common problems."
+keywords:
+  - "ask ai"
+  - "prompt step"
+  - "ai in automations"
+  - "match summary"
+  - "fit score"
+  - "extract"
+  - "classify"
+  - "ai troubleshooting"
+---
+
+Ask AI is the step in an automation that reads the run's data and gives back the answers you ask for: a fit score, a summary, a category, or one clean value pulled out of a longer text. The answers are stored as fields, so the next steps can write them to a record or decide what happens next. Your team still makes the decisions; Ask AI does the first read, the same way on every run.
+
+This guide explains how to set up the step, test it, use its answers, and resolve common problems. For every setting, see the [Prompt reference](/reference/automations/steps/prompt).
+
+## Before you start
+
+Decide two things first:
+
+- **The one question you want answered.** For example: "Is this candidate a good match for this vacancy?" A step that answers one clear question is easier to test and to trust than one that does five jobs.
+- **What happens with the answer.** Write it to the match, route the candidate, or send a message. If nothing uses the answer, the step only adds time and cost to every run.
+
+## Set up the step
+
+### 1. Add Ask AI to the automation
+
+Open the automation, click **+** where the step should go, and choose **Prompt**. The drawer that opens is headed **Ask AI**.
+
+Place the step after the trigger or task that loads the data it needs. Ask AI can only read what the run already has.
+
+### 2. Choose what the AI should do
+
+Under **What should the AI do?**, pick the job that fits:
+
+| Choose | When you want to |
+| --- | --- |
+| **Extract** | Pull specific values out of a text, such as a street name from an address |
+| **Summarize** | Turn a long text into a few lines for a recruiter |
+| **Classify** | Put a record in one of your own categories |
+| **Write** | Draft or rewrite a text in a chosen tone |
+| **Translate** | Turn a text into another language |
+| **Analyze** | Judge something, such as how well a candidate fits a vacancy |
+| **Evaluate** | Check a text against criteria you describe |
+| **Custom** | Write the whole instruction yourself |
+
+Every option except **Custom** creates the output fields that job usually returns, so you start from fields that already exist.
+
+### 3. Give it the data and the instruction
+
+Under **What will you provide to the AI?**:
+
+- In **Input**, write the instruction and insert the variables it needs, such as the vacancy's job title and the candidate's experience.
+- In **Variables**, add fields to pass alongside the instruction without writing them into the text.
+
+Use **Hints for the AI (optional)** for context and rules, such as "You are a recruiter. If the CV does not mention a driving licence, say so instead of guessing."
+
+### 4. Decide what comes back
+
+Under **What should the AI return?**, add one output field per answer:
+
+- **Use an existing field** to map the answer onto a field the automation already knows.
+- **Create custom** to define a new field. Pick the type that matches the answer: **Number** for a score, **Yes / No** for a check, **List** for one of your own options, **Text** for a summary.
+- Fill in **What is it for? (optional)**. It tells the model what belongs in the field.
+
+Give each field its own **Reference as** name. That name is how later steps find the answer.
+
+<Tip>
+  Use a **List** or **Yes / No** field for anything a later step branches on. A list can only return one of your options; free text gives a different sentence every time.
+</Tip>
+
+### 5. Set the language and model options
+
+- **Language**: leave it on **None** to answer in the input's language, or set a fixed language when the record or message expects one.
+- **Advanced**: choose **Speed vs quality**, **Creativity** and **Answer length**. For scores and checks, **Precise** gives the most consistent answers.
+
+## Test it with Preview
+
+Click **Preview** in the drawer footer to run the instruction on sample data before you save. Check every output field, not only the first one.
+
+Test more than one case: a strong candidate, a weak one, and a record with missing information. If the answer for the missing case is a guess, add a hint that says what to do when the information is not there.
+
+## Use the answer in later steps
+
+Each output field becomes a variable named after its **Reference as** value, such as `output.fit_score`. The step also records:
+
+| Variable | Holds |
+| --- | --- |
+| `is_successful` | Whether the model returned an answer that fits the fields |
+| `reasoning` | How the model reached the answer |
+| `error_message` | Why it could not answer, empty on success |
+
+Common next steps:
+
+- **Write it to the record.** An [Update](/reference/automations/steps/update) task writes the summary or score to the match or candidate.
+- **Route on it.** A [Filter](/reference/automations/steps/filter) or [Split](/reference/automations/steps/split) sends records down a different path based on a score or a list value.
+
+## Things to be aware of
+
+- **The answer is used as soon as it is returned.** Test with Preview and a few real records before the automation acts on the answer, especially before it declines a candidate or sends a message.
+- **A run that gets no answer stops.** When the model cannot answer, the step shows as Cancelled with the reason in the timeline, and the steps after it do not run. See [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
+- **An unexpected answer does not stop the run.** If a later step depends on the answer, check it first with a [Filter](/reference/automations/steps/filter).
+- **For one line inside an email**, an [AI variable](/variables/ai-variables) in the template is simpler than a step. Use Ask AI when the answer has to be stored or has to steer the run.
+
+## Troubleshoot Ask AI
+
+| What you see | What to check |
+| --- | --- |
+| The answer is vague or ignores this record | The instruction has no variables. Insert the fields it needs in **Input** or add them under **Variables**. |
+| One output field is always empty or overwritten | Two fields share the same **Reference as**. Give each field its own name. |
+| The answer is in the wrong language | **Language** is set to **None**, so it follows the input. Set a fixed language. |
+| Answers differ a lot between similar records | Set **Creativity** to **Precise** and make the instruction more specific about what a good answer contains. |
+| The run shows Cancelled at the Ask AI step | The model could not return an answer that fits the fields. Read the reason in the timeline, check the inputs, and simplify the fields. |
+| A later step uses a wrong value | Check the output with a **Filter** before that step, and test the case in **Preview**. |
+| The step name on the canvas did not change | **Step name** only changes the drawer header. The card and the variable names keep the automatic name. |
+
+If the step still does not behave as expected, contact [support@hiredata.com](mailto:support@hiredata.com) with the automation name, the Ask AI step, an example record, and the answer you expected.
