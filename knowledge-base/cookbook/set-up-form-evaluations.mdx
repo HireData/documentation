@@ -1,16 +1,21 @@
 ---
 title: "Set up and troubleshoot form evaluations"
 sidebarTitle: "Form evaluations"
-description: "Configure form evaluators, test their results, and fix common issues with criteria, scoring, skills, summaries, and generated fields."
+description: "Pre-screen completed forms with knock-out questions, scores and summaries: configure the evaluators, test their results and fix common issues."
 keywords:
   - "form evaluations"
+  - "pre-screening"
+  - "knock-out questions"
+  - "killer questions"
   - "form scoring"
   - "criteria"
   - "evaluation troubleshooting"
   - "test and evaluate"
 ---
 
-Use form evaluations to turn completed answers into a criteria verdict, a score, a skill profile, an internal summary, or custom outputs. This guide explains how to configure the evaluators, check their results, and resolve common setup problems.
+Form evaluations take on the first round of pre-screening. You describe your knock-out questions and what a good answer looks like once, and every completed response is checked the same way: a criteria verdict, a score, a skill profile, a summary for your recruiter, or custom outputs. Your team still makes the decisions.
+
+This guide explains how to configure the evaluators, check their results, and resolve common setup problems.
 
 ## Choose what you need
 
@@ -19,7 +24,7 @@ You can enable one evaluator or combine several.
 | Evaluator | Use it to | Result |
 | --- | --- | --- |
 | **Summary** | Give your team a short overview of the response. | An AI-written paragraph; no settings to configure. |
-| **Criteria** | Check whether answers meet your requirements. | Meets criteria, Partially meets criteria, Does not meet criteria, or Incomplete. |
+| **Criteria** | Check your must-haves (knock-out questions) and nice-to-haves. | Meets criteria, Partially meets criteria, Does not meet criteria, or Incomplete. |
 | **Scoring** | Award points to answers. | A percentage and a score range label, such as Low, Medium, or High. |
 | **Skills** | Identify which configured skills the answers indicate. | A percentage per skill and the strongest skill. |
 | **Generated fields** | Extract or generate values from the whole response. | A value for each output you define. |
@@ -44,7 +49,7 @@ Both the form-level switch and the question-level switch must be on. Turning an 
 
 Configure each selected question:
 
-- **Criteria:** Choose **Must-have** or **Nice-to-have**, then define the expected answer or AI instructions.
+- **Criteria:** Choose **Must-have** for a knock-out (or killer) question, where the wrong answer means the candidate does not meet your criteria. Choose **Nice-to-have** for something that helps you decide who to call first without ruling anyone out. Then define the expected answer or AI instructions.
 - **Scoring:** Set the question's maximum points, then define when points are awarded. If you use AI, the maximum must be greater than zero.
 - **Skills:** Add the skills you want to assess, then define which answers contribute to each skill and their weights. Add at least one skill before using AI assessment.
 
@@ -109,6 +114,12 @@ See [Test & Evaluate](/reference/forms/testing/test-and-evaluate) for the test s
 Completed responses are evaluated and the results are stored with them. Use **Export CSV** or **Export Excel** in the builder's three-dot menu to export results, including skill percentages and generated fields.
 
 To use a result in an automation, open **Automation variables** at the bottom of **Test & Evaluate** and copy the variable shown beside your test value. For example, the Criteria verdict uses `{{form_response.evaluation.screening}}`, with the values `passed`, `passed_with_restrictions`, `rejected`, or `incomplete`.
+
+Because every response is evaluated as soon as it is completed, an automation can follow up with each candidate straight away. For example, move the Match to the next stage when the result is **Meets criteria**, and send a short update to candidates who do not meet your criteria, so nobody is left waiting.
+
+<Warning>
+  There is no approval step yet: an automation uses the result as soon as it is stored. Test your AI instructions in **Test & Evaluate** before a result triggers a message to candidates.
+</Warning>
 
 For a worked example, see [Screen and score applicants with a pre-screening form](/knowledge-base/cookbook/pre-screening-form).
 
