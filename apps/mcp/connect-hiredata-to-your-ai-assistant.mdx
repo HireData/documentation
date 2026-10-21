@@ -59,7 +59,7 @@ On Team and Enterprise plans, an organisation owner first adds the connector in 
 2. Check that you're signed in with the right HireData account.
 3. Under **Workspace access**, select the workspace(s) you want to grant access to.
 4. Under **What Claude can access**, review the permissions. By default all permissions available to you are selected. Click the gear icon to narrow them down.
-5. Tick **"I recognise and trust the above URL"** to confirm the redirect back to Claude, and click **Authorize**.
+5. Select **"I recognise and trust the above URL"** to confirm the redirect back to Claude, and click **Authorize**.
 
 ![HireData's consent screen with workspace access and permissions](/images/mcp/hiredata-consent-screen.png)
 
@@ -126,7 +126,7 @@ The consumer Copilot app does not support custom MCP connections yet. Microsoft 
 1. In **Microsoft Copilot Studio**, open your agent's **Tools** page and select **Add a tool** \> **New tool** \> **Model Context Protocol**.
 2. Enter a name and description (the agent uses the description to decide when to call HireData), and the server URL: `https://api.hiredata.com/mcp`
 3. Select **OAuth 2.0** authentication with **Dynamic discovery**, create the connection, and add the tool to the agent.
-4. Publish the agent; users sign in to HireData with their own account on first use, with the same workspace selection and permissions as other assistants.
+4. Publish the agent. Users sign in to HireData with their own account on first use, with the same workspace selection and permissions as other assistants.
 
 Agents built this way can be made available in Microsoft 365 Copilot. Copilot Studio requires appropriate licensing, and MCP connections are subject to your organisation's Power Platform data policies. Check Microsoft's documentation for current availability.
 
