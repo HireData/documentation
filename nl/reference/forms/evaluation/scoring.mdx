@@ -32,7 +32,7 @@ Klik op **Scoring**, zet een vraag aan en de instellingen openen.
 
 Een rule is een set condities plus **How many points should be awarded?**. Een conditie leest als `<vraag> <operator> <waarde>` en kan alleen het antwoord op deze vraag testen. **Add condition** voegt een tweede toe en een **All**- en **Any**-switch erboven, en **Add rule** voegt er een rule onder toe.
 
-De operators zijn dezelfde set die Criteria biedt, en het veldtype bepaalt ze: tekstoperators op de tekst- en contacttypen, vergelijkingen op de numerieke, beoordelings- en datumtypen, **is one of** op Multiple Choice en Dropdown, en bestandsmetadata op File Upload. Zie [de operatortabel](/nl/reference/forms/evaluation/criteria#operators).
+De operators zijn dezelfde set die Criteria biedt, en het veldtype bepaalt ze. Tekst- en contacttypen gebruiken tekstoperators, en numerieke, beoordelings- en datumtypen gebruiken vergelijkingen. Multiple Choice en Dropdown gebruiken **is one of**, en File Upload gebruikt bestandsmetadata-operators. Zie [de operatortabel](/nl/reference/forms/evaluation/criteria#operators).
 
 Elke matchende rule keert uit, en het totaal wordt daarna afgetopt op het maximum van de vraag. Twee rules die allebei matchen op een antwoord van vijf jaar, één van 20 en één van 10, kennen 20 toe op een vraag van 20 punten. Overlappende banden zijn veilig zolang het maximum klopt. Dat is wat je "5 jaar of meer, 20 punten" boven "3 jaar of meer, 10 punten" laat schrijven zonder verder over het gat na te denken.
 
