@@ -31,7 +31,7 @@ Cliquez sur **Skills**, activez une question, et ses paramètres s'ouvrent.
 
 Une règle est un ensemble de conditions plus un ou plusieurs impacts de skill. Une condition se lit `<question> <opérateur> <valeur>` et ne peut tester que la réponse de cette question. **Add condition** en ajoute une seconde et un commutateur **All** et **Any** au-dessus.
 
-Les opérateurs sont le même ensemble que propose Criteria, et le type de champ les décide : opérateurs de texte sur les types texte et contact, comparaisons sur les types numériques, de notation et de date, **is one of** sur Multiple Choice et Dropdown, et métadonnées de fichier sur File Upload. Voir [le tableau des opérateurs](/fr/reference/forms/evaluation/criteria#operators).
+Les opérateurs sont le même ensemble que propose Criteria, et le type de champ les décide. Les types texte et contact utilisent les opérateurs de texte, et les types numériques, de notation et de date utilisent les comparaisons. Multiple Choice et Dropdown utilisent **is one of**, et File Upload utilise les opérateurs de métadonnées de fichier. Voir [le tableau des opérateurs](/fr/reference/forms/evaluation/criteria#operators).
 
 Chaque impact a **Which skill does this answer indicate?** et **How much should it contribute?**. **Add skill impact** pointe la même règle vers un second skill, pour qu'une réponse puisse compter pour deux. **Add rule** ajoute une autre règle, ce qui permet à une même question de donner des poids différents à des réponses différentes.
 
