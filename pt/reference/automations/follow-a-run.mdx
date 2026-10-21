@@ -38,7 +38,7 @@ O run é o trabalho da automação para este evento. Clique na linha do run no s
 
 O que ler. O canvas é a automação desenhada de cima para baixo, com uma linha de estado no conector abaixo de cada passo que o run alcançou. "Run Started: Today at 4:41 PM" fica sob o cartão Start, "Completed: Today at 4:41 PM" sob a tarefa Find e "Completed: Today at 4:42 PM" sob a Add Task quando faz scroll. Um passo sem linha nunca foi alcançado. O painel **Event** à direita abre por defeito. O seu **Overview** repete as definições do Start que deixaram passar este evento, **App**, **Connection**, **Object**, **Trigger** e **Filter**, e depois a **Timeline**.
 
-O que lhe diz. A timeline é o run por ordem. **Run Scheduled** e **Run Started** são o evento a chegar e o run a começar. Cada passo escreve depois duas entradas, primeiro o seu estado ("Find: Completed") e depois o que o run fez a seguir ("Find: Run Moved" para o passo seguinte, ou "Add Task: Run Finished" quando o último passo termina). Um run que parou cedo termina antes com uma entrada "Cancelled" e uma mensagem.
+O que lhe diz. A timeline é o run por ordem. **Run Scheduled** e **Run Started** são o evento a chegar e o run a começar. Cada passo escreve depois duas entradas. A primeira é o seu estado ("Find: Completed"). A segunda é o que o run fez a seguir ("Find: Run Moved" para o passo seguinte, ou "Add Task: Run Finished" quando o último passo termina). Um run que parou cedo termina antes com uma entrada "Cancelled" e uma mensagem.
 
 A lista de runs mostra os mesmos runs com o seu estado e, para um run parado, o passo que o parou. [Setup](/pt/reference/automations/steps/setup) documenta o nó Start e o painel Event que ele abre na página do run.
 
