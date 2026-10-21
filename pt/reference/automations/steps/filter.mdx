@@ -26,7 +26,7 @@ O painel tem o cabeçalho **Filter** com os separadores **Filters** e **Advanced
 - **Add Filter**. Adiciona uma linha ao mesmo conjunto.
 - **Add New Set**. Começa um novo conjunto abaixo do primeiro.
 - **AND / OR**. Um alternador que aparece entre duas linhas, e outro que aparece entre dois conjuntos. Por defeito **AND**. Dentro de um conjunto decide se todas as linhas ou alguma linha têm de passar. Entre conjuntos decide se todos os conjuntos ou algum conjunto têm de passar.
-- **Unique Constraints**. No separador **Advanced**. Escolha campos, e o Filter passa só uma vez para cada combinação dos seus valores. Com um identificador e um campo de estado selecionados, um registo passa uma vez para um dado estado, por muitos eventos que produza com esse estado.
+- **Unique Constraints**. No separador **Advanced**. Selecione campos, e o Filter passa só uma vez para cada combinação dos seus valores. Com um identificador e um campo de estado selecionados, um registo passa uma vez para um dado estado, por muitos eventos que produza com esse estado.
 
 ### Operadores
 
@@ -74,7 +74,7 @@ Os outros motivos pelos quais um run pode parar estão listados em [Motivos de c
 
 ## Erros comuns
 
-- **Gravar uma linha sem operador.** O painel grava-a e o canvas mostra a chave em bruto `enums.conditions.undefined` no lugar do operador. Abra o Filter de novo e escolha um.
+- **Gravar uma linha sem operador.** O painel grava-a e o canvas mostra a chave em bruto `enums.conditions.undefined` no lugar do operador. Abra o Filter de novo e selecione um.
 - **Pesquisar só pelo número.** "Question 2" também corresponde a "Question 12". Escreva também parte do título da pergunta.
 - **Esperar um passo saltado.** Um Filter que não passa cancela o run, não salta para o passo seguinte.
 - **Misturar AND e OR sem conjuntos.** As linhas de um conjunto partilham um alternador. Para combinar "A e B" com "C", ponha A e B num conjunto, C noutro, e defina o alternador entre os conjuntos como **OR**.
