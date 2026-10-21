@@ -17,7 +17,7 @@ The panel lists the objects already linked to this form, then **Available object
 <img src="/images/forms-builder/23-objects-panel-linked.png" alt="The Objects panel with Vacancy expanded to its Label, Key, Required, and Remove controls, Match below it, and the Available objects list underneath" width="460" />
 ## What linking an object gives you
 
-Every field on the linked record becomes a variable. You can write it into any text setting the form has, including the question, the description, a placeholder, and an option label, so a question can open with the job title rather than "this role". In the builder the variable shows as a badge such as **Vacancy: Job Title**.
+Every field on the linked record becomes a variable. You can write it into any text setting the form has, including the question, the description, a placeholder, and an option label. That way, a question can open with the job title rather than "this role". In the builder the variable shows as a badge such as **Vacancy: Job Title**.
 
 The variable list in the toolbar shows them all. Each one is named after the object's label and addressed by its key.
 
@@ -44,7 +44,7 @@ Reordering the list therefore changes more than the panel. Read [Configuring a f
 
 ## What Required does {#required}
 
-**Required** matters when an automation sends the form. If the run has no record for a required object, the task fails and nothing goes out, which is better than sending a form whose questions have gaps where the job title should be.
+**Required** matters when an automation sends the form. If the run has no record for a required object, the task fails and nothing goes out. That is better than sending a form whose questions have gaps where the job title should be.
 
 The form's own page is more forgiving. Open a public form with nothing supplying the record and it still loads. Every variable from that object resolves to nothing, unless it carries a `default` modifier. See [Fallback](/variables/modifiers#fallback).
 

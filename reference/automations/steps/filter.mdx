@@ -26,7 +26,7 @@ The drawer is headed **Filter** with tabs **Filters** and **Advanced**.
 - **Add Filter**. Adds a row to the same set.
 - **Add New Set**. Starts a new set below the first.
 - **AND / OR**. A toggle that appears between two rows, and another that appears between two sets. Default **AND**. Within a set it decides whether every row or any row must pass. Between sets it decides whether every set or any set must pass.
-- **Unique Constraints**. On the **Advanced** tab. Pick fields, and the Filter passes only once for each combination of their values. With an identifier and a status field selected, a record passes for a given status once, however many events it produces with that status.
+- **Unique Constraints**. On the **Advanced** tab. Select fields, and the Filter passes only once for each combination of their values. With an identifier and a status field selected, a record passes for a given status once, however many events it produces with that status.
 
 ### Operators
 
@@ -74,7 +74,7 @@ Other reasons a run can stop are listed in [Run cancellation reasons](/knowledge
 
 ## Common mistakes
 
-- **Saving a row without an operator.** The drawer saves it and the canvas shows the raw key `enums.conditions.undefined` in place of the operator. Open the Filter again and pick one.
+- **Saving a row without an operator.** The drawer saves it and the canvas shows the raw key `enums.conditions.undefined` in place of the operator. Open the Filter again and select one.
 - **Searching by number alone.** "Question 2" also matches "Question 12". Type part of the question's title as well.
 - **Expecting a skipped step.** A Filter that does not pass cancels the run, it does not skip to the next step.
 - **Mixing AND and OR without sets.** Rows in one set share one toggle. To combine "A and B" with "C", put A and B in one set, C in another, and set the toggle between the sets to **OR**.
