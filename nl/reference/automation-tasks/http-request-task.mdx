@@ -350,7 +350,7 @@ Open een run en een voltooide HTTP Request toont:
 
 - Zijn **Description** als titel, de method en host eronder (`GET api.example.com`) en het path daaronder
 - **What will you provide?** en **What will you get back?**: het request dat je hebt geconfigureerd en de response die je hebt beschreven
-- Een rij chips voor de instellingen die de call vormden. Het auth-type, de timeout en de retries staan er altijd — `Bearer token`, `30s`, `No retries`. De rest verschijnt pas zodra je ze hebt aangezet: een backoff wanneer retries boven `0` staan, `Ignores error statuses` wanneer **Fail on error responses** uit staat, en `Continues on failure` wanneer **Continue automation on failure** aan staat
+- Een rij chips voor de instellingen die de call vormden. Het auth-type, de timeout en de retries staan er altijd — `Bearer token`, `30s`, `No retries`. De rest verschijnt pas zodra je ze hebt aangezet: een backoff wanneer retries boven `0` staan, `Ignores error statuses` wanneer **Fail on error responses** uit staat, en `Continues on failure` wanneer **Continue automation on failure** aanstaat
 
 De timeline van de run bevat twee entries voor de taak, `HTTP Request: Run Moved` en `HTTP Request: Completed`, met het bericht "Http request succeeded."
 
