@@ -26,7 +26,7 @@ Le panneau est intitulé **Filter** avec les onglets **Filters** et **Advanced**
 - **Add Filter**. Ajoute une ligne au même ensemble.
 - **Add New Set**. Commence un nouvel ensemble sous le premier.
 - **AND / OR**. Une bascule qui apparaît entre deux lignes, et une autre qui apparaît entre deux ensembles. Par défaut **AND**. Au sein d'un ensemble, elle décide si chaque ligne ou n'importe quelle ligne doit passer. Entre les ensembles, elle décide si chaque ensemble ou n'importe quel ensemble doit passer.
-- **Unique Constraints**. Sur l'onglet **Advanced**. Choisissez des champs, et le Filter ne passe qu'une seule fois pour chaque combinaison de leurs valeurs. Avec un identifiant et un champ de statut sélectionnés, un enregistrement passe une seule fois pour un statut donné, quel que soit le nombre d'événements qu'il produit avec ce statut.
+- **Unique Constraints**. Sur l'onglet **Advanced**. Sélectionnez des champs, et le Filter ne passe qu'une seule fois pour chaque combinaison de leurs valeurs. Avec un identifiant et un champ de statut sélectionnés, un enregistrement passe une seule fois pour un statut donné, quel que soit le nombre d'événements qu'il produit avec ce statut.
 
 ### Opérateurs
 
@@ -74,7 +74,7 @@ Les autres raisons pour lesquelles une exécution peut s'arrêter sont listées 
 
 ## Erreurs courantes
 
-- **Enregistrer une ligne sans opérateur.** Le panneau l'enregistre et le canevas affiche la clé brute `enums.conditions.undefined` à la place de l'opérateur. Rouvrez le Filter et choisissez-en un.
+- **Enregistrer une ligne sans opérateur.** Le panneau l'enregistre et le canevas affiche la clé brute `enums.conditions.undefined` à la place de l'opérateur. Rouvrez le Filter et sélectionnez-en un.
 - **Rechercher par numéro seul.** « Question 2 » correspond aussi à « Question 12 ». Tapez aussi une partie du titre de la question.
 - **S'attendre à une étape sautée.** Un Filter qui ne passe pas annule l'exécution, il ne saute pas à l'étape suivante.
 - **Mélanger AND et OR sans ensembles.** Les lignes d'un ensemble partagent une seule bascule. Pour combiner « A et B » avec « C », placez A et B dans un ensemble, C dans un autre, et réglez la bascule entre les ensembles sur **OR**.

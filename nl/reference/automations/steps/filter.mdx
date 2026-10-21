@@ -26,7 +26,7 @@ De drawer heeft de kop **Filter** met de tabbladen **Filters** en **Advanced**.
 - **Add Filter**. Voegt een rij toe aan dezelfde set.
 - **Add New Set**. Begint een nieuwe set onder de eerste.
 - **AND / OR**. Een toggle die tussen twee rijen verschijnt, en nog een die tussen twee sets verschijnt. Standaard **AND**. Binnen een set bepaalt deze of elke rij of een willekeurige rij moet slagen. Tussen sets bepaalt deze of elke set of een willekeurige set moet slagen.
-- **Unique Constraints**. Op het tabblad **Advanced**. Kies velden, en het Filter slaagt slechts één keer voor elke combinatie van hun waarden. Met een identifier en een statusveld geselecteerd, slaagt een record voor een gegeven status één keer, hoeveel events het ook produceert met die status.
+- **Unique Constraints**. Op het tabblad **Advanced**. Selecteer velden, en het Filter slaagt slechts één keer voor elke combinatie van hun waarden. Met een identifier en een statusveld geselecteerd, slaagt een record voor een gegeven status één keer, hoeveel events het ook produceert met die status.
 
 ### Operators
 
@@ -74,7 +74,7 @@ Andere redenen waarom een run kan stoppen staan in [Redenen voor run-annuleringe
 
 ## Veelgemaakte fouten
 
-- **Een rij opslaan zonder operator.** De drawer slaat hem op en het canvas toont de ruwe key `enums.conditions.undefined` op de plek van de operator. Open het Filter opnieuw en kies er een.
+- **Een rij opslaan zonder operator.** De drawer slaat hem op en het canvas toont de ruwe key `enums.conditions.undefined` op de plek van de operator. Open het Filter opnieuw en selecteer er een.
 - **Alleen op nummer zoeken.** "Question 2" matcht ook "Question 12". Typ ook een deel van de titel van de vraag.
 - **Een overgeslagen stap verwachten.** Een Filter dat niet slaagt annuleert de run, het springt niet naar de volgende stap.
 - **AND en OR mengen zonder sets.** Rijen in één set delen één toggle. Om "A en B" te combineren met "C", zet je A en B in één set, C in een andere, en zet je de toggle tussen de sets op **OR**.
