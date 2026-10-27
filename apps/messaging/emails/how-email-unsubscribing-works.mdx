@@ -1,0 +1,71 @@
+---
+title: "How email unsubscribing works"
+sidebarTitle: "Unsubscribing"
+description: "How recipients unsubscribe, which emails are stopped, and how the unsubscribe page uses your workspace branding."
+keywords:
+  - "unsubscribe"
+  - "unsubscribing"
+  - "uitschrijven"
+  - "afmelden"
+  - "unsubscribe page"
+  - "sending domains"
+---
+
+Email unsubscribing lets recipients stop emails sent to their address from your HireData workspace.
+
+## How recipients unsubscribe
+
+The unsubscribe link in the email body uses two steps:
+
+1. The recipient clicks the unsubscribe link to open the unsubscribe page.
+2. They confirm that they want to unsubscribe.
+
+Opening the page alone does not unsubscribe the recipient. This also prevents an email security scanner from unsubscribing someone just by opening the link.
+
+After confirmation, the page shows that the recipient is unsubscribed. They can optionally give a reason and save their feedback. Giving a reason is not required for the unsubscribe to take effect.
+
+<Note>
+Some email apps offer their own **Unsubscribe** action beside the sender's name. This uses a separate one-click mechanism and may unsubscribe the recipient without opening the confirmation page.
+</Note>
+
+## Which emails does an unsubscribe stop?
+
+The unsubscribe applies to the recipient's email address across the HireData workspace. It is not limited to the newsletter, automation, email brand, or sending domain that they unsubscribed from.
+
+For example, if one workspace sends emails from both `example.com` and `careers-example.com`, unsubscribing from an email sent through either domain stops further automation emails to that address from the same workspace.
+
+There is currently no recipient preference centre to choose individual newsletters, brands, or categories of email. An unsubscribe in one workspace does not by itself unsubscribe the address in a separate workspace.
+
+This controls emails sent through HireData. It does not automatically describe subscription settings in your ATS or another email platform.
+
+## What does the unsubscribe page look like?
+
+The page uses the workspace's name and its default brand's email logo and theme. If no email logo is available, it uses the HireData logo.
+
+Choosing another brand for an individual email, or sending from another verified domain, does not give that email a separate unsubscribe page with its own name, logo, or wording.
+
+### Can I change the text?
+
+The unsubscribe page uses standard HireData text. You cannot currently replace it with your own wording or tone of voice.
+
+You can edit the text around the unsubscribe link in your [email template](/apps/messaging/emails/setting-up-an-email-template-in-hiredata), while keeping the unsubscribe link intact. This does not change the text on the page the link opens.
+
+### Which language is shown?
+
+New unsubscribe links carry the email's language. The page uses that language when supported. Older links without a language, or links with an unsupported language, use the page's normal language fallback.
+
+## Where can I view unsubscribes?
+
+Open **Settings → Unsubscribes**. The list shows the address, date, category, and reason where available. You can filter by category.
+
+The list can also contain addresses suppressed for other reasons, such as an invalid address or a spam report. Not every entry means the recipient used the unsubscribe page.
+
+If an automation tries to email an unsubscribed address, its Send Email task stops with **Email unsubscribed.** See [Send Email task](/reference/automations/tasks/send-email).
+
+To manually prevent emails to an address, use the **Block list** in Settings.
+
+## Can a recipient subscribe again?
+
+A recipient can reopen the unsubscribe link and use the option to subscribe again. Saving feedback alone does not subscribe them again.
+
+The **Unsubscribes** list does not offer a manual resubscribe action for workspace users.
