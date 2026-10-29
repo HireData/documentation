@@ -1,0 +1,126 @@
+---
+title: "Set up and troubleshoot form evaluations (pre-screening)"
+sidebarTitle: "Form evaluations"
+description: "Pre-screen completed forms with knock-out questions, scores and summaries: configure the evaluators, test their results and fix common issues."
+keywords:
+  - "form evaluations"
+  - "pre-screening"
+  - "knock-out questions"
+  - "killer questions"
+  - "form scoring"
+  - "criteria"
+  - "evaluation troubleshooting"
+  - "test and evaluate"
+---
+
+Form evaluations take on the first round of pre-screening. You describe your knock-out questions and what a good answer looks like once, and every completed response is checked the same way: a criteria verdict, a score, a skill profile, a summary for your recruiter, or custom outputs. Your team still makes the decisions.
+
+This guide explains how to configure the evaluators, check their results, and resolve common setup problems.
+
+## Choose what you need
+
+You can enable one evaluator or combine several.
+
+| Evaluator | Use it to | Result |
+| --- | --- | --- |
+| **Summary** | Give your team a short overview of the response. | An AI-written paragraph; no settings to configure. |
+| **Criteria** | Check your must-haves (knock-out questions) and nice-to-haves. | Meets criteria, Partially meets criteria, Does not meet criteria, or Incomplete. |
+| **Scoring** | Award points to answers. | A percentage and a score range label, such as Low, Medium, or High. |
+| **Skills** | Identify which configured skills the answers indicate. | A percentage per skill and the strongest skill. |
+| **Generated fields** | Extract or generate values from the whole response. | A value for each output you define. |
+
+For example, use Criteria to check a required qualification and Scoring to award points for relevant experience. A score does not replace the criteria verdict: review both when deciding what happens next.
+
+## Set up an evaluation
+
+### 1. Enable the evaluator for the form
+
+Open your form and select **Evaluation**, beside **Content** and **Logic**. Switch on the evaluators you need, then click an evaluator's name to open its settings.
+
+<img src="/images/forms-builder/29-evaluation-tab.png" alt="The Evaluation tab showing the five form evaluators" width="580" />
+
+### 2. Select and configure the questions
+
+For **Criteria**, **Scoring**, and **Skills**, switch on each question you want to evaluate.
+
+<Warning>
+Both the form-level switch and the question-level switch must be on. Turning an evaluator off for the form stops it evaluating, even if its question switches remain on.
+</Warning>
+
+Configure each selected question:
+
+- **Criteria:** Choose **Must-have** for a knock-out (or killer) question, where the wrong answer means the candidate does not meet your criteria. Choose **Nice-to-have** for something that helps you decide who to call first without ruling anyone out. Then define the expected answer or AI instructions.
+- **Scoring:** Set the question's maximum points, then define when points are awarded. If you use AI, the maximum must be greater than zero.
+- **Skills:** Add the skills you want to assess, then define which answers contribute to each skill and their weights. Add at least one skill before using AI assessment.
+
+**Summary** works on the whole response and needs no question-level setup. For **Generated fields**, enable the evaluator and add at least one output using **Create custom**, **Suggest with AI**, or **Data source**.
+
+### 3. Choose answer rules or AI
+
+Under **How to evaluate?**, choose:
+
+- **Use answer rules** for fixed values or comparisons, such as a selected option or a minimum number of years. Rules return the same result for the same answer.
+- **Evaluate with AI** when interpreting the answer matters, such as a free-text explanation. Write specific instructions about the evidence the AI should look for.
+
+The AI instruction is shared across Criteria, Scoring, and Skills for the same question. Keep the instructions consistent across all evaluators using that question.
+
+For the full settings, see [Criteria](/reference/forms/evaluation/criteria), [Scoring](/reference/forms/evaluation/scoring), [Skills](/reference/forms/evaluation/skills), and [Generated fields](/reference/forms/evaluation/generated-fields).
+
+## Test your results
+
+Open **Test & Evaluate** in the preview panel. Enter answers manually or use **Autofill with AI** to create a test response. Evaluation runs automatically when you enter or change an answer.
+
+<Note>
+Running an evaluation saves the form first, including unsaved changes. It does not create a submitted response, increase the response count, or trigger an automation.
+</Note>
+
+Test answers that meet your requirements, answers that fail them, and unanswered questions. For scoring, also test values just below and at each threshold.
+
+Open the result panels and check the question-level detail:
+
+- **Criteria:** Check which requirements passed or failed and, for AI evaluations, the reasoning.
+- **Scoring:** Check the points awarded per question and the total percentage.
+- **Skills:** Check how each answer contributes to the skill profile.
+
+Review the summary and generated outputs against the original answers. If an output asks for information that may be absent, use **Hints for the AI (optional)** to explain how to handle missing information, such as leaving the output empty.
+
+See [Test & Evaluate](/reference/forms/testing/test-and-evaluate) for the test scenarios and result panels.
+
+## Understand the results
+
+**Criteria uses an ordered verdict.** An answered must-have that fails returns **Does not meet criteria**. Otherwise, a missing answer to an evaluated question returns **Incomplete**. If all evaluated questions are answered, a failed nice-to-have returns **Partially meets criteria**; if everything passes, the result is **Meets criteria**. Check questions skipped by form logic when investigating an incomplete result.
+
+**Scoring is based on total points.** The percentage is earned points divided by the combined maximum points of the configured questions. An unanswered scored question contributes zero points but still counts towards the maximum. Matching rules add together, capped at that question's maximum.
+
+**Skills percentages show relative contributions.** They describe each skill's share of the total weight. A skill at 80% does not mean the respondent has achieved an 80% proficiency score.
+
+**Generated fields run after Criteria, Scoring, and Skills.** They can use the answers and those evaluation results to produce the outputs you defined.
+
+## Troubleshoot an evaluation
+
+| What you see | What to check |
+| --- | --- |
+| No result appears | Enable the evaluator for the form, enable the relevant questions, and configure their rules or AI settings. Enter a test answer. |
+| A rules-based criterion never affects the verdict | Check that it has conditions. A criterion with no conditions is skipped. |
+| AI scoring returns an error | Set the question's maximum points to a number greater than zero. |
+| AI skill assessment returns an error | Add at least one skill to the form. |
+| A score has a percentage but no range label | Include a score range with a minimum of 0%, and check the other thresholds. |
+| The score is lower than expected | Check unanswered or skipped scored questions and each question's maximum points. |
+| Generated fields return nothing | Add at least one output field. |
+| AI results do not match your intended evaluation | Review the question's shared AI instructions, skill descriptions, or generated-field hints, then test again. |
+
+## Use the evaluation results
+
+Completed responses are evaluated and the results are stored with them. Use **Export CSV** or **Export Excel** in the builder's three-dot menu to export results, including skill percentages and generated fields.
+
+To use a result in an automation, open **Automation variables** at the bottom of **Test & Evaluate** and copy the variable shown beside your test value. For example, the Criteria verdict uses `{{form_response.evaluation.screening}}`, with the values `passed`, `passed_with_restrictions`, `rejected`, or `incomplete`.
+
+Because every response is evaluated as soon as it is completed, an automation can follow up with each candidate straight away. For example, move the Match to the next stage when the result is **Meets criteria**, and send a short update to candidates who do not meet your criteria, so nobody is left waiting.
+
+<Warning>
+  There is no approval step yet: an automation uses the result as soon as it is stored. Test your AI instructions in **Test & Evaluate** before a result triggers a message to candidates.
+</Warning>
+
+For a worked example, see [Screen and score applicants with a pre-screening form](/knowledge-base/cookbook/pre-screening-form).
+
+If a result still looks wrong, contact [support@hiredata.com](mailto:support@hiredata.com) with the form name, the evaluator and question involved, the answer you tested, and the expected and actual results.
