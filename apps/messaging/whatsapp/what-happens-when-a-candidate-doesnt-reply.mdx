@@ -65,6 +65,12 @@ You find them in the WhatsApp step, on the **Settings** tab, under **When someth
   </Step>
 </Steps>
 
+<img
+  src="/images/whatsapp/whatsapp-step-settings.webp"
+  alt="The Settings tab of a Send Survey step, with three switches under When something fails: Continue the automation on failure, Skip when the person can't be messaged, and Continue the automation without a reply"
+  width="410"
+/>
+
 ## Example: follow up with candidates who don't reply
 
 Say you send a WhatsApp survey and want to try again, or update the candidate's record, when nobody answers.
@@ -73,6 +79,8 @@ Say you send a WhatsApp survey and want to try again, or update the candidate's 
 2. After the step, add a **Split** with one **Filter** per outcome.
 3. Use the candidate's answer in the filters. For example, one filter for each answer button, and one filter where the answer **is empty** for candidates who didn't reply.
 4. Under the "no reply" filter, add the follow-up: a reminder message, an email, or an update in your ATS.
+
+![A WhatsApp step with the settings Continues on failure, Skips if unreachable and Continues without a reply, followed by a Split with three filters: two for the answer buttons and one where the answer is empty](/images/whatsapp/whatsapp-no-reply-split.webp)
 
 The step also keeps the reason why it didn't go as planned, such as "no reply" or "opted out". Filters and branches can use that reason too, for example to send a reminder only to people who didn't reply.
 
