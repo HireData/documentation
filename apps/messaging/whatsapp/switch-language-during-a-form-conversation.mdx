@@ -1,0 +1,81 @@
+---
+title: "Let candidates switch language during a WhatsApp form conversation"
+sidebarTitle: "Switching language"
+description: "Candidates can ask to continue a WhatsApp form conversation in another language. Learn what switches, what stays the same, and what your form needs."
+keywords:
+  - "language"
+  - "switch language"
+  - "change language"
+  - "translation"
+  - "multilingual"
+  - "whatsapp form"
+  - "pre-screening"
+  - "conversation language"
+---
+
+Not every candidate is comfortable in the language your form starts in. During a WhatsApp form conversation, a candidate can now ask to continue in another language, and the rest of the conversation follows.
+
+This guide explains how a switch works, what your form needs, and how to check that it happened.
+
+## How it works
+
+When a candidate asks to switch language, or makes clear they prefer another one, HireData:
+
+1. Recognises the request in the candidate's latest reply. This also works in the very first message they send.
+2. Switches to that language, if your form has a translation for it.
+3. Asks the next questions in the new language, including the answer options, the auto replies and the ending.
+4. Remembers the language for the rest of the conversation.
+
+The candidate can switch back to the form's original language at any time.
+
+## What your form needs
+
+A candidate can switch to:
+
+- the language the form was written in, and
+- every language the form has a translation for.
+
+Add translations in the form builder under **Manage Languages** > **New Translation**. You can translate by hand or click **Create AI translation**. See [Languages and translations](/reference/forms/overview#localization).
+
+<Warning>
+  If a candidate asks for a language your form has no translation for, the conversation stays in the current language. HireData doesn't translate a form on the fly.
+</Warning>
+
+## What stays the same after a switch
+
+Switching language only changes the language. Everything else carries on as before:
+
+- answers the candidate already gave
+- the questions in the form and the order they come in
+- your form logic
+- your evaluation settings, such as knock-out questions and scoring
+
+## Check if a candidate switched language
+
+Every switch is recorded in the activity of the form response, with the previous language and the new one. This way you can always see which language a candidate answered in, and when they changed it.
+
+Nothing is recorded if a candidate asks for the language they're already using.
+
+## What doesn't start a switch
+
+HireData looks at what the candidate wants now, not at every mention of a language. A switch doesn't happen when:
+
+- the candidate mentions a language in an earlier message, not in their latest reply
+- the candidate quotes text in another language
+- the candidate answers a question about their language skills, for example "I speak German and English"
+
+## Good to know
+
+- **The conversation language is not the candidate's preferred language in your ATS.** A switch changes the language of this conversation and this response. It doesn't update the candidate's preferred language in Carerix.
+- **The first message doesn't change.** How the conversation and the WhatsApp template language are chosen at the start stays the same.
+- **There is no separate language question.** Candidates switch by asking in the chat. You don't need to add a field for it.
+
+## Example
+
+You send a pre-screening form in Portuguese, and the form also has an English translation. A candidate replies that they'd rather continue in English. The next questions arrive in English, the answers they already gave are kept, and the response still gets its evaluation. If they later ask to go back to Portuguese, the form switches back without losing anything.
+
+## Related
+
+- [How to use forms in WhatsApp conversations](/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations)
+- [Languages and translations in the form builder](/reference/forms/overview#localization)
+- [Setting a default language and AI tone of voice](/settings/setting-a-default-language-and-ai-tone-of-voice)
