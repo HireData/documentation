@@ -1,0 +1,102 @@
+---
+title: "Decide what happens when a candidate doesn't reply on WhatsApp"
+sidebarTitle: "When there's no reply"
+description: "Choose per WhatsApp step whether your automation stops or carries on when a candidate doesn't reply, can't be messaged, or the message fails."
+keywords:
+  - "whatsapp no reply"
+  - "candidate did not reply"
+  - "receiver did not reply"
+  - "continue automation"
+  - "whatsapp step settings"
+  - "follow-up"
+  - "reminder"
+  - "skip when unreachable"
+---
+
+Not every candidate answers your WhatsApp. Some never reply, some can't be messaged at all. Each WhatsApp step in an automation now has settings that decide what happens next: stop the run, or carry on so a later step can follow up.
+
+This guide explains the three settings, how to turn them on, and how to build a follow-up for candidates who don't reply.
+
+## The three settings
+
+You find them in the WhatsApp step, on the **Settings** tab, under **When something fails**.
+
+| Setting | What it does |
+| --- | --- |
+| **Continue the automation on failure** | Later steps run, even if the WhatsApp step fails. |
+| **Skip when the person can't be messaged** | The step is marked as skipped and later steps run. |
+| **Continue the automation without a reply** | Later steps run when the chat closes unanswered. |
+
+**Continue the automation without a reply** is only available for WhatsApp conversations.
+
+### Who "can't be messaged"
+
+**Skip when the person can't be messaged** applies to people who:
+
+- have no phone number
+- opted out
+- are blocked
+- already have an open chat
+- reached the conversation limit of the automation
+
+## What happens if you don't change anything
+
+- **New WhatsApp steps** stop the run when the step fails and when the candidate doesn't reply.
+- **Existing WhatsApp steps** keep the behaviour they had before. The new settings stay off until someone turns them on.
+
+<Note>
+  Candidates who reply and then go quiet are not affected. Their runs always continue.
+</Note>
+
+## Turn on a setting
+
+<Steps>
+  <Step title="Open the WhatsApp step">
+    Open your automation and click the WhatsApp step, for example **Send Survey**.
+  </Step>
+  <Step title="Go to the Settings tab">
+    On the last screen of the step, **Configure Task**, switch from **Setup** to **Settings**.
+  </Step>
+  <Step title="Switch on what you need">
+    Under **When something fails**, switch on one or more settings. Each setting has a short description, and the info icon next to it gives more detail.
+  </Step>
+  <Step title="Check the canvas">
+    Back on the automation canvas, the step lists the settings that are on, such as **Continues without a reply**, **Continues on failure**, and **Skips if unreachable**.
+  </Step>
+</Steps>
+
+![The Settings tab of a Send Survey step, showing the three settings under When something fails](/images/whatsapp/whatsapp-step-settings.png)
+
+## Example: follow up with candidates who don't reply
+
+Say you send a WhatsApp survey and want to try again, or update the candidate's record, when nobody answers.
+
+1. Turn on **Continue the automation without a reply** in the WhatsApp step.
+2. After the step, add a **Split** with one **Filter** per outcome.
+3. Use the candidate's answer in the filters. For example, one filter for each answer button, and one filter where the answer **is empty** for candidates who didn't reply.
+4. Under the "no reply" filter, add the follow-up: a reminder message, an email, or an update in your ATS.
+
+The step also keeps the reason why it didn't go as planned, such as "no reply" or "opted out". Filters and branches can use that reason too, for example to send a reminder only to people who didn't reply.
+
+## Good to know
+
+- **A message that never arrives counts as a failure, not as no reply.** Use **Continue the automation on failure** if later steps should still run in that case.
+- **The settings work per step.** An automation with several WhatsApp steps needs the settings on each step where you want the run to carry on.
+- **Stopping is still the right choice for some flows**, for example when the next steps only make sense after the candidate answered. Leave the settings off there.
+
+## Troubleshooting
+
+| What you see | What to check |
+| --- | --- |
+| The run stops at the WhatsApp step with "Receiver did not reply" | **Continue the automation without a reply** is off for that step. Turn it on and check that the steps after it handle the no-reply case. |
+| Later steps don't run for people without a phone number or who opted out | Turn on **Skip when the person can't be messaged**. |
+| Later steps don't run when a message wasn't delivered | Turn on **Continue the automation on failure**. |
+
+See [Run cancellation reasons](/knowledge-base/run-cancellation-reasons) for other reasons a run can stop.
+
+## Related
+
+- [Create a WhatsApp automation in HireData](/apps/messaging/whatsapp/create-a-whatsapp-automation-in-hiredata)
+- [How to use forms in WhatsApp conversations](/apps/messaging/whatsapp/how-to-use-forms-in-whatsapp-conversations)
+- [Filter](/reference/automations/steps/filter) and [Split](/reference/automations/steps/split) steps
+- [Automation safety limits](/settings/automation-safety-limits)
