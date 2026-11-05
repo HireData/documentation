@@ -1,7 +1,7 @@
 ---
-title: "Set up and troubleshoot Ask AI in an automation"
-sidebarTitle: "Ask AI"
-description: "Add an Ask AI step to an automation, test its answer with Preview, use the result in later steps, and fix common problems."
+title: "Score, summarise and sort candidates automatically with Ask AI"
+sidebarTitle: "Score candidates with Ask AI"
+description: "Use the Ask AI step to give every match a fit score or a summary, then match, decline or pre-screen the candidate based on the answer."
 keywords:
   - "ask ai"
   - "prompt step"
@@ -13,9 +13,13 @@ keywords:
   - "ai troubleshooting"
 ---
 
-Ask AI is the step in an automation that reads the run's data and gives back the answers you ask for: a fit score, a summary, a category, or one clean value pulled out of a longer text. The answers are stored as fields, so the next steps can write them to a record or decide what happens next. Your team still makes the decisions; Ask AI does the first read, the same way on every run.
+Ask AI is the step in an automation that reads the run's data and gives back the answers you ask for: a fit score, a summary, a category, or one clean value pulled out of a longer text. The answers are stored as fields, so the next steps can write them to a record or decide what happens next.
 
-This guide explains how to set up the step, test it, use its answers, and resolve common problems. For every setting, see the [Prompt reference](/reference/automations/steps/prompt).
+A typical example: every new match gets a fit score against the vacancy. Based on that score, the automation matches the candidate, declines them, or invites them to a pre-screening. Another: every match gets a short summary for the recruiter with strengths, gaps and red flags.
+
+You decide how the answers are used. Later steps can act on them automatically, without anyone checking first, and answers can vary between runs. So test before you let an answer decline a candidate or send a message.
+
+This guide walks through the setup, testing and common problems. For a description of every setting, see the [Prompt reference](/reference/automations/steps/prompt).
 
 ## Before you start
 
@@ -47,6 +51,12 @@ Under **What should the AI do?**, pick the job that fits:
 | **Evaluate** | Check a text against criteria you describe |
 | **Custom** | Write the whole instruction yourself |
 
+<img
+  src="/images/automations/39-prompt-intents.png"
+  alt="The What should the AI do? panel listing Custom, Extract, Summarize, Classify, Write, Translate, Analyze, and Evaluate, each with a one-line description"
+  width="384"
+/>
+
 Every option except **Custom** creates the output fields that job usually returns, so you start from fields that already exist.
 
 ### 3. Give it the data and the instruction
@@ -63,7 +73,7 @@ Use **Hints for the AI (optional)** for context and rules, such as "You are a re
 Under **What should the AI return?**, add one output field per answer:
 
 - **Use an existing field** to map the answer onto a field the automation already knows.
-- **Create custom** to define a new field. Pick the type that matches the answer: **Number** for a score, **Yes / No** for a check, **List** for one of your own options, **Text** for a summary.
+- **Create custom** to define a new field. Pick the type that matches the answer: **Number** for a score, **Yes / No** for a check, **List** for one of your own options, **Text** for a summary. For a **List**, add the allowed values under **Options**.
 - Fill in **What is it for? (optional)**. It tells the model what belongs in the field.
 
 Give each field its own **Reference as** name. That name is how later steps find the answer.
@@ -77,6 +87,20 @@ Give each field its own **Reference as** name. That name is how later steps find
 - **Language**: leave it on **None** to answer in the input's language, or set a fixed language when the record or message expects one.
 - **Advanced**: choose **Speed vs quality**, **Creativity** and **Answer length**. For scores and checks, **Precise** gives the most consistent answers.
 
+<img
+  src="/images/automations/17-prompt-drawer.png"
+  alt="The Ask AI drawer with Custom chosen, a prompt in the Input tab, an empty Hints box, one output field, Language set to None, and the Advanced section open on Fast, Precise, and Auto"
+  width="384"
+/>
+
+Once saved, the step shows on the canvas with its prompt, a chip per output field and the Advanced settings:
+
+<img
+  src="/images/automations/27-prompt-card.png"
+  alt="An Ask AI: Custom card on the canvas with the prompt text, an output chip, and the chips Fast, Precise, and Auto"
+  width="380"
+/>
+
 ## Test it with Preview
 
 Click **Preview** in the drawer footer, then **Generate an example** to fill in realistic sample data, and run the step before you save. You can edit the example values to test a specific case. Check every output field, not only the first one.
@@ -85,7 +109,7 @@ Test more than one case: a strong candidate, a weak one, and a record with missi
 
 ## Use the answer in later steps
 
-Each output field becomes a variable named after its **Reference as** value, such as `output.fit_score`. The step also records:
+In later steps, find each answer under the step's automatic name, with a key based on its **Reference as** value, such as `output.fit_score`. If Ask AI is inside a [Loop](/reference/automations/steps/loop), use the answer or write it to a record inside that Loop; steps after the Loop cannot read it. The step also records:
 
 | Variable | Holds |
 | --- | --- |
@@ -96,12 +120,13 @@ Each output field becomes a variable named after its **Reference as** value, suc
 Common next steps:
 
 - **Write it to the record.** An [Update](/reference/automations/steps/update) task writes the summary or score to the match or candidate.
-- **Route on it.** A [Filter](/reference/automations/steps/filter) or [Split](/reference/automations/steps/split) sends records down a different path based on a score or a list value.
+- **Continue only when it fits.** A [Filter](/reference/automations/steps/filter) lets the run continue only when a score or list value meets a condition. Runs that don't meet it stop there.
+- **Send different outcomes down different paths.** A [Split](/reference/automations/steps/split) with a Filter in each branch, for example one branch to match, one to decline and one to invite to a pre-screening.
 
 ## Things to be aware of
 
 - **The answer is used as soon as it is returned.** Test with Preview and a few real records before the automation acts on the answer, especially before it declines a candidate or sends a message.
-- **A run that gets no answer stops.** When the model cannot answer, the step shows as Cancelled with the reason in the timeline, and the steps after it do not run. See [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
+- **A step that gets no answer stops its run.** When the model cannot answer, the step shows as Cancelled with the reason in the timeline, and the steps after it do not run. Inside a [Split](/reference/automations/steps/split) or [Loop](/reference/automations/steps/loop), only that branch or iteration stops; other branches and the steps after the Split or Loop can still run. See [Run cancellation reasons](/knowledge-base/run-cancellation-reasons).
 - **An unexpected answer does not stop the run.** If a later step depends on the answer, check it first with a [Filter](/reference/automations/steps/filter).
 - **For one line inside an email**, an [AI variable](/variables/ai-variables) in the template is simpler than a step. Use Ask AI when the answer has to be stored or has to steer the run.
 
