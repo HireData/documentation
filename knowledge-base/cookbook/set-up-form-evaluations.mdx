@@ -1,7 +1,7 @@
 ---
-title: "Set up and troubleshoot form evaluations (pre-screening)"
-sidebarTitle: "Form evaluations"
-description: "Pre-screen completed forms with knock-out questions, scores and summaries: configure the evaluators, test their results and fix common issues."
+title: "Pre-screen every form response automatically with knock-out questions and scores"
+sidebarTitle: "Pre-screen with form evaluations"
+description: "Let HireData check every completed form against your knock-out questions, score the answers and summarise them for the recruiter. Set it up, test it and fix common issues."
 keywords:
   - "form evaluations"
   - "pre-screening"
@@ -84,6 +84,12 @@ Open the result panels and check the question-level detail:
 
 Review the summary and generated outputs against the original answers. If an output asks for information that may be absent, use **Hints for the AI (optional)** to explain how to handle missing information, such as leaving the output empty.
 
+<img
+  src="/images/forms-builder/testing/07-test-results.png"
+  alt="The results of an ideal-candidate run: Meets criteria, 100% High, a skill percentage, the per-question criteria detail, the summary, and the generated fields"
+  width="650"
+/>
+
 See [Test & Evaluate](/reference/forms/testing/test-and-evaluate) for the test scenarios and result panels.
 
 ## Understand the results
@@ -114,6 +120,12 @@ See [Test & Evaluate](/reference/forms/testing/test-and-evaluate) for the test s
 Completed responses are evaluated and the results are stored with them. Use **Export CSV** or **Export Excel** in the builder's three-dot menu to export results, including skill percentages and generated fields.
 
 To use a result in an automation, open **Automation variables** at the bottom of **Test & Evaluate** and copy the variable shown beside your test value. For example, the Criteria verdict uses `{{form_response.evaluation.screening}}`, with the values `passed`, `passed_with_restrictions`, `rejected`, or `incomplete`.
+
+<img
+  src="/images/forms-builder/testing/08-automation-variables.png"
+  alt="The Automation variables list, showing the criteria, score, score range, primary skill, and summary variables with their values"
+  width="650"
+/>
 
 Because every response is evaluated as soon as it is completed, an automation can follow up with each candidate straight away. For example, move the Match to the next stage when the result is **Meets criteria**, and send a short update to candidates who do not meet your criteria, so nobody is left waiting.
 
