@@ -1,0 +1,61 @@
+---
+title: "Carerix-Datensätze aus einer Automatisierung ändern"
+sidebarTitle: "Carerix-Datensätze"
+description: "Fügen Sie Carerix-Datensätze aus einer Automatisierung hinzu, aktualisieren, archivieren und stellen Sie sie wieder her, für jeden Datensatztyp gleich. Teil der HireData-Beta."
+tag: "BETA"
+keywords:
+  - "carerix-datensätze"
+  - "datensatz hinzufügen"
+  - "datensatz aktualisieren"
+  - "archivieren"
+  - "wiederherstellen"
+  - "match löschen"
+  - "record steps"
+  - "beta"
+---
+
+Ihre Automatisierungen können Carerix jetzt aktuell halten, ohne für jede Art von Änderung einen eigenen Schritt. Hinzufügen, Aktualisieren, Archivieren und Wiederherstellen funktioniert gleich für Kandidaten, Kontakte, Unternehmen, Stellen und mehr.
+
+<Note>
+  Dies ist Teil der HireData-Beta und funktioniert im [neuen Automation Builder](/de/automations/engine-1-3). Unter [So funktioniert die Beta](/de/beta/how-the-beta-works) erfahren Sie, wie Sie teilnehmen.
+</Note>
+
+## Carerix aus Ihren Automatisierungen aktuell halten
+
+Klicken Sie in einer neuen Automatisierung auf **\+**. **Add** und **Update** finden Sie unter **Records**, **Archive**, **Restore** und **Delete** unter **Lifecycle**. Wählen Sie dann den Carerix-Datensatz, den Sie ändern möchten.
+
+<Frame caption="Add und Update stehen unter Records. Archive, Restore und Delete stehen unter Lifecycle.">
+  <img src="/images/beta/step-drawer-records-lifecycle.webp" alt="Die Schrittliste mit Add und Update unter Records sowie Archive, Restore und Delete unter Lifecycle" />
+</Frame>
+
+<Frame caption="Wählen Sie den Carerix-Datensatz, den Sie hinzufügen oder aktualisieren möchten.">
+  <img src="/images/beta/carerix-record-types.webp" alt="Das Panel Add Record mit Carerix-Datensätzen wie Candidate, Company, Contact, Job, Match, Lead und Opportunity" />
+</Frame>
+
+### 1. Neue Datensätze hinzufügen
+
+Legen Sie **Kandidaten** an, **Kontakte** mit ihrem Unternehmen, **Unternehmen**, **Stellen** mit einem Kontakt, **Veröffentlichungen** und **Termine** mit ihren Teilnehmern. Die Pflichtfelder entsprechen den Carerix-Formularen, die Sie kennen, etwa das Unternehmen bei einer neuen Stelle. Veröffentlichungen behalten ihren eigenen Text, sodass Carerix den Stellentext nicht darüberschreibt.
+
+### 2. Bestehendes aktualisieren
+
+Ändern Sie jedes Feld oder leeren Sie es vollständig, auch Eigentümer. Halten Sie **Berufsbezeichnung**, **Ausbildung**, **Berufserfahrung**, **Fähigkeiten** und **Sprachen** eines Kandidaten aktuell, oder fügen Sie ihn einem **Talentpool** hinzu, ohne dass er die Pools verliert, in denen er bereits ist.
+
+### 3. Archivieren und wiederherstellen
+
+**Archivieren** Sie einen Datensatz, wenn er nicht mehr aktiv ist, und **stellen Sie ihn wieder her**, wenn Sie ihn wieder brauchen. Nur **Matches** können endgültig gelöscht werden, weil sie die einzigen Datensätze sind, die Carerix wirklich löscht.
+
+### 4. Mehrere Datensätze auf einmal ändern
+
+Ein Schritt kann mehrere Datensätze ändern, etwa alle offenen Matches eines Kandidaten. Fügen Sie **Bedingungen** hinzu, damit der Schritt die Änderung nur vornimmt, wenn die aktuellen Werte des Datensatzes es zulassen.
+
+## Gut zu wissen
+
+- **Jede Änderung wird nach dem Speichern geprüft.** Ein Schritt kann keinen Erfolg melden, wenn sich nichts geändert hat. Lehnt Carerix eine Änderung ab, zeigt der Run den eigenen Grund von Carerix.
+- **Felder und Bezeichnungen folgen Ihren eigenen Carerix-Masken**, etwa Job statt Vacancy.
+- **Dateien** können über einen Link zu einem Datensatz hinzugefügt und über den Dateinamen entfernt werden.
+- **Noch nicht enthalten:** die Sichtbarkeit von Terminen sowie einige Filter und Statusoptionen von Talentpools.
+- **Bestehende Automatisierungen behalten ihre alten Carerix-Schritte**, etwa update field und add note.
+
+## Probieren Sie es selbst aus
+
+Erstellen Sie eine neue Automatisierung in [Automations](https://app.hiredata.com/automations), klicken Sie auf **\+**, wählen Sie **Add** unter **Records** und wählen Sie einen Carerix-Datensatz.
