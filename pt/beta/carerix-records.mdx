@@ -1,0 +1,67 @@
+---
+title: "Alterar registos do Carerix a partir de uma automação"
+sidebarTitle: "Registos do Carerix"
+description: "Adicione, atualize, arquive e restaure registos do Carerix a partir de uma automação, da mesma forma para cada tipo de registo. Faz parte da beta da HireData."
+tag: "BETA"
+keywords:
+  - "registos carerix"
+  - "adicionar registo"
+  - "atualizar registo"
+  - "arquivar"
+  - "restaurar"
+  - "eliminar match"
+  - "passos de registo"
+  - "beta"
+---
+
+As suas automações podem agora manter o Carerix atualizado sem um passo separado para cada tipo de alteração. Adicionar, atualizar, arquivar e restaurar funcionam da mesma forma para candidatos, contactos, empresas, vagas e muito mais.
+
+<Note>
+  Faz parte da beta da HireData e funciona no [novo construtor de automações](/pt/automations/engine-1-3). Consulte [Como funciona a beta](/pt/beta/how-the-beta-works) para aderir.
+</Note>
+
+## Mantenha o Carerix atualizado a partir das suas automações
+
+Numa nova automação, clique em **\+**. Encontra **Add** e **Update** em **Records**, e **Archive**, **Restore** e **Delete** em **Lifecycle**. Depois escolha o registo do Carerix que quer alterar.
+
+<Frame caption="Add e Update estão em Records. Archive, Restore e Delete estão em Lifecycle.">
+  <img
+    src="/images/beta/step-drawer-records-lifecycle.webp"
+    alt="A lista de passos com Add e Update em Records, e Archive, Restore e Delete em Lifecycle"
+  />
+</Frame>
+
+<Frame caption="Escolha o registo do Carerix que quer adicionar ou atualizar.">
+  <img
+    src="/images/beta/carerix-record-types.webp"
+    alt="O painel Add Record com registos do Carerix como Candidate, Company, Contact, Job, Match, Lead e Opportunity"
+  />
+</Frame>
+
+### 1. Adicione novos registos
+
+Crie **candidatos**, **contactos** ligados à respetiva empresa, **empresas**, **vagas** ligadas a um contacto, **publicações** e **reuniões** com os participantes. Os campos obrigatórios correspondem aos formulários do Carerix que já conhece, como a empresa numa nova vaga. As publicações mantêm o seu próprio texto, pelo que o Carerix não o substitui pelo texto da vaga.
+
+### 2. Atualize o que já existe
+
+Altere qualquer campo, ou limpe-o por completo, incluindo os responsáveis. Mantenha atualizados o **cargo**, a **formação**, o **histórico profissional**, as **competências** e as **línguas** de um candidato, ou adicione-o a uma **talent pool** sem perder as pools a que já pertence.
+
+### 3. Arquive e restaure
+
+**Arquive** um registo quando já não está ativo e **restaure**-o quando voltar a precisar dele. Apenas os **matches** podem ser eliminados definitivamente, porque são os únicos registos que o Carerix elimina de facto.
+
+### 4. Altere vários registos de uma vez
+
+Um passo pode alterar vários registos, como todos os matches abertos de um candidato. Adicione **condições** para que o passo só faça a alteração quando os valores atuais do registo o permitem.
+
+## O que mais deve saber
+
+- **Cada alteração é verificada depois de guardada.** Um passo não pode indicar sucesso se nada mudou. Quando o Carerix recusa uma alteração, a execução mostra o motivo dado pelo Carerix.
+- **Os campos e etiquetas seguem os seus próprios ecrãs do Carerix**, como Job em vez de Vacancy.
+- **Ficheiros** podem ser adicionados a um registo a partir de uma ligação, e removidos pelo nome do ficheiro.
+- **Ainda não incluído:** a visibilidade das reuniões e alguns filtros e estados das talent pools.
+- **As automações existentes mantêm os passos Carerix antigos**, como atualizar campo e adicionar nota.
+
+## Experimente
+
+Crie uma nova automação em [Automations](https://app.hiredata.com/automations), clique em **\+**, escolha **Add** em **Records** e selecione um registo do Carerix.
