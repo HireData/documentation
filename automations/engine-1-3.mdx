@@ -1,51 +1,54 @@
 ---
-title: "What Changes on Engine 1.3"
-sidebarTitle: "Engine 1.3 (FAQ)"
-description: "Engine 1.3 brings new record steps and a clearer step drawer to new automations. What changes, what stays the same, and which steps are no longer offered."
+title: "The New Automation Builder"
+sidebarTitle: "New Automation Builder"
+description: "In the new automation builder, every step sits in a clear section, so you find the right one without knowing its technical name. Available in the HireData beta."
 tag: "BETA"
 keywords:
+  - "new automation builder"
+  - "step drawer"
   - "engine 1.3"
-  - "engine 1.3.0"
   - "record steps"
+  - "ask ai"
   - "removed steps"
-  - "carerix steps"
   - "beta"
-  - "faq"
 ---
 
-New automations in beta accounts now run on engine 1.3. It brings one set of record steps for Carerix and HireData, and a step drawer grouped into clear sections. Your existing automations keep running exactly as they do today.
+Building an automation now works like picking from a tidy toolbox. When you add a step, every option sits in a section that says what it does, so you find what you need without knowing its technical name.
 
 <Note>
-  Engine 1.3 is available for beta accounts. In other accounts, new automations are built on engine 1.2.
+  The new automation builder is part of the HireData beta. Ask your HireData contact to add your workspace. Your existing automations keep working exactly as they do today.
 </Note>
 
-## What changes for your automations
+## Find the right step faster
 
-### 1. New automations start on engine 1.3
+Open a new automation in [Automations](https://app.hiredata.com/automations) and click **\+**. The steps are grouped by what they do for you.
 
-In a beta account, every new automation in [Automations](https://app.hiredata.com/automations) starts on engine 1.3. Only beta accounts can choose engine 1.3.
+![The step list in the new automation builder, with the Flow, Search and Outreach sections](/images/automations/step-drawer-top.webp)
 
-### 2. Existing automations don't change
+### 1. Steps grouped by what they do
 
-Automations you already have keep running on their current engine, with their current steps and the previous step drawer.
+- **Flow**: decide who continues (Filter), take different paths (Split), wait (Delay) or repeat steps (Loop).
+- **Search**: look up a candidate, contact or other record with **Find**.
+- **Outreach**: send an **Email**, a **WhatsApp message**, a **WhatsApp survey** or a **Ratecard survey**. WhatsApp options show once WhatsApp is connected.
+- **Records**: **Add** or **Update** a record in your ATS or in HireData.
+- **AI and tools**: **Ask AI** to write, sort or pick out information, or send an **HTTP request** to another system.
+- **Human in the loop**: let a colleague approve a step first with a [Review](/automations/reviews).
+- **Lifecycle**: **Archive**, **Restore** or **Delete** a record.
 
-![The top of the new step drawer, with the Flow, Search and Outreach sections](/images/automations/step-drawer-top.webp)
+### 2. One way to change any record
 
-### 3. New Carerix record steps
+Adding, updating, archiving and restoring records now works the same in every connected app. In Carerix you can, for example, add candidates, contacts, companies and jobs, or update a candidate's education and skills.
 
-On engine 1.3, general steps create, update, delete, archive and restore a Carerix record. You find them in the step drawer under **Records** (Add, Update) and **Lifecycle** (Archive, Restore, Delete). They replace the old Carerix steps **update field**, **add note**, **add task**, **add email** and **add publication**.
+### 3. Your current automations stay as they are
 
-### 4. Steps no longer offered
-
-**Find Email**, **Verify Email**, **Search Domain**, **Sync Person** and **Post Webhook** are no longer offered in new automations. Existing steps with these tasks keep running.
+Automations you already built keep their steps and the previous builder. Joining the beta doesn't move them. Start a new automation to try the new builder, and contact us before you move an existing one.
 
 ## What else changed?
 
-- **The step drawer** groups steps into sections: Flow, Search, Outreach, Records, AI and tools, Human in the loop and Lifecycle.
 - **Prompt is now called Ask AI.**
-- **HTTP request** replaces Post Webhook for calling another web service.
-- **Find** has its own page: [Look up records with Find](/automations/look-up-records). **Review** steps are explained in [Reviews](/automations/reviews).
+- **Some older steps aren't offered in new automations**: Find Email, Verify Email, Search Domain, Sync Person (replaced by the HireData people steps) and Post Webhook (replaced by HTTP request). Automations that already use them keep running.
+- **Testing an automation needs edit rights**, because a test can send messages and change records.
 
 ## Check it out yourself
 
-Create a new automation in [Automations](https://app.hiredata.com/automations) and click **\+** to open the new step drawer.
+Create a new automation in [Automations](https://app.hiredata.com/automations) and click **\+** to see the new step list.
