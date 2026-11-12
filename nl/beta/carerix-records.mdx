@@ -1,0 +1,61 @@
+---
+title: "Carerix-records wijzigen vanuit een automatisering"
+sidebarTitle: "Carerix-records"
+description: "Voeg Carerix-records toe, werk ze bij, archiveer en herstel ze vanuit een automatisering, op dezelfde manier voor elk recordtype. Onderdeel van de HireData-bèta."
+tag: "BETA"
+keywords:
+  - "carerix-records"
+  - "record toevoegen"
+  - "record bijwerken"
+  - "archiveren"
+  - "herstellen"
+  - "match verwijderen"
+  - "record steps"
+  - "bèta"
+---
+
+Je automatiseringen kunnen Carerix nu up-to-date houden zonder aparte stap voor elk soort wijziging. Toevoegen, bijwerken, archiveren en herstellen werkt hetzelfde voor kandidaten, contactpersonen, bedrijven, vacatures en meer.
+
+<Note>
+  Dit is onderdeel van de HireData-bèta en werkt in de [nieuwe automation builder](/nl/automations/engine-1-3). Zie [Zo werkt de bèta](/nl/beta/how-the-beta-works) om deel te nemen.
+</Note>
+
+## Houd Carerix up-to-date vanuit je automatiseringen
+
+Klik in een nieuwe automatisering op **\+**. Je vindt **Add** en **Update** onder **Records**, en **Archive**, **Restore** en **Delete** onder **Lifecycle**. Kies daarna het Carerix-record dat je wilt wijzigen.
+
+<Frame caption="Add en Update staan onder Records. Archive, Restore en Delete staan onder Lifecycle.">
+  <img src="/images/beta/step-drawer-records-lifecycle.webp" alt="De stappenlijst met Add en Update onder Records, en Archive, Restore en Delete onder Lifecycle" />
+</Frame>
+
+<Frame caption="Kies het Carerix-record dat je wilt toevoegen of bijwerken.">
+  <img src="/images/beta/carerix-record-types.webp" alt="Het paneel Add Record met Carerix-records zoals Candidate, Company, Contact, Job, Match, Lead en Opportunity" />
+</Frame>
+
+### 1. Nieuwe records toevoegen
+
+Maak **kandidaten** aan, **contactpersonen** gekoppeld aan hun bedrijf, **bedrijven**, **vacatures** gekoppeld aan een contactpersoon, **publicaties** en **afspraken** met hun deelnemers. De verplichte velden komen overeen met de Carerix-formulieren die je al kent, zoals het bedrijf bij een nieuwe vacature. Publicaties houden hun eigen tekst, zodat Carerix de vacaturetekst er niet overheen zet.
+
+### 2. Bijwerken wat er al is
+
+Wijzig elk veld of maak het helemaal leeg, ook eigenaren. Houd de **functietitel**, **opleiding**, **werkervaring**, **vaardigheden** en **talen** van een kandidaat up-to-date, of voeg hem toe aan een **talentpool** zonder dat hij de pools verliest waar hij al in zit.
+
+### 3. Archiveren en herstellen
+
+**Archiveer** een record als het niet meer actief is en **herstel** het als je het weer nodig hebt. Alleen **matches** kunnen definitief worden verwijderd, omdat dat de enige records zijn die Carerix echt verwijdert.
+
+### 4. Meerdere records tegelijk wijzigen
+
+Eén stap kan meerdere records wijzigen, zoals alle open matches van een kandidaat. Voeg **voorwaarden** toe zodat de stap de wijziging alleen doorvoert als de huidige waarden van het record dat toelaten.
+
+## Goed om te weten
+
+- **Elke wijziging wordt na het opslaan gecontroleerd.** Een stap kan geen succes melden als er niets is veranderd. Weigert Carerix een wijziging, dan toont de run de eigen reden van Carerix.
+- **Velden en labels volgen je eigen Carerix-schermen**, zoals Job in plaats van Vacancy.
+- **Bestanden** kun je vanaf een link aan een record toevoegen en op bestandsnaam verwijderen.
+- **Nog niet inbegrepen:** de zichtbaarheid van afspraken, en sommige filters en statusopties van talentpools.
+- **Bestaande automatiseringen houden hun oude Carerix-stappen**, zoals update field en add note.
+
+## Probeer het zelf
+
+Maak een nieuwe automatisering in [Automations](https://app.hiredata.com/automations), klik op **\+**, kies **Add** onder **Records** en kies een Carerix-record.
