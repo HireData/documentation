@@ -1,0 +1,136 @@
+---
+title: "Map Meta lead answers to Carerix choices with Ask AI"
+sidebarTitle: "Map answers with AI"
+description: "Use Ask AI to map Meta lead answers to Carerix dropdown options and resolve invalid_node_values in the Job Application step."
+keywords:
+  - "Meta Leads"
+  - "Carerix"
+  - "Ask AI"
+  - "invalid_node_values"
+  - "field mapping"
+  - "Functieniveau"
+  - "Function1"
+---
+
+Meta lead answers do not always use the same wording as your Carerix dropdowns. Use **Ask AI** to select from the actual Carerix choices, then pass its outputs to **Job Application**.
+
+**Meta lead received → Find Vacancy → Ask AI → Job Application**
+
+This guide builds on [Create a Meta Leads automation](/apps/meta-leads/create-a-meta-leads-automation-in-hiredata).
+
+## Why a lead can stop with invalid_node_values
+
+Carerix choice fields refer to options from a configured list. HireData can resolve a text answer when it matches an option label, ignoring capitalization and surrounding spaces. Similar wording does not automatically count as a match.
+
+For example, if your Carerix list contains these labels:
+
+| Meta answer | Carerix option | Direct match? |
+| --- | --- | --- |
+| `hbo` | HBO | Yes |
+| `wo` | WO | Yes |
+| `mbo_4` | MBO-4 | No |
+| `werktuigbouwkunde` | Werktuigbouwkundige | No |
+
+The last two values need a mapping. A study direction and a profession are also different kinds of information: deciding to map one to the other requires a business rule.
+
+An unresolved choice can stop the Job Application step with `invalid_node_values`. This is a field-validation problem; it does not by itself mean the Carerix connection is down.
+
+<Note>
+  These labels are examples. Check your own Carerix lists and use the options from the connection selected in your automation. Labels and IDs can differ between environments.
+</Note>
+
+## Before you start
+
+You need a Meta Leads trigger, a working Carerix connection, and a vacancy lookup. Check the exact lead fields available for the selected Meta form.
+
+Decide which answers have a clear destination. For example, `mbo_4` can map to **MBO-4** when that option exists. An answer such as “MBO 3 or lower” does not distinguish between separate MBO-2 and MBO-3 choices. Handle that ambiguity before writing a value.
+
+Keep candidate fields, such as education level, separate from match fields, such as application stage and source.
+
+## 1. Add Ask AI before Job Application
+
+Insert a **Prompt** step after **Find Vacancy** and before **Job Application**. Its settings panel is headed **Ask AI**.
+
+Choose **Classify** under **What should the AI do?**.
+
+For a starting configuration, select **Fast**, **Precise**, and **Auto** under **Advanced**. Preview the result before deciding whether a different quality setting is needed.
+
+See the [Prompt reference](/reference/automations/steps/prompt) for the full settings.
+
+## 2. Return choices from Carerix
+
+Under **What should the AI return?**, choose **Data source** and select the relevant list from your Carerix connection.
+
+For an education-level mapping, select **Functieniveau / Professional level**. If you also have an agreed mapping to a function, add **Functie1 / Function1** as a second output.
+
+Use the actual list rather than a custom Text field. This gives the AI the destination options to choose from.
+
+<Note>
+  Work level and Functieniveau can refer to the same Professional level list in Carerix. Check the underlying list rather than relying only on the field's translated label.
+</Note>
+
+## 3. Provide the answers and mapping rules
+
+Insert the Meta variables using the field picker. The following education example assumes your form exposes this variable and your Carerix list contains **MBO-4**, **HBO**, and **WO**:
+
+```text
+Match the candidate's Meta education answer to the configured
+Carerix Functieniveau output.
+
+Education answer: {{lead.data.heb_je_een_opleiding_afgerond}}
+
+Apply these mapping rules:
+- mbo_4 means MBO-4.
+- hbo means HBO.
+- wo means WO.
+
+Return the corresponding option from the configured Carerix list.
+Do not infer qualifications that the candidate did not provide.
+```
+
+This example covers those three answers. Use a [Split](/reference/automations/steps/split) or [Filter](/reference/automations/steps/filter) to handle missing answers and other choices separately, according to your process.
+
+If you add a **Functie1** output, include the education-direction variable and your reviewed mapping rules in the prompt. Do not ask the model to invent a profession from a study direction. If the answer does not support a function choice, collect more information or route it for review.
+
+## 4. Map the AI outputs into Job Application
+
+Open **Job Application** and replace the original Meta variables for the choice fields with the fields returned by **Ask AI**:
+
+| Candidate field in Job Application | Value to select |
+| --- | --- |
+| Work level | Ask AI → Functieniveau output |
+| Function1, if configured | Ask AI → Functie1 output |
+
+Use the field picker to select the outputs of this specific AI step. If you delete and recreate Ask AI, select its new outputs again.
+
+Keep direct Meta fields for contact details such as name, email, and phone number. For candidate and match source, select the appropriate Carerix options; a platform value such as `fb` is not automatically the corresponding Carerix source.
+
+## 5. Test the mapping and the saved result
+
+First use **Preview** in Ask AI to check representative answers. Then [test the complete automation](/automations/how-to-test-an-automation) with controlled data. A real execution can create or change records in Carerix.
+
+Check:
+
+1. The Meta answer received by the run.
+2. The AI outputs in the Ask AI step's **Fields** tab.
+3. The output variables selected in Job Application.
+4. The candidate and match linked to the intended vacancy.
+5. The values actually saved in Carerix.
+
+Test an exact label, a formatting difference such as `mbo_4`, a missing answer, and an ambiguous choice. Check both a new candidate and an existing candidate.
+
+<Note>
+  A finished run does not prove that candidate education and function were written. In this Job Application flow, finding an existing candidate can skip the candidate-creation fields and proceed to the match. Use a separate candidate update when existing profiles also need these values, and verify the result in Carerix.
+</Note>
+
+## Troubleshooting
+
+| Problem | What to check |
+| --- | --- |
+| Ask AI succeeds, but Job Application stops with `invalid_node_values` | Check all mapped Carerix choice fields, including source. Confirm the application uses AI outputs rather than the original Meta answers. |
+| An output is missing or incorrect | Check the input variable, selected Carerix data source, mapping rules, and preview result. |
+| It works for HBO but fails for MBO 4 | Compare the submitted value with the exact destination label. Capitalization is ignored; underscores, spaces, and hyphens are not interchangeable. |
+| The run finishes, but candidate fields stay unchanged | Check whether the candidate already existed and whether a separate candidate update is needed. |
+| A recreated AI step no longer supplies values | Re-select its outputs in the later steps. |
+
+For a small set of fixed answers, explicit mappings are often more predictable. Use Ask AI when interpreting the answers adds value, while keeping the destination lists and ambiguous cases under your control.
