@@ -1,0 +1,62 @@
+---
+title: "Overzicht van de Spott-integratie"
+sidebarTitle: "Overzicht"
+description: "Ontdek wat de Spott-integratie van HireData synchroniseert, welke recruitmentautomatiseringen ze ondersteunt en hoe je je Spott-account koppelt."
+keywords:
+  - "Spott"
+  - "Spott-integratie"
+  - "Spott ATS"
+  - "Spott-automatisering"
+---
+
+Koppel Spott aan HireData en wijzigingen in Spott starten je automatiseringen. Gaat een sollicitatie naar een nieuwe fase, start een plaatsing of is een klant al een tijd niet benaderd, dan stuurt HireData de juiste e-mail of het juiste WhatsApp-bericht zonder dat iemand eraan hoeft te denken.
+
+## Wat de integratie biedt
+
+Je koppelt Spott één keer met een API-sleutel en een webhook. Vanaf dat moment laat Spott HireData elke wijziging weten, en HireData gebruikt de namen die Spott zelf voor je gegevens gebruikt, zoals **Job** en **Client**.
+
+Spott is een core app, dus je vindt hem bovenaan bij **Settings** > **Apps**.
+
+## Wat je kunt automatiseren
+
+- Stuur een WhatsApp-bericht of e-mail wanneer een sollicitatie naar een nieuwe fase gaat.
+- Check een week na de start van een plaatsing in bij de kandidaat.
+- Volg opportunities op wanneer ze worden aangemaakt of van fase wisselen.
+- Laat wekelijks een automatisering lopen over een groep klanten of kandidaten.
+- Houd automatiseringen per pipeline-track gescheiden, zodat elke track zijn eigen berichten krijgt.
+- Gebruik elk Spott-veld in je e-mails, WhatsApp-berichten en formulieren, ook van gekoppelde records zoals de kandidaat en de vacature van een sollicitatie.
+- Schrijf terug naar Spott: voeg een notitie toe, werk een kandidaat bij of zet een sollicitatie in een andere fase, rechtstreeks vanuit de automatisering.
+
+## Hoe gegevens beschikbaar komen
+
+Bij het koppelen synchroniseert HireData je Spott-velddefinities en gebruikers. Records komen binnen wanneer ze in Spott veranderen, wanneer een automatisering ze opzoekt of wanneer een geplande automatisering loopt.
+
+## Wat Spott nog niet kan
+
+Dit hangt af van wat de API van Spott vandaag biedt.
+
+- **Plaatsingsstatus:** Spott heeft geen statusveld op plaatsingen. Gebruik in plaats daarvan een eigen veld in Spott.
+- **E-mailgeschiedenis:** e-mails die vanuit HireData zijn verstuurd, verschijnen niet in de e-mailgeschiedenis van Spott.
+- **Afspraken:** Spott kan niet alle afspraken opsommen, dus een automatisering kan niet starten op de datum van een afspraak.
+
+## Aan de slag
+
+<Steps>
+  <Step title="Koppel Spott">
+    Plak een Spott-API-sleutel in HireData en voeg daarna de HireData-webhook toe in Spott.
+  </Step>
+  <Step title="Bouw de automatisering">
+    Kies een Spott-object, kies hoe de automatisering start en voeg je bericht toe.
+  </Step>
+  <Step title="Test en activeer">
+    Controleer de triggergegevens en het bericht met een testrecord voordat echte kandidaten de automatisering ingaan.
+  </Step>
+</Steps>
+
+## Spott-handleidingen
+
+- [Koppelen met Spott](/nl/apps/spott/connect-with-spott)
+- [Een Spott-automatisering maken](/nl/apps/spott/create-a-spott-automation-in-hiredata)
+- [Spott-records toevoegen, bijwerken of verwijderen](/nl/apps/spott/add-update-or-delete-spott-records)
+- [Een automatisering testen](/nl/automations/how-to-test-an-automation)
+- [Binnenkomende events bekijken](/nl/settings/logs/events)
