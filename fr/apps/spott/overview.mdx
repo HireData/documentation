@@ -1,0 +1,62 @@
+---
+title: "Vue d'ensemble de l'intégration Spott"
+sidebarTitle: "Vue d'ensemble"
+description: "Découvrez ce que l'intégration Spott de HireData synchronise, quelles automatisations de recrutement elle prend en charge et comment connecter votre compte Spott."
+keywords:
+  - "Spott"
+  - "intégration Spott"
+  - "Spott ATS"
+  - "automatisation Spott"
+---
+
+Connectez Spott à HireData et les changements dans Spott déclenchent vos automatisations. Quand une candidature passe à une nouvelle étape, qu'un placement commence ou qu'un client n'a pas été contacté depuis un moment, HireData envoie le bon e-mail ou le bon message WhatsApp sans que personne n'ait à y penser.
+
+## Ce que fait l'intégration
+
+Vous connectez Spott une seule fois avec une clé API et un webhook. Ensuite, Spott informe HireData de chaque changement, et HireData utilise les noms que Spott donne à vos données, comme **Job** et **Client**.
+
+Spott est une app principale : vous la trouvez en haut de **Settings** > **Apps**.
+
+## Ce que vous pouvez automatiser
+
+- Envoyer un message WhatsApp ou un e-mail quand une candidature passe à une nouvelle étape.
+- Prendre des nouvelles d'un candidat une semaine après le début de son placement.
+- Relancer les opportunités quand elles sont créées ou changent d'étape.
+- Lancer chaque semaine une automatisation sur un groupe de clients ou de candidats.
+- Séparer les automatisations par track de pipeline, pour que chaque track ait ses propres messages.
+- Utiliser chaque champ Spott dans vos e-mails, messages WhatsApp et formulaires, y compris ceux des enregistrements liés, comme le candidat et le job d'une candidature.
+- Écrire dans Spott : ajouter une note, mettre à jour un candidat ou déplacer une candidature vers une autre étape, directement depuis l'automatisation.
+
+## Comment les données arrivent
+
+Lors de la connexion, HireData synchronise les définitions de champs et les utilisateurs de Spott. Les enregistrements arrivent quand ils changent dans Spott, quand une automatisation les recherche ou quand une automatisation planifiée s'exécute.
+
+## Ce que Spott ne permet pas encore
+
+Cela dépend de ce que l'API de Spott propose aujourd'hui.
+
+- **Statut du placement :** Spott n'a pas de champ de statut sur les placements. Utilisez plutôt un champ personnalisé dans Spott.
+- **Historique des e-mails :** les e-mails envoyés depuis HireData n'apparaissent pas dans l'historique des e-mails de Spott.
+- **Rendez-vous :** Spott ne peut pas lister tous les rendez-vous, une automatisation ne peut donc pas démarrer à la date d'un rendez-vous.
+
+## Pour commencer
+
+<Steps>
+  <Step title="Connecter Spott">
+    Collez une clé API Spott dans HireData, puis ajoutez le webhook HireData dans Spott.
+  </Step>
+  <Step title="Créer l'automatisation">
+    Choisissez un objet Spott, son mode de démarrage et ajoutez votre message.
+  </Step>
+  <Step title="Tester et activer">
+    Vérifiez les données du déclencheur et le message avec un enregistrement de test avant que de vrais candidats entrent dans l'automatisation.
+  </Step>
+</Steps>
+
+## Guides Spott
+
+- [Se connecter à Spott](/fr/apps/spott/connect-with-spott)
+- [Créer une automatisation Spott](/fr/apps/spott/create-a-spott-automation-in-hiredata)
+- [Ajouter, mettre à jour ou supprimer des enregistrements Spott](/fr/apps/spott/add-update-or-delete-spott-records)
+- [Tester une automatisation](/fr/automations/how-to-test-an-automation)
+- [Consulter les événements entrants](/fr/settings/logs/events)
