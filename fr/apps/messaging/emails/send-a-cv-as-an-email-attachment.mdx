@@ -1,0 +1,55 @@
+---
+title: "Envoyer le CV d'un candidat ou un autre fichier avec un e-mail automatique"
+sidebarTitle: "Joindre des fichiers à un e-mail"
+description: "Joignez le dernier CV d'un candidat, un fichier depuis une adresse web ou un fichier de votre médiathèque à la tâche Send Email d'une automatisation HireData."
+keywords:
+  - "pièce jointe e-mail"
+  - "joindre un CV"
+  - "envoyer un CV"
+  - "pièces jointes"
+  - "Send Email"
+  - "médiathèque"
+  - "champ fichier"
+---
+
+La tâche **Send Email** peut maintenant joindre des fichiers. Envoyez le dernier CV d'un candidat au recruteur ou à un client, ou ajoutez le même PDF, comme un guide de préparation à l'entretien, à chaque e-mail envoyé par une automatisation.
+
+## Où ajouter des pièces jointes
+
+Ouvrez la tâche **Send Email** dans votre automatisation. Sous **Settings**, vous trouvez la section **Attachments**, à côté de **Recipient**, **CC and BCC** et **Sender**.
+
+Cliquez sur **Add file** pour ajouter une ligne. Chaque ligne propose trois sources :
+
+- **File** joint un fichier issu d'une étape précédente de l'automatisation, comme le CV d'un candidat. Choisissez-le dans **Choose an uploaded file**.
+- **URL** joint le fichier situé à une adresse web.
+- **Media library** (l'icône d'image) joint un fichier que vous avez importé dans HireData, comme un PDF standard.
+
+Ajoutez autant de lignes que nécessaire. Le bouton **−** supprime une ligne.
+
+<img src="/images/emails/attachments-section.png" alt="La section Attachments d'une tâche Send Email avec deux fichiers : le dernier CV issu d'une étape Find et un guide de préparation à l'entretien issu de la médiathèque, ainsi que le bouton Add file" width="492" />
+
+## Joindre le dernier CV d'un candidat
+
+Pour joindre un fichier enregistré sur un enregistrement Carerix ou Spott, trouvez-le d'abord avec une étape **Find**, puis joignez-le.
+
+1. Avant la tâche **Send Email**, ajoutez une étape **Find** qui recherche les fichiers du candidat. S'il y en a plusieurs, le plus récent vient en premier : vous obtenez donc le dernier CV. Voir [Rechercher des enregistrements](/fr/automations/look-up-records).
+2. Dans la tâche **Send Email**, ouvrez **Attachments** et cliquez sur **Add file**.
+3. Laissez **File** sélectionné et choisissez le fichier de votre étape **Find**, par exemple **Find the latest CV: File**.
+4. Enregistrez la tâche.
+
+## Vérifier ce qui a été envoyé
+
+Ouvrez une exécution de l'automatisation. L'étape **Send Email** liste les fichiers joints à l'e-mail.
+
+<img src="/images/emails/attachments-run-step.png" alt="L'étape Send Email d'une exécution avec une carte Attachments listant deux fichiers joints et leur taille" width="384" />
+
+<Tip>
+  Testez d'abord avec un candidat de test et votre propre adresse, et vérifiez l'e-mail reçu avant d'activer l'automatisation pour de vrais candidats.
+</Tip>
+
+Les pièces jointes fonctionnent dans toutes les automatisations, y compris celles créées avant le nouveau builder d'automatisations.
+
+## Articles liés
+
+- [Tâche Send Email](/fr/reference/automations/tasks/send-email) explique chaque réglage de la tâche.
+- [Rechercher des enregistrements](/fr/automations/look-up-records) explique l'étape Find.
