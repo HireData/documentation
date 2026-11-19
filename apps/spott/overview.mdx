@@ -1,0 +1,62 @@
+---
+title: "Spott integration overview"
+sidebarTitle: "Overview"
+description: "Learn what the HireData Spott integration syncs, which recruitment automations it supports, and how to connect your Spott account."
+keywords:
+  - "Spott"
+  - "Spott integration"
+  - "Spott ATS"
+  - "Spott automation"
+---
+
+{/* DRAFT FOR REVIEW (EN only). Writing back to Spott (add, update, delete records) is left out until HD-1967 and HD-1968 are tested. */}
+
+Connect Spott to HireData and changes in Spott start your automations. When an application moves stage, a placement starts or a client hasn't been contacted for a while, HireData can send the right email or WhatsApp message without anyone having to remember it.
+
+## What the integration provides
+
+You connect Spott once with an API key and a webhook. From then on, Spott tells HireData about every change, and HireData uses Spott's own names for your data, such as **Job** and **Client**.
+
+Spott is a core app, so you'll find it at the top of **Settings** > **Apps**.
+
+## What you can automate
+
+- Send a WhatsApp message or email when an application moves to a new stage.
+- Check in with a candidate one week after their placement starts.
+- Follow up on opportunities when they're created or move stage.
+- Run a weekly automation over a set of clients or candidates.
+- Keep automations apart per pipeline track, so each track gets its own messages.
+- Use every Spott field in your emails, WhatsApp messages and forms, including linked records such as an application's candidate and job.
+
+## How data becomes available
+
+When you connect, HireData syncs your Spott field definitions and users. Records come in when they change in Spott, when an automation looks them up, or when a scheduled automation runs.
+
+## What Spott can't do yet
+
+These depend on what Spott's API offers today.
+
+- **Placement status:** Spott has no status field on placements. Use a custom field in Spott instead.
+- **Email history:** emails sent from HireData don't appear in Spott's email history.
+- **Appointments:** Spott can't list all appointments, so an automation can't start on an appointment date.
+
+## Get started
+
+<Steps>
+  <Step title="Connect Spott">
+    Paste a Spott API key in HireData, then add the HireData webhook in Spott.
+  </Step>
+  <Step title="Build the automation">
+    Pick a Spott object, choose how it starts and add your message.
+  </Step>
+  <Step title="Test and activate">
+    Check the trigger data and the message with a test record before real candidates enter the automation.
+  </Step>
+</Steps>
+
+## Spott guides
+
+- [Connect with Spott](/apps/spott/connect-with-spott)
+- [Create a Spott automation](/apps/spott/create-a-spott-automation-in-hiredata)
+- [Test an automation](/automations/how-to-test-an-automation)
+- [Inspect incoming events](/settings/logs/events)
