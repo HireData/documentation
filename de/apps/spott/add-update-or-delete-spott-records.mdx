@@ -1,0 +1,84 @@
+---
+title: "Spott-Datensätze aus einer Automatisierung hinzufügen, aktualisieren oder löschen"
+sidebarTitle: "Spott-Datensätze aktualisieren"
+description: "Halten Sie Spott aus Ihren HireData-Automatisierungen aktuell: Notizen hinzufügen, Kandidaten und andere Datensätze aktualisieren oder löschen und jede Änderung vor dem Speichern prüfen."
+keywords:
+  - "Spott"
+  - "Spott aktualisieren"
+  - "Notiz hinzufügen Spott"
+  - "zurückschreiben"
+  - "Record Steps"
+  - "Kandidat aktualisieren"
+---
+
+Ihre Automatisierungen können jetzt in Spott zurückschreiben. Halten Sie nach einem WhatsApp-Gespräch eine Notiz fest, verschieben Sie eine Bewerbung in die nächste Phase, wenn ein Kandidat ein Formular ausfüllt, oder halten Sie die Kontaktdaten eines Kandidaten aktuell, ohne dass jemand etwas in Spott abtippen muss.
+
+## Schritt 1: Spott-Schritt hinzufügen
+
+Klicken Sie in Ihrer Automatisierung auf **\+** und wählen Sie den benötigten Spott-Schritt. Es gibt einen Schritt pro Aktion und Spott-Objekt, etwa **Add Note in Spott**, **Update Candidate in Spott** oder **Delete Note in Spott**.
+
+Unter **What do you want to add?** können Sie jederzeit zu einem anderen Spott-Objekt wechseln.
+
+<img src="/images/apps/spott/add-note-step.png" alt="Der Schritt Add Note in Spott mit ausgewähltem Note, den Tabs Record und Settings und den Feldern Title und Content" width="420" />
+
+## Schritt 2: Zu ändernden Datensatz wählen
+
+Bei einer Aktualisierung oder Löschung teilen Sie HireData mit, welcher Spott-Datensatz geändert werden soll:
+
+- **Per ID**, zum Beispiel der Kandidat, der die Automatisierung gestartet hat.
+- **Mit Bedingungen**, die den Datensatz finden, zum Beispiel der Kandidat mit einer bestimmten E-Mail-Adresse.
+
+Legen Sie dann fest, was passiert, wenn der Datensatz nicht gefunden wird:
+
+- **Fail the step:** Es ändert sich nichts und der Schritt schlägt fehl. Das ist die Standardeinstellung.
+- **Skip the step:** Es ändert sich nichts und die Automatisierung läuft weiter.
+- **Add it instead:** Fügt einen neuen Datensatz mit diesen Werten hinzu.
+
+<img src="/images/apps/spott/if-not-found.png" alt="Das Menü If not found mit Fail the step, Skip the step und Add it instead" width="480" />
+
+Finden Ihre Bedingungen mehr als einen Datensatz, wählen Sie **Use all**, **Use the first** oder **Fail the step**.
+
+<img src="/images/apps/spott/if-several-match.png" alt="Das Menü If several match mit Use all, Use the first und Fail the step" width="480" />
+
+## Schritt 3: Felder ausfüllen
+
+Geben Sie einen Wert ein oder wählen Sie ein Feld aus einem früheren Schritt der Automatisierung, etwa eine Formularantwort. Felder, die Sie nicht anfassen, zeigen **Unchanged** und bleiben in Spott unverändert. Klicken Sie auf **Change**, um einen neuen Wert zu setzen oder das Feld zu leeren.
+
+Bei Listen, etwa den E-Mail-Adressen eines Kandidaten, können Sie ein Element hinzufügen, die ganze Liste ersetzen oder passende Elemente entfernen.
+
+Einige Dinge erledigt HireData für Sie:
+
+- **Antworten werden den Auswahlwerten in Spott zugeordnet**, nach Name oder Wert, sodass eine Formularantwort wie "ja" oder ein Phasenname bei der richtigen Option landet.
+- **Zahlen und Datumsangaben** werden so gelesen, wie Ihr Workspace sie schreibt.
+- **Neue Bewerbungen und Jobs** können einem bestimmten Pipeline-Track zugeordnet werden, eine Bewerbung auch einer Unterphase.
+- **Ein Wert, der nicht gelesen werden kann**, stoppt den Schritt und zeigt an, um welchen Wert es ging, statt das Feld in Spott zu leeren.
+
+<img src="/images/apps/spott/update-fields.png" alt="Die Felder eines Update Candidate-Schritts: First name ausgefüllt, die anderen Felder als Unchanged markiert mit einer Change-Schaltfläche" width="420" />
+
+<Tip>
+  Eine Aktualisierung ändert nur die Felder, die Sie setzen. Würde sich nichts ändern, wird der Schritt übersprungen, statt dieselben Werte erneut zu speichern, und der Run erklärt den Grund.
+</Tip>
+
+## Schritt 4: Vorschau vor dem Speichern
+
+Klicken Sie auf **Preview**, suchen Sie nach Namen einen Beispieldatensatz und klicken Sie auf **Run preview**. Sie sehen genau, was hinzugefügt oder geändert würde. In Spott wird nichts gespeichert.
+
+<img src="/images/apps/spott/write-preview.png" alt="Das Fenster Preview: links ein Beispielkandidat, rechts die Notiz, die mit Titel und Inhalt hinzugefügt würde" />
+
+## Schritt 5: Prüfen, was gespeichert wurde
+
+Öffnen Sie einen Run und klicken Sie auf den Spott-Schritt. Sie sehen, welcher Datensatz geändert wurde, jedes geänderte Feld mit altem und neuem Wert und **Open in Spott**, um direkt zum Datensatz zu gelangen.
+
+Geht etwas schief, erklärt der Run es in verständlichen Worten, etwa **Record not found**.
+
+<img src="/images/apps/spott/write-run-result.png" alt="Ein abgeschlossener Schritt Update Candidate in Spott mit dem Kandidaten, einer Schaltfläche Open in Spott und der hinzugefügten E-Mail-Adresse unter Changes" width="420" />
+
+## Was noch nicht möglich ist
+
+- **Jobs** können nicht gelöscht werden, weil Spott das nicht erlaubt.
+- **Vermittlungen** können aktualisiert, aber nicht hinzugefügt oder gelöscht werden.
+
+## Verwandte Artikel
+
+- [Eine Spott-Automatisierung erstellen](/de/apps/spott/create-a-spott-automation-in-hiredata)
+- [Eine Automatisierung testen](/de/automations/how-to-test-an-automation)
