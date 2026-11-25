@@ -1,0 +1,24 @@
+---
+title: "Why is a variable missing when the automation runs?"
+sidebarTitle: "Missing variable values"
+description: "Trace a missing value from the event to the message, and check the linked record or WhatsApp button parameter that the affected run actually used."
+keywords: ["variable not found","data_reference_not_found","invalid config","button URL"]
+---
+
+Start with one affected run. A field appearing in the builder means you can select it. The value available when a particular candidate reaches that step depends on the event and the records linked to the message.
+
+1. Open **Runs**, select the failed step, and read **Overview**. Open **Fields** and find the exact variable named in the message.
+2. Check which record owns the field. For a recruiter’s first name, follow the recruiter or owner relationship. A populated candidate first name answers a different question.
+3. Open the event’s **Data** or the earlier step that supplies the value. Compare the field and record ID with the failed step. If only some runs fail, compare one successful run using the same template.
+
+## Match the symptom to the next check
+
+| Symptom | What to check |
+| --- | --- |
+| The editor shows an orange **Variable is not found** badge | Open the badge and replace the unrecognised key with the intended field. |
+| **Send Email** shows `data_reference_not_found` or a required data reference is missing | Check **Objects** on the email or linked form, then check the corresponding object in **Send Email**. Supply the external ID of that object. For example, a Match-triggered email that reads Job fields needs the linked job’s ID. |
+| A WhatsApp message fails with **Invalid config** | Check the recipient first. Then check the values supplied for the selected template, including each dynamic button parameter. A value in the message body does not fill the button’s URL parameter. |
+
+Test with a record that has a known value for the exact field. If it still fails, send support the run ID, variable name, and the step where the value first disappears.
+
+[Variables](/variables/introduction) · [Send Email task](/reference/automations/tasks/send-email)

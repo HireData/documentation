@@ -1,0 +1,29 @@
+---
+title: "Why didn’t my test email arrive?"
+sidebarTitle: "Missing test email"
+description: "Identify which test you ran, check its recipient and required records, then follow the available send or delivery result before trying another test."
+keywords: ["test mail scheduled","failed to send test email","test email not received"]
+---
+
+Where you look depends on where you clicked **Test**. The paper-plane button in the email builder sends a template preview. **Run Test** in an automation starts a test run whose steps you can inspect.
+
+## I used the email builder
+
+1. Reopen **Test Email**. Check the **Email** field. Leaving it empty uses your own address.
+2. If the email or its form uses a required object, supply a **Record** or test **Fields** for each object marked with an asterisk. An error such as `Required data reference [job] is missing` identifies the first missing object.
+3. If you saw **Test mail scheduled!**, check the intended inbox and junk folder. For a test to an ordinary recipient, the domain after the @ must match a verified domain in the workspace. If you see `unverified_test_recipient_domain`, choose a test mailbox on one of those domains. This check also applies when an automation test sends an email. Give support the template link, destination domain, timestamp, and the on-screen result if delivery still differs.
+
+## I tested an automation
+
+Open the test run and select **Send Email**. In **Fields**, check the resolved sender and recipient. In **Overview**, read the exact result.
+
+| Result | What to check |
+| --- | --- |
+| The step was never reached | Open the preceding Filter, Split, or failed step. |
+| `Email unsubscribed.` | Look up the address under **Settings > Unsubscribes**. A previous bounce can also suppress an address. |
+| `Invalid sender email.` | Check the selected sender and its verified domain under **Settings > Domains**. |
+| Sent, delivered, or bounced | Read the most recent status for that message. A delivered result can still leave the email in junk or quarantine. Give the mailbox administrator the recipient, sender, subject, and send time. |
+
+If you contact support about an automation test, include the **run ID** as well as the template. For a builder test, the template and test time identify the attempt.
+
+[Email builder testing](/reference/email-builder/testing) · [Run cancellation reasons](/knowledge-base/run-cancellation-reasons)
