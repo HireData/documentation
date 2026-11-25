@@ -1,0 +1,24 @@
+---
+title: "Why did a duplicate candidate appear, or a WhatsApp chat open the wrong profile?"
+sidebarTitle: "Duplicate or wrong candidate"
+description: "Trace the contact details, HireData Person, Carerix candidate, and application IDs to see whether the mismatch began in a lookup or in a linked profile."
+keywords: ["duplicate candidate","wrong person","WhatsApp linked to wrong candidate","deduplication"]
+---
+
+Find the run that created the application and open the WhatsApp conversation. Write down the HireData Person linked to the chat, the Carerix candidate ID the automation found or created, and the match ID. One person can apply for several vacancies, so a second match alone is expected in that situation.
+
+## Check how the candidate was found
+
+| Entry route | What to check |
+| --- | --- |
+| Meta lead with an email lookup | Open the lead data and inspect the actual email passed to the candidate lookup. An empty email cannot identify an existing candidate. Compare it with the address on the expected Carerix record. |
+| Incoming WhatsApp with a phone lookup | Compare the initiator’s number with the Carerix phone field used by **Find**. Check country code, local prefix, spacing, and whether the number is stored in a different mobile or business field. |
+| Run finds the expected candidate but the chat opens someone else | Compare the candidate ID returned by the run with the record linked to the HireData Person. Changing the vacancy lookup won’t correct a person already linked to the wrong candidate. |
+
+## Decide what to fix
+
+If the lookup used the wrong field, correct the mapping and test with a controlled existing candidate. Check that the lookup returns the intended candidate before the application step runs. When an identifier is empty or matches several people, route the case for review before creating or updating records.
+
+If different people are linked to one profile, stop sends and updates for the affected records while support investigates. Send the workspace, run and conversation IDs, the HireData Person ID, and the expected and actual Carerix IDs. These let support trace the link without a copy of the candidate’s CV.
+
+[Meta lead candidate lookup](/apps/meta-leads/create-a-meta-leads-automation-in-hiredata) · [Look up records with Find](/automations/look-up-records)

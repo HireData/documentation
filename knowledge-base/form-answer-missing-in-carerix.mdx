@@ -1,0 +1,23 @@
+---
+title: "Why is a submitted form answer, file, or match stage missing in Carerix?"
+sidebarTitle: "Missing Carerix updates"
+description: "Follow a form response through the automation to the target Carerix record and find where a captured answer, uploaded file, or stage change stopped."
+keywords: ["form writeback","CV missing","match stage not updated","Carerix field empty"]
+---
+
+Open the HireData response, the automation run, and the Carerix record you expected to change. Check them in that order. A completed form shows that someone submitted it. Each answer still needs a step that writes it to the correct record.
+
+| Checkpoint | What to look for |
+| --- | --- |
+| **Form response** | Open the specific question. For a CV, check that its file answer contains the attachment. A document can be visible in the WhatsApp chat while the file question is empty. |
+| **Automation run** | Follow the branch after submission. Open the Filter or Split to see which value it evaluated. If a “CV uploaded” filter stopped the run, the file step never ran. |
+| **Carerix update step** | Inspect the object, resolved record ID, destination field, and value. A driving licence answer belongs on the candidate. A match stage belongs on the particular application. |
+| **Carerix record** | Open the exact ID from the update step. For a candidate with several applications, check the match for the intended vacancy. |
+
+## Example: a score should move the match
+
+Follow the score into the **Split** and check which branch ran. In that branch, the Carerix match update needs the match ID. A lead email may help you find a candidate, but it cannot identify which of their applications to move. Use the match ID from the application step or a lookup that identifies that candidate and vacancy.
+
+If a step completed with the expected ID and value but the field remains empty, send support the form response ID, run ID, destination record ID and field name. For a missing file, include its type and whether it appears in the chat and in the response.
+
+[Look up a record](/automations/look-up-records) · [Update Carerix fields](/apps/carerix/update-fields-in-carerix-with-hiredata)

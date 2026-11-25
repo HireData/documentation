@@ -1,0 +1,22 @@
+---
+title: "Which Carerix field should I use to filter on groups, match stages, or tags?"
+sidebarTitle: "Carerix groups and tags"
+description: "Choose the Carerix object and field that own the value, filter a set of match stages, and test group exclusions before using them for a whole audience."
+keywords: ["Match: Apply Tags","match-stage group","Stage one of","exclude groups","Carerix filters"]
+---
+
+Start with one Carerix record that should pass the filter and one that should fail. Check where the value is stored. A group on a person, a group of match stages, and an application tag call for different filters.
+
+| What you mean in Carerix | Where to look in HireData | How to filter |
+| --- | --- | --- |
+| A group assigned to a candidate or contact | The groups field on the corresponding candidate or contact object | Select that field and inspect its available membership operators and values. Verify with records that belong to more than one group. |
+| A stage group such as “Intake” that contains several match stages | **Stage** on the **Match** object | If the stage group itself is unavailable, use **Stage → one of** and select every individual stage in that group. Update the selection if the group changes in Carerix. |
+| Tags attached to the application | **Match: Apply Tags** | Check the operators offered for this field. If you only see **is empty** and **is not empty**, you can test whether any tag exists. That field cannot select a particular tag with those operators. |
+
+## Example: exclude members of either of two groups
+
+Suppose you want to exclude members of Group A and Group B. A record should pass only if it belongs to **neither**. If the field offers a membership exclusion for a single group, combine “does not contain A” and “does not contain B” with **AND**. With **OR**, an A-only member passes the second condition.
+
+Check four cases before sending: A only, B only, both, and neither. Only the last should pass. Inspect the values the Filter actually evaluated. If the picker lacks a suitable membership operator or the results differ, hold the bulk send and give support the object, field, operator and example record IDs.
+
+[Filter operators and AND/OR](/reference/automations/steps/filter) · [Enable Carerix fields and relationships](/apps/carerix/how-to-enable-carerix-fields-and-relationships-in-your-automations)

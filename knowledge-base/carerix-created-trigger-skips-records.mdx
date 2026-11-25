@@ -1,0 +1,22 @@
+---
+title: "Why does my Carerix Created trigger skip some new records?"
+sidebarTitle: "Skipped Carerix creations"
+description: "Compare a missed Carerix creation with a successful one and use event order, trigger conditions, and linked runs to decide what to investigate next."
+keywords: ["Carerix Created","duplicate event","missing run","Created or Updated"]
+---
+
+Pick two Carerix records of the same type: one that started the automation and one that didn’t. Write down their Carerix IDs and creation times. This lets you compare what HireData received for the same automation.
+
+1. In **Events**, find each record. Check the Carerix connection, object, event type, and timestamp. A new match and a new candidate are separate events.
+2. Open each event’s **Data** and **Runs** tabs. Compare its field values with the automation’s **Start** conditions. Check that the automation was active when the event arrived.
+3. If the record has both **Created** and **Updated** events close together, inspect each one. Note their order, any duplicate label, and which event has a linked run.
+
+| What you find | Next step |
+| --- | --- |
+| No creation event for the missed record | Check the source record, object, and connection. Give support the Carerix ID and creation time so they can trace delivery. |
+| Only an **Updated** event has a run, or the creation was marked duplicate | Send support both event IDs and the working comparison. Timestamps alone cannot tell you why an event was treated as a duplicate. |
+| The creation event has a run | Open its first stopped step. A filter cancellation means the automation started. |
+
+Switching to **Created or Updated** also lets later edits start the automation. Before broadening the trigger, check what another run would send or update. To verify a correction, create a controlled test record. Replaying a historical event can repeat actions across multiple automations.
+
+[Inspect events](/settings/logs/events) · [Why didn’t my automation run?](/knowledge-base/why-didnt-my-automation-run)

@@ -1,0 +1,28 @@
+---
+title: "What does an email unsubscribe block, and how can someone subscribe again?"
+sidebarTitle: "Email unsubscribes"
+description: "Check what an email opt-out covers across a workspace, how recipients can reverse it, and how to investigate a send cancelled after a previous bounce."
+keywords: ["unsubscribe","resubscribe","Email unsubscribed","unsubscribe page","transactional email"]
+---
+
+An email opt-out applies to the recipient’s address across the HireData workspace, including other brands and sending domains in that workspace. It can also stop a job alert or an operational email. Changing the template or sender domain doesn’t reset the preference.
+
+## How a recipient subscribes again
+
+1. Ask the recipient to open a previous email from the workspace and follow its **Unsubscribe** link.
+2. On the unsubscribe page, they can choose the option to subscribe again if they opted out by accident.
+3. Have the recipient complete the on-screen flow. A consultant cannot manually reverse the recipient’s opt-out in HireData.
+
+When someone wants to opt out using the link in an email, they must confirm on the page. If someone still receives messages after confirming, compare the exact recipient address and workspace on both sends.
+
+## If a run says “Email unsubscribed”
+
+Open **Settings > Unsubscribes** and check the exact address from the run. This result can also occur after an address bounces. If the recipient never opted out, check the earlier delivery result and the address spelling. Ask support to trace the suppression if the reason remains unclear. Include the run ID and send time.
+
+## Can we change the link or the unsubscribe page?
+
+The email footer is part of the template. If its link takes recipients to an unexpected page, check that it uses the template’s **unsubscribe_url** variable. A copied recipient-specific URL can open the wrong page. Editing the footer does not change an existing opt-out.
+
+The hosted unsubscribe page uses the workspace’s default branding. Its wording cannot currently be edited per brand or sending domain.
+
+[Run cancellation reasons](/knowledge-base/run-cancellation-reasons) · [Check links in an email](/reference/email-builder/testing)

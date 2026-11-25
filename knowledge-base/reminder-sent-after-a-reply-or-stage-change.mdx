@@ -1,0 +1,24 @@
+---
+title: "Why did a candidate get a reminder after replying or changing stage?"
+sidebarTitle: "Unexpected reminders"
+description: "Use the run timeline to check when the reply, intake, or stage change happened and which value the reminder branch checked before sending its message."
+keywords: ["reminder after reply","intake already attended","delay","match stage changed"]
+---
+
+Start from the reminder the candidate actually received. Find its send time and the run that sent it. A reply can belong to a different conversation, and two automations can send similar reminders.
+
+## Reconstruct the timeline
+
+1. In the run, note when the invitation went out, when the **Delay** ended, and when the reminder was sent.
+2. Look up the event that should have stopped the reminder. For a reply, use the message time in that conversation. For an intake or stage change, use the timestamp and ID of the meeting or match in the ATS.
+3. Open the **Filter** or **Split** immediately before the reminder. Compare the value it read with the value that should have stopped the send. Check which record or earlier step supplied it.
+
+| What happened | How to correct the flow |
+| --- | --- |
+| The candidate answered, then immediately received the reminder as the next question | Move the reminder out of the form’s question sequence. In a WhatsApp survey, route on the no-reply outcome and put the reminder in that branch. |
+| The candidate attended or changed stage during the wait | After the Delay, look up the same meeting or match by ID. Filter on its current status before sending. A field from the original trigger can still describe the earlier state. |
+| A recruiter moved the match while screening was in progress | Check the current stage before a later step updates the match or sends a follow-up. Route the run away from that action when the recruiter has already moved it on. |
+
+Test both paths with records you control. Leave one eligible and reply or change the stage on the other during the wait. Compare the two runs at the final filter.
+
+[WhatsApp no-reply settings](/apps/messaging/whatsapp/what-happens-when-a-candidate-doesnt-reply) · [Filter](/reference/automations/steps/filter)
