@@ -43,13 +43,11 @@ C'est la zone de contenu principale où vous rédigez le message que verra le de
 
 ![Corps de l'e-mail](/images/intercom/51732613-Screenshot-2025-05-29-at-20_02_06.png)
 
-Le corps se compose de [sections](/fr/reference/email-builder/sections), et chaque section contient les blocs que vous y ajoutez. Les blocs de texte sont [Paragraph](/fr/reference/email-builder/blocks/paragraph) et [Heading](/fr/reference/email-builder/blocks/heading) ; les autres sont listés dans la [référence de l'éditeur d'e-mails](/fr/reference/email-builder/overview). Cliquez sur n'importe quel bloc pour ouvrir ses propres paramètres dans le panneau de droite.
+Le corps se compose de [sections](/fr/reference/email-builder/sections), et chaque section contient les blocs que vous y ajoutez. Les blocs de texte sont [Paragraph](/fr/reference/email-builder/blocks/paragraph) et [Heading](/fr/reference/email-builder/blocks/heading) ; les autres sont listés dans la [référence de l'éditeur d'e-mails](/fr/reference/email-builder/overview). Cliquez sur un bloc pour le sélectionner. Ses paramètres s'ouvrent dans l'onglet **Styles** de la barre latérale.
 
-#### 1. Ajoutez un nouveau bloc depuis la liste **Blocks** de la section en cliquant sur le **+**
+#### 1. Ajoutez un bloc depuis l'onglet **Add** : faites-le glisser sur l'e-mail, ou sélectionnez un bloc et cliquez sur **Add below**
 
-![Section Blocks dans l'éditeur d'e-mails](/images/intercom/51732702-Screenshot-2025-05-29-at-20_03_28.png)
-
-#### 2. Cliquez à l'intérieur du bloc existant comme si vous alliez taper quelque chose pour ajouter votre contenu
+#### 2. Cliquez sur un bloc de texte, puis cliquez à nouveau dessus (ou double-cliquez) pour taper votre contenu
 
 #### 3. Incluez des espaces réservés dynamiques (par ex. \{\{Recipient: First Name\}\}, \{\{Sender: Email\}\}) pour personnaliser le message
 
@@ -57,9 +55,7 @@ Consultez [Variables](/fr/reference/email-builder/variables) pour savoir d'où v
 
 ### 2.4. Ajouter un formulaire (facultatif)
 
-Si votre e-mail doit recueillir des réponses (par ex. retour d'entreprise, confirmation de disponibilité, etc.), vous pouvez ajouter un formulaire. Cliquez à nouveau sur le **+** dans la liste **Blocks** de la section et sélectionnez **Form** :
-
-![Ajout d'un formulaire à votre e-mail](/images/intercom/51732849-Screenshot-2025-05-29-at-20_07_21.png)
+Si votre e-mail doit recueillir des réponses (par ex. retour d'entreprise, confirmation de disponibilité, etc.), vous pouvez ajouter un formulaire. Faites glisser **Form** depuis l'onglet **Add** sur l'e-mail.
 
 Vous pouvez sélectionner l'un des modèles de formulaires ou [créer le vôtre](/fr/content/creating-a-form-in-hiredata) :
 
@@ -103,9 +99,9 @@ Vous pouvez modifier ce bloc, mais veillez à conserver le lien de désabonnemen
 
 ## Étape 3 : Mise en forme de l'e-mail
 
-Chaque bloc se stylise depuis le panneau de droite, et ce que le panneau propose dépend du bloc sélectionné. Couleurs, polices, alignement, espacement et bordures se définissent tous bloc par bloc, et la [référence de l'éditeur d'e-mails](/fr/reference/email-builder/overview) documente chacun d'eux.
+Chaque bloc se stylise depuis l'onglet **Styles** de la barre latérale, et ce qu'il propose dépend du bloc sélectionné. Les paramètres de tout l'e-mail, comme **Section width** et **All sections**, se trouvent dans l'onglet **Global**. Couleurs, polices, alignement, espacement et bordures se définissent tous bloc par bloc, et la [référence de l'éditeur d'e-mails](/fr/reference/email-builder/overview) documente chacun d'eux.
 
-Trois réglages décident du style et n'atteignent pas les mêmes blocs. **Brand** restyle tout l'e-mail, **Theme** dans les paramètres du modèle n'atteint que les blocs que vous ajoutez ensuite, et une valeur que vous définissez vous-même sur un bloc n'atteint que ce bloc. Consultez [Marque, thème et métadonnées](/fr/reference/email-builder/template#brand-theme-and-metadata) avant de partir à la recherche du changement qui n'est pas apparu.
+Trois réglages décident du style et n'atteignent pas les mêmes blocs. **Brand** restyle tout l'e-mail, **Theme** dans les paramètres du modèle (onglet **Global**) n'atteint que les blocs que vous ajoutez ensuite, et une valeur que vous définissez vous-même sur un bloc n'atteint que ce bloc. Consultez [Marque, thème et métadonnées](/fr/reference/email-builder/template#brand-theme-and-metadata) avant de partir à la recherche du changement qui n'est pas apparu.
 
 ## Étape 4 : Utiliser le modèle dans vos automatisations
 

@@ -1,8 +1,17 @@
 ---
 title: "Tour pelo construtor de emails: blocos, barra de ferramentas, tema e guardar"
 sidebarTitle: "Visão geral"
-description: "Um tour pelo construtor de emails da HireData: o canvas e o painel de definições, como adicionar um bloco, todos os tipos de bloco, a barra de ferramentas, o tema e como guardar."
-keywords: ["construtor de emails", "template de email", "blocos de email", "secções de email", "tema do email", "marca do email", "enviar email de teste", "pré-visualização de email", "alterações por guardar"]
+description: "Um tour pelo construtor de emails da HireData: selecionar e editar blocos no canvas, os separadores Styles, Add e Global, todos os tipos de bloco, espaçamento, anular, a barra de ferramentas e como guardar."
+keywords:
+  - "construtor de emails"
+  - "template de email"
+  - "blocos de email"
+  - "secções de email"
+  - "tema do email"
+  - "marca do email"
+  - "enviar email de teste"
+  - "pré-visualização de email"
+  - "alterações por guardar"
 ---
 
 Um template de email é uma mensagem que escreve uma vez e envia muitas vezes, numa automação ou numa newsletter. Abra **Settings**, depois **Emails** em **Templates**, e clique em **New Email**. Selecione **Blank Email** ou um dos templates prontos a usar, e o novo template abre-se no construtor.
@@ -14,61 +23,71 @@ Esta página mapeia o construtor. Para um passo a passo que leva um email do zer
 O construtor tem três partes.
 
 - A caixa **Subject** ao longo do topo. É a linha que o destinatário vê na caixa de entrada, e aceita variáveis.
-- O próprio email à esquerda. Clique em qualquer texto dele e escreva. Clique em qualquer bloco para o selecionar.
-- O painel de definições à direita, que mostra as definições do que quer que tenha selecionado por último.
+- O próprio email, à largura que os seus destinatários veem. Seleciona e edita tudo diretamente nele.
+- A barra lateral à direita, com três separadores: **Styles** para as definições do que selecionou, **Add** para novos blocos, esquemas e modelos de secção, e **Global** para as definições de todo o email.
 
-![O construtor de emails: a caixa Subject ao longo do topo, o email à esquerda e o painel de definições do Template à direita](/images/email-builder/01-builder-at-a-glance.png)
+Um template contém secções, e uma secção contém os blocos que o destinatário lê. [Template](/pt/reference/email-builder/template) explica como os níveis se aninham.
 
-<Tip>
-  Ao clicar no texto de um bloco seleciona esse bloco, pelo que o painel se enche com as definições do próprio bloco. Para selecionar a **secção** que o contém, clique ao lado do bloco, à esquerda ou à direita do texto. As secções não têm contorno no canvas, por isso aponte para a faixa de cor de fundo que a secção preenche.
-</Tip>
+## Selecionar e editar
 
-Um template contém secções, e uma secção contém os blocos que o destinatário lê. [Template](/pt/reference/email-builder/template) explica como os três níveis se aninham, como se move entre eles e porque é que nunca adiciona um Template nem o pode eliminar.
+- **Passe o rato** sobre um bloco ou secção para o contornar com o seu nome.
+- **Clique** para o selecionar. As definições abrem-se em **Styles**.
+- **Clique de novo num bloco de texto selecionado**, ou faça duplo clique, para editar o texto.
+- **Escape** termina primeiro a edição e depois limpa a seleção.
+- **Teclado:** **Tab** seleciona o primeiro bloco, as setas passam de um bloco para outro, **Enter** edita e **Delete** remove.
 
-Um breadcrumb acima das definições nomeia tudo o que contém o bloco selecionado. Selecione uma linha de uma assinatura e aparecem os quatro níveis.
+Um bloco selecionado mostra uma barra de ações com **Move**, **Add below**, **Duplicate** e **Delete**, e um menu com as definições desse tipo de bloco. Num bloco mais alto do que o ecrã, o menu mantém-se visível.
 
-<img src="/images/email-builder/02-breadcrumb.png" alt="O breadcrumb do painel de definições a ler Template, depois Sections, depois Signature, depois Paragraph, com Paragraph esbatido como nível atual" width="402" />
+### Texto
 
-## Adicionar um bloco
+- **Enter** começa uma nova linha no parágrafo ou título. Não cria um bloco novo.
+- **Listas:** transforme linhas numa lista com marcadores ou numerada. Enter continua a lista.
+- **O menu de texto** define a fonte, o tamanho, a cor, o realce, o alinhamento, a lista e a ligação, com mais opções em **More**. Formata todo o bloco, ou apenas o texto selecionado.
+- **Ligações:** o botão de ligação abre um menu para adicionar, alterar ou remover uma ligação. A uma ligação escrita sem "https" é acrescentado automaticamente.
 
-Todos os painéis de definições que podem conter outros blocos listam-nos em **Blocks**, numerados, pela ordem em que aparecem no email. Cada linha tem três controlos.
+## Adicionar, copiar e mover
 
-- O **+** adiciona um novo bloco abaixo dessa linha. Onde o contentor aceita mais do que um tipo de bloco, abre um menu com eles.
-- O **−** elimina esse bloco.
-- A pega à esquerda arrasta o bloco para cima e para baixo na lista.
-
-<img src="/images/email-builder/03-section-blocks-list.png" alt="O painel de definições de uma secção, a mostrar a sua lista Blocks com uma linha numerada por bloco e os controlos de adicionar, eliminar e arrastar" width="400" />
-
-Clique na própria linha de um bloco para o selecionar e abrir as suas definições. [O breadcrumb](/pt/reference/email-builder/template#the-breadcrumb) faz o caminho de volta. Clique em **Sections** para as definições da secção que contém o bloco, e em **Template** para as definições do email como um todo. O email à esquerda não muda. Só o painel.
+- **O separador Add** lista esquemas, modelos de secção e blocos de conteúdo. Arraste um para o email: uma linha mostra onde fica.
+- **Add below** adiciona um bloco por baixo do selecionado. Um novo bloco de texto começa logo em modo de edição.
+- **Duplicate** copia um bloco ou secção, incluindo as traduções.
+- **Move** arrasta um bloco ou secção até à linha onde o largar. Escape cancela.
+- **As secções** só ficam no nível superior do email, nunca dentro de outra secção.
+- **Uma secção ou coluna esvaziada** mantém o seu lugar e mostra uma zona onde pode largar ou adicionar um bloco.
 
 ## Escolher um bloco {#choosing-a-block}
 
-Duas entradas na lista cobrem mais do que um bloco. Um bloco **Two Columns** chega já com as suas duas colunas lá dentro, e um bloco **Socials** contém um filho por cada rede que ligar.
+| Bloco | O que coloca no email |
+| --- | --- |
+| [Section](/pt/reference/email-builder/sections) | uma faixa ao longo do email, com o seu próprio fundo, padding e borda |
+| Secção dividida | uma secção dividida em colunas lado a lado, com esquema e espaçamento próprios. É selecionada e movida como um só bloco |
+| [Paragraph](/pt/reference/email-builder/blocks/paragraph) | texto de corpo, incluindo listas com marcadores e numeradas |
+| [Heading](/pt/reference/email-builder/blocks/heading) | um título, no nível que escolher |
+| [Form](/pt/reference/email-builder/blocks/form) | botões que respondem a uma pergunta de um dos seus formulários |
+| [Image](/pt/reference/email-builder/blocks/image) | uma imagem da sua Media Library, ou uma guardada numa variável |
+| [Socials](/pt/reference/email-builder/blocks/socials) | uma fila de ícones sociais, um por link |
+| [Button](/pt/reference/email-builder/blocks/button) | uma chamada à ação que abre um URL |
+| Divider | uma linha entre blocos |
+| Whitespace | espaço vazio entre blocos |
+| [HTML](/pt/reference/email-builder/blocks/html) | markup escrito por si |
+| [Signature](/pt/reference/email-builder/blocks/signature) | uma imagem ao lado de um bloco de texto de despedida |
 
-| Bloco | Onde pode adicioná-lo | O que coloca no email |
-|---|---|---|
-| [Section](/pt/reference/email-builder/sections) | Template | uma faixa ao longo do email, com o seu próprio fundo, padding e borda |
-| [Paragraph](/pt/reference/email-builder/blocks/paragraph) | Secção ou coluna | texto de corpo |
-| [Heading](/pt/reference/email-builder/blocks/heading) | Secção ou coluna | um título, no nível que escolher |
-| [Two Columns](/pt/reference/email-builder/blocks/columns) | Secção | duas colunas lado a lado, cada uma com os seus próprios blocos |
-| [Form](/pt/reference/email-builder/blocks/form) | Secção | botões que respondem a uma pergunta de um dos seus formulários |
-| [Image](/pt/reference/email-builder/blocks/image) | Secção ou coluna | uma imagem da sua Media Library, ou uma guardada numa variável |
-| [Socials](/pt/reference/email-builder/blocks/socials) | Secção | uma fila de ícones sociais, um por link |
-| [Button](/pt/reference/email-builder/blocks/button) | Secção ou coluna | uma chamada à ação que abre um URL |
-| [HTML](/pt/reference/email-builder/blocks/html) | Secção ou coluna | markup escrito por si |
-| [Signature](/pt/reference/email-builder/blocks/signature) | Secção | uma imagem ao lado de um bloco de texto de despedida |
+As colunas adicionam-se como secção dividida. As colunas dos emails criados antes desta alteração mantêm-se e ainda podem ser duplicadas.
 
-<img src="/images/email-builder/04-block-menu.png" alt="O menu de adicionar na lista Blocks de uma secção, a listar Paragraph, os níveis de título, Two Columns, Form, Image, Socials, Button, HTML e Signature" width="193" />
+## Espaçamento
 
-Uma coluna aceita menos tipos de bloco do que uma secção. Não pode conter um Two Columns, um Form nem uma Signature.
+Selecione um bloco e clique em **Spacing** para ver as margens e o padding no canvas. Arraste uma pega ou escreva um valor, e use o cadeado para alterar vários lados em conjunto. **Done** guarda os valores. A caixa de espaçamento em **Styles** altera os mesmos valores. Os blocos Paragraph, Heading e Socials têm também margens esquerda e direita.
+
+## Definições de todo o email
+
+O separador **Global** contém as definições do template e **All sections**. Uma alteração em **All sections** aplica-se a todas as secções, incluindo as que adicionar depois.
+
+**Section width** define-se uma vez para todo o email: **Default**, **Wide** (640px), **Large** (700px) ou **Custom** (entre 640 e 1240 píxeis). O fundo, a cor das ligações e as fontes também se definem aqui.
 
 ## A barra de ferramentas
 
 A barra de ferramentas percorre o topo do construtor, de **Save** até aos quatro botões de painel à direita.
 
-![A barra de ferramentas do construtor de emails, a mostrar Save, os botões de pré-visualização e de teste, o seletor de marca, os interruptores de variáveis e de código e os quatro botões de painel](/images/email-builder/05-builder-toolbar.png)
-
-**Save** guarda as suas alterações.
+**Save** guarda as suas alterações. **Undo** e **Redo** ficam ao lado e também funcionam com os atalhos de teclado habituais. Cada ação conta como um passo, como um arrastamento inteiro ou uma alteração num campo da barra lateral.
 
 Seguem-se dois botões:
 
@@ -98,6 +117,8 @@ Mude o **Brand** e o email inteiro é reestilizado, incluindo os blocos que já 
 ## Guardar
 
 O construtor de emails não guarda enquanto escreve. **Save** guarda. O botão de pré-visualização e **Send test email** guardam ambos antes de correr, por isso qualquer um deles regista o que quer que tenha alterado. Veja [Testar](/pt/reference/email-builder/testing).
+
+Anule todas as alterações e o email deixa de contar como tendo alterações por guardar.
 
 Tente sair do construtor com alterações por guardar e aparece um aviso. Oferece-se para as guardar com **Save**, ou para as descartar com **Discard** e seguir em frente.
 
