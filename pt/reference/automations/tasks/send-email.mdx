@@ -95,6 +95,12 @@ A própria página da automação, a que abre a partir da lista de Automations a
 - **Sob o cartão**, uma linha por desfecho com um link para as tarefas por trás dele, como "Sent: 1x email" e "Failed to send: 2x email".
 - **Mail Stats** no painel esquerdo: os mesmos cinco números somados em todos os passos Send Email da automação. **Run Stats**, acima, conta os runs por estado.
 
+Cada número conta um email uma única vez. Um email aberto três vezes conta como uma abertura, e o mesmo vale para cliques e bounces.
+
+Clique num número para abrir os runs por trás dele, já filtrados por esse estado de email. Clicar em **Bounced** lista todos os runs cujo email foi devolvido. A lista de runs e a lista de emails na **Inbox** também têm um filtro por estado de email, para obter a mesma lista aí.
+
+Na página de um run, os eventos repetidos com o mesmo conteúdo, como várias aberturas do mesmo email, aparecem agrupados numa só linha da cronologia.
+
 <img src="/images/automations/42-send-email-card-stats.png" alt="O cartão Send Email na página da automação com um bloco Stats de Sent 1, Delivered 1 (100.0%), Bounced 0, Opened 1 (100.0%), Clicked 0, e as linhas Failed to send: 2x email e Sent: 1x email por baixo" width="384" />
 
 <img src="/images/automations/43-mail-stats.png" alt="O painel Mail Stats: Sent 1, Delivered 1 (100.0%), Bounced 0 (0.0%), Opened 1 (100.0%), Clicked 0 (0.0%)" width="240" />
