@@ -95,6 +95,12 @@ La page propre à l'automatisation, celle qui s'ouvre depuis la liste des Automa
 - **Sous la carte**, une ligne par résultat avec un lien vers les tâches concernées, comme « Sent: 1x email » et « Failed to send: 2x email ».
 - **Mail Stats** dans le panneau de gauche : les cinq mêmes chiffres additionnés sur chaque étape Send Email de l'automatisation. **Run Stats** au-dessus compte les exécutions par état.
 
+Chaque chiffre compte un e-mail une seule fois. Un e-mail ouvert trois fois compte comme une ouverture, et il en va de même pour les clics et les bounces.
+
+Cliquez sur un chiffre pour ouvrir les exécutions correspondantes, déjà filtrées sur ce statut d'e-mail. Un clic sur **Bounced** liste toutes les exécutions dont l'e-mail a rebondi. La liste des exécutions et la liste des e-mails de l'**Inbox** proposent aussi un filtre par statut d'e-mail, pour retrouver la même liste à ces endroits.
+
+Sur la page d'une exécution, les événements répétés au contenu identique, comme plusieurs ouvertures d'un même e-mail, sont regroupés en une seule ligne de la chronologie.
+
 <img src="/images/automations/42-send-email-card-stats.png" alt="La carte Send Email sur la page de l'automatisation avec un bloc Stats de Sent 1, Delivered 1 (100.0%), Bounced 0, Opened 1 (100.0%), Clicked 0, et les lignes Failed to send: 2x email et Sent: 1x email en dessous" width="384" />
 
 <img src="/images/automations/43-mail-stats.png" alt="Le panneau Mail Stats : Sent 1, Delivered 1 (100.0%), Bounced 0 (0.0%), Opened 1 (100.0%), Clicked 0 (0.0%)" width="240" />
