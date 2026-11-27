@@ -1,8 +1,17 @@
 ---
 title: "Email builder tour: blocks, toolbar, theme, and saving"
 sidebarTitle: "Overview"
-description: "A tour of the HireData email builder: the canvas and the settings panel, how you add a block, every block type, the toolbar, the theme, and saving."
-keywords: ["email builder", "email template", "email blocks", "email sections", "email theme", "email brand", "send test mail", "email preview", "unsaved changes"]
+description: "A tour of the HireData email builder: selecting and editing blocks on the canvas, the Styles, Add and Global tabs, every block type, spacing, undo, the toolbar, and saving."
+keywords:
+  - "email builder"
+  - "email template"
+  - "email blocks"
+  - "email sections"
+  - "email theme"
+  - "email brand"
+  - "send test mail"
+  - "email preview"
+  - "unsaved changes"
 ---
 
 An email template is a message you write once and send many times, in an automation or a newsletter. Open **Settings**, then **Emails** under **Templates**, and click **New Email**. Select **Blank Email** or one of the ready-made templates, and the new template opens in the builder.
@@ -14,61 +23,71 @@ This page maps the builder. For a walkthrough that takes one email from blank to
 The builder has three parts.
 
 - The **Subject** box across the top. It is the line the recipient sees in their inbox, and it takes variables.
-- The email itself on the left. Click any text in it and type. Click any block to select it.
-- The settings panel on the right, showing the settings of whatever you last selected.
+- The email itself, at the width your recipients see it. You select and edit everything right on it.
+- The sidebar on the right, with three tabs: **Styles** for the settings of what you selected, **Add** for new blocks, layouts and section templates, and **Global** for the settings of the whole email.
 
-![The email builder: the Subject box across the top, the email on the left, and the Template settings panel on the right](/images/email-builder/01-builder-at-a-glance.png)
+A template holds sections, and a section holds the blocks the recipient reads. [Template](/reference/email-builder/template) explains how the levels nest.
 
-<Tip>
-  Click a block's text and you select that block, so the panel fills with the block's own settings. To select the **section** that holds it, click beside the block instead, to the left or right of the text. Sections are not outlined in the canvas, so aim for the band of background colour a section fills.
-</Tip>
+## Selecting and editing
 
-A template holds sections, and a section holds the blocks the recipient reads. [Template](/reference/email-builder/template) explains how the three levels nest, how you move between them, and why you never add one and cannot delete it.
+- **Hover** over a block or section to outline it with its name.
+- **Click** to select it. Its settings open in **Styles**.
+- **Click a selected text block again**, or double-click it, to edit the text.
+- **Escape** stops editing first, then clears the selection.
+- **Keyboard:** **Tab** selects the first block, the arrow keys move between blocks, **Enter** edits and **Delete** removes.
 
-A breadcrumb above the settings names everything that contains the selected block. Select a line of a signature and all four levels appear.
+A selected block shows an actions bar with **Move**, **Add below**, **Duplicate** and **Delete**, and a menu with the settings for that kind of block. On a block taller than the screen, the menu stays in view.
 
-<img src="/images/email-builder/02-breadcrumb.png" alt="The settings panel breadcrumb reading Template, then Sections, then Signature, then Paragraph, with Paragraph greyed out as the current level" width="402" />
+### Text
 
-## Adding a block
+- **Enter** starts a new line inside the paragraph or heading. It doesn't create a new block.
+- **Lists:** make lines bulleted or numbered. Enter continues the list.
+- **The text menu** sets the font, size, colour, highlight, alignment, list and link, with more under **More**. It formats the whole block, or only the text you selected.
+- **Links:** the link button opens a menu to add, edit or remove a link. A link typed without "https" gets it added.
 
-Every settings panel that can contain other blocks lists them under **Blocks**, numbered, in the order they appear in the email. Each row carries three controls.
+## Adding, copying and moving
 
-- The **+** adds a new block below that row. Where the container accepts more than one kind of block, it opens a menu of them.
-- The **−** deletes that block.
-- The handle on the left drags the block up and down the list.
-
-<img src="/images/email-builder/03-section-blocks-list.png" alt="The settings panel for a section, showing its Blocks list with a numbered row per block and the add, delete, and drag controls" width="400" />
-
-Click a block's own row to select it and open its settings. [The breadcrumb](/reference/email-builder/template#the-breadcrumb) walks back out. Click **Sections** for the settings of the section that holds the block, and **Template** for the settings of the email as a whole. The email on the left does not change. Only the panel does.
+- **The Add tab** lists layouts, section templates and content blocks. Drag one onto the email: a line shows where it lands.
+- **Add below** adds a block under the selected one. A new text block starts in edit mode.
+- **Duplicate** copies a block or section, including its translations.
+- **Move** drags a block or section to the line where you drop it. Escape cancels.
+- **Sections** only go at the top level of the email, never inside another section.
+- **An emptied section or column** keeps its place and shows a zone where you can drop or add a block.
 
 ## Choosing a block
 
-Two entries in the list cover more than one block. A **Two Columns** block arrives with its two columns already inside it, and a **Socials** block holds one child per network you link.
+| Block | What it puts in the email |
+| --- | --- |
+| [Section](/reference/email-builder/sections) | a band across the email, with its own background, padding and border |
+| Split section | a section split into columns side by side, with its own layout and gap settings. It's selected and moved as one block |
+| [Paragraph](/reference/email-builder/blocks/paragraph) | body text, including bulleted and numbered lists |
+| [Heading](/reference/email-builder/blocks/heading) | a heading, at the level you pick |
+| [Form](/reference/email-builder/blocks/form) | buttons that answer a question from one of your forms |
+| [Image](/reference/email-builder/blocks/image) | a picture from your media library, or one held in a variable |
+| [Socials](/reference/email-builder/blocks/socials) | a row of social icons, one per link |
+| [Button](/reference/email-builder/blocks/button) | a call to action that opens a URL |
+| Divider | a line between blocks |
+| Whitespace | empty space between blocks |
+| [HTML](/reference/email-builder/blocks/html) | markup you write yourself |
+| [Signature](/reference/email-builder/blocks/signature) | a picture beside a block of sign-off text |
 
-| Block | Where you can add it | What it puts in the email |
-|---|---|---|
-| [Section](/reference/email-builder/sections) | Template | a band across the email, with its own background, padding, and border |
-| [Paragraph](/reference/email-builder/blocks/paragraph) | Section or column | body text |
-| [Heading](/reference/email-builder/blocks/heading) | Section or column | a heading, at the level you pick |
-| [Two Columns](/reference/email-builder/blocks/columns) | Section | two columns side by side, each holding its own blocks |
-| [Form](/reference/email-builder/blocks/form) | Section | buttons that answer a question from one of your forms |
-| [Image](/reference/email-builder/blocks/image) | Section or column | a picture from your media library, or one held in a variable |
-| [Socials](/reference/email-builder/blocks/socials) | Section | a row of social icons, one per link |
-| [Button](/reference/email-builder/blocks/button) | Section or column | a call to action that opens a URL |
-| [HTML](/reference/email-builder/blocks/html) | Section or column | markup you write yourself |
-| [Signature](/reference/email-builder/blocks/signature) | Section | a picture beside a block of sign-off text |
+Columns are added as a split section. Columns in emails made before this change are kept and can still be duplicated.
 
-<img src="/images/email-builder/04-block-menu.png" alt="The add menu on a section's Blocks list, listing Paragraph, the heading levels, Two Columns, Form, Image, Socials, Button, HTML, and Signature" width="193" />
+## Spacing
 
-A column takes fewer kinds of block than a section. It cannot hold a Two Columns, a Form, or a Signature.
+Select a block and click **Spacing** to see its margins and padding on the canvas. Drag a handle or type a value, and use the lock to change sides together. **Done** keeps the values. The spacing box in **Styles** edits the same values. Paragraph, heading and socials blocks also have left and right margins.
+
+## Settings for the whole email
+
+The **Global** tab holds the template settings and **All sections**. A change under **All sections** applies to every section, including sections you add later.
+
+**Section width** is set once for the whole email: **Default**, **Wide** (640px), **Large** (700px) or **Custom** (between 640 and 1240 pixels). The background, link colour and fonts are set here too.
 
 ## The toolbar
 
 The toolbar runs along the top of the builder, from **Save** to the four drawer buttons on the right.
 
-![The email builder toolbar, showing Save, the preview and test buttons, the brand selector, the variable and code toggles, and the four drawer buttons](/images/email-builder/05-builder-toolbar.png)
-
-**Save** stores your changes.
+**Save** stores your changes. **Undo** and **Redo** sit next to it and work with the usual keyboard shortcuts too. Each action is one step, such as a whole drag or one change in a sidebar field.
 
 Two buttons follow it:
 
@@ -98,6 +117,8 @@ Switch **Brand** and the whole email restyles, blocks you already wrote included
 ## Saving
 
 The email builder does not save as you type. **Save** saves. The preview button and **Send test email** each save before they run, so either of those commits whatever you have changed. See [Testing](/reference/email-builder/testing).
+
+Undo every change and the email no longer counts as unsaved.
 
 Try to leave the builder with unsaved changes and a warning appears. It offers to **Save** them, or to **Discard** them and carry on.
 
