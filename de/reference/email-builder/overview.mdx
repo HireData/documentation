@@ -1,8 +1,17 @@
 ---
 title: "Rundgang durch den E-Mail-Builder: Blöcke, Toolbar, Theme und Speichern"
 sidebarTitle: "Überblick"
-description: "Ein Rundgang durch den HireData-E-Mail-Builder: die Arbeitsfläche und das Einstellungspanel, wie Sie einen Block hinzufügen, jeder Blocktyp, die Toolbar, das Theme und das Speichern."
-keywords: ["e-mail-builder", "e-mail-vorlage", "e-mail-blöcke", "e-mail-sektionen", "e-mail-theme", "e-mail-brand", "test-mail senden", "e-mail-vorschau", "ungespeicherte änderungen"]
+description: "Ein Rundgang durch den HireData-E-Mail-Builder: Blöcke auf der Arbeitsfläche auswählen und bearbeiten, die Tabs Styles, Add und Global, jeder Blocktyp, Abstände, Rückgängig, die Toolbar und das Speichern."
+keywords:
+  - "e-mail-builder"
+  - "e-mail-vorlage"
+  - "e-mail-blöcke"
+  - "e-mail-sektionen"
+  - "e-mail-theme"
+  - "e-mail-brand"
+  - "test-mail senden"
+  - "e-mail-vorschau"
+  - "ungespeicherte änderungen"
 ---
 
 Eine E-Mail-Vorlage ist eine Nachricht, die Sie einmal schreiben und viele Male versenden, in einer Automatisierung oder einem Newsletter. Öffnen Sie **Settings**, dann **Emails** unter **Templates**, und klicken Sie auf **New Email**. Wählen Sie **Blank Email** oder eine der fertigen Vorlagen, und die neue Vorlage öffnet sich im Builder.
@@ -14,61 +23,71 @@ Diese Seite kartiert den Builder. Für eine Anleitung, die eine E-Mail von leer 
 Der Builder hat drei Teile.
 
 - Das **Subject**-Feld oben quer über die Breite. Es ist die Zeile, die der Empfänger in seinem Posteingang sieht, und es akzeptiert Variablen.
-- Die E-Mail selbst auf der linken Seite. Klicken Sie auf einen beliebigen Text darin und tippen Sie. Klicken Sie auf einen Block, um ihn auszuwählen.
-- Das Einstellungspanel auf der rechten Seite, das die Einstellungen dessen zeigt, was Sie zuletzt ausgewählt haben.
+- Die E-Mail selbst, in der Breite, die Ihre Empfänger sehen. Sie wählen und bearbeiten alles direkt darin.
+- Die Seitenleiste rechts mit drei Tabs: **Styles** für die Einstellungen dessen, was Sie ausgewählt haben, **Add** für neue Blöcke, Layouts und Sektionsvorlagen, und **Global** für die Einstellungen der ganzen E-Mail.
 
-![Der E-Mail-Builder: oben das Subject-Feld, links die E-Mail und rechts das Panel mit den Template-Einstellungen](/images/email-builder/01-builder-at-a-glance.png)
+Eine Vorlage enthält Sektionen, und eine Sektion enthält die Blöcke, die der Empfänger liest. [Template](/de/reference/email-builder/template) erklärt, wie die Ebenen ineinander verschachtelt sind.
 
-<Tip>
-  Klicken Sie auf den Text eines Blocks, wählen Sie diesen Block aus, und das Panel füllt sich mit den Einstellungen des Blocks. Um die **Sektion** auszuwählen, die ihn enthält, klicken Sie stattdessen neben den Block, links oder rechts vom Text. Sektionen sind auf der Arbeitsfläche nicht umrandet, zielen Sie also auf das Band der Hintergrundfarbe, das eine Sektion füllt.
-</Tip>
+## Auswählen und bearbeiten
 
-Eine Vorlage enthält Sektionen, und eine Sektion enthält die Blöcke, die der Empfänger liest. [Template](/de/reference/email-builder/template) erklärt, wie die drei Ebenen ineinander verschachtelt sind, wie Sie sich zwischen ihnen bewegen und warum Sie nie eines hinzufügen und keines löschen können.
+- **Fahren Sie mit der Maus** über einen Block oder eine Sektion, um ihn mit seinem Namen zu umranden.
+- **Klicken** Sie, um ihn auszuwählen. Seine Einstellungen öffnen sich in **Styles**.
+- **Klicken Sie erneut auf einen ausgewählten Textblock** oder doppelklicken Sie darauf, um den Text zu bearbeiten.
+- **Escape** beendet zuerst das Bearbeiten und hebt dann die Auswahl auf.
+- **Tastatur:** **Tab** wählt den ersten Block, mit den Pfeiltasten wechseln Sie zwischen Blöcken, **Enter** bearbeitet und **Delete** entfernt.
 
-Eine Breadcrumb über den Einstellungen benennt alles, was den ausgewählten Block enthält. Wählen Sie eine Zeile einer Signatur aus, und alle vier Ebenen erscheinen.
+Ein ausgewählter Block zeigt eine Aktionsleiste mit **Move**, **Add below**, **Duplicate** und **Delete** sowie ein Menü mit den Einstellungen für diese Blockart. Bei einem Block, der höher als der Bildschirm ist, bleibt das Menü sichtbar.
 
-<img src="/images/email-builder/02-breadcrumb.png" alt="Die Breadcrumb des Einstellungspanels mit Template, dann Sections, dann Signature, dann Paragraph, wobei Paragraph als aktuelle Ebene ausgegraut ist" width="402" />
+### Text
 
-## Einen Block hinzufügen
+- **Enter** beginnt eine neue Zeile im Absatz oder in der Überschrift. Es entsteht kein neuer Block.
+- **Listen:** Machen Sie Zeilen zu einer Aufzählung oder nummerierten Liste. Enter setzt die Liste fort.
+- **Das Textmenü** legt Schriftart, Größe, Farbe, Hervorhebung, Ausrichtung, Liste und Link fest, weiteres unter **More**. Es formatiert den ganzen Block oder nur den ausgewählten Text.
+- **Links:** Die Link-Schaltfläche öffnet ein Menü, um einen Link hinzuzufügen, zu ändern oder zu entfernen. Einem Link ohne "https" wird es automatisch hinzugefügt.
 
-Jedes Einstellungspanel, das andere Blöcke enthalten kann, listet sie unter **Blocks** auf, nummeriert, in der Reihenfolge, in der sie in der E-Mail erscheinen. Jede Zeile trägt drei Bedienelemente.
+## Hinzufügen, kopieren und verschieben
 
-- Das **+** fügt einen neuen Block unter dieser Zeile hinzu. Wo der Container mehr als eine Art von Block akzeptiert, öffnet es ein Menü mit ihnen.
-- Das **−** löscht diesen Block.
-- Der Griff links zieht den Block in der Liste nach oben und unten.
-
-<img src="/images/email-builder/03-section-blocks-list.png" alt="Das Einstellungspanel einer Sektion mit ihrer Blocks-Liste, einer nummerierten Zeile pro Block und den Bedienelementen zum Hinzufügen, Löschen und Ziehen" width="400" />
-
-Klicken Sie auf die Zeile eines Blocks, um ihn auszuwählen und seine Einstellungen zu öffnen. [Die Breadcrumb](/de/reference/email-builder/template#the-breadcrumb) führt wieder hinaus. Klicken Sie auf **Sections** für die Einstellungen der Sektion, die den Block enthält, und auf **Template** für die Einstellungen der E-Mail als Ganzes. Die E-Mail auf der linken Seite ändert sich nicht. Nur das Panel.
+- **Der Tab Add** listet Layouts, Sektionsvorlagen und Inhaltsblöcke. Ziehen Sie einen auf die E-Mail: Eine Linie zeigt, wo er landet.
+- **Add below** fügt einen Block unter dem ausgewählten ein. Ein neuer Textblock startet direkt im Bearbeitungsmodus.
+- **Duplicate** kopiert einen Block oder eine Sektion, einschließlich der Übersetzungen.
+- **Move** zieht einen Block oder eine Sektion an die Linie, an der Sie loslassen. Escape bricht ab.
+- **Sektionen** stehen nur auf der obersten Ebene der E-Mail, nie in einer anderen Sektion.
+- **Eine geleerte Sektion oder Spalte** behält ihren Platz und zeigt einen Bereich, in dem Sie einen Block ablegen oder hinzufügen können.
 
 ## Einen Block auswählen {#choosing-a-block}
 
-Zwei Einträge in der Liste decken mehr als einen Block ab. Ein **Two Columns**-Block kommt mit seinen beiden Spalten bereits darin an, und ein **Socials**-Block enthält ein Kind pro Netzwerk, das Sie verlinken.
+| Block | Was er in die E-Mail setzt |
+| --- | --- |
+| [Section](/de/reference/email-builder/sections) | ein Band quer über die E-Mail, mit eigenem Hintergrund, Innenabstand und Rahmen |
+| Geteilte Sektion | eine Sektion, die in Spalten nebeneinander geteilt ist, mit eigenem Layout und Abstand. Sie wird als ein Block ausgewählt und verschoben |
+| [Paragraph](/de/reference/email-builder/blocks/paragraph) | Fließtext, auch Aufzählungen und nummerierte Listen |
+| [Heading](/de/reference/email-builder/blocks/heading) | eine Überschrift, auf der Ebene, die Sie wählen |
+| [Form](/de/reference/email-builder/blocks/form) | Schaltflächen, die eine Frage aus einem Ihrer Formulare beantworten |
+| [Image](/de/reference/email-builder/blocks/image) | ein Bild aus Ihrer Medienbibliothek oder eines aus einer Variablen |
+| [Socials](/de/reference/email-builder/blocks/socials) | eine Reihe von Social-Icons, eines pro Link |
+| [Button](/de/reference/email-builder/blocks/button) | ein Call-to-Action, der eine URL öffnet |
+| Divider | eine Linie zwischen Blöcken |
+| Whitespace | Leerraum zwischen Blöcken |
+| [HTML](/de/reference/email-builder/blocks/html) | Markup, das Sie selbst schreiben |
+| [Signature](/de/reference/email-builder/blocks/signature) | ein Bild neben einem Block mit Grußtext |
 
-| Block | Wo Sie ihn hinzufügen können | Was er in die E-Mail setzt |
-|---|---|---|
-| [Section](/de/reference/email-builder/sections) | Template | ein Band quer über die E-Mail, mit eigenem Hintergrund, Innenabstand und Rahmen |
-| [Paragraph](/de/reference/email-builder/blocks/paragraph) | Sektion oder Spalte | Fließtext |
-| [Heading](/de/reference/email-builder/blocks/heading) | Sektion oder Spalte | eine Überschrift, auf der Ebene, die Sie wählen |
-| [Two Columns](/de/reference/email-builder/blocks/columns) | Sektion | zwei Spalten nebeneinander, jede mit eigenen Blöcken |
-| [Form](/de/reference/email-builder/blocks/form) | Sektion | Schaltflächen, die eine Frage aus einem Ihrer Formulare beantworten |
-| [Image](/de/reference/email-builder/blocks/image) | Sektion oder Spalte | ein Bild aus Ihrer Medienbibliothek oder eines aus einer Variablen |
-| [Socials](/de/reference/email-builder/blocks/socials) | Sektion | eine Reihe von Social-Icons, eines pro Link |
-| [Button](/de/reference/email-builder/blocks/button) | Sektion oder Spalte | ein Call-to-Action, der eine URL öffnet |
-| [HTML](/de/reference/email-builder/blocks/html) | Sektion oder Spalte | Markup, das Sie selbst schreiben |
-| [Signature](/de/reference/email-builder/blocks/signature) | Sektion | ein Bild neben einem Block mit Grußtext |
+Spalten fügen Sie als geteilte Sektion hinzu. Spalten in E-Mails von vor dieser Änderung bleiben erhalten und lassen sich weiterhin duplizieren.
 
-<img src="/images/email-builder/04-block-menu.png" alt="Das Hinzufügen-Menü der Blocks-Liste einer Sektion mit Paragraph, den Überschriftenebenen, Two Columns, Form, Image, Socials, Button, HTML und Signature" width="193" />
+## Abstände
 
-Eine Spalte akzeptiert weniger Arten von Blöcken als eine Sektion. Sie kann kein Two Columns, kein Form und keine Signature enthalten.
+Wählen Sie einen Block und klicken Sie auf **Spacing**, um seine Außen- und Innenabstände auf der Arbeitsfläche zu sehen. Ziehen Sie einen Griff oder geben Sie einen Wert ein, und ändern Sie mit dem Schloss mehrere Seiten zugleich. **Done** übernimmt die Werte. Das Abstandsfeld in **Styles** ändert dieselben Werte. Paragraph-, Heading- und Socials-Blöcke haben auch einen linken und rechten Außenabstand.
+
+## Einstellungen für die ganze E-Mail
+
+Der Tab **Global** enthält die Vorlageneinstellungen und **All sections**. Eine Änderung unter **All sections** gilt für jede Sektion, auch für Sektionen, die Sie später hinzufügen.
+
+**Section width** legen Sie einmal für die ganze E-Mail fest: **Default**, **Wide** (640px), **Large** (700px) oder **Custom** (zwischen 640 und 1240 Pixeln). Auch Hintergrund, Linkfarbe und Schriftarten legen Sie hier fest.
 
 ## Die Toolbar
 
 Die Toolbar verläuft oben im Builder, von **Save** bis zu den vier Drawer-Schaltflächen rechts.
 
-![Die Toolbar des E-Mail-Builders mit Save, den Vorschau- und Test-Schaltflächen, der Brand-Auswahl, den Variablen- und Code-Umschaltern und den vier Drawer-Schaltflächen](/images/email-builder/05-builder-toolbar.png)
-
-**Save** speichert Ihre Änderungen.
+**Save** speichert Ihre Änderungen. **Undo** und **Redo** stehen daneben und funktionieren auch mit den üblichen Tastenkürzeln. Jede Aktion ist ein Schritt, etwa ein ganzer Ziehvorgang oder eine Änderung in einem Feld der Seitenleiste.
 
 Zwei Schaltflächen folgen darauf:
 
@@ -98,6 +117,8 @@ Wechseln Sie **Brand**, und die ganze E-Mail wird neu gestylt, einschließlich d
 ## Speichern
 
 Der E-Mail-Builder speichert nicht, während Sie tippen. **Save** speichert. Die Vorschau-Schaltfläche und **Send test email** speichern jeweils, bevor sie laufen, sodass beide alles übernehmen, was Sie geändert haben. Siehe [Testen](/de/reference/email-builder/testing).
+
+Machen Sie jede Änderung rückgängig, gilt die E-Mail nicht mehr als ungespeichert.
 
 Versuchen Sie, den Builder mit ungespeicherten Änderungen zu verlassen, erscheint eine Warnung. Sie bietet an, sie zu speichern (**Save**) oder sie zu verwerfen (**Discard**) und fortzufahren.
 
