@@ -1,8 +1,17 @@
 ---
 title: "Tour de l'éditeur d'e-mails : blocs, barre d'outils, thème et enregistrement"
 sidebarTitle: "Vue d'ensemble"
-description: "Un tour de l'éditeur d'e-mails HireData : le canevas et le panneau des paramètres, comment ajouter un bloc, chaque type de bloc, la barre d'outils, le thème et l'enregistrement."
-keywords: ["éditeur d'e-mails", "modèle d'e-mail", "blocs d'e-mail", "sections d'e-mail", "thème d'e-mail", "marque d'e-mail", "envoyer un e-mail de test", "aperçu d'e-mail", "modifications non enregistrées"]
+description: "Un tour de l'éditeur d'e-mails HireData : sélectionner et modifier les blocs sur le canevas, les onglets Styles, Add et Global, chaque type de bloc, les espacements, l'annulation, la barre d'outils et l'enregistrement."
+keywords:
+  - "éditeur d'e-mails"
+  - "modèle d'e-mail"
+  - "blocs d'e-mail"
+  - "sections d'e-mail"
+  - "thème d'e-mail"
+  - "marque d'e-mail"
+  - "envoyer un e-mail de test"
+  - "aperçu d'e-mail"
+  - "modifications non enregistrées"
 ---
 
 Un modèle d'e-mail est un message que vous rédigez une fois et envoyez de nombreuses fois, dans une automatisation ou une newsletter. Ouvrez **Settings**, puis **Emails** sous **Templates**, et cliquez sur **New Email**. Sélectionnez **Blank Email** ou l'un des modèles prêts à l'emploi, et le nouveau modèle s'ouvre dans l'éditeur.
@@ -14,61 +23,71 @@ Cette page cartographie l'éditeur. Pour un guide qui mène un e-mail de la page
 L'éditeur se compose de trois parties.
 
 - Le champ **Subject** en haut. C'est la ligne que le destinataire voit dans sa boîte de réception, et il accepte les variables.
-- L'e-mail lui-même à gauche. Cliquez sur n'importe quel texte et tapez. Cliquez sur n'importe quel bloc pour le sélectionner.
-- Le panneau des paramètres à droite, qui affiche les paramètres du dernier élément sélectionné.
+- L'e-mail lui-même, à la largeur que voient vos destinataires. Vous sélectionnez et modifiez tout directement dessus.
+- La barre latérale à droite, avec trois onglets : **Styles** pour les paramètres de ce que vous avez sélectionné, **Add** pour les nouveaux blocs, mises en page et modèles de section, et **Global** pour les paramètres de tout l'e-mail.
 
-![L'éditeur d'e-mails : le champ Subject en haut, l'e-mail à gauche et le panneau des paramètres Template à droite](/images/email-builder/01-builder-at-a-glance.png)
+Un modèle contient des sections, et une section contient les blocs que le destinataire lit. [Template](/fr/reference/email-builder/template) explique comment les niveaux s'emboîtent.
 
-<Tip>
-  Cliquer sur le texte d'un bloc sélectionne ce bloc, et le panneau se remplit avec les paramètres du bloc lui-même. Pour sélectionner la **section** qui le contient, cliquez à côté du bloc, à gauche ou à droite du texte. Les sections ne sont pas encadrées dans le canevas, alors visez la bande de couleur de fond qu'une section remplit.
-</Tip>
+## Sélectionner et modifier
 
-Un modèle contient des sections, et une section contient les blocs que le destinataire lit. [Template](/fr/reference/email-builder/template) explique comment les trois niveaux s'emboîtent, comment vous passez de l'un à l'autre, et pourquoi vous n'en ajoutez jamais un et ne pouvez pas le supprimer.
+- **Survolez** un bloc ou une section pour l'encadrer avec son nom.
+- **Cliquez** pour le sélectionner. Ses paramètres s'ouvrent dans **Styles**.
+- **Cliquez à nouveau sur un bloc de texte sélectionné**, ou double-cliquez dessus, pour modifier le texte.
+- **Échap** arrête d'abord la modification, puis efface la sélection.
+- **Clavier :** **Tab** sélectionne le premier bloc, les flèches passent d'un bloc à l'autre, **Entrée** modifie et **Suppr** supprime.
 
-Un fil d'Ariane au-dessus des paramètres nomme tout ce qui contient le bloc sélectionné. Sélectionnez une ligne d'une signature et les quatre niveaux apparaissent.
+Un bloc sélectionné affiche une barre d'actions avec **Move**, **Add below**, **Duplicate** et **Delete**, et un menu avec les paramètres propres à ce type de bloc. Sur un bloc plus haut que l'écran, le menu reste visible.
 
-<img src="/images/email-builder/02-breadcrumb.png" alt="Le fil d'Ariane du panneau des paramètres affichant Template, puis Sections, puis Signature, puis Paragraph, avec Paragraph grisé comme niveau actuel" width="402" />
+### Texte
 
-## Ajouter un bloc
+- **Entrée** commence une nouvelle ligne dans le paragraphe ou le titre. Aucun nouveau bloc n'est créé.
+- **Listes :** transformez des lignes en liste à puces ou numérotée. Entrée continue la liste.
+- **Le menu de texte** règle la police, la taille, la couleur, le surlignage, l'alignement, la liste et le lien, avec d'autres options sous **More**. Il met en forme tout le bloc, ou seulement le texte sélectionné.
+- **Liens :** le bouton de lien ouvre un menu pour ajouter, modifier ou supprimer un lien. Un lien saisi sans « https » le reçoit automatiquement.
 
-Chaque panneau de paramètres qui peut contenir d'autres blocs les liste sous **Blocks**, numérotés, dans l'ordre où ils apparaissent dans l'e-mail. Chaque ligne porte trois commandes.
+## Ajouter, copier et déplacer
 
-- Le **+** ajoute un nouveau bloc sous cette ligne. Là où le conteneur accepte plus d'un type de bloc, il ouvre un menu qui les liste.
-- Le **−** supprime ce bloc.
-- La poignée à gauche fait glisser le bloc vers le haut ou le bas de la liste.
-
-<img src="/images/email-builder/03-section-blocks-list.png" alt="Le panneau des paramètres d'une section, montrant sa liste Blocks avec une ligne numérotée par bloc et les commandes d'ajout, de suppression et de glissement" width="400" />
-
-Cliquez sur la ligne d'un bloc pour le sélectionner et ouvrir ses paramètres. [Le fil d'Ariane](/fr/reference/email-builder/template#the-breadcrumb) permet de remonter. Cliquez sur **Sections** pour les paramètres de la section qui contient le bloc, et sur **Template** pour les paramètres de l'e-mail dans son ensemble. L'e-mail à gauche ne change pas. Seul le panneau change.
+- **L'onglet Add** liste les mises en page, les modèles de section et les blocs de contenu. Faites-en glisser un sur l'e-mail : une ligne montre où il arrive.
+- **Add below** ajoute un bloc sous celui qui est sélectionné. Un nouveau bloc de texte s'ouvre directement en modification.
+- **Duplicate** copie un bloc ou une section, traductions comprises.
+- **Move** fait glisser un bloc ou une section jusqu'à la ligne où vous le déposez. Échap annule.
+- **Les sections** ne se placent qu'au niveau supérieur de l'e-mail, jamais dans une autre section.
+- **Une section ou une colonne vidée** garde sa place et affiche une zone où déposer ou ajouter un bloc.
 
 ## Choisir un bloc {#choosing-a-block}
 
-Deux entrées de la liste couvrent plus d'un bloc. Un bloc **Two Columns** arrive avec ses deux colonnes déjà à l'intérieur, et un bloc **Socials** contient un enfant par réseau que vous liez.
+| Bloc | Ce qu'il place dans l'e-mail |
+| --- | --- |
+| [Section](/fr/reference/email-builder/sections) | une bande en travers de l'e-mail, avec son propre fond, son padding et sa bordure |
+| Section divisée | une section divisée en colonnes côte à côte, avec sa propre mise en page et son espacement. Elle se sélectionne et se déplace comme un seul bloc |
+| [Paragraph](/fr/reference/email-builder/blocks/paragraph) | du texte de corps, y compris des listes à puces et numérotées |
+| [Heading](/fr/reference/email-builder/blocks/heading) | un titre, au niveau que vous choisissez |
+| [Form](/fr/reference/email-builder/blocks/form) | des boutons qui répondent à une question de l'un de vos formulaires |
+| [Image](/fr/reference/email-builder/blocks/image) | une image de votre médiathèque, ou une image portée par une variable |
+| [Socials](/fr/reference/email-builder/blocks/socials) | une rangée d'icônes sociales, une par lien |
+| [Button](/fr/reference/email-builder/blocks/button) | un appel à l'action qui ouvre une URL |
+| Divider | une ligne entre des blocs |
+| Whitespace | un espace vide entre des blocs |
+| [HTML](/fr/reference/email-builder/blocks/html) | du balisage que vous écrivez vous-même |
+| [Signature](/fr/reference/email-builder/blocks/signature) | une image à côté d'un bloc de texte de signature |
 
-| Bloc | Où l'ajouter | Ce qu'il place dans l'e-mail |
-|---|---|---|
-| [Section](/fr/reference/email-builder/sections) | Template | une bande en travers de l'e-mail, avec son propre fond, son padding et sa bordure |
-| [Paragraph](/fr/reference/email-builder/blocks/paragraph) | Section ou colonne | du texte de corps |
-| [Heading](/fr/reference/email-builder/blocks/heading) | Section ou colonne | un titre, au niveau que vous choisissez |
-| [Two Columns](/fr/reference/email-builder/blocks/columns) | Section | deux colonnes côte à côte, contenant chacune ses propres blocs |
-| [Form](/fr/reference/email-builder/blocks/form) | Section | des boutons qui répondent à une question de l'un de vos formulaires |
-| [Image](/fr/reference/email-builder/blocks/image) | Section ou colonne | une image de votre médiathèque, ou une image portée par une variable |
-| [Socials](/fr/reference/email-builder/blocks/socials) | Section | une rangée d'icônes sociales, une par lien |
-| [Button](/fr/reference/email-builder/blocks/button) | Section ou colonne | un appel à l'action qui ouvre une URL |
-| [HTML](/fr/reference/email-builder/blocks/html) | Section ou colonne | du balisage que vous écrivez vous-même |
-| [Signature](/fr/reference/email-builder/blocks/signature) | Section | une image à côté d'un bloc de texte de signature |
+Les colonnes s'ajoutent sous forme de section divisée. Les colonnes des e-mails créés avant ce changement sont conservées et peuvent toujours être dupliquées.
 
-<img src="/images/email-builder/04-block-menu.png" alt="Le menu d'ajout de la liste Blocks d'une section, listant Paragraph, les niveaux de titre, Two Columns, Form, Image, Socials, Button, HTML et Signature" width="193" />
+## Espacements
 
-Une colonne accepte moins de types de blocs qu'une section. Elle ne peut pas contenir de Two Columns, de Form ni de Signature.
+Sélectionnez un bloc et cliquez sur **Spacing** pour voir ses marges et son padding sur le canevas. Faites glisser une poignée ou saisissez une valeur, et utilisez le cadenas pour modifier plusieurs côtés ensemble. **Done** conserve les valeurs. La zone d'espacement dans **Styles** modifie les mêmes valeurs. Les blocs Paragraph, Heading et Socials ont aussi des marges gauche et droite.
+
+## Paramètres de tout l'e-mail
+
+L'onglet **Global** contient les paramètres du modèle et **All sections**. Une modification sous **All sections** s'applique à toutes les sections, y compris celles que vous ajoutez ensuite.
+
+**Section width** se définit une seule fois pour tout l'e-mail : **Default**, **Wide** (640px), **Large** (700px) ou **Custom** (entre 640 et 1240 pixels). Le fond, la couleur des liens et les polices se définissent aussi ici.
 
 ## La barre d'outils
 
 La barre d'outils court le long du haut de l'éditeur, de **Save** jusqu'aux quatre boutons de panneaux à droite.
 
-![La barre d'outils de l'éditeur d'e-mails, montrant Save, les boutons d'aperçu et de test, le sélecteur de marque, les commutateurs de variables et de code, et les quatre boutons de panneaux](/images/email-builder/05-builder-toolbar.png)
-
-**Save** enregistre vos modifications.
+**Save** enregistre vos modifications. **Undo** et **Redo** se trouvent à côté et fonctionnent aussi avec les raccourcis clavier habituels. Chaque action compte pour une étape, par exemple un glissement entier ou une modification dans un champ de la barre latérale.
 
 Deux boutons le suivent :
 
@@ -98,6 +117,8 @@ Changez de **Brand** et l'e-mail entier se restyle, blocs déjà rédigés compr
 ## Enregistrer
 
 L'éditeur d'e-mails n'enregistre pas pendant que vous tapez. C'est **Save** qui enregistre. Le bouton d'aperçu et **Send test email** enregistrent chacun avant de s'exécuter, donc l'un comme l'autre valide tout ce que vous avez modifié. Voir [Tester](/fr/reference/email-builder/testing).
+
+Annulez toutes vos modifications et l'e-mail n'est plus considéré comme non enregistré.
 
 Essayez de quitter l'éditeur avec des modifications non enregistrées et un avertissement apparaît. Il propose de les **Save**, ou de les **Discard** et de continuer.
 
