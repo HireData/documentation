@@ -1,7 +1,7 @@
 ---
 title: "See where your candidate database can do more with Scan"
 sidebarTitle: "Scan"
-description: "Read a HireData Scan of your Carerix database: reachability, completeness and dormancy, team results and the automations that close the gaps."
+description: "Read a HireData Scan of your recruitment database: reachability, completeness and dormancy, team results and the automations that close the gaps."
 keywords:
   - "Scan"
   - "database scan"
@@ -10,12 +10,13 @@ keywords:
   - "dormant candidates"
   - "recommendations"
   - "Carerix"
+  - "Spott"
 ---
 
-A scan reads your recruitment database straight from Carerix and shows, in one report, how reachable and up to date your candidates are, what your team achieves, and which automations would close the gaps.
+A scan reads your recruitment database from your supported ATS connection and shows, in one report, how reachable and up to date your candidates are, what your team achieves, and which automations would close the gaps.
 
 <Note>
-  Scan works with Carerix today.
+  Scan supports Carerix, Vincere and ATS connections through Kombo. Spott access is limited to an agreed pilot. Contact HireData to arrange access with an active Spott connection selected as your core app.
 </Note>
 
 ## What the report shows
@@ -52,11 +53,23 @@ A ranked shortlist of automation templates that target the gaps the scan found, 
   alt="The Recommendations tab with three templates matched to the data, each with its tags and a reason for the match"
 />
 
+## Reading a Spott pilot report
+
+The pilot reads Spott directly, so it does not need a previous data sync. It covers candidates, clients, contacts, vacancies, applications and placements when each read completes.
+
+- **Candidates and contacts:** candidates count once per person. Contacts also count once per person, even if they have roles at several clients.
+- **Applications:** **Matches** counts each application once, including speculative applications without a vacancy. The stage breakdown shows how many applications are currently at each stage. A stage can belong to several pipeline templates.
+- **Successful matches and placements:** a successful match is a distinct application linked to a placement. Several placements linked to one application count as one successful match. Placements count separately by placement record. Placements made during the reporting period use the placement date, not the contract start date.
+- **Recruiter coverage:** recruiter and office breakdowns are unavailable in the initial pilot. An active Spott user is not automatically a recruiter. Application owners need a separate detail read, so global application counts do not establish recruiter results.
+- **Unavailable figures:** complete dated stage history and historical conversion are unavailable in the initial pilot. Mobile, WhatsApp reachability and some profile details are also unavailable. A phone number alone does not establish mobile or WhatsApp reachability.
+
+A limited or incomplete read leaves the affected figures unknown. Unknown figures stay out of the health score, AI summary and recommendations. They do not mean zero activity or poor data quality.
+
 ## Run it again
 
 Click **Run again** to see what changed since the previous scan.
 
-When a figure can't be retrieved from Carerix, the report marks it as missing instead of showing zero. **How this is measured**, at the bottom of the report, explains how each figure is calculated.
+When a figure can't be retrieved from your ATS, the report marks it as missing instead of showing zero. **How this is measured**, at the bottom of the report, explains how each figure is calculated.
 
 ## Related
 

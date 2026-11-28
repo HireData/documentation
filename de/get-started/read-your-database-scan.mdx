@@ -1,7 +1,7 @@
 ---
 title: "Mit Scan sehen, wo Ihre Kandidatendatenbank mehr leisten kann"
 sidebarTitle: "Scan"
-description: "Lesen Sie einen HireData Scan Ihrer Carerix-Datenbank: Erreichbarkeit, Vollständigkeit und Inaktivität, Teamergebnisse und die Automatisierungen, die die Lücken schließen."
+description: "Lesen Sie einen HireData Scan Ihrer Recruiting-Datenbank: Erreichbarkeit, Vollständigkeit und Inaktivität, Teamergebnisse und die Automatisierungen, die die Lücken schließen."
 keywords:
   - "Scan"
   - "Datenbank-Scan"
@@ -10,12 +10,13 @@ keywords:
   - "inaktive Kandidaten"
   - "Empfehlungen"
   - "Carerix"
+  - "Spott"
 ---
 
-Ein Scan liest Ihre Recruiting-Datenbank direkt aus Carerix und zeigt in einem Bericht, wie erreichbar und aktuell Ihre Kandidaten sind, was Ihr Team erreicht und welche Automatisierungen die Lücken schließen würden.
+Ein Scan liest Ihre Recruiting-Datenbank aus Ihrer unterstützten ATS-Verbindung und zeigt in einem Bericht, wie erreichbar und aktuell Ihre Kandidaten sind, was Ihr Team erreicht und welche Automatisierungen die Lücken schließen würden.
 
 <Note>
-  Scan funktioniert derzeit mit Carerix.
+  Scan unterstützt Carerix, Vincere und ATS-Verbindungen über Kombo. Der Zugang mit Spott ist auf einen vereinbarten Piloten begrenzt. Wenden Sie sich an HireData, um den Zugang mit einer aktiven Spott-Verbindung zu vereinbaren, die als Ihre Haupt-App ausgewählt ist.
 </Note>
 
 ## Was der Bericht zeigt
@@ -46,11 +47,23 @@ Eine gereihte Auswahl von Automatisierungsvorlagen, die auf die vom Scan gefunde
 
 <img src="/images/scan/recommendations.png" alt="Der Tab Recommendations mit drei zu den Daten passenden Vorlagen, jeweils mit Tags und einem Grund für die Auswahl" />
 
+## Einen Spott-Pilotbericht lesen
+
+Der Pilot liest Spott direkt aus und benötigt keine vorherige Datensynchronisierung. Er zählt Kandidaten, Kunden, Kontakte, Stellen, Bewerbungen und Platzierungen, wenn die jeweiligen Daten vollständig gelesen wurden.
+
+- **Kandidaten und Kontakte:** Kandidaten zählen einmal pro Person. Auch Kontakte zählen einmal pro Person, selbst wenn sie Rollen bei mehreren Kunden haben.
+- **Bewerbungen:** **Matches** zählt jede Bewerbung einmal, einschließlich Initiativbewerbungen ohne Stelle. Die Aufschlüsselung zeigt, wie viele Bewerbungen sich derzeit in jeder Phase befinden. Eine Phase kann zu mehreren Pipeline-Vorlagen gehören.
+- **Erfolgreiche Matches und Platzierungen:** Ein erfolgreicher Match ist eine eindeutige Bewerbung mit einer verknüpften Platzierung. Mehrere Platzierungen zu einer Bewerbung zählen als ein erfolgreicher Match. Platzierungen zählen separat nach Platzierungsdatensatz. Für im Berichtszeitraum erfolgte Platzierungen gilt das Platzierungsdatum, nicht der Vertragsbeginn.
+- **Recruiter-Abdeckung:** Aufteilungen nach Recruiter und Standort sind im ersten Piloten nicht verfügbar. Ein aktiver Spott-Benutzer ist nicht automatisch ein Recruiter. Zuständige Benutzer für Bewerbungen erfordern einen separaten Detailabruf. Globale Bewerbungszahlen belegen daher keine Recruiter-Ergebnisse.
+- **Nicht verfügbare Zahlen:** Die vollständige datierte Phasenhistorie und historische Konversion sind im ersten Piloten nicht verfügbar. Auch Mobilnummern, WhatsApp-Erreichbarkeit und einige Profildetails sind nicht verfügbar. Eine Telefonnummer allein belegt keine Erreichbarkeit per Mobiltelefon oder WhatsApp.
+
+Bei einem begrenzten oder unvollständigen Abruf bleiben die betroffenen Zahlen unbekannt. Unbekannte Zahlen fließen nicht in den Gesundheitswert, die KI-Zusammenfassung und Empfehlungen ein. Sie bedeuten weder fehlende Aktivität noch schlechte Datenqualität.
+
 ## Erneut ausführen
 
 Klicken Sie auf **Run again**, um zu sehen, was sich seit dem letzten Scan geändert hat.
 
-Kann eine Zahl nicht aus Carerix abgerufen werden, markiert der Bericht sie als fehlend, statt null anzuzeigen. **How this is measured** unten im Bericht erklärt, wie jede Zahl berechnet wird.
+Kann eine Zahl nicht aus Ihrem ATS abgerufen werden, markiert der Bericht sie als fehlend, statt null anzuzeigen. **How this is measured** unten im Bericht erklärt, wie jede Zahl berechnet wird.
 
 ## Verwandte Artikel
 
