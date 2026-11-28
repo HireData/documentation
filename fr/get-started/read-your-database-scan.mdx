@@ -1,7 +1,7 @@
 ---
 title: "Voyez avec Scan où votre base de candidats peut en faire plus"
 sidebarTitle: "Scan"
-description: "Lisez un Scan HireData de votre base Carerix : joignabilité, complétude et inactivité, résultats de l'équipe et automatisations qui comblent les manques."
+description: "Lisez un Scan HireData de votre base de recrutement : joignabilité, complétude et inactivité, résultats de l'équipe et automatisations qui comblent les manques."
 keywords:
   - "Scan"
   - "scan de base de données"
@@ -10,12 +10,13 @@ keywords:
   - "candidats inactifs"
   - "recommandations"
   - "Carerix"
+  - "Spott"
 ---
 
-Un scan lit votre base de recrutement directement depuis Carerix et montre, dans un seul rapport, à quel point vos candidats sont joignables et à jour, ce que votre équipe accomplit et quelles automatisations combleraient les manques.
+Un scan lit votre base de recrutement depuis votre connexion ATS prise en charge et montre, dans un seul rapport, à quel point vos candidats sont joignables et à jour, ce que votre équipe accomplit et quelles automatisations combleraient les manques.
 
 <Note>
-  Scan fonctionne aujourd'hui avec Carerix.
+  Scan prend en charge Carerix, Vincere et les connexions ATS via Kombo. L’accès avec Spott est limité à un pilote convenu. Contactez HireData pour convenir d’un accès avec une connexion Spott active sélectionnée comme application principale.
 </Note>
 
 ## Ce que montre le rapport
@@ -46,11 +47,23 @@ Une sélection classée de modèles d'automatisation qui ciblent les manques dé
 
 <img src="/images/scan/recommendations.png" alt="L'onglet Recommendations avec trois modèles adaptés aux données, chacun avec ses tags et la raison du choix" />
 
+## Lire un rapport pilote Spott
+
+Le pilote lit directement Spott et ne nécessite aucune synchronisation préalable. Il compte les candidats, clients, contacts, postes, candidatures et placements lorsque la lecture correspondante est complète.
+
+- **Candidats et contacts :** les candidats comptent une fois par personne. Les contacts comptent également une fois par personne, même s’ils occupent des fonctions chez plusieurs clients.
+- **Candidatures :** **Matches** compte chaque candidature une seule fois, y compris les candidatures spontanées sans poste. La répartition indique le nombre de candidatures actuellement à chaque étape. Une étape peut appartenir à plusieurs modèles de pipeline.
+- **Matches réussis et placements :** un match réussi est une candidature distincte liée à un placement. Plusieurs placements liés à une candidature comptent comme un seul match réussi. Les placements sont comptés séparément par enregistrement. Les placements réalisés pendant la période du rapport utilisent la date du placement, et non le début du contrat.
+- **Couverture par recruteur :** les répartitions par recruteur et par agence ne sont pas disponibles dans le pilote initial. Un utilisateur Spott actif n’est pas automatiquement un recruteur. Les responsables des candidatures nécessitent une lecture séparée des détails. Les chiffres globaux des candidatures ne permettent donc pas d’établir les résultats par recruteur.
+- **Chiffres indisponibles :** l’historique daté complet des étapes et la conversion historique ne sont pas disponibles dans le pilote initial. Le mobile, la joignabilité WhatsApp et certains détails des profils sont également indisponibles. Un numéro de téléphone seul ne prouve pas la joignabilité par mobile ou WhatsApp.
+
+Une lecture limitée ou incomplète laisse les chiffres concernés inconnus. Les chiffres inconnus sont exclus du score de santé, du résumé IA et des recommandations. Ils ne signifient ni une absence d’activité ni une mauvaise qualité des données.
+
 ## Relancer le scan
 
 Cliquez sur **Run again** pour voir ce qui a changé depuis le scan précédent.
 
-Quand un chiffre ne peut pas être récupéré depuis Carerix, le rapport l'indique comme manquant au lieu d'afficher zéro. **How this is measured**, en bas du rapport, explique comment chaque chiffre est calculé.
+Quand un chiffre ne peut pas être récupéré depuis votre ATS, le rapport l'indique comme manquant au lieu d'afficher zéro. **How this is measured**, en bas du rapport, explique comment chaque chiffre est calculé.
 
 ## Articles liés
 
